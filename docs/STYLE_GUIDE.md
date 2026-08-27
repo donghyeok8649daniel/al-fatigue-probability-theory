@@ -43,6 +43,22 @@ A short Korean summary is not a substitute for the translation when the English 
 
 This rule applies to README files, theory notes, assumptions, failed approaches, result records, planning documents, and future Markdown files.
 
+## Mandatory variable-definition rule
+
+All symbols used in theory, simulations, tests, or result notes must have a stable definition in `docs/VARIABLE_DEFINITIONS.md`.
+
+When a new symbol is introduced, the same commit should add or update its entry in the variable dictionary. Each entry should state, whenever meaningful:
+
+- mathematical definition;
+- physical interpretation;
+- unit or nondimensional status;
+- modeling classification such as **DEFINITION**, **EXACT**, or **CONTROLLED APPROXIMATION**;
+- whether the symbol is microscopic, coarse-grained, or macroscopic.
+
+Do not reuse an existing symbol for a different physical quantity without explicitly renaming one of the variables.
+
+In particular, reduced structural variables such as the non-affine slip/disregistry coordinate $s$ must be traceable to a microscopic atomic definition rather than being left as an unexplained internal variable.
+
 ## Modeling labels
 
 Important claims should be identified as one of:
@@ -101,6 +117,22 @@ Markdown 파일에서는 LaTeX display delimiter인 `\[`와 `\]`를 사용하지
 영문 부분에 추가적인 기술 주장, 가정, 수치결과, 한계가 존재한다면 짧은 한국어 요약만으로 번역을 대신할 수 없다. 수학적 내용을 실제로 수정하는 경우가 아니라면 영문과 한국어 부분의 방정식은 동일하게 유지한다.
 
 이 규칙은 README, 이론 노트, 가정 정리, 실패한 접근, 결과 기록, 연구계획 문서 및 앞으로 새로 만드는 모든 Markdown 파일에 적용한다.
+
+## 모든 변수 정의 의무 규칙
+
+이론, simulation, test, result note에서 사용하는 모든 기호는 `docs/VARIABLE_DEFINITIONS.md`에 안정된 정의를 가져야 한다.
+
+새로운 기호를 도입하면 같은 commit에서 변수 사전에도 해당 항목을 추가하거나 수정한다. 가능한 경우 각 항목에는 다음을 기록한다.
+
+- 수학적 정의;
+- 물리적 의미;
+- 단위 또는 무차원 여부;
+- **DEFINITION**, **EXACT**, **CONTROLLED APPROXIMATION** 등의 모델링 분류;
+- microscopic, coarse-grained, macroscopic 변수 중 어느 수준에 속하는지.
+
+기존 기호를 전혀 다른 물리량에 재사용하지 않는다. 필요하면 기호 하나를 명시적으로 변경한다.
+
+특히 non-affine slip/disregistry coordinate $s$와 같은 축약 구조변수는 단순한 설명 없는 internal variable로 남겨두지 않고 원자수준 정의까지 추적 가능해야 한다.
 
 ## 모델링 분류 라벨
 
