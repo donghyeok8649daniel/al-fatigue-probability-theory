@@ -1,10 +1,12 @@
-"""Generate active normal-deformation simulation results only.
+"""Generate the active normal-deformation reference results only.
 
-Historical Rubin/shear/non-affine result generators are preserved under
-libraries/shear/ and are intentionally excluded from the default workflow.
+Run from repository root:
+    python -m simulations.generate_results
+
+The active research path is cyclic normal stress -> normal interatomic spacing
+-> P(a,t) -> normal-opening instability. Non-normal proof-of-principle models
+are not part of the active result workflow.
 """
-
-from __future__ import annotations
 
 from simulations.run_normal_lj_chain import main
 
