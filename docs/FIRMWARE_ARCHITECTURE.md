@@ -4,7 +4,7 @@
 
 The real-time machine controller and the research theory solver are separated.
 
-The MCU is responsible for deterministic control and safety:
+The MCU is responsible for deterministic normal-load control and safety:
 
 $$
 \sigma_{\rm ref}(t)
@@ -14,9 +14,9 @@ F_{\rm ref}(t)
 \text{closed-loop force control}.
 $$
 
-The PC is responsible for logging, visualization, and computationally expensive theory analysis.
+The PC is responsible for logging, visualization, and computationally expensive analysis of the active normal-spacing theory $P(a,t)$.
 
-The current proof-of-principle $P(a,s,t)$ / Hamiltonian solvers are **not placed inside the hard real-time control loop**.
+The full atomistic/generalized-LJ solver is **not placed inside the hard real-time control loop**. The MCU controls measured force; the PC later compares the measured normal stress/strain history with the theory.
 
 ## Real-time reference generation
 
@@ -31,29 +31,45 @@ $$
 and
 
 $$
-F_{\rm ref}(t)=A_{\rm specimen}\sigma_{\rm ref}(t).
+\boxed{F_{\rm ref}(t)=A_{\rm specimen}\sigma_{\rm ref}(t).}
 $$
 
-The firmware tracks $F_{\rm ref}$ using measured load-cell force.
+The firmware tracks $F_{\rm ref}$ using the measured load-cell force.
+
+## Recorded quantities
+
+The intended telemetry includes at least:
+
+- reference normal stress and force;
+- measured normal force;
+- displacement;
+- normal strain when available;
+- temperature;
+- DCPD voltage when enabled;
+- cycle count;
+- actuator command;
+- fault flags.
+
+These measurements are experimental inputs/observables. They are not substitutes for the microscopic state $P(a,t)$.
 
 ## Safety model
 
-The firmware core immediately commands zero actuator output if any of the following occurs:
+The firmware core commands zero actuator output if any of the following occurs:
 
-- emergency stop / travel-limit input;
+- emergency stop or travel-limit input;
 - invalid sensor sample;
 - measured force exceeds the configured machine limit;
 - displacement exceeds the configured travel limit;
 - the requested force itself exceeds the configured machine limit;
 - requested target cycle count is reached.
 
-These software checks do not replace independent hardwired safety relays, drive limits, mechanical stops, or emergency-stop circuitry.
+Software checks do not replace independent hardwired safety relays, drive limits, mechanical stops, or emergency-stop circuitry.
 
 ## Controller status
 
-The included PI controller is a framework only. No real actuator gains are supplied because $K_p$ and $K_i$ depend on the actual actuator, power amplifier, fixture stiffness, load cell, sampling rate, and specimen.
+The included PI controller is a framework only. Real actuator gains are not supplied because $K_p$ and $K_i$ depend on the actuator, power amplifier, fixture stiffness, load cell, sampling rate, and specimen.
 
-Setting gains by copying arbitrary values would violate the mechanics-first / no-hidden-fitting philosophy and can be unsafe.
+Arbitrary controller gains must not be copied into a real machine. They have to be identified and validated on the actual hardware under conservative force/travel limits.
 
 ## Files
 
@@ -84,7 +100,7 @@ Setting gains by copying arbitrary values would violate the mechanics-first / no
 
 실시간 장비 제어기와 연구 이론 solver를 분리한다.
 
-MCU는 deterministic control과 안전을 담당한다.
+MCU는 deterministic normal-load control과 안전을 담당한다.
 
 $$
 \sigma_{\rm ref}(t)
@@ -94,13 +110,13 @@ F_{\rm ref}(t)
 \text{폐루프 force control}
 $$
 
-PC는 데이터 저장, 시각화, 계산량이 큰 이론분석을 담당한다.
+PC는 데이터 저장, 시각화, 그리고 활성 normal-spacing theory $P(a,t)$의 계산량이 큰 분석을 담당한다.
 
-현재 원리증명 단계의 $P(a,s,t)$ / Hamiltonian solver를 hard real-time 제어 loop 안에 직접 넣지 않는다.
+full atomistic/generalized-LJ solver를 hard real-time 제어 loop 안에 직접 넣지 않는다. MCU는 측정 force를 제어하고, PC가 이후 측정된 normal stress/strain history를 이론과 비교한다.
 
 ## 실시간 기준값 생성
 
-사인 피로시험이면
+사인 피로시험에서는
 
 $$
 \sigma_{\rm ref}(t)
@@ -111,18 +127,32 @@ $$
 이고,
 
 $$
-F_{\rm ref}(t)
-=
-A_{\rm specimen}\sigma_{\rm ref}(t)
+\boxed{F_{\rm ref}(t)=A_{\rm specimen}\sigma_{\rm ref}(t)}
 $$
 
 이다.
 
 펌웨어는 load cell에서 측정한 힘을 이용해 $F_{\rm ref}$를 추종한다.
 
+## 기록량
+
+telemetry에는 최소한 다음을 포함하는 것을 목표로 한다.
+
+- reference normal stress와 force;
+- measured normal force;
+- displacement;
+- 가능하면 normal strain;
+- temperature;
+- 사용하는 경우 DCPD voltage;
+- cycle count;
+- actuator command;
+- fault flag.
+
+이 측정량들은 experimental input/observable이며 microscopic state $P(a,t)$ 자체를 대신하지 않는다.
+
 ## 안전 구조
 
-다음 조건에서는 펌웨어 core가 actuator command를 즉시 0으로 만든다.
+다음 조건에서는 firmware core가 actuator command를 0으로 만든다.
 
 - emergency stop 또는 travel-limit 입력;
 - 잘못된 sensor sample;
@@ -131,13 +161,13 @@ $$
 - 명령한 force reference 자체가 장비 한계를 초과;
 - 목표 cycle 수 도달.
 
-이 software check는 독립적인 hardwired safety relay, drive limit, mechanical stop, emergency-stop 회로를 대체하지 않는다.
+software check는 독립적인 hardwired safety relay, drive limit, mechanical stop, emergency-stop 회로를 대체하지 않는다.
 
 ## 제어기 상태
 
-포함된 PI force controller는 framework다. 실제 $K_p,K_i$는 넣지 않았다. 실제 gain은 actuator, power amplifier, fixture stiffness, load cell, sampling rate, specimen에 따라 달라진다.
+포함된 PI force controller는 framework다. 실제 $K_p,K_i$는 actuator, power amplifier, fixture stiffness, load cell, sampling rate, specimen에 따라 달라지므로 임의값을 제공하지 않는다.
 
-임의의 gain을 복사해 넣는 것은 이 연구의 no-hidden-fitting 원칙에도 맞지 않고 장비 안전 측면에서도 부적절하다.
+실제 장비에 arbitrary controller gain을 복사해 넣으면 안 된다. 실제 hardware에서 보수적인 force/travel limit 아래 plant를 식별하고 검증해야 한다.
 
 ## 파일
 
