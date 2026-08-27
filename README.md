@@ -10,20 +10,20 @@ Derive cyclic hysteresis, irreversible fatigue accumulation, and crack initiatio
 
 The primary reduced state is the thermodynamic-limit spacing density
 
-\[
-P(a,t)=\lim_{N\to\infty}\frac{1}{N}\sum_{i=1}^{N}\delta(a-a_i(t)),
-\]
+$$
+P(a,t)=\lim_{N\to\infty}\frac{1}{N}\sum_{i=1}^{N}\delta(a-a_i(t)).
+$$
 
-where `a_i(t)` is a local interatomic-spacing descriptor. The long-term goal is to derive the evolution of `P(a,t)` from mechanics rather than prescribe a probability family.
+where $a_i(t)$ is a local interatomic-spacing descriptor. The long-term goal is to derive the evolution of $P(a,t)$ from mechanics rather than prescribe a probability family.
 
 ## Current backbone
 
 - Microscopic mechanics: Newton/Hamiltonian dynamics
 - Deterministic lattice baseline: generalized Lennard-Jones interaction
 - Distribution energy: pair-distance distributions and correlation hierarchy
-- Exact density conservation: `∂P/∂t + ∂(Pv)/∂a = 0`
-- Hysteresis target: obtain `∮σ dε > 0` without inserting an empirical hysteresis law
-- Fatigue target: obtain secular cycle-to-cycle evolution `P_{N+1} != P_N`
+- Exact density conservation: $\partial_tP+\partial_a(Pv)=0$
+- Hysteresis target: obtain $\oint \sigma\,d\epsilon>0$ without inserting an empirical hysteresis law
+- Fatigue target: obtain secular cycle-to-cycle evolution $P_{N+1}\neq P_N$
 - Crack initiation: formulate as loss of mechanical stability / first-passage into an unstable state
 
 ## Repository structure
