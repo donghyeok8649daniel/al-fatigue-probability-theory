@@ -1,126 +1,103 @@
-# Aluminum gamma-surface constraints for the next calibration step
+# Auxiliary Note — Aluminum gamma-surface constraints
 
-## Purpose
+## Status
 
-The nonlinear Hamiltonian slip-bath model proves that a non-affine periodic energy landscape can generate inter-basin cycle-state changes without an empirical fatigue law. The next step is to replace the artificial nondimensional barrier with an Al-specific atomistic energy landscape.
+**Auxiliary shear-reference document. Not the main project direction.**
 
-## Literature constraints
+The project is now explicitly centered on cyclic normal stress, normal interatomic spacing $a_i(t)$, the state density $P(a,t)$, and normal-opening instability. See `MILESTONE2_NORMAL_DEFORMATION.md`.
 
-First-principles and atomistic studies of fcc Al generalized stacking-fault energetics consistently place the unstable stacking-fault energy in the rough range of order $10^{-1}\,\mathrm{J/m^2}$, with reported values depending on relaxation and electronic-structure method. Representative literature values include approximately $175$–$224\,\mathrm{mJ/m^2}$ for unstable stacking-fault energies and roughly $120$–$166\,\mathrm{mJ/m^2}$ for intrinsic stacking-fault energies in common first-principles datasets.
+This document is retained only because shear/slip energetics may later be useful as a secondary comparison or closure variable. It must not be interpreted as a requirement that the main fatigue model use a gamma-surface.
 
-Primary sources relevant to this project:
+## Literature constraint
+
+First-principles and atomistic calculations of fcc Al generalized stacking-fault energetics provide physically relevant scales for shear disregistry. Representative sources include:
 
 - G. Lu, N. Kioussis, V. V. Bulatov, E. Kaxiras, Phys. Rev. B **62**, 3099 (2000), DOI: 10.1103/PhysRevB.62.3099.
 - C. Brandl, P. M. Derlet, H. Van Swygenhoven, Phys. Rev. B **76**, 054124 (2007), DOI: 10.1103/PhysRevB.76.054124.
 - S. Ogata, J. Li, S. Yip, *Ideal Pure Shear Strength of Aluminum and Copper*, Science **298**, 807–811 (2002), DOI: 10.1126/science.1076652.
 
-The numerical spread is not a nuisance to be fitted away. It reflects method, relaxation, strain state, and path dependence, so the future model should carry the chosen atomistic input explicitly.
+These values are **EMPIRICAL / ATOMISTIC VALIDATION INPUTS**, not fatigue evolution laws.
 
-## Consequence for ordinary fatigue stress
+## Relation to the current project
 
-A homogeneous perfect-crystal slip coordinate driven directly over a DFT-scale gamma-surface barrier corresponds to ideal shear stresses of order gigapascals, consistent with first-principles ideal-strength calculations for Al.
+The previous auxiliary slip model used
 
-Therefore this project should **not** attempt to explain a tens-of-MPa resolved cyclic stress by simply lowering the gamma-surface barrier until the simulation slips. That would amount to hidden fitting.
+$$
+V_\gamma(s)=\frac{\Delta_\gamma}{2}
+\left[1-\cos\left(\frac{2\pi s}{b}\right)\right].
+$$
 
-Instead, the low-stress fatigue problem must identify how microscopic mechanics changes the *local* generalized force or the accessible state space. Candidate mechanisms to derive and test are:
+That model was useful only as a nonlinear conservative proof-of-principle for cycle-state evolution.
 
-1. free-surface stress concentration and surface-modified gamma surfaces;
-2. pre-existing non-affine defect fields;
-3. spatially correlated multi-slip coordinates;
-4. finite-temperature microscopic initial conditions and exact bath memory;
-5. local geometric amplification near persistent slip structures;
-6. interaction of slip with the spacing distribution $P(a,t)$.
+The current mainline energy model instead prioritizes the fixed generalized Lennard-Jones pair law
 
-Each mechanism must be introduced with its microscopic definition and independently calculable parameters.
+$$
+v(r)=\varepsilon_{\rm LJ}
+\left[
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^m
+-
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^n
+\right]
+$$
 
-## Recommended replacement of the one-harmonic potential
+and derives normal spacing dynamics from the actual interatomic geometry and pair-distance distributions.
 
-The current approximation
+If a future normal-deformation closure derivation proves that tangential disregistry is necessary, this document provides a reference for adding that variable without inventing an arbitrary shear barrier.
+
+## Rule
+
+Do not lower a shear barrier merely to make a desired macroscopic stress cause slip. Do not promote shear/slip to the main fatigue mechanism unless the normal-deformation theory itself shows that it is required.
+
+---
+
+# 한국어 번역 — Al gamma-surface 보조 참고문서
+
+## 상태
+
+**전단 관련 보조 참고문서이며 프로젝트의 메인 방향이 아니다.**
+
+현재 프로젝트는 반복 수직응력, 수직 원자간격 $a_i(t)$, 상태밀도 $P(a,t)$, 수직 opening instability를 중심으로 한다. 메인 이론은 `MILESTONE2_NORMAL_DEFORMATION.md`를 따른다.
+
+이 문서는 향후 shear/slip energetics가 secondary comparison 또는 closure variable로 필요할 가능성 때문에 남긴다. 메인 fatigue model이 gamma-surface를 반드시 사용해야 한다는 뜻은 아니다.
+
+## 문헌 제약조건
+
+FCC Al generalized stacking-fault energetics에 대한 first-principles 및 atomistic 계산은 전단 disregistry의 물리적 energy scale을 제공한다. 대표 참고문헌은 다음과 같다.
+
+- G. Lu, N. Kioussis, V. V. Bulatov, E. Kaxiras, Phys. Rev. B **62**, 3099 (2000), DOI: 10.1103/PhysRevB.62.3099.
+- C. Brandl, P. M. Derlet, H. Van Swygenhoven, Phys. Rev. B **76**, 054124 (2007), DOI: 10.1103/PhysRevB.76.054124.
+- S. Ogata, J. Li, S. Yip, Science **298**, 807–811 (2002), DOI: 10.1126/science.1076652.
+
+이 값들은 **EMPIRICAL / ATOMISTIC VALIDATION INPUT**이지 fatigue evolution law가 아니다.
+
+## 현재 프로젝트와의 관계
+
+이전 보조 slip model은
 
 $$
 V_\gamma(s)=\frac{\Delta_\gamma}{2}
 \left[1-\cos\left(\frac{2\pi s}{b}\right)\right]
 $$
 
-should ultimately be replaced by
+를 사용했다.
+
+이 모델의 역할은 nonlinear conservative dynamics에서 cycle-state evolution이 가능한지 보여주는 원리증명뿐이다.
+
+현재 메인 energy model은 대신 고정된 generalized Lennard-Jones pair law
 
 $$
-V_\gamma(\mathbf s)=A_{\rm RA}\,\gamma_{\rm Al}(\mathbf s),
+v(r)=\varepsilon_{\rm LJ}
+\left[
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^m
+-
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^n
+\right]
 $$
 
-where $\gamma_{\rm Al}(\mathbf s)$ is an atomistically calculated two-dimensional generalized-stacking-fault energy surface and $A_{\rm RA}$ is the mechanically defined representative slip area.
+를 우선하고, 실제 interatomic geometry와 pair-distance distribution에서 수직 spacing dynamics를 유도한다.
 
-The conjugate resolved shear force is then
+향후 normal-deformation closure 유도에서 tangential disregistry가 반드시 필요하다고 증명될 경우에만, arbitrary shear barrier를 새로 만드는 대신 이 문서를 참고해 해당 변수를 추가한다.
 
-$$
-\mathbf F_s=A_{\rm RA}\,\boldsymbol\tau,
-$$
+## 규칙
 
-and local mechanical stability is determined by the Hessian of the driven landscape
-
-$$
-\Phi(\mathbf s,t)=A_{\rm RA}\gamma_{\rm Al}(\mathbf s)
--A_{\rm RA}\boldsymbol\tau(t)\cdot\mathbf s.
-$$
-
-Loss of a local minimum occurs when the smallest eigenvalue satisfies
-
-$$
-\boxed{
-\lambda_{\min}\left[\nabla_{\mathbf s}^2\Phi\right]=0.
-}
-$$
-
-This is a mechanically cleaner instability condition than prescribing a yield stress.
-
----
-
-# 한국어 번역
-
-## 목적
-
-현재 비선형 Hamiltonian slip-bath 모델은 경험적 피로식을 넣지 않아도 주기적인 비아핀 에너지 지형에서 basin 간 이동과 cycle-to-cycle 구조변화가 가능하다는 것을 보여준다. 다음 단계는 임의의 무차원 barrier를 실제 Al의 원자수준 에너지 지형으로 교체하는 것이다.
-
-## 문헌 제약조건
-
-FCC Al의 generalized stacking-fault 계산에서는 계산방법과 relaxation 조건에 따라 차이가 있지만 unstable stacking-fault energy가 대략 $10^{-1}\,\mathrm{J/m^2}$ 규모이며, 대표적인 first-principles 자료에서 약 $175$–$224\,\mathrm{mJ/m^2}$ 수준의 값들이 보고된다. intrinsic stacking-fault energy 역시 대략 $120$–$166\,\mathrm{mJ/m^2}$ 범위의 계산값들이 흔하다.
-
-이 차이는 fitting으로 없애야 할 오차가 아니라 계산방법, 변형상태, relaxation, slip path의 물리적 차이이므로 향후 모델에서 입력값의 출처를 명시해야 한다.
-
-## 저응력 피로에 대한 중요한 결론
-
-완전결정의 균일한 slip 좌표가 DFT 수준의 gamma-surface barrier를 직접 넘으려면 이상전단강도 수준, 즉 GPa 규모의 국부응력이 필요하다. 이는 Al의 first-principles ideal-strength 계산과도 일관된다.
-
-따라서 수십 MPa 수준의 macroscopic cyclic stress에서 slip을 만들기 위해 gamma barrier를 임의로 낮추면 안 된다. 그것은 사실상 숨은 fitting이다.
-
-대신 다음 항목들이 실제 국부 구동력 또는 접근 가능한 상태공간을 어떻게 바꾸는지 미시역학으로 유도해야 한다.
-
-1. 자유표면의 응력집중과 surface-modified gamma surface;
-2. 기존 비아핀 결함장;
-3. 공간적으로 상관된 multi-slip 좌표;
-4. 유한온도 미시 초기조건과 정확한 bath memory;
-5. persistent slip 구조 주변의 국부 기하학적 증폭;
-6. slip과 원자간격 분포 $P(a,t)$의 결합.
-
-현재의 단일 cosine potential은 최종적으로 실제 Al의 2차원 $\gamma$-surface로 교체해야 한다.
-
-$$
-V_\gamma(\mathbf s)=A_{\rm RA}\gamma_{\rm Al}(\mathbf s).
-$$
-
-외부 resolved shear stress를 포함한 구동 에너지 지형은
-
-$$
-\Phi(\mathbf s,t)=A_{\rm RA}\gamma_{\rm Al}(\mathbf s)
--A_{\rm RA}\boldsymbol\tau(t)\cdot\mathbf s
-$$
-
-이고, 국부 최소점의 기계적 소실은
-
-$$
-\boxed{
-\lambda_{\min}\left[\nabla_{\mathbf s}^2\Phi\right]=0
-}
-$$
-
-으로 잡을 수 있다. 이는 경험적인 yield stress를 집어넣는 것보다 훨씬 역학적으로 명확한 기준이다.
+원하는 macroscopic stress에서 slip이 발생하도록 shear barrier를 임의로 낮추지 않는다. normal-deformation theory 자체가 필요성을 보여주지 않는 한 shear/slip을 주 fatigue mechanism으로 승격하지 않는다.
