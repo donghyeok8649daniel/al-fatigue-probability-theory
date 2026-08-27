@@ -22,42 +22,30 @@ $$
 $$
 ```
 
-### Do not use
-
-Do not use LaTeX display delimiters `\[` and `\]` in Markdown files because they may render as literal text in GitHub views.
-
-Do not place mathematical expressions in backticks unless the intent is to show literal source code rather than rendered mathematics.
+Do not use `\[` and `\]` in Markdown files.
 
 ## Mandatory bilingual Markdown rule
 
-**Every `.md` file in this repository must contain a Korean translation.**
+**Every `.md` file in this repository, including auxiliary libraries, must contain a complete Korean translation.**
 
 Required order:
 
-1. English technical version first;
+1. English technical version;
 2. horizontal rule `---`;
-3. heading `# 한국어 번역` or an equivalent Korean title;
+3. heading `# 한국어 번역` or equivalent;
 4. Korean translation of the complete technical content.
 
-A short Korean summary is not a substitute for the translation when the English section contains additional technical claims, assumptions, numerical results, or limitations. Equations should be preserved unchanged between the English and Korean sections unless the mathematical content itself is being corrected.
+A short summary is not a substitute for the full translation.
 
-This rule applies to README files, theory notes, assumptions, failed approaches, result records, planning documents, and future Markdown files.
+## Active-mainline rule
 
-## Mandatory variable-definition rule
+The repository root is reserved for the active **normal-deformation / normal-opening** mainline. Earlier shear, slip, gamma-surface, and Rubin-chain work belongs under `libraries/shear/` unless it is explicitly promoted back into the active theory.
 
-All symbols used in theory, simulations, tests, or result notes must have a stable definition in `docs/VARIABLE_DEFINITIONS.md`.
+Default root-level simulations and tests must not depend on the shear library.
 
-When a new symbol is introduced, the same commit should add or update its entry in the variable dictionary. Each entry should state, whenever meaningful:
+## Variable dictionary rule
 
-- mathematical definition;
-- physical interpretation;
-- unit or nondimensional status;
-- modeling classification such as **DEFINITION**, **EXACT**, or **CONTROLLED APPROXIMATION**;
-- whether the symbol is microscopic, coarse-grained, or macroscopic.
-
-Do not reuse an existing symbol for a different physical quantity without explicitly renaming one of the variables.
-
-In particular, reduced structural variables such as the non-affine slip/disregistry coordinate $s$ must be traceable to a microscopic atomic definition rather than being left as an unexplained internal variable.
+New active normal variables must be added to `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md` in the same commit. Shear-library variables belong to `libraries/shear/docs/VARIABLE_DEFINITIONS.md`.
 
 ## Modeling labels
 
@@ -77,19 +65,19 @@ Never silently promote an approximation into an exact statement.
 
 ## GitHub Markdown 수식
 
-저장소의 모든 Markdown 파일에서 수식은 GitHub에서 정상적으로 렌더링되는 delimiter를 사용해야 한다.
+저장소의 모든 Markdown 파일은 GitHub에서 정상 렌더링되는 수식 delimiter를 사용한다.
 
 ### 인라인 수식
 
-단일 달러 기호를 사용한다.
+단일 dollar 기호를 사용한다.
 
 ```markdown
 $P(a,t)$
 ```
 
-### 독립된 수식 블록
+### 독립 수식 블록
 
-이중 달러 기호를 사용한다.
+이중 dollar 기호를 사용한다.
 
 ```markdown
 $$
@@ -97,46 +85,34 @@ $$
 $$
 ```
 
-### 사용하지 말아야 할 형식
+Markdown에서는 `\[`와 `\]`를 사용하지 않는다.
 
-Markdown 파일에서는 LaTeX display delimiter인 `\[`와 `\]`를 사용하지 않는다. GitHub 화면에서 수식으로 렌더링되지 않고 문자 그대로 보일 수 있기 때문이다.
+## 모든 Markdown의 한국어 번역 의무
 
-수식을 실제 코드 문자열로 보여주려는 경우가 아니라면 수학식을 backtick 안에 넣지 않는다.
+**보조 library를 포함하여 저장소의 모든 `.md` 파일에는 전체 한국어 번역이 있어야 한다.**
 
-## 모든 Markdown 파일의 한국어 번역 의무 규칙
+순서는
 
-**이 저장소의 모든 `.md` 파일에는 한국어 번역본이 반드시 포함되어야 한다.**
+1. 영문 기술 원문;
+2. `---`;
+3. `# 한국어 번역` 또는 동등한 제목;
+4. 전체 한국어 번역
 
-작성 순서는 다음과 같이 통일한다.
+으로 한다. 짧은 요약으로 전체 번역을 대신할 수 없다.
 
-1. 영문 기술 원문을 먼저 작성한다.
-2. 구분선 `---`를 넣는다.
-3. `# 한국어 번역` 또는 이에 해당하는 한국어 제목을 넣는다.
-4. 영문 기술내용 전체를 한국어로 번역한다.
+## 활성 mainline 규칙
 
-영문 부분에 추가적인 기술 주장, 가정, 수치결과, 한계가 존재한다면 짧은 한국어 요약만으로 번역을 대신할 수 없다. 수학적 내용을 실제로 수정하는 경우가 아니라면 영문과 한국어 부분의 방정식은 동일하게 유지한다.
+repository root는 활성 **normal-deformation / normal-opening** mainline 전용이다. 과거 shear, slip, gamma-surface, Rubin-chain 연구는 다시 활성 이론으로 승격시키는 경우가 아니면 `libraries/shear/` 아래에 둔다.
 
-이 규칙은 README, 이론 노트, 가정 정리, 실패한 접근, 결과 기록, 연구계획 문서 및 앞으로 새로 만드는 모든 Markdown 파일에 적용한다.
+기본 root-level simulation과 test는 shear library에 의존하면 안 된다.
 
-## 모든 변수 정의 의무 규칙
+## 변수사전 규칙
 
-이론, simulation, test, result note에서 사용하는 모든 기호는 `docs/VARIABLE_DEFINITIONS.md`에 안정된 정의를 가져야 한다.
-
-새로운 기호를 도입하면 같은 commit에서 변수 사전에도 해당 항목을 추가하거나 수정한다. 가능한 경우 각 항목에는 다음을 기록한다.
-
-- 수학적 정의;
-- 물리적 의미;
-- 단위 또는 무차원 여부;
-- **DEFINITION**, **EXACT**, **CONTROLLED APPROXIMATION** 등의 모델링 분류;
-- microscopic, coarse-grained, macroscopic 변수 중 어느 수준에 속하는지.
-
-기존 기호를 전혀 다른 물리량에 재사용하지 않는다. 필요하면 기호 하나를 명시적으로 변경한다.
-
-특히 non-affine slip/disregistry coordinate $s$와 같은 축약 구조변수는 단순한 설명 없는 internal variable로 남겨두지 않고 원자수준 정의까지 추적 가능해야 한다.
+새로운 활성 normal 변수는 같은 commit에서 `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md`에 추가한다. shear-library 변수는 `libraries/shear/docs/VARIABLE_DEFINITIONS.md`에 둔다.
 
 ## 모델링 분류 라벨
 
-중요한 주장은 다음 중 하나로 분류해야 한다.
+중요한 주장은 다음 중 하나로 분류한다.
 
 - **EXACT / IDENTITY**
 - **DEFINITION**
@@ -144,4 +120,4 @@ Markdown 파일에서는 LaTeX display delimiter인 `\[`와 `\]`를 사용하지
 - **CONTROLLED APPROXIMATION**
 - **EMPIRICAL INPUT**
 
-근사식을 아무 설명 없이 정확식으로 승격시켜서는 안 된다.
+근사를 설명 없이 정확식으로 승격시키지 않는다.
