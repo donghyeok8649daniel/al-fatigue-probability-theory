@@ -26,7 +26,7 @@ Do not use `\[` and `\]` in Markdown files.
 
 ## Mandatory bilingual Markdown rule
 
-**Every `.md` file in this repository, including auxiliary libraries, must contain a complete Korean translation.**
+**Every `.md` file in this repository must contain a complete Korean translation.**
 
 Required order:
 
@@ -35,17 +35,33 @@ Required order:
 3. heading `# 한국어 번역` or equivalent;
 4. Korean translation of the complete technical content.
 
-A short summary is not a substitute for the full translation.
+A short Korean summary is not a substitute for the full translation.
 
-## Active-mainline rule
+## Normal-mainline rule
 
-The repository root is reserved for the active **normal-deformation / normal-opening** mainline. Earlier shear, slip, gamma-surface, and Rubin-chain work belongs under `libraries/shear/` unless it is explicitly promoted back into the active theory.
+The active repository is reserved for the **normal-deformation / normal-opening** research path.
 
-Default root-level simulations and tests must not depend on the shear library.
+New theory, simulation, test, result, and documentation files should support
+
+$$
+\sigma_n(t)
+\rightarrow
+\{a_i(t)\}
+\rightarrow
+P(a,t)
+\rightarrow
+\text{normal memory / secular evolution}
+\rightarrow
+\text{normal-opening instability}.
+$$
+
+A non-normal mechanism should not be added to the active mainline unless a derivation from the normal problem shows that it is mathematically necessary.
 
 ## Variable dictionary rule
 
-New active normal variables must be added to `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md` in the same commit. Shear-library variables belong to `libraries/shear/docs/VARIABLE_DEFINITIONS.md`.
+Any new active theory or simulation variable must be added to `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md` in the same commit.
+
+Any new firmware field or flag must be added to `firmware/VARIABLE_DEFINITIONS.md` in the same commit.
 
 ## Modeling labels
 
@@ -58,6 +74,16 @@ Important claims should be identified as one of:
 - **EMPIRICAL INPUT**
 
 Never silently promote an approximation into an exact statement.
+
+## Numerical-result rule
+
+Every new numerical claim should state:
+
+- the model and parameters;
+- the numerical method;
+- the relevant convergence or conservation check;
+- whether the result is dimensional or nondimensional;
+- whether it is a physical prediction, a null test, or a proof of principle.
 
 ---
 
@@ -89,26 +115,44 @@ Markdown에서는 `\[`와 `\]`를 사용하지 않는다.
 
 ## 모든 Markdown의 한국어 번역 의무
 
-**보조 library를 포함하여 저장소의 모든 `.md` 파일에는 전체 한국어 번역이 있어야 한다.**
+**이 저장소의 모든 `.md` 파일에는 전체 한국어 번역이 있어야 한다.**
 
-순서는
+작성 순서는
 
 1. 영문 기술 원문;
 2. `---`;
 3. `# 한국어 번역` 또는 동등한 제목;
-4. 전체 한국어 번역
+4. 영문 기술내용 전체의 한국어 번역
 
-으로 한다. 짧은 요약으로 전체 번역을 대신할 수 없다.
+으로 통일한다. 짧은 한국어 요약은 전체 번역을 대신할 수 없다.
 
-## 활성 mainline 규칙
+## Normal-mainline 규칙
 
-repository root는 활성 **normal-deformation / normal-opening** mainline 전용이다. 과거 shear, slip, gamma-surface, Rubin-chain 연구는 다시 활성 이론으로 승격시키는 경우가 아니면 `libraries/shear/` 아래에 둔다.
+활성 저장소는 **수직변형 / normal-opening** 연구경로 전용으로 사용한다.
 
-기본 root-level simulation과 test는 shear library에 의존하면 안 된다.
+새로운 theory, simulation, test, result, documentation은
+
+$$
+\sigma_n(t)
+\rightarrow
+\{a_i(t)\}
+\rightarrow
+P(a,t)
+\rightarrow
+\text{수직 memory / secular evolution}
+\rightarrow
+\text{normal-opening instability}
+$$
+
+를 지원해야 한다.
+
+normal problem 자체의 유도에서 수학적으로 필요하다는 것이 드러나지 않는 한 non-normal mechanism을 활성 mainline에 추가하지 않는다.
 
 ## 변수사전 규칙
 
-새로운 활성 normal 변수는 같은 commit에서 `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md`에 추가한다. shear-library 변수는 `libraries/shear/docs/VARIABLE_DEFINITIONS.md`에 둔다.
+새로운 활성 theory/simulation 변수는 같은 commit에서 `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md`에 추가한다.
+
+새로운 firmware field 또는 flag는 같은 commit에서 `firmware/VARIABLE_DEFINITIONS.md`에 추가한다.
 
 ## 모델링 분류 라벨
 
@@ -120,4 +164,14 @@ repository root는 활성 **normal-deformation / normal-opening** mainline 전�
 - **CONTROLLED APPROXIMATION**
 - **EMPIRICAL INPUT**
 
-근사를 설명 없이 정확식으로 승격시키지 않는다.
+근사를 설명 없이 정확식으로 승격하지 않는다.
+
+## 수치결과 규칙
+
+새로운 수치 주장은 반드시 다음을 명시한다.
+
+- 사용한 model과 parameter;
+- numerical method;
+- 관련 convergence 또는 conservation check;
+- dimensional result인지 nondimensional result인지;
+- physical prediction, null test, proof of principle 중 무엇인지.
