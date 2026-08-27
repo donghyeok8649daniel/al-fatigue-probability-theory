@@ -26,6 +26,10 @@ where $a_i(t)$ is a local interatomic-spacing descriptor. The long-term goal is 
 - Fatigue target: obtain secular cycle-to-cycle evolution $P_{N+1}\neq P_N$
 - Crack initiation: formulate as loss of mechanical stability / first-passage into an unstable state
 
+## Variable dictionary
+
+All currently used theoretical and simulation symbols are defined in `docs/VARIABLE_DEFINITIONS.md`, including the microscopic interpretation of the non-affine slip/disregistry coordinate $s$. Any future document that introduces a new symbol should update that variable dictionary in the same commit.
+
 ## Current progress
 
 Milestone 1 now has a mechanics proof-of-principle using a resolved structural coordinate coupled to a semi-infinite harmonic Rubin chain. The full microscopic model is conservative, but outgoing unresolved lattice modes generate an exact phase lag and a nonzero reduced hysteresis loop.
@@ -62,7 +66,7 @@ python -m unittest tests.test_rubin_chain
 
 ## Repository structure
 
-- `docs/` — theory notes, assumptions, derivations, failed approaches
+- `docs/` — theory notes, assumptions, derivations, failed approaches, and variable definitions
 - `theory/` — analytic and numerical model code
 - `simulations/` — numerical experiments
 - `tests/` — conservation, limiting-case, and falsification tests
@@ -111,6 +115,10 @@ $$
 - 피로누적 목표: cycle에 따라 $P_{N+1}\neq P_N$인 secular evolution을 얻는 것
 - 균열개시: mechanical stability loss 또는 unstable state로의 first-passage 문제로 정식화하는 것
 
+## 변수 사전
+
+현재 이론 및 simulation에서 사용하는 모든 주요 기호는 `docs/VARIABLE_DEFINITIONS.md`에 정의한다. 특히 non-affine slip/disregistry coordinate $s$가 원자좌표에서 무엇을 의미하는지까지 명시한다. 앞으로 새로운 기호를 도입하는 문서는 같은 commit에서 변수 정의 파일도 함께 갱신하는 것을 원칙으로 한다.
+
 ## 현재 진행상황
 
 Milestone 1에서는 관심 구조좌표를 준무한 harmonic Rubin chain에 결합한 역학적 원리증명 모델을 구성했다. 전체 미시모델은 보존계지만, 외부로 전파되는 unresolved lattice mode 때문에 정확한 phase lag와 0이 아닌 축약 히스테리시스 loop가 발생한다.
@@ -149,7 +157,7 @@ python -m unittest tests.test_rubin_chain
 
 ## Repository 구조
 
-- `docs/` — 이론 노트, 가정, 유도, 실패한 접근
+- `docs/` — 이론 노트, 가정, 유도, 실패한 접근, 변수정의
 - `theory/` — 해석 및 수치 모델 코드
 - `simulations/` — 수치실험
 - `tests/` — 보존법칙, limiting case, 반증 test
