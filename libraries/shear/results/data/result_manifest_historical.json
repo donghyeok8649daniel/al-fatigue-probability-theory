@@ -1,0 +1,41 @@
+{
+  "model_status": "proof-of-principle, not calibrated Al fatigue life",
+  "rubin": {
+    "analytic_loop_area": 0.015209170034901047,
+    "numeric_loop_area_mean": 0.015208839984912282,
+    "numeric_loop_area_std": 1.921149725428978e-07,
+    "loop_area_relative_error": 2.1700723182610268e-05,
+    "final_internal_energy": 0.8644685639287875,
+    "final_external_work": 0.8644577442919658,
+    "energy_balance_relative_error": 1.2516096816928344e-05,
+    "phase_lag_deg": 28.95502437185985
+  },
+  "slip": {
+    "0.34": {
+      "last_six_cycle_states": [-0.023966511902375365, -0.023883659005477263, -0.024006008309388642, -0.023922779834739453, -0.024044338602637366, -0.02396121326345752],
+      "final_energy_balance_relative_error": 5.219544835870392e-07,
+      "cycle_2_variance": 2.998560194102822e-05,
+      "final_cycle_variance": 0.0006731382824345769
+    },
+    "0.4": {
+      "last_six_cycle_states": [-1.9649775530623599, -1.9648462797816606, -1.9649735709774114, -1.9648596762254658, -1.9650010766779256, -1.9648909809737016],
+      "final_energy_balance_relative_error": 1.6567320036396104e-06,
+      "cycle_2_variance": 0.0006290945174201408,
+      "final_cycle_variance": 0.01627567047854253
+    },
+    "0.5": {
+      "last_six_cycle_states": [-5.852860407632316, -6.854242005131259, -7.852348825213636, -8.853795180841896, -9.85187143488621, -10.853359355263722],
+      "final_energy_balance_relative_error": 1.7654376577010646e-07,
+      "cycle_2_variance": 0.0018824855540729205,
+      "final_cycle_variance": 0.035348786570658326
+    }
+  },
+  "figures": [
+    "rubin_hysteresis_cycle30.svg",
+    "rubin_loop_area_convergence.svg",
+    "slip_cycle_accumulation.svg",
+    "slip_hysteresis_running.svg",
+    "spacing_variance_by_cycle.svg",
+    "slip_energy_balance.svg"
+  ]
+}
