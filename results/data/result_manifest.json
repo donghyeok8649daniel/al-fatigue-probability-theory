@@ -1,0 +1,13 @@
+{
+  "active_mainline": "normal-deformation",
+  "model_status": "proof-of-principle normal generalized-LJ chain; not calibrated Al fatigue life",
+  "active_files": {
+    "theory": "theory/normal_lj_chain.py",
+    "simulation": "simulations/run_normal_lj_chain.py",
+    "tests": "tests/test_normal_lj_chain.py",
+    "summary": "results/data/normal_lj_summary.json",
+    "cycle_history": "results/data/normal_lj_cycle_history.csv",
+    "report": "results/reports/NORMAL_LJ_RESULTS.md"
+  },
+  "auxiliary_library": "libraries/shear/"
+}
