@@ -18,6 +18,24 @@ $$
 
 without inserting an empirical hysteresis law.
 
+### Current status: partially achieved as a mechanics proof-of-principle
+
+A resolved oscillator coupled to a semi-infinite harmonic Rubin chain gives an exact, mechanics-derived complex dynamic stiffness. Inside the propagating phonon band,
+
+$$
+\operatorname{Im}Z(\omega)>0,
+$$
+
+and therefore
+
+$$
+A_H=\pi F_a^2\frac{\operatorname{Im}Z}{|Z|^2}>0.
+$$
+
+A full finite conservative Newton-chain simulation reproduces the analytic loop area to about $2.17\times10^{-5}$ relative error while satisfying the external-work / internal-energy balance to about $1.25\times10^{-5}$ relative error in the reference run.
+
+This establishes that a fitted damping or hysteresis law is not necessary for reduced hysteresis. However, it does **not** yet establish the magnitude of macroscopic hysteresis in real Al. See `MILESTONE1_RUBIN_CHAIN.md`.
+
 ## Milestone 2 — Secular fatigue accumulation
 
 A periodic hysteresis loop alone is internal friction, not fatigue. Derive conditions for
@@ -27,6 +45,8 @@ P_{N+1}\neq P_N
 $$
 
 or for an equivalent slow internal state to evolve cycle by cycle.
+
+**Current highest-priority problem:** identify the smallest mechanically derived slow structural mechanism that prevents full cycle-to-cycle recovery. Pure harmonic radiation does not solve this.
 
 ## Milestone 3 — Crack initiation
 
@@ -78,6 +98,26 @@ $$
 
 이며, 이를 위해 경험적인 히스테리시스 법칙을 별도로 삽입해서는 안 된다.
 
+### 현재 상태: 역학적 원리 증명 수준에서 부분 달성
+
+관심 구조좌표 하나를 준무한 Rubin 조화사슬에 연결하면, 미시 Newton 역학으로부터 복소 동적 강성이 정확히 유도된다. 격자의 propagating band 내부에서는
+
+$$
+\operatorname{Im}Z(\omega)>0
+$$
+
+이므로
+
+$$
+A_H=\pi F_a^2\frac{\operatorname{Im}Z}{|Z|^2}>0
+$$
+
+가 된다.
+
+유한하지만 충분히 긴 전체 보존 Newton 사슬을 직접 적분한 기준 계산에서도 해석적 히스테리시스 면적과 약 $2.17\times10^{-5}$의 상대오차로 일치했고, 외부 일과 내부 에너지의 수지도 약 $1.25\times10^{-5}$ 상대오차로 일치했다.
+
+따라서 적어도 축약된 구조좌표에서 $A_H>0$를 얻기 위해 경험적 damping 또는 히스테리시스 법칙을 필수적으로 삽입할 필요는 없다는 점은 확인됐다. 다만 이것이 실제 Al의 거시적 히스테리시스 크기를 곧바로 설명하는 것은 아니다. 자세한 유도와 수치검증은 `MILESTONE1_RUBIN_CHAIN.md`에 기록한다.
+
 ## 마일스톤 2 — 장기적 피로 누적
 
 주기적으로 완전히 반복되는 히스테리시스 루프만 존재한다면 그것은 내부 마찰일 뿐, 그 자체로 피로 누적을 의미하지 않는다. 따라서 다음 조건이 성립하는 역학적 조건을 유도해야 한다.
@@ -87,6 +127,8 @@ P_{N+1}\neq P_N
 $$
 
 또는 이와 동등하게, 어떤 느린 내부 상태가 cycle마다 누적적으로 진화해야 한다.
+
+**현재 최우선 문제:** 한 cycle 뒤 구조가 완전히 복원되지 않게 만드는 가장 작은 역학적 slow state를 찾는 것이다. 순수 조화격자의 radiation만으로는 이 문제를 해결하지 못한다.
 
 ## 마일스톤 3 — 균열 개시
 
