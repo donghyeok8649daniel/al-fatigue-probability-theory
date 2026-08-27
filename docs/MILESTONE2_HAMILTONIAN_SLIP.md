@@ -1,16 +1,20 @@
-# Milestone 2 — Hamiltonian non-affine slip as a proof of secular structural evolution
+# Auxiliary Research Note — Hamiltonian non-affine slip proof of cycle-state evolution
 
 ## Status
 
-**Proof of principle only. This is not yet a calibrated aluminum fatigue model.**
+**Auxiliary proof-of-principle only. This is not the main physical mechanism of the project.**
 
-The purpose of this step is to test whether cycle-to-cycle structural evolution can arise from microscopic conservative dynamics without inserting a phenomenological damping law, damage variable, or empirical fatigue evolution equation.
+The main project direction is cyclic normal stress, normal interatomic spacing $a_i(t)$, the state density $P(a,t)$, and normal-opening crack initiation. See `MILESTONE2_NORMAL_DEFORMATION.md`.
 
----
+This slip model is retained because it answers one narrower mathematical question:
 
-## 1. Microscopic model
+> Can a fully conservative microscopic system with a nonlinear structural coordinate produce cycle-to-cycle state evolution without an empirical damage law?
 
-Introduce one resolved non-affine slip coordinate $s$ coupled to a long harmonic lattice bath with coordinates $u_j$. The total driven Hamiltonian is
+For this auxiliary model, the answer is yes.
+
+## 1. Auxiliary microscopic model
+
+Introduce one resolved non-affine slip coordinate $s$ coupled to a long harmonic lattice bath with coordinates $u_j$:
 
 $$
 H(t)=\frac{P_s^2}{2M}+V_\gamma(s)
@@ -20,82 +24,38 @@ H(t)=\frac{P_s^2}{2M}+V_\gamma(s)
 -F(t)s.
 $$
 
-The equations of motion are
+The full system contains no viscous damping term.
+
+The current periodic slip landscape is
 
 $$
-M\ddot s=-V_\gamma'(s)-k_c(s-u_1)+F(t),
+V_\gamma(s)=\frac{\Delta_\gamma}{2}
+\left[1-\cos\left(\frac{2\pi s}{b}\right)\right].
 $$
 
-$$
-m\ddot u_1=k_c(s-u_1)+k(u_2-u_1),
-$$
+This one-harmonic landscape is a **CONTROLLED APPROXIMATION** and is not used as the main energy model for normal fatigue.
 
-and for interior bath sites
+## 2. Exact energy balance under the stated model
 
-$$
-m\ddot u_j=k(u_{j+1}-2u_j+u_{j-1}).
-$$
-
-There is **no viscous damping term** anywhere in the full system.
-
-### Classification
-
-- **EXACT under the stated model:** Newton/Hamilton equations above.
-- **CONTROLLED APPROXIMATION:** the finite numerical chain used to approximate a semi-infinite bath before reflected waves return.
-- **CONTROLLED APPROXIMATION:** the periodic slip landscape is represented by one Fourier harmonic,
+Define the internal energy excluding external loading potential. The equations of motion give
 
 $$
-V_\gamma(s)=\frac{\Delta_\gamma}{2}\left[1-\cos\left(\frac{2\pi s}{b}\right)\right].
+\boxed{
+\frac{dE_{\rm int}}{dt}=F(t)\dot s(t).
+}
 $$
 
-For real fcc Al this function must eventually be replaced by a DFT/EAM generalized-stacking-fault energy surface $\gamma(\mathbf s)$ rather than treated as exact.
-
----
-
-## 2. Why this coordinate is physically motivated
-
-For fcc Al, relative displacement of two halves of a crystal across a $\{111\}$ plane defines the generalized stacking-fault energy surface. First-principles calculations show that this energy landscape controls dislocation-core structure and slip energetics. Therefore $s$ is not introduced as an empirical plastic-strain variable; it is a coarse-grained relative atomic displacement.
-
-Relevant primary literature:
-
-- G. Lu, N. Kioussis, V. V. Bulatov, E. Kaxiras, *Generalized-stacking-fault energy surface and dislocation properties of aluminum*, Phys. Rev. B **62**, 3099 (2000), DOI: 10.1103/PhysRevB.62.3099.
-- C. Brandl, P. M. Derlet, H. Van Swygenhoven, *General-stacking-fault energies in highly strained metallic environments: Ab initio calculations*, Phys. Rev. B **76**, 054124 (2007), DOI: 10.1103/PhysRevB.76.054124.
-- R. J. Rubin, *Momentum Autocorrelation Functions and Energy Transport in Harmonic Crystals Containing Isotopic Defects*, Phys. Rev. **131**, 964 (1963), DOI: 10.1103/PhysRev.131.964.
-- R. Zwanzig, *Nonlinear generalized Langevin equations*, J. Stat. Phys. **9**, 215–220 (1973), DOI: 10.1007/BF01008729.
-
-The Rubin/Zwanzig connection is important: eliminating the harmonic bath produces memory and radiation terms in the resolved coordinate even though the full system is conservative.
-
----
-
-## 3. Exact energy balance of the driven conservative model
-
-Define internal energy without the external potential $-F(t)s$:
+Therefore
 
 $$
-E_{\rm int}
-=\frac{P_s^2}{2M}+V_\gamma(s)
-+\frac{k_c}{2}(s-u_1)^2
-+\sum_j\frac{p_j^2}{2m}
-+\frac{k}{2}\sum_j(u_{j+1}-u_j)^2.
+\boxed{
+A_H=\oint F\,ds
+}
 $$
 
-Using the equations of motion,
+is transferred into unresolved lattice modes and/or retained in a changed structural state rather than being introduced through phenomenological damping.
 
-$$
-\boxed{\frac{dE_{\rm int}}{dt}=F(t)\dot s(t)}.
-$$
-
-Therefore the hysteresis work over one cycle is
-
-$$
-\boxed{A_H=\oint F\,ds}
-$$
-
-and this work is transferred into the unresolved lattice modes and/or retained in a changed structural state. It is not numerical or phenomenological dissipation.
-
----
-
-## 4. Cycle map and structural accumulation
+## 3. Auxiliary cycle-map result
 
 At cycle endpoints $t_N=NT$, define
 
@@ -103,135 +63,83 @@ $$
 s_N=s(NT).
 $$
 
-If the trajectory is bounded inside a single basin, a periodic steady state gives
+The nondimensional reference simulation gives three regimes:
 
-$$
-s_{N+1}=s_N.
-$$
+| $F_a$ | Long-time behavior | Interpretation |
+|---:|---|---|
+| 0.34 | $s_N\approx-0.024$ | bounded intra-basin periodic response |
+| 0.40 | finite relocation, then periodic | transient structural relocation |
+| 0.50 | approximately one period of drift per cycle | running inter-basin state |
 
-If inter-basin transitions occur, the cycle map can instead satisfy
-
-$$
-\boxed{s_{N+1}\neq s_N}.
-$$
-
-For an ensemble of representative areas,
-
-$$
-P_s(s,t)=\lim_{N_{\rm RA}\to\infty}
-\frac{1}{N_{\rm RA}}
-\sum_{\alpha=1}^{N_{\rm RA}}
-\delta\!\left(s-s_\alpha(t)\right),
-$$
-
-and the exact kinematic conservation law is
-
-$$
-\partial_tP_s+\partial_s(P_s v_s)=0.
-$$
-
-The natural extension of the original spacing theory is then
-
-$$
-\boxed{P(a,s,t)},
-$$
-
-with marginal
-
-$$
-P(a,t)=\int P(a,s,t)\,ds,
-$$
-
-and joint continuity equation
+For $F_a=0.50$,
 
 $$
 \boxed{
-\partial_tP+\partial_a(Pv_a)+\partial_s(Pv_s)=0.
+s_{N+1}-s_N\approx-1.
 }
 $$
 
-This preserves the original $P(a,t)$ framework while making the minimal non-affine state explicit.
+The global energy-balance relative error is approximately
+
+$$
+\boxed{
+1.8\times10^{-7}.
+}
+$$
+
+Thus the running state is not explained by numerical energy loss in the reference calculation.
+
+## 4. What this result means
+
+The strongest valid conclusion is
+
+$$
+\boxed{
+\text{conservative microscopic dynamics}
+\rightarrow
+\text{nonlinear cycle-state evolution is possible}.
+}
+$$
+
+This supports the search for an analogous mechanism in the **normal-spacing sector**.
+
+It does **not** establish that shear slip is the dominant fatigue mechanism in this project.
+
+It does **not** replace the main target
+
+$$
+\boxed{
+P_{N+1}(a)\neq P_N(a)
+}
+$$
+
+under cyclic normal stress.
+
+## 5. Why this model is kept
+
+The model remains useful as a falsification/reference problem because it demonstrates that one does not need to insert an empirical damage evolution law merely to obtain a nontrivial cycle map.
+
+Future mainline work should translate this lesson into a normal-deformation model based on fixed interatomic mechanics, preferably using the generalized Lennard-Jones pair-potential baseline and exact spacing/correlation dynamics.
 
 ---
 
-## 5. Numerical reference experiment
-
-The repository simulation uses nondimensional parameters
-
-$$
-M=m=k=k_c=b=1,\qquad \Delta_\gamma=0.1,
-$$
-
-with
-
-$$
-F(t)=F_a\sin(0.2t)
-$$
-
-after a smooth two-cycle ramp. A long finite chain is used only long enough that reflected waves cannot return to the resolved coordinate.
-
-Three regimes were found:
-
-| $F_a$ | Long-time cycle-end behavior | Interpretation |
-|---:|---|---|
-| 0.34 | $s_N\approx-0.024$ | bounded intrawell periodic state |
-| 0.40 | $s_N\approx-1.965$ after an initial transition | finite transient structural relocation, then periodic |
-| 0.50 | $s_N$ decreases by approximately one period per cycle | running/inter-basin secular state |
-
-For $F_a=0.50$, representative cycle endpoints were
-
-$$
--5.8529,\,-6.8542,\,-7.8523,\,-8.8538,\,-9.8519,\,-10.8534,
-$$
-
-so asymptotically
-
-$$
-\boxed{s_{N+1}-s_N\approx-1.00.}
-$$
-
-The relative global energy-balance error in the direct Newton integration was
-
-$$
-\boxed{1.8\times10^{-7}},
-$$
-
-which is far below the structural drift and rules out numerical energy loss as its origin in this reference run.
-
----
-
-## 6. What has and has not been proved
-
-### Established by this model
-
-1. A conservative microscopic system can give a nonzero resolved hysteresis loop.
-2. Adding a physically motivated periodic non-affine energy landscape permits deterministic inter-basin transitions.
-3. A cycle map with $s_{N+1}\neq s_N$ can arise without a fitted fatigue evolution law.
-4. The full energy balance remains conservative; energy is redistributed into propagating lattice modes and structural potential energy.
-
-### Not established
-
-1. The nondimensional running state at $F_a=0.50$ is **not** a prediction of fatigue life in Al.
-2. The sinusoidal $V_\gamma$ is not the true Al $\gamma$-surface.
-3. The running state should not yet be called a dislocation multiplication law or crack-initiation law.
-4. The low-stress 20 Hz regime of real high-purity Al has not been reproduced.
-5. A single homogeneous perfect-slip coordinate will generally have an ideal barrier far above ordinary macroscopic fatigue stresses; defects, surfaces, stress concentrations, thermal initial conditions, and multi-slip correlations must be derived rather than hidden in fitted parameters.
-
-A particularly important numerical observation is that the transition from bounded to running motion is nonlinear and non-monotonic in forcing amplitude. Therefore fitting a single scalar threshold to these dynamics would throw away essential phase-space information.
-
----
-
-# 한국어 번역
+# 한국어 번역 — Hamiltonian 비아핀 slip 보조 원리증명
 
 ## 상태
 
-**현재 단계는 원리 증명이다. 아직 보정된 알루미늄 피로수명 모델이 아니다.**
+**이 문서는 보조적인 원리증명이다. 프로젝트의 주 물리메커니즘이 아니다.**
 
-목적은 경험적인 감쇠계수, 손상변수, 피로 누적식을 넣지 않고도 보존적인 미시 역학에서 cycle마다 구조상태가 달라질 수 있는지 확인하는 것이다.
+프로젝트의 메인 방향은 반복 수직응력, 수직 원자간격 $a_i(t)$, 상태밀도 $P(a,t)$, 그리고 수직 opening에 의한 균열개시다. 메인 이론은 `MILESTONE2_NORMAL_DEFORMATION.md`를 따른다.
 
-## 1. 미시 역학 모델
+이 slip 모델을 유지하는 이유는 다음의 좁은 수학적 질문에 답하기 위해서다.
 
-원자면 사이의 상대적인 비아핀 slip 좌표 $s$를 하나 두고, 이를 긴 조화격자 bath $u_j$와 결합한다.
+> 경험적 damage law 없이 보존적인 미시계와 비선형 구조좌표만으로 cycle-to-cycle 상태진화가 가능한가?
+
+이 보조모델에서는 가능했다.
+
+## 1. 보조 미시모델
+
+하나의 non-affine slip coordinate $s$를 긴 harmonic lattice bath $u_j$에 결합한다.
 
 $$
 H(t)=\frac{P_s^2}{2M}+V_\gamma(s)
@@ -241,95 +149,109 @@ H(t)=\frac{P_s^2}{2M}+V_\gamma(s)
 -F(t)s.
 $$
 
-전체계 어디에도 점성 감쇠항을 넣지 않는다. $s$의 주기 퍼텐셜은 현재
+전체계에는 viscous damping term이 없다.
+
+현재 주기 slip landscape는
 
 $$
 V_\gamma(s)=\frac{\Delta_\gamma}{2}
 \left[1-\cos\left(\frac{2\pi s}{b}\right)\right]
 $$
 
-로 두었지만, 이것은 **근사**다. 실제 Al 계산에서는 DFT/EAM으로 얻은 $\gamma(\mathbf s)$를 넣어야 한다.
+이다.
 
-## 2. 왜 $s$가 임의의 손상변수가 아닌가
+이 one-harmonic landscape는 **CONTROLLED APPROXIMATION**이며 normal fatigue의 메인 에너지모델로 사용하지 않는다.
 
-FCC Al의 $\{111\}$ 면을 기준으로 결정의 위쪽과 아래쪽을 상대이동시키면 generalized stacking-fault energy surface가 정의된다. 따라서 $s$는 경험적 plastic strain을 발명한 것이 아니라 원자좌표에서 정의 가능한 상대변위다.
+## 2. 명시된 모델에서의 정확한 에너지수지
 
-## 3. 에너지 수지
-
-외력 퍼텐셜을 제외한 내부에너지는 정확히
+외부 loading potential을 제외한 내부에너지에 대해 운동방정식에서
 
 $$
-\boxed{\frac{dE_{\rm int}}{dt}=F(t)\dot s(t)}
+\boxed{
+\frac{dE_{\rm int}}{dt}=F(t)\dot s(t)
+}
 $$
 
-를 만족한다. 따라서
+가 나온다.
+
+따라서
 
 $$
-\boxed{A_H=\oint F\,ds}
+\boxed{
+A_H=\oint F\,ds
+}
 $$
 
-는 사라진 에너지가 아니라 다른 격자모드로 전달되거나 변경된 구조상태에 남은 에너지다.
+는 phenomenological damping으로 넣은 에너지가 아니라 unresolved lattice mode로 전달되거나 바뀐 구조상태에 남는 에너지다.
 
-## 4. cycle 누적
+## 3. 보조 cycle-map 결과
 
-cycle 끝의 상태를 $s_N=s(NT)$라 하면 한 well 안에서 주기상태가 만들어진 경우
-
-$$
-s_{N+1}=s_N
-$$
-
-이지만, basin을 넘는 전이가 발생하면
+cycle 끝 $t_N=NT$에서
 
 $$
-\boxed{s_{N+1}\neq s_N}
+s_N=s(NT)
 $$
 
-이 가능하다.
+를 정의한다.
 
-대표영역들의 집합에 대해 $P_s(s,t)$를 정의하면 원래 이론은 자연스럽게
+무차원 기준 simulation에서는 세 영역이 나왔다.
 
-$$
-\boxed{P(a,s,t)}
-$$
+| $F_a$ | 장기 거동 | 의미 |
+|---:|---|---|
+| 0.34 | $s_N\approx-0.024$ | 하나의 basin 안에서 주기응답 |
+| 0.40 | 유한 relocation 후 주기상태 | transient 구조이동 |
+| 0.50 | cycle마다 약 한 period씩 drift | running inter-basin state |
 
-로 확장된다. 기존 $P(a,t)$는
-
-$$
-P(a,t)=\int P(a,s,t)\,ds
-$$
-
-라는 정확한 marginal로 그대로 남는다.
-
-## 5. 수치결과
-
-무차원 기준계에서 세 가지 응답이 확인되었다.
-
-- $F_a=0.34$: 동일 well 내부의 주기응답. 히스테리시스는 있지만 secular accumulation은 없음.
-- $F_a=0.40$: 초기에 약 두 개의 well을 이동한 뒤 새 주기상태에서 고정.
-- $F_a=0.50$: 이후 거의 cycle당 한 period씩 계속 이동.
-
-$F_a=0.50$에서 후반 cycle의 $s_N$은
+$F_a=0.50$에서는
 
 $$
--5.8529,\,-6.8542,\,-7.8523,\,-8.8538,\,-9.8519,\,-10.8534
+\boxed{
+s_{N+1}-s_N\approx-1
+}
 $$
 
-였고,
+이고 전체 energy-balance 상대오차는 약
 
 $$
-\boxed{s_{N+1}-s_N\approx-1}
+\boxed{
+1.8\times10^{-7}
+}
 $$
 
-이었다. 전체 Newton 적분의 에너지 수지 상대오차는 약
+이다.
+
+따라서 기준 계산에서 running state를 numerical energy loss로 설명하기 어렵다.
+
+## 4. 이 결과의 의미
+
+가장 강하게 말할 수 있는 결론은
 
 $$
-\boxed{1.8\times10^{-7}}
+\boxed{
+\text{보존적인 미시역학}
+\rightarrow
+\text{비선형 cycle-state evolution 가능}
+}
 $$
 
-이었다.
+이라는 것이다.
 
-## 6. 현재 결론
+이 결과는 **normal-spacing sector**에서 유사한 메커니즘을 찾을 수 있다는 가능성을 보여주는 보조증거다.
 
-이번 계산으로 **미시 보존역학 → 히스테리시스 → basin transition → cycle-to-cycle 구조상태 변화**라는 연결 자체는 가능하다는 것을 보였다.
+하지만 shear slip이 이 프로젝트의 주 피로메커니즘이라는 뜻은 아니다.
 
-하지만 이것을 곧바로 실제 Al의 저응력 피로라고 부르면 안 된다. 다음 단계는 실제 Al의 $\gamma$-surface, 표면/결함에 의한 국부응력 집중, 온도에 따른 미시 초기상태 분포, 여러 slip system과 $a$의 상관관계를 순서대로 넣고 어느 단계가 실제 저응력 secular evolution을 만드는지 반증 가능한 방식으로 확인하는 것이다.
+그리고 반복 수직응력에서의 메인 목표
+
+$$
+\boxed{
+P_{N+1}(a)\neq P_N(a)
+}
+$$
+
+를 해결한 것도 아니다.
+
+## 5. 이 모델을 남기는 이유
+
+경험적 damage evolution law를 넣지 않아도 nontrivial cycle map이 가능하다는 것을 보여주는 falsification/reference problem으로 가치가 있기 때문에 유지한다.
+
+향후 메인 연구는 이 교훈을 고정된 interatomic mechanics, generalized Lennard-Jones pair-potential baseline, 그리고 정확한 spacing/correlation dynamics를 이용해 수직변형 모델로 옮겨야 한다.
