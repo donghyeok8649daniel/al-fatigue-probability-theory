@@ -4,7 +4,7 @@ Mechanics-first research framework for fatigue crack initiation under **normal c
 
 ## Main research direction
 
-The active mainline of this repository is normal deformation and normal-opening instability:
+The active theory is strictly centered on normal deformation and normal-opening instability:
 
 $$
 \boxed{
@@ -22,76 +22,159 @@ P_{N+1}(a)\neq P_N(a)
 }
 $$
 
-The primary microscopic energy baseline is a fixed generalized Lennard-Jones pair potential. Fatigue evolution must arise from atomic configuration and distribution evolution, not by changing the potential parameters with cycle count.
+Earlier non-normal proof-of-principle work has been removed from the active repository. The current code, tests, results, and documentation are organized around normal interatomic spacing only.
 
-## Active normal model
+## Core state
 
-The present normal-chain model uses
+For local normal spacings $a_i(t)$,
 
 $$
-V=\sum_i \phi(\lambda_i),
+P_N(a,t)=\frac1N\sum_{i=1}^N\delta\!\left(a-a_i(t)\right),
+$$
+
+and
+
+$$
+\boxed{
+P(a,t)=\lim_{N\to\infty}P_N(a,t).
+}
+$$
+
+For deterministic microscopic trajectories,
+
+$$
+\boxed{
+\partial_tP+\partial_a(Pv)=0,
+}
+$$
+
+where
+
+$$
+v(a,t)=\langle\dot a_i\mid a_i=a\rangle.
+$$
+
+The central mathematical problem is closure: determine the minimum microscopic state needed to derive $v(a,t)$ without inserting empirical fatigue evolution laws.
+
+## Microscopic energy baseline
+
+The main analytic baseline is a fixed generalized Lennard-Jones pair interaction
+
+$$
+v(r)=\varepsilon_{\rm LJ}
+\left[
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^m
+-
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^n
+\right].
+$$
+
+The LJ parameters do **not** change with cycle count. Fatigue evolution must arise from the atomic configuration, spacing distribution, correlations, memory, or mechanical instability.
+
+The exact pair-distance energy hierarchy is
+
+$$
+\boxed{
+\mathcal U(t)=\sum_{k=1}^{\infty}\int_0^\infty v(r)P_k(r,t)\,dr.
+}
+$$
+
+## Active normal-chain model
+
+The present reduced normal chain uses
+
+$$
+V=\sum_i\phi(\lambda_i),
 \qquad
 \lambda_i=\frac{a_i}{a_0},
 $$
 
-with generalized LJ exponents $m=12.19$ and $n=6$. The normalized potential is chosen so that the reference state satisfies $\phi'(1)=0$ and $\phi''(1)=1$.
-
-The local normal stability-loss condition is
+with generalized-LJ exponents
 
 $$
-\phi''(\lambda_c)=0,
+m=12.19,
+\qquad
+n=6.
 $$
 
-which gives
+The normalized potential is chosen so that
 
 $$
-\lambda_c\approx1.10777154.
+\phi'(1)=0,
+\qquad
+\phi''(1)=1.
 $$
 
-Using the existing $E=69\,\mathrm{GPa}$ stress mapping, the corresponding idealized normal stress scale is about $2.555\,\mathrm{GPa}$.
+The idealized local normal stability-loss condition
 
-A 100 MPa cyclic normal-loading null test does not produce false fatigue accumulation in the current perfect-chain model. This is an intended falsification result, not a failure to be tuned away.
+$$
+\phi''(\lambda_c)=0
+$$
 
-See `docs/MILESTONE2_NORMAL_DEFORMATION.md`, `theory/normal_lj_chain.py`, and `results/reports/NORMAL_LJ_RESULTS.md`.
+gives
 
-## Shear / auxiliary research library
+$$
+\boxed{\lambda_c\approx1.10777154.}
+$$
 
-Earlier Rubin-chain hysteresis, non-affine slip, gamma-surface, shear-oriented simulations, tests, and results are preserved under
+Using the existing $E=69\,\mathrm{GPa}$ mapping gives an idealized 1D normal instability scale of about
 
-`libraries/shear/`
+$$
+2.555\,\mathrm{GPa}.
+$$
 
-They are retained as an auxiliary research library and historical proof-of-principle work. They are **not part of the active normal-deformation mainline** and are not run by the default normal test workflow.
+## Current numerical result
 
-## Active variable dictionaries
+A 32-atom perfect-chain null test at
 
-- `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md` — active normal-LJ variables
-- `firmware/VARIABLE_DEFINITIONS.md` — fatigue-tester firmware fields
-- `libraries/shear/docs/VARIABLE_DEFINITIONS.md` — archived broad/shear-era variables
+$$
+\sigma_a=100\,\mathrm{MPa}
+$$
 
-## Run the active normal simulation
+does not produce false fatigue accumulation. No spacing crosses $\lambda_c$, and the work-energy relative error is approximately
 
-From the repository root:
+$$
+1.24\times10^{-10}.
+$$
+
+This is an intended falsification result and must not be tuned away.
+
+A larger but statically subcritical dimensionless forcing can produce dynamic local opening at atomic-scale frequencies, showing that internal mode structure and history matter. However, this is **not** a 20 Hz fatigue prediction. The major unresolved problem is the physically derived time-scale bridge from fast atomistic LJ dynamics to slow cycle-to-cycle evolution of $P(a,t)$.
+
+See `docs/MILESTONE2_NORMAL_DEFORMATION.md` and `results/reports/NORMAL_LJ_RESULTS.md`.
+
+## Variable definitions
+
+All active theory and simulation variables are defined in:
+
+- `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md`
+- `firmware/VARIABLE_DEFINITIONS.md`
+
+Any new variable must be added to the appropriate dictionary in the same commit that introduces it.
+
+## Run the active simulation
 
 ```bash
 python -m pip install -r requirements.txt
-python -m simulations.run_normal_lj_chain
+python -m simulations.generate_results
 python -m unittest tests.test_normal_lj_chain
 ```
 
 ## Repository structure
 
-- `docs/` — active normal-theory notes, assumptions, derivations, open problems, architecture, and style rules
-- `theory/` — active normal-theory code
+- `docs/` — active normal-theory derivations, assumptions, open problems, variable definitions, and firmware architecture
+- `theory/` — active normal-deformation theory code
 - `simulations/` — active normal numerical experiments
-- `tests/` — active normal falsification/conservation tests
-- `results/` — active normal numerical data, figures, and reports
-- `libraries/shear/` — preserved auxiliary shear/Rubin/non-affine research library
+- `tests/` — normal-model conservation and falsification tests
+- `results/data/` — machine-readable normal simulation results
+- `results/figures/` — normal-deformation figures
+- `results/reports/` — bilingual interpretation of normal results
 - `firmware/` — hardware-independent fatigue-tester controller core
 - `tools/` — PC-side telemetry / analysis helpers
 
 ## Research rule
 
-Every important result should be classified as one of:
+Every important result must be classified as one of:
 
 - **EXACT / IDENTITY**
 - **DEFINITION**
@@ -105,11 +188,11 @@ A model that reproduces a fatigue curve only by fitting is not considered a succ
 
 # 한국어 번역
 
-고순도 또는 단결정 알루미늄의 **수직 반복하중** 아래 피로 균열개시를 미시역학에서 유도하기 위한 mechanics-first 연구 저장소다.
+고순도 또는 단결정 알루미늄의 **수직 반복하중** 아래 피로 균열개시를 미시역학으로부터 유도하기 위한 mechanics-first 연구 저장소다.
 
 ## 메인 연구방향
 
-현재 저장소의 활성 mainline은 수직변형과 normal-opening instability다.
+활성 이론은 수직변형과 normal-opening instability만을 중심으로 한다.
 
 $$
 \boxed{
@@ -127,74 +210,169 @@ P_{N+1}(a)\neq P_N(a)
 }
 $$
 
-주된 미시 에너지 baseline은 고정된 generalized Lennard-Jones pair potential이다. 피로진화는 cycle 수에 따라 potential parameter를 바꾸는 방식이 아니라 원자배열과 분포의 진화에서 나와야 한다.
+기존의 non-normal 원리증명 연구는 활성 저장소에서 제거했다. 현재 code, test, result, documentation은 수직 원자간격을 중심으로 정리한다.
 
-## 활성 normal 모델
+## 핵심 상태변수
 
-현재 normal-chain 모델은
+국부 수직 원자간격 $a_i(t)$에 대해
 
 $$
-V=\sum_i \phi(\lambda_i),
+P_N(a,t)=\frac1N\sum_{i=1}^N\delta\!\left(a-a_i(t)\right)
+$$
+
+를 정의하고,
+
+$$
+\boxed{
+P(a,t)=\lim_{N\to\infty}P_N(a,t)
+}
+$$
+
+를 중심 상태밀도로 사용한다.
+
+결정론적 미시 trajectory에 대해서는
+
+$$
+\boxed{
+\partial_tP+\partial_a(Pv)=0
+}
+$$
+
+이 정확하게 성립하며,
+
+$$
+v(a,t)=\langle\dot a_i\mid a_i=a\rangle
+$$
+
+이다.
+
+핵심 수학 문제는 경험적인 fatigue evolution law를 넣지 않고 $v(a,t)$를 유도하기 위해 필요한 최소 미시상태를 결정하는 것이다.
+
+## 미시에너지 baseline
+
+주된 해석적 baseline은 고정된 generalized Lennard-Jones pair interaction이다.
+
+$$
+v(r)=\varepsilon_{\rm LJ}
+\left[
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^m
+-
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^n
+\right].
+$$
+
+LJ parameter는 cycle 수에 따라 변하지 않는다. 피로진화는 원자배열, spacing distribution, correlation, memory 또는 mechanical instability에서 나와야 한다.
+
+정확한 pair-distance energy hierarchy는
+
+$$
+\boxed{
+\mathcal U(t)=\sum_{k=1}^{\infty}\int_0^\infty v(r)P_k(r,t)\,dr
+}
+$$
+
+이다.
+
+## 활성 normal-chain 모델
+
+현재 축약 normal chain은
+
+$$
+V=\sum_i\phi(\lambda_i),
 \qquad
 \lambda_i=\frac{a_i}{a_0}
 $$
 
-를 사용하며 generalized LJ 지수는 $m=12.19$, $n=6$이다. 정규화된 potential은 기준상태에서 $\phi'(1)=0$, $\phi''(1)=1$을 만족하도록 잡는다.
+를 사용하고 generalized-LJ exponent는
 
-국부 수직 안정성 상실조건은
+$$
+m=12.19,
+\qquad
+n=6
+$$
+
+이다.
+
+정규화된 potential은
+
+$$
+\phi'(1)=0,
+\qquad
+\phi''(1)=1
+$$
+
+을 만족하도록 잡는다.
+
+이상화된 국부 수직 안정성 상실조건
 
 $$
 \phi''(\lambda_c)=0
 $$
 
-이고,
+으로부터
 
 $$
-\lambda_c\approx1.10777154
+\boxed{\lambda_c\approx1.10777154}
 $$
 
-를 준다.
+를 얻는다.
 
-기존 $E=69\,\mathrm{GPa}$ stress mapping을 사용하면 대응하는 이상화 normal stress scale은 약 $2.555\,\mathrm{GPa}$이다.
+기존 $E=69\,\mathrm{GPa}$ mapping을 사용하면 이상화된 1D normal instability scale은 약
 
-100 MPa 수직 반복하중 null test에서는 현재 완전사슬 모델이 가짜 피로누적을 만들지 않는다. 이것은 tuning으로 없애야 할 실패가 아니라 의도된 반증결과다.
+$$
+2.555\,\mathrm{GPa}
+$$
 
-자세한 내용은 `docs/MILESTONE2_NORMAL_DEFORMATION.md`, `theory/normal_lj_chain.py`, `results/reports/NORMAL_LJ_RESULTS.md`에 있다.
+이다.
 
-## 전단 / 보조 연구 라이브러리
+## 현재 수치결과
 
-기존 Rubin-chain 히스테리시스, non-affine slip, gamma-surface, 전단 지향 simulation, test, result는
+32-atom 완전사슬에서
 
-`libraries/shear/`
+$$
+\sigma_a=100\,\mathrm{MPa}
+$$
 
-아래에 보존한다.
+수직 반복하중 null test를 수행하면 인공적인 피로누적이 생기지 않는다. 어떤 spacing도 $\lambda_c$를 넘지 않으며 work-energy 상대오차는 약
 
-이는 보조 연구 라이브러리와 역사적 proof-of-principle 작업으로 유지하지만, **활성 normal-deformation mainline에는 포함하지 않는다.** 기본 normal test workflow에서도 실행하지 않는다.
+$$
+1.24\times10^{-10}
+$$
 
-## 활성 변수사전
+이다.
 
-- `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md` — 활성 normal-LJ 변수
-- `firmware/VARIABLE_DEFINITIONS.md` — 피로시험기 firmware 변수
-- `libraries/shear/docs/VARIABLE_DEFINITIONS.md` — 보존된 과거 broad/shear 변수사전
+이것은 tuning으로 없애야 하는 실패가 아니라 의도된 반증결과다.
 
-## 활성 normal simulation 실행
+더 큰 statically subcritical dimensionless forcing에서는 atomic-scale frequency에서 dynamic local opening이 생길 수 있어 내부 mode 구조와 history의 중요성을 보여준다. 하지만 이것은 **20 Hz 피로예측이 아니다.** 현재 가장 큰 미해결 문제는 빠른 atomistic LJ dynamics에서 느린 cycle-to-cycle $P(a,t)$ 진화까지 이어지는 물리적으로 유도된 time-scale bridge다.
 
-repository root에서 다음을 실행한다.
+자세한 내용은 `docs/MILESTONE2_NORMAL_DEFORMATION.md`와 `results/reports/NORMAL_LJ_RESULTS.md`에 있다.
+
+## 변수정의
+
+활성 theory와 simulation의 모든 변수는 다음 문서에 정의한다.
+
+- `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md`
+- `firmware/VARIABLE_DEFINITIONS.md`
+
+새로운 변수를 도입하면 같은 commit에서 해당 변수사전을 반드시 갱신한다.
+
+## 활성 simulation 실행
 
 ```bash
 python -m pip install -r requirements.txt
-python -m simulations.run_normal_lj_chain
+python -m simulations.generate_results
 python -m unittest tests.test_normal_lj_chain
 ```
 
 ## Repository 구조
 
-- `docs/` — 활성 normal 이론노트, 가정, 유도, open problem, architecture, style rule
-- `theory/` — 활성 normal 이론코드
+- `docs/` — 활성 normal 이론유도, 가정, open problem, 변수정의, firmware architecture
+- `theory/` — 활성 normal-deformation theory code
 - `simulations/` — 활성 normal 수치실험
-- `tests/` — 활성 normal 반증/보존 test
-- `results/` — 활성 normal 수치데이터, figure, report
-- `libraries/shear/` — 보존된 shear/Rubin/non-affine 보조 연구 라이브러리
+- `tests/` — normal model의 conservation/falsification test
+- `results/data/` — machine-readable normal simulation 결과
+- `results/figures/` — normal-deformation figure
+- `results/reports/` — normal result의 영문/한국어 해석
 - `firmware/` — hardware-independent 피로시험기 controller core
 - `tools/` — PC telemetry / analysis helper
 
