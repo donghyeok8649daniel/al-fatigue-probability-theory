@@ -1,35 +1,131 @@
-# Variable definitions — normal generalized-LJ chain
+# Variable Definitions — Active Normal-LJ Mainline
 
-This file defines the symbols introduced by the mainline normal-opening generalized-LJ simulation. General project symbols remain in `docs/VARIABLE_DEFINITIONS.md`.
+This document is the active variable dictionary for the normal-deformation theory. Earlier shear/non-affine variables are preserved separately under `libraries/shear/docs/VARIABLE_DEFINITIONS.md`.
 
-## Normal-chain microscopic variables
+## Classifications
 
-| Symbol | Definition | Physical meaning | Unit / scale | Classification |
+- **EXACT / IDENTITY** — exact under the stated microscopic model.
+- **DEFINITION** — chosen mathematical definition.
+- **ASSUMPTION** — modeling assumption.
+- **CONTROLLED APPROXIMATION** — simplification that must be tested.
+- **EMPIRICAL INPUT** — measured or externally supplied material quantity.
+
+## 1. Normal microscopic geometry
+
+| Symbol | Definition | Meaning | Unit | Classification |
 |---|---|---|---|---|
-| $x_i(t)$ | coordinate of atom/site $i$ | 1D normal atomic position | normalized length | DEFINITION |
-| $\lambda_i(t)$ | $x_{i+1}-x_i$ | local normal bond spacing divided by equilibrium spacing | dimensionless | DEFINITION |
-| $\lambda$ | continuous stretch coordinate | generic argument of the normalized LJ energy | dimensionless | DEFINITION |
-| $N_b$ | number of bonds | finite number of local spacing samples | dimensionless | DEFINITION |
-| $P_N(\lambda,t)$ | $N_b^{-1}\sum_i\delta(\lambda-\lambda_i)$ | finite empirical normal-spacing density | dimensionless-density convention | DEFINITION |
-| $\langle\lambda\rangle$ | mean of $\lambda_i$ | mean normal spacing | dimensionless | DEFINITION |
-| $\operatorname{Var}(\lambda)$ | variance of $\lambda_i$ | normal-spacing broadening measure | dimensionless$^2$ | DEFINITION |
-| $\lambda_{\max}$ | $\max_i\lambda_i$ | largest instantaneous local normal opening | dimensionless | DEFINITION |
+| $x_i(t)$ | atomic coordinate along the loading axis | normal atomic position in the reduced chain | m | DEFINITION |
+| $a_i(t)$ | $x_{i+1}-x_i$ | local normal interatomic spacing | m | DEFINITION |
+| $a_0$ | reference spacing | equilibrium/reference normal spacing | m | EMPIRICAL INPUT or calibration output |
+| $a$ | continuous spacing coordinate | argument of $P(a,t)$ | m | DEFINITION |
+| $\lambda_i$ | $a_i/a_0$ | local normalized normal spacing | dimensionless | DEFINITION |
+| $\lambda$ | $a/a_0$ | continuous normalized spacing coordinate | dimensionless | DEFINITION |
+| $\lambda_c$ | solution of $\phi''(\lambda_c)=0$ | local idealized normal stability-loss stretch | dimensionless | EXACT under stated LJ model |
+| $a_c$ | $a_0\lambda_c$ | corresponding critical normal spacing | m | DEFINITION once $\lambda_c$ is fixed |
 
-## Normalized generalized-LJ energy
+## 2. Normal spacing distribution
 
-The normalized pair energy is
+For finite $N$,
+
+$$
+P_N(a,t)=\frac1N\sum_{i=1}^N\delta(a-a_i(t)).
+$$
+
+The thermodynamic-limit state is
+
+$$
+\boxed{P(a,t)=\lim_{N\to\infty}P_N(a,t)}.
+$$
+
+| Symbol | Definition | Meaning | Unit |
+|---|---|---|---|
+| $P_N(a,t)$ | finite empirical spacing density | finite-system normal-spacing distribution | m$^{-1}$ |
+| $P(a,t)$ | thermodynamic-limit spacing density | central structural state | m$^{-1}$ |
+| $\bar a$ | $\int aP(a,t)\,da$ | mean normal spacing | m |
+| $\operatorname{Var}(a)$ | $\int(a-\bar a)^2P\,da$ | normal-spacing variance | m$^2$ |
+| $Q_c(t)$ | $\int_{a_c}^{\infty}P(a,t)\,da$ | instantaneous unstable-tail occupancy | dimensionless |
+
+Normalization:
+
+$$
+\int P(a,t)\,da=1.
+$$
+
+## 3. Spacing-space dynamics
+
+| Symbol | Definition | Meaning | Unit |
+|---|---|---|---|
+| $v(a,t)$ | $\langle\dot a_i\mid a_i=a\rangle$ | conditional transport velocity in spacing space | m/s |
+| $c$ | $\dot a$ | spacing velocity | m/s |
+| $F(a,c,t)$ | joint density in spacing and spacing velocity | phase-space lift | s/m$^2$ |
+| $A(a,c,t)$ | $\langle\ddot a_i\mid a_i=a,\dot a_i=c\rangle$ | conditional spacing acceleration | m/s$^2$ |
+
+Exact kinematic identity:
+
+$$
+\boxed{\partial_tP+\partial_a(Pv)=0.}
+$$
+
+Phase-space form:
+
+$$
+\partial_tF+\partial_a(cF)+\partial_c(AF)=0.
+$$
+
+## 4. Normal loading variables
+
+| Symbol | Definition | Meaning | Unit |
+|---|---|---|---|
+| $\sigma_n(t)$ | applied normal stress | cyclic stress along active loading axis | Pa |
+| $\sigma_m$ | mean normal stress | cycle mean | Pa |
+| $\sigma_a$ | normal stress amplitude | cyclic amplitude | Pa |
+| $\epsilon_n(t)$ | normal strain | work-conjugate normal strain | dimensionless |
+| $f$ | cyclic frequency | laboratory cycles per second | Hz |
+| $\omega$ | $2\pi f$ | angular frequency | rad/s |
+| $T$ | $2\pi/\omega$ | loading period | s |
+| $N_{\rm cyc}$ | cycle index/count | number of completed cycles | dimensionless |
+
+For a sinusoidal normal test,
+
+$$
+\sigma_n(t)=\sigma_m+\sigma_a\sin(\omega t).
+$$
+
+## 5. Generalized Lennard-Jones baseline
+
+The active pair potential is
+
+$$
+v(r)=\varepsilon_{\rm LJ}
+\left[
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^m
+-
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^n
+\right].
+$$
+
+| Symbol | Definition | Meaning | Unit |
+|---|---|---|---|
+| $v(r)$ | pair interaction energy | microscopic normal interaction baseline | J |
+| $\varepsilon_{\rm LJ}$ | energy scale | LJ energy parameter | J or eV |
+| $\sigma_{\rm LJ}$ | length scale | LJ distance parameter | m |
+| $m,n$ | generalized LJ exponents | repulsive/attractive shape exponents | dimensionless |
+| $\phi(\lambda)$ | normalized LJ potential used in the active chain | dimensionless energy function | dimensionless |
+| $\phi'(\lambda)$ | derivative of $\phi$ | normalized tensile force/stress coordinate | dimensionless |
+| $\phi''(\lambda)$ | second derivative | local tangent stiffness | dimensionless |
+
+The current normalized form is
 
 $$
 \boxed{
-\phi(\lambda)
-=
+\phi(\lambda)=
 \frac{\lambda^{-m}}{m(m-n)}
 -
-\frac{\lambda^{-n}}{n(m-n)}.
+\frac{\lambda^{-n}}{n(m-n)}
 }
 $$
 
-It is normalized so that
+so that
 
 $$
 \phi'(1)=0,
@@ -37,144 +133,230 @@ $$
 \phi''(1)=1.
 $$
 
-| Symbol | Definition | Physical meaning | Classification |
+The current calibrated exponents are
+
+$$
+m=12.19,
+\qquad
+n=6.
+$$
+
+## 6. Chain energy and force
+
+For the nearest-neighbor active normal chain,
+
+$$
+V=\sum_i\phi(\lambda_i).
+$$
+
+The force follows by differentiation; no fatigue-force law is inserted independently.
+
+The local idealized stability condition is
+
+$$
+\boxed{\phi''(\lambda_c)=0.}
+$$
+
+For the current exponents,
+
+$$
+\boxed{\lambda_c\approx1.1077715386.}
+$$
+
+## 7. Energy accounting
+
+| Symbol | Definition | Meaning | Unit |
 |---|---|---|---|
-| $\phi(\lambda)$ | normalized generalized-LJ energy | local normal pair-energy shape used by the reduced chain | DEFINITION / NORMALIZATION |
-| $\phi'(\lambda)$ | $d\phi/d\lambda$ | dimensionless tensile generalized force | EXACT under the stated model |
-| $\phi''(\lambda)$ | $d^2\phi/d\lambda^2$ | local tangent stiffness | EXACT under the stated model |
-| $m$ | repulsive exponent | short-range repulsive shape parameter | EMPIRICAL / previous calibration input |
-| $n$ | attractive exponent | attractive-tail shape parameter | EMPIRICAL / previous calibration input |
-| $\lambda_c$ | solution of $\phi''(\lambda_c)=0$ | local ideal normal stability-loss stretch | DERIVED |
-| $f_c$ | $\phi'(\lambda_c)$ | dimensionless static ideal normal-instability force | DERIVED |
+| $E_{\rm int}$ | kinetic + LJ configurational energy | internal energy in direct chain simulation | J or nondimensional |
+| $W_{\rm ext}$ | time-integrated external power | external mechanical work | J or nondimensional |
+| $A_H$ | $\oint\sigma_n\,d\epsilon_n$ | normal stress-strain hysteresis work per cycle | J/m$^3$ |
 
-For the current values $m=12.19$, $n=6$,
+A numerical model must satisfy the appropriate work-energy balance to within time-discretization error.
 
-$$
-\lambda_c=1.1077715386,
-$$
+## 8. Pair-distance hierarchy
+
+For more than nearest-neighbor structure,
 
 $$
-f_c=0.03703426967.
+R_i^{(k)}=a_i+a_{i+1}+\cdots+a_{i+k-1}.
 $$
 
-## External normal loading
-
-| Symbol | Definition | Physical meaning | Unit / scale | Classification |
-|---|---|---|---|---|
-| $f(t)$ | normalized external end force | cyclic normal generalized force applied to the right boundary | dimensionless | DEFINITION |
-| $f_a$ | force amplitude | amplitude of $f(t)$ | dimensionless | DEFINITION |
-| $f_m$ | mean force | mean value of $f(t)$ | dimensionless | DEFINITION |
-| $\omega^*$ | dimensionless angular frequency | forcing frequency measured on the atomic normalized time scale | dimensionless | DEFINITION |
-| $T^*$ | $2\pi/\omega^*$ | dimensionless loading period | dimensionless | DEFINITION |
-| $N_{\rm cyc}$ | cycle index | loading cycle count | dimensionless | DEFINITION |
-
-Under the earlier 1D stress mapping,
+If $P_k(r,t)$ is the density of $R_i^{(k)}$,
 
 $$
-\boxed{
-f=\frac{\sigma_n}{E}.
-}
+\mathcal U(t)=\sum_{k=1}^{\infty}\int v(r)P_k(r,t)\,dr.
 $$
 
-Therefore a 100 MPa amplitude with $E=69$ GPa gives
+| Symbol | Definition | Meaning | Unit |
+|---|---|---|---|
+| $R_i^{(k)}$ | $k$-th neighbor distance | correlated normal pair distance | m |
+| $P_k(r,t)$ | density of $R_i^{(k)}$ | exact pair-distance hierarchy entry | m$^{-1}$ |
+| $P^{*k}$ | $k$-fold convolution of $P$ | independence approximation to $P_k$ | m$^{-1}$ |
+| $\mathcal U$ | distribution-level configurational energy | pair-energy functional | J per atom under chosen convention |
 
-$$
-f_a=1.44927536\times10^{-3}.
-$$
+The replacement $P_k\approx P^{*k}$ is a **CONTROLLED APPROXIMATION**, not an identity.
 
-## Time-scale variables
+## 9. Time-scale variables
 
-The normalized time scale used for dimensional interpretation is
+| Symbol | Definition | Meaning | Unit |
+|---|---|---|---|
+| $t_0$ | $\sqrt{m_{\rm Al}a_0/(EA_0)}$ in the current 1D scaling | atomic mechanical time scale | s |
+| $\omega^*$ | $\omega t_0$ | dimensionless angular frequency | dimensionless |
+| $m_{\rm Al}$ | atomic mass of Al | inertial scale | kg |
+| $E$ | reference Young's modulus used in current mapping | stress scale | Pa |
+| $A_0$ | effective 1D-to-stress area | force/stress conversion scale | m$^2$ |
 
-$$
-\boxed{
-t_0=\sqrt{\frac{M a_0}{EA_0}}.
-}
-$$
+A laboratory-frequency claim must explicitly map between $\omega$ and $\omega^*$.
 
-| Symbol | Definition | Physical meaning | Unit | Classification |
-|---|---|---|---|---|
-| $t_0$ | $\sqrt{M a_0/(EA_0)}$ | atomic mechanical time scale of the normalized coordinate | s | DERIVED from stated inputs |
-| $M$ | atomic mass used in the time mapping | Al atomic mass in the current dimensional estimate | kg | EMPIRICAL INPUT |
-| $a_0$ | equilibrium/reference spacing | dimensional length used to map normalized spacing to physical spacing | m | EMPIRICAL / previous calibration input |
-| $A_0$ | reference effective area | area used in the earlier 1D stress mapping | m$^2$ | previous calibration output |
-| $E$ | Young's modulus | small-strain normal stiffness used for stress normalization | Pa | EMPIRICAL INPUT |
-| $f_{\rm phys}$ | physical cyclic frequency | laboratory loading frequency | Hz | DEFINITION |
+## 10. Crack-initiation variables
 
-The mappings are
+| Symbol | Definition | Meaning | Unit |
+|---|---|---|---|
+| $\tau_c$ | first time a specified normal mechanical-instability condition occurs | crack-initiation first-passage time | s |
+| $S(t)$ | $P(\tau_c>t)$ | survival probability | dimensionless |
+| $F_{\rm ci}(t)$ | $1-S(t)$ | cumulative initiation probability | dimensionless |
+| $h(t)$ | $-\dot S/S$ | initiation hazard if defined | s$^{-1}$ |
 
-$$
-\boxed{
-\omega^*=2\pi f_{\rm phys}t_0,
-}
-$$
-
-and
-
-$$
-\boxed{
-f_{\rm phys}=\frac{\omega^*}{2\pi t_0}.
-}
-$$
-
-For the current dimensional values,
-
-$$
-t_0\approx5.55\times10^{-14}\ \mathrm{s}.
-$$
-
-Thus $\omega^*=0.02$ is an atomic-scale dynamical test, whereas 20 Hz corresponds to $\omega^*\approx6.97\times10^{-12}$.
-
-## Instability event
-
-The first idealized local normal-instability event is defined by
-
-$$
-\boxed{
-\tau_{\rm inst}
-=
-\inf\{t:\max_i\lambda_i(t)\ge\lambda_c\}.
-}
-$$
-
-This event is a mechanical stability diagnostic. It is **not automatically equal to macroscopic crack initiation, fatigue life, or cumulative failure probability**.
-
-The numerical parameter `runaway_spacing` in the code is only a post-instability integration stop. It is not a physical fracture threshold.
+The active theory does not identify $Q_c(t)$ with $F_{\rm ci}(t)$ without a first-passage argument.
 
 ---
 
-# 한국어 번역 — 수직 generalized-LJ chain 변수정의
+# 한국어 번역 — 활성 Normal-LJ 변수정의
 
-이 파일은 메인 수직-opening generalized-LJ simulation에서 새로 도입된 기호를 정의한다. 프로젝트 전체 공통기호는 `docs/VARIABLE_DEFINITIONS.md`에서 관리한다.
+이 문서는 수직변형 이론의 활성 변수사전이다. 과거 shear/non-affine 변수는 `libraries/shear/docs/VARIABLE_DEFINITIONS.md`에 별도로 보존한다.
 
-## 수직 chain 미시변수
+## 분류
 
-| 기호 | 정의 | 물리적 의미 | 단위 / 척도 | 분류 |
+- **EXACT / IDENTITY** — 명시된 미시모델 아래 정확함.
+- **DEFINITION** — 선택한 수학적 정의.
+- **ASSUMPTION** — 모델링 가정.
+- **CONTROLLED APPROXIMATION** — 검증해야 하는 축약.
+- **EMPIRICAL INPUT** — 측정 또는 외부에서 공급한 재료량.
+
+## 1. 수직 미시기하
+
+| 기호 | 정의 | 의미 | 단위 | 분류 |
 |---|---|---|---|---|
-| $x_i(t)$ | atom/site $i$의 좌표 | 1D 수직 원자위치 | normalized length | DEFINITION |
-| $\lambda_i(t)$ | $x_{i+1}-x_i$ | 평형간격으로 나눈 국부 수직 bond spacing | dimensionless | DEFINITION |
-| $\lambda$ | 연속 stretch 좌표 | normalized LJ energy의 일반 argument | dimensionless | DEFINITION |
-| $N_b$ | bond 수 | finite local spacing sample 수 | dimensionless | DEFINITION |
-| $P_N(\lambda,t)$ | $N_b^{-1}\sum_i\delta(\lambda-\lambda_i)$ | finite empirical normal-spacing density | dimensionless-density convention | DEFINITION |
-| $\langle\lambda\rangle$ | $\lambda_i$의 평균 | 평균 수직 spacing | dimensionless | DEFINITION |
-| $\operatorname{Var}(\lambda)$ | $\lambda_i$의 분산 | normal-spacing broadening 지표 | dimensionless$^2$ | DEFINITION |
-| $\lambda_{\max}$ | $\max_i\lambda_i$ | 순간적으로 가장 큰 국부 수직 opening | dimensionless | DEFINITION |
+| $x_i(t)$ | loading axis 방향 atomic coordinate | 축약사슬의 수직 원자위치 | m | DEFINITION |
+| $a_i(t)$ | $x_{i+1}-x_i$ | 국부 수직 원자간격 | m | DEFINITION |
+| $a_0$ | 기준 spacing | 평형/기준 수직 원자간격 | m | EMPIRICAL INPUT 또는 calibration output |
+| $a$ | 연속 spacing coordinate | $P(a,t)$의 argument | m | DEFINITION |
+| $\lambda_i$ | $a_i/a_0$ | 국부 normalized normal spacing | dimensionless | DEFINITION |
+| $\lambda$ | $a/a_0$ | 연속 normalized spacing coordinate | dimensionless | DEFINITION |
+| $\lambda_c$ | $\phi''(\lambda_c)=0$의 해 | 이상화된 국부 normal stability-loss stretch | dimensionless | stated LJ model 아래 EXACT |
+| $a_c$ | $a_0\lambda_c$ | 대응 critical normal spacing | m | $\lambda_c$가 정해진 뒤 DEFINITION |
 
-## normalized generalized-LJ energy
+## 2. 수직 spacing distribution
 
-normalized pair energy는
+유한 $N$에서
+
+$$
+P_N(a,t)=\frac1N\sum_{i=1}^N\delta(a-a_i(t)).
+$$
+
+열역학적 극한 상태는
+
+$$
+\boxed{P(a,t)=\lim_{N\to\infty}P_N(a,t)}.
+$$
+
+| 기호 | 정의 | 의미 | 단위 |
+|---|---|---|---|
+| $P_N(a,t)$ | finite empirical spacing density | 유한계의 normal-spacing distribution | m$^{-1}$ |
+| $P(a,t)$ | thermodynamic-limit spacing density | 중심 구조상태 | m$^{-1}$ |
+| $\bar a$ | $\int aP(a,t)\,da$ | 평균 수직 spacing | m |
+| $\operatorname{Var}(a)$ | $\int(a-\bar a)^2P\,da$ | 수직 spacing variance | m$^2$ |
+| $Q_c(t)$ | $\int_{a_c}^{\infty}P(a,t)\,da$ | 순간 unstable-tail occupancy | dimensionless |
+
+정규화는
+
+$$
+\int P(a,t)\,da=1
+$$
+
+이다.
+
+## 3. spacing-space dynamics
+
+| 기호 | 정의 | 의미 | 단위 |
+|---|---|---|---|
+| $v(a,t)$ | $\langle\dot a_i\mid a_i=a\rangle$ | spacing space의 conditional transport velocity | m/s |
+| $c$ | $\dot a$ | spacing velocity | m/s |
+| $F(a,c,t)$ | spacing과 spacing velocity의 joint density | phase-space lift | s/m$^2$ |
+| $A(a,c,t)$ | $\langle\ddot a_i\mid a_i=a,\dot a_i=c\rangle$ | conditional spacing acceleration | m/s$^2$ |
+
+정확한 운동학적 항등식은
+
+$$
+\boxed{\partial_tP+\partial_a(Pv)=0.}
+$$
+
+이고 phase-space form은
+
+$$
+\partial_tF+\partial_a(cF)+\partial_c(AF)=0
+$$
+
+이다.
+
+## 4. 수직 loading 변수
+
+| 기호 | 정의 | 의미 | 단위 |
+|---|---|---|---|
+| $\sigma_n(t)$ | applied normal stress | 활성 loading axis 방향 반복응력 | Pa |
+| $\sigma_m$ | mean normal stress | cycle mean | Pa |
+| $\sigma_a$ | normal stress amplitude | 반복응력 amplitude | Pa |
+| $\epsilon_n(t)$ | normal strain | work-conjugate normal strain | dimensionless |
+| $f$ | cyclic frequency | 실험 cycle per second | Hz |
+| $\omega$ | $2\pi f$ | angular frequency | rad/s |
+| $T$ | $2\pi/\omega$ | loading period | s |
+| $N_{\rm cyc}$ | cycle index/count | 완료된 cycle 수 | dimensionless |
+
+사인 수직시험에서는
+
+$$
+\sigma_n(t)=\sigma_m+\sigma_a\sin(\omega t)
+$$
+
+이다.
+
+## 5. generalized Lennard-Jones baseline
+
+활성 pair potential은
+
+$$
+v(r)=\varepsilon_{\rm LJ}
+\left[
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^m
+-
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^n
+\right]
+$$
+
+이다.
+
+| 기호 | 정의 | 의미 | 단위 |
+|---|---|---|---|
+| $v(r)$ | pair interaction energy | 미시 normal interaction baseline | J |
+| $\varepsilon_{\rm LJ}$ | energy scale | LJ energy parameter | J 또는 eV |
+| $\sigma_{\rm LJ}$ | length scale | LJ distance parameter | m |
+| $m,n$ | generalized LJ exponents | repulsive/attractive shape exponent | dimensionless |
+| $\phi(\lambda)$ | 활성 chain의 normalized LJ potential | dimensionless energy function | dimensionless |
+| $\phi'(\lambda)$ | $\phi$의 derivative | normalized tensile force/stress coordinate | dimensionless |
+| $\phi''(\lambda)$ | second derivative | local tangent stiffness | dimensionless |
+
+현재 normalized form은
 
 $$
 \boxed{
-\phi(\lambda)
-=
+\phi(\lambda)=
 \frac{\lambda^{-m}}{m(m-n)}
 -
 \frac{\lambda^{-n}}{n(m-n)}
 }
 $$
 
-이다.
+이고
 
 $$
 \phi'(1)=0,
@@ -182,122 +364,89 @@ $$
 \phi''(1)=1
 $$
 
-이 되도록 normalization했다.
+을 만족한다.
 
-| 기호 | 정의 | 물리적 의미 | 분류 |
+현재 지수는
+
+$$
+m=12.19,
+\qquad
+n=6
+$$
+
+이다.
+
+## 6. 사슬 에너지와 force
+
+최근접 이웃 활성 normal chain은
+
+$$
+V=\sum_i\phi(\lambda_i)
+$$
+
+이다. force는 미분으로 나오며 별도의 fatigue-force law를 삽입하지 않는다.
+
+국부 이상화 stability condition은
+
+$$
+\boxed{\phi''(\lambda_c)=0}
+$$
+
+이고 현재 지수에서
+
+$$
+\boxed{\lambda_c\approx1.1077715386}
+$$
+
+이다.
+
+## 7. 에너지 수지
+
+| 기호 | 정의 | 의미 | 단위 |
 |---|---|---|---|
-| $\phi(\lambda)$ | normalized generalized-LJ energy | reduced chain에서 사용하는 국부 수직 pair-energy shape | DEFINITION / NORMALIZATION |
-| $\phi'(\lambda)$ | $d\phi/d\lambda$ | 무차원 tensile generalized force | stated model 아래 EXACT |
-| $\phi''(\lambda)$ | $d^2\phi/d\lambda^2$ | 국부 tangent stiffness | stated model 아래 EXACT |
-| $m$ | repulsive exponent | short-range repulsive shape parameter | EMPIRICAL / previous calibration input |
-| $n$ | attractive exponent | attractive-tail shape parameter | EMPIRICAL / previous calibration input |
-| $\lambda_c$ | $\phi''(\lambda_c)=0$의 해 | 이상적인 국부 normal stability-loss stretch | DERIVED |
-| $f_c$ | $\phi'(\lambda_c)$ | 무차원 static ideal normal-instability force | DERIVED |
+| $E_{\rm int}$ | kinetic + LJ configurational energy | direct chain simulation의 내부에너지 | J 또는 nondimensional |
+| $W_{\rm ext}$ | 외부 power의 시간적분 | 외부 기계적 일 | J 또는 nondimensional |
+| $A_H$ | $\oint\sigma_n\,d\epsilon_n$ | cycle당 normal stress-strain hysteresis work | J/m$^3$ |
 
-현재 $m=12.19$, $n=6$이면
+수치모델은 time-discretization error 범위에서 적절한 work-energy balance를 만족해야 한다.
 
-$$
-\lambda_c=1.1077715386,
-$$
+## 8. pair-distance hierarchy
+
+최근접 이웃을 넘어가면
 
 $$
-f_c=0.03703426967
+R_i^{(k)}=a_i+a_{i+1}+\cdots+a_{i+k-1}
 $$
 
-이다.
-
-## 외부 수직하중
-
-| 기호 | 정의 | 물리적 의미 | 단위 / 척도 | 분류 |
-|---|---|---|---|---|
-| $f(t)$ | normalized external end force | 오른쪽 경계에 가하는 반복 수직 generalized force | dimensionless | DEFINITION |
-| $f_a$ | force amplitude | $f(t)$의 진폭 | dimensionless | DEFINITION |
-| $f_m$ | mean force | $f(t)$의 평균 | dimensionless | DEFINITION |
-| $\omega^*$ | dimensionless angular frequency | atomic normalized time scale 기준 forcing frequency | dimensionless | DEFINITION |
-| $T^*$ | $2\pi/\omega^*$ | 무차원 loading period | dimensionless | DEFINITION |
-| $N_{\rm cyc}$ | cycle index | loading cycle count | dimensionless | DEFINITION |
-
-기존 1D stress mapping에서는
+이고 $P_k(r,t)$를 $R_i^{(k)}$의 density라 하면
 
 $$
-\boxed{
-f=\frac{\sigma_n}{E}
-}
+\mathcal U(t)=\sum_{k=1}^{\infty}\int v(r)P_k(r,t)\,dr
 $$
 
 이다.
 
-따라서 $E=69$ GPa에서 100 MPa amplitude는
+$P_k\approx P^{*k}$는 **CONTROLLED APPROXIMATION**이지 항등식이 아니다.
 
-$$
-f_a=1.44927536\times10^{-3}
-$$
+## 9. 시간척도 변수
 
-이다.
+| 기호 | 정의 | 의미 | 단위 |
+|---|---|---|---|
+| $t_0$ | 현재 1D scaling에서 $\sqrt{m_{\rm Al}a_0/(EA_0)}$ | atomic mechanical time scale | s |
+| $\omega^*$ | $\omega t_0$ | dimensionless angular frequency | dimensionless |
+| $m_{\rm Al}$ | Al atomic mass | inertial scale | kg |
+| $E$ | 현재 mapping의 reference Young's modulus | stress scale | Pa |
+| $A_0$ | effective 1D-to-stress area | force/stress conversion scale | m$^2$ |
 
-## 시간척도 변수
+실험주파수를 주장하려면 $\omega$와 $\omega^*$ mapping을 명시해야 한다.
 
-차원복원을 위한 normalized time scale은
+## 10. 균열개시 변수
 
-$$
-\boxed{
-t_0=\sqrt{\frac{M a_0}{EA_0}}
-}
-$$
+| 기호 | 정의 | 의미 | 단위 |
+|---|---|---|---|
+| $\tau_c$ | 정해진 normal mechanical-instability condition의 first time | crack-initiation first-passage time | s |
+| $S(t)$ | $P(\tau_c>t)$ | survival probability | dimensionless |
+| $F_{\rm ci}(t)$ | $1-S(t)$ | cumulative initiation probability | dimensionless |
+| $h(t)$ | $-\dot S/S$ | 정의 가능한 경우 initiation hazard | s$^{-1}$ |
 
-이다.
-
-| 기호 | 정의 | 물리적 의미 | 단위 | 분류 |
-|---|---|---|---|---|
-| $t_0$ | $\sqrt{M a_0/(EA_0)}$ | normalized coordinate의 atomic mechanical time scale | s | stated input에서 DERIVED |
-| $M$ | time mapping에 사용한 atomic mass | 현재 dimensional estimate에서 Al atomic mass | kg | EMPIRICAL INPUT |
-| $a_0$ | equilibrium/reference spacing | normalized spacing을 physical spacing으로 바꾸는 길이척도 | m | EMPIRICAL / previous calibration input |
-| $A_0$ | reference effective area | 기존 1D stress mapping의 면적 | m$^2$ | previous calibration output |
-| $E$ | Young's modulus | stress normalization에 사용하는 small-strain normal stiffness | Pa | EMPIRICAL INPUT |
-| $f_{\rm phys}$ | physical cyclic frequency | 실험 loading frequency | Hz | DEFINITION |
-
-mapping은
-
-$$
-\boxed{
-\omega^*=2\pi f_{\rm phys}t_0
-}
-$$
-
-및
-
-$$
-\boxed{
-f_{\rm phys}=\frac{\omega^*}{2\pi t_0}
-}
-$$
-
-이다.
-
-현재 dimensional value를 사용하면
-
-$$
-t_0\approx5.55\times10^{-14}\ \mathrm{s}
-$$
-
-이다.
-
-따라서 $\omega^*=0.02$는 atomic-scale dynamics test이고, 20 Hz는 $\omega^*\approx6.97\times10^{-12}$에 해당한다.
-
-## instability event
-
-첫 이상화된 국부 normal-instability event는
-
-$$
-\boxed{
-\tau_{\rm inst}
-=
-\inf\{t:\max_i\lambda_i(t)\ge\lambda_c\}
-}
-$$
-
-로 정의한다.
-
-이 event는 mechanical stability diagnostic이며, **macroscopic crack initiation, fatigue life, cumulative failure probability와 자동으로 동일한 것이 아니다.**
-
-코드의 `runaway_spacing`은 instability 이후 무한히 계산하지 않기 위한 numerical stop일 뿐 physical fracture threshold가 아니다.
+first-passage 논증 없이 $Q_c(t)$와 $F_{\rm ci}(t)$를 동일시하지 않는다.
