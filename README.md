@@ -1,90 +1,155 @@
 # Al Fatigue Probability Theory
 
-Mechanics-first research framework for fatigue crack initiation in high-purity / single-crystal aluminum.
+Mechanics-first framework for fatigue crack initiation in high-purity / single-crystal aluminum, with the main physical focus on **cyclic normal stress, normal interatomic stretching, and normal-opening instability**.
 
 ## Research goal
 
-Derive cyclic hysteresis, irreversible fatigue accumulation, and crack initiation from microscopic mechanics and distribution-valued state variables, while minimizing empirical fatigue laws and uncontrolled fitting.
+Derive normal hysteresis, irreversible cycle-to-cycle structural evolution, and crack initiation from microscopic mechanics and distribution-valued state variables while minimizing empirical fatigue laws and uncontrolled fitting.
+
+The principal mechanics chain is
+
+$$
+\boxed{
+\sigma_n(t)
+\rightarrow
+\{a_i(t)\}
+\rightarrow
+P(a,t)
+\rightarrow
+\text{normal hysteresis}
+\rightarrow
+P_{N+1}(a)\neq P_N(a)
+\rightarrow
+\text{normal-opening instability / crack initiation}.
+}
+$$
+
+Shear/slip models are retained only as auxiliary proof-of-principle calculations unless future derivation shows that they are mathematically required for closure of the normal-deformation problem.
+
+## Why aluminum is used in this project
+
+The project uses high-purity / single-crystal Al as a target system for isolating and studying normal-deformation-driven failure as cleanly as possible.
+
+This is a research design choice. The repository does **not** assume as a universal material law that every Al orientation or specimen is always weaker in normal opening than in shear. Any such quantitative comparison must be checked separately for the chosen crystal orientation, temperature, loading state, and microscopic model.
 
 ## Core state
 
 The primary reduced state is the thermodynamic-limit spacing density
 
 $$
-P(a,t)=\lim_{N\to\infty}\frac{1}{N}\sum_{i=1}^{N}\delta(a-a_i(t)).
+P(a,t)=\lim_{N\to\infty}\frac{1}{N}\sum_{i=1}^{N}\delta(a-a_i(t)),
 $$
 
-where $a_i(t)$ is a local interatomic-spacing descriptor. The long-term goal is to derive the evolution of $P(a,t)$ from mechanics rather than prescribe a probability family.
+where $a_i(t)$ is a local normal interatomic-spacing descriptor.
 
-The current minimal extension for non-affine structure is the joint state
+The long-term objective is to derive the evolution of $P(a,t)$ from microscopic mechanics rather than prescribe a probability family.
 
-$$
-P(a,s,t),
-$$
+## Primary microscopic energy baseline
 
-where $s$ is an atomistically traceable slip/disregistry coordinate and
+The principal analytic baseline is a fixed generalized Lennard-Jones pair potential
 
 $$
-P(a,t)=\int P(a,s,t)\,ds.
+v(r)=\varepsilon_{\rm LJ}
+\left[
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^m
+-
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^n
+\right].
 $$
 
-## Current backbone
+The potential itself does not change with fatigue damage. Structural evolution must appear through the microscopic configuration and the induced state distributions.
 
-- Microscopic mechanics: Newton/Hamiltonian dynamics
-- Deterministic lattice baseline: generalized Lennard-Jones interaction
-- Distribution energy: pair-distance distributions and correlation hierarchy
-- Exact density conservation: $\partial_tP+\partial_a(Pv)=0$
-- Hysteresis target: obtain $\oint \sigma\,d\epsilon>0$ without inserting an empirical hysteresis law
-- Fatigue target: obtain secular cycle-to-cycle evolution $P_{N+1}\neq P_N$
-- Crack initiation: formulate as loss of mechanical stability / first-passage into an unstable state
+For exact pair-distance densities $P_k(r,t)$,
+
+$$
+\boxed{
+\mathcal U(t)=\sum_{k=1}^{\infty}\int_0^\infty v(r)P_k(r,t)\,dr.
+}
+$$
+
+For deterministic spacing trajectories, the exact kinematic conservation law is
+
+$$
+\boxed{
+\partial_tP+\partial_a(Pv_a)=0,
+}
+$$
+
+where
+
+$$
+v_a(a,t)=\langle\dot a_i\mid a_i=a\rangle.
+$$
+
+The central closure problem is to derive $v_a$ from the minimum necessary microscopic state without inserting a fitted constitutive law.
+
+## Current progress
+
+### Milestone 1 — reduced hysteresis mechanism
+
+A resolved coordinate coupled to a semi-infinite harmonic Rubin chain gives a mechanics-derived phase lag and nonzero reduced hysteresis while the full microscopic system remains conservative.
+
+Reference nondimensional result:
+
+$$
+A_H^{\rm analytic}=0.0152091700,
+$$
+
+$$
+A_H^{\rm numeric}=0.0152088400.
+$$
+
+The relative loop-area error is approximately $2.17\times10^{-5}$ and the energy-balance relative error is approximately $1.25\times10^{-5}$.
+
+This is an auxiliary existence proof. The mainline task is now to derive the analogous hysteresis directly in the normal-spacing sector.
+
+### Milestone 2 — normal spacing accumulation
+
+The current main target is
+
+$$
+\boxed{
+P_{N+1}(a)\neq P_N(a)
+}
+$$
+
+at identical cycle phase under cyclic normal stress.
+
+A previous nonlinear Hamiltonian slip-bath simulation demonstrated $s_{N+1}\neq s_N$ without an empirical damage law. That result is retained as an auxiliary proof that conservative nonlinear microscopic dynamics can generate a nontrivial cycle map, but **shear slip is not the principal physical mechanism of this project**.
+
+The next mainline simulation must obtain secular evolution directly from normal spacing, normal-mode coupling, correlations, free-surface opening, or another microscopically defined normal-deformation mechanism.
+
+See:
+
+- `docs/MILESTONE2_NORMAL_DEFORMATION.md` — current mainline theory
+- `docs/OPEN_PROBLEMS.md` — current unresolved mechanics
+- `docs/MILESTONE2_HAMILTONIAN_SLIP.md` — auxiliary shear/slip proof-of-principle
+
+## Crack initiation
+
+The principal crack-initiation route is a normal-opening stability / first-passage problem.
+
+An idealized reduced-lattice baseline is
+
+$$
+U''(a_c)=0,
+$$
+
+but the final initiation theory must distinguish instantaneous tail occupancy
+
+$$
+Q_c(t)=\int_{a_c}^{\infty}P(a,t)\,da
+$$
+
+from cumulative first-passage probability.
 
 ## Variable dictionaries
 
 Theory and simulation symbols are defined in `docs/VARIABLE_DEFINITIONS.md`. Firmware fields and fault flags are defined in `firmware/VARIABLE_DEFINITIONS.md`.
 
-Any future document or source change that introduces a new research symbol should update the relevant variable dictionary in the same commit.
+Any source or document that introduces a new research symbol must update the relevant variable dictionary in the same commit.
 
-## Current progress
-
-### Milestone 1 — mechanics-derived reduced hysteresis
-
-A resolved structural coordinate coupled to a semi-infinite harmonic Rubin chain produces an exact phase lag and nonzero reduced hysteresis while the full microscopic model remains conservative.
-
-Reference nondimensional result:
-
-$$
-A_H^{\mathrm{analytic}}=0.0152091700,
-$$
-
-$$
-A_H^{\mathrm{numeric}}=0.0152088400.
-$$
-
-The relative loop-area error is about $2.17\times10^{-5}$ and the relative external-work / internal-energy balance error is about $1.25\times10^{-5}$.
-
-### Milestone 2 — proof of cycle-to-cycle structural evolution
-
-A nonlinear periodic non-affine coordinate coupled to the conservative lattice bath produces three numerical regimes: bounded intra-basin response, finite relocation followed by periodic response, and a running inter-basin state.
-
-For the current nondimensional $F_a=0.50$ proof-of-principle case,
-
-$$
-s_{N+1}-s_N\approx-1
-$$
-
-in the late-cycle regime, while the global energy-balance relative error is about
-
-$$
-1.77\times10^{-7}.
-$$
-
-This is **not yet a calibrated Al fatigue-life prediction**. Real Al still requires an atomistic $\gamma(\mathbf s)$ input and a mechanically derived explanation for the gap between ordinary fatigue stresses and perfect-crystal ideal shear strength.
-
-See `results/reports/SIMULATION_RESULTS.md` for figures and interpretation.
-
-## Reproduce the current simulation results
-
-From the repository root:
+## Reproduce current proof-of-principle results
 
 ```bash
 python -m pip install -r requirements.txt
@@ -95,13 +160,15 @@ python -m unittest tests.test_hamiltonian_slip_bath
 
 Generated numerical data are written under `results/data/` and figures under `results/figures/`.
 
+These simulations are currently mechanism tests, not quantitative Al fatigue-life predictions.
+
 ## Fatigue-tester firmware status
 
-A target-independent C99 real-time controller core now exists under `firmware/`.
+A target-independent C99 real-time controller core exists under `firmware/` for normal axial fatigue loading.
 
 Implemented at the core level:
 
-- sine / triangle stress-reference generation;
+- sine / triangle normal-stress reference generation;
 - stress-to-force conversion;
 - cycle counting;
 - PI load-cell force-loop structure and anti-windup;
@@ -110,17 +177,15 @@ Implemented at the core level:
 - target-cycle stop;
 - MCU hardware-abstraction boundary.
 
-The core compiled locally with strict warnings and its host logic/safety test passed. It is **not yet a board-complete flash image** because the actual MCU, actuator drive, ADC/load-cell chain, displacement sensor, DCPD hardware, and real controller gains still need to be fixed and validated.
-
-See `docs/FIRMWARE_ARCHITECTURE.md` and `firmware/README.md`.
+The firmware is not yet a board-complete flash image because the final MCU, actuator drive, sensor electronics, and validated control gains have not been fixed.
 
 ## Repository structure
 
-- `docs/` — theory notes, assumptions, derivations, failed approaches, architecture, and variable definitions
+- `docs/` — theory notes, assumptions, exact derivations, failed approaches, normal-deformation milestone, architecture, and variable definitions
 - `theory/` — analytic and numerical model code
 - `simulations/` — numerical experiments and reproducible result generation
 - `tests/` — conservation, limiting-case, and falsification tests
-- `firmware/` — hardware-independent C real-time controller core and MCU porting boundary
+- `firmware/` — hardware-independent axial-fatigue real-time controller core
 - `tools/` — PC-side telemetry / analysis helpers
 - `results/data/` — machine-readable simulation results
 - `results/figures/` — generated plots
@@ -128,7 +193,7 @@ See `docs/FIRMWARE_ARCHITECTURE.md` and `firmware/README.md`.
 
 ## Research rule
 
-Every important result should be classified as one of:
+Every important result must be classified as one of:
 
 - **EXACT / IDENTITY**
 - **DEFINITION**
@@ -136,103 +201,170 @@ Every important result should be classified as one of:
 - **CONTROLLED APPROXIMATION**
 - **EMPIRICAL INPUT**
 
-A model that only reproduces a known fatigue curve by fitting is not considered a successful derivation.
+A model that reproduces a known fatigue curve only by fitting is not considered a successful derivation.
 
 ---
 
 # 한국어 번역
 
-고순도 또는 단결정 알루미늄의 피로 균열 개시를 미시역학에서부터 설명하기 위한 mechanics-first 연구 framework이다.
+고순도 또는 단결정 알루미늄의 피로 균열개시를 미시역학에서 설명하기 위한 mechanics-first framework이며, 주 물리적 관심은 **반복 수직응력, 수직 원자간 신장, 수직 opening instability**이다.
 
 ## 연구 목표
 
-경험적인 피로법칙과 통제되지 않은 fitting을 가능한 한 배제하면서, 미시역학과 분포값 상태변수로부터 반복 히스테리시스, 비가역적 피로누적, 균열개시를 유도하는 것이 목표다.
+경험적인 피로법칙과 통제되지 않은 fitting을 가능한 한 배제하면서 microscopic mechanics와 distribution-valued state variable로부터 수직 히스테리시스, cycle-to-cycle 비가역 구조진화, 균열개시를 유도한다.
 
-## 핵심 상태변수
-
-가장 기본적인 축약상태는 열역학적 극한의 원자간격 밀도다.
+주 역학 chain은
 
 $$
-P(a,t)=\lim_{N\to\infty}\frac{1}{N}\sum_{i=1}^{N}\delta(a-a_i(t)).
+\boxed{
+\sigma_n(t)
+\rightarrow
+\{a_i(t)\}
+\rightarrow
+P(a,t)
+\rightarrow
+\text{수직 히스테리시스}
+\rightarrow
+P_{N+1}(a)\neq P_N(a)
+\rightarrow
+\text{수직 opening instability / crack initiation}
+}
 $$
 
-여기서 $a_i(t)$는 국부 원자간격 descriptor다. 특정 확률분포 family를 미리 가정하지 않고 $P(a,t)$의 시간진화를 역학에서 유도하는 것이 장기 목표다.
+이다.
 
-현재 비아핀 구조를 포함하기 위한 최소 확장 후보는
+전단/slip 모델은 향후 수직변형 문제의 closure에 수학적으로 필요하다고 유도되지 않는 한 보조 원리증명으로만 유지한다.
+
+## 이 프로젝트에서 Al을 사용하는 이유
+
+고순도/단결정 Al을 수직변형 기반 파괴를 가능한 한 깨끗하게 분리하여 연구하기 위한 대상계로 사용한다.
+
+이것은 연구설계상의 선택이다. 저장소에서는 모든 Al 결정방향이나 시편이 항상 전단보다 수직 opening에 더 약하다는 것을 보편적인 재료법칙으로 가정하지 않는다. 그러한 정량비교는 선택된 결정방향, 온도, 하중상태, microscopic model에 대해 별도로 검증해야 한다.
+
+## 핵심 상태
+
+가장 기본적인 축약상태는 열역학적 극한의 spacing density
 
 $$
-P(a,s,t)
+P(a,t)=\lim_{N\to\infty}\frac{1}{N}\sum_{i=1}^{N}\delta(a-a_i(t))
 $$
 
-이며, $s$는 원자좌표로 추적 가능한 slip/disregistry coordinate다. 기존 spacing state는
+이다.
+
+여기서 $a_i(t)$는 국부 수직 원자간격 descriptor다. 특정 probability family를 미리 가정하지 않고 $P(a,t)$의 진화를 microscopic mechanics에서 유도하는 것이 장기 목표다.
+
+## 주 미시에너지 baseline
+
+주 해석 baseline은 고정된 generalized Lennard-Jones pair potential이다.
 
 $$
-P(a,t)=\int P(a,s,t)\,ds
+v(r)=\varepsilon_{\rm LJ}
+\left[
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^m
+-
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^n
+\right].
 $$
 
-라는 정확한 marginal로 남는다.
+피로손상에 따라 potential 자체를 변화시키지 않는다. 구조진화는 microscopic configuration과 그로부터 유도되는 state distribution의 변화로 나타나야 한다.
 
-## 현재 이론의 기본 골격
+정확한 pair-distance density $P_k(r,t)$에 대해
 
-- 미시역학: Newton/Hamiltonian dynamics
-- 결정론적 lattice baseline: generalized Lennard-Jones interaction
-- 분포에너지: pair-distance distribution 및 correlation hierarchy
-- 정확한 밀도보존식: $\partial_tP+\partial_a(Pv)=0$
-- 히스테리시스 목표: 경험적 hysteresis law 없이 $\oint \sigma\,d\epsilon>0$
-- 피로누적 목표: $P_{N+1}\neq P_N$인 secular evolution
-- 균열개시: mechanical stability loss 또는 first-passage 문제
+$$
+\boxed{
+\mathcal U(t)=\sum_{k=1}^{\infty}\int_0^\infty v(r)P_k(r,t)\,dr
+}
+$$
 
-## 변수 사전
+이다.
 
-이론 및 simulation 기호는 `docs/VARIABLE_DEFINITIONS.md`에 정의하고, firmware field와 fault flag는 `firmware/VARIABLE_DEFINITIONS.md`에 정의한다.
+결정론적 spacing trajectory에 대한 정확한 운동학적 보존식은
 
-앞으로 새로운 연구기호를 도입하는 문서나 source change는 같은 commit에서 해당 변수정의 파일을 함께 갱신한다.
+$$
+\boxed{
+\partial_tP+\partial_a(Pv_a)=0
+}
+$$
+
+이고,
+
+$$
+v_a(a,t)=\langle\dot a_i\mid a_i=a\rangle
+$$
+
+이다.
+
+핵심 closure 문제는 fitted constitutive law를 넣지 않고 필요한 최소 microscopic state에서 $v_a$를 유도하는 것이다.
 
 ## 현재 진행상황
 
-### Milestone 1 — 역학으로부터 유도된 축약 히스테리시스
+### Milestone 1 — 축약 히스테리시스 메커니즘
 
-관심 구조좌표를 준무한 harmonic Rubin chain에 결합하면 전체 미시계는 보존계인 상태에서 정확한 phase lag와 0이 아닌 축약 히스테리시스가 발생한다.
+관심 좌표를 준무한 harmonic Rubin chain에 결합하면 전체 미시계가 보존계인 상태에서 mechanics-derived phase lag와 0이 아닌 축약 히스테리시스가 발생한다.
 
 기준 무차원 결과는
 
 $$
-A_H^{\mathrm{analytic}}=0.0152091700,
+A_H^{\rm analytic}=0.0152091700,
 $$
 
 $$
-A_H^{\mathrm{numeric}}=0.0152088400
-$$
-
-이다.
-
-loop area 해석값-수치값 상대오차는 약 $2.17\times10^{-5}$이고, 외부 일 / 내부에너지 수지 상대오차는 약 $1.25\times10^{-5}$이다.
-
-### Milestone 2 — cycle-to-cycle 구조변화 원리증명
-
-비선형 주기적 비아핀 좌표를 보존적 lattice bath에 결합한 모델에서 세 영역이 나타났다. 하나의 basin 안에서 제한된 응답, 유한한 relocation 후 주기응답, 그리고 basin 사이를 계속 이동하는 running state다.
-
-현재 무차원 $F_a=0.50$ 원리증명 계산의 후반부에서는
-
-$$
-s_{N+1}-s_N\approx-1
-$$
-
-이고, 전체 energy-balance 상대오차는 약
-
-$$
-1.77\times10^{-7}
+A_H^{\rm numeric}=0.0152088400
 $$
 
 이다.
 
-하지만 이것은 **아직 실제 Al 피로수명을 보정한 예측모델이 아니다.** 실제 Al의 atomistic $\gamma(\mathbf s)$ 입력과, 일반적인 피로응력과 완전결정 ideal shear strength 사이의 간극을 줄이는 미시역학적 메커니즘이 아직 필요하다.
+loop-area 상대오차는 약 $2.17\times10^{-5}$이고 energy-balance 상대오차는 약 $1.25\times10^{-5}$이다.
 
-그래프와 해석은 `results/reports/SIMULATION_RESULTS.md`에 정리한다.
+이 결과는 보조적인 existence proof다. 이제 메인 과제는 동일한 히스테리시스를 수직 spacing sector에서 직접 유도하는 것이다.
 
-## 현재 simulation 결과 재생성
+### Milestone 2 — normal spacing 누적진화
 
-repository root에서 다음을 실행한다.
+현재 메인 목표는 반복 수직응력에서 동일한 cycle phase에
+
+$$
+\boxed{
+P_{N+1}(a)\neq P_N(a)
+}
+$$
+
+를 얻는 것이다.
+
+이전 nonlinear Hamiltonian slip-bath simulation은 empirical damage law 없이 $s_{N+1}\neq s_N$이 가능함을 보였다. 이 결과는 보존적인 비선형 microscopic dynamics가 nontrivial cycle map을 만들 수 있다는 보조 증거로 남기지만, **전단 slip은 이 프로젝트의 주 물리메커니즘이 아니다.**
+
+다음 mainline simulation은 normal spacing, normal-mode coupling, spacing correlation, free-surface opening 또는 다른 microscopically defined normal-deformation mechanism에서 secular evolution을 직접 만들어야 한다.
+
+관련 문서:
+
+- `docs/MILESTONE2_NORMAL_DEFORMATION.md` — 현재 메인 이론
+- `docs/OPEN_PROBLEMS.md` — 현재 미해결 역학문제
+- `docs/MILESTONE2_HAMILTONIAN_SLIP.md` — 보조 shear/slip 원리증명
+
+## 균열개시
+
+주 crack-initiation route는 수직 opening의 안정성 / first-passage 문제다.
+
+이상화된 reduced-lattice baseline은
+
+$$
+U''(a_c)=0
+$$
+
+이지만, 최종 initiation theory는 순간 tail occupancy
+
+$$
+Q_c(t)=\int_{a_c}^{\infty}P(a,t)\,da
+$$
+
+와 cumulative first-passage probability를 구분해야 한다.
+
+## 변수사전
+
+이론 및 simulation 기호는 `docs/VARIABLE_DEFINITIONS.md`, firmware field와 fault flag는 `firmware/VARIABLE_DEFINITIONS.md`에 정의한다.
+
+새로운 연구기호를 도입하는 source/document는 같은 commit에서 해당 변수정의 파일을 갱신한다.
+
+## 현재 원리증명 simulation 재현
 
 ```bash
 python -m pip install -r requirements.txt
@@ -243,32 +375,32 @@ python -m unittest tests.test_hamiltonian_slip_bath
 
 수치데이터는 `results/data/`, 그래프는 `results/figures/`에 생성된다.
 
+현재 simulation은 mechanism test이며 정량적인 Al fatigue-life prediction은 아니다.
+
 ## 피로시험기 firmware 상태
 
-`firmware/` 아래에 target-independent C99 실시간 controller core를 추가했다.
+`firmware/` 아래에는 수직 축방향 피로하중을 위한 target-independent C99 real-time controller core가 있다.
 
 현재 core 수준에서 구현된 기능은 다음과 같다.
 
-- sine / triangle stress reference 생성;
+- sine / triangle normal-stress reference 생성;
 - stress-to-force 변환;
 - cycle counting;
-- PI load-cell force-loop 구조와 anti-windup;
+- PI load-cell force-loop 구조 및 anti-windup;
 - force, displacement, sensor-validity, E-stop fault 처리;
 - fault 시 command 0;
 - target-cycle stop;
 - MCU hardware-abstraction boundary.
 
-이 core는 strict warning 옵션으로 로컬 compile했고 host logic/safety test를 통과했다. 다만 실제 MCU, actuator drive, ADC/load-cell chain, displacement sensor, DCPD hardware, 실제 controller gain이 확정되지 않았으므로 **아직 특정 보드에 바로 flash하는 완성 image는 아니다.**
-
-자세한 구조는 `docs/FIRMWARE_ARCHITECTURE.md`와 `firmware/README.md`에 정리한다.
+최종 MCU, actuator drive, sensor electronics, 검증된 control gain이 확정되지 않았기 때문에 아직 board-complete flash image는 아니다.
 
 ## Repository 구조
 
-- `docs/` — 이론노트, 가정, 유도, 실패한 접근, architecture, 변수정의
+- `docs/` — 이론노트, 가정, 정확한 유도, 실패한 접근, 수직변형 milestone, architecture, 변수정의
 - `theory/` — 해석 및 수치모델 코드
-- `simulations/` — 수치실험 및 재현 가능한 결과 생성
-- `tests/` — 보존법칙, limiting case, 반증 test
-- `firmware/` — hardware-independent C 실시간 controller core와 MCU 포팅 경계
+- `simulations/` — 수치실험과 재현 가능한 결과 생성
+- `tests/` — 보존법칙, limiting-case, 반증 test
+- `firmware/` — hardware-independent axial-fatigue real-time controller core
 - `tools/` — PC telemetry / analysis helper
 - `results/data/` — machine-readable simulation 결과
 - `results/figures/` — 생성된 그래프
@@ -284,4 +416,4 @@ python -m unittest tests.test_hamiltonian_slip_bath
 - **CONTROLLED APPROXIMATION**
 - **EMPIRICAL INPUT**
 
-기존 피로곡선을 fitting으로 재현했을 뿐인 모델은 성공적인 이론 유도로 간주하지 않는다.
+기존 피로곡선을 fitting으로만 재현하는 모델은 성공적인 이론유도로 보지 않는다.
