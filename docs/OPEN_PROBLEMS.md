@@ -1,159 +1,291 @@
 # Open Problems
 
-## Milestone 1 — Mechanics-derived hysteresis
+## Main research direction
 
-Given a prescribed cyclic stress
+The principal problem is cyclic **normal deformation** under normal stress. The central state remains the spacing distribution $P(a,t)$.
+
+The intended mechanics chain is
 
 $$
-\sigma(t)=\sigma_m+\sigma_a\sin(\omega t),
+\boxed{
+\sigma_n(t)
+\rightarrow
+\{a_i(t)\}
+\rightarrow
+P(a,t)
+\rightarrow
+\text{normal hysteresis}
+\rightarrow
+P_{N+1}(a)\neq P_N(a)
+\rightarrow
+\text{normal-opening instability / crack initiation}.
+}
 $$
 
-derive an internal evolution law from microscopic mechanics such that loading and unloading do not simply retrace the same structural state, while conserving probability and satisfying the correct energy balance.
+Shear/slip coordinates are auxiliary unless they are later shown to be mathematically necessary for closure of the normal-deformation problem.
+
+## Milestone 1 — Mechanics-derived normal hysteresis
+
+Given
+
+$$
+\sigma_n(t)=\sigma_m+\sigma_a\sin(\omega t),
+$$
+
+derive a branch-dependent normal strain/spacing response from microscopic mechanics while satisfying probability conservation and energy balance.
 
 Success condition:
 
 $$
-A_H=\oint \sigma\,d\epsilon>0
+\boxed{
+A_H=\oint\sigma_n\,d\epsilon_n>0
+}
 $$
 
 without inserting an empirical hysteresis law.
 
-### Current status: partially achieved as a mechanics proof-of-principle
+### Current status
 
-A resolved oscillator coupled to a semi-infinite harmonic Rubin chain gives an exact, mechanics-derived complex dynamic stiffness. Inside the propagating phonon band,
+The Rubin-chain calculation proves the general mechanism that a conservative microscopic system can show reduced hysteresis when energy is transferred into unresolved propagating modes.
 
-$$
-\operatorname{Im}Z(\omega)>0,
-$$
+However, this proof currently uses a generic resolved coordinate $Q$. The mainline task is to derive the analogous effect directly for the normal-spacing coordinate $a$ or its exact phase-space/correlation extension.
 
-and therefore
+## Milestone 2 — Secular normal-spacing evolution
 
-$$
-A_H=\pi F_a^2\frac{\operatorname{Im}Z}{|Z|^2}>0.
-$$
-
-A full finite conservative Newton-chain simulation reproduces the analytic loop area to about $2.17\times10^{-5}$ relative error while satisfying the external-work / internal-energy balance to about $1.25\times10^{-5}$ relative error in the reference run.
-
-This establishes that a fitted damping or hysteresis law is not necessary for reduced hysteresis. However, it does **not** yet establish the magnitude of macroscopic hysteresis in real Al. See `MILESTONE1_RUBIN_CHAIN.md`.
-
-## Milestone 2 — Secular fatigue accumulation
-
-A periodic hysteresis loop alone is internal friction, not fatigue. Derive conditions for
+A periodic hysteresis loop alone is not fatigue. The main success criterion is
 
 $$
-P_{N+1}\neq P_N
+\boxed{
+P_{N+1}(a)\neq P_N(a)
+}
 $$
 
-or for an equivalent slow internal state to evolve cycle by cycle.
+at identical cycle phase, generated from microscopic normal-deformation mechanics.
 
-**Current highest-priority problem:** identify the smallest mechanically derived slow structural mechanism that prevents full cycle-to-cycle recovery. Pure harmonic radiation does not solve this.
+The existing slip-bath result $s_{N+1}\neq s_N$ is an auxiliary existence proof only. It does not solve this Milestone.
 
-## Milestone 3 — Crack initiation
+### Highest-priority questions
 
-Formulate initiation as a mechanical stability loss or first-passage event. Candidate formulations include an absorbing boundary in an enlarged state space or a distribution-level stability criterion.
+1. Can anharmonic normal lattice dynamics generate a secular change in $P(a,t)$ under cyclic normal loading?
+2. What spacing correlations are necessary for closure?
+3. Does a phase-space density $F(a,c,t)$ suffice, or is a higher pair/joint hierarchy required?
+4. Can a free surface or geometric normal stress concentration produce localized opening without introducing an empirical damage law?
+5. How does finite temperature alter the initial phase-space ensemble and tail transport?
+6. Can all observed cycle-to-cycle drift survive time-step, system-size, and boundary-condition refinement?
+
+## Milestone 3 — Crack initiation by normal opening
+
+The main crack-initiation route is treated as a normal-opening stability or first-passage problem.
+
+The idealized one-coordinate criterion
+
+$$
+U''(a_c)=0
+$$
+
+is a useful baseline, not a complete crack criterion.
+
+A cumulative initiation theory should distinguish
+
+$$
+Q_c(t)=\int_{a_c}^{\infty}P(a,t)\,da
+$$
+
+from the first-passage probability
+
+$$
+F_{\rm ci}(t)=\Pr(\tau_c\le t).
+$$
 
 ## Central closure problem
 
-Determine the minimum state required for a mechanically closed model:
+Determine the minimum state required for a mechanically closed normal-deformation model:
 
 - $P(a,t)$ only?
 - phase-space density $F(a,c,t)$?
-- spacing-correlation hierarchy?
-- joint structural state such as $P(a,s,t)$, where $s$ is a non-affine/slip coordinate?
+- neighboring-spacing joint densities?
+- full pair-distance hierarchy $P_k(r,t)$?
+- a surface-normal structural coordinate in addition to $a$?
 
-The preferred answer is the smallest state that can be derived from mechanics without hiding essential memory or irreversibility in fitted constitutive terms.
+The preferred state is the smallest one that follows from microscopic mechanics without hiding memory or irreversibility in fitted constitutive laws.
+
+## Energy-model problem
+
+Use a fixed microscopic potential and let the **state** evolve rather than changing the potential with damage.
+
+The principal analytic baseline is the generalized Lennard-Jones pair law
+
+$$
+v(r)=\varepsilon_{\rm LJ}
+\left[
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^m
+-
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^n
+\right].
+$$
+
+A major open question is how far the resulting pair-potential mechanics can be pushed before many-body corrections become quantitatively necessary for Al. Such corrections should be introduced as validation upgrades, not as hidden phenomenological fatigue laws.
 
 ## Numerical falsification tests
 
-Any candidate model should pass at least:
+Any mainline normal-deformation model should pass at least:
 
-1. zero loading → zero hysteresis;
-2. perfectly reversible conservative limit → zero hysteresis;
+1. zero loading $\rightarrow$ zero hysteresis and zero secular drift;
+2. perfectly reversible affine limit $\rightarrow P_{N+1}=P_N$;
 3. probability normalization preserved;
 4. non-negative density;
 5. dimensional consistency;
 6. energy balance;
 7. uniform-lattice limit recovers the baseline lattice energy;
-8. nonzero fatigue accumulation is not created by numerical diffusion alone.
+8. secular $P$ evolution is not created by numerical diffusion;
+9. convergence with time step and system size;
+10. no arbitrary barrier reduction or damage-dependent LJ parameters.
 
 ---
 
 # 한국어 번역 — 미해결 문제
 
-## 마일스톤 1 — 역학으로부터 유도되는 히스테리시스
+## 주 연구방향
 
-다음과 같은 주기 응력이 주어졌다고 하자.
+핵심 문제는 수직응력 아래의 반복 **수직변형**이다. 중심 상태는 계속 spacing distribution $P(a,t)$이다.
 
-$$
-\sigma(t)=\sigma_m+\sigma_a\sin(\omega t)
-$$
-
-미시적 역학으로부터 내부 상태의 진화 법칙을 유도한다. 이 진화 법칙은 하중과 제하 과정이 단순히 동일한 구조 상태를 역으로 되짚지 않도록 해야 하며, 동시에 확률 보존과 올바른 에너지 수지를 만족해야 한다.
-
-성공 조건은
+목표 역학 chain은
 
 $$
-A_H=\oint \sigma\,d\epsilon>0
+\boxed{
+\sigma_n(t)
+\rightarrow
+\{a_i(t)\}
+\rightarrow
+P(a,t)
+\rightarrow
+\text{수직 히스테리시스}
+\rightarrow
+P_{N+1}(a)\neq P_N(a)
+\rightarrow
+\text{수직 opening instability / crack initiation}
+}
 $$
 
-이며, 이를 위해 경험적인 히스테리시스 법칙을 별도로 삽입해서는 안 된다.
+이다.
 
-### 현재 상태: 역학적 원리 증명 수준에서 부분 달성
+전단/slip 좌표는 향후 수직변형 문제의 closure에 수학적으로 필요하다고 확인되지 않는 한 보조적인 위치에 둔다.
 
-관심 구조좌표 하나를 준무한 Rubin 조화사슬에 연결하면, 미시 Newton 역학으로부터 복소 동적 강성이 정확히 유도된다. 격자의 propagating band 내부에서는
+## Milestone 1 — 역학에서 유도되는 수직 히스테리시스
 
-$$
-\operatorname{Im}Z(\omega)>0
-$$
-
-이므로
+다음 수직응력이 주어졌다고 하자.
 
 $$
-A_H=\pi F_a^2\frac{\operatorname{Im}Z}{|Z|^2}>0
+\sigma_n(t)=\sigma_m+\sigma_a\sin(\omega t)
 $$
 
-가 된다.
+확률보존과 에너지수지를 만족하면서 microscopic mechanics에서 loading/unloading branch가 다른 수직 strain/spacing response를 유도한다.
 
-유한하지만 충분히 긴 전체 보존 Newton 사슬을 직접 적분한 기준 계산에서도 해석적 히스테리시스 면적과 약 $2.17\times10^{-5}$의 상대오차로 일치했고, 외부 일과 내부 에너지의 수지도 약 $1.25\times10^{-5}$ 상대오차로 일치했다.
-
-따라서 적어도 축약된 구조좌표에서 $A_H>0$를 얻기 위해 경험적 damping 또는 히스테리시스 법칙을 필수적으로 삽입할 필요는 없다는 점은 확인됐다. 다만 이것이 실제 Al의 거시적 히스테리시스 크기를 곧바로 설명하는 것은 아니다. 자세한 유도와 수치검증은 `MILESTONE1_RUBIN_CHAIN.md`에 기록한다.
-
-## 마일스톤 2 — 장기적 피로 누적
-
-주기적으로 완전히 반복되는 히스테리시스 루프만 존재한다면 그것은 내부 마찰일 뿐, 그 자체로 피로 누적을 의미하지 않는다. 따라서 다음 조건이 성립하는 역학적 조건을 유도해야 한다.
+성공조건은
 
 $$
-P_{N+1}\neq P_N
+\boxed{
+A_H=\oint\sigma_n\,d\epsilon_n>0
+}
 $$
 
-또는 이와 동등하게, 어떤 느린 내부 상태가 cycle마다 누적적으로 진화해야 한다.
+이며 empirical hysteresis law를 삽입해서는 안 된다.
 
-**현재 최우선 문제:** 한 cycle 뒤 구조가 완전히 복원되지 않게 만드는 가장 작은 역학적 slow state를 찾는 것이다. 순수 조화격자의 radiation만으로는 이 문제를 해결하지 못한다.
+### 현재 상태
 
-## 마일스톤 3 — 균열 개시
+Rubin-chain 계산은 보존적인 미시계에서도 에너지가 해소되지 않은 propagating mode로 전달되면 축약 히스테리시스가 생길 수 있다는 일반 메커니즘을 증명했다.
 
-균열 개시를 기계적 안정성 상실 또는 first-passage 사건으로 정식화한다. 후보 접근으로는 확장된 상태공간에서의 흡수 경계 조건이나 분포 수준의 안정성 기준이 있다.
+다만 현재 이 원리증명은 generic resolved coordinate $Q$를 사용한다. 메인 과제는 동일한 효과를 normal-spacing coordinate $a$ 또는 그 정확한 phase-space/correlation 확장에서 직접 유도하는 것이다.
+
+## Milestone 2 — cycle별 normal-spacing 누적진화
+
+주기 히스테리시스만으로는 피로가 아니다. 메인 성공조건은 동일한 cycle phase에서
+
+$$
+\boxed{
+P_{N+1}(a)\neq P_N(a)
+}
+$$
+
+가 microscopic normal-deformation mechanics에서 발생하는 것이다.
+
+기존 slip-bath의 $s_{N+1}\neq s_N$ 결과는 가능성을 보여주는 보조 existence proof일 뿐 이 Milestone을 해결한 것은 아니다.
+
+### 최우선 질문
+
+1. anharmonic normal lattice dynamics가 반복 수직하중에서 $P(a,t)$의 secular change를 만들 수 있는가?
+2. closure에 어떤 spacing correlation이 필요한가?
+3. phase-space density $F(a,c,t)$만으로 충분한가, 아니면 더 높은 joint/pair hierarchy가 필요한가?
+4. 자유표면 또는 수직방향 형상 응력집중이 empirical damage law 없이 국부 opening을 만들 수 있는가?
+5. 유한온도가 초기 phase-space ensemble과 tail transport를 어떻게 바꾸는가?
+6. 관찰된 cycle drift가 time-step, system-size, boundary-condition refinement 뒤에도 유지되는가?
+
+## Milestone 3 — 수직 opening에 의한 균열개시
+
+주 crack-initiation route는 수직 opening의 안정성 상실 또는 first-passage 문제로 취급한다.
+
+이상화된 단일좌표 기준
+
+$$
+U''(a_c)=0
+$$
+
+은 유용한 baseline이지만 완전한 crack criterion은 아니다.
+
+누적 균열개시 이론에서는
+
+$$
+Q_c(t)=\int_{a_c}^{\infty}P(a,t)\,da
+$$
+
+와 first-passage probability
+
+$$
+F_{\rm ci}(t)=\Pr(\tau_c\le t)
+$$
+
+를 구분해야 한다.
 
 ## 핵심 closure 문제
 
-기계적으로 닫힌 모델을 구성하기 위해 필요한 최소 상태를 결정한다.
+기계적으로 닫힌 수직변형 모델에 필요한 최소상태를 결정한다.
 
 - $P(a,t)$만으로 충분한가?
-- 위상공간 밀도 $F(a,c,t)$가 필요한가?
-- 원자간격 상관관계의 hierarchy가 필요한가?
-- 비아핀/non-affine 또는 slip 좌표 $s$를 포함하는 $P(a,s,t)$와 같은 결합 구조 상태가 필요한가?
+- phase-space density $F(a,c,t)$가 필요한가?
+- 인접 spacing joint density가 필요한가?
+- 전체 pair-distance hierarchy $P_k(r,t)$가 필요한가?
+- $a$ 외에 surface-normal structural coordinate가 필요한가?
 
-목표는 필수적인 memory 또는 irreversibility를 fitting된 구성식 안에 숨기지 않으면서, 미시적 역학으로부터 유도 가능한 가장 작은 상태 표현을 찾는 것이다.
+목표는 memory 또는 irreversibility를 fitting된 구성식에 숨기지 않으면서 microscopic mechanics에서 따라오는 가장 작은 상태를 찾는 것이다.
+
+## 에너지모델 문제
+
+고정된 microscopic potential을 사용하고 damage에 따라 potential을 바꾸는 대신 **state가 진화하도록** 한다.
+
+주 해석 baseline은 generalized Lennard-Jones pair law다.
+
+$$
+v(r)=\varepsilon_{\rm LJ}
+\left[
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^m
+-
+\left(\frac{\sigma_{\rm LJ}}{r}\right)^n
+\right].
+$$
+
+중요한 open question은 Al에 대해 many-body correction이 정량적으로 필요해지기 전까지 pair-potential mechanics를 어디까지 밀어붙일 수 있는가이다. many-body correction은 숨은 피로 phenomenology가 아니라 validation upgrade로 도입해야 한다.
 
 ## 수치적 반증 테스트
 
-어떤 후보 모델이든 최소한 다음 테스트를 통과해야 한다.
+메인 수직변형 모델은 최소한 다음을 통과해야 한다.
 
-1. 외력이 0이면 히스테리시스도 0이어야 한다.
-2. 완전히 가역적인 보존계 한계에서는 히스테리시스가 0이어야 한다.
-3. 확률 정규화가 보존되어야 한다.
-4. 확률밀도는 음수가 되어서는 안 된다.
-5. 모든 주요 식은 차원적으로 일관되어야 한다.
-6. 에너지 수지를 만족해야 한다.
-7. 균일 격자 한계에서 기존의 기준 lattice energy가 복원되어야 한다.
-8. 0이 아닌 피로 누적이 단순한 numerical diffusion 때문에 인공적으로 발생해서는 안 된다.
+1. 외력 0 $\rightarrow$ 히스테리시스 0, secular drift 0;
+2. 완전 가역 affine limit $\rightarrow P_{N+1}=P_N$;
+3. 확률 정규화 보존;
+4. density 비음수;
+5. 차원 일관성;
+6. 에너지수지;
+7. 균일격자 limit에서 baseline lattice energy 복원;
+8. secular $P$ evolution이 numerical diffusion 때문에 생기지 않음;
+9. time step과 system size에 대해 convergence;
+10. arbitrary barrier reduction 및 damage-dependent LJ parameter 금지.
