@@ -4,30 +4,27 @@
 # - 주요 함수/메서드: physical_energy_scale, inverse_reduced_temperature, force_biased_potential, _bisect_root
 #   quasistatic_stable_spacing, metastable_stationary_points, metastable_barrier_height
 #   metastable_gibbs_density, metastable_tail_probability, fixed_length_two_spacing_density
-# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+#   fixed_length_canonical_density
+# - 주의: thermal/canonical 및 metastable 분포는 명시된 ensemble·시간척도 가정 아래에서만 물리적으로 해석한다. 피로수명 법칙이나 escape rate를 임의로 넣지 않는다.
 # === 한국어 파일 안내 끝 ===
 """Physical-statistical forms of the full nonlinear 1D layer-LJ spacing state.
 
 This module does not fit a named distribution and does not Taylor-expand the
-LJ force.  It separates three physically distinct statements:
+LJ force. It separates three physically distinct statements:
 
 1. zero-temperature quasistatic homogeneous force balance;
 2. equilibrium statistical mechanics at fixed length / temperature;
 3. a metastable intact-basin Gibbs distribution under tensile force.
 
-The normalized layer potential is phi(lambda).  If the physical effective
-layer-patch energy is U = E0 * phi + const and phi''(1)=1, the calibration
-E = (a0/A0) U''(a0) gives E0 = E A0 a0 exactly.
+For the fixed-length canonical ensemble, the exact finite-M one-spacing
+marginal can be evaluated from the convolution recursion
 
-A tensile force f = sigma/E biases the reduced potential to
+    Z_M(L) = integral z(lambda) Z_{M-1}(L-lambda) d lambda,
+    z(lambda) = exp[-chi phi(lambda)].
 
-    w_f(lambda) = phi(lambda) - f lambda.
-
-For 0 < f < f_c this function has a stable stationary point below lambda_c
-and an unstable barrier point above lambda_c.  The full-domain tensile Gibbs
-integral diverges because w_f -> -infinity as lambda -> infinity; therefore a
-normalizable tensile distribution can only be an intact-basin/metastable
-object unless length is constrained.
+The code uses the shifted potential phi(lambda)-phi(1), which changes each
+Z_M only by an M-dependent constant and therefore leaves the normalized
+fixed-M spacing marginal unchanged while improving numerical conditioning.
 """
 from __future__ import annotations
 
@@ -51,11 +48,7 @@ def physical_energy_scale(
     reference_area_m2: float,
     equilibrium_spacing_m: float,
 ) -> float:
-    """Return E0 = E A0 a0 in joules.
-
-    This follows exactly from the model normalization phi''(1)=1 and the
-    calibration E=(a0/A0) U''(a0), provided U=E0*phi(a/a0)+const.
-    """
+    """Return E0 = E A0 a0 in joules."""
     if min(youngs_modulus_pa, reference_area_m2, equilibrium_spacing_m) <= 0.0:
         raise ValueError("E, A0, and a0 must all be positive")
     return youngs_modulus_pa * reference_area_m2 * equilibrium_spacing_m
@@ -67,12 +60,7 @@ def inverse_reduced_temperature(
     equilibrium_spacing_m: float,
     temperature_k: float,
 ) -> float:
-    """Return chi = E0/(k_B T).
-
-    The representative layer area A0 is a physical input, not a fitting
-    parameter.  No aluminum temperature prediction is meaningful until A0 is
-    defined consistently with the coarse-grained layer potential.
-    """
+    """Return chi = E0/(k_B T)."""
     if temperature_k <= 0.0:
         raise ValueError("temperature must be positive")
     e0 = physical_energy_scale(
@@ -118,14 +106,7 @@ def quasistatic_stable_spacing(
     m: float = 12.19,
     n: float = 6.0,
 ) -> float:
-    """Return the stable homogeneous spacing satisfying phi'(lambda)=f.
-
-    For this active tensile implementation 0 <= f < f_c is required.  At
-    f=0 the stable state is exactly lambda=1.  The result is the T=0
-    quasistatic homogeneous state, for which P is a delta measure at this
-    spacing; applying it to a finite-rate driven state is a quasistatic
-    approximation rather than an exact dynamic claim.
-    """
+    """Return the stable homogeneous spacing satisfying phi'(lambda)=f."""
     fc = critical_dimensionless_force(m, n)
     if dimensionless_force < 0.0 or dimensionless_force >= fc:
         raise ValueError("require 0 <= dimensionless_force < f_c")
@@ -144,15 +125,10 @@ def metastable_stationary_points(
     m: float = 12.19,
     n: float = 6.0,
 ) -> tuple[float, float]:
-    """Return (stable_spacing, barrier_spacing) for 0 < f < f_c.
-
-    The stable point lies in (1, lambda_c), while the barrier point lies above
-    lambda_c.  No polynomial/Taylor approximation is used.
-    """
+    """Return (stable_spacing, barrier_spacing) for 0 < f < f_c."""
     fc = critical_dimensionless_force(m, n)
     if not (0.0 < dimensionless_force < fc):
         raise ValueError("metastable tensile basin requires 0 < f < f_c")
-
     stable = quasistatic_stable_spacing(dimensionless_force, m, n)
     lam_c = critical_stretch(m, n)
 
@@ -188,13 +164,7 @@ def metastable_gibbs_density(
     m: float = 12.19,
     n: float = 6.0,
 ) -> np.ndarray:
-    """Return the normalized intact-basin metastable Gibbs density.
-
-    P_ms(lambda) is proportional to exp[-chi(w_f(lambda)-w_f(lambda_s))]
-    on 0 < lambda < lambda_b and is zero outside that basin.  This is a
-    controlled local-equilibrium/metastable approximation, not a global
-    equilibrium distribution and not a fatigue escape-rate model.
-    """
+    """Return the normalized intact-basin metastable Gibbs density."""
     lam = np.asarray(stretch, dtype=float)
     if lam.ndim != 1 or lam.size < 3 or np.any(np.diff(lam) <= 0.0):
         raise ValueError("stretch must be a strictly increasing 1D grid")
@@ -241,6 +211,96 @@ def metastable_tail_probability(
     return float(np.trapezoid(tail_p, tail_lam))
 
 
+def _uniform_grid_step(grid: np.ndarray) -> float:
+    diffs = np.diff(grid)
+    if grid.ndim != 1 or grid.size < 4 or np.any(diffs <= 0.0):
+        raise ValueError("grid must be a strictly increasing 1D array")
+    dx = float(diffs[0])
+    if not np.allclose(diffs, dx, rtol=2.0e-10, atol=2.0e-13):
+        raise ValueError("fixed-length convolution requires a uniform grid")
+    if abs(float(grid[0])) > max(1.0e-13, 1.0e-10 * dx):
+        raise ValueError("fixed-length convolution grid must start at zero")
+    return dx
+
+
+def _shifted_boltzmann_weight(
+    grid: np.ndarray,
+    inverse_temperature: float,
+    m: float,
+    n: float,
+) -> np.ndarray:
+    weight = np.zeros_like(grid, dtype=float)
+    positive = grid > 0.0
+    phi_eq = float(normalized_lj_energy(1.0, m, n))
+    psi = normalized_lj_energy(grid[positive], m, n) - phi_eq
+    weight[positive] = np.exp(-inverse_temperature * psi)
+    return weight
+
+
+def _fft_convolution_prefix(a: np.ndarray, b: np.ndarray, dx: float) -> np.ndarray:
+    n = a.size
+    nfft = 1 << (2 * n - 1).bit_length()
+    conv = np.fft.irfft(np.fft.rfft(a, nfft) * np.fft.rfft(b, nfft), nfft)
+    conv = conv[:n] * dx
+    conv[conv < 0.0] = 0.0
+    return conv
+
+
+def fixed_length_canonical_density(
+    grid: np.ndarray,
+    total_stretch: float,
+    spacing_count: int,
+    inverse_temperature: float,
+    m: float = 12.19,
+    n: float = 6.0,
+) -> np.ndarray:
+    """Numerically evaluate the exact finite-M fixed-length canonical marginal.
+
+    The physical formula is
+
+        P_M(lambda|L,chi)
+          = z(lambda) Z_{M-1}(L-lambda) / Z_M(L),
+
+    where Z_M is the M-fold convolution of z(lambda)=exp[-chi phi(lambda)].
+    The additive shift phi -> phi-phi(1) used numerically cancels exactly from
+    the normalized fixed-M marginal.
+
+    The convolution is a numerical quadrature of the exact ensemble formula;
+    grid refinement is therefore required for quantitative use.
+    """
+    lam = np.asarray(grid, dtype=float)
+    dx = _uniform_grid_step(lam)
+    if spacing_count < 2:
+        raise ValueError("spacing_count must be at least 2")
+    if inverse_temperature <= 0.0 or total_stretch <= 0.0:
+        raise ValueError("inverse_temperature and total_stretch must be positive")
+    if total_stretch > float(lam[-1]):
+        raise ValueError("grid must extend at least to total_stretch")
+
+    z = _shifted_boltzmann_weight(lam, inverse_temperature, m, n)
+    prev = z.copy()
+    peak = float(np.max(prev))
+    if peak <= 0.0:
+        raise ValueError("Boltzmann weight vanished on the supplied grid")
+    prev /= peak
+
+    for _count in range(2, spacing_count):
+        prev = _fft_convolution_prefix(z, prev, dx)
+        peak = float(np.max(prev))
+        if not math.isfinite(peak) or peak <= 0.0:
+            raise ValueError("partition recursion lost numerical support")
+        prev /= peak
+
+    partner = total_stretch - lam
+    reservoir = np.interp(partner, lam, prev, left=0.0, right=0.0)
+    one_spacing_weight = z * reservoir
+    one_spacing_weight[(lam <= 0.0) | (lam >= total_stretch)] = 0.0
+    norm = float(np.trapezoid(one_spacing_weight, lam))
+    if not math.isfinite(norm) or norm <= 0.0:
+        raise ValueError("fixed-length canonical marginal normalization failed")
+    return one_spacing_weight / norm
+
+
 def fixed_length_two_spacing_density(
     stretch: np.ndarray,
     total_stretch: float,
@@ -248,15 +308,7 @@ def fixed_length_two_spacing_density(
     m: float = 12.19,
     n: float = 6.0,
 ) -> np.ndarray:
-    """Exact canonical M=2 one-spacing density at fixed total stretch.
-
-    For two positive spacings with lambda_1+lambda_2=L,
-
-        P(lambda_1|L,chi) ~ exp[-chi(phi(lambda_1)+phi(L-lambda_1))].
-
-    This is an exact configurational canonical result for the stated M=2
-    fixed-length ensemble.  It is not a driven nonequilibrium fatigue law.
-    """
+    """Exact canonical M=2 one-spacing density at fixed total stretch."""
     lam = np.asarray(stretch, dtype=float)
     if lam.ndim != 1 or lam.size < 3 or np.any(np.diff(lam) <= 0.0):
         raise ValueError("stretch must be a strictly increasing 1D grid")
