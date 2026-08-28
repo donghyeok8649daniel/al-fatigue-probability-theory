@@ -1,5 +1,5 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: push-forward 관련 이전 진단 결과를 재현하는 스크립트다. harmonic/Taylor 근사는 active 전역 분포 모델로 해석하지 않는다.
+# - 파일 역할: push-forward 관련 과거 harmonic/Taylor 진단 결과를 재현한다. active 전역 분포 모델은 아니다.
 # - 주요 클래스: 없음 또는 외부 선언만 사용
 # - 주요 함수/메서드: empirical_kolmogorov_distance, main
 # - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.

@@ -1,5 +1,5 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 보존적 1D layer-LJ chain을 실행하고 cycle history, energy balance, instability 관련 결과를 저장한다.
+# - 파일 역할: 보존적 1D layer-LJ chain을 실행하고 cycle history, energy balance, instability 결과를 저장한다.
 # - 주요 클래스: 없음 또는 외부 선언만 사용
 # - 주요 함수/메서드: main
 # - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.

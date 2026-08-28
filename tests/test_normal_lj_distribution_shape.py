@@ -1,5 +1,5 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
+# - 파일 역할: exact P log-slope/함수형 복원식과 P2 기반 nonlinear-LJ conditional acceleration 적분을 검증한다.
 # - 주요 클래스: TestNormalLJDistributionShape
 # - 주요 함수/메서드: TestNormalLJDistributionShape.test_reconstructs_known_density
 #   TestNormalLJDistributionShape.test_constant_theta_special_case

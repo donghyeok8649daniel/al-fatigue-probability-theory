@@ -1,5 +1,5 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: calibrated generalized-LJ layer interaction을 사용하는 보존적 1D normal chain을 적분하고, 에너지·spacing·instability 진단값을 계산한다.
+# - 파일 역할: calibrated generalized-LJ layer interaction을 사용하는 보존적 1D normal chain을 적분하고 에너지·spacing·instability 진단값을 계산한다.
 # - 주요 클래스: NormalLJParameters, InstabilityEvent, NormalLJResult
 # - 주요 함수/메서드: NormalLJResult.energy_balance_relative_error, _validate_exponents, normalized_lj_energy
 #   normalized_lj_force, normalized_lj_stiffness, critical_stretch, critical_dimensionless_force

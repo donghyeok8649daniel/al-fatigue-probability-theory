@@ -1,5 +1,5 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: fixed-length/fixed-energy ensemble에서 유도한 large-M one-point spacing closure와 수치 적분·moment 계산을 구현한다.
+# - 파일 역할: fixed-length/fixed-energy ensemble에서 유도한 과거 large-M one-point spacing closure와 moment 계산을 구현한다.
 # - 주요 클래스: ClosureMoments, ClosureSolution
 # - 주요 함수/메서드: shifted_lj_energy, _quadrature, _legendre_rule, _logsumexp, _closure_mode, _moment_rule
 #   closure_moments, solve_alpha_for_mean, solve_distribution_closure, closure_density

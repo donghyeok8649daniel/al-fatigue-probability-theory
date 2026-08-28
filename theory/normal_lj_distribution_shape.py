@@ -1,5 +1,5 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 활성 1D normal layer-LJ 이론 계산에 사용하는 Python 모듈이다.
+# - 파일 역할: exact phase-space 1·2차 moment balance로부터 P(lambda,t)의 log-slope와 순간 함수형을 복원하고, P2에서 full nonlinear LJ conditional acceleration을 계산한다.
 # - 주요 클래스: 없음 또는 외부 선언만 사용
 # - 주요 함수/메서드: _as_same_1d, density_log_slope, reconstruct_density_from_shape_fields
 #   lj_conditional_acceleration

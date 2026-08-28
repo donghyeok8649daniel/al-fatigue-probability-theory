@@ -1,5 +1,5 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
+# - 파일 역할: Taylor/harmonic 없이 유도한 finite-M transport/moment identity와 exact nonlinear LJ acceleration을 검증한다.
 # - 주요 클래스: TestNormalLJDistributionTransport
 # - 주요 함수/메서드: TestNormalLJDistributionTransport.test_exact_spacing_acceleration
 #   TestNormalLJDistributionTransport.test_moment_rate_identities

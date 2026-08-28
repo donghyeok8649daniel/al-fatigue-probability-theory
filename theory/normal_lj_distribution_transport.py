@@ -1,5 +1,5 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 활성 1D normal layer-LJ 이론 계산에 사용하는 Python 모듈이다.
+# - 파일 역할: 원래 nonlinear 1D layer-LJ 식에서 finite-M spacing/velocity empirical measure의 exact transport 및 moment identity를 계산한다.
 # - 주요 클래스: 없음 또는 외부 선언만 사용
 # - 주요 함수/메서드: exact_spacing_acceleration, monomial_moment, monomial_moment_rate
 #   monomial_moment_second_rate

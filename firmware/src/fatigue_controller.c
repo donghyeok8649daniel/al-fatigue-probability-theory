@@ -1,8 +1,8 @@
 /* === 한국어 파일 안내 시작 ===
-파일 역할: fatigue_controller.h에 선언된 파형 생성, force reference 계산, 제어 상태 갱신 및 안전 로직을 구현한다.
+파일 역할: 파형 생성, force reference, 제어 상태 갱신 및 안전 로직을 구현한다.
 주요 자료형: 없음 또는 다른 헤더에서 정의
 주요 함수: clampd, waveform_value, sin, ft_config_valid, ft_init, ft_start, ft_stop, ft_step
-주의: 이 안내는 코드 탐색용이며 안전한 실제 하드웨어 구동에는 별도의 HAL 구현과 limit/interlock 검증이 필요하다.
+주의: 이 안내는 코드 탐색용이며 실제 하드웨어 구동에는 별도의 HAL 및 limit/interlock 검증이 필요하다.
 === 한국어 파일 안내 끝 === */
 #include "fatigue_controller.h"
 

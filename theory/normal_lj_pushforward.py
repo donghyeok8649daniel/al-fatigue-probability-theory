@@ -1,5 +1,5 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: deterministic spacing field에서 one-point density를 얻는 push-forward 관련 계산 도구를 모은다. harmonic/Taylor 기반 항목은 active 전역 분포 가정으로 사용하지 않는다.
+# - 파일 역할: deterministic spacing field의 push-forward 보조 계산을 제공한다. harmonic/Taylor 항목은 historical diagnostic으로만 유지한다.
 # - 주요 클래스: 없음 또는 외부 선언만 사용
 # - 주요 함수/메서드: lj_force_taylor_coefficients, linear_mode_frequency, arcsine_density, arcsine_cdf
 #   single_mode_moments, two_harmonic_moments, two_harmonic_max_abs_skewness

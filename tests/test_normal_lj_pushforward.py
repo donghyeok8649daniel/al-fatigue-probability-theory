@@ -1,5 +1,5 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: push-forward 보조 계산의 수학적 identity를 검증한다. harmonic/Taylor 항목은 과거 진단용 테스트로만 유지한다.
+# - 파일 역할: push-forward 보조 identity를 검증한다. harmonic/Taylor 항목은 historical diagnostic이다.
 # - 주요 클래스: PushForwardDistributionTests
 # - 주요 함수/메서드: PushForwardDistributionTests.test_lj_force_taylor_coefficients
 #   PushForwardDistributionTests.test_linear_dispersion

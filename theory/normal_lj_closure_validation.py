@@ -1,5 +1,5 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: deterministic layer-spacing snapshot과 mean/energy 기반 one-point distribution closure를 같은 조건에서 비교하는 검증 도구를 제공한다.
+# - 파일 역할: deterministic layer-spacing snapshot과 mean/energy 기반 one-point distribution closure를 같은 조건에서 비교한다.
 # - 주요 클래스: ClosureSnapshotComparison
 # - 주요 함수/메서드: _standard_legendre_rule, _legendre_unbounded, closure_third_central_moment
 #   closure_cdf_many, closure_cdf, kolmogorov_distance, compare_snapshot_to_closure

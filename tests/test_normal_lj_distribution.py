@@ -1,5 +1,5 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: spacing closure의 normalization, moment recovery, energy relation 및 수치 안정성을 검증한다.
+# - 파일 역할: historical spacing closure의 normalization, moment recovery, energy relation 및 수치 안정성을 검증한다.
 # - 주요 클래스: NormalLJDistributionTests
 # - 주요 함수/메서드: NormalLJDistributionTests.test_solver_recovers_mean_and_energy
 #   NormalLJDistributionTests.test_energy_decreases_with_beta_at_fixed_mean

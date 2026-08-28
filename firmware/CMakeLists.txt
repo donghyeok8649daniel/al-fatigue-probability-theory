@@ -1,5 +1,5 @@
 # === 한국어 빌드 파일 안내 시작 ===
-# - 파일 역할: host-side firmware scaffold와 테스트 실행 파일을 빌드하기 위한 CMake 설정이다.
+# - 파일 역할: host-side firmware scaffold와 테스트 실행 파일을 빌드하는 CMake 설정이다.
 # - 주요 기능: firmware library/host executable의 source, include path, link 구성을 지정한다.
 # === 한국어 빌드 파일 안내 끝 ===
 
