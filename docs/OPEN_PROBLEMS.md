@@ -1,5 +1,18 @@
 # Open Problems — Active 1D Layer-LJ Mainline
 
+## 1D statistical-cell and dependence priority
+
+<!-- STATISTICAL_CELL_OPEN_EN -->
+
+The current dynamically matched chain behaves, in a variance-equivalent sense, like roughly three independent axial probability blocks even as $M$ increases from 31 to 255. The estimated axial statistical length grows with system size instead of converging.
+
+Open questions:
+
+1. determine whether this system-scale coherence is caused by the present boundary/loading protocol or survives in a physically appropriate 1D ensemble;
+2. do not assign a fixed local mini-cell length until a size-independent axial scale converges;
+3. keep the variance-equivalent length separate from a crack-tail/first-passage clustering length;
+4. keep $A_0$ (energy calibration area) separate from any future transverse statistical area.
+
 ## Current physical priority — identify the ensemble before closing $P$
 
 <!-- PHYSICAL_P_OPEN_EN -->
@@ -137,6 +150,19 @@ Any next model must preserve:
 ---
 
 # 한국어 번역 — 활성 1D Layer-LJ Mainline 미해결 문제
+
+## 1D 통계셀 및 종속성 우선문제
+
+<!-- STATISTICAL_CELL_OPEN_KO -->
+
+현재 dynamically matched chain은 variance-equivalent 관점에서 $M=31$에서 255로 커져도 대략 3개의 독립 axial probability block처럼 행동한다. 추정 axial statistical length는 수렴하지 않고 system size와 함께 증가한다.
+
+미해결 문제는 다음과 같다.
+
+1. 이 system-scale coherence가 현재 boundary/loading protocol 때문인지, 물리적으로 적절한 1D ensemble에서도 유지되는지 확인한다.
+2. system-size-independent axial scale이 수렴하기 전에는 fixed local mini-cell length를 지정하지 않는다.
+3. variance-equivalent length와 crack-tail/first-passage clustering length를 분리한다.
+4. $A_0$(energy calibration area)와 미래의 transverse statistical area를 분리한다.
 
 ## 현재 물리 우선순위 — $P$를 닫기 전에 ensemble부터 결정
 

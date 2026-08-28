@@ -1,7 +1,7 @@
 {
-  "active_mainline": "1D normal layer-LJ in continuous physical time t, with full nonlinear mechanics, exact transport, and explicitly labeled statistical-mechanical ensemble limits",
+  "active_mainline": "Strictly 1D normal layer-LJ in continuous physical time t, with full nonlinear mechanics, exact transport, explicitly labeled statistical-mechanical limits, and correlation-derived axial statistical-cell scales",
   "scope_freeze": "Remain strictly in one-dimensional normal tension until P(lambda,t) is physically identified and validated. 2D/3D FEM, multiaxial criteria, specimen hazard integration, and 3D mini-mesh coupling are deferred.",
-  "state": "P(lambda,t) has exact driven-transport constraints and physically derived equilibrium limits: T=0 quasistatic delta state, fixed-length canonical/microcanonical marginals, and a controlled metastable intact-basin Gibbs form under subcritical tension",
+  "state": "P(lambda,t) has exact transport and physical equilibrium constraints. Probability aggregation distinguishes complete identical dependence, partial dependence, and true independence. The exact variance-equivalent statistical length belongs to the true stationary correlation sequence; deterministic finite snapshots use a separately labeled first-positive-lobe estimator because the all-lag sample-mean-centered plug-in sum has an exact zero-sum artifact.",
   "primary_reduced_observables": [
     "P(lambda,t)",
     "d_lambda log P",
@@ -60,7 +60,8 @@
     "physical_distribution_simulation": "simulations/run_normal_lj_physical_distribution.py",
     "physical_distribution_data": "results/data/normal_lj_physical_distribution.json",
     "physical_distribution_table": "results/data/normal_lj_physical_distribution.csv",
-    "physical_distribution_report": "results/reports/NORMAL_LJ_PHYSICAL_DISTRIBUTION.md"
+    "physical_distribution_report": "results/reports/NORMAL_LJ_PHYSICAL_DISTRIBUTION.md",
+    "statistical_cell_report": "results/reports/NORMAL_LJ_STATISTICAL_CELL.md"
   },
   "historical_or_falsification_diagnostics": {
     "equal_measure_two_moment_closure": "docs/MILESTONE5_DERIVED_DISTRIBUTION_CLOSURE.md",
@@ -74,6 +75,6 @@
     "shear": "libraries/shear/",
     "fcc_normal_3d": "libraries/fcc_normal/"
   },
-  "current_result": "Physical theory now fixes several non-arbitrary forms of P. The elastic calibration gives E0=E*A0*a0 and chi=E0/(k_B*T). Zero-temperature homogeneous quasistatic equilibrium is a delta measure at the stable force-balance spacing. An isolated equilibrium chain has a microcanonical configurational measure weighted by remaining kinetic phase volume. At fixed total length, the exact canonical one-spacing marginal is exp[-chi*phi(lambda)]*Z_{M-1}(L-lambda)/Z_M(L). A global tensile force-controlled Gibbs density does not normalize; for 0<f<fc an intact-basin Gibbs density is only a controlled metastable/local-equilibrium approximation.",
-  "next_target": "Physically define the representative layer area A0, then test whether deterministic cyclic states are consistent with microcanonical/local-equilibrium statistics. Compare physically derived P forms directly with mechanics; if they fail, derive the nonequilibrium correction from the exact F1/P2 hierarchy."
+  "current_result": "For true stationary 1D correlations, Var(mean_M)=sigma_lambda^2*tau_M/M exactly and M_eff=M/tau_M, ell_stat_2=a0*tau_M. For one deterministic sample-mean-centered snapshot the all-lag weighted covariance sum is exactly zero, so a first-positive-lobe estimator is used instead. In the dynamically matched M=31,63,127,255 sweep, M_eff_hat_plus is approximately 2.929, 2.986, 3.029, 3.054, while ell_stat_2_hat_plus/a0 is approximately 10.584, 21.101, 41.934, 83.489. Thus the tested chain retains system-scale coherent dependence and does not yet provide a converged local material correlation length. Complete identity remains distinct from partial dependence, and event independence still requires joint factorization.",
+  "next_target": "Stay in 1D. Determine whether the observed system-scale coherence is caused by the present boundary/loading protocol or persists in a physically appropriate 1D ensemble. Continue identifying P(lambda,t), and later derive an event/first-passage clustering length separately from the second-moment statistical length. Do not assign a fixed local mini-cell or identify A0 with a statistical independence area without an independent physical derivation."
 }

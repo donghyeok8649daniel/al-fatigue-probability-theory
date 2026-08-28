@@ -1,5 +1,30 @@
 # Al Fatigue Probability Theory
 
+## Active 1D statistical-cell dependence scale
+
+<!-- STATISTICAL_CELL_STATUS_EN -->
+
+Probability aggregation is now explicitly separated into complete identical dependence, partial dependence, and true independence. For a second-order stationary 1D spacing process, the exact variance identity is
+
+$$
+\operatorname{Var}(\bar\lambda_M)
+=\frac{\sigma_\lambda^2}{M}\tau_M,
+\qquad
+\tau_M=1+2\sum_{k=1}^{M-1}\left(1-\frac{k}{M}\right)\rho_k.
+$$
+
+This defines the variance-equivalent independent count and axial statistical length
+
+$$
+M_{\rm eff}=\frac{M}{\tau_M},
+\qquad
+\ell_{\rm stat}^{(2)}=a_0\tau_M.
+$$
+
+A single deterministic finite snapshot cannot use the all-lag population formula directly because sample-mean centering gives an exact weighted zero-sum identity. Such snapshots therefore use a separately labeled first-positive-lobe estimator. In the dynamically matched sweep $M=31,63,127,255$, the corrected estimate gives $M_{\rm eff}^{(+)}\approx2.93,2.99,3.03,3.05$ while $\ell_{\rm stat}^{(2,+)}/a_0\approx10.58,21.10,41.93,83.49$. Thus the tested protocol retains system-scale coherence rather than converging to a local material correlation length.
+
+The mechanical calibration area $A_0$ is not identified with a transverse statistical independence area. The active scope remains strictly one-dimensional.
+
 ## Active physical-statistical constraint on $P$
 
 <!-- PHYSICAL_P_STATUS_EN -->
@@ -331,6 +356,33 @@ No fitted Gaussian/Weibull distribution, cycle-dependent LJ parameter, empirical
 ---
 
 # 한국어 번역
+
+## 활성 1D 통계셀 종속성 척도
+
+<!-- STATISTICAL_CELL_STATUS_KO -->
+
+확률을 합칠 때 완전 동일 종속, 부분 종속, 진짜 독립을 명시적으로 구분한다. second-order stationary 1D spacing process에서는
+
+$$
+\operatorname{Var}(\bar\lambda_M)
+=\frac{\sigma_\lambda^2}{M}\tau_M,
+\qquad
+\tau_M=1+2\sum_{k=1}^{M-1}\left(1-\frac{k}{M}\right)\rho_k
+$$
+
+가 정확하고, 이에 따라
+
+$$
+M_{\rm eff}=\frac{M}{\tau_M},
+\qquad
+\ell_{\rm stat}^{(2)}=a_0\tau_M
+$$
+
+를 정의한다.
+
+하지만 하나의 deterministic finite snapshot을 자기 sample mean으로 center하면 모든 lag를 넣은 weighted correlation sum이 정확히 0이 되는 finite-sample identity가 있으므로 population 식을 그대로 plug-in하면 안 된다. 따라서 snapshot에는 별도로 표시한 first-positive-lobe estimator를 사용한다. Dynamically matched $M=31,63,127,255$ sweep에서는 corrected estimate가 $M_{\rm eff}^{(+)}\approx2.93,2.99,3.03,3.05$이고 $\ell_{\rm stat}^{(2,+)}/a_0\approx10.58,21.10,41.93,83.49$이다. 즉 tested protocol은 local material correlation length로 수렴하지 않고 system-scale coherence를 유지한다.
+
+mechanical calibration area $A_0$를 transverse statistical independence area와 동일시하지 않는다. 활성 범위는 계속 엄격한 1D다.
 
 ## $P$에 대한 활성 물리 통계역학 제약
 
