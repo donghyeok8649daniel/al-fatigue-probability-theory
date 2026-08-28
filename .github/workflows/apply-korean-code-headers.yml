@@ -11,11 +11,14 @@ on:
       - 'firmware/**'
       - 'docs/MILESTONE10_EXACT_DISTRIBUTION_TRANSPORT.md'
       - 'docs/MILESTONE11_EXACT_P_SHAPE.md'
+      - 'docs/MILESTONE12_PHYSICAL_STATISTICAL_P.md'
       - 'docs/VARIABLE_DEFINITIONS_DISTRIBUTION_TRANSPORT.md'
       - 'docs/VARIABLE_DEFINITIONS_P_SHAPE.md'
+      - 'docs/VARIABLE_DEFINITIONS_PHYSICAL_P.md'
       - 'results/data/result_manifest.json'
       - 'tools/add_korean_code_headers.py'
       - 'tools/apply_exact_transport_supersession.py'
+      - 'tools/apply_physical_statistical_p_status.py'
   workflow_dispatch:
 
 permissions:
@@ -36,6 +39,9 @@ jobs:
       - name: Synchronize exact nonlinear transport status
         run: python tools/apply_exact_transport_supersession.py
 
+      - name: Synchronize physical-statistical P status
+        run: python tools/apply_physical_statistical_p_status.py
+
       - name: Apply Korean file headers
         run: python tools/add_korean_code_headers.py
 
@@ -45,7 +51,10 @@ jobs:
       - name: Run unit tests
         run: python -m unittest discover -s tests
 
-      - name: Commit synchronized header/status updates
+      - name: Generate Milestone 12 dimensionless diagnostics
+        run: python -m simulations.run_normal_lj_physical_distribution
+
+      - name: Commit synchronized status and generated diagnostics
         shell: bash
         run: |
           if git diff --quiet; then
@@ -54,6 +63,6 @@ jobs:
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add README.md docs theory simulations tests firmware
-          git commit -m 'Synchronize active-theory status and Korean code headers'
+          git add README.md docs theory simulations tests firmware results
+          git commit -m 'Synchronize physical-statistical P status and diagnostics'
           git push
