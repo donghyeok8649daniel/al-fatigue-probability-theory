@@ -10,9 +10,10 @@ Run from repository root:
     python -m simulations.generate_results
 
 The active research path is strictly one-dimensional and continuous-time:
-normal stress -> spacing field / probability state -> spatial correlation and
-push-forward structure -> normal-opening feasibility. Archived FCC and shear
-libraries are not imported by this workflow.
+normal stress -> exact nonlinear spacing transport / probability state ->
+spatial correlation -> normal-opening feasibility. Historical harmonic/Taylor
+push-forward diagnostics and archived FCC/shear libraries are not imported by
+this active workflow.
 """
 
 from simulations.run_normal_lj_chain import main as run_normal_chain
@@ -29,9 +30,6 @@ from simulations.run_normal_lj_closure_system_size import (
 )
 from simulations.run_normal_lj_spatial_correlation import (
     main as run_normal_spatial_correlation,
-)
-from simulations.run_normal_lj_pushforward_clue import (
-    main as run_normal_pushforward_clue,
 )
 
 
