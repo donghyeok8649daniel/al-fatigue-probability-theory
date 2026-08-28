@@ -1,7 +1,7 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 1D layer-spacing 상관으로부터 분산 기준 유효 독립개수와 축방향 통계 특성길이를 계산하고, 완전종속/독립 극한을 검증한다.
+# - 파일 역할: 1D layer-spacing 상관으로부터 분산 기준 유효 독립개수와 축방향 통계 특성길이를 계산하고, 완전종속/독립 극한 및 동일-block event aggregation을 검증한다.
 # - 주요 클래스: 없음 또는 외부 선언만 사용
-# - 주요 함수/메서드: finite_correlation_factor, effective_independent_count, variance_equivalent_axial_length, identical_pair_msd, independent_any_event_probability
+# - 주요 함수/메서드: finite_correlation_factor, effective_independent_count, variance_equivalent_axial_length, identical_pair_msd, independent_any_event_probability, identical_block_any_event_probability
 # - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """Correlation-based statistical-cell quantities for the active 1D theory.
@@ -126,3 +126,34 @@ def independent_any_event_probability(
     if n == 0:
         return 0.0
     return -math.expm1(n * math.log1p(-q)) if q < 1.0 else 1.0
+
+
+def identical_block_any_event_probability(
+    single_variable_probability: float,
+    total_variables: int,
+    identical_block_size: int,
+) -> float:
+    """Exact union probability for independent blocks of identical variables.
+
+    Assume M variables are partitioned into N=M/b blocks.  All b variables
+    inside one block are exactly the same random variable, while different
+    blocks are mutually independent.  If that underlying variable has event
+    probability q, then
+
+        P(any event among all M variables) = 1-(1-q)^(M/b).
+
+    This exact special case calibrates the meaning of an event-relevant
+    dependence length.  It is not asserted for partially dependent blocks.
+    """
+    q = float(single_variable_probability)
+    m = int(total_variables)
+    b = int(identical_block_size)
+    if not (0.0 <= q <= 1.0):
+        raise ValueError("single_variable_probability must lie in [0,1]")
+    if m < 0 or b <= 0:
+        raise ValueError("total_variables must be non-negative and block size positive")
+    if m == 0:
+        return 0.0
+    if m % b != 0:
+        raise ValueError("total_variables must be an integer multiple of identical_block_size")
+    return independent_any_event_probability(q, m // b)
