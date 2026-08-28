@@ -1,7 +1,7 @@
 {
-  "active_mainline": "1D normal layer-LJ in continuous physical time t, with full nonlinear mechanics, exact transport, and explicitly labeled statistical-mechanical ensemble limits",
+  "active_mainline": "Strictly 1D normal layer-LJ in continuous physical time t, with full nonlinear mechanics, exact transport, explicitly labeled statistical-mechanical limits, and correlation-derived axial statistical-cell scales",
   "scope_freeze": "Remain strictly in one-dimensional normal tension until P(lambda,t) is physically identified and validated. 2D/3D FEM, multiaxial criteria, specimen hazard integration, and 3D mini-mesh coupling are deferred.",
-  "state": "P(lambda,t) has exact driven-transport constraints and physically derived equilibrium limits: T=0 quasistatic delta state, fixed-length canonical/microcanonical marginals, and a controlled metastable intact-basin Gibbs form under subcritical tension",
+  "state": "P(lambda,t) has exact driven-transport constraints and physically derived equilibrium limits. Probability aggregation is explicitly separated into complete identical dependence, partial dependence, and true independence. The 1D axial variance-equivalent statistical length is derived from the spacing correlation sequence rather than chosen as a numerical mesh size.",
   "primary_reduced_observables": [
     "P(lambda,t)",
     "d_lambda log P",
@@ -17,7 +17,10 @@
     "E(t)",
     "Q_c(t)",
     "C_k(t)",
-    "rho_k(t)"
+    "rho_k(t)",
+    "tau_M(t)",
+    "M_eff(t)",
+    "ell_stat_2(t)"
   ],
   "active_files": {
     "scope_freeze": "docs/SCOPE_FREEZE_1D_FIRST.md",
@@ -25,28 +28,32 @@
     "distribution_transport_theory": "theory/normal_lj_distribution_transport.py",
     "distribution_shape_theory": "theory/normal_lj_distribution_shape.py",
     "energy_feasibility_theory": "theory/normal_lj_energy_feasibility.py",
+    "physical_distribution_theory": "theory/normal_lj_physical_distribution.py",
+    "spatial_correlation_theory": "theory/normal_lj_spatial_correlation.py",
+    "statistical_cell_theory": "theory/normal_lj_statistical_cells.py",
+    "timescale_theory": "theory/normal_lj_timescale.py",
     "distribution_closure_theory_for_falsification_reference": "theory/normal_lj_distribution.py",
     "closure_validation_theory": "theory/normal_lj_closure_validation.py",
-    "spatial_correlation_theory": "theory/normal_lj_spatial_correlation.py",
-    "timescale_theory": "theory/normal_lj_timescale.py",
     "distribution_transport_test": "tests/test_normal_lj_distribution_transport.py",
     "distribution_shape_test": "tests/test_normal_lj_distribution_shape.py",
+    "physical_distribution_test": "tests/test_normal_lj_physical_distribution.py",
     "spatial_correlation_test": "tests/test_normal_lj_spatial_correlation.py",
+    "statistical_cell_test": "tests/test_normal_lj_statistical_cells.py",
     "distribution_transport_derivation": "docs/MILESTONE10_EXACT_DISTRIBUTION_TRANSPORT.md",
     "distribution_shape_derivation": "docs/MILESTONE11_EXACT_P_SHAPE.md",
+    "physical_distribution_derivation": "docs/MILESTONE12_PHYSICAL_STATISTICAL_P.md",
+    "statistical_cell_derivation": "docs/MILESTONE13_1D_STATISTICAL_CELL.md",
     "distribution_transport_variables": "docs/VARIABLE_DEFINITIONS_DISTRIBUTION_TRANSPORT.md",
     "distribution_shape_variables": "docs/VARIABLE_DEFINITIONS_P_SHAPE.md",
+    "physical_distribution_variables": "docs/VARIABLE_DEFINITIONS_PHYSICAL_P.md",
+    "statistical_cell_variables": "docs/VARIABLE_DEFINITIONS_STATISTICAL_CELL.md",
     "spatial_correlation_derivation": "docs/MILESTONE8_SPATIAL_CORRELATION.md",
     "spatial_correlation_variables": "docs/VARIABLE_DEFINITIONS_SPATIAL_CORRELATION.md",
     "spatial_correlation_report": "results/reports/NORMAL_LJ_SPATIAL_CORRELATION.md",
     "spatial_correlation_summary": "results/data/normal_lj_spatial_correlation.json",
     "spatial_correlation_table": "results/data/normal_lj_spatial_correlation_summary.csv",
     "spatial_correlation_scaled": "results/data/normal_lj_spatial_correlation_scaled.csv",
-    "physical_distribution_theory": "theory/normal_lj_physical_distribution.py",
-    "physical_distribution_test": "tests/test_normal_lj_physical_distribution.py",
     "physical_distribution_simulation": "simulations/run_normal_lj_physical_distribution.py",
-    "physical_distribution_derivation": "docs/MILESTONE12_PHYSICAL_STATISTICAL_P.md",
-    "physical_distribution_variables": "docs/VARIABLE_DEFINITIONS_PHYSICAL_P.md",
     "physical_distribution_data": "results/data/normal_lj_physical_distribution.json",
     "physical_distribution_table": "results/data/normal_lj_physical_distribution.csv",
     "physical_distribution_report": "results/reports/NORMAL_LJ_PHYSICAL_DISTRIBUTION.md"
@@ -63,6 +70,6 @@
     "shear": "libraries/shear/",
     "fcc_normal_3d": "libraries/fcc_normal/"
   },
-  "current_result": "Physical theory now fixes several non-arbitrary forms of P. The elastic calibration gives E0=E*A0*a0 and chi=E0/(k_B*T). Zero-temperature homogeneous quasistatic equilibrium is a delta measure at the stable force-balance spacing. An isolated equilibrium chain has a microcanonical configurational measure weighted by remaining kinetic phase volume. At fixed total length, the exact canonical one-spacing marginal is exp[-chi*phi(lambda)]*Z_{M-1}(L-lambda)/Z_M(L). A global tensile force-controlled Gibbs density does not normalize; for 0<f<fc an intact-basin Gibbs density is only a controlled metastable/local-equilibrium approximation.",
-  "next_target": "Physically define the representative layer area A0, then test whether deterministic cyclic states are consistent with microcanonical/local-equilibrium statistics. Compare physically derived P forms directly with mechanics; if they fail, derive the nonequilibrium correction from the exact F1/P2 hierarchy."
+  "current_result": "For a second-order stationary 1D spacing sequence, Var(mean_M)=sigma_lambda^2*tau_M/M exactly, with tau_M=1+2*sum_{k=1}^{M-1}(1-k/M)rho_k. This defines M_eff=M/tau_M and the variance-equivalent axial statistical length ell_stat_2=a0*tau_M. The construction reproduces the exact independent limit M_eff=M and completely identical limit M_eff=1. Complete identical dependence is defined by E[(X-Y)^2]=0, whereas full independence requires P2=P1*P1; zero covariance alone is insufficient. The mechanical energy-calibration area A0 is explicitly not identified with a transverse statistical independence area A_stat in the current 1D theory.",
+  "next_target": "Evaluate tau_M, M_eff, and ell_stat_2 on the existing dynamically matched 1D system-size correlation sweep and test whether ell_stat_2 converges with M. If it scales with system size, retain that as evidence of coherent nonlocal 1D dynamics rather than imposing an arbitrary correlation cutoff. Continue deriving and testing P(lambda,t) only within the strict 1D scope."
 }
