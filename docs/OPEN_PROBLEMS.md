@@ -1,505 +1,361 @@
-# Open Problems — Active Normal-Deformation Mainline
+# Open Problems — Active 1D Normal-LJ Mainline
 
-## Milestone 1 — Normal microscopic state and exact transport
+## 1. Continuous-time probability state
 
-The active state variable is the normal-spacing density
-
-$$
-P(a,t)=\lim_{N\to\infty}\frac1N\sum_i\delta(a-a_i(t)).
-$$
-
-The exact kinematic transport equation is
+The active state is
 
 $$
-\boxed{\partial_tP+\partial_a(Pv)=0.}
+P(a,t),
 $$
 
-The unresolved problem is closure: derive $v(a,t)$, or the minimum enlarged state required to determine it, from normal microscopic mechanics without hiding memory inside an empirical constitutive law.
+not a cycle-indexed family.
 
-## Milestone 2 — Normal cyclic hysteresis and secular evolution
-
-For prescribed normal stress
-
-$$
-\sigma_n(t)=\sigma_m+\sigma_a\sin\omega t,
-$$
-
-derive a mechanics-generated loading/unloading difference and then the stronger fatigue condition
-
-$$
-\boxed{P_{N+1}(a)\neq P_N(a)}.
-$$
-
-A closed periodic loop with no cycle-state drift is internal friction, not fatigue accumulation.
-
-The current generalized-LJ perfect-chain 100 MPa null test correctly shows essentially reversible behavior. This result must not be tuned away.
-
-Key questions are:
-
-1. Can anharmonic normal lattice dynamics generate a secular change in $P(a,t)$ under experimentally relevant cyclic normal loading?
-2. Which neighbor-spacing correlations are necessary for closure?
-3. Is the phase-space density $F(a,c,t)$ sufficient, or is a higher correlation hierarchy required?
-4. Can a free surface or mechanically derived normal stress concentration produce localized opening without an empirical damage variable?
-5. Does any observed cycle-to-cycle drift survive time-step, system-size, and boundary-condition refinement?
-
-## Milestone 3 — Three-dimensional FCC normal pair-lattice validation
-
-### Current status: partially achieved
-
-The active 3D homogeneous FCC pair model is
+The exact kinematic identity is
 
 $$
 \boxed{
-U(\mathbf F)=\frac12\sum_{\mathbf R\ne0}v(|\mathbf F\mathbf R|).
+\partial_tP+\partial_a(Pv)=0.
 }
 $$
 
-For [001] normal loading,
+The theory may use finite empirical densities for numerical work, but any finite index counts represented spacings or atoms, not fatigue cycles.
+
+## 2. Mean and energy as reduced observables
+
+Define
 
 $$
-\mathbf F=\operatorname{diag}(\lambda_t,\lambda_t,\lambda_n),
+\mu(t)=\int\lambda P(\lambda,t)\,d\lambda
 $$
 
-with $\lambda_t$ relaxed at fixed $\lambda_n$.
-
-Using the inherited generalized-LJ exponents
+and
 
 $$
-m=12.19,\qquad n=6,
+\mathcal E(t)=\int\psi(\lambda)P(\lambda,t)\,d\lambda.
 $$
 
-and calibrating only the LJ energy scale to the directional experimental modulus
+The current hypothesis is that the mean may remain nearly conserved while the distribution broadens and stores configurational energy.
+
+The exact identity
 
 $$
-E_{[001]}\approx62.7024\ \mathrm{GPa},
+\mathcal E(t)-\psi(\mu(t))
+=
+\int D_\psi(\lambda\mid\mu(t))P(\lambda,t)\,d\lambda
 $$
 
-the model predicts
+makes this statement precise inside the convex LJ region.
 
-$$
-C_{11}^{\rm LJ}\approx107.169\ \mathrm{GPa},
-$$
+## 3. Exact obstruction: reverse compression
 
-$$
-C_{12}^{\rm LJ}\approx61.180\ \mathrm{GPa}.
-$$
+Normalization, mean, and energy are not enough to force a tensile tail.
 
-These closely match the external normal-elastic reference values $107$ GPa and $61$ GPa.
+Because the generalized-LJ repulsion diverges at small spacing, a crack-free measure can store arbitrarily large energy through sufficiently strong compression while remaining below $\lambda_c$ on the tensile side.
 
-The unfitted relaxed [001] ideal engineering strength is approximately
+This is now an exact falsification result, not an open question.
 
-$$
-\boxed{9.045\ \mathrm{GPa}},
-$$
+## 4. Highest-priority open problem: derive the compression bound
 
-which is in the same scale as a first-principles [001] reference near $10.63$ GPa.
-
-This is a strong positive result for the active normal-mechanics backbone.
-
-### Exact limitation exposed by the same calculation
-
-A cubic central pair potential at zero pressure obeys the Cauchy relation
-
-$$
-\boxed{C_{12}=C_{44}.}
-$$
-
-The numerical FCC sum reproduces this relation to numerical accuracy, predicting $C_{44}\approx61.180$ GPa, whereas real Al is approximately $29$ GPa.
-
-Therefore the fixed central pair model is not a complete quantitative three-dimensional Al potential. This limitation is structural, not numerical.
-
-## Milestone 4 — Absolute cohesive-energy consistency
-
-This is now the highest-priority energy-model problem before quantitative thermal probability is introduced.
-
-With the same fixed generalized-LJ shape:
-
-- fitting the experimental cohesive energy $E_{\rm coh}\approx3.43$ eV/atom gives
-  $$
-  E_{[001]}^{\rm LJ}\approx220.466\ \mathrm{GPa},
-  $$
-  which is far too stiff;
-- fitting the correct normal modulus gives
-  $$
-  E_{\rm coh}^{\rm LJ}\approx0.976\ \mathrm{eV/atom},
-  $$
-  which is far too small.
-
-Thus the current pair law cannot simultaneously reproduce the tangent normal mechanics and the absolute separation-energy scale.
-
-The central problem is
+The energy-feasibility theorem becomes finite only after imposing a physically justified lower support bound
 
 $$
 \boxed{
-\text{retain the successful normal LJ mechanics}
-+\text{derive the minimum physically justified cohesive/many-body correction}.
+\lambda\ge\lambda_L(t)>0.
 }
 $$
 
-Requirements for any correction:
-
-1. its microscopic physical origin must be explicit;
-2. it must enter through an energy or Hamiltonian, not through a fitted fatigue-damage law;
-3. it must not vary with cycle count merely to imitate degradation;
-4. it must preserve the already successful normal small-strain limit unless the new physics requires a calculable correction;
-5. the number of independent material inputs must be minimized and each must be classified;
-6. the correction must be tested against cohesion and normal traction before any fatigue-life calculation.
-
-Candidate directions may include an explicitly derived electronic-density / many-body cohesive term, but no specific functional form is accepted yet.
-
-## Milestone 5 — Finite-temperature distribution and time-scale bridge
-
-Thermal activation must not be added quantitatively until Milestone 4 fixes or bounds the relevant absolute energy landscape.
-
-A probability containing
-
-$$
-\exp\!\left(-\frac{\Delta U}{k_B T}\right)
-$$
-
-is exponentially sensitive to $\Delta U$. Therefore an effective LJ potential that has the correct normal stiffness but the wrong cohesive-energy scale cannot be used directly for a quantitative escape rate.
-
-After the energy problem is controlled, the next task is to derive
+The highest-priority problem is therefore
 
 $$
 \boxed{
-\text{fast atomic dynamics}
+\text{derive or independently constrain }\lambda_L(t)
+\text{ from 1D normal-LJ mechanics.}
+}
+$$
+
+The bound must not be selected to obtain a desired fatigue life.
+
+Candidate one-dimensional routes include:
+
+1. finite-chain total-energy accessibility;
+2. imposed-force and boundary-condition bounds;
+3. a rigorously defined maximum reverse-compression work;
+4. experimentally measured minimum normal spacing or strain bounds if available;
+5. a stronger integral bound on the compression-side energy instead of a hard support bound.
+
+## 5. Crack-free energy ceiling
+
+Once $\lambda_L(t)$ is established, the exact maximum crack-free energy at mean $\mu(t)$ is
+
+$$
+\boxed{
+\mathcal E_{\rm safe}^{\max}(t)
+=
+\frac{\lambda_c-\mu(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_L(t))
++
+\frac{\mu(t)-\lambda_L(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_c).
+}
+$$
+
+The associated energy margin is
+
+$$
+M_E(t)=\mathcal E_{\rm safe}^{\max}(t)-\mathcal E(t).
+$$
+
+The next validation problem is to compute $\mu(t)$, $\mathcal E(t)$, and the mechanically derived compression constraint in the same 1D simulation and verify whether the energy margin behaves consistently under null and non-null loading.
+
+## 6. Continuous-time initiation
+
+Define
+
+$$
+\boxed{
+\tau_E
+=
+\inf\{t\ge0:M_E(t)<0\}.
+}
+$$
+
+If $\lambda_L(t)$ is a true hard lower bound, then $M_E<0$ implies that some probability mass must leave the safe interval through the tensile side.
+
+The instantaneous tail is
+
+$$
+Q_c(t)=\int_{\lambda_c}^{\infty}P(\lambda,t)\,d\lambda.
+$$
+
+A later task is to connect the energy-feasibility crossing to a physically precise crack-initiation event for a finite specimen or representative region.
+
+## 7. Energy input from cyclic loading
+
+A separate unresolved problem is the relation
+
+$$
+\boxed{
+\sigma(t)
 \rightarrow
-\text{exact projected memory / coarse state}
+W(t)
 \rightarrow
-\text{slow evolution of }P(a,t)
+\mathcal E(t).
 }
 $$
 
-without inserting an arbitrary relaxation time.
+Not all external work is retained as configurational energy. Kinetic energy and recoverable elastic work must be separated by an exact energy balance.
 
-Exact starting points include microscopic Liouville dynamics, conditional propagators, and projection-derived memory kernels. Any Markovian reduction must be justified from this level rather than postulated.
+No arbitrary retained-energy fraction is allowed.
 
-Key questions include:
+## 8. 1D-only closure questions
 
-1. What is the correct finite-temperature microscopic state: $P(a,t)$ plus temperature, phase-space density, or a larger correlation hierarchy?
-2. Which part of the thermal energy changes the normal-spacing distribution and which part remains kinetic?
-3. Can a controlled separation of atomic and laboratory time scales be obtained from the microscopic spectrum or projected memory kernel?
-4. Can a 20 Hz cycle map be derived without inserting an empirical relaxation time?
+- Is $P(a,t)$ plus $\mathcal E(t)$ sufficient for the crack-feasibility bound even if it is not sufficient for full dynamics?
+- Can $\lambda_L(t)$ be obtained from total 1D LJ energy and finite-system constraints?
+- Is a hard support bound too strong, and would a bound on compression-side Bregman energy be a more natural third condition?
+- What finite representative length is required for a crack-initiation statement?
+- How should kinetic energy be excluded from $\mathcal E(t)$ without losing exact energy accounting?
+- Can the measured external normal work define a rigorous upper/lower bound on the configurational-energy trajectory?
 
-## Milestone 6 — Normal-opening crack initiation
+## 9. Required falsification tests
 
-The active crack-initiation picture is normal opening or normal mechanical stability loss.
+Any active model must satisfy:
 
-The old reduced 1D LJ criterion
-
-$$
-\phi''(\lambda_c)=0,
-\qquad
-\lambda_c\approx1.10777154
-$$
-
-remains a useful reduced-model diagnostic, but the 3D FCC model shows that the ultimate normal stability condition should ultimately be defined from the relevant multidimensional energy Hessian or loss of a stable equilibrium branch.
-
-Instantaneous tail occupancy
-
-$$
-Q_c(t)=\int_{a_c}^{\infty}P(a,t)\,da
-$$
-
-must be distinguished from first-passage initiation.
-
-The preferred cumulative formulation is
-
-$$
-\tau_c=\inf\{t:\text{a mechanically defined normal-opening instability occurs}\},
-$$
-
-with
-
-$$
-F_{\rm ci}(t)=\Pr(\tau_c\le t).
-$$
-
-## Central closure questions
-
-- Is $P(a,t)$ sufficient?
-- Is the phase-space lift $F(a,c,t)$ required?
-- Which neighbor-spacing joint densities are essential?
-- Is the full pair-distance hierarchy $P_k(r,t)$ needed?
-- What is the minimum extra energy variable or density variable required by the failure of the central pair potential?
-- Can projected memory be reduced at laboratory frequencies without empirical damping?
-- What physical mechanism produces cycle-to-cycle broadening or tail growth under 100 MPa-class normal loading?
-
-## Falsification tests
-
-Any active normal model must satisfy at least:
-
-1. zero loading gives zero artificial fatigue accumulation;
-2. reversible conservative limits recover reversible behavior;
+1. zero loading produces no artificial energy accumulation;
+2. reversible conservative limits remain reversible;
 3. probability normalization is preserved;
-4. density remains non-negative;
+4. the mean and configurational energy are computed directly from the same $P(a,t)$;
 5. dimensions are consistent;
-6. energy balance is satisfied;
-7. the uniform-lattice limit recovers the stated microscopic energy model;
-8. $P_{N+1}\neq P_N$ is not numerical diffusion;
-9. a 20 Hz claim uses a physically derived time-scale bridge;
-10. microscopic potential parameters remain fixed unless the microscopic interaction model itself is explicitly changed;
-11. lattice-sum and finite-difference errors are much smaller than any claimed material discrepancy;
-12. thermal first-passage predictions are not made from an unvalidated absolute barrier-energy scale.
+6. full work-energy balance is checked;
+7. the LJ potential parameters remain fixed;
+8. no named probability family is inserted for convenience;
+9. the energy-feasibility theorem is never used without explicitly stating the compression constraint;
+10. illustrative values of $\lambda_L$ are never reported as Al material constants;
+11. any claimed $\tau_E$ is a physical-time first passage, not a fitted cycle-life law;
+12. 3D FCC and shear archives are not imported into the active default calculation.
 
 ---
 
-# 한국어 번역 — 활성 수직변형 Mainline의 미해결 문제
+# 한국어 번역 — 활성 1D Normal-LJ Mainline의 미해결 문제
 
-## 마일스톤 1 — 수직 미시상태와 정확한 수송
+## 1. 연속시간 확률상태
 
-활성 상태변수는 수직 원자간격 밀도
-
-$$
-P(a,t)=\lim_{N\to\infty}\frac1N\sum_i\delta(a-a_i(t))
-$$
-
-이다.
-
-정확한 운동학적 수송식은
+활성 상태는 cycle-indexed family가 아니라
 
 $$
-\boxed{\partial_tP+\partial_a(Pv)=0}
+P(a,t)
 $$
 
 이다.
 
-아직 닫히지 않은 문제는 $v(a,t)$ 또는 이를 결정하기 위해 필요한 최소 확장상태를 수직 미시역학에서 유도하는 것이다. memory를 경험적 구성식 안에 숨기면 안 된다.
-
-## 마일스톤 2 — 수직 반복 히스테리시스와 secular evolution
-
-수직 반복응력
-
-$$
-\sigma_n(t)=\sigma_m+\sigma_a\sin\omega t
-$$
-
-아래에서 loading/unloading 차이를 역학으로부터 만들고, 더 강한 피로조건
-
-$$
-\boxed{P_{N+1}(a)\neq P_N(a)}
-$$
-
-를 얻어야 한다.
-
-cycle-state drift가 없는 닫힌 주기루프는 internal friction일 수 있지만 피로누적은 아니다.
-
-현재 generalized-LJ 완전사슬의 100 MPa null test는 거의 가역적인 응답을 올바르게 보여준다. 이 결과를 tuning으로 없애면 안 된다.
-
-핵심 질문은 다음과 같다.
-
-1. anharmonic normal lattice dynamics가 실험적으로 의미 있는 수직 반복하중에서 $P(a,t)$의 secular change를 만들 수 있는가?
-2. closure를 위해 어떤 neighbor-spacing correlation이 필요한가?
-3. phase-space density $F(a,c,t)$로 충분한가, 아니면 더 높은 correlation hierarchy가 필요한가?
-4. 경험적 damage variable 없이 자유표면 또는 역학적으로 유도된 normal stress concentration이 국부 opening을 만들 수 있는가?
-5. 관찰된 cycle-to-cycle drift가 time-step, system-size, boundary-condition refinement 후에도 남는가?
-
-## 마일스톤 3 — 3차원 FCC normal pair-lattice 검증
-
-### 현재 상태: 부분 달성
-
-활성 3D homogeneous FCC pair model은
+정확한 kinematic identity는
 
 $$
 \boxed{
-U(\mathbf F)=\frac12\sum_{\mathbf R\ne0}v(|\mathbf F\mathbf R|)
+\partial_tP+\partial_a(Pv)=0
 }
 $$
 
 이다.
 
-[001] normal loading에서는
+numerical work에서 finite empirical density를 사용할 수 있지만 finite index는 represented spacing 또는 atom 수를 뜻하며 fatigue cycle count가 아니다.
+
+## 2. 축약 observable로서 평균과 에너지
 
 $$
-\mathbf F=\operatorname{diag}(\lambda_t,\lambda_t,\lambda_n)
+\mu(t)=\int\lambda P(\lambda,t)\,d\lambda
 $$
 
-을 사용하고 고정 $\lambda_n$에서 $\lambda_t$를 relaxation한다.
-
-기존 generalized-LJ exponent
+및
 
 $$
-m=12.19,\qquad n=6
+\mathcal E(t)=\int\psi(\lambda)P(\lambda,t)\,d\lambda
 $$
 
-을 유지하고 LJ energy scale 하나만 방향성 experimental modulus
+를 정의한다.
+
+현재 가설은 평균이 거의 보존되는 동안 distribution이 넓어지고 configurational energy를 저장할 수 있다는 것이다.
+
+convex LJ region에서
 
 $$
-E_{[001]}\approx62.7024\ \mathrm{GPa}
+\mathcal E(t)-\psi(\mu(t))
+=
+\int D_\psi(\lambda\mid\mu(t))P(\lambda,t)\,d\lambda
 $$
 
-에 맞추면
+라는 exact identity가 이 주장을 수학적으로 명확하게 만든다.
 
-$$
-C_{11}^{\rm LJ}\approx107.169\ \mathrm{GPa},
-$$
+## 3. 정확한 장애물: reverse compression
 
-$$
-C_{12}^{\rm LJ}\approx61.180\ \mathrm{GPa}
-$$
+정규화, 평균, 에너지만으로 tensile tail을 강제할 수 없다.
 
-가 나온다.
+generalized-LJ repulsion은 small spacing에서 발산하므로 tensile side에서 $\lambda_c$ 아래에 머무르면서도 충분히 강한 compression으로 임의로 큰 energy를 저장할 수 있다.
 
-외부 normal-elastic reference $107$ GPa, $61$ GPa와 매우 가깝다.
+이것은 이제 open question이 아니라 exact falsification result다.
 
-peak를 fitting하지 않은 relaxed [001] ideal engineering strength는 약
+## 4. 가장 우선적인 open problem: compression bound 유도
 
-$$
-\boxed{9.045\ \mathrm{GPa}}
-$$
-
-이고, first-principles [001] reference 약 $10.63$ GPa와 같은 scale에 있다.
-
-이는 active normal-mechanics backbone에 상당히 긍정적인 결과다.
-
-### 같은 계산에서 드러난 정확한 한계
-
-zero pressure의 cubic central pair potential은 Cauchy relation
-
-$$
-\boxed{C_{12}=C_{44}}
-$$
-
-을 만족한다.
-
-수치 FCC sum도 이를 numerical accuracy까지 복원하여 $C_{44}\approx61.180$ GPa를 예측하지만 실제 Al은 약 $29$ GPa다.
-
-따라서 fixed central pair model은 complete quantitative 3D Al potential이 아니다. 이 한계는 numerical artifact가 아니라 model class의 구조적 한계다.
-
-## 마일스톤 4 — Absolute cohesive-energy consistency
-
-이제 quantitative thermal probability를 넣기 전에 가장 우선해야 할 energy-model 문제다.
-
-같은 fixed generalized-LJ shape에서
-
-- experimental cohesive energy $E_{\rm coh}\approx3.43$ eV/atom을 맞추면
-  $$
-  E_{[001]}^{\rm LJ}\approx220.466\ \mathrm{GPa}
-  $$
-  로 지나치게 단단해지고,
-- 올바른 normal modulus를 맞추면
-  $$
-  E_{\rm coh}^{\rm LJ}\approx0.976\ \mathrm{eV/atom}
-  $$
-  으로 separation-energy scale이 지나치게 작아진다.
-
-따라서 현재 pair law 하나로 tangent normal mechanics와 absolute separation-energy scale을 동시에 재현할 수 없다.
-
-중심 문제는
+energy-feasibility theorem이 유한한 ceiling을 가지려면 물리적으로 정당화된 lower support bound
 
 $$
 \boxed{
-\text{성공적인 normal LJ mechanics 유지}
-+\text{최소한의 물리적으로 정당화된 cohesive/many-body correction 유도}
+\lambda\ge\lambda_L(t)>0
+}
+$$
+
+이 필요하다.
+
+따라서 가장 중요한 문제는
+
+$$
+\boxed{
+\text{1D normal-LJ mechanics로부터 }\lambda_L(t)
+\text{를 유도하거나 독립적으로 제약하는 것}
 }
 $$
 
 이다.
 
-어떤 correction이든 다음 조건을 만족해야 한다.
+원하는 fatigue life를 만들기 위해 이 bound를 선택하면 안 된다.
 
-1. microscopic physical origin이 명확해야 한다.
-2. fitted fatigue-damage law가 아니라 energy 또는 Hamiltonian을 통해 들어와야 한다.
-3. degradation을 흉내내기 위해 cycle에 따라 변하면 안 된다.
-4. 새로운 physics가 계산 가능한 correction을 요구하지 않는 한 이미 잘 맞는 normal small-strain limit를 유지해야 한다.
-5. independent material input 수를 최소화하고 각각을 분류해야 한다.
-6. fatigue-life 계산 전에 cohesion과 normal traction에 대해 먼저 검증해야 한다.
+가능한 1차원 경로는 다음과 같다.
 
-explicitly derived electronic-density / many-body cohesive term은 후보가 될 수 있지만 아직 특정 functional form은 채택하지 않는다.
+1. finite-chain total-energy accessibility;
+2. imposed-force 및 boundary-condition bound;
+3. 엄밀하게 정의된 maximum reverse-compression work;
+4. 가능하다면 직접 측정된 minimum normal spacing 또는 strain bound;
+5. hard support bound 대신 compression-side energy에 대한 더 강한 integral bound.
 
-## 마일스톤 5 — Finite-temperature distribution과 time-scale bridge
+## 5. crack-free energy ceiling
 
-Milestone 4에서 relevant absolute energy landscape를 수정하거나 오차범위를 제어하기 전에는 quantitative thermal activation을 넣지 않는다.
-
-$$
-\exp\!\left(-\frac{\Delta U}{k_BT}\right)
-$$
-
-같은 probability는 $\Delta U$에 지수적으로 민감하다. normal stiffness는 맞지만 cohesive-energy scale이 틀린 effective LJ potential을 quantitative escape rate에 바로 쓰면 안 된다.
-
-energy 문제가 제어된 뒤 다음 과제는
+$\lambda_L(t)$가 확보되면 평균 $\mu(t)$에서 정확한 maximum crack-free energy는
 
 $$
 \boxed{
-\text{빠른 atomic dynamics}
+\mathcal E_{\rm safe}^{\max}(t)
+=
+\frac{\lambda_c-\mu(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_L(t))
++
+\frac{\mu(t)-\lambda_L(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_c)
+}
+$$
+
+이다.
+
+energy margin은
+
+$$
+M_E(t)=\mathcal E_{\rm safe}^{\max}(t)-\mathcal E(t)
+$$
+
+이다.
+
+다음 validation 문제는 같은 1D simulation에서 $\mu(t)$, $\mathcal E(t)$, mechanics-derived compression constraint를 함께 계산하고 null/non-null loading에서 energy margin이 일관되게 거동하는지 확인하는 것이다.
+
+## 6. 연속시간 initiation
+
+$$
+\boxed{
+\tau_E
+=
+\inf\{t\ge0:M_E(t)<0\}
+}
+$$
+
+로 정의한다.
+
+$\lambda_L(t)$가 true hard lower bound라면 $M_E<0$는 일부 probability mass가 safe interval을 tensile side로 빠져나가야 한다는 뜻이다.
+
+순간 tail은
+
+$$
+Q_c(t)=\int_{\lambda_c}^{\infty}P(\lambda,t)\,d\lambda
+$$
+
+이다.
+
+향후에는 energy-feasibility crossing을 finite specimen 또는 representative region의 물리적으로 정확한 crack-initiation event와 연결해야 한다.
+
+## 7. cyclic loading으로부터의 energy input
+
+별도의 미해결 문제는
+
+$$
+\boxed{
+\sigma(t)
 \rightarrow
-\text{exact projected memory / coarse state}
+W(t)
 \rightarrow
-P(a,t)\text{의 느린 진화}
+\mathcal E(t)
 }
 $$
 
-를 임의의 relaxation time 없이 유도하는 것이다.
+관계다.
 
-출발점은 microscopic Liouville dynamics, conditional propagator, projection-derived memory kernel이다. Markovian reduction은 이 수준에서 정당화되어야 한다.
+외부 work 전체가 configurational energy로 남는 것은 아니다. kinetic energy와 recoverable elastic work를 exact energy balance로 분리해야 한다.
 
-핵심 질문은 다음과 같다.
+임의의 retained-energy fraction은 허용하지 않는다.
 
-1. 올바른 finite-temperature microscopic state는 $P(a,t)$와 temperature인가, phase-space density인가, 아니면 더 큰 correlation hierarchy인가?
-2. thermal energy 중 어떤 부분이 normal-spacing distribution을 바꾸고 어떤 부분이 kinetic energy로 남는가?
-3. microscopic spectrum 또는 projected memory kernel에서 atomic/laboratory time-scale separation을 controlled하게 유도할 수 있는가?
-4. empirical relaxation time 없이 20 Hz cycle map을 유도할 수 있는가?
+## 8. 1D-only closure 질문
 
-## 마일스톤 6 — Normal-opening crack initiation
+- $P(a,t)$가 full dynamics에는 부족해도 $\mathcal E(t)$와 함께 crack-feasibility bound에는 충분한가?
+- total 1D LJ energy와 finite-system constraint로 $\lambda_L(t)$를 얻을 수 있는가?
+- hard support bound가 지나치게 강하다면 compression-side Bregman energy bound가 더 자연스러운 세 번째 조건인가?
+- crack-initiation statement에 필요한 finite representative length는 얼마인가?
+- exact energy accounting을 유지하면서 kinetic energy를 $\mathcal E(t)$에서 어떻게 분리할 것인가?
+- measured external normal work로 configurational-energy trajectory의 rigorous upper/lower bound를 만들 수 있는가?
 
-활성 crack-initiation 그림은 수직 opening 또는 normal mechanical stability loss다.
+## 9. 필수 falsification test
 
-기존 reduced 1D LJ criterion
+모든 활성 model은 다음을 만족해야 한다.
 
-$$
-\phi''(\lambda_c)=0,
-\qquad
-\lambda_c\approx1.10777154
-$$
-
-는 유용한 reduced-model diagnostic으로 남지만, 3D FCC 결과를 고려하면 최종 normal stability condition은 관련 multidimensional energy Hessian 또는 stable-equilibrium branch의 소멸로 정의해야 한다.
-
-순간적인 tail occupancy
-
-$$
-Q_c(t)=\int_{a_c}^{\infty}P(a,t)\,da
-$$
-
-와 first-passage initiation을 구분해야 한다.
-
-선호하는 누적 정식화는
-
-$$
-\tau_c=\inf\{t:\text{역학적으로 정의된 normal-opening instability 발생}\}
-$$
-
-이며
-
-$$
-F_{\rm ci}(t)=\Pr(\tau_c\le t)
-$$
-
-이다.
-
-## 핵심 closure 질문
-
-- $P(a,t)$만으로 충분한가?
-- phase-space lift $F(a,c,t)$가 필요한가?
-- 어떤 neighbor-spacing joint density가 필수인가?
-- full pair-distance hierarchy $P_k(r,t)$가 필요한가?
-- central pair potential의 실패 때문에 필요한 최소 extra energy variable 또는 density variable은 무엇인가?
-- 경험적 damping 없이 실험주파수에서 projected memory를 축약할 수 있는가?
-- 100 MPa급 수직하중에서 cycle-to-cycle broadening 또는 tail growth를 만드는 실제 물리는 무엇인가?
-
-## 반증 테스트
-
-활성 normal model은 최소한 다음을 만족해야 한다.
-
-1. zero loading에서 인공적인 피로누적이 없어야 한다.
-2. 가역 보존계 한계에서 가역응답이 복원되어야 한다.
-3. 확률 정규화가 보존되어야 한다.
-4. density는 음수가 되면 안 된다.
-5. 차원적으로 일관되어야 한다.
-6. 에너지 수지를 만족해야 한다.
-7. uniform-lattice limit에서 명시된 microscopic energy model이 복원되어야 한다.
-8. $P_{N+1}\neq P_N$가 numerical diffusion 때문이면 안 된다.
-9. 20 Hz를 주장하려면 물리적으로 유도된 time-scale bridge가 있어야 한다.
-10. microscopic interaction model 자체를 명시적으로 바꾸는 경우가 아니라면 potential parameter는 고정되어야 한다.
-11. lattice-sum 및 finite-difference error는 주장하는 material discrepancy보다 훨씬 작아야 한다.
-12. 검증되지 않은 absolute barrier-energy scale로 thermal first-passage prediction을 만들면 안 된다.
+1. zero loading에서 artificial energy accumulation이 없어야 한다.
+2. reversible conservative limit는 reversible해야 한다.
+3. probability normalization이 보존되어야 한다.
+4. mean과 configurational energy는 동일한 $P(a,t)$에서 직접 계산해야 한다.
+5. dimension이 일치해야 한다.
+6. full work-energy balance를 확인해야 한다.
+7. LJ potential parameter는 고정되어야 한다.
+8. 편의를 위한 named probability family를 넣지 않는다.
+9. compression constraint를 명시하지 않고 energy-feasibility theorem을 사용하지 않는다.
+10. illustrative $\lambda_L$를 Al material constant로 보고하지 않는다.
+11. 어떤 $\tau_E$ 주장도 fitted cycle-life law가 아니라 physical-time first passage여야 한다.
+12. 3D FCC 및 shear archive를 active default calculation에서 import하지 않는다.

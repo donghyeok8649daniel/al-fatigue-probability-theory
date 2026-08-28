@@ -2,228 +2,258 @@
 
 ## GitHub Markdown math
 
-All mathematical expressions in repository Markdown files must use GitHub-compatible math delimiters.
+Use GitHub-compatible math delimiters in every Markdown file.
 
-### Inline math
-
-Use single-dollar delimiters:
+Inline math:
 
 ```markdown
 $P(a,t)$
 ```
 
-### Display math
-
-Use double-dollar delimiters:
+Display math:
 
 ```markdown
 $$
-\partial_t P + \partial_a(Pv)=0
+\partial_tP+\partial_a(Pv)=0
 $$
 ```
 
-Do not use `\[` and `\]` in Markdown files.
+Do not use `\[` and `\]` in repository Markdown.
 
 ## Mandatory bilingual Markdown rule
 
-**Every `.md` file in this repository, including files inside research libraries, must contain a complete Korean translation.**
+**Every `.md` file must contain a complete Korean translation.**
 
 Required order:
 
-1. English technical version;
-2. horizontal rule `---`;
-3. heading `# 한국어 번역` or equivalent;
-4. Korean translation of the complete technical content.
+1. complete English technical source;
+2. `---`;
+3. Korean translation heading;
+4. complete Korean translation.
 
-A short Korean summary is not a substitute for the full translation.
+A short Korean summary is not sufficient.
 
-## Active normal-mainline rule
+## Active-mainline dimensionality rule
 
-The repository root is reserved for the **normal-deformation / normal-opening** research path.
+The active research root is **one-dimensional and normal-only**.
 
-New active theory, simulation, test, result, and documentation files should support
+Active theory must be expressible in terms of 1D normal coordinates such as
 
 $$
-\sigma_n(t)
-\rightarrow
-\{a_i(t)\}
-\rightarrow
-P(a,t)
-\rightarrow
-\text{normal memory / secular evolution}
-\rightarrow
-\text{normal-opening instability}.
+a_i(t),
+\qquad
+P(a,t),
+\qquad
+\mu(t),
+\qquad
+\mathcal E(t).
 $$
 
-A non-normal mechanism should not be promoted into the active mainline unless the normal problem itself shows that it is mathematically necessary.
+Three-dimensional FCC work is preserved under `libraries/fcc_normal/` and shear/Rubin/slip work is preserved under `libraries/shear/`. Archive code must not be imported by default active simulations or tests.
 
-## Auxiliary-library rule
+## Continuous-time rule
 
-Historical or side-path work may be preserved under `libraries/` without being part of the active mainline.
+The fundamental state-evolution coordinate is physical time $t$.
 
-Current preserved auxiliary library:
+Do not introduce fatigue cycle count as an independent state variable.
 
-- `libraries/shear/` — Rubin-chain, non-affine slip, gamma-surface, shear-oriented simulations, tests, data, and reports.
+For constant frequency only, a cycle count may be reported afterward as
 
-The default root-level normal simulations and tests must not import or depend on this library.
+$$
+N=ft.
+$$
+
+If the symbol $N$ is used in a finite empirical density, it must be clearly identified as a finite system/sample count rather than fatigue cycle count. Prefer another finite-size symbol such as $M$ when practical.
+
+## Energy-feasibility rule
+
+Any claim that stored configurational energy forces a tensile tail must state the additional compression-side constraint explicitly.
+
+In particular, the exact safe-energy ceiling
+
+$$
+\mathcal E_{\rm safe}^{\max}(t)
+$$
+
+may be used only after declaring a physically justified lower support bound $\lambda_L(t)$ or an equivalent rigorous compression-side constraint.
+
+Illustrative $\lambda_L$ values must never be presented as Al material constants.
 
 ## Variable dictionary rule
 
-Every new active symbol must be documented in the same change that introduces it.
+Any new active theory or simulation variable must be added to the appropriate variable-definition Markdown file in the same change.
 
-Use:
+Current active dictionaries include:
 
-- `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md` for spacing, probability, 1D normal dynamics, time-scale, and first-passage variables;
-- `docs/VARIABLE_DEFINITIONS_FCC_NORMAL_LJ.md` for FCC geometry, deformation-gradient, lattice-sum, directional-elasticity, and FCC calibration variables;
-- `firmware/VARIABLE_DEFINITIONS.md` for firmware fields and fault flags;
-- `libraries/shear/docs/VARIABLE_DEFINITIONS.md` for variables used only by the shear library.
+- `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md`;
+- `docs/VARIABLE_DEFINITIONS_ENERGY_FEASIBILITY.md`;
+- `docs/VARIABLE_DEFINITIONS_NORMAL_TIMESCALE.md`;
+- `firmware/VARIABLE_DEFINITIONS.md`.
 
 ## Modeling labels
 
-Important claims should be identified as one of:
+Important statements must be labeled as one of:
 
 - **EXACT / IDENTITY**
 - **DEFINITION**
 - **ASSUMPTION**
 - **CONTROLLED APPROXIMATION**
-- **EMPIRICAL INPUT**
+- **EMPIRICAL INPUT / PHYSICAL CONSTRAINT**
 
-Never silently promote an approximation into an exact statement.
+Never silently promote an assumption or controlled approximation to an exact result.
 
-## Fixed-potential rule
+## Forbidden shortcuts
 
-Active Lennard-Jones parameters must not be changed as a function of cycle count merely to imitate fatigue damage.
+Do not:
 
-If one fixed potential cannot reproduce two physical quantities simultaneously, record the incompatibility as a model result. Do not hide it by switching parameter sets inside one derivation.
-
-A new energy contribution may be introduced only when its physical origin and mathematical necessity are stated explicitly.
+- fit Gaussian, Weibull, or another named family to $P(a,t)$ merely for convenience;
+- vary LJ parameters with time to imitate damage;
+- insert an empirical damage variable and call it mechanics-derived;
+- insert a retained-energy fraction without an energy balance;
+- insert a fitted relaxation time or damping coefficient solely to obtain a desired fatigue life;
+- use the energy ceiling without controlling reverse compression;
+- convert a physical-time criterion into a cycle-life law and then treat the cycle count as fundamental.
 
 ## Numerical-result rule
 
-Every new numerical claim should state:
+Every numerical result must state:
 
-- the model and parameters;
-- the numerical method;
-- the relevant convergence or conservation check;
-- whether the result is dimensional or nondimensional;
-- whether it is a physical prediction, a null test, a calibration study, or a proof of principle.
-
-A discrepancy much larger than the numerical convergence error must be treated as a model result, not tuned away automatically.
+- the exact model being evaluated;
+- dimensional versus nondimensional quantities;
+- numerical method;
+- conservation/convergence check where applicable;
+- whether any parameter is illustrative rather than a material input;
+- whether the result is an exact theorem check, null test, proof of principle, or physical prediction.
 
 ---
 
-# 한국어 번역 — 저장소 작성 규칙
+# 한국어 번역 — Repository 작성 규칙
 
 ## GitHub Markdown 수식
 
-저장소의 모든 Markdown 파일은 GitHub에서 정상 렌더링되는 수식 delimiter를 사용한다.
+모든 Markdown 파일에서 GitHub-compatible math delimiter를 사용한다.
 
-### 인라인 수식
-
-단일 dollar 기호를 사용한다.
+Inline math:
 
 ```markdown
 $P(a,t)$
 ```
 
-### 독립 수식 블록
-
-이중 dollar 기호를 사용한다.
+Display math:
 
 ```markdown
 $$
-\partial_t P + \partial_a(Pv)=0
+\partial_tP+\partial_a(Pv)=0
 $$
 ```
 
-Markdown에서는 `\[`와 `\]`를 사용하지 않는다.
+repository Markdown에서는 `\[`와 `\]`를 사용하지 않는다.
 
 ## 모든 Markdown의 한국어 번역 의무
 
-**research library 내부 파일까지 포함하여 저장소의 모든 `.md`에는 전체 한국어 번역이 있어야 한다.**
+**모든 `.md` 파일에는 완전한 한국어 번역이 있어야 한다.**
 
-작성 순서는
+필수 순서는 다음과 같다.
 
-1. 영문 기술 원문;
+1. 완전한 영문 technical source;
 2. `---`;
-3. `# 한국어 번역` 또는 동등한 제목;
-4. 영문 기술내용 전체의 한국어 번역
+3. 한국어 번역 heading;
+4. 전체 한국어 번역.
 
-으로 통일한다. 짧은 한국어 요약은 전체 번역을 대신할 수 없다.
+짧은 한국어 summary는 충분하지 않다.
 
-## 활성 normal-mainline 규칙
+## Active-mainline 차원 규칙
 
-repository root는 **수직변형 / normal-opening** 연구경로 전용이다.
+활성 research root는 **1차원 normal-only**다.
 
-새로운 활성 theory, simulation, test, result, documentation은
+활성 theory는
 
 $$
-\sigma_n(t)
-\rightarrow
-\{a_i(t)\}
-\rightarrow
-P(a,t)
-\rightarrow
-\text{수직 memory / secular evolution}
-\rightarrow
-\text{normal-opening instability}
+a_i(t),
+\qquad
+P(a,t),
+\qquad
+\mu(t),
+\qquad
+\mathcal E(t)
 $$
 
-를 지원해야 한다.
+같은 1D normal coordinate로 표현할 수 있어야 한다.
 
-normal problem 자체에서 수학적으로 필요하다는 것이 드러나지 않는 한 non-normal mechanism을 활성 mainline으로 승격하지 않는다.
+3차원 FCC 연구는 `libraries/fcc_normal/`에 보존하고 shear/Rubin/slip 연구는 `libraries/shear/`에 보존한다. archive code를 기본 active simulation이나 test에서 import하면 안 된다.
 
-## 보조 library 규칙
+## 연속시간 규칙
 
-과거 연구나 side-path 연구는 활성 mainline과 분리하여 `libraries/` 아래 보존할 수 있다.
+근본 state-evolution coordinate는 물리적 시간 $t$다.
 
-현재 보존된 보조 library는
+fatigue cycle count를 독립적인 state variable로 도입하지 않는다.
 
-- `libraries/shear/` — Rubin-chain, non-affine slip, gamma-surface, 전단 지향 simulation/test/data/report
+주파수가 일정할 때만 필요하면 나중에
 
-이다.
+$$
+N=ft
+$$
 
-기본 root-level normal simulation과 test는 이 library를 import하거나 의존하면 안 된다.
+로 cycle count를 표시할 수 있다.
+
+finite empirical density에서 $N$을 사용할 경우 fatigue cycle count가 아니라 finite system/sample count라는 점을 명확히 해야 한다. 가능하면 finite-size symbol은 $M$처럼 다른 기호를 사용한다.
+
+## Energy-feasibility 규칙
+
+저장된 configurational energy가 tensile tail을 강제한다고 주장하려면 compression-side constraint를 반드시 명시해야 한다.
+
+특히 정확한 safe-energy ceiling
+
+$$
+\mathcal E_{\rm safe}^{\max}(t)
+$$
+
+은 물리적으로 정당화된 lower support bound $\lambda_L(t)$ 또는 동등한 엄밀한 compression-side constraint를 선언한 뒤에만 사용할 수 있다.
+
+illustrative $\lambda_L$ 값을 Al material constant로 제시하면 안 된다.
 
 ## 변수사전 규칙
 
-새로운 active symbol은 도입하는 변경과 같은 변경에서 반드시 정의한다.
+새로운 활성 theory 또는 simulation variable은 같은 change에서 적절한 variable-definition Markdown에 추가한다.
 
-다음 파일을 사용한다.
+현재 활성 dictionary는 다음을 포함한다.
 
-- `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md` — spacing, probability, 1D normal dynamics, time scale, first-passage 변수;
-- `docs/VARIABLE_DEFINITIONS_FCC_NORMAL_LJ.md` — FCC geometry, deformation gradient, lattice sum, directional elasticity, FCC calibration 변수;
-- `firmware/VARIABLE_DEFINITIONS.md` — firmware field와 fault flag;
-- `libraries/shear/docs/VARIABLE_DEFINITIONS.md` — shear library 전용 변수.
+- `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md`;
+- `docs/VARIABLE_DEFINITIONS_ENERGY_FEASIBILITY.md`;
+- `docs/VARIABLE_DEFINITIONS_NORMAL_TIMESCALE.md`;
+- `firmware/VARIABLE_DEFINITIONS.md`.
 
-## 모델링 분류 라벨
+## 모델링 분류 label
 
-중요한 주장은 다음 중 하나로 분류한다.
+중요한 statement는 다음 중 하나로 분류한다.
 
 - **EXACT / IDENTITY**
 - **DEFINITION**
 - **ASSUMPTION**
 - **CONTROLLED APPROXIMATION**
-- **EMPIRICAL INPUT**
+- **EMPIRICAL INPUT / PHYSICAL CONSTRAINT**
 
-근사를 설명 없이 정확식으로 승격하지 않는다.
+assumption이나 controlled approximation을 설명 없이 exact result로 승격하지 않는다.
 
-## Fixed-potential 규칙
+## 금지 shortcut
 
-fatigue damage를 흉내내기 위해 cycle 수에 따라 active Lennard-Jones parameter를 변경하지 않는다.
+다음은 금지한다.
 
-하나의 fixed potential이 두 물리량을 동시에 재현하지 못하면 그 incompatibility 자체를 model result로 기록한다. 하나의 derivation 안에서 parameter set을 바꿔 문제를 숨기지 않는다.
-
-새 energy contribution은 물리적 기원과 수학적 필요성이 명시된 경우에만 도입한다.
+- 편의를 위해 $P(a,t)$에 Gaussian, Weibull 또는 다른 named family를 fitting하는 것;
+- damage를 흉내내기 위해 시간에 따라 LJ parameter를 바꾸는 것;
+- empirical damage variable을 넣고 mechanics-derived라고 부르는 것;
+- energy balance 없이 retained-energy fraction을 넣는 것;
+- 원하는 fatigue life를 만들기 위해 fitted relaxation time 또는 damping coefficient를 넣는 것;
+- reverse compression을 제어하지 않고 energy ceiling을 사용하는 것;
+- physical-time criterion을 cycle-life law로 바꾼 뒤 cycle count를 근본변수처럼 취급하는 것.
 
 ## 수치결과 규칙
 
-새로운 수치 주장은 반드시 다음을 명시한다.
+모든 numerical result는 다음을 명시해야 한다.
 
-- 사용한 model과 parameter;
+- 평가한 정확한 model;
+- dimensional / nondimensional quantity 구분;
 - numerical method;
-- 관련 convergence 또는 conservation check;
-- dimensional result인지 nondimensional result인지;
-- physical prediction, null test, calibration study, proof of principle 중 무엇인지.
-
-numerical convergence error보다 훨씬 큰 discrepancy는 자동 tuning 대상이 아니라 model result로 취급한다.
+- 가능한 경우 conservation/convergence check;
+- parameter가 material input이 아니라 illustrative 값인지 여부;
+- exact theorem check, null test, proof of principle, physical prediction 중 무엇인지.

@@ -1,67 +1,107 @@
 # Assumptions and Approximations
 
-This file records the active assumptions of the **normal-deformation / normal-opening** mainline only.
+This file records the assumptions of the active **one-dimensional normal-LJ / continuous-time** mainline.
 
 ## Active assumptions
 
-1. The research target is high-purity / single-crystal aluminum under primarily **normal cyclic loading**.
-2. The primary reduced structural coordinate is the local normal interatomic spacing $a$.
-3. The central state density is $P(a,t)$, interpreted as a thermodynamic-limit population density rather than a finite histogram.
-4. The principal analytic microscopic baseline is a fixed generalized Lennard-Jones pair interaction when explicitly stated.
-5. Fatigue evolution must arise from atomic configuration, spacing distributions, correlations, projected memory, or mechanical stability loss.
-6. Lennard-Jones parameters are not allowed to evolve with cycle count merely to imitate damage.
-7. The current 1D normal chain is a reduced model and is not claimed to be an exact 3D description of FCC aluminum.
+1. The research target is high-purity / single-crystal aluminum under primarily normal cyclic loading.
+2. The active theory is intentionally one-dimensional. Three-dimensional FCC calculations are archived and are not part of the default mainline.
+3. The primary microscopic coordinate is the local normal interatomic spacing $a$ or its normalized form $\lambda=a/a_0$.
+4. The central state density is $P(a,t)$ or equivalently $P(\lambda,t)$.
+5. Physical time $t$ is the fundamental evolution coordinate. Fatigue cycle count is not an independent state variable.
+6. The microscopic energy baseline is a fixed generalized Lennard-Jones interaction when explicitly stated.
+7. LJ parameters do not evolve with loading history merely to imitate damage.
+8. No named probability family is assumed for $P$.
+9. Crack initiation is pursued through normal opening / normal stability loss, not through an inserted empirical damage law.
+
+## Exact result versus physical constraint
+
+The continuous-time energy-feasibility theorem is exact only after the admissible support is stated.
+
+A central additional condition is
+
+$$
+\boxed{
+\lambda\ge\lambda_L(t)>0.
+}
+$$
+
+The mathematical theorem treats $\lambda_L(t)$ as a given hard lower bound. Its physical value is **not yet derived** and must not be fitted to obtain a desired fatigue life.
+
+Without a compression-side constraint, normalization, mean, and LJ energy alone cannot force a tensile tail because LJ repulsion diverges as $\lambda\to0^+$.
 
 ## Controlled approximations that may be tested
 
-- One-dimensional normal chain as a reduction of the full 3D crystal.
-- Nearest-neighbor truncation when explicitly used.
-- Independent adjacent spacings, $P_k\approx P^{*k}$, only after comparison with correlated simulations.
-- Markov closure in spacing space only if projected memory is negligible on the target time scale.
-- Fokker–Planck truncation only after a small-jump/Kramers–Moyal argument.
-- Moment closure only as a late-stage reduction.
+- finite 1D chain as a numerical representation of the active 1D theory;
+- nearest-neighbor truncation when explicitly used;
+- finite empirical density as an approximation to $P(a,t)$;
+- any later Markov, Fokker-Planck, or moment closure only after a derivation justifies it.
 
 ## Forbidden shortcuts unless explicitly justified
 
-- Fitting a Weibull, Gaussian, or other named family to $P(a,t)$ merely for convenience.
-- Inserting an empirical hysteresis law or fatigue-damage evolution equation and then calling it mechanics-derived.
-- Changing LJ parameters with cycle count to create degradation.
+- Fitting a Weibull, Gaussian, or another named family to $P(a,t)$ merely for convenience.
+- Using fatigue cycle count as the fundamental evolution coordinate.
+- Changing LJ parameters with time or loading history to create degradation.
+- Introducing an empirical damage variable and calling it mechanics-derived.
 - Introducing damping, relaxation times, transition rates, kernels, or thresholds solely to obtain a desired fatigue curve.
-- Calling an atomic-frequency dynamic instability a 20 Hz fatigue prediction without a physically derived time-scale bridge.
-- Confusing instantaneous unstable-tail occupancy with cumulative first-passage crack initiation.
-- Tuning away a reversible 100 MPa null result merely because fatigue accumulation was expected.
+- Assuming that all external work is retained as configurational energy.
+- Using $\mathcal E_{\rm safe}^{\max}(t)$ without stating the compression-side constraint.
+- Treating illustrative $\lambda_L$ values as aluminum material constants.
+- Calling an atomic-frequency dynamic instability a 20 Hz fatigue prediction without a derived bridge.
+- Tuning away the reversible 100 MPa null result merely because fatigue accumulation was expected.
 
 ---
 
 # 한국어 번역 — 가정과 근사
 
-이 문서는 활성 **수직변형 / normal-opening** mainline의 가정만 기록한다.
+이 문서는 활성 **1차원 normal-LJ / 연속시간** mainline의 가정을 기록한다.
 
 ## 활성 가정
 
-1. 연구대상은 주로 **수직 반복하중**을 받는 고순도 또는 단결정 알루미늄이다.
-2. 가장 기본적인 축약 구조좌표는 국부 수직 원자간격 $a$이다.
-3. 중심 상태밀도는 $P(a,t)$이며, 유한 histogram이 아니라 열역학적 극한의 population density로 해석한다.
-4. 명시적으로 선언하는 경우 주된 해석적 미시 baseline은 고정 generalized Lennard-Jones pair interaction이다.
-5. 피로진화는 원자배열, spacing distribution, correlation, projected memory 또는 mechanical stability loss에서 나와야 한다.
-6. damage를 흉내내기 위해 cycle에 따라 Lennard-Jones parameter를 변화시키지 않는다.
-7. 현재 1D normal chain은 축약모델이며 FCC aluminum의 정확한 3D 표현이라고 주장하지 않는다.
+1. 연구대상은 주로 normal cyclic loading을 받는 고순도 또는 단결정 알루미늄이다.
+2. 활성 이론은 의도적으로 1차원이다. 3차원 FCC 계산은 archive에 보존하며 기본 mainline에는 포함하지 않는다.
+3. 주 microscopic coordinate는 국부 수직 원자간격 $a$ 또는 normalized form $\lambda=a/a_0$이다.
+4. 중심 상태밀도는 $P(a,t)$ 또는 동등한 $P(\lambda,t)$이다.
+5. 물리적 시간 $t$가 근본 evolution coordinate다. fatigue cycle count는 독립적인 state variable이 아니다.
+6. 명시적으로 사용할 때 microscopic energy baseline은 고정 generalized Lennard-Jones interaction이다.
+7. damage를 흉내내기 위해 loading history에 따라 LJ parameter를 바꾸지 않는다.
+8. $P$에 특정 named probability family를 가정하지 않는다.
+9. crack initiation은 empirical damage law가 아니라 normal opening / normal stability loss로 다룬다.
+
+## Exact result와 physical constraint의 구분
+
+continuous-time energy-feasibility theorem은 admissible support가 명시된 뒤에만 exact하다.
+
+핵심 추가조건은
+
+$$
+\boxed{
+\lambda\ge\lambda_L(t)>0
+}
+$$
+
+이다.
+
+수학 theorem은 $\lambda_L(t)$를 주어진 hard lower bound로 취급한다. 그 물리적 값은 **아직 유도되지 않았으며** 원하는 fatigue life를 얻기 위한 fitting parameter로 사용하면 안 된다.
+
+compression-side constraint가 없으면 LJ repulsion이 $\lambda\to0^+$에서 발산하므로 정규화, 평균, LJ energy만으로 tensile tail을 강제할 수 없다.
 
 ## 검증 가능한 controlled approximation
 
-- full 3D crystal을 축약한 1차원 normal chain.
-- 명시적으로 사용하는 nearest-neighbor truncation.
-- correlated simulation과 비교한 뒤에만 허용하는 adjacent-spacing independence $P_k\approx P^{*k}$.
-- 목표 시간척도에서 projected memory가 무시 가능할 때만 사용하는 spacing-space Markov closure.
-- 작은 jump에 대한 Kramers–Moyal 논증 이후에만 사용하는 Fokker–Planck truncation.
-- 마지막 단계의 축약으로만 사용하는 moment closure.
+- 활성 1D theory의 numerical representation으로 사용하는 finite 1D chain;
+- 명시적으로 선언한 nearest-neighbor truncation;
+- $P(a,t)$의 approximation으로 사용하는 finite empirical density;
+- 향후 Markov, Fokker-Planck, moment closure는 derivation이 정당화한 뒤에만 사용.
 
-## 명시적인 정당화 없이 금지되는 지름길
+## 명시적 정당화 없이 금지되는 shortcut
 
-- 편의를 위해 $P(a,t)$에 Weibull, Gaussian 등 특정 분포 family를 fitting하는 것.
-- 경험적 hysteresis law 또는 fatigue-damage evolution equation을 넣고 mechanics-derived라고 부르는 것.
-- degradation을 만들기 위해 cycle 수에 따라 LJ parameter를 변경하는 것.
-- 원하는 피로곡선을 만들 목적으로 damping, relaxation time, transition rate, kernel, threshold를 임의로 넣는 것.
-- 물리적으로 유도된 time-scale bridge 없이 atomic-frequency instability를 20 Hz 피로예측이라고 부르는 것.
-- 순간 unstable-tail occupancy와 누적 first-passage crack initiation을 혼동하는 것.
-- 피로누적을 기대했다는 이유만으로 가역적인 100 MPa null result를 tuning으로 없애는 것.
+- 편의를 위해 $P(a,t)$에 Weibull, Gaussian 또는 다른 named family를 fitting하는 것.
+- fatigue cycle count를 근본 evolution coordinate로 사용하는 것.
+- degradation을 만들기 위해 시간이나 loading history에 따라 LJ parameter를 바꾸는 것.
+- empirical damage variable을 넣고 mechanics-derived라고 부르는 것.
+- 원하는 fatigue curve를 얻기 위해 damping, relaxation time, transition rate, kernel, threshold를 임의로 넣는 것.
+- 외부 work 전체가 configurational energy로 저장된다고 가정하는 것.
+- compression-side constraint를 밝히지 않고 $\mathcal E_{\rm safe}^{\max}(t)$를 사용하는 것.
+- illustrative $\lambda_L$ 값을 aluminum material constant로 취급하는 것.
+- derived bridge 없이 atomic-frequency dynamic instability를 20 Hz fatigue prediction이라고 부르는 것.
+- 피로누적을 기대했다는 이유로 reversible 100 MPa null result를 tuning으로 없애는 것.

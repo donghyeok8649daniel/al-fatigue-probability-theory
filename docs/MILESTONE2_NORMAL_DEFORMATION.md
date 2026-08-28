@@ -1,10 +1,10 @@
-# Milestone 2 — Normal-Deformation-Driven Structural Evolution
+# Milestone 2 — Continuous-Time 1D Normal-Deformation State
 
 ## Status
 
-This document defines the active research direction of the project: cyclic **normal stress**, normal interatomic spacing, distribution evolution, and normal-opening instability.
+The active theory uses physical time $t$ as the evolution coordinate.
 
-The working objective is
+The working chain is
 
 $$
 \boxed{
@@ -14,90 +14,66 @@ $$
 \rightarrow
 P(a,t)
 \rightarrow
-\text{normal hysteresis / memory}
+\mu(t),\mathcal E(t)
 \rightarrow
-P_{N+1}(a)\neq P_N(a)
-\rightarrow
-\text{normal-opening instability}.
+\text{normal-opening feasibility}.
 }
 $$
 
-The choice of high-purity / single-crystal Al is a research-design choice intended to study this normal-deformation route with as little microstructural ambiguity as practical. Quantitative orientation dependence must be checked separately rather than assumed.
+Fatigue cycle count is not a state variable. If a constant-frequency experiment later requires a cycle label, it may be derived from $N=ft$.
 
-## 1. Primary loading variable
+## 1. One-dimensional normal loading only
 
-The imposed loading is a cyclic normal stress
-
-$$
-\sigma_n(t)=\sigma_m+\sigma_a\sin(\omega t).
-$$
-
-The corresponding macroscopic normal strain is $\epsilon_n(t)$ and the normal hysteresis work is
+The imposed loading is a normal stress history
 
 $$
-\boxed{A_H=\oint\sigma_n\,d\epsilon_n.}
+\sigma_n(t).
 $$
 
-A nonzero loop alone is not sufficient for fatigue. A purely periodic internal state can represent reversible or stationary internal friction. The stronger target is cycle-to-cycle structural evolution.
-
-## 2. Primary microscopic coordinate and state density
-
-The central microscopic variable is the local normal interatomic spacing
+For a sinusoidal experiment one may use
 
 $$
-a_i(t).
+\sigma_n(t)=\sigma_m+\sigma_a\sin(\omega t),
 $$
 
-For a finite system,
+but the theory itself is formulated for a general time history.
+
+No shear coordinate or three-dimensional crystal kinematics are part of the active mainline.
+
+## 2. Microscopic normal spacing state
+
+The microscopic coordinates are the 1D normal spacings
 
 $$
-P_N(a,t)=\frac1N\sum_{i=1}^{N}\delta\!\left(a-a_i(t)\right).
+a_i(t)=x_{i+1}(t)-x_i(t).
 $$
 
-The thermodynamic-limit state is
+For a finite set of $M$ spacings,
 
 $$
-\boxed{P(a,t)=\lim_{N\to\infty}P_N(a,t).}
+P_M(a,t)
+=
+\frac1M\sum_{i=1}^{M}\delta(a-a_i(t)).
 $$
 
-This density is not assumed to be Gaussian, Weibull, or any other named family.
+Here $M$ is a finite system/sample count, not fatigue cycle count.
 
-## 3. Microscopic energy baseline
-
-The main analytic baseline is a fixed generalized Lennard-Jones pair potential
+The continuum state is
 
 $$
-v(r)=\varepsilon_{\rm LJ}
-\left[
-\left(\frac{\sigma_{\rm LJ}}{r}\right)^m
--
-\left(\frac{\sigma_{\rm LJ}}{r}\right)^n
-\right].
+\boxed{P(a,t).}
 $$
 
-For an atomistic configuration $\{\mathbf r_i\}$, the corresponding pair-energy baseline is
+No Gaussian, Weibull, or other named family is assumed.
 
-$$
-U_{\rm pair}
-=\frac12\sum_{i\ne j}v(|\mathbf r_i-\mathbf r_j|).
-$$
-
-For the exact pair-distance hierarchy,
-
-$$
-\boxed{
-\mathcal U(t)=\sum_{k=1}^{\infty}\int_0^\infty v(r)P_k(r,t)\,dr.
-}
-$$
-
-The potential parameters do not evolve with cycle number. Structural evolution must appear through atomic positions, $P(a,t)$, $P_k(r,t)$, correlations, or projected memory.
-
-## 4. Exact transport and closure problem
+## 3. Exact kinematics
 
 For deterministic spacing trajectories,
 
 $$
-\boxed{\partial_tP+\partial_a(Pv)=0,}
+\boxed{
+\partial_tP+\partial_a(Pv)=0,
+}
 $$
 
 where
@@ -106,48 +82,37 @@ $$
 v(a,t)=\langle\dot a_i\mid a_i=a\rangle.
 $$
 
-This is an exact kinematic identity but not generally a closed evolution equation.
+This is an exact kinematic identity. It does not by itself close the dynamics.
 
-For a nearest-neighbor chain with $a_i=x_{i+1}-x_i$ and $V=\sum_i v(a_i)$,
+## 4. Fixed generalized-LJ normal energy
 
-$$
-m\ddot a_i
-=v'(a_{i+1})-2v'(a_i)+v'(a_{i-1}).
-$$
+The active 1D microscopic energy is derived from the fixed generalized Lennard-Jones interaction.
 
-Therefore neighboring-spacing correlations enter the dynamics. The central closure problem is
+Using
 
 $$
-\boxed{
-\text{What is the minimum microscopic state required to determine }v(a,t)?
-}
+\lambda_i=\frac{a_i}{a_0},
 $$
 
-Candidate exact enlargements include the phase-space density $F(a,c,t)$ and the pair-distance/correlation hierarchy.
-
-## 5. Current normal generalized-LJ chain
-
-The active reduced simulation uses normalized spacings
-
-$$
-\lambda_i=\frac{a_i}{a_0}
-$$
-
-and
-
-$$
-V=\sum_i\phi(\lambda_i),
-$$
-
-with
+the reduced pair energy is
 
 $$
 \phi(\lambda)
 =
 \frac{\lambda^{-m}}{m(m-n)}
 -
-\frac{\lambda^{-n}}{n(m-n)}.
+\frac{\lambda^{-n}}{n(m-n)},
 $$
+
+with
+
+$$
+m=12.19,
+\qquad
+n=6.
+$$
+
+The parameters do not evolve with time or loading history.
 
 The normalization gives
 
@@ -157,113 +122,107 @@ $$
 \phi''(1)=1.
 $$
 
-For the current baseline $m=12.19$, $n=6$, the idealized local normal stability loss is
+The idealized tensile tangent-stability limit is
 
 $$
-\boxed{\phi''(\lambda_c)=0,}
+\boxed{
+\phi''(\lambda_c)=0,
+}
 $$
 
 with
 
 $$
-\boxed{\lambda_c\approx1.1077715386.}
+\lambda_c\approx1.1077715386.
 $$
 
-## 6. Current falsification result
+## 5. Continuous-time moments used by the new theory
 
-For the current 32-atom perfect-chain reference calculation and a normal stress amplitude of 100 MPa mapped through $E=69$ GPa,
-
-$$
-f_a^*=\frac{100\,\mathrm{MPa}}{69\,\mathrm{GPa}}
-\approx1.4493\times10^{-3}.
-$$
-
-No local spacing crosses $\lambda_c$ in the reference run. The response remains essentially reversible and the numerical work-energy error is very small.
-
-This is an important null result. The model must not be forced to accumulate fatigue merely because the loading is cyclic.
-
-## 7. Main Milestone-2 target
-
-At identical cycle phase, a perfectly reversible state satisfies
-
-$$
-P_{N+1}(a)=P_N(a).
-$$
-
-The fatigue-accumulation target is
-
-$$
-\boxed{P_{N+1}(a)\neq P_N(a)}
-$$
-
-from microscopic normal-deformation mechanics alone.
-
-Mechanisms may be introduced only when they are mechanically defined. Current candidates include:
-
-- anharmonic transfer among normal lattice modes;
-- spatially nonuniform normal spacing and neighbor correlations;
-- free-surface normal relaxation and opening;
-- finite-temperature phase-space ensembles;
-- normal stress concentration generated by geometry or existing microscopic heterogeneity;
-- exact projected memory from eliminated normal microscopic degrees of freedom.
-
-## 8. Time-scale problem
-
-Direct atomic dynamics evolves much faster than laboratory fatigue cycling. A high-frequency atomic instability cannot be relabeled as a 20 Hz fatigue prediction.
-
-The required bridge is
+Define
 
 $$
 \boxed{
-\text{fast atomic LJ dynamics}
-\rightarrow
-\text{projected memory / coarse state}
-\rightarrow
-\text{slow }P(a,t)\text{ evolution}.
+\mu(t)=\int\lambda P(\lambda,t)\,d\lambda
 }
 $$
 
-Any relaxation time, damping coefficient, or Markov approximation must be derived or independently justified rather than inserted to obtain the desired lifetime.
-
-## 9. Crack-initiation target
-
-The one-coordinate LJ condition
+and the shifted LJ energy
 
 $$
-\phi''(\lambda_c)=0
+\psi(\lambda)=\phi(\lambda)-\phi(1).
 $$
 
-is an idealized local stability diagnostic, not a complete crack-initiation probability law.
-
-The instantaneous tail
+Then
 
 $$
-Q_c(t)=\int_{a_c}^{\infty}P(a,t)\,da
+\boxed{
+\mathcal E(t)
+=
+\int\psi(\lambda)P(\lambda,t)\,d\lambda.
+}
 $$
 
-must be distinguished from cumulative first passage.
+The current working idea is that $\mu(t)$ may remain approximately conserved while $\mathcal E(t)$ increases through redistribution and broadening of $P$.
 
-The preferred initiation variable is
+This does not require specifying the full evolution law for $P$ first.
+
+## 6. Existing null test
+
+The existing 32-atom perfect-chain reference calculation at 100 MPa normal stress amplitude remains essentially reversible and does not cross $\lambda_c$.
+
+This is a required null/falsification result. Cyclic loading alone must not create artificial fatigue.
+
+## 7. Stronger energy-feasibility route
+
+The active next step is no longer to demand a discrete condition such as $P_{N+1}\neq P_N$.
+
+Instead, at every physical time $t$, ask whether a crack-free distribution satisfying the known normalization, mean, energy, and support constraints can exist.
+
+The exact result is developed in `docs/MILESTONE4_TIME_ENERGY_FEASIBILITY.md`.
+
+The key additional condition is a physically justified compression bound
 
 $$
-\tau_c=\inf\{t:\text{a mechanically defined normal-opening instability occurs}\},
+\boxed{
+\lambda\ge\lambda_L(t)>0.
+}
 $$
 
-with cumulative initiation probability
+Without such a condition, LJ reverse compression can absorb arbitrarily large energy and energy alone cannot force a tensile tail.
+
+## 8. Crack-initiation variable
+
+The instantaneous unstable tail is
 
 $$
-F_{\rm ci}(t)=\Pr(\tau_c\le t).
+Q_c(t)
+=
+\int_{\lambda_c}^{\infty}P(\lambda,t)\,d\lambda.
 $$
+
+The active energy-feasibility first-passage variable is
+
+$$
+\boxed{
+\tau_E
+=
+\inf\left\{
+t:\mathcal E(t)>\mathcal E_{\rm safe}^{\max}(t)
+\right\}.
+}
+$$
+
+If the lower compression bound is physically valid, crossing this ceiling makes a fully crack-free support mathematically impossible.
 
 ---
 
-# 한국어 번역 — 수직변형 기반 구조진화
+# 한국어 번역 — 연속시간 1D 수직변형 상태
 
 ## 상태
 
-이 문서는 프로젝트의 활성 연구방향을 정의한다. 중심은 반복 **수직응력**, 수직 원자간격, 분포진화, normal-opening instability다.
+활성 이론은 물리적 시간 $t$를 evolution coordinate로 사용한다.
 
-목표 연결은
+작동 연결은
 
 $$
 \boxed{
@@ -273,107 +232,79 @@ $$
 \rightarrow
 P(a,t)
 \rightarrow
-\text{수직 히스테리시스 / memory}
+\mu(t),\mathcal E(t)
 \rightarrow
-P_{N+1}(a)\neq P_N(a)
-\rightarrow
-\text{normal-opening instability}
+\text{normal-opening feasibility}
 }
 $$
 
 이다.
 
-고순도/단결정 Al의 선택은 수직변형 경로를 가능한 한 적은 미세구조적 모호성으로 연구하기 위한 연구설계 선택이다. 결정방향에 따른 정량 차이는 별도로 검증해야 하며 미리 가정하지 않는다.
+fatigue cycle count는 상태변수가 아니다. 일정 주파수 실험에서 cycle label이 필요하면 나중에 $N=ft$로 환산한다.
 
-## 1. 주 하중변수
+## 1. 1차원 수직하중만 사용
 
-외부하중은 반복 수직응력
+외부하중은 normal stress history
+
+$$
+\sigma_n(t)
+$$
+
+이다.
+
+sinusoidal experiment에서는
 
 $$
 \sigma_n(t)=\sigma_m+\sigma_a\sin(\omega t)
 $$
 
-이다.
+를 사용할 수 있지만 이론 자체는 일반적인 time history에 대해 작성한다.
 
-이에 대응하는 거시적 수직변형률은 $\epsilon_n(t)$이며 수직 hysteresis work는
+shear coordinate와 3차원 crystal kinematics는 활성 mainline에 포함하지 않는다.
 
-$$
-\boxed{A_H=\oint\sigma_n\,d\epsilon_n}
-$$
+## 2. 미시 수직-spacing 상태
 
-이다.
-
-0이 아닌 loop만으로 피로라고 할 수 없다. 완전히 주기적인 내부상태는 가역응답 또는 stationary internal friction일 수 있다. 더 강한 목표는 cycle-to-cycle 구조진화다.
-
-## 2. 주 미시좌표와 상태밀도
-
-중심 미시변수는 국부 수직 원자간격
+microscopic coordinate는 1D normal spacing
 
 $$
-a_i(t)
+a_i(t)=x_{i+1}(t)-x_i(t)
 $$
 
 이다.
 
-유한계에서는
+유한한 $M$개의 spacing에 대해
 
 $$
-P_N(a,t)=\frac1N\sum_{i=1}^{N}\delta\!\left(a-a_i(t)\right)
+P_M(a,t)
+=
+\frac1M\sum_{i=1}^{M}\delta(a-a_i(t))
 $$
 
-를 정의하고, thermodynamic-limit state는
+를 정의한다.
+
+여기서 $M$은 fatigue cycle count가 아니라 finite system/sample count다.
+
+continuum state는
 
 $$
-\boxed{P(a,t)=\lim_{N\to\infty}P_N(a,t)}
-$$
-
-이다.
-
-이 density를 Gaussian, Weibull 또는 다른 named family로 미리 가정하지 않는다.
-
-## 3. 미시에너지 baseline
-
-주된 해석적 baseline은 고정된 generalized Lennard-Jones pair potential이다.
-
-$$
-v(r)=\varepsilon_{\rm LJ}
-\left[
-\left(\frac{\sigma_{\rm LJ}}{r}\right)^m
--
-\left(\frac{\sigma_{\rm LJ}}{r}\right)^n
-\right]
-$$
-
-atomistic configuration $\{\mathbf r_i\}$에 대한 pair-energy baseline은
-
-$$
-U_{\rm pair}
-=\frac12\sum_{i\ne j}v(|\mathbf r_i-\mathbf r_j|)
+\boxed{P(a,t)}
 $$
 
 이다.
 
-정확한 pair-distance hierarchy에서는
+Gaussian, Weibull 또는 다른 named family를 가정하지 않는다.
+
+## 3. 정확한 kinematics
+
+deterministic spacing trajectory에서는
 
 $$
 \boxed{
-\mathcal U(t)=\sum_{k=1}^{\infty}\int_0^\infty v(r)P_k(r,t)\,dr
+\partial_tP+\partial_a(Pv)=0
 }
 $$
 
-이다.
-
-potential parameter는 cycle 수에 따라 변하지 않는다. 구조진화는 atomic position, $P(a,t)$, $P_k(r,t)$, correlation 또는 projected memory에 나타나야 한다.
-
-## 4. 정확한 수송과 closure 문제
-
-결정론적 spacing trajectory에서는
-
-$$
-\boxed{\partial_tP+\partial_a(Pv)=0}
-$$
-
-이며
+이고
 
 $$
 v(a,t)=\langle\dot a_i\mid a_i=a\rangle
@@ -381,46 +312,17 @@ $$
 
 이다.
 
-이 식은 정확한 kinematic identity지만 일반적으로 닫힌 evolution equation은 아니다.
+이것은 정확한 kinematic identity지만 dynamics를 자동으로 close하지는 않는다.
 
-$a_i=x_{i+1}-x_i$, $V=\sum_i v(a_i)$인 nearest-neighbor chain에서는
+## 4. 고정 generalized-LJ 수직에너지
 
-$$
-m\ddot a_i
-=v'(a_{i+1})-2v'(a_i)+v'(a_{i-1})
-$$
-
-이므로 neighbor-spacing correlation이 동역학에 들어간다.
-
-따라서 핵심 closure 문제는
-
-$$
-\boxed{
-\text{$v(a,t)$를 결정하기 위해 필요한 최소 microscopic state는 무엇인가?}
-}
-$$
-
-이다.
-
-정확한 확장후보로 phase-space density $F(a,c,t)$와 pair-distance/correlation hierarchy가 있다.
-
-## 5. 현재 normal generalized-LJ chain
-
-활성 축약 simulation은
+활성 1D microscopic energy는 고정 generalized Lennard-Jones interaction에서 유도한다.
 
 $$
 \lambda_i=\frac{a_i}{a_0}
 $$
 
-와
-
-$$
-V=\sum_i\phi(\lambda_i)
-$$
-
-를 사용한다.
-
-normalized potential은
+를 사용하면 reduced pair energy는
 
 $$
 \phi(\lambda)
@@ -430,7 +332,19 @@ $$
 \frac{\lambda^{-n}}{n(m-n)}
 $$
 
-이고,
+이고
+
+$$
+m=12.19,
+\qquad
+n=6
+$$
+
+이다.
+
+parameter는 시간이나 loading history에 따라 변하지 않는다.
+
+normalization으로
 
 $$
 \phi'(1)=0,
@@ -438,112 +352,104 @@ $$
 \phi''(1)=1
 $$
 
-을 만족한다.
-
-현재 baseline $m=12.19$, $n=6$에서 이상화된 국부 normal stability loss는
-
-$$
-\boxed{\phi''(\lambda_c)=0}
-$$
-
-이고
-
-$$
-\boxed{\lambda_c\approx1.1077715386}
-$$
-
-이다.
-
-## 6. 현재 반증결과
-
-현재 32-atom perfect-chain reference calculation에서 normal stress amplitude 100 MPa를 $E=69$ GPa로 mapping하면
-
-$$
-f_a^*=\frac{100\,\mathrm{MPa}}{69\,\mathrm{GPa}}
-\approx1.4493\times10^{-3}
-$$
-
-이다.
-
-reference run에서는 어떤 local spacing도 $\lambda_c$를 넘지 않는다. 응답은 거의 가역적이며 numerical work-energy error도 매우 작다.
-
-이것은 중요한 null result다. loading이 cyclic이라는 이유만으로 model이 억지로 fatigue accumulation을 만들면 안 된다.
-
-## 7. Main Milestone-2 목표
-
-동일한 cycle phase에서 완전히 가역적인 상태는
-
-$$
-P_{N+1}(a)=P_N(a)
-$$
-
-를 만족한다.
-
-피로누적 목표는 미시 수직변형 역학만으로
-
-$$
-\boxed{P_{N+1}(a)\neq P_N(a)}
-$$
-
-를 얻는 것이다.
-
-mechanism은 역학적으로 정의되는 경우에만 도입한다. 현재 후보는 다음과 같다.
-
-- normal lattice mode 사이의 anharmonic energy transfer;
-- spatially nonuniform normal spacing 및 neighbor correlation;
-- free-surface normal relaxation과 opening;
-- finite-temperature phase-space ensemble;
-- geometry 또는 기존 microscopic heterogeneity가 만드는 normal stress concentration;
-- 제거된 normal microscopic DOF로부터의 exact projected memory.
-
-## 8. 시간척도 문제
-
-직접 atomic dynamics는 실험 피로 cycle보다 훨씬 빠르다. 고주파 atomic instability를 20 Hz fatigue prediction으로 다시 이름 붙이면 안 된다.
-
-필요한 연결은
+이고, 이상화된 tensile tangent-stability limit는
 
 $$
 \boxed{
-\text{빠른 atomic LJ dynamics}
-\rightarrow
-\text{projected memory / coarse state}
-\rightarrow
-\text{느린 }P(a,t)\text{ evolution}
+\phi''(\lambda_c)=0
+}
+$$
+
+이며
+
+$$
+\lambda_c\approx1.1077715386
+$$
+
+이다.
+
+## 5. 새 이론에서 사용하는 연속시간 moment
+
+$$
+\boxed{
+\mu(t)=\int\lambda P(\lambda,t)\,d\lambda
+}
+$$
+
+를 정의하고 shifted LJ energy를
+
+$$
+\psi(\lambda)=\phi(\lambda)-\phi(1)
+$$
+
+로 둔다.
+
+그러면
+
+$$
+\boxed{
+\mathcal E(t)
+=
+\int\psi(\lambda)P(\lambda,t)\,d\lambda
 }
 $$
 
 이다.
 
-relaxation time, damping coefficient, Markov approximation을 사용할 경우 원하는 수명을 만들기 위해 임의로 넣는 것이 아니라 유도하거나 독립적으로 정당화해야 한다.
+현재 working idea는 $\mu(t)$가 거의 보존되는 동안 $P$의 redistribution과 broadening으로 $\mathcal E(t)$가 증가할 수 있다는 것이다.
 
-## 9. 균열개시 목표
+이를 위해 먼저 $P$의 전체 evolution law를 특정할 필요는 없다.
 
-one-coordinate LJ 조건
+## 6. 기존 null test
 
-$$
-\phi''(\lambda_c)=0
-$$
+기존 32-atom perfect-chain 100 MPa normal stress amplitude reference calculation은 거의 가역적이며 $\lambda_c$를 넘지 않는다.
 
-은 이상화된 local stability diagnostic이지 완전한 crack-initiation probability law가 아니다.
+이는 반드시 유지해야 하는 null/falsification result다. loading이 cyclic이라는 사실만으로 artificial fatigue가 생기면 안 된다.
 
-순간 tail
+## 7. 더 강한 energy-feasibility 경로
 
-$$
-Q_c(t)=\int_{a_c}^{\infty}P(a,t)\,da
-$$
+활성 다음 단계는 더 이상 $P_{N+1}\neq P_N$ 같은 discrete condition을 요구하는 것이 아니다.
 
-와 cumulative first passage를 구분해야 한다.
+대신 모든 물리적 시간 $t$에서 알려진 정규화, 평균, 에너지, support 조건을 만족하는 crack-free distribution이 존재할 수 있는지를 묻는다.
 
-선호하는 initiation variable은
+정확한 결과는 `docs/MILESTONE4_TIME_ENERGY_FEASIBILITY.md`에 정리한다.
+
+핵심 추가조건은 물리적으로 정당화된 compression bound
 
 $$
-\tau_c=\inf\{t:\text{역학적으로 정의된 normal-opening instability 발생}\}
-$$
-
-이며 cumulative initiation probability는
-
-$$
-F_{\rm ci}(t)=\Pr(\tau_c\le t)
+\boxed{
+\lambda\ge\lambda_L(t)>0
+}
 $$
 
 이다.
+
+이 조건이 없으면 LJ reverse compression이 임의로 큰 energy를 흡수할 수 있으므로 energy만으로 tensile tail을 강제할 수 없다.
+
+## 8. 균열개시 변수
+
+순간 unstable tail은
+
+$$
+Q_c(t)
+=
+\int_{\lambda_c}^{\infty}P(\lambda,t)\,d\lambda
+$$
+
+이다.
+
+활성 energy-feasibility first-passage variable은
+
+$$
+\boxed{
+\tau_E
+=
+\inf\left\{
+t:\mathcal E(t)>\mathcal E_{\rm safe}^{\max}(t)
+\right\}
+}
+$$
+
+이다.
+
+lower compression bound가 물리적으로 유효하다면 이 ceiling을 넘는 순간 fully crack-free support는 수학적으로 불가능해진다.

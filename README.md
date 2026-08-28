@@ -1,222 +1,322 @@
 # Al Fatigue Probability Theory
 
-Mechanics-first research framework for fatigue crack initiation under **normal cyclic loading** in high-purity / single-crystal aluminum.
+Mechanics-first framework for fatigue crack initiation under **one-dimensional normal cyclic loading** in high-purity / single-crystal aluminum.
 
 ## Active research direction
 
-The repository root is the active normal-deformation mainline:
+The active repository mainline is deliberately restricted to
 
 $$
 \boxed{
 \sigma_n(t)
 \rightarrow
-\{a_i(t)\}
-\rightarrow
 P(a,t)
 \rightarrow
-\text{normal memory / hysteresis}
+\mu(t),\mathcal E(t)
 \rightarrow
-P_{N+1}(a)\neq P_N(a)
+\text{crack-free energy feasibility}
 \rightarrow
-\text{normal-opening instability}
+\text{normal-opening tail}
+\rightarrow
+\tau_c.
 }
 $$
 
-Earlier Rubin-chain, slip, gamma-surface, and shear-oriented work is preserved under `libraries/shear/` and is not part of the default active workflow.
+The fundamental evolution variable is physical time $t$, not fatigue cycle count.
 
-## Core state
-
-For local normal spacings $a_i(t)$,
+If the loading frequency is constant, an equivalent cycle count may later be reported as
 
 $$
-P_N(a,t)=\frac1N\sum_{i=1}^{N}\delta\!\left(a-a_i(t)\right),
+N=f t,
 $$
 
-and the central state density is
+but $N$ is not used as the state-evolution coordinate.
+
+All active theory is **1D, normal-only, generalized-LJ based**. Earlier shear/Rubin work is preserved under `libraries/shear/`. Earlier 3D FCC normal-LJ work is preserved under `libraries/fcc_normal/`. Neither archive is part of the default active workflow.
+
+## Core probability state
+
+For finite local spacings $a_i(t)$,
 
 $$
-\boxed{P(a,t)=\lim_{N\to\infty}P_N(a,t).}
+P_M(a,t)
+=
+\frac1M\sum_{i=1}^M\delta(a-a_i(t)),
+$$
+
+where $M$ denotes a finite number of represented spacings, not fatigue cycles.
+
+The continuum/thermodynamic state is
+
+$$
+\boxed{
+P(a,t).
+}
+$$
+
+The density is not assumed to be Gaussian, Weibull, or any other named family.
+
+Its normalization and mean are
+
+$$
+\boxed{
+\int P(a,t)\,da=1,
+}
+$$
+
+$$
+\boxed{
+\bar a(t)=\int aP(a,t)\,da.
+}
 $$
 
 For deterministic microscopic trajectories,
 
 $$
-\boxed{\partial_tP+\partial_a(Pv)=0,}
-$$
-
-where
-
-$$
-v(a,t)=\langle\dot a_i\mid a_i=a\rangle.
-$$
-
-The main closure problem is to derive $v(a,t)$, or the minimum enlarged state required to determine it, from microscopic mechanics rather than from an empirical fatigue evolution law.
-
-## Microscopic interaction baseline
-
-The active analytic baseline is a fixed generalized Lennard-Jones pair interaction
-
-$$
 \boxed{
-v(r)=\varepsilon_{\rm LJ}
-\left[
-\left(\frac{\sigma_{\rm LJ}}{r}\right)^m
--
-\left(\frac{\sigma_{\rm LJ}}{r}\right)^n
-\right].
+\partial_tP+\partial_a(Pv)=0,
 }
-$$
-
-The LJ parameters do **not** evolve with cycle count. Structural evolution must come from atomic configuration, spacing distributions, correlations, memory, or stability loss.
-
-The exact pair-distance energy hierarchy is
-
-$$
-\boxed{
-\mathcal U(t)=\sum_{k=1}^{\infty}\int_0^\infty v(r)P_k(r,t)\,dr.
-}
-$$
-
-## Current active models
-
-### 1. Reduced 1D normal chain
-
-`theory/normal_lj_chain.py` is the current direct cyclic-dynamics null model.
-
-It uses
-
-$$
-V=\sum_i\phi(\lambda_i),
-\qquad
-\lambda_i=\frac{a_i}{a_0},
 $$
 
 with
 
 $$
-m=12.19,\qquad n=6.
+v(a,t)=\langle\dot a_i\mid a_i=a\rangle.
 $$
 
-A 32-atom perfect-chain calculation at $100$ MPa normal stress amplitude does **not** produce artificial fatigue accumulation. No local spacing crosses the idealized LJ tangent-instability stretch and the work-energy balance error is approximately
+## Fixed generalized Lennard-Jones baseline
+
+The active microscopic interaction is
+
+$$
+\boxed{
+v(r)=\varepsilon_{\rm LJ}
+\left[
+\left(\frac{\sigma_{\rm LJ}}r\right)^m
+-
+\left(\frac{\sigma_{\rm LJ}}r\right)^n
+\right].
+}
+$$
+
+The potential parameters do not evolve with time or fatigue history.
+
+For the reduced normalized 1D chain,
+
+$$
+\lambda=\frac{a}{a_0},
+$$
+
+and
+
+$$
+\phi(\lambda)
+=
+\frac{\lambda^{-m}}{m(m-n)}
+-
+\frac{\lambda^{-n}}{n(m-n)},
+$$
+
+with
+
+$$
+m=12.19,
+\qquad
+n=6.
+$$
+
+The normalization gives
+
+$$
+\phi'(1)=0,
+\qquad
+\phi''(1)=1.
+$$
+
+The idealized normal tangent-stability limit is
+
+$$
+\boxed{
+\phi''(\lambda_c)=0,
+}
+$$
+
+with
+
+$$
+\boxed{
+\lambda_c\approx1.1077715386.
+}
+$$
+
+## Current null result
+
+The existing perfect 32-atom 1D reference simulation at a 100 MPa normal stress amplitude remains an important null test. It does not generate artificial fatigue accumulation and no local spacing crosses $\lambda_c$ in the reference run.
+
+The work-energy balance error is approximately
 
 $$
 1.24\times10^{-10}.
 $$
 
-This is an intended null/falsification result.
+This result must not be tuned away.
 
-See `results/reports/NORMAL_LJ_RESULTS.md`.
+## New continuous-time energy formulation
 
-### 2. Three-dimensional FCC normal lattice sum
-
-`theory/fcc_normal_lj.py` removes the nearest-neighbor 1D geometry and evaluates
+Define the shifted LJ energy
 
 $$
 \boxed{
-U(\mathbf F)
-=\frac12\sum_{\mathbf R\neq0}
-v(|\mathbf F\mathbf R|)
+\psi(\lambda)=\phi(\lambda)-\phi(1),
 }
 $$
 
-directly on an FCC lattice.
-
-For [001] normal loading,
+and
 
 $$
-\mathbf F=\operatorname{diag}(\lambda_t,\lambda_t,\lambda_n),
+\boxed{
+\mu(t)=\int\lambda P(\lambda,t)\,d\lambda,
+}
 $$
 
-and $\lambda_t$ is relaxed by
-
 $$
-\frac{\partial U}{\partial\lambda_t}=0.
-$$
-
-Using external Al reference values
-
-$$
-C_{11}=107\ \text{GPa},\qquad C_{12}=61\ \text{GPa},
+\boxed{
+\mathcal E(t)
+=
+\int\psi(\lambda)P(\lambda,t)\,d\lambda.
+}
 $$
 
-gives
+At nearly conserved mean, energy above the homogeneous value is exactly
 
 $$
-E_{[001]}\approx62.7024\ \text{GPa},
+\boxed{
+\mathcal E(t)-\psi(\mu(t))
+=
+\int
+\left[
+\psi(\lambda)-\psi(\mu)-\psi'(\mu)(\lambda-\mu)
+\right]
+P(\lambda,t)\,d\lambda.
+}
+$$
+
+Inside the convex LJ region this quantity is non-negative and measures distributional spreading away from the mean.
+
+## Exact impossibility result
+
+Normalization, mean, and energy alone do **not** force a tensile tail.
+
+Because
+
+$$
+\psi(\lambda)\rightarrow\infty
 \qquad
-\nu_{[001]}\approx0.363095.
+(\lambda\rightarrow0^+),
 $$
 
-With $(m,n)=(12.19,6)$ and one LJ energy-scale calibration to $E_{[001]}$, the FCC pair model predicts
+arbitrarily large energy can mathematically be stored by reverse compression while all probability remains below $\lambda_c$.
 
-$$
-C_{11}^{\rm LJ}\approx107.169\ \text{GPa},
-$$
+Therefore one more physical condition is necessary.
 
-$$
-C_{12}^{\rm LJ}\approx61.180\ \text{GPa},
-$$
-
-so the **normal elastic sector is reproduced very closely**.
-
-The same model predicts an unfitted relaxed [001] ideal engineering strength of approximately
-
-$$
-\boxed{9.045\ \text{GPa}.}
-$$
-
-A first-principles reference reports about $10.63$ GPa for pure Al [001] tension, so the strength scale is reasonable without fitting the peak.
-
-However, two exact/quantitative limitations are now explicit:
-
-1. a cubic central pair potential obeys the Cauchy relation
-   $$
-   \boxed{C_{12}=C_{44}},
-   $$
-   while real Al has approximately $C_{12}=61$ GPa and $C_{44}=29$ GPa;
-2. fitting the normal modulus gives a cohesive energy of only about
-   $$
-   0.976\ \text{eV/atom},
-   $$
-   whereas the experimental scale is about $3.43$ eV/atom. Fitting cohesion instead makes $E_{[001]}\approx220.5$ GPa.
-
-Therefore the generalized LJ pair law is currently a strong **effective normal-mechanics baseline**, but it is not yet a quantitatively valid thermodynamic cohesive-energy model.
-
-See `docs/MILESTONE3_FCC_NORMAL_LJ.md`.
-
-## Consequence for the next theory step
-
-The current result prevents a premature shortcut.
-
-A thermal first-passage model containing
-
-$$
-\exp\!\left(-\frac{\Delta U}{k_BT}\right)
-$$
-
-cannot be quantitatively trusted if the absolute separation-energy scale is wrong, even when the normal elastic response is good.
-
-So the next active problem is
+The current minimal condition is a mechanically justified lower support bound
 
 $$
 \boxed{
-\text{preserve successful LJ normal mechanics}
-\; + \;
-\text{derive the minimum physically required cohesive/many-body correction}
+\lambda\ge\lambda_L(t)>0.
 }
 $$
 
-before introducing thermal escape rates or fatigue-life predictions.
+This is not a fitting parameter. Deriving or independently constraining $\lambda_L(t)$ is now the main physical problem.
+
+## Exact crack-free energy ceiling
+
+Assume
+
+$$
+\operatorname{supp}P(\lambda,t)
+\subset
+[\lambda_L(t),\lambda_c].
+$$
+
+Since the generalized LJ energy is convex throughout this interval, the exact minimum and maximum possible energies at a fixed mean are
+
+$$
+\boxed{
+\mathcal E_{\rm safe}^{\min}(t)=\psi(\mu(t)),
+}
+$$
+
+and
+
+$$
+\boxed{
+\mathcal E_{\rm safe}^{\max}(t)
+=
+\frac{\lambda_c-\mu(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_L(t))
++
+\frac{\mu(t)-\lambda_L(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_c).
+}
+$$
+
+The maximum is attained by an endpoint two-point measure, so this is an exact extremum over all admissible probability distributions, not a chosen distribution ansatz.
+
+Define
+
+$$
+\boxed{
+M_E(t)=\mathcal E_{\rm safe}^{\max}(t)-\mathcal E(t).
+}
+$$
+
+If a valid hard compression bound has been established and
+
+$$
+M_E(t)<0,
+$$
+
+then no crack-free probability distribution can satisfy normalization, mean, energy, and support simultaneously. Therefore probability mass beyond $\lambda_c$ becomes unavoidable.
+
+The corresponding continuous-time first passage is
+
+$$
+\boxed{
+\tau_E
+=
+\inf\{t\ge0:M_E(t)<0\}.
+}
+$$
+
+See `docs/MILESTONE4_TIME_ENERGY_FEASIBILITY.md`.
+
+## Current next step
+
+The highest-priority problem is now
+
+$$
+\boxed{
+\text{derive }\lambda_L(t)\text{ from 1D normal-LJ mechanics.}
+}
+$$
+
+No 3D model, shear coordinate, fitted damage law, fitted relaxation time, or assumed probability family is required for this step.
+
+## Active code
+
+- `theory/normal_lj_chain.py` — conservative 1D LJ normal-chain dynamics
+- `theory/normal_lj_energy_feasibility.py` — exact probability-measure energy bounds
+- `theory/normal_lj_timescale.py` — retained 1D time-scale falsification diagnostic
+- `simulations/run_normal_lj_chain.py` — direct 1D null/dynamic simulation
+- `simulations/run_normal_lj_energy_feasibility.py` — exact energy-ceiling parameter sweep
+- `tests/test_normal_lj_chain.py`
+- `tests/test_normal_lj_energy_feasibility.py`
 
 ## Variable definitions
 
-Active variables are defined in:
-
-- `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md` — spacing, probability, 1D normal dynamics, first passage;
-- `docs/VARIABLE_DEFINITIONS_FCC_NORMAL_LJ.md` — FCC geometry, $\mathbf F$, $\lambda_n$, $\lambda_t$, lattice sums, cubic elastic constants and calibration variables;
-- `firmware/VARIABLE_DEFINITIONS.md` — tester firmware fields and fault flags.
-
-Any new variable must be documented in the appropriate dictionary in the same change that introduces it.
+- `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md`
+- `docs/VARIABLE_DEFINITIONS_ENERGY_FEASIBILITY.md`
+- `docs/VARIABLE_DEFINITIONS_NORMAL_TIMESCALE.md`
+- `firmware/VARIABLE_DEFINITIONS.md`
 
 ## Reproduce active results
 
@@ -226,84 +326,118 @@ python -m simulations.generate_results
 python -m unittest discover -s tests
 ```
 
-The active result generator runs both the reduced normal chain and the FCC normal-LJ validation.
+The default workflow runs only active 1D normal-LJ calculations.
 
 ## Repository structure
 
-- `docs/` — active normal-theory derivations, assumptions, variable definitions and open problems
-- `theory/` — active normal mechanics code
-- `simulations/` — active normal numerical experiments
-- `tests/` — conservation, calibration and falsification tests
-- `results/data/` — machine-readable results
-- `results/figures/` — generated normal-deformation figures
-- `results/reports/` — bilingual result interpretation
-- `firmware/` — hardware-independent fatigue-tester controller core
-- `tools/` — PC telemetry / analysis helpers
-- `libraries/shear/` — preserved auxiliary shear/Rubin/slip research library
+- `docs/` — active 1D normal theory and variable definitions
+- `theory/` — active 1D normal-LJ mathematical code
+- `simulations/` — active 1D numerical/analytical runners
+- `tests/` — active 1D falsification and theorem tests
+- `results/` — active 1D result data, figures, and reports
+- `firmware/` — fatigue-tester controller core
+- `libraries/shear/` — preserved shear/Rubin/slip archive
+- `libraries/fcc_normal/` — preserved 3D FCC normal-LJ archive
 
 ## Research rule
 
-Every important result must be classified as one of:
+Every important statement must be classified as one of:
 
 - **EXACT / IDENTITY**
 - **DEFINITION**
 - **ASSUMPTION**
 - **CONTROLLED APPROXIMATION**
-- **EMPIRICAL INPUT**
+- **EMPIRICAL INPUT / PHYSICAL CONSTRAINT**
 
-A model that only reproduces a fatigue curve through fitted damage parameters is not considered a successful mechanics derivation.
+A result obtained only by fitting a fatigue curve is not considered a successful mechanics derivation.
 
 ---
 
 # 한국어 번역
 
-고순도 또는 단결정 알루미늄의 **수직 반복하중** 아래 피로 균열개시를 미시역학에서부터 유도하기 위한 mechanics-first 연구 저장소다.
+고순도 또는 단결정 알루미늄의 **1차원 수직 반복하중** 아래 피로 균열개시를 mechanics-first 방식으로 유도하기 위한 연구 framework다.
 
 ## 활성 연구방향
 
-repository root의 active mainline은 수직변형이다.
+현재 repository mainline은 의도적으로 다음 경로로 제한한다.
 
 $$
 \boxed{
 \sigma_n(t)
 \rightarrow
-\{a_i(t)\}
-\rightarrow
 P(a,t)
 \rightarrow
-\text{수직 memory / hysteresis}
+\mu(t),\mathcal E(t)
 \rightarrow
-P_{N+1}(a)\neq P_N(a)
+\text{crack-free energy feasibility}
 \rightarrow
-\text{normal-opening instability}
+\text{normal-opening tail}
+\rightarrow
+\tau_c
 }
 $$
 
-기존 Rubin-chain, slip, gamma-surface, shear-oriented 연구는 삭제하지 않고 `libraries/shear/`에 보존하며 기본 active workflow에는 포함하지 않는다.
+근본 evolution variable은 fatigue cycle count가 아니라 물리적 시간 $t$다.
 
-## 핵심 상태변수
-
-국부 수직 원자간격 $a_i(t)$에 대해
+loading frequency가 일정할 때 필요하면 나중에
 
 $$
-P_N(a,t)=\frac1N\sum_{i=1}^{N}\delta\!\left(a-a_i(t)\right)
+N=ft
 $$
 
-를 정의하고 중심 상태밀도는
+로 equivalent cycle count를 표시할 수 있지만 $N$을 state-evolution coordinate로 사용하지 않는다.
+
+모든 활성 이론은 **1D, normal-only, generalized-LJ 기반**이다. 기존 shear/Rubin 연구는 `libraries/shear/`에 보존하고, 기존 3D FCC normal-LJ 연구는 `libraries/fcc_normal/`에 보존한다. 두 archive 모두 기본 active workflow에는 들어가지 않는다.
+
+## 핵심 확률상태
+
+유한한 local spacing $a_i(t)$에 대해
 
 $$
-\boxed{P(a,t)=\lim_{N\to\infty}P_N(a,t)}
+P_M(a,t)
+=
+\frac1M\sum_{i=1}^M\delta(a-a_i(t))
+$$
+
+를 정의한다. 여기서 $M$은 fatigue cycle 수가 아니라 유한한 represented spacing 수다.
+
+continuum/thermodynamic state는
+
+$$
+\boxed{P(a,t)}
 $$
 
 이다.
 
-결정론적 microscopic trajectory에서는
+이 density를 Gaussian, Weibull 또는 다른 named family로 가정하지 않는다.
+
+정규화와 평균은
 
 $$
-\boxed{\partial_tP+\partial_a(Pv)=0}
+\boxed{
+\int P(a,t)\,da=1
+}
 $$
 
-이 정확하게 성립하며
+및
+
+$$
+\boxed{
+\bar a(t)=\int aP(a,t)\,da
+}
+$$
+
+이다.
+
+deterministic microscopic trajectory에서는
+
+$$
+\boxed{
+\partial_tP+\partial_a(Pv)=0
+}
+$$
+
+이고
 
 $$
 v(a,t)=\langle\dot a_i\mid a_i=a\rangle
@@ -311,56 +445,84 @@ $$
 
 이다.
 
-핵심 closure 문제는 경험적 fatigue evolution law 없이 $v(a,t)$ 또는 이를 결정하기 위해 필요한 최소 enlarged state를 microscopic mechanics에서 유도하는 것이다.
+## 고정 generalized Lennard-Jones baseline
 
-## 미시 상호작용 baseline
-
-활성 해석 baseline은 고정 generalized Lennard-Jones pair interaction이다.
+활성 microscopic interaction은
 
 $$
 \boxed{
 v(r)=\varepsilon_{\rm LJ}
 \left[
-\left(\frac{\sigma_{\rm LJ}}{r}\right)^m
+\left(\frac{\sigma_{\rm LJ}}r\right)^m
 -
-\left(\frac{\sigma_{\rm LJ}}{r}\right)^n
+\left(\frac{\sigma_{\rm LJ}}r\right)^n
 \right]
 }
 $$
 
-LJ parameter는 cycle에 따라 변하지 않는다. 구조진화는 atomic configuration, spacing distribution, correlation, memory 또는 stability loss에서 나와야 한다.
+이다.
 
-정확한 pair-distance energy hierarchy는
+potential parameter는 시간이나 fatigue history에 따라 변하지 않는다.
+
+축약 normalized 1D chain에서는
+
+$$
+\lambda=\frac{a}{a_0}
+$$
+
+이고
+
+$$
+\phi(\lambda)
+=
+\frac{\lambda^{-m}}{m(m-n)}
+-
+\frac{\lambda^{-n}}{n(m-n)}
+$$
+
+이며
+
+$$
+m=12.19,
+\qquad
+n=6
+$$
+
+이다.
+
+normalization에 의해
+
+$$
+\phi'(1)=0,
+\qquad
+\phi''(1)=1
+$$
+
+이다.
+
+이상화된 normal tangent-stability limit는
 
 $$
 \boxed{
-\mathcal U(t)=\sum_{k=1}^{\infty}\int_0^\infty v(r)P_k(r,t)\,dr
+\phi''(\lambda_c)=0
+}
+$$
+
+이고
+
+$$
+\boxed{
+\lambda_c\approx1.1077715386
 }
 $$
 
 이다.
 
-## 현재 활성 모델
+## 현재 null result
 
-### 1. 축약 1D normal chain
+기존 perfect 32-atom 1D reference simulation에서 normal stress amplitude 100 MPa를 가한 결과는 중요한 null test로 유지한다. reference run에서는 인공적인 fatigue accumulation이 생기지 않았고 어떤 local spacing도 $\lambda_c$를 넘지 않았다.
 
-`theory/normal_lj_chain.py`는 현재 직접 cyclic dynamics를 확인하는 null model이다.
-
-$$
-V=\sum_i\phi(\lambda_i),
-\qquad
-\lambda_i=\frac{a_i}{a_0}
-$$
-
-을 사용하고
-
-$$
-m=12.19,\qquad n=6
-$$
-
-이다.
-
-32-atom 완전사슬에 $100$ MPa normal stress amplitude를 가한 계산에서는 인공적인 fatigue accumulation이 생기지 않는다. 어떤 local spacing도 이상화된 LJ tangent-instability stretch를 넘지 않았고 work-energy balance error는 약
+work-energy balance error는 약
 
 $$
 1.24\times10^{-10}
@@ -368,127 +530,178 @@ $$
 
 이다.
 
-이것은 의도된 null/falsification result다.
+이 결과를 tuning으로 없애면 안 된다.
 
-자세한 결과는 `results/reports/NORMAL_LJ_RESULTS.md`에 있다.
+## 새로운 연속시간 에너지 formulation
 
-### 2. 3차원 FCC normal lattice sum
-
-`theory/fcc_normal_lj.py`는 1D nearest-neighbor geometry를 제거하고
+shifted LJ energy를
 
 $$
 \boxed{
-U(\mathbf F)
-=\frac12\sum_{\mathbf R\neq0}v(|\mathbf F\mathbf R|)
+\psi(\lambda)=\phi(\lambda)-\phi(1)
 }
 $$
 
-를 FCC lattice에 직접 계산한다.
-
-[001] normal loading에서는
-
-$$
-\mathbf F=\operatorname{diag}(\lambda_t,\lambda_t,\lambda_n)
-$$
-
-이고 $\lambda_t$는
-
-$$
-\frac{\partial U}{\partial\lambda_t}=0
-$$
-
-으로 relaxation한다.
-
-외부 Al reference
-
-$$
-C_{11}=107\ \text{GPa},\qquad C_{12}=61\ \text{GPa}
-$$
-
-로부터
-
-$$
-E_{[001]}\approx62.7024\ \text{GPa},
-\qquad
-\nu_{[001]}\approx0.363095
-$$
-
-를 얻는다.
-
-$(m,n)=(12.19,6)$을 유지하고 LJ energy scale 하나만 $E_{[001]}$에 맞추면
-
-$$
-C_{11}^{\rm LJ}\approx107.169\ \text{GPa},
-$$
-
-$$
-C_{12}^{\rm LJ}\approx61.180\ \text{GPa}
-$$
-
-가 되어 **normal elastic sector를 매우 잘 재현**한다.
-
-그리고 peak strength를 fitting하지 않았는데 relaxed [001] ideal engineering strength는 약
-
-$$
-\boxed{9.045\ \text{GPa}}
-$$
-
-가 나온다.
-
-first-principles reference의 pure Al [001] ideal strength 약 $10.63$ GPa와 비교하면 strength scale도 상당히 근접하다.
-
-하지만 두 가지 한계도 정확히 드러난다.
-
-1. cubic central pair potential은
-   $$
-   \boxed{C_{12}=C_{44}}
-   $$
-   라는 Cauchy relation을 만족해야 하지만 실제 Al은 대략 $C_{12}=61$ GPa, $C_{44}=29$ GPa다.
-2. normal modulus를 맞추면 cohesive energy는 약
-   $$
-   0.976\ \text{eV/atom}
-   $$
-   에 불과하지만 experimental scale은 약 $3.43$ eV/atom이다. 반대로 cohesion을 맞추면 $E_{[001]}\approx220.5$ GPa가 된다.
-
-따라서 generalized LJ pair law는 현재 **effective normal-mechanics baseline**으로는 매우 강하지만, 아직 quantitative thermodynamic cohesive-energy model은 아니다.
-
-자세한 내용은 `docs/MILESTONE3_FCC_NORMAL_LJ.md`에 있다.
-
-## 다음 이론단계에 주는 의미
-
-현재 결과는 성급한 shortcut 하나를 막아준다.
-
-$$
-\exp\!\left(-\frac{\Delta U}{k_BT}\right)
-$$
-
-같은 thermal first-passage factor는 absolute energy scale에 지수적으로 민감하다. normal elasticity가 잘 맞더라도 separation energy가 틀리면 quantitative thermal escape rate에 그대로 사용할 수 없다.
-
-그래서 다음 active problem은
+로 정의하고
 
 $$
 \boxed{
-\text{성공적인 LJ normal mechanics 유지}
-\; + \;
-\text{최소한의 물리적으로 필요한 cohesive/many-body correction 유도}
+\mu(t)=\int\lambda P(\lambda,t)\,d\lambda
+}
+$$
+
+및
+
+$$
+\boxed{
+\mathcal E(t)
+=
+\int\psi(\lambda)P(\lambda,t)\,d\lambda
+}
+$$
+
+를 사용한다.
+
+평균이 거의 보존될 때 homogeneous value를 초과하는 에너지는 정확히
+
+$$
+\boxed{
+\mathcal E(t)-\psi(\mu(t))
+=
+\int
+\left[
+\psi(\lambda)-\psi(\mu)-\psi'(\mu)(\lambda-\mu)
+\right]
+P(\lambda,t)\,d\lambda
 }
 $$
 
 이다.
 
-thermal escape rate나 fatigue-life prediction은 그 다음에 넣는다.
+convex LJ 영역에서는 이 값이 음수가 아니며 평균에서 분포가 퍼지는 정도와 연결된다.
+
+## 정확한 impossibility result
+
+정규화, 평균, 에너지만으로는 **tensile tail을 강제할 수 없다.**
+
+$$
+\psi(\lambda)\rightarrow\infty
+\qquad
+(\lambda\rightarrow0^+)
+$$
+
+이므로 모든 확률질량을 $\lambda_c$ 아래에 유지하면서 reverse compression으로 임의로 큰 에너지를 수학적으로 저장할 수 있다.
+
+따라서 하나의 추가 물리조건이 필요하다.
+
+현재 최소조건은 역학적으로 정당화된 lower support bound
+
+$$
+\boxed{
+\lambda\ge\lambda_L(t)>0
+}
+$$
+
+이다.
+
+이 값은 fitting parameter가 아니다. $\lambda_L(t)$를 1D mechanics로부터 유도하거나 독립적으로 제약하는 것이 현재 중심 물리문제다.
+
+## 정확한 crack-free energy ceiling
+
+$$
+\operatorname{supp}P(\lambda,t)
+\subset
+[\lambda_L(t),\lambda_c]
+$$
+
+를 가정한다.
+
+generalized LJ energy는 이 interval 전체에서 convex하므로 고정 평균에서 가능한 최소 및 최대 energy는 정확히
+
+$$
+\boxed{
+\mathcal E_{\rm safe}^{\min}(t)=\psi(\mu(t))
+}
+$$
+
+및
+
+$$
+\boxed{
+\mathcal E_{\rm safe}^{\max}(t)
+=
+\frac{\lambda_c-\mu(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_L(t))
++
+\frac{\mu(t)-\lambda_L(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_c)
+}
+$$
+
+이다.
+
+최댓값은 endpoint two-point measure에서 실제로 달성되므로 특정 distribution ansatz가 아니라 모든 admissible probability distribution에 대한 정확한 extremum이다.
+
+$$
+\boxed{
+M_E(t)=\mathcal E_{\rm safe}^{\max}(t)-\mathcal E(t)
+}
+$$
+
+를 정의한다.
+
+유효한 hard compression bound가 확보된 상태에서
+
+$$
+M_E(t)<0
+$$
+
+이면 정규화, 평균, 에너지 및 support를 동시에 만족하는 crack-free probability distribution은 존재할 수 없다. 따라서 $\lambda_c$를 넘는 probability mass가 필수가 된다.
+
+이에 대응하는 연속시간 first passage는
+
+$$
+\boxed{
+\tau_E
+=
+\inf\{t\ge0:M_E(t)<0\}
+}
+$$
+
+이다.
+
+자세한 내용은 `docs/MILESTONE4_TIME_ENERGY_FEASIBILITY.md`에 있다.
+
+## 현재 다음 단계
+
+가장 우선적인 문제는
+
+$$
+\boxed{
+\text{1D normal-LJ mechanics로부터 }\lambda_L(t)\text{를 유도하는 것}
+}
+$$
+
+이다.
+
+이 단계에는 3D model, shear coordinate, fitted damage law, fitted relaxation time 또는 assumed probability family가 필요하지 않다.
+
+## 활성 code
+
+- `theory/normal_lj_chain.py` — conservative 1D LJ normal-chain dynamics
+- `theory/normal_lj_energy_feasibility.py` — 정확한 probability-measure energy bound
+- `theory/normal_lj_timescale.py` — 유지되는 1D time-scale falsification diagnostic
+- `simulations/run_normal_lj_chain.py` — 직접 1D null/dynamic simulation
+- `simulations/run_normal_lj_energy_feasibility.py` — exact energy-ceiling parameter sweep
+- `tests/test_normal_lj_chain.py`
+- `tests/test_normal_lj_energy_feasibility.py`
 
 ## 변수정의
 
-활성 변수는 다음 문서에 정의한다.
+- `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md`
+- `docs/VARIABLE_DEFINITIONS_ENERGY_FEASIBILITY.md`
+- `docs/VARIABLE_DEFINITIONS_NORMAL_TIMESCALE.md`
+- `firmware/VARIABLE_DEFINITIONS.md`
 
-- `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md` — spacing, probability, 1D normal dynamics, first passage;
-- `docs/VARIABLE_DEFINITIONS_FCC_NORMAL_LJ.md` — FCC geometry, $\mathbf F$, $\lambda_n$, $\lambda_t$, lattice sum, cubic elastic constants, calibration variables;
-- `firmware/VARIABLE_DEFINITIONS.md` — tester firmware field와 fault flag.
-
-새 변수를 도입하면 같은 변경에서 적절한 변수사전을 갱신한다.
-
-## 활성 결과 재생성
+## 활성 결과 재현
 
 ```bash
 python -m pip install -r requirements.txt
@@ -496,29 +709,27 @@ python -m simulations.generate_results
 python -m unittest discover -s tests
 ```
 
-active result generator는 축약 normal chain과 FCC normal-LJ validation을 모두 실행한다.
+기본 workflow는 active 1D normal-LJ calculation만 실행한다.
 
 ## Repository 구조
 
-- `docs/` — active normal theory derivation, assumption, variable definition, open problem
-- `theory/` — active normal mechanics code
-- `simulations/` — active normal numerical experiment
-- `tests/` — conservation, calibration, falsification test
-- `results/data/` — machine-readable result
-- `results/figures/` — normal-deformation figure
-- `results/reports/` — bilingual result interpretation
-- `firmware/` — hardware-independent fatigue-tester controller core
-- `tools/` — PC telemetry / analysis helper
-- `libraries/shear/` — 보존된 auxiliary shear/Rubin/slip 연구 library
+- `docs/` — 활성 1D normal theory 및 변수정의
+- `theory/` — 활성 1D normal-LJ mathematical code
+- `simulations/` — 활성 1D numerical/analytical runner
+- `tests/` — 활성 1D falsification 및 theorem test
+- `results/` — 활성 1D result data, figure, report
+- `firmware/` — fatigue-tester controller core
+- `libraries/shear/` — 보존된 shear/Rubin/slip archive
+- `libraries/fcc_normal/` — 보존된 3D FCC normal-LJ archive
 
 ## 연구 규칙
 
-모든 중요한 결과는 다음 중 하나로 분류한다.
+모든 중요한 statement는 다음 중 하나로 분류한다.
 
 - **EXACT / IDENTITY**
 - **DEFINITION**
 - **ASSUMPTION**
 - **CONTROLLED APPROXIMATION**
-- **EMPIRICAL INPUT**
+- **EMPIRICAL INPUT / PHYSICAL CONSTRAINT**
 
-fitted damage parameter만으로 fatigue curve를 재현하는 모델은 성공적인 mechanics derivation으로 간주하지 않는다.
+fatigue curve fitting만으로 얻은 결과는 성공적인 mechanics derivation으로 보지 않는다.

@@ -1,41 +1,26 @@
 {
-  "active_mainline": "normal-deformation",
-  "model_status": "normal generalized-LJ mechanics validation; not calibrated Al fatigue life",
-  "active_models": {
-    "reduced_1d_normal_chain": {
-      "theory": "theory/normal_lj_chain.py",
-      "simulation": "simulations/run_normal_lj_chain.py",
-      "tests": "tests/test_normal_lj_chain.py",
-      "summary": "results/data/normal_lj_summary.json",
-      "cycle_history": "results/data/normal_lj_cycle_history.csv",
-      "report": "results/reports/NORMAL_LJ_RESULTS.md"
-    },
-    "normal_lj_timescale": {
-      "theory": "theory/normal_lj_timescale.py",
-      "simulation": "simulations/run_normal_lj_timescale.py",
-      "tests": "tests/test_normal_lj_timescale.py",
-      "summary": "results/data/normal_lj_timescale_summary.json",
-      "milestone": "docs/MILESTONE3_NORMAL_MEMORY_TIMESCALE.md",
-      "variables": "docs/VARIABLE_DEFINITIONS_NORMAL_TIMESCALE.md",
-      "classification": "falsification / time-scale diagnostic"
-    },
-    "fcc_normal_lattice_sum": {
-      "theory": "theory/fcc_normal_lj.py",
-      "simulation": "simulations/run_fcc_normal_lj.py",
-      "tests": "tests/test_fcc_normal_lj.py",
-      "summary": "results/data/fcc_normal_lj_summary.json",
-      "stress_strain": "results/data/fcc_normal_lj_stress_strain.csv",
-      "milestone": "docs/MILESTONE3_FCC_NORMAL_LJ.md",
-      "variables": "docs/VARIABLE_DEFINITIONS_FCC_NORMAL_LJ.md",
-      "figures": [
-        "results/figures/fcc_lj_001_stress_strain.svg",
-        "results/figures/fcc_lj_elastic_constants.svg",
-        "results/figures/fcc_lj_cohesion_conflict.svg",
-        "results/figures/fcc_lj_cutoff_convergence.svg"
-      ]
-    }
+  "active_mainline": "1D normal generalized-LJ in continuous physical time t",
+  "state": "P(a,t)",
+  "primary_reduced_observables": [
+    "mu(t)",
+    "E(t)",
+    "lambda_L(t)",
+    "E_safe_max(t)",
+    "tau_E"
+  ],
+  "active_files": {
+    "chain_theory": "theory/normal_lj_chain.py",
+    "energy_feasibility_theory": "theory/normal_lj_energy_feasibility.py",
+    "timescale_theory": "theory/normal_lj_timescale.py",
+    "chain_simulation": "simulations/run_normal_lj_chain.py",
+    "energy_feasibility_simulation": "simulations/run_normal_lj_energy_feasibility.py",
+    "energy_feasibility_test": "tests/test_normal_lj_energy_feasibility.py",
+    "energy_feasibility_report": "results/reports/NORMAL_LJ_ENERGY_FEASIBILITY.md",
+    "energy_feasibility_summary": "results/data/normal_lj_energy_feasibility_summary.json"
   },
-  "auxiliary_library": "libraries/shear/",
-  "current_time_scale_falsification": "ordinary conservative normal acoustic modes and ordinary local LJ critical softening do not directly provide a 20 Hz microscopic memory scale",
-  "current_blocker_before_quantitative_thermal_first_passage": "absolute cohesive-energy consistency / minimum physically justified many-body correction"
+  "archives": {
+    "shear": "libraries/shear/",
+    "fcc_normal_3d": "libraries/fcc_normal/"
+  },
+  "next_target": "derive lambda_L(t) from 1D normal-LJ mechanics without fitting"
 }
