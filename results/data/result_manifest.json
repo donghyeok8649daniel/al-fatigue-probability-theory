@@ -1,47 +1,49 @@
 {
-  "active_mainline": "1D normal layer-LJ in continuous physical time t",
-  "state": "P_a(a,t) / p_lambda(lambda,t), with spatial push-forward and pair-state extensions under test",
+  "active_mainline": "1D normal layer-LJ in continuous physical time t, using the full nonlinear LJ force without global Taylor or harmonic closure",
+  "state": "P(lambda,t) is treated as a marginal of spacing-velocity transport F1(lambda,v,t), with neighboring-spacing joint states P2 required by the exact LJ acceleration",
   "primary_reduced_observables": [
+    "P(lambda,t)",
+    "J(lambda,t)",
+    "F1(lambda,v,t)",
+    "K(lambda,t)",
+    "A1(lambda,t)",
     "mu(t)",
     "E(t)",
-    "alpha(t)",
-    "beta(t)",
     "Q_c(t)",
-    "m_3(t)",
     "C_k(t)",
     "rho_k(t)"
   ],
   "active_files": {
     "chain_theory": "theory/normal_lj_chain.py",
+    "distribution_transport_theory": "theory/normal_lj_distribution_transport.py",
     "energy_feasibility_theory": "theory/normal_lj_energy_feasibility.py",
-    "distribution_theory": "theory/normal_lj_distribution.py",
+    "distribution_closure_theory_for_falsification_reference": "theory/normal_lj_distribution.py",
     "closure_validation_theory": "theory/normal_lj_closure_validation.py",
     "spatial_correlation_theory": "theory/normal_lj_spatial_correlation.py",
-    "pushforward_theory": "theory/normal_lj_pushforward.py",
     "timescale_theory": "theory/normal_lj_timescale.py",
-    "distribution_simulation": "simulations/run_normal_lj_distribution.py",
-    "closure_falsification_simulation": "simulations/run_normal_lj_closure_falsification.py",
-    "system_size_simulation": "simulations/run_normal_lj_closure_system_size.py",
-    "spatial_correlation_simulation": "simulations/run_normal_lj_spatial_correlation.py",
-    "pushforward_simulation": "simulations/run_normal_lj_pushforward_clue.py",
+    "distribution_transport_test": "tests/test_normal_lj_distribution_transport.py",
     "spatial_correlation_test": "tests/test_normal_lj_spatial_correlation.py",
-    "pushforward_test": "tests/test_normal_lj_pushforward.py",
+    "distribution_transport_derivation": "docs/MILESTONE10_EXACT_DISTRIBUTION_TRANSPORT.md",
+    "distribution_transport_variables": "docs/VARIABLE_DEFINITIONS_DISTRIBUTION_TRANSPORT.md",
     "spatial_correlation_derivation": "docs/MILESTONE8_SPATIAL_CORRELATION.md",
-    "pushforward_derivation": "docs/MILESTONE9_GOVERNING_EQUATION_PUSHFORWARD.md",
     "spatial_correlation_variables": "docs/VARIABLE_DEFINITIONS_SPATIAL_CORRELATION.md",
-    "pushforward_variables": "docs/VARIABLE_DEFINITIONS_PUSHFORWARD.md",
     "spatial_correlation_report": "results/reports/NORMAL_LJ_SPATIAL_CORRELATION.md",
-    "pushforward_report": "results/reports/NORMAL_LJ_PUSHFORWARD_CLUE.md",
     "spatial_correlation_summary": "results/data/normal_lj_spatial_correlation.json",
     "spatial_correlation_table": "results/data/normal_lj_spatial_correlation_summary.csv",
-    "spatial_correlation_scaled": "results/data/normal_lj_spatial_correlation_scaled.csv",
-    "pushforward_summary": "results/data/normal_lj_pushforward_clue.json",
-    "pushforward_table": "results/data/normal_lj_pushforward_clue.csv"
+    "spatial_correlation_scaled": "results/data/normal_lj_spatial_correlation_scaled.csv"
+  },
+  "historical_or_falsification_diagnostics": {
+    "equal_measure_two_moment_closure": "docs/MILESTONE5_DERIVED_DISTRIBUTION_CLOSURE.md",
+    "closure_falsification": "docs/MILESTONE6_CLOSURE_FALSIFICATION.md",
+    "harmonic_taylor_pushforward_diagnostic": "docs/MILESTONE9_GOVERNING_EQUATION_PUSHFORWARD.md",
+    "harmonic_taylor_helper_code": "theory/normal_lj_pushforward.py",
+    "harmonic_taylor_simulation": "simulations/run_normal_lj_pushforward_clue.py",
+    "harmonic_taylor_test": "tests/test_normal_lj_pushforward.py"
   },
   "archives": {
     "shear": "libraries/shear/",
     "fcc_normal_3d": "libraries/fcc_normal/"
   },
-  "current_result": "The one-point spacing density is exactly the spatial push-forward of the deterministic spacing field. Linearized 1D layer-LJ normal modes imply arcsine-type density structure, while the calibrated LJ quadratic/cubic nonlinearity generates harmonic distortion. Existing driven snapshots falsify single-mode sufficiency; the slower snapshot is too skewed even for a first-plus-second-harmonic waveform. Strong O(M)-scale spatial correlation remains present and cannot be encoded by one-point P alone.",
-  "next_target": "Derive the mechanically excited spatial-mode or neighboring-spacing pair-state evolution directly from the 1D layer-LJ governing equation and determine the minimum representation that reproduces both P1(lambda,t) and C_k(t) without a fitted probability family or empirical correlation law."
+  "current_result": "The exact finite-M spacing empirical density obeys a continuity equation d_t P + d_lambda J = 0. Because the microscopic layer-LJ mechanics is second order, the natural transported state includes spacing velocity F1(lambda,v,t). The flux equation requires a velocity second moment and conditional acceleration; the original full nonlinear LJ acceleration then introduces neighboring-spacing joint densities P2. Therefore P(lambda,t) is not naturally closed by a named probability family, a finite harmonic representation, or a Taylor expansion around lambda=1.",
+  "next_target": "Derive the exact evolution hierarchy for F1(lambda,v,t) together with neighboring-spacing joint information P2, identify precisely where the next joint state enters, and test which information can be eliminated without changing P(lambda,t), C_k(t), or the crack-relevant tail."
 }
