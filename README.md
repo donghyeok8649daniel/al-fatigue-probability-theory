@@ -2,112 +2,72 @@
 
 Mechanics-first framework for fatigue crack initiation under **one-dimensional normal cyclic loading** in high-purity / single-crystal aluminum.
 
-## Active research direction
+## Active model
 
-The active repository mainline is deliberately restricted to
+The active derivation is deliberately restricted to a one-dimensional stack of represented material layers. The microscopic reduced coordinate is the normal spacing between adjacent layers,
+
+$$
+a_i(t)>0.
+$$
+
+The effective normal interaction between layers is represented by the calibrated generalized Lennard-Jones model. Three-dimensional FCC and shear mechanisms are not part of the active derivation and remain archived under `libraries/`.
+
+The active chain is
 
 $$
 \boxed{
 \sigma_n(t)
 \rightarrow
-P(a,t)
-\rightarrow
 \mu(t),\mathcal E(t)
 \rightarrow
-\text{crack-free energy feasibility}
+P(a,t)
 \rightarrow
-\text{normal-opening tail}
+Q_c(t)
 \rightarrow
-\tau_c.
+\text{normal-opening first passage}.
 }
 $$
 
-The fundamental evolution variable is physical time $t$, not fatigue cycle count.
+Physical time $t$ is fundamental. Fatigue cycle count is not an independent state variable.
 
-If the loading frequency is constant, an equivalent cycle count may later be reported as
+## Layer-spacing probability state
 
-$$
-N=f t,
-$$
-
-but $N$ is not used as the state-evolution coordinate.
-
-All active theory is **1D, normal-only, generalized-LJ based**. Earlier shear/Rubin work is preserved under `libraries/shear/`. Earlier 3D FCC normal-LJ work is preserved under `libraries/fcc_normal/`. Neither archive is part of the default active workflow.
-
-## Core probability state
-
-For finite local spacings $a_i(t)$,
-
-$$
-P_M(a,t)
-=
-\frac1M\sum_{i=1}^M\delta(a-a_i(t)),
-$$
-
-where $M$ denotes a finite number of represented spacings, not fatigue cycles.
-
-The continuum/thermodynamic state is
+Let $P_a(a,t)$ be the physical layer-spacing density,
 
 $$
 \boxed{
-P(a,t).
+\int_0^\infty P_a(a,t)\,da=1.
 }
 $$
 
-The density is not assumed to be Gaussian, Weibull, or any other named family.
-
-Its normalization and mean are
-
-$$
-\boxed{
-\int P(a,t)\,da=1,
-}
-$$
-
-$$
-\boxed{
-\bar a(t)=\int aP(a,t)\,da.
-}
-$$
-
-For deterministic microscopic trajectories,
-
-$$
-\boxed{
-\partial_tP+\partial_a(Pv)=0,
-}
-$$
-
-with
-
-$$
-v(a,t)=\langle\dot a_i\mid a_i=a\rangle.
-$$
-
-## Fixed generalized Lennard-Jones baseline
-
-The active microscopic interaction is
-
-$$
-\boxed{
-v(r)=\varepsilon_{\rm LJ}
-\left[
-\left(\frac{\sigma_{\rm LJ}}r\right)^m
--
-\left(\frac{\sigma_{\rm LJ}}r\right)^n
-\right].
-}
-$$
-
-The potential parameters do not evolve with time or fatigue history.
-
-For the reduced normalized 1D chain,
+With
 
 $$
 \lambda=\frac{a}{a_0},
 $$
 
-and
+define
+
+$$
+\boxed{
+p_\lambda(\lambda,t)=a_0P_a(a_0\lambda,t).
+}
+$$
+
+The mean normalized spacing is
+
+$$
+\boxed{
+\mu(t)
+=
+\int_0^\infty
+\lambda p_\lambda(\lambda,t)\,d\lambda.
+}
+$$
+
+## Calibrated generalized-LJ layer energy
+
+The normalized active form is
 
 $$
 \phi(\lambda)
@@ -125,7 +85,7 @@ m=12.19,
 n=6.
 $$
 
-The normalization gives
+It is normalized so that
 
 $$
 \phi'(1)=0,
@@ -133,37 +93,7 @@ $$
 \phi''(1)=1.
 $$
 
-The idealized normal tangent-stability limit is
-
-$$
-\boxed{
-\phi''(\lambda_c)=0,
-}
-$$
-
-with
-
-$$
-\boxed{
-\lambda_c\approx1.1077715386.
-}
-$$
-
-## Current null result
-
-The existing perfect 32-atom 1D reference simulation at a 100 MPa normal stress amplitude remains an important null test. It does not generate artificial fatigue accumulation and no local spacing crosses $\lambda_c$ in the reference run.
-
-The work-energy balance error is approximately
-
-$$
-1.24\times10^{-10}.
-$$
-
-This result must not be tuned away.
-
-## New continuous-time energy formulation
-
-Define the shifted LJ energy
+Define the shifted configurational energy
 
 $$
 \boxed{
@@ -175,148 +105,201 @@ and
 
 $$
 \boxed{
-\mu(t)=\int\lambda P(\lambda,t)\,d\lambda,
+\mathcal E(t)
+=
+\int_0^\infty
+\psi(\lambda)p_\lambda(\lambda,t)\,d\lambda.
+}
+$$
+
+The current idealized normal tangent-instability stretch is
+
+$$
+\boxed{
+\lambda_c
+=
+\left(\frac{m+1}{n+1}\right)^{1/(m-n)}
+\approx1.1077715386.
+}
+$$
+
+## New derived distribution closure
+
+The repository now contains an explicit candidate form for $P(a,t)$ that is **derived from stated constraints rather than chosen as a Gaussian or Weibull family**.
+
+For $M$ positive layer spacings, define
+
+$$
+L=M\mu,
+\qquad
+E_c=M\mathcal E,
+$$
+
+and the constrained density of reduced configurations
+
+$$
+\Omega_M(L,E)
+=
+\int
+\delta\left(\sum_i\lambda_i-L\right)
+\delta\left(\sum_i\psi(\lambda_i)-E\right)
+\,d^M\lambda.
+$$
+
+**ASSUMPTION:** conditional on the instantaneous $(L,E)$ constraints, compatible reduced layer-spacing configurations receive equal base measure.
+
+Under that assumption the finite-$M$ marginal is
+
+$$
+\boxed{
+p_M(\lambda\mid L,E)
+=
+\frac{
+\Omega_{M-1}(L-\lambda,E-\psi(\lambda))
+}{
+\Omega_M(L,E)
+}.
+}
+$$
+
+The large-$M$ saddle-point reduction gives
+
+$$
+\boxed{
+p_\lambda(\lambda,t)
+=
+\frac{
+\exp[-\alpha(t)\lambda-\beta(t)\psi(\lambda)]
+}{
+Z(\alpha(t),\beta(t))
+}.
+}
+$$
+
+Here
+
+$$
+Z(\alpha,\beta)
+=
+\int_0^\infty
+\exp[-\alpha\lambda-\beta\psi(\lambda)]\,d\lambda,
+$$
+
+and the multipliers are determined from the physical moments,
+
+$$
+\boxed{
+\mu(t)
+=-\partial_\alpha\ln Z,
 }
 $$
 
 $$
 \boxed{
 \mathcal E(t)
-=
-\int\psi(\lambda)P(\lambda,t)\,d\lambda.
+=-\partial_\beta\ln Z.
 }
 $$
 
-At nearly conserved mean, energy above the homogeneous value is exactly
+Thus $\alpha$ and $\beta$ are not fitted fatigue parameters. Also, $\beta$ is **not** identified with thermodynamic inverse temperature unless a separate equilibrium derivation is supplied.
+
+## Exact identity inside the closure
+
+At fixed mean,
 
 $$
 \boxed{
-\mathcal E(t)-\psi(\mu(t))
+\frac{d\mathcal E}{d\beta}\bigg|_\mu
 =
-\int
+-
 \left[
-\psi(\lambda)-\psi(\mu)-\psi'(\mu)(\lambda-\mu)
+\operatorname{Var}(\psi)
+-
+\frac{\operatorname{Cov}(\lambda,\psi)^2}{\operatorname{Var}(\lambda)}
 \right]
-P(\lambda,t)\,d\lambda.
+\le0.
 }
 $$
 
-Inside the convex LJ region this quantity is non-negative and measures distributional spreading away from the mean.
-
-## Exact impossibility result
-
-Normalization, mean, and energy alone do **not** force a tensile tail.
-
-Because
+Therefore, inside the adopted exponential-family closure,
 
 $$
-\psi(\lambda)\rightarrow\infty
+\boxed{
+\mu=\text{constant},
+\quad
+\mathcal E\uparrow
+\Rightarrow
+\beta\downarrow.
+}
+$$
+
+## Current numerical result
+
+At fixed
+
+$$
+\mu=1,
+$$
+
+the solved distributions broaden as $\mathcal E$ increases. The normal-opening tail
+
+$$
+\boxed{
+Q_c
+=
+\int_{\lambda_c}^{\infty}p_\lambda(\lambda)\,d\lambda
+}
+$$
+
+changes as follows:
+
+| $\mathcal E$ | $\operatorname{Var}(\lambda)$ | $Q_c$ |
+|---:|---:|---:|
+| $2\times10^{-4}$ | $4.0917\times10^{-4}$ | $4.6411\times10^{-5}$ |
+| $5\times10^{-4}$ | $1.0604\times10^{-3}$ | $5.1948\times10^{-3}$ |
+| $10^{-3}$ | $2.2480\times10^{-3}$ | $2.7631\times10^{-2}$ |
+| $2\times10^{-3}$ | $4.7677\times10^{-3}$ | $6.8314\times10^{-2}$ |
+| $4\times10^{-3}$ | $9.3832\times10^{-3}$ | $1.1464\times10^{-1}$ |
+
+The monotone tail growth is a **numerical result on this sampled energy range**, not yet a universal theorem.
+
+At $\mathcal E=10^{-3}$, quadrature orders 320 and 640 differ in $Q_c$ by only about
+
+$$
+1.04\times10^{-10}.
+$$
+
+## Important limitation
+
+The distribution form is not yet proven to be the exact nonequilibrium distribution generated by cyclic loading.
+
+The next falsification test is to run the deterministic 1D layer-LJ dynamics, measure
+
+$$
+\mu_{\rm sim}(t),
 \qquad
-(\lambda\rightarrow0^+),
+\mathcal E_{\rm sim}(t),
 $$
 
-arbitrarily large energy can mathematically be stored by reverse compression while all probability remains below $\lambda_c$.
+solve the closure with those same measured moments, and compare its predicted distribution with the empirical layer-spacing distribution.
 
-Therefore one more physical condition is necessary.
+If the shapes disagree, the closure must be rejected or enlarged.
 
-The current minimal condition is a mechanically justified lower support bound
+## Active files
 
-$$
-\boxed{
-\lambda\ge\lambda_L(t)>0.
-}
-$$
+- `theory/normal_lj_chain.py` — conservative 1D normal chain
+- `theory/normal_lj_energy_feasibility.py` — exact worst-case crack-free energy bounds under stated support constraints
+- `theory/normal_lj_distribution.py` — large-$M$ layer-spacing distribution closure
+- `simulations/run_normal_lj_distribution.py` — energy sweep and figures
+- `tests/test_normal_lj_distribution.py` — moment recovery, monotonic-energy identity, and sampled tail-growth tests
+- `docs/MILESTONE5_DERIVED_DISTRIBUTION_CLOSURE.md` — derivation and interpretation
+- `docs/VARIABLE_DEFINITIONS_DISTRIBUTION_CLOSURE.md` — closure variables
+- `results/reports/NORMAL_LJ_DISTRIBUTION_CLOSURE.md` — numerical result report
 
-This is not a fitting parameter. Deriving or independently constraining $\lambda_L(t)$ is now the main physical problem.
+Archived work:
 
-## Exact crack-free energy ceiling
-
-Assume
-
-$$
-\operatorname{supp}P(\lambda,t)
-\subset
-[\lambda_L(t),\lambda_c].
-$$
-
-Since the generalized LJ energy is convex throughout this interval, the exact minimum and maximum possible energies at a fixed mean are
-
-$$
-\boxed{
-\mathcal E_{\rm safe}^{\min}(t)=\psi(\mu(t)),
-}
-$$
-
-and
-
-$$
-\boxed{
-\mathcal E_{\rm safe}^{\max}(t)
-=
-\frac{\lambda_c-\mu(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_L(t))
-+
-\frac{\mu(t)-\lambda_L(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_c).
-}
-$$
-
-The maximum is attained by an endpoint two-point measure, so this is an exact extremum over all admissible probability distributions, not a chosen distribution ansatz.
-
-Define
-
-$$
-\boxed{
-M_E(t)=\mathcal E_{\rm safe}^{\max}(t)-\mathcal E(t).
-}
-$$
-
-If a valid hard compression bound has been established and
-
-$$
-M_E(t)<0,
-$$
-
-then no crack-free probability distribution can satisfy normalization, mean, energy, and support simultaneously. Therefore probability mass beyond $\lambda_c$ becomes unavoidable.
-
-The corresponding continuous-time first passage is
-
-$$
-\boxed{
-\tau_E
-=
-\inf\{t\ge0:M_E(t)<0\}.
-}
-$$
-
-See `docs/MILESTONE4_TIME_ENERGY_FEASIBILITY.md`.
-
-## Current next step
-
-The highest-priority problem is now
-
-$$
-\boxed{
-\text{derive }\lambda_L(t)\text{ from 1D normal-LJ mechanics.}
-}
-$$
-
-No 3D model, shear coordinate, fitted damage law, fitted relaxation time, or assumed probability family is required for this step.
-
-## Active code
-
-- `theory/normal_lj_chain.py` — conservative 1D LJ normal-chain dynamics
-- `theory/normal_lj_energy_feasibility.py` — exact probability-measure energy bounds
-- `theory/normal_lj_timescale.py` — retained 1D time-scale falsification diagnostic
-- `simulations/run_normal_lj_chain.py` — direct 1D null/dynamic simulation
-- `simulations/run_normal_lj_energy_feasibility.py` — exact energy-ceiling parameter sweep
-- `tests/test_normal_lj_chain.py`
-- `tests/test_normal_lj_energy_feasibility.py`
-
-## Variable definitions
-
-- `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md`
-- `docs/VARIABLE_DEFINITIONS_ENERGY_FEASIBILITY.md`
-- `docs/VARIABLE_DEFINITIONS_NORMAL_TIMESCALE.md`
-- `firmware/VARIABLE_DEFINITIONS.md`
+- `libraries/shear/`
+- `libraries/fcc_normal/`
 
 ## Reproduce active results
 
@@ -326,151 +309,98 @@ python -m simulations.generate_results
 python -m unittest discover -s tests
 ```
 
-The default workflow runs only active 1D normal-LJ calculations.
+## Research labels
 
-## Repository structure
-
-- `docs/` — active 1D normal theory and variable definitions
-- `theory/` — active 1D normal-LJ mathematical code
-- `simulations/` — active 1D numerical/analytical runners
-- `tests/` — active 1D falsification and theorem tests
-- `results/` — active 1D result data, figures, and reports
-- `firmware/` — fatigue-tester controller core
-- `libraries/shear/` — preserved shear/Rubin/slip archive
-- `libraries/fcc_normal/` — preserved 3D FCC normal-LJ archive
-
-## Research rule
-
-Every important statement must be classified as one of:
+Every important statement is classified as one of:
 
 - **EXACT / IDENTITY**
 - **DEFINITION**
 - **ASSUMPTION**
 - **CONTROLLED APPROXIMATION**
-- **EMPIRICAL INPUT / PHYSICAL CONSTRAINT**
+- **EMPIRICAL INPUT / CALIBRATION**
 
-A result obtained only by fitting a fatigue curve is not considered a successful mechanics derivation.
+No fitted Gaussian/Weibull distribution, cycle-dependent LJ parameter, or empirical fatigue-damage variable is accepted as a mechanics derivation.
 
 ---
 
 # 한국어 번역
 
-고순도 또는 단결정 알루미늄의 **1차원 수직 반복하중** 아래 피로 균열개시를 mechanics-first 방식으로 유도하기 위한 연구 framework다.
+고순도 또는 단결정 알루미늄의 **1차원 수직 반복하중** 아래 피로 균열개시를 mechanics-first 방식으로 유도하기 위한 연구 저장소다.
 
-## 활성 연구방향
+## 활성 모델
 
-현재 repository mainline은 의도적으로 다음 경로로 제한한다.
+활성 derivation은 represented material layer의 1차원 stack으로 의도적으로 제한한다. microscopic reduced coordinate는 인접 layer 사이의 수직간격
+
+$$
+a_i(t)>0
+$$
+
+이다.
+
+layer 간 유효 수직상호작용은 calibration된 generalized Lennard-Jones model로 표현한다. 3D FCC와 shear mechanism은 active derivation에 포함하지 않으며 `libraries/` 아래 archive로 유지한다.
+
+활성 연결은
 
 $$
 \boxed{
 \sigma_n(t)
 \rightarrow
-P(a,t)
-\rightarrow
 \mu(t),\mathcal E(t)
 \rightarrow
-\text{crack-free energy feasibility}
+P(a,t)
 \rightarrow
-\text{normal-opening tail}
+Q_c(t)
 \rightarrow
-\tau_c
-}
-$$
-
-근본 evolution variable은 fatigue cycle count가 아니라 물리적 시간 $t$다.
-
-loading frequency가 일정할 때 필요하면 나중에
-
-$$
-N=ft
-$$
-
-로 equivalent cycle count를 표시할 수 있지만 $N$을 state-evolution coordinate로 사용하지 않는다.
-
-모든 활성 이론은 **1D, normal-only, generalized-LJ 기반**이다. 기존 shear/Rubin 연구는 `libraries/shear/`에 보존하고, 기존 3D FCC normal-LJ 연구는 `libraries/fcc_normal/`에 보존한다. 두 archive 모두 기본 active workflow에는 들어가지 않는다.
-
-## 핵심 확률상태
-
-유한한 local spacing $a_i(t)$에 대해
-
-$$
-P_M(a,t)
-=
-\frac1M\sum_{i=1}^M\delta(a-a_i(t))
-$$
-
-를 정의한다. 여기서 $M$은 fatigue cycle 수가 아니라 유한한 represented spacing 수다.
-
-continuum/thermodynamic state는
-
-$$
-\boxed{P(a,t)}
-$$
-
-이다.
-
-이 density를 Gaussian, Weibull 또는 다른 named family로 가정하지 않는다.
-
-정규화와 평균은
-
-$$
-\boxed{
-\int P(a,t)\,da=1
-}
-$$
-
-및
-
-$$
-\boxed{
-\bar a(t)=\int aP(a,t)\,da
+\text{normal-opening first passage}
 }
 $$
 
 이다.
 
-deterministic microscopic trajectory에서는
+물리시간 $t$가 근본적인 evolution coordinate이며 fatigue cycle count는 독립 상태변수가 아니다.
+
+## Layer-spacing probability state
+
+$P_a(a,t)$를 physical layer-spacing density라고 하자.
 
 $$
 \boxed{
-\partial_tP+\partial_a(Pv)=0
-}
-$$
-
-이고
-
-$$
-v(a,t)=\langle\dot a_i\mid a_i=a\rangle
-$$
-
-이다.
-
-## 고정 generalized Lennard-Jones baseline
-
-활성 microscopic interaction은
-
-$$
-\boxed{
-v(r)=\varepsilon_{\rm LJ}
-\left[
-\left(\frac{\sigma_{\rm LJ}}r\right)^m
--
-\left(\frac{\sigma_{\rm LJ}}r\right)^n
-\right]
+\int_0^\infty P_a(a,t)\,da=1
 }
 $$
 
 이다.
-
-potential parameter는 시간이나 fatigue history에 따라 변하지 않는다.
-
-축약 normalized 1D chain에서는
 
 $$
 \lambda=\frac{a}{a_0}
 $$
 
-이고
+를 사용하여
+
+$$
+\boxed{
+p_\lambda(\lambda,t)=a_0P_a(a_0\lambda,t)
+}
+$$
+
+를 정의한다.
+
+평균 normalized spacing은
+
+$$
+\boxed{
+\mu(t)
+=
+\int_0^\infty
+\lambda p_\lambda(\lambda,t)\,d\lambda
+}
+$$
+
+이다.
+
+## Calibration된 generalized-LJ layer energy
+
+활성 normalized form은
 
 $$
 \phi(\lambda)
@@ -480,7 +410,7 @@ $$
 \frac{\lambda^{-n}}{n(m-n)}
 $$
 
-이며
+이고
 
 $$
 m=12.19,
@@ -490,7 +420,7 @@ $$
 
 이다.
 
-normalization에 의해
+normalization은
 
 $$
 \phi'(1)=0,
@@ -498,43 +428,9 @@ $$
 \phi''(1)=1
 $$
 
-이다.
+을 준다.
 
-이상화된 normal tangent-stability limit는
-
-$$
-\boxed{
-\phi''(\lambda_c)=0
-}
-$$
-
-이고
-
-$$
-\boxed{
-\lambda_c\approx1.1077715386
-}
-$$
-
-이다.
-
-## 현재 null result
-
-기존 perfect 32-atom 1D reference simulation에서 normal stress amplitude 100 MPa를 가한 결과는 중요한 null test로 유지한다. reference run에서는 인공적인 fatigue accumulation이 생기지 않았고 어떤 local spacing도 $\lambda_c$를 넘지 않았다.
-
-work-energy balance error는 약
-
-$$
-1.24\times10^{-10}
-$$
-
-이다.
-
-이 결과를 tuning으로 없애면 안 된다.
-
-## 새로운 연속시간 에너지 formulation
-
-shifted LJ energy를
+shifted configurational energy를
 
 $$
 \boxed{
@@ -546,7 +442,102 @@ $$
 
 $$
 \boxed{
-\mu(t)=\int\lambda P(\lambda,t)\,d\lambda
+\mathcal E(t)
+=
+\int_0^\infty
+\psi(\lambda)p_\lambda(\lambda,t)\,d\lambda
+}
+$$
+
+를 사용한다.
+
+현재 이상화된 normal tangent-instability stretch는
+
+$$
+\boxed{
+\lambda_c
+=
+\left(\frac{m+1}{n+1}\right)^{1/(m-n)}
+\approx1.1077715386
+}
+$$
+
+이다.
+
+## 새롭게 유도한 distribution closure
+
+repository에는 이제 **Gaussian이나 Weibull family를 임의로 고른 것이 아니라 명시된 constraint에서 유도한** $P(a,t)$의 explicit candidate form이 들어간다.
+
+$M$개의 양의 layer spacing에 대해
+
+$$
+L=M\mu,
+\qquad
+E_c=M\mathcal E
+$$
+
+를 정의하고 reduced configuration의 constrained density를
+
+$$
+\Omega_M(L,E)
+=
+\int
+\delta\left(\sum_i\lambda_i-L\right)
+\delta\left(\sum_i\psi(\lambda_i)-E\right)
+\,d^M\lambda
+$$
+
+로 둔다.
+
+**ASSUMPTION:** instantaneous $(L,E)$ constraint가 주어졌을 때 compatible reduced layer-spacing configuration에 동일한 base measure를 부여한다.
+
+이 가정 아래 finite-$M$ marginal은
+
+$$
+\boxed{
+p_M(\lambda\mid L,E)
+=
+\frac{
+\Omega_{M-1}(L-\lambda,E-\psi(\lambda))
+}{
+\Omega_M(L,E)
+}
+}
+$$
+
+이다.
+
+large-$M$ saddle-point reduction은
+
+$$
+\boxed{
+p_\lambda(\lambda,t)
+=
+\frac{
+\exp[-\alpha(t)\lambda-\beta(t)\psi(\lambda)]
+}{
+Z(\alpha(t),\beta(t))
+}
+}
+$$
+
+를 준다.
+
+여기서
+
+$$
+Z(\alpha,\beta)
+=
+\int_0^\infty
+\exp[-\alpha\lambda-\beta\psi(\lambda)]\,d\lambda
+$$
+
+이고 multiplier는 physical moment
+
+$$
+\boxed{
+\mu(t)
+=-\partial_\alpha\ln Z
 }
 $$
 
@@ -555,151 +546,117 @@ $$
 $$
 \boxed{
 \mathcal E(t)
-=
-\int\psi(\lambda)P(\lambda,t)\,d\lambda
+=-\partial_\beta\ln Z
 }
 $$
 
-를 사용한다.
+로 결정된다.
 
-평균이 거의 보존될 때 homogeneous value를 초과하는 에너지는 정확히
+따라서 $\alpha$, $\beta$는 fitted fatigue parameter가 아니다. 또한 별도의 equilibrium derivation 없이 $\beta$를 thermodynamic inverse temperature라고 해석하지 않는다.
+
+## Closure 내부의 정확한 identity
+
+fixed mean에서
 
 $$
 \boxed{
-\mathcal E(t)-\psi(\mu(t))
+\frac{d\mathcal E}{d\beta}\bigg|_\mu
 =
-\int
+-
 \left[
-\psi(\lambda)-\psi(\mu)-\psi'(\mu)(\lambda-\mu)
+\operatorname{Var}(\psi)
+-
+\frac{\operatorname{Cov}(\lambda,\psi)^2}{\operatorname{Var}(\lambda)}
 \right]
-P(\lambda,t)\,d\lambda
+\le0
 }
 $$
 
 이다.
 
-convex LJ 영역에서는 이 값이 음수가 아니며 평균에서 분포가 퍼지는 정도와 연결된다.
-
-## 정확한 impossibility result
-
-정규화, 평균, 에너지만으로는 **tensile tail을 강제할 수 없다.**
+따라서 adopted exponential-family closure 내부에서는
 
 $$
-\psi(\lambda)\rightarrow\infty
+\boxed{
+\mu=\text{constant},
+\quad
+\mathcal E\uparrow
+\Rightarrow
+\beta\downarrow
+}
+$$
+
+이다.
+
+## 현재 수치결과
+
+$$
+\mu=1
+$$
+
+을 고정하면 $\mathcal E$가 증가할수록 solved distribution이 넓어진다.
+
+normal-opening tail
+
+$$
+\boxed{
+Q_c
+=
+\int_{\lambda_c}^{\infty}p_\lambda(\lambda)\,d\lambda
+}
+$$
+
+은 다음과 같이 변한다.
+
+| $\mathcal E$ | $\operatorname{Var}(\lambda)$ | $Q_c$ |
+|---:|---:|---:|
+| $2\times10^{-4}$ | $4.0917\times10^{-4}$ | $4.6411\times10^{-5}$ |
+| $5\times10^{-4}$ | $1.0604\times10^{-3}$ | $5.1948\times10^{-3}$ |
+| $10^{-3}$ | $2.2480\times10^{-3}$ | $2.7631\times10^{-2}$ |
+| $2\times10^{-3}$ | $4.7677\times10^{-3}$ | $6.8314\times10^{-2}$ |
+| $4\times10^{-3}$ | $9.3832\times10^{-3}$ | $1.1464\times10^{-1}$ |
+
+monotone tail growth는 **이 sampled energy range에서의 numerical result**이며 아직 universal theorem은 아니다.
+
+$\mathcal E=10^{-3}$에서 quadrature order 320과 640의 $Q_c$ 차이는 약
+
+$$
+1.04\times10^{-10}
+$$
+
+뿐이다.
+
+## 중요한 한계
+
+이 distribution form이 cyclic loading이 만드는 exact nonequilibrium distribution이라고 아직 증명된 것은 아니다.
+
+다음 falsification test는 deterministic 1D layer-LJ dynamics를 돌려
+
+$$
+\mu_{\rm sim}(t),
 \qquad
-(\lambda\rightarrow0^+)
+\mathcal E_{\rm sim}(t)
 $$
 
-이므로 모든 확률질량을 $\lambda_c$ 아래에 유지하면서 reverse compression으로 임의로 큰 에너지를 수학적으로 저장할 수 있다.
+를 측정하고, 동일한 두 moment를 closure에 넣어 얻은 predicted distribution을 empirical layer-spacing distribution과 직접 비교하는 것이다.
 
-따라서 하나의 추가 물리조건이 필요하다.
+shape가 맞지 않으면 closure를 기각하거나 확장해야 한다.
 
-현재 최소조건은 역학적으로 정당화된 lower support bound
+## 활성 파일
 
-$$
-\boxed{
-\lambda\ge\lambda_L(t)>0
-}
-$$
+- `theory/normal_lj_chain.py` — conservative 1D normal chain
+- `theory/normal_lj_energy_feasibility.py` — stated support constraint 아래 exact worst-case crack-free energy bound
+- `theory/normal_lj_distribution.py` — large-$M$ layer-spacing distribution closure
+- `simulations/run_normal_lj_distribution.py` — energy sweep 및 figure 생성
+- `tests/test_normal_lj_distribution.py` — moment recovery, monotonic-energy identity, sampled tail-growth test
+- `docs/MILESTONE5_DERIVED_DISTRIBUTION_CLOSURE.md` — 유도와 해석
+- `docs/VARIABLE_DEFINITIONS_DISTRIBUTION_CLOSURE.md` — closure 변수정의
+- `results/reports/NORMAL_LJ_DISTRIBUTION_CLOSURE.md` — numerical result report
 
-이다.
+archive:
 
-이 값은 fitting parameter가 아니다. $\lambda_L(t)$를 1D mechanics로부터 유도하거나 독립적으로 제약하는 것이 현재 중심 물리문제다.
-
-## 정확한 crack-free energy ceiling
-
-$$
-\operatorname{supp}P(\lambda,t)
-\subset
-[\lambda_L(t),\lambda_c]
-$$
-
-를 가정한다.
-
-generalized LJ energy는 이 interval 전체에서 convex하므로 고정 평균에서 가능한 최소 및 최대 energy는 정확히
-
-$$
-\boxed{
-\mathcal E_{\rm safe}^{\min}(t)=\psi(\mu(t))
-}
-$$
-
-및
-
-$$
-\boxed{
-\mathcal E_{\rm safe}^{\max}(t)
-=
-\frac{\lambda_c-\mu(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_L(t))
-+
-\frac{\mu(t)-\lambda_L(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_c)
-}
-$$
-
-이다.
-
-최댓값은 endpoint two-point measure에서 실제로 달성되므로 특정 distribution ansatz가 아니라 모든 admissible probability distribution에 대한 정확한 extremum이다.
-
-$$
-\boxed{
-M_E(t)=\mathcal E_{\rm safe}^{\max}(t)-\mathcal E(t)
-}
-$$
-
-를 정의한다.
-
-유효한 hard compression bound가 확보된 상태에서
-
-$$
-M_E(t)<0
-$$
-
-이면 정규화, 평균, 에너지 및 support를 동시에 만족하는 crack-free probability distribution은 존재할 수 없다. 따라서 $\lambda_c$를 넘는 probability mass가 필수가 된다.
-
-이에 대응하는 연속시간 first passage는
-
-$$
-\boxed{
-\tau_E
-=
-\inf\{t\ge0:M_E(t)<0\}
-}
-$$
-
-이다.
-
-자세한 내용은 `docs/MILESTONE4_TIME_ENERGY_FEASIBILITY.md`에 있다.
-
-## 현재 다음 단계
-
-가장 우선적인 문제는
-
-$$
-\boxed{
-\text{1D normal-LJ mechanics로부터 }\lambda_L(t)\text{를 유도하는 것}
-}
-$$
-
-이다.
-
-이 단계에는 3D model, shear coordinate, fitted damage law, fitted relaxation time 또는 assumed probability family가 필요하지 않다.
-
-## 활성 code
-
-- `theory/normal_lj_chain.py` — conservative 1D LJ normal-chain dynamics
-- `theory/normal_lj_energy_feasibility.py` — 정확한 probability-measure energy bound
-- `theory/normal_lj_timescale.py` — 유지되는 1D time-scale falsification diagnostic
-- `simulations/run_normal_lj_chain.py` — 직접 1D null/dynamic simulation
-- `simulations/run_normal_lj_energy_feasibility.py` — exact energy-ceiling parameter sweep
-- `tests/test_normal_lj_chain.py`
-- `tests/test_normal_lj_energy_feasibility.py`
-
-## 변수정의
-
-- `docs/VARIABLE_DEFINITIONS_NORMAL_LJ.md`
-- `docs/VARIABLE_DEFINITIONS_ENERGY_FEASIBILITY.md`
-- `docs/VARIABLE_DEFINITIONS_NORMAL_TIMESCALE.md`
-- `firmware/VARIABLE_DEFINITIONS.md`
+- `libraries/shear/`
+- `libraries/fcc_normal/`
 
 ## 활성 결과 재현
 
@@ -709,20 +666,7 @@ python -m simulations.generate_results
 python -m unittest discover -s tests
 ```
 
-기본 workflow는 active 1D normal-LJ calculation만 실행한다.
-
-## Repository 구조
-
-- `docs/` — 활성 1D normal theory 및 변수정의
-- `theory/` — 활성 1D normal-LJ mathematical code
-- `simulations/` — 활성 1D numerical/analytical runner
-- `tests/` — 활성 1D falsification 및 theorem test
-- `results/` — 활성 1D result data, figure, report
-- `firmware/` — fatigue-tester controller core
-- `libraries/shear/` — 보존된 shear/Rubin/slip archive
-- `libraries/fcc_normal/` — 보존된 3D FCC normal-LJ archive
-
-## 연구 규칙
+## 연구 분류 라벨
 
 모든 중요한 statement는 다음 중 하나로 분류한다.
 
@@ -730,6 +674,6 @@ python -m unittest discover -s tests
 - **DEFINITION**
 - **ASSUMPTION**
 - **CONTROLLED APPROXIMATION**
-- **EMPIRICAL INPUT / PHYSICAL CONSTRAINT**
+- **EMPIRICAL INPUT / CALIBRATION**
 
-fatigue curve fitting만으로 얻은 결과는 성공적인 mechanics derivation으로 보지 않는다.
+fitted Gaussian/Weibull distribution, cycle-dependent LJ parameter 또는 empirical fatigue-damage variable은 mechanics derivation으로 인정하지 않는다.
