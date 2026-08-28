@@ -1,7 +1,7 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 1D 상관 기반 유효 독립개수와 통계 특성길이가 완전독립/완전동일종속 극한을 정확히 재현하는지 검증한다.
+# - 파일 역할: 1D 상관 기반 유효 독립개수와 통계 특성길이가 완전독립/완전동일종속 극한 및 동일-block event 확률을 정확히 재현하는지 검증한다.
 # - 주요 클래스: TestNormalLJStatisticalCells
-# - 주요 함수/메서드: TestNormalLJStatisticalCells.test_independent_limit, TestNormalLJStatisticalCells.test_fully_identical_limit, TestNormalLJStatisticalCells.test_anticorrelation_can_raise_effective_count, TestNormalLJStatisticalCells.test_identical_pair_msd, TestNormalLJStatisticalCells.test_independent_any_event_probability
+# - 주요 함수/메서드: TestNormalLJStatisticalCells.test_independent_limit, TestNormalLJStatisticalCells.test_fully_identical_limit, TestNormalLJStatisticalCells.test_anticorrelation_can_raise_effective_count, TestNormalLJStatisticalCells.test_identical_pair_msd, TestNormalLJStatisticalCells.test_independent_any_event_probability, TestNormalLJStatisticalCells.test_identical_block_any_event_probability
 # - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 import unittest
@@ -11,6 +11,7 @@ import numpy as np
 from theory.normal_lj_statistical_cells import (
     effective_independent_count,
     finite_correlation_factor,
+    identical_block_any_event_probability,
     identical_pair_msd,
     independent_any_event_probability,
     variance_equivalent_axial_length,
@@ -51,6 +52,23 @@ class TestNormalLJStatisticalCells(unittest.TestCase):
         self.assertAlmostEqual(independent_any_event_probability(0.1, 3), 0.271)
         self.assertEqual(independent_any_event_probability(0.6, 0), 0.0)
         self.assertEqual(independent_any_event_probability(1.0, 5), 1.0)
+
+    def test_identical_block_any_event_probability(self) -> None:
+        q = 0.1
+        m = 12
+        self.assertAlmostEqual(
+            identical_block_any_event_probability(q, m, 1),
+            independent_any_event_probability(q, m),
+        )
+        self.assertAlmostEqual(
+            identical_block_any_event_probability(q, m, m), q
+        )
+        self.assertAlmostEqual(
+            identical_block_any_event_probability(q, m, 3),
+            independent_any_event_probability(q, 4),
+        )
+        with self.assertRaises(ValueError):
+            identical_block_any_event_probability(q, 10, 3)
 
 
 if __name__ == "__main__":
