@@ -1,3 +1,12 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: calibrated generalized-LJ layer interaction을 사용하는 보존적 1D normal chain을 적분하고, 에너지·spacing·instability 진단값을 계산한다.
+# - 주요 클래스: NormalLJParameters, InstabilityEvent, NormalLJResult
+# - 주요 함수/메서드: NormalLJResult.energy_balance_relative_error, _validate_exponents, normalized_lj_energy
+#   normalized_lj_force, normalized_lj_stiffness, critical_stretch, critical_dimensionless_force
+#   stress_to_dimensionless_force, atomic_time_scale, dimensionless_omega_from_frequency
+#   physical_frequency_from_dimensionless_omega, simulate_normal_lj_chain
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 """Normal-opening generalized Lennard-Jones chain.
 
 This module is the main proof-of-principle model for the project's current

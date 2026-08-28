@@ -1,3 +1,10 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: 1D layer-LJ potential의 convexity와 support constraint를 이용해 crack-free energy feasibility bound를 계산한다.
+# - 주요 클래스: SafeEnergyInterval
+# - 주요 함수/메서드: shifted_lj_energy, safe_energy_interval, safe_energy_margin, safe_distribution_exists
+#   first_energy_ceiling_crossing_time, no_compression_bound_counterexample_energy
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 """Exact energy-feasibility bounds for the active 1D normal-LJ theory.
 
 The active state is P(lambda, t), where lambda=a/a0 is the local normal

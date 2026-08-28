@@ -1,3 +1,12 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: 무차원·물리 시간/주파수 변환과 scale 계산을 검증한다.
+# - 주요 클래스: NormalLJTimescaleTests
+# - 주요 함수/메서드: NormalLJTimescaleTests.test_lowest_mode_decreases_with_chain_length
+#   NormalLJTimescaleTests.test_mode_inversion
+#   NormalLJTimescaleTests.test_100mpa_stable_branch_has_positive_tangent_stiffness
+#   NormalLJTimescaleTests.test_20hz_critical_softening_requires_extreme_proximity
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 import math
 import unittest
 

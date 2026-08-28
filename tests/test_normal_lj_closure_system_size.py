@@ -1,3 +1,11 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: system-size sweep의 dynamic-similarity 규칙과 수치 진단 함수를 검증한다.
+# - 주요 클래스: NormalLJClosureSystemSizeTests
+# - 주요 함수/메서드: NormalLJClosureSystemSizeTests.test_dynamic_similarity_invariant
+#   NormalLJClosureSystemSizeTests.test_sharply_concentrated_state_is_resolved
+#   NormalLJClosureSystemSizeTests.test_vectorized_cdf_matches_scalar
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 import unittest
 
 import numpy as np

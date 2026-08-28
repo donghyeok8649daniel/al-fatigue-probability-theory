@@ -1,3 +1,15 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: push-forward 보조 계산의 수학적 identity를 검증한다. harmonic/Taylor 항목은 과거 진단용 테스트로만 유지한다.
+# - 주요 클래스: PushForwardDistributionTests
+# - 주요 함수/메서드: PushForwardDistributionTests.test_lj_force_taylor_coefficients
+#   PushForwardDistributionTests.test_linear_dispersion
+#   PushForwardDistributionTests.test_arcsine_normalization_numerically
+#   PushForwardDistributionTests.test_arcsine_cdf_endpoints
+#   PushForwardDistributionTests.test_single_mode_moments
+#   PushForwardDistributionTests.test_two_harmonic_skewness_formula
+#   PushForwardDistributionTests.test_two_harmonic_maximum_skewness
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 import math
 import unittest
 

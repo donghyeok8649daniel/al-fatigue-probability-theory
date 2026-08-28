@@ -1,3 +1,12 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: 1D reduced layer model의 무차원/물리 시간·주파수 변환과 scale separation 진단을 계산한다.
+# - 주요 클래스: 없음 또는 외부 선언만 사용
+# - 주요 함수/메서드: lowest_fixed_free_mode_omega_star, lowest_fixed_free_mode_frequency_hz
+#   moving_atoms_for_target_frequency, homogeneous_stretch_for_dimensionless_stress
+#   local_small_oscillation_frequency_hz, normalized_lj_third_derivative
+#   near_critical_distance_for_target_local_frequency
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 """Time-scale diagnostics for the active normal generalized-LJ mainline.
 
 No damping, fitted relaxation time, or fatigue law is introduced here.

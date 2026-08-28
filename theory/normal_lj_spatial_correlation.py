@@ -1,3 +1,11 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: layer-spacing 순서정보를 나타내는 C_k, rho_k 및 scaled correlation 진단량을 계산한다.
+# - 주요 클래스: CorrelationSummary
+# - 주요 함수/메서드: spatial_covariance, normalized_spatial_correlation, correlation_profile
+#   first_zero_crossing, positive_correlation_integral_over_m, random_permutation_expected_rho
+#   summarize_spatial_correlation
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 """Spatial-correlation diagnostics for the active 1D normal layer-LJ theory.
 
 A one-point spacing density P(lambda,t) is invariant under any permutation of

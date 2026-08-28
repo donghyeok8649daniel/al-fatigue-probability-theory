@@ -125,6 +125,17 @@ Every numerical result must state:
 - whether any parameter is illustrative rather than a material input;
 - whether the result is an exact theorem check, null test, proof of principle, or physical prediction.
 
+## Korean code-file header rule
+
+Every active source, simulation, test, and firmware code/header file must begin with a Korean navigation comment that states at least:
+
+- the role of the file;
+- the main functions/classes or public symbols;
+- the implementation/output role when useful;
+- a reminder that scientific classification belongs to the detailed docstrings and theory documents.
+
+Use `python tools/add_korean_code_headers.py` to regenerate these headers after adding or renaming functions. Use `--check` to detect stale headers.
+
 ---
 
 # 한국어 번역 — Repository 작성 규칙
@@ -257,3 +268,15 @@ assumption이나 controlled approximation을 설명 없이 exact result로 승�
 - 가능한 경우 conservation/convergence check;
 - parameter가 material input이 아니라 illustrative 값인지 여부;
 - exact theorem check, null test, proof of principle, physical prediction 중 무엇인지.
+
+## 한국어 코드 파일 상단 안내 규칙
+
+모든 활성 source, simulation, test, firmware code/header 파일은 맨 위에 최소한 다음 내용을 적은 한국어 탐색용 주석을 둔다.
+
+- 파일이 하는 일;
+- 주요 함수/클래스 또는 공개 symbol;
+- 필요하면 구현 또는 출력 결과의 역할;
+- 물리적 가정·근사·정확성 분류는 세부 docstring과 theory 문서를 따라야 한다는 주의.
+
+함수 추가/이름변경 뒤에는 `python tools/add_korean_code_headers.py`로 헤더를 다시 생성한다. `--check` 옵션으로 오래된 헤더를 검사할 수 있다.
+

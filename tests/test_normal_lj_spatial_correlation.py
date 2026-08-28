@@ -1,3 +1,12 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: C_k, rho_k, permutation reference 등 spatial-correlation 계산을 검증한다.
+# - 주요 클래스: SpatialCorrelationTests
+# - 주요 함수/메서드: SpatialCorrelationTests.test_c0_is_empirical_variance
+#   SpatialCorrelationTests.test_one_point_permutation_invariance_does_not_fix_correlation
+#   SpatialCorrelationTests.test_random_permutation_expectation
+#   SpatialCorrelationTests.test_profile_starts_at_unity
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 import unittest
 import numpy as np
 

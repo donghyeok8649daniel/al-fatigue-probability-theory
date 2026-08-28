@@ -1,3 +1,9 @@
+/* === 한국어 파일 안내 시작 ===
+파일 역할: 피로시험기 제어기의 설정값, 상태, 파형/제어 인터페이스를 선언하는 공개 헤더다.
+주요 자료형: ft_waveform_t, ft_config_t, ft_sample_t, ft_output_t, ft_controller_t
+주요 함수: ft_config_valid, ft_init, ft_start, ft_stop, ft_step
+주의: 이 안내는 코드 탐색용이며 안전한 실제 하드웨어 구동에는 별도의 HAL 구현과 limit/interlock 검증이 필요하다.
+=== 한국어 파일 안내 끝 === */
 #ifndef FATIGUE_CONTROLLER_H
 #define FATIGUE_CONTROLLER_H
 

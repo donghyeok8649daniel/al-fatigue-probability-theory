@@ -1,3 +1,9 @@
+/* === 한국어 파일 안내 시작 ===
+파일 역할: 실제 MCU 없이 host 환경에서 firmware 제어 로직의 기본 동작을 확인하는 테스트 실행 파일이다.
+주요 자료형: 없음 또는 다른 헤더에서 정의
+주요 함수: main
+주의: 이 안내는 코드 탐색용이며 안전한 실제 하드웨어 구동에는 별도의 HAL 구현과 limit/interlock 검증이 필요하다.
+=== 한국어 파일 안내 끝 === */
 #include "fatigue_controller.h"
 #include <assert.h>
 #include <stdio.h>

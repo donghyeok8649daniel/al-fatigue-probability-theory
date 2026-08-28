@@ -1,3 +1,10 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: deterministic spacing field에서 one-point density를 얻는 push-forward 관련 계산 도구를 모은다. harmonic/Taylor 기반 항목은 active 전역 분포 가정으로 사용하지 않는다.
+# - 주요 클래스: 없음 또는 외부 선언만 사용
+# - 주요 함수/메서드: lj_force_taylor_coefficients, linear_mode_frequency, arcsine_density, arcsine_cdf
+#   single_mode_moments, two_harmonic_moments, two_harmonic_max_abs_skewness
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 """Push-forward structure implied by the 1D layer-LJ governing equations.
 
 The empirical one-point spacing density is the push-forward of the uniformly

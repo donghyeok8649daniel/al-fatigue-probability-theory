@@ -1,3 +1,9 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: 동적으로 matched된 여러 chain size에서 spacing spatial correlation을 계산하고 CSV/JSON/figure를 생성한다.
+# - 주요 클래스: 없음 또는 외부 선언만 사용
+# - 주요 함수/메서드: main
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 """Spatial-correlation sweep for dynamically matched 1D layer-LJ chains."""
 from __future__ import annotations
 

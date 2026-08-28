@@ -1,3 +1,14 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: safe-energy bound와 관련 convexity/feasibility identity를 검증한다.
+# - 주요 클래스: NormalLJEnergyFeasibilityTests
+# - 주요 함수/메서드: NormalLJEnergyFeasibilityTests.test_endpoint_measure_attains_exact_maximum
+#   NormalLJEnergyFeasibilityTests.test_delta_at_mean_attains_exact_minimum
+#   NormalLJEnergyFeasibilityTests.test_random_safe_measures_stay_below_chord_bound
+#   NormalLJEnergyFeasibilityTests.test_energy_above_ceiling_has_no_safe_distribution
+#   NormalLJEnergyFeasibilityTests.test_no_lower_compression_bound_allows_unbounded_safe_energy
+#   NormalLJEnergyFeasibilityTests.test_first_crossing_is_continuous_time_not_cycle_index
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 import unittest
 
 import numpy as np

@@ -1,3 +1,9 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: omega*M을 고정한 동적 유사성 조건에서 represented system size에 따른 closure mismatch를 검사한다.
+# - 주요 클래스: 없음 또는 외부 선언만 사용
+# - 주요 함수/메서드: dynamically_matched_omega, main
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 """Dynamically matched represented-system-size sweep for the 1D layer-LJ closure.
 
 A naive fixed-frequency M sweep is not a clean finite-size test because the

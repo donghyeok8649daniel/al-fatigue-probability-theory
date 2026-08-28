@@ -1,3 +1,9 @@
+/* === 한국어 파일 안내 시작 ===
+파일 역할: MCU main loop에서 HAL과 fatigue controller를 연결하는 사용 예시를 제공한다.
+주요 자료형: 없음 또는 다른 헤더에서 정의
+주요 함수: fatigue_control_init, fatigue_control_start, fatigue_control_tick
+주의: 이 안내는 코드 탐색용이며 안전한 실제 하드웨어 구동에는 별도의 HAL 구현과 limit/interlock 검증이 필요하다.
+=== 한국어 파일 안내 끝 === */
 #include "fatigue_controller.h"
 #include "fatigue_hal.h"
 

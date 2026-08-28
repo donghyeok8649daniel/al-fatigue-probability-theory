@@ -1,3 +1,13 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: closure-vs-mechanics 비교 지표와 반증시험 계산이 재현되는지 검증한다.
+# - 주요 클래스: ClosureFalsificationTests
+# - 주요 함수/메서드: ClosureFalsificationTests.setUpClass
+#   ClosureFalsificationTests.test_variance_is_close_in_near_equilibrium_case
+#   ClosureFalsificationTests.test_full_distribution_is_not_identical
+#   ClosureFalsificationTests.test_tail_remains_effectively_zero_before_instability
+#   ClosureFalsificationTests.test_skewness_is_not_forced_by_mean_and_energy
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 import unittest
 
 from theory.normal_lj_chain import NormalLJParameters, simulate_normal_lj_chain

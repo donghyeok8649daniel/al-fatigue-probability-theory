@@ -1,3 +1,12 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: spacing closure의 normalization, moment recovery, energy relation 및 수치 안정성을 검증한다.
+# - 주요 클래스: NormalLJDistributionTests
+# - 주요 함수/메서드: NormalLJDistributionTests.test_solver_recovers_mean_and_energy
+#   NormalLJDistributionTests.test_energy_decreases_with_beta_at_fixed_mean
+#   NormalLJDistributionTests.test_tail_increases_over_reference_energy_sweep
+#   NormalLJDistributionTests.test_homogeneous_energy_is_jensen_minimum
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 import unittest
 
 from theory.normal_lj_distribution import (
