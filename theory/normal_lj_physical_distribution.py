@@ -1,5 +1,5 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 활성 1D normal layer-LJ 이론 계산에 사용하는 Python 모듈이다.
+# - 파일 역할: full nonlinear layer-LJ에 비선형 탄성 안정성과 통계역학을 적용해 zero-T, fixed-length canonical, tensile metastable P의 물리 함수형을 계산한다.
 # - 주요 클래스: 없음 또는 외부 선언만 사용
 # - 주요 함수/메서드: physical_energy_scale, inverse_reduced_temperature, force_biased_potential, _bisect_root
 #   quasistatic_stable_spacing, metastable_stationary_points, metastable_barrier_height

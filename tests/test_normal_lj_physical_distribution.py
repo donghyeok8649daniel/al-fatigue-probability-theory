@@ -1,5 +1,5 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
+# - 파일 역할: 비선형 안정점·장벽, 물리 에너지척도, metastable Gibbs P, exact M=2 fixed-length canonical P의 성질을 검증한다.
 # - 주요 클래스: TestNormalLJPhysicalDistribution
 # - 주요 함수/메서드: TestNormalLJPhysicalDistribution.test_physical_energy_scale_and_inverse_temperature
 #   TestNormalLJPhysicalDistribution.test_quasistatic_zero_force_is_equilibrium_spacing
