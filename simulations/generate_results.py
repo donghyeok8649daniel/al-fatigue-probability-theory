@@ -43,7 +43,6 @@ def main() -> None:
     run_normal_closure_falsification()
     run_normal_closure_system_size()
     run_normal_spatial_correlation()
-    run_normal_pushforward_clue()
 
 
 if __name__ == "__main__":

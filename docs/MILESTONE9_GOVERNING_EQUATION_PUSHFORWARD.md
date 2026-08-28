@@ -1,5 +1,9 @@
 # Milestone 9 — Governing-Equation Push-Forward Clue for the 1D Spacing Distribution
 
+> **SUPERSEDED AS ACTIVE GLOBAL-DISTRIBUTION ROUTE:** Sections below that use linear modes, finite harmonics, or a Taylor expansion about $\lambda=1$ are retained only as historical/local diagnostics. They are not used for the active full-support distribution theory. The current exact nonlinear route is `MILESTONE10_EXACT_DISTRIBUTION_TRANSPORT.md`.
+
+<!-- M9_SUPERSEDED_EN -->
+
 ## Scope
 
 The active model remains strictly one-dimensional, normal-only, and layer based. This milestone does not choose a new fitted probability family. Instead it asks what can be said about the form of the one-point spacing density directly from the existing deterministic layer-spacing field and the 1D layer-LJ governing equation.
@@ -299,6 +303,10 @@ No empirical relaxation constant, damage variable, Gaussian assumption, Weibull 
 ---
 
 # 한국어 번역 — 1D Spacing Distribution 형식에 대한 지배방정식 Push-Forward 단서
+
+> **활성 전역분포 경로에서 제외됨:** 아래의 linear mode, finite harmonic, $\lambda=1$ 주변 Taylor expansion 부분은 historical/local diagnostic으로만 보존한다. 전체 support의 활성 distribution theory에는 사용하지 않는다. 현재 exact nonlinear 경로는 `MILESTONE10_EXACT_DISTRIBUTION_TRANSPORT.md`다.
+
+<!-- M9_SUPERSEDED_KO -->
 
 ## 범위
 

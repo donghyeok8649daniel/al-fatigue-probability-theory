@@ -1,8 +1,9 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: Taylor/harmonic 근사 없이 원래 1D layer-LJ 식에서 spacing distribution의 exact transport/moment 구조를 계산한다.
-# - 주요 클래스: 없음
-# - 주요 함수/메서드: exact_spacing_acceleration, monomial_moment, monomial_moment_rate, monomial_moment_second_rate
-# - 주의: 이 파일은 probability family를 가정하지 않는다. finite-M empirical measure의 exact identity와 원래 nonlinear LJ force만 사용한다.
+# - 파일 역할: 활성 1D normal layer-LJ 이론 계산에 사용하는 Python 모듈이다.
+# - 주요 클래스: 없음 또는 외부 선언만 사용
+# - 주요 함수/메서드: exact_spacing_acceleration, monomial_moment, monomial_moment_rate
+#   monomial_moment_second_rate
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """Exact transport identities for the nonlinear 1D layer-LJ spacing state.
 

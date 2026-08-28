@@ -1,5 +1,19 @@
 # Al Fatigue Probability Theory
 
+## Active-theory correction — exact nonlinear transport
+
+**CURRENT ACTIVE STATUS:** the harmonic/single-mode and Taylor-expanded push-forward material retained later in this README is historical/local diagnostic work and is **not** the active global form of $P(\lambda,t)$.
+
+The current derivation keeps the original nonlinear generalized-LJ force and starts from the exact empirical transport identities
+
+$$
+\partial_tP+\partial_\lambda J=0,
+$$
+
+with the spacing-velocity phase-space state $F_1(\lambda,v,t)$ and neighboring-spacing joint state $P_2$ entering the exact hierarchy. See `docs/MILESTONE10_EXACT_DISTRIBUTION_TRANSPORT.md`.
+
+<!-- ACTIVE_TRANSPORT_CORRECTION_EN -->
+
 Mechanics-first research framework for fatigue crack initiation under **one-dimensional normal cyclic loading** in high-purity / single-crystal aluminum.
 
 ## Active scope
@@ -280,6 +294,20 @@ No fitted Gaussian/Weibull distribution, cycle-dependent LJ parameter, empirical
 ---
 
 # 한국어 번역
+
+## 활성 이론 정정 — 정확한 비선형 transport
+
+**현재 활성 상태:** 이 README 뒤쪽에 남아 있는 harmonic/single-mode 및 Taylor-expanded push-forward 내용은 historical/local diagnostic이며 $P(\lambda,t)$의 활성 전역 형식으로 사용하지 않는다.
+
+현재 derivation은 원래 nonlinear generalized-LJ force를 그대로 유지하고 exact empirical transport identity
+
+$$
+\partial_tP+\partial_\lambda J=0
+$$
+
+에서 출발한다. 이후 spacing-velocity phase-space state $F_1(\lambda,v,t)$와 neighboring-spacing joint state $P_2$가 exact hierarchy에 들어간다. `docs/MILESTONE10_EXACT_DISTRIBUTION_TRANSPORT.md`를 현재 기준으로 사용한다.
+
+<!-- ACTIVE_TRANSPORT_CORRECTION_KO -->
 
 고순도 또는 단결정 알루미늄의 **1차원 수직 반복하중** 아래 피로 균열개시를 mechanics-first 방식으로 전개하는 연구 저장소다.
 

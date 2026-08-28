@@ -1,8 +1,10 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: Taylor/harmonic 근사 없이 유도한 finite-M spacing transport/moment identity와 exact nonlinear LJ acceleration을 검증한다.
+# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
 # - 주요 클래스: TestNormalLJDistributionTransport
-# - 주요 함수/메서드: TestNormalLJDistributionTransport.test_exact_spacing_acceleration, test_moment_rate_identities, test_boundary_not_silently_closed
-# - 주의: 이 테스트는 probability family의 적합도를 검사하지 않고 exact finite-sample identity만 검사한다.
+# - 주요 함수/메서드: TestNormalLJDistributionTransport.test_exact_spacing_acceleration
+#   TestNormalLJDistributionTransport.test_moment_rate_identities
+#   TestNormalLJDistributionTransport.test_boundary_not_silently_closed
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 import unittest
 
