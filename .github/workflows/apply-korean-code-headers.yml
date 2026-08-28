@@ -12,9 +12,11 @@ on:
       - 'docs/MILESTONE10_EXACT_DISTRIBUTION_TRANSPORT.md'
       - 'docs/MILESTONE11_EXACT_P_SHAPE.md'
       - 'docs/MILESTONE12_PHYSICAL_STATISTICAL_P.md'
+      - 'docs/MILESTONE13_1D_STATISTICAL_CELL.md'
       - 'docs/VARIABLE_DEFINITIONS_DISTRIBUTION_TRANSPORT.md'
       - 'docs/VARIABLE_DEFINITIONS_P_SHAPE.md'
       - 'docs/VARIABLE_DEFINITIONS_PHYSICAL_P.md'
+      - 'docs/VARIABLE_DEFINITIONS_STATISTICAL_CELL.md'
       - 'results/data/result_manifest.json'
       - 'tools/add_korean_code_headers.py'
       - 'tools/apply_exact_transport_supersession.py'
@@ -54,6 +56,9 @@ jobs:
       - name: Generate Milestone 12 dimensionless diagnostics
         run: python -m simulations.run_normal_lj_physical_distribution
 
+      - name: Generate Milestone 13 correlation-cell diagnostics
+        run: python -m simulations.run_normal_lj_spatial_correlation
+
       - name: Commit synchronized status and generated diagnostics
         shell: bash
         run: |
@@ -64,5 +69,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add README.md docs theory simulations tests firmware results
-          git commit -m 'Synchronize physical-statistical P status and diagnostics'
+          git commit -m 'Synchronize 1D probability and statistical-cell diagnostics'
           git push
