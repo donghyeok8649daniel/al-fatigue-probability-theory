@@ -1,1 +1,0 @@
-Temporary duplicate with corrected math will replace the original in the next commit.
