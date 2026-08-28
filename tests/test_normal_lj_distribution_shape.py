@@ -1,8 +1,11 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: exact instantaneous P shape law와 neighbor-joint LJ acceleration 계산을 검증하는 회귀 테스트다.
+# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
 # - 주요 클래스: TestNormalLJDistributionShape
-# - 주요 함수/메서드: test_reconstructs_known_density, test_constant_theta_special_case, test_neighbor_acceleration_independent_case
-# - 검증 내용: log-slope 적분으로 알려진 density를 복원하는지, constant-Theta 특수형이 exponential-LJ 구조를 재현하는지, P2 적분식이 조건부 LJ acceleration과 일치하는지 확인한다.
+# - 주요 함수/메서드: TestNormalLJDistributionShape.test_reconstructs_known_density
+#   TestNormalLJDistributionShape.test_constant_theta_special_case
+#   TestNormalLJDistributionShape.test_neighbor_acceleration_independent_case
+#   TestNormalLJDistributionShape.test_log_slope_requires_positive_theta
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 import unittest
 

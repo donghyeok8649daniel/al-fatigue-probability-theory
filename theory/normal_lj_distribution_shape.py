@@ -1,9 +1,9 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: exact phase-space moment balance에서 1D layer-spacing 분포 P(lambda,t)의 순간 함수형/로그기울기 제약을 계산한다.
-# - 주요 함수/메서드: density_log_slope, reconstruct_density_from_shape_fields, lj_conditional_acceleration
-# - 입력: stretch grid, conditional velocity variance Theta, conditional acceleration, mean-flow material acceleration, neighbor joint densities
-# - 출력: d(log P)/d(lambda), 정규화된 P(lambda), full nonlinear LJ 조건부 acceleration
-# - 주의: Taylor/harmonic/Gaussian/Weibull 가정을 사용하지 않는다. P의 smooth representation에서 Theta>0인 구간에 대한 exact moment identity다.
+# - 파일 역할: 활성 1D normal layer-LJ 이론 계산에 사용하는 Python 모듈이다.
+# - 주요 클래스: 없음 또는 외부 선언만 사용
+# - 주요 함수/메서드: _as_same_1d, density_log_slope, reconstruct_density_from_shape_fields
+#   lj_conditional_acceleration
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """Exact instantaneous shape constraint for the 1D layer-spacing density.
 
