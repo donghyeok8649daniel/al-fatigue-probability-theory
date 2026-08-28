@@ -1,10 +1,10 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: full nonlinear layer-LJ 퍼텐셜에 비선형 탄성 안정성과 평형 통계역학을 적용해 준정적·canonical·metastable spacing 분포를 계산한다.
+# - 파일 역할: 활성 1D normal layer-LJ 이론 계산에 사용하는 Python 모듈이다.
 # - 주요 클래스: 없음 또는 외부 선언만 사용
-# - 주요 함수/메서드: physical_energy_scale, inverse_reduced_temperature, force_biased_potential
+# - 주요 함수/메서드: physical_energy_scale, inverse_reduced_temperature, force_biased_potential, _bisect_root
 #   quasistatic_stable_spacing, metastable_stationary_points, metastable_barrier_height
 #   metastable_gibbs_density, metastable_tail_probability, fixed_length_two_spacing_density
-# - 주의: thermal/canonical 및 metastable 분포는 명시된 ensemble·시간척도 가정 아래에서만 물리적으로 해석한다. 피로수명 법칙이나 escape rate를 임의로 넣지 않는다.
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """Physical-statistical forms of the full nonlinear 1D layer-LJ spacing state.
 
