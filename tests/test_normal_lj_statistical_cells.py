@@ -1,7 +1,7 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 1D 상관 기반 유효 독립개수와 통계 특성길이가 완전독립/완전동일종속 극한 및 동일-block event 확률을 정확히 재현하는지 검증한다.
+# - 파일 역할: 1D true-correlation 유효 독립개수와 finite-snapshot positive-window 특성길이가 독립/완전동일종속 극한 및 동일-block event 확률을 재현하는지 검증한다.
 # - 주요 클래스: TestNormalLJStatisticalCells
-# - 주요 함수/메서드: TestNormalLJStatisticalCells.test_independent_limit, TestNormalLJStatisticalCells.test_fully_identical_limit, TestNormalLJStatisticalCells.test_anticorrelation_can_raise_effective_count, TestNormalLJStatisticalCells.test_identical_pair_msd, TestNormalLJStatisticalCells.test_independent_any_event_probability, TestNormalLJStatisticalCells.test_identical_block_any_event_probability
+# - 주요 함수/메서드: TestNormalLJStatisticalCells.test_independent_limit, TestNormalLJStatisticalCells.test_fully_identical_limit, TestNormalLJStatisticalCells.test_anticorrelation_can_raise_effective_count, TestNormalLJStatisticalCells.test_positive_window_estimator, TestNormalLJStatisticalCells.test_positive_window_fully_identical_limit, TestNormalLJStatisticalCells.test_identical_pair_msd, TestNormalLJStatisticalCells.test_independent_any_event_probability, TestNormalLJStatisticalCells.test_identical_block_any_event_probability
 # - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 import unittest
@@ -14,6 +14,9 @@ from theory.normal_lj_statistical_cells import (
     identical_block_any_event_probability,
     identical_pair_msd,
     independent_any_event_probability,
+    positive_window_empirical_axial_length,
+    positive_window_empirical_correlation_factor,
+    positive_window_empirical_effective_count,
     variance_equivalent_axial_length,
 )
 
@@ -42,6 +45,28 @@ class TestNormalLJStatisticalCells(unittest.TestCase):
         rho = np.array([1.0, -0.2, 0.0, 0.0])
         self.assertLess(finite_correlation_factor(rho), 1.0)
         self.assertGreater(effective_independent_count(rho), float(len(rho)))
+
+    def test_positive_window_estimator(self) -> None:
+        rho_hat = np.array([1.0, 0.8, 0.4, -0.1, 0.2])
+        expected = 1.0 + 2.0 * ((1.0 - 1.0 / 5.0) * 0.8 + (1.0 - 2.0 / 5.0) * 0.4)
+        tau_hat = positive_window_empirical_correlation_factor(rho_hat)
+        self.assertAlmostEqual(tau_hat, expected, places=14)
+        self.assertAlmostEqual(
+            positive_window_empirical_effective_count(rho_hat), 5.0 / expected, places=14
+        )
+        self.assertAlmostEqual(
+            positive_window_empirical_axial_length(rho_hat, 2.0), 2.0 * expected, places=14
+        )
+
+    def test_positive_window_fully_identical_limit(self) -> None:
+        m = 9
+        rho_hat = np.ones(m)
+        self.assertAlmostEqual(
+            positive_window_empirical_correlation_factor(rho_hat), float(m), places=13
+        )
+        self.assertAlmostEqual(
+            positive_window_empirical_effective_count(rho_hat), 1.0, places=13
+        )
 
     def test_identical_pair_msd(self) -> None:
         x = np.array([0.9, 1.0, 1.1])
