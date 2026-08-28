@@ -1,5 +1,6 @@
 {
   "active_mainline": "1D normal layer-LJ in continuous physical time t, with full nonlinear mechanics, exact transport, and explicitly labeled statistical-mechanical ensemble limits",
+  "scope_freeze": "Remain strictly in one-dimensional normal tension until P(lambda,t) is physically identified and validated. 2D/3D FEM, multiaxial criteria, specimen hazard integration, and 3D mini-mesh coupling are deferred.",
   "state": "P(lambda,t) has exact driven-transport constraints and physically derived equilibrium limits: T=0 quasistatic delta state, fixed-length canonical/microcanonical marginals, and a controlled metastable intact-basin Gibbs form under subcritical tension",
   "primary_reduced_observables": [
     "P(lambda,t)",
@@ -19,6 +20,7 @@
     "rho_k(t)"
   ],
   "active_files": {
+    "scope_freeze": "docs/SCOPE_FREEZE_1D_FIRST.md",
     "chain_theory": "theory/normal_lj_chain.py",
     "distribution_transport_theory": "theory/normal_lj_distribution_transport.py",
     "distribution_shape_theory": "theory/normal_lj_distribution_shape.py",
@@ -61,6 +63,6 @@
     "shear": "libraries/shear/",
     "fcc_normal_3d": "libraries/fcc_normal/"
   },
-  "current_result": "Physical theory now fixes several non-arbitrary forms of P. The elastic calibration gives E0=E*A0*a0 and chi=E0/(k_B*T). Zero-temperature homogeneous quasistatic equilibrium is a delta measure at the stable force-balance spacing. An isolated equilibrium chain has a microcanonical configurational measure weighted by remaining kinetic phase volume. At fixed total length, the exact canonical one-spacing marginal is exp[-chi*phi(lambda)]*Z_{M-1}(L-lambda)/Z_M(L). A global tensile force-controlled Gibbs density does not normalize; for 0<f<fc an intact-basin Gibbs density is only a controlled metastable/local-equilibrium approximation.",
-  "next_target": "Physically define the representative layer area A0, then test whether deterministic cyclic states are consistent with microcanonical/local-equilibrium statistics. Compare physically derived P forms directly with mechanics; if they fail, derive the nonequilibrium correction from the exact F1/P2 hierarchy."
+  "current_result": "Physical theory fixes several non-arbitrary one-dimensional forms of P. The elastic calibration gives E0=E*A0*a0 and chi=E0/(k_B*T). Zero-temperature homogeneous quasistatic equilibrium is a delta measure at the stable force-balance spacing. An isolated equilibrium chain has a microcanonical configurational measure weighted by remaining kinetic phase volume. At fixed total length, the exact canonical one-spacing marginal is exp[-chi*phi(lambda)]*Z_{M-1}(L-lambda)/Z_M(L). A global tensile force-controlled Gibbs density does not normalize; for 0<f<fc an intact-basin Gibbs density is only a controlled metastable/local-equilibrium approximation.",
+  "next_target": "Stay strictly in 1D. Determine which physically derived P(lambda,t) form actually describes the deterministic cyclic 1D layer-LJ chain, including the role of A0/chi only after their physical meaning is fixed. Validate P and its tail/first-passage behavior before introducing any 2D/3D FEM or specimen-level probabilistic coupling."
 }
