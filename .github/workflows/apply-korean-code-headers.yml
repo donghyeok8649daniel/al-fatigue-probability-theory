@@ -13,6 +13,7 @@ on:
       - 'docs/MILESTONE11_EXACT_P_SHAPE.md'
       - 'docs/MILESTONE12_PHYSICAL_STATISTICAL_P.md'
       - 'docs/MILESTONE13_1D_STATISTICAL_CELL.md'
+      - 'docs/MILESTONE13A_FINITE_SNAPSHOT_CORRECTION.md'
       - 'docs/VARIABLE_DEFINITIONS_DISTRIBUTION_TRANSPORT.md'
       - 'docs/VARIABLE_DEFINITIONS_P_SHAPE.md'
       - 'docs/VARIABLE_DEFINITIONS_PHYSICAL_P.md'
@@ -21,6 +22,7 @@ on:
       - 'tools/add_korean_code_headers.py'
       - 'tools/apply_exact_transport_supersession.py'
       - 'tools/apply_physical_statistical_p_status.py'
+      - 'tools/apply_statistical_cell_status.py'
   workflow_dispatch:
 
 permissions:
@@ -44,6 +46,9 @@ jobs:
       - name: Synchronize physical-statistical P status
         run: python tools/apply_physical_statistical_p_status.py
 
+      - name: Synchronize 1D statistical-cell status
+        run: python tools/apply_statistical_cell_status.py
+
       - name: Apply Korean file headers
         run: python tools/add_korean_code_headers.py
 
@@ -59,6 +64,9 @@ jobs:
       - name: Generate Milestone 13 correlation-cell diagnostics
         run: python -m simulations.run_normal_lj_spatial_correlation
 
+      - name: Synchronize latest status after diagnostics
+        run: python tools/apply_statistical_cell_status.py
+
       - name: Commit synchronized status and generated diagnostics
         shell: bash
         run: |
@@ -68,6 +76,6 @@ jobs:
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add README.md docs theory simulations tests firmware results
-          git commit -m 'Synchronize 1D probability and statistical-cell diagnostics'
+          git add README.md docs theory simulations tests firmware results tools
+          git commit -m 'Synchronize latest 1D statistical-cell status and diagnostics'
           git push
