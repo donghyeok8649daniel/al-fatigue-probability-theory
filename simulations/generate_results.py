@@ -15,6 +15,9 @@ from simulations.run_normal_lj_energy_feasibility import (
     main as run_normal_energy_feasibility,
 )
 from simulations.run_normal_lj_distribution import main as run_normal_distribution
+from simulations.run_normal_lj_closure_falsification import (
+    main as run_normal_closure_falsification,
+)
 
 
 def main() -> None:
@@ -22,6 +25,7 @@ def main() -> None:
     run_normal_timescale()
     run_normal_energy_feasibility()
     run_normal_distribution()
+    run_normal_closure_falsification()
 
 
 if __name__ == "__main__":
