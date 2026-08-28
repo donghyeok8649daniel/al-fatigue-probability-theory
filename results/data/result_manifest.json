@@ -6,24 +6,32 @@
     "E(t)",
     "alpha(t)",
     "beta(t)",
-    "Q_c(t)"
+    "Q_c(t)",
+    "m_3(t)"
   ],
   "active_files": {
     "chain_theory": "theory/normal_lj_chain.py",
     "energy_feasibility_theory": "theory/normal_lj_energy_feasibility.py",
     "distribution_theory": "theory/normal_lj_distribution.py",
+    "closure_validation_theory": "theory/normal_lj_closure_validation.py",
     "timescale_theory": "theory/normal_lj_timescale.py",
     "distribution_simulation": "simulations/run_normal_lj_distribution.py",
+    "closure_falsification_simulation": "simulations/run_normal_lj_closure_falsification.py",
     "distribution_test": "tests/test_normal_lj_distribution.py",
+    "closure_falsification_test": "tests/test_normal_lj_closure_falsification.py",
     "distribution_derivation": "docs/MILESTONE5_DERIVED_DISTRIBUTION_CLOSURE.md",
+    "closure_falsification_derivation": "docs/MILESTONE6_CLOSURE_FALSIFICATION.md",
     "distribution_variables": "docs/VARIABLE_DEFINITIONS_DISTRIBUTION_CLOSURE.md",
+    "closure_falsification_variables": "docs/VARIABLE_DEFINITIONS_CLOSURE_FALSIFICATION.md",
     "distribution_report": "results/reports/NORMAL_LJ_DISTRIBUTION_CLOSURE.md",
-    "distribution_summary": "results/data/normal_lj_distribution_summary.json",
-    "distribution_sweep": "results/data/normal_lj_distribution_sweep.csv"
+    "closure_falsification_report": "results/reports/NORMAL_LJ_CLOSURE_FALSIFICATION.md",
+    "closure_falsification_summary": "results/data/normal_lj_closure_falsification.json",
+    "closure_falsification_table": "results/data/normal_lj_closure_falsification.csv"
   },
   "archives": {
     "shear": "libraries/shear/",
     "fcc_normal_3d": "libraries/fcc_normal/"
   },
-  "next_target": "validate or falsify the derived distribution closure against deterministic 1D layer-LJ spacing histograms at the same measured mu(t) and E(t)"
+  "current_result": "At identical measured mean stretch and configurational energy, the two-moment closure matches variance closely in two near-equilibrium snapshots but shows Kolmogorov distances about 0.15 and a strong skewness mismatch in the slower case.",
+  "next_target": "Run a represented-system-size sweep in the deterministic 1D layer-LJ model to separate finite-M saddle-point error from persistent dynamical information before adding an extra moment constraint."
 }
