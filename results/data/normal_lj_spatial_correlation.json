@@ -1,0 +1,17 @@
+{
+  "classification": "controlled numerical spatial-correlation diagnostic in the active 1D normal layer-LJ model",
+  "protocol": {
+    "force_amplitude": 0.03,
+    "sample_cycle": 2,
+    "dynamic_similarity_rule": "omega * M = 0.62",
+    "dt": 0.01,
+    "ramp_cycles": 2
+  },
+  "exact_permutation_null": "For any nonzero lag k under a uniformly random permutation of a centered finite sample, E[rho_k] = -1/(M-1).",
+  "summary_rows": [
+    {"M":31,"rho1":0.9334389183838557,"random_permutation_expected_rho_k":-0.03333333333333333,"zero_crossing_scaled_eta":0.3560354759279746,"positive_correlation_integral_over_M":0.17845510700871137},
+    {"M":63,"rho1":0.9662886871347085,"random_permutation_expected_rho_k":-0.016129032258064516,"zero_crossing_scaled_eta":0.3512839062292717,"positive_correlation_integral_over_M":0.18265844524509148},
+    {"M":127,"rho1":0.982819821050473,"random_permutation_expected_rho_k":-0.007936507936507936,"zero_crossing_scaled_eta":0.34814499031950463,"positive_correlation_integral_over_M":0.18366992564022772},
+    {"M":255,"rho1":0.9913021836564478,"random_permutation_expected_rho_k":-0.003937007874015748,"zero_crossing_scaled_eta":0.3463100149192504,"positive_correlation_integral_over_M":0.18388847861908117}
+  ]
+}
