@@ -1,326 +1,53 @@
-# Open Problems — Active 1D Normal-LJ Mainline
+# Open Problems — Active 1D Layer-LJ Mainline
 
-## 1. Continuous-time probability state
+## Scope
 
-The active state is
+The active theory is strictly one-dimensional and normal-only. The represented microscopic coordinate is the normal separation between material layers. The effective layer interaction is the calibrated generalized Lennard-Jones model.
 
-$$
-P(a,t),
-$$
+Archived three-dimensional FCC and shear work are not part of the active derivation.
 
-not a cycle-indexed family.
+## 1. Validate or falsify the derived distribution closure
 
-The exact kinematic identity is
+The current large-$M$ candidate is
 
 $$
 \boxed{
-\partial_tP+\partial_a(Pv)=0.
+p_\lambda(\lambda,t)
+=
+Z^{-1}
+\exp[-\alpha(t)\lambda-\beta(t)\psi(\lambda)].
 }
 $$
 
-The theory may use finite empirical densities for numerical work, but any finite index counts represented spacings or atoms, not fatigue cycles.
-
-## 2. Mean and energy as reduced observables
-
-Define
+The highest-priority test is to compare it against deterministic 1D layer-LJ simulations at the same measured
 
 $$
-\mu(t)=\int\lambda P(\lambda,t)\,d\lambda
+\mu(t)
 $$
 
 and
 
 $$
-\mathcal E(t)=\int\psi(\lambda)P(\lambda,t)\,d\lambda.
-$$
-
-The current hypothesis is that the mean may remain nearly conserved while the distribution broadens and stores configurational energy.
-
-The exact identity
-
-$$
-\mathcal E(t)-\psi(\mu(t))
-=
-\int D_\psi(\lambda\mid\mu(t))P(\lambda,t)\,d\lambda
-$$
-
-makes this statement precise inside the convex LJ region.
-
-## 3. Exact obstruction: reverse compression
-
-Normalization, mean, and energy are not enough to force a tensile tail.
-
-Because the generalized-LJ repulsion diverges at small spacing, a crack-free measure can store arbitrarily large energy through sufficiently strong compression while remaining below $\lambda_c$ on the tensile side.
-
-This is now an exact falsification result, not an open question.
-
-## 4. Highest-priority open problem: derive the compression bound
-
-The energy-feasibility theorem becomes finite only after imposing a physically justified lower support bound
-
-$$
-\boxed{
-\lambda\ge\lambda_L(t)>0.
-}
-$$
-
-The highest-priority problem is therefore
-
-$$
-\boxed{
-\text{derive or independently constrain }\lambda_L(t)
-\text{ from 1D normal-LJ mechanics.}
-}
-$$
-
-The bound must not be selected to obtain a desired fatigue life.
-
-Candidate one-dimensional routes include:
-
-1. finite-chain total-energy accessibility;
-2. imposed-force and boundary-condition bounds;
-3. a rigorously defined maximum reverse-compression work;
-4. experimentally measured minimum normal spacing or strain bounds if available;
-5. a stronger integral bound on the compression-side energy instead of a hard support bound.
-
-## 5. Crack-free energy ceiling
-
-Once $\lambda_L(t)$ is established, the exact maximum crack-free energy at mean $\mu(t)$ is
-
-$$
-\boxed{
-\mathcal E_{\rm safe}^{\max}(t)
-=
-\frac{\lambda_c-\mu(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_L(t))
-+
-\frac{\mu(t)-\lambda_L(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_c).
-}
-$$
-
-The associated energy margin is
-
-$$
-M_E(t)=\mathcal E_{\rm safe}^{\max}(t)-\mathcal E(t).
-$$
-
-The next validation problem is to compute $\mu(t)$, $\mathcal E(t)$, and the mechanically derived compression constraint in the same 1D simulation and verify whether the energy margin behaves consistently under null and non-null loading.
-
-## 6. Continuous-time initiation
-
-Define
-
-$$
-\boxed{
-\tau_E
-=
-\inf\{t\ge0:M_E(t)<0\}.
-}
-$$
-
-If $\lambda_L(t)$ is a true hard lower bound, then $M_E<0$ implies that some probability mass must leave the safe interval through the tensile side.
-
-The instantaneous tail is
-
-$$
-Q_c(t)=\int_{\lambda_c}^{\infty}P(\lambda,t)\,d\lambda.
-$$
-
-A later task is to connect the energy-feasibility crossing to a physically precise crack-initiation event for a finite specimen or representative region.
-
-## 7. Energy input from cyclic loading
-
-A separate unresolved problem is the relation
-
-$$
-\boxed{
-\sigma(t)
-\rightarrow
-W(t)
-\rightarrow
 \mathcal E(t).
-}
 $$
 
-Not all external work is retained as configurational energy. Kinetic energy and recoverable elastic work must be separated by an exact energy balance.
+The equal-measure fixed-$(L,E)$ assumption must be rejected if the empirical distribution systematically disagrees.
 
-No arbitrary retained-energy fraction is allowed.
+## 2. Derive the time law for stored configurational energy
 
-## 8. 1D-only closure questions
-
-- Is $P(a,t)$ plus $\mathcal E(t)$ sufficient for the crack-feasibility bound even if it is not sufficient for full dynamics?
-- Can $\lambda_L(t)$ be obtained from total 1D LJ energy and finite-system constraints?
-- Is a hard support bound too strong, and would a bound on compression-side Bregman energy be a more natural third condition?
-- What finite representative length is required for a crack-initiation statement?
-- How should kinetic energy be excluded from $\mathcal E(t)$ without losing exact energy accounting?
-- Can the measured external normal work define a rigorous upper/lower bound on the configurational-energy trajectory?
-
-## 9. Required falsification tests
-
-Any active model must satisfy:
-
-1. zero loading produces no artificial energy accumulation;
-2. reversible conservative limits remain reversible;
-3. probability normalization is preserved;
-4. the mean and configurational energy are computed directly from the same $P(a,t)$;
-5. dimensions are consistent;
-6. full work-energy balance is checked;
-7. the LJ potential parameters remain fixed;
-8. no named probability family is inserted for convenience;
-9. the energy-feasibility theorem is never used without explicitly stating the compression constraint;
-10. illustrative values of $\lambda_L$ are never reported as Al material constants;
-11. any claimed $\tau_E$ is a physical-time first passage, not a fitted cycle-life law;
-12. 3D FCC and shear archives are not imported into the active default calculation.
-
----
-
-# 한국어 번역 — 활성 1D Normal-LJ Mainline의 미해결 문제
-
-## 1. 연속시간 확률상태
-
-활성 상태는 cycle-indexed family가 아니라
+The closure converts
 
 $$
-P(a,t)
+\mu(t),\mathcal E(t)
 $$
 
-이다.
+into a distribution, but it does not yet determine $\mathcal E(t)$.
 
-정확한 kinematic identity는
+The next mechanics problem is
 
 $$
 \boxed{
-\partial_tP+\partial_a(Pv)=0
-}
-$$
-
-이다.
-
-numerical work에서 finite empirical density를 사용할 수 있지만 finite index는 represented spacing 또는 atom 수를 뜻하며 fatigue cycle count가 아니다.
-
-## 2. 축약 observable로서 평균과 에너지
-
-$$
-\mu(t)=\int\lambda P(\lambda,t)\,d\lambda
-$$
-
-및
-
-$$
-\mathcal E(t)=\int\psi(\lambda)P(\lambda,t)\,d\lambda
-$$
-
-를 정의한다.
-
-현재 가설은 평균이 거의 보존되는 동안 distribution이 넓어지고 configurational energy를 저장할 수 있다는 것이다.
-
-convex LJ region에서
-
-$$
-\mathcal E(t)-\psi(\mu(t))
-=
-\int D_\psi(\lambda\mid\mu(t))P(\lambda,t)\,d\lambda
-$$
-
-라는 exact identity가 이 주장을 수학적으로 명확하게 만든다.
-
-## 3. 정확한 장애물: reverse compression
-
-정규화, 평균, 에너지만으로 tensile tail을 강제할 수 없다.
-
-generalized-LJ repulsion은 small spacing에서 발산하므로 tensile side에서 $\lambda_c$ 아래에 머무르면서도 충분히 강한 compression으로 임의로 큰 energy를 저장할 수 있다.
-
-이것은 이제 open question이 아니라 exact falsification result다.
-
-## 4. 가장 우선적인 open problem: compression bound 유도
-
-energy-feasibility theorem이 유한한 ceiling을 가지려면 물리적으로 정당화된 lower support bound
-
-$$
-\boxed{
-\lambda\ge\lambda_L(t)>0
-}
-$$
-
-이 필요하다.
-
-따라서 가장 중요한 문제는
-
-$$
-\boxed{
-\text{1D normal-LJ mechanics로부터 }\lambda_L(t)
-\text{를 유도하거나 독립적으로 제약하는 것}
-}
-$$
-
-이다.
-
-원하는 fatigue life를 만들기 위해 이 bound를 선택하면 안 된다.
-
-가능한 1차원 경로는 다음과 같다.
-
-1. finite-chain total-energy accessibility;
-2. imposed-force 및 boundary-condition bound;
-3. 엄밀하게 정의된 maximum reverse-compression work;
-4. 가능하다면 직접 측정된 minimum normal spacing 또는 strain bound;
-5. hard support bound 대신 compression-side energy에 대한 더 강한 integral bound.
-
-## 5. crack-free energy ceiling
-
-$\lambda_L(t)$가 확보되면 평균 $\mu(t)$에서 정확한 maximum crack-free energy는
-
-$$
-\boxed{
-\mathcal E_{\rm safe}^{\max}(t)
-=
-\frac{\lambda_c-\mu(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_L(t))
-+
-\frac{\mu(t)-\lambda_L(t)}{\lambda_c-\lambda_L(t)}\psi(\lambda_c)
-}
-$$
-
-이다.
-
-energy margin은
-
-$$
-M_E(t)=\mathcal E_{\rm safe}^{\max}(t)-\mathcal E(t)
-$$
-
-이다.
-
-다음 validation 문제는 같은 1D simulation에서 $\mu(t)$, $\mathcal E(t)$, mechanics-derived compression constraint를 함께 계산하고 null/non-null loading에서 energy margin이 일관되게 거동하는지 확인하는 것이다.
-
-## 6. 연속시간 initiation
-
-$$
-\boxed{
-\tau_E
-=
-\inf\{t\ge0:M_E(t)<0\}
-}
-$$
-
-로 정의한다.
-
-$\lambda_L(t)$가 true hard lower bound라면 $M_E<0$는 일부 probability mass가 safe interval을 tensile side로 빠져나가야 한다는 뜻이다.
-
-순간 tail은
-
-$$
-Q_c(t)=\int_{\lambda_c}^{\infty}P(\lambda,t)\,d\lambda
-$$
-
-이다.
-
-향후에는 energy-feasibility crossing을 finite specimen 또는 representative region의 물리적으로 정확한 crack-initiation event와 연결해야 한다.
-
-## 7. cyclic loading으로부터의 energy input
-
-별도의 미해결 문제는
-
-$$
-\boxed{
-\sigma(t)
+\sigma_n(t)
 \rightarrow
 W(t)
 \rightarrow
@@ -328,34 +55,223 @@ W(t)
 }
 $$
 
-관계다.
+using an explicit energy balance, without a fitted retained-energy fraction.
 
-외부 work 전체가 configurational energy로 남는 것은 아니다. kinetic energy와 recoverable elastic work를 exact energy balance로 분리해야 한다.
+Kinetic energy, reversible mean deformation energy, and energy stored in distributional broadening must be separated.
 
-임의의 retained-energy fraction은 허용하지 않는다.
+## 3. Determine whether external stress supplies an additional independent moment
 
-## 8. 1D-only closure 질문
+A candidate normal force constraint is
 
-- $P(a,t)$가 full dynamics에는 부족해도 $\mathcal E(t)$와 함께 crack-feasibility bound에는 충분한가?
-- total 1D LJ energy와 finite-system constraint로 $\lambda_L(t)$를 얻을 수 있는가?
-- hard support bound가 지나치게 강하다면 compression-side Bregman energy bound가 더 자연스러운 세 번째 조건인가?
-- crack-initiation statement에 필요한 finite representative length는 얼마인가?
-- exact energy accounting을 유지하면서 kinetic energy를 $\mathcal E(t)$에서 어떻게 분리할 것인가?
-- measured external normal work로 configurational-energy trajectory의 rigorous upper/lower bound를 만들 수 있는가?
+$$
+\frac{1}{A_0}
+\int U'(a)P_a(a,t)\,da
+=\sigma_n(t).
+$$
 
-## 9. 필수 falsification test
+Its exact validity depends on the precise reduced layer model and boundary conditions. It should first be derived from the 1D mechanics and then used as an independent test of the two-moment closure.
 
-모든 활성 model은 다음을 만족해야 한다.
+If it is genuinely independent, the distribution family may need an additional conjugate multiplier rather than silently forcing the two-moment form to fit it.
 
-1. zero loading에서 artificial energy accumulation이 없어야 한다.
-2. reversible conservative limit는 reversible해야 한다.
-3. probability normalization이 보존되어야 한다.
-4. mean과 configurational energy는 동일한 $P(a,t)$에서 직접 계산해야 한다.
-5. dimension이 일치해야 한다.
-6. full work-energy balance를 확인해야 한다.
-7. LJ potential parameter는 고정되어야 한다.
-8. 편의를 위한 named probability family를 넣지 않는다.
-9. compression constraint를 명시하지 않고 energy-feasibility theorem을 사용하지 않는다.
-10. illustrative $\lambda_L$를 Al material constant로 보고하지 않는다.
-11. 어떤 $\tau_E$ 주장도 fitted cycle-life law가 아니라 physical-time first passage여야 한다.
-12. 3D FCC 및 shear archive를 active default calculation에서 import하지 않는다.
+## 4. Finite-$M$ corrections
+
+The exponential form is a large-$M$ saddle-point result. The exact finite-$M$ marginal under the stated ensemble is
+
+$$
+p_M(\lambda\mid L,E)
+=
+\frac{\Omega_{M-1}(L-\lambda,E-\psi(\lambda))}{\Omega_M(L,E)}.
+$$
+
+The magnitude of the saddle-point error as a function of represented layer count must be quantified.
+
+## 5. Tail versus first passage
+
+The instantaneous tail
+
+$$
+Q_c(t)
+=
+\int_{\lambda_c}^{\infty}p_\lambda(\lambda,t)\,d\lambda
+$$
+
+is not automatically the cumulative crack-initiation probability.
+
+A later theory must connect this instantaneous distribution to a first-passage event
+
+$$
+\tau_c
+=
+\inf\{t:\text{mechanically defined normal-opening instability occurs}\}.
+$$
+
+## 6. Exact status of the compression side
+
+The earlier exact feasibility theorem shows that normalization, mean, and energy alone cannot force a tensile tail because the LJ repulsive side can carry unbounded energy as $\lambda\to0^+$.
+
+The new distribution closure selects a particular entropy-dominant state rather than solving that exact worst-case feasibility problem.
+
+These are complementary statements and must not be confused:
+
+- the exact feasibility bound asks what **any** admissible distribution could do;
+- the saddle-point closure predicts which distribution is selected under the additional ensemble assumption.
+
+## 7. Required falsification tests
+
+Any next 1D model must satisfy:
+
+1. normalization of $P$;
+2. positivity of $P$;
+3. exact recovery of the imposed mean and energy moments;
+4. convergence with quadrature/grid refinement;
+5. no fitted Gaussian, Weibull, or fatigue-damage law;
+6. fixed LJ parameters through time;
+7. explicit separation between exact results and closure assumptions;
+8. direct comparison against microscopic 1D dynamics whenever a distribution form is proposed;
+9. no claim that $\beta=1/(k_BT)$ without an equilibrium derivation;
+10. no claim that instantaneous $Q_c$ equals cumulative crack-initiation probability without a first-passage derivation.
+
+---
+
+# 한국어 번역 — 활성 1D Layer-LJ Mainline 미해결 문제
+
+## 범위
+
+활성 이론은 엄격하게 1차원 수직변형만 다룬다. represented microscopic coordinate는 material layer 사이의 수직간격이며 layer 간 유효상호작용은 calibration된 generalized Lennard-Jones model이다.
+
+archive된 3D FCC와 shear 연구는 active derivation에 포함하지 않는다.
+
+## 1. 유도된 distribution closure 검증 또는 반증
+
+현재 large-$M$ 후보는
+
+$$
+\boxed{
+p_\lambda(\lambda,t)
+=
+Z^{-1}
+\exp[-\alpha(t)\lambda-\beta(t)\psi(\lambda)]
+}
+$$
+
+이다.
+
+가장 우선순위가 높은 시험은 deterministic 1D layer-LJ simulation에서 측정한 동일한
+
+$$
+\mu(t)
+$$
+
+및
+
+$$
+\mathcal E(t)
+$$
+
+를 넣었을 때 empirical distribution과 이 closure를 비교하는 것이다.
+
+empirical distribution이 체계적으로 다르면 equal-measure fixed-$(L,E)$ assumption은 기각해야 한다.
+
+## 2. Stored configurational energy의 시간법칙 유도
+
+현재 closure는
+
+$$
+\mu(t),\mathcal E(t)
+$$
+
+로부터 distribution을 계산하지만 $\mathcal E(t)$ 자체를 결정하지는 않는다.
+
+다음 mechanics 문제는 fitted retained-energy fraction 없이 explicit energy balance로
+
+$$
+\boxed{
+\sigma_n(t)
+\rightarrow
+W(t)
+\rightarrow
+\mathcal E(t)
+}
+$$
+
+를 유도하는 것이다.
+
+kinetic energy, reversible mean deformation energy, distributional broadening에 저장된 energy를 분리해야 한다.
+
+## 3. External stress가 독립적인 추가 moment를 주는가
+
+candidate normal force constraint는
+
+$$
+\frac{1}{A_0}
+\int U'(a)P_a(a,t)\,da
+=\sigma_n(t)
+$$
+
+이다.
+
+정확한 유효성은 precise reduced layer model과 boundary condition에 의존한다. 먼저 1D mechanics에서 유도한 뒤 two-moment closure에 대한 independent test로 사용해야 한다.
+
+실제로 독립적인 constraint라면 two-moment form을 억지로 맞추는 대신 additional conjugate multiplier가 필요한지 검토해야 한다.
+
+## 4. Finite-$M$ correction
+
+exponential form은 large-$M$ saddle-point result다. stated ensemble 아래 exact finite-$M$ marginal은
+
+$$
+p_M(\lambda\mid L,E)
+=
+\frac{\Omega_{M-1}(L-\lambda,E-\psi(\lambda))}{\Omega_M(L,E)}
+$$
+
+이다.
+
+represented layer count에 따라 saddle-point error가 얼마나 되는지 정량화해야 한다.
+
+## 5. Tail과 first passage 구분
+
+instantaneous tail
+
+$$
+Q_c(t)
+=
+\int_{\lambda_c}^{\infty}p_\lambda(\lambda,t)\,d\lambda
+$$
+
+은 자동으로 cumulative crack-initiation probability가 아니다.
+
+나중 이론에서는 이 instantaneous distribution을 first-passage event
+
+$$
+\tau_c
+=
+\inf\{t:\text{mechanically defined normal-opening instability occurs}\}
+$$
+
+와 연결해야 한다.
+
+## 6. Compression side의 정확한 상태
+
+기존 exact feasibility theorem은 normalization, mean, energy만으로 tensile tail을 강제할 수 없다는 것을 보였다. LJ repulsive side는 $\lambda\to0^+$에서 무한한 energy를 담을 수 있기 때문이다.
+
+새 distribution closure는 그 exact worst-case feasibility problem을 푸는 대신 additional ensemble assumption 아래 entropy-dominant state 하나를 선택한다.
+
+두 명제는 서로 보완적이며 혼동하면 안 된다.
+
+- exact feasibility bound는 **어떤** admissible distribution이라도 할 수 있는지를 묻는다.
+- saddle-point closure는 additional ensemble assumption 아래 어떤 distribution이 선택되는지를 예측한다.
+
+## 7. 필수 반증시험
+
+다음 1D model은 최소한 다음을 만족해야 한다.
+
+1. $P$ normalization;
+2. $P$ positivity;
+3. imposed mean/energy moment의 정확한 복원;
+4. quadrature/grid refinement convergence;
+5. fitted Gaussian, Weibull, fatigue-damage law 금지;
+6. 시간에 따른 LJ parameter 고정;
+7. exact result와 closure assumption 명시적 분리;
+8. distribution form 제안 시 microscopic 1D dynamics와 직접 비교;
+9. equilibrium derivation 없이 $\beta=1/(k_BT)$라고 주장하지 않기;
+10. first-passage derivation 없이 instantaneous $Q_c$를 cumulative crack-initiation probability라고 주장하지 않기.
