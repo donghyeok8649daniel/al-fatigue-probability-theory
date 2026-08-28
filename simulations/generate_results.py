@@ -11,9 +11,9 @@ Run from repository root:
 
 The active research path is strictly one-dimensional and continuous-time:
 normal stress -> exact nonlinear spacing transport / probability state ->
-spatial correlation -> normal-opening feasibility. Historical harmonic/Taylor
-push-forward diagnostics and archived FCC/shear libraries are not imported by
-this active workflow.
+physical-statistical ensemble limits -> spatial correlation -> normal-opening
+feasibility. Historical harmonic/Taylor push-forward diagnostics and archived
+FCC/shear libraries are not imported by this active workflow.
 """
 
 from simulations.run_normal_lj_chain import main as run_normal_chain
@@ -31,6 +31,9 @@ from simulations.run_normal_lj_closure_system_size import (
 from simulations.run_normal_lj_spatial_correlation import (
     main as run_normal_spatial_correlation,
 )
+from simulations.run_normal_lj_physical_distribution import (
+    main as run_normal_physical_distribution,
+)
 
 
 def main() -> None:
@@ -41,6 +44,7 @@ def main() -> None:
     run_normal_closure_falsification()
     run_normal_closure_system_size()
     run_normal_spatial_correlation()
+    run_normal_physical_distribution()
 
 
 if __name__ == "__main__":
