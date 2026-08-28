@@ -3,9 +3,9 @@
 # - 주요 클래스: 없음 또는 외부 선언만 사용
 # - 주요 함수/메서드: physical_energy_scale, inverse_reduced_temperature, force_biased_potential, _bisect_root
 #   quasistatic_stable_spacing, metastable_stationary_points, metastable_barrier_height
-#   metastable_gibbs_density, metastable_tail_probability, fixed_length_two_spacing_density
-#   fixed_length_canonical_density
-# - 주의: thermal/canonical 및 metastable 분포는 명시된 ensemble·시간척도 가정 아래에서만 물리적으로 해석한다. 피로수명 법칙이나 escape rate를 임의로 넣지 않는다.
+#   metastable_gibbs_density, metastable_tail_probability, _uniform_grid_step, _shifted_boltzmann_weight
+#   _fft_convolution_prefix, fixed_length_canonical_density, fixed_length_two_spacing_density
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """Physical-statistical forms of the full nonlinear 1D layer-LJ spacing state.
 

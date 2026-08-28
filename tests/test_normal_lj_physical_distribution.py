@@ -1,8 +1,17 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 비선형 안정점·장벽, 물리 에너지척도, metastable Gibbs P, finite-M fixed-length canonical P의 성질을 검증한다.
+# - 파일 역할: 비선형 안정점·장벽, 물리 에너지척도, metastable Gibbs P, exact M=2 fixed-length canonical P의 성질을 검증한다.
 # - 주요 클래스: TestNormalLJPhysicalDistribution
-# - 주요 함수/메서드: 에너지척도, stationary point, barrier, metastable density, canonical convolution 검증
-# - 주의: 이 테스트는 명시된 equilibrium/metastable ensemble의 수학을 검증하며 실제 Al fatigue life를 검증하지 않는다.
+# - 주요 함수/메서드: TestNormalLJPhysicalDistribution.test_physical_energy_scale_and_inverse_temperature
+#   TestNormalLJPhysicalDistribution.test_quasistatic_zero_force_is_equilibrium_spacing
+#   TestNormalLJPhysicalDistribution.test_metastable_stationary_points_have_correct_stability
+#   TestNormalLJPhysicalDistribution.test_barrier_is_positive_and_decreases_toward_critical_force
+#   TestNormalLJPhysicalDistribution.test_metastable_density_is_normalized_and_confined_to_basin
+#   TestNormalLJPhysicalDistribution.test_higher_chi_concentrates_metastable_density_near_stable_point
+#   TestNormalLJPhysicalDistribution.test_fixed_length_two_spacing_density_is_normalized_and_symmetric
+#   TestNormalLJPhysicalDistribution.test_convolution_density_matches_exact_M2_formula
+#   TestNormalLJPhysicalDistribution.test_finite_M_canonical_mean_is_total_length_over_M
+#   TestNormalLJPhysicalDistribution.test_metastable_force_domain_is_enforced
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 import unittest
 
