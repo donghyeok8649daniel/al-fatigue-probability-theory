@@ -1,5 +1,5 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 동적으로 matched된 여러 chain size에서 spacing spatial correlation과 그로부터 유도한 유효 독립개수·통계 특성길이를 계산하고 CSV/JSON/figure를 생성한다.
+# - 파일 역할: 동적으로 matched된 여러 chain size에서 spacing spatial correlation과 finite-snapshot positive-window 유효 독립개수·통계 특성길이를 계산하고 CSV/JSON/figure를 생성한다.
 # - 주요 클래스: 없음 또는 외부 선언만 사용
 # - 주요 함수/메서드: main
 # - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
@@ -28,9 +28,9 @@ from theory.normal_lj_spatial_correlation import (
     summarize_spatial_correlation,
 )
 from theory.normal_lj_statistical_cells import (
-    effective_independent_count,
-    finite_correlation_factor,
-    variance_equivalent_axial_length,
+    positive_window_empirical_axial_length,
+    positive_window_empirical_correlation_factor,
+    positive_window_empirical_effective_count,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -58,9 +58,15 @@ def main() -> None:
         values = result.cycle_snapshots[SAMPLE_CYCLE]
         summary = summarize_spatial_correlation(values)
         lags, covariance, rho = correlation_profile(values)
-        tau_m = finite_correlation_factor(rho)
-        m_eff = effective_independent_count(rho)
-        ell_stat_reduced = variance_equivalent_axial_length(rho, 1.0)
+
+        # IMPORTANT: rho here is a finite open-chain snapshot diagnostic, not
+        # the true stationary population correlation sequence.  Therefore use
+        # the separately labeled positive-window estimator rather than the
+        # exact all-lag population formula.
+        tau_hat = positive_window_empirical_correlation_factor(rho)
+        m_eff_hat = positive_window_empirical_effective_count(rho)
+        ell_hat_reduced = positive_window_empirical_axial_length(rho, 1.0)
+
         summary_rows.append({
             "atoms": atoms,
             "M": m_count,
@@ -69,10 +75,10 @@ def main() -> None:
             "mean_stretch": float(np.mean(values)),
             **asdict(summary),
             "random_permutation_expected_rho_k": random_permutation_expected_rho(m_count),
-            "tau_M_empirical": tau_m,
-            "M_eff_variance_equivalent": m_eff,
-            "ell_stat_2_over_a0": ell_stat_reduced,
-            "M_eff_over_M": m_eff / m_count,
+            "tau_M_positive_window_estimate": tau_hat,
+            "M_eff_positive_window_estimate": m_eff_hat,
+            "ell_stat_2_over_a0_positive_window_estimate": ell_hat_reduced,
+            "M_eff_over_M_positive_window_estimate": m_eff_hat / m_count,
         })
         for k, c_k, rho_k in zip(lags, covariance, rho):
             profile_rows.append({
@@ -112,7 +118,7 @@ def main() -> None:
             "dynamic_similarity_rule": "omega * M = 0.62",
         },
         "exact_permutation_null": "For any nonzero lag k under a uniformly random permutation of a centered finite sample, E[rho_k] = -1/(M-1).",
-        "statistical_cell_note": "tau_M, M_eff, and ell_stat_2/a0 use empirical finite-snapshot rho_k, so they are estimators/diagnostics rather than exact material constants.",
+        "statistical_cell_note": "The exact tau_M formula belongs to true stationary population correlations. A single sample-mean-centered finite snapshot has an all-lag zero-sum artifact, so the committed tau/M_eff/ell_stat values use a first-positive-lobe finite-snapshot estimator and are explicitly diagnostics, not material constants.",
         "summary_rows": summary_rows,
         "scaled_lag_rows": scaled_rows,
     }
@@ -150,12 +156,12 @@ def main() -> None:
     plt.figure(figsize=(7.5, 5.0))
     plt.plot(
         m_values,
-        [row["ell_stat_2_over_a0"] for row in summary_rows],
+        [row["ell_stat_2_over_a0_positive_window_estimate"] for row in summary_rows],
         marker="o",
     )
     plt.xlabel("Represented spacings M")
-    plt.ylabel("Variance-equivalent axial length ell_stat^(2) / a0")
-    plt.title("1D correlation-derived statistical length")
+    plt.ylabel("Positive-window axial length estimate / a0")
+    plt.title("1D correlation-derived statistical length diagnostic")
     plt.grid(True)
     plt.tight_layout()
     plt.savefig(FIG / "normal_lj_statistical_length.svg")
