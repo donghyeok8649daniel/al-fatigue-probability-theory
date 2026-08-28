@@ -1,6 +1,6 @@
 """Direct validation utilities for the active 1D layer-LJ distribution closure.
 
-This module compares a deterministic spacing snapshot from the reduced 1D
+This module compares deterministic spacing snapshots from the reduced 1D
 layer-LJ mechanics against the large-M closure
 
     p(lambda) = Z^{-1} exp[-alpha lambda - beta psi(lambda)]
@@ -13,6 +13,8 @@ the saddle-point closure to an exact driven-state law.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
+
 import numpy as np
 
 from theory.normal_lj_chain import critical_stretch
@@ -43,21 +45,17 @@ class ClosureSnapshotComparison:
     beta: float
 
 
-def _legendre_interval(order: int, lower: float, upper: float):
+@lru_cache(maxsize=16)
+def _standard_legendre_rule(order: int):
     if order < 32:
         raise ValueError("quadrature order must be at least 32")
-    if not (0.0 <= lower < upper):
-        raise ValueError("require 0 <= lower < upper")
-    z, w = np.polynomial.legendre.leggauss(order)
-    x = 0.5 * (upper - lower) * z + 0.5 * (upper + lower)
-    weights = 0.5 * (upper - lower) * w
-    return x, weights
+    return np.polynomial.legendre.leggauss(order)
 
 
 def _legendre_unbounded(order: int):
     if order < 64:
         raise ValueError("quadrature order must be at least 64")
-    z, w = np.polynomial.legendre.leggauss(order)
+    z, w = _standard_legendre_rule(order)
     q = 0.5 * (z + 1.0)
     wq = 0.5 * w
     lam = q / (1.0 - q)
@@ -65,49 +63,95 @@ def _legendre_unbounded(order: int):
     return lam, weights
 
 
-def closure_third_central_moment(solution: ClosureSolution, *, quadrature_order: int = 640) -> float:
-    lam, weights = _legendre_unbounded(int(quadrature_order))
+def closure_third_central_moment(
+    solution: ClosureSolution,
+    *,
+    quadrature_order: int = 640,
+) -> float:
+    """Third central stretch moment evaluated by the closure moment rule.
+
+    quadrature_order is retained for API compatibility; the solved closure
+    already stores the moment evaluated with its own resolved quadrature.
+    """
+    del quadrature_order
+    return solution.moments.third_central_moment_stretch
+
+
+def closure_cdf_many(
+    stretches,
+    solution: ClosureSolution,
+    *,
+    quadrature_order: int = 128,
+):
+    """Evaluate closure CDF values in one vectorized Gauss-Legendre pass."""
+    x = np.asarray(stretches, dtype=float)
+    if x.ndim != 1:
+        raise ValueError("stretches must be one-dimensional")
+
+    out = np.zeros_like(x)
+    positive = x > 0.0
+    if not np.any(positive):
+        return out
+
+    z, w = _standard_legendre_rule(int(quadrature_order))
+    u = 0.5 * (z + 1.0)
+    wu = 0.5 * w
+
+    xp = x[positive]
+    lam = xp[:, None] * u[None, :]
+    weights = xp[:, None] * wu[None, :]
     density = closure_density(
         lam,
         solution.moments.alpha,
         solution.moments.beta,
         quadrature_order=solution.quadrature_order,
     )
-    mu = solution.moments.mean_stretch
-    return float(np.sum(weights * density * (lam - mu) ** 3))
+    out[positive] = np.sum(weights * density, axis=1)
+    return out
 
 
-def closure_cdf(stretch: float, solution: ClosureSolution, *, quadrature_order: int = 128) -> float:
-    x = float(stretch)
-    if x <= 0.0:
-        return 0.0
-    lam, weights = _legendre_interval(int(quadrature_order), 0.0, x)
-    density = closure_density(
-        lam,
-        solution.moments.alpha,
-        solution.moments.beta,
-        quadrature_order=solution.quadrature_order,
+def closure_cdf(
+    stretch: float,
+    solution: ClosureSolution,
+    *,
+    quadrature_order: int = 128,
+) -> float:
+    return float(
+        closure_cdf_many(
+            np.asarray([stretch], dtype=float),
+            solution,
+            quadrature_order=quadrature_order,
+        )[0]
     )
-    return float(np.sum(weights * density))
 
 
-def kolmogorov_distance(spacings, solution: ClosureSolution, *, cdf_quadrature_order: int = 128) -> float:
+def kolmogorov_distance(
+    spacings,
+    solution: ClosureSolution,
+    *,
+    cdf_quadrature_order: int = 128,
+) -> float:
     values = np.sort(np.asarray(spacings, dtype=float))
     if values.ndim != 1 or len(values) < 2:
         raise ValueError("spacings must be a one-dimensional sample of length >= 2")
     if np.any(values <= 0.0):
         raise ValueError("all spacings must be positive")
-    model_cdf = np.asarray([
-        closure_cdf(value, solution, quadrature_order=cdf_quadrature_order)
-        for value in values
-    ])
+
+    model_cdf = closure_cdf_many(
+        values,
+        solution,
+        quadrature_order=int(cdf_quadrature_order),
+    )
     count = len(values)
     empirical_upper = np.arange(1, count + 1, dtype=float) / count
     empirical_lower = np.arange(0, count, dtype=float) / count
-    return float(max(
-        np.max(np.abs(empirical_upper - model_cdf)),
-        np.max(np.abs(empirical_lower - model_cdf)),
-    ))
+
+    return float(
+        max(
+            np.max(np.abs(empirical_upper - model_cdf)),
+            np.max(np.abs(empirical_lower - model_cdf)),
+        )
+    )
 
 
 def compare_snapshot_to_closure(
@@ -138,8 +182,16 @@ def compare_snapshot_to_closure(
         solution,
         quadrature_order=int(closure_quadrature_order),
     )
-    empirical_skew = empirical_third / empirical_variance ** 1.5 if empirical_variance > 0.0 else 0.0
-    closure_skew = closure_third / closure_variance ** 1.5 if closure_variance > 0.0 else 0.0
+    empirical_skew = (
+        empirical_third / empirical_variance ** 1.5
+        if empirical_variance > 0.0
+        else 0.0
+    )
+    closure_skew = (
+        closure_third / closure_variance ** 1.5
+        if closure_variance > 0.0
+        else 0.0
+    )
     lam_c = critical_stretch()
 
     return ClosureSnapshotComparison(
@@ -148,7 +200,8 @@ def compare_snapshot_to_closure(
         empirical_mean_energy=mean_energy,
         empirical_variance=empirical_variance,
         closure_variance=closure_variance,
-        variance_relative_error=abs(closure_variance - empirical_variance) / max(empirical_variance, 1.0e-300),
+        variance_relative_error=abs(closure_variance - empirical_variance)
+        / max(empirical_variance, 1.0e-300),
         empirical_third_central_moment=empirical_third,
         closure_third_central_moment=closure_third,
         empirical_skewness=empirical_skew,
