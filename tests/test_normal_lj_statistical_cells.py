@@ -1,7 +1,14 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 1D true-correlation 유효 독립개수와 finite-snapshot positive-window 특성길이가 독립/완전동일종속 극한 및 동일-block event 확률을 재현하는지 검증한다.
+# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
 # - 주요 클래스: TestNormalLJStatisticalCells
-# - 주요 함수/메서드: TestNormalLJStatisticalCells.test_independent_limit, TestNormalLJStatisticalCells.test_fully_identical_limit, TestNormalLJStatisticalCells.test_anticorrelation_can_raise_effective_count, TestNormalLJStatisticalCells.test_positive_window_estimator, TestNormalLJStatisticalCells.test_positive_window_fully_identical_limit, TestNormalLJStatisticalCells.test_identical_pair_msd, TestNormalLJStatisticalCells.test_independent_any_event_probability, TestNormalLJStatisticalCells.test_identical_block_any_event_probability
+# - 주요 함수/메서드: TestNormalLJStatisticalCells.test_independent_limit
+#   TestNormalLJStatisticalCells.test_fully_identical_limit
+#   TestNormalLJStatisticalCells.test_anticorrelation_can_raise_effective_count
+#   TestNormalLJStatisticalCells.test_positive_window_estimator
+#   TestNormalLJStatisticalCells.test_positive_window_fully_identical_limit
+#   TestNormalLJStatisticalCells.test_identical_pair_msd
+#   TestNormalLJStatisticalCells.test_independent_any_event_probability
+#   TestNormalLJStatisticalCells.test_identical_block_any_event_probability
 # - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 import unittest

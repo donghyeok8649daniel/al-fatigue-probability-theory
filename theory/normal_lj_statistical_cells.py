@@ -1,7 +1,10 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 1D layer-spacing 상관으로부터 true-process 분산 기준 유효 독립개수와 finite-snapshot positive-window 통계 특성길이를 구분해 계산하고, 완전종속/독립 및 동일-block event 극한을 검증한다.
+# - 파일 역할: 활성 1D normal layer-LJ 이론 계산에 사용하는 Python 모듈이다.
 # - 주요 클래스: 없음 또는 외부 선언만 사용
-# - 주요 함수/메서드: finite_correlation_factor, effective_independent_count, variance_equivalent_axial_length, positive_window_empirical_correlation_factor, positive_window_empirical_effective_count, positive_window_empirical_axial_length, identical_pair_msd, independent_any_event_probability, identical_block_any_event_probability
+# - 주요 함수/메서드: finite_correlation_factor, effective_independent_count, variance_equivalent_axial_length
+#   positive_window_empirical_correlation_factor, positive_window_empirical_effective_count
+#   positive_window_empirical_axial_length, identical_pair_msd, independent_any_event_probability
+#   identical_block_any_event_probability
 # - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """Correlation-based statistical-cell quantities for the active 1D theory.
