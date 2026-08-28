@@ -1,7 +1,7 @@
 {
   "active_mainline": "Strictly 1D normal layer-LJ in continuous physical time t, with full nonlinear mechanics, exact transport, explicitly labeled statistical-mechanical limits, and correlation-derived axial statistical-cell scales",
   "scope_freeze": "Remain strictly in one-dimensional normal tension until P(lambda,t) is physically identified and validated. 2D/3D FEM, multiaxial criteria, specimen hazard integration, and 3D mini-mesh coupling are deferred.",
-  "state": "P(lambda,t) has exact driven-transport constraints and physically derived equilibrium limits. Probability aggregation is explicitly separated into complete identical dependence, partial dependence, and true independence. The 1D axial variance-equivalent statistical length is derived from the spacing correlation sequence rather than chosen as a numerical mesh size.",
+  "state": "P(lambda,t) has exact driven-transport constraints and physically derived equilibrium limits. Probability aggregation is explicitly separated into complete identical dependence, partial dependence, and true independence. The exact variance-equivalent statistical length belongs to the true stationary correlation sequence; deterministic finite snapshots use a separately labeled positive-window estimator because the all-lag sample-mean-centered plug-in sum has an exact zero-sum artifact.",
   "primary_reduced_observables": [
     "P(lambda,t)",
     "d_lambda log P",
@@ -20,7 +20,10 @@
     "rho_k(t)",
     "tau_M(t)",
     "M_eff(t)",
-    "ell_stat_2(t)"
+    "ell_stat_2(t)",
+    "tau_hat_M_plus(t)",
+    "M_eff_hat_plus(t)",
+    "ell_stat_2_hat_plus(t)"
   ],
   "active_files": {
     "scope_freeze": "docs/SCOPE_FREEZE_1D_FIRST.md",
@@ -43,6 +46,7 @@
     "distribution_shape_derivation": "docs/MILESTONE11_EXACT_P_SHAPE.md",
     "physical_distribution_derivation": "docs/MILESTONE12_PHYSICAL_STATISTICAL_P.md",
     "statistical_cell_derivation": "docs/MILESTONE13_1D_STATISTICAL_CELL.md",
+    "statistical_cell_finite_snapshot_correction": "docs/MILESTONE13A_FINITE_SNAPSHOT_CORRECTION.md",
     "distribution_transport_variables": "docs/VARIABLE_DEFINITIONS_DISTRIBUTION_TRANSPORT.md",
     "distribution_shape_variables": "docs/VARIABLE_DEFINITIONS_P_SHAPE.md",
     "physical_distribution_variables": "docs/VARIABLE_DEFINITIONS_PHYSICAL_P.md",
@@ -70,6 +74,6 @@
     "shear": "libraries/shear/",
     "fcc_normal_3d": "libraries/fcc_normal/"
   },
-  "current_result": "For a second-order stationary 1D spacing sequence, Var(mean_M)=sigma_lambda^2*tau_M/M exactly, with tau_M=1+2*sum_{k=1}^{M-1}(1-k/M)rho_k. This defines M_eff=M/tau_M and the variance-equivalent axial statistical length ell_stat_2=a0*tau_M. The construction reproduces the exact independent limit M_eff=M and completely identical limit M_eff=1. Complete identical dependence is defined by E[(X-Y)^2]=0, whereas full independence requires P2=P1*P1; zero covariance alone is insufficient. The mechanical energy-calibration area A0 is explicitly not identified with a transverse statistical independence area A_stat in the current 1D theory.",
-  "next_target": "Evaluate tau_M, M_eff, and ell_stat_2 on the existing dynamically matched 1D system-size correlation sweep and test whether ell_stat_2 converges with M. If it scales with system size, retain that as evidence of coherent nonlocal 1D dynamics rather than imposing an arbitrary correlation cutoff. Continue deriving and testing P(lambda,t) only within the strict 1D scope."
+  "current_result": "For a second-order stationary 1D spacing process, Var(mean_M)=sigma_lambda^2*tau_M/M exactly with tau_M=1+2*sum_{k=1}^{M-1}(1-k/M)rho_k, giving M_eff=M/tau_M and ell_stat_2=a0*tau_M. Complete identity is E[(X-Y)^2]=0; full independence requires P2=P1*P1. For one deterministic finite snapshot centered by its own sample mean, the all-lag weighted covariance sum is exactly zero: C0+2*sum(1-k/M)Ck=(sum d_i)^2/M=0. Therefore the snapshot cannot use the all-lag population formula directly; it uses a first-positive-lobe estimator tau_hat_M_plus, with corresponding M_eff_hat_plus and ell_stat_2_hat_plus explicitly labeled ESTIMATOR/DIAGNOSTIC. A0 remains the energy-calibration area and is not identified with a transverse statistical area A_stat.",
+  "next_target": "Run the dynamically matched 1D system-size sweep with the corrected positive-window finite-snapshot estimator and test whether ell_stat_2_hat_plus converges with M. If it scales with system size, interpret that as coherent nonlocal 1D dynamics rather than imposing an arbitrary cutoff. Keep crack-tail/event dependence separate from second-moment correlation length and continue deriving P(lambda,t) within the strict 1D scope."
 }
