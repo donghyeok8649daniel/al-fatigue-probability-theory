@@ -1,5 +1,18 @@
 # Assumptions and Approximations
 
+## Statistical-mechanical ensemble rule
+
+<!-- PHYSICAL_P_ASSUMPTIONS_EN -->
+
+A smooth thermal $P$ is not assumed merely because the coordinate is treated probabilistically. The following physical distinctions are mandatory:
+
+- the zero-temperature homogeneous quasistatic state is a delta distribution on the stable mechanical branch;
+- a microcanonical distribution requires an isolated conservative equilibrium interpretation and includes the kinetic density-of-states factor after momenta are integrated out;
+- a canonical fixed-length distribution requires a thermal reservoir and fixed total length;
+- a tensile intact-basin Gibbs density is only a metastable/local-equilibrium approximation and requires intrabasin equilibration to be fast relative to loading/escape;
+- no Kramers or Arrhenius escape prefactor is introduced without an independently derived bath/friction/phonon time scale;
+- $A_0$ is a physical coarse-graining input and may not be tuned to obtain a desired tail probability or fatigue life.
+
 This file records the assumptions of the active **one-dimensional normal-LJ / continuous-time** mainline.
 
 ## Active assumptions
@@ -53,6 +66,19 @@ Without a compression-side constraint, normalization, mean, and LJ energy alone 
 ---
 
 # 한국어 번역 — 가정과 근사
+
+## 통계역학 ensemble 규칙
+
+<!-- PHYSICAL_P_ASSUMPTIONS_KO -->
+
+coordinate를 probabilistic하게 다룬다는 이유만으로 smooth thermal $P$를 가정하지 않는다. 다음 물리적 구분을 반드시 유지한다.
+
+- zero-temperature homogeneous quasistatic state는 stable mechanical branch 위의 delta distribution이다.
+- microcanonical distribution은 isolated conservative equilibrium 해석을 요구하며 momentum 적분 뒤 kinetic density-of-states factor를 포함한다.
+- canonical fixed-length distribution은 thermal reservoir와 fixed total length를 요구한다.
+- tensile intact-basin Gibbs density는 metastable/local-equilibrium approximation일 뿐이며 intrabasin equilibration이 loading/escape보다 빨라야 한다.
+- independently derived bath/friction/phonon time scale 없이 Kramers 또는 Arrhenius escape prefactor를 넣지 않는다.
+- $A_0$는 physical coarse-graining input이며 원하는 tail probability나 fatigue life를 얻도록 tuning하면 안 된다.
 
 이 문서는 활성 **1차원 normal-LJ / 연속시간** mainline의 가정을 기록한다.
 

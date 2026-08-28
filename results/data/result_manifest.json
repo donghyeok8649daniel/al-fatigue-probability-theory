@@ -1,6 +1,6 @@
 {
-  "active_mainline": "1D normal layer-LJ in continuous physical time t, using the full nonlinear LJ force without global Taylor or harmonic closure",
-  "state": "P(lambda,t) is constrained by an exact instantaneous shape law derived from the first two spacing-velocity moment equations; the required fields are conditional velocity variance Theta, mean-flow material acceleration D_t u, and conditional nonlinear-LJ acceleration from neighboring-spacing joint states",
+  "active_mainline": "1D normal layer-LJ in continuous physical time t, with full nonlinear mechanics, exact transport, and explicitly labeled statistical-mechanical ensemble limits",
+  "state": "P(lambda,t) has exact driven-transport constraints and physically derived equilibrium limits: T=0 quasistatic delta state, fixed-length canonical/microcanonical marginals, and a controlled metastable intact-basin Gibbs form under subcritical tension",
   "primary_reduced_observables": [
     "P(lambda,t)",
     "d_lambda log P",
@@ -39,7 +39,15 @@
     "spatial_correlation_report": "results/reports/NORMAL_LJ_SPATIAL_CORRELATION.md",
     "spatial_correlation_summary": "results/data/normal_lj_spatial_correlation.json",
     "spatial_correlation_table": "results/data/normal_lj_spatial_correlation_summary.csv",
-    "spatial_correlation_scaled": "results/data/normal_lj_spatial_correlation_scaled.csv"
+    "spatial_correlation_scaled": "results/data/normal_lj_spatial_correlation_scaled.csv",
+    "physical_distribution_theory": "theory/normal_lj_physical_distribution.py",
+    "physical_distribution_test": "tests/test_normal_lj_physical_distribution.py",
+    "physical_distribution_simulation": "simulations/run_normal_lj_physical_distribution.py",
+    "physical_distribution_derivation": "docs/MILESTONE12_PHYSICAL_STATISTICAL_P.md",
+    "physical_distribution_variables": "docs/VARIABLE_DEFINITIONS_PHYSICAL_P.md",
+    "physical_distribution_data": "results/data/normal_lj_physical_distribution.json",
+    "physical_distribution_table": "results/data/normal_lj_physical_distribution.csv",
+    "physical_distribution_report": "results/reports/NORMAL_LJ_PHYSICAL_DISTRIBUTION.md"
   },
   "historical_or_falsification_diagnostics": {
     "equal_measure_two_moment_closure": "docs/MILESTONE5_DERIVED_DISTRIBUTION_CLOSURE.md",
@@ -53,6 +61,6 @@
     "shear": "libraries/shear/",
     "fcc_normal_3d": "libraries/fcc_normal/"
   },
-  "current_result": "Where a smooth continuum representation has P>0 and conditional velocity variance Theta>0, the exact first two phase-space moment equations imply d_lambda log P = (a_bar - D_t u)/Theta - d_lambda log Theta. Hence P(lambda,t) = C(t)/Theta(lambda,t) times exp[integral (a_bar-D_t u)/Theta d lambda]. The original nonlinear layer-LJ law enters exactly through a_bar = m_plus + m_minus - 2 phi'(lambda), where m_plus/minus are conditional neighboring-spacing force means obtained from ordered P2 states. This is an instantaneous function-form constraint, not a named distribution closure. The older exponential-LJ family is recovered only under the restrictive special conditions of lambda-independent Theta, zero D_t u, and central-spacing-independent neighbor-force means.",
-  "next_target": "Record spacing and spacing velocity simultaneously in the deterministic chain, estimate u(lambda,t), Theta(lambda,t), D_t u(lambda,t), and a_bar(lambda,t), and test the exact measured log-slope identity under bin/grid refinement before introducing any closure for neighboring-spacing P2."
+  "current_result": "Physical theory now fixes several non-arbitrary forms of P. The elastic calibration gives E0=E*A0*a0 and chi=E0/(k_B*T). Zero-temperature homogeneous quasistatic equilibrium is a delta measure at the stable force-balance spacing. An isolated equilibrium chain has a microcanonical configurational measure weighted by remaining kinetic phase volume. At fixed total length, the exact canonical one-spacing marginal is exp[-chi*phi(lambda)]*Z_{M-1}(L-lambda)/Z_M(L). A global tensile force-controlled Gibbs density does not normalize; for 0<f<fc an intact-basin Gibbs density is only a controlled metastable/local-equilibrium approximation.",
+  "next_target": "Physically define the representative layer area A0, then test whether deterministic cyclic states are consistent with microcanonical/local-equilibrium statistics. Compare physically derived P forms directly with mechanics; if they fail, derive the nonequilibrium correction from the exact F1/P2 hierarchy."
 }

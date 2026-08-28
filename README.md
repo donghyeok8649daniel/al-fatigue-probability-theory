@@ -1,5 +1,42 @@
 # Al Fatigue Probability Theory
 
+## Active physical-statistical constraint on $P$
+
+<!-- PHYSICAL_P_STATUS_EN -->
+
+The current mechanics now gives a physically grounded hierarchy of possible spacing distributions without fitting a named family. With
+
+$$
+U(a)=E_0\phi(a/a_0)+C,
+$$
+
+the elastic calibration $E=(a_0/A_0)U''(a_0)$ and $\phi''(1)=1$ imply
+
+$$
+oxed{E_0=EA_0a_0},
+\qquad
+oxed{\chi=rac{EA_0a_0}{k_BT}}.
+$$
+
+At zero-temperature homogeneous quasistatic equilibrium, the distribution is not broad:
+
+$$
+oxed{P(\lambda\mid f)=\delta[\lambda-\lambda_s(f)]}.
+$$
+
+At fixed total normalized length, canonical equilibrium gives the exact finite-$M$ marginal
+
+$$
+oxed{
+P_M(\lambda\mid L,\chi)
+=rac{e^{-\chi\phi(\lambda)}Z_{M-1}(L-\lambda,\chi)}{Z_M(L,\chi)}.
+}
+$$
+
+For constant tensile force $f>0$, the full-domain Gibbs integral diverges because $\phi(\lambda)-f\lambda	o-\infty$. For $0<f<f_c$, a Gibbs density conditioned on the intact basin $0<\lambda<\lambda_b(f)$ is therefore only a **controlled metastable/local-equilibrium approximation**, not a global equilibrium law or a fatigue-life law. See `docs/MILESTONE12_PHYSICAL_STATISTICAL_P.md`.
+
+The representative layer area $A_0$ is now an explicit physical bottleneck: no numerical aluminum thermal distribution is claimed until $A_0$ is defined consistently with the coarse-grained layer interaction.
+
 ## Active-theory correction — exact nonlinear transport
 
 **CURRENT ACTIVE STATUS:** the harmonic/single-mode and Taylor-expanded push-forward material retained later in this README is historical/local diagnostic work and is **not** the active global form of $P(\lambda,t)$.
@@ -294,6 +331,49 @@ No fitted Gaussian/Weibull distribution, cycle-dependent LJ parameter, empirical
 ---
 
 # 한국어 번역
+
+## $P$에 대한 활성 물리 통계역학 제약
+
+<!-- PHYSICAL_P_STATUS_KO -->
+
+현재 mechanics에서는 named distribution을 fitting하지 않고도 가능한 spacing distribution의 물리적 hierarchy를 얻는다.
+
+$$
+U(a)=E_0\phi(a/a_0)+C
+$$
+
+로 두면 elastic calibration $E=(a_0/A_0)U''(a_0)$와 $\phi''(1)=1$에서
+
+$$
+oxed{E_0=EA_0a_0},
+\qquad
+oxed{\chi=rac{EA_0a_0}{k_BT}}
+$$
+
+가 나온다.
+
+zero-temperature homogeneous quasistatic equilibrium에서는 broad distribution이 아니라
+
+$$
+oxed{P(\lambda\mid f)=\delta[\lambda-\lambda_s(f)]}
+$$
+
+이다.
+
+fixed total normalized length의 canonical equilibrium에서는 exact finite-$M$ marginal
+
+$$
+oxed{
+P_M(\lambda\mid L,\chi)
+=rac{e^{-\chi\phi(\lambda)}Z_{M-1}(L-\lambda,\chi)}{Z_M(L,\chi)}
+}
+$$
+
+을 얻는다.
+
+constant tensile force $f>0$에서는 $\phi(\lambda)-f\lambda	o-\infty$이므로 full-domain Gibbs integral이 발산한다. 따라서 $0<f<f_c$에서 intact basin $0<\lambda<\lambda_b(f)$에 조건부로 둔 Gibbs density는 **controlled metastable/local-equilibrium approximation**일 뿐 global equilibrium law나 fatigue-life law가 아니다. `docs/MILESTONE12_PHYSICAL_STATISTICAL_P.md`를 현재 물리 통계역학 기준으로 사용한다.
+
+representative layer area $A_0$가 이제 명시적인 physical bottleneck이다. coarse-grained layer interaction과 일관된 $A_0$가 정해지기 전에는 numerical aluminum thermal distribution을 주장하지 않는다.
 
 ## 활성 이론 정정 — 정확한 비선형 transport
 
