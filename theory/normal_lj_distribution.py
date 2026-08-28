@@ -1,16 +1,24 @@
 """Large-system distribution closure for the active 1D normal layer-LJ theory.
 
 The closure is derived from an equiprobable fixed-length/fixed-configurational-
-energy ensemble for M positive layer spacings.  For finite M the one-spacing
+energy ensemble for M positive layer spacings. For finite M the one-spacing
 marginal is proportional to the density of states of the remaining M-1
-spacings.  A large-M saddle-point expansion gives
+spacings. A large-M saddle-point expansion gives
 
     p(lambda) = Z^{-1} exp[-alpha*lambda - beta*psi(lambda)].
 
 This is a CONTROLLED APPROXIMATION to the driven fatigue state, not an exact
-consequence of deterministic cyclic dynamics.  alpha and beta are determined
+consequence of deterministic cyclic dynamics. alpha and beta are determined
 by the prescribed mean stretch and mean configurational energy; they are not
 fitted fatigue parameters.
+
+Numerics:
+A transformed Gauss-Legendre rule is used on (0, infinity) for ordinary
+states. Very sharply concentrated states can be under-resolved by a fixed
+global rule. For large alpha and beta, the implementation therefore switches
+to a mode-centered finite Gauss-Legendre rule whose width is derived from the
+local LJ curvature. This is a numerical resolution strategy, not a new
+physical closure.
 """
 from __future__ import annotations
 
@@ -20,7 +28,12 @@ import math
 
 import numpy as np
 
-from theory.normal_lj_chain import critical_stretch, normalized_lj_energy
+from theory.normal_lj_chain import (
+    critical_stretch,
+    normalized_lj_energy,
+    normalized_lj_force,
+    normalized_lj_stiffness,
+)
 
 
 @dataclass(frozen=True)
@@ -33,6 +46,7 @@ class ClosureMoments:
     variance_stretch: float
     variance_energy: float
     covariance_stretch_energy: float
+    third_central_moment_stretch: float
     critical_tail_probability: float
 
 
@@ -54,11 +68,7 @@ def shifted_lj_energy(stretch, m: float = 12.19, n: float = 6.0):
 
 @lru_cache(maxsize=32)
 def _quadrature(order: int, lower: float = 0.0):
-    """Gauss-Legendre quadrature on lambda in (lower, infinity).
-
-    The map lambda=lower+x/(1-x), x in (0,1), resolves the unbounded domain
-    without introducing a finite support cutoff.
-    """
+    """Gauss-Legendre quadrature on lambda in (lower, infinity)."""
     if order < 64:
         raise ValueError("quadrature order must be at least 64")
     if lower < 0.0:
@@ -72,9 +82,67 @@ def _quadrature(order: int, lower: float = 0.0):
     return lam, log_measure
 
 
+@lru_cache(maxsize=16)
+def _legendre_rule(order: int):
+    if order < 64:
+        raise ValueError("quadrature order must be at least 64")
+    return np.polynomial.legendre.leggauss(order)
+
+
 def _logsumexp(values: np.ndarray) -> float:
     vmax = float(np.max(values))
     return vmax + math.log(float(np.sum(np.exp(values - vmax))))
+
+
+def _closure_mode(
+    alpha: float,
+    beta: float,
+    *,
+    m: float,
+    n: float,
+) -> float:
+    """Mode of exp[-alpha lambda-beta psi(lambda)] on the compressive branch."""
+    target_force = -alpha / beta
+    lo = 1.0e-8
+    hi = 1.0
+    for _ in range(120):
+        mid = 0.5 * (lo + hi)
+        force_mid = float(normalized_lj_force(mid, m, n))
+        if force_mid < target_force:
+            lo = mid
+        else:
+            hi = mid
+    return 0.5 * (lo + hi)
+
+
+def _moment_rule(
+    alpha: float,
+    beta: float,
+    *,
+    m: float,
+    n: float,
+    quadrature_order: int,
+):
+    """Return quadrature nodes and log-measure for closure moments.
+
+    A mode-centered rule is used only for sharply concentrated states for
+    which a fixed global transformed rule can miss the narrow probability
+    peak. The switch thresholds are numerical, not material parameters.
+    """
+    if beta > 1.0e4 and alpha > 50.0:
+        mode = _closure_mode(alpha, beta, m=m, n=n)
+        stiffness = float(normalized_lj_stiffness(mode, m, n))
+        curvature = beta * stiffness
+        if curvature > 0.0:
+            sigma_local = 1.0 / math.sqrt(curvature)
+            lower = max(1.0e-10, mode - 24.0 * sigma_local)
+            upper = mode + 24.0 * sigma_local
+            z, w = _legendre_rule(int(quadrature_order))
+            lam = 0.5 * (upper - lower) * z + 0.5 * (upper + lower)
+            weights = 0.5 * (upper - lower) * w
+            return lam, np.log(weights)
+
+    return _quadrature(int(quadrature_order), 0.0)
 
 
 def closure_moments(
@@ -93,7 +161,13 @@ def closure_moments(
     if beta <= 0.0:
         raise ValueError("beta must be positive for repulsive-tail integrability")
 
-    lam, log_measure = _quadrature(int(quadrature_order), 0.0)
+    lam, log_measure = _moment_rule(
+        alpha,
+        beta,
+        m=m,
+        n=n,
+        quadrature_order=int(quadrature_order),
+    )
     energy = shifted_lj_energy(lam, m, n)
     log_terms = log_measure - alpha * lam - beta * energy
     log_z = _logsumexp(log_terms)
@@ -106,6 +180,8 @@ def closure_moments(
     var_lam = float(np.sum(probabilities * dl * dl))
     var_e = float(np.sum(probabilities * de * de))
     cov = float(np.sum(probabilities * dl * de))
+    third_lam = float(np.sum(probabilities * dl ** 3))
+
     lam_c = critical_stretch(m, n)
     tail_lam, tail_log_measure = _quadrature(int(quadrature_order), float(lam_c))
     tail_energy = shifted_lj_energy(tail_lam, m, n)
@@ -121,6 +197,7 @@ def closure_moments(
         variance_stretch=var_lam,
         variance_energy=var_e,
         covariance_stretch_energy=cov,
+        third_central_moment_stretch=third_lam,
         critical_tail_probability=tail,
     )
 
@@ -142,15 +219,25 @@ def solve_alpha_for_mean(
 
     lo = 1.0e-10
     hi = 1.0
-    while closure_moments(hi, beta, m=m, n=n, quadrature_order=quadrature_order).mean_stretch > mu:
+    while closure_moments(
+        hi,
+        beta,
+        m=m,
+        n=n,
+        quadrature_order=quadrature_order,
+    ).mean_stretch > mu:
         hi *= 2.0
-        if hi > 1.0e8:
+        if hi > 1.0e12:
             raise RuntimeError("failed to bracket alpha")
 
-    for _ in range(100):
+    for _ in range(120):
         mid = 0.5 * (lo + hi)
         mean_mid = closure_moments(
-            mid, beta, m=m, n=n, quadrature_order=quadrature_order
+            mid,
+            beta,
+            m=m,
+            n=n,
+            quadrature_order=quadrature_order,
         ).mean_stretch
         if mean_mid > mu:
             lo = mid
@@ -185,43 +272,75 @@ def solve_distribution_closure(
 
     beta_lo = 1.0e-3
     alpha_lo = solve_alpha_for_mean(
-        beta_lo, mu, m=m, n=n, quadrature_order=quadrature_order
+        beta_lo,
+        mu,
+        m=m,
+        n=n,
+        quadrature_order=quadrature_order,
     )
     e_lo = closure_moments(
-        alpha_lo, beta_lo, m=m, n=n, quadrature_order=quadrature_order
+        alpha_lo,
+        beta_lo,
+        m=m,
+        n=n,
+        quadrature_order=quadrature_order,
     ).mean_energy
     while e_lo < target_e:
         beta_lo *= 0.1
         if beta_lo < 1.0e-14:
             raise RuntimeError("failed to bracket target energy from above")
         alpha_lo = solve_alpha_for_mean(
-            beta_lo, mu, m=m, n=n, quadrature_order=quadrature_order
+            beta_lo,
+            mu,
+            m=m,
+            n=n,
+            quadrature_order=quadrature_order,
         )
         e_lo = closure_moments(
-            alpha_lo, beta_lo, m=m, n=n, quadrature_order=quadrature_order
+            alpha_lo,
+            beta_lo,
+            m=m,
+            n=n,
+            quadrature_order=quadrature_order,
         ).mean_energy
 
     beta_hi = 1.0
     while True:
         alpha_hi = solve_alpha_for_mean(
-            beta_hi, mu, m=m, n=n, quadrature_order=quadrature_order
+            beta_hi,
+            mu,
+            m=m,
+            n=n,
+            quadrature_order=quadrature_order,
         )
         e_hi = closure_moments(
-            alpha_hi, beta_hi, m=m, n=n, quadrature_order=quadrature_order
+            alpha_hi,
+            beta_hi,
+            m=m,
+            n=n,
+            quadrature_order=quadrature_order,
         ).mean_energy
         if e_hi <= target_e:
             break
         beta_hi *= 2.0
-        if beta_hi > 1.0e12:
+        if beta_hi > 1.0e14:
             raise RuntimeError("failed to bracket target energy from below")
 
-    for _ in range(100):
+    for _ in range(120):
         beta_mid = math.sqrt(beta_lo * beta_hi)
         alpha_mid = solve_alpha_for_mean(
-            beta_mid, mu, m=m, n=n, quadrature_order=quadrature_order
+            beta_mid,
+            mu,
+            m=m,
+            n=n,
+            quadrature_order=quadrature_order,
         )
         e_mid = closure_moments(
-            alpha_mid, beta_mid, m=m, n=n, quadrature_order=quadrature_order
+            alpha_mid,
+            beta_mid,
+            m=m,
+            n=n,
+            quadrature_order=quadrature_order,
         ).mean_energy
         if e_mid > target_e:
             beta_lo = beta_mid
@@ -232,10 +351,18 @@ def solve_distribution_closure(
 
     beta = math.sqrt(beta_lo * beta_hi)
     alpha = solve_alpha_for_mean(
-        beta, mu, m=m, n=n, quadrature_order=quadrature_order
+        beta,
+        mu,
+        m=m,
+        n=n,
+        quadrature_order=quadrature_order,
     )
     moments = closure_moments(
-        alpha, beta, m=m, n=n, quadrature_order=quadrature_order
+        alpha,
+        beta,
+        m=m,
+        n=n,
+        quadrature_order=quadrature_order,
     )
     return ClosureSolution(
         target_mean_stretch=mu,
@@ -259,17 +386,22 @@ def closure_density(
     if np.any(lam <= 0.0):
         raise ValueError("stretch must be positive")
     moments = closure_moments(
-        alpha, beta, m=m, n=n, quadrature_order=quadrature_order
+        alpha,
+        beta,
+        m=m,
+        n=n,
+        quadrature_order=quadrature_order,
     )
-    log_density = -alpha * lam - beta * shifted_lj_energy(lam, m, n) - moments.log_partition
+    log_density = (
+        -alpha * lam
+        - beta * shifted_lj_energy(lam, m, n)
+        - moments.log_partition
+    )
     return np.exp(log_density)
 
 
 def energy_derivative_at_fixed_mean(moments: ClosureMoments) -> float:
-    """Exact exponential-family identity d<E>/d beta at fixed mean.
-
-    d<E>/d beta|_mu = -[Var(E)-Cov(lambda,E)^2/Var(lambda)] <= 0.
-    """
+    """Exact exponential-family identity d<E>/d beta at fixed mean."""
     if moments.variance_stretch <= 0.0:
         return 0.0
     residual = (
