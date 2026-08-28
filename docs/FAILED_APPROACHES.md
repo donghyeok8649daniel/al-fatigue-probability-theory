@@ -34,6 +34,18 @@ $$
 
 is an instantaneous unstable fraction, not automatically a cumulative crack-initiation probability. A first-passage or absorbing-boundary formulation is required for initiation probability.
 
+## Finite-harmonic form as a global spacing-distribution model
+
+A single or finite set of spatial harmonics was explored as a push-forward diagnostic. This route is not accepted as the active global form of $P(\lambda,t)$ because a finite harmonic ansatz inserts spatial periodicity that is not guaranteed by the actual driven boundary-value problem.
+
+The harmonic calculation remains useful only as a historical/local falsification diagnostic. It must not be promoted to the global nonequilibrium distribution law.
+
+## Taylor expansion about equilibrium as a full-support distribution derivation
+
+Expanding the generalized-LJ force about $\lambda=1$ is a local approximation. The fatigue theory must reason about the entire occupied support, including tensile and compression tails, so a local Taylor expansion is not used to derive the active full distribution.
+
+The original nonlinear generalized-LJ force is retained in the active transport/hierarchy derivation. Local Taylor coefficients may be kept only as explicitly local diagnostics, not as the governing law for the full $P(\lambda,t)$.
+
 ---
 
 # 한국어 번역 — 실패했거나 배제한 접근
@@ -75,3 +87,15 @@ Q_c(t)=\int_{a_c}^{\infty}P(a,t)\,da
 $$
 
 는 그 순간 unstable 영역에 존재하는 분율이다. 이것이 자동으로 누적 crack-initiation probability가 되는 것은 아니다. 균열개시 확률을 정의하려면 first-passage 또는 absorbing-boundary 정식화가 필요하다.
+
+## 유한 harmonic 형식을 전역 spacing distribution 모델로 사용하는 접근
+
+single 또는 finite spatial harmonic을 push-forward diagnostic으로 시험했지만 이를 $P(\lambda,t)$의 활성 전역 형식으로 사용하지 않는다. 유한 harmonic ansatz는 실제 driven boundary-value problem에서 보장되지 않은 공간 주기성을 미리 넣기 때문이다.
+
+harmonic 계산은 과거의 국소 진단/반증시험으로만 보존하며 global nonequilibrium distribution law로 승격하지 않는다.
+
+## 평형점 Taylor 전개로 전체 support 분포를 유도하는 접근
+
+generalized-LJ force를 $\lambda=1$ 주변에서 Taylor 전개하는 것은 국소 근사다. 현재 피로이론은 tensile/compression tail을 포함한 전체 occupied support를 다뤄야 하므로 local Taylor expansion으로 활성 전체 distribution을 유도하지 않는다.
+
+활성 transport/hierarchy derivation에서는 원래의 nonlinear generalized-LJ force를 그대로 유지한다. Taylor coefficient는 필요하면 명시적인 국소 diagnostic으로만 보존하고 full $P(\lambda,t)$의 governing law로 사용하지 않는다.
