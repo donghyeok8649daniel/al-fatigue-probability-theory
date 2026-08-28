@@ -1,12 +1,31 @@
 {
   "active_mainline": "normal-deformation",
-  "model_status": "proof-of-principle normal generalized-LJ chain; not calibrated Al fatigue life",
-  "active_files": {
-    "theory": "theory/normal_lj_chain.py",
-    "simulation": "simulations/run_normal_lj_chain.py",
-    "tests": "tests/test_normal_lj_chain.py",
-    "summary": "results/data/normal_lj_summary.json",
-    "cycle_history": "results/data/normal_lj_cycle_history.csv",
-    "report": "results/reports/NORMAL_LJ_RESULTS.md"
-  }
+  "model_status": "normal generalized-LJ mechanics validation; not calibrated Al fatigue life",
+  "active_models": {
+    "reduced_1d_normal_chain": {
+      "theory": "theory/normal_lj_chain.py",
+      "simulation": "simulations/run_normal_lj_chain.py",
+      "tests": "tests/test_normal_lj_chain.py",
+      "summary": "results/data/normal_lj_summary.json",
+      "cycle_history": "results/data/normal_lj_cycle_history.csv",
+      "report": "results/reports/NORMAL_LJ_RESULTS.md"
+    },
+    "fcc_normal_lattice_sum": {
+      "theory": "theory/fcc_normal_lj.py",
+      "simulation": "simulations/run_fcc_normal_lj.py",
+      "tests": "tests/test_fcc_normal_lj.py",
+      "summary": "results/data/fcc_normal_lj_summary.json",
+      "stress_strain": "results/data/fcc_normal_lj_stress_strain.csv",
+      "milestone": "docs/MILESTONE3_FCC_NORMAL_LJ.md",
+      "variables": "docs/VARIABLE_DEFINITIONS_FCC_NORMAL_LJ.md",
+      "figures": [
+        "results/figures/fcc_lj_001_stress_strain.svg",
+        "results/figures/fcc_lj_elastic_constants.svg",
+        "results/figures/fcc_lj_cohesion_conflict.svg",
+        "results/figures/fcc_lj_cutoff_convergence.svg"
+      ]
+    }
+  },
+  "auxiliary_library": "libraries/shear/",
+  "current_blocker_before_quantitative_thermal_first_passage": "absolute cohesive-energy consistency / minimum physically justified many-body correction"
 }
