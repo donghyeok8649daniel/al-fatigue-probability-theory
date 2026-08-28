@@ -2,93 +2,91 @@
 
 ## Scope
 
-The active theory remains strictly one-dimensional and normal-only. The local state variable is the normalized layer spacing
+The active theory remains strictly one-dimensional and normal-only. The normalized layer spacing is
 
 $$
-\lambda_i(t)=\frac{a_i(t)}{a_0}.
+\lambda_i(t)=a_i(t)/a_0.
 $$
 
-The current one-point closure uses only the unordered spacing density $p_\lambda(\lambda,t)$. This milestone tests whether deterministic 1D layer-LJ mechanics retains spatial ordering information that cannot be represented by that one-point density.
+The current one-point density $p_\lambda(\lambda,t)$ contains the set of spacing values but not their spatial order. This milestone tests whether deterministic 1D layer-LJ mechanics retains ordering information that survives increasing represented system size.
 
 ## Exact finite-chain definitions
 
 For $M$ represented spacings,
 
 $$
-\mu(t)=\frac1M\sum_{i=1}^M\lambda_i(t),
+\mu(t)=M^{-1}\sum_{i=1}^{M}\lambda_i(t),
 $$
 
 $$
 \boxed{
-C_k(t)=\frac{1}{M-k}\sum_{i=1}^{M-k}[\lambda_i(t)-\mu(t)][\lambda_{i+k}(t)-\mu(t)]
+C_k(t)=(M-k)^{-1}\sum_{i=1}^{M-k}[\lambda_i(t)-\mu(t)][\lambda_{i+k}(t)-\mu(t)]
 }
 $$
 
 and
 
 $$
-\boxed{\rho_k(t)=\frac{C_k(t)}{C_0(t)}}.
+\boxed{\rho_k(t)=C_k(t)/C_0(t)}.
 $$
 
-Since
+Because
 
 $$
-C_0(t)=\frac1M\sum_i[\lambda_i(t)-\mu(t)]^2,
+C_0(t)=M^{-1}\sum_i[\lambda_i(t)-\mu(t)]^2,
 $$
 
 $C_0$ is exactly the empirical spacing variance.
 
-## Exact non-identifiability of ordering from the one-point density
+## Exact ordering non-identifiability of a one-point density
 
-The empirical one-point density
+The empirical density
 
 $$
-p_M(\lambda,t)=\frac1M\sum_{i=1}^M\delta[\lambda-\lambda_i(t)]
+p_M(\lambda,t)=M^{-1}\sum_i\delta[\lambda-\lambda_i(t)]
 $$
 
-is invariant under any permutation $\pi$ of the layer-spacing labels:
+is invariant under every permutation $\pi$ of the layer-spacing labels:
 
 $$
 \boxed{p_M^\pi(\lambda,t)=p_M(\lambda,t)}.
 $$
 
-All one-point moments are therefore unchanged by permuting exactly the same spacing values, while $C_k$ generally changes. Hence
+Therefore all one-point moments and the one-point LJ energy are unchanged by reordering exactly the same spacing values, while $C_k$ generally changes. Hence
 
 $$
 \boxed{p_M(\lambda,t)\text{ does not determine spatial ordering}.}
 $$
 
-This is an **EXACT / IDENTITY-level structural result** and does not depend on the proposed exponential closure.
+This is an **EXACT / IDENTITY-level structural result** and is independent of the proposed exponential closure.
 
 ## Exact random-permutation reference
 
-Let $d_i=\lambda_i-\mu$, so that $\sum_i d_i=0$. Under a uniformly random permutation, two distinct elements satisfy
+Let $d_i=\lambda_i-\mu$ with $\sum_i d_i=0$. Under a uniformly random permutation, any two distinct entries satisfy
 
 $$
-\mathbb E[d_{\pi(i)}d_{\pi(j)}]=-rac{C_0}{M-1},\qquad i\ne j.
+\mathbb E[d_{\pi(i)}d_{\pi(j)}]=-C_0/(M-1),\qquad i\ne j.
 $$
 
 Therefore every nonzero lag obeys
 
 $$
-\boxed{\mathbb E_{\rm perm}[\rho_k]=-rac{1}{M-1}}.
+\boxed{\mathbb E_{\rm perm}[\rho_k]=-(M-1)^{-1}.}
 $$
 
-This is exact for the stated finite permutation ensemble.
+This is exact for the stated finite permutation ensemble and tends to zero as $M$ grows.
 
-## Dynamically matched protocol
+## Controlled numerical protocol
 
-The existing controlled system-size protocol is retained:
+The dynamically matched system-size sweep uses
 
 $$
 F_a^*=0.03,
-$$
-
-$$
+\qquad
 \boxed{\omega M=0.62},
 $$
 
-and the phase-locked snapshot is taken at $t_s=2T$. The tested represented spacing counts are
+and samples at $t_s=2T$. The represented spacing counts are
 
 $$
 M=31,\ 63,\ 127,\ 255.
@@ -96,7 +94,7 @@ $$
 
 This is a **CONTROLLED NUMERICAL PROTOCOL**, not a material law.
 
-## Numerical result
+## Numerical results
 
 Nearest-neighbor correlation is
 
@@ -107,13 +105,13 @@ Nearest-neighbor correlation is
 | 127 | 0.982820 | -0.007937 |
 | 255 | 0.991302 | -0.003937 |
 
-A fixed lag becomes a vanishing fraction of the chain as $M$ grows, so the more meaningful comparison uses
+A fixed lag becomes a vanishing fraction of the chain as $M$ grows. The meaningful comparison therefore uses the scaled lag
 
 $$
-\eta=\frac{k}{M}.
+\eta=k/M.
 $$
 
-At similar $\eta$, the four correlation profiles nearly collapse:
+At similar $\eta$, the four profiles nearly collapse:
 
 | $\eta$ | $M=31$ | $M=63$ | $M=127$ | $M=255$ |
 |---:|---:|---:|---:|---:|
@@ -123,7 +121,7 @@ At similar $\eta$, the four correlation profiles nearly collapse:
 | 0.30 | 0.2250 | 0.1707 | 0.1668 | 0.1638 |
 | 0.40 | -0.1113 | -0.1623 | -0.1884 | -0.1877 |
 
-The first zero crossing satisfies
+The first zero crossing scales as
 
 | $M$ | $k_0/M$ |
 |---:|---:|
@@ -132,17 +130,17 @@ The first zero crossing satisfies
 | 127 | 0.3481 |
 | 255 | 0.3463 |
 
-and the positive-correlation area divided by $M$ approaches about
+and the positive-correlation area divided by $M$ approaches approximately
 
 $$
 \boxed{0.184}.
 $$
 
-These are **NUMERICAL RESULTS** of the stated reduced-model protocol, not a theorem for aluminum fatigue.
+These are **NUMERICAL RESULTS** of the stated reduced-model protocol, not a quantitative aluminum fatigue-life prediction.
 
 ## Interpretation and next state
 
-The driven 1D chain retains an $O(M)$ coherent spatial structure. A one-point density forgets layer order and therefore cannot distinguish the actual deterministic state from a permutation of exactly the same spacing values.
+The driven chain retains an $O(M)$ coherent spatial structure. A one-point density forgets layer order and cannot distinguish the deterministic snapshot from a permutation of exactly the same spacing values.
 
 The physically motivated next statistical object is therefore a neighboring-spacing joint density
 
@@ -150,15 +148,7 @@ $$
 \boxed{P_2(\lambda,\lambda',t)}.
 $$
 
-It can carry, for example,
-
-$$
-C_1(t)=\iint(\lambda-\mu)(\lambda'-\mu)P_2(\lambda,\lambda',t)\,d\lambda\,d\lambda'
-$$
-
-up to the finite open-chain endpoint convention.
-
-The next task is to derive the minimum pair-state evolution required by the 1D layer-LJ equations. No empirical correlation length or fitted relaxation law is introduced.
+It can carry $C_1$ and the ordering information that is absent from $p_\lambda$. The next task is to derive the minimum pair-state evolution required by the 1D layer-LJ equations, without inserting an empirical correlation length or fitted relaxation law.
 
 ---
 
@@ -166,51 +156,51 @@ The next task is to derive the minimum pair-state evolution required by the 1D l
 
 ## 범위
 
-활성 이론은 계속 엄격하게 1차원 수직변형만 다룬다. 국부 상태변수는 normalized layer spacing
+활성 이론은 계속 엄격하게 1차원 수직변형만 다룬다. normalized layer spacing은
 
 $$
-\lambda_i(t)=\frac{a_i(t)}{a_0}
+\lambda_i(t)=a_i(t)/a_0
 $$
 
 이다.
 
-현재 one-point closure는 순서를 제거한 spacing density $p_\lambda(\lambda,t)$만 사용한다. 이번 마일스톤에서는 deterministic 1D layer-LJ mechanics가 이 one-point density로 표현할 수 없는 공간적 순서정보를 유지하는지 검사한다.
+현재 one-point density $p_\lambda(\lambda,t)$는 spacing 값들의 집합은 담지만 공간적 순서는 담지 못한다. 이번 마일스톤에서는 deterministic 1D layer-LJ mechanics가 represented system size를 키워도 남는 ordering information을 가지는지 검사한다.
 
 ## 정확한 finite-chain 정의
 
 $M$개의 represented spacing에 대해
 
 $$
-\mu(t)=\frac1M\sum_{i=1}^M\lambda_i(t),
+\mu(t)=M^{-1}\sum_{i=1}^{M}\lambda_i(t),
 $$
 
 $$
-\boxed{C_k(t)=\frac{1}{M-k}\sum_{i=1}^{M-k}[\lambda_i(t)-\mu(t)][\lambda_{i+k}(t)-\mu(t)]}
+\boxed{C_k(t)=(M-k)^{-1}\sum_{i=1}^{M-k}[\lambda_i(t)-\mu(t)][\lambda_{i+k}(t)-\mu(t)]}
 $$
 
 및
 
 $$
-\boxed{\rho_k(t)=\frac{C_k(t)}{C_0(t)}}
+\boxed{\rho_k(t)=C_k(t)/C_0(t)}
 $$
 
 를 정의한다.
 
 $$
-C_0(t)=\frac1M\sum_i[\lambda_i(t)-\mu(t)]^2
+C_0(t)=M^{-1}\sum_i[\lambda_i(t)-\mu(t)]^2
 $$
 
 이므로 $C_0$는 정확히 empirical spacing variance다.
 
 ## one-point density로 ordering을 결정할 수 없다는 정확한 결과
 
-empirical one-point density
+empirical density
 
 $$
-p_M(\lambda,t)=\frac1M\sum_{i=1}^M\delta[\lambda-\lambda_i(t)]
+p_M(\lambda,t)=M^{-1}\sum_i\delta[\lambda-\lambda_i(t)]
 $$
 
-는 layer-spacing label의 임의 permutation $\pi$에 대해
+는 layer-spacing label의 모든 permutation $\pi$에 대해
 
 $$
 \boxed{p_M^\pi(\lambda,t)=p_M(\lambda,t)}
@@ -218,7 +208,7 @@ $$
 
 로 불변이다.
 
-따라서 정확히 같은 spacing 값들의 순서를 바꾸면 모든 one-point moment는 그대로지만 $C_k$는 일반적으로 바뀐다. 즉
+따라서 정확히 같은 spacing 값의 순서를 바꾸어도 모든 one-point moment와 one-point LJ energy는 그대로지만 $C_k$는 일반적으로 바뀐다. 즉
 
 $$
 \boxed{p_M(\lambda,t)\text{만으로 spatial ordering을 결정할 수 없다}.}
@@ -228,10 +218,10 @@ $$
 
 ## 정확한 random-permutation 기준
 
-$d_i=\lambda_i-\mu$로 두면 $\sum_i d_i=0$이다. uniform random permutation에서 서로 다른 두 원소는
+$d_i=\lambda_i-\mu$, $\sum_i d_i=0$로 두자. uniform random permutation에서 서로 다른 두 entry는
 
 $$
-\mathbb E[d_{\pi(i)}d_{\pi(j)}]=-rac{C_0}{M-1},\qquad i\ne j
+\mathbb E[d_{\pi(i)}d_{\pi(j)}]=-C_0/(M-1),\qquad i\ne j
 $$
 
 를 만족한다.
@@ -239,24 +229,22 @@ $$
 따라서 모든 nonzero lag에서
 
 $$
-\boxed{\mathbb E_{\rm perm}[\rho_k]=-rac{1}{M-1}}
+\boxed{\mathbb E_{\rm perm}[\rho_k]=-(M-1)^{-1}}
 $$
 
-이다. 이는 stated finite permutation ensemble에 대해 정확하다.
+이다. stated finite permutation ensemble에 대해 정확하며 $M$이 커지면 0으로 간다.
 
-## Dynamically matched protocol
+## Controlled numerical protocol
 
-기존 controlled system-size protocol을 그대로 유지한다.
+Dynamically matched system-size sweep는
 
 $$
 F_a^*=0.03,
-$$
-
-$$
+\qquad
 \boxed{\omega M=0.62}
 $$
 
-이며 phase-locked snapshot은 $t_s=2T$에서 취한다. 시험한 represented spacing 수는
+를 사용하고 $t_s=2T$에서 sample한다. represented spacing 수는
 
 $$
 M=31,\ 63,\ 127,\ 255
@@ -277,15 +265,15 @@ nearest-neighbor correlation은 다음과 같다.
 | 127 | 0.982820 | -0.007937 |
 | 255 | 0.991302 | -0.003937 |
 
-$M$이 커질수록 fixed lag는 전체 chain에서 차지하는 비율이 0으로 가므로 더 의미 있는 비교는
+$M$이 커지면 fixed lag는 전체 chain의 아주 작은 비율이 되므로 scaled lag
 
 $$
-\eta=\frac{k}{M}
+\eta=k/M
 $$
 
-를 사용한다.
+가 더 의미 있다.
 
-비슷한 $\eta$에서 네 correlation profile은 거의 같은 곡선으로 collapse한다.
+비슷한 $\eta$에서 네 profile은 거의 같은 곡선으로 collapse한다.
 
 | $\eta$ | $M=31$ | $M=63$ | $M=127$ | $M=255$ |
 |---:|---:|---:|---:|---:|
@@ -312,11 +300,11 @@ $$
 
 로 접근한다.
 
-이는 stated reduced-model protocol의 **NUMERICAL RESULT**이며 실제 aluminum fatigue에 대한 theorem은 아니다.
+이는 stated reduced-model protocol의 **NUMERICAL RESULT**이며 정량적인 aluminum fatigue-life prediction은 아니다.
 
 ## 해석과 다음 상태
 
-Driven 1D chain은 $O(M)$ 규모의 coherent spatial structure를 유지한다. one-point density는 layer 순서를 잊기 때문에 실제 deterministic state와 정확히 같은 spacing 값을 섞은 상태를 구분할 수 없다.
+Driven chain은 $O(M)$ 규모의 coherent spatial structure를 유지한다. one-point density는 layer 순서를 잊기 때문에 실제 deterministic snapshot과 정확히 같은 spacing 값을 permutation한 상태를 구분할 수 없다.
 
 따라서 물리적으로 자연스러운 다음 statistical object는 neighboring-spacing joint density
 
@@ -326,12 +314,4 @@ $$
 
 이다.
 
-finite open-chain endpoint convention을 제외하면
-
-$$
-C_1(t)=\iint(\lambda-\mu)(\lambda'-\mu)P_2(\lambda,\lambda',t)\,d\lambda\,d\lambda'
-$$
-
-로 표현할 수 있다.
-
-다음 목표는 경험적 correlation length나 fitted relaxation law를 넣는 것이 아니라 1D layer-LJ equation에서 필요한 최소 pair-state evolution을 유도하는 것이다.
+이 상태는 $C_1$과 $p_\lambda$에 없는 ordering information을 담을 수 있다. 다음 목표는 empirical correlation length나 fitted relaxation law를 넣는 것이 아니라 1D layer-LJ equation에서 필요한 최소 pair-state evolution을 유도하는 것이다.
