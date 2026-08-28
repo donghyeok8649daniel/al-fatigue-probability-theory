@@ -10,6 +10,15 @@
       "cycle_history": "results/data/normal_lj_cycle_history.csv",
       "report": "results/reports/NORMAL_LJ_RESULTS.md"
     },
+    "normal_lj_timescale": {
+      "theory": "theory/normal_lj_timescale.py",
+      "simulation": "simulations/run_normal_lj_timescale.py",
+      "tests": "tests/test_normal_lj_timescale.py",
+      "summary": "results/data/normal_lj_timescale_summary.json",
+      "milestone": "docs/MILESTONE3_NORMAL_MEMORY_TIMESCALE.md",
+      "variables": "docs/VARIABLE_DEFINITIONS_NORMAL_TIMESCALE.md",
+      "classification": "falsification / time-scale diagnostic"
+    },
     "fcc_normal_lattice_sum": {
       "theory": "theory/fcc_normal_lj.py",
       "simulation": "simulations/run_fcc_normal_lj.py",
@@ -27,5 +36,6 @@
     }
   },
   "auxiliary_library": "libraries/shear/",
+  "current_time_scale_falsification": "ordinary conservative normal acoustic modes and ordinary local LJ critical softening do not directly provide a 20 Hz microscopic memory scale",
   "current_blocker_before_quantitative_thermal_first_passage": "absolute cohesive-energy consistency / minimum physically justified many-body correction"
 }
