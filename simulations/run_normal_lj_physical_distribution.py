@@ -1,9 +1,8 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: current layer-LJ calibration에서 force-biased stable/barrier point와 metastable thermal P의 dimensionless 진단값을 생성한다.
+# - 파일 역할: 활성 이론을 실행해 재현 가능한 수치 결과를 생성하는 Python 스크립트다.
 # - 주요 클래스: 없음 또는 외부 선언만 사용
 # - 주요 함수/메서드: main
-# - 출력: results/data/normal_lj_physical_distribution.csv, .json 및 results/reports/NORMAL_LJ_PHYSICAL_DISTRIBUTION.md
-# - 주의: chi는 dimensionless diagnostic 값이며 A0가 물리적으로 결정되기 전에는 실제 Al 온도/수명 예측으로 해석하지 않는다.
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """Generate dimensionless physical-statistical diagnostics for Milestone 12."""
 from __future__ import annotations
