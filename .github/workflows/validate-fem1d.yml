@@ -5,8 +5,11 @@ on:
     paths:
       - 'fem1d/**'
       - 'simulations/visualize_fem1d.py'
+      - 'simulations/fem_tension_ui.py'
       - 'tests/test_fem1d_visualizer.py'
+      - 'tests/test_fem_tension_ui.py'
       - 'docs/MILESTONE14_1D_FEM_SCAFFOLD.md'
+      - 'docs/MILESTONE14A_2D_3D_TENSION_UI.md'
       - '.github/workflows/validate-fem1d.yml'
   workflow_dispatch:
 
@@ -16,6 +19,8 @@ permissions:
 jobs:
   validate-fem1d:
     runs-on: ubuntu-latest
+    env:
+      MPLBACKEND: Agg
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -31,8 +36,8 @@ jobs:
       - name: Run analytical uniform-bar self-test
         run: make -C fem1d self-test
 
-      - name: Test Python visualizer helpers
-        run: python -m unittest discover -s tests -p 'test_fem1d_visualizer.py'
+      - name: Test Python FEM visualizer and tensile UI helpers
+        run: python -m unittest discover -s tests -p 'test_fem*.py'
 
       - name: Generate reversible 1D FEM demo history
         run: |
@@ -49,11 +54,19 @@ jobs:
             --steps-per-cycle 80 \
             --outdir results/data/fem1d_demo
 
-      - name: Generate Python FEM visualizations
+      - name: Generate basic 1D plots
         run: |
           python simulations/visualize_fem1d.py \
             --input-dir results/data/fem1d_demo \
             --output-dir results/figures/fem1d_demo
+
+      - name: Generate tensile-only 2D and 3D previews
+        run: |
+          python simulations/fem_tension_ui.py \
+            --input-dir results/data/fem1d_demo \
+            --output-dir results/figures/fem1d_demo \
+            --field stress \
+            --save-previews
 
       - name: Commit reproducible demo outputs
         shell: bash
@@ -65,5 +78,5 @@ jobs:
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Generate validated standalone 1D FEM demo outputs'
+          git commit -m 'Generate validated tensile-only 2D and 3D FEM previews'
           git push
