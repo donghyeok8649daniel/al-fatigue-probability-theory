@@ -1,8 +1,12 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 통합 tensile FEM GUI의 입력 단위변환, 물리 입력 검증, C solver 명령행 변환을 검증한다.
+# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
 # - 주요 클래스: TestTensionRunConfig, TestSolverCommand
-# - 주요 함수/메서드: 기본 단위변환/면적 계산, 비정상 입력 거부, CLI 인자 생성 검증
-# - 주의: 실제 C binary 실행과 2D/3D rendering은 GitHub Actions의 headless smoke 단계에서 별도로 검증한다.
+# - 주요 함수/메서드: TestTensionRunConfig.test_default_unit_conversions_and_area
+#   TestTensionRunConfig.test_invalid_geometry_is_rejected
+#   TestTensionRunConfig.test_invalid_discrete_controls_are_rejected
+#   TestTensionRunConfig.test_negative_mean_stress_is_allowed_but_negative_amplitude_is_not
+#   TestSolverCommand._option_value, TestSolverCommand.test_command_contains_converted_inputs_numerically
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 import unittest
 from pathlib import Path

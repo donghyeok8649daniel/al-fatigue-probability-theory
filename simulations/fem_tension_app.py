@@ -1,10 +1,14 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 1D C FEM 해석 입력, 실행, 2D/3D tensile-only 결과 확인을 한 창에서 수행하는 통합 GUI다.
+# - 파일 역할: 활성 이론을 실행해 재현 가능한 수치 결과를 생성하는 Python 스크립트다.
 # - 주요 클래스: TensionRunConfig, FEMTensionApp
-# - 주요 함수: validate_run_config, solver_executable, build_fem_solver, solver_command, run_fem_solver, run_headless_smoke, main
-# - 입력: 길이/폭/두께/E/mesh/평균응력/응력진폭/주파수/cycle/시간분할 및 변형 표시 배율
-# - 출력: C FEM의 nodes.csv/elements.csv/metadata.csv와 GUI의 2D/3D axial stress 또는 axial strain 표시
-# - 주의: 화면은 2D/3D지만 역학은 순수 1D 축인장이다. shear, von-Mises, Poisson 수축, 다축 파손기준, P(lambda,t)는 아직 넣지 않는다.
+# - 주요 함수/메서드: TensionRunConfig.length_m, TensionRunConfig.width_m, TensionRunConfig.thickness_m
+#   TensionRunConfig.area_m2, TensionRunConfig.young_pa, validate_run_config, repository_root
+#   solver_executable, _solver_sources, _needs_rebuild, build_fem_solver, solver_command, run_fem_solver
+#   FEMTensionApp.__init__, FEMTensionApp._create_parameter_panel, FEMTensionApp._create_result_controls
+#   FEMTensionApp._read_config, FEMTensionApp._set_status, FEMTensionApp._on_run, FEMTensionApp._on_save
+#   FEMTensionApp._on_slider, FEMTensionApp._on_view, FEMTensionApp._on_field
+#   FEMTensionApp._clear_main_axes, FEMTensionApp.redraw, FEMTensionApp.show, run_headless_smoke, main
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """Integrated GUI for the standalone one-dimensional tensile FEM scaffold.
 
