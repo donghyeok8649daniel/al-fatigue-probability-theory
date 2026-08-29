@@ -14,15 +14,18 @@ on:
       - 'docs/MILESTONE12_PHYSICAL_STATISTICAL_P.md'
       - 'docs/MILESTONE13_1D_STATISTICAL_CELL.md'
       - 'docs/MILESTONE13A_FINITE_SNAPSHOT_CORRECTION.md'
+      - 'docs/MILESTONE15_QUASISTATIC_PROTOCOL_COHERENCE.md'
       - 'docs/VARIABLE_DEFINITIONS_DISTRIBUTION_TRANSPORT.md'
       - 'docs/VARIABLE_DEFINITIONS_P_SHAPE.md'
       - 'docs/VARIABLE_DEFINITIONS_PHYSICAL_P.md'
       - 'docs/VARIABLE_DEFINITIONS_STATISTICAL_CELL.md'
+      - 'docs/VARIABLE_DEFINITIONS_QUASISTATIC_PROTOCOL.md'
       - 'results/data/result_manifest.json'
       - 'tools/add_korean_code_headers.py'
       - 'tools/apply_exact_transport_supersession.py'
       - 'tools/apply_physical_statistical_p_status.py'
       - 'tools/apply_statistical_cell_status.py'
+      - 'tools/apply_quasistatic_protocol_status.py'
   workflow_dispatch:
 
 permissions:
@@ -49,6 +52,9 @@ jobs:
       - name: Synchronize 1D statistical-cell status
         run: python tools/apply_statistical_cell_status.py
 
+      - name: Synchronize quasistatic/protocol correction status
+        run: python tools/apply_quasistatic_protocol_status.py
+
       - name: Apply Korean file headers
         run: python tools/add_korean_code_headers.py
 
@@ -64,18 +70,23 @@ jobs:
       - name: Generate Milestone 13 correlation-cell diagnostics
         run: python -m simulations.run_normal_lj_spatial_correlation
 
+      - name: Generate Milestone 15 quasistatic protocol diagnostics
+        run: python -m simulations.run_normal_lj_quasistatic_protocol
+
       - name: Synchronize latest status after diagnostics
-        run: python tools/apply_statistical_cell_status.py
+        run: |
+          python tools/apply_statistical_cell_status.py
+          python tools/apply_quasistatic_protocol_status.py
 
       - name: Commit synchronized status and generated diagnostics
         shell: bash
         run: |
-          if git diff --quiet; then
+          git add README.md docs theory simulations tests firmware results tools
+          if git diff --cached --quiet; then
             echo 'No synchronization changes required.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add README.md docs theory simulations tests firmware results tools
-          git commit -m 'Synchronize latest 1D statistical-cell status and diagnostics'
+          git commit -m 'Synchronize Milestone 15 quasistatic protocol diagnostics'
           git push
