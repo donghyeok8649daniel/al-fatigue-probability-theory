@@ -6,10 +6,13 @@ on:
       - 'fem1d/**'
       - 'simulations/visualize_fem1d.py'
       - 'simulations/fem_tension_ui.py'
+      - 'simulations/fem_tension_app.py'
       - 'tests/test_fem1d_visualizer.py'
       - 'tests/test_fem_tension_ui.py'
+      - 'tests/test_fem_tension_app.py'
       - 'docs/MILESTONE14_1D_FEM_SCAFFOLD.md'
       - 'docs/MILESTONE14A_2D_3D_TENSION_UI.md'
+      - 'docs/MILESTONE14B_INTEGRATED_TENSION_APP.md'
       - '.github/workflows/validate-fem1d.yml'
   workflow_dispatch:
 
@@ -36,8 +39,22 @@ jobs:
       - name: Run analytical uniform-bar self-test
         run: make -C fem1d self-test
 
-      - name: Test Python FEM visualizer and tensile UI helpers
+      - name: Test Python FEM visualizers and integrated app helpers
         run: python -m unittest discover -s tests -p 'test_fem*.py'
+
+      - name: Run integrated app headless smoke test
+        run: |
+          rm -rf .tmp/fem1d_app_smoke
+          python -m simulations.fem_tension_app \
+            --headless-smoke \
+            --solver fem1d/bin/fem1d_solver \
+            --no-auto-build \
+            --output-dir .tmp/fem1d_app_smoke/data \
+            --preview-dir .tmp/fem1d_app_smoke/figures
+          test -f .tmp/fem1d_app_smoke/data/nodes.csv
+          test -f .tmp/fem1d_app_smoke/data/elements.csv
+          test -f .tmp/fem1d_app_smoke/figures/tension_2d_peak.png
+          test -f .tmp/fem1d_app_smoke/figures/tension_3d_peak.png
 
       - name: Generate reversible 1D FEM demo history
         run: |
