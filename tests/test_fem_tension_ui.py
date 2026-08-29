@@ -1,8 +1,11 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 2D/3D tensile UI가 1D 축방향 scalar만 시각적으로 펼치고 transverse mechanics를 만들지 않는지 검증한다.
+# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
 # - 주요 클래스: TestFemTensionUI
-# - 주요 함수/메서드: test_extruded_scalar_is_transversely_constant, test_axial_snapshot_uses_only_requested_scalar, test_invalid_field_rejected
-# - 주의: 이 테스트는 시각화 데이터의 구조를 검증하며 C FEM 해석 자체는 fem1d self-test가 담당한다.
+# - 주요 함수/메서드: TestFemTensionUI._histories
+#   TestFemTensionUI.test_extruded_scalar_is_transversely_constant
+#   TestFemTensionUI.test_axial_snapshot_uses_only_requested_scalar
+#   TestFemTensionUI.test_invalid_field_rejected
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 import unittest
 

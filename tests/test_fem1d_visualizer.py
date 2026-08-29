@@ -1,8 +1,9 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: Python 1D FEM visualizer의 CSV 로딩과 snapshot 선택 규칙을 검증한다.
+# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
 # - 주요 클래스: TestFem1DVisualizer
-# - 주요 함수/메서드: test_select_peak_tension, test_select_peak_absolute, test_select_final
-# - 주의: C FEM 자체의 해석 정확도는 fem1d_solver --self-test에서 별도로 검증한다.
+# - 주요 함수/메서드: TestFem1DVisualizer._history, TestFem1DVisualizer.test_select_peak_tension
+#   TestFem1DVisualizer.test_select_peak_absolute, TestFem1DVisualizer.test_select_final
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 import unittest
 

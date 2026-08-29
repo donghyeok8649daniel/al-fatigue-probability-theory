@@ -1,10 +1,11 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 1D bar FEM의 축방향 인장 결과를 2D/3D 시편 형상으로 펼쳐 보여주는 tensile-only UI다.
+# - 파일 역할: 활성 이론을 실행해 재현 가능한 수치 결과를 생성하는 Python 스크립트다.
 # - 주요 클래스: TensionViewer
-# - 주요 함수/메서드: load_fem_history, axial_snapshot, extruded_scalar_2d, plot_tension_2d, plot_tension_3d, save_preview_images, launch_ui, main
-# - 입력: fem1d solver가 생성한 nodes.csv, elements.csv
-# - 출력: interactive 2D/3D viewer 또는 tensile_2d_peak.png, tensile_3d_peak.png
-# - 물리 제한: 화면은 2D/3D지만 계산 상태는 오직 지정 인장축의 u(x,t), epsilon_x(x,t), sigma_x(x,t)뿐이다. shear, von Mises, transverse failure는 사용하지 않는다.
+# - 주요 함수/메서드: load_fem_history, axial_snapshot, extruded_scalar_2d, _deformed_x, plot_tension_2d
+#   _element_prism_faces, plot_tension_3d, _field_range, save_preview_images, TensionViewer.__init__
+#   TensionViewer._on_slider, TensionViewer._on_view, TensionViewer._on_field, TensionViewer.redraw
+#   TensionViewer.show, launch_ui, main
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """2D/3D presentation layer for the strictly one-dimensional tensile FEM.
 

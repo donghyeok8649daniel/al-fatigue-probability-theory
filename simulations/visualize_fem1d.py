@@ -1,9 +1,8 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: C 1D FEM이 출력한 nodes.csv/elements.csv를 읽어 변위·변형률·응력 및 응력이력을 시각화한다.
-# - 주요 함수: load_numeric_csv, select_snapshot_step, plot_fem1d_results, main
-# - 입력: fem1d output directory의 nodes.csv, elements.csv
-# - 출력: displacement_snapshot.png, strain_snapshot.png, stress_snapshot.png, stress_history.png
-# - 주의: P(lambda,t), Q_c, crack probability는 아직 계산하지 않는다. 확률이론 결합용 시각화 자리는 이후 추가한다.
+# - 파일 역할: 활성 이론을 실행해 재현 가능한 수치 결과를 생성하는 Python 스크립트다.
+# - 주요 클래스: 없음 또는 외부 선언만 사용
+# - 주요 함수/메서드: load_numeric_csv, select_snapshot_step, _save_line, plot_fem1d_results, main
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """Visualizer for the standalone 1D bar FEM scaffold."""
 from __future__ import annotations
