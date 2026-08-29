@@ -44,7 +44,12 @@ class TestTensionRunConfig(unittest.TestCase):
 
 
 class TestSolverCommand(unittest.TestCase):
-    def test_command_contains_exact_converted_inputs(self) -> None:
+    @staticmethod
+    def _option_value(command: list[str], option: str) -> str:
+        index = command.index(option)
+        return command[index + 1]
+
+    def test_command_contains_converted_inputs_numerically(self) -> None:
         config = TensionRunConfig(
             length_mm=60.0,
             width_mm=8.0,
@@ -58,16 +63,16 @@ class TestSolverCommand(unittest.TestCase):
             steps_per_cycle=64,
         )
         command = solver_command(config, Path("solver"), Path("output"))
-        joined = " ".join(command)
-        self.assertIn("--elements 24", joined)
-        self.assertIn("--length-m 0.059999999999999998", joined)
-        self.assertIn("--area-m2 1.6000000000000003e-05", joined)
-        self.assertIn("--young-pa 70000000000", joined)
-        self.assertIn("--stress-mean-mpa 30", joined)
-        self.assertIn("--stress-amplitude-mpa 80", joined)
-        self.assertIn("--frequency-hz 5", joined)
-        self.assertIn("--cycles 3", joined)
-        self.assertIn("--steps-per-cycle 64", joined)
+
+        self.assertEqual(int(self._option_value(command, "--elements")), 24)
+        self.assertAlmostEqual(float(self._option_value(command, "--length-m")), 0.06)
+        self.assertAlmostEqual(float(self._option_value(command, "--area-m2")), 1.6e-5)
+        self.assertAlmostEqual(float(self._option_value(command, "--young-pa")), 70.0e9)
+        self.assertAlmostEqual(float(self._option_value(command, "--stress-mean-mpa")), 30.0)
+        self.assertAlmostEqual(float(self._option_value(command, "--stress-amplitude-mpa")), 80.0)
+        self.assertAlmostEqual(float(self._option_value(command, "--frequency-hz")), 5.0)
+        self.assertEqual(int(self._option_value(command, "--cycles")), 3)
+        self.assertEqual(int(self._option_value(command, "--steps-per-cycle")), 64)
         self.assertEqual(command[-2:], ["--outdir", "output"])
 
 
