@@ -13,6 +13,20 @@ Open questions:
 3. keep the variance-equivalent length separate from a crack-tail/first-passage clustering length;
 4. keep $A_0$ (energy calibration area) separate from any future transverse statistical area.
 
+## Quasistatic-protocol correction and new probability target
+
+<!-- QUASISTATIC_PROTOCOL_OPEN_EN -->
+
+Milestone 15 identifies the committed deterministic cycle-2 correlation snapshot as a zero-applied-force residual-dynamics state. In the exact homogeneous quasistatic force-controlled solution all spacings are identical, so the spatial variance is zero. Slowing the drive collapses the residual variance while leaving the normalized correlation shape approximately intact.
+
+Open questions are therefore updated:
+
+1. define a physically justified 1D initial phase-space ensemble $\Gamma_0$;
+2. evolve the ensemble with the same full nonlinear conservative layer-LJ dynamics under cyclic loading;
+3. distinguish ensemble broadening from single-trajectory residual waves;
+4. test one-point $P_{\rm ens}$, pair dependence, and first-passage/tail convergence with system size and ensemble size;
+5. only after those tests define an event-relevant statistical-cell or clustering scale.
+
 ## Current physical priority — identify the ensemble before closing $P$
 
 <!-- PHYSICAL_P_OPEN_EN -->
@@ -163,6 +177,20 @@ Any next model must preserve:
 2. system-size-independent axial scale이 수렴하기 전에는 fixed local mini-cell length를 지정하지 않는다.
 3. variance-equivalent length와 crack-tail/first-passage clustering length를 분리한다.
 4. $A_0$(energy calibration area)와 미래의 transverse statistical area를 분리한다.
+
+## 준정적 프로토콜 교정과 새로운 확률 목표
+
+<!-- QUASISTATIC_PROTOCOL_OPEN_KO -->
+
+Milestone 15에서는 기존 deterministic cycle-2 correlation snapshot이 applied force가 0인 동적 잔류상태임을 확인했다. 정확한 균질 force-controlled 준정적 해에서는 모든 spacing이 동일하므로 spatial variance는 0이다. drive를 느리게 하면 residual variance는 0으로 무너지지만 normalized correlation shape는 거의 유지된다.
+
+따라서 미해결 문제를 다음처럼 갱신한다.
+
+1. 물리적으로 정당한 1D initial phase-space ensemble $\Gamma_0$를 정의한다.
+2. 같은 full nonlinear conservative layer-LJ dynamics와 cyclic loading으로 ensemble을 진화시킨다.
+3. ensemble broadening과 single-trajectory residual wave를 분리한다.
+4. one-point $P_{\rm ens}$, pair dependence, first-passage/tail의 system-size 및 ensemble-size 수렴을 검사한다.
+5. 그 검증 뒤에만 event-relevant statistical-cell 또는 clustering scale을 정의한다.
 
 ## 현재 물리 우선순위 — $P$를 닫기 전에 ensemble부터 결정
 

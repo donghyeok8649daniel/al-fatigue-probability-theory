@@ -1,8 +1,8 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 현재 zero-mean cyclic end-force protocol에서 omega*M을 낮추며 zero-load residual variance와 normalized correlation을 비교한다.
+# - 파일 역할: 활성 이론을 실행해 재현 가능한 수치 결과를 생성하는 Python 스크립트다.
 # - 주요 클래스: 없음 또는 외부 선언만 사용
 # - 주요 함수/메서드: write_csv, render_report, main
-# - 주의: 이 sweep은 boundary/loading protocol diagnostic이며 물질 고유 correlation length 측정이 아니다.
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """Milestone 15: quasistatic-limit diagnosis of the current correlation protocol."""
 from __future__ import annotations

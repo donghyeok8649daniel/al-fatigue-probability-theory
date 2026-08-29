@@ -1,8 +1,9 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 1D layer-LJ force-control의 정확한 준정적 평형과 동적 잔류 snapshot 진단량을 계산한다.
+# - 파일 역할: 활성 1D normal layer-LJ 이론 계산에 사용하는 Python 모듈이다.
 # - 주요 클래스: ProtocolResidualMetrics
-# - 주요 함수/메서드: stable_stretch_for_tensile_force, quasistatic_open_chain_spacings, cycle_boundary_force, residual_snapshot_metrics
-# - 주의: 준정적 평형은 exact static result이고, 느린 주기구동으로의 수렴은 별도의 controlled numerical diagnostic이다.
+# - 주요 함수/메서드: stable_stretch_for_tensile_force, quasistatic_open_chain_spacings, cycle_boundary_force
+#   residual_snapshot_metrics
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """Quasistatic force-control and protocol diagnostics for the active 1D layer-LJ chain.
 

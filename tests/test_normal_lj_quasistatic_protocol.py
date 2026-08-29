@@ -1,8 +1,14 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 1D layer-LJ 준정적 force-control의 유일 안정 spacing과 protocol residual 진단을 검증한다.
+# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
 # - 주요 클래스: QuasistaticProtocolTests
-# - 주요 함수/메서드: stable root, homogeneous static state, integer-cycle force, zero-variance residual metric 검증
-# - 주의: 장시간 동적 sweep은 unit test가 아니라 별도 simulation/CI diagnostic에서 수행한다.
+# - 주요 함수/메서드: QuasistaticProtocolTests.test_zero_force_stable_stretch_is_equilibrium
+#   QuasistaticProtocolTests.test_stable_root_recovers_force
+#   QuasistaticProtocolTests.test_critical_force_maps_to_critical_stretch
+#   QuasistaticProtocolTests.test_static_open_chain_is_exactly_homogeneous
+#   QuasistaticProtocolTests.test_zero_mean_sine_has_zero_force_at_integer_cycle
+#   QuasistaticProtocolTests.test_nonzero_mean_is_multiplied_by_ramp_envelope
+#   QuasistaticProtocolTests.test_zero_variance_snapshot_does_not_create_artificial_cell_length
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 import unittest
 

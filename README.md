@@ -25,6 +25,30 @@ A single deterministic finite snapshot cannot use the all-lag population formula
 
 The mechanical calibration area $A_0$ is not identified with a transverse statistical independence area. The active scope remains strictly one-dimensional.
 
+## Active correction — quasistatic limit of the deterministic correlation snapshot
+
+<!-- QUASISTATIC_PROTOCOL_STATUS_EN -->
+
+The earlier $M_{\rm eff}^{(+)}\approx3$ arithmetic remains a valid normalized-shape diagnostic for the selected deterministic snapshot, but its physical interpretation is now corrected. The committed Milestone 13 snapshot is taken at integer cycle 2 under zero-mean sinusoidal end loading, so the exact applied force at that phase is zero.
+
+For the homogeneous force-controlled chain,
+
+$$
+\Pi=\sum_i[\phi(\lambda_i)-f\lambda_i],
+\qquad
+\phi'(\lambda_i)=f.
+$$
+
+On the stable branch $\phi''>0$, the root is unique and therefore every spacing is identical:
+
+$$
+\lambda_i=\lambda_s(f)\quad\forall i.
+$$
+
+At the sampled zero-force phase this gives $\lambda_i=1$ and $C_0=0$ exactly in the quasistatic state. A new $\alpha=\omega M$ sweep shows that the deterministic residual variance collapses rapidly toward zero as the drive is slowed, while the normalized correlation shape and positive-window $M_{\rm eff}^{(+)}$ remain near three. Therefore normalized residual correlation alone cannot define a material statistical-cell length.
+
+The project now explicitly distinguishes a single-trajectory spatial empirical measure $P_{M,\mathrm{spatial}}^{\mathrm{traj}}$ from a future physically specified ensemble probability $P_{\rm ens}$. The next active target is a justified 1D initial ensemble under the same nonlinear cyclic mechanics, not a fitted named distribution.
+
 ## Active physical-statistical constraint on $P$
 
 <!-- PHYSICAL_P_STATUS_EN -->
@@ -383,6 +407,32 @@ $$
 하지만 하나의 deterministic finite snapshot을 자기 sample mean으로 center하면 모든 lag를 넣은 weighted correlation sum이 정확히 0이 되는 finite-sample identity가 있으므로 population 식을 그대로 plug-in하면 안 된다. 따라서 snapshot에는 별도로 표시한 first-positive-lobe estimator를 사용한다. Dynamically matched $M=31,63,127,255$ sweep에서는 corrected estimate가 $M_{\rm eff}^{(+)}\approx2.93,2.99,3.03,3.05$이고 $\ell_{\rm stat}^{(2,+)}/a_0\approx10.58,21.10,41.93,83.49$이다. 즉 tested protocol은 local material correlation length로 수렴하지 않고 system-scale coherence를 유지한다.
 
 mechanical calibration area $A_0$를 transverse statistical independence area와 동일시하지 않는다. 활성 범위는 계속 엄격한 1D다.
+
+## 활성 교정 — deterministic correlation snapshot의 준정적 극한
+
+<!-- QUASISTATIC_PROTOCOL_STATUS_KO -->
+
+기존 $M_{\rm eff}^{(+)}\approx3$ 계산 자체는 선택한 deterministic snapshot의 normalized-shape 진단값으로 유효하지만 물리적 해석은 교정되었다. Milestone 13 snapshot은 zero-mean sinusoidal end loading에서 정수 cycle 2에 저장되므로 그 정확한 위상에서 applied force는 0이다.
+
+균질 force-controlled chain에서는
+
+$$
+\Pi=\sum_i[\phi(\lambda_i)-f\lambda_i],
+\qquad
+\phi'(\lambda_i)=f
+$$
+
+이고 안정 branch에서 $\phi''>0$이므로 안정 root가 유일하다. 따라서
+
+$$
+\lambda_i=\lambda_s(f)\quad\forall i
+$$
+
+이다.
+
+현재 snapshot의 zero-force 위상에서는 준정적 상태가 정확히 $\lambda_i=1$, $C_0=0$이다. 새 $\alpha=\omega M$ sweep에서는 drive를 느리게 할수록 deterministic residual variance가 0으로 급격히 감소하지만 normalized correlation shape와 positive-window $M_{\rm eff}^{(+)}$는 약 3을 유지한다. 따라서 normalized residual correlation만으로 물질 고유 statistical-cell length를 정의할 수 없다.
+
+이제 한 trajectory의 spatial empirical measure $P_{M,\mathrm{spatial}}^{\mathrm{traj}}$와 물리적으로 정의해야 할 ensemble probability $P_{\rm ens}$를 명시적으로 구분한다. 다음 활성 목표는 임의 named distribution fitting이 아니라 같은 nonlinear cyclic mechanics 위에서 물리적으로 정당한 1D initial ensemble을 만드는 것이다.
 
 ## $P$에 대한 활성 물리 통계역학 제약
 
