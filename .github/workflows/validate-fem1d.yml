@@ -62,7 +62,7 @@ jobs:
 
       - name: Generate tensile-only 2D and 3D previews
         run: |
-          python simulations/fem_tension_ui.py \
+          python -m simulations.fem_tension_ui \
             --input-dir results/data/fem1d_demo \
             --output-dir results/figures/fem1d_demo \
             --field stress \
