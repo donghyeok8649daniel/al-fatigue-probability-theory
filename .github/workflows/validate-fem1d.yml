@@ -58,12 +58,12 @@ jobs:
       - name: Commit reproducible demo outputs
         shell: bash
         run: |
-          if git diff --quiet -- results/data/fem1d_demo results/figures/fem1d_demo; then
+          git add results/data/fem1d_demo results/figures/fem1d_demo
+          if git diff --cached --quiet; then
             echo 'No FEM demo output changes required.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add results/data/fem1d_demo results/figures/fem1d_demo
           git commit -m 'Generate validated standalone 1D FEM demo outputs'
           git push
