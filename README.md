@@ -1,5 +1,27 @@
 # Al Fatigue Probability Theory
 
+## Scope freeze / 연구 범위 고정
+
+The active material theory is **only a one-dimensional normal-tensile spacing
+model for pure single-crystal aluminum**. FCC calculations are archived and
+are not used by the active calculation. Shear, Rubin-chain, slip, multiaxial,
+and crystal-plasticity models are not active. Even when a 2D/3D mesh is shown,
+the constitutive input remains only the user-selected loading-axis scalar
+normal stress; the mesh does not make the fatigue theory 2D/3D.
+
+현재 활성 재료이론은 **순수 단결정 알루미늄의 1D normal tensile spacing
+model**뿐이다. FCC 계산은 미래 확장용 archive이며 현재 계산에 사용하지
+않는다. shear/Rubin/slip/multiaxial/crystal-plasticity 모델도 현재 사용하지
+않는다. 2D/3D mesh가 존재해도 constitutive input은 loading axis 방향 scalar
+normal stress뿐이며, 현재 재료이론은 여전히 1D이다.
+
+The exact homogeneous lattice energy and the local crack-gap energy are kept
+separate in `theory/exact_lattice_energy.py`. The finite-volume kinetic model
+with reflecting or absorbing escape is in `theory/smoluchowski_escape.py`.
+Uncalibrated runs are dimensionless demonstrations, not aluminum-life
+predictions. In particular, the mechanical representative area $A_0$ is not a
+correlation area $A_c$ and is not a FEM element area.
+
 ## Candidate kinetic probability and FEM coupling
 
 The four working quantities are now connected by a separate, explicitly labeled kinetic post-processor:

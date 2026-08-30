@@ -1,0 +1,157 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx,hyperref}
+\title{One-Dimensional Fatigue Modeling of Pure Aluminum:\\Deterministic Calibration and a Probabilistic Spacing Hypothesis}
+\author{Donghyeok Kim \and Minsoo Kang \and Junhyeok Park}
+\date{August 2026}
+\newcommand{\dd}{\mathrm d}
+\begin{document}\maketitle
+\begin{abstract}
+We derive the exact generalized Lennard--Jones energy of an infinite uniform
+one-dimensional chain, distinguish it from the cross-gap energy of two half
+chains, and formulate a controlled metastable spacing-density dynamics.
+Finite-rate probability transport produces phase-lag hysteresis; irreversible
+crack initiation requires probability escape. Results without a calibrated
+representative area and mobility are dimensionless demonstrations, not an
+aluminum fatigue-life prediction.
+\end{abstract}
+
+\section{Problem definition and scope}
+The active material theory describes pure single-crystal aluminum under scalar
+normal tension using only spacing $a$ and density $P(a,t)$. FCC, shear, slip,
+Rubin chains, multiaxial fatigue and crystal plasticity are inactive archives.
+Two- or three-dimensional meshes may display geometry and scalar axial stress
+but do not change the constitutive theory.
+
+\section{Finite-chain pair energy and bidirectional counting}
+For
+$v(r)=\varepsilon_{\rm LJ}[(\sigma_{\rm LJ}/r)^m-(\sigma_{\rm LJ}/r)^n]$,
+$m>n>1$, separation $ka$ occurs $N-k$ times, hence
+\begin{equation}U_N(a)=\sum_{1\le i<j\le N}v(|i-j|a)
+=\sum_{k=1}^{N-1}(N-k)v(ka).\end{equation}
+An interior atom has two directions, while the factor $1/2$ removes pair
+duplication. The usual 12--6 convention $4\epsilon[(\sigma/r)^{12}-(\sigma/r)^6]$
+is separate; only for that special form is $\varepsilon_{\rm LJ}=4\epsilon$.
+
+\section{Exact Riemann-zeta thermodynamic limit}
+Using $\zeta(s)=\sum_{k\ge1}k^{-s}$,
+\begin{equation}
+U_\infty=\lim_{N\to\infty}{U_N\over N}
+={1\over2}\sum_{k\ne0}v(|k|a)=\sum_{k\ge1}v(ka)
+=\varepsilon_{\rm LJ}\left[\zeta(m)(\sigma_{\rm LJ}/a)^m
+-\zeta(n)(\sigma_{\rm LJ}/a)^n\right].
+\end{equation}
+This is energy per atom or representative cell, not total chain energy.
+
+\section{Homogeneous spacing energy versus local crack-gap energy}
+For half-chains of internal spacing $a_0$ separated by $g$, let $q=g/a_0$.
+There are $\ell+1$ cross-gap pairs with $i+j=\ell$, and
+\begin{align}
+S_p(q)&=\sum_{\ell\ge0}(\ell+1)(q+\ell)^{-p}
+=\zeta(p-1,q)+(1-q)\zeta(p,q),\\
+U_{\rm gap}&=\varepsilon_{\rm LJ}\left[(\sigma_{\rm LJ}/a_0)^mS_m(q)
+-(\sigma_{\rm LJ}/a_0)^nS_n(q)\right].
+\end{align}
+$U_\infty$ is exact for homogeneous dilation; $U_{\rm gap}$ is direct for one
+local opening. Treating the former as a local energy is explicitly a
+local-homogeneous/mean-field hypothesis. They are not mixed here.
+
+\section{Equilibrium and tangent instability}
+Stationarity and zero tangent stiffness give
+\begin{align}
+a_0&=\sigma_{\rm LJ}\left[{m\zeta(m)\over n\zeta(n)}\right]^{1/(m-n)},\\
+a_c&=\sigma_{\rm LJ}\left[{m(m+1)\zeta(m)\over n(n+1)\zeta(n)}\right]^{1/(m-n)},\\
+\lambda_c&=a_c/a_0=[(m+1)/(n+1)]^{1/(m-n)}=1.1077715386\ldots
+\end{align}
+for $m=12.19,n=6$. With $\lambda=a/a_0$,
+\begin{equation}U_\infty=E_0\phi(\lambda)+C,\quad
+\phi={\lambda^{-m}\over m(m-n)}-{\lambda^{-n}\over n(m-n)},\quad
+\phi'(1)=0,\quad\phi''(1)=1,
+\end{equation}
+where
+$E_0=\varepsilon_{\rm LJ}m(m-n)\zeta(m)(\sigma_{\rm LJ}/a_0)^m
+=EA_0a_0$. This proves that $\phi$ is the exactly normalized zeta-lattice
+energy, not an empirical deletion of zeta factors.
+
+\section{Statistical ensemble and normalization problem}
+$F=\sigma A_0$ has units N and
+$\Phi=U-F(a-a_0)$. $A_0$ is a mechanical representative area, neither a
+correlation area nor a finite-element area. For tensile $F$, $\Phi\to-\infty$;
+for $F=0$, $U\to0$. Thus a one-spacing Gibbs law on $(0,\infty)$ is not
+normalizable. We use a declared finite intact basin and conditional Gibbs
+initialization. A fixed-total-length canonical chain is an alternative but
+couples multiple spacings.
+
+\section{Langevin-to-Smoluchowski derivation}
+An isothermal eliminated phonon bath, rapid velocity relaxation, constant
+friction and white-noise scale separation give, by fluctuation--dissipation,
+\begin{equation}\gamma\dot a=-\Phi_a+\sqrt{2\gamma k_BT}\xi,
+\quad\langle\xi(t)\xi(t')\rangle=\delta(t-t').\end{equation}
+The forward equation is
+\begin{equation}\partial_tP=-\partial_aJ,\qquad
+J=-{1\over\gamma}(\Phi_aP+k_BT P_a),\quad
+M_a=\gamma^{-1},\quad D_a=k_BT/\gamma.\end{equation}
+No empirical diffusion or hysteresis operator is introduced.
+
+\section{Probability current, hysteresis and energy balance}
+The maintained observables are
+$\int P\dd a=1$, $\bar a=\int aP\dd a$,
+$\bar U=\int[U-U(a_0)]P\dd a$, and
+$w_h=\int\sigma\dot{\bar\lambda}\dd t$ with
+$H_k=\oint_k\sigma\dd\bar\lambda$.
+For sinusoidal loading, finite mobility makes $P$ lag the instantaneous
+conditional distribution. Loading and unloading distributions differ at the
+same stress. Diffusion alone is not the cause; the competition between drive
+and relaxation times is. Both frozen very-fast and equilibrated quasistatic
+limits have vanishing loops, with a finite-rate maximum possible.
+
+For $\mathcal F=\int P(\Phi+k_BT\ln P)\dd a$,
+\begin{equation}\dot{\mathcal F}=\int P\partial_t\Phi\dd a
+-\int{J^2\over M_aP}\dd a-[\mu J]_L^R,
+\quad \mu=\Phi+k_BT(\ln P+1),\end{equation}
+so current dissipation is nonnegative. $H_k$ is work, not stored pair energy.
+
+\section{Irreversible escape, survival and hazard}
+A reflecting process can become periodic without accumulating damage. For
+$0<F<F_c$, $U'=F$ has stable and unstable roots; $a_b(F)>a_c$ is the barrier
+and merges with $a_c$ at $F_c$. With absorbing intact-boundary transport,
+\begin{equation}S=\int_\Omega\rho\dd a,\quad P_{\rm init}=1-S,
+\quad h=J_{\rm out}/S,
+\quad p_{\rm tail}=S^{-1}\int_{a_c}^{a_b(t)}\rho\dd a.\end{equation}
+Reflecting tail, escape flux, and cumulative initiation are distinct.
+
+\section{Numerical method and verification}
+Cell-centered finite volumes use Chang--Cooper exponential fitting
+\cite{changcooper}, backward Euler, reflecting lower flux and selectable
+reflecting or absorbing upper boundary. Tests cover pair counting, zeta
+convergence, equilibrium and instability derivatives, exact normalized-energy
+equivalence, Gibbs stationarity, positivity, reflecting mass, absorbing
+outflux balance, phase lag, frequency limits and refinement. Moment balances
+retain $-[qJ]_L^R$; conditional moments obey
+$\dot{\langle q\rangle}_c=(\dot Q_q-\langle q\rangle_c\dot S)/S$.
+Nonlinear LJ drift leaves the hierarchy unclosed; no Gaussian closure is used.
+
+\section{Limitations and unresolved physical parameters}
+Unresolved physical inputs include $\varepsilon_{\rm LJ},\sigma_{\rm LJ}$
+consistent with the 1D coarse graining, $A_0$, $T$, mobility, escape condition,
+and correlation scales $l_c,A_c,V_c$. Physical inputs are separated from
+domain, cell count, timestep, tolerance and output cadence. Consequently the
+reported sweep is dimensionless and is not a calibrated aluminum lifetime.
+
+\section{FEM/UI extension roadmap}
+Only after theory validation, a separate branch may display 1D--3D meshes,
+orbit/zoom/pan, loading axis, scalar normal stress, and local density/tail/
+initiation maps. Mesh elements are not independent probability samples and no
+shear or multiaxial capability is implied.
+
+\begin{thebibliography}{9}
+\bibitem{nist} NIST Digital Library of Mathematical Functions, Sections 25.2
+and 25.11, Riemann and Hurwitz zeta functions.
+\bibitem{risken} H. Risken, \emph{The Fokker--Planck Equation}, 2nd ed., Springer, 1989.
+\bibitem{gardiner} C. W. Gardiner, \emph{Handbook of Stochastic Methods}, Springer, 2004.
+\bibitem{changcooper} J. S. Chang and G. Cooper, ``A practical difference
+scheme for Fokker--Planck equations,'' J. Comput. Phys. 6 (1970) 1--16.
+\bibitem{sg} D. L. Scharfetter and H. K. Gummel, IEEE Trans. Electron Devices
+16 (1969) 64--77.
+\end{thebibliography}
+\end{document}
