@@ -1,5 +1,26 @@
 # Al Fatigue Probability Theory
 
+## Candidate kinetic probability and FEM coupling
+
+The four working quantities are now connected by a separate, explicitly labeled kinetic post-processor:
+
+$$
+\int p_e(\lambda,t)d\lambda=1,
+\qquad
+\bar a_e=a_0\int\lambda p_e\,d\lambda,
+$$
+
+$$
+u_{{\rm LJ},e}
+=E\int[\phi(\lambda)-\phi(1)]p_e\,d\lambda,
+\qquad
+H_{e,k}=\oint_k\sigma_e\,d\bar\lambda_e.
+$$
+
+Each C FEM element supplies its local normal-stress history to a conditional-intact Smoluchowski solver. The implementation preserves normalization and the finite-volume Gibbs stationary state, exports mean spacing, variance, energy, loop work, and the tail above $\lambda_c$, and renders the actual 1D node/element mesh plus 2D/3D tensile-only views.
+
+This is a **candidate kinetic extension**, not yet a calibrated aluminum fatigue-life law. The current upper boundary is no-flux, so the critical tail is an instability diagnostic rather than irreversible crack probability. See `docs/MILESTONE16_PROBABILITY_ENERGY_HYSTERESIS_FEM.md`.
+
 ## Active 1D statistical-cell dependence scale
 
 <!-- STATISTICAL_CELL_STATUS_EN -->

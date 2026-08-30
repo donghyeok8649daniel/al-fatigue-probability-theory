@@ -1,0 +1,12 @@
+key,value
+elements,32
+length_m,0.050000000000000003
+area_m2,1.0000000000000001e-05
+young_pa,69000000000
+stress_mean_pa,120000000
+stress_amplitude_pa,80000000
+frequency_hz,5
+cycles,3
+steps_per_cycle,80
+solver,quasistatic_linear_bar_fem
+probability_coupling,none_scaffold_only

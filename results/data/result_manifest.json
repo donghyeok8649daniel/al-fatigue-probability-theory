@@ -72,7 +72,7 @@
     "quasistatic_protocol_report": "results/reports/NORMAL_LJ_QUASISTATIC_PROTOCOL.md"
   },
   "prepared_scaffolds": {
-    "fem1d_status": "Prepared but deliberately uncoupled from the active P(lambda,t) theory. It is a reversible continuum reference/interface, not a fatigue model.",
+    "fem1d_status": "The C stiffness solver remains deliberately uncoupled from P(lambda,t) and stays a reversible continuum reference. A separate candidate kinetic probability post-processor now consumes its element stress histories without changing the C solver.",
     "fem1d_c_api": "fem1d/include/fem1d.h",
     "fem1d_c_solver": "fem1d/src/fem1d.c",
     "fem1d_cli": "fem1d/src/main.c",
@@ -94,6 +94,17 @@
       "metadata.csv"
     ],
     "visualization_rule": "2D/3D display geometry may be extruded from the 1D bar, but every displayed cross-section inherits only the axial scalar stress/strain from the underlying 1D element. No shear, von-Mises, transverse constitutive law, or multiaxial failure model is active."
+  },
+  "candidate_kinetic_extension": {
+    "status": "Numerically verified conditional-intact Smoluchowski extension; chi and relaxation time are not yet calibrated aluminum parameters, and the no-flux upper boundary does not define irreversible crack probability.",
+    "theory": "theory/normal_lj_probability_dynamics.py",
+    "derivation": "docs/MILESTONE16_PROBABILITY_ENERGY_HYSTERESIS_FEM.md",
+    "simulation": "simulations/run_normal_lj_fem_probability.py",
+    "test": "tests/test_normal_lj_probability_dynamics.py",
+    "element_history": "results/data/fem_probability_demo/probability_elements.csv",
+    "summary": "results/data/fem_probability_demo/summary.json",
+    "hysteresis_figure": "results/figures/fem_probability_demo/probability_hysteresis_summary.png",
+    "mesh_figure": "results/figures/fem_probability_demo/fem_mesh_probability_fields.png"
   },
   "historical_or_falsification_diagnostics": {
     "equal_measure_two_moment_closure": "docs/MILESTONE5_DERIVED_DISTRIBUTION_CLOSURE.md",

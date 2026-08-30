@@ -1,8 +1,9 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 1D normal layer-LJ의 준정적 stable branch와 닫힌 subcritical cycle의 zero-hysteresis/no-accumulation 한계를 계산한다.
-# - 주요 클래스: 없음
-# - 주요 함수/메서드: stable_stretch_from_force, quasistatic_force_from_phase, quasistatic_cycle, closed_cycle_residual, branch_retrace_error
-# - 주의: 실제 피로 누적 법칙을 추가하지 않으며, frequency-independent phase path는 준정적 homogeneous equilibrium 가정 아래의 결과다.
+# - 파일 역할: 활성 1D normal layer-LJ 이론 계산에 사용하는 Python 모듈이다.
+# - 주요 클래스: 없음 또는 외부 선언만 사용
+# - 주요 함수/메서드: stable_stretch_from_force, quasistatic_force_from_phase, quasistatic_cycle
+#   closed_cycle_residual, branch_retrace_error
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """Quasistatic limit of the active one-dimensional normal layer-LJ model.
 

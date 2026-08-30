@@ -110,7 +110,17 @@ def plot_tension_2d(
         np.asarray(snapshot["scalar"]),
         half_width_m,
     )
-    mesh = ax.pcolormesh(x_grid, y_grid, field_grid, shading="flat", cmap=cmap, norm=norm)
+    mesh = ax.pcolormesh(
+        x_grid,
+        y_grid,
+        field_grid,
+        shading="flat",
+        cmap=cmap,
+        norm=norm,
+        edgecolors="black",
+        linewidth=0.45,
+    )
+    ax.scatter(x_def, np.full_like(x_def, -half_width_m), s=8, color="black", zorder=3)
     ax.plot(x_def, np.full_like(x_def, -half_width_m), linewidth=0.8)
     ax.plot(x_def, np.full_like(x_def, half_width_m), linewidth=0.8)
     ax.set_xlabel("tensile axis x [m]")

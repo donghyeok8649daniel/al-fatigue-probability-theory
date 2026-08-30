@@ -4,7 +4,7 @@ This directory contains a deliberately minimal finite-element scaffold for the a
 
 ## Purpose
 
-The FEM solver is kept independent of the unfinished probability theory. It provides a verified continuum-scale stress/strain history that can later be passed to the layer-spacing probability model without hiding assumptions inside the FEM code.
+The FEM solver is kept independent of the candidate probability theory. It provides a verified continuum-scale stress/strain history that can be passed to the separate layer-spacing probability post-processor without hiding assumptions inside the FEM code.
 
 Current chain:
 
@@ -15,10 +15,10 @@ u(x,t),\epsilon(x,t),\sigma(x,t)
 \rightarrow
 \text{CSV interface}
 \rightarrow
-\text{future }P(\lambda,t)\text{ coupling}.
+\text{candidate }P_e(\lambda,t)\text{ post-processing}.
 $$
 
-The probability coupling is intentionally **not implemented yet**.
+The candidate coupling is implemented in `simulations/run_normal_lj_fem_probability.py`. It does not modify the C stiffness solver and is not yet a calibrated crack-initiation law.
 
 ## Current mechanical model
 
@@ -75,6 +75,8 @@ make -C fem1d self-test
 python simulations/visualize_fem1d.py \
   --input-dir results/data/fem1d_demo \
   --output-dir results/figures/fem1d_demo
+
+python -m simulations.run_normal_lj_fem_probability
 ```
 
 The solver writes `nodes.csv`, `elements.csv`, and `metadata.csv`.
@@ -99,7 +101,7 @@ $$
 
 ## 목적
 
-아직 확정되지 않은 확률이론을 FEM 코드 안에 미리 집어넣지 않는다. 먼저 검증된 연속체 응력/변형률 이력을 계산하고, 나중에 layer-spacing 확률모델에 명시적인 인터페이스로 넘긴다.
+후보 확률이론을 FEM 강성 코드 안에 직접 집어넣지 않는다. 먼저 검증된 연속체 응력/변형률 이력을 계산하고, 별도의 layer-spacing 확률 post-processor에 명시적인 인터페이스로 넘긴다.
 
 현재 연결은
 
@@ -110,12 +112,10 @@ u(x,t),\epsilon(x,t),\sigma(x,t)
 \rightarrow
 \text{CSV 인터페이스}
 \rightarrow
-\text{향후 }P(\lambda,t)\text{ 결합}
+\text{후보 }P_e(\lambda,t)\text{ 후처리}
 $$
 
-이다.
-
-확률 결합은 의도적으로 **아직 구현하지 않았다**.
+이다. 후보 결합은 `simulations/run_normal_lj_fem_probability.py`에 구현되어 있지만 C FEM 강성해석은 변경하지 않으며, 아직 보정된 균열개시 법칙도 아니다.
 
 ## 현재 기계 모델
 

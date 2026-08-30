@@ -1,8 +1,9 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 1D normal layer-LJ의 준정적 안정 branch가 단일값이며 닫힌 인장 cycle에서 경로를 되짚는지 검증한다.
-# - 주요 클래스: 없음
-# - 주요 함수: test_stable_branch_endpoints, test_quasistatic_cycle_is_closed, test_frequency_is_absent_from_phase_path, test_rejects_unstable_or_compressive_cycles
-# - 주의: 이 테스트는 준정적 homogeneous equilibrium branch의 성질만 검증하며 실제 피로 누적 법칙을 가정하지 않는다.
+# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
+# - 주요 클래스: 없음 또는 외부 선언만 사용
+# - 주요 함수/메서드: test_stable_branch_endpoints, test_quasistatic_cycle_is_closed
+#   test_frequency_is_absent_from_phase_path, test_rejects_unstable_or_compressive_cycles
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """Regression tests for the exact quasistatic homogeneous LJ branch."""
 
