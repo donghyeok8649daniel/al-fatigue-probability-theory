@@ -42,6 +42,11 @@ from simulations.fem_tension_ui import (
 from simulations.ftgsim_format import create_ftgsim, extract_geometry, extract_results, open_ftgsim
 from simulations.mesh_viewer import MeshViewport, SUPPORTED_EXTENSIONS, load_mesh
 from simulations.visualize_fem1d import load_numeric_csv
+from theory.cubic_normal_orientation import (
+    CubicElasticConstants,
+    directional_young_modulus,
+    miller_unit_vector,
+)
 
 
 @dataclass(frozen=True)
@@ -52,6 +57,12 @@ class TensionRunConfig:
     width_mm: float = 10.0
     thickness_mm: float = 1.0
     young_gpa: float = 69.0
+    loading_h: int = 1
+    loading_k: int = 0
+    loading_l: int = 0
+    cubic_c11_gpa: float | None = None
+    cubic_c12_gpa: float | None = None
+    cubic_c44_gpa: float | None = None
     elements: int = 40
     stress_mean_mpa: float = 50.0
     stress_amplitude_mpa: float = 100.0
@@ -78,7 +89,24 @@ class TensionRunConfig:
 
     @property
     def young_pa(self) -> float:
+        constants = self.cubic_constants
+        if constants is not None:
+            return directional_young_modulus(
+                constants, self.loading_h, self.loading_k, self.loading_l)
         return self.young_gpa * 1.0e9
+
+    @property
+    def cubic_constants(self) -> CubicElasticConstants | None:
+        values = (self.cubic_c11_gpa, self.cubic_c12_gpa, self.cubic_c44_gpa)
+        if all(value is None for value in values):
+            return None
+        if any(value is None for value in values):
+            raise ValueError("provide all of C11, C12 and C44, or none")
+        return CubicElasticConstants(*(float(value)*1e9 for value in values))
+
+    @property
+    def elastic_calibration_mode(self) -> str:
+        return "cubic_direction_projection" if self.cubic_constants is not None else "user_supplied_axis_modulus"
 
 
 def validate_run_config(config: TensionRunConfig) -> None:
@@ -94,6 +122,13 @@ def validate_run_config(config: TensionRunConfig) -> None:
     for name, value in positive.items():
         if not np.isfinite(value) or value <= 0.0:
             raise ValueError(f"{name} must be finite and positive")
+    if not all(isinstance(value, int) for value in (config.loading_h, config.loading_k, config.loading_l)):
+        raise ValueError("Miller direction components must be integers")
+    miller_unit_vector(config.loading_h, config.loading_k, config.loading_l)
+    if config.cubic_constants is not None:
+        config.cubic_constants.validate()
+        if not np.isfinite(config.young_pa) or config.young_pa <= 0:
+            raise ValueError("directional Young modulus must be positive")
     if config.elements < 1:
         raise ValueError("elements must be at least 1")
     if config.cycles < 1:
@@ -167,7 +202,12 @@ def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path |
         },
         geometry={
             "mesh_dimension": 1,
-            "loading_axis": [1.0, 0.0, 0.0],
+            "loading_axis": miller_unit_vector(
+                config.loading_h, config.loading_k, config.loading_l).tolist(),
+            "crystal_loading_direction_hkl": [
+                config.loading_h, config.loading_k, config.loading_l],
+            "elastic_calibration_mode": config.elastic_calibration_mode,
+            "directional_young_modulus_pa": config.young_pa,
             "geometry_kind": "uniform_bar",
             "length_mm": config.length_mm,
             "width_mm": config.width_mm,
@@ -372,6 +412,7 @@ class FEMTensionApp:
         ("width_mm", "Width [mm]", "10"),
         ("thickness_mm", "Thickness [mm]", "1"),
         ("young_gpa", "E [GPa]", "69"),
+        ("loading_direction", "Crystal axis [h k l]", "1 0 0"),
         ("elements", "Elements", "40"),
         ("stress_mean_mpa", "Mean stress [MPa]", "50"),
         ("stress_amplitude_mpa", "Amplitude [MPa]", "100"),
@@ -424,7 +465,11 @@ class FEMTensionApp:
 
     def _apply_config_to_boxes(self) -> None:
         for key, _label, _initial in self._INPUT_SPECS:
-            self.textboxes[key].set_val(str(getattr(self.config, key)))
+            if key == "loading_direction":
+                value = f"{self.config.loading_h} {self.config.loading_k} {self.config.loading_l}"
+            else:
+                value = str(getattr(self.config, key))
+            self.textboxes[key].set_val(value)
 
     def _load_project(self, path: Path) -> None:
         self.config, _geometry, display = config_from_ftgsim(path)
@@ -503,11 +548,22 @@ class FEMTensionApp:
                 raise ValueError(f"{key} must be an integer")
             return int(raw)
 
+        direction = self.textboxes["loading_direction"].text.replace(",", " ").split()
+        if len(direction) != 3:
+            raise ValueError("crystal axis must contain three Miller integers: h k l")
+        try:
+            h, k, l = (int(value) for value in direction)
+        except ValueError:
+            raise ValueError("crystal axis must contain integer Miller indices") from None
+
         config = TensionRunConfig(
             length_mm=floating("length_mm"),
             width_mm=floating("width_mm"),
             thickness_mm=floating("thickness_mm"),
             young_gpa=floating("young_gpa"),
+            loading_h=h,
+            loading_k=k,
+            loading_l=l,
             elements=integer("elements"),
             stress_mean_mpa=floating("stress_mean_mpa"),
             stress_amplitude_mpa=floating("stress_amplitude_mpa"),
@@ -580,12 +636,15 @@ class FEMTensionApp:
     def _open_geometry(self, path: Path) -> None:
         mesh = load_mesh(path)
         self.geometry_source_path = Path(path)
-        viewport = MeshViewport(mesh)
+        loading_axis = miller_unit_vector(
+            self.config.loading_h, self.config.loading_k, self.config.loading_l)
+        viewport = MeshViewport(mesh, loading_axis=loading_axis)
         self.mesh_viewports.append(viewport)
         viewport.figure.show()
         self._set_status(
             f"Opened {path.name}: {mesh.vertices.shape[0]} nodes, "
-            f"{len(mesh.faces)} faces, inferred {mesh.dimension}D"
+            f"{len(mesh.faces)} faces, inferred {mesh.dimension}D, "
+            f"crystal axis [{self.config.loading_h} {self.config.loading_k} {self.config.loading_l}]"
         )
 
     def _on_open_geometry(self, _event) -> None:

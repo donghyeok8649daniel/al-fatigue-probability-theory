@@ -73,6 +73,12 @@ channel containing survival, cumulative initiation, outflux and hazard. Its
 setup status must still state whether physical parameters are calibrated; file
 presence alone is not evidence of an aluminum lifetime law.
 
+For the single-crystal model, `geometry.json` records both the normalized
+loading-axis vector and integer `crystal_loading_direction_hkl`. It also records
+whether the scalar axial modulus was supplied directly or projected from all
+three cubic constants. Orientation metadata never implies shear-fatigue or
+multiaxial support.
+
 ## Security limits
 
 The reader validates all paths before extraction, rejects absolute paths,

@@ -21,7 +21,15 @@ The active material theory describes pure single-crystal aluminum under scalar
 normal tension using only spacing $a$ and density $P(a,t)$. FCC, shear, slip,
 Rubin chains, multiaxial fatigue and crystal plasticity are inactive archives.
 Two- or three-dimensional meshes may display geometry and scalar axial stress
-but do not change the constitutive theory.
+but do not change the constitutive theory. Every run declares a cubic loading
+direction $[hkl]$. If cubic constants are supplied, only the scalar directional
+modulus is projected:
+\begin{equation}
+E_{[hkl]}^{-1}=S_{11}-2(S_{11}-S_{12}-S_{44}/2)
+(l_1^2l_2^2+l_2^2l_3^2+l_3^2l_1^2).
+\end{equation}
+The appearance of $S_{44}$ in this anisotropic elastic projection does not
+introduce shear loading or a shear-fatigue criterion.
 
 \section{Finite-chain pair energy and bidirectional counting}
 For

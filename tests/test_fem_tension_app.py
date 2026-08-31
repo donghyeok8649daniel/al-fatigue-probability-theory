@@ -46,6 +46,21 @@ class TestTensionRunConfig(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_run_config(TensionRunConfig(stress_amplitude_mpa=-1.0))
 
+    def test_single_crystal_direction_is_required(self) -> None:
+        with self.assertRaises(ValueError):
+            validate_run_config(TensionRunConfig(loading_h=0, loading_k=0, loading_l=0))
+
+    def test_optional_cubic_constants_determine_axis_modulus(self) -> None:
+        config_100 = TensionRunConfig(
+            loading_h=1, loading_k=0, loading_l=0,
+            cubic_c11_gpa=110, cubic_c12_gpa=60, cubic_c44_gpa=30)
+        config_111 = TensionRunConfig(
+            loading_h=1, loading_k=1, loading_l=1,
+            cubic_c11_gpa=110, cubic_c12_gpa=60, cubic_c44_gpa=30)
+        validate_run_config(config_100); validate_run_config(config_111)
+        self.assertNotAlmostEqual(config_100.young_pa, config_111.young_pa)
+        self.assertEqual(config_100.elastic_calibration_mode, "cubic_direction_projection")
+
 
 class TestSolverCommand(unittest.TestCase):
     @staticmethod

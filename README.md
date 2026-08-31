@@ -60,6 +60,16 @@ than fabricated from FEM element count or display geometry. The active
 definition is first passage through the zero-tangent-stiffness stretch; see
 `docs/CRACK_INITIATION_DEFINITION.md`.
 
+## Single-crystal loading direction
+
+Every active run declares a nonzero cubic loading direction `[h k l]`. The GUI
+accepts it as `Crystal axis [h k l]`. If all of $C_{11},C_{12},C_{44}$ are
+provided programmatically or in `.ftgsim`, the application projects the scalar
+directional Young modulus; otherwise `E_axis` is treated as a user-supplied
+direction-specific value. This remains scalar normal tension only. No shear,
+slip or multiaxial fatigue model is activated. See
+`docs/SINGLE_CRYSTAL_ORIENTATION.md`.
+
 ## Candidate kinetic probability and FEM coupling
 
 The four working quantities are now connected by a separate, explicitly labeled kinetic post-processor:
