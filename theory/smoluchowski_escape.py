@@ -79,6 +79,12 @@ def _grid(c: TransportConfig) -> tuple[np.ndarray, float]:
     return c.lambda_min + (np.arange(c.cells) + 0.5) * dx, dx
 
 
+def transport_grid(c: TransportConfig) -> tuple[np.ndarray, float]:
+    """Return the validated finite-volume cell centres and uniform width."""
+    _validate(c)
+    return _grid(c)
+
+
 def conditional_equilibrium(x: np.ndarray, dx: float, force: float,
                             c: TransportConfig) -> np.ndarray:
     potential = normalized_lj_energy(x, c.m, c.n) - force * (x - 1.0)
@@ -110,6 +116,30 @@ def _absorbing_coefficient(x_last: float, dx: float, force: float,
     return drift * (1.0 - delta) + diffusion / h
 
 
+def finite_volume_generator(force: float, c: TransportConfig) -> np.ndarray:
+    """Return the continuous-time spatial generator of the FV flux scheme.
+
+    This matrix satisfies ``d rho / dt = L rho`` before backward-Euler time
+    discretization.  It is useful for frozen-load spectral checks; it adds no
+    new dynamics or parameter.
+    """
+    x, dx = transport_grid(c)
+    left, right = _face_coefficients(x, dx, float(force), c)
+    generator = np.zeros((x.size, x.size))
+    generator[0, 0] = -left[0] / dx
+    generator[0, 1] = -right[0] / dx
+    for i in range(1, x.size - 1):
+        generator[i, i - 1] = left[i - 1] / dx
+        generator[i, i] = (right[i - 1] - left[i]) / dx
+        generator[i, i + 1] = -right[i] / dx
+    generator[-1, -2] = left[-1] / dx
+    generator[-1, -1] = right[-1] / dx
+    if c.boundary == "absorbing":
+        generator[-1, -1] -= _absorbing_coefficient(
+            float(x[-1]), dx, float(force), c) / dx
+    return generator
+
+
 def step(density: np.ndarray, x: np.ndarray, dx: float, dt: float, force: float,
          c: TransportConfig) -> tuple[np.ndarray, float]:
     """Backward-Euler conservative step; return rho and end-step outflux."""
@@ -136,6 +166,36 @@ def step(density: np.ndarray, x: np.ndarray, dx: float, dt: float, force: float,
         raise RuntimeError("negative finite-volume density")
     updated = np.maximum(updated, 0.0)
     return updated, out_coefficient * float(updated[-1])
+
+
+def advance_interval(density: np.ndarray, x: np.ndarray, dx: float,
+                     t0: float, t1: float, force0: float, force1: float,
+                     c: TransportConfig, max_dt: float = 0.02
+                     ) -> tuple[np.ndarray, float]:
+    """Advance one output interval and return density and integrated outflux.
+
+    The load is linearly interpolated and sampled at every backward-Euler
+    substep midpoint.  The returned flux integral therefore obeys the same
+    discrete mass balance as :func:`solve` and the periodic-cycle operator.
+    """
+    if not (t1 > t0 and max_dt > 0):
+        raise ValueError("require t1 > t0 and max_dt > 0")
+    rho = np.asarray(density, dtype=float)
+    if rho.shape != x.shape or np.any(rho < 0):
+        raise ValueError("density must be nonnegative and match the grid")
+    ratio = (t1 - t0) / max_dt
+    # Avoid an accidental extra substep when an analytically integral ratio
+    # is represented as, for example, 2.000000000000001.  Without this guard
+    # a uniform periodic grid can acquire phase-origin-dependent timesteps.
+    count = max(1, math.ceil(ratio - 1e-12 * max(1.0, abs(ratio))))
+    local_dt = (t1 - t0) / count
+    flux_integral = 0.0
+    for j in range(count):
+        fraction = (j + 0.5) / count
+        local_force = force0 + fraction * (force1 - force0)
+        rho, jout = step(rho, x, dx, local_dt, float(local_force), c)
+        flux_integral += local_dt * jout
+    return rho, flux_integral
 
 
 def _barrier_dimensionless(force: float, m: float, n: float) -> float | None:
@@ -169,13 +229,9 @@ def solve(time: np.ndarray, force: np.ndarray, c: TransportConfig = TransportCon
     densities = np.empty((t.size, c.cells)); densities[0] = rho
     out = np.zeros(t.size)
     for k in range(1, t.size):
-        count = max(1, math.ceil((t[k] - t[k - 1]) / max_dt))
-        local_dt = (t[k] - t[k - 1]) / count
-        flux_integral = 0.0
-        for j in range(count):
-            fj = f[k - 1] + (j + 0.5) / count * (f[k] - f[k - 1])
-            rho, jout = step(rho, x, dx, local_dt, float(fj), c)
-            flux_integral += local_dt * jout
+        rho, flux_integral = advance_interval(
+            rho, x, dx, float(t[k - 1]), float(t[k]),
+            float(f[k - 1]), float(f[k]), c, max_dt=max_dt)
         out[k] = flux_integral / (t[k] - t[k - 1])
         densities[k] = rho
 
