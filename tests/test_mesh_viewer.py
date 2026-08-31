@@ -1,3 +1,11 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
+# - 주요 클래스: 없음 또는 외부 선언만 사용
+# - 주요 함수/메서드: test_obj_lines_faces_and_dimension, test_ascii_and_binary_stl
+#   test_ascii_ply_and_legacy_vtk, test_binary_ply_and_unsupported_cad_are_honestly_rejected
+#   test_scroll_zoom_reset_and_viewport_dimensions
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 from pathlib import Path
 from types import SimpleNamespace
 import struct

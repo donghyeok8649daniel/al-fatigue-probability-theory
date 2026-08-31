@@ -2,10 +2,14 @@
 # - 파일 역할: 활성 이론을 실행해 재현 가능한 수치 결과를 생성하는 Python 스크립트다.
 # - 주요 클래스: TensionRunConfig, FEMTensionApp
 # - 주요 함수/메서드: TensionRunConfig.length_m, TensionRunConfig.width_m, TensionRunConfig.thickness_m
-#   TensionRunConfig.area_m2, TensionRunConfig.young_pa, validate_run_config, repository_root
-#   solver_executable, _solver_sources, _needs_rebuild, build_fem_solver, solver_command, run_fem_solver
-#   FEMTensionApp.__init__, FEMTensionApp._create_parameter_panel, FEMTensionApp._create_result_controls
+#   TensionRunConfig.area_m2, TensionRunConfig.young_pa, TensionRunConfig.cubic_constants
+#   TensionRunConfig.elastic_calibration_mode, validate_run_config, config_from_ftgsim
+#   save_tension_ftgsim, initiation_snapshot, repository_root, solver_executable, _solver_sources
+#   _needs_rebuild, build_fem_solver, solver_command, run_fem_solver, FEMTensionApp.__init__
+#   FEMTensionApp._apply_config_to_boxes, FEMTensionApp._load_project
+#   FEMTensionApp._create_parameter_panel, FEMTensionApp._create_result_controls
 #   FEMTensionApp._read_config, FEMTensionApp._set_status, FEMTensionApp._on_run, FEMTensionApp._on_save
+#   FEMTensionApp._on_save_project, FEMTensionApp._open_geometry, FEMTensionApp._on_open_geometry
 #   FEMTensionApp._on_slider, FEMTensionApp._on_view, FEMTensionApp._on_field
 #   FEMTensionApp._clear_main_axes, FEMTensionApp.redraw, FEMTensionApp.show, run_headless_smoke, main
 # - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.

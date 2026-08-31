@@ -5,6 +5,8 @@
 #   TestTensionRunConfig.test_invalid_geometry_is_rejected
 #   TestTensionRunConfig.test_invalid_discrete_controls_are_rejected
 #   TestTensionRunConfig.test_negative_mean_stress_is_allowed_but_negative_amplitude_is_not
+#   TestTensionRunConfig.test_single_crystal_direction_is_required
+#   TestTensionRunConfig.test_optional_cubic_constants_determine_axis_modulus
 #   TestSolverCommand._option_value, TestSolverCommand.test_command_contains_converted_inputs_numerically
 # - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===

@@ -1,3 +1,12 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
+# - 주요 클래스: 없음 또는 외부 선언만 사용
+# - 주요 함수/메서드: test_tension_project_round_trip_and_result_extraction, test_checksum_tampering_is_rejected
+#   test_path_traversal_and_executable_members_are_rejected
+#   test_wrong_extension_and_physics_model_are_rejected
+#   test_optional_initiation_channel_is_preserved_but_not_claimed_calibrated
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 import json
 from pathlib import Path
 import zipfile

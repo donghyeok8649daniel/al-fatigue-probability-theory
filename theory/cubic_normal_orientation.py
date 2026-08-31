@@ -1,3 +1,10 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: 활성 1D normal layer-LJ 이론 계산에 사용하는 Python 모듈이다.
+# - 주요 클래스: CubicElasticConstants
+# - 주요 함수/메서드: CubicElasticConstants.validate, CubicElasticConstants.compliances, miller_unit_vector
+#   directional_young_modulus
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 """Scalar normal-tension projection for a cubic single crystal.
 
 This module supplies only the Young modulus along a declared crystallographic

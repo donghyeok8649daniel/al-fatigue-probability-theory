@@ -1,3 +1,11 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: 활성 1D normal layer-LJ 이론 계산에 사용하는 Python 모듈이다.
+# - 주요 클래스: 없음 또는 외부 선언만 사용
+# - 주요 함수/메서드: _check, hurwitz_zeta, riemann_zeta, pair_potential, finite_chain_energy
+#   bulk_energy_per_atom, equilibrium_spacing, critical_spacing, critical_stretch, energy_scale
+#   epsilon_from_energy_scale, normalized_phi, gap_sum, crack_gap_energy, bulk_force, barrier_spacing
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 """Exact one-dimensional generalized-LJ lattice and crack-gap energies.
 
 The functions here keep three objects deliberately separate: one pair energy,

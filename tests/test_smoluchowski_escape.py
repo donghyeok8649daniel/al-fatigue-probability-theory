@@ -1,3 +1,13 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
+# - 주요 클래스: 없음 또는 외부 선언만 사용
+# - 주요 함수/메서드: test_reflecting_probability_and_equilibrium_preservation
+#   test_absorbing_mass_equals_integrated_outflux
+#   test_tangent_instability_is_exact_operational_initiation_boundary
+#   test_finite_rate_distribution_lag_and_quasistatic_loop_collapse
+#   test_grid_timestep_refinement_and_free_energy_balance
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 import numpy as np
 import pytest
 
