@@ -1,7 +1,8 @@
 import numpy as np
+import pytest
 
-from theory.smoluchowski_escape import TransportConfig, solve
-from theory.normal_lj_chain import normalized_lj_energy
+from theory.smoluchowski_escape import TransportConfig, domain_max, solve
+from theory.normal_lj_chain import critical_stretch, normalized_lj_energy
 
 
 def test_reflecting_probability_and_equilibrium_preservation():
@@ -21,6 +22,17 @@ def test_absorbing_mass_equals_integrated_outflux():
     assert np.max(np.abs((1-h.survival[1:])-cumulative)) < 2e-11
     assert np.all(np.diff(h.survival) <= 2e-13)
     assert np.all(h.hazard >= 0)
+
+
+def test_tangent_instability_is_exact_operational_initiation_boundary():
+    config = TransportConfig(cells=140, boundary="absorbing",
+                             initiation_definition="tangent_instability",
+                             lambda_max=9.0)
+    assert domain_max(config) == pytest.approx(critical_stretch())
+    t = np.linspace(0, 1, 51)
+    h = solve(t, np.full_like(t, 0.01), config, max_dt=0.02)
+    assert h.stretch[-1] < critical_stretch()
+    assert np.all(h.tail_conditional == 0.0)
 
 
 def test_finite_rate_distribution_lag_and_quasistatic_loop_collapse():

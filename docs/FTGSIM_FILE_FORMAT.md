@@ -33,6 +33,8 @@ results/nodes.csv
 results/elements.csv
 results/metadata.csv
 results/summary.json
+results/probability_elements.csv
+results/initiation_elements.csv
 ```
 
 An imported portable mesh may additionally be embedded as exactly one of:
@@ -65,6 +67,11 @@ ignored.
 Changing display state cannot change the simulation definition. The FEM
 cross-sectional area is not the atomic representative area $A_0$, correlation
 area $A_c$, or a count of independent probability samples.
+
+When `results/initiation_elements.csv` exists, it is an optional scalar result
+channel containing survival, cumulative initiation, outflux and hazard. Its
+setup status must still state whether physical parameters are calibrated; file
+presence alone is not evidence of an aluminum lifetime law.
 
 ## Security limits
 

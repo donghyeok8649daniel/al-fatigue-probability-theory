@@ -19,9 +19,10 @@ DATA = ROOT / "results" / "data" / "smoluchowski"
 def history(period: float, boundary: str, cycles: int = 6):
     time = np.linspace(0.0, cycles * period, cycles * 100 + 1)
     force = 0.008 + 0.007 * np.sin(2 * np.pi * time / period)
-    upper = 1.205 if boundary == "absorbing" else 1.34
-    return solve(time, force, TransportConfig(inverse_temperature=80, cells=180,
-                 lambda_max=upper, boundary=boundary), max_dt=min(0.03, period/100))
+    initiation = "tangent_instability" if boundary == "absorbing" else "fixed_coordinate"
+    return solve(time, force, TransportConfig(inverse_temperature=2000, cells=180,
+                 lambda_max=1.34, boundary=boundary, initiation_definition=initiation),
+                 max_dt=min(0.03, period/100))
 
 
 def cycle_areas(h, period):
@@ -72,10 +73,10 @@ def main() -> None:
     axes[0, 1].set(title="cumulative initiation", xlabel="reduced time", ylabel="$1-S$")
     axes[1, 0].plot(absorbing.time, absorbing.hazard)
     axes[1, 0].set(title="hazard", xlabel="reduced time", ylabel="$h t_r$")
-    axes[1, 1].plot(absorbing.time, absorbing.tail_conditional)
-    axes[1, 1].set(title="conditional instability precursor", xlabel="reduced time",
-                   ylabel="$p_{tail}$")
-    fig.suptitle("Fixed absorbing-boundary escape")
+    axes[1, 1].plot(absorbing.time, absorbing.outflux)
+    axes[1, 1].set(title="first-passage outflux", xlabel="reduced time",
+                   ylabel="$J_{out}t_r$")
+    fig.suptitle(r"Crack initiation: first passage through $\lambda_c$")
     fig.savefig(FIG / "escape_observables.png", dpi=180); plt.close(fig)
 
     periods = np.asarray([0.5, 2, 6, 12, 30, 80, 200.0])
@@ -102,7 +103,8 @@ def main() -> None:
             absorbing.tail_conditional, absorbing.survival, absorbing.hazard,
             absorbing.initiation))
     summary = {"status": "dimensionless demonstration; not calibrated aluminum life",
-               "m": 12.19, "n": 6.0, "inverse_temperature": 80.0,
+               "m": 12.19, "n": 6.0, "inverse_temperature": 2000.0,
+               "initiation_definition": "first passage through tangent-instability stretch",
                "periods": periods.tolist(), "frequencies": (1/periods).tolist(),
                "loop_areas": loop, "four_cycle_escape": escape,
                "same_force_density_l1_difference": float(np.sum(np.abs(

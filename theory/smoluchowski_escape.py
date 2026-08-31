@@ -22,6 +22,7 @@ class TransportConfig:
     lambda_max: float = 1.34
     cells: int = 220
     boundary: str = "reflecting"
+    initiation_definition: str = "fixed_coordinate"
     m: float = 12.19
     n: float = 6.0
 
@@ -48,14 +49,26 @@ class TransportHistory:
 def _validate(c: TransportConfig) -> None:
     if c.boundary not in {"reflecting", "absorbing"}:
         raise ValueError("boundary must be reflecting or absorbing")
+    if c.initiation_definition not in {"fixed_coordinate", "tangent_instability"}:
+        raise ValueError("unknown initiation definition")
+    if c.initiation_definition == "tangent_instability" and c.boundary != "absorbing":
+        raise ValueError("tangent-instability first passage requires an absorbing boundary")
     if not (c.m > c.n > 1 and c.inverse_temperature > 0):
         raise ValueError("invalid exponents or inverse temperature")
     if not (0 < c.lambda_min < 1 < c.lambda_max) or c.cells < 40:
         raise ValueError("invalid domain or grid")
 
 
+def domain_max(c: TransportConfig) -> float:
+    """Return the actual upper boundary implied by the declared definition."""
+    if c.initiation_definition == "tangent_instability":
+        return critical_stretch(c.m, c.n)
+    return c.lambda_max
+
+
 def _grid(c: TransportConfig) -> tuple[np.ndarray, float]:
-    dx = (c.lambda_max - c.lambda_min) / c.cells
+    upper = domain_max(c)
+    dx = (upper - c.lambda_min) / c.cells
     return c.lambda_min + (np.arange(c.cells) + 0.5) * dx, dx
 
 
@@ -83,7 +96,7 @@ def _absorbing_coefficient(x_last: float, dx: float, force: float,
     """Coefficient J_out=c p_last to a zero-density boundary face."""
     h = 0.5 * dx
     phi_last = float(normalized_lj_energy(x_last, c.m, c.n))
-    phi_face = float(normalized_lj_energy(c.lambda_max, c.m, c.n))
+    phi_face = float(normalized_lj_energy(domain_max(c), c.m, c.n))
     drift = force - (phi_face - phi_last) / h
     diffusion = 1.0 / c.inverse_temperature
     delta = float(_chang_cooper_weight(np.asarray([drift * h / diffusion]))[0])

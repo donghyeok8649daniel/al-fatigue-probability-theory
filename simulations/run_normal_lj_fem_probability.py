@@ -26,6 +26,11 @@ from theory.normal_lj_probability_dynamics import (
     completed_cycle_hysteresis_areas,
     solve_spacing_probability_history,
 )
+from theory.smoluchowski_escape import (
+    TransportConfig,
+    TransportHistory,
+    solve as solve_initiation_history,
+)
 
 
 def _element_histories(
@@ -49,6 +54,75 @@ def _element_histories(
             )
         histories[element] = cache[key]
     return histories
+
+
+def _element_initiation_histories(
+    elements: np.ndarray,
+    youngs_modulus_pa: float,
+    relaxation_time_s: float,
+    inverse_temperature: float,
+    grid_cells: int = 180,
+) -> dict[int, TransportHistory]:
+    """First-passage histories with the absorbing boundary exactly at lambda_c."""
+    if relaxation_time_s <= 0 or youngs_modulus_pa <= 0:
+        raise ValueError("physical scales must be positive")
+    histories: dict[int, TransportHistory] = {}
+    cache: dict[bytes, TransportHistory] = {}
+    config = TransportConfig(
+        inverse_temperature=inverse_temperature,
+        lambda_min=0.82,
+        lambda_max=1.34,  # ignored by the explicit tangent boundary definition
+        cells=grid_cells,
+        boundary="absorbing",
+        initiation_definition="tangent_instability",
+    )
+    for element in np.unique(elements["element"]).astype(int):
+        rows = elements[elements["element"] == element]
+        rows = rows[np.argsort(rows["step"])]
+        stress = np.asarray(rows["stress_pa"], dtype=float)
+        time = np.asarray(rows["time_s"], dtype=float)
+        force = stress / youngs_modulus_pa
+        key = np.round(force, decimals=14).tobytes()
+        if key not in cache:
+            reduced_time = (time - time[0]) / relaxation_time_s
+            output_interval = float(np.min(np.diff(reduced_time)))
+            cache[key] = solve_initiation_history(
+                reduced_time,
+                force,
+                config,
+                max_dt=min(0.03, output_interval),
+            )
+        histories[element] = cache[key]
+    return histories
+
+
+def write_initiation_element_history(
+    path: Path,
+    elements: np.ndarray,
+    histories: dict[int, TransportHistory],
+    relaxation_time_s: float,
+) -> None:
+    """Export irreversible initiation fields separately from reflecting tail mass."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    x_by_element = {
+        int(element): float(np.mean(elements["x_mid_m"][elements["element"] == element]))
+        for element in np.unique(elements["element"]).astype(int)
+    }
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["time_s", "step", "element", "x_mid_m", "stress_pa",
+                         "survival", "initiation_probability", "outflux_per_s", "hazard_per_s"])
+        for element, history in sorted(histories.items()):
+            rows = elements[elements["element"] == element]
+            rows = rows[np.argsort(rows["step"])]
+            for step in range(history.time.size):
+                writer.writerow([
+                    f"{history.time[step] * relaxation_time_s:.17g}", step, element,
+                    f"{x_by_element[element]:.17g}", f"{rows['stress_pa'][step]:.17g}",
+                    f"{history.survival[step]:.17g}", f"{history.initiation[step]:.17g}",
+                    f"{history.outflux[step] / relaxation_time_s:.17g}",
+                    f"{history.hazard[step] / relaxation_time_s:.17g}",
+                ])
 
 
 def write_probability_element_history(
@@ -336,11 +410,23 @@ def run_demo(
     run_fem_solver(config, fem_dir)
     nodes, elements = load_fem_history(fem_dir)
     histories = _element_histories(elements, config.young_pa, probability_parameters)
+    initiation_histories = _element_initiation_histories(
+        elements,
+        config.young_pa,
+        probability_parameters.relaxation_time_s,
+        probability_parameters.inverse_temperature,
+    )
     write_probability_element_history(
         data_dir / "probability_elements.csv",
         elements,
         histories,
         equilibrium_spacing_m,
+    )
+    write_initiation_element_history(
+        data_dir / "initiation_elements.csv",
+        elements,
+        initiation_histories,
+        probability_parameters.relaxation_time_s,
     )
 
     representative = histories[int(np.unique(elements["element"])[len(histories) // 2])]
@@ -377,6 +463,9 @@ def run_demo(
         "cycle_hysteresis_energy_density_j_m3": [float(value) for value in areas],
         "peak_mean_spacing_m": float(equilibrium_spacing_m * np.max(representative.mean_stretch)),
         "peak_critical_tail_probability": float(np.max(representative.critical_tail_probability)),
+        "initiation_definition": "first passage through lambda_c (tangent stiffness loss)",
+        "final_survival_probability": float(initiation_histories[min(initiation_histories)].survival[-1]),
+        "cumulative_initiation_probability": float(initiation_histories[min(initiation_histories)].initiation[-1]),
     }
     data_dir.mkdir(parents=True, exist_ok=True)
     (data_dir / "summary.json").write_text(

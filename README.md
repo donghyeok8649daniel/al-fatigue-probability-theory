@@ -15,8 +15,10 @@ model**뿐이다. FCC 계산은 미래 확장용 archive이며 현재 계산에 
 않는다. 2D/3D mesh가 존재해도 constitutive input은 loading axis 방향 scalar
 normal stress뿐이며, 현재 재료이론은 여전히 1D이다.
 
-The exact homogeneous lattice energy and the local crack-gap energy are kept
-separate in `theory/exact_lattice_energy.py`. The finite-volume kinetic model
+The active coordinate is the local approximately homogeneous atomic spacing
+before crack initiation, so the exact homogeneous zeta-lattice energy is the
+active energy. The local crack-gap energy is retained only as a post-initiation
+archive comparison in `theory/exact_lattice_energy.py`. The finite-volume kinetic model
 with reflecting or absorbing escape is in `theory/smoluchowski_escape.py`.
 Uncalibrated runs are dimensionless demonstrations, not aluminum-life
 predictions. In particular, the mechanical representative area $A_0$ is not a
@@ -50,6 +52,13 @@ py -3 -m simulations.fem_tension_app examples/cube_3d.obj
 
 STEP/IGES and automatic solid/volume meshing are not claimed because the
 repository has no CAD-kernel/mesher backend. See `docs/MESH_VIEWPORT.md`.
+
+When a project contains a separately solved `initiation_elements.csv` channel,
+the FEM UI can color axial elements by cumulative initiation probability,
+survival, or hazard. Missing probability results are shown as missing rather
+than fabricated from FEM element count or display geometry. The active
+definition is first passage through the zero-tangent-stiffness stretch; see
+`docs/CRACK_INITIATION_DEFINITION.md`.
 
 ## Candidate kinetic probability and FEM coupling
 

@@ -75,3 +75,16 @@ def test_wrong_extension_and_physics_model_are_rejected(tmp_path: Path):
     renamed.write_bytes(wrong.read_bytes())
     with pytest.raises(ValueError, match="expected a .ftgsim"):
         open_ftgsim(renamed)
+
+
+def test_optional_initiation_channel_is_preserved_but_not_claimed_calibrated(tmp_path: Path):
+    output = tmp_path / "results"; output.mkdir()
+    (output / "initiation_elements.csv").write_text(
+        "step,element,survival,initiation_probability,outflux_per_s,hazard_per_s\n"
+        "0,0,1,0,0,0\n", encoding="utf-8")
+    project = save_tension_ftgsim(tmp_path / "initiation.ftgsim", TensionRunConfig(), output)
+    bundle = open_ftgsim(project)
+    model = bundle.setup["probability_model"]
+    assert model["enabled"] is True
+    assert model["calibration_status"] == "parameters_not_embedded_or_calibrated"
+    assert "results/initiation_elements.csv" in bundle.members

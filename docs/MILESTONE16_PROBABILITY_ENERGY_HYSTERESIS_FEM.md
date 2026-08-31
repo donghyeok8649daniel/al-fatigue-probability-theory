@@ -1,5 +1,10 @@
 # Milestone 16 — Probability, Energy Hysteresis, and 1D FEM Coupling
 
+> **STATUS UPDATE:** The old reflecting-tail demonstration in this milestone is
+> retained for reproducibility. The active crack-initiation definition now uses
+> first passage through the tangent-stability limit $\lambda_c$ with an
+> absorbing boundary. See `docs/CRACK_INITIATION_DEFINITION.md`.
+
 ## Status
 
 **CANDIDATE KINETIC EXTENSION / NUMERICALLY VERIFIED INTERFACE — NOT YET A CALIBRATED ALUMINUM FATIGUE-LIFE LAW**

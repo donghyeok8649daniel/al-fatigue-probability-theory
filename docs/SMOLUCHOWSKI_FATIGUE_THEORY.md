@@ -1,6 +1,12 @@
 # 1D normal-tensile Smoluchowski fatigue theory
 
-## Exact energies and interpretation
+## Active coordinate and exact energies
+
+The active random coordinate is the representative spacing of a small,
+approximately affine atomic neighbourhood immediately before crack initiation.
+It is not the width of an already formed free-surface crack. Accordingly the
+homogeneous zeta-lattice energy is the active local energy. The half-chain gap
+energy below is retained only as a post-initiation comparison/archive model.
 
 For the generalized pair potential
 
@@ -143,24 +149,39 @@ $$\dot{\mathcal F}=\int P\partial_t\Phi\,da
 The nonnegative second integral is rate-dependent entropy production times
 temperature. Boundary work/free-energy transport must be retained for escape.
 
-## Escape, survival, hazard, and precursor
+## Operational crack-initiation definition
+
+This project studies initiation, not post-initiation opening or propagation.
+Crack initiation is operationally defined as the first time a local
+approximately homogeneous spacing reaches $a_c$, where its tangent stiffness
+vanishes. The intact domain therefore ends exactly at $a_c$ and uses an
+absorbing boundary there. Probability crossing it is never reinjected into the
+intact ensemble.
+
+This definition does not claim that a macroscopic free surface is already
+complete at $a_c$. It states that the pre-crack local homogeneous model has
+lost stability and is no longer the valid state description.
+
+## Survival, hazard, and barrier comparison
 
 A reflecting Markov model may reach a periodic state and need not accumulate
-damage. For $0<F<F_c$, $U'(a)=F$ has a stable root below $a_c$ and an unstable
-barrier $a_b(F)>a_c$; they merge at $F_c=U'(a_c)$. The minimal irreversible
-extension evolves unnormalised intact density $\rho$ with an absorbing (or
-physically calibrated radiation) boundary:
+damage. The active irreversible model evolves unnormalised intact density
+$\rho$ on $a<a_c$ with an absorbing boundary at $a_c$:
 
 $$S=\int_\Omega\rho da,\quad P_{\rm init}=1-S,\quad
 h=J_{\rm out}/S.$$
 
-The conditional precursor
+For a separate, stricter energetic-escape interpretation, $0<F<F_c$ gives a
+stable root below $a_c$ and an unstable effective-potential barrier
+$a_b(F)>a_c$; they merge at $F_c=U'(a_c)$. The old diagnostic
 
 $$p_{\rm tail}=S^{-1}\int_{a_c}^{a_b(t)}\rho da$$
 
-is distinct from reflecting tail mass, outgoing flux, and cumulative
-initiation. The code uses a declared fixed absorbing coordinate so a moving
-barrier is not silently approximated; $a_b(t)$ is evaluated as a diagnostic.
+is retained only for barrier comparison. In the active first-passage model the
+intact density has no mass at or above $a_c$: its initiation measures are
+outgoing flux, survival and cumulative first-passage probability. The
+reflecting model's mass above $a_c$ remains an instantaneous instability-tail
+diagnostic and is not a cumulative initiation probability.
 
 ## Exact moment balances
 

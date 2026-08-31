@@ -53,8 +53,10 @@ U_{\rm gap}&=\varepsilon_{\rm LJ}\left[(\sigma_{\rm LJ}/a_0)^mS_m(q)
 -(\sigma_{\rm LJ}/a_0)^nS_n(q)\right].
 \end{align}
 $U_\infty$ is exact for homogeneous dilation; $U_{\rm gap}$ is direct for one
-local opening. Treating the former as a local energy is explicitly a
-local-homogeneous/mean-field hypothesis. They are not mixed here.
+formed local opening. The active pre-initiation coordinate is the representative
+spacing of a small approximately affine atomic neighbourhood, so $U_\infty$ is
+the active local-homogeneous energy. $U_{\rm gap}$ is retained only for a future
+post-initiation model and the two are not mixed.
 
 \section{Equilibrium and tangent instability}
 Stationarity and zero tangent stiffness give
@@ -111,14 +113,18 @@ For $\mathcal F=\int P(\Phi+k_BT\ln P)\dd a$,
 \quad \mu=\Phi+k_BT(\ln P+1),\end{equation}
 so current dissipation is nonnegative. $H_k$ is work, not stored pair energy.
 
-\section{Irreversible escape, survival and hazard}
+\section{Irreversible initiation, survival and hazard}
 A reflecting process can become periodic without accumulating damage. For
-$0<F<F_c$, $U'=F$ has stable and unstable roots; $a_b(F)>a_c$ is the barrier
-and merges with $a_c$ at $F_c$. With absorbing intact-boundary transport,
+$0<F<F_c$, $U'=F$ also has stable and unstable roots; $a_b(F)>a_c$ is an
+alternative energetic barrier and merges with $a_c$ at $F_c$. This initiation
+study instead defines crack initiation operationally as first loss of tangent
+stability of the local homogeneous environment. The intact domain therefore
+has an absorbing boundary exactly at $a_c$:
 \begin{equation}S=\int_\Omega\rho\dd a,\quad P_{\rm init}=1-S,
-\quad h=J_{\rm out}/S,
-\quad p_{\rm tail}=S^{-1}\int_{a_c}^{a_b(t)}\rho\dd a.\end{equation}
-Reflecting tail, escape flux, and cumulative initiation are distinct.
+\quad h=J_{\rm out}/S.\end{equation}
+The reflecting-model mass above $a_c$ is an instantaneous tail diagnostic;
+first-passage flux and cumulative initiation are distinct. No post-initiation
+opening or propagation is modeled.
 
 \section{Numerical method and verification}
 Cell-centered finite volumes use Chang--Cooper exponential fitting

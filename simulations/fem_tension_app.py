@@ -41,6 +41,7 @@ from simulations.fem_tension_ui import (
 )
 from simulations.ftgsim_format import create_ftgsim, extract_geometry, extract_results, open_ftgsim
 from simulations.mesh_viewer import MeshViewport, SUPPORTED_EXTENSIONS, load_mesh
+from simulations.visualize_fem1d import load_numeric_csv
 
 
 @dataclass(frozen=True)
@@ -130,7 +131,8 @@ def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path |
     files: dict[str, Path] = {}
     if output_dir is not None:
         source_dir = Path(output_dir)
-        for name in ("nodes.csv", "elements.csv", "metadata.csv", "summary.json"):
+        for name in ("nodes.csv", "elements.csv", "metadata.csv", "summary.json",
+                     "probability_elements.csv", "initiation_elements.csv"):
             source = source_dir / name
             if source.is_file():
                 files[f"results/{name}"] = source
@@ -143,6 +145,7 @@ def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path |
         geometry_member = f"geometry/source{source.suffix.lower()}"
         files[geometry_member] = source
         source_dimension = load_mesh(source).dimension
+    has_initiation_results = "results/initiation_elements.csv" in files
     return create_ftgsim(
         path,
         setup={
@@ -150,7 +153,10 @@ def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path |
             "material_scope": "pure_single_crystal_aluminum",
             "tension_run": asdict(config),
             "probability_model": {
-                "enabled": False,
+                "enabled": has_initiation_results,
+                "calibration_status": (
+                    "parameters_not_embedded_or_calibrated" if has_initiation_results else "not_solved"
+                ),
                 "coordinate": "local_homogeneous_spacing",
                 "energy": "exact_riemann_zeta_bulk_lattice",
                 "initiation_definition": "first_tangent_stiffness_loss",
@@ -174,6 +180,39 @@ def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path |
         files=files,
         generator={"application": "fem_tension_app", "format_extension": ".ftgsim"},
     )
+
+
+def initiation_snapshot(
+    nodes: np.ndarray,
+    elements: np.ndarray,
+    initiation_elements: np.ndarray,
+    step: int,
+    field: str,
+) -> dict:
+    """Map an optional first-passage scalar channel onto the axial FEM elements."""
+    columns = {
+        "initiation": ("initiation_probability", "cumulative initiation probability"),
+        "survival": ("survival", "intact survival probability"),
+        "hazard": ("hazard_per_s", "initiation hazard [1/s]"),
+    }
+    if field not in columns:
+        raise ValueError("field must be initiation, survival or hazard")
+    column, label = columns[field]
+    if column not in (initiation_elements.dtype.names or ()):
+        raise ValueError(f"initiation result is missing column: {column}")
+    base = axial_snapshot(nodes, elements, step, "stress")
+    result_rows = initiation_elements[initiation_elements["step"] == step]
+    element_rows = elements[elements["step"] == step]
+    result_rows = result_rows[np.argsort(result_rows["element"])]
+    element_rows = element_rows[np.argsort(element_rows["element"])]
+    if result_rows.size != element_rows.size or not np.array_equal(
+        result_rows["element"].astype(int), element_rows["element"].astype(int)
+    ):
+        raise ValueError("initiation/FEM element identifiers do not align")
+    base["scalar"] = np.asarray(result_rows[column], dtype=float)
+    base["field"] = field
+    base["label"] = label
+    return base
 
 
 def repository_root() -> Path:
@@ -355,6 +394,7 @@ class FEMTensionApp:
         self.auto_build = auto_build
         self.nodes: np.ndarray | None = None
         self.elements: np.ndarray | None = None
+        self.initiation_elements: np.ndarray | None = None
         self.steps = np.array([0], dtype=int)
         self.config = TensionRunConfig()
         self.view = "2D"
@@ -398,6 +438,9 @@ class FEMTensionApp:
             self.steps = np.unique(self.elements["step"]).astype(int)
             self.slider.valmax = max(len(self.steps) - 1, 1)
             self.slider.ax.set_xlim(self.slider.valmin, self.slider.valmax)
+        initiation_path = self.output_dir / "initiation_elements.csv"
+        if initiation_path.is_file():
+            self.initiation_elements = load_numeric_csv(initiation_path)
         geometry_files = extract_geometry(bundle, self.output_dir / "imported_geometry")
         if geometry_files:
             self._open_geometry(geometry_files[0])
@@ -443,9 +486,10 @@ class FEMTensionApp:
         self.slider.on_changed(self._on_slider)
 
         view_ax = self.fig.add_axes([0.79, 0.035, 0.075, 0.09])
-        field_ax = self.fig.add_axes([0.89, 0.035, 0.085, 0.09])
+        field_ax = self.fig.add_axes([0.875, 0.02, 0.115, 0.18])
         self.view_radio = RadioButtons(view_ax, ("2D", "3D"), active=0)
-        self.field_radio = RadioButtons(field_ax, ("stress", "strain"), active=0)
+        self.field_radio = RadioButtons(
+            field_ax, ("stress", "strain", "initiation", "survival", "hazard"), active=0)
         self.view_radio.on_clicked(self._on_view)
         self.field_radio.on_clicked(self._on_field)
 
@@ -605,8 +649,24 @@ class FEMTensionApp:
 
         index = min(int(round(self.slider.val)), len(self.steps) - 1)
         step = int(self.steps[index])
-        snapshot = axial_snapshot(self.nodes, self.elements, step, self.field)
-        vmin, vmax = _field_range(self.elements, self.field)
+        if self.field in {"stress", "strain"}:
+            snapshot = axial_snapshot(self.nodes, self.elements, step, self.field)
+            vmin, vmax = _field_range(self.elements, self.field)
+        else:
+            if self.initiation_elements is None:
+                self.main_ax.text(0.5, 0.5,
+                    "No initiation result in this project.\n"
+                    "Calibrated/declared probability parameters are required before solving.",
+                    transform=self.main_ax.transAxes, ha="center", va="center")
+                self.main_ax.set_axis_off(); self.fig.canvas.draw_idle(); return
+            snapshot = initiation_snapshot(
+                self.nodes, self.elements, self.initiation_elements, step, self.field)
+            values = np.asarray(self.initiation_elements[
+                {"initiation": "initiation_probability", "survival": "survival",
+                 "hazard": "hazard_per_s"}[self.field]], dtype=float)
+            vmin, vmax = float(np.min(values)), float(np.max(values))
+            if np.isclose(vmin, vmax):
+                margin = max(abs(vmin), 1.0) * 1e-9; vmin -= margin; vmax += margin
         norm = Normalize(vmin=vmin, vmax=vmax)
         cmap = plt.get_cmap("viridis")
 
