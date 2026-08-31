@@ -37,6 +37,20 @@ The format records the 1D mesh dimension, loading axis, material/loading
 inputs, display state, and optional FEM results. Windows registry association
 is intentionally not performed. See `docs/FTGSIM_FILE_FORMAT.md`.
 
+## CAD-style mesh inspection
+
+OBJ, binary/ASCII STL, ASCII PLY and legacy ASCII VTK geometry can be opened
+before or after analysis in a common 1D/2D/3D viewport. It provides 3D orbit,
+pan, wheel/right-drag zoom, reset, projection switching and the scalar normal
+loading-axis marker:
+
+```powershell
+py -3 -m simulations.fem_tension_app examples/cube_3d.obj
+```
+
+STEP/IGES and automatic solid/volume meshing are not claimed because the
+repository has no CAD-kernel/mesher backend. See `docs/MESH_VIEWPORT.md`.
+
 ## Candidate kinetic probability and FEM coupling
 
 The four working quantities are now connected by a separate, explicitly labeled kinetic post-processor:

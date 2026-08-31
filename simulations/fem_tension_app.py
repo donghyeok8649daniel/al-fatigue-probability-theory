@@ -39,7 +39,8 @@ from simulations.fem_tension_ui import (
     plot_tension_3d,
     save_preview_images,
 )
-from simulations.ftgsim_format import create_ftgsim, extract_results, open_ftgsim
+from simulations.ftgsim_format import create_ftgsim, extract_geometry, extract_results, open_ftgsim
+from simulations.mesh_viewer import MeshViewport, SUPPORTED_EXTENSIONS, load_mesh
 
 
 @dataclass(frozen=True)
@@ -122,7 +123,8 @@ def config_from_ftgsim(path: Path) -> tuple[TensionRunConfig, dict, dict]:
 
 
 def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path | None = None,
-                        *, view: str = "2D", field: str = "stress") -> Path:
+                        *, view: str = "2D", field: str = "stress",
+                        geometry_source: Path | None = None) -> Path:
     """Save setup and any existing FEM CSV results as an open `.ftgsim` bundle."""
     validate_run_config(config)
     files: dict[str, Path] = {}
@@ -132,6 +134,15 @@ def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path |
             source = source_dir / name
             if source.is_file():
                 files[f"results/{name}"] = source
+    geometry_member = None
+    source_dimension = None
+    if geometry_source is not None:
+        source = Path(geometry_source)
+        if source.suffix.lower() not in SUPPORTED_EXTENSIONS or not source.is_file():
+            raise ValueError("geometry_source must be an existing OBJ/STL/PLY/VTK file")
+        geometry_member = f"geometry/source{source.suffix.lower()}"
+        files[geometry_member] = source
+        source_dimension = load_mesh(source).dimension
     return create_ftgsim(
         path,
         setup={
@@ -146,7 +157,7 @@ def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path |
                 "critical_stretch_rule": "((m+1)/(n+1))**(1/(m-n))",
                 "note": "Parameters and escape coupling must be supplied before activation.",
             },
-            "result_references": sorted(files),
+            "result_references": sorted(name for name in files if name.startswith("results/")),
         },
         geometry={
             "mesh_dimension": 1,
@@ -156,6 +167,8 @@ def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path |
             "width_mm": config.width_mm,
             "thickness_mm": config.thickness_mm,
             "elements": config.elements,
+            "source_member": geometry_member,
+            "source_dimension": source_dimension,
         },
         display={"view": view, "field": field, "deformation_scale": config.deformation_scale},
         files=files,
@@ -335,6 +348,7 @@ class FEMTensionApp:
         solver: Path | None = None,
         auto_build: bool = True,
         project_path: Path | None = None,
+        geometry_path: Path | None = None,
     ) -> None:
         self.output_dir = Path(output_dir)
         self.solver = None if solver is None else Path(solver)
@@ -347,6 +361,8 @@ class FEMTensionApp:
         self.field = "stress"
         self.main_ax = None
         self.colorbar = None
+        self.mesh_viewports: list[MeshViewport] = []
+        self.geometry_source_path: Path | None = None
 
         self.fig = plt.figure(figsize=(13.4, 7.5))
         self.fig.canvas.manager.set_window_title("1D Tensile FEM — C Solver + 2D/3D Viewer")
@@ -362,6 +378,8 @@ class FEMTensionApp:
         )
         if project_path is not None:
             self._load_project(Path(project_path))
+        if geometry_path is not None:
+            self._open_geometry(Path(geometry_path))
         self.redraw()
 
     def _apply_config_to_boxes(self) -> None:
@@ -380,6 +398,9 @@ class FEMTensionApp:
             self.steps = np.unique(self.elements["step"]).astype(int)
             self.slider.valmax = max(len(self.steps) - 1, 1)
             self.slider.ax.set_xlim(self.slider.valmin, self.slider.valmax)
+        geometry_files = extract_geometry(bundle, self.output_dir / "imported_geometry")
+        if geometry_files:
+            self._open_geometry(geometry_files[0])
         self.status.set_text(f"Opened {path.name} (1D normal tension only)")
 
     def _create_parameter_panel(self) -> None:
@@ -403,9 +424,13 @@ class FEMTensionApp:
         self.project_button = Button(project_ax, "Save .ftgsim")
         self.project_button.on_clicked(self._on_save_project)
 
+        geometry_ax = self.fig.add_axes([0.025, 0.095, 0.175, 0.040])
+        self.geometry_button = Button(geometry_ax, "Open 1D/2D/3D mesh")
+        self.geometry_button.on_clicked(self._on_open_geometry)
+
         self.fig.text(
             0.025,
-            0.13,
+            0.08,
             "A = width × thickness\n2D/3D = display only\nNo shear / von-Mises / Poisson model",
             ha="left",
             va="top",
@@ -502,10 +527,38 @@ class FEMTensionApp:
             self.config = self._read_config()
             target = self.output_dir.parent / f"{self.output_dir.name}.ftgsim"
             saved = save_tension_ftgsim(target, self.config, self.output_dir,
-                                        view=self.view, field=self.field)
+                                        view=self.view, field=self.field,
+                                        geometry_source=self.geometry_source_path)
             self._set_status(f"Saved project: {saved}")
         except Exception as exc:
             self._set_status(f"ERROR saving project: {exc}")
+
+    def _open_geometry(self, path: Path) -> None:
+        mesh = load_mesh(path)
+        self.geometry_source_path = Path(path)
+        viewport = MeshViewport(mesh)
+        self.mesh_viewports.append(viewport)
+        viewport.figure.show()
+        self._set_status(
+            f"Opened {path.name}: {mesh.vertices.shape[0]} nodes, "
+            f"{len(mesh.faces)} faces, inferred {mesh.dimension}D"
+        )
+
+    def _on_open_geometry(self, _event) -> None:
+        try:
+            from tkinter import Tk, filedialog
+            root = Tk(); root.withdraw()
+            selected = filedialog.askopenfilename(
+                title="Open mesh geometry",
+                filetypes=[("Supported mesh", "*.obj *.stl *.ply *.vtk"),
+                           ("OBJ", "*.obj"), ("STL", "*.stl"),
+                           ("PLY", "*.ply"), ("Legacy VTK", "*.vtk")],
+            )
+            root.destroy()
+            if selected:
+                self._open_geometry(Path(selected))
+        except Exception as exc:
+            self._set_status(f"ERROR opening geometry: {exc}")
 
     def _on_slider(self, _value) -> None:
         self.redraw()
@@ -611,7 +664,10 @@ def run_headless_smoke(
 
 def main(argv: Sequence[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description="Integrated GUI for strictly 1D tensile FEM")
-    parser.add_argument("project", nargs="?", type=Path, help="optional .ftgsim project to open")
+    parser.add_argument("input", nargs="?", type=Path,
+                        help="optional .ftgsim project or OBJ/STL/PLY/VTK geometry")
+    parser.add_argument("--geometry", type=Path, default=None,
+                        help="mesh geometry to open in the CAD-style viewport")
     parser.add_argument("--output-dir", type=Path, default=Path("results/data/fem1d_ui_run"))
     parser.add_argument("--preview-dir", type=Path, default=Path("results/figures/fem1d_ui_run"))
     parser.add_argument("--solver", type=Path, default=None)
@@ -636,11 +692,21 @@ def main(argv: Sequence[str] | None = None) -> None:
             print(f"project={saved}")
         return
 
+    project_path = args.input if args.input and args.input.suffix.lower() == ".ftgsim" else None
+    geometry_path = args.geometry
+    if args.input and args.input.suffix.lower() in SUPPORTED_EXTENSIONS:
+        if geometry_path is not None:
+            parser.error("specify geometry either positionally or with --geometry, not both")
+        geometry_path = args.input
+    elif args.input and project_path is None:
+        parser.error("input must be .ftgsim, .obj, .stl, .ply or .vtk")
+
     app = FEMTensionApp(
         output_dir=args.output_dir,
         solver=args.solver,
         auto_build=not args.no_auto_build,
-        project_path=args.project,
+        project_path=project_path,
+        geometry_path=geometry_path,
     )
     app.show()
 

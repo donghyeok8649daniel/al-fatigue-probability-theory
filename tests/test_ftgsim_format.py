@@ -9,7 +9,8 @@ from simulations.fem_tension_app import (
     config_from_ftgsim,
     save_tension_ftgsim,
 )
-from simulations.ftgsim_format import MANIFEST_NAME, create_ftgsim, extract_results, open_ftgsim
+from simulations.ftgsim_format import (MANIFEST_NAME, create_ftgsim, extract_geometry,
+                                       extract_results, open_ftgsim)
 
 
 def test_tension_project_round_trip_and_result_extraction(tmp_path: Path):
@@ -18,7 +19,10 @@ def test_tension_project_round_trip_and_result_extraction(tmp_path: Path):
     (result_dir / "nodes.csv").write_text("step,node\n0,0\n", encoding="utf-8")
     (result_dir / "elements.csv").write_text("step,element\n0,0\n", encoding="utf-8")
     config = TensionRunConfig(elements=17, frequency_hz=8.0, deformation_scale=3.0)
-    project = save_tension_ftgsim(tmp_path / "sample", config, result_dir, view="3D")
+    geometry_source = tmp_path / "part.obj"
+    geometry_source.write_text("v 0 0 0\nv 1 0 0\nl 1 2\n", encoding="utf-8")
+    project = save_tension_ftgsim(tmp_path / "sample", config, result_dir, view="3D",
+                                  geometry_source=geometry_source)
     assert project.suffix == ".ftgsim"
 
     loaded, geometry, display = config_from_ftgsim(project)
@@ -26,10 +30,14 @@ def test_tension_project_round_trip_and_result_extraction(tmp_path: Path):
     assert geometry["mesh_dimension"] == 1
     assert geometry["loading_axis"] == [1.0, 0.0, 0.0]
     assert display["view"] == "3D"
+    assert geometry["source_member"] == "geometry/source.obj"
     bundle = open_ftgsim(project)
     extracted = extract_results(bundle, tmp_path / "opened")
     assert {item.name for item in extracted} == {"nodes.csv", "elements.csv"}
     assert (tmp_path / "opened" / "nodes.csv").read_text(encoding="utf-8") == "step,node\n0,0\n"
+    geometry_files = extract_geometry(bundle, tmp_path / "opened_geometry")
+    assert len(geometry_files) == 1
+    assert geometry_files[0].read_text(encoding="utf-8").startswith("v 0 0 0")
     (tmp_path / "opened" / "nodes.csv").write_text("user data\n", encoding="utf-8")
     with pytest.raises(FileExistsError, match="refusing to overwrite"):
         extract_results(bundle, tmp_path / "opened")

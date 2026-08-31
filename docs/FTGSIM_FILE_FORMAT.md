@@ -35,6 +35,18 @@ results/metadata.csv
 results/summary.json
 ```
 
+An imported portable mesh may additionally be embedded as exactly one of:
+
+```text
+geometry/source.obj
+geometry/source.stl
+geometry/source.ply
+geometry/source.vtk
+```
+
+The reader checksum-validates the member before extracting it and never treats
+mesh content as executable code.
+
 ## Manifest
 
 Version 1 uses `format`, semantic `schema_version`, `bundle_kind`, UUID,

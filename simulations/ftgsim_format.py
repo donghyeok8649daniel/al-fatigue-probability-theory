@@ -25,7 +25,8 @@ MANIFEST_NAME = "ftgsim-manifest.json"
 MAX_FILES = 256
 MAX_MEMBER_BYTES = 128 * 1024 * 1024
 MAX_TOTAL_BYTES = 512 * 1024 * 1024
-ALLOWED_SUFFIXES = {".json", ".csv", ".png", ".svg", ".txt", ".md"}
+ALLOWED_SUFFIXES = {".json", ".csv", ".png", ".svg", ".txt", ".md",
+                    ".obj", ".stl", ".ply", ".vtk"}
 
 
 @dataclass(frozen=True)
@@ -198,6 +199,31 @@ def extract_results(bundle: FTGSimBundle, destination: Path) -> tuple[Path, ...]
             data = archive.read(name)
             if output.exists() and output.read_bytes() != data:
                 raise FileExistsError(f"refusing to overwrite an existing result: {output}")
+            if not output.exists():
+                output.write_bytes(data)
+            extracted.append(output)
+    return tuple(extracted)
+
+
+def extract_geometry(bundle: FTGSimBundle, destination: Path) -> tuple[Path, ...]:
+    """Extract only a checksummed, non-executable mesh below `geometry/`."""
+    target = Path(destination).resolve()
+    target.mkdir(parents=True, exist_ok=True)
+    extracted: list[Path] = []
+    checksums = bundle.manifest.get("checksums_sha256", {})
+    with zipfile.ZipFile(bundle.path, "r") as archive:
+        for name in bundle.members:
+            pure = _safe_member(name)
+            if not pure.parts or pure.parts[0] != "geometry" or pure.suffix.lower() not in {".obj", ".stl", ".ply", ".vtk"}:
+                continue
+            if name not in checksums:
+                raise ValueError(f"geometry member is not checksummed: {name}")
+            output = (target / Path(*pure.parts[1:])).resolve()
+            if target != output and target not in output.parents:
+                raise ValueError(f"unsafe extraction target: {name}")
+            data = archive.read(name)
+            if output.exists() and output.read_bytes() != data:
+                raise FileExistsError(f"refusing to overwrite existing geometry: {output}")
             if not output.exists():
                 output.write_bytes(data)
             extracted.append(output)
