@@ -22,6 +22,21 @@ Uncalibrated runs are dimensionless demonstrations, not aluminum-life
 predictions. In particular, the mechanical representative area $A_0$ is not a
 correlation area $A_c$ and is not a FEM element area.
 
+## `.ftgsim` project files
+
+The desktop tensile app now reads and writes the open `.ftgsim` container.
+It is a versioned ZIP/ZIP64 bundle containing checksummed JSON/CSV/PNG data,
+never Python pickle or executable content. A project can be opened without OS
+file association:
+
+```powershell
+py -3 -m simulations.fem_tension_app path/to/model.ftgsim
+```
+
+The format records the 1D mesh dimension, loading axis, material/loading
+inputs, display state, and optional FEM results. Windows registry association
+is intentionally not performed. See `docs/FTGSIM_FILE_FORMAT.md`.
+
 ## Candidate kinetic probability and FEM coupling
 
 The four working quantities are now connected by a separate, explicitly labeled kinetic post-processor:

@@ -1,5 +1,10 @@
 # AFT Project / Result Bundle Format — Draft
 
+> **SUPERSEDED:** The unimplemented `.aftproj`/`.aftres` proposal below is
+> retained only as design history. The implemented version-1 container uses
+> the single `.ftgsim` extension and a `bundle_kind` manifest field. See
+> `docs/FTGSIM_FILE_FORMAT.md`.
+
 ## Status
 
 **FORMAT DESIGN DRAFT — NOT YET FROZEN OR IMPLEMENTED**

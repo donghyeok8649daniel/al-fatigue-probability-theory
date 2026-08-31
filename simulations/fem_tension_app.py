@@ -19,7 +19,7 @@ but they do not introduce transverse degrees of freedom or constitutive laws.
 from __future__ import annotations
 
 import argparse
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from pathlib import Path
 import os
 import shutil
@@ -39,6 +39,7 @@ from simulations.fem_tension_ui import (
     plot_tension_3d,
     save_preview_images,
 )
+from simulations.ftgsim_format import create_ftgsim, extract_results, open_ftgsim
 
 
 @dataclass(frozen=True)
@@ -101,6 +102,65 @@ def validate_run_config(config: TensionRunConfig) -> None:
         raise ValueError("stress_mean_mpa must be finite")
     if not np.isfinite(config.stress_amplitude_mpa) or config.stress_amplitude_mpa < 0.0:
         raise ValueError("stress_amplitude_mpa must be finite and nonnegative")
+
+
+def config_from_ftgsim(path: Path) -> tuple[TensionRunConfig, dict, dict]:
+    """Load and validate the tensile-only setup from an `.ftgsim` bundle."""
+    bundle = open_ftgsim(path)
+    if bundle.setup.get("physics_model") != "1d_normal_tensile":
+        raise ValueError("ftgsim project is not a 1D normal-tensile model")
+    values = bundle.setup.get("tension_run")
+    if not isinstance(values, dict):
+        raise ValueError("ftgsim setup is missing tension_run")
+    allowed = set(TensionRunConfig.__dataclass_fields__)
+    unknown = set(values) - allowed
+    if unknown:
+        raise ValueError(f"unknown tension_run fields: {sorted(unknown)}")
+    config = TensionRunConfig(**values)
+    validate_run_config(config)
+    return config, bundle.geometry, bundle.display
+
+
+def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path | None = None,
+                        *, view: str = "2D", field: str = "stress") -> Path:
+    """Save setup and any existing FEM CSV results as an open `.ftgsim` bundle."""
+    validate_run_config(config)
+    files: dict[str, Path] = {}
+    if output_dir is not None:
+        source_dir = Path(output_dir)
+        for name in ("nodes.csv", "elements.csv", "metadata.csv", "summary.json"):
+            source = source_dir / name
+            if source.is_file():
+                files[f"results/{name}"] = source
+    return create_ftgsim(
+        path,
+        setup={
+            "physics_model": "1d_normal_tensile",
+            "material_scope": "pure_single_crystal_aluminum",
+            "tension_run": asdict(config),
+            "probability_model": {
+                "enabled": False,
+                "coordinate": "local_homogeneous_spacing",
+                "energy": "exact_riemann_zeta_bulk_lattice",
+                "initiation_definition": "first_tangent_stiffness_loss",
+                "critical_stretch_rule": "((m+1)/(n+1))**(1/(m-n))",
+                "note": "Parameters and escape coupling must be supplied before activation.",
+            },
+            "result_references": sorted(files),
+        },
+        geometry={
+            "mesh_dimension": 1,
+            "loading_axis": [1.0, 0.0, 0.0],
+            "geometry_kind": "uniform_bar",
+            "length_mm": config.length_mm,
+            "width_mm": config.width_mm,
+            "thickness_mm": config.thickness_mm,
+            "elements": config.elements,
+        },
+        display={"view": view, "field": field, "deformation_scale": config.deformation_scale},
+        files=files,
+        generator={"application": "fem_tension_app", "format_extension": ".ftgsim"},
+    )
 
 
 def repository_root() -> Path:
@@ -274,6 +334,7 @@ class FEMTensionApp:
         output_dir: Path,
         solver: Path | None = None,
         auto_build: bool = True,
+        project_path: Path | None = None,
     ) -> None:
         self.output_dir = Path(output_dir)
         self.solver = None if solver is None else Path(solver)
@@ -299,7 +360,27 @@ class FEMTensionApp:
             ha="left",
             va="top",
         )
+        if project_path is not None:
+            self._load_project(Path(project_path))
         self.redraw()
+
+    def _apply_config_to_boxes(self) -> None:
+        for key, _label, _initial in self._INPUT_SPECS:
+            self.textboxes[key].set_val(str(getattr(self.config, key)))
+
+    def _load_project(self, path: Path) -> None:
+        self.config, _geometry, display = config_from_ftgsim(path)
+        self._apply_config_to_boxes()
+        self.view = display.get("view", "2D") if display.get("view") in {"2D", "3D"} else "2D"
+        self.field = display.get("field", "stress") if display.get("field") in {"stress", "strain"} else "stress"
+        bundle = open_ftgsim(path)
+        extracted = extract_results(bundle, self.output_dir)
+        if {"nodes.csv", "elements.csv"}.issubset({item.name for item in extracted}):
+            self.nodes, self.elements = load_fem_history(self.output_dir)
+            self.steps = np.unique(self.elements["step"]).astype(int)
+            self.slider.valmax = max(len(self.steps) - 1, 1)
+            self.slider.ax.set_xlim(self.slider.valmin, self.slider.valmax)
+        self.status.set_text(f"Opened {path.name} (1D normal tension only)")
 
     def _create_parameter_panel(self) -> None:
         self.fig.text(0.025, 0.955, "Tensile test inputs", ha="left", va="top", weight="bold")
@@ -318,9 +399,13 @@ class FEMTensionApp:
         self.save_button = Button(save_ax, "Save views")
         self.save_button.on_clicked(self._on_save)
 
+        project_ax = self.fig.add_axes([0.025, 0.145, 0.175, 0.040])
+        self.project_button = Button(project_ax, "Save .ftgsim")
+        self.project_button.on_clicked(self._on_save_project)
+
         self.fig.text(
             0.025,
-            0.18,
+            0.13,
             "A = width × thickness\n2D/3D = display only\nNo shear / von-Mises / Poisson model",
             ha="left",
             va="top",
@@ -411,6 +496,16 @@ class FEMTensionApp:
             self._set_status(f"Saved 2D/3D peak-tension views to {preview_dir} (step {result['step']}).")
         except Exception as exc:
             self._set_status(f"ERROR saving views: {exc}")
+
+    def _on_save_project(self, _event) -> None:
+        try:
+            self.config = self._read_config()
+            target = self.output_dir.parent / f"{self.output_dir.name}.ftgsim"
+            saved = save_tension_ftgsim(target, self.config, self.output_dir,
+                                        view=self.view, field=self.field)
+            self._set_status(f"Saved project: {saved}")
+        except Exception as exc:
+            self._set_status(f"ERROR saving project: {exc}")
 
     def _on_slider(self, _value) -> None:
         self.redraw()
@@ -516,11 +611,14 @@ def run_headless_smoke(
 
 def main(argv: Sequence[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description="Integrated GUI for strictly 1D tensile FEM")
+    parser.add_argument("project", nargs="?", type=Path, help="optional .ftgsim project to open")
     parser.add_argument("--output-dir", type=Path, default=Path("results/data/fem1d_ui_run"))
     parser.add_argument("--preview-dir", type=Path, default=Path("results/figures/fem1d_ui_run"))
     parser.add_argument("--solver", type=Path, default=None)
     parser.add_argument("--no-auto-build", action="store_true")
     parser.add_argument("--headless-smoke", action="store_true")
+    parser.add_argument("--save-project", type=Path, default=None,
+                        help="write the headless result as a .ftgsim bundle")
     args = parser.parse_args(argv)
 
     if args.headless_smoke:
@@ -532,12 +630,17 @@ def main(argv: Sequence[str] | None = None) -> None:
         )
         for key, value in summary.items():
             print(f"{key}={value}")
+        if args.save_project is not None:
+            saved = save_tension_ftgsim(args.save_project,
+                TensionRunConfig(elements=12, cycles=1, steps_per_cycle=24), args.output_dir)
+            print(f"project={saved}")
         return
 
     app = FEMTensionApp(
         output_dir=args.output_dir,
         solver=args.solver,
         auto_build=not args.no_auto_build,
+        project_path=args.project,
     )
     app.show()
 
