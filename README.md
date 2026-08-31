@@ -24,6 +24,18 @@ Uncalibrated runs are dimensionless demonstrations, not aluminum-life
 predictions. In particular, the mechanical representative area $A_0$ is not a
 correlation area $A_c$ and is not a FEM element area.
 
+An owner-supplied 23-page two-row ideal-slip derivation is preserved under
+`research/source/` and audited under `libraries/shear/`. Its exact shifted
+Epstein--Hurwitz/Poisson--Bessel identity is retained, but its slip variables,
+mixed patch energy, and plasticity claims are not active. See
+`libraries/shear/docs/SLIP_LATTICE_ENERGY_REVIEW.md`.
+
+프로젝트 소유자가 제공한 23쪽 두 원자열 ideal-slip 유도자료는
+`research/source/`에 원본으로 보존하고 `libraries/shear/`에서 검토한다.
+이동된 Epstein--Hurwitz/Poisson--Bessel 항등식은 정확한 수학으로 보존하지만,
+slip 변수, 혼합 patch energy 및 소성 주장은 활성화하지 않는다. 자세한 판정은
+`libraries/shear/docs/SLIP_LATTICE_ENERGY_REVIEW.md`에 있다.
+
 ## `.ftgsim` project files
 
 The desktop tensile app now reads and writes the open `.ftgsim` container.
