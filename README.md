@@ -40,7 +40,7 @@ Last updated: **2026-09-01**
 - **FEM/UI:** geometry and scalar normal-stress visualization remain available.
   The new registry solver is not yet coupled to FEM elements; mesh dimension
   does not create multiaxial constitutive physics.
-- **Verification at this update:** 135 primary tests and 8 independent
+- **Verification at this update:** 151 primary tests and 8 independent
   shear/Bessel audit tests pass. The corrected source PDF SHA-256 is
   `42C3D5086CA203C76F3DC8213A1718B5121AA1273067738C5B478BCBF12D999D`.
   Both TeX sources have balanced environments and every paper figure exists;
@@ -65,6 +65,7 @@ Reproduce the active registry demonstration and its focused verification with:
 ```powershell
 py -3 -m simulations.run_registry_plasticity
 py -3 -m pytest tests/test_registry_plasticity.py -q
+$env:MPLBACKEND='Agg'; py -3 -m pytest -q
 ```
 
 The generated data and figure are under `results/data/registry_plasticity/`
