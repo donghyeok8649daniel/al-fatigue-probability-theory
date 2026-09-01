@@ -1,12 +1,12 @@
 # 이 파일은 두 평행 원자열의 반복단위당 registry 에너지를 수치 검산한다.
 # 주요 함수는 well_depth_scale, inverse_power_q2_closed, two_row_cross_energy_per_repeat_direct이다.
-# 이 모듈은 비활성 archive이며 과학적 분류와 한계는 docs/SLIP_LATTICE_ENERGY_REVIEW.md를 따른다.
+# 이 모듈은 독립 direct-sum 검산 기준이며 활성 구현은 theory/ 아래에 있다.
 
-"""Diagnostic evaluators for the archived two-row registry derivation.
+"""Diagnostic evaluators for the audited two-row registry derivation.
 
 The mathematical object is the cross-row interaction energy per upper atom,
 equivalently per commensurate row repeat.  It is not the total energy of two
-infinite rows and it is not an active aluminum plasticity law.
+infinite rows and it is not a quantitative aluminum plasticity law.
 
 The direct sums below use an explicit symmetric numerical half-width.  That
 half-width is a convergence-control parameter for theorem checks, not a
@@ -139,4 +139,3 @@ def registry_force_per_repeat_direct(
         )
 
     return epsilon_coefficient * (derivative(m) - derivative(n))
-

@@ -4,9 +4,10 @@
 
 The shifted Epstein--Hurwitz lattice sum and its Poisson--Bessel representation
 are retained as an **EXACT / IDENTITY** for the stated two-row geometry. The
-plasticity, patch-energy, probability-tail, and irreversible-transition claims
-require corrections. The result is archived and is not activated in the
-normal-tensile solver.
+corrected scalar registry energy and unwrapped probability dynamics are now an
+optional active ideal-slip branch. They remain separate from the primary
+normal-tensile solver. Unsupported mixed patch energy, automatic
+irreversibility, and quantitative aluminum-plasticity claims remain rejected.
 
 Source under review:
 `research/source/slip_lattice_energy_mn_K_derivation_KR_v3_23pages.pdf`.
@@ -40,7 +41,7 @@ Source under review:
    the nonlinear embedding function, is correct. The original method is
    described by [Daw and Baskes (1984)](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.29.6443).
 
-## Corrections required before any model activation
+## Corrections governing the active reduced branch
 
 | ID | Source claim | Finding | Conservative correction |
 |---|---|---|---|
@@ -111,16 +112,18 @@ and persistence of the shifted $z$ population have been validated.
 
 ## Repository integration decision
 
-- **Active normal branch:** unchanged; uses only $a$ and $P(a,t)$.
-- **Archived exact mathematics:** the two-row direct sum and Poisson--Bessel
-  identity may be retained.
-- **Archived controlled kinetics:** Kramers/Smoluchowski registry dynamics may
-  be studied only with explicit bath and time-scale assumptions.
+- **Primary active normal branch:** unchanged; uses only $a$ and $P(a,t)$.
+- **Optional active exact mathematics:** the two-row direct sum and
+  Poisson--Bessel identity drive `theory/registry_lattice.py`.
+- **Optional active controlled kinetics:** the unwrapped scalar Smoluchowski
+  registry dynamics in `theory/registry_plasticity.py` use an explicit
+  isothermal bath and constant-mobility overdamped assumption.
 - **Rejected as active physics:** the mixed patch energy, automatic
   irreversibility of $z$, invented EAM kernel, and quantitative-Al claim.
-- **Required before activation:** full FCC plane/direction, validated complete
-  EAM or DFT GSF surface, MD-derived memory/mobility, residual-slip test,
-  hardening model, and comparison to single-crystal cyclic data.
+- **Required before quantitative aluminum use:** full FCC plane/direction,
+  validated complete EAM or DFT GSF surface, MD-derived memory/mobility,
+  homogenization thickness, hardening model, and comparison to single-crystal
+  cyclic data.
 
 ---
 

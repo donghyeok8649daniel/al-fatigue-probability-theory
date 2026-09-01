@@ -1,13 +1,17 @@
 \documentclass[11pt]{article}
 \usepackage[a4paper,margin=25mm]{geometry}
-\usepackage{amsmath,amssymb,bm,booktabs,longtable,hyperref}
-\title{Corrected Two-Row Registry Energy and the Limits of an Ideal-Slip Extension}
+\usepackage{amsmath,amssymb,bm,booktabs,longtable,array,hyperref}
+\title{Exact Two-Row Registry Energy and an Active Ideal-Slip Extension}
 \author{Donghyeok Kim \and Minsoo Kang \and Junhyeok Park}
 \date{September 2026}
 \newcommand{\dd}{\,\mathrm d}
 \newcommand{\epsc}{\varepsilon_c}
 \newcommand{\epsw}{\varepsilon_w}
+\newcommand{\epsLJ}{\varepsilon_{\mathrm{LJ}}}
 \newcommand{\sigLJ}{\sigma_{\mathrm{LJ}}}
+\newcommand{\kB}{k_{\mathrm B}}
+\newcommand{\Zsh}{\mathcal Z}
+\newcommand{\Bmn}{\mathcal B}
 \begin{document}
 \maketitle
 
@@ -19,16 +23,19 @@ conventions are separated, the energy is identified as cross-row energy per
 repeat, and the unsupported addition of collinear bulk-chain and cross-row
 energies is removed. An unwrapped registry index is retained only as a signed
 translation counter: its change is not automatically an irreversible plastic
-event. The construction remains an archived ideal-registry mechanism and is
-not an active or quantitative plasticity law for aluminum.
+event. The corrected energy and unwrapped scalar-registry dynamics are an
+optional active ideal mechanism. Quantitative plasticity of aluminum is not
+claimed.
 \end{abstract}
 
 \section{Scope and status}
 
-The active repository theory remains one-dimensional and normal-only, with
-state coordinate $a$ and density $P(a,t)$. The tangential registry $s$,
-resolved shear $\tau$, and well index $z$ in this note are an inactive archive.
-No active FEM element supplies shear stress to this model.
+The primary crack-initiation branch remains the one-dimensional normal model
+with state coordinate $a$ and density $P(a,t)$. This note supplies a separate
+optional active branch with one scalar registry $s$ and unwrapped well index
+$z$. It is still a one-index row lattice and one-slip-coordinate mechanism;
+it is not a multiaxial continuum law. No FEM element currently supplies shear
+stress to this branch.
 
 \section{Two distinct generalized Lennard--Jones conventions}
 
@@ -134,7 +141,7 @@ explicit bulk/interface subtraction.
 
 Write the kinematic identity
 \begin{equation}
-s=zb+\widetilde s,qquad z\in\mathbb Z,qquad 0\le\widetilde s<b.
+s=zb+\widetilde s,\qquad z\in\mathbb Z,\qquad 0\le\widetilde s<b.
 \end{equation}
 $z$ records signed net translations. A conservative periodic landscape permits
 both $z\to z+1$ and $z\to z-1$. Thus a jump is not automatically permanent.
@@ -185,14 +192,45 @@ atomic and phonon modes. Without that bath, fracture, or another irreversible
 state change, the fixed multiwell energy is conservative and cannot by itself
 produce steady dissipative plastic hysteresis.
 
-\section{Requirements for aluminum activation}
+\section{Active probability implementation}
 
-The two-row result is not a quantitative aluminum law. Activation requires a
+The active reduced solver prescribes $a/b$, puts $u=s/b$, and evolves the
+unwrapped density by
+\begin{equation}
+ \partial_t p=-\partial_u j,\qquad
+ j=-\left[(\partial_u w-g)p+\beta^{-1}\partial_u p\right],
+ \quad w={W\over\epsc},\quad
+ g={\tau A_{\rm rep}b\over\epsc}.
+\end{equation}
+Here time is scaled by $b^2/(M_s\epsc)$ and
+$\beta=\epsc/(\kB T)$. Chang--Cooper finite-volume fluxes and backward Euler
+preserve probability and nonnegativity. The initial state is a Boltzmann
+density conditioned on one registry well; a global density on the infinite
+periodic line is not normalizable.
+
+Plastic residual is not inferred from a crossing alone. After unloading and a
+declared relaxation time it requires
+\begin{equation}
+ \langle\widetilde s\rangle\longrightarrow0,
+ \qquad \langle z\rangle\ne0,
+ \qquad \gamma_p={b\over h_{\rm slip}}\langle z\rangle.
+\end{equation}
+The current subcritical dimensionless pulse calculation gives
+$\langle z\rangle=0.4913473$ and
+$\langle\widetilde s/b\rangle=1.59\times10^{-10}$ after unloading, while six
+symmetric zero-mean cycles give $\langle z\rangle=0.001004$. These results
+demonstrate a reduced mechanism and do not calibrate aluminum.
+
+\section{Requirements for quantitative aluminum use}
+
+The active two-row branch is not a quantitative aluminum law. Quantitative use requires a
 declared FCC plane and direction, a complete validated Al EAM potential or DFT
 generalized-stacking-fault surface, the corresponding representative area,
 MD-derived memory/mobility, residual-slip validation, and additional physics
-for dislocation storage and cyclic hardening. Until then this note remains an
-ideal single-registry mechanism archive.
+for dislocation storage and cyclic hardening. Until then it remains an active
+ideal single-registry mechanism with explicit limitations.
+
+\input{symbol_index_en.tex}
 
 \begin{thebibliography}{9}
 \bibitem{dlmf} NIST Digital Library of Mathematical Functions,

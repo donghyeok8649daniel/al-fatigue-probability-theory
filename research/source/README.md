@@ -1,42 +1,41 @@
-# Imported research source
+# Imported research sources
 
-The file
-`slip_lattice_energy_mn_K_derivation_KR_v3_23pages.pdf` is an immutable
-research input supplied by the project owner on 2026-09-01.
+## Corrected ideal-registry derivation
 
-- SHA-256: `0E293BC2D8C33788CF89B9667630F22D094E267360F35C52B497385FC2DB8208`
-- Status: unreviewed source; not an active constitutive model
-- Language: English derivation followed by a Korean translation
-- Page count: 23
+The project owner supplied the current corrected source on 2026-09-01. It has
+replaced the earlier repository copy at:
 
-The pasted TeX source contained corrupted Korean text and referenced missing
-`symbol_index_en.tex` and `symbol_index_ko.tex` files. It is therefore not
-treated as a buildable archival source. Mathematical claims are checked
-against the PDF, and accepted corrections are rewritten rather than silently
-copying the corrupted source.
+`slip_lattice_energy_mn_K_derivation_KR_v3_23pages.pdf`
 
-The active model remains the one-dimensional normal-tensile model. Slip and
-shear content from this PDF may enter only the isolated `libraries/shear/`
-archive until its geometry, atomistic energy surface, kinetics, and aluminum
-calibration have been validated.
+- Current PDF SHA-256:
+  `42C3D5086CA203C76F3DC8213A1718B5121AA1273067738C5B478BCBF12D999D`
+- Current PDF size: 125,691 bytes
+- Previous PDF SHA-256, recoverable from Git history:
+  `0E293BC2D8C33788CF89B9667630F22D094E267360F35C52B497385FC2DB8208`
+- Status: corrected research source and provenance for the optional active
+  ideal-registry branch
 
----
+The accompanying `symbol_index_en.tex` has SHA-256
+`D72A3C3CA43339467489D47FB57E475F7DA5014BE236EF2E370D86B527D11A93`.
+A build-local copy, with the repository coefficient and area conventions
+corrected, is stored at `libraries/shear/docs/symbol_index_en.tex`.
 
-# 반입 연구 원본
+The source is not accepted blindly. The exact shifted Epstein--Hurwitz /
+Poisson--Bessel identity, its derivative, and the unwrapped registry notation
+are active after independent numerical checks. The repository continues to
+correct coefficient/well-depth notation, keeps `A0`, `Ac`, and registry area
+distinct, rejects unsupported addition of the collinear and two-row energies,
+and makes no quantitative aluminum-plasticity claim.
 
-`slip_lattice_energy_mn_K_derivation_KR_v3_23pages.pdf`는 프로젝트 소유자가
-2026-09-01에 제공한 변경하지 않는 연구 입력자료다.
+See `docs/ACTIVE_IDEAL_REGISTRY_PLASTICITY.md` and
+`libraries/shear/docs/SLIP_LATTICE_ENERGY_REVIEW.md`.
 
-- SHA-256: `0E293BC2D8C33788CF89B9667630F22D094E267360F35C52B497385FC2DB8208`
-- 상태: 검토 전 원본이며 활성 구성모델이 아님
-- 언어: 영문 유도 뒤에 한국어 번역 수록
-- 페이지 수: 23
+## 한국어 상태
 
-대화에 붙여 넣은 TeX는 한국어 문자열이 깨져 있고 존재하지 않는
-`symbol_index_en.tex`, `symbol_index_ko.tex` 파일을 참조한다. 따라서 그
-TeX를 빌드 가능한 보존 원본으로 취급하지 않는다. 수학적 주장은 PDF와
-대조하고, 채택할 내용은 깨진 문자열을 복사하지 않고 다시 작성한다.
-
-활성 모델은 계속 1차원 normal tensile 모델이다. PDF의 slip 및 shear
-내용은 기하, 원자론적 에너지면, 동역학, 알루미늄 보정이 검증될 때까지
-분리된 `libraries/shear/` archive에만 둘 수 있다.
+2026-09-01에 프로젝트 소유자가 제공한 오류수정 PDF가 기존 저장소 PDF를
+대체했다. 이전판은 Git 이력에서 복구할 수 있다. 정확한 Bessel 격자합과
+unwrapped registry 좌표는 독립 검산 뒤 선택적 활성 소성 branch에 반영했다.
+다만 `A0`, correlation area, registry interface area는 동일시하지 않으며,
+서로 다른 기하의 normal-chain energy와 two-row energy도 단순히 더하지 않는다.
+현재 결과는 정량적 알루미늄 소성 보정값이 아니라 이상적 단일 registry
+mechanism이다.
