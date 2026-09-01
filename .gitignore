@@ -216,19 +216,3 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-# Local C build output
-fem1d/bin/
-
-# LaTeX build intermediates and local document QA renders
-*.aux
-*.fdb_latexmk
-*.fls
-*.log
-*.out
-*.synctex.gz
-*.toc
-*.xdv
-tmp/
-
-# Reproducible local smoke-test output
-.tmp/
