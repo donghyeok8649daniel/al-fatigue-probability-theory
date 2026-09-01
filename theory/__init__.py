@@ -4,8 +4,11 @@
 # - 주요 함수/메서드: 없음 또는 외부 선언만 사용
 # - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
-"""Active normal-deformation theory package.
+"""Active reduced material-theory package.
 
-The current mainline contains generalized-Lennard-Jones normal-chain mechanics
-and probability-based normal-spacing theory only.
+The primary crack-initiation branch contains generalized-Lennard-Jones
+normal-chain mechanics and probability-based normal-spacing theory.  The
+optional ideal-registry branch contains an exact one-index two-row Bessel
+lattice energy and unwrapped scalar-slip probability dynamics.  It is a
+reduced mechanism model, not quantitative aluminum crystal plasticity.
 """
