@@ -1,0 +1,29 @@
+분류,부품명/사양,필수도,필요수량,권장여분,동아리 조달 가능 수량,예상단가,통화,구매/견적 링크,비고,가격근거,구매필요수량,예상구매비용
+구동계,750 W AC servo motor + 220 V driver kit,필수,1,0,0,379400,KRW,https://www.coupang.com/vp/products/8285927467,2.39 N·m / 3000 rpm 급. 실제 반복주기/스트로크/하중에서 동특성 검증 필요.,실판매가,1,379400
+동력전달,SFU1605 300 mm ball-screw kit (BK/BF supports + coupler),필수,1,0,0,133840,KRW,https://www.coupang.com/vp/products/9340038494,C7급 저가 키트 기준. 반복하중 수명·백래시·축정렬 검증 필요.,실판매가,1,133840
+가이드,HGR15 300 mm linear guide set (2 rails + 4 blocks),필수,1,0,0,111440,KRW,https://www.coupang.com/vp/products/9409933698,축하중은 볼스크류/프레임이 받도록 하고 가이드는 정렬·횡하중 억제용.,실판매가,1,111440
+구조물,Steel load frame / base plate fabrication,필수,1,0,0,180000,KRW,,2 kN급 반복하중을 보수적으로 견디는 강재 프레임. 동아리 가공/용접 가능 시 비용 크게 감소.,로컬가공 추정,1,180000
+치구,Specimen tensile grips / clevis pair fabrication,필수,1,0,0,100000,KRW,,시편 형상에 맞춰 강재 가공. 편심하중 최소화가 중요.,로컬가공 추정,1,100000
+힘계측,S-type load cell 200 kg (~2 kN),필수,1,0,0,39200,KRW,https://www.coupang.com/vp/products/8655276062,인장/압축 S형. 실제 피로시험 전 정적 교정 필요.,실판매가,1,39200
+제어,STM32F407VET6 development board,필수,1,1,0,19200,KRW,https://catalog.11st.co.kr/pc/176554266?poc=pc&sortCds=DLV_INCLUDE,실시간 force loop + timestamp telemetry용. 1개 여분 권장.,가격비교 최저가,2,38400
+제어,ST-LINK/V2 compatible programmer,필수,1,0,0,8800,KRW,https://www.ic114.com/WebSite/site/SC/30L0.ASPX?tree=052201,STM32 디버깅/플래시용.,국내판매가,1,8800
+아날로그,AD620 instrumentation amplifier module,필수,2,1,0,6000,KRW,https://www.coupang.com/vp/products/7166761134,로드셀/strain bridge 저전압 증폭용. 실제 PCB에서는 저잡음 설계 재검토.,실판매가,3,18000
+DAQ,ADS1256 24-bit ADC module,필수,1,0,0,25700,KRW,https://www.coupang.com/vp/products/7539299390,DCPD/strain logging용. 하드 실시간 force feedback은 STM32 ADC 경로와 분리 권장.,실판매가,1,25700
+변형률계측,"BF350-3AA 350 Ω strain gauge, 10-pack",필수,1,1,0,14000,KRW,https://www.coupang.com/vp/products/9438324733,시편 직접 변형률 측정용 소모품. 접착/배선 공정 필요.,실판매가,2,28000
+변위계측,"KTC linear displacement sensor, 100 mm",필수,1,0,0,45320,KRW,https://catalog.11st.co.kr/mw/455553745?trCtgrNo=950076&trTypeCd=MAT9,travel/safety/actuator displacement 채널용. specimen strain은 strain gauge와 분리.,가격비교 최저가,1,45320
+온도,MAX31855 + K-type thermocouple cable,권장,1,0,0,9200,KRW,https://www.coupang.com/vp/products/8155067337?itemId=23225763414&vendorItemId=90713090771,시편 근처 온도 drift 기록.,실판매가,1,9200
+DCPD,XL4015 CC/CV 5 A current module (prototype),권장,1,1,0,7130,KRW,https://www.coupang.com/vp/products/7276649095,DCPD 초기 프로토타입용. 최종 정밀 측정에는 저잡음 정전류원 재설계/교체 권장.,실판매가,2,14260
+DCPD,Kelvin 4-wire test lead / clips,권장,1,0,0,24000,KRW,https://www.coupang.com/vp/products/9451577998,4-wire potential-drop 배선용.,실판매가,1,24000
+통신,ADUM3160 USB isolator module,권장,1,0,0,11910,KRW,https://www.coupang.com/vp/products/7511385771,PC-시험기 USB 절연 및 ground-loop 완화.,실판매가,1,11910
+저전압전원,24 V 5 A DC supply,필수,1,0,0,21900,KRW,https://www.coupang.com/vp/products/8658602172,센서/릴레이/보조회로 전원. 실제 전압 요구에 맞춰 DC-DC 추가 가능.,실판매가,1,21900
+안전,22 mm maintained emergency-stop switch,필수,1,0,0,31810,KRW,https://kr.element14.com/alcoswitch-te-connectivity/pbes22l110r/e-stop-sw-spst-no-spst-nc-10a/dp/4352428,소프트웨어 E-stop이 아니라 drive-enable/power 차단 하드웨어 경로에 사용.,실판매가,1,31810
+안전,Roller-lever limit switch,필수,2,1,0,34526,KRW,https://kr.element14.com/c/automation-process-control/industrial-switches/limit-switches?limit-switch-actuator=roller-lever,상/하 travel limit. 2개 사용 + 1개 여분 권장.,카테고리 대표가,3,103578
+안전,2P 25 A contactor,필수,1,0,0,10900,KRW,https://www.coupang.com/vp/products/7434779389,E-stop/interlock 시 servo drive 전원 또는 enable 차단 계통.,실판매가,1,10900
+안전,2P 10 A AC circuit breaker,필수,1,0,0,8800,KRW,https://www.coupang.com/vp/products/9523298189,220 V 입력 보호. 실제 servo drive 정격에 따라 전류등급 재선정.,실판매가,1,8800
+함체,300×200×150 mm steel control enclosure,필수,1,0,0,20700,KRW,https://www.coupang.com/vp/products/5353241909,MCU/AFE/차단기/컨택터/단자대 수납.,실판매가,1,20700
+배선,"Shielded flexible 4-core cable, 10 m",필수,1,0,0,60520,KRW,https://www.coupang.com/vp/products/5689647787,로드셀/strain/DCPD 등 저레벨 신호 배선용.,실판매가,1,60520
+배선,DIN rail / terminals / fuses / ferrules / wiring lot,필수,1,0,0,50000,KRW,,"단자대, 퓨즈홀더, 페룰, 글랜드, 접지선, 커넥터 묶음 추정.",묶음 추정,1,50000
+기구,"Rod ends, alignment couplers, fasteners lot",필수,1,0,0,40000,KRW,,"로드셀/그립 정렬, 체결부품, 스페이서 등 묶음 추정.",묶음 추정,1,40000
+소모품,Strain-gauge adhesive / surface prep / solder consumables,필수,1,0,0,20000,KRW,,"접착제, 표면처리, 리드선, 납땜/절연 소모품.",묶음 추정,1,20000
+안전,Mechanical guard / transparent shield fabrication,필수,1,0,0,50000,KRW,,시편/치구 파손 비산 방지용 가드. 로컬 가공 가능.,로컬가공 추정,1,50000
+구동계,Servo regenerative/braking resistor compatible with drive,권장,1,0,0,30000,KRW,,20 Hz 부근 반복 역전 시 회생에너지 대응. 선택한 드라이버 매뉴얼에 맞춰 최종 선정.,추정,1,30000
