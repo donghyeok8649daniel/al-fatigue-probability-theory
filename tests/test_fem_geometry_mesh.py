@@ -1,9 +1,11 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 2D/3D mesh 생성, CAD surface 입력, normal projection과 axial field mapping을 회귀검증한다.
+# - 파일 역할: 1D/2D/3D mesh 생성, CAD surface 입력, normal projection과 axial field mapping을 회귀검증한다.
 # - 주요 클래스: TestStructuredMeshes, TestNormalOnlyProjection, TestGeometryImport
-# - 주요 함수/메서드: TestStructuredMeshes.test_rectangle_has_actual_quad_connectivity
+# - 주요 함수/메서드: TestStructuredMeshes.test_line_mesh_is_a_first_class_supported_dimension
+#   TestStructuredMeshes.test_rectangle_has_actual_quad_connectivity
 #   TestStructuredMeshes.test_box_has_hex_cells_and_only_boundary_faces
 #   TestStructuredMeshes.test_dependency_free_npz_round_trip
+#   TestNormalOnlyProjection.test_axial_mapping_operates_on_line_mesh
 #   TestNormalOnlyProjection.test_tensor_is_reduced_to_sigma_nn_only
 #   TestNormalOnlyProjection.test_axial_mapping_is_constant_across_each_cross_section
 #   TestGeometryImport.test_ascii_stl_is_read_as_surface_not_volume
@@ -26,11 +28,22 @@ from simulations.fem_geometry_mesh import (
     project_normal_stress,
     save_mesh_npz,
     structured_box_mesh,
+    structured_line_mesh,
     structured_rectangle_mesh,
 )
 
 
 class TestStructuredMeshes(unittest.TestCase):
+    def test_line_mesh_is_a_first_class_supported_dimension(self) -> None:
+        mesh = structured_line_mesh(0.05, 5)
+        self.assertEqual(mesh.topological_dimension, 1)
+        self.assertEqual(mesh.embedding_dimension, 1)
+        self.assertEqual(mesh.points_m.shape, (6, 1))
+        self.assertEqual(mesh.cell_count, 5)
+        faces, owners = boundary_faces(mesh)
+        self.assertEqual(len(faces), 5)
+        np.testing.assert_array_equal(owners, np.arange(5))
+
     def test_rectangle_has_actual_quad_connectivity(self) -> None:
         mesh = structured_rectangle_mesh(0.05, 0.01, 5, 2)
         self.assertEqual(mesh.topological_dimension, 2)
@@ -66,6 +79,15 @@ class TestStructuredMeshes(unittest.TestCase):
 
 
 class TestNormalOnlyProjection(unittest.TestCase):
+    def test_axial_mapping_operates_on_line_mesh(self) -> None:
+        mesh = structured_line_mesh(1.0, 4)
+        result = map_axial_element_field(
+            mesh,
+            np.array([0.125, 0.375, 0.625, 0.875]),
+            np.array([1.0, 2.0, 3.0, 4.0]),
+        )
+        np.testing.assert_allclose(result.values, [1.0, 2.0, 3.0, 4.0])
+
     def test_tensor_is_reduced_to_sigma_nn_only(self) -> None:
         stress = np.array(
             [

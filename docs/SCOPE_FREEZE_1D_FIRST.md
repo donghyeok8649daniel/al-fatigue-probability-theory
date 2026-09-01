@@ -43,7 +43,7 @@ The following are **not active tasks** at this stage:
 
 These topics may be revisited only after the one-dimensional theory is closed enough to define and validate $P(\lambda,t)$ under one-dimensional tensile loading.
 
-Two- and three-dimensional **geometry meshes** are permitted for CAD import, specimen visualization, cell-addressed data storage, and later solver interfaces. They do not relax this scope freeze: a field copied from the 1D bar to those cells must be labeled as an axial visualization/post-processing projection, not a 2D/3D equilibrium solution. The active probability input remains one declared tensile normal scalar $\sigma_{nn}$.
+One-, two-, and three-dimensional **geometry meshes** are permitted for CAD import, specimen visualization, cell-addressed data storage, and later solver interfaces. They do not relax this scope freeze: a field copied from the 1D bar to those cells must be labeled as an axial visualization/post-processing projection, not a 2D/3D equilibrium solution. The active probability input remains one declared tensile normal scalar $\sigma_{nn}$.
 
 ## Immediate priority
 
@@ -109,7 +109,7 @@ $$
 
 이 항목들은 1차원 인장하중 아래 $P(\lambda,t)$를 정의하고 검증할 수 있을 정도로 1D 이론이 닫힌 뒤에만 다시 검토한다.
 
-CAD import, 시편 시각화, cell-addressed data storage 및 향후 solver interface를 위한 2D/3D **geometry mesh**는 허용한다. 이것은 scope freeze를 완화하지 않는다. 1D bar field를 해당 cell로 복사한 값은 2D/3D equilibrium solution이 아니라 axial visualization/post-processing projection으로 표시해야 한다. 활성 확률입력은 계속 선언한 tensile normal scalar $\sigma_{nn}$ 하나뿐이다.
+CAD import, 시편 시각화, cell-addressed data storage 및 향후 solver interface를 위한 1D/2D/3D **geometry mesh**는 허용한다. 이것은 scope freeze를 완화하지 않는다. 1D bar field를 해당 cell로 복사한 값은 2D/3D equilibrium solution이 아니라 axial visualization/post-processing projection으로 표시해야 한다. 활성 확률입력은 계속 선언한 tensile normal scalar $\sigma_{nn}$ 하나뿐이다.
 
 ## 즉시 우선순위
 

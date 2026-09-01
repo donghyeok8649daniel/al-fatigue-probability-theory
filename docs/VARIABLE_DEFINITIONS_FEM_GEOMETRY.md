@@ -9,7 +9,7 @@
 
 | Symbol / code field | Definition | Meaning | Unit | Classification |
 |---|---|---|---|---|
-| $d_{\rm mesh}$ | topological cell dimension | 2 for triangle/quad, 3 for volume cells | dimensionless | DEFINITION |
+| $d_{\rm mesh}$ | topological cell dimension | 1 for line, 2 for triangle/quad, 3 for volume cells | dimensionless | DEFINITION |
 | $d_{\rm probability}$ | dimension of spacing state | current value 1 | dimensionless | DEFINITION |
 | $\mathbf x_I$ | mesh node coordinate | position of node $I$ | m | DEFINITION |
 | $\mathbf x_c$ | mean of cell-node coordinates | cell centroid used for field mapping | m | DEFINITION |
@@ -24,6 +24,8 @@
 | `characteristic_length_m` | requested Gmsh target size | CAD meshing resolution; not correlation length | m | NUMERICAL INPUT |
 | `nx, ny, nz` | element counts along generated axes | structured mesh resolution | counts | NUMERICAL INPUT |
 | $N_{\rm cell}$ | total top-dimensional cell count | numerical storage/discretization count | count | DEFINITION |
+| $\alpha_{\rm vis}$ | UI opacity | rendering visibility only | dimensionless | NUMERICAL INPUT |
+| $\xi_{\rm clip}$ | UI axial clipping fraction | hides cells with centroids beyond the selected axial fraction | dimensionless | NUMERICAL INPUT |
 
 The meshing `characteristic_length_m` is unrelated to the microscopic correlation length $\ell_c$ or statistical volume $V_c$. Likewise, $N_{\rm cell}$ is not an effective independent microscopic-unit count.
 
@@ -40,7 +42,7 @@ The meshing `characteristic_length_m` is unrelated to the microscopic correlatio
 
 | 기호 / code field | 정의 | 의미 | 단위 | 분류 |
 |---|---|---|---|---|
-| $d_{\rm mesh}$ | topological cell dimension | triangle/quad는 2, volume cell은 3 | 무차원 | DEFINITION |
+| $d_{\rm mesh}$ | topological cell dimension | line은 1, triangle/quad는 2, volume cell은 3 | 무차원 | DEFINITION |
 | $d_{\rm probability}$ | spacing state의 차원 | 현재 값 1 | 무차원 | DEFINITION |
 | $\mathbf x_I$ | mesh node coordinate | node $I$의 위치 | m | DEFINITION |
 | $\mathbf x_c$ | cell-node coordinate 평균 | field mapping에 쓰는 cell centroid | m | DEFINITION |
@@ -55,5 +57,7 @@ The meshing `characteristic_length_m` is unrelated to the microscopic correlatio
 | `characteristic_length_m` | Gmsh target size | CAD meshing 해상도이며 correlation length가 아님 | m | NUMERICAL INPUT |
 | `nx, ny, nz` | generated axis별 element 수 | structured mesh 해상도 | count | NUMERICAL INPUT |
 | $N_{\rm cell}$ | top-dimensional cell 총수 | numerical storage/discretization count | count | DEFINITION |
+| $\alpha_{\rm vis}$ | UI opacity | rendering visibility에만 사용 | 무차원 | NUMERICAL INPUT |
+| $\xi_{\rm clip}$ | UI axial clipping fraction | 선택한 axial fraction 이후 centroid의 cell을 숨김 | 무차원 | NUMERICAL INPUT |
 
 meshing의 `characteristic_length_m`는 microscopic correlation length $\ell_c$ 또는 statistical volume $V_c$와 무관하다. 마찬가지로 $N_{\rm cell}$은 유효 독립 microscopic-unit 수가 아니다.

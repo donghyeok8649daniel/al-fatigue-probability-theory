@@ -1,7 +1,8 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 1D element history를 실제 2D/3D mesh cell field로 내보내는 통합 경로를 검증한다.
+# - 파일 역할: 1D element history를 실제 1D/2D/3D mesh cell field로 내보내는 통합 경로를 검증한다.
 # - 주요 클래스: TestTensileMeshProjection
-# - 주요 함수/메서드: TestTensileMeshProjection.test_probability_scalar_can_be_mapped_to_real_2d_cells
+# - 주요 함수/메서드: TestTensileMeshProjection.test_line_mesh_projection_is_supported
+#   TestTensileMeshProjection.test_probability_scalar_can_be_mapped_to_real_2d_cells
 #   TestTensileMeshProjection.test_stl_surface_is_read_and_colored_with_one_normal_scalar
 # - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
@@ -15,6 +16,34 @@ from simulations.run_tensile_mesh_projection import run_projection
 
 
 class TestTensileMeshProjection(unittest.TestCase):
+    def test_line_mesh_projection_is_supported(self) -> None:
+        text = """time_s,step,element,x_mid_m,stress_pa
+0.1,1,0,0.125,10
+0.1,1,1,0.375,20
+0.1,1,2,0.625,30
+0.1,1,3,0.875,40
+"""
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            history = root / "history.csv"
+            history.write_text(text, encoding="utf-8")
+            summary = run_projection(
+                history_csv=history,
+                field="stress_pa",
+                step=1,
+                output_dir=root / "line_out",
+                dimension=1,
+                length_m=1.0,
+                width_m=0.1,
+                thickness_m=0.01,
+                nx=4,
+                ny=1,
+                nz=1,
+            )
+            self.assertTrue((root / "line_out" / "mesh_field_preview.png").is_file())
+        self.assertEqual(summary["topological_dimension"], 1)
+        self.assertEqual(summary["cells"], 4)
+
     def test_probability_scalar_can_be_mapped_to_real_2d_cells(self) -> None:
         text = """time_s,step,element,x_mid_m,stress_pa,critical_tail_probability
 0.1,4,0,0.125,10,0.01

@@ -1,5 +1,15 @@
 # Al Fatigue Probability Theory
 
+> [!CAUTION]
+> **ACTIVE MAINLINE = 1D NORMAL TENSION ONLY.** FCC and shear/slip material
+> models are archived research and are not imported by active simulations.
+> A 2D/3D mesh is geometry and visualization; it does not activate shear,
+> crystal plasticity, or multiaxial fatigue.
+>
+> **현재 활성 본선 = 1D normal tension only.** FCC와 shear/slip 재료모델은
+> 보관 연구이며 active simulation에서 사용하지 않는다. 2D/3D mesh는
+> geometry/시각화일 뿐 전단·결정소성·다축 피로를 활성화하지 않는다.
+
 ## Scope freeze / 연구 범위 고정
 
 The active material theory is **only a one-dimensional normal-tensile spacing
@@ -92,7 +102,6 @@ directional Young modulus; otherwise `E_axis` is treated as a user-supplied
 direction-specific value. This remains scalar normal tension only. No shear,
 slip or multiaxial fatigue model is activated. See
 `docs/SINGLE_CRYSTAL_ORIENTATION.md`.
-
 ## Candidate kinetic probability and FEM coupling
 
 The four working quantities are now connected by a separate, explicitly labeled kinetic post-processor:
@@ -141,7 +150,7 @@ $t_r=\gamma a_0/(E_{[hkl]}A_0)$. Thus loading-axis stress alone cannot identify
 life; the representative area and spacing mobility remain required physical
 inputs and are never replaced by FEM mesh size.
 
-The geometry layer now supports actual 2D quad and 3D hex connectivity, dependency-free STL/OBJ surface import, and optional STEP/IGES/BREP volume meshing through Gmsh. This does **not** change the active theory: every mesh cell receives only the declared tensile normal scalar $\sigma_{nn}$, or a scalar derived from its 1D $P(a,t)$. The current 1D-to-mesh mapping is explicitly a visualization/post-processing projection, not a 2D/3D elasticity solve. See `docs/MILESTONE17_2D_3D_MESH_CAD_NORMAL_ONLY.md`.
+The geometry layer now supports actual 1D line, 2D quad, and 3D hex connectivity, dependency-free STL/OBJ surface import, and optional STEP/IGES/BREP meshing through Gmsh. A lightweight NumPy/Matplotlib mesh UI exposes nodes, edges, opacity, and axial clipping without adding a VTK stack to the core installation. This does **not** change the active theory: every mesh cell receives only the declared tensile normal scalar $\sigma_{nn}$, or a scalar derived from its 1D $P(a,t)$. The current 1D-to-mesh mapping is explicitly a visualization/post-processing projection, not a 2D/3D elasticity solve. See `docs/MILESTONE17_2D_3D_MESH_CAD_NORMAL_ONLY.md`.
 
 ## Active 1D statistical-cell dependence scale
 
@@ -205,27 +214,27 @@ $$
 the elastic calibration $E=(a_0/A_0)U''(a_0)$ and $\phi''(1)=1$ imply
 
 $$
-oxed{E_0=EA_0a_0},
+\boxed{E_0=EA_0a_0},
 \qquad
-oxed{\chi=rac{EA_0a_0}{k_BT}}.
+\boxed{\chi=\frac{EA_0a_0}{k_BT}}.
 $$
 
 At zero-temperature homogeneous quasistatic equilibrium, the distribution is not broad:
 
 $$
-oxed{P(\lambda\mid f)=\delta[\lambda-\lambda_s(f)]}.
+\boxed{P(\lambda\mid f)=\delta[\lambda-\lambda_s(f)]}.
 $$
 
 At fixed total normalized length, canonical equilibrium gives the exact finite-$M$ marginal
 
 $$
-oxed{
+\boxed{
 P_M(\lambda\mid L,\chi)
-=rac{e^{-\chi\phi(\lambda)}Z_{M-1}(L-\lambda,\chi)}{Z_M(L,\chi)}.
+=\frac{e^{-\chi\phi(\lambda)}Z_{M-1}(L-\lambda,\chi)}{Z_M(L,\chi)}.
 }
 $$
 
-For constant tensile force $f>0$, the full-domain Gibbs integral diverges because $\phi(\lambda)-f\lambda	o-\infty$. For $0<f<f_c$, a Gibbs density conditioned on the intact basin $0<\lambda<\lambda_b(f)$ is therefore only a **controlled metastable/local-equilibrium approximation**, not a global equilibrium law or a fatigue-life law. See `docs/MILESTONE12_PHYSICAL_STATISTICAL_P.md`.
+For constant tensile force $f>0$, the full-domain Gibbs integral diverges because $\phi(\lambda)-f\lambda\to-\infty$. For $0<f<f_c$, a Gibbs density conditioned on the intact basin $0<\lambda<\lambda_b(f)$ is therefore only a **controlled metastable/local-equilibrium approximation**, not a global equilibrium law or a fatigue-life law. See `docs/MILESTONE12_PHYSICAL_STATISTICAL_P.md`.
 
 The representative layer area $A_0$ is now an explicit physical bottleneck: no numerical aluminum thermal distribution is claimed until $A_0$ is defined consistently with the coarse-grained layer interaction.
 
@@ -259,7 +268,7 @@ $$
 \lambda_i(t)=a_i(t)/a_0.
 $$
 
-The effective normal interaction between layers is represented by the calibrated generalized Lennard-Jones model. Three-dimensional FCC and shear work remain archived under `libraries/` and are not part of the active derivation.
+The effective normal interaction between layers is represented by the calibrated generalized Lennard-Jones model. Three-dimensional FCC work is archived under `libraries/fcc_normal/`; shear/Rubin/slip code is intentionally excluded and represented only by the tombstone `libraries/shear/README.md`. Neither is part of the active derivation or executable workflow.
 
 Physical time $t$ is fundamental. Fatigue cycle count is not an independent state variable.
 
@@ -545,7 +554,7 @@ $$
 
 이는 **후보 kinetic extension**이며 아직 보정된 aluminum fatigue-life law가 아니다. 현재 upper boundary가 no-flux이므로 critical tail은 irreversible crack probability가 아니라 instability diagnostic이다. 자세한 내용은 `docs/MILESTONE16_PROBABILITY_ENERGY_HYSTERESIS_FEM.md`에 있다.
 
-geometry 계층은 이제 실제 2D quad와 3D hex connectivity, 외부 의존성이 없는 STL/OBJ surface import, 선택적 Gmsh 기반 STEP/IGES/BREP volume meshing을 지원한다. 이것은 활성 이론을 바꾸지 않는다. 각 mesh cell에는 선언한 tensile normal scalar $\sigma_{nn}$ 또는 그 cell의 1D $P(a,t)$에서 유도한 scalar만 전달한다. 현재 1D-to-mesh mapping은 2D/3D elasticity solve가 아니라 명시적으로 구분한 visualization/post-processing projection이다. 자세한 내용은 `docs/MILESTONE17_2D_3D_MESH_CAD_NORMAL_ONLY.md`에 있다.
+geometry 계층은 이제 실제 1D line, 2D quad, 3D hex connectivity, 외부 의존성이 없는 STL/OBJ surface import, 선택적 Gmsh 기반 STEP/IGES/BREP meshing을 지원한다. 경량 NumPy/Matplotlib mesh UI에서 node, edge, opacity 및 axial clipping을 조절할 수 있으며 core 설치에 무거운 VTK stack을 추가하지 않는다. 이것은 활성 이론을 바꾸지 않는다. 각 mesh cell에는 선언한 tensile normal scalar $\sigma_{nn}$ 또는 그 cell의 1D $P(a,t)$에서 유도한 scalar만 전달한다. 현재 1D-to-mesh mapping은 2D/3D elasticity solve가 아니라 명시적으로 구분한 visualization/post-processing projection이다. 자세한 내용은 `docs/MILESTONE17_2D_3D_MESH_CAD_NORMAL_ONLY.md`에 있다.
 
 ## 활성 1D 통계셀 종속성 척도
 
@@ -613,9 +622,9 @@ $$
 로 두면 elastic calibration $E=(a_0/A_0)U''(a_0)$와 $\phi''(1)=1$에서
 
 $$
-oxed{E_0=EA_0a_0},
+\boxed{E_0=EA_0a_0},
 \qquad
-oxed{\chi=rac{EA_0a_0}{k_BT}}
+\boxed{\chi=\frac{EA_0a_0}{k_BT}}
 $$
 
 가 나온다.
@@ -623,7 +632,7 @@ $$
 zero-temperature homogeneous quasistatic equilibrium에서는 broad distribution이 아니라
 
 $$
-oxed{P(\lambda\mid f)=\delta[\lambda-\lambda_s(f)]}
+\boxed{P(\lambda\mid f)=\delta[\lambda-\lambda_s(f)]}
 $$
 
 이다.
@@ -631,15 +640,15 @@ $$
 fixed total normalized length의 canonical equilibrium에서는 exact finite-$M$ marginal
 
 $$
-oxed{
+\boxed{
 P_M(\lambda\mid L,\chi)
-=rac{e^{-\chi\phi(\lambda)}Z_{M-1}(L-\lambda,\chi)}{Z_M(L,\chi)}
+=\frac{e^{-\chi\phi(\lambda)}Z_{M-1}(L-\lambda,\chi)}{Z_M(L,\chi)}
 }
 $$
 
 을 얻는다.
 
-constant tensile force $f>0$에서는 $\phi(\lambda)-f\lambda	o-\infty$이므로 full-domain Gibbs integral이 발산한다. 따라서 $0<f<f_c$에서 intact basin $0<\lambda<\lambda_b(f)$에 조건부로 둔 Gibbs density는 **controlled metastable/local-equilibrium approximation**일 뿐 global equilibrium law나 fatigue-life law가 아니다. `docs/MILESTONE12_PHYSICAL_STATISTICAL_P.md`를 현재 물리 통계역학 기준으로 사용한다.
+constant tensile force $f>0$에서는 $\phi(\lambda)-f\lambda\to-\infty$이므로 full-domain Gibbs integral이 발산한다. 따라서 $0<f<f_c$에서 intact basin $0<\lambda<\lambda_b(f)$에 조건부로 둔 Gibbs density는 **controlled metastable/local-equilibrium approximation**일 뿐 global equilibrium law나 fatigue-life law가 아니다. `docs/MILESTONE12_PHYSICAL_STATISTICAL_P.md`를 현재 물리 통계역학 기준으로 사용한다.
 
 representative layer area $A_0$가 이제 명시적인 physical bottleneck이다. coarse-grained layer interaction과 일관된 $A_0$가 정해지기 전에는 numerical aluminum thermal distribution을 주장하지 않는다.
 
@@ -675,7 +684,7 @@ $$
 
 이다.
 
-layer 사이의 유효 normal interaction은 calibration된 generalized Lennard-Jones model로 표현한다. 3차원 FCC와 shear 연구는 `libraries/` 아래 archive로 유지하며 active derivation에 포함하지 않는다.
+layer 사이의 유효 normal interaction은 calibration된 generalized Lennard-Jones model로 표현한다. 3차원 FCC 연구는 `libraries/fcc_normal/`에 archive하고, shear/Rubin/slip code는 의도적으로 제외하여 `libraries/shear/README.md` tombstone만 둔다. 둘 다 active derivation이나 실행 workflow에 포함하지 않는다.
 
 물리적 시간 $t$가 근본 evolution coordinate이며 fatigue cycle count는 독립 상태변수가 아니다.
 

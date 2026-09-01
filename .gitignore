@@ -218,3 +218,6 @@ __marimo__/
 .streamlit/secrets.toml
 # Local C build output
 fem1d/bin/
+
+# Reproducible local smoke-test output
+.tmp/

@@ -9,12 +9,14 @@ on:
       - 'simulations/fem_tension_app.py'
       - 'simulations/fem_geometry_mesh.py'
       - 'simulations/fem_mesh_ui.py'
+      - 'simulations/fem_mesh_app.py'
       - 'simulations/run_tensile_mesh_projection.py'
       - 'tests/test_fem1d_visualizer.py'
       - 'tests/test_fem_tension_ui.py'
       - 'tests/test_fem_tension_app.py'
       - 'tests/test_fem_geometry_mesh.py'
       - 'tests/test_fem_mesh_projection.py'
+      - 'tests/test_fem_mesh_app.py'
       - 'docs/MILESTONE14_1D_FEM_SCAFFOLD.md'
       - 'docs/MILESTONE14A_2D_3D_TENSION_UI.md'
       - 'docs/MILESTONE14B_INTEGRATED_TENSION_APP.md'
@@ -63,8 +65,14 @@ jobs:
           test -f .tmp/fem1d_app_smoke/figures/tension_2d_peak.png
           test -f .tmp/fem1d_app_smoke/figures/tension_3d_peak.png
 
-      - name: Validate actual 2D and 3D mesh projections
+      - name: Validate actual 1D 2D and 3D mesh projections
         run: |
+          python -m simulations.run_tensile_mesh_projection \
+            --history-csv .tmp/fem1d_app_smoke/data/elements.csv \
+            --field stress_pa \
+            --dimension 1 \
+            --nx 12 \
+            --output-dir .tmp/fem1d_mesh_1d
           python -m simulations.run_tensile_mesh_projection \
             --history-csv .tmp/fem1d_app_smoke/data/elements.csv \
             --field stress_pa \
@@ -77,10 +85,22 @@ jobs:
             --dimension 3 \
             --nx 12 --ny 3 --nz 2 \
             --output-dir .tmp/fem1d_mesh_3d
+          test -f .tmp/fem1d_mesh_1d/geometry_mesh.npz
+          test -f .tmp/fem1d_mesh_1d/mesh_field_preview.png
           test -f .tmp/fem1d_mesh_2d/geometry_mesh.npz
           test -f .tmp/fem1d_mesh_2d/mesh_field_preview.png
           test -f .tmp/fem1d_mesh_3d/geometry_mesh.npz
           test -f .tmp/fem1d_mesh_3d/mesh_field_preview.png
+
+      - name: Validate lightweight mesh UI rendering
+        run: |
+          python -m simulations.fem_mesh_app \
+            --headless-smoke \
+            --output-dir .tmp/fem_mesh_ui
+          test -f .tmp/fem_mesh_ui/mesh_1d/mesh_preview.png
+          test -f .tmp/fem_mesh_ui/mesh_2d/mesh_preview.png
+          test -f .tmp/fem_mesh_ui/mesh_3d/mesh_preview.png
+          test -f .tmp/fem_mesh_ui/lightweight_mesh_ui.png
 
       - name: Generate reversible 1D FEM demo history
         run: |

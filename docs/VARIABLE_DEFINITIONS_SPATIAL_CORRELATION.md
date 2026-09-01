@@ -35,7 +35,7 @@ and samples at $t_s=2T$.
 For any centered finite spacing sample and any nonzero lag under a uniform random permutation,
 
 $$
-\boxed{\mathbb E_{\rm perm}[\rho_k]=-rac{1}{M-1}}.
+\boxed{\mathbb E_{\rm perm}[\rho_k]=-\frac{1}{M-1}}.
 $$
 
 This is **EXACT / IDENTITY** for the stated permutation ensemble.
@@ -79,7 +79,7 @@ $$
 centered finite spacing sample을 uniform random permutation했을 때 모든 nonzero lag에서
 
 $$
-\boxed{\mathbb E_{\rm perm}[\rho_k]=-rac{1}{M-1}}
+\boxed{\mathbb E_{\rm perm}[\rho_k]=-\frac{1}{M-1}}
 $$
 
 가 성립한다.

@@ -49,7 +49,7 @@ P(a,t),
 \mathcal E(t).
 $$
 
-Three-dimensional FCC work is preserved under `libraries/fcc_normal/` and shear/Rubin/slip work is preserved under `libraries/shear/`. Archive code must not be imported by default active simulations or tests.
+Three-dimensional FCC work is preserved under `libraries/fcc_normal/`. Shear/Rubin/slip code is intentionally absent; `libraries/shear/README.md` is an inactive tombstone only. Archive code must not be imported by default active simulations or tests.
 
 ## Continuous-time rule
 
@@ -191,7 +191,7 @@ $$
 
 같은 1D normal coordinate로 표현할 수 있어야 한다.
 
-3차원 FCC 연구는 `libraries/fcc_normal/`에 보존하고 shear/Rubin/slip 연구는 `libraries/shear/`에 보존한다. archive code를 기본 active simulation이나 test에서 import하면 안 된다.
+3차원 FCC 연구는 `libraries/fcc_normal/`에 보존한다. shear/Rubin/slip code는 의도적으로 제외하고 `libraries/shear/README.md`만 비활성 tombstone으로 둔다. archive code를 기본 active simulation이나 test에서 import하면 안 된다.
 
 ## 연속시간 규칙
 
@@ -279,4 +279,3 @@ assumption이나 controlled approximation을 설명 없이 exact result로 승�
 - 물리적 가정·근사·정확성 분류는 세부 docstring과 theory 문서를 따라야 한다는 주의.
 
 함수 추가/이름변경 뒤에는 `python tools/add_korean_code_headers.py`로 헤더를 다시 생성한다. `--check` 옵션으로 오래된 헤더를 검사할 수 있다.
-

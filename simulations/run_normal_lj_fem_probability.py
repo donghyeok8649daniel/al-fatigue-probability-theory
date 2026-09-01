@@ -454,6 +454,20 @@ def run_demo(
         field="stress",
     )
     probability_csv = data_dir / "probability_elements.csv"
+    mesh_1d = run_projection(
+        history_csv=probability_csv,
+        field="critical_tail_probability",
+        step="peak-tension",
+        output_dir=data_dir / "mesh_projection_1d",
+        dimension=1,
+        length_m=config.length_m,
+        width_m=config.width_m,
+        thickness_m=config.thickness_m,
+        nx=elements_count,
+        ny=1,
+        nz=1,
+        preview_path=figure_dir / "actual_mesh_1d_critical_tail.png",
+    )
     mesh_2d = run_projection(
         history_csv=probability_csv,
         field="critical_tail_probability",
@@ -498,6 +512,7 @@ def run_demo(
         "final_survival_probability": float(initiation_histories[min(initiation_histories)].survival[-1]),
         "cumulative_initiation_probability": float(initiation_histories[min(initiation_histories)].initiation[-1]),
         "mesh_projection_rule": "normal-only axial scalar mapping; not 2D/3D elasticity",
+        "mesh_1d_cells": int(mesh_1d["cells"]),
         "mesh_2d_cells": int(mesh_2d["cells"]),
         "mesh_3d_cells": int(mesh_3d["cells"]),
     }

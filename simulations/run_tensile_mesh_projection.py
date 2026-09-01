@@ -1,11 +1,11 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 1D FEM/확률 이력의 normal-only scalar를 실제 2D/3D 또는 CAD mesh cell에 매핑해 저장한다.
+# - 파일 역할: 1D FEM/확률 이력의 normal-only scalar를 실제 1D/2D/3D 또는 CAD mesh cell에 매핑해 저장한다.
 # - 주요 클래스: 없음 또는 외부 선언만 사용
 # - 주요 함수/메서드: load_element_snapshot, build_or_load_mesh, write_projection_csv, run_projection
 #   _parse_axis, main
 # - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
-"""Map a one-dimensional axial result to an actual 2D/3D geometry mesh.
+"""Map a one-dimensional axial result to an actual 1D/2D/3D geometry mesh.
 
 The generated field is explicitly a normal-only projection.  It is suitable
 for mesh inspection and for carrying ``sigma_nn`` or a probability-derived
@@ -27,6 +27,7 @@ from simulations.fem_geometry_mesh import (
     map_axial_element_field,
     save_mesh_npz,
     structured_box_mesh,
+    structured_line_mesh,
     structured_rectangle_mesh,
 )
 from simulations.fem_mesh_ui import save_geometry_mesh_preview
@@ -89,11 +90,13 @@ def build_or_load_mesh(
             target_dimension=dimension,
             characteristic_length_m=characteristic_length_m,
         )
+    if dimension == 1:
+        return structured_line_mesh(length_m, nx)
     if dimension == 2:
         return structured_rectangle_mesh(length_m, width_m, nx, ny)
     if dimension == 3:
         return structured_box_mesh(length_m, width_m, thickness_m, nx, ny, nz)
-    raise ValueError("dimension must be 2 or 3")
+    raise ValueError("dimension must be 1, 2, or 3")
 
 
 def write_projection_csv(
@@ -107,11 +110,8 @@ def write_projection_csv(
     destination = Path(path)
     destination.parent.mkdir(parents=True, exist_ok=True)
     centers = np.asarray(centers_m, dtype=float)
-    padded = (
-        np.column_stack([centers, np.zeros(centers.shape[0])])
-        if centers.shape[1] == 2
-        else centers
-    )
+    padded = np.zeros((centers.shape[0], 3), dtype=float)
+    padded[:, : centers.shape[1]] = centers
     with destination.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(["cell", "x_m", "y_m", "z_m", "normalized_axial_coordinate", field])
@@ -209,8 +209,8 @@ def run_projection(
 
 def _parse_axis(text: str) -> np.ndarray:
     values = np.asarray([float(value.strip()) for value in text.split(",")], dtype=float)
-    if values.shape not in ((2,), (3,)):
-        raise argparse.ArgumentTypeError("axis must contain 2 or 3 comma-separated values")
+    if values.shape not in ((1,), (2,), (3,)):
+        raise argparse.ArgumentTypeError("axis must contain 1, 2, or 3 comma-separated values")
     return values
 
 
@@ -222,7 +222,7 @@ def main(argv: Sequence[str] | None = None) -> None:
     parser.add_argument("--field", default="stress_pa")
     parser.add_argument("--step", default="peak-tension")
     parser.add_argument("--output-dir", type=Path, required=True)
-    parser.add_argument("--dimension", type=int, choices=(2, 3), default=3)
+    parser.add_argument("--dimension", type=int, choices=(1, 2, 3), default=3)
     parser.add_argument("--geometry", type=Path, default=None)
     parser.add_argument("--coordinate-scale-to-m", type=float, default=1.0)
     parser.add_argument("--characteristic-length-m", type=float, default=None)

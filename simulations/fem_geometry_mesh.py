@@ -1,18 +1,18 @@
 # === 한국어 파일 안내 시작 ===
-# - 파일 역할: 1D normal-only 결과를 표시할 실제 2D/3D mesh를 생성하고 CAD/mesh 파일을 읽는 geometry 계층이다.
+# - 파일 역할: 1D normal-only 결과를 표시할 실제 1D/2D/3D mesh를 생성하고 CAD/mesh 파일을 읽는 geometry 계층이다.
 # - 주요 클래스: CellBlock, GeometryMesh, AxialProjection
 # - 주요 함수/메서드: CellBlock.__post_init__, CellBlock.dimension, GeometryMesh.__post_init__
 #   GeometryMesh.topological_dimension, GeometryMesh.cell_count, GeometryMesh.embedding_dimension
-#   _point_index_2d, _point_index_3d, structured_rectangle_mesh, structured_box_mesh
-#   _deduplicated_triangles, _load_stl, _load_obj, _load_with_meshio, _mesh_cad_with_gmsh
-#   load_geometry_mesh, cell_centers, _unit_axis, project_normal_stress, map_axial_element_field
-#   boundary_faces, save_mesh_npz, load_mesh_npz
+#   _point_index_2d, _point_index_3d, structured_line_mesh, structured_rectangle_mesh
+#   structured_box_mesh, _deduplicated_triangles, _load_stl, _load_obj, _load_with_meshio
+#   _mesh_cad_with_gmsh, load_geometry_mesh, cell_centers, _unit_axis, project_normal_stress
+#   map_axial_element_field, boundary_faces, subset_cells, save_mesh_npz, load_mesh_npz
 # - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """Geometry and meshing layer for a normal-stress-only fatigue workflow.
 
 Mesh dimension and constitutive-model dimension are deliberately separated.
-The mesh may be two- or three-dimensional, while the active probability model
+The mesh may be one-, two-, or three-dimensional, while the active probability model
 receives only one scalar normal component, ``sigma_nn``.  Mapping a 1D bar
 solution onto this mesh is a visualization/post-processing projection; it is
 not a 2D/3D elasticity solution.
@@ -29,6 +29,7 @@ import numpy as np
 
 
 _CELL_DIMENSION = {
+    "line": 1,
     "triangle": 2,
     "quad": 2,
     "tetra": 3,
@@ -38,6 +39,7 @@ _CELL_DIMENSION = {
 }
 
 _CELL_NODE_COUNT = {
+    "line": 2,
     "triangle": 3,
     "quad": 4,
     "tetra": 4,
@@ -47,6 +49,7 @@ _CELL_NODE_COUNT = {
 }
 
 _GMSH_CELL_NAMES = {
+    (1, 2): "line",
     (2, 3): "triangle",
     (2, 4): "quad",
     (3, 4): "tetra",
@@ -92,8 +95,8 @@ class GeometryMesh:
 
     def __post_init__(self) -> None:
         points = np.asarray(self.points_m, dtype=float)
-        if points.ndim != 2 or points.shape[1] not in (2, 3) or points.shape[0] == 0:
-            raise ValueError("points_m must have shape (n,2) or (n,3)")
+        if points.ndim != 2 or points.shape[1] not in (1, 2, 3) or points.shape[0] == 0:
+            raise ValueError("points_m must have shape (n,1), (n,2), or (n,3)")
         if not np.all(np.isfinite(points)):
             raise ValueError("mesh points must be finite")
         if not self.cell_blocks:
@@ -138,6 +141,21 @@ def _point_index_2d(i: int, j: int, ny: int) -> int:
 
 def _point_index_3d(i: int, j: int, k: int, ny: int, nz: int) -> int:
     return (i * (ny + 1) + j) * (nz + 1) + k
+
+
+def structured_line_mesh(length_m: float, nx: int) -> GeometryMesh:
+    """Generate an actual one-dimensional line-element tensile mesh."""
+    if not (np.isfinite(length_m) and length_m > 0.0):
+        raise ValueError("length_m must be finite and positive")
+    if nx < 1:
+        raise ValueError("nx must be at least 1")
+    points = np.linspace(0.0, length_m, nx + 1, dtype=float)[:, np.newaxis]
+    cells = np.column_stack([np.arange(nx, dtype=int), np.arange(1, nx + 1, dtype=int)])
+    return GeometryMesh(
+        points,
+        (CellBlock("line", cells),),
+        source="generated structured tensile line",
+    )
 
 
 def structured_rectangle_mesh(
@@ -309,14 +327,19 @@ def _load_with_meshio(path: Path, coordinate_scale_to_m: float) -> GeometryMesh:
         ) from exc
     imported = meshio.read(path)
     blocks: list[CellBlock] = []
-    aliases = {"hexahedron8": "hexahedron", "tetra4": "tetra", "quad4": "quad"}
+    aliases = {
+        "line2": "line",
+        "hexahedron8": "hexahedron",
+        "tetra4": "tetra",
+        "quad4": "quad",
+    }
     for block in imported.cells:
         cell_type = aliases.get(block.type, block.type)
         if cell_type in _CELL_DIMENSION:
             expected = _CELL_NODE_COUNT[cell_type]
             blocks.append(CellBlock(cell_type, np.asarray(block.data, dtype=int)[:, :expected]))
     if not blocks:
-        raise ValueError("mesh file has no supported triangle/quad/tetra/hex/wedge/pyramid cells")
+        raise ValueError("mesh file has no supported line/triangle/quad/tetra/hex/wedge/pyramid cells")
     top_dimension = max(block.dimension for block in blocks)
     blocks = [block for block in blocks if block.dimension == top_dimension]
     points = np.asarray(imported.points, dtype=float)
@@ -342,8 +365,8 @@ def _mesh_cad_with_gmsh(
             "STEP/IGES/BREP import requires optional dependency 'gmsh'; "
             "install requirements-cad.txt"
         ) from exc
-    if target_dimension not in (2, 3):
-        raise ValueError("target_dimension must be 2 or 3 for CAD meshing")
+    if target_dimension not in (1, 2, 3):
+        raise ValueError("target_dimension must be 1, 2, or 3 for CAD meshing")
     gmsh.initialize()
     try:
         gmsh.model.add("tensile_geometry")
@@ -381,7 +404,7 @@ def _mesh_cad_with_gmsh(
         return GeometryMesh(
             points,
             tuple(blocks),
-            source=f"Gmsh CAD volume/surface mesh: {path.name}",
+            source=f"Gmsh CAD topology mesh: {path.name}",
         )
     finally:
         gmsh.finalize()
@@ -469,7 +492,7 @@ def map_axial_element_field(
     *,
     tensile_axis: np.ndarray | tuple[float, ...] | None = None,
 ) -> AxialProjection:
-    """Copy a 1D piecewise-constant element field onto 2D/3D mesh cells.
+    """Copy a 1D piecewise-constant element field onto 1D/2D/3D mesh cells.
 
     The mesh axial coordinate is normalized over its geometric extent and mapped
     to the normalized extent of the 1D bar.  This controlled visualization
@@ -508,6 +531,16 @@ def map_axial_element_field(
 
 def boundary_faces(mesh: GeometryMesh) -> tuple[list[np.ndarray], np.ndarray]:
     """Extract visible cells/faces and their owner-cell indices."""
+    if mesh.topological_dimension == 1:
+        segments: list[np.ndarray] = []
+        owners: list[int] = []
+        offset = 0
+        for block in mesh.cell_blocks:
+            for local, connectivity in enumerate(block.connectivity):
+                segments.append(mesh.points_m[connectivity])
+                owners.append(offset + local)
+            offset += block.connectivity.shape[0]
+        return segments, np.asarray(owners, dtype=int)
     if mesh.topological_dimension == 2:
         faces: list[np.ndarray] = []
         owners: list[int] = []
@@ -549,6 +582,45 @@ def boundary_faces(mesh: GeometryMesh) -> tuple[list[np.ndarray], np.ndarray]:
             faces.append(mesh.points_m[ids])
             owners.append(owner)
     return faces, np.asarray(owners, dtype=int)
+
+
+def subset_cells(mesh: GeometryMesh, keep: np.ndarray) -> tuple[GeometryMesh, np.ndarray]:
+    """Return a cell-filtered mesh and original flattened cell indices.
+
+    Connectivity and referenced points are compacted so an interactive clipping
+    view does not display nodes belonging only to hidden cells.
+    """
+    mask = np.asarray(keep, dtype=bool)
+    if mask.shape != (mesh.cell_count,):
+        raise ValueError(f"keep must have shape ({mesh.cell_count},)")
+    selected = np.flatnonzero(mask)
+    if selected.size == 0:
+        raise ValueError("cell subset may not be empty")
+    selected_connectivity: list[tuple[str, np.ndarray]] = []
+    offset = 0
+    for block in mesh.cell_blocks:
+        local_mask = mask[offset : offset + block.connectivity.shape[0]]
+        if np.any(local_mask):
+            selected_connectivity.append((block.cell_type, block.connectivity[local_mask]))
+        offset += block.connectivity.shape[0]
+    used_points = np.unique(
+        np.concatenate([connectivity.ravel() for _, connectivity in selected_connectivity])
+    )
+    remap = np.full(mesh.points_m.shape[0], -1, dtype=int)
+    remap[used_points] = np.arange(used_points.size, dtype=int)
+    blocks = tuple(
+        CellBlock(cell_type, remap[connectivity])
+        for cell_type, connectivity in selected_connectivity
+    )
+    return (
+        GeometryMesh(
+            mesh.points_m[used_points],
+            blocks,
+            source=f"clipped view of {mesh.source}",
+            role=mesh.role,
+        ),
+        selected,
+    )
 
 
 def save_mesh_npz(path: Path, mesh: GeometryMesh) -> None:
