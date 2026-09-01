@@ -239,8 +239,8 @@ $$
 }
 $$
 
-This still does **not** constitute a closed probability evolution law: $\mathbf
-u$ and $\boldsymbol\Theta$ still require dynamics/ensemble information.
+This still does **not** constitute a closed probability evolution law:
+$\mathbf u$ and $\boldsymbol\Theta$ still require dynamics/ensemble information.
 
 ---
 
