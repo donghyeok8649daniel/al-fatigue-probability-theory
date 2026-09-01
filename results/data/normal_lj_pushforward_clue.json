@@ -1,0 +1,30 @@
+{
+  "classification": "governing-equation push-forward structural clue plus numerical falsification of single-mode sufficiency",
+  "single_mode_origin": "linearized 1D layer-LJ normal mode sampled uniformly in spatial phase",
+  "two_harmonic_skewness_bound": 0.816496580927726,
+  "rows": [
+    {
+      "case": "slow_t10T",
+      "represented_spacings": 31,
+      "mean_stretch": 0.9848361735160458,
+      "variance": 3.3339418983172776e-05,
+      "skewness": 1.0622121986597701,
+      "single_mode_amplitude_from_variance": 0.008165711112104417,
+      "single_mode_arcsine_KS": 0.259885197358645,
+      "mean_energy_exponential_closure_KS": 0.15888125557861082,
+      "exceeds_two_harmonic_skewness_bound": true
+    },
+    {
+      "case": "dynamic_t2T",
+      "represented_spacings": 31,
+      "mean_stretch": 0.9885611826976782,
+      "variance": 2.5764546092775844e-05,
+      "skewness": 0.5559221914389422,
+      "single_mode_amplitude_from_variance": 0.007178376709643461,
+      "single_mode_arcsine_KS": 0.19720212200943987,
+      "mean_energy_exponential_closure_KS": 0.1458358929129957,
+      "exceeds_two_harmonic_skewness_bound": false
+    }
+  ],
+  "conclusion": "The one-point density is exactly a spatial push-forward. A single linear mode gives an arcsine density, but the tested driven states require richer spatial mode content; the slow snapshot is too skewed even for a first-plus-second-harmonic waveform."
+}

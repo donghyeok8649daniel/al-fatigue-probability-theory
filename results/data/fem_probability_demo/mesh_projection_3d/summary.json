@@ -1,0 +1,16 @@
+{
+  "points": 495,
+  "cells": 256,
+  "topological_dimension": 3,
+  "field_min": 0.0011832861259351238,
+  "field_max": 0.0011832861259351288,
+  "source": "generated structured tensile box",
+  "role": "geometry/display mesh; not a multidimensional mechanics solution",
+  "history_csv": "results/data/fem_probability_demo/probability_elements.csv",
+  "field": "critical_tail_probability",
+  "step": 20,
+  "time_s": 0.05,
+  "tensile_axis": "1,0,0",
+  "mapping": "1D FEM axial-field projection; not 2D/3D elasticity",
+  "preview_path": "results/figures/fem_probability_demo/actual_mesh_3d_critical_tail.png"
+}

@@ -1,0 +1,31 @@
+\section*{\koreanfont 기호 및 계산 색인}
+\label{sec:symbols-ko}
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.32\textwidth}}
+\toprule 기호 & 물리적 의미 & 단위 & 정의/계산법/위치\\ \midrule
+\endfirsthead\toprule 기호 & 물리적 의미 & 단위 & 정의/계산법/위치\\ \midrule\endhead\bottomrule\endfoot
+$a,a_0,a^\ddagger$ & 층간거리, 기준거리, 외측 장벽 & m & $a^\ddagger$는 식~\eqref{eq:normal-barrier}의 음의 곡률 근.\\
+$b$ & row 반복거리/slip 주기 & m & 선택한 결정학적 반복거리.\\
+$s,s_0,\widetilde s,z$ & 펼친 slip, 기준, well 내부좌표, well 지수 & m,m,m,1 & $s=s_0+zb+\widetilde s$; Sec.~\ref{sec:plastic}.\\
+$m,n,q$ & LJ 지수와 일반 지수 & 1 & 전체 $U_0$는 $m>n>2$; 단일 row는 $q>1$.\\
+$\epsLJ,\sigLJ,C_{m,n}$ & pair 우물깊이, 영점거리, 정규화계수 & J,m,1 & 식~\eqref{eq:pair}; 피로 loop에 fitting하지 않는다.\\
+$p,k,\ell$ & row site, normal layer, 역격자 지수 & 1 & $p\in\mathbb Z$, $k,\ell\ge1$; $k$는 multiplicity가 아니다.\\
+$\delta,\delta_0,\eta$ & 무차원 registry와 거리 & 1 & $s/b,s_0/b,a/b$.\\
+$B_q,H_q,\Delta H_q$ & 단일-row, 다층, slip-excess 합 & 1 & 식~\eqref{eq:Bdirect}, \eqref{eq:Hexact}, \eqref{eq:DeltaH}.\\
+$K_\nu,\mathcal K_\nu,\operatorname{Li}_r$ & Bessel, Bessel--Lambert, polylog 함수 & 1 & Secs.~\ref{sec:mellin}, \ref{sec:polylog}.\\
+$v_{m,n},W$ & pair potential과 row--row kernel & J & 식~\eqref{eq:pair}, \eqref{eq:W}; $W$는 최종 에너지가 아니다.\\
+$U_0$ & intrinsic 다층 위치에너지 & J & $\sum_{k\ge1}W(ka,s)$; 외력 일을 포함하지 않는다.\\
+$\begin{gathered}\Delta U_0,\Delta U_n\\V_{\rm slip}\end{gathered}$ & 전체/normal/slip 초과에너지 & J & 동일한 $U_0$의 항등분해 식~\eqref{eq:decomp}.\\
+$P$ & $(a,s)$ 확률밀도 & m$^{-2}$ & 식~\eqref{eq:smol}로 진화한다.\\
+$J_a,J_s$ & 확률 flux & m$^{-1}$s$^{-1}$ & 식~\eqref{eq:currents}.\\
+$M_a,M_s$ & mobility & m$^2$J$^{-1}$s$^{-1}$ & 확산은 $k_BT M_i$로 고정된다.\\
+$Q_a,Q_s$ & 인장에서 유도된 일반화 힘 & N & $A_0\sigma,A_0M\sigma$; 독립 shear 입력은 없다.\\
+$M,A_0$ & signed Schmid factor, 대표 기계면적 & 1,m$^2$ & $A_0$는 FEM 요소면적이나 상관면적이 아니다.\\
+$\bar a,\bar U$ & G1 평균거리, G2 평균 intrinsic 에너지 & m,J & 식~\eqref{eq:G1}, \eqref{eq:G2}.\\
+$\dot D_{\rm irr},E_{\rm hyst}$ & 비가역률과 누적 hysteresis & J s$^{-1}$,J & G3 식~\eqref{eq:G3}; 저장 damage와 동일시하지 않는다.\\
+$S,P_{\rm crack}$ & 생존/균열개시 확률 & 1 & G4 확장 식~\eqref{eq:G4escape}.\\
+$h_{\rm slip},\gamma_p,\varepsilon_p$ & 균질화 두께, 소성 shear/인장 strain & m,1,1 & 잔류 $\langle z\rangle$로 식~\eqref{eq:plastic-strain} 계산.\\
+$T,k_B,\Omega_b$ & bath 온도, Boltzmann 상수, 결합영역 & K,J K$^{-1}$,m$^2$ & 확률동역학과 absorbing 경계에서 사용.\\
+$\omega,\sigma_m,\sigma_a$ & 각주파수, 평균응력, 진폭 & s$^{-1}$,Pa,Pa & 단축 인장파형 식~\eqref{eq:driving}.\\
+\end{longtable}
+\normalsize

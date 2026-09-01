@@ -1,0 +1,278 @@
+{
+  "classification": "controlled numerical 1D spatial-correlation/statistical-cell diagnostic",
+  "protocol": {
+    "force_amplitude": 0.03,
+    "sample_cycle": 2,
+    "dynamic_similarity_rule": "omega * M = 0.62"
+  },
+  "exact_permutation_null": "For any nonzero lag k under a uniformly random permutation of a centered finite sample, E[rho_k] = -1/(M-1).",
+  "statistical_cell_note": "The exact tau_M formula belongs to true stationary population correlations. A single sample-mean-centered finite snapshot has an all-lag zero-sum artifact, so the committed tau/M_eff/ell_stat values use a first-positive-lobe finite-snapshot estimator and are explicitly diagnostics, not material constants.",
+  "summary_rows": [
+    {
+      "atoms": 32,
+      "M": 31,
+      "omega": 0.02,
+      "omega_times_M": 0.62,
+      "mean_stretch": 0.9885611826976759,
+      "represented_spacings": 31,
+      "variance_c0": 2.5764546092765083e-05,
+      "rho1": 0.9334389183864853,
+      "first_zero_crossing_lag": 11.037099753779783,
+      "first_zero_crossing_scaled_lag": 0.3560354759283801,
+      "positive_correlation_integral_over_m": 0.17845510700903922,
+      "random_permutation_expected_rho_k": -0.03333333333333333,
+      "tau_M_positive_window_estimate": 10.583553503477779,
+      "M_eff_positive_window_estimate": 2.9290729233629644,
+      "ell_stat_2_over_a0_positive_window_estimate": 10.583553503477779,
+      "M_eff_over_M_positive_window_estimate": 0.09448622333428917
+    },
+    {
+      "atoms": 64,
+      "M": 63,
+      "omega": 0.009841269841269842,
+      "omega_times_M": 0.62,
+      "mean_stretch": 0.9903309873135886,
+      "represented_spacings": 63,
+      "variance_c0": 1.7558702998845592e-05,
+      "rho1": 0.9662886871344369,
+      "first_zero_crossing_lag": 22.130886092458947,
+      "first_zero_crossing_scaled_lag": 0.3512839062295071,
+      "positive_correlation_integral_over_m": 0.18265844524463748,
+      "random_permutation_expected_rho_k": -0.016129032258064516,
+      "tau_M_positive_window_estimate": 21.101052540184057,
+      "M_eff_positive_window_estimate": 2.985633056930461,
+      "ell_stat_2_over_a0_positive_window_estimate": 21.101052540184057,
+      "M_eff_over_M_positive_window_estimate": 0.047391000903658116
+    },
+    {
+      "atoms": 128,
+      "M": 127,
+      "omega": 0.004881889763779528,
+      "omega_times_M": 0.62,
+      "mean_stretch": 0.9911993196030418,
+      "represented_spacings": 127,
+      "variance_c0": 1.4146403432813952e-05,
+      "rho1": 0.9828198210636802,
+      "first_zero_crossing_lag": 44.21441377099805,
+      "first_zero_crossing_scaled_lag": 0.3481449903228193,
+      "positive_correlation_integral_over_m": 0.1836699256406526,
+      "random_permutation_expected_rho_k": -0.007936507936507936,
+      "tau_M_positive_window_estimate": 41.93398341435304,
+      "M_eff_positive_window_estimate": 3.028569901053827,
+      "ell_stat_2_over_a0_positive_window_estimate": 41.93398341435304,
+      "M_eff_over_M_positive_window_estimate": 0.023847007094912026
+    },
+    {
+      "atoms": 256,
+      "M": 255,
+      "omega": 0.0024313725490196078,
+      "omega_times_M": 0.62,
+      "mean_stretch": 0.9916307738647823,
+      "represented_spacings": 255,
+      "variance_c0": 1.260622125044592e-05,
+      "rho1": 0.9913021836513312,
+      "first_zero_crossing_lag": 88.3090538046318,
+      "first_zero_crossing_scaled_lag": 0.3463100149201247,
+      "positive_correlation_integral_over_m": 0.18388847861812985,
+      "random_permutation_expected_rho_k": -0.003937007874015748,
+      "tau_M_positive_window_estimate": 83.48914342393425,
+      "M_eff_positive_window_estimate": 3.0542893308317005,
+      "ell_stat_2_over_a0_positive_window_estimate": 83.48914342393425,
+      "M_eff_over_M_positive_window_estimate": 0.011977605218947845
+    }
+  ],
+  "scaled_lag_rows": [
+    {
+      "M": 31,
+      "omega": 0.02,
+      "eta_target": 0.02,
+      "lag_k": 1,
+      "eta_actual": 0.03225806451612903,
+      "rho_k": 0.9334389183864853
+    },
+    {
+      "M": 31,
+      "omega": 0.02,
+      "eta_target": 0.05,
+      "lag_k": 2,
+      "eta_actual": 0.06451612903225806,
+      "rho_k": 0.8618138682591564
+    },
+    {
+      "M": 31,
+      "omega": 0.02,
+      "eta_target": 0.1,
+      "lag_k": 3,
+      "eta_actual": 0.0967741935483871,
+      "rho_k": 0.7851619961649561
+    },
+    {
+      "M": 31,
+      "omega": 0.02,
+      "eta_target": 0.2,
+      "lag_k": 6,
+      "eta_actual": 0.1935483870967742,
+      "rho_k": 0.5257804020869177
+    },
+    {
+      "M": 31,
+      "omega": 0.02,
+      "eta_target": 0.3,
+      "lag_k": 9,
+      "eta_actual": 0.2903225806451613,
+      "rho_k": 0.2250384381096033
+    },
+    {
+      "M": 31,
+      "omega": 0.02,
+      "eta_target": 0.4,
+      "lag_k": 12,
+      "eta_actual": 0.3870967741935484,
+      "rho_k": -0.11134734868797051
+    },
+    {
+      "M": 63,
+      "omega": 0.009841269841269842,
+      "eta_target": 0.02,
+      "lag_k": 1,
+      "eta_actual": 0.015873015873015872,
+      "rho_k": 0.9662886871344369
+    },
+    {
+      "M": 63,
+      "omega": 0.009841269841269842,
+      "eta_target": 0.05,
+      "lag_k": 3,
+      "eta_actual": 0.047619047619047616,
+      "rho_k": 0.8954790592368995
+    },
+    {
+      "M": 63,
+      "omega": 0.009841269841269842,
+      "eta_target": 0.1,
+      "lag_k": 6,
+      "eta_actual": 0.09523809523809523,
+      "rho_k": 0.7807691145990499
+    },
+    {
+      "M": 63,
+      "omega": 0.009841269841269842,
+      "eta_target": 0.2,
+      "lag_k": 13,
+      "eta_actual": 0.20634920634920634,
+      "rho_k": 0.47399290603986227
+    },
+    {
+      "M": 63,
+      "omega": 0.009841269841269842,
+      "eta_target": 0.3,
+      "lag_k": 19,
+      "eta_actual": 0.30158730158730157,
+      "rho_k": 0.17071330323930983
+    },
+    {
+      "M": 63,
+      "omega": 0.009841269841269842,
+      "eta_target": 0.4,
+      "lag_k": 25,
+      "eta_actual": 0.3968253968253968,
+      "rho_k": -0.16230204693410497
+    },
+    {
+      "M": 127,
+      "omega": 0.004881889763779528,
+      "eta_target": 0.02,
+      "lag_k": 3,
+      "eta_actual": 0.023622047244094488,
+      "rho_k": 0.9476624759236382
+    },
+    {
+      "M": 127,
+      "omega": 0.004881889763779528,
+      "eta_target": 0.05,
+      "lag_k": 6,
+      "eta_actual": 0.047244094488188976,
+      "rho_k": 0.8929337176048368
+    },
+    {
+      "M": 127,
+      "omega": 0.004881889763779528,
+      "eta_target": 0.1,
+      "lag_k": 13,
+      "eta_actual": 0.10236220472440945,
+      "rho_k": 0.7559579668949505
+    },
+    {
+      "M": 127,
+      "omega": 0.004881889763779528,
+      "eta_target": 0.2,
+      "lag_k": 25,
+      "eta_actual": 0.1968503937007874,
+      "rho_k": 0.4915850724230972
+    },
+    {
+      "M": 127,
+      "omega": 0.004881889763779528,
+      "eta_target": 0.3,
+      "lag_k": 38,
+      "eta_actual": 0.2992125984251969,
+      "rho_k": 0.16681804758984525
+    },
+    {
+      "M": 127,
+      "omega": 0.004881889763779528,
+      "eta_target": 0.4,
+      "lag_k": 51,
+      "eta_actual": 0.4015748031496063,
+      "rho_k": -0.18838130095808034
+    },
+    {
+      "M": 255,
+      "omega": 0.0024313725490196078,
+      "eta_target": 0.02,
+      "lag_k": 5,
+      "eta_actual": 0.0196078431372549,
+      "rho_k": 0.9558654437217327
+    },
+    {
+      "M": 255,
+      "omega": 0.0024313725490196078,
+      "eta_target": 0.05,
+      "lag_k": 13,
+      "eta_actual": 0.050980392156862744,
+      "rho_k": 0.8819008163689392
+    },
+    {
+      "M": 255,
+      "omega": 0.0024313725490196078,
+      "eta_target": 0.1,
+      "lag_k": 26,
+      "eta_actual": 0.10196078431372549,
+      "rho_k": 0.7529836517451436
+    },
+    {
+      "M": 255,
+      "omega": 0.0024313725490196078,
+      "eta_target": 0.2,
+      "lag_k": 51,
+      "eta_actual": 0.2,
+      "rho_k": 0.4756885647359321
+    },
+    {
+      "M": 255,
+      "omega": 0.0024313725490196078,
+      "eta_target": 0.3,
+      "lag_k": 76,
+      "eta_actual": 0.2980392156862745,
+      "rho_k": 0.16375571703125794
+    },
+    {
+      "M": 255,
+      "omega": 0.0024313725490196078,
+      "eta_target": 0.4,
+      "lag_k": 102,
+      "eta_actual": 0.4,
+      "rho_k": -0.18769203395854647
+    }
+  ]
+}

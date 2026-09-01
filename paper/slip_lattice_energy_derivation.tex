@@ -1,0 +1,498 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\setmainfont[BoldFont=lmroman10-bold.otf,ItalicFont=lmroman10-italic.otf]{lmroman10-regular.otf}
+\newfontfamily\koreanfont[Path=fonts/,Ligatures=TeX,BoldFont=NotoSansKR-Reconstructed-Bold.ttf]{NotoSansKR-Reconstructed-Regular.ttf}
+\newenvironment{koreantranslation}{\koreanfont\XeTeXlinebreaklocale "ko"\XeTeXlinebreakskip=0pt plus 1pt}{}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{booktabs,longtable,array}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black}
+\allowdisplaybreaks
+\newcommand{\epsLJ}{\varepsilon_{\mathrm{LJ}}}
+\newcommand{\sigLJ}{\sigma_{\mathrm{LJ}}}
+\newcommand{\kB}{k_{\mathrm B}}
+\newcommand{\dd}{\,\mathrm d}
+
+\title{One-Dimensional Fatigue Modeling of Pure Aluminum:\\
+Deterministic Calibration and a Probabilistic Spacing Hypothesis}
+\author{Donghyeok Kim \and Minsoo Kang \and Junhyeok Park}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We derive one intrinsic conservative energy for a reduced single-crystal
+fatigue state with normal layer spacing $a$ and one crystallographic registry
+$s$.  A row--row interaction $W(d,s)$ is only a kernel: the active local
+lattice potential is the multiplicity-free sum $U_0(a,s)=\sum_{k\ge1}W(ka,s)$,
+with the same collective $s$ at every layer.  Mellin transformation and
+Poisson summation yield an exact Bessel--Lambert representation of the new
+two-index lattice sum $H_q$.  For the 12--6 case its half-integer Bessel terms
+reduce exactly to verified polylogarithms.  Normal opening and slip are then
+an identity decomposition of the same $U_0$, so they are not double counted.
+Uniaxial tensile stress enters only as generalized driving forces in a
+two-coordinate Smoluchowski equation.  The four governing observables are
+mean spacing, mean intrinsic energy, cumulative irreversible dissipation, and
+normalization/survival.  Plasticity requires a residual transition of the
+unwrapped slip-well index; crack initiation is first passage through the
+negative-curvature normal barrier, not an empirical energy threshold.  The
+present numerical examples are dimensionless mechanism tests, not calibrated
+aluminum-life predictions.
+\end{abstract}
+
+\section{Scope and fatigue-crack-initiation objective}
+\label{sec:scope}
+
+The physical target is repeated uniaxial normal tension of a pure single
+crystal.  The microscopic state uses one normal spacing $a$ and one scalar
+registry $s$ for a declared slip system.  The probability state space is thus
+two-dimensional, but this does not introduce a two-dimensional continuum
+stress criterion.  The only applied waveform is uniaxial.  Generalized
+Lennard--Jones energetics are retained deliberately so that the landscape is
+derived rather than looked up.  EAM and DFT are future quantitative checks,
+not governing potentials in this theory.
+
+\section{Definitions and counting convention}
+\label{sec:counting}
+
+Consider one reference row and rows at normal distances $a,2a,3a,\ldots$.
+Within every row the tangential repeat is $b$.  The scalar $s$ is one
+collective relative registry; it is neither multiplied by the normal-layer
+index nor independently redrawn for each layer.  Once one reference layer has
+been chosen, its interaction with layer $k$ occurs once.  Consequently
+\begin{equation}
+ \boxed{U_0(a,s)=\sum_{k=1}^{\infty}W(ka,s),}
+ \label{eq:U0count}
+\end{equation}
+with no multiplicity before $W$.  In contrast, $\sum_k kW(ka,s)$ counts all
+cross-interface layer pairs of two half-spaces.  That is a distinct interface
+energy and is not the local-state convention.  Similarly $W(ka,ks)$ would
+assign a different registry to every layer and is excluded by the definition
+of the collective coordinate.
+
+\section{Generalized Lennard--Jones $m$--$n$ pair potential}
+\label{sec:pair}
+
+We use the well-depth convention
+\begin{equation}
+ \boxed{v_{m,n}(r)=C_{m,n}\epsLJ
+ \left[\left(\frac{\sigLJ}{r}\right)^m-
+       \left(\frac{\sigLJ}{r}\right)^n\right],\qquad
+ C_{m,n}=\frac{m}{m-n}\left(\frac mn\right)^{n/(m-n)}.}
+ \label{eq:pair}
+\end{equation}
+It gives $\min v=-\epsLJ$ at
+$r_e=\sigLJ(m/n)^{1/(m-n)}$.  For $m=12,n=6$, $C_{12,6}=4$, so the usual
+$4\epsLJ$ convention is recovered rather than silently mixed with a different
+coefficient definition.  The full multilayer absolute energy below requires
+\begin{equation}\boxed{m>n>2.}\label{eq:convergence}
+\end{equation}
+The weaker condition $q>1$ suffices for an individual row kernel.
+
+\section{Single-row kernel $W(d,s)$}
+\label{sec:row}
+
+For row separation $d$ and site index $p\in\mathbb Z$,
+\begin{equation}
+ \boxed{W_{m,n}(d,s)=\sum_{p=-\infty}^{\infty}
+ v_{m,n}\!\left(\sqrt{d^2+(pb+s)^2}\right).}
+ \label{eq:W}
+\end{equation}
+Put $\delta=s/b$, $\eta=d/b$ and, for $q>1$,
+\begin{equation}
+ \boxed{B_q(\delta,\eta)=\sum_{p=-\infty}^{\infty}
+ [(p+\delta)^2+\eta^2]^{-q/2}.}
+ \label{eq:Bdirect}
+\end{equation}
+Then
+\begin{equation}
+ W_{m,n}=C_{m,n}\epsLJ\left[
+ (\sigLJ/b)^mB_m-(\sigLJ/b)^nB_n\right].
+ \label{eq:WB}
+\end{equation}
+
+\section{Exact Mellin--Poisson--Bessel representation of $W$}
+\label{sec:mellin}
+
+For $x>0$ and $\operatorname{Re}\alpha>0$, the Gamma integral gives
+\begin{equation}
+ x^{-\alpha}=\frac1{\Gamma(\alpha)}
+ \int_0^\infty t^{\alpha-1}e^{-xt}\dd t.
+ \label{eq:mellin}
+\end{equation}
+Applying it termwise to Eq.~\eqref{eq:Bdirect} is justified by Tonelli's
+theorem for real $q>1$.  Shifted Gaussian Poisson summation gives
+\begin{equation}
+ \sum_{p\in\mathbb Z}e^{-t(p+\delta)^2}
+ =\sqrt{\frac\pi t}\sum_{\ell\in\mathbb Z}
+ e^{-\pi^2\ell^2/t}e^{2\pi i\ell\delta}.
+ \label{eq:poisson}
+\end{equation}
+The required nonzero reciprocal integral follows from the defining identity
+for the modified Bessel function of the second kind~\cite{DLMFBessel},
+\begin{equation}
+ \boxed{K_\nu(x)=\frac12\int_0^\infty
+ u^{\nu-1}\exp\!\left[-\frac x2(u+u^{-1})\right]\dd u,}
+ \label{eq:Kdef}
+\end{equation}
+because
+\begin{equation}
+ \int_0^\infty t^{\nu-1}e^{-\beta t-\gamma/t}\dd t
+ =2(\gamma/\beta)^{\nu/2}K_\nu(2\sqrt{\beta\gamma}).
+\end{equation}
+Separating the $\ell=0$ mode and combining $\pm\ell$ yields the exact identity
+\begin{equation}
+\boxed{B_q(\delta,\eta)=\frac{\sqrt\pi}{\Gamma(q/2)}\left[
+ \Gamma\!\left(\frac{q-1}{2}\right)\eta^{1-q}
+ +4\sum_{\ell=1}^{\infty}\cos(2\pi\ell\delta)
+ \left(\frac{\pi\ell}{\eta}\right)^{(q-1)/2}
+ K_{(q-1)/2}(2\pi\ell\eta)\right].}
+\label{eq:Bbessel}
+\end{equation}
+No small-slip, harmonic, or Taylor approximation was made.
+
+\section{Multi-layer intrinsic lattice potential}
+\label{sec:H}
+
+Now redefine $\eta=a/b$ and introduce
+\begin{equation}
+ \boxed{H_q(\delta,\eta)=\sum_{k=1}^{\infty}B_q(\delta,k\eta)
+ =\sum_{k=1}^{\infty}\sum_{p=-\infty}^{\infty}
+ [(p+\delta)^2+k^2\eta^2]^{-q/2}.}
+ \label{eq:Hdirect}
+\end{equation}
+This two-index absolute sum converges for $q>2$, as follows by comparison
+with the radial integral of $R^{-q}$ over a two-dimensional lattice.  The
+intrinsic potential is therefore
+\begin{equation}
+ \boxed{\begin{aligned}
+ U_0(a,s)&=\sum_{k=1}^{\infty}\sum_{p=-\infty}^{\infty}
+ v_{m,n}\!\left(\sqrt{k^2a^2+(pb+s)^2}\right)\\
+ &=C_{m,n}\epsLJ\left[(\sigLJ/b)^mH_m(\delta,\eta)-
+ (\sigLJ/b)^nH_n(\delta,\eta)\right].
+ \end{aligned}}
+ \label{eq:U0H}
+\end{equation}
+It depends only on atomic positions.  External stress work is absent.
+
+\section{Exact $H_q$ series}
+
+Let $\nu_q=(q-1)/2$.  The zero Fourier modes sum as
+$\sum_{k\ge1}(k\eta)^{1-q}=\eta^{1-q}\zeta(q-1)$.  The nonzero modes give the
+Bessel--Lambert series
+\begin{equation}
+ \boxed{\mathcal K_\nu(x)=\sum_{k=1}^{\infty}k^{-\nu}K_\nu(kx).}
+ \label{eq:Klambert}
+\end{equation}
+Hence
+\begin{equation}
+\boxed{H_q=\frac{\sqrt\pi}{\Gamma(q/2)}\left[
+ \Gamma(\nu_q)\eta^{1-q}\zeta(q-1)
+ +4\sum_{\ell=1}^{\infty}\cos(2\pi\ell\delta)
+ \left(\frac{\pi\ell}{\eta}\right)^{\nu_q}
+ \mathcal K_{\nu_q}(2\pi\ell\eta)\right].}
+\label{eq:Hexact}
+\end{equation}
+Absolute convergence permits the reordering.  Exponential decay of $K_\nu$
+makes the reciprocal form rapidly convergent for $\eta>0$; its truncations are
+numerical controls, not physical cutoffs.
+
+\section{Normal/slip decomposition from the same $U_0$}
+\label{sec:decomp}
+
+For one reference $(a_0,s_0)$, add and subtract $U_0(a,s_0)$:
+\begin{equation}
+\boxed{\begin{aligned}
+ \Delta U_0(a,s)&=U_0(a,s)-U_0(a_0,s_0)\\
+ &=\underbrace{U_0(a,s_0)-U_0(a_0,s_0)}_{\Delta U_n(a)}
+ +\underbrace{U_0(a,s)-U_0(a,s_0)}_{V_{\rm slip}(a,s)}.
+\end{aligned}}
+\label{eq:decomp}
+\end{equation}
+This is an exact identity.  It replaces the former practice of treating a
+collinear $U_\infty$ and a two-row $W$ as independent candidates.  Those
+reduced geometries may be archived, but are not added to form the present
+fundamental energy.
+
+\section{Slip-excess $\Delta H_q$}
+
+With $\delta_0=s_0/b$, the zero mode cancels exactly:
+\begin{equation}
+\boxed{\begin{aligned}
+ \Delta H_q={4\sqrt\pi\over\Gamma(q/2)}
+ \sum_{\ell=1}^{\infty}&[\cos(2\pi\ell\delta)-
+ \cos(2\pi\ell\delta_0)]
+ \left({\pi\ell\over\eta}\right)^{\nu_q}\\[-0.2em]
+ &\times\sum_{k=1}^{\infty}k^{-\nu_q}
+ K_{\nu_q}(2\pi\ell k\eta).
+\end{aligned}}
+\label{eq:DeltaH}
+\end{equation}
+Then
+\begin{equation}
+ V_{\rm slip}=C_{m,n}\epsLJ[(\sigLJ/b)^m\Delta H_m-
+ (\sigLJ/b)^n\Delta H_n].
+ \label{eq:Vslip}
+\end{equation}
+At $\delta=\delta_0$ every bracket is zero, proving
+$V_{\rm slip}(a,s_0)=0$.  Replacing $\delta$ by $\delta+1$ leaves every cosine
+unchanged, proving period $b$.  If $s_0=0$,
+$\cos(2\pi\ell\delta)-1=-2\sin^2(\pi\ell\delta)$.
+
+\section{LJ 12--6 polylogarithm special case}
+\label{sec:polylog}
+
+The independently expanded half-integer functions are
+\begin{align}
+ K_{5/2}(x)&=\sqrt{\pi/(2x)}e^{-x}(1+3x^{-1}+3x^{-2}),\\
+ K_{11/2}(x)&=\sqrt{\pi/(2x)}e^{-x}(1+15x^{-1}+105x^{-2}
+ +420x^{-3}+945x^{-4}+945x^{-5}).
+\end{align}
+In $k^{-\nu}K_\nu(kx)$, the square-root adds $k^{-1/2}$.
+Using $\sum_{k\ge1}e^{-kx}/k^r=\operatorname{Li}_r(e^{-x})$ gives
+\begin{align}
+\mathcal K_{5/2}(x)&=\sqrt{\pi/(2x)}[\operatorname{Li}_3(e^{-x})
+ +3x^{-1}\operatorname{Li}_4(e^{-x})+3x^{-2}\operatorname{Li}_5(e^{-x})],
+ \label{eq:poly6}\\
+\mathcal K_{11/2}(x)&=\sqrt{\pi/(2x)}[\operatorname{Li}_6(e^{-x})
+ +15x^{-1}\operatorname{Li}_7(e^{-x})+105x^{-2}\operatorname{Li}_8(e^{-x})\notag\\
+&\quad+420x^{-3}\operatorname{Li}_9(e^{-x})
+ +945x^{-4}\operatorname{Li}_{10}(e^{-x})
+ +945x^{-5}\operatorname{Li}_{11}(e^{-x})].
+ \label{eq:poly12}
+\end{align}
+Substitution into Eq.~\eqref{eq:Hexact} is the explicit polylog form.  The
+coefficients were generated from the exact half-integer formula and checked
+against both unsimplified Bessel sums and real-space double sums.
+
+\section{Unwrapped slip and plastic deformation}
+\label{sec:plastic}
+
+The periodic energy does not justify folding the state history.  Write
+\begin{equation}\boxed{s=s_0+zb+\widetilde s,\qquad z\in\mathbb Z,}
+\label{eq:unwrapped}\end{equation}
+and let $\mathcal W_z$ be well $z$.  Define
+\begin{equation}
+ p_z=\iint_{\mathcal W_z}P\dd a\dd s,qquad
+ \langle z\rangle=\sum_z zp_z.
+\end{equation}
+For an independently specified homogenization thickness,
+\begin{equation}
+ \boxed{\gamma_p={b\over h_{\rm slip}}\langle z\rangle,qquad
+ \varepsilon_p=M{b\over h_{\rm slip}}\langle z\rangle.}
+ \label{eq:plastic-strain}
+\end{equation}
+Intrawell lag is not plasticity.  The reduced operational criterion is a
+residual $\Delta\langle z\rangle\ne0$ after unloading and relaxation.
+
+\section{Tensile-driving probability dynamics}
+\label{sec:dynamics}
+
+The only applied load is
+\begin{equation}
+ \boxed{\sigma(t)=\sigma_m+\sigma_a\sin\omega t,\qquad
+ Q_a=A_0\sigma(t),\quad Q_s=A_0M\sigma(t).}
+ \label{eq:driving}
+\end{equation}
+$M=(\bm e\cdot\bm n)(\bm e\cdot\bm d)$ is the signed resolved-slip
+projection for one declared slip plane and direction.  There is no independent
+shear fatigue input.
+
+Eliminating isothermal bath degrees of freedom after velocity relaxation gives
+$\dot q_i=-M_i(\partial_{q_i}U_0-Q_i)+\sqrt{2\kB TM_i}\,\xi_i$.
+The fluctuation--dissipation coefficient is fixed, and the Fokker--Planck
+equation is~\cite{Risken,Gardiner}
+\begin{equation}
+ \boxed{\partial_tP=-\partial_aJ_a-\partial_sJ_s,}
+ \label{eq:smol}
+\end{equation}
+\begin{equation}
+ \boxed{J_a=-M_a[P(\partial_aU_0-Q_a)+\kB T\partial_aP],\quad
+ J_s=-M_s[P(\partial_sU_0-Q_s)+\kB T\partial_sP].}
+ \label{eq:currents}
+\end{equation}
+This PDE is the underlying evolution law; it is not counted as one of the
+four observable equations below.
+
+\section{The four governing equations}
+\label{sec:four}
+
+For a closed bonded domain $\Omega_b$, the named equations are
+\begin{align}
+\text{G1:}\quad&\boxed{\bar a(t)=\iint_{\Omega_b}aP\dd a\dd s,}
+\label{eq:G1}\\
+\text{G2:}\quad&\boxed{\bar U(t)=\iint_{\Omega_b}
+[U_0(a,s)-U_0(a_0,s_0)]P\dd a\dd s,}
+\label{eq:G2}\\
+\text{G3:}\quad&\boxed{E_{\rm hyst}(t)=\int_0^t\dot D_{\rm irr}(t')\dd t',\quad
+\dot D_{\rm irr}=\iint_{\Omega_b}\left[{J_a^2\over M_aP}+{J_s^2\over M_sP}\right]
+\dd a\dd s\ge0,}
+\label{eq:G3}\\
+\text{G4:}\quad&\boxed{\iint_{\Omega_b}P(a,s,t)\dd a\dd s=1.}
+\label{eq:G4}
+\end{align}
+With no-flux boundaries, integration by parts gives
+$\dd\bar a/\dd t=\iint J_a\dd a\dd s$ and
+\begin{equation}
+ {\dd\bar U\over\dd t}=\iint(\partial_aU_0J_a+
+ \partial_sU_0J_s)\dd a\dd s.
+\end{equation}
+The omitted boundary terms must be restored for absorption.  Because
+$U_0(a,s+b)=U_0(a,s)$, an equivalent-well transition can lower $\bar U$;
+therefore $\bar U$ is not a cumulative damage variable.
+
+\section{Hysteresis and irreversible energy accumulation}
+
+The nonequilibrium free energy
+\begin{equation}
+ \mathcal F[P,t]=\iint P[U_0-Q_a a-Q_s s+\kB T\ln(P/P_*)]\dd a\dd s
+\end{equation}
+satisfies, for no-flux or periodic boundaries,
+\begin{equation}
+ {\dd\mathcal F\over\dd t}=-\dot Q_a\bar a-\dot Q_s\bar s-
+ \dot D_{\rm irr}.
+\end{equation}
+Thus finite mobility produces phase lag because current needs finite time to
+redistribute $P$; diffusion alone is not the cause.  In a quasistatic closed
+cycle the conditional distribution returns to the same state and loop area
+tends to zero.  For cycle $N$,
+\begin{equation}
+ \Delta E_{{\rm hyst},N}=\int_{(N-1)T_c}^{NT_c}\dot D_{\rm irr}\dd t,qquad
+ E_{\rm hyst}^{(N)}=\sum_{j=1}^N\Delta E_{{\rm hyst},j}.
+\end{equation}
+$E_{\rm hyst}$ is total irreversible/hysteretic dissipation.  It may include
+heat transferred to eliminated modes as well as microstructural irreversible
+work, so it is tracked as history but not equated automatically with stored
+damage energy.
+
+\section{Crack-initiation absorbing boundary and first passage}
+\label{sec:crack}
+
+At fixed $s,t$, stationary normal states solve the full-energy force balance
+\begin{equation}
+ \boxed{\partial_aU_0(a^\ddagger,s)=Q_a(t),\qquad
+ \partial_a^2U_0(a^\ddagger,s)<0.}
+ \label{eq:normal-barrier}
+\end{equation}
+The positive-curvature root is the stable bonded state; the outer
+negative-curvature root defines the absorbing barrier.  With absorption,
+\begin{equation}
+ \boxed{S(t)=\iint_{\Omega_b(t)}P\dd a\dd s\le1,qquad
+ P_{\rm crack}(t)=1-S(t).}
+ \label{eq:G4escape}
+\end{equation}
+If the moving boundary is a graph $a=a^\ddagger(s,t)$ and registry edges are
+periodic or no-flux, Reynolds transport gives the relative outflux
+\begin{equation}
+ \boxed{-\dot S=\int\left[J_a-J_s\partial_sa^\ddagger-
+ P\partial_ta^\ddagger\right]_{a=a^\ddagger}\dd s.}
+ \label{eq:movingflux}
+\end{equation}
+For an ideal absorbing boundary $P=0$, its motion term vanishes.  A finite-grid
+radiation implementation must retain it.  Neither an arbitrary distance nor
+$E_{\rm hyst}>E_c$ defines fracture.
+
+\section{Numerical consistency checks}
+\label{sec:numerics}
+
+The implementation evaluates direct $(k,p)$ sums, Fourier--Bessel sums,
+Bessel--Lambert sums, and the 12--6 polylog closure independently.  Table
+\ref{tab:checks} records representative double-precision results; direct sums
+use $k_{\max}=400,p_{\max}=800$ and reciprocal sums use 20 modes.
+\begin{table}[h]
+\centering
+\begin{tabular}{ccccc}
+\toprule $q$ & $(\delta,\eta)$ & direct $H_q$ & Bessel--Lambert $H_q$ & relative error\\\midrule
+6 &(0,0.7)&9.39075449597613&9.39075449604469&$7.30\times10^{-12}$\\
+6 &(0.23,1)&1.23234977228797&1.23234977229983&$9.63\times10^{-12}$\\
+6 &(0.5,1.4)&0.224780520495904&0.224780520498402&$1.11\times10^{-11}$\\
+12&(0,0.7)&72.4515258960140&72.4515258960140&$1.96\times10^{-16}$\\
+12&(0.23,1)&0.799764218140630&0.799764218140630&$1.39\times10^{-16}$\\
+12&(0.5,1.4)&0.0175417129797649&0.0175417129797649&$7.91\times10^{-16}$\\
+\bottomrule
+\end{tabular}
+\caption{Independent direct and analytical evaluations.}
+\label{tab:checks}
+\end{table}
+The polylog and unsimplified Bessel--Lambert values agree to at most
+$4\times10^{-15}$ relative tolerance in the automated tests.  Periodicity,
+even symmetry, $V_{\rm slip}(s_0)=0$, analytical $a$ and $s$ derivatives,
+unweighted layer counting, probability conservation, nonnegative dissipation,
+and grid/time refinement are separately tested.  Units are
+$[U_0]={\rm J}$, $[\partial_iU_0]={\rm N}$,
+$[P]={\rm m}^{-2}$, $[J_i]={\rm m}^{-1}{\rm s}^{-1}$,
+$[\dot D_{\rm irr}]={\rm J\,s^{-1}}$, and $[E_{\rm hyst}]={\rm J}$.
+
+\section{Model limitations and future quantitative extension}
+
+The exact sums do not determine the representative area $A_0$, mobilities,
+memory time, active slip system, or $h_{\rm slip}$.  One collective registry
+does not contain dislocation multiplication, hardening, backstress, or
+multiple-slip interactions.  These unresolved quantities prevent a
+quantitative aluminum fatigue-life claim.  A future FCC/EAM/DFT calculation
+may validate or extend the generalized-LJ landscape, but it does not replace
+the current analytical governing energy~\cite{DawBaskes}.  Likewise, a CAD/FEM mesh supplies
+geometry and scalar normal stress only; it does not add shear or multiaxial
+constitutive physics.
+
+\input{symbol_index_en.tex}
+
+\clearpage
+\begin{koreantranslation}
+\section*{\koreanfont 한국어 연구 요약}
+
+이 연구의 활성 위치에너지는 단일 row kernel $W$ 자체가 아니라
+\[
+ U_0(a,s)=\sum_{k=1}^{\infty}W(ka,s)
+\]
+이다. 기준 layer와 $a,2a,3a,\ldots$ 떨어진 각 layer의 상호작용을 한 번씩
+세므로 앞에 multiplicity $k$가 없다. $\sum kW(ka,s)$는 두 half-space 사이의
+모든 layer pair를 세는 별도 interface convention이다. 또한 $s$는 하나의
+collective/unwrapped slip 좌표이므로 모든 $k$에 동일하며 $ks$나 $js$를 쓰지
+않는다.
+
+$B_q$의 기존 Mellin--Poisson--Bessel 유도를 보존한 채 다시 $k$에 대해
+합하면 식~\eqref{eq:Hexact}의 정확한 $H_q$를 얻는다. 이는 Taylor 또는
+harmonic 근사가 아니다. 전체 absolute double sum 때문에 $m>n>2$가
+필요하고, 단일 row에는 $q>1$이면 충분하다. 12--6에서는 $K_{5/2}$와
+$K_{11/2}$가 유한다항식으로 닫혀 식~\eqref{eq:poly6}--\eqref{eq:poly12}의
+polylog 식이 된다. 계수는 직접 이중합과 Bessel 합을 서로 비교하여 검산했다.
+
+normal opening과 slip은 서로 다른 에너지를 더한 것이 아니다. 동일한 $U_0$에
+$U_0(a,s_0)$를 더하고 빼서 식~\eqref{eq:decomp}처럼 $\Delta U_n$과
+$V_{\rm slip}$으로 정확히 분해한다. 외부응력의 일은 intrinsic $U_0$에 넣지
+않고, 단축 인장응력 하나로부터 $Q_a=A_0\sigma$와 $Q_s=A_0M\sigma$만
+확률방정식에 넣는다. 독립 shear 피로하중은 없다.
+
+공식적인 4 governing equations는 G1 평균 층간거리, G2 평균 intrinsic
+초과에너지, G3 누적 비가역 dissipation $E_{\rm hyst}$, G4 정규화이다.
+$U_0$가 $s$에 대해 주기적이므로 slip 후 평균 lattice energy는 다시 낮아질 수
+있다. 반면 $E_{\rm hyst}=\int\dot D_{\rm irr}\dd t$는 단조 비감소하지만,
+그 전체가 재료에 저장된 damage energy라고 해석하지 않는다.
+
+소성은 단순한 phase lag가 아니다. $s=s_0+zb+\widetilde s$로 펼쳐 저장하고,
+unloading과 relaxation 뒤에도 $\Delta\langle z\rangle\ne0$일 때만 잔류
+소성변형으로 정의한다. 균열개시는 임의 $a_c$ 또는 $E_c$가 아니라
+$\partial_aU_0=Q_a$, $\partial_a^2U_0<0$인 외측 metastable barrier를
+통과하는 확률유출로 정의한다. 경계가 움직이면 식~\eqref{eq:movingflux}의
+상대 flux를 사용한다.
+
+현재 결과는 수학적/무차원 mechanism 검증이다. $A_0$, mobility, memory,
+$h_{\rm slip}$, dislocation hardening이 독립적으로 확정되기 전에는 알루미늄
+수명예측이라고 주장하지 않는다. EAM/DFT는 향후 정량 검증용일 뿐 현재
+fundamental potential을 대체하지 않는다.
+
+\input{symbol_index_ko.tex}
+\end{koreantranslation}
+
+\begin{thebibliography}{9}
+\bibitem{Risken} H. Risken, \emph{The Fokker--Planck Equation}, 2nd ed., Springer, 1989.
+\bibitem{Gardiner} C. W. Gardiner, \emph{Handbook of Stochastic Methods}, 3rd ed., Springer, 2004.
+\bibitem{DLMFBessel} NIST Digital Library of Mathematical Functions, Secs. 10.32 and 10.39, \url{https://dlmf.nist.gov/10}.
+\bibitem{DLMFZeta} NIST Digital Library of Mathematical Functions, Sec. 25.2, \url{https://dlmf.nist.gov/25.2}.
+\bibitem{DawBaskes} M. S. Daw and M. I. Baskes, ``Embedded-atom method,'' \emph{Phys. Rev. B} 29, 6443--6453 (1984).
+\end{thebibliography}
+\end{document}

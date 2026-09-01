@@ -1,0 +1,231 @@
+\section{Complete Symbol and Computational Index}
+
+This index is normative for the notation used in this document. Local dummy variables are marked as
+such; repeated glyphs with different subscripts are not interchangeable.
+
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.16\textwidth}
+                  >{\raggedright\arraybackslash}p{0.34\textwidth}
+                  >{\raggedright\arraybackslash}p{0.40\textwidth}}
+\toprule
+Symbol & Meaning and unit & Definition or calculation method\\
+\midrule
+\endfirsthead
+\toprule
+Symbol & Meaning and unit & Definition or calculation method\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+$a,a_0$ & instantaneous and zero-load equilibrium normal spacing; length & $a$ is the primary
+normal coordinate. Compute $a_0$ from Eq.~\eqref{eq:chain_equilibrium}, or from the minimum of a
+validated replacement energy.\\
+$a^\ddagger,a_{\rm inf}$ & normal barrier and lattice inflection spacing; length & Bracket all roots
+of $N_AU_\infty'(a)=\sigma A_0$, classify by $U_\infty''$, and use the negative-curvature root as
+$a^\ddagger$. Equation~\eqref{eq:normal_instability} gives $a_{\rm inf}$.\\
+$s,s_0,\widetilde s,b$ & unwrapped registry, reference registry, within-cell registry, and slip
+repeat; length & $s=zb+\widetilde s$; obtain $b$ and $s_0$ from the chosen lattice geometry and use
+$0\leq\widetilde s<b$.\\
+$z,\mathbb Z,\ddagger$ & integer well label, set of integers, and transition-state marker;
+dimensionless & Increment or decrement $z$ when unwrapped $s$ crosses a periodic cell boundary.
+The dagger is not multiplication; it marks a saddle or activation barrier.\\
+$r,r_e,r_p,r_{ij}$ & pair distances; length & $r_e$ is Eq.~\eqref{eq:re_sigma}; $r_p$ is
+Eq.~\eqref{eq:pair_distance}; $r_{ij}=|\bm R_i-\bm R_j|$ in the selected atomic geometry.\\
+$\bm d,\bm n,\bm e$ & unit slip direction, plane normal, and uniaxial loading direction;
+dimensionless & Normalize the crystallographic vectors and verify
+$\bm d\mathbin{\cdot}\bm n=0$.\\
+$\bm R_p^-,\bm r_p,\bm R_{ij}$ & lower-row site, cross-row separation vector, and reference lattice
+vector; length & Construct directly from the lattice basis and integer cell indices.\\
+$m,n,q$ & repulsive exponent, attractive exponent, and generic exponent; dimensionless & Require
+$m>n>1$ for the present one-dimensional sums; they are neither masses nor Schmid factors.\\
+$C_{m,n}$ & generalized LJ normalization; dimensionless & Evaluate
+Eq.~\eqref{eq:generalized_LJ}.\\
+$\epsc,\epsw,\sigLJ$ & pair-law coefficient, pair well depth, and zero-crossing distance; energy,
+energy, and length & Keep $\epsc=C_{m,n}\epsw$ explicit. Obtain them from a declared pair potential
+or independent cohesive calibration; do not fit them to the fatigue loop.\\
+$\begin{gathered}v_{m,n},E_{\rm pair}\\E_N,U_\infty\end{gathered}$ & pair, finite-system, finite-chain, and infinite-chain-per-atom
+energies; energy & Use Eqs.~\eqref{eq:generalized_LJ}, \eqref{eq:pair_counting},
+\eqref{eq:finite_chain_energy}, and \eqref{eq:normal_chain_energy}.\\
+$W_{m,n},\Delta W_{m,n}$ & cross-row energy and registry excess; energy & Evaluate the direct sum or
+Eq.~\eqref{eq:full_W_mn}; subtract the $s_0$ value for $\Delta W$.\\
+$\gamma_{m,n},\gamma_{\rm EAM},\gamma_{\rm GSF}$ & slip or generalized stacking-fault energy
+density; energy/area & Divide exact interface-cell excess energy by its represented area; see
+Eqs.~\eqref{eq:gamma_definition}, \eqref{eq:EAM_GSF}, and \eqref{eq:full_GSF}.\\
+$\psi,\Phi,\Phi_n$ & tilted slip energy, full patch potential, and normal-only potential; energy &
+Use Eqs.~\eqref{eq:tilted_energy} and \eqref{eq:full_patch_energy}; set $s=s_0,\tau=0$ for
+$\Phi_n$.\\
+$\Delta G_{z,\pm}^\ddagger$ & forward/backward activation barrier; energy & Locate the full-energy
+minimum and adjacent saddle by bracketed root finding, classify by the exact second derivative,
+then use Eq.~\eqref{eq:exact_barrier}.\\
+$A_{\rm at},A_0,A_{\rm rep},A_{\rm cell}$ & area per atomic column, normal mechanical
+representative area, registry repeat area, and interface-cell area; area & Compute atomic areas from
+the declared lattice cell. Keep $A_0$, $A_{\rm rep}$, statistical correlation area, and FEM
+element area distinct unless a geometry and counting derivation proves an equality.\\
+$N,N_A$ & finite atom count and equivalent column count; integers & $N_A=A_0/A_{\rm at}$ must agree
+with the energy counting convention.\\
+$h_{\rm slip}$ & thickness homogenizing a slip discontinuity; length & Specify from the selected
+slip band or coarse-graining thickness independently of mesh size.\\
+$\sigma,\sigma_{\rm c},\tau,\tau_{\rm int},\tau_{\rm ideal}$ & applied normal stress, normal
+instability stress, resolved shear, internal traction, and ideal shear strength; stress & Use
+Eqs.~\eqref{eq:normal_instability}, \eqref{eq:Schmid}, \eqref{eq:traction_full}, and
+\eqref{eq:ideal_strength}.\\
+$F_n,F_s,\mathcal M$ & normal force, slip force, and resolved-shear projection; force, force,
+dimensionless & $F_n=\sigma A_0$, $F_s=\tau A_0$,
+$\mathcal M=(\bm d\mathbin{\cdot}\bm e)(\bm n\mathbin{\cdot}\bm e)$, and
+$\tau=\mathcal M\sigma$.\\
+$\delta,\delta_0,\eta$ & normalized registry, reference registry, and separation; dimensionless &
+$\delta=s/b$, $\delta_0=s_0/b$, $\eta=a/b$.\\
+$p,k,\ell,i,j$ & direct-row, pair-separation, reciprocal-mode, and atom/component indices; integers
+& Their ranges are stated at each sum. $i,j$ in $\delta_{ij}$ label components, not atoms.\\
+$\nu,\mu,\chi$ & Mellin exponent, Bessel order, and Bessel argument; dimensionless & In the lattice
+sum, $\nu=q/2$, $\mu=\nu-1/2$, and $\chi=2\pi|\ell|\eta$. The Bessel argument is $\chi$, not the
+well index $z$.\\
+$t,u,x,y$ in transform integrals & local dummy integration/Fourier variables; $y$ is also the
+local dependent variable in the displayed Bessel ODE & Their dimensions follow the displayed
+substitution and they have no material-state meaning.\\
+$\begin{gathered}g(x),\widehat g(\ell),I_0\\I_\ell,\mathcal I\end{gathered}$ & local Poisson-transform function, its Fourier
+transform, zero/nonzero Fourier integrals, and a generic Bessel integral & These are derivation-only
+objects defined immediately before the equations in which they occur; evaluate them by the exact
+Gamma/Bessel identities shown there.\\
+$\Gamma(\cdot),\zeta(\cdot),I_\mu,K_\mu$ & Gamma, Riemann-zeta, modified Bessel first-kind, and
+modified Bessel second-kind functions & Use standard special-function libraries; verify $K_\mu$
+against Eq.~\eqref{eq:K_definition} when testing.\\
+$\Zsh_\nu,\Bmn_q,\Delta\Bmn_q$ & shifted Epstein--Hurwitz sum, closed exponent sum, and registry
+difference; dimensionless & Use Eqs.~\eqref{eq:Z_definition}, \eqref{eq:Bq}, and
+\eqref{eq:DeltaBq}. Increase the reciprocal cutoff to tolerance and confirm test points against
+the direct sum.\\
+$\beta,\gamma$ in Eq.~\eqref{eq:Bessel_generic_integral} & positive local integration parameters &
+For that derivation only, $\beta=\eta^2$ and $\gamma=\pi^2\ell^2$; they are not inverse temperature
+or stacking-fault energy.\\
+$\begin{gathered}\pi,e,\ii,\operatorname{Re}\\|\cdot|,\exp,\ln,\sum\\
+\int,\lim,\max\end{gathered}$ & circle constant, natural-logarithm base, imaginary
+unit, real part, norm, and standard operators & $\exp x=e^x$ and $\ln$ is its inverse. Sums and
+integrals use the displayed limits; $\lim$, $\max$, and absolute values have their standard exact
+meanings.\\
+$!,\bmod,\sim,\propto,\mathbb R$ & factorial, remainder operation, asymptotic/equivalence marker,
+proportionality marker, and real-number set & $j!=\Gamma(j+1)$ for nonnegative integer $j$;
+$s\bmod b$ retains only the within-cell registry, whereas unwrapped $s$ retains slip history.\\
+\end{longtable}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.16\textwidth}
+                  >{\raggedright\arraybackslash}p{0.34\textwidth}
+                  >{\raggedright\arraybackslash}p{0.40\textwidth}}
+\toprule
+Dynamic symbol & Meaning and unit & Definition or calculation method\\
+\midrule
+\endfirsthead
+\toprule
+Dynamic symbol & Meaning and unit & Definition or calculation method\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+$t,f,\omega_{\rm L}$ & time, cyclic frequency, and loading angular frequency; time, 1/time, 1/time &
+$\omega_{\rm L}=2\pi f$; for nonsinusoidal loading test every relevant harmonic.\\
+$T,\kB,\beta_T$ & absolute temperature, Boltzmann constant, and inverse thermal energy; K,
+energy/K, 1/energy & $\beta_T=(\kB T)^{-1}$.\\
+$q_i,v_i,m_i^*$ & collective coordinate, velocity, and effective mass; length, length/time, mass &
+$q_a=a,q_s=s$. For two rigid patches of masses $M_U,M_L$, use
+$m_i^*=M_UM_L/(M_U+M_L)$; use the moving mass when the other patch is fixed.\\
+$\mathcal K_i,R_i,\tau_{K_i}$ & memory-friction kernel, projected random force, and kernel decay
+time & Obtain $\mathcal K_i(t)=\beta_T\langle R_i(0)R_i(t)\rangle$ from a constrained equilibrium
+MD projection and estimate $\tau_{K_i}$ from its decay.\\
+$\Gamma_i,M_i,D_i$ & Markov friction, long-time mobility, and configuration diffusivity;
+mass/time, length$^2$/(energy time), length$^2$/time & If a Markov plateau exists,
+$\Gamma_i=\int_0^\infty\mathcal K_i(t)\dd t$, $M_i=1/\Gamma_i$, and $D_i=\kB TM_i$.\\
+$\xi_i,\delta_{ij},\delta(t-t')$ & unit white noise, Kronecker delta, and Dirac delta & Normalize by
+$\langle\xi_i(t)\xi_j(t')\rangle=\delta_{ij}\delta(t-t')$. Do not confuse $\delta_{ij}$ with
+$\delta=s/b$.\\
+$\rho,\rho_*,\mathcal P_b,\dd\Lambda$ & phase density, reference phase density, bonded phase domain,
+and phase-volume element & Normalize $\rho$ on $\mathcal P_b=\Omega_b\times\mathbb R^2$;
+$\rho_*$ only nondimensionalizes the logarithm.\\
+$\mathcal J_{v_i}^{\rm irr}$ & irreversible velocity-space probability current & Compute
+Eq.~\eqref{eq:velocity_irreversible_current}; it produces the Markov Kramers dissipation.\\
+$\mathcal F_K,\dot D_K$ & inertial nonequilibrium free energy and irreversible loss rate; energy,
+energy/time & Use Eqs.~\eqref{eq:Kramers_free_energy} and \eqref{eq:Kramers_dissipation}.\\
+$\epsilon_i^{\rm in},\epsilon_i^{\rm mem}$ & inertial and memory reduction tests; dimensionless &
+Compute Eq.~\eqref{eq:overdamped_conditions}; use Smoluchowski only when both are small for every
+relevant loading harmonic.\\
+$P,P_{\rm eq},P_*,\mathcal Z_{\rm conf}$ & configuration density, equilibrium density, reference
+density, and configurational partition function & $P$ is the velocity marginal of $\rho$; normalize
+using Eq.~\eqref{eq:normalization}; use $P_{\rm eq}$ only in a bounded bonded basin.\\
+$\begin{gathered}\Omega_b,\partial\Omega_b\\\partial\Omega_{\rm fr},\bm n_\Omega,\dd S\end{gathered}$ & bonded domain, its
+boundary, absorbing fracture portion, outward normal, and boundary measure & Place the normal
+fracture boundary at the full-energy saddle $a^\ddagger$, not at a fitted distance.\\
+$J_a,J_s,\bm J$ & configuration probability currents; 1/(length time) & Evaluate
+Eqs.~\eqref{eq:Ja}--\eqref{eq:Js}; use conservative finite-volume face fluxes.\\
+$\mathcal F,\mu_P,D_{\rm irr},\dot D_{\rm irr}$ & overdamped free energy, probability chemical
+potential, accumulated dissipation, and rate; energy, energy, energy, energy/time & Use
+Eqs.~\eqref{eq:free_energy_functional}, \eqref{eq:probability_chemical_potential},
+\eqref{eq:dissipation}, and \eqref{eq:accumulated_dissipation}.\\
+$S,P_{\rm crack},p_{\rm tail}$ & intact survival, cumulative crack probability, and instantaneous
+tail probability; dimensionless & Use Eqs.~\eqref{eq:survival_flux} and
+\eqref{eq:tail_probability}; never identify dissipation directly with crack probability.\\
+$\bar a,\bar s,\operatorname{Var}[a],\bar E$ & unconditioned means, variance, and mean potential
+energy & Use Eqs.~\eqref{eq:mean_a}--\eqref{eq:mean_energy}; divide by $S$ for intact-conditional
+moments.\\
+$\begin{gathered}g,\bm\nabla,\langle\cdot\rangle\\\partial_t,\dot{(\cdot)},(\cdot)'\end{gathered}$ & generic observable, gradient,
+ensemble average, partial time derivative, total time derivative, and one-variable derivative &
+Use Eq.~\eqref{eq:general_moment_boundary}; keep its boundary term for absorbing fracture.\\
+\end{longtable}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.16\textwidth}
+                  >{\raggedright\arraybackslash}p{0.34\textwidth}
+                  >{\raggedright\arraybackslash}p{0.40\textwidth}}
+\toprule
+Slip/EAM symbol & Meaning and unit & Definition or calculation method\\
+\midrule
+\endfirsthead
+\toprule
+Slip/EAM symbol & Meaning and unit & Definition or calculation method\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+$s_z,s_{z,\pm}^\ddagger$ & stable registry in well $z$ and adjacent forward/backward saddle; length
+& Solve $\partial_s\gamma=\tau$ on each periodic interval and classify with
+$\partial_s^2\gamma$.\\
+$\gamma_p,\varepsilon_p$ & reduced plastic shear and projected axial plastic strain; dimensionless
+& Use Eq.~\eqref{eq:plastic_strain}; this is ideal single-slip bookkeeping, not hardening.\\
+$s_L,s_R,x,y,T_{\rm FP}$ & reflecting boundary, absorbing boundary, quadrature variables, and mean
+first-passage time; length, length, length, length, time & Select boundaries around the exact well
+and saddle and evaluate Eq.~\eqref{eq:exact_MFPT} by adaptive quadrature.\\
+$k_{z,\pm}^{\rm FP},k_{z,\pm}$ & first-passage and optional asymptotic transition rates; 1/time &
+Invert the exact overdamped MFPT under its assumptions; use Eq.~\eqref{eq:Kramers_rate} only for a
+verified high barrier.\\
+$p_z,J_{a,z}$ & probability density and normal current in well $z$ & Advance
+Eq.~\eqref{eq:master_equation} only when intrawell, escape, and load time scales separate.\\
+$\begin{gathered}E_{\rm EAM},\phi,F,\rho_i\\f,f_0,\beta_\rho\end{gathered}$ & EAM energy, pair term, embedding function, host
+density, density kernel, amplitude, and decay coefficient & Use a complete validated EAM
+parameterization. Sum $f(r_{ij})$ before applying nonlinear $F$. $\beta_\rho$ is not $\beta_T$.\\
+$\mathcal U,\mathcal L,\mathcal U_{\rm cell}$ & upper half-crystal, lower half-crystal, and upper
+interface cell & Generate from the selected crystal orientation and converge neighbor extent or the
+validated EAM cutoff.\\
+$M_U,M_L$ & masses of upper and lower representative moving patches; mass & Sum atomic masses in
+the correlated patch used for the relative collective coordinate.\\
+\end{longtable}
+\normalsize
+
+\subsection{Reproducible calculation sequence}
+
+\begin{enumerate}
+  \item Declare geometry and counting: $m,n,\epsLJ,\sigLJ,b,A_{\rm at},A_0,s_0$ and whether the
+  normal-only or optional slip branch is active.
+  \item Evaluate $U_\infty$ and $W_{m,n}$. Increase the Bessel-mode cutoff until the energy and all
+  required derivatives are stable at the requested tolerance; verify representative points against
+  the direct real-space sum.
+  \item Locate minima, saddles, and instability points by bracketed root finding on the full
+  analytic energy and classify them with full derivatives. No polynomial energy fit is required.
+  \item Obtain $m_i^*$ and $\mathcal K_i$ from atomistic geometry and constrained equilibrium MD.
+  Test Eq.~\eqref{eq:overdamped_conditions}; do not introduce $M_i$ unless the reduction is
+  supported.
+  \item If inertia matters, advance Eq.~\eqref{eq:Kramers_PDE} with a conservative,
+  positivity-preserving finite-volume method in $(q_i,v_i)$. If the reduction is justified, advance
+  Eq.~\eqref{eq:Smoluchowski} with conservative face fluxes. Check positivity, normalization, and
+  time-step and domain convergence in either case.
+  \item For crack initiation, place the absorbing normal boundary at the full-energy saddle,
+  integrate its outward probability flux, and report $p_{\rm tail}$, $S$, and $P_{\rm crack}$
+  separately. Use Eq.~\eqref{eq:dissipation_with_boundary}, not the closed-boundary balance.
+  \item Repeat with finer state grids, smaller time steps, larger lattice-sum cutoffs, and larger
+  velocity domains. Report convergence before interpreting a fatigue hysteresis loop.
+\end{enumerate}
