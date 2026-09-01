@@ -27,6 +27,24 @@ This file records the assumptions of the active **one-dimensional normal-LJ / co
 8. No named probability family is assumed for $P$.
 9. Crack initiation is pursued through normal opening / normal stability loss, not through an inserted empirical damage law.
 
+## Active Smoluchowski/Floquet assumptions
+
+1. Eliminated atomic and phonon coordinates act as an isothermal bath on the
+   resolved timescale, and spacing-velocity relaxation is fast enough for the
+   overdamped reduction.
+2. Mobility is constant. No coordinate-dependent mobility, stochastic
+   convention correction, or independently fitted diffusivity is active.
+3. The tangent-instability point $\lambda_c$ is an operational absorbing
+   initiation boundary. Its mathematical use is exact after declaration; its
+   equivalence to observed crack initiation remains a physical validation
+   problem.
+4. The imposed load is periodic when the one-cycle spectrum is used. Cycle
+   count is only a stroboscopic observation of the continuous-time PDE, not a
+   newly introduced evolution variable.
+5. The generator itself does not degrade between cycles. Therefore the
+   long-cycle survivor-conditioned density and energy are periodic, while
+   irreversible accumulation occurs through escaped probability.
+
 ## Exact result versus physical constraint
 
 The continuous-time energy-feasibility theorem is exact only after the admissible support is stated.
@@ -93,6 +111,22 @@ coordinate를 probabilistic하게 다룬다는 이유만으로 smooth thermal $P
 7. damage를 흉내내기 위해 loading history에 따라 LJ parameter를 바꾸지 않는다.
 8. $P$에 특정 named probability family를 가정하지 않는다.
 9. crack initiation은 empirical damage law가 아니라 normal opening / normal stability loss로 다룬다.
+
+## 활성 Smoluchowski/Floquet 가정
+
+1. 생략한 atomic/phonon 좌표는 해석 시간척도에서 isothermal bath로
+   작용하고, spacing velocity relaxation은 overdamped 축약이 가능할 만큼
+   빠르다.
+2. mobility는 상수다. 위치의존 mobility, stochastic convention 보정,
+   독립 fitting diffusion은 활성화하지 않는다.
+3. 변곡점 $\lambda_c$를 operational absorbing initiation boundary로 둔다.
+   선언 뒤의 수학은 정확하지만 실제 균열개시와 같은지는 별도 물리 검증
+   대상이다.
+4. 한 주기 spectrum을 쓸 때 하중은 주기적이다. cycle count는 연속시간
+   PDE를 stroboscopic하게 관찰한 것이며 새로운 근본 evolution variable이
+   아니다.
+5. generator 자체는 cycle에 따라 열화되지 않는다. 따라서 장기 생존조건부
+   분포와 에너지는 주기적이고, 비가역 누적은 유출확률로 발생한다.
 
 ## Exact result와 physical constraint의 구분
 

@@ -183,6 +183,29 @@ outgoing flux, survival and cumulative first-passage probability. The
 reflecting model's mass above $a_c$ remains an instantaneous instability-tail
 diagnostic and is not a cumulative initiation probability.
 
+## Periodic survival spectrum
+
+For a periodic force with period $T$, the absorbing PDE defines a linear
+one-cycle operator $\mathcal K=\mathcal U(T,0)$. Its positive principal mode
+is
+
+$$\mathcal Kq_0=rq_0,\qquad \int q_0d\lambda=1,\qquad 0<r<1.$$
+
+This is a consequence of the governing equation, not a fitted fatigue kernel.
+The associated conditional density is periodic, while its unnormalised mass
+is multiplied by $r$ each cycle. Therefore
+
+$$S_N=r^N,\qquad 1-r=P_{\rm escape,cycle},\qquad
+\int_0^T h(t)dt=-\log r$$
+
+when initialized in the principal mode; generic initial distributions approach
+the same successive cycle ratio after a transient. This also proves that the
+conditioned survivor energy is periodic in the long-cycle regime. The active
+Markov model accumulates escaped probability, not an arbitrary retained
+fraction of loop work. Full derivation, numerical checks, Korean summary and
+the explicitly uncalibrated low-cycle result are in
+[`SMOLUCHOWSKI_FLOQUET_SURVIVAL.md`](SMOLUCHOWSKI_FLOQUET_SURVIVAL.md).
+
 ## Exact moment balances
 
 For $Q_q=\int_L^R q(a)\rho da$,

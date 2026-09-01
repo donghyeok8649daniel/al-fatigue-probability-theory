@@ -1,5 +1,19 @@
 # Open Problems — Active 1D Layer-LJ Mainline
 
+## September 2026 periodic-first-passage update
+
+The mathematical connection from the active absorbing Smoluchowski PDE to
+long-cycle survival is now closed at the model level. The one-cycle positive
+sub-Markov operator has principal multiplier $r$, giving integrated cycle
+hazard $-\log r$, principal-mode survival $S_N=r^N$, an adjoint-derived
+initial-state prefactor, and controlled fast/slow frequency limits. See
+`SMOLUCHOWSKI_FLOQUET_SURVIVAL.md`.
+
+What remains open is physical identification, not another empirical life law:
+$A_0$, spacing mobility/friction, bath reduction, single-crystal directional
+calibration, and experimental/atomistic validation of first passage through
+$\lambda_c$ as an initiation event.
+
 ## 1D statistical-cell and dependence priority
 
 <!-- STATISTICAL_CELL_OPEN_EN -->
@@ -139,7 +153,7 @@ Normalization, mean, and energy alone cannot force a tensile tail because LJ com
 
 An exact crack-free energy ceiling therefore still requires an independently justified compression-side constraint, such as a mechanically derived lower support bound or one-sided compression-energy budget.
 
-## 7. Tail versus first passage
+## 7. Tail versus first passage — mathematical link completed, physics open
 
 The instantaneous tail
 
@@ -147,7 +161,13 @@ $$
 Q_c(t)=\int_{\lambda_c}^{\infty}p_\lambda(\lambda,t)\,d\lambda
 $$
 
-is not automatically a cumulative crack-initiation probability. A later theory must connect the evolving spatial/probability state to a mechanically defined first-passage event.
+is not a cumulative crack-initiation probability. The active kinetic model now
+keeps it as a reflecting precursor diagnostic and separately defines
+irreversible initiation as absorbing first passage through $\lambda_c$. Its
+cycle operator supplies survival, flux and hazard without fitting. The open
+question is whether this operational tangent-instability crossing agrees with
+atomistic or experimental crack-initiation observations for the chosen
+single-crystal direction and representative patch.
 
 ## 8. Required falsification rules
 
@@ -164,6 +184,18 @@ Any next model must preserve:
 ---
 
 # 한국어 번역 — 활성 1D Layer-LJ Mainline 미해결 문제
+
+## 2026년 9월 주기 first-passage 갱신
+
+활성 흡수형 Smoluchowski PDE에서 장기 cycle 생존으로 가는 수학적 연결은
+모델 수준에서 완료됐다. 양의 sub-Markov 한 주기 연산자의 최대 고유값
+$r$에서 cycle 누적 hazard $-\log r$, 고유상태 생존 $S_N=r^N$, 왼쪽
+고유함수로 정해지는 초기상태 계수와 빠른/느린 주파수 극한이 나온다.
+
+남은 것은 새로운 경험 수명식이 아니라 물리량 식별이다. $A_0$, spacing
+mobility/friction, bath 축약, 단결정 방향별 calibration, 그리고
+$\lambda_c$ first passage가 실제 균열개시인지에 대한 atomistic/실험 검증이
+필요하다.
 
 ## 1D 통계셀 및 종속성 우선문제
 
@@ -312,7 +344,7 @@ normalization, mean, energy만으로는 tensile tail을 강제할 수 없다. LJ
 
 따라서 exact crack-free energy ceiling에는 mechanically derived lower support bound 또는 one-sided compression-energy budget 같은 독립적으로 정당화된 compression-side constraint가 여전히 필요하다.
 
-## 7. Tail과 first passage 구분
+## 7. Tail과 first passage 구분 — 수학적 연결 완료, 물리 검증 미완료
 
 instantaneous tail
 
@@ -320,7 +352,12 @@ $$
 Q_c(t)=\int_{\lambda_c}^{\infty}p_\lambda(\lambda,t)\,d\lambda
 $$
 
-은 자동으로 cumulative crack-initiation probability가 아니다. 나중 이론에서 evolving spatial/probability state를 mechanically defined first-passage event와 연결해야 한다.
+은 cumulative crack-initiation probability가 아니다. 현재 kinetic model은
+이를 reflecting precursor 진단량으로만 유지하고, 비가역 개시는
+$\lambda_c$ 흡수경계의 first passage로 별도 정의했다. 한 주기
+연산자에서 생존, 유출, hazard가 fitting 없이 유도된다. 남은 문제는 이
+변곡점 통과 정의가 선택한 단결정 방향과 대표 patch에서 atomistic/실험
+균열개시와 일치하는지 검증하는 것이다.
 
 ## 8. 필수 반증 규칙
 

@@ -20,9 +20,20 @@ before crack initiation, so the exact homogeneous zeta-lattice energy is the
 active energy. The local crack-gap energy is retained only as a post-initiation
 archive comparison in `theory/exact_lattice_energy.py`. The finite-volume kinetic model
 with reflecting or absorbing escape is in `theory/smoluchowski_escape.py`.
+The periodic absorbing solver and its one-cycle survival spectrum are in
+`theory/smoluchowski_floquet.py`. Its principal multiplier is derived from the
+governing PDE, not fitted as a fatigue-life coefficient. See
+`docs/SMOLUCHOWSKI_FLOQUET_SURVIVAL.md`.
+수식을 최소화한 한국어 연구진전 설명은
+`docs/RESEARCH_PROGRESS_KO.md`에 정리되어 있다.
 Uncalibrated runs are dimensionless demonstrations, not aluminum-life
 predictions. In particular, the mechanical representative area $A_0$ is not a
 correlation area $A_c$ and is not a FEM element area.
+
+주기하중의 비가역 균열개시는 흡수형 Smoluchowski 방정식의 한 주기
+생존연산자로 계산한다. 최대 고유값은 장시간 cycle 생존비이며 별도로 맞춘
+피로계수가 아니다. 현재 수치는 무차원 예제일 뿐 단결정 알루미늄의 수명
+예측값이 아니다.
 
 An owner-supplied 23-page two-row ideal-slip derivation is preserved under
 `research/source/` and audited under `libraries/shear/`. Its exact shifted
@@ -101,7 +112,34 @@ $$
 
 Each C FEM element supplies its local normal-stress history to a conditional-intact Smoluchowski solver. The implementation preserves normalization and the finite-volume Gibbs stationary state, exports mean spacing, variance, energy, loop work, and the tail above $\lambda_c$, and renders the actual 1D node/element mesh plus 2D/3D tensile-only views.
 
-This is a **candidate kinetic extension**, not yet a calibrated aluminum fatigue-life law. The current upper boundary is no-flux, so the critical tail is an instability diagnostic rather than irreversible crack probability. See `docs/MILESTONE16_PROBABILITY_ENERGY_HYSTERESIS_FEM.md`.
+This is a **candidate kinetic extension**, not yet a calibrated aluminum
+fatigue-life law. Reflecting runs use the critical tail only as an
+instantaneous instability diagnostic. Separate absorbing runs define
+irreversible initiation as first passage through $\lambda_c$ and report
+survival, outgoing flux and hazard. These two observables are not mixed. See
+`docs/MILESTONE16_PROBABILITY_ENERGY_HYSTERESIS_FEM.md` and
+`docs/SMOLUCHOWSKI_FLOQUET_SURVIVAL.md`.
+
+The periodic survival calculation is reproducible with
+
+```powershell
+py -3 -m simulations.run_smoluchowski_floquet
+```
+
+It writes verification plots and CSV/JSON data under
+`results/figures/smoluchowski_floquet/` and
+`results/data/smoluchowski_floquet/`. At the explicitly uncalibrated demo
+point, $r\simeq0.9048$ explains the previously observed low-cycle probability
+loss. The result also proves that conditioned survivor energy becomes
+periodic; the active Markov model accumulates escaped probability, not an
+arbitrarily retained fraction of hysteresis work.
+
+With $E_0=E_{[hkl]}A_0a_0$, the reduced load is exactly
+$Fa_0/E_0=\sigma/E_{[hkl]}$, but the inverse temperature and physical clock
+remain $E_{[hkl]}A_0a_0/(k_BT)$ and
+$t_r=\gamma a_0/(E_{[hkl]}A_0)$. Thus loading-axis stress alone cannot identify
+life; the representative area and spacing mobility remain required physical
+inputs and are never replaced by FEM mesh size.
 
 ## Active 1D statistical-cell dependence scale
 

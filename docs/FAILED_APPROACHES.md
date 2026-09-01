@@ -34,6 +34,16 @@ $$
 
 is an instantaneous unstable fraction, not automatically a cumulative crack-initiation probability. A first-passage or absorbing-boundary formulation is required for initiation probability.
 
+## Retaining hysteresis work as pair-potential energy
+
+Adding $H_k$ or an arbitrary fraction of it to $U(a)$ is rejected. $U$ is a
+state function, whereas loop work is path dependent. In the isothermal
+Smoluchowski reduction, current dissipation is transferred to eliminated bath
+coordinates and the surviving conditional state becomes periodic. The
+irreversible active observable is escaped probability. Persistent stored
+energy would require a separately derived slow microscopic state; it cannot be
+created by changing the same LJ potential after each cycle.
+
 ## Finite-harmonic form as a global spacing-distribution model
 
 A single or finite set of spatial harmonics was explored as a push-forward diagnostic. This route is not accepted as the active global form of $P(\lambda,t)$ because a finite harmonic ansatz inserts spatial periodicity that is not guaranteed by the actual driven boundary-value problem.
@@ -87,6 +97,15 @@ Q_c(t)=\int_{a_c}^{\infty}P(a,t)\,da
 $$
 
 는 그 순간 unstable 영역에 존재하는 분율이다. 이것이 자동으로 누적 crack-initiation probability가 되는 것은 아니다. 균열개시 확률을 정의하려면 first-passage 또는 absorbing-boundary 정식화가 필요하다.
+
+## Hysteresis work를 pair-potential energy로 저장하는 접근
+
+$H_k$ 또는 그 임의 분율을 $U(a)$에 더하는 방식은 배제한다. $U$는
+상태함수이고 loop work는 경로의존량이다. isothermal Smoluchowski 축약에서
+current dissipation은 생략한 bath 좌표로 전달되고, 생존조건부 상태는
+주기상태가 된다. 현재 비가역량은 유출확률이다. 지속적인 저장에너지를
+표현하려면 별도로 유도한 느린 미시상태가 필요하며 같은 LJ potential을
+cycle마다 바꿔서 만들 수 없다.
 
 ## 유한 harmonic 형식을 전역 spacing distribution 모델로 사용하는 접근
 

@@ -3,7 +3,7 @@
 \usepackage{amsmath,amssymb,booktabs,graphicx,hyperref}
 \title{One-Dimensional Fatigue Modeling of Pure Aluminum:\\Deterministic Calibration and a Probabilistic Spacing Hypothesis}
 \author{Donghyeok Kim \and Minsoo Kang \and Junhyeok Park}
-\date{August 2026}
+\date{September 2026}
 \newcommand{\dd}{\mathrm d}
 \begin{document}\maketitle
 \begin{abstract}
@@ -134,16 +134,148 @@ The reflecting-model mass above $a_c$ is an instantaneous tail diagnostic;
 first-passage flux and cumulative initiation are distinct. No post-initiation
 opening or propagation is modeled.
 
+\section{Periodic first passage and the Floquet--Perron survival spectrum}
+Suppose the normal force is periodic with period $T$, and let
+$\mathcal U(t_2,t_1)$ denote the linear absorbing Smoluchowski evolution.
+The one-cycle operator
+\begin{equation}\mathcal K=\mathcal U(T,0)\end{equation}
+is positive and sub-Markov: it maps nonnegative intact densities to
+nonnegative densities without increasing their mass. The finite-volume
+backward-Euler step obeys the exact telescoping balance
+\begin{equation}
+S^{j+1}-S^j=-\Delta t\,J_{\rm out}^{j+1}.
+\end{equation}
+Its Chang--Cooper diffusion matrix is an irreducible M-matrix under the stated
+finite-domain conditions. Perron--Frobenius theory \cite{seneta} therefore
+gives a positive principal conditional density and multiplier
+\begin{equation}
+\boxed{\mathcal Kq_0=rq_0,\qquad \int q_0\dd\lambda=1,
+\qquad 0<r<1.}
+\end{equation}
+This eigenproblem is not a fitted fatigue law; it is one-period propagation of
+the governing PDE. Periodic conditional limits and spectral gaps for absorbed
+Markov evolution, and positive principal modes for periodic-parabolic
+operators, are established in broader settings in
+\cite{periodicqsd,daners,timeinhomogeneous}.
+
+Within a cycle define
+\begin{equation}
+g(\theta)=\int\mathcal U(\theta,0)q_0\dd\lambda,\qquad
+q(\lambda,\theta)={\mathcal U(\theta,0)q_0\over g(\theta)}.
+\end{equation}
+Then $g(0)=1$, $g(T)=r$, and $q(\lambda,T)=q(\lambda,0)$. Since
+$\dot g=-J_{\rm out}$,
+\begin{equation}
+\boxed{\mathcal H_c=\int_0^T{J_{\rm out}\over g}\dd t=-\log r,
+\qquad S_N=r^N}
+\end{equation}
+for an initial principal mode. For a generic nonnegative initial density, the
+successive survival ratios converge to $r$. If the positive left mode is
+normalized by $w_0^Tq_0=1$, the missing initial-state coefficient is determined,
+not fitted:
+\begin{equation}
+w_0^T\mathcal K=rw_0^T,\qquad
+S_N\sim (w_0^T\rho_0)r^N.
+\end{equation}
+The ratio $|r_2|/r$ sets the leading conditional transient contraction per
+cycle. The conditioned density satisfies
+\begin{equation}
+\partial_tq=-\partial_\lambda J[q]+h(t)q,
+\qquad h=J_{\rm out}[q],
+\end{equation}
+where $+hq$ is solely the normalization correction after conditioning on
+survival, not a physical probability source.
+When first passage is binned by cycle, the principal mode gives the derived
+geometric law
+\begin{equation}
+\Pr(K_{\rm init}=k)=r^{k-1}(1-r),\qquad
+\mathbb E K_{\rm init}={1\over1-r},\qquad
+\operatorname{Var}K_{\rm init}={r\over(1-r)^2}.
+\end{equation}
+This is not an assumed Weibull or empirical S--N distribution; the
+phase-resolved flux retains timing information within each cycle.
+
+This spectrum also exposes a limitation. In the principal regime the
+conditional density, mean spacing, variance, and mean pair energy repeat each
+cycle. Hence the active Markov model accumulates irreversible escaped
+probability, but it does not continually store dissipated loop work in the
+surviving pair-energy distribution. Persistent conditional-tail growth would
+require a microscopically derived slow state or memory kernel; no arbitrary
+energy-storage variable is introduced here.
+
+For the uncalibrated reduced demonstration
+$\beta=2000$ and
+$f(t)=0.008+0.007\sin(2\pi t/12)$, the computation gives
+$r=0.9047876$, $1-r=0.0952124$, and $-\log r=0.100055$, corresponding to
+$N_{50}=\log(0.5)/\log r=6.928$ cycles in the principal mode. This low cycle
+count explains the earlier numerical behaviour but is not an aluminum-life
+prediction: $E_0$, $A_0$, temperature, mobility time scale, and the initiation
+definition have not been jointly calibrated.
+In the phase-resolved principal mode the force peaks at cycle phase $0.25$,
+whereas the conditional mean spacing, mean interaction energy and hazard peak
+near $0.35$, and the variance near $0.40$. This directly resolves the
+finite-mobility probability-transport lag responsible for the hysteretic
+loading--unloading distinction; it is not attributed to diffusion alone.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{../results/figures/smoluchowski_floquet/operator_verification.png}
+\caption{Independent checks of the principal one-cycle survival multiplier:
+power iteration, direct cycle ratios, and geometric survival from the
+principal conditional density.}
+\label{fig:floquet-verification}
+\end{figure}
+
+For the 70-cell dense diagnostic, $|r_2|/r=9.12\times10^{-5}$ and the
+conditioned-equilibrium initialization has the independently predicted
+coefficient $w_0^T\rho_0=0.98978$. This accounts for the observed convergence
+of the direct cycle ratio after essentially one transient cycle.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{../results/figures/smoluchowski_floquet/biorthogonal_survival_spectrum.png}
+\caption{Right conditional mode, left survival-propensity weight, spectral
+contraction and the initial-state asymptotic prefactor.}
+\label{fig:biorthogonal-spectrum}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{../results/figures/smoluchowski_floquet/phase_resolved_mode.png}
+\caption{Phase-resolved periodic conditional density, within-cycle survival,
+moments, interaction energy and first-passage hazard.}
+\label{fig:phase-mode}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{../results/figures/smoluchowski_floquet/energy_tail_escape_distinction.png}
+\caption{State-function energy, reflecting instability-tail diagnostic and
+absorbing first-passage hazard are reported separately and are not added to
+one another.}
+\label{fig:energy-tail-escape}
+\end{figure}
+
 \section{Numerical method and verification}
 Cell-centered finite volumes use Chang--Cooper exponential fitting
 \cite{changcooper}, backward Euler, reflecting lower flux and selectable
 reflecting or absorbing upper boundary. Tests cover pair counting, zeta
 convergence, equilibrium and instability derivatives, exact normalized-energy
 equivalence, Gibbs stationarity, positivity, reflecting mass, absorbing
-outflux balance, phase lag, frequency limits and refinement. Moment balances
+outflux balance, phase lag, frequency limits and refinement. The periodic
+tests also assemble a small cycle matrix explicitly, compare its spectral
+radius with power iteration, verify $S_N=r^N$, demonstrate convergence from a
+generic initial density, verify invariance under a change of cycle phase
+origin, and refine both grid and timestep. Moment balances
 retain $-[qJ]_L^R$; conditional moments obey
 $\dot{\langle q\rangle}_c=(\dot Q_q-\langle q\rangle_c\dot S)/S$.
 Nonlinear LJ drift leaves the hierarchy unclosed; no Gaussian closure is used.
+With cycle phase $\theta=t/T$, the fast-period expansion is
+$\mathcal K=I+T\overline{\mathcal L}+O(T^2)$, so $1-r=O(T)$ while
+$-\log(r)/T$ approaches a finite decay rate. Under a separated instantaneous
+principal mode, the slow adiabatic limit instead approaches the cycle average
+of the frozen-load principal escape rate. These limits distinguish loss per
+cycle from loss per unit physical time.
 
 \section{Limitations and unresolved physical parameters}
 Unresolved physical inputs include $\varepsilon_{\rm LJ},\sigma_{\rm LJ}$
@@ -151,6 +283,18 @@ consistent with the 1D coarse graining, $A_0$, $T$, mobility, escape condition,
 and correlation scales $l_c,A_c,V_c$. Physical inputs are separated from
 domain, cell count, timestep, tolerance and output cadence. Consequently the
 reported sweep is dimensionless and is not a calibrated aluminum lifetime.
+The nondimensional groups make this non-identifiability explicit. Using the
+loading-axis single-crystal modulus,
+\begin{equation}
+E_0=E_{[hkl]}A_0a_0,\qquad
+{Fa_0\over E_0}={\sigma\over E_{[hkl]}},\qquad
+\beta={E_{[hkl]}A_0a_0\over k_BT},\qquad
+t_r={\gamma a_0\over E_{[hkl]}A_0}.
+\end{equation}
+The representative area cancels from reduced stress but not from thermal
+coarse graining or the mobility clock. It therefore cannot be replaced by a
+FEM element area, and a physical cycle count cannot be claimed before $A_0$
+and $\gamma$ are independently constrained.
 
 \section{FEM/UI extension roadmap}
 Only after theory validation, a separate branch may display 1D--3D meshes,
@@ -167,5 +311,17 @@ and 25.11, Riemann and Hurwitz zeta functions.
 scheme for Fokker--Planck equations,'' J. Comput. Phys. 6 (1970) 1--16.
 \bibitem{sg} D. L. Scharfetter and H. K. Gummel, IEEE Trans. Electron Devices
 16 (1969) 64--77.
+\bibitem{seneta} E. Seneta, \emph{Non-negative Matrices and Markov Chains},
+2nd ed., Springer, 1981.
+\bibitem{periodicqsd} N. Champagnat and D. Villemonais,
+``Quasi-limiting estimates for periodic absorbed Markov chains,''
+arXiv:2211.02706, 2022.
+\bibitem{daners} D. Daners, ``Existence and perturbation of principal
+eigenvalues for a periodic-parabolic problem,'' Electron. J. Differential
+Equations, Conf. 05, pp. 51--67, 2000.
+\bibitem{timeinhomogeneous} N. Champagnat and D. Villemonais,
+``Uniform convergence of penalized time-inhomogeneous Markov processes,''
+ESAIM Probab. Stat. 22 (2018), 129--162,
+doi:10.1051/ps/2017022.
 \end{thebibliography}
 \end{document}

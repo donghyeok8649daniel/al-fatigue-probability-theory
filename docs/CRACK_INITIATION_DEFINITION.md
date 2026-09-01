@@ -39,6 +39,13 @@ comparison. It lies beyond the tangent-instability point below critical force
 and merges with it only at critical force. It is not the active initiation
 boundary.
 
+For periodic loading, the absorbing evolution over one cycle has principal
+survival multiplier $r$. In its periodic conditional mode,
+$S_N=r^N$, cycle escape is $1-r$, and integrated cycle hazard is $-\log r$.
+This is the long-cycle consequence of first passage, not a separate empirical
+definition of damage. Survivor-conditioned energy is periodic; it is not
+artificially accumulated to create initiation.
+
 ## FEM and UI interpretation
 
 Each FEM element supplies only its scalar loading-axis normal-stress history.
@@ -59,6 +66,12 @@ values and asks for declared/calibrated probability parameters.
 정의한다. 임계점을 통과한 확률은 intact 분포로 되돌리지 않는다. 이때
 survival은 아직 개시되지 않은 확률, 누적 유출은 initiation probability,
 순간 유출률을 survival로 나눈 값은 hazard다.
+
+주기하중에서는 흡수형 시간진화를 한 cycle 적용한 연산자의 최대 생존
+고유값을 $r$이라 한다. 주기 조건부분포에서 $S_N=r^N$, cycle 유출은
+$1-r$, cycle 누적 hazard는 $-\log r$이다. 이는 별도 damage law가 아니라
+위 first-passage 정의의 장기 결과다. 생존조건부 에너지는 주기적이며
+균열개시를 만들기 위해 임의로 누적하지 않는다.
 
 이 정의는 임계점에서 거시적 자유표면이 이미 완성됐다는 뜻이 아니다.
 균열 전 국소 균질모델이 더 이상 안정하지 않다는 조작적 판정이다.
