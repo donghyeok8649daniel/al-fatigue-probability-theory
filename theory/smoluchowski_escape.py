@@ -1,8 +1,9 @@
 # === 한국어 파일 안내 시작 ===
 # - 파일 역할: 활성 1D normal layer-LJ 이론 계산에 사용하는 Python 모듈이다.
 # - 주요 클래스: TransportConfig, TransportHistory
-# - 주요 함수/메서드: _validate, domain_max, _grid, conditional_equilibrium, _face_coefficients
-#   _absorbing_coefficient, step, _barrier_dimensionless, solve
+# - 주요 함수/메서드: _validate, domain_max, _grid, transport_grid, conditional_equilibrium, _face_coefficients
+#   _absorbing_coefficient, finite_volume_generator, step, advance_interval, _barrier_dimensionless
+#   solve
 # - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
 # === 한국어 파일 안내 끝 ===
 """Finite-volume Smoluchowski transport with reflecting or absorbing escape.

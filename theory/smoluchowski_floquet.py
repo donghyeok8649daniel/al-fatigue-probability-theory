@@ -1,3 +1,11 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: 활성 1D normal layer-LJ 이론 계산에 사용하는 Python 모듈이다.
+# - 주요 클래스: CycleTrace, FloquetResult, DenseCycleSpectrum
+# - 주요 함수/메서드: _validate_protocol, propagate_cycle, principal_survival_mode, cycle_operator_matrix
+#   dense_cycle_spectrum, asymptotic_survival_prefactor, frozen_principal_escape_rate
+#   adiabatic_mean_escape_rate, direct_cycle_survival_ratios
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 """One-cycle survival spectrum of the absorbing Smoluchowski equation.
 
 No fatigue-life law is postulated here.  A periodic load and the already

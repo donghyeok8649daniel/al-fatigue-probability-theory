@@ -1,3 +1,19 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
+# - 주요 클래스: 없음 또는 외부 선언만 사용
+# - 주요 함수/메서드: _protocol, _config, test_protocol_must_be_periodic_and_boundary_absorbing
+#   test_principal_mode_is_positive_periodic_and_mass_balanced
+#   test_eigenstate_survival_is_exact_geometric_and_generic_ratios_converge
+#   test_dense_operator_spectral_radius_matches_power_iteration
+#   test_left_perron_mode_predicts_generic_initial_survival_prefactor
+#   test_floquet_multiplier_grid_and_timestep_refinement
+#   test_cycle_flux_equals_mass_loss_for_arbitrary_density
+#   test_principal_multiplier_is_independent_of_cycle_phase_origin
+#   test_fast_cycle_escape_is_linear_in_period_to_leading_order
+#   test_continuous_generator_matches_backward_euler_step
+#   test_slow_cycle_hazard_approaches_frozen_generator_average
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 import numpy as np
 import pytest
 
