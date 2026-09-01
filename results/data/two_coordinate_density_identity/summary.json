@@ -1,0 +1,18 @@
+{
+  "classification": "synthetic algebra/numerics verification of exact smooth-moment identity",
+  "grid": {
+    "a_points": 181,
+    "s_points": 221
+  },
+  "nonzero_theta_as": true,
+  "conditional_velocity_correlation_min": 0.1616036517988238,
+  "conditional_velocity_correlation_max": 0.17008401285415223,
+  "max_abs_compatibility_curl": 1.5006662579253316e-10,
+  "rms_compatibility_curl": 4.931168593804461e-12,
+  "path_log_density_mismatch": 7.105427357601002e-15,
+  "density_L1_error": 4.7275703058937074e-06,
+  "mean_intrinsic_energy_target": 0.08208677960185987,
+  "mean_intrinsic_energy_recovered": 0.08208633658490277,
+  "relative_mean_energy_error": 5.3969343083014585e-06,
+  "not_a_physical_claim": "Target P and Delta U0 are synthetic verification fields. Physical (a,s) validation requires a mechanics-generated ensemble supplying A, u and Theta."
+}
