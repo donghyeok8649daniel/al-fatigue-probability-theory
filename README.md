@@ -1,29 +1,89 @@
 # Al Fatigue Probability Theory
 
-> [!CAUTION]
-> **ACTIVE MAINLINE = 1D NORMAL TENSION ONLY.** FCC and shear/slip material
-> models are archived research and are not imported by active simulations.
-> A 2D/3D mesh is geometry and visualization; it does not activate shear,
-> crystal plasticity, or multiaxial fatigue.
->
-> **현재 활성 본선 = 1D normal tension only.** FCC와 shear/slip 재료모델은
-> 보관 연구이며 active simulation에서 사용하지 않는다. 2D/3D mesh는
-> geometry/시각화일 뿐 전단·결정소성·다축 피로를 활성화하지 않는다.
+## Persistent research status / 영구 진행상황 기록
+
+**Repository rule:** every commit that changes theory, physical scope,
+numerical results, paper content, or validation status must update this section
+before it is pushed. A new work session must read this section first. Completed,
+in-progress, rejected, and physically unresolved work must never be inferred
+only from chat history.
+
+**저장소 유지 규칙:** 이론, 물리 범위, 수치 결과, 논문 또는 검증 상태가
+바뀌는 모든 작업은 push 전에 반드시 이 절을 갱신한다. 새로운 작업 세션은
+항상 이 절부터 읽는다. 채팅 기록에만 진행상황을 남기지 않는다.
+
+Last updated: **2026-09-01**
+
+- **Primary active branch:** one-dimensional normal-spacing crack initiation
+  for pure single-crystal aluminum, using $a$, $P(a,t)$, exact zeta-chain
+  energy, Smoluchowski transport, absorbing escape, and the periodic
+  Floquet--Perron survival operator.
+- **Optional active plasticity branch:** one-dimensional scalar registry
+  $s/b$ for one declared slip system. Its exact shifted Epstein--Hurwitz /
+  Poisson--Bessel energy drives an unwrapped probability density. Residual
+  plastic slip is reported only when the well-index population $z$ remains
+  shifted after unloading and a declared relaxation interval.
+- **Verified current result:** a subcritical dimensionless resolved-shear
+  pulse leaves $\langle z\rangle=0.4913473$ while the mean intrawell registry
+  returns to $1.6\times10^{-10}$. Six symmetric zero-mean cycles leave only
+  $\langle z\rangle=0.001004$. This is a mechanism demonstration, not an
+  aluminum plastic-strain calibration.
+- **Geometry rule:** the normal collinear energy $U_\infty(a)$ and the two-row
+  registry energy $W(a,s)$ are alternative atomistic geometries and are not
+  added. The current slip calculation prescribes $a/b$ and evolves the single
+  unwrapped registry coordinate.
+- **Still unresolved:** a validated FCC Al GSF/EAM surface, active slip-system
+  selection, representative interface area, MD-derived mobility/memory,
+  homogenization thickness, dislocation storage, hardening, and two-way
+  normal--slip coupling. Therefore quantitative Al cyclic plasticity is not
+  claimed.
+- **FEM/UI:** geometry and scalar normal-stress visualization remain available.
+  The new registry solver is not yet coupled to FEM elements; mesh dimension
+  does not create multiaxial constitutive physics.
+- **Verification at this update:** 135 primary tests and 8 independent
+  shear/Bessel audit tests pass. The corrected source PDF SHA-256 is
+  `42C3D5086CA203C76F3DC8213A1718B5121AA1273067738C5B478BCBF12D999D`.
+  Both TeX sources have balanced environments and every paper figure exists;
+  no TeX engine is installed, so no updated PDF is claimed.
+
+The project now has two deliberately separated reduced branches. The primary
+fatigue branch remains the one-dimensional normal-tensile spacing model. The
+optional plasticity branch is also one-dimensional in its lattice registry and
+uses one scalar resolved-slip coordinate. Activating this branch does not
+activate Rubin chains, an arbitrary shear-fatigue criterion, multiaxial
+fatigue, or a full crystal-plasticity law. A joint future $(a,s)$ evolution
+would have a two-coordinate probability state space, but it would still not be
+a 2D continuum constitutive law.
+
+현재 프로젝트는 두 개의 축약 branch를 분리해 사용한다. 주 균열개시 branch는
+1D normal spacing 모델이고, 선택적 소성 branch는 하나의 slip system에 대한 1D
+scalar registry 모델이다. Bessel 격자합은 이제 실제 활성 에너지로 사용된다.
+다만 이는 전위 증식·경화까지 포함하는 정량적 단결정 소성모델은 아니다.
+
+Reproduce the active registry demonstration and its focused verification with:
+
+```powershell
+py -3 -m simulations.run_registry_plasticity
+py -3 -m pytest tests/test_registry_plasticity.py -q
+```
+
+The generated data and figure are under `results/data/registry_plasticity/`
+and `results/figures/registry_plasticity/`.
 
 ## Scope freeze / 연구 범위 고정
 
-The active material theory is **only a one-dimensional normal-tensile spacing
-model for pure single-crystal aluminum**. FCC calculations are archived and
-are not used by the active calculation. Shear, Rubin-chain, slip, multiaxial,
-and crystal-plasticity models are not active. Even when a 2D/3D mesh is shown,
-the constitutive input remains only the user-selected loading-axis scalar
-normal stress; the mesh does not make the fatigue theory 2D/3D.
+The primary crack-initiation theory is a one-dimensional normal-tensile spacing
+model for pure single-crystal aluminum. The exact one-registry Bessel model is
+now an optional active reduced-plasticity branch. Full FCC half-space,
+Rubin-chain, multiaxial-fatigue, and conventional crystal-plasticity models are
+not active. Even when a 2D/3D mesh is shown, the mesh does not create additional
+constitutive physics.
 
-현재 활성 재료이론은 **순수 단결정 알루미늄의 1D normal tensile spacing
-model**뿐이다. FCC 계산은 미래 확장용 archive이며 현재 계산에 사용하지
-않는다. shear/Rubin/slip/multiaxial/crystal-plasticity 모델도 현재 사용하지
-않는다. 2D/3D mesh가 존재해도 constitutive input은 loading axis 방향 scalar
-normal stress뿐이며, 현재 재료이론은 여전히 1D이다.
+주 균열개시 이론은 **순수 단결정 알루미늄의 1D normal tensile spacing
+model**이다. 여기에 단일 slip system의 scalar registry를 쓰는 선택적 1D
+Bessel 소성 branch가 활성화되어 있다. 완전한 FCC half-space, Rubin chain,
+multiaxial fatigue 및 통상적인 crystal-plasticity 모델은 아직 활성화하지
+않았다. 2D/3D mesh의 존재 자체가 구성방정식을 다축으로 만들지는 않는다.
 
 The active coordinate is the local approximately homogeneous atomic spacing
 before crack initiation, so the exact homogeneous zeta-lattice energy is the
@@ -45,11 +105,13 @@ correlation area $A_c$ and is not a FEM element area.
 피로계수가 아니다. 현재 수치는 무차원 예제일 뿐 단결정 알루미늄의 수명
 예측값이 아니다.
 
-An owner-supplied 23-page two-row ideal-slip derivation is preserved under
-`research/source/` and audited under `libraries/shear/`. Its exact shifted
-Epstein--Hurwitz/Poisson--Bessel identity is retained, but its slip variables,
-mixed patch energy, and plasticity claims are not active. See
-`libraries/shear/docs/SLIP_LATTICE_ENERGY_REVIEW.md`.
+The owner-supplied corrected two-row ideal-slip derivation and symbol index are
+preserved under `research/source/` and audited under `libraries/shear/`. The
+exact shifted Epstein--Hurwitz/Poisson--Bessel identity and scalar unwrapped
+registry dynamics are active in `theory/registry_lattice.py` and
+`theory/registry_plasticity.py`. Unsupported mixed patch energy, automatic
+irreversibility, and quantitative-Al claims remain rejected. See
+`docs/ACTIVE_IDEAL_REGISTRY_PLASTICITY.md`.
 
 프로젝트 소유자가 제공한 23쪽 두 원자열 ideal-slip 유도자료는
 `research/source/`에 원본으로 보존하고 `libraries/shear/`에서 검토한다.
@@ -99,8 +161,10 @@ Every active run declares a nonzero cubic loading direction `[h k l]`. The GUI
 accepts it as `Crystal axis [h k l]`. If all of $C_{11},C_{12},C_{44}$ are
 provided programmatically or in `.ftgsim`, the application projects the scalar
 directional Young modulus; otherwise `E_axis` is treated as a user-supplied
-direction-specific value. This remains scalar normal tension only. No shear,
-slip or multiaxial fatigue model is activated. See
+direction-specific value. The optional registry branch additionally requires a
+declared slip-plane normal and in-plane slip direction and uses the signed
+Schmid projection of the uniaxial load. The GUI does not yet solve this branch,
+and no multiaxial fatigue criterion is activated. See
 `docs/SINGLE_CRYSTAL_ORIENTATION.md`.
 ## Candidate kinetic probability and FEM coupling
 
@@ -268,7 +332,7 @@ $$
 \lambda_i(t)=a_i(t)/a_0.
 $$
 
-The effective normal interaction between layers is represented by the calibrated generalized Lennard-Jones model. Three-dimensional FCC work is archived under `libraries/fcc_normal/`; shear/Rubin/slip code is intentionally excluded and represented only by the tombstone `libraries/shear/README.md`. Neither is part of the active derivation or executable workflow.
+The effective normal interaction between layers is represented by the calibrated generalized Lennard--Jones model. Three-dimensional FCC work remains archived under `libraries/fcc_normal/`. The corrected one-index registry/Bessel mechanism is active as a separate optional branch and is never added to the collinear normal energy.
 
 Physical time $t$ is fundamental. Fatigue cycle count is not an independent state variable.
 
@@ -684,7 +748,7 @@ $$
 
 이다.
 
-layer 사이의 유효 normal interaction은 calibration된 generalized Lennard-Jones model로 표현한다. 3차원 FCC 연구는 `libraries/fcc_normal/`에 archive하고, shear/Rubin/slip code는 의도적으로 제외하여 `libraries/shear/README.md` tombstone만 둔다. 둘 다 active derivation이나 실행 workflow에 포함하지 않는다.
+layer 사이의 유효 normal interaction은 calibration된 generalized Lennard--Jones model로 표현한다. 3차원 FCC 연구는 `libraries/fcc_normal/` 아래 archive로 유지한다. 교정된 단일 registry/Bessel mechanism은 별도 선택 branch로 활성화하며 collinear normal energy에 더하지 않는다.
 
 물리적 시간 $t$가 근본 evolution coordinate이며 fatigue cycle count는 독립 상태변수가 아니다.
 

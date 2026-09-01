@@ -6,8 +6,10 @@ The material is pure single-crystal aluminum. Every simulation must declare a
 nonzero cubic crystallographic loading direction `[h k l]`. The active fatigue
 input remains one scalar normal stress along that direction.
 
-This does not activate the archived FCC pair-sum model, slip, shear fatigue,
-crystal plasticity, or a multiaxial failure criterion.
+This does not activate the archived FCC pair-sum model or a multiaxial failure
+criterion. The optional active ideal-registry branch separately requires one
+slip-plane normal and one in-plane slip direction and uses the signed Schmid
+projection of this uniaxial load. It is not yet connected to the FEM/UI path.
 
 ## Directional scalar modulus
 
@@ -49,5 +51,7 @@ not calibrated `[100]` single-crystal aluminum properties.
 
 순수 단결정 알루미늄이므로 모든 계산은 `[h k l]` 인장방향을 기록한다.
 해당 방향의 Young 계수만 scalar normal constitutive input으로 사용한다.
-cubic elastic constant가 주어지면 방향별 Young 계수를 계산하지만 shear,
-slip, crystal plasticity 또는 multiaxial fatigue는 계산하지 않는다.
+cubic elastic constant가 주어지면 방향별 Young 계수를 계산한다. 선택적 활성
+registry branch에서는 별도로 slip plane normal과 slip direction을 지정해
+signed Schmid factor를 계산한다. 이는 full crystal plasticity나 multiaxial
+fatigue criterion이 아니며 아직 FEM/UI에는 연결하지 않았다.

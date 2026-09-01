@@ -55,12 +55,23 @@ damage 모델이 된다. 지속적인 조건부 에너지 또는 tail 누적을 
 
 ## 이것이 소성변형인가
 
-아니다. 현재 활성좌표는 normal spacing 하나뿐이고 shear, slip, 전위,
-잔류변형 좌표가 없다. 현재 모델은 탄성적인 국소 벌어짐, 확률수송,
-변곡점 최초통과에 의한 균열개시를 표현한다. 소성을 넣으려면 검증된
-결정학적 slip energy와 되돌아오지 않는 slip 상태가 필요하다. 저장소의
-Bessel/ideal-slip 유도는 수학 archive이며 활성 균열개시 계산에 섞지
-않았다.
+normal spacing branch만 보면 소성변형이 아니다. 그러나 이제 별도의 선택적
+1D registry branch를 활성화했다. 이 branch는 두 원자열의 정확한
+Poisson--Bessel 에너지를 사용하고, registry를 한 주기 안으로 접지 않고
+여러 lattice well에 걸쳐 펼친 확률밀도를 직접 계산한다.
+
+소성 판정은 단순히 barrier를 한 번 넘었다는 사실이 아니다. 하중을 제거하고
+충분한 relaxation 시간을 준 뒤, well 내부 평균변위는 0으로 돌아왔는데도
+평균 well 번호가 0이 아니면 잔류 slip으로 정의한다. 현재 무차원 pulse
+예제에서는 하중 제거 뒤 well 내부 변위가 약 0으로 복귀했지만 평균 well
+번호는 약 0.4913 남았다. 반대로 대칭 zero-mean 하중 6주기에서는 약
+0.0010만 남아 방향성 slip이 거의 상쇄됐다.
+
+따라서 Bessel 모델은 더 이상 비활성 archive만은 아니다. 정확한 에너지와
+unwrapped 확률동역학은 활성화됐다. 다만 전위선, 전위 증식, forest
+hardening, backstress 및 multiple slip은 아직 없으므로 이를 정량적인
+알루미늄 crystal plasticity라고 부르지는 않는다. 또한 normal-chain energy와
+two-row registry energy는 다른 기하이므로 서로 더하지 않는다.
 
 ## 실제 알루미늄 수명으로 바꾸려면
 
@@ -92,9 +103,13 @@ mesh 수를 이 값 대신 쓰면 안 된다.
 ```powershell
 py -3 -m pytest -q
 py -3 -m pytest libraries/shear/tests -q
+py -3 -m pytest tests/test_registry_plasticity.py -q
 $env:MPLBACKEND='Agg'
 py -3 -m simulations.run_smoluchowski_floquet
+py -3 -m simulations.run_registry_plasticity
 ```
 
 그래프는 `results/figures/smoluchowski_floquet/`, 원자료는
 `results/data/smoluchowski_floquet/`에 있다.
+활성 소성 예제는 `results/figures/registry_plasticity/`와
+`results/data/registry_plasticity/`에 있다.

@@ -1,4 +1,18 @@
-# Open Problems — Active 1D Layer-LJ Mainline
+# Open Problems — Active Normal and Ideal-Registry Branches
+
+## September 2026 ideal-registry activation update
+
+The exact one-index two-row Poisson--Bessel energy and an unwrapped scalar
+registry Smoluchowski solver are now an optional active mechanism branch. A
+subcritical biased pulse leaves a residual well-index population after
+intrawell relaxation, whereas complete symmetric zero-mean cycles produce no
+comparable directed drift. See `ACTIVE_IDEAL_REGISTRY_PLASTICITY.md`.
+
+Open physical tasks are a validated FCC Al GSF/EAM surface, slip-system
+selection, representative interface area, atomistic mobility/memory,
+homogenization thickness, dislocation hardening, and a common Hamiltonian for
+two-way normal--registry coupling. Until those are resolved this is an ideal
+mechanism demonstration, not quantitative aluminum plasticity.
 
 ## September 2026 periodic-first-passage update
 
@@ -71,7 +85,7 @@ without a global Taylor expansion, finite harmonic ansatz, empirical correlation
 
 ## Scope
 
-The active theory is strictly one-dimensional, normal-only, and layer based. The effective normal interaction is the calibrated generalized Lennard-Jones model. Archived 3D FCC and shear work are not part of the active derivation.
+The primary branch is one-dimensional, normal-only, and layer based. The optional active branch is one-dimensional in a scalar unwrapped registry for one slip system. Full 3D FCC half-space, multiaxial fatigue, and conventional crystal plasticity remain outside the active derivation.
 
 ## 1. Derive the mechanically generated spatial state before choosing another probability family
 
@@ -254,7 +268,7 @@ $$
 
 ## 범위
 
-활성 이론은 엄격하게 1차원, normal-only, layer 기반이다. 유효 normal interaction은 calibration된 generalized Lennard-Jones model이다. archive된 3D FCC와 shear 연구는 active derivation에 포함하지 않는다.
+주 branch는 엄격하게 1차원, normal-only, layer 기반이다. 선택적 활성 branch는 한 slip system의 scalar unwrapped registry를 사용한다. full 3D FCC half-space, multiaxial fatigue 및 통상적인 crystal plasticity는 active derivation에 포함하지 않는다.
 
 ## 1. 다른 probability family를 고르기 전에 mechanically generated spatial state를 유도한다
 

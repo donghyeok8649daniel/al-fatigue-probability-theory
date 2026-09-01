@@ -13,7 +13,9 @@ A smooth thermal $P$ is not assumed merely because the coordinate is treated pro
 - no Kramers or Arrhenius escape prefactor is introduced without an independently derived bath/friction/phonon time scale;
 - $A_0$ is a physical coarse-graining input and may not be tuned to obtain a desired tail probability or fatigue life.
 
-This file records the assumptions of the active **one-dimensional normal-LJ / continuous-time** mainline.
+This file records the assumptions of the primary **one-dimensional normal-LJ /
+continuous-time** branch and the optional active one-dimensional registry
+branch.
 
 ## Active assumptions
 
@@ -46,6 +48,28 @@ This file records the assumptions of the active **one-dimensional normal-LJ / co
 5. The generator itself does not degrade between cycles. Therefore the
    long-cycle survivor-conditioned density and energy are periodic, while
    irreversible accumulation occurs through escaped probability.
+
+## Active ideal-registry assumptions
+
+1. Two parallel one-index rows and one scalar registry are an ideal mechanism,
+   not a full FCC half-space or dislocation network.
+2. Normal separation $a/b$ is prescribed. The cross-row energy $W(a,s)$ is not
+   added to the collinear normal-chain energy $U_\infty(a)$.
+3. The exact Bessel identity evaluates the stated pair geometry. Reciprocal
+   mode count is numerical, not a physical cutoff.
+4. One declared plane normal, in-plane slip direction, and loading axis define
+   signed resolved shear through the Schmid projection.
+5. The unwrapped registry density starts as a metastable distribution
+   conditioned on one well. Its numerical domain must have negligible edge
+   probability.
+6. Constant registry mobility and an isothermal Markov bath are active
+   reduction assumptions requiring atomistic validation.
+7. A crossing alone is not plastic. Residual reduced slip requires intrawell
+   recovery and a nonzero shifted well-index population after unloading and a
+   declared relaxation interval.
+8. $A_{\rm rep}$, $A_0$, $A_c$, and FEM element area are distinct.
+9. Quantitative aluminum plasticity, hardening, and two-way normal--slip
+   coupling are not claimed.
 
 ## Exact result versus physical constraint
 
@@ -100,7 +124,8 @@ coordinate를 probabilistic하게 다룬다는 이유만으로 smooth thermal $P
 - independently derived bath/friction/phonon time scale 없이 Kramers 또는 Arrhenius escape prefactor를 넣지 않는다.
 - $A_0$는 physical coarse-graining input이며 원하는 tail probability나 fatigue life를 얻도록 tuning하면 안 된다.
 
-이 문서는 활성 **1차원 normal-LJ / 연속시간** mainline의 가정을 기록한다.
+이 문서는 주 **1차원 normal-LJ / 연속시간** branch와 선택적 활성 1차원
+registry branch의 가정을 기록한다.
 
 ## 활성 가정
 
@@ -131,6 +156,25 @@ coordinate를 probabilistic하게 다룬다는 이유만으로 smooth thermal $P
    아니다.
 5. generator 자체는 cycle에 따라 열화되지 않는다. 따라서 장기 생존조건부
    분포와 에너지는 주기적이고, 비가역 누적은 유출확률로 발생한다.
+
+## 활성 ideal-registry 가정
+
+1. 두 개의 1D 원자열과 하나의 scalar registry는 이상적 mechanism이며 full
+   FCC half-space나 전위 network가 아니다.
+2. normal separation $a/b$는 현재 지정값이다. cross-row $W(a,s)$를
+   collinear $U_\infty(a)$에 더하지 않는다.
+3. Bessel 항등식은 해당 pair geometry에서 exact하다. reciprocal mode 수는
+   수치 parameter이며 물리 cutoff가 아니다.
+4. slip plane normal, in-plane direction, loading axis로 signed Schmid
+   projection을 계산한다.
+5. unwrapped density는 한 well에 조건부인 metastable 분포에서 시작하며 계산
+   영역 끝 확률이 충분히 작아야 한다.
+6. constant mobility와 isothermal Markov bath는 MD 검증이 필요한 축약가정이다.
+7. well crossing만으로 소성이라 하지 않는다. unloading과 지정 relaxation 뒤
+   intrawell 변위는 복귀하고 well-index population은 이동해 있어야 한다.
+8. $A_{\rm rep}$, $A_0$, $A_c$, FEM element area를 구분한다.
+9. 정량적 알루미늄 소성, 경화, 양방향 normal--slip coupling은 아직 주장하지
+   않는다.
 
 ## Exact result와 physical constraint의 구분
 
