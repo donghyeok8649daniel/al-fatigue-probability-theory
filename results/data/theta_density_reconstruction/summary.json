@@ -1,0 +1,24 @@
+{
+  "classification": "numerical reconstruction check of the exact smooth 1D moment-shape identity; Gaussian kernel smoothing is an estimator, not a physical PDF assumption",
+  "parameters": {
+    "atoms": 512,
+    "dt": 0.01,
+    "force_amplitude": 0.03,
+    "omega": 0.02,
+    "ramp_cycles": 2,
+    "epsilon_cycles_for_time_derivative": 0.00025,
+    "bandwidth_rule": "1.5 * Silverman",
+    "phases": [2.05, 2.1, 2.25, 2.4, 2.5, 2.6, 2.75, 2.9]
+  },
+  "period": 314.1592653589793,
+  "max_L1_density_error": 0.07625524370048758,
+  "max_KS_density_error": 0.038126356235710035,
+  "max_mean_energy_relative_error": 0.030458227768377324,
+  "interpretation": "The reconstructed density agrees closely with the directly smoothed finite-M density at all tested phases. Mean energy is compared between the two continuum densities on the same grid so raw-sample KDE bias is not mixed into the shape-reconstruction error.",
+  "limitations": [
+    "finite-M empirical state is smoothed numerically to estimate conditional fields",
+    "only interior spacings are used because the bulk acceleration identity does not apply at boundaries",
+    "the check is 1D normal-only and does not yet validate the (a,s) tensor extension",
+    "Theta approaching zero is a degenerate regime where the smooth divided shape formula is not applicable"
+  ]
+}
