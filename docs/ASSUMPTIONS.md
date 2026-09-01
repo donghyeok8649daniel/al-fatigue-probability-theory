@@ -26,6 +26,8 @@ This file records the assumptions of the active **one-dimensional normal-LJ / co
 7. LJ parameters do not evolve with loading history merely to imitate damage.
 8. No named probability family is assumed for $P$.
 9. Crack initiation is pursued through normal opening / normal stability loss, not through an inserted empirical damage law.
+10. A 2D/3D specimen mesh is permitted as a geometry, storage, and visualization structure, but the active microscopic state and probability dynamics remain 1D normal-only.
+11. Until a multidimensional continuum solver is separately validated, copying a 1D axial field to 2D/3D cells is labeled as a visualization/post-processing projection rather than a multidimensional mechanics result.
 
 ## Active Smoluchowski/Floquet assumptions
 
@@ -111,6 +113,8 @@ coordinate를 probabilistic하게 다룬다는 이유만으로 smooth thermal $P
 7. damage를 흉내내기 위해 loading history에 따라 LJ parameter를 바꾸지 않는다.
 8. $P$에 특정 named probability family를 가정하지 않는다.
 9. crack initiation은 empirical damage law가 아니라 normal opening / normal stability loss로 다룬다.
+10. 2D/3D 시편 mesh는 geometry, storage 및 visualization 구조로 허용하지만 활성 microscopic state와 probability dynamics는 1D normal-only로 유지한다.
+11. multidimensional continuum solver를 별도로 검증하기 전까지 1D axial field를 2D/3D cell에 복사한 결과는 multidimensional mechanics result가 아니라 visualization/post-processing projection으로 표시한다.
 
 ## 활성 Smoluchowski/Floquet 가정
 

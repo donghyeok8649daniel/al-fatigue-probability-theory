@@ -21,6 +21,7 @@ import numpy as np
 
 from simulations.fem_tension_app import TensionRunConfig, run_fem_solver
 from simulations.fem_tension_ui import load_fem_history, save_preview_images
+from simulations.run_tensile_mesh_projection import run_projection
 from theory.normal_lj_probability_dynamics import (
     ProbabilityHistory,
     SpacingDynamicsParameters,
@@ -452,6 +453,35 @@ def run_demo(
         deformation_scale=config.deformation_scale,
         field="stress",
     )
+    probability_csv = data_dir / "probability_elements.csv"
+    mesh_2d = run_projection(
+        history_csv=probability_csv,
+        field="critical_tail_probability",
+        step="peak-tension",
+        output_dir=data_dir / "mesh_projection_2d",
+        dimension=2,
+        length_m=config.length_m,
+        width_m=config.width_m,
+        thickness_m=config.thickness_m,
+        nx=elements_count,
+        ny=4,
+        nz=1,
+        preview_path=figure_dir / "actual_mesh_2d_critical_tail.png",
+    )
+    mesh_3d = run_projection(
+        history_csv=probability_csv,
+        field="critical_tail_probability",
+        step="peak-tension",
+        output_dir=data_dir / "mesh_projection_3d",
+        dimension=3,
+        length_m=config.length_m,
+        width_m=config.width_m,
+        thickness_m=config.thickness_m,
+        nx=elements_count,
+        ny=4,
+        nz=2,
+        preview_path=figure_dir / "actual_mesh_3d_critical_tail.png",
+    )
 
     summary: dict[str, float | int | str | list[float]] = {
         "status": "candidate kinetic demonstration; chi and relaxation time are not calibrated aluminum values",
@@ -467,6 +497,9 @@ def run_demo(
         "initiation_definition": "first passage through lambda_c (tangent stiffness loss)",
         "final_survival_probability": float(initiation_histories[min(initiation_histories)].survival[-1]),
         "cumulative_initiation_probability": float(initiation_histories[min(initiation_histories)].initiation[-1]),
+        "mesh_projection_rule": "normal-only axial scalar mapping; not 2D/3D elasticity",
+        "mesh_2d_cells": int(mesh_2d["cells"]),
+        "mesh_3d_cells": int(mesh_3d["cells"]),
     }
     data_dir.mkdir(parents=True, exist_ok=True)
     (data_dir / "summary.json").write_text(

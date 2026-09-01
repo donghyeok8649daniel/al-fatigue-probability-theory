@@ -4,6 +4,8 @@
 
 **ACTIVE VISUALIZATION SCAFFOLD.** This milestone changes presentation dimensionality only. It does not relax the one-dimensional mechanics scope.
 
+Milestone 17 extends this display-only idea to actual quad/hex connectivity and CAD/mesh import. The mechanics restriction stated here remains unchanged.
+
 ## Mechanical state
 
 The active mechanical variables remain
@@ -73,6 +75,8 @@ without changing the visualization rule. A future color field such as $Q_c(x,t)$
 ## 상태
 
 **활성 시각화 스캐폴드.** 이 마일스톤은 표현 차원만 바꾸며 1차원 역학 범위를 완화하지 않는다.
+
+Milestone 17은 이 display-only 개념을 실제 quad/hex connectivity 및 CAD/mesh import로 확장한다. 여기서 선언한 mechanics 제한은 그대로 유지된다.
 
 ## 역학 상태
 

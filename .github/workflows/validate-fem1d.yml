@@ -7,12 +7,19 @@ on:
       - 'simulations/visualize_fem1d.py'
       - 'simulations/fem_tension_ui.py'
       - 'simulations/fem_tension_app.py'
+      - 'simulations/fem_geometry_mesh.py'
+      - 'simulations/fem_mesh_ui.py'
+      - 'simulations/run_tensile_mesh_projection.py'
       - 'tests/test_fem1d_visualizer.py'
       - 'tests/test_fem_tension_ui.py'
       - 'tests/test_fem_tension_app.py'
+      - 'tests/test_fem_geometry_mesh.py'
+      - 'tests/test_fem_mesh_projection.py'
       - 'docs/MILESTONE14_1D_FEM_SCAFFOLD.md'
       - 'docs/MILESTONE14A_2D_3D_TENSION_UI.md'
       - 'docs/MILESTONE14B_INTEGRATED_TENSION_APP.md'
+      - 'docs/MILESTONE17_2D_3D_MESH_CAD_NORMAL_ONLY.md'
+      - 'docs/VARIABLE_DEFINITIONS_FEM_GEOMETRY.md'
       - '.github/workflows/validate-fem1d.yml'
   workflow_dispatch:
 
@@ -55,6 +62,25 @@ jobs:
           test -f .tmp/fem1d_app_smoke/data/elements.csv
           test -f .tmp/fem1d_app_smoke/figures/tension_2d_peak.png
           test -f .tmp/fem1d_app_smoke/figures/tension_3d_peak.png
+
+      - name: Validate actual 2D and 3D mesh projections
+        run: |
+          python -m simulations.run_tensile_mesh_projection \
+            --history-csv .tmp/fem1d_app_smoke/data/elements.csv \
+            --field stress_pa \
+            --dimension 2 \
+            --nx 12 --ny 3 \
+            --output-dir .tmp/fem1d_mesh_2d
+          python -m simulations.run_tensile_mesh_projection \
+            --history-csv .tmp/fem1d_app_smoke/data/elements.csv \
+            --field stress_pa \
+            --dimension 3 \
+            --nx 12 --ny 3 --nz 2 \
+            --output-dir .tmp/fem1d_mesh_3d
+          test -f .tmp/fem1d_mesh_2d/geometry_mesh.npz
+          test -f .tmp/fem1d_mesh_2d/mesh_field_preview.png
+          test -f .tmp/fem1d_mesh_3d/geometry_mesh.npz
+          test -f .tmp/fem1d_mesh_3d/mesh_field_preview.png
 
       - name: Generate reversible 1D FEM demo history
         run: |

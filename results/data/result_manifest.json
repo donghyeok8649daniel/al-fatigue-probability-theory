@@ -1,6 +1,6 @@
 {
   "active_mainline": "Strictly 1D normal layer-LJ in continuous physical time t, with full nonlinear mechanics, exact transport, explicitly labeled statistical-mechanical limits, and correlation-derived axial statistical-cell scales",
-  "scope_freeze": "Remain strictly in one-dimensional normal tension until P(lambda,t) is physically identified and validated. 2D/3D FEM, multiaxial criteria, specimen hazard integration, and 3D mini-mesh coupling are deferred.",
+  "scope_freeze": "The active microscopic theory remains strictly one-dimensional and normal-only. 2D/3D geometry meshes and CAD input are allowed for geometry, storage, and visualization, but 2D/3D constitutive mechanics, multiaxial criteria, and shear-driven probability states remain deferred.",
   "state": "Exact nonlinear transport remains active, but Milestone 15 corrects the interpretation of the deterministic spatial-correlation snapshot. For a homogeneous force-controlled 1D layer-LJ chain the exact stable quasistatic state has lambda_i=lambda_s(f) for all i. The existing cycle-2 zero-mean-sine snapshot is taken at zero applied force, so its nonzero variance is residual dynamics. A drive-rate sweep shows residual variance collapsing toward zero while normalized M_eff^(+) stays near three. Single-trajectory spatial empirical P is therefore separated from a future physically specified ensemble probability P_ens.",
   "primary_reduced_observables": [
     "P(lambda,t)",
@@ -93,7 +93,13 @@
       "elements.csv",
       "metadata.csv"
     ],
-    "visualization_rule": "2D/3D display geometry may be extruded from the 1D bar, but every displayed cross-section inherits only the axial scalar stress/strain from the underlying 1D element. No shear, von-Mises, transverse constitutive law, or multiaxial failure model is active."
+    "visualization_rule": "2D/3D geometry may use actual quad/hex connectivity or imported CAD/mesh cells, but every cell receives only a normal axial scalar from the 1D solution. No shear, von-Mises, transverse constitutive law, or multiaxial failure model is active.",
+    "geometry_mesh_module": "simulations/fem_geometry_mesh.py",
+    "geometry_mesh_visualizer": "simulations/fem_mesh_ui.py",
+    "geometry_mesh_projection_cli": "simulations/run_tensile_mesh_projection.py",
+    "geometry_mesh_scope": "docs/MILESTONE17_2D_3D_MESH_CAD_NORMAL_ONLY.md",
+    "geometry_mesh_variables": "docs/VARIABLE_DEFINITIONS_FEM_GEOMETRY.md",
+    "cad_support": "Built-in STL/OBJ surface readers; optional Gmsh for STEP/IGES/BREP meshing and meshio for common solver mesh formats. Surface import is never silently promoted to a volume FEM mesh."
   },
   "candidate_kinetic_extension": {
     "status": "Numerically verified conditional-intact Smoluchowski extension; chi and relaxation time are not yet calibrated aluminum parameters, and the no-flux upper boundary does not define irreversible crack probability.",
@@ -104,7 +110,11 @@
     "element_history": "results/data/fem_probability_demo/probability_elements.csv",
     "summary": "results/data/fem_probability_demo/summary.json",
     "hysteresis_figure": "results/figures/fem_probability_demo/probability_hysteresis_summary.png",
-    "mesh_figure": "results/figures/fem_probability_demo/fem_mesh_probability_fields.png"
+    "mesh_figure": "results/figures/fem_probability_demo/fem_mesh_probability_fields.png",
+    "actual_mesh_2d_figure": "results/figures/fem_probability_demo/actual_mesh_2d_critical_tail.png",
+    "actual_mesh_3d_figure": "results/figures/fem_probability_demo/actual_mesh_3d_critical_tail.png",
+    "mesh_2d_bundle": "results/data/fem_probability_demo/mesh_projection_2d/geometry_mesh.npz",
+    "mesh_3d_bundle": "results/data/fem_probability_demo/mesh_projection_3d/geometry_mesh.npz"
   },
   "historical_or_falsification_diagnostics": {
     "equal_measure_two_moment_closure": "docs/MILESTONE5_DERIVED_DISTRIBUTION_CLOSURE.md",

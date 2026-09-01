@@ -141,6 +141,8 @@ $t_r=\gamma a_0/(E_{[hkl]}A_0)$. Thus loading-axis stress alone cannot identify
 life; the representative area and spacing mobility remain required physical
 inputs and are never replaced by FEM mesh size.
 
+The geometry layer now supports actual 2D quad and 3D hex connectivity, dependency-free STL/OBJ surface import, and optional STEP/IGES/BREP volume meshing through Gmsh. This does **not** change the active theory: every mesh cell receives only the declared tensile normal scalar $\sigma_{nn}$, or a scalar derived from its 1D $P(a,t)$. The current 1D-to-mesh mapping is explicitly a visualization/post-processing projection, not a 2D/3D elasticity solve. See `docs/MILESTONE17_2D_3D_MESH_CAD_NORMAL_ONLY.md`.
+
 ## Active 1D statistical-cell dependence scale
 
 <!-- STATISTICAL_CELL_STATUS_EN -->
@@ -521,6 +523,29 @@ No fitted Gaussian/Weibull distribution, cycle-dependent LJ parameter, empirical
 ---
 
 # 한국어 번역
+
+## 후보 확률동역학 및 FEM 결합
+
+현재 네 개의 작동식은 별도로 표시한 kinetic post-processor로 연결된다.
+
+$$
+\int p_e(\lambda,t)d\lambda=1,
+\qquad
+\bar a_e=a_0\int\lambda p_e\,d\lambda,
+$$
+
+$$
+u_{{\rm LJ},e}
+=E\int[\phi(\lambda)-\phi(1)]p_e\,d\lambda,
+\qquad
+H_{e,k}=\oint_k\sigma_e\,d\bar\lambda_e.
+$$
+
+각 C FEM element의 local normal-stress history를 conditional-intact Smoluchowski solver로 넘긴다. 구현은 normalization과 finite-volume Gibbs stationary state를 보존하고, 평균거리·분산·에너지·loop work·$\lambda_c$ 이상 tail을 출력하며 실제 1D node/element mesh 및 2D/3D tensile-only view를 그린다.
+
+이는 **후보 kinetic extension**이며 아직 보정된 aluminum fatigue-life law가 아니다. 현재 upper boundary가 no-flux이므로 critical tail은 irreversible crack probability가 아니라 instability diagnostic이다. 자세한 내용은 `docs/MILESTONE16_PROBABILITY_ENERGY_HYSTERESIS_FEM.md`에 있다.
+
+geometry 계층은 이제 실제 2D quad와 3D hex connectivity, 외부 의존성이 없는 STL/OBJ surface import, 선택적 Gmsh 기반 STEP/IGES/BREP volume meshing을 지원한다. 이것은 활성 이론을 바꾸지 않는다. 각 mesh cell에는 선언한 tensile normal scalar $\sigma_{nn}$ 또는 그 cell의 1D $P(a,t)$에서 유도한 scalar만 전달한다. 현재 1D-to-mesh mapping은 2D/3D elasticity solve가 아니라 명시적으로 구분한 visualization/post-processing projection이다. 자세한 내용은 `docs/MILESTONE17_2D_3D_MESH_CAD_NORMAL_ONLY.md`에 있다.
 
 ## 활성 1D 통계셀 종속성 척도
 
