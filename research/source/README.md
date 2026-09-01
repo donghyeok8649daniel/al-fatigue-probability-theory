@@ -1,5 +1,9 @@
 # Imported research sources
 
+These files preserve owner-supplied provenance and are not the current
+governing paper. The active derivation uses the supplied two-row energy as
+$W(d,s)$ in $U_0(a,s)=\sum_{k\ge1}W(ka,s)$ without layer multiplicity.
+
 ## Corrected ideal-registry derivation
 
 The project owner supplied the current corrected source on 2026-09-01. It has

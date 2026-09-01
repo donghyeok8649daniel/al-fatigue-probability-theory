@@ -65,6 +65,9 @@ class RegistryHistory:
     mean_lattice_energy: np.ndarray
     work: np.ndarray
     entropy_production: np.ndarray
+    hysteresis_energy: np.ndarray
+    plastic_shear_strain: np.ndarray
+    plastic_tensile_strain: np.ndarray
     boundary_probability: np.ndarray
     preferred_registry: float
 
@@ -164,6 +167,8 @@ def solve_registry(
     generalized_force: np.ndarray,
     c: RegistryTransportConfig = RegistryTransportConfig(),
     max_dt: float = 0.01,
+    b_over_h_slip: float = 1.0,
+    schmid_projection: float = 1.0,
 ) -> RegistryHistory:
     """Solve the full unwrapped registry-density evolution.
 
@@ -174,6 +179,8 @@ def solve_registry(
     """
 
     c.validate()
+    if b_over_h_slip <= 0.0:
+        raise ValueError("b_over_h_slip must be positive")
     t = np.asarray(time, dtype=float)
     force = np.asarray(generalized_force, dtype=float)
     if (
@@ -227,6 +234,12 @@ def solve_registry(
         np.sum(history[:, :edge_cells], axis=1)
         + np.sum(history[:, -edge_cells:], axis=1)
     ) * dx
+    hysteresis_energy = np.zeros(t.size)
+    hysteresis_energy[1:] = np.cumsum(
+        0.5 * (entropy[1:] + entropy[:-1]) * np.diff(t)
+    )
+    gamma_p = b_over_h_slip * mean_z
+    epsilon_p = schmid_projection * gamma_p
     return RegistryHistory(
         t,
         force,
@@ -239,6 +252,9 @@ def solve_registry(
         mean_energy,
         work,
         entropy,
+        hysteresis_energy,
+        gamma_p,
+        epsilon_p,
         boundary_probability,
         delta0,
     )

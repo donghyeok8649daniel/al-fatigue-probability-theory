@@ -1,4 +1,10 @@
-# 1D normal-tensile Smoluchowski fatigue theory
+# 1D normal-tensile Smoluchowski fatigue theory (historical baseline)
+
+> **Superseded for the coupled active energy (2026-09-02).** The derivations
+> below remain valid for their declared normal-chain geometry, but the current
+> fundamental spacing--slip model uses
+> $U_0(a,s)=\sum_{k\ge1}W(ka,s)$. Do not add this historical $U_\infty$ to
+> $W$. See `ACTIVE_IDEAL_REGISTRY_PLASTICITY.md`.
 
 ## Active coordinate and exact energies
 

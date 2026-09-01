@@ -1,193 +1,31 @@
-\section*{\koreanfont 전체 기호 및 계산 인덱스}
-
-아래 표는 본문의 기호를 빠짐없이 찾기 위한 한국어 인덱스다. 같은 모양이라도
-아래첨자가 다르면 다른 양이며, 적분 안에서만 쓰는 dummy variable은 재료변수가 아니다.
-
+\section*{\koreanfont 기호 및 계산 색인}
+\label{sec:symbols-ko}
 \small
-\begin{longtable}{>{\raggedright\arraybackslash}p{0.17\textwidth}
-                  >{\raggedright\arraybackslash}p{0.34\textwidth}
-                  >{\raggedright\arraybackslash}p{0.39\textwidth}}
-\toprule
-기호 & 의미와 단위 & 정의와 계산방법\\
-\midrule
-\endfirsthead
-\toprule
-기호 & 의미와 단위 & 정의와 계산방법\\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-$a,a_0$ & 현재 및 무하중 평형 법선거리; 길이 & $a$는 핵심 상태변수이고 $a_0$는
-식~\eqref{eq:chain_equilibrium} 또는 검증된 에너지의 최소점에서 계산한다.\\
-$a^\ddagger,a_{\rm inf}$ & 법선 장벽과 변곡거리; 길이 & 전체 힘평형식의 모든 근을
-구간포착한 뒤 곡률 부호로 분류한다. 음의 곡률 근이 $a^\ddagger$이다.\\
-$s,s_0,\widetilde s,b$ & 누적 슬립좌표, 기준 registry, 셀 내부좌표, 격자주기; 길이 &
-$s=zb+\widetilde s$, $0\leq\widetilde s<b$이며 $b,s_0$는 결정기하에서 정한다.\\
-$z,\mathbb Z,\ddagger,\pm$ & 우물번호, 정수집합, 전이상태 표시, 전진/후진; 무차원 &
-$z$는 공간좌표가 아니라 장벽통과 누적번호이다. $\ddagger$는 곱셈표시가 아니다.\\
-$r,r_e,r_p,r_{ij}$ & 원자쌍 거리; 길이 & $r_e$는 식~\eqref{eq:re_sigma}, $r_p$는
-식~\eqref{eq:pair_distance}, $r_{ij}$는 실제 이웃좌표에서 계산한다.\\
-$\bm d,\bm n,\bm e$ & 슬립방향, 면법선, 단축하중방향 단위벡터 & 모두 정규화하고
-$\bm d\cdot\bm n=0$을 확인한다.\\
-$\bm R_p^-,\bm r_p,\bm R_{ij}$ & 격자점 및 원자쌍 기준벡터; 길이 & 선언한 lattice
-basis와 정수 cell index로 생성한다.\\
-$m,n,q$ & 반발지수, 인력지수, 일반지수; 무차원 & 현재 1D 합의 수렴조건은 $m>n>1$이다.
-질량이나 Schmid factor와 무관하다.\\
-$C_{m,n},\epsLJ,\sigLJ$ & LJ 정규화계수, 우물깊이, 영점거리; 무차원, 에너지, 길이 &
-$C_{m,n}$은 식~\eqref{eq:generalized_LJ}; LJ 계수는 독립적인 응집에너지 자료에서
-정하고 피로루프에 맞추지 않는다.\\
-$\begin{gathered}v_{m,n},E_{\rm pair}\\E_N,U_\infty\end{gathered}$ & 원자쌍, 유한계, 사슬, 무한사슬 에너지; 에너지 &
-각각 식~\eqref{eq:generalized_LJ}, \eqref{eq:pair_counting},
-\eqref{eq:finite_chain_energy}, \eqref{eq:normal_chain_energy}로 계산한다.\\
-$W_{m,n},\Delta W_{m,n}$ & 두 원자열 전체에너지와 registry 초과에너지; 에너지 &
-직접합 또는 식~\eqref{eq:full_W_mn}을 쓰고 기준 $s_0$ 값을 뺀다.\\
-$\gamma_{m,n},\gamma_{\rm EAM},\gamma_{\rm GSF}$ & 슬립/GSF 면적에너지; 에너지/면적 &
-정확한 interface-cell 초과에너지를 대표면적으로 나눈다.\\
-$\psi,\Phi,\Phi_n$ & 기울어진 슬립에너지, 대표영역 전체에너지, normal-only 에너지 &
-식~\eqref{eq:tilted_energy}, \eqref{eq:full_patch_energy}; normal-only에서는
-$s=s_0,\tau=0$.\\
-$\Delta G_{z,\pm}^\ddagger$ & 전진/후진 활성화장벽; 에너지 & 최소점과 인접 안장점을
-전체에너지에서 구하고 식~\eqref{eq:exact_barrier}에 대입한다.\\
-$A_{\rm at},A_0,A_{\rm cell}$ & 원자기둥 면적, 상관 대표면적, interface-cell 면적 & 결정
-단위셀에서 계산하며 $A_0=N_AA_{\rm at}$이다. $A_0$를 FEM 요소면적으로 두지 않는다.\\
-$N,N_A,h_{\rm slip}$ & 원자수, 등가 원자기둥수, 슬립 균질화두께 & $N_A=A_0/A_{\rm at}$;
-$h_{\rm slip}$은 물리적 슬립밴드/축약두께에서 정한다.\\
-$\sigma,\sigma_{\rm c},\tau,\tau_{\rm int},\tau_{\rm ideal}$ & 법선응력, 법선임계응력,
-resolved shear, 내부전단저항, 이상전단강도; 응력 & 본문 식
-\eqref{eq:normal_instability}, \eqref{eq:Schmid}, \eqref{eq:traction_full},
-\eqref{eq:ideal_strength}로 계산한다.\\
-$F_n,F_s,\mathcal M$ & 법선 및 접선 일반화힘과 Schmid 투영계수 & $F_n=\sigma A_0$,
-$F_s=\tau A_0$, $\mathcal M=(\bm d\cdot\bm e)(\bm n\cdot\bm e)$이다.\\
-$\delta,\delta_0,\eta$ & 무차원 registry, 기준 registry, 법선거리 & $\delta=s/b$,
-$\delta_0=s_0/b$, $\eta=a/b$.\\
-$p,k,\ell,i,j$ & 직접격자, 분리거리, 역격자, 원자/성분 index; 정수 & 각 합에 적힌
-범위를 따른다. $\delta_{ij}$의 $i,j$는 성분번호이다.\\
-$\nu,\mu,\chi$ & Mellin 지수, Bessel 차수, Bessel 인자 & $\nu=q/2$,
-$\mu=\nu-1/2$, $\chi=2\pi|\ell|\eta$. $\chi$를 우물번호 $z$와 분리했다.\\
-$t,u,x,y$ & 문맥별 시간 또는 dummy 적분변수; Bessel ODE의 $y$는 국소 종속변수 &
-동역학의 $t$ 외에는 재료상태가 아니다.\\
-$g(x),\widehat g(\ell),I_0,I_\ell,\mathcal I$ & Poisson 변환함수와 Fourier 변환, 영/비영
-모드 적분, 일반 Bessel 적분 & 모두 유도과정에만 쓰며 해당 식 직전에 정의된다. 본문에
-유도한 정확한 Gamma/Bessel 항등식으로 계산한다.\\
-$\Gamma(\cdot),\zeta(\cdot),I_\mu,K_\mu$ & Gamma, Riemann zeta, 수정 Bessel 제1종과 제2종 &
-검증된 special-function library를 사용하고 $K_\mu$는 식~\eqref{eq:K_definition}으로
-교차검산한다.\\
-$\Zsh_\nu,\Bmn_q,\Delta\Bmn_q$ & 이동 Epstein 합, 닫힌 지수합, registry 차분 & 식
-\eqref{eq:Z_definition}, \eqref{eq:Bq}, \eqref{eq:DeltaBq}; cutoff를 늘려 수렴시키고
-직접합과 비교한다.\\
-$\beta,\gamma$ in 식~\eqref{eq:Bessel_generic_integral} & 그 적분에서만 쓰는 양의 변수 &
-$\beta=\eta^2$, $\gamma=\pi^2\ell^2$이며 $\beta_T,\gamma_{m,n}$과 다른 기호다.\\
-$\begin{gathered}\pi,e,\ii,\operatorname{Re}\\|\cdot|,\exp,\ln,\sum\\
-\int,\lim,\max\end{gathered}$ & 원주율, 자연로그 밑, 허수단위, 실수부,
-크기와 표준연산자 & $\exp x=e^x$, $\ln$은 그 역함수이며 각 합과 적분의 범위는 식에
-표시한다.\\
-$!,\bmod,\sim,\propto,\mathbb R$ & 팩토리얼, 나머지연산, 점근/동등표시, 비례표시,
-실수집합 & 정수 $j\geq0$에서 $j!=\Gamma(j+1)$. $s\bmod b$는 셀 내부위치만 남기고
-누적 장벽통과 이력은 unwrapped $s$ 또는 $z$에 보존한다.\\
-\end{longtable}
-
-\begin{longtable}{>{\raggedright\arraybackslash}p{0.17\textwidth}
-                  >{\raggedright\arraybackslash}p{0.34\textwidth}
-                  >{\raggedright\arraybackslash}p{0.39\textwidth}}
-\toprule
-동역학 기호 & 의미와 단위 & 정의와 계산방법\\
-\midrule
-\endfirsthead
-\toprule
-동역학 기호 & 의미와 단위 & 정의와 계산방법\\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-$t,f,\omega_{\rm L}$ & 시간, 반복주파수, 하중각주파수 & $\omega_{\rm L}=2\pi f$이며
-비사인파는 의미 있는 모든 harmonic을 검사한다.\\
-$T,\kB,\beta_T$ & 절대온도, Boltzmann 상수, 역열에너지 & $\beta_T=(\kB T)^{-1}$.\\
-$q_i,v_i,m_i^*$ & 집단좌표, 속도, 유효질량 & $q_a=a,q_s=s$. 두 rigid patch가 함께
-움직이면 $m_i^*=M_UM_L/(M_U+M_L)$, 한쪽 고정이면 이동쪽 질량을 쓴다.\\
-$\mathcal K_i,R_i,\tau_{K_i}$ & memory-friction kernel, projected random force, kernel 감쇠시간 &
-구속평형 MD에서 $\mathcal K_i(t)=\beta_T\langle R_i(0)R_i(t)\rangle$를 구하고 감쇠시간을
-측정한다.\\
-$\Gamma_i,M_i,D_i$ & Markov 마찰, 장시간 mobility, 확산계수 & Markov plateau가 있을 때
-$\Gamma_i=\int_0^\infty\mathcal K_i\dd t$, $M_i=1/\Gamma_i$, $D_i=\kB TM_i$.\\
-$\xi_i,\delta_{ij},\delta(t-t')$ & 단위 백색잡음, Kronecker delta, Dirac delta & 잡음상관은
-$\langle\xi_i(t)\xi_j(t')\rangle=\delta_{ij}\delta(t-t')$.\\
-$\rho,\rho_*,\mathcal P_b,\dd\Lambda$ & 위상공간밀도, 기준밀도, 결합 위상영역, 위상체적 &
-$\mathcal P_b=\Omega_b\times\mathbb R^2$에서 정규화하며 $\rho_*$는 로그를 무차원화한다.\\
-$\mathcal J_{v_i}^{\rm irr},\mathcal F_K,\dot D_K$ & 속도공간 비가역전류, 관성 자유에너지,
-관성 소산율 & 식~\eqref{eq:velocity_irreversible_current},
-\eqref{eq:Kramers_free_energy}, \eqref{eq:Kramers_dissipation}.\\
-$\epsilon_i^{\rm in},\epsilon_i^{\rm mem}$ & 관성 및 memory 축약 판정수 & 식
-\eqref{eq:overdamped_conditions}의 두 값이 모든 중요 하중주파수에서 작을 때만
-Smoluchowski를 쓴다.\\
-$P,P_{\rm eq},P_*,\mathcal Z_{\rm conf}$ & 상태밀도, 평형밀도, 기준밀도, 분배함수 &
-$P=\iint\rho\dd v_a\dd v_s$; $P_{\rm eq}$는 유한 결합우물 안에서만 정규화한다.\\
-$\begin{gathered}\Omega_b,\partial\Omega_b\\\partial\Omega_{\rm fr},\bm n_\Omega,\dd S\end{gathered}$ & 결합영역, 전체경계,
-흡수형 균열경계, 외향법선, 경계면적요소 & 균열경계는 fitting한 $a_c$가 아니라 전체
-에너지의 $a^\ddagger$에 둔다.\\
-$J_a,J_s,\bm J$ & $a,s$방향 확률유속 & 식~\eqref{eq:Ja}--\eqref{eq:Js}; 보존형
-finite-volume face flux로 계산한다.\\
-$\mathcal F,\mu_P,D_{\rm irr},\dot D_{\rm irr}$ & 과감쇠 자유에너지, 확률 chemical
-potential, 누적소산, 소산율 & 식~\eqref{eq:free_energy_functional},
-\eqref{eq:probability_chemical_potential}, \eqref{eq:dissipation},
-\eqref{eq:accumulated_dissipation}.\\
-$S,P_{\rm crack},p_{\rm tail}$ & 생존확률, 누적균열확률, 순간 꼬리확률 & 식
-\eqref{eq:survival_flux}, \eqref{eq:tail_probability}; 소산에너지를 균열확률과 동일시하지
-않는다.\\
-$\bar a,\bar s,\operatorname{Var}[a],\bar E$ & 평균거리, 평균 registry, 거리분산,
-평균 potential 에너지 & 식~\eqref{eq:mean_a}--\eqref{eq:mean_energy}; 생존조건부 값은
-$S$로 나눈다.\\
-$g,\bm\nabla,\langle\cdot\rangle,\partial_t,\dot{(\cdot)},(\cdot)'$ & 일반 관측량, gradient,
-ensemble 평균, 편미분, 전미분, 단일변수 미분 & 흡수경계에서는 식
-\eqref{eq:general_moment_boundary}의 경계항을 유지한다.\\
-\end{longtable}
-
-\begin{longtable}{>{\raggedright\arraybackslash}p{0.17\textwidth}
-                  >{\raggedright\arraybackslash}p{0.34\textwidth}
-                  >{\raggedright\arraybackslash}p{0.39\textwidth}}
-\toprule
-소성/EAM 기호 & 의미와 단위 & 정의와 계산방법\\
-\midrule
-\endfirsthead
-\toprule
-소성/EAM 기호 & 의미와 단위 & 정의와 계산방법\\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-$s_z,s_{z,\pm}^\ddagger$ & $z$번째 안정점과 전진/후진 안장점; 길이 & 각 주기에서
-$\partial_s\gamma=\tau$를 풀고 2차미분 부호로 분류한다.\\
-$\gamma_p,\varepsilon_p$ & 축약 소성전단변형률과 축방향 투영 소성변형률 & 식
-\eqref{eq:plastic_strain}; 전위경화식이 아니라 이상 단일슬립 bookkeeping이다.\\
-$s_L,s_R,x,y,T_{\rm FP}$ & 반사경계, 흡수경계, 적분변수, 평균최초통과시간 & 정확한 우물과
-안장점 주변 경계를 정하고 식~\eqref{eq:exact_MFPT}를 적응형 적분한다.\\
-$k_{z,\pm}^{\rm FP},k_{z,\pm}$ & 최초통과 및 선택적 점근 전이율; 1/시간 & 과감쇠
-MFPT의 역수 또는 높은 장벽에서만 식~\eqref{eq:Kramers_rate}.\\
-$p_z,J_{a,z}$ & $z$번째 우물 확률밀도와 법선유속 & 시간척도 분리가 검증될 때만
-식~\eqref{eq:master_equation}을 쓴다.\\
-$\begin{gathered}E_{\rm EAM},\phi,F,\rho_i\\f,f_0,\beta_\rho\end{gathered}$ & EAM 에너지, pair항, embedding 함수,
-전자밀도, density kernel, 진폭, 감쇠계수 & 완전하고 검증된 EAM parameter set을
-사용하고 $f$를 먼저 합한 뒤 비선형 $F$를 계산한다.\\
-$\mathcal U,\mathcal L,\mathcal U_{\rm cell}$ & 위와 아래 반결정 및 위쪽 interface cell &
-선택한 결정방향에서 생성하고 이웃범위 또는 EAM cutoff 수렴성을 확인한다.\\
-$M_U,M_L$ & 위와 아래 대표 patch 질량 & 상관영역 안 원자질량을 합산한다.\\
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.32\textwidth}}
+\toprule 기호 & 물리적 의미 & 단위 & 정의/계산법/위치\\ \midrule
+\endfirsthead\toprule 기호 & 물리적 의미 & 단위 & 정의/계산법/위치\\ \midrule\endhead\bottomrule\endfoot
+$a,a_0,a^\ddagger$ & 층간거리, 기준거리, 외측 장벽 & m & $a^\ddagger$는 식~\eqref{eq:normal-barrier}의 음의 곡률 근.\\
+$b$ & row 반복거리/slip 주기 & m & 선택한 결정학적 반복거리.\\
+$s,s_0,\widetilde s,z$ & 펼친 slip, 기준, well 내부좌표, well 지수 & m,m,m,1 & $s=s_0+zb+\widetilde s$; Sec.~\ref{sec:plastic}.\\
+$m,n,q$ & LJ 지수와 일반 지수 & 1 & 전체 $U_0$는 $m>n>2$; 단일 row는 $q>1$.\\
+$\epsLJ,\sigLJ,C_{m,n}$ & pair 우물깊이, 영점거리, 정규화계수 & J,m,1 & 식~\eqref{eq:pair}; 피로 loop에 fitting하지 않는다.\\
+$p,k,\ell$ & row site, normal layer, 역격자 지수 & 1 & $p\in\mathbb Z$, $k,\ell\ge1$; $k$는 multiplicity가 아니다.\\
+$\delta,\delta_0,\eta$ & 무차원 registry와 거리 & 1 & $s/b,s_0/b,a/b$.\\
+$B_q,H_q,\Delta H_q$ & 단일-row, 다층, slip-excess 합 & 1 & 식~\eqref{eq:Bdirect}, \eqref{eq:Hexact}, \eqref{eq:DeltaH}.\\
+$K_\nu,\mathcal K_\nu,\operatorname{Li}_r$ & Bessel, Bessel--Lambert, polylog 함수 & 1 & Secs.~\ref{sec:mellin}, \ref{sec:polylog}.\\
+$v_{m,n},W$ & pair potential과 row--row kernel & J & 식~\eqref{eq:pair}, \eqref{eq:W}; $W$는 최종 에너지가 아니다.\\
+$U_0$ & intrinsic 다층 위치에너지 & J & $\sum_{k\ge1}W(ka,s)$; 외력 일을 포함하지 않는다.\\
+$\begin{gathered}\Delta U_0,\Delta U_n\\V_{\rm slip}\end{gathered}$ & 전체/normal/slip 초과에너지 & J & 동일한 $U_0$의 항등분해 식~\eqref{eq:decomp}.\\
+$P$ & $(a,s)$ 확률밀도 & m$^{-2}$ & 식~\eqref{eq:smol}로 진화한다.\\
+$J_a,J_s$ & 확률 flux & m$^{-1}$s$^{-1}$ & 식~\eqref{eq:currents}.\\
+$M_a,M_s$ & mobility & m$^2$J$^{-1}$s$^{-1}$ & 확산은 $k_BT M_i$로 고정된다.\\
+$Q_a,Q_s$ & 인장에서 유도된 일반화 힘 & N & $A_0\sigma,A_0M\sigma$; 독립 shear 입력은 없다.\\
+$M,A_0$ & signed Schmid factor, 대표 기계면적 & 1,m$^2$ & $A_0$는 FEM 요소면적이나 상관면적이 아니다.\\
+$\bar a,\bar U$ & G1 평균거리, G2 평균 intrinsic 에너지 & m,J & 식~\eqref{eq:G1}, \eqref{eq:G2}.\\
+$\dot D_{\rm irr},E_{\rm hyst}$ & 비가역률과 누적 hysteresis & J s$^{-1}$,J & G3 식~\eqref{eq:G3}; 저장 damage와 동일시하지 않는다.\\
+$S,P_{\rm crack}$ & 생존/균열개시 확률 & 1 & G4 확장 식~\eqref{eq:G4escape}.\\
+$h_{\rm slip},\gamma_p,\varepsilon_p$ & 균질화 두께, 소성 shear/인장 strain & m,1,1 & 잔류 $\langle z\rangle$로 식~\eqref{eq:plastic-strain} 계산.\\
+$T,k_B,\Omega_b$ & bath 온도, Boltzmann 상수, 결합영역 & K,J K$^{-1}$,m$^2$ & 확률동역학과 absorbing 경계에서 사용.\\
+$\omega,\sigma_m,\sigma_a$ & 각주파수, 평균응력, 진폭 & s$^{-1}$,Pa,Pa & 단축 인장파형 식~\eqref{eq:driving}.\\
 \end{longtable}
 \normalsize
-
-\subsection*{\koreanfont 실제 계산 순서}
-
-\renewcommand{\labelenumi}{{\normalfont\arabic{enumi}.}}
-\begin{enumerate}
-  \item $m,n,\epsLJ,\sigLJ,b,A_{\rm at},A_0,s_0$와 normal-only/slip 분기를 선언한다.
-  \item $U_\infty,W_{m,n}$을 계산하고 Bessel cutoff를 늘려 에너지와 필요한 미분값을
-  수렴시킨 뒤 대표점에서 직접 원자합과 비교한다.
-  \item 전체 에너지의 근을 bracket하여 안정점, 안장점, 불안정점을 구하고 정확한
-  곡률로 분류한다. 에너지를 다항식으로 fitting할 필요가 없다.
-  \item 원자기하와 구속평형 MD에서 $m_i^*,\mathcal K_i$를 구하고
-  식~\eqref{eq:overdamped_conditions}을 검사한다. 조건이 맞지 않으면 mobility를
-  기본상수처럼 넣지 않는다.
-  \item 관성이 중요하면 Kramers PDE를 푼다. 축약이 검증되면 Smoluchowski PDE를
-  쓴다. 두 경우 모두 보존형 finite-volume 기법을 적용하고, 격자, 시간간격,
-  속도영역, 정규화의 수렴을 확인한다.
-  \item 균열경계는 $a^\ddagger$에 두고 바깥 확률유속을 적분한다. $p_{\rm tail}$,
-  $S$, $P_{\rm crack}$, $D_{\rm irr}$를 서로 다른 출력으로 보고한다.
-\end{enumerate}

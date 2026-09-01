@@ -1,215 +1,107 @@
-# Assumptions and Approximations
+# Assumptions and approximations
 
-## Statistical-mechanical ensemble rule
+This file is normative for the active multiplicity-free multilayer theory.
+Earlier normal-chain and two-row documents are retained as derivation history,
+not as competing active total energies.
 
-<!-- PHYSICAL_P_ASSUMPTIONS_EN -->
+## Active physical assumptions
 
-A smooth thermal $P$ is not assumed merely because the coordinate is treated probabilistically. The following physical distinctions are mandatory:
+1. The target is a pure single crystal under repeated uniaxial tensile stress.
+2. The microscopic state is `(a,s)`: one locally homogeneous normal layer
+   spacing and one scalar collective/unwrapped registry for a declared slip
+   system.  A 2D probability state does not imply 2D continuum mechanics.
+3. The intrinsic potential is the generalized-LJ multilayer sum
+   `U0(a,s)=sum_{k>=1} W(k*a,s)`, with no `k` multiplicity and with the same
+   `s` for every normal layer.
+4. Full absolute convergence requires `m>n>2`.  A single row requires only
+   `q>1`; registry-excess reciprocal terms converge exponentially once the
+   zero Fourier mode is removed.
+5. Normal opening and slip are the exact decomposition of one `U0`.  The
+   historical collinear `U_infinity` and row kernel `W` are not added.
+6. `U0` contains atomic positional energy only.  The single applied stress
+   enters as `Q_a=A0*sigma(t)` and `Q_s=A0*M*sigma(t)` in the probability
+   current.  No independent shear-fatigue load is used.
+7. Eliminated atomic/phonon coordinates form an isothermal bath, velocity
+   relaxation is faster than resolved evolution, mobility is constant, and
+   diffusion obeys `D_i=kBT*M_i`.  These are reduction assumptions requiring
+   atomistic validation; no extra empirical diffusion is inserted.
+8. No named family is imposed on `P(a,s,t)`.  A bonded-basin Gibbs density is
+   only a conditional/metastable ensemble, never a global dead-load tensile
+   equilibrium.
+9. Finite-rate intrawell lag is not plasticity.  Plasticity requires a
+   residual `Delta<z> != 0` after unloading/relaxation in
+   `s=s0+z*b+s_tilde`.
+10. Mean intrinsic energy and cumulative hysteresis are distinct.
+    `E_hyst=integral dot(D)_irr dt` is nondecreasing dissipation but is not
+    assumed to be entirely stored damage energy.
+11. Crack initiation is first passage through the outer negative-curvature
+    root of `partial_a U0=Q_a`, including relative-flux corrections when the
+    boundary moves.  No arbitrary spacing or hysteresis-energy threshold is
+    active.
+12. `A0`, correlation area, slip homogenization thickness, and FEM element
+    area remain distinct unless independently derived.
+13. 2D/3D CAD/FEM remains geometry, mesh, scalar normal-stress transport, and
+    visualization.  It does not activate shear or multiaxial constitutive
+    physics.
+14. EAM/DFT is future quantitative validation/extension only and does not
+    replace the current generalized-LJ fundamental potential.
 
-- the zero-temperature homogeneous quasistatic state is a delta distribution on the stable mechanical branch;
-- a microcanonical distribution requires an isolated conservative equilibrium interpretation and includes the kinetic density-of-states factor after momenta are integrated out;
-- a canonical fixed-length distribution requires a thermal reservoir and fixed total length;
-- a tensile intact-basin Gibbs density is only a metastable/local-equilibrium approximation and requires intrabasin equilibration to be fast relative to loading/escape;
-- no Kramers or Arrhenius escape prefactor is introduced without an independently derived bath/friction/phonon time scale;
-- $A_0$ is a physical coarse-graining input and may not be tuned to obtain a desired tail probability or fatigue life.
+## Exact results versus numerical controls
 
-This file records the assumptions of the primary **one-dimensional normal-LJ /
-continuous-time** branch and the optional active one-dimensional registry
-branch.
+The Mellin--Poisson identity, the Bessel--Lambert `H_q` representation, the
+normal/slip identity decomposition, and the 12--6 polylog closure are exact.
+`pmax`, `kmax`, reciprocal modes, layer modes, grid spacing, timestep, and
+solver tolerance are numerical controls and must be refined.  They are not
+material fitting parameters.
 
-## Active assumptions
+## Unresolved physical inputs
 
-1. The research target is high-purity / single-crystal aluminum under primarily normal cyclic loading.
-2. The active theory is intentionally one-dimensional. Three-dimensional FCC calculations are archived and are not part of the default mainline.
-3. The primary microscopic coordinate is the local normal interatomic spacing $a$ or its normalized form $\lambda=a/a_0$.
-4. The central state density is $P(a,t)$ or equivalently $P(\lambda,t)$.
-5. Physical time $t$ is the fundamental evolution coordinate. Fatigue cycle count is not an independent state variable.
-6. The microscopic energy baseline is a fixed generalized Lennard-Jones interaction when explicitly stated.
-7. LJ parameters do not evolve with loading history merely to imitate damage.
-8. No named probability family is assumed for $P$.
-9. Crack initiation is pursued through normal opening / normal stability loss, not through an inserted empirical damage law.
-10. A 2D/3D specimen mesh is permitted as a geometry, storage, and visualization structure, but the active microscopic state and probability dynamics remain 1D normal-only.
-11. Until a multidimensional continuum solver is separately validated, copying a 1D axial field to 2D/3D cells is labeled as a visualization/post-processing projection rather than a multidimensional mechanics result.
-
-## Active Smoluchowski/Floquet assumptions
-
-1. Eliminated atomic and phonon coordinates act as an isothermal bath on the
-   resolved timescale, and spacing-velocity relaxation is fast enough for the
-   overdamped reduction.
-2. Mobility is constant. No coordinate-dependent mobility, stochastic
-   convention correction, or independently fitted diffusivity is active.
-3. The tangent-instability point $\lambda_c$ is an operational absorbing
-   initiation boundary. Its mathematical use is exact after declaration; its
-   equivalence to observed crack initiation remains a physical validation
-   problem.
-4. The imposed load is periodic when the one-cycle spectrum is used. Cycle
-   count is only a stroboscopic observation of the continuous-time PDE, not a
-   newly introduced evolution variable.
-5. The generator itself does not degrade between cycles. Therefore the
-   long-cycle survivor-conditioned density and energy are periodic, while
-   irreversible accumulation occurs through escaped probability.
-
-## Active ideal-registry assumptions
-
-1. Two parallel one-index rows and one scalar registry are an ideal mechanism,
-   not a full FCC half-space or dislocation network.
-2. Normal separation $a/b$ is prescribed. The cross-row energy $W(a,s)$ is not
-   added to the collinear normal-chain energy $U_\infty(a)$.
-3. The exact Bessel identity evaluates the stated pair geometry. Reciprocal
-   mode count is numerical, not a physical cutoff.
-4. One declared plane normal, in-plane slip direction, and loading axis define
-   signed resolved shear through the Schmid projection.
-5. The unwrapped registry density starts as a metastable distribution
-   conditioned on one well. Its numerical domain must have negligible edge
-   probability.
-6. Constant registry mobility and an isothermal Markov bath are active
-   reduction assumptions requiring atomistic validation.
-7. A crossing alone is not plastic. Residual reduced slip requires intrawell
-   recovery and a nonzero shifted well-index population after unloading and a
-   declared relaxation interval.
-8. $A_{\rm rep}$, $A_0$, $A_c$, and FEM element area are distinct.
-9. Quantitative aluminum plasticity, hardening, and two-way normal--slip
-   coupling are not claimed.
-
-## Exact result versus physical constraint
-
-The continuous-time energy-feasibility theorem is exact only after the admissible support is stated.
-
-A central additional condition is
-
-$$
-\boxed{
-\lambda\ge\lambda_L(t)>0.
-}
-$$
-
-The mathematical theorem treats $\lambda_L(t)$ as a given hard lower bound. Its physical value is **not yet derived** and must not be fitted to obtain a desired fatigue life.
-
-Without a compression-side constraint, normalization, mean, and LJ energy alone cannot force a tensile tail because LJ repulsion diverges as $\lambda\to0^+$.
-
-## Controlled approximations that may be tested
-
-- finite 1D chain as a numerical representation of the active 1D theory;
-- nearest-neighbor truncation when explicitly used;
-- finite empirical density as an approximation to $P(a,t)$;
-- any later Markov, Fokker-Planck, or moment closure only after a derivation justifies it.
-
-## Forbidden shortcuts unless explicitly justified
-
-- Fitting a Weibull, Gaussian, or another named family to $P(a,t)$ merely for convenience.
-- Using fatigue cycle count as the fundamental evolution coordinate.
-- Changing LJ parameters with time or loading history to create degradation.
-- Introducing an empirical damage variable and calling it mechanics-derived.
-- Introducing damping, relaxation times, transition rates, kernels, or thresholds solely to obtain a desired fatigue curve.
-- Assuming that all external work is retained as configurational energy.
-- Using $\mathcal E_{\rm safe}^{\max}(t)$ without stating the compression-side constraint.
-- Treating illustrative $\lambda_L$ values as aluminum material constants.
-- Calling an atomic-frequency dynamic instability a 20 Hz fatigue prediction without a derived bridge.
-- Tuning away the reversible 100 MPa null result merely because fatigue accumulation was expected.
+- `epsilon_LJ`, `sigma_LJ`, `b`, the reference `(a0,s0)`, and the chosen
+  single-crystal slip system;
+- representative mechanical area `A0`, mobilities/memory times, temperature,
+  and `h_slip`;
+- dislocation storage, hardening, backstress, and multiple-slip interactions;
+- experimental/atomistic validation of the outer-barrier first-passage event
+  as observed crack initiation.
 
 ---
 
-# 한국어 번역 — 가정과 근사
+# 가정과 근사의 한국어 정리
 
-## 통계역학 ensemble 규칙
+이 문서는 현재 활성화된 multiplicity-free 다층 이론의 기준 문서다. 과거의
+normal-chain 및 two-row 문서는 유도 이력으로 보존하지만 현재 total energy와
+경쟁하는 식으로 사용하지 않는다.
 
-<!-- PHYSICAL_P_ASSUMPTIONS_KO -->
+## 활성 물리 가정
 
-coordinate를 probabilistic하게 다룬다는 이유만으로 smooth thermal $P$를 가정하지 않는다. 다음 물리적 구분을 반드시 유지한다.
+1. 대상은 반복 단축 인장응력을 받는 순수 단결정이다.
+2. 미시상태는 국소적으로 균일한 normal layer 간격 `a`와, 지정된 slip
+   system의 하나의 scalar collective/unwrapped registry `s`다. `(a,s)`가
+   2차원 확률공간이라는 사실은 2D continuum constitutive law를 뜻하지 않는다.
+3. intrinsic potential은 `U0(a,s)=sum_{k>=1} W(k*a,s)`다. 앞에
+   multiplicity `k`가 없고 모든 normal layer 항에서 같은 `s`를 사용한다.
+4. 전체 absolute sum은 `m>n>2`를 요구한다. 단일 row는 `q>1`이면 되고,
+   slip-excess는 zero Fourier mode가 제거되어 지수적으로 수렴한다.
+5. normal opening과 slip은 하나의 `U0`에서 정확히 분해한다. 과거의
+   collinear `U_infinity`와 row kernel `W`를 total energy로 더하지 않는다.
+6. `U0`에는 외력 일을 넣지 않는다. 단 하나의 인장응력으로부터
+   `Q_a=A0*sigma(t)`, `Q_s=A0*M*sigma(t)`를 만들어 확률 current에 넣는다.
+   독립적인 shear fatigue 입력은 없다.
+7. 생략한 원자/phonon 좌표가 등온 bath이고 속도완화가 빠르며 mobility는
+   상수라고 가정한다. 확산은 fluctuation--dissipation으로 고정한다.
+8. `P(a,s,t)`에 Gaussian 등 특정 분포족을 강제하지 않는다. bonded-basin
+   Gibbs 분포는 조건부 metastable ensemble일 뿐 전역 인장평형이 아니다.
+9. well 내부 phase lag는 소성이 아니다. `s=s0+z*b+s_tilde`에서 unloading과
+   relaxation 뒤 `Delta<z> != 0`일 때만 잔류 소성으로 정의한다.
+10. 평균 intrinsic energy와 누적 hysteresis를 구분한다. `E_hyst`는 비가역
+    dissipation이지만 전부 저장 damage energy라고 단정하지 않는다.
+11. 균열개시는 `partial_a U0=Q_a`의 음의 곡률 외측 장벽을 통과하는
+    first passage다. 임의 거리나 energy threshold를 사용하지 않는다.
+12. `A0`, 상관면적, slip 균질화 두께, FEM 요소면적은 서로 다르다.
+13. 2D/3D CAD/FEM은 geometry, mesh, scalar normal stress 전달 및
+    visualization용이다. shear/multiaxial 재료이론을 활성화하지 않는다.
+14. EAM/DFT는 미래 정량 검증/확장용이며 현재 generalized-LJ governing
+    potential을 대체하지 않는다.
 
-- zero-temperature homogeneous quasistatic state는 stable mechanical branch 위의 delta distribution이다.
-- microcanonical distribution은 isolated conservative equilibrium 해석을 요구하며 momentum 적분 뒤 kinetic density-of-states factor를 포함한다.
-- canonical fixed-length distribution은 thermal reservoir와 fixed total length를 요구한다.
-- tensile intact-basin Gibbs density는 metastable/local-equilibrium approximation일 뿐이며 intrabasin equilibration이 loading/escape보다 빨라야 한다.
-- independently derived bath/friction/phonon time scale 없이 Kramers 또는 Arrhenius escape prefactor를 넣지 않는다.
-- $A_0$는 physical coarse-graining input이며 원하는 tail probability나 fatigue life를 얻도록 tuning하면 안 된다.
-
-이 문서는 주 **1차원 normal-LJ / 연속시간** branch와 선택적 활성 1차원
-registry branch의 가정을 기록한다.
-
-## 활성 가정
-
-1. 연구대상은 주로 normal cyclic loading을 받는 고순도 또는 단결정 알루미늄이다.
-2. 활성 이론은 의도적으로 1차원이다. 3차원 FCC 계산은 archive에 보존하며 기본 mainline에는 포함하지 않는다.
-3. 주 microscopic coordinate는 국부 수직 원자간격 $a$ 또는 normalized form $\lambda=a/a_0$이다.
-4. 중심 상태밀도는 $P(a,t)$ 또는 동등한 $P(\lambda,t)$이다.
-5. 물리적 시간 $t$가 근본 evolution coordinate다. fatigue cycle count는 독립적인 state variable이 아니다.
-6. 명시적으로 사용할 때 microscopic energy baseline은 고정 generalized Lennard-Jones interaction이다.
-7. damage를 흉내내기 위해 loading history에 따라 LJ parameter를 바꾸지 않는다.
-8. $P$에 특정 named probability family를 가정하지 않는다.
-9. crack initiation은 empirical damage law가 아니라 normal opening / normal stability loss로 다룬다.
-10. 2D/3D 시편 mesh는 geometry, storage 및 visualization 구조로 허용하지만 활성 microscopic state와 probability dynamics는 1D normal-only로 유지한다.
-11. multidimensional continuum solver를 별도로 검증하기 전까지 1D axial field를 2D/3D cell에 복사한 결과는 multidimensional mechanics result가 아니라 visualization/post-processing projection으로 표시한다.
-
-## 활성 Smoluchowski/Floquet 가정
-
-1. 생략한 atomic/phonon 좌표는 해석 시간척도에서 isothermal bath로
-   작용하고, spacing velocity relaxation은 overdamped 축약이 가능할 만큼
-   빠르다.
-2. mobility는 상수다. 위치의존 mobility, stochastic convention 보정,
-   독립 fitting diffusion은 활성화하지 않는다.
-3. 변곡점 $\lambda_c$를 operational absorbing initiation boundary로 둔다.
-   선언 뒤의 수학은 정확하지만 실제 균열개시와 같은지는 별도 물리 검증
-   대상이다.
-4. 한 주기 spectrum을 쓸 때 하중은 주기적이다. cycle count는 연속시간
-   PDE를 stroboscopic하게 관찰한 것이며 새로운 근본 evolution variable이
-   아니다.
-5. generator 자체는 cycle에 따라 열화되지 않는다. 따라서 장기 생존조건부
-   분포와 에너지는 주기적이고, 비가역 누적은 유출확률로 발생한다.
-
-## 활성 ideal-registry 가정
-
-1. 두 개의 1D 원자열과 하나의 scalar registry는 이상적 mechanism이며 full
-   FCC half-space나 전위 network가 아니다.
-2. normal separation $a/b$는 현재 지정값이다. cross-row $W(a,s)$를
-   collinear $U_\infty(a)$에 더하지 않는다.
-3. Bessel 항등식은 해당 pair geometry에서 exact하다. reciprocal mode 수는
-   수치 parameter이며 물리 cutoff가 아니다.
-4. slip plane normal, in-plane direction, loading axis로 signed Schmid
-   projection을 계산한다.
-5. unwrapped density는 한 well에 조건부인 metastable 분포에서 시작하며 계산
-   영역 끝 확률이 충분히 작아야 한다.
-6. constant mobility와 isothermal Markov bath는 MD 검증이 필요한 축약가정이다.
-7. well crossing만으로 소성이라 하지 않는다. unloading과 지정 relaxation 뒤
-   intrawell 변위는 복귀하고 well-index population은 이동해 있어야 한다.
-8. $A_{\rm rep}$, $A_0$, $A_c$, FEM element area를 구분한다.
-9. 정량적 알루미늄 소성, 경화, 양방향 normal--slip coupling은 아직 주장하지
-   않는다.
-
-## Exact result와 physical constraint의 구분
-
-continuous-time energy-feasibility theorem은 admissible support가 명시된 뒤에만 exact하다.
-
-핵심 추가조건은
-
-$$
-\boxed{
-\lambda\ge\lambda_L(t)>0
-}
-$$
-
-이다.
-
-수학 theorem은 $\lambda_L(t)$를 주어진 hard lower bound로 취급한다. 그 물리적 값은 **아직 유도되지 않았으며** 원하는 fatigue life를 얻기 위한 fitting parameter로 사용하면 안 된다.
-
-compression-side constraint가 없으면 LJ repulsion이 $\lambda\to0^+$에서 발산하므로 정규화, 평균, LJ energy만으로 tensile tail을 강제할 수 없다.
-
-## 검증 가능한 controlled approximation
-
-- 활성 1D theory의 numerical representation으로 사용하는 finite 1D chain;
-- 명시적으로 선언한 nearest-neighbor truncation;
-- $P(a,t)$의 approximation으로 사용하는 finite empirical density;
-- 향후 Markov, Fokker-Planck, moment closure는 derivation이 정당화한 뒤에만 사용.
-
-## 명시적 정당화 없이 금지되는 shortcut
-
-- 편의를 위해 $P(a,t)$에 Weibull, Gaussian 또는 다른 named family를 fitting하는 것.
-- fatigue cycle count를 근본 evolution coordinate로 사용하는 것.
-- degradation을 만들기 위해 시간이나 loading history에 따라 LJ parameter를 바꾸는 것.
-- empirical damage variable을 넣고 mechanics-derived라고 부르는 것.
-- 원하는 fatigue curve를 얻기 위해 damping, relaxation time, transition rate, kernel, threshold를 임의로 넣는 것.
-- 외부 work 전체가 configurational energy로 저장된다고 가정하는 것.
-- compression-side constraint를 밝히지 않고 $\mathcal E_{\rm safe}^{\max}(t)$를 사용하는 것.
-- illustrative $\lambda_L$ 값을 aluminum material constant로 취급하는 것.
-- derived bridge 없이 atomic-frequency dynamic instability를 20 Hz fatigue prediction이라고 부르는 것.
-- 피로누적을 기대했다는 이유로 reversible 100 MPa null result를 tuning으로 없애는 것.
+수학적 항등식과 numerical cutoff를 혼동하지 않는다. `pmax`, `kmax`, Bessel
+mode, grid, timestep은 모두 수치 수렴변수이며 재료 fitting parameter가 아니다.

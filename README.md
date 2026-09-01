@@ -12,39 +12,54 @@ only from chat history.
 바뀌는 모든 작업은 push 전에 반드시 이 절을 갱신한다. 새로운 작업 세션은
 항상 이 절부터 읽는다. 채팅 기록에만 진행상황을 남기지 않는다.
 
-Last updated: **2026-09-01**
+Last updated: **2026-09-02 (multilayer derivation implemented and locally verified)**
 
-- **Primary active branch:** one-dimensional normal-spacing crack initiation
-  for pure single-crystal aluminum, using $a$, $P(a,t)$, exact zeta-chain
-  energy, Smoluchowski transport, absorbing escape, and the periodic
-  Floquet--Perron survival operator.
-- **Optional active plasticity branch:** one-dimensional scalar registry
-  $s/b$ for one declared slip system. Its exact shifted Epstein--Hurwitz /
-  Poisson--Bessel energy drives an unwrapped probability density. Residual
-  plastic slip is reported only when the well-index population $z$ remains
-  shifted after unloading and a declared relaxation interval.
+- **Current integration task:** the normal spacing $a$ and one scalar
+  crystallographic registry $s$ are being derived from one common intrinsic
+  multilayer potential
+  $U_0(a,s)=\sum_{k=1}^{\infty}W(ka,s)$.  The row--row $W$ is a kernel, not
+  the final lattice energy.  There is no multiplicity prefactor $k$, and the
+  same collective/unwrapped $s$ is used in every layer term (never $ks$).
+- **Probability state:** the active fundamental state is the reduced
+  two-coordinate density $P(a,s,t)$ for uniaxial tensile fatigue in a single
+  crystal.  A declared loading axis and one declared slip system give
+  $Q_a=A_0\sigma(t)$ and $Q_s=A_0M\sigma(t)$; there is no independent shear
+  fatigue input or multiaxial fatigue criterion.
+- **Plasticity criterion:** registry is unwrapped as $s=zb+\tilde s$.
+  Intrawell phase lag alone is not plasticity; plastic deformation requires a
+  residual change $\Delta\langle z\rangle\ne0$ after unloading/relaxation.
 - **Verified current result:** a subcritical dimensionless resolved-shear
-  pulse leaves $\langle z\rangle=0.4913473$ while the mean intrawell registry
+  pulse leaves $\langle z\rangle=0.4915266$ while the mean intrawell registry
   returns to $1.6\times10^{-10}$. Six symmetric zero-mean cycles leave only
   $\langle z\rangle=0.001004$. This is a mechanism demonstration, not an
   aluminum plastic-strain calibration.
-- **Geometry rule:** the normal collinear energy $U_\infty(a)$ and the two-row
-  registry energy $W(a,s)$ are alternative atomistic geometries and are not
-  added. The current slip calculation prescribes $a/b$ and evolves the single
-  unwrapped registry coordinate.
-- **Still unresolved:** a validated FCC Al GSF/EAM surface, active slip-system
-  selection, representative interface area, MD-derived mobility/memory,
+- **Unified-energy rule:** normal opening and slip are the exact identity
+  $\Delta U_0=\Delta U_n+V_{\rm slip}$ from the same $U_0$.  The prior
+  collinear $U_\infty$ and single-row $W$ remain historical/reduced
+  derivations but are not added as the fundamental total energy.
+- **Still unresolved:** active slip-system selection, representative
+  mechanical area, MD-derived mobility/memory,
   homogenization thickness, dislocation storage, hardening, and two-way
   normal--slip coupling. Therefore quantitative Al cyclic plasticity is not
   claimed.
 - **FEM/UI:** geometry and scalar normal-stress visualization remain available.
   The new registry solver is not yet coupled to FEM elements; mesh dimension
   does not create multiaxial constitutive physics.
-- **Verification at this update:** 151 primary tests and 8 independent
-  shear/Bessel audit tests pass. The corrected source PDF SHA-256 is
-  `42C3D5086CA203C76F3DC8213A1718B5121AA1273067738C5B478BCBF12D999D`.
-  Both TeX sources have balanced environments and every paper figure exists;
-  no TeX engine is installed, so no updated PDF is claimed.
+- **Verification:** direct $(k,p)$ sums agree with the exact
+  $H_q$ Bessel--Lambert form for $q=6,12$ at tested points at relative errors
+  of order $10^{-11}$ or smaller.  The independently derived 12--6 polylog
+  closure agrees with the Bessel--Lambert evaluation at machine precision.
+  The complete local suite passes (167 tests). The canonical paper was built
+  locally with Tectonic 0.17.0; its log contains no LaTeX errors, missing
+  glyphs, overflow warnings, or unresolved references. The tracked PDF is
+  `output/pdf/slip_lattice_energy_derivation.pdf` (SHA-256
+  `e433296316a04a1ae4239da4ce323476c81feb1e8559e304789fd00bdf9fe23a`).
+  No GitHub Actions workflow or persistent automation is used or changed.
+
+### Historical pre-multilayer branch description
+
+The following branch-separation paragraphs are retained only as the immediate
+pre-2026-09-02 research history. They are not the active governing model.
 
 The project now has two deliberately separated reduced branches. The primary
 fatigue branch remains the one-dimensional normal-tensile spacing model. The
@@ -64,14 +79,37 @@ Reproduce the active registry demonstration and its focused verification with:
 
 ```powershell
 py -3 -m simulations.run_registry_plasticity
-py -3 -m pytest tests/test_registry_plasticity.py -q
+py -3 -m simulations.verify_multilayer_lattice
+py -3 -m pytest tests/test_multilayer_lattice.py tests/test_registry_plasticity.py -q
 $env:MPLBACKEND='Agg'; py -3 -m pytest -q
 ```
 
-The generated data and figure are under `results/data/registry_plasticity/`
+The generated data and figures are under `results/data/registry_plasticity/`
 and `results/figures/registry_plasticity/`.
 
-## Scope freeze / 연구 범위 고정
+## Active scope freeze / 현재 연구 범위
+
+The active fundamental state is now the coupled reduced coordinate $(a,s)$
+under one uniaxial tensile waveform. Its intrinsic energy is exclusively
+$U_0(a,s)=\sum_{k\ge1}W(ka,s)$: no layer multiplicity $k$, no $ks$, and no
+external-work term is included in $U_0$. Normal and slip excess energies are
+an exact decomposition of this same potential. Plasticity is a residual
+unwrapped-well transition, and crack initiation is normal-barrier first
+passage. EAM/DFT remains future validation only. See
+`docs/ACTIVE_IDEAL_REGISTRY_PLASTICITY.md` and `docs/ASSUMPTIONS.md`.
+
+현재 활성 fundamental state는 하나의 단축 인장파형 아래 $(a,s)$를 쓰는
+축약모델이다. intrinsic energy는 오직
+$U_0(a,s)=\sum_{k\ge1}W(ka,s)$이며, layer multiplicity $k$, $ks$, 외력 일은
+$U_0$에 넣지 않는다. normal/slip energy는 같은 $U_0$의 항등분해이고,
+소성은 unwrapped well의 잔류 이동, 균열개시는 normal barrier first passage로
+정의한다. EAM/DFT는 향후 검증용이다.
+
+### Superseded pre-multilayer status (historical context only)
+
+The paragraphs below in this subsection describe the previous separated
+normal-chain/two-row baseline and are retained only to document the transition.
+They are not the active governing model after 2026-09-02.
 
 The primary crack-initiation theory is a one-dimensional normal-tensile spacing
 model for pure single-crystal aluminum. The exact one-registry Bessel model is
@@ -319,7 +357,11 @@ with the spacing-velocity phase-space state $F_1(\lambda,v,t)$ and neighboring-s
 
 Mechanics-first research framework for fatigue crack initiation under **one-dimensional normal cyclic loading** in high-purity / single-crystal aluminum.
 
-## Active scope
+## Legacy normal-chain scope (historical module)
+
+The section below documents the earlier normal-only branch. The active common
+energy and current scope are defined in the persistent status above and in
+`docs/ACTIVE_IDEAL_REGISTRY_PLASTICITY.md`.
 
 The active derivation is deliberately restricted to a one-dimensional stack of represented material layers. The microscopic reduced coordinate is the normal spacing
 

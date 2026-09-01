@@ -1,4 +1,12 @@
-# Open Problems — Active Normal and Ideal-Registry Branches
+# Open Problems — Active Multilayer Spacing--Registry Theory
+
+## September 2026 multilayer supersession
+
+The active energy is now the common multiplicity-free
+$U_0(a,s)=\sum_{k\ge1}W(ka,s)$. Earlier separated normal-chain and single-row
+branch descriptions below are historical milestones. Current open physical
+inputs are $A_0$, mobility/memory, $h_{\rm slip}$, active slip-system
+selection, and dislocation hardening. EAM/DFT is future validation only.
 
 ## September 2026 ideal-registry activation update
 

@@ -17,6 +17,7 @@ from theory.registry_lattice import (
     registry_energy_derivative,
     schmid_factor,
     shifted_inverse_power_bessel,
+    h_q_delta_derivative_bessel,
 )
 from theory.registry_plasticity import (
     RegistryTransportConfig,
@@ -48,18 +49,18 @@ def test_active_bessel_energy_is_periodic_and_its_force_is_exact_derivative() ->
     assert registry_energy(delta + 1.0, lattice) == pytest.approx(
         registry_energy(delta, lattice), abs=2.0e-14
     )
-    direct_derivative = registry_force_per_repeat_direct(
-        a=lattice.normal_ratio,
-        s=delta,
-        b=1.0,
-        epsilon_coefficient=1.0,
-        sigma=lattice.sigma_ratio,
-        m=lattice.m,
-        n=lattice.n,
-        half_width=5000,
+    direct_derivative = (
+        lattice.sigma_ratio**lattice.m
+        * h_q_delta_derivative_bessel(
+            lattice.m, delta, lattice.normal_ratio, 28, 64
+        )
+        - lattice.sigma_ratio**lattice.n
+        * h_q_delta_derivative_bessel(
+            lattice.n, delta, lattice.normal_ratio, 28, 64
+        )
     )
     assert registry_energy_derivative(delta, lattice) == pytest.approx(
-        direct_derivative, rel=3.0e-13
+        direct_derivative, rel=2.0e-13
     )
 
 

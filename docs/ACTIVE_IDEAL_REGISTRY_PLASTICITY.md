@@ -1,255 +1,212 @@
-# Active one-dimensional ideal-registry plasticity branch
+# Active multilayer spacing--registry fatigue theory
 
-## Status
+## Scope
 
-The exact two-row Poisson--Bessel lattice energy is now an **optional active
-mechanism branch**. It is not merely an archive. The primary crack-initiation
-model remains the separate normal-chain model. The two energies are not added.
+The active fundamental model describes repeated **uniaxial tensile loading of
+a single crystal** with one normal spacing coordinate `a` and one declared
+crystallographic slip coordinate `s`.  A 2D state space `(a,s)` is not a 2D
+continuum constitutive law.  No independent shear-fatigue input, multiaxial
+criterion, fitted Peierls sinusoid, or EAM/DFT lookup surface is active.
 
-This distinction is geometric, not bureaucratic:
+## Counting convention
 
-- the normal branch uses a collinear chain and homogeneous local spacing `a`;
-- the registry branch uses two parallel one-index rows, prescribed separation
-  `a`, row repeat `b`, and one scalar unwrapped registry `s`;
-- a future jointly evolving `(a,s)` density would have two state coordinates,
-  although the row lattice and the slip coordinate would remain reduced 1D;
-- no 2D/3D continuum shear criterion is introduced.
-
-## Exact energy used by the solver
-
-For the repository coefficient convention
+For row repeat `b`, row separation `d`, and common registry `s`,
 
 ```text
-v(r) = epsilon_c [(sigma_LJ/r)^m - (sigma_LJ/r)^n],  m > n > 1,
+W(d,s) = sum_{p in Z} v_mn(sqrt(d^2+(p b+s)^2))
 ```
 
-the configuration-dependent cross-row energy per upper atom, equivalently per
-commensurate row repeat, is
+is one row--row kernel.  The local fatigue state assumes equally spaced normal
+layers at `a,2a,3a,...`, so its intrinsic energy is
 
 ```text
-W(a,s) = sum over p in Z of v(sqrt(a^2+(p b+s)^2)).
+U0(a,s) = sum_{k>=1} W(k a,s)
+        = sum_{k>=1} sum_{p in Z}
+          v_mn(sqrt(k^2 a^2+(p b+s)^2)).
 ```
 
-Put `delta=s/b`, `eta=a/b`, and
+There is **no prefactor `k`**.  A weighted `sum k W(k a,s)` counts all pairs
+between two half-spaces and is a different interface-energy convention.  The
+same collective/unwrapped `s` appears for every layer; neither `ks` nor `js`
+is used.
+
+## Exact multilayer sum
+
+With `delta=s/b`, `eta=a/b`, and `q>2`, define
 
 ```text
-Z_nu(delta,eta) = sum over p in Z of [(p+delta)^2+eta^2]^(-nu).
+B_q(delta,eta) = sum_p [(p+delta)^2+eta^2]^(-q/2),
+H_q(delta,eta) = sum_k B_q(delta,k eta).
 ```
 
-Mellin transformation followed by Poisson summation gives the identity
+The retained Mellin--Poisson derivation gives, with `nu=(q-1)/2`,
 
 ```text
-Z_nu = sqrt(pi)/Gamma(nu) [
-  Gamma(nu-1/2) eta^(1-2 nu)
-  + 4 sum over ell>=1 of
-    cos(2 pi ell delta)
-    (pi ell/eta)^(nu-1/2)
-    K_(nu-1/2)(2 pi ell eta)
-].
+H_q = sqrt(pi)/Gamma(q/2) [
+  Gamma(nu) eta^(1-q) zeta(q-1)
+  + 4 sum_{ell>=1} cos(2 pi ell delta) (pi ell/eta)^nu
+      Kcal_nu(2 pi ell eta)
+],
+Kcal_nu(x) = sum_{k>=1} k^(-nu) K_nu(kx).
 ```
 
-Thus
+This is an exact convergent representation, not a harmonic approximation.
+The absolute double sum requires `q>2`; the single-row `B_q` needs only
+`q>1`.  Registry differences remove the zero Fourier mode and retain the
+weaker exponentially convergent slip-excess structure.
+
+For the well-depth convention
 
 ```text
-W/epsilon_c = (sigma_LJ/b)^m Z_(m/2)
-              - (sigma_LJ/b)^n Z_(n/2).
+C_mn = m/(m-n) (m/n)^(n/(m-n)),
+v_mn = C_mn epsilon_LJ [(sigma_LJ/r)^m-(sigma_LJ/r)^n],
 ```
 
-The Bessel-mode count in the implementation controls an exponentially
-convergent numerical evaluation of this exact identity. It is not a physical
-pair cutoff. Representative values are checked independently against the
-direct real-space sum. For `q=2`, where direct truncation converges only as
-`1/N`, the Bessel result is checked against the independent hyperbolic closed
-form.
-
-The derivative of the same series is used for the registry force. No fitted
-sinusoidal Peierls potential and no Taylor polynomial replace the energy.
-
-## Why the normal and registry energies are not summed
-
-`U_infinity(a)` counts pairs in one collinear homogeneously dilated chain.
-`W(a,s)` counts cross pairs between two parallel rows. Adding them without one
-common atomistic cell and a disjoint pair partition would mix geometries and
-can double count interactions. Therefore:
-
-- the normal crack-initiation solver continues to use `U_infinity`;
-- the ideal-registry solver uses `W` as its configuration-dependent energy;
-- same-row contributions are constant when `b` is prescribed;
-- two-way normal--registry coupling is deferred until it is derived from one
-  common half-space or interface Hamiltonian.
-
-## Resolved uniaxial loading
-
-For unit loading axis `e`, slip-plane normal `n`, and in-plane slip direction
-`d`, the signed Schmid projection is
+the common intrinsic potential is
 
 ```text
-M = (e dot n)(e dot d),       n dot d = 0,
-tau(t) = M sigma(t).
+U0 = C_mn epsilon_LJ [
+  (sigma_LJ/b)^m H_m - (sigma_LJ/b)^n H_n
+],                     m>n>2.
 ```
 
-The sign is retained because forward and reverse registry translations must
-not be merged. The reduced generalized force used in the numerical model is
+External work is not part of `U0`.
+
+## One-energy normal/slip split
+
+For reference `(a0,s0)`,
 
 ```text
-g(t) = tau(t) A_rep b / epsilon_c.
+Delta U0(a,s) = U0(a,s)-U0(a0,s0)
+              = Delta U_n(a)+V_slip(a,s),
+Delta U_n     = U0(a,s0)-U0(a0,s0),
+V_slip        = U0(a,s)-U0(a,s0).
 ```
 
-`A_rep` is a crystallographically defined interface area per repeat. It is not
-the normal mechanical area `A0`, the correlation area `Ac`, or a FEM element
-area unless a separate derivation proves an equality.
+This identity prevents double counting.  The old collinear `U_infinity` and
+single-row `W` are useful reduced derivations but are not summed as the active
+fundamental energy.
 
-## Probability dynamics and nondimensionalization
-
-Let `u=s/b` be unwrapped rather than reduced modulo one. With constant
-long-time mobility `M_s`, the physical current is
+The slip excess uses
 
 ```text
-J_s = -M_s [P partial_s W - tau A_rep P + k_B T partial_s P].
+Delta H_q = H_q(delta,eta)-H_q(delta0,eta)
 ```
 
-The active numerical implementation scales energy by `epsilon_c`, registry by
-`b`, and time by
+and contains only cosine differences.  Therefore `V_slip(a,s0)=0` and
+`V_slip(a,s+b)=V_slip(a,s)` exactly.  For `s0=0`, each difference is
+`cos(2 pi ell delta)-1=-2 sin^2(pi ell delta)`.
+
+## Independently derived 12--6 polylog closure
+
+The half-integer identities are
 
 ```text
-t_s = b^2/(M_s epsilon_c).
+K_5/2(x)  = sqrt(pi/(2x)) exp(-x) (1+3/x+3/x^2),
+K_11/2(x) = sqrt(pi/(2x)) exp(-x)
+             (1+15/x+105/x^2+420/x^3+945/x^4+945/x^5).
 ```
 
-It then solves
+Multiplication by `k^(-nu)` shows directly that
 
 ```text
-partial_t p = -partial_u j,
-j = -[(partial_u w - g)p + beta^(-1) partial_u p],
-beta = epsilon_c/(k_B T).
+Kcal_5/2(x) = sqrt(pi/(2x)) [
+  Li_3(e^-x)+3/x Li_4(e^-x)+3/x^2 Li_5(e^-x)],
+
+Kcal_11/2(x) = sqrt(pi/(2x)) [
+  Li_6(e^-x)+15/x Li_7(e^-x)+105/x^2 Li_8(e^-x)
+  +420/x^3 Li_9(e^-x)+945/x^4 Li_10(e^-x)
+  +945/x^5 Li_11(e^-x)].
 ```
 
-The finite-volume face flux uses Chang--Cooper exponential fitting and
-backward Euler. This gives nonnegative density, exact reflecting mass balance,
-and the correct discrete zero-current Gibbs ratio. The unwrapped domain is a
-numerical truncation only; the reported edge probability must be negligible
-and the domain must be refined.
+The orders start at `q/2` because the square-root prefactor contributes one
+additional `k^(-1/2)`.  Tests compare these expressions with both the direct
+double sum and the unsimplified Bessel--Lambert series.
 
-The initial state is a metastable Boltzmann distribution conditioned on one
-registry basin. A global equilibrium density on the infinite periodic line
-would not be normalizable.
+## Uniaxial driving and probability evolution
 
-## Operational reduced plasticity
-
-Write
+For the only applied stress
 
 ```text
-u = delta_0 + z + u_tilde,
-z in Z,  -1/2 <= u_tilde < 1/2,
+sigma(t)=sigma_m+sigma_a sin(omega t),
+Q_a=A0 sigma(t),       Q_s=A0 M sigma(t),
 ```
 
-where `delta_0` is the numerically verified minimum in one period. A well
-crossing alone is not declared plastic because reverse crossings are allowed.
-The model reports residual reduced plasticity only when, after the applied
-resolved force is removed and a relaxation interval is supplied,
+where `M` is the signed Schmid projection of the declared tensile axis onto
+one declared slip system.  The underlying evolution law is
 
 ```text
-mean(u_tilde) -> 0,     but mean(z) != 0.
+partial_t P = -partial_a J_a-partial_s J_s,
+J_a = -M_a [P(partial_a U0-Q_a)+kBT partial_a P],
+J_s = -M_s [P(partial_s U0-Q_s)+kBT partial_s P].
 ```
 
-For a separately declared homogenization thickness `h_slip`, the kinematic
-mapping is
+The Einstein relation fixes diffusion; no arbitrary probability kernel is
+introduced.
+
+## The four governing equations
+
+The PDE evolves these four official observables:
 
 ```text
-gamma_p = (b/h_slip) mean(z),
-epsilon_p = M gamma_p.
+G1  bar(a) = integral integral a P da ds.
+
+G2  bar(U) = integral integral [U0(a,s)-U0(a0,s0)] P da ds.
+
+G3  E_hyst(t) = integral_0^t dot(D)_irr dt,
+    dot(D)_irr = integral integral [J_a^2/(M_a P)+J_s^2/(M_s P)] da ds >=0.
+
+G4  integral integral P da ds = 1
+    (or S(t)<=1 with an absorbing fracture boundary).
 ```
 
-This mapping expresses a permanent relative translation. It does not create
-dislocation density, hardening, backstress, or multiple-slip interaction.
+`bar(U)` can decrease after a jump into an equivalent registry well because
+`U0(a,s+b)=U0(a,s)`.  `E_hyst` is cumulative irreversible/hysteretic
+dissipation and is not automatically stored damage energy; it includes energy
+passed to eliminated thermal modes.  Per-cycle increments are integrals of
+`dot(D)_irr` over each cycle.
 
-## Dissipation and symmetry
+## Plasticity and crack initiation
 
-With probability chemical potential
+Registry is never folded before its well population is measured:
 
 ```text
-mu = w - g u + beta^(-1)(ln p + 1),
+s=s0+z b+tilde(s),       z in Z,
+p_z=integral_{W_z} P da ds,
+gamma_p=(b/h_slip)<z>,   epsilon_p=M gamma_p.
 ```
 
-the closed-domain free-energy balance is
+Finite-rate intrawell lag is recoverable.  The operational plasticity
+criterion is a residual `Delta<z> != 0` after unloading and relaxation.
+
+At a given tensile drive, the normal escape boundary is the outer root
 
 ```text
-dF/dt = -mean(u) dg/dt - integral j^2/p du.
+partial_a U0(a^dagger,s)=Q_a(t),
+partial_a^2 U0(a^dagger,s)<0.
 ```
 
-The second term is nonpositive; dimensionally it is multiplied by
-`epsilon_c/t_s`. Energy is transferred to the eliminated isothermal bath. The
-periodic lattice energy itself is conservative.
-
-Because `W(u)` is inversion symmetric about a verified minimum, a symmetric
-initial density and exactly antisymmetric zero-mean load have no preferred
-translation direction. The tests confirm that six complete symmetric cycles
-leave `mean(z)=0.001004` at the stated discretization. A biased tensile-resolved
-shear history can instead produce a directed population transfer.
-
-## Current reproducible result
-
-For the explicitly dimensionless demonstration
+For a moving graph `a=a^dagger(s,t)`, Reynolds transport gives the relative
+outflux (periodic/no-flux registry edges)
 
 ```text
-m=12.19, n=6, a/b=1, sigma_LJ/b=1,
-beta=20, Bessel modes=20,
-peak g=0.55, ideal maximum |d(W/epsilon_c)/du|=1.0582731,
+-dS/dt = integral [J_a-J_s partial_s a^dagger
+                   -P partial_t a^dagger] ds.
 ```
 
-the load is subcritical with respect to deterministic registry instability.
-After ramp, hold, unloading, and 18 reduced time units at zero force:
+At an ideal absorbing boundary `P=0`, the boundary-motion term vanishes.
+Crack initiation is this first-passage probability `1-S`, not an arbitrary
+spacing or accumulated-energy threshold.
 
-```text
-mean(z)                    = 0.4913473
-mean intrawell registry    = 1.59e-10
-accumulated reduced work   = 0.2591766
-maximum edge probability  = 2.93e-10
-```
+## Current numerical status and limitations
 
-The result demonstrates thermally assisted, finite-time transfer between
-lattice wells and residual translation. It is not a prediction of aluminum
-yield strain or fatigue life.
+The direct `(k,p)` sum, the Fourier--Bessel representation, the
+Bessel--Lambert form, and the 12--6 polylog closure are tested at several
+registries and normal separations.  Numerical truncations must still be
+refined for each new parameter regime.
 
-Run:
-
-```powershell
-py -3 -m simulations.run_registry_plasticity
-py -3 -m pytest tests/test_registry_plasticity.py -q
-```
-
-Outputs:
-
-- `results/data/registry_plasticity/summary.json`
-- `results/data/registry_plasticity/resolved_shear_pulse.csv`
-- `results/data/registry_plasticity/symmetric_cycle.csv`
-- `results/figures/registry_plasticity/active_registry_plasticity.png`
-
-## Corrected source and remaining source-level corrections
-
-The owner-supplied corrected PDF replaces the earlier repository PDF at
-`research/source/slip_lattice_energy_mn_K_derivation_KR_v3_23pages.pdf`; its
-SHA-256 is `42C3D5086CA203C76F3DC8213A1718B5121AA1273067738C5B478BCBF12D999D`.
-The supplied English symbol index is preserved in `research/source/` and used
-by the corrected slip TeX under `libraries/shear/docs/`.
-
-Two project-level corrections remain intentionally stronger than the supplied
-index:
-
-1. The project coefficient `epsilon_c` and pair-well depth `epsilon_w` retain
-   separate symbols. They differ by `C_mn`.
-2. The index describes `A0` as a correlation patch area. This project instead
-   keeps normal mechanical area `A0`, statistical correlation area `Ac`, and
-   registry interface area `A_rep` distinct unless derived otherwise.
-
-## Physical work still required
-
-- choose the active FCC slip plane and direction for each crystal orientation;
-- replace or validate the two-row central-force landscape against a complete
-  Al EAM or first-principles generalized stacking-fault surface;
-- determine `A_rep`, `M_s`, memory time, and `h_slip` independently;
-- test the overdamped reduction against atomistic time scales;
-- introduce dislocation storage/hardening only after a microscopic or
-  independently calibrated derivation;
-- derive a common `(a,s)` Hamiltonian before coupling registry plasticity back
-  into normal crack initiation.
-
+The theory is a mathematically derived reduced single-slip mechanism.  It
+does not yet determine `A0`, mobilities, memory time, `h_slip`, dislocation
+storage/hardening, or the active slip system.  EAM/DFT remains only a future
+quantitative-aluminum validation/extension; it does not replace the current
+generalized-LJ governing potential.

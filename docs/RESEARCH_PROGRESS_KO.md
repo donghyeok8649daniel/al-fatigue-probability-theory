@@ -1,115 +1,59 @@
-# 연구 진전 설명 — 수식 없이 읽는 현재 결론
+# 연구 진행상황 — 2026-09-02
 
-## 이번에 실제로 새로 확정한 것
+## 현재 활성 이론
 
-주기하중을 받는 흡수형 확률방정식을 한 cycle 동안 그대로 계산하면
-“한 주기 생존연산자”가 생긴다. 이 연산자는 임의로 만든 피로식이 아니라
-기존 Smoluchowski 방정식의 시간적분 결과다.
+단결정의 반복 단축 인장 하에서 normal spacing `a`와 하나의 결정학적
+unwrapped slip coordinate `s`를 동시에 쓰는 통합 미시 에너지를 도입했다.
 
-이 연산자에는 가장 오래 살아남는 고유분포와 그 분포가 한 cycle 뒤에
-얼마나 남는지를 나타내는 최대 고유값이 있다. 이 최대 고유값 하나로
-장시간 cycle별 생존비, cycle당 개시확률, 누적 hazard가 동시에 정해진다.
-별도 Weibull 수명식이나 damage 계수를 붙이지 않았다.
-
-초기분포가 고유분포와 달라도 두 번째 고유값이 초기조건의 영향이 얼마나
-빨리 사라지는지 결정한다. 왼쪽 고유함수는 초기 spacing 위치별 장기 생존
-기여도를 정한다. 따라서 장기 생존식 앞에 붙는 초기조건 계수도 fitting하지
-않고 계산할 수 있다.
-
-## 왜 기존 예제가 너무 적은 cycle에서 무너졌는가
-
-현재 무차원 예제의 한 cycle 생존비는 약 0.9048이다. 즉 한 cycle마다
-intact 확률의 약 9.5퍼센트가 변곡점 흡수경계를 통과한다. 그래서 절반이
-개시되는 cycle이 약 6.9회밖에 안 된다.
-
-이는 프로그램이 cycle 수를 잘못 세어서도 아니고 초기분포가 이상해서도
-아니다. 두 번째/첫 번째 고유값 비가 약 0.000091이어서 초기분포 영향은
-사실상 한 cycle 뒤 사라진다. 낮은 cycle 수는 현재 선택한 무차원 온도,
-하중, mobility 시간척도와 개시경계의 직접 결과다. 실제 단결정 알루미늄
-수명이라는 뜻은 전혀 아니다.
-
-## 확률분포에서 히스테리시스가 생기는 이유
-
-하중 최고점은 cycle의 25퍼센트 지점인데 평균 spacing, 평균 상호작용
-에너지와 hazard의 최고점은 약 35퍼센트 지점, 분산 최고점은 약 40퍼센트
-지점에 나타난다.
-
-원인은 finite mobility다. 하중이 바뀌어도 확률분포가 즉시 새 평형분포로
-이동하지 못하고 probability current를 통해 유한한 시간 동안 이동한다.
-그래서 같은 응력에서도 loading 때와 unloading 때의 분포가 다르다.
-diffusion 항 하나가 히스테리시스를 만든다는 설명은 틀리다. drift,
-diffusion과 하중시간척도가 함께 정하는 유한시간 수송지연이 원인이다.
-
-## 에너지가 cycle마다 쌓이는가
-
-현재 Markov Smoluchowski 모델에서는 장시간 뒤 생존조건부 분포가 매
-cycle 똑같이 반복된다. 따라서 생존한 원자근방의 평균에너지와 tail도
-매 cycle 계속 커지지 않는다. 누적되는 것은 변곡점 경계를 넘어 intact
-모집단에서 빠져나간 확률이다.
-
-히스테리시스 work는 경로의존 소산량이고 원자간 potential은 상태함수다.
-소산 work의 일부를 임의 비율로 potential에 더하면 물리가 아니라 fitted
-damage 모델이 된다. 지속적인 조건부 에너지 또는 tail 누적을 원한다면
-원자동역학이나 bath 제거에서 유도한 느린 내부좌표 또는 memory kernel이
-먼저 있어야 한다.
-
-## 이것이 소성변형인가
-
-normal spacing branch만 보면 소성변형이 아니다. 그러나 이제 별도의 선택적
-1D registry branch를 활성화했다. 이 branch는 두 원자열의 정확한
-Poisson--Bessel 에너지를 사용하고, registry를 한 주기 안으로 접지 않고
-여러 lattice well에 걸쳐 펼친 확률밀도를 직접 계산한다.
-
-소성 판정은 단순히 barrier를 한 번 넘었다는 사실이 아니다. 하중을 제거하고
-충분한 relaxation 시간을 준 뒤, well 내부 평균변위는 0으로 돌아왔는데도
-평균 well 번호가 0이 아니면 잔류 slip으로 정의한다. 현재 무차원 pulse
-예제에서는 하중 제거 뒤 well 내부 변위가 약 0으로 복귀했지만 평균 well
-번호는 약 0.4913 남았다. 반대로 대칭 zero-mean 하중 6주기에서는 약
-0.0010만 남아 방향성 slip이 거의 상쇄됐다.
-
-따라서 Bessel 모델은 더 이상 비활성 archive만은 아니다. 정확한 에너지와
-unwrapped 확률동역학은 활성화됐다. 다만 전위선, 전위 증식, forest
-hardening, backstress 및 multiple slip은 아직 없으므로 이를 정량적인
-알루미늄 crystal plasticity라고 부르지는 않는다. 또한 normal-chain energy와
-two-row registry energy는 다른 기하이므로 서로 더하지 않는다.
-
-## 실제 알루미늄 수명으로 바꾸려면
-
-loading-axis 탄성계수를 사용하면 무차원 normal force는 응력을 그
-탄성계수로 나눈 값이 된다. 대표면적은 이 응력비에서는 소거된다.
-
-그러나 thermal 분포 폭에는 대표면적이 남고, 실제 초 단위 시간축에는
-spacing friction 또는 mobility가 남는다. 따라서 단결정 방향과 응력만
-알아서는 수명을 정할 수 없다. 대표 원자층 면적, 온도, mobility와 변곡점
-최초통과 정의를 독립적으로 정하거나 검증해야 한다. FEM element 면적이나
-mesh 수를 이 값 대신 쓰면 안 된다.
-
-## 검증한 수치 성질
-
-- 확률밀도는 음수가 되지 않는다.
-- 흡수경계에서 잃은 질량과 누적 outgoing flux가 기계정밀도로 같다.
-- 작은 격자에서 직접 만든 주기행렬의 최대 고유값과 power iteration이
-  일치한다.
-- 고유분포에서 직접 여러 cycle을 계산한 생존확률과 고유값의 거듭제곱이
-  일치한다.
-- cycle 시작 phase를 바꿔도 최대 고유값이 같다.
-- grid와 timestep을 줄이면 같은 고유값으로 수렴한다.
-- 매우 빠른 cycle에서는 cycle당 유출이 주기에 비례한다.
-- 매우 느린 cycle에서는 평균 hazard가 고정하중 subgenerator의 평균
-  escape rate로 수렴한다.
-
-## 재현 명령
-
-```powershell
-py -3 -m pytest -q
-py -3 -m pytest libraries/shear/tests -q
-py -3 -m pytest tests/test_registry_plasticity.py -q
-$env:MPLBACKEND='Agg'
-py -3 -m simulations.run_smoluchowski_floquet
-py -3 -m simulations.run_registry_plasticity
+```text
+U0(a,s) = sum_{k>=1} W(k*a,s)
 ```
 
-그래프는 `results/figures/smoluchowski_floquet/`, 원자료는
-`results/data/smoluchowski_floquet/`에 있다.
-활성 소성 예제는 `results/figures/registry_plasticity/`와
-`results/data/registry_plasticity/`에 있다.
+여기서 `W(d,s)`는 row--row kernel이다. local fatigue counting에서는 각
+normal layer를 기준 layer와 한 번씩 세므로 `k W(k*a,s)`가 아니며, `s`는
+모든 layer에서 같은 collective coordinate이므로 `W(k*a,k*s)`도 아니다.
+
+## 수학적 진전
+
+- `H_q=sum_k sum_p[(p+delta)^2+k^2 eta^2]^(-q/2)`를 정의했다.
+- Mellin--Poisson--Bessel 유도를 보존하여 zeta zero mode와
+  Bessel--Lambert series로 이루어진 정확한 `H_q` 식을 얻었다.
+- full absolute energy의 수렴조건을 `m>n>2`로 확정했다.
+- normal energy와 slip energy를 서로 더하지 않고 동일한 `U0`의 정확한
+  항등분해로 정의했다.
+- 12--6의 `K_5/2`, `K_11/2`를 독립적으로 전개해 polylog closure를 얻었다.
+- direct double sum과 analytic representation의 상대오차는 시험점에서
+  `q=6`은 최대 약 `1.12e-11`, `q=12`는 약 `2e-16` 이하였다.
+- polylog와 Bessel--Lambert 계산은 기계정밀도로 일치했다.
+- 전체 회귀검사 `167 passed`, 새 multilayer/registry 집중검사 `25 passed`를
+  확인했다.
+- 영문 본문과 한국어 요약/기호표를 포함한 11쪽 논문 PDF를 로컬 Tectonic
+  0.17.0으로 빌드했다. LaTeX 오류, 누락 글자, overflow, 미해결 참조가 없다.
+  산출물은 `output/pdf/slip_lattice_energy_derivation.pdf`에 있다.
+- `.github/workflows/**`는 변경하지 않았고 지속 자동화도 추가하지 않았다.
+
+## 확률ㆍ소성ㆍ균열 연결
+
+underlying law는 `(a,s)` Smoluchowski continuity equation이다. 공식적인
+“4 governing equations”는 평균거리, 평균 intrinsic energy, 누적
+hysteresis dissipation, normalization/survival이다.
+
+소성변형은 `s=s0+z*b+s_tilde`의 well population 이동으로 계산하며, 단순
+phase lag가 아니라 unloading/relaxation 후 `Delta<z> != 0`을 요구한다.
+
+균열개시는 임의 `a_c`나 `E_hyst>E_c`로 정의하지 않는다. 순간 인장 force에서
+`partial_a U0=Q_a`, `partial_a^2 U0<0`인 외측 장벽을 흡수경계로 두고 그
+상대 probability outflux를 누적해 `P_crack=1-S`로 정의한다.
+
+## 아직 미완료/미확정
+
+- 현재 registry transport demo는 `a/b`를 고정한다. 완전한 2D `(a,s)`
+  finite-volume solver와 moving absorbing boundary의 수치결합은 후속 작업이다.
+- `A0`, mobility/memory, `h_slip`, active slip system, dislocation hardening은
+  물리적으로 미확정이다.
+- 현재 결과는 dimensionless mechanism verification이며 알루미늄 수명예측이
+  아니다.
+- EAM/DFT는 향후 정량 검증용일 뿐 현재 governing potential이 아니다.
+
+진행상황은 모든 이론ㆍ코드ㆍ검증ㆍ논문 변경 commit 전에 README와 이 문서에
+항상 함께 갱신한다.

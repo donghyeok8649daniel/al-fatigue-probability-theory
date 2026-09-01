@@ -1,4 +1,9 @@
-# Ideal-registry source audit and reference implementation
+# Ideal-registry source audit and reference implementation (historical kernel)
+
+> The active model now treats this two-row result as the kernel $W(d,s)$ and
+> sums it without multiplicity as $U_0(a,s)=\sum_{k\ge1}W(ka,s)$. This folder
+> remains an independent single-row audit; separate-branch language below is
+> pre-multilayer history.
 
 This directory preserves the source audit and independent direct-sum reference
 checks. The optional active implementation lives under

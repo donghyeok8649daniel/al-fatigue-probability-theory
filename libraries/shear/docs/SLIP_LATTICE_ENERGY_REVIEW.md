@@ -1,4 +1,9 @@
-# Audit of the imported slip-lattice energy note
+# Audit of the imported slip-lattice energy note (historical source audit)
+
+> **2026-09-02 supersession:** the exact two-row expression is now $W(d,s)$
+> inside the active unweighted sum $U_0=\sum_{k\ge1}W(ka,s)$. The earlier
+> separated-branch conclusion below is preserved as audit history. EAM/DFT
+> remains future validation only.
 
 ## Decision
 
