@@ -1,3 +1,11 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: 활성 1D normal layer-LJ 이론 계산에 사용하는 Python 모듈이다.
+# - 주요 클래스: RegistryLattice
+# - 주요 함수/메서드: RegistryLattice.validate, inverse_power_bessel_coefficients, shifted_inverse_power_bessel
+#   registry_energy_coefficients, registry_energy, registry_energy_derivative, preferred_registry
+#   schmid_factor
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 """Exact one-registry lattice energy for the active ideal-slip extension.
 
 The geometry is one-dimensional: each row is indexed by one integer and the
