@@ -1,3 +1,9 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: multiplicity 없는 다층 generalized-LJ 위치에너지 U0(a,s)를 계산한다.
+# - 주요 클래스: RegistryLattice, MultilayerPotentialParameters
+# - 주요 함수/메서드: h_q_direct, h_q_bessel, h_q_polylog, u0, dU_da, dU_ds
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 """Exact multiplicity-free multilayer lattice energy.
 
 ``W(d,s)`` is a row--row interaction kernel.  The intrinsic local-fatigue

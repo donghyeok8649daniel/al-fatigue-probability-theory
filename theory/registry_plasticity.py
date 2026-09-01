@@ -1,3 +1,10 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: 활성 1D normal layer-LJ 이론 계산에 사용하는 Python 모듈이다.
+# - 주요 클래스: RegistryTransportConfig, RegistryHistory
+# - 주요 함수/메서드: RegistryTransportConfig.validate, registry_grid, metastable_well_distribution
+#   _face_coefficients, registry_step, solve_registry
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 """Finite-volume probability dynamics for the active ideal-registry branch.
 
 The state u=s/b is unwrapped across lattice periods.  Its integer well index

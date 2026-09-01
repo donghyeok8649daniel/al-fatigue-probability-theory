@@ -1,3 +1,16 @@
+# === 한국어 파일 안내 시작 ===
+# - 파일 역할: 활성 1D normal layer-LJ 코드의 수학적·수치적 동작을 검증하는 회귀 테스트다.
+# - 주요 클래스: 없음 또는 외부 선언만 사용
+# - 주요 함수/메서드: test_active_bessel_identity_matches_independent_direct_sum
+#   test_active_bessel_energy_is_periodic_and_its_force_is_exact_derivative
+#   test_preferred_registry_is_computed_not_assumed, test_signed_schmid_projection_for_fcc_example
+#   _transport_config, test_zero_load_preserves_symmetry_and_probability
+#   test_discrete_gibbs_state_has_zero_registry_current
+#   test_resolved_shear_pulse_leaves_an_unwrapped_residual_slip_population
+#   test_symmetric_zero_mean_cycles_do_not_create_directed_plastic_drift
+#   test_registry_grid_and_timestep_refinement
+# - 주의: 이 헤더는 코드 탐색용 설명이며, 물리적 가정/근사 여부는 각 함수 docstring과 docs/의 분류 라벨을 따른다.
+# === 한국어 파일 안내 끝 ===
 from __future__ import annotations
 
 import math
