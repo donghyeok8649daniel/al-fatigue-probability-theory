@@ -135,9 +135,9 @@ $$
 with
 
 $$
-m=12.19,
+n=12.19,
 \qquad
-n=6.
+m=6.
 $$
 
 The calibration gives
