@@ -1,14 +1,13 @@
-# Auxiliary Symbol Index — 1D active derivations
-# 보조 수학기호 Index — 1D 활성 유도
+# Auxiliary Symbol Index / 보조 수학기호 Index — 1D active derivations
 
-This file covers auxiliary symbols that appear in detailed derivations but are not primary state variables.
+This file covers auxiliary symbols that appear in detailed derivations but are not primary state variables.  
 이 파일은 상세 유도에서 실제로 사용되지만 주 상태변수는 아닌 보조 기호를 정의한다.
 
 The same mandatory rule applies: equation definition + English/Korean term + mathematical meaning + physical meaning + unit/scaling + status + dependencies.
 
 | Symbol | Equation definition | English term | 한국어 명칭 | Mathematical definition | Physical definition | Unit / scaling | Status | Dependencies |
 |---|---|---|---|---|---|---|---|---|
-| $\nu$ | **not an active mean-rate symbol** | reserved Greek nu | 예약된 그리스문자 nu | not used as a state variable in the active theory | no active physical meaning | — | RESERVED | any legacy $\nu=E[c\mid\lambda]$ is a typography error; use $u$ |
+| $\nu$ | **not an active mean-rate symbol** | reserved Greek nu | 예약된 그리스문자 nu | not used as a state variable in the active theory | no active physical meaning | — | RESERVED | any legacy $\nu=\mathbb E[c\mid\lambda]$ is a typography error; use $u$ |
 | $q^*$ | $q(\tau_L)=q(\tau_U)=q^*$ | matched force level | 동일비교 하중수준 | scalar forcing value used to pair two times | same instantaneous applied load on loading/unloading branches | 1 | DEFINITION | $q,\tau_L,\tau_U$ |
 | $\tau_L$ | $q(\tau_L)=q^*,\;\dot q(\tau_L)>0$ | loading-branch comparison time | 하중증가 구간 비교시각 | time selected on increasing branch | instant at which load reaches $q^*$ while increasing | 1 | DEFINITION | $q,q^*$ |
 | $\tau_U$ | $q(\tau_U)=q^*,\;\dot q(\tau_U)<0$ | unloading-branch comparison time | 하중감소 구간 비교시각 | time selected on decreasing branch | instant at which load reaches $q^*$ while decreasing | 1 | DEFINITION | $q,q^*$ |
@@ -60,7 +59,7 @@ and is contradicted for a trajectory when
 
 $$
 \boxed{
-\mathcal R_2(\tau_L)\neq\mathcal R_2(\tau_U).
+\mathcal R_2(\tau_L)\neq\mathcal R_2(\tau_U)
 }
 $$
 
@@ -69,7 +68,7 @@ Cycle energy balance with a future irreversible mechanism:
 $$
 \boxed{
 W_{\rm ext}^{\rm cyc}
-=\Delta E_{\rm mech}^{\rm cyc}+D_{\rm irr}^{\rm cyc}.
+=\Delta E_{\rm mech}^{\rm cyc}+D_{\rm irr}^{\rm cyc}
 }
 $$
 
@@ -79,6 +78,6 @@ $$
 \boxed{
 F(\lambda_{\rm ph}(\tau),c_{\rm ph}(\tau),\tau)
 =F_0(\lambda_{\rm ph}(\tau_0),c_{\rm ph}(\tau_0))
-\exp\left[-\int_{\tau_0}^{\tau}\partial_cA(\lambda_{\rm ph}(s),c_{\rm ph}(s),s)ds\right].
+\exp\left[-\int_{\tau_0}^{\tau}\partial_cA(\lambda_{\rm ph}(s),c_{\rm ph}(s),s)ds\right]
 }
 $$
