@@ -164,10 +164,10 @@ Hence, wherever $P>0$,
 
 $$
 \boxed{
-u
+u(\lambda,\tau)
 =\frac{
 \frac1M\sum_i\int C_i\,\delta(\lambda-\Lambda_i)\,d\mu_0
-}{P}
+}{P(\lambda,\tau)}
 }
 $$
 
@@ -175,11 +175,11 @@ and
 
 $$
 \boxed{
-\Theta
+\Theta(\lambda,\tau)
 =\frac{
 \frac1M\sum_i\int C_i^2\,\delta(\lambda-\Lambda_i)\,d\mu_0
-}{P}
--u^2.
+}{P(\lambda,\tau)}
+-u(\lambda,\tau)^2.
 }
 $$
 
@@ -239,13 +239,7 @@ issue.
 
 ## 6. Time-integrated Volterra form of the first moments
 
-The continuity equation
-
-$$
-\partial_\tau P+\partial_\lambda(Pu)=0
-$$
-
-integrates exactly to
+The continuity equation integrates exactly to
 
 $$
 \boxed{
@@ -356,7 +350,7 @@ $$
 \boxed{
 \begin{aligned}
 u(X(\tau),\tau)
-=u_0(\alpha)
+={}&u_0(\alpha)
 +\int_{\tau_0}^{\tau}
 \left[
 \mathcal A
@@ -454,13 +448,7 @@ $$
 }
 $$
 
-Expanding
-
-$$
-\partial_\tau F+\partial_\lambda(cF)+\partial_c(AF)=0
-$$
-
-gives along such a characteristic
+Expanding the projected transport equation gives along such a characteristic
 
 $$
 \frac{dF}{d\tau}
