@@ -8,13 +8,14 @@ Physical and mathematical source of truth for the active aluminum fatigue-probab
 - [`README_EQUATION_INDEX.md`](README_EQUATION_INDEX.md) — **equation & symbol entry index / 수식·기호 진입 Index**
 - [`docs/EQUATION_SUMMARY_1D_P_U_THETA.md`](docs/EQUATION_SUMMARY_1D_P_U_THETA.md) — **compact governing-equation sheet / 핵심 지배방정식 정리**
 - [`docs/VARIABLE_INDEX_1D_P_U_THETA.md`](docs/VARIABLE_INDEX_1D_P_U_THETA.md) — **authoritative bilingual mathematical symbol dictionary / 기준 영·한 수학기호 사전**
+- [`docs/AUXILIARY_SYMBOL_INDEX_1D.md`](docs/AUXILIARY_SYMBOL_INDEX_1D.md) — **derivation-only auxiliary symbols / 유도용 보조기호 사전**
 - [`docs/MASTER_1D_P_U_THETA_FORMULATION.md`](docs/MASTER_1D_P_U_THETA_FORMULATION.md) — full differential derivation / 전체 미분형 유도
 - [`docs/MILESTONE25_EXACT_INTEGRAL_REPRESENTATION.md`](docs/MILESTONE25_EXACT_INTEGRAL_REPRESENTATION.md) — exact push-forward, Volterra, characteristic and survival integrals / 정확한 적분해
 - [`docs/CRACK_INITIATION_DEFINITION.md`](docs/CRACK_INITIATION_DEFINITION.md) — kinetic first-passage initiation / 위상공간 최초통과 균열개시
 
 ## Mandatory notation rule / 기호 정의 강제 규칙
 
-A new mathematical symbol is not considered defined unless `docs/VARIABLE_INDEX_1D_P_U_THETA.md` is updated at the same time with:
+A new mathematical symbol is not considered defined unless `docs/VARIABLE_INDEX_1D_P_U_THETA.md` or `docs/AUXILIARY_SYMBOL_INDEX_1D.md` is updated at the same time with:
 
 \[
 \boxed{
