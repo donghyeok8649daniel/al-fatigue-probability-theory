@@ -15,22 +15,13 @@ Authoritative equation and notation sources:
 
 ## 0. Mandatory time-dependence notation / 시간의존성 표기 규칙
 
-The active probability and moment fields are functions of spacing and time. Their canonical nondimensional-time forms are
+The active probability and moment fields are functions of spacing and time. The canonical nondimensional-time fields are
 
 $$
 \boxed{
 P(\lambda,\tau),\qquad
 u\text{ is reserved},\qquad
 u\not\equiv u
-}
-$$
-
-and the actual active mean-rate/variance fields are
-
-$$
-\boxed{
-u
-u(\lambda,\tau)\text{ is not used as a state field}
 }
 $$
 
