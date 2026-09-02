@@ -4,18 +4,19 @@ The authoritative mathematical mainline is now:
 
 1. `../README_EQUATION_INDEX.md` — root equation/symbol navigation and notation policy;
 2. `EQUATION_SUMMARY_1D_P_U_THETA.md` — compact active governing-equation sheet;
-3. `VARIABLE_INDEX_1D_P_U_THETA.md` — authoritative bilingual symbol/term dictionary with equation, mathematical, physical, unit, status and dependency definitions;
-4. `MASTER_1D_P_U_THETA_FORMULATION.md` — full active differential derivation;
-5. `MILESTONE25_EXACT_INTEGRAL_REPRESENTATION.md` — exact full-flow, Volterra, characteristic, and first-passage integral representations;
-6. `MILESTONE24_THETA_HISTORY_STATE.md` — history-bearing $P$–$u$–$\Theta$ interpretation;
-7. `CRACK_INITIATION_DEFINITION.md` — kinetic first-passage initiation definition;
-8. `theory/normal_lj_chain.py` — closed finite microscopic chain;
-9. `theory/normal_lj_distribution_shape.py` — exact smooth density-shape reconstruction;
-10. `theory/normal_lj_moment_hierarchy.py` — corrected exact $\Theta$ balance and spacing-coordinate kinetic metric.
+3. `VARIABLE_INDEX_1D_P_U_THETA.md` — authoritative bilingual primary symbol/term dictionary with equation, mathematical, physical, unit, status and dependency definitions;
+4. `AUXILIARY_SYMBOL_INDEX_1D.md` — derivation-only auxiliary symbols with the same bilingual definition contract;
+5. `MASTER_1D_P_U_THETA_FORMULATION.md` — full active differential derivation;
+6. `MILESTONE25_EXACT_INTEGRAL_REPRESENTATION.md` — exact full-flow, Volterra, characteristic, and first-passage integral representations;
+7. `MILESTONE24_THETA_HISTORY_STATE.md` — history-bearing $P$–$u$–$\Theta$ interpretation;
+8. `CRACK_INITIATION_DEFINITION.md` — kinetic first-passage initiation definition;
+9. `theory/normal_lj_chain.py` — closed finite microscopic chain;
+10. `theory/normal_lj_distribution_shape.py` — exact smooth density-shape reconstruction;
+11. `theory/normal_lj_moment_hierarchy.py` — corrected exact $\Theta$ balance and spacing-coordinate kinetic metric.
 
 ## Mandatory notation rule
 
-A new mathematical symbol is not part of the active theory unless `VARIABLE_INDEX_1D_P_U_THETA.md` is updated simultaneously with:
+A new mathematical symbol is not part of the active theory unless `VARIABLE_INDEX_1D_P_U_THETA.md` or `AUXILIARY_SYMBOL_INDEX_1D.md` is updated simultaneously with:
 
 $$
 \boxed{
@@ -60,11 +61,11 @@ The following material may remain in the repository for historical, verification
 
 ## Corrections that must be preserved
 
-### 1. Active mean-rate symbol is $u$, never $\nu$
+### 1. Active mean-rate symbol is $u$
 
 $$
 \boxed{
-u\text{ is not an active theory symbol for mean rate},\qquad u(\lambda,\tau)=\mathbb E[c\mid\lambda].}
+u\text{ is reserved/not active},\qquad u(\lambda,\tau)=\mathbb E[c\mid\lambda].}
 $$
 
 Any legacy occurrence of LaTeX `\\nu` where the conditional mean spacing rate is intended is a typography error and must be corrected to $u$.
