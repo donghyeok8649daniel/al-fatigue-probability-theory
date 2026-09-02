@@ -1,40 +1,25 @@
-# Master 1D $P$–$u$–$\Theta$ formulation
+# Master derivation — active 1D $P$–$u$–$\Theta$ theory
 
-## 0. Active scope
+This document is the canonical differential derivation of the active normal-only model.
+이 문서는 현재 1D normal-only 모델의 **기준 미분형 유도문서**이다.
 
-The active mathematical mainline is
+For navigation and definitions, use:
 
-$$
-\boxed{
-\text{1D nonlinear LJ chain}
-\to F_M(\lambda,c,\tau)
-\to \{P,u,\Theta\}
-\to \{\bar a,\bar U,\text{first passage}\}.
-}
-$$
+- `../README_EQUATION_INDEX.md`
+- `EQUATION_SUMMARY_1D_P_U_THETA.md`
+- `VARIABLE_INDEX_1D_P_U_THETA.md`
+- `AUXILIARY_SYMBOL_INDEX_1D.md`
+- `MILESTONE25_EXACT_INTEGRAL_REPRESENTATION.md`
 
-This document uses five labels:
-
-- **MODEL**: adopted physical model;
-- **DEFINITION**: mathematical definition;
-- **EXACT**: exact identity under the stated model;
-- **CONDITIONAL**: exact only under an additional stated condition;
-- **OPEN**: physical ingredient not yet derived.
-
-No Boltzmann/Gibbs equilibrium, Gaussian/Weibull PDF family, Fokker--Planck or
-Smoluchowski closure, white noise, empirical damage law, FCC geometry, or slip
-coordinate is required by the active 1D formulation.
-
-All symbols follow `VARIABLE_INDEX_1D_P_U_THETA.md`; in particular the
-conditional mean spacing rate is always denoted by $u$, never by $\nu$.
+The conditional mean spacing-rate symbol is **always** $u$.
 
 ---
 
-## 1. Physical scaling
+# 1. Physical scaling
 
-Let $a_0$ be the reference spacing, $m_a$ the represented atomic/repeat mass,
-$E$ the reference Young modulus, and $A_0$ the current effective 1D reference
-area. Define
+Let $a_0$ be the equilibrium spacing, $m_a$ the represented microscopic mass,
+$E$ the reference Young modulus, and $A_0$ the effective 1D reference area.
+Define
 
 $$
 \boxed{
@@ -54,39 +39,37 @@ U_{\rm ref}=EA_0a_0.
 }
 $$
 
-The current stress-to-chain-force mapping is
+The active stress-to-chain-force bridge is
 
 $$
 \boxed{
-q(\tau)=\frac{F_{\rm ext}}{EA_0}=\frac{\sigma_n(t)}{E}.
+q(\tau)=\frac{F_{\rm ext}(t)}{EA_0}=\frac{\sigma_n(t)}{E}.
 }
 $$
 
-For
+For sinusoidal loading,
 
 $$
+\boxed{
 \sigma_n(t)=\sigma_m+\sigma_a\sin(2\pi f t),
-$$
-
-the nondimensional angular frequency is
-
-$$
-\boxed{\omega^*=2\pi f t_0.}
+\qquad
+\omega^*=2\pi f t_0.
+}
 $$
 
 **Status:** DEFINITION under the current calibration bridge.
 
 ---
 
-## 2. Microscopic generalized-LJ chain
+# 2. Microscopic 1D generalized-LJ chain
 
-Take $M+1$ nodes $x_0,\ldots,x_M$ in units of $a_0$, with
+Take $M+1$ nodes $x_0,\ldots,x_M$ with
 
 $$
 \boxed{x_0(\tau)=0.}
 $$
 
-Define normalized spacings
+Define the $M$ normalized spacings
 
 $$
 \boxed{
@@ -95,7 +78,15 @@ $$
 }
 $$
 
-and physical spacings $a_i=a_0\lambda_i$.
+and physical spacings
+
+$$
+\boxed{a_i=a_0\lambda_i.}
+$$
+
+Dots below denote $d/d\tau$.
+
+## 2.1 Active interaction energy
 
 The normalized generalized-LJ energy is
 
@@ -110,7 +101,7 @@ $$
 }
 $$
 
-Hence
+Its derivatives are
 
 $$
 \boxed{
@@ -122,17 +113,21 @@ $$
 $$
 \boxed{
 \phi''(\lambda)
-=\frac{(m+1)\lambda^{-m-2}-(n+1)\lambda^{-n-2}}{m-n},
+=\frac{(m+1)\lambda^{-m-2}-(n+1)\lambda^{-n-2}}{m-n}.
 }
 $$
 
-with
+Thus
 
 $$
-\boxed{\phi'(1)=0,\qquad \phi''(1)=1.}
+\boxed{
+\phi'(1)=0,
+\qquad
+\phi''(1)=1.
+}
 $$
 
-The dimensionless configurational energy is
+The finite-chain configurational energy is
 
 $$
 \boxed{
@@ -140,9 +135,9 @@ V^*(\boldsymbol\lambda)=\sum_{i=1}^{M}\phi(\lambda_i).
 }
 $$
 
-**Status:** MODEL.
+**Status:** $\phi$ is MODEL; the derivatives are EXACT consequences of that model.
 
-### 2.1 Exact node equations
+## 2.2 Closed node equations
 
 For identical unit masses after nondimensionalization,
 
@@ -154,7 +149,7 @@ $$
 }
 $$
 
-and the loaded end obeys
+and at the loaded end
 
 $$
 \boxed{
@@ -162,31 +157,23 @@ $$
 }
 $$
 
-Dots in Sections 2--15 denote derivatives with respect to $\tau$ unless
-physical time is written explicitly.
-
-**Status:** EXACT under the MODEL and boundary conditions.
-
-### 2.2 Exact spacing equations
-
-For $i=2,\ldots,M-1$,
+Therefore the bulk spacing equation is
 
 $$
 \boxed{
 \ddot\lambda_i
-=
-\phi'(\lambda_{i+1})
+=\phi'(\lambda_{i+1})
 -2\phi'(\lambda_i)
-+\phi'(\lambda_{i-1}).
++\phi'(\lambda_{i-1}),
+\qquad i=2,\ldots,M-1.
 }
 $$
 
-The boundary spacings are different:
+The boundary spacings satisfy
 
 $$
 \boxed{
-\ddot\lambda_1
-=\phi'(\lambda_2)-\phi'(\lambda_1),
+\ddot\lambda_1=\phi'(\lambda_2)-\phi'(\lambda_1),
 }
 $$
 
@@ -197,24 +184,23 @@ $$
 }
 $$
 
-**Status:** EXACT. The bulk equation must not be used at the boundaries without
-these corrections.
+**Status:** EXACT under the active chain model and boundary law.
 
 ---
 
-## 3. Exact mechanical-energy structure
+# 3. Exact mechanical energy
 
-The dimensionless mechanical energy is
+Define
 
 $$
 \boxed{
-E_{\rm mech}^*=T^*+V^*,
+T^*=\frac12\sum_{j=1}^{M}\dot x_j^2,
 \qquad
-T^*=\frac12\sum_{j=1}^{M}\dot x_j^2.
+E_{\rm mech}^*=T^*+V^*.
 }
 $$
 
-The exact external-power balance is
+Differentiating and using the equations of motion gives
 
 $$
 \boxed{
@@ -222,9 +208,9 @@ $$
 }
 $$
 
-Thus the baseline chain is conservative apart from prescribed boundary work.
+Hence the active baseline is conservative except for prescribed external work.
 
-### 3.1 Spacing-coordinate mass metric
+## 3.1 Spacing-coordinate mass metric
 
 Since
 
@@ -232,18 +218,19 @@ $$
 x_j=\sum_{k=1}^{j}\lambda_k,
 $$
 
-define $L_{jk}=1$ for $k\le j$ and $0$ otherwise. With
-$c_i=\dot\lambda_i$,
+write
 
 $$
 \boxed{
 \boldsymbol x=\mathbf L\boldsymbol\lambda,
 \qquad
-\dot{\boldsymbol x}=\mathbf L\boldsymbol c.
+\dot{\boldsymbol x}=\mathbf L\boldsymbol c,
+\qquad
+\boldsymbol c=\dot{\boldsymbol\lambda}.
 }
 $$
 
-Therefore
+Then
 
 $$
 \boxed{
@@ -253,7 +240,7 @@ T^*=\frac12\boldsymbol c^T\mathbf G_\lambda\boldsymbol c,
 }
 $$
 
-where, using one-based indices,
+with
 
 $$
 \boxed{
@@ -261,57 +248,44 @@ $$
 }
 $$
 
-Thus spacing rates are not independent unit-mass velocities. Exact total
-kinetic energy requires cross-spacing rate correlations.
-
-**Status:** EXACT kinematics.
+Thus local spacing rates are not independent unit-mass velocities.
 
 ---
 
-## 4. Probability meaning
+# 4. Mechanics-generated empirical probability state
 
-For a deterministic chain at fixed time, sample a spacing index uniformly from
-the represented spacings. The resulting probability is a **spatial empirical
-counting measure**; it does not assume thermal randomness or independence.
-
-Define
+For one deterministic chain, define the empirical phase-space measure
 
 $$
 \boxed{
 F_M(\lambda,c,\tau)
 =\frac1M\sum_{i=1}^{M}
 \delta[\lambda-\lambda_i(\tau)]
-\delta[c-c_i(\tau)].
+\delta[c-c_i(\tau)],
 }
 $$
 
-Then
+where
 
 $$
-\boxed{
-\iint F_M\,dc\,d\lambda=1
-}
+\boxed{c_i=\dot\lambda_i.}
 $$
 
-and
+Its spacing marginal is
 
 $$
 \boxed{
 P_M(\lambda,\tau)
-=\int F_M\,dc
+=\int F_M(\lambda,c,\tau)dc
 =\frac1M\sum_i\delta[\lambda-\lambda_i(\tau)].
 }
 $$
 
-A smooth $F$ or $P$ is a continuum/coarse representation of the empirical
-measure. Numerical KDE smoothing is an estimator only, not a physical Gaussian
-PDF assumption.
-
-**Status:** DEFINITION.
+No named probability family is assumed.
 
 ---
 
-## 5. Exact empirical phase-space transport
+# 5. Exact empirical phase-space transport
 
 Define the empirical acceleration flux
 
@@ -319,11 +293,12 @@ $$
 \boxed{
 \mathcal G_M(\lambda,c,\tau)
 =\frac1M\sum_i\ddot\lambda_i
-\delta(\lambda-\lambda_i)\delta(c-c_i).
+\delta(\lambda-\lambda_i)
+\delta(c-c_i).
 }
 $$
 
-Distributional differentiation gives
+Differentiating $F_M$ distributionally gives
 
 $$
 \boxed{
@@ -333,9 +308,7 @@ $$
 }
 $$
 
-**Status:** EXACT empirical identity.
-
-For a smooth representation define
+For a smooth projected representation define
 
 $$
 \boxed{
@@ -344,7 +317,15 @@ A(\lambda,c,\tau)
 }
 $$
 
-Then $\mathcal G=AF$ and
+Then
+
+$$
+\boxed{
+\mathcal G=AF
+}
+$$
+
+and
 
 $$
 \boxed{
@@ -354,52 +335,59 @@ $$
 }
 $$
 
-This is an exact projected identity when $A$ is the true conditional
-acceleration. It is not an autonomous one-point closure because $A$ retains
-hidden-neighbour information.
+This is an exact projected identity when $A$ is the true mechanics-generated conditional acceleration. It is not an autonomous one-point constitutive closure.
 
 ---
 
-## 6. Complete raw moment hierarchy
+# 6. Exact raw moment hierarchy
 
 Define
 
 $$
 \boxed{
-R_r(\lambda,\tau)=\int c^rF(\lambda,c,\tau)\,dc,
+R_r(\lambda,\tau)=\int_{-\infty}^{\infty}c^rF(\lambda,c,\tau)dc,
 \qquad r=0,1,2,\ldots
 }
 $$
 
-and, for $r\ge1$,
+and for $r\ge1$
 
 $$
 \boxed{
 B_r(\lambda,\tau)
-=\int c^{r-1}A(\lambda,c,\tau)F(\lambda,c,\tau)\,dc.
+=\int c^{r-1}A(\lambda,c,\tau)F(\lambda,c,\tau)dc.
 }
 $$
 
-If the required moments exist and the velocity-boundary terms vanish,
+Multiply the projected phase-space equation by $c^r$ and integrate over $c$.
+Assuming the required moments exist and the velocity-boundary terms vanish,
 
 $$
 \boxed{
-\partial_\tau R_r+\partial_\lambda R_{r+1}=rB_r,
-\qquad r\ge0,
+\partial_\tau R_r+\partial_\lambda R_{r+1}=rB_r.
 }
 $$
 
-with zero right-hand side for $r=0$.
-
 **Status:** EXACT.
+
+---
+
+# 7. Reduced fields $P,u,\Theta$
 
 Define
 
 $$
-\boxed{u(\lambda,\tau)=\mathbb E[c\mid\lambda]}
+\boxed{
+P(\lambda,\tau)=R_0=\int Fdc,
+}
 $$
 
-as the conditional mean spacing rate,
+$$
+\boxed{
+ u(\lambda,\tau)=\mathbb E[c\mid\lambda]
+=\frac{R_1}{P},
+}
+$$
 
 $$
 \boxed{
@@ -409,37 +397,52 @@ $$
 }
 $$
 
+$$
+\boxed{
+C_3(\lambda,\tau)=\mathbb E[(c-u)^3\mid\lambda],
+}
+$$
+
+$$
+\boxed{
+\mathcal A(\lambda,\tau)
+=\mathbb E[\ddot\lambda_i\mid\lambda_i=\lambda],
+}
+$$
+
 and
 
 $$
 \boxed{
-C_3(\lambda,\tau)=\mathbb E[(c-u)^3\mid\lambda].
+\Psi(\lambda,\tau)
+=\operatorname{Cov}(c,\ddot\lambda\mid\lambda)
+=\mathbb E[(c-u)\ddot\lambda\mid\lambda].
 }
 $$
 
-Then
+The first raw moments are
 
 $$
-\boxed{R_0=P,}
+\boxed{
+R_0=P,
+\qquad
+R_1=Pu,
+\qquad
+R_2=P(u^2+\Theta),
+}
 $$
 
 $$
-\boxed{R_1=Pu,}
-$$
-
-$$
-\boxed{R_2=P(u^2+\Theta),}
-$$
-
-$$
-\boxed{R_3=P(u^3+3u\Theta+C_3).}
+\boxed{
+R_3=P(u^3+3u\Theta+C_3).
+}
 $$
 
 ---
 
-## 7. Exact $P$ and $u$ equations
+# 8. Exact continuity and mean-flow equations
 
-The zeroth moment gives
+The $r=0$ equation gives
 
 $$
 \boxed{
@@ -447,28 +450,19 @@ $$
 }
 $$
 
-Define
+Define the spacing-space probability current
 
 $$
 \boxed{J=Pu.}
 $$
 
-The first moment gives
+The $r=1$ equation gives
 
 $$
 \boxed{
 \partial_\tau(Pu)
 +\partial_\lambda[P(u^2+\Theta)]
-=P\mathcal A,
-}
-$$
-
-where
-
-$$
-\boxed{
-\mathcal A(\lambda,\tau)
-=\mathbb E[\ddot\lambda_i\mid\lambda_i=\lambda].
+=P\mathcal A.
 }
 $$
 
@@ -481,11 +475,11 @@ D_\tau u
 }
 $$
 
-with
+where
 
 $$
 \boxed{
-D_\tau u=\partial_\tau u+u\partial_\lambda u.
+D_\tau=\partial_\tau+u\partial_\lambda.
 }
 $$
 
@@ -493,9 +487,9 @@ $$
 
 ---
 
-## 8. Exact $\Theta$ equation
+# 9. Correct exact $\Theta$ equation
 
-The second raw moment balance is
+The $r=2$ raw equation is
 
 $$
 \boxed{
@@ -505,42 +499,43 @@ $$
 }
 $$
 
-Define the conditional spacing-rate/acceleration covariance
+Because
 
 $$
-\boxed{
-\Psi(\lambda,\tau)
-=\operatorname{Cov}(c,\ddot\lambda\mid\lambda)
-=\mathbb E[(c-u)\ddot\lambda\mid\lambda].
-}
+\mathbb E[c\ddot\lambda\mid\lambda]
+=u\mathcal A+\Psi,
 $$
 
-Combining the zeroth, first, and second moment equations gives
+combining the $r=0,1,2$ balances gives
 
 $$
 \boxed{
 D_\tau\Theta
-+2\Theta\,\partial_\lambda u
++2\Theta\partial_\lambda u
 +\frac1P\partial_\lambda(PC_3)
 =2\Psi.
 }
 $$
 
-**Status:** EXACT general second-central-moment equation.
+The shorter form
 
-The shorter equation with zero right-hand side is **CONDITIONAL** on
+$$
+D_\tau\Theta
++2\Theta\partial_\lambda u
++\frac1P\partial_\lambda(PC_3)=0
+$$
+
+is only valid under the extra condition
 
 $$
 \boxed{\Psi=0.}
 $$
 
-That condition is not automatic in the LJ spacing chain because
-$\ddot\lambda_i$ depends on neighbouring spacings. Setting either $C_3=0$ or
-$\Psi=0$ without derivation is a closure assumption.
+For the actual spatial LJ chain, $\Psi=0$ is not automatic because $\ddot\lambda_i$ depends on neighbouring spacings.
 
 ---
 
-## 9. Exact nonlinear-LJ neighbour terms
+# 10. Exact neighbour-conditioned acceleration
 
 For a bulk spacing,
 
@@ -549,21 +544,19 @@ $$
 =\phi'(\lambda_{i+1})-2\phi'(\lambda_i)+\phi'(\lambda_{i-1}).
 $$
 
-Let $P_2^+(\lambda,\lambda',\tau)$ and
-$P_2^-(\lambda,\lambda',\tau)$ be ordered central/right and central/left
-neighbour joint densities with central marginal $P$. Define
+Let $P_2^+(\lambda,\lambda',\tau)$ and $P_2^-(\lambda,\lambda',\tau)$ be ordered central/right and central/left neighbour joint densities. Define
 
 $$
 \boxed{
 m_+
-=\frac1P\int\phi'(\lambda')P_2^+(\lambda,\lambda',\tau)\,d\lambda',
+=\frac1P\int\phi'(\lambda')P_2^+(\lambda,\lambda',\tau)d\lambda',
 }
 $$
 
 $$
 \boxed{
 m_-
-=\frac1P\int\phi'(\lambda')P_2^-(\lambda,\lambda',\tau)\,d\lambda'.
+=\frac1P\int\phi'(\lambda')P_2^-(\lambda,\lambda',\tau)d\lambda'.
 }
 $$
 
@@ -575,33 +568,30 @@ $$
 }
 $$
 
-No neighbour-independence assumption is used.
+For $\Psi$, let $F_2^+(\lambda,c,\lambda',\tau)$ and $F_2^-(\lambda,c,\lambda',\tau)$ include the central spacing rate. Since
 
-For the $\Theta$ source, let
-$F_2^+(\lambda,c,\lambda',\tau)$ and
-$F_2^-(\lambda,c,\lambda',\tau)$ include the central spacing rate. Since
-$\mathbb E[c-u\mid\lambda]=0$, the central force term drops from the covariance,
-and
+$$
+\mathbb E[c-u\mid\lambda]=0,
+$$
+
+the central-force term vanishes inside the covariance and
 
 $$
 \boxed{
 \Psi_{\rm bulk}
 =\frac1P\iint
 (c-u)\phi'(\lambda')
-[F_2^++F_2^-]\,dc\,d\lambda'.
+[F_2^++F_2^-]dc\,d\lambda'.
 }
 $$
 
-Boundary spacings require their own acceleration statistics if retained in the
-one-point average.
-
-**Status:** EXACT for the bulk chain.
+No neighbour-independence approximation is used.
 
 ---
 
-## 10. Exact instantaneous shape identity for $P$
+# 11. Exact instantaneous density-shape relation
 
-From the mean-flow balance,
+From the mean-flow equation,
 
 $$
 \frac1P\partial_\lambda(P\Theta)
@@ -609,7 +599,7 @@ $$
 +\Theta\partial_\lambda\ln P.
 $$
 
-Thus
+Hence
 
 $$
 \boxed{
@@ -618,7 +608,7 @@ $$
 }
 $$
 
-Where $P>0$ and $\Theta>0$ are smooth,
+On a smooth interval where $P>0$ and $\Theta>0$,
 
 $$
 \boxed{
@@ -628,7 +618,7 @@ $$
 }
 $$
 
-At fixed $\tau$,
+Integrating in $\lambda$ gives
 
 $$
 \boxed{
@@ -637,53 +627,66 @@ P(\lambda,\tau)
 \exp\left[
 \int_{\lambda_*}^{\lambda}
 \frac{\mathcal A(\eta,\tau)-D_\tau u(\eta,\tau)}
-{\Theta(\eta,\tau)}\,d\eta
+{\Theta(\eta,\tau)}d\eta
 \right].
 }
 $$
 
-For a normalized nonabsorbing density, $\mathcal N_P(\tau)$ is fixed by
+The normalization factor $\mathcal N_P(\tau)$ is determined by
 
 $$
 \boxed{
-\int_0^\infty P(\lambda,\tau)\,d\lambda=1.
+\int_0^\infty P(\lambda,\tau)d\lambda=1.
 }
 $$
 
-**Status:** EXACT instantaneous shape representation under smoothness,
-positivity, and moment-existence conditions. It is a reconstruction/constraint,
-not an independent evolution law.
-
-### 10.1 Degenerate case
-
-At $\Theta=0$, the divided shape formula is invalid. The undivided moment
-balance and continuity equation remain valid.
-
-For the ideal homogeneous initial state,
-
-$$
-\boxed{
-\lambda_i(0)=1,
-\qquad
-c_i(0)=0,
-}
-$$
-
-so
-
-$$
-\boxed{
-F_M(\lambda,c,0)=\delta(\lambda-1)\delta(c),
-\qquad
-P_M(\lambda,0)=\delta(\lambda-1).
-}
-$$
-
-No artificial initial PDF width is introduced.
+At $\Theta=0$ the divided form is invalid; the undivided moment equations remain valid.
 
 ---
 
-## 11. What $\Theta$ means mechanically
+# 12. Exact time-integral representations
+
+The continuity equation integrates to
+
+$$
+\boxed{
+P(\lambda,\tau)
+=P_0(\lambda)
+-\partial_\lambda
+\int_{\tau_0}^{\tau}P(\lambda,s)u(\lambda,s)ds.
+}
+$$
+
+The first moment integrates to
+
+$$
+\boxed{
+Pu
+=P_0u_0
+-\partial_\lambda\int_{\tau_0}^{\tau}P(u^2+\Theta)ds
++\int_{\tau_0}^{\tau}P\mathcal A ds.
+}
+$$
+
+The second raw moment integrates to
+
+$$
+\boxed{
+\begin{aligned}
+P(u^2+\Theta)(\lambda,\tau)
+={}&P_0(u_0^2+\Theta_0)(\lambda)\\
+&-\partial_\lambda\int_{\tau_0}^{\tau}
+P(u^3+3u\Theta+C_3)ds\\
+&+2\int_{\tau_0}^{\tau}P(u\mathcal A+\Psi)ds.
+\end{aligned}
+}
+$$
+
+The full push-forward and characteristic integral forms are given in `MILESTONE25_EXACT_INTEGRAL_REPRESENTATION.md`.
+
+---
+
+# 13. Meaning of $\Theta$
 
 Exactly,
 
@@ -693,31 +696,34 @@ $$
 }
 $$
 
-Therefore $\Theta$ is the conditional spacing-rate dispersion that is lost by
-reducing the phase-space state to $P$ alone. It can distinguish loading and
-unloading populations at the same spacing.
-
-However, because of Section 3.1,
+Thus $\Theta$ is the conditional spacing-rate dispersion lost when reducing $F$ to $P$ alone.
+However,
 
 $$
 \frac12(u^2+\Theta)
 $$
 
-is only a local spacing-rate quadratic moment. It is not by itself the exact
-chain kinetic-energy density. Exact total kinetic energy requires the metric
-$\mathbf G_\lambda$ and cross-spacing correlations.
+is not the full chain kinetic-energy density because the exact kinetic energy uses $\mathbf G_\lambda$ and cross-spacing rate correlations.
 
 ---
 
-## 12. Same-force history dependence
+# 14. Same-force history dependence
 
-Let $\tau_L$ and $\tau_U$ satisfy
+At two times $\tau_L$ and $\tau_U$ satisfying
 
 $$
 q(\tau_L)=q(\tau_U)=q^*,
 $$
 
-with $\dot q(\tau_L)>0$ and $\dot q(\tau_U)<0$. Define
+with
+
+$$
+\dot q(\tau_L)>0,
+\qquad
+\dot q(\tau_U)<0,
+$$
+
+define
 
 $$
 \boxed{
@@ -733,33 +739,38 @@ $$
 }
 $$
 
-then there is no memoryless map $\mathcal R_2=\mathcal S[q(\tau)]$ for that
-trajectory. The current finite-chain numerical test gives this non-retracing.
+then no memoryless scalar-load map
 
-Thus $(P,u,\Theta)$ is a **history-bearing reduced descriptor**. It is not
-claimed to be an autonomous closed Markov state, because $C_3$, $\Psi$ and
-neighbour joint states enter its exact evolution.
+$$
+\mathcal R_2=\mathcal S[q(\tau)]
+$$
+
+exists for that trajectory. This establishes dynamic history dependence, not irreversible dissipation.
 
 ---
 
-## 13. G1: mean spacing
+# 15. G1 — mean spacing
 
 Define
 
 $$
 \boxed{
-\bar\lambda(\tau)=\int_0^\infty\lambda P(\lambda,\tau)\,d\lambda,
-\qquad
+\bar\lambda(\tau)=\int_0^\infty\lambda P(\lambda,\tau)d\lambda,
+}
+$$
+
+$$
+\boxed{
 \bar a(t)=a_0\bar\lambda(t/t_0).
 }
 $$
 
-From continuity,
+Using continuity,
 
 $$
 \boxed{
 \frac{d\bar\lambda}{d\tau}
-=-[\lambda J]_0^\infty+\int_0^\infty J\,d\lambda.
+=-[\lambda J]_0^\infty+\int_0^\infty Jd\lambda.
 }
 $$
 
@@ -773,13 +784,11 @@ $$
 }
 $$
 
-**Status:** G1 DEFINITION plus EXACT moment identity.
-
 ---
 
-## 14. G2: mean intrinsic configurational energy
+# 16. G2 — mean intrinsic configurational energy
 
-Use the same nearest-neighbour energy that generates the microscopic forces:
+Define the equilibrium-subtracted interaction energy
 
 $$
 \boxed{
@@ -787,17 +796,16 @@ $$
 }
 $$
 
-The mean intrinsic configurational energy per represented spacing is
+Then
 
 $$
 \boxed{
 \bar U(\tau)
-=U_{\rm ref}\int_0^\infty
-\Delta\phi(\lambda)P(\lambda,\tau)\,d\lambda.
+=U_{\rm ref}\int_0^\infty\Delta\phi(\lambda)P(\lambda,\tau)d\lambda.
 }
 $$
 
-If $P_M$ includes all $M$ spacings,
+For the empirical density over all $M$ spacings,
 
 $$
 \boxed{
@@ -811,11 +819,11 @@ $$
 \boxed{
 \frac1{U_{\rm ref}}\frac{d\bar U}{d\tau}
 =-[\Delta\phi J]_0^\infty
-+\int_0^\infty\phi'(\lambda)J\,d\lambda.
++\int_0^\infty\phi'(\lambda)Jd\lambda.
 }
 $$
 
-For vanishing spacing-space boundary flux,
+If boundary flux vanishes,
 
 $$
 \boxed{
@@ -826,68 +834,48 @@ $$
 
 This is configurational energy, not total mechanical energy.
 
-**Status:** G2 DEFINITION and EXACT under the active nearest-neighbour chain.
-
-A long-range/zeta energy must not be substituted into G2 while retaining
-nearest-neighbour equations of motion and then called mechanically exact.
-
 ---
 
-## 15. G3: irreversible hysteresis energy
+# 17. G3 — irreversible hysteresis energy
 
 The fixed observable is
 
 $$
 \boxed{
-E_{\rm hyst}(t)=\int_0^t\dot D_{\rm irr}(t')\,dt',
+E_{\rm hyst}(t)=\int_0^t\dot D_{\rm irr}(t')dt',
 \qquad
 \dot D_{\rm irr}\ge0.
 }
 $$
 
-The current conservative baseline contains no irreversible force, hence
+For the current conservative baseline,
 
 $$
 \boxed{
 \dot D_{\rm irr}=0,
 \qquad
-E_{\rm hyst}=0
+E_{\rm hyst}=0.
 }
 $$
 
-for that baseline.
-
-If a future physical irreversible node force $r_j^{\rm irr}$ is derived, then
-
-$$
-\frac{dE_{\rm mech}^*}{d\tau}
-=q\dot x_M+\sum_jr_j^{\rm irr}\dot x_j.
-$$
-
-If
-
-$$
-\sum_jr_j^{\rm irr}\dot x_j\le0,
-$$
-
-define
+If a future physical irreversible node force $r_j^{\rm irr}$ is derived, define
 
 $$
 \boxed{
-\dot D_{\rm irr}^*=-\sum_jr_j^{\rm irr}\dot x_j\ge0.
+\dot D_{\rm irr}^*=-\sum_jr_j^{\rm irr}\dot x_j\ge0
 }
 $$
 
-Then
+whenever the irreversible force performs nonpositive mechanical power. Then
 
 $$
 \boxed{
 \frac{dE_{\rm mech}^*}{d\tau}
-=q\dot x_M-\dot D_{\rm irr}^*,
+=q\dot x_M-\dot D_{\rm irr}^*.
 }
 $$
 
-and over one cycle
+Over one cycle,
 
 $$
 \boxed{
@@ -896,22 +884,21 @@ W_{\rm ext}^{\rm cyc}
 }
 $$
 
-Therefore same-force non-retracing or a transient loop does not by itself prove
-irreversible dissipation.
-
-**Status:** G3 observable DEFINED; physical $r_j^{\rm irr}$ is OPEN.
+Thus same-force non-retracing alone does not prove $\dot D_{\rm irr}>0$.
 
 ---
 
-## 16. G4 and local first passage
+# 18. G4 — mechanical first passage
 
-The operational local instability threshold is
+The operational local instability threshold is defined by
 
 $$
-\boxed{\phi''(\lambda_c)=0,}
+\boxed{
+\phi''(\lambda_c)=0.
+}
 $$
 
-so
+For the active generalized-LJ form,
 
 $$
 \boxed{
@@ -920,47 +907,36 @@ $$
 }
 $$
 
-For $m=12.19$, $n=6$,
-
-$$
-\lambda_c\approx1.1077715386.
-$$
-
-### 16.1 Nonabsorbing tail
+For each spacing,
 
 $$
 \boxed{
-Q_c(\tau)=\int_{\lambda_c}^{\infty}P(\lambda,\tau)\,d\lambda
+\tau_i^c
+=\inf\{\tau\ge\tau_0:\lambda_i(\tau)\ge\lambda_c\}.
 }
 $$
 
-is an instantaneous instability-tail diagnostic, not cumulative first passage.
-
-### 16.2 Exact finite empirical first passage
-
-Define
+The instantaneous nonabsorbing tail
 
 $$
 \boxed{
-\tau_i^c=\inf\{\tau\ge0:\lambda_i(\tau)\ge\lambda_c\}.
+Q_c(\tau)=\int_{\lambda_c}^{\infty}P(\lambda,\tau)d\lambda
 }
 $$
 
-With
+is not cumulative first passage.
+
+For finite empirical trajectories define
 
 $$
+\boxed{
 \chi_i(\tau)=\mathbf1_{\{\tau<\tau_i^c\}},
-$$
-
-the local survivor fraction is
-
-$$
-\boxed{
-S_M(\tau)=\frac1M\sum_i\chi_i(\tau),
+\qquad
+S_M(\tau)=\frac1M\sum_i\chi_i(\tau).
 }
 $$
 
-and
+Then
 
 $$
 \boxed{
@@ -968,57 +944,43 @@ F_{{\rm ci},M}^{\rm local}=1-S_M.
 }
 $$
 
-Distributionally,
-
-$$
-\boxed{
--\frac{dS_M}{d\tau}
-=\frac1M\sum_i\delta(\tau-\tau_i^c).
-}
-$$
-
-**Status:** EXACT finite empirical definition.
-
-### 16.3 Smooth kinetic absorbing boundary
-
-Let $F_b(\lambda,c,\tau)$ be the survivor phase-space subdensity for
-$0<\lambda<\lambda_c$. The interior equation is the same projected kinetic
-transport. At the right boundary impose no inflow from the failed side:
+For a smooth survivor phase-space subdensity $F_b$ on $0<\lambda<\lambda_c$, impose no inflow from the failed side:
 
 $$
 \boxed{
 F_b(\lambda_c,c,\tau)=0
-\quad\text{for incoming }c<0.
+\qquad(c<0).
 }
 $$
 
-Outgoing $c>0$ states give
+The outward first-passage flux is
 
 $$
 \boxed{
 j_{\rm esc}(\tau)
-=\int_0^\infty cF_b(\lambda_c^-,c,\tau)\,dc\ge0.
+=\int_0^\infty cF_b(\lambda_c^-,c,\tau)dc.
 }
 $$
 
-Assuming no lower-boundary loss,
+Define
 
 $$
 \boxed{
-S(\tau)
-=\int_0^{\lambda_c}\int_{-\infty}^{\infty}F_b\,dc\,d\lambda,
+S(\tau)=\int_0^{\lambda_c}\int_{-\infty}^{\infty}F_b\,dc\,d\lambda.
 }
 $$
 
+Then
+
 $$
 \boxed{
-\frac{dS}{d\tau}=-j_{\rm esc},
+\dot S=-j_{\rm esc},
 \qquad
-F_{\rm ci}^{\rm local}=1-S.
+F_{\rm ci}^{\rm local}=1-S,
 }
 $$
 
-For $S>0$,
+and for $S>0$,
 
 $$
 \boxed{
@@ -1028,47 +990,21 @@ h_t=\frac{h_\tau}{t_0}.
 }
 $$
 
-**Status:** EXACT kinetic first-passage balance under the stated boundary
-conditions.
-
-### 16.4 Survivor-conditioned observables
-
-The survivor spacing marginal
-
-$$
-P_b(\lambda,\tau)=\int F_b\,dc
-$$
-
-has mass $S$, not one. Define
+The normalized survivor density is
 
 $$
 \boxed{
-\widehat P_b=\frac{P_b}{S}.
-}
-$$
-
-Then
-
-$$
-\boxed{
-\bar\lambda_{\rm surv}
-=\frac1S\int_0^{\lambda_c}\lambda P_b\,d\lambda,
-}
-$$
-
-$$
-\boxed{
-\bar U_{\rm surv}
-=\frac{U_{\rm ref}}S
-\int_0^{\lambda_c}\Delta\phi(\lambda)P_b\,d\lambda.
+\widehat P_b=\frac{P_b}{S},
+\qquad
+P_b(\lambda,\tau)=\int F_bdc.
 }
 $$
 
 ---
 
-## 17. Local versus specimen probability
+# 19. Local versus specimen probability
 
-For one deterministic chain realization,
+For one realization,
 
 $$
 \boxed{
@@ -1076,30 +1012,26 @@ $$
 }
 $$
 
-The quantity $1-S_M$ is a local spatial first-passage fraction. It is not, in
-general, specimen-to-specimen crack probability.
-
-A specimen ensemble $\omega$ would require
+The finite local first-passage fraction $1-S_M$ is not automatically a specimen-to-specimen probability.
+With an ensemble measure $\mu_0$, the exact specimen survival formula is
 
 $$
 \boxed{
 S_{\rm spec}(\tau)
-=\Pr_\omega\left[\min_i\tau_i^c(\omega)>\tau\right].
+=\int
+\mathbf1\left[
+\max_i\sup_{s\in[\tau_0,\tau]}
+\Lambda_i(s;\Gamma_0)<\lambda_c
+\right]
+\mu_0(d\Gamma_0).
 }
 $$
 
-No independent-cell product is assumed.
-
-**Status:** specimen-probability bridge OPEN.
-
-Also, once $\tau_{\rm spec}^c$ is reached, the intact pre-crack chain is no
-longer a physical post-initiation propagation model. Continued local crossings
-past the first specimen event are mathematical diagnostics unless a post-crack
-model is added.
+Thus the mathematical survival formula exists; the physical construction and calibration of $\mu_0$ and its correlation scale remain open.
 
 ---
 
-## 18. Exact closure status
+# 20. Exact closure status
 
 The full microscopic state
 
@@ -1110,55 +1042,55 @@ $$
 }
 $$
 
-is a closed deterministic state under the chain equations.
+is closed under the finite-chain ODEs.
 
-From it one can generate exactly
-
-$$
-F_M,\ P_M,\ u,\ \Theta,\ C_3,\ \Psi,\ P_2^\pm,\ F_2^\pm,
-\ \bar a,\ \bar U,\ \tau_i^c.
-$$
-
-The projected three-field system is exact but not autonomously closed:
+The projected fields satisfy
 
 $$
 \boxed{
 \{P,u,\Theta\}
-\to
-\{C_3,\Psi,P_2^\pm,F_2^\pm,\ldots\}.
+\longrightarrow
+\{C_3,\Psi,P_2^\pm,F_2^\pm,\ldots\},
 }
 $$
 
-This is not a missing algebraic derivation. It is the exact hierarchy produced
-by the reduced projection.
+so the three-field PDE is exact but hierarchical rather than autonomous.
+However, the closed microscopic flow yields exact push-forward integrals for all these quantities; see `MILESTONE25_EXACT_INTEGRAL_REPRESENTATION.md`.
+
+Therefore
+
+$$
+\boxed{
+\text{lack of autonomous three-field closure}
+\neq
+\text{lack of exact mathematical solution representation}.
+}
+$$
 
 ---
 
-## 19. Assumption ledger
+# 21. Active assumption ledger
 
-The active base model assumes:
+The active model assumes:
 
 1. one-dimensional normal motion;
 2. identical masses after nondimensionalization;
 3. nearest-neighbour generalized-LJ energy $V^*=\sum_i\phi(\lambda_i)$;
 4. fixed left boundary and prescribed right-end normal force;
-5. current calibration map $q=\sigma/E$;
+5. current calibration map $q=\sigma_n/E$;
 6. spatial empirical probability over represented spacings;
 7. smooth continuum fields only where moment equations are used;
 8. sufficient velocity-space decay for moment integration by parts;
-9. $P>0$ and $\Theta>0$ only where the divided shape formula is used;
+9. $P>0$ and $\Theta>0$ only where the divided density-shape formula is used;
 10. $\phi''(\lambda_c)=0$ as the operational local initiation threshold.
 
-It does not assume equilibrium statistics, named PDF families, neighbour
-independence, stochastic Markov dynamics, white noise, Fokker--Planck,
-Smoluchowski, empirical fatigue damage, viscous damping, independent FEM
-elements, FCC geometry, or registry slip.
+The active theory does **not** assume Boltzmann/Gibbs equilibrium, Gaussian/Weibull spacing or life distributions, neighbour independence, stochastic Markov dynamics, white noise, Fokker--Planck, Smoluchowski, empirical fatigue damage, arbitrary viscous damping, independent FEM-element probabilities, FCC geometry, or registry slip.
 
 ---
 
-## 20. Final paper-level equation set
+# 22. Final governing set
 
-Microscopic bulk mechanics:
+Microscopic mechanics:
 
 $$
 \boxed{
@@ -1167,11 +1099,13 @@ $$
 }
 $$
 
-Empirical state:
+Empirical phase-space state:
 
 $$
 \boxed{
-F_M=\frac1M\sum_i\delta(\lambda-\lambda_i)\delta(c-c_i).
+F_M
+=\frac1M\sum_i
+\delta(\lambda-\lambda_i)\delta(c-c_i).
 }
 $$
 
@@ -1187,9 +1121,19 @@ Reduced fields:
 
 $$
 \boxed{
-P=\int F\,dc,
+P=\int Fdc,
 \qquad
-u=\mathbb E[c\mid\lambda],
+u_{\rm reserved}\;\text{is not used},
+\qquad
+u_{\rm reserved}\neq u,
+}
+$$
+
+and the active mean rate is
+
+$$
+\boxed{
+ u=\mathbb E[c\mid\lambda],
 \qquad
 \Theta=\operatorname{Var}(c\mid\lambda).
 }
@@ -1221,7 +1165,7 @@ $$
 }
 $$
 
-Second-central-moment balance:
+Variance balance:
 
 $$
 \boxed{
@@ -1229,14 +1173,6 @@ D_\tau\Theta
 +2\Theta\partial_\lambda u
 +\frac1P\partial_\lambda(PC_3)
 =2\Psi.
-}
-$$
-
-Bulk LJ acceleration:
-
-$$
-\boxed{
-\mathcal A=m_++m_- -2\phi'(\lambda).
 }
 $$
 
@@ -1252,7 +1188,8 @@ G2:
 
 $$
 \boxed{
-\bar U=U_{\rm ref}\int[\phi(\lambda)-\phi(1)]P\,d\lambda.
+\bar U
+=U_{\rm ref}\int[\phi(\lambda)-\phi(1)]P\,d\lambda.
 }
 $$
 
@@ -1260,28 +1197,24 @@ G3:
 
 $$
 \boxed{
-E_{\rm hyst}=\int\dot D_{\rm irr}\,dt,
+E_{\rm hyst}=\int\dot D_{\rm irr}dt,
 \qquad
 \dot D_{\rm irr}\ge0,
 }
 $$
 
-with $\dot D_{\rm irr}=0$ for the current conservative baseline and the
-physical irreversible mechanism OPEN.
+with $\dot D_{\rm irr}=0$ in the present conservative baseline.
 
-G4 / local first passage:
+G4:
 
 $$
 \boxed{
 \phi''(\lambda_c)=0,
-\quad
+\qquad
 \dot S=-j_{\rm esc},
-\quad
+\qquad
 F_{\rm ci}^{\rm local}=1-S.
 }
 $$
 
-This is the complete active 1D mathematical formulation. The remaining
-problems are physical rather than hidden algebra: irreversible mechanism,
-laboratory-fatigue time-scale bridge, specimen-level probability bridge, and
-experimental validation.
+This is the active mathematical theory. The remaining blockers are physical: an irreversible G3 mechanism, a physical specimen measure/correlation scale, microscopic-to-laboratory fatigue time-scale bridging, and experimental validation.
