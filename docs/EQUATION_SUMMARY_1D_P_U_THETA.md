@@ -1,30 +1,16 @@
 # Active 1D equation summary — $P$–$u$–$\Theta$
 
-This file is the compact equation sheet for the active normal-only theory.
-It is intended to be read together with `VARIABLE_INDEX_1D_P_U_THETA.md`, which
-provides the mandatory bilingual mathematical/physical definition of every
-symbol used here.
+This file is the compact authoritative equation sheet for the active normal-only theory.
+이 파일은 현재 **1D normal-only 이론의 기준 수식 정리본**이다.
 
-> **Active scope / 현재 범위**  
-> 1D nonlinear generalized-LJ normal chain $\rightarrow$ mechanically generated
-> phase-space state $\rightarrow$ $P,u,\Theta$ $\rightarrow$ mean spacing,
-> configurational energy, and first passage.  Registry $s$, FCC geometry,
-> Boltzmann equilibrium, Smoluchowski/Fokker–Planck closure, named probability
-> families, and empirical damage laws are not part of this active equation set.
+All symbols are defined in `VARIABLE_INDEX_1D_P_U_THETA.md` with bilingual mathematical and physical definitions.
+모든 기호는 `VARIABLE_INDEX_1D_P_U_THETA.md`에서 영·한 수학적/물리적 정의를 갖는다.
+
+**Status labels:** MODEL, DEFINITION, EXACT, CONDITIONAL, OPEN.
 
 ---
 
-## 0. Status labels / 식의 상태 분류
-
-- **MODEL / 모델**: adopted reduced physical model.
-- **DEFINITION / 정의**: mathematical definition.
-- **EXACT / 정확식**: exact identity under the stated model/measure.
-- **CONDITIONAL / 조건부 정확식**: exact only under the stated extra condition.
-- **OPEN / 미완성 물리**: mathematical slot exists, but its physical law is not yet derived.
-
----
-
-# 1. Physical–nondimensional bridge / 물리량–무차원량 연결
+## E01. Physical–nondimensional bridge / 물리–무차원 연결
 
 \[
 \boxed{
@@ -38,12 +24,8 @@ symbol used here.
 \boxed{
 U_{\rm ref}=EA_0a_0,
 \qquad
-F_{\rm ref}=EA_0
-}
-\]
-
-\[
-\boxed{
+F_{\rm ref}=EA_0,
+\qquad
 q(\tau)=\frac{F_{\rm ext}}{EA_0}=\frac{\sigma_n(t)}{E}
 }
 \]
@@ -58,27 +40,11 @@ For sinusoidal loading,
 }
 \]
 
-**Status:** DEFINITION under the present calibration bridge.
+**Status:** DEFINITION under the current calibration bridge.
 
 ---
 
-# 2. Microscopic generalized-LJ chain / 미시 generalized-LJ 사슬
-
-For $M+1$ nodes and $M$ normalized spacings,
-
-\[
-\boxed{
-\lambda_i=x_i-x_{i-1},
-\qquad
-a_i=a_0\lambda_i,
-\qquad
-c_i=\dot\lambda_i
-}
-\]
-
-where dots denote $d/d\tau$.
-
-The active normalized pair energy is
+## E02. Generalized-LJ normal energy / generalized-LJ 수직 에너지
 
 \[
 \boxed{
@@ -91,8 +57,6 @@ The active normalized pair energy is
 }
 \]
 
-with
-
 \[
 \boxed{
 \phi'(\lambda)
@@ -100,8 +64,6 @@ with
 \frac{\lambda^{-n-1}-\lambda^{-m-1}}{m-n}
 }
 \]
-
-and
 
 \[
 \boxed{
@@ -111,8 +73,6 @@ and
 }
 \]
 
-so that
-
 \[
 \boxed{
 \phi'(1)=0,
@@ -121,19 +81,27 @@ so that
 }
 \]
 
-and
-
 \[
 \boxed{
 V^*(\boldsymbol\lambda)=\sum_{i=1}^{M}\phi(\lambda_i)
 }
 \]
 
-**Status:** MODEL for $\phi$; derivatives and consequences are EXACT under that model.
+**Status:** $\phi$ is MODEL; derivatives and consequences are EXACT under that model.
 
 ---
 
-# 3. Closed microscopic equations / 닫힌 미시 운동방정식
+## E03. Microscopic chain equations / 미시 사슬 운동식
+
+\[
+\boxed{
+\lambda_i=x_i-x_{i-1},
+\qquad
+a_i=a_0\lambda_i,
+\qquad
+c_i=\dot\lambda_i
+}
+\]
 
 Interior nodes:
 
@@ -146,7 +114,7 @@ Interior nodes:
 }
 \]
 
-Loaded right boundary:
+Loaded end:
 
 \[
 \boxed{
@@ -154,7 +122,7 @@ Loaded right boundary:
 }
 \]
 
-Bulk spacing equation:
+Bulk spacings:
 
 \[
 \boxed{
@@ -171,9 +139,7 @@ Boundary spacings:
 
 \[
 \boxed{
-\ddot\lambda_1
-=
-\phi'(\lambda_2)-\phi'(\lambda_1)
+\ddot\lambda_1=\phi'(\lambda_2)-\phi'(\lambda_1)
 }
 \]
 
@@ -184,11 +150,11 @@ Boundary spacings:
 }
 \]
 
-**Status:** EXACT under the active chain model and boundary law.
+**Status:** EXACT under the active finite-chain model and boundary law.
 
 ---
 
-# 4. Exact mechanical energy / 정확한 기계에너지
+## E04. Mechanical energy and spacing-coordinate mass metric / 기계에너지와 간격좌표 질량메트릭
 
 \[
 \boxed{
@@ -200,27 +166,19 @@ T^*=\frac12\sum_{j=1}^{M}\dot x_j^2
 
 \[
 \boxed{
-\frac{dE_{\rm mech}^*}{d\tau}
-=q(\tau)\dot x_M
+\frac{dE_{\rm mech}^*}{d\tau}=q(\tau)\dot x_M
 }
 \]
 
-Using
-
-\[
-\boldsymbol x=\mathbf L\boldsymbol\lambda,
-\]
+With $\boldsymbol x=\mathbf L\boldsymbol\lambda$,
 
 \[
 \boxed{
-T^*
-=\frac12\boldsymbol c^T\mathbf G_\lambda\boldsymbol c,
+T^*=\frac12\boldsymbol c^T\mathbf G_\lambda\boldsymbol c,
 \qquad
 \mathbf G_\lambda=\mathbf L^T\mathbf L
 }
 \]
-
-with
 
 \[
 \boxed{
@@ -228,13 +186,11 @@ with
 }
 \]
 
-for one-based indexing.
-
-**Status:** EXACT.  Hence one-point $\Theta$ is not the complete chain kinetic energy.
+**Status:** EXACT.  Therefore one-point $\Theta$ alone is not the complete chain kinetic energy.
 
 ---
 
-# 5. Mechanically generated empirical phase-space state / 역학적으로 생성되는 경험적 위상공간 상태
+## E05. Empirical phase-space state / 경험적 위상공간 상태
 
 \[
 \boxed{
@@ -249,65 +205,50 @@ F_M(\lambda,c,\tau)
 \[
 \boxed{
 P_M(\lambda,\tau)
-=
-\int F_M\,dc
-=
-\frac1M\sum_i\delta[\lambda-\lambda_i(\tau)]
+=\int F_Mdc
+=\frac1M\sum_i\delta[\lambda-\lambda_i(\tau)]
 }
 \]
 
-No named PDF family is assumed.
+No Gaussian, Weibull, Boltzmann, or other named PDF is assumed.
 
 **Status:** DEFINITION.
 
 ---
 
-# 6. Exact phase-space transport / 정확한 위상공간 수송식
-
-Define
+## E06. Exact projected phase-space transport / 정확한 투영 위상공간 수송
 
 \[
 \boxed{
 A(\lambda,c,\tau)
-=
-\mathbb E[\ddot\lambda_i\mid\lambda_i=\lambda,c_i=c]
+=\mathbb E[\ddot\lambda_i\mid\lambda_i=\lambda,c_i=c]
 }
 \]
-
-Then a smooth projected representation satisfies
 
 \[
 \boxed{
-\partial_\tau F
-+\partial_\lambda(cF)
-+\partial_c(AF)=0
+\partial_\tau F+\partial_\lambda(cF)+\partial_c(AF)=0
 }
 \]
 
-when $A$ is the true conditional acceleration generated by the chain.
-
-**Status:** EXACT projected identity, not an autonomous one-point closure.
+**Status:** EXACT projected identity when $A$ is the true mechanics-generated conditional acceleration; not an autonomous one-point closure.
 
 ---
 
-# 7. Complete raw moment hierarchy / 완전한 원시 모멘트 계층
+## E07. Exact raw moment hierarchy / 정확한 원시 모멘트 계층
 
 \[
 \boxed{
-R_r(\lambda,\tau)=\int c^rF(\lambda,c,\tau)\,dc
+R_r(\lambda,\tau)=\int c^rF(\lambda,c,\tau)dc
 }
 \]
 
 \[
 \boxed{
-B_r(\lambda,\tau)
-=
-\int c^{r-1}A(\lambda,c,\tau)F(\lambda,c,\tau)\,dc,
+B_r(\lambda,\tau)=\int c^{r-1}AFdc,
 \qquad r\ge1
 }
 \]
-
-and
 
 \[
 \boxed{
@@ -316,23 +257,31 @@ and
 }
 \]
 
-assuming the required moments exist and velocity-boundary terms vanish.
+assuming finite moments and vanishing velocity-boundary terms.
 
 **Status:** EXACT.
 
 ---
 
-# 8. Reduced state $P,u,\Theta$ / 축약상태 $P,u,\Theta$
+## E08. Reduced fields / 축약장
 
 \[
 \boxed{
-P=\int F\,dc
+P(\lambda,\tau)=\int F(\lambda,c,\tau)dc
 }
 \]
 
 \[
 \boxed{
-u(\lambda,\tau)=\mathbb E[c\mid\lambda]}
+u(\lambda,\tau)\;\text{is not used.}}
+\]
+
+The active mean-rate symbol is strictly
+
+\[
+\boxed{
+ u(\lambda,\tau)=\mathbb E[c\mid\lambda]
+}
 \]
 
 \[
@@ -363,7 +312,15 @@ C_3(\lambda,\tau)=\mathbb E[(c-u)^3\mid\lambda]
 }
 \]
 
-The exact balances are
+\[
+\boxed{
+D_\tau=\partial_\tau+u\partial_\lambda
+}
+\]
+
+---
+
+## E09. Exact $P$–$u$–$\Theta$ equations / 정확한 $P$–$u$–$\Theta$ 식
 
 \[
 \boxed{
@@ -374,13 +331,9 @@ The exact balances are
 \[
 \boxed{
 D_\tau u
-=\mathcal A-\frac1P\partial_\lambda(P\Theta),
-\qquad
-D_\tau=\partial_\tau+u\partial_\lambda
+=\mathcal A-\frac1P\partial_\lambda(P\Theta)
 }
 \]
-
-and the corrected general $\Theta$ equation
 
 \[
 \boxed{
@@ -391,31 +344,27 @@ D_\tau\Theta
 }
 \]
 
-**Status:** EXACT.  Setting $C_3=0$ or $\Psi=0$ is an additional closure condition unless mechanically derived.
+The shorter zero-source $\Theta$ equation is valid only under the additional condition $\Psi=0$.
+
+**Status:** EXACT general equations; $\Psi=0$ version is CONDITIONAL.
 
 ---
 
-# 9. Exact nonlinear neighbour contribution / 정확한 비선형 이웃 상관항
-
-For ordered right/left neighbour joint densities $P_2^\pm$,
+## E10. Exact neighbour-statistics form / 정확한 이웃상관 형태
 
 \[
 \boxed{
-m_+(\lambda,\tau)
-=
-\frac1P\int\phi'(\lambda')P_2^+(\lambda,\lambda',\tau)\,d\lambda'
+m_+
+=\frac1P\int\phi'(\lambda')P_2^+(\lambda,\lambda',\tau)d\lambda'
 }
 \]
 
 \[
 \boxed{
-m_-(\lambda,\tau)
-=
-\frac1P\int\phi'(\lambda')P_2^-(\lambda,\lambda',\tau)\,d\lambda'
+m_-
+=\frac1P\int\phi'(\lambda')P_2^-(\lambda,\lambda',\tau)d\lambda'
 }
 \]
-
-and
 
 \[
 \boxed{
@@ -423,74 +372,65 @@ and
 }
 \]
 
-For ordered central-rate/neighbour densities $F_2^\pm$,
-
 \[
 \boxed{
 \Psi_{\rm bulk}
-=
-\frac1P\iint
-(c-u)\phi'(\lambda')
-[F_2^++F_2^-]\,dc\,d\lambda'
+=\frac1P\iint
+(c-u)\phi'(\lambda')[F_2^++F_2^-]dc\,d\lambda'
 }
 \]
 
-No neighbour-independence assumption is used.
-
-**Status:** EXACT for bulk spacings.
+**Status:** EXACT for bulk spacings; no neighbour-independence assumption.
 
 ---
 
-# 10. Instantaneous density-shape equation / 순간 PDF 형상식
+## E11. Instantaneous density-shape relation / 순간 확률밀도 형상식
 
 \[
 \boxed{
-\Theta\,\partial_\lambda\ln P
-=
-\mathcal A-D_\tau u-\partial_\lambda\Theta
+\Theta\partial_\lambda\ln P
+=\mathcal A-D_\tau u-\partial_\lambda\Theta
 }
 \]
 
-For smooth $P>0$ and $\Theta>0$,
+For smooth $P>0$, $\Theta>0$,
 
 \[
 \boxed{
 \partial_\lambda\ln P
-=
-\frac{\mathcal A-D_\tau u}{\Theta}
+=\frac{\mathcal A-D_\tau u}{\Theta}
 -\partial_\lambda\ln\Theta
 }
 \]
 
-and therefore
+and
 
 \[
 \boxed{
 P(\lambda,\tau)
-=
-\frac{\mathcal N_P(\tau)}{\Theta(\lambda,\tau)}
-\exp\!\left[
+=\frac{\mathcal N_P(\tau)}{\Theta(\lambda,\tau)}
+\exp\left[
 \int_{\lambda_*}^{\lambda}
-\frac{\mathcal A(\eta,\tau)-D_\tau u(\eta,\tau)}
-{\Theta(\eta,\tau)}\,d\eta
+\frac{\mathcal A(\eta,\tau)-D_\tau u(\eta,\tau)}{\Theta(\eta,\tau)}d\eta
 \right]
 }
 \]
 
-where $\mathcal N_P(\tau)$ is fixed by normalization.
+where $\mathcal N_P$ is fixed by $\int P d\lambda=1$.
 
-**Status:** EXACT instantaneous reconstruction under smoothness/positivity conditions.  At $\Theta=0$, use the undivided transport/moment equations.
+At $\Theta=0$ the divided form is invalid; use the undivided moment and transport equations.
+
+**Status:** EXACT instantaneous reconstruction under smoothness/positivity conditions.
 
 ---
 
-# 11. Exact time-integrated Volterra form / 정확한 시간 적분형
+## E12. Exact Volterra time-integral form / 정확한 볼테라 시간적분형
 
 \[
 \boxed{
 P(\lambda,\tau)
 =P_0(\lambda)
--\partial_\lambda
-\int_{\tau_0}^{\tau}P(\lambda,s)u(\lambda,s)\,ds
+-\partial_\lambda\int_{\tau_0}^{\tau}P(\lambda,s)u(\lambda,s)ds
 }
 \]
 
@@ -498,9 +438,8 @@ P(\lambda,\tau)
 \boxed{
 Pu
 =P_0u_0
--\partial_\lambda
-\int_{\tau_0}^{\tau}P(u^2+\Theta)(\lambda,s)\,ds
-+\int_{\tau_0}^{\tau}P\mathcal A(\lambda,s)\,ds
+-\partial_\lambda\int_{\tau_0}^{\tau}P(u^2+\Theta)(\lambda,s)ds
++\int_{\tau_0}^{\tau}P\mathcal A(\lambda,s)ds
 }
 \]
 
@@ -509,19 +448,17 @@ Pu
 \begin{aligned}
 P(u^2+\Theta)(\lambda,\tau)
 ={}&P_0(u_0^2+\Theta_0)(\lambda)\\
-&-\partial_\lambda\int_{\tau_0}^{\tau}
-P(u^3+3u\Theta+C_3)(\lambda,s)\,ds\\
-&+2\int_{\tau_0}^{\tau}
-P(u\mathcal A+\Psi)(\lambda,s)\,ds.
+&-\partial_\lambda\int_{\tau_0}^{\tau}P(u^3+3u\Theta+C_3)(\lambda,s)ds\\
+&+2\int_{\tau_0}^{\tau}P(u\mathcal A+\Psi)(\lambda,s)ds.
 \end{aligned}
 }
 \]
 
-**Status:** EXACT hierarchical Volterra representation.
+**Status:** EXACT hierarchical integral equations.
 
 ---
 
-# 12. Characteristic integral forms / 특성곡선 적분형
+## E13. Characteristic integral form / 특성곡선 적분형
 
 Define
 
@@ -537,9 +474,7 @@ and
 \[
 \boxed{
 \mathcal I_u(s;\alpha)
-=
-\int_{\tau_0}^{s}
-\partial_\lambda u(X(r),r)\,dr
+=\int_{\tau_0}^{s}\partial_\lambda u(X(r),r)dr
 }
 \]
 
@@ -547,21 +482,16 @@ Then
 
 \[
 \boxed{
-P(X(\tau),\tau)
-=P_0(\alpha)e^{-\mathcal I_u(\tau;\alpha)}
+P(X(\tau),\tau)=P_0(\alpha)e^{-\mathcal I_u(\tau;\alpha)}
 }
 \]
-
-and
 
 \[
 \boxed{
  u(X(\tau),\tau)
 =u_0(\alpha)
 +\int_{\tau_0}^{\tau}
-\left[
-\mathcal A-\frac1P\partial_\lambda(P\Theta)
-\right]_{(X(s),s)}ds
+\left[\mathcal A-\frac1P\partial_\lambda(P\Theta)\right]_{(X(s),s)}ds
 }
 \]
 
@@ -569,8 +499,7 @@ Define
 
 \[
 \boxed{
-S_\Theta
-=2\Psi-\frac1P\partial_\lambda(PC_3)
+S_\Theta=2\Psi-\frac1P\partial_\lambda(PC_3)
 }
 \]
 
@@ -582,20 +511,16 @@ Then
 =e^{-2\mathcal I_u(\tau;\alpha)}
 \left[
 \Theta_0(\alpha)
-+\int_{\tau_0}^{\tau}
- e^{2\mathcal I_u(s;\alpha)}
- S_\Theta(X(s),s)\,ds
++\int_{\tau_0}^{\tau}e^{2\mathcal I_u(s;\alpha)}S_\Theta(X(s),s)ds
 \right]
 }
 \]
 
-**Status:** EXACT characteristic representation when the smooth characteristic map exists.
+**Status:** EXACT characteristic representation when a smooth characteristic map exists.
 
 ---
 
-# 13. Exact full-flow push-forward representation / 전체 미시흐름의 정확한 push-forward 적분해
-
-Let the complete chain state be
+## E14. Exact full-flow push-forward / 전체 미시흐름의 정확한 push-forward
 
 \[
 \boxed{
@@ -603,97 +528,94 @@ Let the complete chain state be
 }
 \]
 
-and the deterministic LJ flow under $q$ be
-
 \[
 \boxed{
 \Gamma(\tau)=\Phi_{\tau,\tau_0}^{q}(\Gamma_0)
 }
 \]
 
-with an arbitrary normalized initial full-state measure
-
 \[
 \boxed{
-\int\mu_0(d\Gamma_0)=1.
-}
-\]
-
-Define trajectory projections
-
-\[
-\boxed{
-\Lambda_i(\tau;\Gamma_0)
-=x_i(\tau;\Gamma_0)-x_{i-1}(\tau;\Gamma_0)
+\int\mu_0(d\Gamma_0)=1
 }
 \]
 
 \[
 \boxed{
-C_i(\tau;\Gamma_0)=\frac{d\Lambda_i}{d\tau},
+\Lambda_i(\tau;\Gamma_0)=x_i(\tau;\Gamma_0)-x_{i-1}(\tau;\Gamma_0)
+}
+\]
+
+\[
+\boxed{
+C_i=\frac{d\Lambda_i}{d\tau},
 \qquad
-A_i(\tau;\Gamma_0)=\frac{d^2\Lambda_i}{d\tau^2}
+A_i=\frac{d^2\Lambda_i}{d\tau^2}
 }
 \]
-
-Then
 
 \[
 \boxed{
 F(\lambda,c,\tau)
-=
-\frac1M\sum_{i=1}^{M}
-\int
+=\frac1M\sum_i\int
 \delta[\lambda-\Lambda_i]
-\delta[c-C_i]
-\,\mu_0(d\Gamma_0)
+\delta[c-C_i]\mu_0(d\Gamma_0)
 }
 \]
 
 \[
 \boxed{
 P(\lambda,\tau)
-=
-\frac1M\sum_i
-\int
-\delta[\lambda-\Lambda_i]
-\,\mu_0(d\Gamma_0)
+=\frac1M\sum_i\int\delta[\lambda-\Lambda_i]\mu_0(d\Gamma_0)
 }
 \]
 
 \[
 \boxed{
 Pu
-=
-\frac1M\sum_i
-\int
-C_i\delta[\lambda-\Lambda_i]
-\,\mu_0(d\Gamma_0)
+=\frac1M\sum_i\int C_i\delta[\lambda-\Lambda_i]\mu_0(d\Gamma_0)
 }
 \]
 
 \[
 \boxed{
 P(u^2+\Theta)
-=
-\frac1M\sum_i
-\int
-C_i^2\delta[\lambda-\Lambda_i]
-\,\mu_0(d\Gamma_0)
+=\frac1M\sum_i\int C_i^2\delta[\lambda-\Lambda_i]\mu_0(d\Gamma_0)
 }
 \]
 
-Therefore $P,u,\Theta$ have exact integral representations even though the reduced three-field PDE system is hierarchical.
+Also
+
+\[
+\boxed{
+P\mathcal A
+=\frac1M\sum_i\int A_i\delta[\lambda-\Lambda_i]\mu_0(d\Gamma_0)
+}
+\]
+
+\[
+\boxed{
+PC_3
+=\frac1M\sum_i\int(C_i-u)^3\delta[\lambda-\Lambda_i]\mu_0(d\Gamma_0)
+}
+\]
+
+\[
+\boxed{
+P\Psi
+=\frac1M\sum_i\int(C_i-u)A_i\delta[\lambda-\Lambda_i]\mu_0(d\Gamma_0)
+}
+\]
 
 **Status:** EXACT under the closed finite-chain model and declared $\mu_0$.
 
 ---
 
-# 14. G1 — mean spacing / 평균 간격
+## E15. G1 — mean spacing / 평균 간격
 
 \[
 \boxed{
-\bar\lambda(\tau)=\int_0^\infty\lambda P(\lambda,\tau)\,d\lambda
+\bar\lambda(\tau)=\int_0^\infty\lambda P(\lambda,\tau)d\lambda
 }
 \]
 
@@ -703,20 +625,17 @@ Therefore $P,u,\Theta$ have exact integral representations even though the reduc
 }
 \]
 
-Equivalent full-flow form:
-
 \[
 \boxed{
-\bar a(\tau)
-=
-\frac{a_0}{M}\sum_i
-\int\Lambda_i(\tau;\Gamma_0)\,\mu_0(d\Gamma_0)
+\bar a(\tau)=\frac{a_0}{M}\sum_i\int\Lambda_i(\tau;\Gamma_0)\mu_0(d\Gamma_0)
 }
 \]
 
+**Status:** G1 DEFINITION plus exact equivalent projection form.
+
 ---
 
-# 15. G2 — mean intrinsic configurational energy / 평균 고유 배치에너지
+## E16. G2 — mean intrinsic configurational energy / 평균 고유 배치에너지
 
 \[
 \boxed{
@@ -727,38 +646,32 @@ Equivalent full-flow form:
 \[
 \boxed{
 \bar U(\tau)
-=U_{\rm ref}\int_0^\infty\Delta\phi(\lambda)P(\lambda,\tau)\,d\lambda
+=U_{\rm ref}\int_0^\infty\Delta\phi(\lambda)P(\lambda,\tau)d\lambda
 }
 \]
-
-Equivalent full-flow form:
 
 \[
 \boxed{
 \bar U(\tau)
-=
-\frac{U_{\rm ref}}{M}\sum_i
-\int
-[\phi(\Lambda_i)-\phi(1)]\,\mu_0(d\Gamma_0)
+=\frac{U_{\rm ref}}{M}\sum_i\int[\phi(\Lambda_i)-\phi(1)]\mu_0(d\Gamma_0)
 }
 \]
 
-**Status:** EXACT under the same nearest-neighbour energy that generates the chain dynamics.
+**Status:** EXACT under the same nearest-neighbour energy used in the microscopic equations.
 
 ---
 
-# 16. G3 — irreversible hysteresis energy / 비가역 히스테리시스 에너지
+## E17. G3 — irreversible hysteresis energy / 비가역 히스테리시스 에너지
 
 \[
 \boxed{
-E_{\rm hyst}(t)
-=\int_0^t\dot D_{\rm irr}(t')\,dt',
+E_{\rm hyst}(t)=\int_0^t\dot D_{\rm irr}(t')dt',
 \qquad
 \dot D_{\rm irr}\ge0
 }
 \]
 
-For the present conservative baseline,
+Present conservative baseline:
 
 \[
 \boxed{
@@ -768,31 +681,25 @@ E_{\rm hyst}=0
 }
 \]
 
-If a future physically derived irreversible force $r_j^{\rm irr}$ is added,
+If a future physical irreversible node force is derived,
 
 \[
 \boxed{
-\dot D_{\rm irr}^*
-=-\sum_jr_j^{\rm irr}\dot x_j\ge0
+\dot D_{\rm irr}^*=-\sum_jr_j^{\rm irr}\dot x_j\ge0
 }
 \]
-
-and
 
 \[
 \boxed{
-\frac{dE_{\rm mech}^*}{d\tau}
-=q\dot x_M-\dot D_{\rm irr}^*
+\frac{dE_{\rm mech}^*}{d\tau}=q\dot x_M-\dot D_{\rm irr}^*
 }
 \]
 
-**Status:** observable DEFINED; microscopic irreversible law OPEN.
+**Status:** G3 observable DEFINED; physical irreversible law OPEN.
 
 ---
 
-# 17. G4 — mechanical first passage / 기계적 최초통과 균열개시
-
-The local tangent-stiffness-loss threshold is
+## E18. G4 — mechanical first passage / 기계적 최초통과 균열개시
 
 \[
 \boxed{
@@ -800,43 +707,31 @@ The local tangent-stiffness-loss threshold is
 }
 \]
 
-hence
-
 \[
 \boxed{
-\lambda_c
-=\left(\frac{m+1}{n+1}\right)^{1/(m-n)}
+\lambda_c=\left(\frac{m+1}{n+1}\right)^{1/(m-n)}
 }
 \]
 
-For each spacing trajectory,
-
 \[
 \boxed{
-\tau_i^c
-=\inf\{\tau\ge\tau_0:\lambda_i(\tau)\ge\lambda_c\}
+\tau_i^c=\inf\{\tau\ge\tau_0:\lambda_i(\tau)\ge\lambda_c\}
 }
 \]
 
-For a survivor phase-space subdensity $F_b$ on $\lambda<\lambda_c$,
+For the survivor phase-space subdensity $F_b$,
 
 \[
 \boxed{
-F_b(\lambda_c,c,\tau)=0
-\qquad(c<0)
+F_b(\lambda_c,c,\tau)=0\qquad(c<0)
 }
 \]
-
-is the no-inflow kinetic absorbing boundary, while the outward escape flux is
 
 \[
 \boxed{
-j_{\rm esc}(\tau)
-=\int_0^\infty cF_b(\lambda_c^-,c,\tau)\,dc
+j_{\rm esc}=\int_0^\infty cF_b(\lambda_c^-,c,\tau)dc
 }
 \]
-
-and
 
 \[
 \boxed{
@@ -844,32 +739,30 @@ and
 \qquad
 F_{\rm ci}^{\rm local}=1-S,
 \qquad
-h=\frac{j_{\rm esc}}{S}=-\frac{d}{d\tau}\ln S
+h=\frac{j_{\rm esc}}S=-\frac{d}{d\tau}\ln S
 }
 \]
 
-Exact full-flow local survival:
+Full-flow local survival:
 
 \[
 \boxed{
 S_{\rm local}(\tau)
-=\frac1M\sum_i
-\int
-\mathbf1\!\left[
+=\frac1M\sum_i\int
+\mathbf1\left[
 \sup_{s\in[\tau_0,\tau]}\Lambda_i(s;\Gamma_0)<\lambda_c
 \right]\mu_0(d\Gamma_0)
 }
 \]
 
-Exact specimen-ensemble survival:
+Specimen survival:
 
 \[
 \boxed{
 S_{\rm spec}(\tau)
 =\int
-\mathbf1\!\left[
-\max_i\sup_{s\in[\tau_0,\tau]}
-\Lambda_i(s;\Gamma_0)<\lambda_c
+\mathbf1\left[
+\max_i\sup_{s\in[\tau_0,\tau]}\Lambda_i(s;\Gamma_0)<\lambda_c
 \right]\mu_0(d\Gamma_0)
 }
 \]
@@ -880,46 +773,36 @@ F_{\rm ci}^{\rm spec}=1-S_{\rm spec}
 }
 \]
 
-**Status:** mathematical first-passage formula EXACT once the full-state measure $\mu_0$ is declared; physical specimen-scale choice/calibration of $\mu_0$ remains OPEN.
+**Status:** exact first-passage mathematics once $\mu_0$ is declared; physical specimen-scale $\mu_0$ and correlation calibration remain OPEN.
 
 ---
 
-# 18. Final mathematical statement / 최종 수학적 구조
+## E19. Final mathematical structure / 최종 수학 구조
 
 \[
 \boxed{
 \text{closed finite LJ ODE}
 \Longrightarrow
-\text{exact full-state flow }\Phi^q
+\Phi^q
 \Longrightarrow
-\text{exact push-forward }F
+F
 \Longrightarrow
-P,u,\Theta
-}
-\]
-
-while
-
-\[
-\boxed{
 (P,u,\Theta)
-\text{ obey exact but hierarchical reduced equations}
 }
 \]
-
-and
 
 \[
 \boxed{
-\text{absence of a three-field autonomous closure}
-\neq
-\text{absence of an exact integral representation}.
+(P,u,\Theta)\text{ satisfy exact hierarchical reduced equations}
 }
 \]
 
-The remaining unresolved issues are physical, not missing algebra:
+\[
+\boxed{
+\text{no autonomous three-field closure}
+\neq
+\text{no exact integral solution representation}
+}
+\]
 
-1. derive a real irreversible microscopic mechanism for G3;
-2. physically determine/validate the specimen initial measure $\mu_0$ and correlation scale;
-3. bridge atomic time scales to laboratory fatigue cycling;
-4. validate experimentally.
+Remaining open problems are physical: the irreversible G3 mechanism, physical specimen measure $\mu_0$/correlation scale, microscopic-to-laboratory fatigue time-scale bridge, and experimental validation.
