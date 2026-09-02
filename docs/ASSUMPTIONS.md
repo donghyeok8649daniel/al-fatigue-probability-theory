@@ -1,7 +1,7 @@
 # Assumptions and approximations — active 1D theory
 # 가정과 근사 — 활성 1D 이론
 
-> **Normative status / 기준 상태:** This file now follows the active 1D normal-only
+> **Normative status / 기준 상태:** This file follows the active 1D normal-only
 > formulation. Historical `(a,s)` Smoluchowski/registry assumptions are retained only
 > as a future extension and are **not** the governing assumptions of the present paper.
 > 현재 기준 이론은 1D normal-only `P-u-Theta` 체계다. 과거 `(a,s)`
@@ -18,32 +18,18 @@ Authoritative equation and notation sources:
 
 ## 0. Mandatory time-dependence notation / 시간의존성 표기 규칙
 
-The active probability and moment fields are functions of spacing and time.
-Their canonical forms are
+The active probability and moment fields are functions of spacing and time. Their
+canonical nondimensional-time forms are
 
 \[
 \boxed{
 P(\lambda,\tau),\qquad
-u\;\text{is not used},\qquad
-u\neq u,
-}
-\]
-
-\[
-\boxed{
-u_{
-\text{legacy typo}}\;\text{must be replaced by}\;u(\lambda,\tau)}
-\]
-
-and, explicitly,
-
-\[
-\boxed{
-P(\lambda,\tau),\qquad
-u\text{ reserved},\qquad
+u\text{ is not an active state symbol},\qquad
 u\not\equiv u,
 }
 \]
+
+and the actual active mean-rate/variance fields are
 
 \[
 \boxed{
@@ -57,17 +43,16 @@ With physical time,
 
 \[
 \boxed{
-P(\lambda,t)=P\!\left(\lambda,\tau=t/t_0\right)
+P(\lambda,t)=P\!\left(\lambda,\tau=t/t_0\right),
 }
 \]
 
-and analogously for `u` and `Theta`. Bare `P`, `u`, or `Theta` may appear only
-as local shorthand after the full functional dependence has already been declared.
+with analogous notation for `u` and `Theta`.
 
-정식 표기는 반드시 `P(lambda,t)` 또는 `P(lambda,tau)`, `u(lambda,t)` 또는
-`u(lambda,tau)`, `Theta(lambda,t)` 또는 `Theta(lambda,tau)`처럼 시간의존성을
-포함한다. 독립변수를 생략한 `P`, `u`, `Theta`는 같은 식/절 안에서 이미
-함수형이 선언된 뒤의 축약표기로만 허용한다.
+Bare `P`, `u`, or `Theta` may appear only as local shorthand after the full
+functional dependence has already been declared. 정식 표기는 반드시
+`P(lambda,t)` 또는 `P(lambda,tau)`, `u(lambda,t)` 또는 `u(lambda,tau)`,
+`Theta(lambda,t)` 또는 `Theta(lambda,tau)`처럼 시간의존성을 포함한다.
 
 ## 1. Active physical assumptions / 활성 물리 가정
 
@@ -120,7 +105,7 @@ as local shorthand after the full functional dependence has already been declare
     \]
     where
     \[
-    \boxed{\Psi=\operatorname{Cov}(c,\ddot\lambda\mid\lambda,\tau).}
+    \boxed{\Psi(\lambda,\tau)=\operatorname{Cov}(c,\ddot\lambda\mid\lambda,\tau).}
     \]
     Setting `Psi=0` or `C_3=0` is an additional closure assumption and is not active
     by default.
