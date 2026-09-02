@@ -3,31 +3,35 @@
 ## 0. Scope
 
 This milestone keeps the active 1D normal generalized-LJ chain and the exact
-spacing-space moment structure.  It introduces no Boltzmann law, Fokker--Planck
+spacing-space moment structure. It introduces no Boltzmann law, Fokker--Planck
 closure, damping, empirical damage variable, or prescribed PDF family.
 
-The question is:
+The purpose is to distinguish three statements that must not be conflated:
 
-> At the same externally applied normal force, can the mechanically generated
-> state differ between the loading and unloading passages of a cycle?
+1. exact mathematical definition of $P$, $u$, and $\Theta$;
+2. load-path dependence / same-force non-retracing of those reduced fields;
+3. irreversible dissipation required by G3.
 
-The answer must be separated into two statements:
-
-1. **state non-retracing / history dependence** of $(P,u,\Theta)$;
-2. **irreversible dissipation** required by G3.
-
-They are not the same statement.
+The first two are established in the current reduced theory and numerical
+protocol. The third is not supplied by the present conservative chain.
 
 ---
 
-## 1. Exact state definitions
+## 1. Exact empirical and smooth state definitions
 
-For local spacing $a_i(t)$ and spacing velocity $c_i=\dot a_i$, define the
-finite empirical phase-space measure
+For represented local spacing $a_i(t)$ and spacing rate
 
 $$
-F_M(a,c,t)=\frac1M\sum_{i=1}^M
+c_i(t)=\dot a_i(t),
+$$
+
+define the finite empirical phase-space measure
+
+$$
+\boxed{
+F_M(a,c,t)=\frac1M\sum_{i=1}^{M}
 \delta[a-a_i(t)]\delta[c-c_i(t)].
+}
 $$
 
 Its spacing marginal is
@@ -39,7 +43,7 @@ P_M(a,t)=\int F_M(a,c,t)\,dc
 }
 $$
 
-For the smooth one-point representation,
+For a smooth one-point representation, wherever $P>0$, define
 
 $$
 \boxed{u(a,t)=\mathbb E[c\mid a]}
@@ -54,35 +58,69 @@ $$
 }
 $$
 
-Thus $\Theta$ is not a fitted memory coefficient.  It is an exact conditional
-second central velocity moment of the mechanically generated state.
+Thus $\Theta$ is not a fitted memory coefficient. It is the exact conditional
+second central moment of the mechanically generated spacing-rate population.
 
 ---
 
-## 2. Exact moment relation retained
+## 2. Exact phase-space and first two moment equations
 
-The exact first two phase-space moment equations give
-
-$$
-\partial_tP+\partial_a(Pu)=0
-$$
-
-and
+Let
 
 $$
+A(a,c,t)=\mathbb E[\ddot a_i\mid a_i=a,\dot a_i=c]
+$$
+
+be the conditional acceleration field. The smooth projected kinetic equation is
+
+$$
+\boxed{
+\partial_tF+\partial_a(cF)+\partial_c(AF)=0,
+}
+$$
+
+provided the conditional field is defined from the underlying mechanics. This
+is a projected identity, not an autonomous closure: $A$ can retain information
+about hidden neighbouring degrees of freedom.
+
+Integrating over $c$ gives
+
+$$
+\boxed{
+\partial_tP+\partial_a(Pu)=0.
+}
+$$
+
+Define the one-point conditional acceleration
+
+$$
+\boxed{
+\mathcal A(a,t)=\mathbb E[\ddot a_i\mid a_i=a].
+}
+$$
+
+Multiplying the kinetic equation by $c$ and integrating gives
+
+$$
+\boxed{
+\partial_t(Pu)
++\partial_a\!\left[P(u^2+\Theta)\right]
+=P\mathcal A.
+}
+$$
+
+Therefore
+
+$$
+\boxed{
 D_tu
 =\mathcal A-\frac1P\partial_a(P\Theta),
-$$
-
-where
-
-$$
-D_tu=\partial_tu+u\partial_a u,
 \qquad
-\mathcal A(a,t)=\mathbb E[\ddot a_i\mid a_i=a].
+D_tu=\partial_tu+u\partial_a u.
+}
 $$
 
-Rearranging,
+Rearranging yields the exact density-shape identity
 
 $$
 \boxed{
@@ -101,7 +139,7 @@ $$
 }
 $$
 
-This is an exact shape identity, not an independent probability closure.
+This is an exact shape identity, not an independent predictive closure.
 
 ---
 
@@ -121,140 +159,191 @@ $$
 \dot Q(t_U)<0.
 $$
 
-If
+If any of
 
 $$
-\boxed{P(a,t_L)\ne P(a,t_U)}
+P(a,t_L)\ne P(a,t_U),
 $$
 
-or
-
 $$
-\boxed{u(a,t_L)\ne u(a,t_U)}
+u(a,t_L)\ne u(a,t_U),
 $$
 
 or
 
 $$
-\boxed{\Theta(a,t_L)\ne\Theta(a,t_U),}
+\Theta(a,t_L)\ne\Theta(a,t_U)
 $$
 
-then the reduced state is not a single-valued function of the instantaneous
-external force alone.
-
-Equivalently,
+holds, then the reduced descriptor is not a single-valued function of the
+instantaneous external force alone. Equivalently,
 
 $$
+\boxed{
 (P,u,\Theta)\ne\mathcal S[Q(t)]
+}
 $$
 
-for any memoryless scalar map $\mathcal S$.
+for a memoryless scalar map $\mathcal S$.
 
-This is a precise reduced-state notion of **history dependence**.
+This is the precise reduced-state meaning of **history dependence** used here.
+It does not imply that $(P,u,\Theta)$ is a closed Markov state.
 
 ---
 
-## 4. Why $\Theta$ can carry history
+## 4. What $\Theta$ measures — and what it does not
 
-At a fixed spacing value $a$, two ensembles can have the same local spacing
-population but different incoming/outgoing velocity populations.  Then their
-conditional mean velocities and conditional velocity spreads differ:
+At fixed spacing $a$,
 
 $$
-u_L(a)\ne u_U(a),
+\boxed{
+\mathbb E[c^2\mid a]=u(a,t)^2+\Theta(a,t).
+}
+$$
+
+Hence $\Theta$ measures the unresolved spread of local spacing rates at fixed
+spacing. It distinguishes, for example, incoming and outgoing populations that
+can have similar spacing statistics.
+
+However, $c_i=\dot a_i$ is a bond-spacing rate, not an independent unit-mass
+particle velocity. For a chain of unit-mass moving atoms with the left end
+fixed, write the spacing vector as $\boldsymbol a$ and the atomic-position
+vector as
+
+$$
+\boldsymbol x=\mathbf L\boldsymbol a,
+$$
+
+where $L_{jk}=1$ for $k\le j$ and $0$ otherwise. Then the exact kinetic energy is
+
+$$
+\boxed{
+T=\frac12\dot{\boldsymbol a}^{T}
+\mathbf G_a
+\dot{\boldsymbol a},
 \qquad
-\Theta_L(a)\ne\Theta_U(a).
-$$
-
-Therefore $P(a)$ alone need not distinguish all load/unload states.  The
-phase-space information retained by $(u,\Theta)$ can distinguish states whose
-instantaneous spacing statistics are similar.
-
-The conditional kinetic contribution is
-
-$$
-\boxed{
-\mathbb E\!\left[\frac12c^2\middle|a\right]
-=\frac12\left[u(a,t)^2+\Theta(a,t)\right]
+\mathbf G_a=\mathbf L^{T}\mathbf L.
 }
 $$
 
-in the current unit-mass normalized 1D chain.  Hence $\Theta$ also has a direct
-mechanical energy interpretation.
+Thus the actual chain kinetic energy contains cross terms between different
+spacing rates. One-point $u$ and $\Theta$ alone do not determine total kinetic
+energy. The quantity
+
+$$
+\frac12[u^2+\Theta]
+$$
+
+is therefore a **local spacing-rate quadratic diagnostic**, not by itself the
+exact chain kinetic-energy density.
 
 ---
 
-## 5. This does not yet prove irreversible fatigue hysteresis
+## 5. Exact $\Theta$ evolution: acceleration-covariance source
 
-The active normal chain is conservative.  With external forcing,
-
-$$
-\boxed{
-\frac{dE_{\rm mech}}{dt}=Q(t)\,\dot x_{\rm end}(t).
-}
-$$
-
-A non-retracing force--state loop can therefore arise from reversible inertia,
-wave propagation, and phase-space redistribution even when no irreversible
-mechanism is present.
-
-Consequently
-
-$$
-(P_L,u_L,\Theta_L)\ne(P_U,u_U,\Theta_U)
-$$
-
-is sufficient to establish **history-dependent reduced state**, but it is not
-sufficient to establish
-
-$$
-\dot D_{\rm irr}>0.
-$$
-
-G3 remains a separate physical requirement.
-
-The correct hierarchy is
+Define the third conditional central spacing-rate moment
 
 $$
 \boxed{
-\text{same-force non-retracing}
-\not\Rightarrow
-\text{irreversible dissipation}.
+C_3(a,t)=\mathbb E[(c-u)^3\mid a]
 }
 $$
 
----
+and the conditional spacing-rate/acceleration covariance
 
-## 6. Exact evolution of $\Theta$ and the remaining hierarchy
+$$
+\boxed{
+\Psi(a,t)
+=\operatorname{Cov}(c,\ddot a_i\mid a_i=a)
+=\mathbb E[(c-u)\ddot a_i\mid a_i=a].
+}
+$$
 
-The second central moment obeys
+The exact second-central-moment balance is
 
 $$
 \boxed{
 D_t\Theta
 +2\Theta\,\partial_a u
-+\frac1P\partial_a(PC_3)=0,
++\frac1P\partial_a(PC_3)
+=2\Psi.
 }
 $$
 
-with
+This is the general equation for the current projected chain.
+
+The commonly shorter form
 
 $$
-C_3(a,t)=\mathbb E[(c-u)^3\mid a].
+D_t\Theta
++2\Theta\,\partial_a u
++\frac1P\partial_a(PC_3)=0
 $$
 
-Thus $\Theta$ is mathematically defined and dynamically meaningful, but its
-standalone predictive evolution still belongs to the exact moment hierarchy.
-Setting $C_3=0$ would be a new closure assumption and is not adopted here.
+is valid only when
 
-For direct deterministic simulation this is not an obstacle: the microscopic
-chain generates $F_M$, hence $P,u,\Theta,C_3,\ldots$ directly.
+$$
+\Psi=\operatorname{Cov}(c,\ddot a\mid a)=0,
+$$
+
+for example if the acceleration is deterministic at fixed $a,t$. That
+condition is **not automatic** for the actual LJ spacing chain because the
+central spacing acceleration depends on neighbouring spacings.
+
+Therefore the predictive hierarchy contains both a third velocity moment and
+neighbour-conditioned acceleration information. Setting either $C_3=0$ or
+$\Psi=0$ without a mechanical derivation would be a closure assumption.
 
 ---
 
-## 7. Consequence for the active mainline
+## 6. Conservative history dependence is not G3 dissipation
 
-The current 1D mainline is therefore
+The active normal chain is conservative apart from external work. With
+prescribed end force $Q(t)$,
+
+$$
+\boxed{
+\frac{dE_{\rm mech}}{dt}=Q(t)\dot x_{\rm end}(t).
+}
+$$
+
+Consequently, a non-retracing force--state loop can arise from inertia, wave
+propagation, and phase-space redistribution without irreversible dissipation.
+For a cycle,
+
+$$
+\boxed{
+W_{\rm ext}^{\rm cyc}
+=\Delta E_{\rm mech}^{\rm cyc}
++D_{\rm irr}^{\rm cyc}.
+}
+$$
+
+In the present conservative baseline,
+
+$$
+\boxed{D_{\rm irr}^{\rm cyc}=0,}
+$$
+
+so a nonzero cycle work during a transient is stored as a change in mechanical
+energy. Therefore
+
+$$
+\boxed{
+\text{same-force non-retracing}
+\not\Rightarrow
+\dot D_{\rm irr}>0.
+}
+$$
+
+G3 remains a separate physical requirement.
+
+---
+
+## 7. Current status of the 1D mainline
+
+The exact finite chain is closed at the microscopic state level. Its one-point
+projection is
 
 $$
 \boxed{
@@ -265,23 +354,11 @@ $$
 }
 $$
 
-The immediate numerical falsification test is
+The tuple $(P,u,\Theta)$ is a mechanically generated, history-bearing reduced
+descriptor. It is not yet an autonomous closed state because exact evolution
+introduces $C_3$, $\Psi$, and neighbouring joint statistics.
 
-$$
-\boxed{
-(P,u,\Theta)_{\rm load}(Q^*)
-\stackrel{?}{=}
-(P,u,\Theta)_{\rm unload}(Q^*)
-}
-$$
-
-at several identical force levels in the same cycle.
-
-If unequal, the chain-generated distribution state contains load-path history.
-The result must still be labeled **dynamic history dependence** until a
-mechanically justified irreversible mechanism supplies G3.
-
-A further scale check is mandatory before relating this inertial history to
-laboratory fatigue frequencies, because the current atomic normal dynamics and
-laboratory cycling have already been shown to have a very large time-scale
-separation.
+The same-force numerical test establishes dynamic history dependence of this
+reduced descriptor. A further physical time-scale and irreversibility mechanism
+is still required before that non-retracing can be identified with laboratory
+fatigue hysteresis and long-cycle accumulation.
