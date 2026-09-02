@@ -25,7 +25,7 @@ $$
 \boxed{
 t_0=\sqrt{\frac{m_a a_0}{EA_0}},
 \qquad
-\tau=\frac{t}{t_0}.
+\tau=\frac{t}{t_0}
 }
 $$
 
@@ -35,7 +35,7 @@ $$
 \boxed{
 F_{\rm ref}=EA_0,
 \qquad
-U_{\rm ref}=EA_0a_0.
+U_{\rm ref}=EA_0a_0
 }
 $$
 
@@ -43,7 +43,7 @@ The active stress-to-chain-force bridge is
 
 $$
 \boxed{
-q(\tau)=\frac{F_{\rm ext}(t)}{EA_0}=\frac{\sigma_n(t)}{E}.
+q(\tau)=\frac{F_{\rm ext}(t)}{EA_0}=\frac{\sigma_n(t)}{E}
 }
 $$
 
@@ -53,7 +53,7 @@ $$
 \boxed{
 \sigma_n(t)=\sigma_m+\sigma_a\sin(2\pi f t),
 \qquad
-\omega^*=2\pi f t_0.
+\omega^*=2\pi f t_0
 }
 $$
 
@@ -66,7 +66,7 @@ $$
 Take $M+1$ nodes $x_0,\ldots,x_M$ with
 
 $$
-\boxed{x_0(\tau)=0.}
+\boxed{x_0(\tau)=0}
 $$
 
 Define the $M$ normalized spacings
@@ -74,14 +74,14 @@ Define the $M$ normalized spacings
 $$
 \boxed{
 \lambda_i=x_i-x_{i-1}>0,
-\qquad i=1,\ldots,M,
+\qquad i=1,\ldots,M
 }
 $$
 
 and physical spacings
 
 $$
-\boxed{a_i=a_0\lambda_i.}
+\boxed{a_i=a_0\lambda_i}
 $$
 
 Dots below denote $d/d\tau$.
@@ -97,7 +97,7 @@ $$
 \frac{\lambda^{-m}}{m(m-n)}
 -
 \frac{\lambda^{-n}}{n(m-n)},
-\qquad m>n>1.
+\qquad m>n>1
 }
 $$
 
@@ -106,14 +106,14 @@ Its derivatives are
 $$
 \boxed{
 \phi'(\lambda)
-=\frac{\lambda^{-n-1}-\lambda^{-m-1}}{m-n},
+=\frac{\lambda^{-n-1}-\lambda^{-m-1}}{m-n}
 }
 $$
 
 $$
 \boxed{
 \phi''(\lambda)
-=\frac{(m+1)\lambda^{-m-2}-(n+1)\lambda^{-n-2}}{m-n}.
+=\frac{(m+1)\lambda^{-m-2}-(n+1)\lambda^{-n-2}}{m-n}
 }
 $$
 
@@ -123,7 +123,7 @@ $$
 \boxed{
 \phi'(1)=0,
 \qquad
-\phi''(1)=1.
+\phi''(1)=1
 }
 $$
 
@@ -131,7 +131,7 @@ The finite-chain configurational energy is
 
 $$
 \boxed{
-V^*(\boldsymbol\lambda)=\sum_{i=1}^{M}\phi(\lambda_i).
+V^*(\boldsymbol\lambda)=\sum_{i=1}^{M}\phi(\lambda_i)
 }
 $$
 
@@ -145,7 +145,7 @@ $$
 \boxed{
 \ddot x_j
 =\phi'(\lambda_{j+1})-\phi'(\lambda_j),
-\qquad j=1,\ldots,M-1,
+\qquad j=1,\ldots,M-1
 }
 $$
 
@@ -153,7 +153,7 @@ and at the loaded end
 
 $$
 \boxed{
-\ddot x_M=-\phi'(\lambda_M)+q(\tau).
+\ddot x_M=-\phi'(\lambda_M)+q(\tau)
 }
 $$
 
@@ -165,7 +165,7 @@ $$
 =\phi'(\lambda_{i+1})
 -2\phi'(\lambda_i)
 +\phi'(\lambda_{i-1}),
-\qquad i=2,\ldots,M-1.
+\qquad i=2,\ldots,M-1
 }
 $$
 
@@ -173,14 +173,14 @@ The boundary spacings satisfy
 
 $$
 \boxed{
-\ddot\lambda_1=\phi'(\lambda_2)-\phi'(\lambda_1),
+\ddot\lambda_1=\phi'(\lambda_2)-\phi'(\lambda_1)
 }
 $$
 
 $$
 \boxed{
 \ddot\lambda_M
-=q(\tau)+\phi'(\lambda_{M-1})-2\phi'(\lambda_M).
+=q(\tau)+\phi'(\lambda_{M-1})-2\phi'(\lambda_M)
 }
 $$
 
@@ -196,7 +196,7 @@ $$
 \boxed{
 T^*=\frac12\sum_{j=1}^{M}\dot x_j^2,
 \qquad
-E_{\rm mech}^*=T^*+V^*.
+E_{\rm mech}^*=T^*+V^*
 }
 $$
 
@@ -204,7 +204,7 @@ Differentiating and using the equations of motion gives
 
 $$
 \boxed{
-\frac{dE_{\rm mech}^*}{d\tau}=q(\tau)\dot x_M.
+\frac{dE_{\rm mech}^*}{d\tau}=q(\tau)\dot x_M
 }
 $$
 
@@ -215,7 +215,7 @@ Hence the active baseline is conservative except for prescribed external work.
 Since
 
 $$
-x_j=\sum_{k=1}^{j}\lambda_k,
+x_j=\sum_{k=1}^{j}\lambda_k
 $$
 
 write
@@ -226,7 +226,7 @@ $$
 \qquad
 \dot{\boldsymbol x}=\mathbf L\boldsymbol c,
 \qquad
-\boldsymbol c=\dot{\boldsymbol\lambda}.
+\boldsymbol c=\dot{\boldsymbol\lambda}
 }
 $$
 
@@ -236,7 +236,7 @@ $$
 \boxed{
 T^*=\frac12\boldsymbol c^T\mathbf G_\lambda\boldsymbol c,
 \qquad
-\mathbf G_\lambda=\mathbf L^T\mathbf L,
+\mathbf G_\lambda=\mathbf L^T\mathbf L
 }
 $$
 
@@ -244,7 +244,7 @@ with
 
 $$
 \boxed{
-(G_\lambda)_{k\ell}=M-\max(k,\ell)+1.
+(G_\lambda)_{k\ell}=M-\max(k,\ell)+1
 }
 $$
 
@@ -261,14 +261,14 @@ $$
 F_M(\lambda,c,\tau)
 =\frac1M\sum_{i=1}^{M}
 \delta[\lambda-\lambda_i(\tau)]
-\delta[c-c_i(\tau)],
+\delta[c-c_i(\tau)]
 }
 $$
 
 where
 
 $$
-\boxed{c_i=\dot\lambda_i.}
+\boxed{c_i=\dot\lambda_i}
 $$
 
 Its spacing marginal is
@@ -276,8 +276,8 @@ Its spacing marginal is
 $$
 \boxed{
 P_M(\lambda,\tau)
-=\int F_M(\lambda,c,\tau)dc
-=\frac1M\sum_i\delta[\lambda-\lambda_i(\tau)].
+=\int F_M(\lambda,c,\tau)\,dc
+=\frac1M\sum_i\delta[\lambda-\lambda_i(\tau)]
 }
 $$
 
@@ -294,7 +294,7 @@ $$
 \mathcal G_M(\lambda,c,\tau)
 =\frac1M\sum_i\ddot\lambda_i
 \delta(\lambda-\lambda_i)
-\delta(c-c_i).
+\delta(c-c_i)
 }
 $$
 
@@ -304,7 +304,7 @@ $$
 \boxed{
 \partial_\tau F_M
 +\partial_\lambda(cF_M)
-+\partial_c\mathcal G_M=0.
++\partial_c\mathcal G_M=0
 }
 $$
 
@@ -313,16 +313,14 @@ For a smooth projected representation define
 $$
 \boxed{
 A(\lambda,c,\tau)
-=\mathbb E[\ddot\lambda_i\mid\lambda_i=\lambda,c_i=c].
+=\mathbb{E}[\ddot\lambda_i\mid\lambda_i=\lambda,c_i=c]
 }
 $$
 
 Then
 
 $$
-\boxed{
-\mathcal G=AF
-}
+\boxed{\mathcal G=AF}
 $$
 
 and
@@ -331,7 +329,7 @@ $$
 \boxed{
 \partial_\tau F
 +\partial_\lambda(cF)
-+\partial_c(AF)=0.
++\partial_c(AF)=0
 }
 $$
 
@@ -345,7 +343,7 @@ Define
 
 $$
 \boxed{
-R_r(\lambda,\tau)=\int_{-\infty}^{\infty}c^rF(\lambda,c,\tau)dc,
+R_r(\lambda,\tau)=\int_{-\infty}^{\infty}c^rF(\lambda,c,\tau)\,dc,
 \qquad r=0,1,2,\ldots
 }
 $$
@@ -355,7 +353,7 @@ and for $r\ge1$
 $$
 \boxed{
 B_r(\lambda,\tau)
-=\int c^{r-1}A(\lambda,c,\tau)F(\lambda,c,\tau)dc.
+=\int c^{r-1}A(\lambda,c,\tau)F(\lambda,c,\tau)\,dc
 }
 $$
 
@@ -364,7 +362,7 @@ Assuming the required moments exist and the velocity-boundary terms vanish,
 
 $$
 \boxed{
-\partial_\tau R_r+\partial_\lambda R_{r+1}=rB_r.
+\partial_\tau R_r+\partial_\lambda R_{r+1}=rB_r
 }
 $$
 
@@ -378,35 +376,35 @@ Define
 
 $$
 \boxed{
-P(\lambda,\tau)=R_0=\int Fdc,
+P(\lambda,\tau)=R_0=\int F\,dc
 }
 $$
 
 $$
 \boxed{
- u(\lambda,\tau)=\mathbb E[c\mid\lambda]
-=\frac{R_1}{P},
+ u(\lambda,\tau)=\mathbb{E}[c\mid\lambda]
+=\frac{R_1}{P}
 }
 $$
 
 $$
 \boxed{
 \Theta(\lambda,\tau)
-=\operatorname{Var}(c\mid\lambda)
-=\mathbb E[(c-u)^2\mid\lambda],
+=\mathrm{Var}(c\mid\lambda)
+=\mathbb{E}[(c-u)^2\mid\lambda]
 }
 $$
 
 $$
 \boxed{
-C_3(\lambda,\tau)=\mathbb E[(c-u)^3\mid\lambda],
+C_3(\lambda,\tau)=\mathbb{E}[(c-u)^3\mid\lambda]
 }
 $$
 
 $$
 \boxed{
 \mathcal A(\lambda,\tau)
-=\mathbb E[\ddot\lambda_i\mid\lambda_i=\lambda],
+=\mathbb{E}[\ddot\lambda_i\mid\lambda_i=\lambda]
 }
 $$
 
@@ -415,8 +413,8 @@ and
 $$
 \boxed{
 \Psi(\lambda,\tau)
-=\operatorname{Cov}(c,\ddot\lambda\mid\lambda)
-=\mathbb E[(c-u)\ddot\lambda\mid\lambda].
+=\mathrm{Cov}(c,\ddot\lambda\mid\lambda)
+=\mathbb{E}[(c-u)\ddot\lambda\mid\lambda]
 }
 $$
 
@@ -428,13 +426,13 @@ R_0=P,
 \qquad
 R_1=Pu,
 \qquad
-R_2=P(u^2+\Theta),
+R_2=P(u^2+\Theta)
 }
 $$
 
 $$
 \boxed{
-R_3=P(u^3+3u\Theta+C_3).
+R_3=P(u^3+3u\Theta+C_3)
 }
 $$
 
@@ -446,14 +444,14 @@ The $r=0$ equation gives
 
 $$
 \boxed{
-\partial_\tau P+\partial_\lambda(Pu)=0.
+\partial_\tau P+\partial_\lambda(Pu)=0
 }
 $$
 
 Define the spacing-space probability current
 
 $$
-\boxed{J=Pu.}
+\boxed{J=Pu}
 $$
 
 The $r=1$ equation gives
@@ -462,7 +460,7 @@ $$
 \boxed{
 \partial_\tau(Pu)
 +\partial_\lambda[P(u^2+\Theta)]
-=P\mathcal A.
+=P\mathcal A
 }
 $$
 
@@ -471,7 +469,7 @@ Using continuity,
 $$
 \boxed{
 D_\tau u
-=\mathcal A-\frac1P\partial_\lambda(P\Theta),
+=\mathcal A-\frac1P\partial_\lambda(P\Theta)
 }
 $$
 
@@ -479,7 +477,7 @@ where
 
 $$
 \boxed{
-D_\tau=\partial_\tau+u\partial_\lambda.
+D_\tau=\partial_\tau+u\partial_\lambda
 }
 $$
 
@@ -495,15 +493,15 @@ $$
 \boxed{
 \partial_\tau[P(u^2+\Theta)]
 +\partial_\lambda[P(u^3+3u\Theta+C_3)]
-=2P\mathbb E[c\ddot\lambda\mid\lambda].
+=2P\mathbb{E}[c\ddot\lambda\mid\lambda]
 }
 $$
 
 Because
 
 $$
-\mathbb E[c\ddot\lambda\mid\lambda]
-=u\mathcal A+\Psi,
+\mathbb{E}[c\ddot\lambda\mid\lambda]
+=u\mathcal A+\Psi
 $$
 
 combining the $r=0,1,2$ balances gives
@@ -513,7 +511,7 @@ $$
 D_\tau\Theta
 +2\Theta\partial_\lambda u
 +\frac1P\partial_\lambda(PC_3)
-=2\Psi.
+=2\Psi
 }
 $$
 
@@ -528,7 +526,7 @@ $$
 is only valid under the extra condition
 
 $$
-\boxed{\Psi=0.}
+\boxed{\Psi=0}
 $$
 
 For the actual spatial LJ chain, $\Psi=0$ is not automatic because $\ddot\lambda_i$ depends on neighbouring spacings.
@@ -541,7 +539,7 @@ For a bulk spacing,
 
 $$
 \ddot\lambda_i
-=\phi'(\lambda_{i+1})-2\phi'(\lambda_i)+\phi'(\lambda_{i-1}).
+=\phi'(\lambda_{i+1})-2\phi'(\lambda_i)+\phi'(\lambda_{i-1})
 $$
 
 Let $P_2^+(\lambda,\lambda',\tau)$ and $P_2^-(\lambda,\lambda',\tau)$ be ordered central/right and central/left neighbour joint densities. Define
@@ -549,14 +547,14 @@ Let $P_2^+(\lambda,\lambda',\tau)$ and $P_2^-(\lambda,\lambda',\tau)$ be ordered
 $$
 \boxed{
 m_+
-=\frac1P\int\phi'(\lambda')P_2^+(\lambda,\lambda',\tau)d\lambda',
+=\frac1P\int\phi'(\lambda')P_2^+(\lambda,\lambda',\tau)\,d\lambda'
 }
 $$
 
 $$
 \boxed{
 m_-
-=\frac1P\int\phi'(\lambda')P_2^-(\lambda,\lambda',\tau)d\lambda'.
+=\frac1P\int\phi'(\lambda')P_2^-(\lambda,\lambda',\tau)\,d\lambda'
 }
 $$
 
@@ -564,14 +562,14 @@ Then
 
 $$
 \boxed{
-\mathcal A_{\rm bulk}=m_++m_- -2\phi'(\lambda).
+\mathcal A_{\rm bulk}=m_++m_- -2\phi'(\lambda)
 }
 $$
 
 For $\Psi$, let $F_2^+(\lambda,c,\lambda',\tau)$ and $F_2^-(\lambda,c,\lambda',\tau)$ include the central spacing rate. Since
 
 $$
-\mathbb E[c-u\mid\lambda]=0,
+\mathbb{E}[c-u\mid\lambda]=0
 $$
 
 the central-force term vanishes inside the covariance and
@@ -581,7 +579,7 @@ $$
 \Psi_{\rm bulk}
 =\frac1P\iint
 (c-u)\phi'(\lambda')
-[F_2^++F_2^-]dc\,d\lambda'.
+[F_2^++F_2^-]\,dc\,d\lambda'
 }
 $$
 
@@ -596,7 +594,7 @@ From the mean-flow equation,
 $$
 \frac1P\partial_\lambda(P\Theta)
 =\partial_\lambda\Theta
-+\Theta\partial_\lambda\ln P.
++\Theta\partial_\lambda\ln P
 $$
 
 Hence
@@ -604,7 +602,7 @@ Hence
 $$
 \boxed{
 \Theta\partial_\lambda\ln P
-=\mathcal A-D_\tau u-\partial_\lambda\Theta.
+=\mathcal A-D_\tau u-\partial_\lambda\Theta
 }
 $$
 
@@ -614,7 +612,7 @@ $$
 \boxed{
 \partial_\lambda\ln P
 =\frac{\mathcal A-D_\tau u}{\Theta}
--\partial_\lambda\ln\Theta.
+-\partial_\lambda\ln\Theta
 }
 $$
 
@@ -627,8 +625,8 @@ P(\lambda,\tau)
 \exp\left[
 \int_{\lambda_*}^{\lambda}
 \frac{\mathcal A(\eta,\tau)-D_\tau u(\eta,\tau)}
-{\Theta(\eta,\tau)}d\eta
-\right].
+{\Theta(\eta,\tau)}\,d\eta
+\right]
 }
 $$
 
@@ -636,7 +634,7 @@ The normalization factor $\mathcal N_P(\tau)$ is determined by
 
 $$
 \boxed{
-\int_0^\infty P(\lambda,\tau)d\lambda=1.
+\int_0^\infty P(\lambda,\tau)\,d\lambda=1
 }
 $$
 
@@ -653,7 +651,7 @@ $$
 P(\lambda,\tau)
 =P_0(\lambda)
 -\partial_\lambda
-\int_{\tau_0}^{\tau}P(\lambda,s)u(\lambda,s)ds.
+\int_{\tau_0}^{\tau}P(\lambda,s)u(\lambda,s)\,ds
 }
 $$
 
@@ -663,8 +661,8 @@ $$
 \boxed{
 Pu
 =P_0u_0
--\partial_\lambda\int_{\tau_0}^{\tau}P(u^2+\Theta)ds
-+\int_{\tau_0}^{\tau}P\mathcal A ds.
+-\partial_\lambda\int_{\tau_0}^{\tau}P(u^2+\Theta)\,ds
++\int_{\tau_0}^{\tau}P\mathcal A\,ds
 }
 $$
 
@@ -672,13 +670,10 @@ The second raw moment integrates to
 
 $$
 \boxed{
-\begin{aligned}
 P(u^2+\Theta)(\lambda,\tau)
-={}&P_0(u_0^2+\Theta_0)(\lambda)\\
-&-\partial_\lambda\int_{\tau_0}^{\tau}
-P(u^3+3u\Theta+C_3)ds\\
-&+2\int_{\tau_0}^{\tau}P(u\mathcal A+\Psi)ds.
-\end{aligned}
+=P_0(u_0^2+\Theta_0)(\lambda)
+-\partial_\lambda\int_{\tau_0}^{\tau}P(u^3+3u\Theta+C_3)\,ds
++2\int_{\tau_0}^{\tau}P(u\mathcal A+\Psi)\,ds
 }
 $$
 
@@ -692,7 +687,7 @@ Exactly,
 
 $$
 \boxed{
-\mathbb E[c^2\mid\lambda]=u^2+\Theta.
+\mathbb{E}[c^2\mid\lambda]=u^2+\Theta
 }
 $$
 
@@ -712,7 +707,7 @@ is not the full chain kinetic-energy density because the exact kinetic energy us
 At two times $\tau_L$ and $\tau_U$ satisfying
 
 $$
-q(\tau_L)=q(\tau_U)=q^*,
+q(\tau_L)=q(\tau_U)=q^*
 $$
 
 with
@@ -720,14 +715,14 @@ with
 $$
 \dot q(\tau_L)>0,
 \qquad
-\dot q(\tau_U)<0,
+\dot q(\tau_U)<0
 $$
 
 define
 
 $$
 \boxed{
-\mathcal R_2(\tau)=\{P(\lambda,\tau),u(\lambda,\tau),\Theta(\lambda,\tau)\}.
+\mathcal R_2(\tau)=\{P(\lambda,\tau),u(\lambda,\tau),\Theta(\lambda,\tau)\}
 }
 $$
 
@@ -735,7 +730,7 @@ If
 
 $$
 \boxed{
-\mathcal R_2(\tau_L)\ne\mathcal R_2(\tau_U),
+\mathcal R_2(\tau_L)\ne\mathcal R_2(\tau_U)
 }
 $$
 
@@ -755,13 +750,13 @@ Define
 
 $$
 \boxed{
-\bar\lambda(\tau)=\int_0^\infty\lambda P(\lambda,\tau)d\lambda,
+\bar\lambda(\tau)=\int_0^\infty\lambda P(\lambda,\tau)\,d\lambda
 }
 $$
 
 $$
 \boxed{
-\bar a(t)=a_0\bar\lambda(t/t_0).
+\bar a(t)=a_0\bar\lambda(t/t_0)
 }
 $$
 
@@ -770,7 +765,7 @@ Using continuity,
 $$
 \boxed{
 \frac{d\bar\lambda}{d\tau}
-=-[\lambda J]_0^\infty+\int_0^\infty Jd\lambda.
+=-[\lambda J]_0^\infty+\int_0^\infty J\,d\lambda
 }
 $$
 
@@ -780,7 +775,7 @@ $$
 \boxed{
 \frac{d\bar\lambda}{d\tau}
 =\int_0^\infty Pu\,d\lambda
-=\mathbb E[c].
+=\mathbb{E}[c]
 }
 $$
 
@@ -792,7 +787,7 @@ Define the equilibrium-subtracted interaction energy
 
 $$
 \boxed{
-\Delta\phi(\lambda)=\phi(\lambda)-\phi(1).
+\Delta\phi(\lambda)=\phi(\lambda)-\phi(1)
 }
 $$
 
@@ -801,7 +796,7 @@ Then
 $$
 \boxed{
 \bar U(\tau)
-=U_{\rm ref}\int_0^\infty\Delta\phi(\lambda)P(\lambda,\tau)d\lambda.
+=U_{\rm ref}\int_0^\infty\Delta\phi(\lambda)P(\lambda,\tau)\,d\lambda
 }
 $$
 
@@ -809,7 +804,7 @@ For the empirical density over all $M$ spacings,
 
 $$
 \boxed{
-V_{\rm phys}-MU_{\rm ref}\phi(1)=M\bar U.
+V_{\rm phys}-MU_{\rm ref}\phi(1)=M\bar U
 }
 $$
 
@@ -819,7 +814,7 @@ $$
 \boxed{
 \frac1{U_{\rm ref}}\frac{d\bar U}{d\tau}
 =-[\Delta\phi J]_0^\infty
-+\int_0^\infty\phi'(\lambda)Jd\lambda.
++\int_0^\infty\phi'(\lambda)J\,d\lambda
 }
 $$
 
@@ -828,7 +823,7 @@ If boundary flux vanishes,
 $$
 \boxed{
 \frac{d\bar U}{d\tau}
-=U_{\rm ref}\int_0^\infty\phi'(\lambda)Pu\,d\lambda.
+=U_{\rm ref}\int_0^\infty\phi'(\lambda)Pu\,d\lambda
 }
 $$
 
@@ -842,9 +837,9 @@ The fixed observable is
 
 $$
 \boxed{
-E_{\rm hyst}(t)=\int_0^t\dot D_{\rm irr}(t')dt',
+E_{\rm hyst}(t)=\int_0^t\dot D_{\rm irr}(t')\,dt',
 \qquad
-\dot D_{\rm irr}\ge0.
+\dot D_{\rm irr}\ge0
 }
 $$
 
@@ -854,7 +849,7 @@ $$
 \boxed{
 \dot D_{\rm irr}=0,
 \qquad
-E_{\rm hyst}=0.
+E_{\rm hyst}=0
 }
 $$
 
@@ -871,7 +866,7 @@ whenever the irreversible force performs nonpositive mechanical power. Then
 $$
 \boxed{
 \frac{dE_{\rm mech}^*}{d\tau}
-=q\dot x_M-\dot D_{\rm irr}^*.
+=q\dot x_M-\dot D_{\rm irr}^*
 }
 $$
 
@@ -880,7 +875,7 @@ Over one cycle,
 $$
 \boxed{
 W_{\rm ext}^{\rm cyc}
-=\Delta E_{\rm mech}^{\rm cyc}+D_{\rm irr}^{\rm cyc}.
+=\Delta E_{\rm mech}^{\rm cyc}+D_{\rm irr}^{\rm cyc}
 }
 $$
 
@@ -894,7 +889,7 @@ The operational local instability threshold is defined by
 
 $$
 \boxed{
-\phi''(\lambda_c)=0.
+\phi''(\lambda_c)=0
 }
 $$
 
@@ -903,7 +898,7 @@ For the active generalized-LJ form,
 $$
 \boxed{
 \lambda_c
-=\left(\frac{m+1}{n+1}\right)^{1/(m-n)}.
+=\left(\frac{m+1}{n+1}\right)^{1/(m-n)}
 }
 $$
 
@@ -912,7 +907,7 @@ For each spacing,
 $$
 \boxed{
 \tau_i^c
-=\inf\{\tau\ge\tau_0:\lambda_i(\tau)\ge\lambda_c\}.
+=\inf\{\tau\ge\tau_0:\lambda_i(\tau)\ge\lambda_c\}
 }
 $$
 
@@ -920,7 +915,7 @@ The instantaneous nonabsorbing tail
 
 $$
 \boxed{
-Q_c(\tau)=\int_{\lambda_c}^{\infty}P(\lambda,\tau)d\lambda
+Q_c(\tau)=\int_{\lambda_c}^{\infty}P(\lambda,\tau)\,d\lambda
 }
 $$
 
@@ -930,9 +925,9 @@ For finite empirical trajectories define
 
 $$
 \boxed{
-\chi_i(\tau)=\mathbf1_{\{\tau<\tau_i^c\}},
+\chi_i(\tau)=\mathbf{1}_{\{\tau<\tau_i^c\}},
 \qquad
-S_M(\tau)=\frac1M\sum_i\chi_i(\tau).
+S_M(\tau)=\frac1M\sum_i\chi_i(\tau)
 }
 $$
 
@@ -940,7 +935,7 @@ Then
 
 $$
 \boxed{
-F_{{\rm ci},M}^{\rm local}=1-S_M.
+F_{{\rm ci},M}^{\rm local}=1-S_M
 }
 $$
 
@@ -949,7 +944,7 @@ For a smooth survivor phase-space subdensity $F_b$ on $0<\lambda<\lambda_c$, imp
 $$
 \boxed{
 F_b(\lambda_c,c,\tau)=0
-\qquad(c<0).
+\qquad(c<0)
 }
 $$
 
@@ -958,7 +953,7 @@ The outward first-passage flux is
 $$
 \boxed{
 j_{\rm esc}(\tau)
-=\int_0^\infty cF_b(\lambda_c^-,c,\tau)dc.
+=\int_0^\infty cF_b(\lambda_c^-,c,\tau)\,dc
 }
 $$
 
@@ -966,7 +961,7 @@ Define
 
 $$
 \boxed{
-S(\tau)=\int_0^{\lambda_c}\int_{-\infty}^{\infty}F_b\,dc\,d\lambda.
+S(\tau)=\int_0^{\lambda_c}\int_{-\infty}^{\infty}F_b\,dc\,d\lambda
 }
 $$
 
@@ -976,7 +971,7 @@ $$
 \boxed{
 \dot S=-j_{\rm esc},
 \qquad
-F_{\rm ci}^{\rm local}=1-S,
+F_{\rm ci}^{\rm local}=1-S
 }
 $$
 
@@ -986,7 +981,7 @@ $$
 \boxed{
 h_\tau=\frac{j_{\rm esc}}S=-\frac{d}{d\tau}\ln S,
 \qquad
-h_t=\frac{h_\tau}{t_0}.
+h_t=\frac{h_\tau}{t_0}
 }
 $$
 
@@ -996,7 +991,7 @@ $$
 \boxed{
 \widehat P_b=\frac{P_b}{S},
 \qquad
-P_b(\lambda,\tau)=\int F_bdc.
+P_b(\lambda,\tau)=\int F_b\,dc
 }
 $$
 
@@ -1008,7 +1003,7 @@ For one realization,
 
 $$
 \boxed{
-\tau_{\rm spec}^c=\min_i\tau_i^c.
+\tau_{\rm spec}^c=\min_i\tau_i^c
 }
 $$
 
@@ -1019,11 +1014,11 @@ $$
 \boxed{
 S_{\rm spec}(\tau)
 =\int
-\mathbf1\left[
+\mathbf{1}\left[
 \max_i\sup_{s\in[\tau_0,\tau]}
 \Lambda_i(s;\Gamma_0)<\lambda_c
 \right]
-\mu_0(d\Gamma_0).
+\mu_0(d\Gamma_0)
 }
 $$
 
@@ -1050,7 +1045,7 @@ $$
 \boxed{
 \{P,u,\Theta\}
 \longrightarrow
-\{C_3,\Psi,P_2^\pm,F_2^\pm,\ldots\},
+\{C_3,\Psi,P_2^\pm,F_2^\pm,\ldots\}
 }
 $$
 
@@ -1063,7 +1058,7 @@ $$
 \boxed{
 \text{lack of autonomous three-field closure}
 \neq
-\text{lack of exact mathematical solution representation}.
+\text{lack of exact mathematical solution representation}
 }
 $$
 
@@ -1095,7 +1090,7 @@ Microscopic mechanics:
 $$
 \boxed{
 \ddot\lambda_i
-=\phi'(\lambda_{i+1})-2\phi'(\lambda_i)+\phi'(\lambda_{i-1}).
+=\phi'(\lambda_{i+1})-2\phi'(\lambda_i)+\phi'(\lambda_{i-1})
 }
 $$
 
@@ -1105,7 +1100,7 @@ $$
 \boxed{
 F_M
 =\frac1M\sum_i
-\delta(\lambda-\lambda_i)\delta(c-c_i).
+\delta(\lambda-\lambda_i)\delta(c-c_i)
 }
 $$
 
@@ -1113,7 +1108,7 @@ Projected transport:
 
 $$
 \boxed{
-\partial_\tau F+\partial_\lambda(cF)+\partial_c(AF)=0.
+\partial_\tau F+\partial_\lambda(cF)+\partial_c(AF)=0
 }
 $$
 
@@ -1121,11 +1116,11 @@ Reduced fields:
 
 $$
 \boxed{
-P=\int Fdc,
+P=\int F\,dc,
 \qquad
-u_{\rm reserved}\;\text{is not used},
+\nu_{\rm reserved}\;\text{is not used},
 \qquad
-u_{\rm reserved}\neq u,
+\nu_{\rm reserved}\neq u
 }
 $$
 
@@ -1133,9 +1128,9 @@ and the active mean rate is
 
 $$
 \boxed{
- u=\mathbb E[c\mid\lambda],
+ u=\mathbb{E}[c\mid\lambda],
 \qquad
-\Theta=\operatorname{Var}(c\mid\lambda).
+\Theta=\mathrm{Var}(c\mid\lambda)
 }
 $$
 
@@ -1143,7 +1138,7 @@ Continuity:
 
 $$
 \boxed{
-\partial_\tau P+\partial_\lambda(Pu)=0.
+\partial_\tau P+\partial_\lambda(Pu)=0
 }
 $$
 
@@ -1152,7 +1147,7 @@ Mean-flow balance:
 $$
 \boxed{
 D_\tau u
-=\mathcal A-\frac1P\partial_\lambda(P\Theta).
+=\mathcal A-\frac1P\partial_\lambda(P\Theta)
 }
 $$
 
@@ -1161,7 +1156,7 @@ Density shape:
 $$
 \boxed{
 \Theta\partial_\lambda\ln P
-=\mathcal A-D_\tau u-\partial_\lambda\Theta.
+=\mathcal A-D_\tau u-\partial_\lambda\Theta
 }
 $$
 
@@ -1172,7 +1167,7 @@ $$
 D_\tau\Theta
 +2\Theta\partial_\lambda u
 +\frac1P\partial_\lambda(PC_3)
-=2\Psi.
+=2\Psi
 }
 $$
 
@@ -1180,7 +1175,7 @@ G1:
 
 $$
 \boxed{
-\bar a=a_0\int\lambda P\,d\lambda.
+\bar a=a_0\int\lambda P\,d\lambda
 }
 $$
 
@@ -1189,7 +1184,7 @@ G2:
 $$
 \boxed{
 \bar U
-=U_{\rm ref}\int[\phi(\lambda)-\phi(1)]P\,d\lambda.
+=U_{\rm ref}\int[\phi(\lambda)-\phi(1)]P\,d\lambda
 }
 $$
 
@@ -1197,9 +1192,9 @@ G3:
 
 $$
 \boxed{
-E_{\rm hyst}=\int\dot D_{\rm irr}dt,
+E_{\rm hyst}=\int\dot D_{\rm irr}\,dt,
 \qquad
-\dot D_{\rm irr}\ge0,
+\dot D_{\rm irr}\ge0
 }
 $$
 
@@ -1213,7 +1208,7 @@ $$
 \qquad
 \dot S=-j_{\rm esc},
 \qquad
-F_{\rm ci}^{\rm local}=1-S.
+F_{\rm ci}^{\rm local}=1-S
 }
 $$
 
