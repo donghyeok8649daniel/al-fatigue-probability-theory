@@ -1,107 +1,205 @@
-# Assumptions and approximations
+# Assumptions and approximations — active 1D theory
+# 가정과 근사 — 활성 1D 이론
 
-This file is normative for the active multiplicity-free multilayer theory.
-Earlier normal-chain and two-row documents are retained as derivation history,
-not as competing active total energies.
+> **Normative status / 기준 상태:** This file now follows the active 1D normal-only
+> formulation. Historical `(a,s)` Smoluchowski/registry assumptions are retained only
+> as a future extension and are **not** the governing assumptions of the present paper.
+> 현재 기준 이론은 1D normal-only `P-u-Theta` 체계다. 과거 `(a,s)`
+> Smoluchowski/registry 가정은 향후 확장 이력으로만 남으며 현재 논문의 활성
+> 지배가정이 아니다.
 
-## Active physical assumptions
+Authoritative equation and notation sources:
 
-1. The target is a pure single crystal under repeated uniaxial tensile stress.
-2. The microscopic state is `(a,s)`: one locally homogeneous normal layer
-   spacing and one scalar collective/unwrapped registry for a declared slip
-   system.  A 2D probability state does not imply 2D continuum mechanics.
-3. The intrinsic potential is the generalized-LJ multilayer sum
-   `U0(a,s)=sum_{k>=1} W(k*a,s)`, with no `k` multiplicity and with the same
-   `s` for every normal layer.
-4. Full absolute convergence requires `m>n>2`.  A single row requires only
-   `q>1`; registry-excess reciprocal terms converge exponentially once the
-   zero Fourier mode is removed.
-5. Normal opening and slip are the exact decomposition of one `U0`.  The
-   historical collinear `U_infinity` and row kernel `W` are not added.
-6. `U0` contains atomic positional energy only.  The single applied stress
-   enters as `Q_a=A0*sigma(t)` and `Q_s=A0*M*sigma(t)` in the probability
-   current.  No independent shear-fatigue load is used.
-7. Eliminated atomic/phonon coordinates form an isothermal bath, velocity
-   relaxation is faster than resolved evolution, mobility is constant, and
-   diffusion obeys `D_i=kBT*M_i`.  These are reduction assumptions requiring
-   atomistic validation; no extra empirical diffusion is inserted.
-8. No named family is imposed on `P(a,s,t)`.  A bonded-basin Gibbs density is
-   only a conditional/metastable ensemble, never a global dead-load tensile
-   equilibrium.
-9. Finite-rate intrawell lag is not plasticity.  Plasticity requires a
-   residual `Delta<z> != 0` after unloading/relaxation in
-   `s=s0+z*b+s_tilde`.
-10. Mean intrinsic energy and cumulative hysteresis are distinct.
-    `E_hyst=integral dot(D)_irr dt` is nondecreasing dissipation but is not
-    assumed to be entirely stored damage energy.
-11. Crack initiation is first passage through the outer negative-curvature
-    root of `partial_a U0=Q_a`, including relative-flux corrections when the
-    boundary moves.  No arbitrary spacing or hysteresis-energy threshold is
-    active.
-12. `A0`, correlation area, slip homogenization thickness, and FEM element
-    area remain distinct unless independently derived.
-13. 2D/3D CAD/FEM remains geometry, mesh, scalar normal-stress transport, and
-    visualization.  It does not activate shear or multiaxial constitutive
-    physics.
-14. EAM/DFT is future quantitative validation/extension only and does not
-    replace the current generalized-LJ fundamental potential.
+- `README_EQUATION_INDEX.md`
+- `docs/EQUATION_SUMMARY_1D_P_U_THETA.md`
+- `docs/VARIABLE_INDEX_1D_P_U_THETA.md`
+- `docs/MASTER_1D_P_U_THETA_FORMULATION.md`
+- `docs/MILESTONE25_EXACT_INTEGRAL_REPRESENTATION.md`
 
-## Exact results versus numerical controls
+## 0. Mandatory time-dependence notation / 시간의존성 표기 규칙
 
-The Mellin--Poisson identity, the Bessel--Lambert `H_q` representation, the
-normal/slip identity decomposition, and the 12--6 polylog closure are exact.
-`pmax`, `kmax`, reciprocal modes, layer modes, grid spacing, timestep, and
-solver tolerance are numerical controls and must be refined.  They are not
-material fitting parameters.
+The active probability and moment fields are functions of spacing and time.
+Their canonical forms are
 
-## Unresolved physical inputs
+\[
+\boxed{
+P(\lambda,\tau),\qquad
+u\;\text{is not used},\qquad
+u\neq u,
+}
+\]
 
-- `epsilon_LJ`, `sigma_LJ`, `b`, the reference `(a0,s0)`, and the chosen
-  single-crystal slip system;
-- representative mechanical area `A0`, mobilities/memory times, temperature,
-  and `h_slip`;
-- dislocation storage, hardening, backstress, and multiple-slip interactions;
-- experimental/atomistic validation of the outer-barrier first-passage event
-  as observed crack initiation.
+\[
+\boxed{
+u_{
+\text{legacy typo}}\;\text{must be replaced by}\;u(\lambda,\tau)}
+\]
 
----
+and, explicitly,
 
-# 가정과 근사의 한국어 정리
+\[
+\boxed{
+P(\lambda,\tau),\qquad
+u\text{ reserved},\qquad
+u\not\equiv u,
+}
+\]
 
-이 문서는 현재 활성화된 multiplicity-free 다층 이론의 기준 문서다. 과거의
-normal-chain 및 two-row 문서는 유도 이력으로 보존하지만 현재 total energy와
-경쟁하는 식으로 사용하지 않는다.
+\[
+\boxed{
+ u(\lambda,\tau)=\mathbb E[c\mid\lambda,\tau],
+\qquad
+\Theta(\lambda,\tau)=\operatorname{Var}(c\mid\lambda,\tau).
+}
+\]
 
-## 활성 물리 가정
+With physical time,
 
-1. 대상은 반복 단축 인장응력을 받는 순수 단결정이다.
-2. 미시상태는 국소적으로 균일한 normal layer 간격 `a`와, 지정된 slip
-   system의 하나의 scalar collective/unwrapped registry `s`다. `(a,s)`가
-   2차원 확률공간이라는 사실은 2D continuum constitutive law를 뜻하지 않는다.
-3. intrinsic potential은 `U0(a,s)=sum_{k>=1} W(k*a,s)`다. 앞에
-   multiplicity `k`가 없고 모든 normal layer 항에서 같은 `s`를 사용한다.
-4. 전체 absolute sum은 `m>n>2`를 요구한다. 단일 row는 `q>1`이면 되고,
-   slip-excess는 zero Fourier mode가 제거되어 지수적으로 수렴한다.
-5. normal opening과 slip은 하나의 `U0`에서 정확히 분해한다. 과거의
-   collinear `U_infinity`와 row kernel `W`를 total energy로 더하지 않는다.
-6. `U0`에는 외력 일을 넣지 않는다. 단 하나의 인장응력으로부터
-   `Q_a=A0*sigma(t)`, `Q_s=A0*M*sigma(t)`를 만들어 확률 current에 넣는다.
-   독립적인 shear fatigue 입력은 없다.
-7. 생략한 원자/phonon 좌표가 등온 bath이고 속도완화가 빠르며 mobility는
-   상수라고 가정한다. 확산은 fluctuation--dissipation으로 고정한다.
-8. `P(a,s,t)`에 Gaussian 등 특정 분포족을 강제하지 않는다. bonded-basin
-   Gibbs 분포는 조건부 metastable ensemble일 뿐 전역 인장평형이 아니다.
-9. well 내부 phase lag는 소성이 아니다. `s=s0+z*b+s_tilde`에서 unloading과
-   relaxation 뒤 `Delta<z> != 0`일 때만 잔류 소성으로 정의한다.
-10. 평균 intrinsic energy와 누적 hysteresis를 구분한다. `E_hyst`는 비가역
-    dissipation이지만 전부 저장 damage energy라고 단정하지 않는다.
-11. 균열개시는 `partial_a U0=Q_a`의 음의 곡률 외측 장벽을 통과하는
-    first passage다. 임의 거리나 energy threshold를 사용하지 않는다.
-12. `A0`, 상관면적, slip 균질화 두께, FEM 요소면적은 서로 다르다.
-13. 2D/3D CAD/FEM은 geometry, mesh, scalar normal stress 전달 및
-    visualization용이다. shear/multiaxial 재료이론을 활성화하지 않는다.
-14. EAM/DFT는 미래 정량 검증/확장용이며 현재 generalized-LJ governing
-    potential을 대체하지 않는다.
+\[
+\boxed{
+P(\lambda,t)=P\!\left(\lambda,\tau=t/t_0\right)
+}
+\]
 
-수학적 항등식과 numerical cutoff를 혼동하지 않는다. `pmax`, `kmax`, Bessel
-mode, grid, timestep은 모두 수치 수렴변수이며 재료 fitting parameter가 아니다.
+and analogously for `u` and `Theta`. Bare `P`, `u`, or `Theta` may appear only
+as local shorthand after the full functional dependence has already been declared.
+
+정식 표기는 반드시 `P(lambda,t)` 또는 `P(lambda,tau)`, `u(lambda,t)` 또는
+`u(lambda,tau)`, `Theta(lambda,t)` 또는 `Theta(lambda,tau)`처럼 시간의존성을
+포함한다. 독립변수를 생략한 `P`, `u`, `Theta`는 같은 식/절 안에서 이미
+함수형이 선언된 뒤의 축약표기로만 허용한다.
+
+## 1. Active physical assumptions / 활성 물리 가정
+
+1. The target baseline is a pure single crystal represented by a one-dimensional
+   normal chain under repeated uniaxial normal loading.
+2. The active microscopic coordinates are node positions `x_j(tau)` or normalized
+   nearest-neighbour spacings `lambda_i(tau)=x_i-x_{i-1}`. Registry/slip `s` is not
+   required by the current normal-only paper mainline.
+3. The active microscopic configurational energy is the nearest-neighbour
+   generalized-LJ chain energy
+   \[
+   \boxed{V^*(\boldsymbol\lambda)=\sum_{i=1}^M\phi(\lambda_i).}
+   \]
+   The same energy must generate both the equations of motion and G2 if exact
+   mechanical consistency is claimed.
+4. The current finite-chain dynamics is deterministic and conservative apart from
+   prescribed boundary work. No viscous damping, white noise, empirical damage,
+   phonon bath, or stochastic diffusion is inserted into the active baseline.
+5. The initial homogeneous ideal baseline may be
+   \[
+   \boxed{\lambda_i(0)=1,\qquad \dot\lambda_i(0)=0,}
+   \]
+   which gives a delta empirical state. Any broader initial realization measure
+   `mu_0` must be physically declared rather than silently assumed.
+6. The one-point probability state is mechanically generated. For one deterministic
+   chain it is a spatial empirical counting measure over represented spacings; for
+   an ensemble it is the push-forward of a declared full-state initial measure.
+7. No named probability family (Gaussian, Weibull, Gibbs/Boltzmann, etc.) is imposed
+   on `P(lambda,tau)`.
+8. Smooth one-point fields are used only where the empirical measure admits a
+   meaningful smooth/coarse representation and the required conditional moments
+   exist.
+9. Moment integration assumes sufficient decay in spacing-rate `c` so that the
+   required velocity-space boundary terms vanish.
+10. The divided density-shape formula is used only where
+    \[
+    \boxed{P(\lambda,\tau)>0,\qquad \Theta(\lambda,\tau)>0.}
+    \]
+    At `Theta=0`, the undivided transport/moment equations are used.
+11. Neighbour independence is not assumed. The conditional acceleration and the
+    `Theta` source retain neighbour joint statistics.
+12. The exact general second-central-moment equation is
+    \[
+    \boxed{
+    D_\tau\Theta
+    +2\Theta\,\partial_\lambda u
+    +\frac1P\partial_\lambda(PC_3)
+    =2\Psi,
+    }
+    \]
+    where
+    \[
+    \boxed{\Psi=\operatorname{Cov}(c,\ddot\lambda\mid\lambda,\tau).}
+    \]
+    Setting `Psi=0` or `C_3=0` is an additional closure assumption and is not active
+    by default.
+13. `Theta(lambda,tau)` is a conditional spacing-rate variance, not an empirical
+    fatigue-damage scalar and not by itself the total kinetic-energy density.
+14. Same-load loading/unloading non-retracing of `(P,u,Theta)` establishes dynamic
+    history dependence, not irreversible dissipation.
+15. The current conservative baseline has
+    \[
+    \boxed{\dot D_{\rm irr}=0,\qquad E_{\rm hyst}=0.}
+    \]
+    G3 requires a separately derived physical irreversible mechanism before a
+    nonzero irreversible hysteresis energy can be claimed.
+16. The operational local initiation threshold is the loss of positive tangent
+    stiffness,
+    \[
+    \boxed{\phi''(\lambda_c)=0,}
+    \]
+    followed by first passage through `lambda_c`.
+17. Local spatial first-passage fraction and specimen-to-specimen crack-initiation
+    probability are distinct. Specimen probability requires a physically declared
+    realization measure `mu_0` and represented correlation scale; independent-cell
+    multiplication is not assumed.
+18. The exact reduced differential equations are hierarchical rather than an
+    autonomous three-field closure, but the closed finite LJ dynamics supplies
+    exact push-forward/integral representations for `F`, `P`, `u`, `Theta`, `C_3`,
+    `Psi`, G1, G2, and first-passage survival.
+19. The microscopic time scale `t_0` must not be confused with laboratory fatigue
+    cycling. A physical bridge from microscopic dynamics/history to laboratory
+    Hz-scale fatigue accumulation remains open.
+20. 2D/3D CAD/FEM may transport/visualize scalar normal mechanics but does not by
+    itself activate multiaxial constitutive physics.
+
+## 2. Assumptions that are NOT active / 현재 활성화하지 않는 가정
+
+The active 1D paper does **not** assume:
+
+- Boltzmann/Gibbs equilibrium as the fundamental spacing distribution;
+- Gaussian/Weibull spacing or fatigue-life PDFs;
+- Smoluchowski/Fokker--Planck mobility closure;
+- Einstein fluctuation--dissipation relation as an already justified reduced law;
+- arbitrary diffusion kernels or white noise;
+- independent neighbouring spacings;
+- independent statistical cells or independent FEM element failure probabilities;
+- viscous damping or an empirical fatigue damage variable;
+- FCC lattice reconstruction;
+- registry coordinate `s` or unwrapped slip index `z` as a required current state;
+- pure normal loading as an already proven low-frequency slip/dislocation mechanism.
+
+## 3. Historical `(a,s)` registry theory / 과거 `(a,s)` registry 이론의 위치
+
+The multiplicity-free multilayer energy `U_0(a,s)`, Bessel/polylog representations,
+and unwrapped registry variable `z` are retained as mathematically defined extension
+material. They are not deleted. However, current numerical/mechanical checks show
+that the perfect-symmetry pure-normal baseline does not justify claiming an active
+low-frequency `s` transition or plastic slip mechanism.
+
+Thus, for the ideal symmetric pure-normal baseline, the conservative extension is
+
+\[
+\boxed{
+P(a,s,t)=P(a,t)\,\delta(s-s_0),
+}
+\]
+
+until a physical symmetry-breaking mechanism is introduced and justified.
+
+Possible future mechanisms such as defects, dislocations, a physically derived
+phonon bath, or another slow internal variable are OPEN and must be derived rather
+than inserted ad hoc.
+
+## 4. Remaining open physical inputs / 남아 있는 물리적 미해결 항목
+
+- physical irreversible microscopic mechanism for G3;
+- physically justified specimen/initial full-state measure `mu_0` and correlation scale;
+- bridge from microscopic time/history to laboratory fatigue cycling;
+- quantitative material calibration beyond the present reduced LJ bridge;
+- experimental validation of first-passage initiation;
+- any future symmetry-breaking/plasticity extension and its relation to dislocation mechanics.
+
+These are physical open problems, not reasons to revert the active theory to an
+assumed PDF family or an unjustified stochastic closure.
