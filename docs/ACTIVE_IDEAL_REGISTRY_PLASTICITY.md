@@ -1,5 +1,15 @@
 # Active multilayer spacing--registry fatigue theory
 
+> **Geometry correction (Milestone 20).** The historical reduced driving pair
+> `Q_a=A0 sigma`, `Q_s=A0 M sigma` must not be treated as a single literal
+> FCC plane-opening/plane-slip virtual-work identity when `M != 0`.  If `a` is
+> the normal opening of the same slip plane that carries `s`, exact virtual
+> work gives `Q_a=A0 sigma (l.n)^2` and `Q_s=A0 M sigma`.  If `a` remains the
+> loading-axis spacing, the coupled FCC energy must instead be re-derived for
+> loading-axis deformation plus internal slip.  See
+> `MILESTONE20_FCC_GEOMETRY_CONSISTENCY.md`.  The probability observables G1--G4
+> are unchanged by this correction.
+
 ## Scope
 
 The active fundamental model describes repeated **uniaxial tensile loading of
@@ -123,17 +133,41 @@ The orders start at `q/2` because the square-root prefactor contributes one
 additional `k^(-1/2)`.  Tests compare these expressions with both the direct
 double sum and the unsimplified Bessel--Lambert series.
 
-## Uniaxial driving and probability evolution
+## Uniaxial driving: geometry status
 
-For the only applied stress
+The historical reduced model wrote
 
 ```text
 sigma(t)=sigma_m+sigma_a sin(omega t),
-Q_a=A0 sigma(t),       Q_s=A0 M sigma(t),
+Q_a=A0 sigma(t),
+Q_s=A0 M sigma(t).
 ```
 
-where `M` is the signed Schmid projection of the declared tensile axis onto
-one declared slip system.  The underlying evolution law is
+The `Q_s` expression is the signed Schmid projection for a declared tensile
+axis, slip-plane normal, and in-plane slip direction.  Milestone 20 shows that
+if `a` and `s` are interpreted literally as normal and tangential relative
+coordinates of that same plane patch, virtual work instead gives
+
+```text
+Q_a=A0 sigma(t) (l.n)^2,
+Q_s=A0 sigma(t) (l.n)(l.d)=A0 M sigma(t).
+```
+
+Hence `Q_a=A0 sigma` and nonzero `Q_s=A0 M sigma` are not simultaneously exact
+for one literal plane-relative embedding.  The project must choose between:
+
+1. **slip-plane coordinates:** use the projected `Q_a` above and validate/extend
+   `U0(a,s)` against FCC stacking; or
+2. **loading-axis spacing plus internal slip:** retain the axial meaning of `a`
+   but re-derive the coupled FCC energy rather than reading the current row
+   geometry literally.
+
+Until that choice is completed, the old pair is retained only as a historical
+reduced closure and is not a foundational identity.
+
+## Historical reduced Smoluchowski closure
+
+The earlier implementation used
 
 ```text
 partial_t P = -partial_a J_a-partial_s J_s,
@@ -141,30 +175,37 @@ J_a = -M_a [P(partial_a U0-Q_a)+kBT partial_a P],
 J_s = -M_s [P(partial_s U0-Q_s)+kBT partial_s P].
 ```
 
-The Einstein relation fixes diffusion; no arbitrary probability kernel is
-introduced.
+This remains a **specific overdamped/Markov/isothermal closure**, not the
+fundamental definition of `P`.  The newer mainline probability foundation is
+the exact empirical transport/moment hierarchy and the Theta-based shape
+identity.  The Smoluchowski form must only be used when its assumptions are
+explicitly justified.
 
 ## The four governing equations
 
-The PDE evolves these four official observables:
+The official observables remain
 
 ```text
 G1  bar(a) = integral integral a P da ds.
 
 G2  bar(U) = integral integral [U0(a,s)-U0(a0,s0)] P da ds.
 
-G3  E_hyst(t) = integral_0^t dot(D)_irr dt,
-    dot(D)_irr = integral integral [J_a^2/(M_a P)+J_s^2/(M_s P)] da ds >=0.
+G3  E_hyst(t) = integral_0^t dot(D)_irr dt.
 
 G4  integral integral P da ds = 1
     (or S(t)<=1 with an absorbing fracture boundary).
 ```
 
-`bar(U)` can decrease after a jump into an equivalent registry well because
-`U0(a,s+b)=U0(a,s)`.  `E_hyst` is cumulative irreversible/hysteretic
-dissipation and is not automatically stored damage energy; it includes energy
-passed to eliminated thermal modes.  Per-cycle increments are integrals of
-`dot(D)_irr` over each cycle.
+For the historical Smoluchowski closure only,
+
+```text
+dot(D)_irr = integral integral [J_a^2/(M_a P)+J_s^2/(M_s P)] da ds >=0.
+```
+
+That quadratic expression is not promoted as a closure-independent universal
+law.  `bar(U)` can decrease after a jump into an equivalent registry well
+because `U0(a,s+b)=U0(a,s)`.  `E_hyst` is cumulative irreversible/hysteretic
+dissipation and must be tied to a physically justified irreversible mechanism.
 
 ## Plasticity and crack initiation
 
@@ -176,8 +217,9 @@ p_z=integral_{W_z} P da ds,
 gamma_p=(b/h_slip)<z>,   epsilon_p=M gamma_p.
 ```
 
-Finite-rate intrawell lag is recoverable.  The operational plasticity
-criterion is a residual `Delta<z> != 0` after unloading and relaxation.
+Finite-rate intrawell lag is recoverable.  A well crossing is a slip event; the
+strong plasticity criterion additionally requires residual well-index change
+after unloading and an explicitly justified relaxation/irreversible mechanism.
 
 At a given tensile drive, the normal escape boundary is the outer root
 
@@ -186,6 +228,7 @@ partial_a U0(a^dagger,s)=Q_a(t),
 partial_a^2 U0(a^dagger,s)<0.
 ```
 
+The correct `Q_a` depends on the coordinate interpretation described above.
 For a moving graph `a=a^dagger(s,t)`, Reynolds transport gives the relative
 outflux (periodic/no-flux registry edges)
 
@@ -206,7 +249,9 @@ registries and normal separations.  Numerical truncations must still be
 refined for each new parameter regime.
 
 The theory is a mathematically derived reduced single-slip mechanism.  It
-does not yet determine `A0`, mobilities, memory time, `h_slip`, dislocation
-storage/hardening, or the active slip system.  EAM/DFT remains only a future
-quantitative-aluminum validation/extension; it does not replace the current
-generalized-LJ governing potential.
+does not yet determine `A0`, the finite energy--mass patch mapping, the physical
+origin/evolution of the full conditional covariance `Theta`, the irreversible
+mechanism for G3, `h_slip`, dislocation storage/hardening, or a quantitative
+active-slip selection rule.  EAM/DFT remains only a future quantitative-
+aluminum validation/extension; it does not replace the current generalized-LJ
+governing potential without an explicit model change.
