@@ -1,17 +1,14 @@
-# Variable & Mathematical Symbol Index — active 1D $P$–$u$–$\Theta$ theory
-# 수학 기호·변수 Index — 활성 1D $P$–$u$–$\Theta$ 이론
+# Variable & Mathematical Symbol Index / 수학 기호·변수 Index — active 1D $P$–$u$–$\Theta$ theory
 
-This file is the **authoritative bilingual symbol dictionary** for the active theory.
+This file is the **authoritative bilingual symbol dictionary** for the active theory.  
 이 파일은 현재 이론의 **기준 영·한 수학기호 사전**이다.
 
-A symbol is not considered fully defined unless this index contains its defining equation, mathematical meaning, physical meaning, unit/scaling, status, and dependencies.
+A symbol is not considered fully defined unless this index contains its defining equation, mathematical meaning, physical meaning, unit/scaling, status, and dependencies.  
 기호는 이 Index에 정의식, 수학적 의미, 물리적 의미, 단위/스케일, 상태, 선행 의존성이 모두 기록되어야 완전히 정의된 것으로 본다.
 
----
+## 0. Mandatory definition rule / 기호 정의 강제 규칙
 
-# 0. Mandatory definition rule / 기호 정의 강제 규칙
-
-Every future symbol MUST be added here with the following fields.
+Every future symbol MUST be added here with the following fields.  
 앞으로 새 기호를 만들 때는 반드시 아래 항목을 동시에 추가한다.
 
 1. **Symbol / 기호** — exact LaTeX glyph.
@@ -24,15 +21,13 @@ Every future symbol MUST be added here with the following fields.
 8. **Status / 상태** — MODEL, DEFINITION, EXACT, CONDITIONAL, OPEN.
 9. **Dependencies / 선행 정의** — symbols/equations required before this symbol is meaningful.
 
-If a defining equation exists, prose alone is not accepted as a definition.
+If a defining equation exists, prose alone is not accepted as a definition.  
 수식 정의가 존재하면 문장 설명만으로 정의하지 않는다.
 
-The same glyph must not silently carry two unrelated meanings.
+The same glyph must not silently carry two unrelated meanings.  
 동일한 기호가 서로 다른 수학적 객체를 암묵적으로 뜻하지 않도록 한다.
 
----
-
-# 1. Status vocabulary / 식·기호 상태 분류
+## 1. Status vocabulary / 식·기호 상태 분류
 
 | Status | English definition | 한국어 정의 |
 |---|---|---|
@@ -42,9 +37,7 @@ The same glyph must not silently carry two unrelated meanings.
 | **CONDITIONAL** | exact only under an additional explicitly stated condition | 추가 조건이 만족될 때만 정확히 성립 |
 | **OPEN** | mathematical slot exists but the required physical law/calibration is not yet derived | 수학적 자리는 있으나 필요한 물리법칙/보정이 아직 미정 |
 
----
-
-# 2. Physical scales and loading / 물리 스케일과 하중
+## 2. Physical scales and loading / 물리 스케일과 하중
 
 | Symbol | Equation definition | English term | 한국어 명칭 | Mathematical definition | Physical definition | Unit / scaling | Status | Dependencies |
 |---|---|---|---|---|---|---|---|---|
@@ -66,9 +59,7 @@ The same glyph must not silently carry two unrelated meanings.
 | $F_{\rm ext}(t)$ | prescribed end force | external end force | 외부 끝단 힘 | scalar boundary load | tensile force applied to the loaded end | N | input history | $t$ |
 | $q(\tau)$ | $\displaystyle q=\frac{F_{\rm ext}}{EA_0}=\frac{\sigma_n}{E}$ | nondimensional end force | 무차원 끝단 하중 | scalar boundary forcing in normalized ODE | applied normal stress written in chain force units | 1 | DEFINITION under current bridge | $F_{\rm ext},E,A_0,\sigma_n$ |
 
----
-
-# 3. Microscopic chain geometry and dynamics / 미시 사슬 기하와 동역학
+## 3. Microscopic chain geometry and dynamics / 미시 사슬 기하와 동역학
 
 | Symbol | Equation definition | English term | 한국어 명칭 | Mathematical definition | Physical definition | Unit / scaling | Status | Dependencies |
 |---|---|---|---|---|---|---|---|---|
@@ -95,31 +86,29 @@ The same glyph must not silently carry two unrelated meanings.
 
 Microscopic equations / 미시 운동식:
 
-\[
+$$
 \boxed{
 \ddot x_j=\phi'(\lambda_{j+1})-\phi'(\lambda_j),
 \qquad j=1,\ldots,M-1
 }
-\]
+$$
 
-\[
+$$
 \boxed{
 \ddot x_M=-\phi'(\lambda_M)+q(\tau)
 }
-\]
+$$
 
-\[
+$$
 \boxed{
 \ddot\lambda_i
 =\phi'(\lambda_{i+1})-2\phi'(\lambda_i)+\phi'(\lambda_{i-1})
 }
-\]
+$$
 
 for bulk spacings.
 
----
-
-# 4. Empirical probability and phase-space state / 경험적 확률·위상공간 상태
+## 4. Empirical probability and phase-space state / 경험적 확률·위상공간 상태
 
 | Symbol | Equation definition | English term | 한국어 명칭 | Mathematical definition | Physical definition | Unit / scaling | Status | Dependencies |
 |---|---|---|---|---|---|---|---|---|
@@ -137,15 +126,13 @@ for bulk spacings.
 
 Exact projected transport / 정확한 투영 수송식:
 
-\[
+$$
 \boxed{
 \partial_\tau F+\partial_\lambda(cF)+\partial_c(AF)=0
 }
-\]
+$$
 
----
-
-# 5. Conditional moments and hierarchy / 조건부 모멘트와 계층
+## 5. Conditional moments and hierarchy / 조건부 모멘트와 계층
 
 | Symbol | Equation definition | English term | 한국어 명칭 | Mathematical definition | Physical definition | Unit / scaling | Status | Dependencies |
 |---|---|---|---|---|---|---|---|---|
@@ -161,50 +148,48 @@ Exact projected transport / 정확한 투영 수송식:
 
 Exact hierarchy / 정확한 계층식:
 
-\[
+$$
 \boxed{
 \partial_\tau R_r+\partial_\lambda R_{r+1}=rB_r
 }
-\]
+$$
 
 with
 
-\[
+$$
 R_0=P,
 \qquad
 R_1=Pu,
 \qquad
 R_2=P(u^2+\Theta),
 \qquad
-R_3=P(u^3+3u\Theta+C_3).
-\]
+R_3=P(u^3+3u\Theta+C_3)
+$$
 
 Exact reduced equations / 정확한 축약식:
 
-\[
+$$
 \boxed{
 \partial_\tau P+\partial_\lambda(Pu)=0
 }
-\]
+$$
 
-\[
+$$
 \boxed{
 D_\tau u=\mathcal A-\frac1P\partial_\lambda(P\Theta)
 }
-\]
+$$
 
-\[
+$$
 \boxed{
 D_\tau\Theta+2\Theta\partial_\lambda u+\frac1P\partial_\lambda(PC_3)=2\Psi
 }
-\]
+$$
 
-The zero-right-hand-side $\Theta$ equation is only CONDITIONAL on $\Psi=0$.
+The zero-right-hand-side $\Theta$ equation is only CONDITIONAL on $\Psi=0$.  
 $\Psi=0$을 두는 짧은 $\Theta$ 식은 추가 조건이 있을 때만 정확하다.
 
----
-
-# 6. Neighbour correlation objects / 이웃 상관 객체
+## 6. Neighbour correlation objects / 이웃 상관 객체
 
 | Symbol | Equation definition | English term | 한국어 명칭 | Mathematical definition | Physical definition | Unit / scaling | Status | Dependencies |
 |---|---|---|---|---|---|---|---|---|
@@ -218,26 +203,24 @@ $\Psi=0$을 두는 짧은 $\Theta$ 식은 추가 조건이 있을 때만 정확�
 
 Bulk conditional acceleration:
 
-\[
+$$
 \boxed{
 \mathcal A_{\rm bulk}=m_++m_- -2\phi'(\lambda)
 }
-\]
+$$
 
 Bulk acceleration covariance:
 
-\[
+$$
 \boxed{
 \Psi_{\rm bulk}
 =\frac1P\iint(c-u)\phi'(\lambda')[F_2^++F_2^-]dc\,d\lambda'
 }
-\]
+$$
 
 No independence assumption is used.
 
----
-
-# 7. Density-shape and normalization symbols / 확률밀도 형상·정규화 기호
+## 7. Density-shape and normalization symbols / 확률밀도 형상·정규화 기호
 
 | Symbol | Equation definition | English term | 한국어 명칭 | Mathematical definition | Physical definition | Unit / scaling | Status | Dependencies |
 |---|---|---|---|---|---|---|---|---|
@@ -247,14 +230,14 @@ No independence assumption is used.
 
 Exact shape relation:
 
-\[
+$$
 \boxed{
 \Theta\partial_\lambda\ln P
 =\mathcal A-D_\tau u-\partial_\lambda\Theta
 }
-\]
+$$
 
-\[
+$$
 \boxed{
 P(\lambda,\tau)
 =\frac{\mathcal N_P(\tau)}{\Theta(\lambda,\tau)}
@@ -263,13 +246,11 @@ P(\lambda,\tau)
 \frac{\mathcal A(\eta,\tau)-D_\tau u(\eta,\tau)}{\Theta(\eta,\tau)}d\eta
 \right]
 }
-\]
+$$
 
 The divided formula is valid only on smooth regions with $P>0$ and $\Theta>0$.
 
----
-
-# 8. Full-flow integral representation / 전체 흐름 적분표현
+## 8. Full-flow integral representation / 전체 흐름 적분표현
 
 | Symbol | Equation definition | English term | 한국어 명칭 | Mathematical definition | Physical definition | Unit / scaling | Status | Dependencies |
 |---|---|---|---|---|---|---|---|---|
@@ -284,44 +265,42 @@ The divided formula is valid only on smooth regions with $P>0$ and $\Theta>0$.
 
 Exact push-forward:
 
-\[
+$$
 \boxed{
 F(\lambda,c,\tau)
 =\frac1M\sum_i\int
 \delta[\lambda-\Lambda_i(\tau;\Gamma_0)]
 \delta[c-C_i(\tau;\Gamma_0)]\mu_0(d\Gamma_0)
 }
-\]
+$$
 
 and therefore
 
-\[
+$$
 \boxed{
 P(\lambda,\tau)
 =\frac1M\sum_i\int
 \delta[\lambda-\Lambda_i(\tau;\Gamma_0)]\mu_0(d\Gamma_0)
 }
-\]
+$$
 
-\[
+$$
 \boxed{
 Pu
 =\frac1M\sum_i\int C_i\delta[\lambda-\Lambda_i]\mu_0(d\Gamma_0)
 }
-\]
+$$
 
-\[
+$$
 \boxed{
 P(u^2+\Theta)
 =\frac1M\sum_i\int C_i^2\delta[\lambda-\Lambda_i]\mu_0(d\Gamma_0)
 }
-\]
+$$
 
 These formulas show that lack of an autonomous three-field closure is not lack of an exact integral representation.
 
----
-
-# 9. Volterra and characteristic symbols / 볼테라·특성곡선 기호
+## 9. Volterra and characteristic symbols / 볼테라·특성곡선 기호
 
 | Symbol | Equation definition | English term | 한국어 명칭 | Mathematical definition | Physical definition | Unit / scaling | Status | Dependencies |
 |---|---|---|---|---|---|---|---|---|
@@ -333,13 +312,13 @@ These formulas show that lack of an autonomous three-field closure is not lack o
 
 Exact characteristic forms:
 
-\[
+$$
 \boxed{
 P(X(\tau),\tau)=P_0(\alpha)e^{-\mathcal I_u(\tau;\alpha)}
 }
-\]
+$$
 
-\[
+$$
 \boxed{
 \Theta(X(\tau),\tau)
 =e^{-2\mathcal I_u(\tau;\alpha)}
@@ -348,11 +327,9 @@ P(X(\tau),\tau)=P_0(\alpha)e^{-\mathcal I_u(\tau;\alpha)}
 +\int_{\tau_0}^{\tau}e^{2\mathcal I_u(s;\alpha)}S_\Theta(X(s),s)ds
 \right]
 }
-\]
+$$
 
----
-
-# 10. G1–G2 observables / G1–G2 관측량
+## 10. G1–G2 observables / G1–G2 관측량
 
 | Symbol | Equation definition | English term | 한국어 명칭 | Mathematical definition | Physical definition | Unit / scaling | Status | Dependencies |
 |---|---|---|---|---|---|---|---|---|
@@ -363,21 +340,19 @@ P(X(\tau),\tau)=P_0(\alpha)e^{-\mathcal I_u(\tau;\alpha)}
 
 Equivalent full-flow forms:
 
-\[
+$$
 \boxed{
 \bar a=\frac{a_0}{M}\sum_i\int\Lambda_i\,\mu_0(d\Gamma_0)
 }
-\]
+$$
 
-\[
+$$
 \boxed{
 \bar U=\frac{U_{\rm ref}}{M}\sum_i\int[\phi(\Lambda_i)-\phi(1)]\mu_0(d\Gamma_0)
 }
-\]
+$$
 
----
-
-# 11. G3 irreversibility symbols / G3 비가역성 기호
+## 11. G3 irreversibility symbols / G3 비가역성 기호
 
 | Symbol | Equation definition | English term | 한국어 명칭 | Mathematical definition | Physical definition | Unit / scaling | Status | Dependencies |
 |---|---|---|---|---|---|---|---|---|
@@ -388,17 +363,15 @@ Equivalent full-flow forms:
 
 Current conservative baseline:
 
-\[
+$$
 \boxed{
 \dot D_{\rm irr}=0,
 \qquad
 E_{\rm hyst}=0
 }
-\]
+$$
 
----
-
-# 12. G4 first-passage and survival symbols / G4 최초통과·생존 기호
+## 12. G4 first-passage and survival symbols / G4 최초통과·생존 기호
 
 | Symbol | Equation definition | English term | 한국어 명칭 | Mathematical definition | Physical definition | Unit / scaling | Status | Dependencies |
 |---|---|---|---|---|---|---|---|---|
@@ -420,23 +393,21 @@ E_{\rm hyst}=0
 
 For the kinetic absorbing boundary:
 
-\[
+$$
 \boxed{
 F_b(\lambda_c,c,\tau)=0\quad\text{for incoming }c<0
 }
-\]
+$$
 
 and
 
-\[
+$$
 \boxed{
 \dot S=-j_{\rm esc}
 }
-\]
+$$
 
----
-
-# 13. Core mathematical term glossary / 핵심 수학용어 사전
+## 13. Core mathematical term glossary / 핵심 수학용어 사전
 
 | English term | 한국어 | Equation / formal definition | Mathematical meaning | Physical meaning |
 |---|---|---|---|---|
@@ -454,7 +425,7 @@ and
 | probability current | 확률류 | $J=Pu$ | flux in reduced coordinate space | transport of local-state population across spacing values |
 | material derivative | 물질미분 | $D_\tau=\partial_\tau+u\partial_\lambda$ | derivative along reduced mean flow | time change following mean spacing-space transport |
 | raw moment | 원시 모멘트 | $R_r=\int c^rFdc$ | moment about zero | rate-statistics hierarchy |
-| central moment | 중심 모멘트 | $E[(c-u)^r\mid\lambda]$ | moment about conditional mean | local spread/skewness of spacing rates |
+| central moment | 중심 모멘트 | $\mathbb E[(c-u)^r\mid\lambda]$ | moment about conditional mean | local spread/skewness of spacing rates |
 | moment hierarchy | 모멘트 계층 | $\partial_\tau R_r+\partial_\lambda R_{r+1}=rB_r$ | lower moments depend on higher moments/sources | information-loss chain created by projection |
 | closure | 폐쇄/클로저 | express higher statistics using retained fields | reduction assumption | needed only for an autonomous low-order solver |
 | push-forward measure | 푸시포워드 측도 | $\mu_\tau=(\Phi^q_{\tau,\tau_0})_\#\mu_0$ conceptually | image measure under deterministic flow | evolution of an initial microscopic population through mechanics |
@@ -468,13 +439,11 @@ and
 | hazard | 위험률 | $h=-d\ln S/d\tau$ | conditional event rate | instantaneous initiation rate among survivors |
 | history dependence | 이력의존성 | same $q$ with different $(P,u,\Theta)$ | non-single-valued reduced response to instantaneous forcing | loading/unloading microscopic states can differ at the same stress |
 | irreversible dissipation | 비가역 소산 | $\dot D_{\rm irr}\ge0$ | monotone loss functional | energy permanently removed from recoverable mechanical storage |
-| configurational energy | 배치에너지 | $\bar U=U_{\rm ref}E[\Delta\phi]$ | expectation of potential-energy difference | mean recoverable microscopic structural energy |
+| configurational energy | 배치에너지 | $\bar U=U_{\rm ref}\mathbb E[\Delta\phi]$ | expectation of potential-energy difference | mean recoverable microscopic structural energy |
 | local first-passage fraction | 국소 최초통과 비율 | $1-S_{\rm local}$ | average event indicator over local states | fraction/probability of represented local spacings already initiated |
 | specimen survival | 시편 생존확률 | $S_{\rm spec}$ path integral | probability of no first passage anywhere | probability entire represented specimen remains uninitiated |
 
----
-
-# 14. Critical interpretation rules / 핵심 해석 규칙
+## 14. Critical interpretation rules / 핵심 해석 규칙
 
 1. $P$ is mechanically generated; it is not assumed Gaussian, Weibull, Boltzmann, or any other named family.
 2. $\Theta$ is an exact conditional spacing-rate variance, not a fitted damage parameter.
