@@ -38,9 +38,13 @@ A symbol must not silently change meaning between files. If the same glyph would
 
 ## 3. Markdown and math-rendering rule / Markdown·수식 렌더링 규칙
 
-- Display math uses GitHub-compatible `$$ ... $$` delimiters.
-- Inline math uses `$...$`.
-- Do not use `\[` and `\]` in active Markdown files.
+- Display math uses `$$ ... $$` only.
+- Inline math uses `$...$` only.
+- Do not use `\[` or `\]` in Markdown math.
+- Do not use `\(` or `\)` in Markdown math.
+- `\operatorname{...}` and `\operatorname*{...}` are forbidden because the target renderer rejects them. Use `\mathrm{...}` instead.
+- Write expectation as `\mathbb{E}`, not `\mathbb E`.
+- Write indicator symbols with explicit braces, for example `\mathbf{1}`.
 - Do not place display-math blocks inside Markdown tables.
 - Keep a blank line before and after every display-math block.
 - Use fenced code blocks only for literal code or plain-text pseudocode, not for equations that should render as math.
@@ -238,7 +242,7 @@ $$
 \boxed{
 S_{\rm spec}(\tau)
 =\int
-\mathbf1\!\left[
+\mathbf{1}\!\left[
 \max_i\sup_{s\in[\tau_0,\tau]}\Lambda_i(s;\Gamma_0)<\lambda_c
 \right]\mu_0(d\Gamma_0)
 }
@@ -267,10 +271,10 @@ The complete entries live in `docs/VARIABLE_INDEX_1D_P_U_THETA.md` and `docs/AUX
 | empirical measure | 경험적 측도 | finite sum of Dirac masses | distribution generated directly from represented spacings |
 | phase-space density | 위상공간 밀도 | density in $(\lambda,c)$ | joint population of spacing and spacing-rate states |
 | marginal density | 주변밀도 | $P=\int F\,dc$ | spacing distribution after velocity information is projected out |
-| conditional mean | 조건부 평균 | $u=\mathbb E[c\mid\lambda]$ | mean opening/closing rate at fixed spacing |
-| conditional variance | 조건부 분산 | $\Theta=\operatorname{Var}(c\mid\lambda)$ | unresolved spread of spacing rates at fixed spacing |
-| conditional acceleration | 조건부 가속도 | $\mathcal A=\mathbb E[\ddot\lambda\mid\lambda]$ | mean microscopic acceleration at a given spacing |
-| acceleration covariance | 가속도 공분산 | $\Psi=\operatorname{Cov}(c,\ddot\lambda\mid\lambda)$ | coupling between rate and acceleration fluctuations |
+| conditional mean | 조건부 평균 | $u=\mathbb{E}[c\mid\lambda]$ | mean opening/closing rate at fixed spacing |
+| conditional variance | 조건부 분산 | $\Theta=\mathrm{Var}(c\mid\lambda)$ | unresolved spread of spacing rates at fixed spacing |
+| conditional acceleration | 조건부 가속도 | $\mathcal A=\mathbb{E}[\ddot\lambda\mid\lambda]$ | mean microscopic acceleration at a given spacing |
+| acceleration covariance | 가속도 공분산 | $\Psi=\mathrm{Cov}(c,\ddot\lambda\mid\lambda)$ | coupling between rate and acceleration fluctuations |
 | moment hierarchy | 모멘트 계층 | $\partial_\tau R_r+\partial_\lambda R_{r+1}=rB_r$ | information lost under projection |
 | push-forward | 푸시포워드/전방사상 측도 | image of $\mu_0$ under $\Phi^q$ | evolution of an initial microscopic population under deterministic mechanics |
 | characteristic curve | 특성곡선 | $dX/ds=u(X,s)$ | trajectory in spacing space transported by mean flow |
