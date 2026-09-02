@@ -25,6 +25,9 @@ No Boltzmann/Gibbs equilibrium, Gaussian/Weibull PDF family, Fokker--Planck or
 Smoluchowski closure, white noise, empirical damage law, FCC geometry, or slip
 coordinate is required by the active 1D formulation.
 
+All symbols follow `VARIABLE_INDEX_1D_P_U_THETA.md`; in particular the
+conditional mean spacing rate is always denoted by $u$, never by $\nu$.
+
 ---
 
 ## 1. Physical scaling
@@ -393,8 +396,7 @@ with zero right-hand side for $r=0$.
 Define
 
 $$
-\boxed{
-u(\lambda,\tau)=\mathbb E[c\mid\lambda]}
+\boxed{u(\lambda,\tau)=\mathbb E[c\mid\lambda]}
 $$
 
 as the conditional mean spacing rate,
@@ -631,7 +633,7 @@ At fixed $\tau$,
 $$
 \boxed{
 P(\lambda,\tau)
-=\frac{C(\tau)}{\Theta(\lambda,\tau)}
+=\frac{\mathcal N_P(\tau)}{\Theta(\lambda,\tau)}
 \exp\left[
 \int_{\lambda_*}^{\lambda}
 \frac{\mathcal A(\eta,\tau)-D_\tau u(\eta,\tau)}
@@ -640,7 +642,7 @@ P(\lambda,\tau)
 }
 $$
 
-For a normalized nonabsorbing density, $C(\tau)$ is fixed by
+For a normalized nonabsorbing density, $\mathcal N_P(\tau)$ is fixed by
 
 $$
 \boxed{
@@ -1103,7 +1105,7 @@ The full microscopic state
 
 $$
 \boxed{
-\mathbf Z(\tau)
+\Gamma(\tau)
 =(x_1,\ldots,x_M,\dot x_1,\ldots,\dot x_M)
 }
 $$
