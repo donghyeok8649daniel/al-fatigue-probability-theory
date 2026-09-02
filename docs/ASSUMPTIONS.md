@@ -1,6 +1,4 @@
-# Assumptions and approximations — active 1D theory
-
-# 가정과 근사 — 활성 1D 이론
+# Assumptions and approximations / 가정과 근사 — active 1D theory
 
 > **Normative status / 기준 상태:** This file follows the active 1D normal-only formulation. Historical $(a,s)$ Smoluchowski/registry assumptions are retained only as a future extension and are **not** the governing assumptions of the present paper.  
 > 현재 기준 이론은 1D normal-only $P$–$u$–$\Theta$ 체계다. 과거 $(a,s)$ Smoluchowski/registry 가정은 향후 확장 이력으로만 남으며 현재 논문의 활성 지배가정이 아니다.
