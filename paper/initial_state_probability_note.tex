@@ -1,0 +1,64 @@
+% Supplementary manuscript note: exact initialization of P0 and information sufficiency.
+% This file is publication material and may be folded into fatigue_probability_main.tex
+% during the next manuscript consolidation.
+
+\section*{Supplementary note: initial-state generation of the probability measure}
+
+For a fixed-left finite chain, define the ordered initial spacings and spacing rates by
+\begin{equation}
+\lambda_i(0)=x_i(0)-x_{i-1}(0),
+\qquad
+c_i(0)=\dot x_i(0)-\dot x_{i-1}(0).
+\end{equation}
+Because \(x_0=\dot x_0=0\), the ordered arrays \(\{\lambda_i(0),c_i(0)\}_{i=1}^M\) are equivalent to the complete deterministic microscopic state \(\Gamma_0\). The initial empirical phase-space and spacing measures are therefore generated exactly as
+\begin{equation}
+F_0(\lambda,c)
+=\frac1M\sum_{i=1}^{M}
+\delta[\lambda-\lambda_i(0)]\delta[c-c_i(0)],
+\end{equation}
+\begin{equation}
+P_{\lambda,0}(\lambda)
+=\frac1M\sum_{i=1}^{M}
+\delta[\lambda-\lambda_i(0)].
+\end{equation}
+For an initial full-state measure \(\mu_0\), the corresponding ensemble forms follow by integrating these push-forwards over \(\mu_0(d\Gamma_0)\). Thus no named probability family is required at the initial time.
+
+For a perfectly homogeneous static state under initial normalized force \(q_0=\sigma_0/E\), the stable equilibrium stretch satisfies
+\begin{equation}
+\phi'(\lambda_{\rm eq})=q_0,
+\qquad
+\phi''(\lambda_{\rm eq})>0.
+\end{equation}
+With zero initial spacing rates,
+\begin{equation}
+P_{\lambda,0}(\lambda)=\delta(\lambda-\lambda_{\rm eq}),
+\qquad
+F_0(\lambda,c)=\delta(\lambda-\lambda_{\rm eq})\delta(c).
+\end{equation}
+The delta form is therefore a consequence of the specified homogeneous deterministic initial condition rather than a statistical ansatz.
+
+A one-point marginal is not, however, an exact autonomous initialization in the general chain. The spacing acceleration contains neighbor information,
+\begin{equation}
+\ddot\lambda_i
+=\phi'(\lambda_{i+1})-2\phi'(\lambda_i)+\phi'(\lambda_{i-1}),
+\end{equation}
+so a permutation of the same set of spacing/rate pairs preserves both \(P_0\) and the one-point \(F_0(\lambda,c)\) while changing the deterministic accelerations. For a smooth test function \(g\),
+\begin{equation}
+\frac{d^2}{d\tau^2}
+\left[\frac1M\sum_i g(\lambda_i)\right]
+=
+\frac1M\sum_i
+\left[g''(\lambda_i)c_i^2+g'(\lambda_i)\ddot\lambda_i\right].
+\end{equation}
+Hence states with identical one-point \(F_0\) can have different second time derivatives of the same probability moment.
+
+A direct generalized-LJ counterexample using \(m=12.19\), \(n=6\), zero initial rates, and two spatial permutations of the same eight spacings gives identical one-point \(P_0\) and \(F_0\) but an empirical spacing-distribution KS distance of \(0.375\) at normalized time \(\tau=1\). For \(g(\lambda)=\lambda^2\), the two initial second derivatives are approximately \(-3.51299\times10^{-3}\) and \(-1.85653\times10^{-3}\), respectively.
+
+The exact finite-chain initialization hierarchy is therefore
+\begin{equation}
+\text{ordered }\{\lambda_i(0),c_i(0)\}
+\Longleftrightarrow \Gamma_0
+\Longrightarrow F_0(\lambda,c)
+\Longrightarrow P_0(\lambda),
+\end{equation}
+with no general reverse implication. The full labeled initial state, or a probability measure over that state, remains the exact reference. Reduced initial probability data become sufficient only after an additional assumption removes or reconstructs the discarded spatial correlations.
