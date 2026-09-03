@@ -1,0 +1,29 @@
+{
+  "classification": "deterministic conservative 1D normal-chain tail/first-passage audit",
+  "parameters": {
+    "atoms": 512,
+    "dt": 0.01,
+    "cycles": 6,
+    "mean_stress_pa_under_sigma_over_E_mapping": 100000000.0,
+    "stress_amplitude_pa_under_sigma_over_E_mapping": 100000000.0,
+    "omega_star": 0.02,
+    "ramp_cycles": 2,
+    "thresholds": [1.002, 1.003, 1.004, 1.005, 1.006],
+    "crossing_balance_threshold": 1.004
+  },
+  "checks": {
+    "max_abs_work_minus_energy": 9.145196752657903e-12,
+    "crossing_balance_exact_at_each_cycle": true,
+    "snapshot_tail_monotone": false,
+    "first_passage_tail_monotone_for_each_threshold": true,
+    "critical_stretch": 1.1077715385524567,
+    "critical_first_passage_fraction_through_cycle_6": 0.0
+  },
+  "interpretation": [
+    "Snapshot tail mass is not a cumulative damage variable: it can grow and later decrease because cells can cross back below the threshold.",
+    "Cumulative first-passage mass is nondecreasing by construction and remains distinct from irreversible thermodynamic dissipation.",
+    "For the 1.004 audit threshold, the cycle-end change in the number of cells above threshold equals upward crossings minus downward crossings exactly.",
+    "External work matches the change in conservative mechanical energy to numerical integration accuracy.",
+    "The omega*=0.02 protocol is a proof-of-principle atomic-chain calculation and is not a direct mapping to laboratory fatigue frequency."
+  ]
+}
