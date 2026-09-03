@@ -1,0 +1,40 @@
+% Manuscript integration note: local correlation hierarchy and pair insufficiency.
+% This file is intentionally standalone and is not yet input by main.tex.
+
+\section*{Local correlation hierarchy and reduced-state sufficiency}
+For a deterministic initial microscopic state, the initial one-point spacing and phase-space measures are generated exactly rather than prescribed as named probability families. However, the one-point state is not generally autonomous because the interior spacing acceleration satisfies
+\begin{equation}
+\ddot\lambda_i
+=\phi'(\lambda_{i+1})-2\phi'(\lambda_i)+\phi'(\lambda_{i-1}).
+\end{equation}
+A directed nearest-neighbor pair measure therefore supplies the instantaneous neighbor-force averages entering the one-point acceleration source. This does not imply exact pair closure. The transport of the pair $(i,i+1)$ requires the outside spacings $\lambda_{i-1}$ and $\lambda_{i+2}$, so its acceleration flux depends on contiguous triplet information. The exact local hierarchy consequently has the schematic form
+\begin{equation}
+F_1\leftarrow F_2\leftarrow F_3\leftarrow\cdots.
+\end{equation}
+Nearest-neighbor mechanics makes the hierarchy local but does not make $F_2$ an autonomous state.
+
+A deterministic counterexample was constructed with zero initial rates and zero external force. Let
+\begin{equation}
+A=0.99,\qquad B=1.01,\qquad C=1.02,
+\end{equation}
+and compare the ordered spacing states
+\begin{equation}
+(A,A,A,B,A,C)
+\end{equation}
+and
+\begin{equation}
+(A,A,B,A,A,C).
+\end{equation}
+They have the same one-point spacing measure, the same one-point phase-space measure, the same first and last spacing, and the same directed adjacent-pair counts: $(A,A)$ twice and $(A,B)$, $(B,A)$, and $(A,C)$ once each. Their triplet measures differ. Under the same fixed-left, zero-force-right generalized-LJ dynamics with $m=12.19$ and $n=6$, the later one-point spacing distributions separate. At $\tau=1$, the empirical Kolmogorov--Smirnov distance is
+\begin{equation}
+D_{KS}=0.3333333333,
+\end{equation}
+and the maximum difference between sorted spacing samples is approximately
+\begin{equation}
+5.47\times10^{-3}.
+\end{equation}
+Hence, for arbitrary ordered initial chains,
+\begin{equation}
+(P_0,F_0,F_{2,0})+\sigma(0:t)\not\Rightarrow P(t).
+\end{equation}
+This does not invalidate the probability reduction. It identifies the next problem: determine the smallest local block order that predicts the fatigue observables of interest to a controlled tolerance, rather than declaring an exact low-order closure without evidence.
