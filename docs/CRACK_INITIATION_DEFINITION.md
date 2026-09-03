@@ -1,359 +1,287 @@
-# Operational definition of crack initiation — active 1D mainline
+# Crack Initiation Definition / 균열개시 정의
 
-## 1. Scope
+이 문서는 활성 1D normal-only 이론에서 crack initiation을 first-passage 문제로 정의한다.
 
-The active paper stops at **initiation / local stability loss**. It does not
-model propagation of an already formed macroscopic crack.
+## 1. Local mechanical threshold / 국소 기계적 임계점
 
-The active microscopic mainline is the 1D normal generalized-LJ chain. The
-current operational instability threshold is therefore derived from the same
-normalized interaction that drives the chain.
-
-No Smoluchowski closure is required for the definition below.
-
----
-
-## 2. Local mechanical initiation threshold
-
-For the normalized generalized-LJ energy
+active generalized-LJ interaction은
 
 $$
-\phi(\lambda)
-=
-\frac{\lambda^{-m}}{m(m-n)}
--
-\frac{\lambda^{-n}}{n(m-n)},
+\phi(\lambda)=\frac{\lambda^{-m}}{m(m-n)}-\frac{\lambda^{-n}}{n(m-n)}
 $$
 
-the local tangent stiffness is $\phi''(\lambda)$. The operational initiation
-stretch is
+이다.
 
-$$
-\boxed{
-\phi''(\lambda_c)=0.
-}
-$$
-
-Hence
-
-$$
-\boxed{
-\lambda_c
-=\left(\frac{m+1}{n+1}\right)^{1/(m-n)}.
-}
-$$
-
-For the current $m=12.19$, $n=6$ baseline,
-
-$$
-\boxed{\lambda_c\approx1.1077715386.}
-$$
-
-This criterion means that the ideal intact local bond/layer description has
-lost positive tangent stiffness. It does **not** claim that a macroscopic free
-surface has already fully formed.
-
----
-
-## 3. Instantaneous tail is not cumulative initiation
-
-For a nonabsorbing spacing density $P(\lambda,t)$, define the instantaneous
-critical tail
-
-$$
-\boxed{
-Q_c(t)=\int_{\lambda_c}^{\infty}P(\lambda,t)\,d\lambda.
-}
-$$
-
-This mass can return below $\lambda_c$ in a reflecting/nonabsorbing calculation.
-Therefore
-
-$$
-\boxed{
-Q_c(t)\neq F_{\rm ci}(t)
-}
-$$
-
-in general, where $F_{\rm ci}$ denotes cumulative first passage.
-
----
-
-## 4. Exact finite empirical first passage
-
-For each represented spacing trajectory $\lambda_i(t)$ define
-
-$$
-\boxed{
-\tau_i^c
-=\inf\{t\ge0:\lambda_i(t)\ge\lambda_c\}.
-}
-$$
-
-Once this time has occurred, that trajectory is counted as initiated even if a
-nonabsorbing continuation of the mechanics would later return below
-$\lambda_c$.
-
-Define
-
-$$
-\chi_i(t)=\mathbf1_{\{t<\tau_i^c\}}.
-$$
-
-The local survivor fraction is
-
-$$
-\boxed{
-S_M(t)=\frac1M\sum_i\chi_i(t),
-}
-$$
-
-and the cumulative local first-passage fraction is
-
-$$
-\boxed{
-F_{{\rm ci},M}^{\rm local}(t)=1-S_M(t).
-}
-$$
-
-In the distributional sense,
-
-$$
-\boxed{
--\dot S_M(t)
-=\frac1M\sum_i\delta(t-\tau_i^c).
-}
-$$
-
-These are exact definitions for the finite empirical spacing population.
-
----
-
-## 5. Smooth phase-space absorbing formulation
-
-Let $F_b(\lambda,c,t)$ denote the intact/survivor phase-space subdensity on
-
-$$
-0<\lambda<\lambda_c,
-\qquad c=\dot\lambda.
-$$
-
-The interior projected transport equation remains
-
-$$
-\partial_tF_b+\partial_\lambda(cF_b)+\partial_c(AF_b)=0.
-$$
-
-Because the underlying dynamics is second order, an absorbing boundary is most
-naturally stated as **no inflow from the failed side**. At the right boundary,
-
-$$
-\boxed{
-F_b(\lambda_c,c,t)=0
-\quad\text{for incoming }c<0.
-}
-$$
-
-Outgoing states with $c>0$ are allowed to leave. The escape flux is
-
-$$
-\boxed{
-j_{\rm esc}(t)
-=\int_0^{\infty}cF_b(\lambda_c^-,c,t)\,dc\ge0.
-}
-$$
-
-Assuming no loss through the lower-spacing boundary,
-
-$$
-\boxed{
-S(t)
-=\int_0^{\lambda_c}\int_{-\infty}^{\infty}
-F_b(\lambda,c,t)\,dc\,d\lambda
-}
-$$
-
-obeys
-
-$$
-\boxed{
-\dot S(t)=-j_{\rm esc}(t).
-}
-$$
-
-Therefore
-
-$$
-\boxed{
-F_{\rm ci}^{\rm local}(t)=1-S(t)
-}
-$$
-
-and, for $S>0$,
-
-$$
-\boxed{
-h(t)=\frac{j_{\rm esc}(t)}{S(t)}=-\frac{d}{dt}\ln S(t).
-}
-$$
-
-This is first passage of the mechanically generated phase-space state, not an
-empirical fatigue-damage law.
-
----
-
-## 6. Survivor-conditioned observables
-
-The intact spacing marginal
-
-$$
-P_b(\lambda,t)=\int F_b(\lambda,c,t)\,dc
-$$
-
-is a subdensity with
-
-$$
-\int_0^{\lambda_c}P_b\,d\lambda=S(t),
-$$
-
-not one. If a normalized conditional survivor distribution is needed, define
-
-$$
-\boxed{
-\widehat P_b(\lambda,t)=\frac{P_b(\lambda,t)}{S(t)}.
-}
-$$
-
-Then, for example,
-
-$$
-\boxed{
-\bar\lambda_{\rm surv}
-=\frac1S\int_0^{\lambda_c}\lambda P_b\,d\lambda
-}
-$$
-
-and
-
-$$
-\boxed{
-\bar U_{\rm surv}
-=\frac{U_{\rm ref}}{S}
-\int_0^{\lambda_c}[\phi(\lambda)-\phi(1)]P_b\,d\lambda.
-}
-$$
-
-Unnormalized moments over $P_b$ must not be silently called conditional means.
-
----
-
-## 7. Local first-passage fraction versus specimen probability
-
-The empirical measure $P_M$ used by the deterministic chain is, first of all, a
-spatial counting distribution across represented spacings. Therefore
-
-$$
-1-S_M(t)
-$$
-
-is the fraction of represented local spacings that have experienced first
-passage.
-
-For one deterministic chain realization, the specimen first-initiation time is
-
-$$
-\boxed{
-\tau_{\rm spec}^c=\min_i\tau_i^c.
-}
-$$
-
-A specimen-level probability requires an ensemble of microscopic/specimen
-realizations $\omega$:
-
-$$
-\boxed{
-S_{\rm spec}(t)
-=\Pr_\omega\left[\min_i\tau_i^c(\omega)>t\right].
-}
-$$
-
-In general,
-
-$$
-\boxed{
-1-S_M(t)
-\neq
-\Pr(\tau_{\rm spec}^c\le t).
-}
-$$
-
-No independence product over atoms, statistical cells, or FEM elements is
-assumed. The specimen-scale probability bridge remains an open calibration /
-correlation problem.
-
----
-
-## 8. Relation to G4
-
-The active normalization/survival equation is therefore
-
-$$
-\boxed{
-\int_0^{\infty}P(\lambda,t)\,d\lambda=1
-}
-$$
-
-for a nonabsorbing intact calculation, or
-
-$$
-\boxed{
-S(t)=\int_0^{\lambda_c}P_b(\lambda,t)\,d\lambda\le1
-}
-$$
-
-for the first-passage survivor subdensity.
-
-The cumulative local initiation fraction is $1-S$.
-
-This document does not promote the earlier overdamped/Smoluchowski one-cycle
-operator to the active mainline. Such an operator can only be reintroduced if
-its additional dynamical assumptions are independently justified.
-
----
-
-## 한국어 요약
-
-현재 균열개시는 같은 1D generalized-LJ chain에서
+local tangent stiffness loss를 operational initiation threshold로 사용한다.
 
 $$
 \phi''(\lambda_c)=0
 $$
 
-이 되는 국소 접선강성 상실점의 **첫 도달**로 정의한다.
-
-비흡수 계산의 순간 tail
+따라서
 
 $$
-\int_{\lambda_c}^{\infty}P\,d\lambda
+\lambda_c=\left(\frac{m+1}{n+1}\right)^{1/(m-n)}
 $$
 
-은 다시 돌아올 수 있으므로 누적 균열개시확률이 아니다.
+이다.
 
-2차 동역학의 흡수조건은 phase space에서 실패영역으로 나가는 $c>0$ flux는
-허용하고, 실패영역에서 다시 들어오는 $c<0$ inflow를 차단하는 방식으로
-쓴다. 그러면
+이 기준은 adopted interaction model 아래의 mechanical criterion이다. 실제 재료에서의 experimental crack-initiation definition과의 calibration은 별도 문제다.
+
+## 2. Local first-passage time / 국소 최초통과 시간
+
+각 represented spacing $i$에 대해
 
 $$
-\dot S=-j_{\rm esc},
-\qquad
-F_{\rm ci}^{\rm local}=1-S,
-\qquad
-h=j_{\rm esc}/S
+\tau_i^c=\inf\{\tau\ge\tau_0:\lambda_i(\tau)\ge\lambda_c\}
 $$
 
-가 된다.
+로 정의한다.
 
-다만 현재 $P_M$은 우선 한 시편 내부 spacing들의 공간 empirical
-distribution이므로 $1-S$를 specimen-to-specimen 균열확률로 바로 동일시하지
-않는다. specimen probability에는 별도의 realization ensemble과 spatial
-correlation/statistical-length bridge가 필요하다.
+이 정의는 instantaneous tail mass와 다르다.
+
+$$
+Q_c(\tau)=\int_{\lambda_c}^{\infty}P(\lambda,\tau)\,d\lambda
+$$
+
+$Q_c$는 현재 시각의 nonabsorbing tail이며 cumulative first passage가 아니다.
+
+## 3. Finite empirical survival / 유한 경험적 생존
+
+local survival indicator는
+
+$$
+\chi_i(\tau)=I[\tau<\tau_i^c]
+$$
+
+이다.
+
+empirical survival fraction은
+
+$$
+S_M(\tau)=\frac{1}{M}\sum_{i=1}^{M}\chi_i(\tau)
+$$
+
+이고 cumulative local first-passage fraction은
+
+$$
+F_{\mathrm{ci},M}^{\mathrm{local}}(\tau)=1-S_M(\tau)
+$$
+
+이다.
+
+분포론적으로 first-passage event density는
+
+$$
+-\frac{dS_M}{d\tau}=\frac{1}{M}\sum_i\delta(\tau-\tau_i^c)
+$$
+
+로 쓸 수 있다.
+
+## 4. Survivor phase-space subdensity / 생존 위상공간 부분밀도
+
+survivor phase-space subdensity를
+
+$$
+F_b(\lambda,c,\tau)
+$$
+
+로 두고 intact domain을
+
+$$
+0<\lambda<\lambda_c
+$$
+
+로 둔다.
+
+right boundary $\lambda=\lambda_c$에서 failed side로부터의 재유입을 막기 위해 incoming velocity $c<0$에 대해
+
+$$
+F_b(\lambda_c,c,\tau)=0
+$$
+
+을 둔다.
+
+이 조건은 kinetic absorbing boundary다.
+
+## 5. Escape flux / 탈출 플럭스
+
+outgoing first-passage flux는
+
+$$
+j_{\mathrm{esc}}(\tau)=\int_0^\infty cF_b(\lambda_c^-,c,\tau)\,dc
+$$
+
+이다.
+
+$$
+j_{\mathrm{esc}}\ge0
+$$
+
+이다.
+
+lower boundary loss가 없다고 하면 survivor mass는
+
+$$
+S(\tau)=\int_0^{\lambda_c}\int_{-\infty}^{\infty}F_b(\lambda,c,\tau)\,dc\,d\lambda
+$$
+
+이다.
+
+따라서
+
+$$
+\frac{dS}{d\tau}=-j_{\mathrm{esc}}
+$$
+
+이다.
+
+cumulative local initiation fraction은
+
+$$
+F_{\mathrm{ci}}^{\mathrm{local}}=1-S
+$$
+
+이다.
+
+## 6. Hazard / 위험률
+
+$S>0$일 때 nondimensional hazard는
+
+$$
+h_\tau=\frac{j_{\mathrm{esc}}}{S}
+$$
+
+이고
+
+$$
+h_\tau=-\frac{d}{d\tau}\ln S
+$$
+
+이다.
+
+physical-time hazard는
+
+$$
+h_t=\frac{h_\tau}{t_0}
+$$
+
+이다.
+
+## 7. Survivor marginal and conditional density / 생존 주변밀도와 조건부 밀도
+
+survivor spacing subdensity는
+
+$$
+P_b(\lambda,\tau)=\int_{-\infty}^{\infty}F_b(\lambda,c,\tau)\,dc
+$$
+
+이다.
+
+이 함수는 normalized density가 아니라 subdensity다.
+
+$$
+\int_0^{\lambda_c}P_b(\lambda,\tau)\,d\lambda=S(\tau)
+$$
+
+이다.
+
+survivor-conditioned normalized density는
+
+$$
+\widehat P_b(\lambda,\tau)=\frac{P_b(\lambda,\tau)}{S(\tau)}
+$$
+
+이다.
+
+survivor-conditioned mean spacing은
+
+$$
+\bar\lambda_{\mathrm{surv}}(\tau)=\frac{1}{S(\tau)}\int_0^{\lambda_c}\lambda P_b(\lambda,\tau)\,d\lambda
+$$
+
+이다.
+
+survivor-conditioned configurational energy는
+
+$$
+\bar U_{\mathrm{surv}}(\tau)=\frac{U_{\mathrm{ref}}}{S(\tau)}\int_0^{\lambda_c}[\phi(\lambda)-\phi(1)]P_b(\lambda,\tau)\,d\lambda
+$$
+
+이다.
+
+## 8. Exact full-flow local survival / 전체 흐름 국소 생존
+
+full initial-state measure $\mu_0$를 사용하면 local survival을 trajectory path functional로 직접 쓸 수 있다.
+
+$$
+S_{\mathrm{local}}(\tau)=\frac{1}{M}\sum_i\int I\left[\sup_{s\in[\tau_0,\tau]}\Lambda_i(s;\Gamma_0)<\lambda_c\right]\,\mu_0(d\Gamma_0)
+$$
+
+따라서
+
+$$
+F_{\mathrm{ci}}^{\mathrm{local}}(\tau)=1-S_{\mathrm{local}}(\tau)
+$$
+
+이다.
+
+## 9. Specimen first-initiation time / 시편 최초 균열개시 시간
+
+한 realization에서 specimen first-initiation time은
+
+$$
+\tau_{\mathrm{spec}}^c=\min_i\tau_i^c
+$$
+
+이다.
+
+이 값은 represented spacings 중 하나라도 처음 threshold를 통과하는 시각이다.
+
+## 10. Specimen survival probability / 시편 생존확률
+
+ensemble measure $\mu_0$가 선언되면
+
+$$
+S_{\mathrm{spec}}(\tau)=\int I\left[\max_i\sup_{s\in[\tau_0,\tau]}\Lambda_i(s;\Gamma_0)<\lambda_c\right]\,\mu_0(d\Gamma_0)
+$$
+
+이다.
+
+specimen crack-initiation cumulative probability는
+
+$$
+F_{\mathrm{ci}}^{\mathrm{spec}}(\tau)=1-S_{\mathrm{spec}}(\tau)
+$$
+
+이다.
+
+## 11. Local fraction is not automatically specimen probability / 국소 비율과 시편 확률의 구분
+
+$$
+1-S_M
+$$
+
+은 한 deterministic realization 내부의 local spatial first-passage fraction일 수 있다. 이것을 독립 cell product로 specimen-to-specimen probability로 바꾸지 않는다.
+
+specimen probability는 $\mu_0$와 spatial correlation 구조를 포함하는 ensemble definition이 필요하다.
+
+## 12. Post-initiation scope / 개시 이후 범위
+
+$$
+\tau_{\mathrm{spec}}^c
+$$
+
+에 도달한 뒤 현재 intact pre-crack chain은 실제 crack propagation model이 아니다.
+
+따라서 specimen first-initiation 이후의 추가 local crossings는 post-crack model이 추가되지 않는 한 mathematical diagnostic으로만 해석한다.
+
+## 13. Status summary / 상태 요약
+
+- $\phi''(\lambda_c)=0$: MODEL-based local criterion
+- $\tau_i^c$: DEFINITION
+- kinetic absorbing boundary: EXACT formulation for the declared survivor transport
+- $S_{\mathrm{local}}$: EXACT once the full flow and $\mu_0$ are declared
+- $S_{\mathrm{spec}}$: EXACT path-integral formula once $\mu_0$ is declared
+- physical construction of $\mu_0$ and specimen correlation scale: OPEN
+- post-initiation crack propagation: outside current model

@@ -1,83 +1,307 @@
-# Auxiliary Symbol Index / 보조 수학기호 Index — 1D active derivations
+# Auxiliary Symbol Index / 보조기호 Index
 
-This file covers auxiliary symbols that appear in detailed derivations but are not primary state variables.  
-이 파일은 상세 유도에서 실제로 사용되지만 주 상태변수는 아닌 보조 기호를 정의한다.
+이 문서는 활성 1D 이론의 보조기호를 정의한다. 수식은 렌더러 호환성을 위해 단순한 문법만 사용한다.
 
-The same mandatory rule applies: equation definition + English/Korean term + mathematical meaning + physical meaning + unit/scaling + status + dependencies.
+## 1. Loading-history symbols / 하중 이력 기호
 
-| Symbol | Equation definition | English term | 한국어 명칭 | Mathematical definition | Physical definition | Unit / scaling | Status | Dependencies |
-|---|---|---|---|---|---|---|---|---|
-| $\nu$ | **not an active mean-rate symbol** | reserved Greek nu | 예약된 그리스문자 nu | not used as a state variable in the active theory | no active physical meaning | — | RESERVED | any legacy $\nu=\mathbb E[c\mid\lambda]$ is a typography error; use $u$ |
-| $q^*$ | $q(\tau_L)=q(\tau_U)=q^*$ | matched force level | 동일비교 하중수준 | scalar forcing value used to pair two times | same instantaneous applied load on loading/unloading branches | 1 | DEFINITION | $q,\tau_L,\tau_U$ |
-| $\tau_L$ | $q(\tau_L)=q^*,\;\dot q(\tau_L)>0$ | loading-branch comparison time | 하중증가 구간 비교시각 | time selected on increasing branch | instant at which load reaches $q^*$ while increasing | 1 | DEFINITION | $q,q^*$ |
-| $\tau_U$ | $q(\tau_U)=q^*,\;\dot q(\tau_U)<0$ | unloading-branch comparison time | 하중감소 구간 비교시각 | time selected on decreasing branch | instant at which load reaches $q^*$ while decreasing | 1 | DEFINITION | $q,q^*$ |
-| $\mathcal R_2$ | $\mathcal R_2(\tau)=\{P(\lambda,\tau),u(\lambda,\tau),\Theta(\lambda,\tau)\}$ | reduced history descriptor | 축약 이력상태 기술자 | ordered set of retained one-point fields | reduced microscopic state used to compare load paths | mixed functional object | DEFINITION | $P,u,\Theta$ |
-| $\mathcal S$ | hypothetical $\mathcal R_2=\mathcal S[q]$ | memoryless state map | 무기억 상태사상 | hypothetical single-valued map from instantaneous load to reduced state | constitutive map ruled out when same-load states differ | map | CONDITIONAL/HYPOTHETICAL | $q,\mathcal R_2$ |
-| $Q_c$ | $Q_c(\tau)=\int_{\lambda_c}^{\infty}P(\lambda,\tau)d\lambda$ | instantaneous critical tail mass | 순간 임계 초과확률질량 | upper-tail integral of nonabsorbing $P$ | instantaneous fraction of local spacings above threshold, allowed to return | 1 | DEFINITION | $P,\lambda_c$ |
-| $S_M$ | $S_M=\frac1M\sum_i\chi_i$ | finite empirical survivor fraction | 유한계 경험적 생존비율 | average of local survival indicators | fraction of represented spacings not yet first-passed | 1 | EXACT finite definition | $M,\chi_i$ |
-| $F_{{\rm ci},M}^{\rm local}$ | $1-S_M$ | finite local initiation fraction | 유한계 국소 균열개시 비율 | complement of $S_M$ | fraction of represented spacings already first-passed | 1 | DEFINITION | $S_M$ |
-| $h_\tau$ | $h_\tau=j_{\rm esc}/S=-d\ln S/d\tau$ | nondimensional hazard | 무차원 위험률 | event rate per nondimensional time conditional on survival | local initiation rate in $\tau$ units | 1/$\tau$ | DEFINITION | $j_{\rm esc},S$ |
-| $h_t$ | $h_t=h_\tau/t_0$ | physical-time hazard | 물리시간 위험률 | dimensional hazard | local initiation rate per second | s$^{-1}$ | DEFINITION | $h_\tau,t_0$ |
-| $\bar\lambda_{\rm surv}$ | $\bar\lambda_{\rm surv}=S^{-1}\int_0^{\lambda_c}\lambda P_b d\lambda$ | survivor-conditioned mean spacing | 생존조건부 평균간격 | conditional first moment under $\widehat P_b$ | mean spacing among intact states only | 1 | DEFINITION | $S,P_b,\lambda_c$ |
-| $\bar U_{\rm surv}$ | $\bar U_{\rm surv}=\frac{U_{\rm ref}}S\int_0^{\lambda_c}\Delta\phi P_b d\lambda$ | survivor-conditioned configurational energy | 생존조건부 배치에너지 | conditional expectation of $\Delta\phi$ over survivors | mean recoverable energy among intact states | J | DEFINITION | $U_{\rm ref},S,\Delta\phi,P_b$ |
-| $V_{\rm phys}$ | $V_{\rm phys}=U_{\rm ref}V^*$ | physical chain configurational energy | 물리 사슬 배치에너지 | dimensionalized total potential | total recoverable potential energy of represented chain | J | DEFINITION | $U_{\rm ref},V^*$ |
-| $W_{\rm ext}^{\rm cyc}$ | $W_{\rm ext}^{\rm cyc}=\int_{\rm cycle}q\dot x_M d\tau$ in normalized units | cycle external work | 사이클 외부일 | line/time integral of external power over one cycle | work delivered by prescribed end load in one cycle | normalized energy | DEFINITION | $q,x_M$ |
-| $\Delta E_{\rm mech}^{\rm cyc}$ | $E_{\rm mech}^*(\tau_{n+1})-E_{\rm mech}^*(\tau_n)$ | cycle mechanical-energy change | 사이클 기계에너지 변화 | difference of mechanical energy across cycle endpoints | recoverable energy stored/released over the cycle | normalized energy | DEFINITION | $E_{\rm mech}^*$ |
-| $D_{\rm irr}^{\rm cyc}$ | $\int_{\rm cycle}\dot D_{\rm irr}^*d\tau$ | cycle irreversible dissipation | 사이클 비가역 소산 | cycle integral of nonnegative dissipation rate | irreversible energy lost in one cycle | normalized energy | OPEN physically | $\dot D_{\rm irr}^*$ |
-| $D_{\rm irr}^*(\tau;\Gamma_0)$ | $\int_{\tau_0}^{\tau}\dot D_{\rm irr}^*(\Phi_{s,\tau_0}^q(\Gamma_0),s)ds$ | trajectory irreversible functional | 궤적 비가역 소산함수 | path functional on one full-state trajectory | accumulated irreversible energy along one microscopic realization | normalized energy | OPEN physically | $\dot D_{\rm irr}^*,\Phi^q,\Gamma_0$ |
-| $\lambda_{\rm ph}(s)$ | $d\lambda_{\rm ph}/ds=c_{\rm ph}$ | projected phase-space characteristic spacing | 투영 위상공간 특성 간격 | coordinate of a characteristic of the projected kinetic PDE | spacing coordinate carried along projected phase-space flow | 1 | DEFINITION | $c_{\rm ph},A$ |
-| $c_{\rm ph}(s)$ | $dc_{\rm ph}/ds=A(\lambda_{\rm ph},c_{\rm ph},s)$ | projected phase-space characteristic rate | 투영 위상공간 특성 간격속도 | rate coordinate of projected phase-space characteristic | spacing-rate coordinate carried along projected flow | 1/$\tau$ | DEFINITION | $A,\lambda_{\rm ph}$ |
-| $F_0$ | $F_0(\lambda,c)=F(\lambda,c,\tau_0)$ | initial phase-space density | 초기 위상공간 밀도 | initial condition for projected kinetic transport | initial joint spacing/rate population | phase-space density | DEFINITION | $F,\tau_0$ |
-| $P_0$ | $P_0(\lambda)=P(\lambda,\tau_0)$ | initial spacing density | 초기 간격밀도 | initial marginal density | initial spacing population | inverse $\lambda$ | DEFINITION | $P,\tau_0$ |
-| $u_0$ | $u_0(\lambda)=u(\lambda,\tau_0)$ | initial conditional mean rate | 초기 조건부 평균 간격속도 | initial conditional first moment | initial mean opening/closing rate at each spacing | 1/$\tau$ | DEFINITION | $u,\tau_0$ |
-| $\Theta_0$ | $\Theta_0(\lambda)=\Theta(\lambda,\tau_0)$ | initial conditional variance | 초기 조건부 분산 | initial conditional second central moment | initial unresolved rate spread | 1/$\tau^2$ | DEFINITION | $\Theta,\tau_0$ |
-| $\Gamma_0^*$ | deterministic initial state used when $\mu_0=\delta_{\Gamma_0^*}$ | single deterministic initial state | 단일 결정론적 초기상태 | atom of the initial measure | one prescribed microscopic realization | mixed state | DEFINITION | $\Gamma_0,\mu_0$ |
+### $q^*$
 
-## Auxiliary exact relations / 보조 정확식
+- English: matched load value
+- 한국어: 동일 비교 하중값
+- Mathematical definition: scalar satisfying $q(\tau_L)=q(\tau_U)=q^*$
+- Physical definition: loading과 unloading 상태를 같은 외부 하중에서 비교하기 위한 값
+- Status: DEFINITION
 
-Same-force history test:
+### $\tau_L$
+
+- English: loading-branch time
+- 한국어: loading branch 시각
+- Mathematical definition: time satisfying $q(\tau_L)=q^*$ and $\dot q(\tau_L)>0$
+- Status: DEFINITION
+
+### $\tau_U$
+
+- English: unloading-branch time
+- 한국어: unloading branch 시각
+- Mathematical definition: time satisfying $q(\tau_U)=q^*$ and $\dot q(\tau_U)<0$
+- Status: DEFINITION
+
+### $\mathcal R_2(\tau)$
 
 $$
-\boxed{
-q(\tau_L)=q(\tau_U)=q^*,
-\qquad
-\dot q(\tau_L)>0,
-\qquad
-\dot q(\tau_U)<0
-}
+\mathcal R_2(\tau)=\{P(\lambda,\tau),u(\lambda,\tau),\Theta(\lambda,\tau)\}
 $$
 
-A memoryless load-only description would require
+- English: second-order reduced descriptor
+- 한국어: 2차 축약 기술자
+- Physical definition: same-load non-retracing을 비교하기 위한 reduced state
+- Status: DEFINITION
+
+## 2. Density-shape symbols / 밀도 형상 기호
+
+### $\lambda_*$
+
+- English: reference spacing point
+- 한국어: 기준 간격점
+- Mathematical definition: arbitrary reference point in a smooth interval where $P>0$ and $\Theta>0$
+- Physical definition: integration origin only; no independent physical state
+- Status: DEFINITION
+
+### $\eta$
+
+- English: spacing integration variable
+- 한국어: 간격 적분변수
+- Mathematical definition: dummy variable in the density-shape integral
+- Status: DEFINITION
+
+### $\mathcal N_P(\tau)$
 
 $$
-\boxed{
-\mathcal R_2(\tau)=\mathcal S[q(\tau)]
-}
+\int_0^\infty P(\lambda,\tau)\,d\lambda=1
 $$
 
-and is contradicted for a trajectory when
+- English: density normalization factor
+- 한국어: 확률밀도 정규화 계수
+- Mathematical definition: positive integration factor fixed by total probability mass
+- Status: DEFINITION
+
+## 3. Initial-value symbols / 초기값 기호
+
+### $P_0(\lambda)$
 
 $$
-\boxed{
-\mathcal R_2(\tau_L)\neq\mathcal R_2(\tau_U)
-}
+P_0(\lambda)=P(\lambda,\tau_0)
 $$
 
-Cycle energy balance with a future irreversible mechanism:
+- English: initial spacing density
+- 한국어: 초기 간격밀도
+- Status: DEFINITION
+
+### $u_0(\lambda)$
 
 $$
-\boxed{
-W_{\rm ext}^{\rm cyc}
-=\Delta E_{\rm mech}^{\rm cyc}+D_{\rm irr}^{\rm cyc}
-}
+u_0(\lambda)=u(\lambda,\tau_0)
 $$
 
-Projected phase-space characteristic density:
+- English: initial conditional mean spacing rate
+- 한국어: 초기 조건부 평균 간격속도
+- Status: DEFINITION
+
+### $\Theta_0(\lambda)$
 
 $$
-\boxed{
-F(\lambda_{\rm ph}(\tau),c_{\rm ph}(\tau),\tau)
-=F_0(\lambda_{\rm ph}(\tau_0),c_{\rm ph}(\tau_0))
-\exp\left[-\int_{\tau_0}^{\tau}\partial_cA(\lambda_{\rm ph}(s),c_{\rm ph}(s),s)ds\right]
-}
+\Theta_0(\lambda)=\Theta(\lambda,\tau_0)
 $$
+
+- English: initial conditional spacing-rate variance
+- 한국어: 초기 조건부 간격속도 분산
+- Status: DEFINITION
+
+### $\tau_0$
+
+- English: initial nondimensional time
+- 한국어: 초기 무차원 시간
+- Mathematical definition: lower temporal bound for initial data and integral representations
+- Status: DEFINITION
+
+## 4. Characteristic symbols / 특성곡선 기호
+
+### $s$
+
+- English: dummy time variable
+- 한국어: 시간 적분변수
+- Mathematical definition: integration variable in $[\tau_0,\tau]$
+- Status: DEFINITION
+
+### $r$
+
+- English: inner dummy time variable
+- 한국어: 내부 시간 적분변수
+- Mathematical definition: integration variable used inside $\mathcal I_u$
+- Status: DEFINITION
+
+### $X(s;\alpha)$
+
+$$
+\frac{dX}{ds}=u(X(s),s)
+$$
+
+$$
+X(\tau_0)=\alpha
+$$
+
+- English: characteristic curve
+- 한국어: 특성곡선
+- Mathematical definition: integral curve of the reduced mean-flow field
+- Physical definition: mean probability-transport path in spacing space
+- Status: DEFINITION
+
+### $\alpha$
+
+- English: characteristic label
+- 한국어: 특성곡선 초기 라벨
+- Mathematical definition: initial coordinate satisfying $X(\tau_0;\alpha)=\alpha$
+- Status: DEFINITION
+
+### $\mathcal I_u$
+
+$$
+\mathcal I_u(s;\alpha)=\int_{\tau_0}^{s}\partial_\lambda u(X(r),r)\,dr
+$$
+
+- English: accumulated mean-rate gradient
+- 한국어: 누적 평균속도 구배
+- Physical definition: cumulative local compression or dilation along a characteristic
+- Status: DEFINITION
+
+### $S_\Theta$
+
+$$
+S_\Theta=2\Psi-\frac{1}{P}\partial_\lambda(PC_3)
+$$
+
+- English: variance source
+- 한국어: 분산 소스항
+- Status: DEFINITION
+
+## 5. First-passage symbols / 최초통과 기호
+
+### $Q_c(\tau)$
+
+$$
+Q_c(\tau)=\int_{\lambda_c}^{\infty}P(\lambda,\tau)\,d\lambda
+$$
+
+- English: instantaneous nonabsorbing tail mass
+- 한국어: 순간 비흡수 꼬리질량
+- Mathematical definition: current probability mass above $\lambda_c$
+- Physical definition: instantaneous tail only; not cumulative first passage
+- Status: DEFINITION
+
+### $\chi_i(\tau)$
+
+$$
+\chi_i(\tau)=I[\tau<\tau_i^c]
+$$
+
+- English: local survival indicator
+- 한국어: 국소 생존 지시함수
+- Status: DEFINITION
+
+### $S_M(\tau)$
+
+$$
+S_M(\tau)=\frac{1}{M}\sum_i\chi_i(\tau)
+$$
+
+- English: empirical local survival fraction
+- 한국어: 경험적 국소 생존비율
+- Status: DEFINITION
+
+### $F_{\mathrm{ci},M}^{\mathrm{local}}$
+
+$$
+F_{\mathrm{ci},M}^{\mathrm{local}}=1-S_M
+$$
+
+- English: cumulative local first-passage fraction
+- 한국어: 누적 국소 최초통과 비율
+- Status: DEFINITION
+
+### $h_\tau$
+
+$$
+h_\tau=\frac{j_{\mathrm{esc}}}{S}
+$$
+
+$$
+h_\tau=-\frac{d}{d\tau}\ln S
+$$
+
+- English: nondimensional initiation hazard
+- 한국어: 무차원 균열개시 위험률
+- Status: EXACT when $S>0$ and differentiable
+
+### $h_t$
+
+$$
+h_t=\frac{h_\tau}{t_0}
+$$
+
+- English: physical-time initiation hazard
+- 한국어: 물리시간 균열개시 위험률
+- Unit: 1/s
+- Status: DEFINITION
+
+### $\widehat P_b$
+
+$$
+\widehat P_b(\lambda,\tau)=\frac{P_b(\lambda,\tau)}{S(\tau)}
+$$
+
+- English: survivor-conditioned density
+- 한국어: 생존조건부 밀도
+- Status: DEFINITION for $S>0$
+
+### $\tau_{\mathrm{spec}}^c$
+
+$$
+\tau_{\mathrm{spec}}^c=\min_i\tau_i^c
+$$
+
+- English: specimen first-initiation time
+- 한국어: 시편 최초 균열개시 시간
+- Status: DEFINITION for one realization
+
+### $F_{\mathrm{ci}}^{\mathrm{spec}}$
+
+$$
+F_{\mathrm{ci}}^{\mathrm{spec}}(\tau)=1-S_{\mathrm{spec}}(\tau)
+$$
+
+- English: specimen crack-initiation cumulative probability
+- 한국어: 시편 균열개시 누적확률
+- Status: DEFINITION
+
+## 6. Energy-history symbols / 에너지 이력 기호
+
+### $D_{\mathrm{irr}}$
+
+$$
+D_{\mathrm{irr}}(t)=\int_0^t\dot D_{\mathrm{irr}}(t')\,dt'
+$$
+
+- English: accumulated irreversible dissipation
+- 한국어: 누적 비가역 소산
+- Unit: J
+- Status: DEFINITION
+
+### $r_j^{\mathrm{irr}}$
+
+미래에 실제 microscopic irreversible node force가 유도될 경우 사용할 기호다.
+
+$$
+\dot D_{\mathrm{irr}}^*=-\sum_jr_j^{\mathrm{irr}}\dot x_j
+$$
+
+비가역 소산으로 해석하려면
+
+$$
+\dot D_{\mathrm{irr}}^*\ge0
+$$
+
+이어야 한다.
+
+- English: irreversible node force
+- 한국어: 비가역 노드 힘
+- Status: OPEN
+
+### $W_{\mathrm{ext}}^{\mathrm{cyc}}$
+
+$$
+W_{\mathrm{ext}}^{\mathrm{cyc}}=\Delta E_{\mathrm{mech}}^{\mathrm{cyc}}+D_{\mathrm{irr}}^{\mathrm{cyc}}
+$$
+
+- English: external work over one cycle
+- 한국어: 한 사이클 외력 일
+- Status: CONDITIONAL on a physically valid irreversible mechanism

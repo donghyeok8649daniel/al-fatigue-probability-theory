@@ -1,1215 +1,687 @@
-# Master derivation — active 1D $P$–$u$–$\Theta$ theory
+# Master 1D $P$-$u$-$\Theta$ Formulation / 기준 1D 유도
 
-This document is the canonical differential derivation of the active normal-only model.
-이 문서는 현재 1D normal-only 모델의 **기준 미분형 유도문서**이다.
+이 문서는 활성 normal-only 이론의 기준 미분형 유도문서다. 수식 렌더링 안정성을 위해 단순한 LaTeX 문법만 사용한다.
 
-For navigation and definitions, use:
-
-- `../README_EQUATION_INDEX.md`
-- `EQUATION_SUMMARY_1D_P_U_THETA.md`
-- `VARIABLE_INDEX_1D_P_U_THETA.md`
-- `AUXILIARY_SYMBOL_INDEX_1D.md`
-- `MILESTONE25_EXACT_INTEGRAL_REPRESENTATION.md`
-
-The conditional mean spacing-rate symbol is **always** $u$.
-
----
-
-# 1. Physical scaling
-
-Let $a_0$ be the equilibrium spacing, $m_a$ the represented microscopic mass,
-$E$ the reference Young modulus, and $A_0$ the effective 1D reference area.
-Define
+## 1. Physical scaling / 물리 스케일
 
 $$
-\boxed{
-t_0=\sqrt{\frac{m_a a_0}{EA_0}},
-\qquad
+t_0=\sqrt{\frac{m_a a_0}{EA_0}}
+$$
+
+$$
 \tau=\frac{t}{t_0}
-}
 $$
 
-The force and energy scales are
-
 $$
-\boxed{
-F_{\rm ref}=EA_0,
-\qquad
-U_{\rm ref}=EA_0a_0
-}
+\lambda=\frac{a}{a_0}
 $$
 
-The active stress-to-chain-force bridge is
-
 $$
-\boxed{
-q(\tau)=\frac{F_{\rm ext}(t)}{EA_0}=\frac{\sigma_n(t)}{E}
-}
+F_{\mathrm{ref}}=EA_0
 $$
 
-For sinusoidal loading,
+$$
+U_{\mathrm{ref}}=EA_0a_0
+$$
 
 $$
-\boxed{
-\sigma_n(t)=\sigma_m+\sigma_a\sin(2\pi f t),
-\qquad
+q(\tau)=\frac{F_{\mathrm{ext}}(t)}{EA_0}=\frac{\sigma_n(t)}{E}
+$$
+
+사인 하중은
+
+$$
+\sigma_n(t)=\sigma_m+\sigma_a\sin(2\pi f t)
+$$
+
+$$
 \omega^*=2\pi f t_0
-}
 $$
 
-**Status:** DEFINITION under the current calibration bridge.
+으로 쓴다.
 
----
+## 2. Finite generalized-LJ chain / 유한 generalized-LJ 사슬
 
-# 2. Microscopic 1D generalized-LJ chain
-
-Take $M+1$ nodes $x_0,\ldots,x_M$ with
+$M+1$개의 node $x_0,\ldots,x_M$을 두고 $x_0=0$으로 둔다.
 
 $$
-\boxed{x_0(\tau)=0}
-$$
-
-Define the $M$ normalized spacings
-
-$$
-\boxed{
-\lambda_i=x_i-x_{i-1}>0,
-\qquad i=1,\ldots,M
-}
-$$
-
-and physical spacings
-
-$$
-\boxed{a_i=a_0\lambda_i}
-$$
-
-Dots below denote $d/d\tau$.
-
-## 2.1 Active interaction energy
-
-The normalized generalized-LJ energy is
-
-$$
-\boxed{
-\phi(\lambda)
-=
-\frac{\lambda^{-m}}{m(m-n)}
--
-\frac{\lambda^{-n}}{n(m-n)},
-\qquad m>n>1
-}
-$$
-
-Its derivatives are
-
-$$
-\boxed{
-\phi'(\lambda)
-=\frac{\lambda^{-n-1}-\lambda^{-m-1}}{m-n}
-}
+\lambda_i=x_i-x_{i-1}
 $$
 
 $$
-\boxed{
-\phi''(\lambda)
-=\frac{(m+1)\lambda^{-m-2}-(n+1)\lambda^{-n-2}}{m-n}
-}
+a_i=a_0\lambda_i
 $$
 
-Thus
+활성 normalized interaction energy는
 
 $$
-\boxed{
-\phi'(1)=0,
-\qquad
+\phi(\lambda)=\frac{\lambda^{-m}}{m(m-n)}-\frac{\lambda^{-n}}{n(m-n)}
+$$
+
+이다.
+
+$$
+\phi'(\lambda)=\frac{\lambda^{-n-1}-\lambda^{-m-1}}{m-n}
+$$
+
+$$
+\phi''(\lambda)=\frac{(m+1)\lambda^{-m-2}-(n+1)\lambda^{-n-2}}{m-n}
+$$
+
+$$
+\phi'(1)=0
+$$
+
+$$
 \phi''(1)=1
-}
 $$
 
-The finite-chain configurational energy is
+전체 configurational energy는
 
 $$
-\boxed{
-V^*(\boldsymbol\lambda)=\sum_{i=1}^{M}\phi(\lambda_i)
-}
+V^*=\sum_{i=1}^{M}\phi(\lambda_i)
 $$
 
-**Status:** $\phi$ is MODEL; the derivatives are EXACT consequences of that model.
+이다.
 
-## 2.2 Closed node equations
-
-For identical unit masses after nondimensionalization,
+내부 node equation은
 
 $$
-\boxed{
-\ddot x_j
-=\phi'(\lambda_{j+1})-\phi'(\lambda_j),
-\qquad j=1,\ldots,M-1
-}
+\ddot x_j=\phi'(\lambda_{j+1})-\phi'(\lambda_j)
 $$
 
-and at the loaded end
+$$
+j=1,\ldots,M-1
+$$
+
+이고 loaded end는
 
 $$
-\boxed{
 \ddot x_M=-\phi'(\lambda_M)+q(\tau)
-}
 $$
 
-Therefore the bulk spacing equation is
+이다.
+
+bulk spacing은
 
 $$
-\boxed{
-\ddot\lambda_i
-=\phi'(\lambda_{i+1})
--2\phi'(\lambda_i)
-+\phi'(\lambda_{i-1}),
-\qquad i=2,\ldots,M-1
-}
+\ddot\lambda_i=\phi'(\lambda_{i+1})-2\phi'(\lambda_i)+\phi'(\lambda_{i-1})
 $$
 
-The boundary spacings satisfy
+$$
+i=2,\ldots,M-1
+$$
+
+을 만족한다.
+
+경계 spacing은
 
 $$
-\boxed{
 \ddot\lambda_1=\phi'(\lambda_2)-\phi'(\lambda_1)
-}
 $$
 
 $$
-\boxed{
-\ddot\lambda_M
-=q(\tau)+\phi'(\lambda_{M-1})-2\phi'(\lambda_M)
-}
+\ddot\lambda_M=q(\tau)+\phi'(\lambda_{M-1})-2\phi'(\lambda_M)
 $$
 
-**Status:** EXACT under the active chain model and boundary law.
+이다.
 
----
-
-# 3. Exact mechanical energy
-
-Define
+## 3. Exact mechanical energy / 정확한 기계에너지
 
 $$
-\boxed{
-T^*=\frac12\sum_{j=1}^{M}\dot x_j^2,
-\qquad
-E_{\rm mech}^*=T^*+V^*
-}
+T^*=\frac{1}{2}\sum_{j=1}^{M}\dot x_j^2
 $$
 
-Differentiating and using the equations of motion gives
-
 $$
-\boxed{
-\frac{dE_{\rm mech}^*}{d\tau}=q(\tau)\dot x_M
-}
+E_{\mathrm{mech}}^*=T^*+V^*
 $$
 
-Hence the active baseline is conservative except for prescribed external work.
+운동방정식을 대입하면
 
-## 3.1 Spacing-coordinate mass metric
+$$
+\frac{dE_{\mathrm{mech}}^*}{d\tau}=q(\tau)\dot x_M
+$$
 
-Since
+을 얻는다. 현재 baseline은 prescribed external work를 제외하면 conservative다.
+
+spacing coordinate로는
 
 $$
 x_j=\sum_{k=1}^{j}\lambda_k
 $$
 
-write
+이다. $L_{jk}=1$ for $k\le j$, otherwise $0$로 두면
 
 $$
-\boxed{
-\boldsymbol x=\mathbf L\boldsymbol\lambda,
-\qquad
-\dot{\boldsymbol x}=\mathbf L\boldsymbol c,
-\qquad
-\boldsymbol c=\dot{\boldsymbol\lambda}
-}
+x=L\lambda
 $$
 
-Then
-
 $$
-\boxed{
-T^*=\frac12\boldsymbol c^T\mathbf G_\lambda\boldsymbol c,
-\qquad
-\mathbf G_\lambda=\mathbf L^T\mathbf L
-}
+G_\lambda=L^TL
 $$
 
-with
+$$
+T^*=\frac{1}{2}c^TG_\lambda c
+$$
 
 $$
-\boxed{
 (G_\lambda)_{k\ell}=M-\max(k,\ell)+1
-}
 $$
 
-Thus local spacing rates are not independent unit-mass velocities.
+이다. 따라서 one-point variance $\Theta$만으로 전체 kinetic energy를 표현할 수 없다.
 
----
-
-# 4. Mechanics-generated empirical probability state
-
-For one deterministic chain, define the empirical phase-space measure
+## 4. Mechanics-generated empirical probability / 역학에서 생성되는 경험적 확률
 
 $$
-\boxed{
-F_M(\lambda,c,\tau)
-=\frac1M\sum_{i=1}^{M}
-\delta[\lambda-\lambda_i(\tau)]
-\delta[c-c_i(\tau)]
-}
+c_i=\dot\lambda_i
 $$
 
-where
+finite deterministic chain의 empirical phase-space measure는
 
 $$
-\boxed{c_i=\dot\lambda_i}
+F_M(\lambda,c,\tau)=\frac{1}{M}\sum_{i=1}^{M}\delta(\lambda-\lambda_i(\tau))\delta(c-c_i(\tau))
 $$
 
-Its spacing marginal is
+이다.
+
+spacing marginal은
 
 $$
-\boxed{
-P_M(\lambda,\tau)
-=\int F_M(\lambda,c,\tau)\,dc
-=\frac1M\sum_i\delta[\lambda-\lambda_i(\tau)]
-}
+P_M(\lambda,\tau)=\int F_M(\lambda,c,\tau)\,dc
 $$
 
-No named probability family is assumed.
-
----
-
-# 5. Exact empirical phase-space transport
-
-Define the empirical acceleration flux
-
 $$
-\boxed{
-\mathcal G_M(\lambda,c,\tau)
-=\frac1M\sum_i\ddot\lambda_i
-\delta(\lambda-\lambda_i)
-\delta(c-c_i)
-}
+P_M(\lambda,\tau)=\frac{1}{M}\sum_i\delta(\lambda-\lambda_i(\tau))
 $$
 
-Differentiating $F_M$ distributionally gives
+이다. named PDF를 가정하지 않는다.
+
+## 5. Exact phase-space transport / 정확한 위상공간 수송
+
+empirical acceleration flux를
 
 $$
-\boxed{
-\partial_\tau F_M
-+\partial_\lambda(cF_M)
-+\partial_c\mathcal G_M=0
-}
+\mathcal G_M(\lambda,c,\tau)=\frac{1}{M}\sum_i\ddot\lambda_i\delta(\lambda-\lambda_i)\delta(c-c_i)
 $$
 
-For a smooth projected representation define
+로 정의한다.
+
+분포론적으로
 
 $$
-\boxed{
-A(\lambda,c,\tau)
-=\mathbb{E}[\ddot\lambda_i\mid\lambda_i=\lambda,c_i=c]
-}
+\partial_\tau F_M+\partial_\lambda(cF_M)+\partial_c\mathcal G_M=0
 $$
 
-Then
+이다.
+
+smooth representation에서는
 
 $$
-\boxed{\mathcal G=AF}
+A(\lambda,c,\tau)=\mathrm{E}[\ddot\lambda_i\mid\lambda_i=\lambda,c_i=c,\tau]
 $$
 
-and
+로 두고
 
 $$
-\boxed{
-\partial_\tau F
-+\partial_\lambda(cF)
-+\partial_c(AF)=0
-}
+\mathcal G=AF
 $$
 
-This is an exact projected identity when $A$ is the true mechanics-generated conditional acceleration. It is not an autonomous one-point constitutive closure.
-
----
-
-# 6. Exact raw moment hierarchy
-
-Define
-
 $$
-\boxed{
-R_r(\lambda,\tau)=\int_{-\infty}^{\infty}c^rF(\lambda,c,\tau)\,dc,
-\qquad r=0,1,2,\ldots
-}
+\partial_\tau F+\partial_\lambda(cF)+\partial_c(AF)=0
 $$
 
-and for $r\ge1$
+을 얻는다. 이 식은 true conditional acceleration을 사용하면 exact projected identity다.
+
+## 6. Raw moment hierarchy / 원시 모멘트 계층
 
 $$
-\boxed{
-B_r(\lambda,\tau)
-=\int c^{r-1}A(\lambda,c,\tau)F(\lambda,c,\tau)\,dc
-}
+R_r(\lambda,\tau)=\int c^rF(\lambda,c,\tau)\,dc
 $$
 
-Multiply the projected phase-space equation by $c^r$ and integrate over $c$.
-Assuming the required moments exist and the velocity-boundary terms vanish,
+$$
+B_r(\lambda,\tau)=\int c^{r-1}A(\lambda,c,\tau)F(\lambda,c,\tau)\,dc
+$$
+
+velocity-space boundary term이 사라진다고 하면
 
 $$
-\boxed{
 \partial_\tau R_r+\partial_\lambda R_{r+1}=rB_r
-}
 $$
 
-**Status:** EXACT.
+이다.
 
----
-
-# 7. Reduced fields $P,u,\Theta$
-
-Define
+## 7. Reduced fields / 축약장
 
 $$
-\boxed{
-P(\lambda,\tau)=R_0=\int F\,dc
-}
+P(\lambda,\tau)=R_0
 $$
 
 $$
-\boxed{
- u(\lambda,\tau)=\mathbb{E}[c\mid\lambda]
-=\frac{R_1}{P}
-}
+u(\lambda,\tau)=\mathrm{E}[c\mid\lambda,\tau]=\frac{R_1}{P}
 $$
 
 $$
-\boxed{
-\Theta(\lambda,\tau)
-=\mathrm{Var}(c\mid\lambda)
-=\mathbb{E}[(c-u)^2\mid\lambda]
-}
+\Theta(\lambda,\tau)=\mathrm{Var}(c\mid\lambda,\tau)
 $$
 
 $$
-\boxed{
-C_3(\lambda,\tau)=\mathbb{E}[(c-u)^3\mid\lambda]
-}
+\Theta(\lambda,\tau)=\mathrm{E}[(c-u)^2\mid\lambda,\tau]
 $$
 
 $$
-\boxed{
-\mathcal A(\lambda,\tau)
-=\mathbb{E}[\ddot\lambda_i\mid\lambda_i=\lambda]
-}
+C_3(\lambda,\tau)=\mathrm{E}[(c-u)^3\mid\lambda,\tau]
 $$
 
-and
-
 $$
-\boxed{
-\Psi(\lambda,\tau)
-=\mathrm{Cov}(c,\ddot\lambda\mid\lambda)
-=\mathbb{E}[(c-u)\ddot\lambda\mid\lambda]
-}
+\mathcal A(\lambda,\tau)=\mathrm{E}[\ddot\lambda_i\mid\lambda_i=\lambda,\tau]
 $$
 
-The first raw moments are
+$$
+\Psi(\lambda,\tau)=\mathrm{Cov}(c,\ddot\lambda\mid\lambda,\tau)
+$$
 
 $$
-\boxed{
-R_0=P,
-\qquad
-R_1=Pu,
-\qquad
+\Psi(\lambda,\tau)=\mathrm{E}[(c-u)\ddot\lambda\mid\lambda,\tau]
+$$
+
+raw moments는
+
+$$
+R_0=P
+$$
+
+$$
+R_1=Pu
+$$
+
+$$
 R_2=P(u^2+\Theta)
-}
 $$
 
 $$
-\boxed{
 R_3=P(u^3+3u\Theta+C_3)
-}
 $$
 
----
+이다.
 
-# 8. Exact continuity and mean-flow equations
+## 8. Exact continuity and mean-flow equations / 정확한 연속·평균류 식
 
-The $r=0$ equation gives
+$r=0$에서
 
 $$
-\boxed{
 \partial_\tau P+\partial_\lambda(Pu)=0
-}
 $$
 
-Define the spacing-space probability current
+을 얻는다.
+
+확률류는
 
 $$
-\boxed{J=Pu}
+J=Pu
 $$
 
-The $r=1$ equation gives
+이다.
+
+$r=1$에서
 
 $$
-\boxed{
-\partial_\tau(Pu)
-+\partial_\lambda[P(u^2+\Theta)]
-=P\mathcal A
-}
+\partial_\tau(Pu)+\partial_\lambda[P(u^2+\Theta)]=P\mathcal A
 $$
 
-Using continuity,
+을 얻는다.
 
 $$
-\boxed{
-D_\tau u
-=\mathcal A-\frac1P\partial_\lambda(P\Theta)
-}
-$$
-
-where
-
-$$
-\boxed{
 D_\tau=\partial_\tau+u\partial_\lambda
-}
 $$
 
-**Status:** EXACT.
-
----
-
-# 9. Correct exact $\Theta$ equation
-
-The $r=2$ raw equation is
+를 사용하면
 
 $$
-\boxed{
-\partial_\tau[P(u^2+\Theta)]
-+\partial_\lambda[P(u^3+3u\Theta+C_3)]
-=2P\mathbb{E}[c\ddot\lambda\mid\lambda]
-}
+D_\tau u=\mathcal A-\frac{1}{P}\partial_\lambda(P\Theta)
 $$
 
-Because
+이다.
+
+## 9. Correct exact variance equation / 정확한 분산식
+
+$r=2$에서
 
 $$
-\mathbb{E}[c\ddot\lambda\mid\lambda]
-=u\mathcal A+\Psi
+\partial_\tau[P(u^2+\Theta)]+\partial_\lambda[P(u^3+3u\Theta+C_3)]=2P\mathrm{E}[c\ddot\lambda\mid\lambda,\tau]
 $$
 
-combining the $r=0,1,2$ balances gives
+을 얻는다.
 
 $$
-\boxed{
-D_\tau\Theta
-+2\Theta\partial_\lambda u
-+\frac1P\partial_\lambda(PC_3)
-=2\Psi
-}
+\mathrm{E}[c\ddot\lambda\mid\lambda,\tau]=u\mathcal A+\Psi
 $$
 
-The shorter form
+이므로
 
 $$
-D_\tau\Theta
-+2\Theta\partial_\lambda u
-+\frac1P\partial_\lambda(PC_3)=0
+D_\tau\Theta+2\Theta\partial_\lambda u+\frac{1}{P}\partial_\lambda(PC_3)=2\Psi
 $$
 
-is only valid under the extra condition
+이다.
+
+$\Psi=0$은 additional condition이며 일반적인 spatial LJ chain에서 자동으로 성립하지 않는다.
+
+## 10. Neighbour-conditioned acceleration / 이웃 조건부 가속도
+
+bulk spacing에서
 
 $$
-\boxed{\Psi=0}
+\ddot\lambda_i=\phi'(\lambda_{i+1})-2\phi'(\lambda_i)+\phi'(\lambda_{i-1})
 $$
 
-For the actual spatial LJ chain, $\Psi=0$ is not automatic because $\ddot\lambda_i$ depends on neighbouring spacings.
+이다.
 
----
-
-# 10. Exact neighbour-conditioned acceleration
-
-For a bulk spacing,
+ordered joint densities $P_2^+$와 $P_2^-$를 사용해
 
 $$
-\ddot\lambda_i
-=\phi'(\lambda_{i+1})-2\phi'(\lambda_i)+\phi'(\lambda_{i-1})
-$$
-
-Let $P_2^+(\lambda,\lambda',\tau)$ and $P_2^-(\lambda,\lambda',\tau)$ be ordered central/right and central/left neighbour joint densities. Define
-
-$$
-\boxed{
-m_+
-=\frac1P\int\phi'(\lambda')P_2^+(\lambda,\lambda',\tau)\,d\lambda'
-}
+m_+=\frac{1}{P}\int\phi'(\lambda')P_2^+(\lambda,\lambda',\tau)\,d\lambda'
 $$
 
 $$
-\boxed{
-m_-
-=\frac1P\int\phi'(\lambda')P_2^-(\lambda,\lambda',\tau)\,d\lambda'
-}
+m_-=\frac{1}{P}\int\phi'(\lambda')P_2^-(\lambda,\lambda',\tau)\,d\lambda'
 $$
 
-Then
+로 두면
 
 $$
-\boxed{
-\mathcal A_{\rm bulk}=m_++m_- -2\phi'(\lambda)
-}
+\mathcal A_{\mathrm{bulk}}=m_++m_- -2\phi'(\lambda)
 $$
 
-For $\Psi$, let $F_2^+(\lambda,c,\lambda',\tau)$ and $F_2^-(\lambda,c,\lambda',\tau)$ include the central spacing rate. Since
+이다.
+
+central rate를 포함한 $F_2^+$와 $F_2^-$를 쓰면
 
 $$
-\mathbb{E}[c-u\mid\lambda]=0
+\Psi_{\mathrm{bulk}}=\frac{1}{P}\iint(c-u)\phi'(\lambda')[F_2^++F_2^-]\,dc\,d\lambda'
 $$
 
-the central-force term vanishes inside the covariance and
+이다. neighbour independence는 필요하지 않다.
+
+## 11. Density-shape relation / 확률밀도 형상식
+
+mean-flow equation을 전개하면
 
 $$
-\boxed{
-\Psi_{\rm bulk}
-=\frac1P\iint
-(c-u)\phi'(\lambda')
-[F_2^++F_2^-]\,dc\,d\lambda'
-}
+\frac{1}{P}\partial_\lambda(P\Theta)=\partial_\lambda\Theta+\Theta\partial_\lambda\ln P
 $$
 
-No neighbour-independence approximation is used.
+이다.
 
----
-
-# 11. Exact instantaneous density-shape relation
-
-From the mean-flow equation,
+따라서
 
 $$
-\frac1P\partial_\lambda(P\Theta)
-=\partial_\lambda\Theta
-+\Theta\partial_\lambda\ln P
+\Theta\partial_\lambda\ln P=\mathcal A-D_\tau u-\partial_\lambda\Theta
 $$
 
-Hence
+이다.
+
+$P>0$ 및 $\Theta>0$인 smooth interval에서는
 
 $$
-\boxed{
-\Theta\partial_\lambda\ln P
-=\mathcal A-D_\tau u-\partial_\lambda\Theta
-}
+\partial_\lambda\ln P=\frac{\mathcal A-D_\tau u}{\Theta}-\partial_\lambda\ln\Theta
 $$
 
-On a smooth interval where $P>0$ and $\Theta>0$,
+이고
 
 $$
-\boxed{
-\partial_\lambda\ln P
-=\frac{\mathcal A-D_\tau u}{\Theta}
--\partial_\lambda\ln\Theta
-}
+P(\lambda,\tau)=\frac{\mathcal N_P(\tau)}{\Theta(\lambda,\tau)}\exp\left(\int_{\lambda_*}^{\lambda}\frac{\mathcal A(\eta,\tau)-D_\tau u(\eta,\tau)}{\Theta(\eta,\tau)}\,d\eta\right)
 $$
 
-Integrating in $\lambda$ gives
+이다.
 
 $$
-\boxed{
-P(\lambda,\tau)
-=\frac{\mathcal N_P(\tau)}{\Theta(\lambda,\tau)}
-\exp\left[
-\int_{\lambda_*}^{\lambda}
-\frac{\mathcal A(\eta,\tau)-D_\tau u(\eta,\tau)}
-{\Theta(\eta,\tau)}\,d\eta
-\right]
-}
-$$
-
-The normalization factor $\mathcal N_P(\tau)$ is determined by
-
-$$
-\boxed{
 \int_0^\infty P(\lambda,\tau)\,d\lambda=1
-}
 $$
 
-At $\Theta=0$ the divided form is invalid; the undivided moment equations remain valid.
+로 $\mathcal N_P$를 정한다. $\Theta=0$에서는 divided form을 사용하지 않는다.
 
----
-
-# 12. Exact time-integral representations
-
-The continuity equation integrates to
+## 12. Exact time-integral forms / 정확한 시간적분형
 
 $$
-\boxed{
-P(\lambda,\tau)
-=P_0(\lambda)
--\partial_\lambda
-\int_{\tau_0}^{\tau}P(\lambda,s)u(\lambda,s)\,ds
-}
+P(\lambda,\tau)=P_0(\lambda)-\partial_\lambda\int_{\tau_0}^{\tau}P(\lambda,s)u(\lambda,s)\,ds
 $$
 
-The first moment integrates to
-
 $$
-\boxed{
-Pu
-=P_0u_0
--\partial_\lambda\int_{\tau_0}^{\tau}P(u^2+\Theta)\,ds
-+\int_{\tau_0}^{\tau}P\mathcal A\,ds
-}
+P(\lambda,\tau)u(\lambda,\tau)=P_0(\lambda)u_0(\lambda)-\partial_\lambda\int_{\tau_0}^{\tau}P(u^2+\Theta)(\lambda,s)\,ds+\int_{\tau_0}^{\tau}P(\lambda,s)\mathcal A(\lambda,s)\,ds
 $$
 
-The second raw moment integrates to
-
 $$
-\boxed{
-P(u^2+\Theta)(\lambda,\tau)
-=P_0(u_0^2+\Theta_0)(\lambda)
--\partial_\lambda\int_{\tau_0}^{\tau}P(u^3+3u\Theta+C_3)\,ds
-+2\int_{\tau_0}^{\tau}P(u\mathcal A+\Psi)\,ds
-}
+P(u^2+\Theta)(\lambda,\tau)=P_0(u_0^2+\Theta_0)(\lambda)-\partial_\lambda\int_{\tau_0}^{\tau}P(u^3+3u\Theta+C_3)(\lambda,s)\,ds+2\int_{\tau_0}^{\tau}P(u\mathcal A+\Psi)(\lambda,s)\,ds
 $$
 
-The full push-forward and characteristic integral forms are given in `MILESTONE25_EXACT_INTEGRAL_REPRESENTATION.md`.
-
----
-
-# 13. Meaning of $\Theta$
-
-Exactly,
+## 13. Characteristic forms / 특성곡선형
 
 $$
-\boxed{
-\mathbb{E}[c^2\mid\lambda]=u^2+\Theta
-}
+\frac{dX}{ds}=u(X(s),s)
 $$
 
-Thus $\Theta$ is the conditional spacing-rate dispersion lost when reducing $F$ to $P$ alone.
-However,
-
 $$
-\frac12(u^2+\Theta)
+X(\tau_0)=\alpha
 $$
 
-is not the full chain kinetic-energy density because the exact kinetic energy uses $\mathbf G_\lambda$ and cross-spacing rate correlations.
+$$
+\mathcal I_u(s;\alpha)=\int_{\tau_0}^{s}\partial_\lambda u(X(r),r)\,dr
+$$
 
----
+continuity equation으로부터
 
-# 14. Same-force history dependence
+$$
+P(X(\tau),\tau)=P_0(\alpha)e^{-\mathcal I_u(\tau;\alpha)}
+$$
 
-At two times $\tau_L$ and $\tau_U$ satisfying
+이다.
+
+$$
+S_\Theta=2\Psi-\frac{1}{P}\partial_\lambda(PC_3)
+$$
+
+로 두면
+
+$$
+\Theta(X(\tau),\tau)=e^{-2\mathcal I_u(\tau;\alpha)}\left(\Theta_0(\alpha)+\int_{\tau_0}^{\tau}e^{2\mathcal I_u(s;\alpha)}S_\Theta(X(s),s)\,ds\right)
+$$
+
+이다.
+
+## 14. Same-load history dependence / 동일하중 이력의존성
 
 $$
 q(\tau_L)=q(\tau_U)=q^*
 $$
 
-with
+$$
+\dot q(\tau_L)>0
+$$
 
 $$
-\dot q(\tau_L)>0,
-\qquad
 \dot q(\tau_U)<0
 $$
 
-define
+로 두고
 
 $$
-\boxed{
 \mathcal R_2(\tau)=\{P(\lambda,\tau),u(\lambda,\tau),\Theta(\lambda,\tau)\}
-}
 $$
 
-If
+를 비교한다.
 
 $$
-\boxed{
 \mathcal R_2(\tau_L)\ne\mathcal R_2(\tau_U)
-}
 $$
 
-then no memoryless scalar-load map
+이면 instantaneous load $q$만의 memoryless map으로 reduced state를 나타낼 수 없다. 이 사실은 dynamic history dependence이며 irreversible dissipation 자체를 증명하지 않는다.
+
+## 15. G1 mean spacing / 평균 간격
 
 $$
-\mathcal R_2=\mathcal S[q(\tau)]
-$$
-
-exists for that trajectory. This establishes dynamic history dependence, not irreversible dissipation.
-
----
-
-# 15. G1 — mean spacing
-
-Define
-
-$$
-\boxed{
 \bar\lambda(\tau)=\int_0^\infty\lambda P(\lambda,\tau)\,d\lambda
-}
 $$
 
 $$
-\boxed{
 \bar a(t)=a_0\bar\lambda(t/t_0)
-}
 $$
 
-Using continuity,
+boundary flux가 사라지면
 
 $$
-\boxed{
-\frac{d\bar\lambda}{d\tau}
-=-[\lambda J]_0^\infty+\int_0^\infty J\,d\lambda
-}
+\frac{d\bar\lambda}{d\tau}=\int_0^\infty P(\lambda,\tau)u(\lambda,\tau)\,d\lambda
 $$
 
-If the spacing-space boundary flux vanishes,
+이다.
+
+## 16. G2 mean intrinsic configurational energy / 평균 고유 배치에너지
 
 $$
-\boxed{
-\frac{d\bar\lambda}{d\tau}
-=\int_0^\infty Pu\,d\lambda
-=\mathbb{E}[c]
-}
-$$
-
----
-
-# 16. G2 — mean intrinsic configurational energy
-
-Define the equilibrium-subtracted interaction energy
-
-$$
-\boxed{
 \Delta\phi(\lambda)=\phi(\lambda)-\phi(1)
-}
 $$
 
-Then
-
 $$
-\boxed{
-\bar U(\tau)
-=U_{\rm ref}\int_0^\infty\Delta\phi(\lambda)P(\lambda,\tau)\,d\lambda
-}
+\bar U(\tau)=U_{\mathrm{ref}}\int_0^\infty\Delta\phi(\lambda)P(\lambda,\tau)\,d\lambda
 $$
 
-For the empirical density over all $M$ spacings,
+boundary flux가 사라지면
 
 $$
-\boxed{
-V_{\rm phys}-MU_{\rm ref}\phi(1)=M\bar U
-}
+\frac{d\bar U}{d\tau}=U_{\mathrm{ref}}\int_0^\infty\phi'(\lambda)P(\lambda,\tau)u(\lambda,\tau)\,d\lambda
 $$
 
-The rate is
+이다.
+
+## 17. G3 irreversible history / 비가역 이력
 
 $$
-\boxed{
-\frac1{U_{\rm ref}}\frac{d\bar U}{d\tau}
-=-[\Delta\phi J]_0^\infty
-+\int_0^\infty\phi'(\lambda)J\,d\lambda
-}
+E_{\mathrm{hyst}}(t)=\int_0^t\dot D_{\mathrm{irr}}(t')\,dt'
 $$
 
-If boundary flux vanishes,
-
 $$
-\boxed{
-\frac{d\bar U}{d\tau}
-=U_{\rm ref}\int_0^\infty\phi'(\lambda)Pu\,d\lambda
-}
+\dot D_{\mathrm{irr}}\ge0
 $$
 
-This is configurational energy, not total mechanical energy.
-
----
-
-# 17. G3 — irreversible hysteresis energy
-
-The fixed observable is
+현재 conservative baseline에서는
 
 $$
-\boxed{
-E_{\rm hyst}(t)=\int_0^t\dot D_{\rm irr}(t')\,dt',
-\qquad
-\dot D_{\rm irr}\ge0
-}
+\dot D_{\mathrm{irr}}=0
 $$
 
-For the current conservative baseline,
-
 $$
-\boxed{
-\dot D_{\rm irr}=0,
-\qquad
-E_{\rm hyst}=0
-}
+E_{\mathrm{hyst}}=0
 $$
 
-If a future physical irreversible node force $r_j^{\rm irr}$ is derived, define
+이다.
+
+future irreversible node force가 유도된다면
 
 $$
-\boxed{
-\dot D_{\rm irr}^*=-\sum_jr_j^{\rm irr}\dot x_j\ge0
-}
+\dot D_{\mathrm{irr}}^*=-\sum_jr_j^{\mathrm{irr}}\dot x_j
 $$
 
-whenever the irreversible force performs nonpositive mechanical power. Then
+이고 dissipative interpretation을 위해
 
 $$
-\boxed{
-\frac{dE_{\rm mech}^*}{d\tau}
-=q\dot x_M-\dot D_{\rm irr}^*
-}
+\dot D_{\mathrm{irr}}^*\ge0
 $$
 
-Over one cycle,
+이어야 한다.
+
+## 18. G4 first passage / 최초통과 균열개시
+
+local tangent-stiffness threshold를
 
 $$
-\boxed{
-W_{\rm ext}^{\rm cyc}
-=\Delta E_{\rm mech}^{\rm cyc}+D_{\rm irr}^{\rm cyc}
-}
-$$
-
-Thus same-force non-retracing alone does not prove $\dot D_{\rm irr}>0$.
-
----
-
-# 18. G4 — mechanical first passage
-
-The operational local instability threshold is defined by
-
-$$
-\boxed{
 \phi''(\lambda_c)=0
-}
 $$
 
-For the active generalized-LJ form,
+로 정의한다.
 
 $$
-\boxed{
-\lambda_c
-=\left(\frac{m+1}{n+1}\right)^{1/(m-n)}
-}
+\lambda_c=\left(\frac{m+1}{n+1}\right)^{1/(m-n)}
 $$
 
-For each spacing,
+각 spacing의 first-passage time은
 
 $$
-\boxed{
-\tau_i^c
-=\inf\{\tau\ge\tau_0:\lambda_i(\tau)\ge\lambda_c\}
-}
+\tau_i^c=\inf\{\tau\ge\tau_0:\lambda_i(\tau)\ge\lambda_c\}
 $$
 
-The instantaneous nonabsorbing tail
+이다.
+
+instantaneous tail은
 
 $$
-\boxed{
 Q_c(\tau)=\int_{\lambda_c}^{\infty}P(\lambda,\tau)\,d\lambda
-}
 $$
 
-is not cumulative first passage.
+이며 cumulative first passage가 아니다.
 
-For finite empirical trajectories define
-
-$$
-\boxed{
-\chi_i(\tau)=\mathbf{1}_{\{\tau<\tau_i^c\}},
-\qquad
-S_M(\tau)=\frac1M\sum_i\chi_i(\tau)
-}
-$$
-
-Then
+survivor subdensity $F_b$의 right boundary에서 incoming $c<0$에 대해
 
 $$
-\boxed{
-F_{{\rm ci},M}^{\rm local}=1-S_M
-}
-$$
-
-For a smooth survivor phase-space subdensity $F_b$ on $0<\lambda<\lambda_c$, impose no inflow from the failed side:
-
-$$
-\boxed{
 F_b(\lambda_c,c,\tau)=0
-\qquad(c<0)
-}
 $$
 
-The outward first-passage flux is
+을 적용한다.
 
 $$
-\boxed{
-j_{\rm esc}(\tau)
-=\int_0^\infty cF_b(\lambda_c^-,c,\tau)\,dc
-}
+j_{\mathrm{esc}}=\int_0^\infty cF_b(\lambda_c^-,c,\tau)\,dc
 $$
 
-Define
-
 $$
-\boxed{
-S(\tau)=\int_0^{\lambda_c}\int_{-\infty}^{\infty}F_b\,dc\,d\lambda
-}
+S(\tau)=\int_0^{\lambda_c}\int_{-\infty}^{\infty}F_b(\lambda,c,\tau)\,dc\,d\lambda
 $$
 
-Then
-
 $$
-\boxed{
-\dot S=-j_{\rm esc},
-\qquad
-F_{\rm ci}^{\rm local}=1-S
-}
+\frac{dS}{d\tau}=-j_{\mathrm{esc}}
 $$
 
-and for $S>0$,
-
 $$
-\boxed{
-h_\tau=\frac{j_{\rm esc}}S=-\frac{d}{d\tau}\ln S,
-\qquad
-h_t=\frac{h_\tau}{t_0}
-}
+F_{\mathrm{ci}}^{\mathrm{local}}=1-S
 $$
 
-The normalized survivor density is
-
 $$
-\boxed{
-\widehat P_b=\frac{P_b}{S},
-\qquad
-P_b(\lambda,\tau)=\int F_b\,dc
-}
+h_\tau=\frac{j_{\mathrm{esc}}}{S}=-\frac{d}{d\tau}\ln S
 $$
 
----
+## 19. Local and specimen probability / 국소·시편 확률
 
-# 19. Local versus specimen probability
-
-For one realization,
+one realization에서
 
 $$
-\boxed{
-\tau_{\rm spec}^c=\min_i\tau_i^c
-}
+\tau_{\mathrm{spec}}^c=\min_i\tau_i^c
 $$
 
-The finite local first-passage fraction $1-S_M$ is not automatically a specimen-to-specimen probability.
-With an ensemble measure $\mu_0$, the exact specimen survival formula is
+이다.
+
+ensemble measure $\mu_0$가 선언되면 specimen survival은
 
 $$
-\boxed{
-S_{\rm spec}(\tau)
-=\int
-\mathbf{1}\left[
-\max_i\sup_{s\in[\tau_0,\tau]}
-\Lambda_i(s;\Gamma_0)<\lambda_c
-\right]
-\mu_0(d\Gamma_0)
-}
+S_{\mathrm{spec}}(\tau)=\int I\left[\max_i\sup_{s\in[\tau_0,\tau]}\Lambda_i(s;\Gamma_0)<\lambda_c\right]\,\mu_0(d\Gamma_0)
 $$
 
-Thus the mathematical survival formula exists; the physical construction and calibration of $\mu_0$ and its correlation scale remain open.
+이다.
 
----
+수학적 survival formula는 존재하지만 실제 재료의 $\mu_0$와 spatial correlation scale은 OPEN이다.
 
-# 20. Exact closure status
+## 20. Closure status / 폐쇄 상태
 
-The full microscopic state
-
-$$
-\boxed{
-\Gamma(\tau)
-=(x_1,\ldots,x_M,\dot x_1,\ldots,\dot x_M)
-}
-$$
-
-is closed under the finite-chain ODEs.
-
-The projected fields satisfy
+full microscopic state는
 
 $$
-\boxed{
-\{P,u,\Theta\}
-\longrightarrow
-\{C_3,\Psi,P_2^\pm,F_2^\pm,\ldots\}
-}
+\Gamma=(x_1,\ldots,x_M,\dot x_1,\ldots,\dot x_M)
 $$
 
-so the three-field PDE is exact but hierarchical rather than autonomous.
-However, the closed microscopic flow yields exact push-forward integrals for all these quantities; see `MILESTONE25_EXACT_INTEGRAL_REPRESENTATION.md`.
+이며 finite ODE 아래 closed deterministic state다.
 
-Therefore
-
-$$
-\boxed{
-\text{lack of autonomous three-field closure}
-\neq
-\text{lack of exact mathematical solution representation}
-}
-$$
-
----
-
-# 21. Active assumption ledger
-
-The active model assumes:
-
-1. one-dimensional normal motion;
-2. identical masses after nondimensionalization;
-3. nearest-neighbour generalized-LJ energy $V^*=\sum_i\phi(\lambda_i)$;
-4. fixed left boundary and prescribed right-end normal force;
-5. current calibration map $q=\sigma_n/E$;
-6. spatial empirical probability over represented spacings;
-7. smooth continuum fields only where moment equations are used;
-8. sufficient velocity-space decay for moment integration by parts;
-9. $P>0$ and $\Theta>0$ only where the divided density-shape formula is used;
-10. $\phi''(\lambda_c)=0$ as the operational local initiation threshold.
-
-The active theory does **not** assume Boltzmann/Gibbs equilibrium, Gaussian/Weibull spacing or life distributions, neighbour independence, stochastic Markov dynamics, white noise, Fokker--Planck, Smoluchowski, empirical fatigue damage, arbitrary viscous damping, independent FEM-element probabilities, FCC geometry, or registry slip.
-
----
-
-# 22. Final governing set
-
-Microscopic mechanics:
+projected fields는
 
 $$
-\boxed{
-\ddot\lambda_i
-=\phi'(\lambda_{i+1})-2\phi'(\lambda_i)+\phi'(\lambda_{i-1})
-}
+P,u,\Theta\to C_3,\Psi,P_2^\pm,F_2^\pm,\ldots
 $$
 
-Empirical phase-space state:
+의 hierarchy를 가진다.
 
-$$
-\boxed{
-F_M
-=\frac1M\sum_i
-\delta(\lambda-\lambda_i)\delta(c-c_i)
-}
-$$
-
-Projected transport:
-
-$$
-\boxed{
-\partial_\tau F+\partial_\lambda(cF)+\partial_c(AF)=0
-}
-$$
-
-Reduced fields:
-
-$$
-\boxed{
-P=\int F\,dc,
-\qquad
-\nu_{\rm reserved}\;\text{is not used},
-\qquad
-\nu_{\rm reserved}\neq u
-}
-$$
-
-and the active mean rate is
-
-$$
-\boxed{
- u=\mathbb{E}[c\mid\lambda],
-\qquad
-\Theta=\mathrm{Var}(c\mid\lambda)
-}
-$$
-
-Continuity:
-
-$$
-\boxed{
-\partial_\tau P+\partial_\lambda(Pu)=0
-}
-$$
-
-Mean-flow balance:
-
-$$
-\boxed{
-D_\tau u
-=\mathcal A-\frac1P\partial_\lambda(P\Theta)
-}
-$$
-
-Density shape:
-
-$$
-\boxed{
-\Theta\partial_\lambda\ln P
-=\mathcal A-D_\tau u-\partial_\lambda\Theta
-}
-$$
-
-Variance balance:
-
-$$
-\boxed{
-D_\tau\Theta
-+2\Theta\partial_\lambda u
-+\frac1P\partial_\lambda(PC_3)
-=2\Psi
-}
-$$
-
-G1:
-
-$$
-\boxed{
-\bar a=a_0\int\lambda P\,d\lambda
-}
-$$
-
-G2:
-
-$$
-\boxed{
-\bar U
-=U_{\rm ref}\int[\phi(\lambda)-\phi(1)]P\,d\lambda
-}
-$$
-
-G3:
-
-$$
-\boxed{
-E_{\rm hyst}=\int\dot D_{\rm irr}\,dt,
-\qquad
-\dot D_{\rm irr}\ge0
-}
-$$
-
-with $\dot D_{\rm irr}=0$ in the present conservative baseline.
-
-G4:
-
-$$
-\boxed{
-\phi''(\lambda_c)=0,
-\qquad
-\dot S=-j_{\rm esc},
-\qquad
-F_{\rm ci}^{\rm local}=1-S
-}
-$$
-
-This is the active mathematical theory. The remaining blockers are physical: an irreversible G3 mechanism, a physical specimen measure/correlation scale, microscopic-to-laboratory fatigue time-scale bridging, and experimental validation.
+따라서 3-field PDE는 exact하지만 autonomous하지 않다. 그러나 full deterministic flow를 투영하면 exact integral representation이 존재한다.

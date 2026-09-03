@@ -1,294 +1,266 @@
-# README — Equation & Symbol Index / 수식·기호 Index
+# Equation and Symbol Index / 수식·기호 Index
 
-This is the entry point for the active mathematical theory.  
-이 파일은 현재 활성 이론의 **수식·기호·용어 색인 진입점**이다.
+이 파일은 `theory-core`의 활성 수학 문서 진입점이다.
 
 ## 1. Authoritative documents / 기준 문서
 
-1. [`docs/EQUATION_SUMMARY_1D_P_U_THETA.md`](docs/EQUATION_SUMMARY_1D_P_U_THETA.md) — **Equation sheet / 핵심 수식 정리본**
-2. [`docs/VARIABLE_INDEX_1D_P_U_THETA.md`](docs/VARIABLE_INDEX_1D_P_U_THETA.md) — **Bilingual symbol dictionary / 영·한 기호 사전**
-3. [`docs/AUXILIARY_SYMBOL_INDEX_1D.md`](docs/AUXILIARY_SYMBOL_INDEX_1D.md) — **Auxiliary symbol dictionary / 보조기호 사전**
-4. [`docs/MASTER_1D_P_U_THETA_FORMULATION.md`](docs/MASTER_1D_P_U_THETA_FORMULATION.md) — **Full differential derivation / 전체 미분형 유도**
-5. [`docs/MILESTONE25_EXACT_INTEGRAL_REPRESENTATION.md`](docs/MILESTONE25_EXACT_INTEGRAL_REPRESENTATION.md) — **Exact integral representations / 정확한 적분해 표현**
-6. [`docs/CRACK_INITIATION_DEFINITION.md`](docs/CRACK_INITIATION_DEFINITION.md) — **Kinetic first passage / 위상공간 최초통과 균열개시**
+1. [`docs/EQUATION_SUMMARY_1D_P_U_THETA.md`](docs/EQUATION_SUMMARY_1D_P_U_THETA.md) — 핵심 수식 정리본
+2. [`docs/VARIABLE_INDEX_1D_P_U_THETA.md`](docs/VARIABLE_INDEX_1D_P_U_THETA.md) — 영·한 기호 사전
+3. [`docs/AUXILIARY_SYMBOL_INDEX_1D.md`](docs/AUXILIARY_SYMBOL_INDEX_1D.md) — 보조기호 사전
+4. [`docs/MASTER_1D_P_U_THETA_FORMULATION.md`](docs/MASTER_1D_P_U_THETA_FORMULATION.md) — 전체 미분형 유도
+5. [`docs/MILESTONE25_EXACT_INTEGRAL_REPRESENTATION.md`](docs/MILESTONE25_EXACT_INTEGRAL_REPRESENTATION.md) — 정확한 적분 표현
+6. [`docs/CRACK_INITIATION_DEFINITION.md`](docs/CRACK_INITIATION_DEFINITION.md) — 최초통과 균열개시 정의
 
-## 2. Mandatory symbol-definition contract / 기호 정의 강제 규칙
+## 2. Mandatory symbol-definition contract / 기호 정의 규칙
 
-A new mathematical symbol is not considered defined unless the symbol index is updated at the same time.  
-새 수학기호를 도입할 때 기호 Index를 동시에 갱신하지 않으면 이론상 정의된 기호로 인정하지 않는다.
+새 기호를 도입할 때는 해당 기호의 다음 항목을 Index에 함께 추가한다.
 
-Every new symbol entry MUST include:
+- Symbol / 기호
+- Equation definition / 수식적 정의
+- English term / 영문 명칭
+- Korean term / 한국어 명칭
+- Mathematical definition / 수학적 정의
+- Physical definition / 물리적 정의
+- Unit or scaling / 단위 또는 스케일
+- Status / 상태
+- Dependencies / 선행 정의
 
-| Required field | English | 한국어 |
-|---|---|---|
-| Symbol | exact LaTeX symbol | 정확한 LaTeX 기호 |
-| Equation definition | defining equation or operator identity | 정의식 또는 연산자 항등식 |
-| English term | standard English name | 영문 명칭 |
-| Korean term | Korean name | 한국어 명칭 |
-| Mathematical definition | domain, conditioning, measure, operation, scalar/vector role | 정의역, 조건, 측도, 연산, 스칼라/벡터 역할 |
-| Physical definition | represented physical quantity/process | 나타내는 물리량/과정 |
-| Unit / scaling | SI unit or nondimensional scaling | SI 단위 또는 무차원 스케일 |
-| Status | MODEL / DEFINITION / EXACT / CONDITIONAL / OPEN | 모델 / 정의 / 정확식 / 조건부 / 미완성 |
-| Dependencies | symbols/equations required first | 선행 기호/식 |
+수식으로 정의할 수 있는 기호는 문장 설명만으로 끝내지 않는다. 같은 기호를 서로 다른 수학적 객체에 중복 사용하지 않는다.
 
-A prose-only definition is insufficient when a mathematical defining relation exists.  
-수식으로 정의 가능한 기호는 문장 설명만으로 정의하지 않는다.
+## 3. Markdown math safety rule / Markdown 수식 안전 규칙
 
-A symbol must not silently change meaning between files. If the same glyph would represent a different mathematical object, rename or decorate the symbol explicitly.
+이 문서군은 렌더러 호환성을 위해 보수적인 LaTeX 부분집합만 사용한다.
 
-## 3. Markdown and math-rendering rule / Markdown·수식 렌더링 규칙
-
-- Display math uses `$$ ... $$` only.
-- Inline math uses `$...$` only.
-- Do not use `\[` or `\]` in Markdown math.
-- Do not use `\(` or `\)` in Markdown math.
-- `\operatorname{...}` and `\operatorname*{...}` are forbidden because the target renderer rejects them. Use `\mathrm{...}` instead.
-- Write expectation as `\mathbb{E}`, not `\mathbb E`.
-- Write indicator symbols with explicit braces, for example `\mathbf{1}`.
-- Do not place display-math blocks inside Markdown tables.
-- Keep a blank line before and after every display-math block.
-- Use fenced code blocks only for literal code or plain-text pseudocode, not for equations that should render as math.
+- Inline math: `$ ... $`
+- Display math: `$$ ... $$`
+- 사용 금지: `\operatorname`, `\boxed`, `\text`, `\begin`, `\end`, `\mathbb`, `\mathbf`, `\boldsymbol`, `\mathsf`
+- 기대값: `\mathrm{E}`
+- 분산: `\mathrm{Var}`
+- 공분산: `\mathrm{Cov}`
+- 지시함수: `I[condition]`
+- display 수식은 Markdown table 안에 넣지 않는다.
+- 여러 줄 수식은 정렬 environment 대신 여러 개의 독립 `$$ ... $$` 블록으로 나눈다.
+- 수식 안에 긴 영어/한국어 문장을 넣지 않는다.
 
 ## 4. Active mathematical chain / 활성 수학 체계
 
 $$
-\boxed{
-\text{1D nonlinear generalized-LJ chain}
-\rightarrow
+\mathrm{1D\ LJ\ chain}
+\to
 \Phi^q_{\tau,\tau_0}
-\rightarrow
+\to
 F(\lambda,c,\tau)
-\rightarrow
-\{P,u,\Theta\}
-\rightarrow
-\{\bar a,\bar U,S,F_{\rm ci}\}
-}
+\to
+P(\lambda,\tau),u(\lambda,\tau),\Theta(\lambda,\tau)
 $$
 
-The finite LJ dynamics is closed. The one-point $P$–$u$–$\Theta$ PDEs are exact but hierarchical, and the same reduced fields also possess exact full-flow integral representations.
+$$
+P,u,\Theta
+\to
+\bar a,\bar U,S,F_{ci}
+$$
+
+물리 좌표와 무차원 좌표의 관계는
+
+$$
+\lambda=\frac{a}{a_0}
+$$
+
+$$
+\tau=\frac{t}{t_0}
+$$
+
+이다. 따라서 물리적 분포와 무차원 분포는 서로 다른 밀도이며 Jacobian을 포함해 연결한다.
+
+$$
+P_a(a,t)\,da=P_\lambda(\lambda,t)\,d\lambda
+$$
+
+$$
+P_\lambda(\lambda,t)=a_0 P_a(a_0\lambda,t)
+$$
 
 ## 5. Governing-equation index / 지배방정식 Index
 
-### E01 — generalized-LJ energy / generalized-LJ 에너지
+### E01. Generalized-LJ energy
 
 $$
-\boxed{
-\phi(\lambda)
-=
-\frac{\lambda^{-m}}{m(m-n)}
--
-\frac{\lambda^{-n}}{n(m-n)}
-}
+\phi(\lambda)=\frac{\lambda^{-m}}{m(m-n)}-\frac{\lambda^{-n}}{n(m-n)}
 $$
 
-### E02 — bulk spacing dynamics / 내부 spacing 동역학
+### E02. Bulk spacing dynamics
 
 $$
-\boxed{
-\ddot\lambda_i
-=
-\phi'(\lambda_{i+1})-2\phi'(\lambda_i)+\phi'(\lambda_{i-1})
-}
+\ddot\lambda_i=\phi'(\lambda_{i+1})-2\phi'(\lambda_i)+\phi'(\lambda_{i-1})
 $$
 
-### E03 — empirical phase-space measure / 경험적 위상공간 측도
+### E03. Empirical phase-space measure
 
 $$
-\boxed{
-F_M(\lambda,c,\tau)
-=\frac1M\sum_i
-\delta(\lambda-\lambda_i)\delta(c-c_i)
-}
+F_M(\lambda,c,\tau)=\frac{1}{M}\sum_i\delta(\lambda-\lambda_i)\delta(c-c_i)
 $$
 
-### E04 — projected kinetic transport / 투영 위상공간 수송
+### E04. Projected phase-space transport
 
 $$
-\boxed{
 \partial_\tau F+\partial_\lambda(cF)+\partial_c(AF)=0
-}
 $$
 
-### E05 — continuity / 연속방정식
+### E05. Continuity
 
 $$
-\boxed{
 \partial_\tau P+\partial_\lambda(Pu)=0
-}
 $$
 
-### E06 — mean-spacing-rate equation / 조건부 평균 spacing-rate 식
+### E06. Conditional mean spacing-rate balance
 
 $$
-\boxed{
-D_\tau u
-=\mathcal A-\frac1P\partial_\lambda(P\Theta)
-}
+D_\tau u=\mathcal A-\frac{1}{P}\partial_\lambda(P\Theta)
 $$
 
-### E07 — exact $\Theta$ equation / 정확한 $\Theta$ 식
+### E07. Exact variance balance
 
 $$
-\boxed{
-D_\tau\Theta
-+2\Theta\partial_\lambda u
-+\frac1P\partial_\lambda(PC_3)
-=2\Psi
-}
+D_\tau\Theta+2\Theta\partial_\lambda u+\frac{1}{P}\partial_\lambda(PC_3)=2\Psi
 $$
 
-### E08 — density-shape identity / 확률밀도 형상 항등식
+### E08. Density-shape identity
 
 $$
-\boxed{
-\Theta\partial_\lambda\ln P
-=\mathcal A-D_\tau u-\partial_\lambda\Theta
-}
+\Theta\partial_\lambda\ln P=\mathcal A-D_\tau u-\partial_\lambda\Theta
 $$
 
-### E09 — instantaneous integral form of $P$ / $P$의 순간 적분형
+### E09. Instantaneous integral form of the density
 
 $$
-\boxed{
-P(\lambda,\tau)
-=
-\frac{\mathcal N_P(\tau)}{\Theta(\lambda,\tau)}
-\exp\!\left[
-\int_{\lambda_*}^{\lambda}
-\frac{\mathcal A-D_\tau u}{\Theta}\,d\eta
-\right]
-}
+P(\lambda,\tau)=\frac{\mathcal N_P(\tau)}{\Theta(\lambda,\tau)}\exp\left(\int_{\lambda_*}^{\lambda}\frac{\mathcal A(\eta,\tau)-D_\tau u(\eta,\tau)}{\Theta(\eta,\tau)}\,d\eta\right)
 $$
 
-### E10 — exact full-flow push-forward / 전체 흐름의 정확한 push-forward
+이 식은 smooth region에서 $P>0$ 및 $\Theta>0$일 때만 나눗셈 형태로 사용한다.
+
+### E10. Exact full-flow push-forward
 
 $$
-\boxed{
-F(\lambda,c,\tau)
-=\frac1M\sum_i\int
-\delta[\lambda-\Lambda_i(\tau;\Gamma_0)]
-\delta[c-C_i(\tau;\Gamma_0)]
-\,\mu_0(d\Gamma_0)
-}
+F(\lambda,c,\tau)=\frac{1}{M}\sum_i\int\delta(\lambda-\Lambda_i(\tau;\Gamma_0))\delta(c-C_i(\tau;\Gamma_0))\,\mu_0(d\Gamma_0)
 $$
 
-### E11 — exact $\Theta$ characteristic integral / $\Theta$의 정확한 특성곡선 적분해
+### E11. Characteristic integral for the variance
 
 $$
-\boxed{
-\Theta(X(\tau),\tau)
-=e^{-2\mathcal I_u(\tau;\alpha)}
-\left[
-\Theta_0(\alpha)
-+\int_{\tau_0}^{\tau}
- e^{2\mathcal I_u(s;\alpha)}S_\Theta(X(s),s)\,ds
-\right]
-}
+\mathcal I_u(s;\alpha)=\int_{\tau_0}^{s}\partial_\lambda u(X(r),r)\,dr
 $$
 
-with
-
 $$
-\boxed{
-S_\Theta=2\Psi-\frac1P\partial_\lambda(PC_3)
-}
+S_\Theta=2\Psi-\frac{1}{P}\partial_\lambda(PC_3)
 $$
 
-### E12 — G1 mean spacing / G1 평균 간격
+$$
+\Theta(X(\tau),\tau)=e^{-2\mathcal I_u(\tau;\alpha)}\left(\Theta_0(\alpha)+\int_{\tau_0}^{\tau}e^{2\mathcal I_u(s;\alpha)}S_\Theta(X(s),s)\,ds\right)
+$$
+
+### E12. G1 mean spacing
 
 $$
-\boxed{
 \bar a=a_0\int\lambda P(\lambda,\tau)\,d\lambda
-}
 $$
 
-### E13 — G2 mean intrinsic configurational energy / G2 평균 고유 배치에너지
+### E13. G2 mean intrinsic configurational energy
 
 $$
-\boxed{
-\bar U
-=U_{\rm ref}\int[\phi(\lambda)-\phi(1)]P(\lambda,\tau)\,d\lambda
-}
+\bar U=U_{\mathrm{ref}}\int[\phi(\lambda)-\phi(1)]P(\lambda,\tau)\,d\lambda
 $$
 
-### E14 — G3 irreversible history / G3 비가역 에너지 이력
+### E14. G3 irreversible history
 
 $$
-\boxed{
-E_{\rm hyst}(t)=\int_0^t\dot D_{\rm irr}(t')\,dt',
-\qquad\dot D_{\rm irr}\ge0
-}
+E_{\mathrm{hyst}}(t)=\int_0^t\dot D_{\mathrm{irr}}(t')\,dt'
 $$
 
-Current conservative baseline:
-
 $$
-\boxed{\dot D_{\rm irr}=0}
+\dot D_{\mathrm{irr}}\ge0
 $$
 
-### E15 — local stability threshold / 국소 안정성 상실점
+현재 보존계 baseline에서는
 
 $$
-\boxed{
-\phi''(\lambda_c)=0,
-\qquad
+\dot D_{\mathrm{irr}}=0
+$$
+
+이다.
+
+### E15. Local mechanical threshold
+
+$$
+\phi''(\lambda_c)=0
+$$
+
+$$
 \lambda_c=\left(\frac{m+1}{n+1}\right)^{1/(m-n)}
-}
 $$
 
-### E16 — specimen survival integral / 시편 생존 적분식
+### E16. Specimen survival
 
 $$
-\boxed{
-S_{\rm spec}(\tau)
-=\int
-\mathbf{1}\!\left[
-\max_i\sup_{s\in[\tau_0,\tau]}\Lambda_i(s;\Gamma_0)<\lambda_c
-\right]\mu_0(d\Gamma_0)
-}
+S_{\mathrm{spec}}(\tau)=\int I\left[\max_i\sup_{s\in[\tau_0,\tau]}\Lambda_i(s;\Gamma_0)<\lambda_c\right]\,\mu_0(d\Gamma_0)
 $$
 
-## 6. Symbol groups / 기호 그룹
+## 6. Core definitions / 핵심 정의
 
-The complete entries live in `docs/VARIABLE_INDEX_1D_P_U_THETA.md` and `docs/AUXILIARY_SYMBOL_INDEX_1D.md`.
+### Normalized spacing / 무차원 간격
 
-- **Scales / 스케일:** $t,\tau,t_0,m_a,a_0,E,A_0,U_{\rm ref},F_{\rm ref}$
-- **Loading / 하중:** $\sigma_n,\sigma_m,\sigma_a,f,\omega^*,F_{\rm ext},q$
-- **Microscopic chain / 미시 사슬:** $M,x_i,\lambda_i,a_i,c_i,m,n,\phi,V^*,T^*,E_{\rm mech}^*,\mathbf L,\mathbf G_\lambda$
-- **Projected probability / 투영 확률:** $F_M,P_M,F,P,A,\mathcal A,J$
-- **Moments / 모멘트:** $u,\Theta,C_3,\Psi,R_r,B_r$
-- **Neighbour correlations / 이웃 상관:** $P_2^\pm,F_2^\pm,m_\pm$
-- **Integral solution / 적분해:** $\Gamma,\Gamma_0,\Phi^q,\mu_0,\Lambda_i,C_i,A_i,X,\alpha,\mathcal I_u,S_\Theta,\lambda_*,\mathcal N_P$
-- **Observables / 관측량:** $\bar\lambda,\bar a,\Delta\phi,\bar U,\dot D_{\rm irr},E_{\rm hyst}$
-- **First passage / 최초통과:** $\lambda_c,\tau_i^c,\chi_i,F_b,P_b,S,j_{\rm esc},h,\widehat P_b,S_{\rm local},S_{\rm spec},F_{\rm ci}^{\rm local},F_{\rm ci}^{\rm spec}$
+$$
+\lambda=\frac{a}{a_0}
+$$
 
-## 7. Term glossary / 핵심 용어 Index
+### Spacing rate / 간격 변화율
 
-| English term | 한국어 | Mathematical role / 수학적 역할 | Physical role / 물리적 역할 |
-|---|---|---|---|
-| normalized spacing | 무차원 원자층간격 | $\lambda=a/a_0$ | local normal opening/stretch |
-| spacing rate | 간격 변화율 | $c=d\lambda/d\tau$ | local opening/closing rate |
-| empirical measure | 경험적 측도 | finite sum of Dirac masses | distribution generated directly from represented spacings |
-| phase-space density | 위상공간 밀도 | density in $(\lambda,c)$ | joint population of spacing and spacing-rate states |
-| marginal density | 주변밀도 | $P=\int F\,dc$ | spacing distribution after velocity information is projected out |
-| conditional mean | 조건부 평균 | $u=\mathbb{E}[c\mid\lambda]$ | mean opening/closing rate at fixed spacing |
-| conditional variance | 조건부 분산 | $\Theta=\mathrm{Var}(c\mid\lambda)$ | unresolved spread of spacing rates at fixed spacing |
-| conditional acceleration | 조건부 가속도 | $\mathcal A=\mathbb{E}[\ddot\lambda\mid\lambda]$ | mean microscopic acceleration at a given spacing |
-| acceleration covariance | 가속도 공분산 | $\Psi=\mathrm{Cov}(c,\ddot\lambda\mid\lambda)$ | coupling between rate and acceleration fluctuations |
-| moment hierarchy | 모멘트 계층 | $\partial_\tau R_r+\partial_\lambda R_{r+1}=rB_r$ | information lost under projection |
-| push-forward | 푸시포워드/전방사상 측도 | image of $\mu_0$ under $\Phi^q$ | evolution of an initial microscopic population under deterministic mechanics |
-| characteristic curve | 특성곡선 | $dX/ds=u(X,s)$ | trajectory in spacing space transported by mean flow |
-| Volterra integral equation | 볼테라 적분방정식 | present state expressed using past-time integrals | exact time-history form of reduced balances |
-| first passage | 최초통과 | first hitting of $\lambda_c$ | local mechanical initiation event |
-| survival | 생존 | probability/mass not yet first-passed | intact local/specimen population |
-| hazard | 위험률/개시율 | $h=-d\ln S/d\tau$ | instantaneous initiation rate conditional on survival |
-| absorbing boundary | 흡수경계 | no inflow from failed side | prevents a failed trajectory from being counted as intact again |
-| closure | 폐쇄/클로저 | higher statistics expressed through retained fields | extra assumption needed for an autonomous reduced solver |
-| history dependence | 이력의존성 | same forcing value can have different reduced state | loading and unloading microscopic states do not retrace |
-| irreversible dissipation | 비가역 소산 | $\dot D_{\rm irr}\ge0$ | energy permanently removed from recoverable mechanical storage |
+$$
+c=\frac{d\lambda}{d\tau}
+$$
 
-## 8. Scope warning / 범위 주의
+### Marginal density / 주변밀도
 
-The current theory has an exact mathematical integral representation for the reduced state, but **G3 irreversible physics, the physical specimen measure $\mu_0$, laboratory fatigue time-scale bridging, and experimental validation remain open physical problems.**
+$$
+P(\lambda,\tau)=\int F(\lambda,c,\tau)\,dc
+$$
 
-현재 이론은 축약상태의 정확한 적분 표현까지 갖지만, **G3 비가역 물리, 실제 시편의 $\mu_0$, 실험실 피로 시간척도 연결, 실험검증은 아직 물리적으로 미완성**이다.
+### Conditional mean / 조건부 평균
+
+$$
+u(\lambda,\tau)=\mathrm{E}[c\mid\lambda,\tau]
+$$
+
+### Conditional variance / 조건부 분산
+
+$$
+\Theta(\lambda,\tau)=\mathrm{Var}(c\mid\lambda,\tau)=\mathrm{E}[(c-u)^2\mid\lambda,\tau]
+$$
+
+### Conditional acceleration / 조건부 가속도
+
+$$
+\mathcal A(\lambda,\tau)=\mathrm{E}[\ddot\lambda\mid\lambda,\tau]
+$$
+
+### Rate-acceleration covariance / 속도-가속도 공분산
+
+$$
+\Psi(\lambda,\tau)=\mathrm{Cov}(c,\ddot\lambda\mid\lambda,\tau)
+$$
+
+### Probability current / 확률류
+
+$$
+J(\lambda,\tau)=P(\lambda,\tau)u(\lambda,\tau)
+$$
+
+## 7. Scope / 범위
+
+현재 수학적으로는 finite deterministic chain, exact projected transport, moment hierarchy, instantaneous density-shape relation, exact push-forward integral, characteristic integral, 그리고 first-passage survival 표현까지 정의돼 있다.
+
+아직 물리적으로 열려 있는 항목은 다음과 같다.
+
+- 비가역 G3 microscopic mechanism
+- 실제 시편의 초기 측도 $\mu_0$와 spatial correlation scale
+- 원자 시간척도와 실험실 피로 시간척도의 연결
+- 실험 검증 및 calibration
