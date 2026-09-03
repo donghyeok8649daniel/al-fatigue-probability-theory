@@ -7,6 +7,7 @@ Manuscript-only branch for publication artifacts.
 - Canonical entry point: `paper/main.tex`
 - Current paper body: `paper/fatigue_probability_main.tex`
 - Current direction: 1D deterministic normal generalized-LJ chain -> mechanically generated spacing probability -> exact P-u-Theta transport -> tail flux / first passage -> G1, G2 and G4.
+- Initial-state supplement: `paper/initial_state_probability_note.tex` derives exact `P0`/`F0` from the microscopic initial state and records the non-uniqueness of future `P` from one-point `P0` or `F0` alone when neighbor ordering is discarded.
 - G3 nonzero irreversible dissipation remains physically open.
 - Registry `s` is retained only as a non-mainline plasticity extension. No FCC reconstruction is part of the current manuscript.
 
@@ -26,3 +27,4 @@ Not owned here: theory implementation, FEM/simulation code, numerical result gen
 Validated equations/results are imported conceptually from `theory-core` and `numerical-fem`; publication integration is reviewed through `integration`.
 
 The current tail/first-passage validation is generated on `numerical-fem` by `simulations/verify_probability_tail_first_passage.py`, with results under `results/data/probability_tail_first_passage/`.
+The current initial-data sufficiency audit is generated on `numerical-fem` by `simulations/verify_initial_data_sufficiency.py`, with results under `results/data/initial_data_sufficiency/`.
