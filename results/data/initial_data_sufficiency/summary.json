@@ -1,0 +1,40 @@
+{
+  "classification": "deterministic finite-chain reduced-initial-data counterexample",
+  "model": {
+    "m": 12.19,
+    "n": 6.0,
+    "dt": 0.0001,
+    "end_time": 1.0,
+    "external_force": 0.0,
+    "number_of_spacings": 8
+  },
+  "initial_data": {
+    "spacing_multiset_identical": true,
+    "rate_multiset_identical": true,
+    "one_point_P0_identical": true,
+    "one_point_F0_identical": true,
+    "ordered_neighbor_structure_identical": false,
+    "spacing_order_A": [0.98, 0.99, 1.0, 1.01, 1.02, 1.005, 0.995, 1.015],
+    "spacing_order_B": [0.98, 1.02, 1.0, 0.995, 0.99, 1.015, 1.01, 1.005]
+  },
+  "analytic_local_check": {
+    "second_derivative_of_mean_lambda_squared_A": -0.0035129887491351097,
+    "second_derivative_of_mean_lambda_squared_B": -0.0018565264686519784
+  },
+  "final_state": {
+    "empirical_KS_distance_between_spacing_distributions": 0.375,
+    "mean_spacing_A": 1.001187732734359,
+    "mean_spacing_B": 1.0015808093785,
+    "variance_spacing_A": 7.328110644697918e-05,
+    "variance_spacing_B": 1.816367517233919e-05,
+    "max_sorted_spacing_difference": 0.010366315110223345,
+    "spacing_A": [0.9859480538797187, 0.9896172815422797, 0.9989515911856544, 1.0086673628888412, 1.0116463928159876, 1.006213275324237, 1.0059671729341053, 1.0024907313040483],
+    "spacing_B": [0.9967064856080821, 0.9971341218027017, 1.003191392767792, 0.9963143689899421, 1.0015081939541073, 1.0040058902151694, 1.0090287433465184, 1.0047572783436864]
+  },
+  "interpretation": [
+    "P0 alone is not sufficient because it discards rates and spatial ordering.",
+    "Even one-point F0(lambda,c) is not sufficient: the two chains have exactly the same multiset of spacing/rate pairs but different neighbor ordering.",
+    "The future one-point spacing distributions differ under the same deterministic generalized-LJ dynamics and the same loading.",
+    "The ordered spacing/rate state, equivalently Gamma0 for the fixed-left chain, remains an exact sufficient deterministic initialization."
+  ]
+}
