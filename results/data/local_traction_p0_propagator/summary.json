@@ -1,0 +1,88 @@
+{
+  "classification": "candidate local-traction P0-to-P characteristic audit",
+  "status": "candidate reduced model; not exact finite-chain projection",
+  "model": {
+    "m": 12.19,
+    "n": 6.0,
+    "E_pa": 69000000000.0,
+    "stress_mean_pa": 100000000.0,
+    "stress_amplitude_pa": 100000000.0,
+    "q_mean": 0.0014492753623188406,
+    "q_amplitude": 0.0014492753623188406,
+    "omega_star": 0.02,
+    "dt": 0.02,
+    "cycles": 3,
+    "number_of_characteristics": 5001,
+    "diagnostic_P0_support": [0.997, 1.003],
+    "diagnostic_P0_sampling": "uniform quadrature weights over explicit bounded support; not a physical aluminum P0 assumption",
+    "initial_rate_condition": "c(lambda0,0)=0",
+    "tail_threshold": 1.004
+  },
+  "checks": {
+    "same_applied_q_KS_initial_vs_half_cycle": 0.5826834633073386,
+    "same_phase_KS_cycle1_vs_cycle2": 0.6926614677064586,
+    "max_abs_characteristic_work_minus_energy": 9.190989332379202e-10,
+    "first_passage_monotone_at_cycle_ends": true,
+    "snapshot_tail_monotone_at_cycle_ends": false
+  },
+  "cycle_end_results": [
+    {
+      "cycle": 0,
+      "snapshot_tail_fraction": 0.0,
+      "first_passage_fraction": 0.0,
+      "mean_lambda": 1.0,
+      "variance_lambda": 3.001199999999894e-06,
+      "mean_energy_change": 0.0,
+      "mean_external_work": 0.0
+    },
+    {
+      "cycle": 1,
+      "snapshot_tail_fraction": 0.0,
+      "first_passage_fraction": 0.667866426714657,
+      "mean_lambda": 1.001088927273435,
+      "variance_lambda": 1.9194083076666916e-07,
+      "mean_energy_change": 1.6210079928872988e-06,
+      "mean_external_work": 1.6212469163319128e-06
+    },
+    {
+      "cycle": 2,
+      "snapshot_tail_fraction": 0.27914417116576684,
+      "first_passage_fraction": 0.6680663867226555,
+      "mean_lambda": 1.0027656811129064,
+      "variance_lambda": 2.3085351919461103e-06,
+      "mean_energy_change": 4.031872592119414e-06,
+      "mean_external_work": 4.031940796225959e-06
+    },
+    {
+      "cycle": 3,
+      "snapshot_tail_fraction": 0.1833633273345331,
+      "first_passage_fraction": 0.6680663867226555,
+      "mean_lambda": 1.0025802907671497,
+      "variance_lambda": 1.6954219504685783e-06,
+      "mean_energy_change": 3.7104668830949936e-06,
+      "mean_external_work": 3.710582675202906e-06
+    }
+  ],
+  "same_force_snapshots": {
+    "initial": {
+      "q": 0.0014492753623188406,
+      "mean_lambda": 1.0,
+      "variance_lambda": 3.001199999999894e-06
+    },
+    "half_cycle": {
+      "q": 0.0014492647153473367,
+      "mean_lambda": 1.0023869126796425,
+      "variance_lambda": 1.1942327954953815e-06,
+      "snapshot_tail_fraction": 0.0657868426314737
+    }
+  },
+  "interpretation": [
+    "Under the candidate local-traction assumption, an initially static F0 is fixed by P0 alone as F0=P0*delta(c).",
+    "The supplied stress history and local characteristic equations then define a unique push-forward P(t) without ordered atom positions.",
+    "The same applied stress at different phases can correspond to different P because characteristic rates retain history internally.",
+    "Snapshot tail mass is not cumulative; first-passage mass is cumulative.",
+    "The diagnostic bounded P0 is not a proposed physical aluminum initial distribution.",
+    "A delta P0 with identical initial rates and identical local stress histories would remain a delta and would not generate a tail by itself.",
+    "The candidate has not yet been validated as an accurate replacement for the finite chain or for experimental aluminum fatigue behavior."
+  ]
+}
