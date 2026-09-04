@@ -13,7 +13,8 @@ The authoritative mainline is split into two layers: an exact microscopic refere
 9. `PERIODIC_P_FIRST_PASSAGE_SEPARATION.md` — periodic PDF versus cumulative first passage;
 10. `PEAK_HAZARD_ASYMPTOTICS_AND_IDENTIFIABILITY.md` — tensile-peak hazard asymptotic and future $A_c$ identification route;
 11. `EXPERIMENTAL_FALSIFICATION_PLAN_REDUCED_CLOSURE.md` — ordered validation/rejection tests;
-12. `PURE_NORMAL_CYCLE_ACCUMULATION_NO_GO_AND_LITERATURE_CHECK.md` — final frequency-scaling no-go and external aluminum consistency check.
+12. `PURE_NORMAL_CYCLE_ACCUMULATION_NO_GO_AND_LITERATURE_CHECK.md` — final frequency-scaling no-go and external aluminum consistency check;
+13. `FINAL_RESEARCH_VERDICT_2026-09-05.md` — current final synthesis and scope decision.
 
 ## Layer A — exact microscopic reference
 
@@ -181,7 +182,7 @@ Registry/kink calculations remain a plasticity/defect extension; long-lived trap
 The strict pure-normal model now has a proven cycle-accumulation limitation. A deterministic label-preserving quasistatic cycle cannot create indefinitely renewed first passages. With fast stationary thermal renewal, phase-controlled periodic loading gives
 
 $$
-\mathcal H_{\mathrm{cycle}}\propto\frac1f,
+\mathcal H_f\propto\frac1f,
 $$
 
 so the model becomes predominantly elapsed-time controlled. External room-temperature aluminum evidence includes weak frequency sensitivity in high-purity aluminum over a broad conventional-frequency range and single-crystal crack-initiation observations tied to cyclic slip/dislocation structure. Therefore the current closure is retained as a **normal-instability submodel**, not yet as a complete room-temperature pure-Al fatigue mechanism.
