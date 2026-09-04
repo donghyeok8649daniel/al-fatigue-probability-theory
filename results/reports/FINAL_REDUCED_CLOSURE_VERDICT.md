@@ -7,10 +7,10 @@ This report accompanies `simulations/audit_final_reduced_closure_sensitivity.py`
 The reduced laboratory model is closed by combining:
 
 1. quasistatic stable-branch transport of the structural spacing distribution;
-2. a finite-temperature rare transition-state flux to the declared normal-instability boundary;
+2. a finite-temperature positive-flux transition-state approximation to the declared normal-instability boundary;
 3. survivor mass loss as the cumulative first-passage memory.
 
-The resulting local equation is
+On the intact domain $\lambda<\lambda_c$,
 
 $$
 \partial_tP_b
@@ -29,11 +29,13 @@ k_c
 \exp\left[-\frac{EA_ca_0\Delta\psi_c(\lambda)}{k_BT}\right].
 $$
 
+The rate expression is used only under the declared high-barrier, harmonic-well, fast-intrawell-equilibration approximation and away from the immediate spinodal neighbourhood. If the quasistatic stable branch itself reaches $\lambda_c$, the local state is absorbed deterministically rather than extrapolating the harmonic prefactor through $\phi''\to0$. A dynamical transmission/recrossing correction may be required by higher-fidelity calculations.
+
 No value of $A_c$ is selected here.
 
 ## Sensitivity
 
-For the historical Al bridge and a 300 K, 20 Hz, $100\pm100$ MPa protocol, the barrier associated with one reference atomic area is only about 0.02 eV. The event is therefore not rare at that scale. Increasing the coherent area multiplies the barrier and changes the local hazard exponentially.
+For the historical Al bridge and a 300 K, 20 Hz, $100\pm100$ MPa protocol, the effective-potential climb associated with one reference atomic area is only about 0.02 eV. The event is therefore not rare at that scale. Increasing the coherent area multiplies the energy climb and changes the local hazard exponentially.
 
 The sensitivity sweep gives approximately:
 
@@ -44,7 +46,7 @@ The sensitivity sweep gives approximately:
 | 50 | $2.30\times10^{-6}$ | $3.02\times10^5$ |
 | 60 | $1.16\times10^{-9}$ | $5.97\times10^8$ |
 
-These values are not a fit and do not identify the physical characteristic area. They demonstrate the correct high-cycle structure: one local event can have survival extremely close to one per cycle while cumulative first passage remains finite over many cycles.
+These values are not a fit and do not identify the physical characteristic area. Rows that do not satisfy the rare-event assumption are **failure-of-assumption diagnostics**, not quantitative fatigue-life predictions. The rare-event rows demonstrate the desired high-cycle structure: one local event can have survival extremely close to one per cycle while cumulative first passage remains finite over many cycles.
 
 ## Rejected alternatives summarized
 
@@ -57,4 +59,4 @@ These values are not a fit and do not identify the physical characteristic area.
 
 ## Interpretation
 
-The successful mathematical endpoint is not a complete experimentally validated theory of real Al fatigue. It is a closed and falsifiable **1D normal-instability initiation submodel**. The next unknowns are calibration/validation quantities: $A_c$, physical $P_0$, recrossing/transmission correction, the operational initiation boundary, and specimen-scale correlation structure.
+The successful mathematical endpoint is not a complete experimentally validated theory of real Al fatigue. It is a closed and falsifiable **1D normal-instability initiation submodel under a declared transition-state approximation**. The next unknowns are calibration/validation quantities: $A_c$, physical $P_0$, transmission/recrossing correction, the operational initiation boundary, and specimen-scale correlation structure.
