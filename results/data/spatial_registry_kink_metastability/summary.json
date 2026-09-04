@@ -1,0 +1,37 @@
+{
+  "classification": "self-consistent dimensionless spatial-registry metastability diagnostic",
+  "status": "candidate only; formation/local-minimum energy is not the activation saddle barrier",
+  "m": 12.19,
+  "n": 6.0,
+  "sigma_LJ_over_b_from_infinite_row_equilibrium": 0.8942468262601596,
+  "b_over_sigma_LJ": 1.1182594901478287,
+  "zero_stress_registry_well_a_over_b": 0.858217918140167,
+  "normal_curvature_dimensionless": 124.5027916763064,
+  "physical_b_bridge_m": 3.335684597150011e-10,
+  "energy_unit_eV": 0.08112186366348038,
+  "kink_pair": {
+    "sites": 121,
+    "formation_energy_dimensionless": 11.387552352499792,
+    "formation_energy_eV": 0.9237794694002335,
+    "minimum_hessian_eigenvalue_fixed_endpoints": 0.000126130966,
+    "maximum_registry_s": 1.4999272648138238,
+    "maximum_local_normal_opening_ratio": 1.1437949388712758,
+    "mean_local_normal_opening_ratio": 1.0098270704625916,
+    "std_local_normal_opening_ratio": 0.031157178636200353
+  },
+  "stress_sensitivity": [
+    {"stress_MPa": 0, "dimensionless_normal_force": 0.0, "metastable_pair_energy_dimensionless": 11.387552352499792, "metastable_pair_energy_eV": 0.9237794694002335},
+    {"stress_MPa": 50, "dimensionless_normal_force": 0.07742791799575673, "metastable_pair_energy_dimensionless": 11.308338913633033, "metastable_pair_energy_eV": 0.9173535276121688},
+    {"stress_MPa": 100, "dimensionless_normal_force": 0.15485583599151345, "metastable_pair_energy_dimensionless": 11.228720256136565, "metastable_pair_energy_eV": 0.910894713733671},
+    {"stress_MPa": 150, "dimensionless_normal_force": 0.2322837539872702, "metastable_pair_energy_dimensionless": 11.148686307419583, "metastable_pair_energy_eV": 0.904402210657402},
+    {"stress_MPa": 200, "dimensionless_normal_force": 0.3097116719830269, "metastable_pair_energy_dimensionless": 11.068226558427103, "metastable_pair_energy_eV": 0.8978751658692361}
+  ],
+  "verdict": [
+    "With endpoints returned to the original well, unconstrained energy minimization retains a nonuniform kink-antikink state instead of collapsing to the uniform well.",
+    "The fixed-endpoint Hessian is nonnegative within numerical resolution; the tiny lowest mode is consistent with a nearly translational defect mode.",
+    "The residual registry core produces local quasistatic normal-equilibrium openings up to about 14.38% on this candidate surface.",
+    "This supplies a non-equivalent post-transition structural state and a direct mechanical route back into P_a.",
+    "The formation energy is not the transition-state barrier Delta G_kp; no Arrhenius lifetime may be claimed until the saddle is computed."
+  ],
+  "next_required_calculation": "Compute a minimum-energy path / critical kink-pair saddle and then test cycle-resolved nucleation plus residual P_a feedback."
+}
