@@ -641,12 +641,16 @@ class FEMTensionApp:
 
     def _on_backend(self, label: str) -> None:
         self.backend = label
+        if self.backend == "FVM" and self.field not in {"stress", "strain"}:
+            self.field = "stress"
+            self.field_radio.set_active(0)
         self._set_status(f"Selected {label} backend")
 
     def _on_run(self, _event) -> None:
         try:
             self.config = self._read_config()
             self._set_status(f"Running {self.backend}...")
+            self.initiation_elements = None
             completed = run_selected_solver(
                 self.config,
                 self.output_dir,
@@ -735,6 +739,14 @@ class FEMTensionApp:
         self.redraw()
 
     def _on_field(self, label: str) -> None:
+        if label in {"initiation", "survival", "hazard"} and self.initiation_elements is None:
+            self.field = "stress"
+            self.field_radio.set_active(0)
+            self._set_status(
+                f"{label} requires probability first-passage output; "
+                "FVM currently provides stress/strain only."
+            )
+            return
         self.field = label
         self.redraw()
 
