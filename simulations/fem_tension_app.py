@@ -443,18 +443,18 @@ class FEMTensionApp:
     """Matplotlib desktop app that runs the C solver and visualizes its axial output."""
 
     _INPUT_SPECS = (
-        ("length_mm", "Length [mm]", "50"),
-        ("width_mm", "Width [mm]", "10"),
-        ("thickness_mm", "Thickness [mm]", "1"),
+        ("length_mm", "L [mm]", "50"),
+        ("width_mm", "W [mm]", "10"),
+        ("thickness_mm", "T [mm]", "1"),
         ("young_gpa", "E [GPa]", "69"),
-        ("loading_direction", "Crystal axis [h k l]", "1 0 0"),
-        ("elements", "Elements", "40"),
-        ("stress_mean_mpa", "Mean stress [MPa]", "50"),
-        ("stress_amplitude_mpa", "Amplitude [MPa]", "100"),
-        ("frequency_hz", "Frequency [Hz]", "20"),
+        ("loading_direction", "Axis [h k l]", "1 0 0"),
+        ("elements", "Cells", "40"),
+        ("stress_mean_mpa", "Mean stress MPa", "50"),
+        ("stress_amplitude_mpa", "Stress amp MPa", "100"),
+        ("frequency_hz", "Freq Hz", "20"),
         ("cycles", "Cycles", "2"),
         ("steps_per_cycle", "Steps/cycle", "80"),
-        ("deformation_scale", "Deformation scale", "1"),
+        ("deformation_scale", "Deform scale", "1"),
     )
 
     def __init__(
