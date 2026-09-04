@@ -1,0 +1,65 @@
+{
+  "classification": "candidate local-traction laboratory-timescale no-go audit",
+  "status": "candidate rejected as standalone progressive lab-fatigue mechanism in present conservative atomic-inertia form",
+  "retained_time_scale_s": 5.55046e-14,
+  "old_candidate_audit": {
+    "mean_stress_pa": 100000000.0,
+    "q_at_initial_time": 0.0014492753623188406,
+    "omega_star": 0.02,
+    "equivalent_frequency_hz_under_retained_t0": 57348379446.710846,
+    "startup_acceleration_samples": [
+      {
+        "lambda0": 0.997,
+        "phi_prime_lambda0": -0.0030970780340464237,
+        "initial_acceleration_q0_minus_phi_prime": 0.004546353396365265
+      },
+      {
+        "lambda0": 1.0,
+        "phi_prime_lambda0": 0.0,
+        "initial_acceleration_q0_minus_phi_prime": 0.0014492753623188406
+      },
+      {
+        "lambda0": 1.003,
+        "phi_prime_lambda0": 0.002906323332310349,
+        "initial_acceleration_q0_minus_phi_prime": -0.0014570479699915085
+      }
+    ],
+    "interpretation": "initial support was not mechanically equilibrated under q(0), so the prior strong history signal contains atomic startup transients"
+  },
+  "laboratory_frequency_mapping": [
+    {
+      "frequency_hz": 1.0,
+      "omega_star": 3.487456872008801e-13,
+      "linear_relative_inertial_correction_kappa_1": 1.216235543412141e-25
+    },
+    {
+      "frequency_hz": 20.0,
+      "omega_star": 6.974913744017601e-12,
+      "linear_relative_inertial_correction_kappa_1": 4.864942173648563e-23
+    },
+    {
+      "frequency_hz": 100.0,
+      "omega_star": 3.4874568720088006e-11,
+      "linear_relative_inertial_correction_kappa_1": 1.2162355434121408e-21
+    },
+    {
+      "frequency_hz": 1000.0,
+      "omega_star": 3.4874568720088005e-10,
+      "linear_relative_inertial_correction_kappa_1": 1.2162355434121408e-19
+    }
+  ],
+  "analytic_linearized_result": {
+    "equation": "y_ddot + kappa*y = q_a*sin(omega_star*tau)",
+    "periodic_particular_amplitude": "q_a/(kappa-omega_star^2)",
+    "cycle_work_periodic_particular": 0.0,
+    "relative_inertial_correction": "omega_star^2/(kappa-omega_star^2)",
+    "interpretation": "away from resonance, the conservative periodic response has no dissipative phase lag and becomes quasistatic as omega_star -> 0"
+  },
+  "verdict": [
+    "The mathematical P0 + stress-history -> P map remains well-defined as a candidate reduced constitutive propagator.",
+    "The prior omega*=0.02 audit corresponds to roughly 57.35 GHz under the retained atomic time calibration, not laboratory fatigue frequency.",
+    "At 20 Hz the kappa=1 linear inertial correction is approximately 4.865e-23, so the local conservative atomic coordinate is effectively quasistatic.",
+    "Without a separately derived slow or irreversible mechanism, the candidate does not explain progressive subcritical laboratory-frequency fatigue accumulation.",
+    "Return the main theory path to the exact finite-chain/correlation-hierarchy checkpoint rather than adding arbitrary damping/diffusion/damage."
+  ]
+}
