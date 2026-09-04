@@ -1,45 +1,36 @@
 # Final reduced P0-to-survival closure / 최종 P0-생존 축약법칙
 
-Status: **ACTIVE REDUCED LAB-SCALE CLOSURE for the declared 1D normal-instability hypothesis.**  
+Status: **ACTIVE REDUCED LAB-SCALE CLOSURE for the declared 1D normal-instability hypothesis.**
+
 The exact finite LJ chain and its $P$-$u$-$\Theta$ projection remain the microscopic reference model. This document supplies a separate controlled laboratory-time-scale reduction. It is not claimed to be a complete dislocation/slip theory of real single-crystal aluminum.
 
-## 1. Problem that this closure must solve
+## 1. Target
 
-The target is
+The reduced laboratory model must predict
 
 $$
+\boxed{
 P_0(\lambda)+\sigma(0:t)
 \longrightarrow
 P_b(\lambda,t),\ S(t),\ F_{\mathrm{ci}}(t)
+}
 $$
 
 without reconstructing every microscopic trajectory and without prescribing a named PDF or empirical fatigue-damage variable.
 
-Previous audits established three facts:
+Previous audits established that the exact finite conservative chain is not autonomous in one-point $P_0$, laboratory-frequency normal elastic motion is quasistatic on the atomic time scale, and permanent drift of a normalized spacing PDF is not mathematically required if survivor mass is removed by first passage.
 
-1. the exact finite conservative chain is not autonomous in $P$ alone;
-2. laboratory-frequency normal elastic motion is quasistatic on the atomic time scale and does not by itself create progressive cycle memory;
-3. permanent drift of the normalized spacing PDF is not mathematically required if survivor mass is removed by first passage.
+## 2. Structural P0 embedding
 
-The remaining task is therefore to close the survivor escape flux, not to force permanent $P$-shape drift.
-
-## 2. Structural P0, not instantaneous thermal displacement
-
-$P_0(\lambda)$ is the reference-phase **structural/prestress spacing density** on the stable branch
+$P_0(\lambda)$ is the reference-phase **structural/prestress spacing density** on the intact stable branch, not an instantaneous thermal-displacement distribution. Let
 
 $$
-0<\lambda<\lambda_c.
+q_{\mathrm{ref}}=\frac{\sigma_{\mathrm{ref}}}{E},
+\qquad
+q(t)=\frac{\sigma(t)}{E}.
 $$
 
-It is not the instantaneous finite-temperature displacement distribution. Fast thermal coordinates are eliminated from the structural PDF and enter only through the rare-event crossing law below.
-
-Let the external reduced normal traction at the reference phase be
-
-$$
-q_{\mathrm{ref}}=\frac{\sigma_{\mathrm{ref}}}{E}.
-$$
-
-For a starting value $\lambda_0$ define the local residual conjugate bias
+For starting label $\lambda_0$, define
 
 $$
 \boxed{
@@ -47,27 +38,11 @@ q_r(\lambda_0)=\phi'(\lambda_0)-q_{\mathrm{ref}}.
 }
 $$
 
-This is the minimal $P_0$-only embedding closure: $\lambda_0$ is, by construction, the stable local equilibrium at the reference load. It does not claim that the full finite-chain neighbour configuration is reconstructible from $P_0$.
+This is the explicit $P_0$-only embedding hypothesis: $\lambda_0$ is a local stable equilibrium at the reference phase. It does not reconstruct the missing finite-chain neighbour ordering.
 
 ## 3. Quasistatic stable-branch map
 
-The local reduced effective energy is
-
-$$
-\psi(\lambda;q_{\mathrm{tot}})
-=\phi(\lambda)-q_{\mathrm{tot}}\lambda,
-$$
-
-with
-
-$$
-q_{\mathrm{tot}}(\lambda_0,t)
-=q_r(\lambda_0)+q(t),
-\qquad
-q(t)=\frac{\sigma(t)}{E}.
-$$
-
-In the laboratory-frequency quasistatic regime, the intact structural spacing follows the stable root
+The intact reduced characteristic satisfies
 
 $$
 \boxed{
@@ -78,22 +53,23 @@ $$
 }
 $$
 
-At the reference phase this gives exactly
-
-$$
-\Lambda(\lambda_0,t_0)=\lambda_0.
-$$
-
-Differentiating the stable-root equation gives the closed characteristic velocity
+At the declared initial/reference phase,
 
 $$
 \boxed{
-\dot\Lambda
-=\frac{\dot q(t)}{\phi''(\Lambda)}.
+\Lambda(\lambda_0,0)=\lambda_0.
 }
 $$
 
-Therefore the nonabsorbing structural density obeys the closed transport equation
+Differentiating gives
+
+$$
+\boxed{
+\dot\Lambda=\frac{\dot q(t)}{\phi''(\Lambda)}.
+}
+$$
+
+Therefore the nonabsorbing structural density obeys
 
 $$
 \boxed{
@@ -107,35 +83,15 @@ $$
 }
 $$
 
-This is the requested $P_0+\sigma(0:t)\to P(t)$ law under the declared quasistatic/local-prestress reduction.
-
-## 4. Exact push-forward form of the mechanical part
-
-On the stable branch the map is monotone. Differentiating with respect to $\lambda_0$ gives
-
-$$
-\phi''(\Lambda)\frac{\partial\Lambda}{\partial\lambda_0}
-=\phi''(\lambda_0),
-$$
-
-so
-
-$$
-\boxed{
-\frac{\partial\Lambda}{\partial\lambda_0}
-=\frac{\phi''(\lambda_0)}{\phi''(\Lambda)}.
-}
-$$
-
-Hence
+The mechanical push-forward is
 
 $$
 P(\lambda,t)
 =\int P_0(\lambda_0)
-\delta[\lambda-\Lambda(\lambda_0,t)]\,d\lambda_0,
+\delta[\lambda-\Lambda(\lambda_0,t)]d\lambda_0.
 $$
 
-or, when the inverse map exists,
+Where the inverse map exists,
 
 $$
 \boxed{
@@ -145,11 +101,11 @@ P(\lambda,t)
 }
 $$
 
-A closed load cycle returns this nonabsorbing structural $P$ to the same reference-phase shape if the stable branch is never lost. Fatigue accumulation therefore does not come from forcing a permanent drift into this mechanical PDF.
+A closed load cycle returns this nonabsorbing structural map to the same reference-phase shape if the stable branch is never lost.
 
-## 5. Mechanical instability boundary
+## 4. Operational instability boundary
 
-The operational initiation boundary remains
+The retained generalized-LJ tangent stiffness vanishes at
 
 $$
 \phi''(\lambda_c)=0,
@@ -164,87 +120,65 @@ $$
 }
 $$
 
-The corresponding maximum stable reduced traction is
+The maximum stable reduced traction is
 
 $$
-\boxed{
-q_c=\phi'(\lambda_c).
-}
+\boxed{q_c=\phi'(\lambda_c).}
 $$
 
-If
+If the local total reduced traction reaches or exceeds $q_c$, the stable intact root disappears and that characteristic is absorbed deterministically. The use of $\lambda_c$ is operational and must ultimately be checked against an experimental initiation definition.
+
+## 5. Characteristic cohesive area
+
+Let $A_c$ be the characteristic area participating coherently in one local normal-instability event. It is not calibrated here and is not a FEM element area or specimen independent-cell area. The event-energy scaling
 
 $$
-q_{\mathrm{tot}}\ge q_c,
+\Delta G_c\propto A_c
 $$
 
-no stable intact root exists and the local domain reaches the operational instability deterministically.
+is an explicit coherent-area hypothesis rather than a hidden fitted fatigue parameter.
 
-## 6. Characteristic cohesive area remains symbolic
-
-Let $A_c$ be the characteristic area participating coherently in one local normal-instability event. It is **not calibrated here** and is not a FEM element area or a specimen independent-cell area.
-
-Let $A_0$ be the existing mechanical atomic/reference area. The coherent effective mass is taken consistently with the same reduced normal coordinate as
+With the same reduced coordinate, take
 
 $$
 m_c=\frac{A_c}{A_0}m_a.
 $$
 
-The characteristic-domain energy scale is
-
-$$
-E_c=EA_ca_0.
-$$
-
-Because stiffness and mass both scale with $A_c$, the local small-oscillation frequency is independent of the unknown characteristic area:
-
-$$
-\omega_s^2
-=\frac{EA_0}{m_aa_0}\phi''(\lambda_s)
-=\frac{1}{t_0^2}\phi''(\lambda_s).
-$$
-
-Thus
+Because stiffness and mass both scale with $A_c$, the small-oscillation attempt frequency is
 
 $$
 \boxed{
-\nu_s(\lambda_s)
-=\frac{\sqrt{\phi''(\lambda_s)}}{2\pi t_0}.
+\nu_s(\lambda)=\frac{\sqrt{\phi''(\lambda)}}{2\pi t_0},
+\qquad
+t_0=\sqrt{\frac{m_a a_0}{EA_0}}.
 }
 $$
 
-## 7. Rare thermal first passage to lambda_c
+## 6. Rare thermal first passage
 
-For the current stable spacing $\lambda_s<\lambda_c$, define the energy climb to the operational absorbing boundary
+For stable $\lambda<\lambda_c$, define the effective-potential climb to the operational dividing surface at the same reduced traction,
 
 $$
-\Delta\psi_c(\lambda_s)
+\Delta\psi_c(\lambda)
 =
 \left[
-\phi(\lambda_c)-\phi'(\lambda_s)\lambda_c
+\phi(\lambda_c)-\phi'(\lambda)\lambda_c
 \right]
 -
 \left[
-\phi(\lambda_s)-\phi'(\lambda_s)\lambda_s
+\phi(\lambda)-\phi'(\lambda)\lambda
 \right].
 $$
 
-The characteristic-domain barrier is
+Then
 
 $$
 \boxed{
-\Delta G_c(\lambda_s)
-=EA_ca_0\,\Delta\psi_c(\lambda_s).
+\Delta G_c(\lambda)=EA_ca_0\Delta\psi_c(\lambda).
 }
 $$
 
-In the rare-event regime
-
-$$
-\Delta G_c\gg k_BT,
-$$
-
-and assuming fast thermal re-equilibration inside the intact well compared with both the fatigue period and the escape time, the positive-flux transition-state approximation gives
+Under the declared high-barrier, harmonic-intrawell, fast-re-equilibration assumptions, and **away from the immediate spinodal neighbourhood**, the positive-flux transition-state approximation is
 
 $$
 \boxed{
@@ -256,11 +190,11 @@ k_c(\lambda,T;A_c)
 }
 $$
 
-This is not an arbitrary Kramers kernel or fitted fatigue rate. The barrier and prefactor are both inherited from the already declared generalized-LJ normal mechanics. The additional physical assumptions are finite temperature, local re-equilibration, and rare first passage.
+This is not a fitted fatigue kernel and not an exact stochastic reduction. A transmission/recrossing factor may be required by higher-fidelity dynamics. The harmonic prefactor is not extrapolated through $\phi''\to0$; deterministic absorption is used when the stable characteristic reaches $\lambda_c$.
 
-## 8. Closed survivor equation
+## 7. Closed survivor equation
 
-Let $P_b(\lambda,t)$ be the intact survivor subdensity. The final reduced equation is
+The intact survivor subdensity satisfies
 
 $$
 \boxed{
@@ -269,104 +203,69 @@ $$
 \left[
 \frac{\dot q(t)}{\phi''(\lambda)}P_b
 \right]
-=-k_c(\lambda,T;A_c)P_b.
+=-k_c(\lambda,T;A_c)P_b,
+\qquad \lambda<\lambda_c.
 }
 $$
 
-Initial condition:
+with
 
 $$
-\boxed{
-P_b(\lambda,t_0)=P_0(\lambda)
-}
+\boxed{P_b(\lambda,0)=P_0(\lambda).}
 $$
 
-when the reference population is initially intact.
-
-Along a characteristic,
+Along a stable characteristic,
 
 $$
 W(\lambda_0,t)
 =\exp\left[
--\int_{t_0}^{t}
-k_c(\Lambda(\lambda_0,s),T;A_c)\,ds
+-\int_0^t k_c(\Lambda(\lambda_0,s),T;A_c)ds
 \right].
 $$
 
-Hence the exact characteristic solution of the reduced equation is
+Hence, before deterministic absorption of that characteristic,
 
 $$
 \boxed{
 P_b(\lambda,t)
 =\int P_0(\lambda_0)
 W(\lambda_0,t)
-\delta[\lambda-\Lambda(\lambda_0,t)]\,d\lambda_0.
+\delta[\lambda-\Lambda(\lambda_0,t)]d\lambda_0.
 }
 $$
 
-If the inverse map exists,
+The local survival and cumulative initiation probability are
 
 $$
 \boxed{
-P_b(\lambda,t)
-=P_0(\lambda_0)
-W(\lambda_0,t)
-\frac{\phi''(\lambda)}{\phi''(\lambda_0)}.
-}
-$$
-
-The local survival and cumulative first-passage probability are therefore
-
-$$
-\boxed{
-S(t)=\int_0^{\lambda_c}P_b(\lambda,t)\,d\lambda
-=\int P_0(\lambda_0)W(\lambda_0,t)\,d\lambda_0,
-}
-$$
-
-$$
-\boxed{
+S(t)=\int_{0}^{\lambda_c}P_b(\lambda,t)d\lambda,
+\qquad
 F_{\mathrm{ci}}(t)=1-S(t).
 }
 $$
 
-This completes the requested mapping
+This completes the requested reduced mapping from $P_0$ and the stress history.
 
-$$
-\boxed{
-P_0+\sigma(0:t)
-\longrightarrow
-P_b(\lambda,t),\ S(t),\ F_{\mathrm{ci}}(t).
-}
-$$
+## 8. Periodic loading
 
-## 9. Periodic loading
-
-For a periodic stress waveform of period $T_f$, each reference label has one-cycle integrated hazard
+For a periodic stress waveform of period $T_f=1/f$, each structural label that remains mechanically stable has
 
 $$
 \mathcal H_c(\lambda_0)
-=\int_0^{T_f}
-k_c[\Lambda(\lambda_0,t),T;A_c]dt.
+=\int_0^{T_f}k_c[\Lambda(\lambda_0,t),T;A_c]dt.
 $$
 
-For one delta reference state,
-
-$$
-S_N=\exp[-N\mathcal H_c].
-$$
-
-For a general structural $P_0$,
+After $N$ identical cycles,
 
 $$
 \boxed{
 S_N
-=\int P_0(\lambda_0)
-\exp[-N\mathcal H_c(\lambda_0)]\,d\lambda_0.
+=\int_{\mathrm{stable}} P_0(\lambda_0)
+\exp[-N\mathcal H_c(\lambda_0)]d\lambda_0.
 }
 $$
 
-Thus repeated cycles progressively remove the more weakly protected part of $P_0$ even when the reversible mechanical map itself returns to the same phase each cycle. The normalized survivor distribution can change by **selection**, not by an invented permanent deformation of every surviving spacing.
+Thus the reversible mechanical map may return after every cycle while survivor mass decreases. A heterogeneous survivor population changes by selection rather than by an imposed permanent distortion of every surviving spacing.
 
 In the strict quasistatic phase-controlled limit,
 
@@ -374,62 +273,42 @@ $$
 \mathcal H_c\propto\frac1f.
 $$
 
-Therefore the model predicts approximately frequency-independent life in physical time and a cycle count proportional to $f$ until quasistatic/local-equilibrium assumptions fail. This is a falsifiable prediction, not a hidden calibration rule.
+The model therefore predicts approximately frequency-independent local life in physical time and a cycle count proportional to $f$ until the quasistatic or fast-equilibration assumptions fail. This is a falsification signature.
 
-## 10. Why this route survives the earlier no-go tests
+## 9. Why earlier routes are not the mainline
 
-### Deterministic finite-chain mixing
+- **Exact finite-chain mixing:** reference truth, but not autonomous in one-point $P_0$.
+- **Local conservative oscillator:** gives reversible $P_0\to P(t)$ but no laboratory-Hz cycle accumulation.
+- **Collective normal elastic mode:** too fast in a local characteristic region.
+- **Permanent normalized-P drift:** not mathematically required for cumulative first passage.
+- **Registry-kink storage:** rare transient states exist, but long-lived trapping was not established in the ideal pure-normal surface.
+- **Arbitrary diffusion/Kramers fitting:** rejected; no fitted diffusion coefficient, damping constant, named PDF, or empirical life kernel is used in the active equation.
 
-At laboratory frequency the pure normal elastic dynamics is quasistatic compared with atomic mechanical time scales. A label-preserving reversible cycle cannot generate new first-passage events indefinitely. This route remains a reference/no-go for high-cycle accumulation.
+## 10. What remains for calibration and falsification
 
-### Local conservative oscillator
+The following remain open by design:
 
-The local oscillator supplied $P_0\to P(t)$ but became quasistatic at laboratory Hz and therefore had no cycle accumulation. The present reduction keeps its valid quasistatic mechanical limit and adds only the finite-temperature first-passage physics required for renewed rare opportunities.
+1. characteristic cohesive area $A_c$;
+2. physical structural/prestress $P_0$;
+3. validation or revision of the operational $\lambda_c$ boundary;
+4. transmission/recrossing correction to the positive-flux TST approximation;
+5. loading-axis calibration $E,a_0,A_0,m,n$ where required;
+6. specimen-scale correlation area/volume and local-to-specimen survival mapping;
+7. comparison with actual pure-Al single-crystal fatigue, where slip-band and dislocation evolution may dominate.
 
-### Spatial registry kink
+The peak-hazard asymptotic and temperature-slope relation provide a future route to identify $A_c$ from local-hazard data rather than by forcing an S-N fit.
 
-The registry-kink audit found a rare formation scale but only very shallow post-formation trapping under the ideal pure-normal reduced surface. It is therefore not promoted as the primary long-lived memory state. It remains a transient/plasticity-extension diagnostic.
+## 11. Final verdict
 
-### Arbitrary diffusion
-
-No diffusion coefficient, damping constant, Gaussian PDF, Weibull life law, or fitted fatigue kernel appears in the final equation. Thermal physics enters only through $k_BT$ and the rare-event transition-state flux derived from the same normal potential.
-
-## 11. What is calibrated later
-
-The following are deliberately left for experiment or higher-fidelity calculation:
-
-- characteristic cohesive area $A_c$;
-- the physical structural/prestress $P_0$;
-- single-crystal loading-axis $E$ and the mechanical reference $A_0,a_0$ if the present calibration is revised;
-- validity of the operational $\lambda_c$ initiation boundary;
-- transmission/recrossing corrections if the rare-event TST approximation is not accurate enough;
-- specimen-scale correlation volume/area and the mapping from local survival to specimen probability.
-
-$A_c$ is especially important because it multiplies the activation barrier exponentially. It must not be chosen now merely to force an S-N curve.
-
-## 12. Real-aluminum scope boundary
-
-Published fatigue experiments on pure Al single crystals show strong involvement of slip bands, secondary slip, dislocation structures, lattice rotation, and subgrain evolution in actual crack initiation. Therefore the present closed law must be described as a **1D normal-instability hypothesis/submodel**, not as a proven complete microscopic theory of aluminum fatigue.
-
-This distinction is scientifically useful: the reduced law is now closed and testable. If its temperature, frequency, mean-stress, and $P_0$ predictions fail against dedicated normal-loading experiments, the missing state is likely plastic/dislocation structure rather than another arbitrary probability closure.
-
-## 13. Final verdict
-
-The exact finite-chain probability projection alone cannot satisfy the requested $P_0$-only autonomous evolution without lost correlation information. However, after the laboratory-frequency quasistatic reduction and an explicit finite-temperature rare-first-passage assumption, the requested reduced law **can** be closed:
+The exact finite-chain projection alone cannot satisfy an autonomous $P_0$-only high-cycle law because projection discards ordering/correlation information. After the laboratory-frequency quasistatic reduction and the explicitly declared finite-temperature transition-state hypothesis, however, the local survivor problem is mathematically closed:
 
 $$
 \boxed{
-\partial_tP_b
-+\partial_\lambda
-\left[
-\frac{\dot\sigma(t)/E}{\phi''(\lambda)}P_b
-\right]
-=-
-\frac{\sqrt{\phi''(\lambda)}}{2\pi t_0}
-\exp\left[
--\frac{EA_ca_0\Delta\psi_c(\lambda)}{k_BT}
-\right]P_b.
+P_0+\sigma(0:t)
+\to P_b(\lambda,t)
+\to S(t)
+\to F_{\mathrm{ci}}(t).
 }
 $$
 
-Together with $P_b(\lambda,t_0)=P_0(\lambda)$ and the absorbing deterministic condition at $q_{\mathrm{tot}}\ge q_c$, this is the final reduced local initiation equation of the current 1D normal hypothesis.
+This is the successful endpoint of the present closure search. The remaining work is parameter identification, transmission testing, specimen-scale scaling, and experimental falsification—not invention of another arbitrary probability closure.
