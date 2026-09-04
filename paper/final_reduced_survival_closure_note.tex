@@ -1,0 +1,79 @@
+% Candidate manuscript insertion: final reduced lab-scale survival closure.
+% This note is intentionally separate from fatigue_probability_main.tex until the manuscript is restructured around the two-layer theory.
+
+\section*{Reduced laboratory-scale survival closure}
+
+The exact finite-chain probability projection is retained as a microscopic reference, but it is not autonomous in the initial one-point spacing marginal because microscopic ordering and correlation information is lost under projection. Laboratory-frequency audits further show that conservative normal dynamics approaches a quasistatic cycle on the atomic mechanical time scale. Therefore high-cycle accumulation is formulated as survivor first passage rather than as an imposed permanent drift of the normalized spacing density.
+
+Let $P_0(\lambda)$ denote the reference-phase structural/prestress spacing density, $q(t)=\sigma(t)/E$, and $q_{\rm ref}$ the reference-phase reduced traction. Each starting spacing is embedded by
+\begin{equation}
+q_r(\lambda_0)=\phi'(\lambda_0)-q_{\rm ref},
+\end{equation}
+so that its intact quasistatic trajectory satisfies
+\begin{equation}
+\phi'[\Lambda(\lambda_0,t)]
+=\phi'(\lambda_0)+q(t)-q_{\rm ref},
+\qquad
+\phi''(\Lambda)>0.
+\end{equation}
+Consequently
+\begin{equation}
+\dot\Lambda=\frac{\dot q(t)}{\phi''(\Lambda)}.
+\end{equation}
+
+The operational instability boundary remains
+\begin{equation}
+\lambda_c=\left(\frac{m+1}{n+1}\right)^{1/(m-n)},
+\qquad \phi''(\lambda_c)=0.
+\end{equation}
+For a stable spacing $\lambda$, define the effective-potential climb
+\begin{equation}
+\Delta\psi_c(\lambda)
+=\left[\phi(\lambda_c)-\phi'(\lambda)\lambda_c\right]
+-\left[\phi(\lambda)-\phi'(\lambda)\lambda\right].
+\end{equation}
+If $A_c$ is the characteristic cohesive area of one local event, the barrier is
+\begin{equation}
+\Delta G_c=EA_ca_0\Delta\psi_c.
+\end{equation}
+Under the explicitly declared rare-event and fast intrawell thermal re-equilibration assumptions, the positive-flux transition-state rate is
+\begin{equation}
+k_c(\lambda,T;A_c)
+=\frac{\sqrt{\phi''(\lambda)}}{2\pi t_0}
+\exp\left[-\frac{EA_ca_0\Delta\psi_c(\lambda)}{k_BT}\right].
+\end{equation}
+
+The intact survivor subdensity therefore obeys the closed reduced equation
+\begin{equation}
+\boxed{
+\partial_tP_b
++\partial_\lambda\left[
+\frac{\dot\sigma(t)/E}{\phi''(\lambda)}P_b
+\right]
+=-k_c(\lambda,T;A_c)P_b,
+}
+\end{equation}
+with $P_b(\lambda,t_0)=P_0(\lambda)$. Hence
+\begin{equation}
+S(t)=\int P_b(\lambda,t)d\lambda,
+\qquad
+F_{\rm ci}(t)=1-S(t).
+\end{equation}
+This gives the reduced mapping
+\begin{equation}
+\boxed{
+P_0+\sigma(0:t)\longrightarrow P_b(\lambda,t),\ S(t),\ F_{\rm ci}(t).
+}
+\end{equation}
+
+For periodic loading, each starting spacing has an integrated one-cycle hazard
+\begin{equation}
+\mathcal H_c(\lambda_0)=\int_0^{T_f}k_c[\Lambda(\lambda_0,t),T;A_c]dt,
+\end{equation}
+and therefore
+\begin{equation}
+S_N=\int P_0(\lambda_0)e^{-N\mathcal H_c(\lambda_0)}d\lambda_0.
+\end{equation}
+Permanent cycle-to-cycle drift of the normalized structural PDF is therefore not required. The cumulative history is stored in survivor mass.
+
+The characteristic area $A_c$ is deliberately not fitted in the present derivation. A sensitivity audit shows that the local life depends exponentially on this area, making its independent calibration or higher-fidelity calculation essential. The reduced equation is therefore mathematically closed and experimentally falsifiable, but it remains a normal-instability submodel rather than a complete dislocation theory of real single-crystal Al fatigue.
