@@ -1,6 +1,6 @@
 # Auxiliary Symbol Index / 보조기호 Index
 
-이 문서는 활성 1D 이론의 보조기호를 정의한다. 수식은 렌더러 호환성을 위해 단순한 문법만 사용한다.
+이 문서는 활성 1D 이론의 보조기호를 정의한다. exact microscopic layer와 reduced laboratory layer의 기호를 구분한다.
 
 ## 1. Loading-history symbols / 하중 이력 기호
 
@@ -8,22 +8,26 @@
 
 - English: matched load value
 - 한국어: 동일 비교 하중값
-- Mathematical definition: scalar satisfying $q(\tau_L)=q(\tau_U)=q^*$
-- Physical definition: loading과 unloading 상태를 같은 외부 하중에서 비교하기 위한 값
+- Mathematical definition: $q(\tau_L)=q(\tau_U)=q^*$
+- Physical meaning: loading과 unloading 상태를 같은 외부 하중에서 비교하기 위한 값
+- Unit/scaling: dimensionless
 - Status: DEFINITION
+- Dependencies: $q,\tau_L,\tau_U$
 
 ### $\tau_L$
 
 - English: loading-branch time
 - 한국어: loading branch 시각
-- Mathematical definition: time satisfying $q(\tau_L)=q^*$ and $\dot q(\tau_L)>0$
+- Mathematical definition: $q(\tau_L)=q^*$ and $\dot q(\tau_L)>0$
+- Unit/scaling: nondimensional time
 - Status: DEFINITION
 
 ### $\tau_U$
 
 - English: unloading-branch time
 - 한국어: unloading branch 시각
-- Mathematical definition: time satisfying $q(\tau_U)=q^*$ and $\dot q(\tau_U)<0$
+- Mathematical definition: $q(\tau_U)=q^*$ and $\dot q(\tau_U)<0$
+- Unit/scaling: nondimensional time
 - Status: DEFINITION
 
 ### $\mathcal R_2(\tau)$
@@ -34,7 +38,7 @@ $$
 
 - English: second-order reduced descriptor
 - 한국어: 2차 축약 기술자
-- Physical definition: same-load non-retracing을 비교하기 위한 reduced state
+- Physical meaning: same-load non-retracing을 비교하기 위한 exact-chain reduced state
 - Status: DEFINITION
 
 ## 2. Density-shape symbols / 밀도 형상 기호
@@ -43,26 +47,28 @@ $$
 
 - English: reference spacing point
 - 한국어: 기준 간격점
-- Mathematical definition: arbitrary reference point in a smooth interval where $P>0$ and $\Theta>0$
-- Physical definition: integration origin only; no independent physical state
+- Mathematical definition: arbitrary reference point where $P>0$ and $\Theta>0$
+- Physical meaning: integration origin only
+- Unit/scaling: dimensionless
 - Status: DEFINITION
 
 ### $\eta$
 
 - English: spacing integration variable
 - 한국어: 간격 적분변수
-- Mathematical definition: dummy variable in the density-shape integral
+- Mathematical meaning: dummy spacing variable
+- Unit/scaling: dimensionless
 - Status: DEFINITION
 
 ### $\mathcal N_P(\tau)$
 
 $$
-\int_0^\infty P(\lambda,\tau)\,d\lambda=1
+\int_0^\infty P(\lambda,\tau)d\lambda=1
 $$
 
 - English: density normalization factor
 - 한국어: 확률밀도 정규화 계수
-- Mathematical definition: positive integration factor fixed by total probability mass
+- Mathematical meaning: positive integration factor fixed by total probability mass
 - Status: DEFINITION
 
 ## 3. Initial-value symbols / 초기값 기호
@@ -75,7 +81,9 @@ $$
 
 - English: initial spacing density
 - 한국어: 초기 간격밀도
-- Status: DEFINITION
+- Physical meaning in the laboratory closure: structural/prestress spacing density at the declared reference phase; not the instantaneous thermal-displacement PDF
+- Unit/scaling: dimensionless density in $\lambda$
+- Status: DEFINITION / ACTIVE REDUCED INPUT
 
 ### $u_0(\lambda)$
 
@@ -85,7 +93,7 @@ $$
 
 - English: initial conditional mean spacing rate
 - 한국어: 초기 조건부 평균 간격속도
-- Status: DEFINITION
+- Status: EXACT-LAYER DEFINITION
 
 ### $\Theta_0(\lambda)$
 
@@ -95,63 +103,57 @@ $$
 
 - English: initial conditional spacing-rate variance
 - 한국어: 초기 조건부 간격속도 분산
-- Status: DEFINITION
+- Status: EXACT-LAYER DEFINITION
 
 ### $\tau_0$
 
 - English: initial nondimensional time
 - 한국어: 초기 무차원 시간
-- Mathematical definition: lower temporal bound for initial data and integral representations
+- Mathematical meaning: lower temporal bound for exact microscopic initial data
 - Status: DEFINITION
 
-## 4. Characteristic symbols / 특성곡선 기호
+## 4. Exact-layer characteristic symbols / 정확층 특성곡선 기호
 
 ### $s$
 
 - English: dummy time variable
 - 한국어: 시간 적분변수
-- Mathematical definition: integration variable in $[\tau_0,\tau]$
 - Status: DEFINITION
 
 ### $r$
 
 - English: inner dummy time variable
 - 한국어: 내부 시간 적분변수
-- Mathematical definition: integration variable used inside $\mathcal I_u$
 - Status: DEFINITION
 
 ### $X(s;\alpha)$
 
 $$
-\frac{dX}{ds}=u(X(s),s)
-$$
-
-$$
+\frac{dX}{ds}=u(X(s),s),
+\qquad
 X(\tau_0)=\alpha
 $$
 
-- English: characteristic curve
-- 한국어: 특성곡선
-- Mathematical definition: integral curve of the reduced mean-flow field
-- Physical definition: mean probability-transport path in spacing space
+- English: exact reduced mean-flow characteristic
+- 한국어: 정확 축약 평균흐름 특성곡선
+- Physical meaning: mean probability-transport path in spacing space
 - Status: DEFINITION
 
 ### $\alpha$
 
 - English: characteristic label
 - 한국어: 특성곡선 초기 라벨
-- Mathematical definition: initial coordinate satisfying $X(\tau_0;\alpha)=\alpha$
+- Mathematical definition: $X(\tau_0;\alpha)=\alpha$
 - Status: DEFINITION
 
 ### $\mathcal I_u$
 
 $$
-\mathcal I_u(s;\alpha)=\int_{\tau_0}^{s}\partial_\lambda u(X(r),r)\,dr
+\mathcal I_u(s;\alpha)=\int_{\tau_0}^{s}\partial_\lambda u(X(r),r)dr
 $$
 
 - English: accumulated mean-rate gradient
 - 한국어: 누적 평균속도 구배
-- Physical definition: cumulative local compression or dilation along a characteristic
 - Status: DEFINITION
 
 ### $S_\Theta$
@@ -169,13 +171,12 @@ $$
 ### $Q_c(\tau)$
 
 $$
-Q_c(\tau)=\int_{\lambda_c}^{\infty}P(\lambda,\tau)\,d\lambda
+Q_c(\tau)=\int_{\lambda_c}^{\infty}P(\lambda,\tau)d\lambda
 $$
 
 - English: instantaneous nonabsorbing tail mass
 - 한국어: 순간 비흡수 꼬리질량
-- Mathematical definition: current probability mass above $\lambda_c$
-- Physical definition: instantaneous tail only; not cumulative first passage
+- Physical meaning: current tail only; not cumulative first passage
 - Status: DEFINITION
 
 ### $\chi_i(\tau)$
@@ -212,10 +213,7 @@ $$
 
 $$
 h_\tau=\frac{j_{\mathrm{esc}}}{S}
-$$
-
-$$
-h_\tau=-\frac{d}{d\tau}\ln S
+=-\frac{d}{d\tau}\ln S
 $$
 
 - English: nondimensional initiation hazard
@@ -236,7 +234,7 @@ $$
 ### $\widehat P_b$
 
 $$
-\widehat P_b(\lambda,\tau)=\frac{P_b(\lambda,\tau)}{S(\tau)}
+\widehat P_b(\lambda,t)=\frac{P_b(\lambda,t)}{S(t)}
 $$
 
 - English: survivor-conditioned density
@@ -268,40 +266,202 @@ $$
 ### $D_{\mathrm{irr}}$
 
 $$
-D_{\mathrm{irr}}(t)=\int_0^t\dot D_{\mathrm{irr}}(t')\,dt'
+D_{\mathrm{irr}}(t)=\int_0^t\dot D_{\mathrm{irr}}(t')dt'
 $$
 
 - English: accumulated irreversible dissipation
 - 한국어: 누적 비가역 소산
 - Unit: J
-- Status: DEFINITION
+- Status: DEFINITION; zero in the conservative exact baseline
 
 ### $r_j^{\mathrm{irr}}$
-
-미래에 실제 microscopic irreversible node force가 유도될 경우 사용할 기호다.
 
 $$
 \dot D_{\mathrm{irr}}^*=-\sum_jr_j^{\mathrm{irr}}\dot x_j
 $$
 
-비가역 소산으로 해석하려면
-
-$$
-\dot D_{\mathrm{irr}}^*\ge0
-$$
-
-이어야 한다.
-
-- English: irreversible node force
-- 한국어: 비가역 노드 힘
+- English: future irreversible node force
+- 한국어: 미래 비가역 노드 힘
+- Unit/scaling: normalized force in the displayed equation
 - Status: OPEN
 
 ### $W_{\mathrm{ext}}^{\mathrm{cyc}}$
 
 $$
-W_{\mathrm{ext}}^{\mathrm{cyc}}=\Delta E_{\mathrm{mech}}^{\mathrm{cyc}}+D_{\mathrm{irr}}^{\mathrm{cyc}}
+W_{\mathrm{ext}}^{\mathrm{cyc}}
+=\Delta E_{\mathrm{mech}}^{\mathrm{cyc}}+D_{\mathrm{irr}}^{\mathrm{cyc}}
 $$
 
 - English: external work over one cycle
 - 한국어: 한 사이클 외력 일
 - Status: CONDITIONAL on a physically valid irreversible mechanism
+
+## 7. Reduced laboratory thermal-first-passage symbols / 실험실 축약 열 최초통과 기호
+
+### $q_{\mathrm{ref}}$
+
+$$
+q_{\mathrm{ref}}=\frac{\sigma_{\mathrm{ref}}}{E}
+$$
+
+- English: reference reduced normal traction
+- 한국어: 기준 무차원 normal traction
+- Mathematical meaning: external reduced load at the phase where $P_0$ is defined
+- Physical meaning: reference load used to interpret each $\lambda_0$ as a local structural equilibrium
+- Unit/scaling: dimensionless
+- Status: ACTIVE REDUCED INPUT
+- Dependencies: $\sigma_{\mathrm{ref}},E$
+
+### $q_r(\lambda_0)$
+
+$$
+q_r(\lambda_0)=\phi'(\lambda_0)-q_{\mathrm{ref}}
+$$
+
+- English: residual conjugate bias
+- 한국어: 잔류 켤레 바이어스
+- Mathematical meaning: local bias that makes $\lambda_0$ an equilibrium at the reference load
+- Physical meaning: minimal local-prestress embedding of structural $P_0$; not a reconstruction of finite-chain neighbour ordering
+- Unit/scaling: dimensionless
+- Status: ACTIVE REDUCED CLOSURE
+- Dependencies: $\lambda_0,\phi,q_{\mathrm{ref}}$
+
+### $\Lambda(\lambda_0,t)$
+
+$$
+\phi'[\Lambda(\lambda_0,t)]
+=\phi'(\lambda_0)+q(t)-q_{\mathrm{ref}},
+\qquad
+\phi''[\Lambda(\lambda_0,t)]>0
+$$
+
+- English: quasistatic stable-branch spacing map
+- 한국어: 준정적 안정가지 간격 사상
+- Mathematical meaning: stable solution carrying the reference spacing label $\lambda_0$ under the applied load history
+- Physical meaning: reversible structural spacing response in the laboratory-frequency reduced model
+- Unit/scaling: dimensionless
+- Status: ACTIVE REDUCED STATE MAP
+- Dependencies: $\lambda_0,q(t),q_{\mathrm{ref}},\phi$
+
+### $q_c$
+
+$$
+q_c=\phi'(\lambda_c)
+$$
+
+- English: maximum stable reduced traction
+- 한국어: 최대 안정 무차원 traction
+- Physical meaning: traction at the declared tangent-stiffness-loss point
+- Unit/scaling: dimensionless
+- Status: DERIVED MODEL THRESHOLD
+- Dependencies: $\lambda_c,\phi$
+
+### $A_c$
+
+- English: characteristic cohesive area
+- 한국어: 특성 응집 면적
+- Mathematical meaning: area multiplying the local normal-instability energy scale
+- Physical meaning: coherently participating area for one local normal first-passage event
+- Unit: m^2
+- Status: OPEN CALIBRATION PARAMETER
+- Dependencies: independent experimental/higher-fidelity calibration
+- Warning: not $A_0$, not a FEM element area, and not automatically an independent statistical-cell area
+
+### $\Delta\psi_c(\lambda)$
+
+$$
+\Delta\psi_c(\lambda)
+=
+[\phi(\lambda_c)-\phi'(\lambda)\lambda_c]
+-[\phi(\lambda)-\phi'(\lambda)\lambda]
+$$
+
+- English: dimensionless climb to the operational instability boundary
+- 한국어: 균열개시 경계까지의 무차원 에너지 상승량
+- Mathematical meaning: effective-energy difference from the stable state to $\lambda_c$ at the same local conjugate traction
+- Unit/scaling: dimensionless
+- Status: DERIVED REDUCED QUANTITY
+- Dependencies: $\phi,\lambda,\lambda_c$
+
+### $\Delta G_c(\lambda)$
+
+$$
+\Delta G_c(\lambda)=EA_ca_0\Delta\psi_c(\lambda)
+$$
+
+- English: characteristic-domain normal-instability barrier
+- 한국어: 특성영역 normal 불안정 활성화 장벽
+- Physical meaning: energy cost for the characteristic cohesive domain to reach the operational absorbing boundary
+- Unit: J
+- Status: DERIVED WITH SYMBOLIC $A_c$
+- Dependencies: $E,A_c,a_0,\Delta\psi_c$
+
+### $\nu_s(\lambda)$
+
+$$
+\nu_s(\lambda)=\frac{\sqrt{\phi''(\lambda)}}{2\pi t_0}
+$$
+
+- English: local transition-state attempt frequency
+- 한국어: 국소 전이상태 시도 주파수
+- Physical meaning: small-oscillation frequency inherited from the normal potential and inertial scale
+- Unit: 1/s
+- Status: DERIVED REDUCED PREFACTOR
+- Dependencies: $\phi'',t_0$
+- Warning: $\nu_s$ is not the conditional mean spacing-rate field $u$
+
+### $k_c(\lambda,T;A_c)$
+
+$$
+k_c(\lambda,T;A_c)
+=\nu_s(\lambda)
+\exp\left[-\frac{\Delta G_c(\lambda)}{k_BT}\right]
+$$
+
+- English: local thermal normal-instability first-passage rate
+- 한국어: 국소 열적 normal 불안정 최초통과율
+- Mathematical meaning: rare-event sink rate used in the reduced survivor transport
+- Physical meaning: positive-flux transition-state approximation for a locally re-equilibrated intact well
+- Unit: 1/s
+- Status: ACTIVE REDUCED LAW under the declared rare-event and local-equilibration assumptions
+- Dependencies: $\nu_s,\Delta G_c,k_B,T,A_c$
+
+### $W(\lambda_0,t)$
+
+$$
+W(\lambda_0,t)
+=\exp\left[-\int_{t_0}^{t}k_c(\Lambda(\lambda_0,s),T;A_c)ds\right]
+$$
+
+- English: characteristic survivor weight
+- 한국어: 특성곡선 생존 가중치
+- Mathematical meaning: surviving mass fraction carried by one initial spacing label
+- Unit/scaling: dimensionless
+- Status: EXACT SOLUTION FACTOR of the declared reduced PDE
+- Dependencies: $k_c,\Lambda$
+
+### $\mathcal H_c(\lambda_0)$
+
+$$
+\mathcal H_c(\lambda_0)
+=\int_0^{T_f}k_c[\Lambda(\lambda_0,t),T;A_c]dt
+$$
+
+- English: one-cycle integrated local hazard
+- 한국어: 한 사이클 누적 국소 hazard
+- Physical meaning: cumulative rare-event exposure of one structural reference label during one loading period
+- Unit/scaling: dimensionless
+- Status: DERIVED REDUCED CYCLE QUANTITY
+- Dependencies: $k_c,\Lambda,T_f$
+
+### $T_f$
+
+$$
+T_f=\frac1f
+$$
+
+- English: physical fatigue-loading period
+- 한국어: 물리적 피로하중 주기
+- Unit: s
+- Status: DEFINITION
+- Dependencies: loading frequency $f$
