@@ -1,0 +1,39 @@
+{
+  "classification": "periodic-P first-passage identifiability audit",
+  "status": "exact synthetic counterexample; not material calibration",
+  "M": 100,
+  "lambda_low": 1.0,
+  "lambda_high_peak": 1.02,
+  "lambda_threshold": 1.01,
+  "max_sorted_snapshot_difference_between_histories": 0.0,
+  "deterministic_histories": [
+    {"cycles": 1, "same_label_first_passage_fraction": 0.01, "rotating_label_first_passage_fraction": 0.01},
+    {"cycles": 2, "same_label_first_passage_fraction": 0.01, "rotating_label_first_passage_fraction": 0.02},
+    {"cycles": 5, "same_label_first_passage_fraction": 0.01, "rotating_label_first_passage_fraction": 0.05},
+    {"cycles": 10, "same_label_first_passage_fraction": 0.01, "rotating_label_first_passage_fraction": 0.1},
+    {"cycles": 25, "same_label_first_passage_fraction": 0.01, "rotating_label_first_passage_fraction": 0.25},
+    {"cycles": 50, "same_label_first_passage_fraction": 0.01, "rotating_label_first_passage_fraction": 0.5},
+    {"cycles": 100, "same_label_first_passage_fraction": 0.01, "rotating_label_first_passage_fraction": 1.0},
+    {"cycles": 150, "same_label_first_passage_fraction": 0.01, "rotating_label_first_passage_fraction": 1.0}
+  ],
+  "stochastic_rare_trial_diagnostic": {
+    "per_cycle_probability": 1e-05,
+    "rows": [
+      {"cycles": 1, "cumulative_probability": 9.99999999995449e-06},
+      {"cycles": 10, "cumulative_probability": 9.999550011952074e-05},
+      {"cycles": 100, "cumulative_probability": 0.0009995051616562556},
+      {"cycles": 1000, "cumulative_probability": 0.009950215753607328},
+      {"cycles": 10000, "cumulative_probability": 0.09516303438524065},
+      {"cycles": 100000, "cumulative_probability": 0.6321223982317534},
+      {"cycles": 1000000, "cumulative_probability": 0.9999546023401903}
+    ],
+    "warning": "Independent per-cycle trials are extra stochastic physics and are not adopted by this audit."
+  },
+  "verdict": [
+    "The same cycle-periodic instantaneous spacing marginal can coexist with different cumulative first-passage histories.",
+    "If the same label repeats the threshold-crossing trajectory every cycle, cumulative first passage saturates after the first cycle.",
+    "If the crossing label rotates while the one-point marginal stays identical, cumulative first passage grows until all labels have crossed.",
+    "Therefore snapshot P alone is insufficient to determine fatigue first passage; survivor/path information is required.",
+    "Permanent drift of the normalized P shape is not mathematically necessary if survivor escape continues by mixing, stochasticity, or another hidden-state mechanism."
+  ]
+}
