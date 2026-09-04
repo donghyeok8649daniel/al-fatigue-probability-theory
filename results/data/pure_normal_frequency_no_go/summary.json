@@ -1,0 +1,26 @@
+{
+  "classification": "pure-normal quasistatic thermal frequency no-go",
+  "assumption": "instantaneous phase-dependent escape rate with no explicit rate dependence",
+  "scaling": {
+    "H_cycle": "proportional to 1/f",
+    "median_cycles": "proportional to f",
+    "median_time": "approximately independent of f"
+  },
+  "historical_frequency_interval": {
+    "low_cpm": 25.0,
+    "high_cpm": 1440.0,
+    "low_Hz": 0.4166666666666667,
+    "high_Hz": 24.0
+  },
+  "ratio_check": {
+    "hazard_low_frequency_over_high_frequency": 57.6,
+    "median_cycles_high_frequency_over_low_frequency": 57.6,
+    "normalized_H_cycle_high_frequency": 1.0,
+    "normalized_H_cycle_low_frequency": 57.6
+  },
+  "interpretation": [
+    "At equal stress waveform and equal cycle count, the strict model predicts 57.6 times more cumulative local hazard at 25 cpm than at 1440 cpm.",
+    "A broad room-temperature fatigue-strength insensitivity over that interval is therefore a direct falsification warning for a dominant fast-equilibrium pure-normal thermal mechanism.",
+    "The historical experiment is not an exact single-crystal match, so this is a mechanism-level warning rather than a standalone rejection of every normal-instability contribution."
+  ]
+}
