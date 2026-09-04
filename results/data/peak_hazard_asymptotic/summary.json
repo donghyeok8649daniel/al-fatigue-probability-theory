@@ -1,0 +1,38 @@
+{
+  "classification": "peak-dominated cycle-hazard asymptotic verification",
+  "status": "derived-asymptotic diagnostic; no A_c calibration",
+  "model": {
+    "m": 12.19,
+    "n": 6.0,
+    "lambda_c": 1.1077715385524567,
+    "E_GPa": 69.0,
+    "a0_m": 2.8627442948e-10,
+    "A0_m2": 6.0338e-20
+  },
+  "comparison": [
+    {"A_c_over_A0": 40.0, "amplitude_MPa": 50.0, "direct_hazard": 0.002924573195032228, "peak_hazard": 0.0024860598288367454, "relative_error": -0.14994097837604314},
+    {"A_c_over_A0": 40.0, "amplitude_MPa": 100.0, "direct_hazard": 0.004674868766896912, "peak_hazard": 0.004206838730004737, "relative_error": -0.10011618726205307},
+    {"A_c_over_A0": 40.0, "amplitude_MPa": 150.0, "direct_hazard": 0.008721254280360108, "peak_hazard": 0.008166591768892673, "relative_error": -0.06359893813857853},
+    {"A_c_over_A0": 50.0, "amplitude_MPa": 50.0, "direct_hazard": 1.1686170475031603e-6, "peak_hazard": 1.0051750642760274e-6, "relative_error": -0.13985931796591466},
+    {"A_c_over_A0": 50.0, "amplitude_MPa": 100.0, "direct_hazard": 2.297921274995298e-6, "peak_hazard": 2.1179685558111038e-6, "relative_error": -0.07831108974112366},
+    {"A_c_over_A0": 50.0, "amplitude_MPa": 150.0, "direct_hazard": 5.369093583939917e-6, "peak_hazard": 5.111384880257347e-6, "relative_error": -0.047998549411288005},
+    {"A_c_over_A0": 60.0, "amplitude_MPa": 50.0, "direct_hazard": 4.746219216158556e-10, "peak_hazard": 4.147975859055358e-10, "relative_error": -0.12604629703290393},
+    {"A_c_over_A0": 60.0, "amplitude_MPa": 100.0, "direct_hazard": 1.161008448632272e-9, "peak_hazard": 1.0882972609615388e-9, "relative_error": -0.06262761287946761},
+    {"A_c_over_A0": 60.0, "amplitude_MPa": 150.0, "direct_hazard": 3.3952643620486692e-9, "peak_hazard": 3.26513171060567e-9, "relative_error": -0.03832769338894082}
+  ],
+  "temperature_inversion": {
+    "injected_A_c_over_A0": 50.0,
+    "temperatures_K": [260.0, 275.0, 290.0, 300.0, 310.0, 325.0, 340.0],
+    "direct_hazards": [6.67910568e-9, 7.27272251e-8, 6.19784943e-7, 2.29792127e-6, 7.83484772e-6, 4.28697163e-5, 2.02177102e-4],
+    "fit_slope_K": -11253.04759142993,
+    "peak_asymptotic_predicted_slope_K": -11223.65635885751,
+    "inferred_A_c_over_A0": 50.130934303549054,
+    "relative_area_error": 0.0026186860709811466
+  },
+  "verdict": [
+    "The peak-dominated asymptotic reproduces direct cycle quadrature within roughly 4-15 percent over the audited rare-event sweep.",
+    "At A_c/A0=50 and 100+/-100 MPa, 20 Hz, 300 K, the direct hazard is about 2.298e-6 and the peak formula about 2.118e-6.",
+    "The transformed temperature slope recovers the injected A_c/A0=50 value as about 50.13 in the controlled numerical test.",
+    "This creates an experimental identifiability route for A_c only when local hazard is available; specimen S-N data still require separate correlation-scale treatment."
+  ]
+}
