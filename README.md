@@ -5,8 +5,8 @@ Manuscript-only branch for publication artifacts.
 ## Current manuscript
 
 - Canonical entry point: `paper/main.tex`.
-- Canonical paper body: `paper/fatigue_probability_main_v2.tex`.
-- Previous `paper/fatigue_probability_main.tex` is preserved unchanged as manuscript history and is not the governing body.
+- Canonical paper body: `paper/fatigue_probability_main_v3.tex`.
+- Previous `paper/fatigue_probability_main.tex` and `paper/fatigue_probability_main_v2.tex` are preserved as manuscript history and are not the governing body.
 - Active manuscript structure is two-layered:
   1. exact finite generalized-LJ chain -> mechanically generated phase-space/spacing probability -> exact $P$-$u$-$\Theta$ projection;
   2. reduced laboratory closure -> structural/prestress $P_0$ -> quasistatic stable-branch transport -> finite-temperature survivor first passage -> $P_b$, $S$, and $F_{\rm ci}$.
@@ -14,14 +14,17 @@ Manuscript-only branch for publication artifacts.
 - The reduced lab-scale closure is a controlled 1D normal-instability hypothesis. It uses a high-barrier, harmonic-well, fast-intrawell-equilibration positive-flux transition-state approximation away from the immediate spinodal neighbourhood. If the stable mechanical branch reaches $\lambda_c$, absorption is deterministic. A transmission/recrossing correction remains a validation target.
 - The model contains no named lifetime distribution, scalar fatigue-damage law, fitted diffusion coefficient, or imposed permanent normalized-$P$ drift.
 - The characteristic cohesive area $A_c$ remains explicit and uncalibrated; specimen correlation area/volume scaling is deliberately deferred until local calibration.
-- In the strict quasistatic/fast-equilibration regime, integrated hazard per cycle scales as $1/f$; temperature dependence is activated through the mechanically derived effective-potential climb. These are falsification signatures, not fitted rules.
+- Canonical v3 adds the final pure-normal cycle-accumulation no-go result. Deterministic label-preserving quasistatic first passage saturates under repeated identical cycles, whereas fast stationary thermal renewal gives $\mathcal H_f\propto1/f$ and therefore elapsed-time-controlled accumulation.
+- Published room-temperature aluminum evidence is used as a mechanism check: broad frequency insensitivity in high-purity aluminum and single-crystal initiation associated with slip/dislocation/subgrain structure prevent promotion of the strict pure-normal closure to a complete material law without further physics.
+- The scientifically active scope is therefore a closed and falsifiable **1D normal-instability first-passage submodel plus a no-go result for strict pure-normal cycle accumulation**.
 - Nonzero irreversible thermodynamic G3 remains a separate physical problem.
 - Registry $s$ is retained only as a non-mainline plasticity/defect extension. No FCC reconstruction is part of the active manuscript.
 
 ## Symbols
 
-- `paper/symbol_index_active_v2.tex`: canonical English symbol/computation index included by the v2 manuscript.
+- `paper/symbol_index_active_v2.tex`: canonical English symbol/computation index used by the v3 manuscript; the historical filename is retained to avoid needless file churn.
 - `paper/symbol_index_active_v2_ko.tex`: Korean companion index for the same active model.
+- Both indexes include the final frequency-scaling quantities $\mathcal H_f$ and $N_{50}$.
 
 ## Supporting manuscript notes
 
@@ -32,7 +35,7 @@ Manuscript-only branch for publication artifacts.
 
 ## Historical manuscript material
 
-`paper/slip_lattice_energy_derivation.tex`, `paper/fatigue_probability_main.tex`, and older symbol indexes are retained as historical/source derivation material. They are not the current canonical governing manuscript.
+`paper/slip_lattice_energy_derivation.tex`, `paper/fatigue_probability_main.tex`, `paper/fatigue_probability_main_v2.tex`, and older symbol indexes are retained as historical/source derivation material. They are not the current canonical governing manuscript.
 
 ## Branch ownership
 
@@ -53,5 +56,5 @@ Key numerical provenance on `numerical-fem` includes:
 - `simulations/audit_collective_mode_lab_timescale.py`;
 - `simulations/audit_periodic_p_first_passage_identifiability.py`;
 - `simulations/audit_final_reduced_closure_sensitivity.py`;
-- `simulations/verify_final_reduced_general_p0.py`;
-- `simulations/verify_peak_hazard_asymptotic.py`.
+- `simulations/audit_pure_normal_frequency_no_go.py`;
+- `results/reports/PURE_NORMAL_FREQUENCY_NO_GO.md`.
