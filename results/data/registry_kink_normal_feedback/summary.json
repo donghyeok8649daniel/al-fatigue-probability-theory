@@ -1,0 +1,23 @@
+{
+  "classification": "dimensionless direct-sum mechanism diagnostic",
+  "status": "candidate-only; no kink-pair saddle, characteristic-area, or lifetime calibration",
+  "m": 12.19,
+  "n": 6.0,
+  "b_over_sigma_LJ": 1.0,
+  "k_max": 80,
+  "p_max": 250,
+  "stable_well_s_over_b": 0.5,
+  "stable_well_a0_over_b": 0.9910707231837682,
+  "rows": [
+    {"s_over_b": 0.5, "energy_excess_at_a0": 0.0, "dU_da_at_a0": -1.1102230246251564e-11, "stable_a_eq_over_b": 0.9910707231837682, "relative_opening_from_well": 0.0},
+    {"s_over_b": 0.4, "energy_excess_at_a0": 0.12838632573690578, "dU_da_at_a0": -2.0913059295746272, "stable_a_eq_over_b": 1.0079950293129452, "relative_opening_from_well": 0.017076789509842857},
+    {"s_over_b": 0.3, "energy_excess_at_a0": 0.4808993711293674, "dU_da_at_a0": -7.893606075770609, "stable_a_eq_over_b": 1.0401337952686955, "relative_opening_from_well": 0.04950511697824602},
+    {"s_over_b": 0.25, "energy_excess_at_a0": 0.7108998679113445, "dU_da_at_a0": -11.723410722380699, "stable_a_eq_over_b": 1.0550508761998143, "relative_opening_from_well": 0.06455659673863925},
+    {"s_over_b": 0.2, "energy_excess_at_a0": 0.9504087579566605, "dU_da_at_a0": -15.745595392874232, "stable_a_eq_over_b": 1.0676924019648686, "relative_opening_from_well": 0.07731201920177486},
+    {"s_over_b": 0.1, "energy_excess_at_a0": 1.3585967177155092, "dU_da_at_a0": -22.674485063034485, "stable_a_eq_over_b": 1.084830683611324, "relative_opening_from_well": 0.09460471208992662},
+    {"s_over_b": 0.0, "energy_excess_at_a0": 1.5214021213951088, "dU_da_at_a0": -25.462383863505963, "stable_a_eq_over_b": 1.0905666586737746, "relative_opening_from_well": 0.10039236672271008}
+  ],
+  "key_result": "Intermediate registry positions strongly shift the stable normal equilibrium; at the registry saddle s/b=0 the preferred normal spacing is about 10.04% larger than the registry-well equilibrium.",
+  "interpretation": "A spatial kink core can therefore feed back into the normal spacing state through the already-derived U0(a,s), even though the far-field wells s0 and s0+b are exactly equivalent.",
+  "next_required_calculation": "Minimize the spatial registry-row energy and compute the critical kink-pair saddle barrier Delta G_kp; do not substitute N*Delta G_s as the governing barrier."
+}
