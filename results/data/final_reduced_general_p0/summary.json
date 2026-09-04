@@ -1,0 +1,61 @@
+{
+  "classification": "final reduced closure general-P0 verification",
+  "status": "synthetic structural P0 and area-ratio diagnostic; not Al life calibration",
+  "model": {
+    "m": 12.19,
+    "n": 6.0,
+    "lambda_c": 1.1077715385524567,
+    "q_c": 0.03703426967076833,
+    "E_GPa": 69.0,
+    "a0_m": 2.8627442948e-10,
+    "A0_m2": 6.0338e-20,
+    "temperature_K": 300.0,
+    "A_c_over_A0": 50.0,
+    "mean_stress_MPa": 100.0,
+    "amplitude_MPa": 100.0,
+    "frequency_Hz": 20.0
+  },
+  "reference_lambda": 1.0014720338979324,
+  "p0_points": [
+    {"lambda0": 1.0002720338979323, "weight": 0.03, "integrated_hazard_per_cycle": 3.874097199434477e-7, "survival_probability_per_cycle": 0.9999996125903551},
+    {"lambda0": 1.0006720338979325, "weight": 0.08, "integrated_hazard_per_cycle": 7.06492884028138e-7, "survival_probability_per_cycle": 0.9999992935073655},
+    {"lambda0": 1.0010720338979324, "weight": 0.16, "integrated_hazard_per_cycle": 1.2788466559115418e-6, "survival_probability_per_cycle": 0.9999987211541618},
+    {"lambda0": 1.0014720338979324, "weight": 0.26, "integrated_hazard_per_cycle": 2.2979212749954763e-6, "survival_probability_per_cycle": 0.9999977020813652},
+    {"lambda0": 1.0018720338979323, "weight": 0.22, "integrated_hazard_per_cycle": 4.099115134479163e-6, "survival_probability_per_cycle": 0.9999959008932668},
+    {"lambda0": 1.0022720338979323, "weight": 0.16, "integrated_hazard_per_cycle": 7.259645289337641e-6, "survival_probability_per_cycle": 0.9999927403810618},
+    {"lambda0": 1.0026720338979325, "weight": 0.09, "integrated_hazard_per_cycle": 1.2765644098235348e-5, "survival_probability_per_cycle": 0.9999872344373822}
+  ],
+  "max_closed_cycle_lambda_error": 2.220446049250313e-16,
+  "mixture_one_cycle_survival": 0.9999959175409736,
+  "mixture_one_cycle_first_passage": 4.082459026388818e-6,
+  "survival_by_cycles": [
+    {"cycles": 1, "survival": 0.9999959175409736, "first_passage_fraction": 4.082459026388818e-6, "conditional_mean_lambda0": 1.0016320320234933},
+    {"cycles": 10000, "survival": 0.9605556586187638, "first_passage_fraction": 0.0394443413812362, "conditional_mean_lambda0": 1.0016135795444328},
+    {"cycles": 100000, "survival": 0.6993602205522065, "first_passage_fraction": 0.3006397794477935, "conditional_mean_lambda0": 1.0014718736954693},
+    {"cycles": 300000, "survival": 0.4153394114994918, "first_passage_fraction": 0.5846605885005083, "conditional_mean_lambda0": 1.0012677187346213},
+    {"cycles": 1000000, "survival": 0.13425496401643905, "first_passage_fraction": 0.865745035983561, "conditional_mean_lambda0": 1.0009336706625276}
+  ],
+  "frequency_sweep": [
+    {"frequency_Hz": 1.0, "integrated_hazard_per_cycle": 4.5958425499909534e-5, "frequency_times_hazard": 4.5958425499909534e-5, "median_cycles": 15082.048025368269, "median_time_s": 15082.048025368269},
+    {"frequency_Hz": 5.0, "integrated_hazard_per_cycle": 9.191685099981905e-6, "frequency_times_hazard": 4.595842549990953e-5, "median_cycles": 75410.24012684135, "median_time_s": 15082.04802536827},
+    {"frequency_Hz": 10.0, "integrated_hazard_per_cycle": 4.5958425499909525e-6, "frequency_times_hazard": 4.595842549990953e-5, "median_cycles": 150820.4802536827, "median_time_s": 15082.04802536827},
+    {"frequency_Hz": 20.0, "integrated_hazard_per_cycle": 2.2979212749954763e-6, "frequency_times_hazard": 4.595842549990953e-5, "median_cycles": 301640.9605073654, "median_time_s": 15082.04802536827},
+    {"frequency_Hz": 50.0, "integrated_hazard_per_cycle": 9.191685099981907e-7, "frequency_times_hazard": 4.5958425499909534e-5, "median_cycles": 754102.4012684134, "median_time_s": 15082.048025368269},
+    {"frequency_Hz": 100.0, "integrated_hazard_per_cycle": 4.5958425499909534e-7, "frequency_times_hazard": 4.5958425499909534e-5, "median_cycles": 1508204.8025368268, "median_time_s": 15082.048025368269}
+  ],
+  "temperature_sweep": [
+    {"temperature_K": 250.0, "integrated_hazard_per_cycle": 1.1610084486323787e-9, "median_cycles": 597021650.7695916},
+    {"temperature_K": 275.0, "integrated_hazard_per_cycle": 7.272722514667517e-8, "median_cycles": 9530779.96805208},
+    {"temperature_K": 300.0, "integrated_hazard_per_cycle": 2.2979212749954763e-6, "median_cycles": 301640.9605073654},
+    {"temperature_K": 325.0, "integrated_hazard_per_cycle": 4.286971625930532e-5, "median_cycles": 16168.690652565037},
+    {"temperature_K": 350.0, "integrated_hazard_per_cycle": 5.28460458979151e-4, "median_cycles": 1311.63489866191},
+    {"temperature_K": 400.0, "integrated_hazard_per_cycle": 0.031573216334314404, "median_cycles": 21.95364492551299}
+  ],
+  "verdict": [
+    "The quasistatic characteristic map returns every structural label to its reference spacing after a closed stress cycle to numerical precision.",
+    "Despite that reversible mechanical return, the survivor mass decreases because each structural label has a nonzero thermal first-passage hazard.",
+    "The normalized survivor population shifts toward lower-hazard initial spacings by selection; no permanent drift of every surviving spacing is imposed.",
+    "Within the strict quasistatic/local-equilibrium limit, hazard per cycle scales as 1/f and median life in physical time is frequency-independent; this is a strong falsifiable prediction of the reduced hypothesis.",
+    "Temperature sensitivity is exponentially strong and must be checked experimentally before the closure is treated as a material law for Al."
+  ]
+}
