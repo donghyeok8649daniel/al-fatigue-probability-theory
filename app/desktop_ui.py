@@ -23,6 +23,38 @@ SIDEBAR_BG = "#e9edf1"
 ACCENT = "#1677c8"
 TEXT = "#202830"
 MUTED = "#66727d"
+WINDOW_TITLE = "Al Fatigue — Theory Core v1"
+_INSTANCE_MUTEX = None
+
+
+def acquire_single_instance() -> bool:
+    """Keep one Windows UI instance and focus it when launched again."""
+    global _INSTANCE_MUTEX
+    if os.name != "nt":
+        return True
+    import ctypes
+
+    kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+    user32 = ctypes.WinDLL("user32", use_last_error=True)
+    kernel32.CreateMutexW.argtypes = (ctypes.c_void_p, ctypes.c_bool, ctypes.c_wchar_p)
+    kernel32.CreateMutexW.restype = ctypes.c_void_p
+    kernel32.CloseHandle.argtypes = (ctypes.c_void_p,)
+    user32.FindWindowW.argtypes = (ctypes.c_wchar_p, ctypes.c_wchar_p)
+    user32.FindWindowW.restype = ctypes.c_void_p
+    user32.ShowWindow.argtypes = (ctypes.c_void_p, ctypes.c_int)
+    user32.SetForegroundWindow.argtypes = (ctypes.c_void_p,)
+    handle = kernel32.CreateMutexW(None, False, "Local\\AlFatigueDesktopApp")
+    if not handle:
+        return True
+    if ctypes.get_last_error() == 183:
+        window = user32.FindWindowW(None, WINDOW_TITLE)
+        if window:
+            user32.ShowWindow(window, 9)
+            user32.SetForegroundWindow(window)
+        kernel32.CloseHandle(handle)
+        return False
+    _INSTANCE_MUTEX = handle
+    return True
 
 
 class DesktopApp:
@@ -53,7 +85,7 @@ class DesktopApp:
 
     def __init__(self, project_path: Path | None = None) -> None:
         self.root = tk.Tk()
-        self.root.title("Al Fatigue — Theory Core v1")
+        self.root.title(WINDOW_TITLE)
         self.root.configure(bg=APP_BG)
         self.root.minsize(980, 640)
         self._center(1180, 760)
@@ -400,6 +432,8 @@ class DesktopApp:
 
 
 def main() -> None:
+    if not acquire_single_instance():
+        return
     project = Path(sys.argv[1]) if len(sys.argv) > 1 else None
     DesktopApp(project_path=project).run()
 
