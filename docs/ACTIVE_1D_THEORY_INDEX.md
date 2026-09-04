@@ -148,9 +148,7 @@ Greek $\nu$ is reserved and is **not** the exact-chain conditional mean-rate fie
 
 $$
 \boxed{
-u
- u(\lambda,\tau)=\mathbb E[c\mid\lambda,\tau]
-}
+u(\lambda,\tau)=\mathbb E[c\mid\lambda,\tau]}
 $$
 
 The reduced thermal-closure attempt frequency is written $\nu_s$ and must not be confused with $u$.
