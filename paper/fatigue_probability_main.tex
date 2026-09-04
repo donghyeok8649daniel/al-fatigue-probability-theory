@@ -3,6 +3,7 @@
 \usepackage{amsmath,amssymb,bm}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{longtable}
 \usepackage{hyperref}
 \usepackage{microtype}
 \usepackage{siunitx}
@@ -19,11 +20,11 @@
 \maketitle
 
 \begin{abstract}
-We develop a two-layer one-dimensional fatigue-initiation theory for pure aluminum under normal cyclic loading. The microscopic reference layer is a finite generalized Lennard--Jones chain. Its empirical phase-space measure and spacing marginal are exact push-forwards of deterministic nonlinear mechanics, yielding exact transport identities and the reduced conditional fields $P$, $u$, and $\Theta$. Numerical counterexamples show, however, that the one-point initial spacing density $P_0$ does not retain sufficient neighbour-ordering information to predict the future exact microscopic marginal autonomously. Independent time-scale audits further show that ordinary laboratory-frequency normal loading is quasistatic relative to the retained atomic and elastic normal modes, so conservative normal oscillation cannot by itself provide a high-cycle fatigue clock. We therefore separate reversible structural probability transport from cumulative survivor first passage. The laboratory-scale layer interprets $P_0$ as a structural/prestress spacing density, transports it on the stable quasistatic branch, and introduces a finite-temperature rare transition-state flux to the existing tangent-stiffness-loss boundary. The resulting survivor equation is closed from $P_0$ and the applied stress history without a named spacing distribution, Weibull life law, scalar damage variable, fitted diffusion coefficient, or imposed permanent drift of the normalized spacing PDF. The characteristic cohesive area remains explicit and uncalibrated; sensitivity calculations show that it controls the local high-cycle probability exponentially. The theory is therefore a closed and falsifiable one-dimensional normal-instability submodel, not a claim that real single-crystal aluminum fatigue is already reduced to normal separation alone.
+We develop a two-layer one-dimensional fatigue-initiation theory for pure aluminum under normal cyclic loading. The microscopic reference layer is a finite generalized Lennard--Jones chain. Its empirical phase-space measure and spacing marginal are exact push-forwards of deterministic nonlinear mechanics, yielding exact transport identities and the reduced conditional fields $P$, $u$, and $\Theta$. Numerical counterexamples show, however, that the one-point initial spacing density $P_0$ does not retain sufficient neighbour-ordering information to predict the future exact microscopic marginal autonomously. Independent time-scale audits further show that ordinary laboratory-frequency normal loading is quasistatic relative to the retained atomic and elastic normal modes, so conservative normal oscillation cannot by itself provide a high-cycle fatigue clock. We therefore separate reversible structural probability transport from cumulative survivor first passage. The laboratory-scale layer interprets $P_0$ as a structural/prestress spacing density, transports it on the stable quasistatic branch, and applies a finite-temperature positive-flux transition-state approximation to an operational tangent-stiffness-loss dividing surface. The resulting survivor equation is closed from $P_0$ and the applied stress history without a named spacing distribution, Weibull life law, scalar damage variable, fitted diffusion coefficient, or imposed permanent drift of the normalized spacing PDF. The characteristic cohesive area remains explicit and uncalibrated; sensitivity calculations show that it controls the local high-cycle probability exponentially. The theory is therefore a closed and falsifiable one-dimensional normal-instability submodel under declared assumptions, not a claim that real single-crystal aluminum fatigue is already reduced to normal separation alone.
 \end{abstract}
 
 \section{Scope and two-layer claim}
-The present work is deliberately restricted to a one-dimensional normal-loading hypothesis. It does not reconstruct an FCC lattice, does not postulate a Gaussian, Weibull, Boltzmann, or other named lifetime/spacing family, and does not introduce a phenomenological scalar fatigue-damage variable. The formulation is split into two layers.
+The present work is deliberately restricted to a one-dimensional normal-loading hypothesis. It does not reconstruct an FCC lattice, does not postulate a Gaussian, Weibull, Boltzmann, or other named lifetime/spacing family, and does not introduce a phenomenological scalar fatigue-damage variable.
 
 The exact microscopic reference layer is
 \begin{equation}
@@ -38,16 +39,16 @@ F(\lambda,c,t)
 \end{equation}
 where $\Gamma_0$ is the complete initial microscopic state. This layer is closed at the finite-chain level but its one-point projected hierarchy is not autonomous in $P_0$.
 
-The reduced laboratory-scale initiation layer targets instead
+The reduced laboratory-scale initiation layer targets
 \begin{equation}
 \boxed{
 P_0(\lambda)+\sigma(0:t)
 \longrightarrow
-P_b(\lambda,t),\;S(t),\;F_{\rm ci}(t),
+P_b(\lambda,t),\;S(t),\;F_{\rm ci}(t).
 }
 \label{eq:lab_target}
 \end{equation}
-where $P_b$ is the intact survivor subdensity, $S$ is its surviving mass, and $F_{\rm ci}=1-S$ is the cumulative local initiation probability. Permanent cycle-to-cycle drift of the normalized spacing PDF is not required; first-passage loss carries the cumulative history.
+Here $P_b$ is the intact survivor subdensity, $S$ its surviving mass, and $F_{\rm ci}=1-S$ the cumulative local initiation probability. Permanent cycle-to-cycle drift of the normalized spacing PDF is not required; first-passage loss carries cumulative history.
 
 The four working observables/goals are
 \begin{align}
@@ -56,7 +57,7 @@ G2:&\quad \bar U(t),\\
 G3:&\quad E_{\rm hyst}(t)=\int_0^t\dot D_{\rm irr}(t')dt',\qquad \dot D_{\rm irr}\ge0,\\
 G4:&\quad \text{first passage to a mechanically defined normal-instability boundary.}
 \end{align}
-The exact conservative chain closes $G1$ and $G2$ and supplies the reference mechanics for $G4$. The reduced thermal survivor law closes the laboratory-scale local $G4$ problem under explicitly stated rare-event assumptions. A nonzero irreversible thermodynamic $G3$ is not manufactured from conservative cycle work or from first-passage bookkeeping.
+The exact conservative chain closes $G1$ and $G2$ and supplies the reference mechanics for $G4$. The reduced survivor law closes the laboratory-scale local $G4$ problem under explicitly stated quasistatic and transition-state assumptions. A nonzero irreversible thermodynamic $G3$ is not manufactured from conservative cycle work or first-passage bookkeeping.
 
 \section{Normalized generalized-Lennard--Jones normal mechanics}
 Let $a_0$ be the reference normal spacing and define
@@ -67,9 +68,9 @@ t_0=\sqrt{\frac{m_a a_0}{EA_0}}.
 \end{equation}
 The reduced normal traction is the calibration bridge
 \begin{equation}
-q=\frac{F_{\rm ext}}{EA_0}=\frac{\sigma_n}{E}.
+q=\frac{F_{\rm ext}}{EA_0}=\frac{\sigma_n}{E},
 \end{equation}
-The normalized generalized-Lennard--Jones potential is
+not a universal atomistic identity. The normalized generalized-Lennard--Jones potential is
 \begin{equation}
 \phi(\lambda)
 =\frac{\lambda^{-m}}{m(m-n)}
@@ -86,22 +87,21 @@ with
 \end{equation}
 Thus $\phi'(1)=0$ and $\phi''(1)=1$. The current numerical calibration uses $m=12.19$ and $n=6$.
 
-The operational local tangent-instability boundary satisfies
+The operational local tangent-instability dividing surface satisfies
 \begin{equation}
 \phi''(\lambda_c)=0,
 \qquad
-\boxed{
-\lambda_c=\left(\frac{m+1}{n+1}\right)^{1/(m-n)}
-},
+\boxed{\lambda_c=\left(\frac{m+1}{n+1}\right)^{1/(m-n)}},
 \label{eq:lambdac}
 \end{equation}
-so that $\lambda_c\approx1.1077715386$ for the active exponents. The corresponding maximum stable reduced traction is
+so $\lambda_c\approx1.1077715386$. The corresponding maximum stable reduced traction is
 \begin{equation}
 q_c=\phi'(\lambda_c).
 \end{equation}
+The use of $\lambda_c$ is operational: it marks loss of local tangent stability in the retained 1D potential, not the completed formation of a macroscopic free surface.
 
 \section{Exact finite-chain reference}
-Let $x_0=0$ and let $x_1,\ldots,x_M$ be normalized node positions. Define
+Let $x_0=0$ and $x_1,\ldots,x_M$ be normalized node positions. Define
 \begin{equation}
 \lambda_i=x_i-x_{i-1},\qquad c_i=\dot\lambda_i,
 \end{equation}
@@ -113,21 +113,19 @@ where the dot in this section denotes differentiation with respect to $\tau$. Th
 \begin{equation}
 \ddot x_M=-\phi'(\lambda_M)+q(\tau).
 \end{equation}
-The exact dimensionless mechanical energy is
+The exact reduced mechanical energy is
 \begin{equation}
 E_{\rm mech}^*=\frac12\sum_{j=1}^M\dot x_j^2+\sum_{i=1}^M\phi(\lambda_i),
 \end{equation}
-with balance
+with
 \begin{equation}
-\boxed{
-\frac{dE_{\rm mech}^*}{d\tau}=q(\tau)\dot x_M.
-}
+\boxed{\frac{dE_{\rm mech}^*}{d\tau}=q(\tau)\dot x_M.}
 \label{eq:energy_balance}
 \end{equation}
-External cyclic work may therefore change the conservative mechanical energy, but that exchange is not by itself irreversible dissipation.
+External cyclic work may change conservative mechanical energy, but that exchange is not by itself irreversible dissipation.
 
 \subsection{Empirical probability and exact push-forward}
-For one deterministic chain, the empirical spacing measure is
+For one deterministic chain,
 \begin{equation}
 P_{\lambda,M}(\lambda,\tau)
 =\frac1M\sum_{i=1}^M\delta[\lambda-\lambda_i(\tau)].
@@ -145,7 +143,7 @@ P_\lambda(\lambda,\tau\mid q,\mu_0)
 \delta[\lambda-\Lambda_i(\tau;\Gamma_0,q)]\,\mu_0(d\Gamma_0).
 \label{eq:exact_pushforward}
 \end{equation}
-This defines the probability state mechanically; it does not select a PDF family in advance.
+Thus the microscopic probability state is generated by mechanics rather than selected from a named PDF family.
 
 \subsection{Phase-space transport and reduced moments}
 Define
@@ -164,15 +162,18 @@ Distributionally,
 \end{equation}
 For a smooth representation write $\mathcal G=AF$ with
 \begin{equation}
-A=\E[\ddot\lambda_i\mid\lambda_i=\lambda,c_i=c].
+A(\lambda,c,\tau)=\E[\ddot\lambda_i\mid\lambda_i=\lambda,c_i=c].
 \end{equation}
 Define
 \begin{equation}
+u
 u(\lambda,\tau)=\E[c\mid\lambda,\tau],
 \qquad
 \Theta(\lambda,\tau)=\Var(c\mid\lambda,\tau),
 \end{equation}
-and
+\begin{equation}
+\mathcal A(\lambda,\tau)=\E[\ddot\lambda_i\mid\lambda_i=\lambda,\tau],
+\end{equation}
 \begin{equation}
 C_3=\E[(c-u)^3\mid\lambda,\tau],
 \qquad
@@ -181,6 +182,7 @@ C_3=\E[(c-u)^3\mid\lambda,\tau],
 The exact reduced balances are
 \begin{equation}
 \partial_\tau P+\partial_\lambda(Pu)=0,
+\qquad J=Pu,
 \label{eq:continuity}
 \end{equation}
 \begin{equation}
@@ -195,22 +197,20 @@ D_\tau\Theta+2\Theta\partial_\lambda u
 }
 \label{eq:theta_balance}
 \end{equation}
-The one-point fields are exact descriptors, but $C_3$, $\Psi$, and neighbour-force correlations demonstrate why the projected system is not an autonomous $P_0$-only solver in general.
-
-Where $P>0$ and $\Theta>0$, the momentum identity also gives the exact smooth density-shape representation
+The one-point fields are exact descriptors, but $C_3$, $\Psi$, and neighbour-force correlations demonstrate why the projected system is not an autonomous $P_0$-only solver in general. Where $P>0$ and $\Theta>0$,
 \begin{equation}
 \Theta\partial_\lambda\ln P
-=\mathcal A-D_\tau u-\partial_\lambda\Theta.
+=\mathcal A-D_\tau u-\partial_\lambda\Theta,
 \end{equation}
-It is a representation of the mechanically generated density, not a Gaussian or other assumed closure.
+which is an exact smooth density-shape representation, not an assumed Gaussian closure.
 
 \section{Why the exact projection is not the laboratory fatigue closure}
-Two numerical counterexamples establish the information loss under one-point projection. Distinct microscopic states can have identical $P_0$ and identical one-point phase-space density $F_0(\lambda,c)$ but different neighbour ordering and therefore different future $P$. Even equality of the directed nearest-neighbour pair measure does not generally close the future evolution because its transport depends on longer local blocks. The finite chain is therefore retained as reference truth rather than relabelled as a probability-only theory.
+Two numerical counterexamples establish the information loss under one-point projection. Distinct microscopic states can have identical $P_0$ and identical one-point phase-space density $F_0(\lambda,c)$ but different neighbour ordering and therefore different future $P$. Even equality of the directed nearest-neighbour pair measure does not generally close future evolution because pair transport depends on longer local blocks. The finite chain is therefore retained as reference truth rather than relabelled as a probability-only theory.
 
-Independent laboratory-time-scale audits establish a second reduction. With the current Al bridge the atomic normal time scale is of order $10^{-14}\,$s. A local conservative oscillator and finite-chain longitudinal modes are therefore effectively quasistatic at ordinary hertz-scale fatigue frequencies. Making the lowest normal elastic mode itself of order $20\,$Hz would require a macroscopic length of order tens of metres, whereas reducing the characteristic region raises the mode frequency. Hence conservative normal dynamics is not the slow high-cycle clock.
+Independent laboratory-time-scale audits establish a second reduction. With the current Al bridge the atomic normal time scale is of order $10^{-14}\,$s. Local conservative oscillation and finite-chain longitudinal modes are therefore effectively quasistatic at ordinary hertz-scale fatigue frequencies. Making the lowest normal elastic mode itself of order $20\,$Hz would require a macroscopic length of order tens of metres, whereas reducing the characteristic region raises the mode frequency. Hence conservative normal dynamics is not the slow high-cycle clock.
 
 \section{Instantaneous tails versus cumulative first passage}
-For a fixed threshold $\lambda_*$, the instantaneous tail is
+For a fixed threshold $\lambda_*$, define
 \begin{equation}
 Q_*(\tau)=\int_{\lambda_*}^{\infty}P(\lambda,\tau)d\lambda.
 \end{equation}
@@ -224,13 +224,13 @@ J_+=\int_0^\infty cF(\lambda_*,c,\tau)dc,
 \qquad
 J_-=-\int_{-\infty}^0cF(\lambda_*,c,\tau)dc,
 \end{equation}
-so $\dot Q_*=J_+-J_-$. Snapshot tail mass may therefore rise and fall.
+so $\dot Q_*=J_+-J_-$. Snapshot tail mass may rise and fall.
 
 For each represented spacing define
 \begin{equation}
 \tau_i^c=\inf\{\tau:\lambda_i(\tau)\ge\lambda_c\}.
 \end{equation}
-The cumulative first-passage fraction is nondecreasing by definition. Crucially, a cycle-periodic one-point marginal does not determine this history: the same marginal can be produced by repeatedly exposing the same label or by exposing a different surviving label each cycle. Conversely, if every deterministic label is exactly periodic, the crossing set repeats and cumulative first passage saturates after the first cycle. The correct reduced fatigue state therefore requires survivor/path information, not an artificial permanent deformation of the normalized PDF.
+The cumulative first-passage fraction is nondecreasing by definition. A cycle-periodic one-point marginal does not determine this history: the same marginal can be produced by repeatedly exposing the same label or by exposing a different surviving label each cycle. Conversely, if every deterministic label is exactly periodic, the crossing set repeats and cumulative first passage saturates after the first cycle. The correct reduced fatigue state therefore requires survivor/path information, not artificial permanent deformation of the normalized PDF.
 
 \section{G1, G2, and the local initiation boundary}
 The mean physical spacing is
@@ -243,7 +243,7 @@ The mean intrinsic normal energy is
 \bar U(t)=U_{\rm ref}\int[\phi(\lambda)-\phi(1)]P_\lambda(\lambda,t)d\lambda.
 }
 \end{equation}
-The local initiation dividing surface is Eq.~\eqref{eq:lambdac}. This is a model-based operational criterion for loss of tangent stability, not a claim that a macroscopic free surface is already formed at $\lambda_c$.
+The local initiation dividing surface is Eq.~\eqref{eq:lambdac}. It is an operational 1D tangent-instability criterion whose experimental validity must be tested.
 
 \input{final_reduced_survival_closure_note.tex}
 
@@ -253,7 +253,7 @@ A reduced registry coordinate $s$ was explored only as a possible extension. The
 U_0(a,s)=\sum_{k\ge1}\sum_{p\in\mathbb Z}
 v_{m,n}\left(\sqrt{k^2a^2+(pb+s)^2}\right).
 \end{equation}
-Normal opening lowers the neighbouring registry barrier, but perfect registry symmetry does not generate motion from $s=s_0$, $\dot s=0$. Spatially resolving the registry field produces kink--antikink configurations and a rare formation-energy scale, yet unbounded relaxation and minimum-energy-path audits show only very shallow post-formation trapping in the ideal pure-normal reduced surface. The registry route is therefore not promoted as the primary long-lived fatigue memory or as the present crack trigger. It remains a plasticity/defect extension for later higher-fidelity work.
+Normal opening lowers a neighbouring registry barrier, but perfect registry symmetry does not generate motion from $s=s_0$, $\dot s=0$. Spatially resolving registry produces kink--antikink configurations and a rare formation-energy scale, yet unbounded relaxation and minimum-energy-path audits show only very shallow post-formation trapping in the ideal pure-normal reduced surface. A coupled check also shows that the registry-saddle relaxed normal spacing remains below that same coupled surface's own normal curvature-loss point. The registry route is therefore not promoted as the primary long-lived fatigue memory or as the present crack trigger.
 
 \section{G3: conservative work is not irreversible dissipation}
 For the exact reference chain, Eq.~\eqref{eq:energy_balance} is the complete mechanical-energy balance. A loading/unloading mismatch of $P$, $u$, or $\Theta$, nonzero external cycle work during a transient, or cumulative first passage does not alone establish
@@ -268,12 +268,11 @@ The conservative microscopic baseline therefore retains
 as its thermodynamic statement. The reduced thermal escape law transfers unresolved thermal degrees of freedom into a transition-state probability flux; it is not interpreted as an arbitrary stored fatigue-energy fraction.
 
 \section{Numerical audits and falsification results}
-\subsection{Exact-projection diagnostics}
-A 512-spacing density-shape reconstruction audit reported a maximum $L^1$ error of $0.076255$, maximum Kolmogorov--Smirnov distance of $0.038126$, and maximum relative mean-energy error of $3.046\%$ over the tested phases. The Gaussian kernel in that audit is only a numerical estimator.
+A 512-spacing density-shape reconstruction audit reported maximum $L^1$ error $0.076255$, maximum Kolmogorov--Smirnov distance $0.038126$, and maximum relative mean-energy error $3.046\%$. The Gaussian kernel used there is only a numerical estimator.
 
 At an approximately $150\,$MPa matched-force loading/unloading comparison, the deterministic reference chain produced $L^1\approx0.7023$ and KS $\approx0.2061$ between spacing marginals, with normalized differences in $u$ and $\Theta$ of approximately $1.406$ and $1.828$. Mechanical work and energy increments still agreed to approximately $10^{-13}$--$10^{-12}$, confirming dynamic history dependence without claiming irreversible dissipation.
 
-A six-cycle tail audit at the illustrative threshold $\lambda_*=1.004$ gave cycle-end snapshot tail fractions
+A six-cycle audit at the illustrative threshold $\lambda_*=1.004$ gave cycle-end snapshot tail fractions
 \begin{equation}
 0,\;0,\;0.037182,\;0.266145,\;0.256360,\;0.146771,
 \end{equation}
@@ -283,8 +282,7 @@ while cumulative first-passage fractions were
 \end{equation}
 Thus the nonabsorbing tail is nonmonotone whereas the first-passage record is monotone. No spacing reached the actual $\lambda_c$ in that low-load proof-of-principle audit.
 
-\subsection{Reduced-closure sensitivity}
-Using the current historical bridge $E=69\,$GPa, $a_0=2.8627442948\times10^{-10}\,$m, $A_0=6.0338\times10^{-20}\,$m$^2$, $T=300\,$K, and a $100\pm100\,$MPa, $20\,$Hz sinusoid, the atomic-reference energy climb to $\lambda_c$ is only about $0.02164\,$eV at zero stress and $0.01935\,$eV at $200\,$MPa. Therefore one atomic reference area cannot be silently identified with the rare cohesive event.
+Using the current historical bridge $E=69\,$GPa, $a_0=2.8627442948\times10^{-10}\,$m, $A_0=6.0338\times10^{-20}\,$m$^2$, $T=300\,$K, and a $100\pm100\,$MPa, $20\,$Hz sinusoid, the atomic-reference effective-potential climb to $\lambda_c$ is about $0.02164\,$eV at zero stress and $0.01935\,$eV at $200\,$MPa. One atomic reference area therefore cannot be silently identified with the rare cohesive event.
 
 Writing $A_c=RA_0$, the same sensitivity audit gives
 \begin{center}
@@ -299,10 +297,10 @@ $R$ & cycle hazard & cycle escape & local median cycles\\
 \bottomrule
 \end{tabular}
 \end{center}
-These numbers are a sensitivity sweep, not calibration. No value of $R$ is adopted. Their purpose is to show that a very high local survival probability per cycle is natural in the high-cycle regime and that the characteristic cohesive area must be determined independently.
+These are sensitivity values, not calibration. No value of $R$ is adopted. They show that extremely high local per-cycle survival is natural in the high-cycle regime and that $A_c$ must be determined independently.
 
 \section{What is established and what remains open}
-The final mathematical chain is
+The final reduced mathematical chain is
 \begin{equation}
 \boxed{
 P_0+\sigma(0:t)
@@ -314,30 +312,27 @@ S(t)
 F_{\rm ci}(t).
 }
 \end{equation}
-It is closed under the declared structural-prestress, quasistatic, fast intrawell re-equilibration, and rare transition-state assumptions. The closure does not require full microscopic ordering, an assumed lifetime distribution, a scalar damage variable, permanent normalized-$P$ drift, or a fitted diffusion coefficient.
+It is closed under the declared structural-prestress embedding, quasistatic stable-branch transport, fast intrawell re-equilibration, harmonic-well positive-flux transition-state approximation, and rare-event regime. The closure does not require full microscopic ordering, an assumed lifetime distribution, a scalar damage variable, permanent normalized-$P$ drift, or a fitted diffusion coefficient.
 
-The remaining tasks are not further closure invention. They are
+The remaining tasks are calibration and falsification rather than further arbitrary closure invention:
 \begin{enumerate}
 \item determine the characteristic cohesive area $A_c$ independently;
-\item construct or measure the structural/prestress $P_0$;
-\item validate the operational $\lambda_c$ dividing surface and any transition-state recrossing correction;
-\item test the predicted temperature, mean-stress, amplitude, frequency, and initial-state dependences;
-\item determine the specimen-scale correlation area/volume and local-to-specimen survival mapping only after local calibration;
+\item construct or measure structural/prestress $P_0$;
+\item validate $\lambda_c$ as the operational dividing surface and quantify transition-state recrossing/transmission corrections;
+\item test predicted temperature, mean-stress, amplitude, frequency, and initial-state dependences;
+\item determine specimen-scale correlation area/volume and local-to-specimen survival mapping only after local calibration;
 \item determine experimentally whether real pure-Al single-crystal fatigue in the target regime is dominated by the proposed normal-instability path or by dislocation/slip-band evolution.
 \end{enumerate}
 A nonzero thermodynamic $G3$ remains a separate physical question if post-initiation plastic dissipation is to be modeled.
 
+\input{symbol_index_current.tex}
+
 \section{Reproducibility paths}
-The exact tail/first-passage audit is generated on the \texttt{numerical-fem} branch by
-\texttt{simulations/verify\_probability\_tail\_first\_passage.py}. Initial-state sufficiency and pair-state insufficiency are audited by
-\texttt{simulations/verify\_initial\_data\_sufficiency.py} and
-\texttt{simulations/verify\_pair\_state\_insufficiency.py}. Laboratory-time-scale no-go tests are stored with the local-traction and collective-mode audits. The final reduced sensitivity calculation is generated by
-\texttt{simulations/audit\_final\_reduced\_closure\_sensitivity.py} with its summary under
-\texttt{results/data/final\_reduced\_closure\_sensitivity/}.
+The exact tail/first-passage audit is generated on the \texttt{numerical-fem} branch by \texttt{simulations/verify\_probability\_tail\_first\_passage.py}. Initial-state sufficiency and pair-state insufficiency are audited by \texttt{simulations/verify\_initial\_data\_sufficiency.py} and \texttt{simulations/verify\_pair\_state\_insufficiency.py}. Laboratory-time-scale no-go tests are stored with the local-traction and collective-mode audits. The final reduced sensitivity calculation is generated by \texttt{simulations/audit\_final\_reduced\_closure\_sensitivity.py}, with its summary under \texttt{results/data/final\_reduced\_closure\_sensitivity/}.
 
 \section{Conclusion}
 The exact finite generalized-Lennard--Jones chain remains the mechanically closed microscopic reference, and its empirical probability state is an exact projection rather than an assumed statistical family. That projection alone cannot become an autonomous $P_0$-only high-cycle fatigue solver because one-point marginalization discards spatial ordering and correlation information. Laboratory-frequency audits also rule out conservative normal oscillation and ordinary longitudinal elastic modes as the missing slow fatigue clock.
 
-The successful reduction is instead to separate reversible structural transport from cumulative survivor first passage. The structural/prestress density $P_0$ is carried quasistatically on the stable branch, while finite-temperature rare transition-state crossing removes intact survivor mass at a rate whose barrier and attempt scale are inherited from the same normal interaction. This yields a closed mapping from $P_0$ and the applied stress history to $P_b$, $S$, and $F_{\rm ci}$ without an empirical damage law or imposed PDF family. The characteristic cohesive area remains explicit rather than hidden in a fit, making the present one-dimensional normal-instability hypothesis sharply falsifiable. The next stage is therefore independent calibration and experiment, not another arbitrary probability closure.
+The successful reduction is to separate reversible structural transport from cumulative survivor first passage. The structural/prestress density $P_0$ is carried quasistatically on the stable branch, while a finite-temperature positive-flux transition-state approximation removes intact survivor mass according to an energy climb inherited from the same normal interaction. This yields a closed mapping from $P_0$ and the applied stress history to $P_b$, $S$, and $F_{\rm ci}$ without an empirical damage law or imposed PDF family. The characteristic cohesive area remains explicit rather than hidden in a fit, making the present one-dimensional normal-instability hypothesis sharply falsifiable. The next stage is independent calibration, higher-fidelity transmission testing, and experiment rather than another arbitrary probability closure.
 
 \end{document}
