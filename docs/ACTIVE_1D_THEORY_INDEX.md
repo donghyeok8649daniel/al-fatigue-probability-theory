@@ -12,7 +12,8 @@ The authoritative mainline is split into two layers: an exact microscopic refere
 8. `FINAL_REDUCED_P0_THERMAL_FIRST_PASSAGE_CLOSURE.md` — active reduced lab-scale closure;
 9. `PERIODIC_P_FIRST_PASSAGE_SEPARATION.md` — periodic PDF versus cumulative first passage;
 10. `PEAK_HAZARD_ASYMPTOTICS_AND_IDENTIFIABILITY.md` — tensile-peak hazard asymptotic and future $A_c$ identification route;
-11. `EXPERIMENTAL_FALSIFICATION_PLAN_REDUCED_CLOSURE.md` — ordered validation/rejection tests.
+11. `EXPERIMENTAL_FALSIFICATION_PLAN_REDUCED_CLOSURE.md` — ordered validation/rejection tests;
+12. `PURE_NORMAL_CYCLE_ACCUMULATION_NO_GO_AND_LITERATURE_CHECK.md` — final frequency-scaling no-go and external aluminum consistency check.
 
 ## Layer A — exact microscopic reference
 
@@ -28,7 +29,7 @@ The finite microscopic chain is closed. Its projected one-point hierarchy is exa
 The active mean-rate symbol is
 
 $$
-u(\lambda,\tau)=\mathrm E[c\mid\lambda,\tau].
+u u(\lambda,\tau)=\mathrm E[c\mid\lambda,\tau].
 $$
 
 The general variance balance is
@@ -177,6 +178,16 @@ The following are not active governing assumptions unless separately re-justifie
 
 Registry/kink calculations remain a plasticity/defect extension; long-lived trapping and direct crack triggering were not established in the ideal pure-normal reduced surface.
 
+## Final physical limitation
+
+The strict pure-normal model now has a proven cycle-accumulation limitation. A deterministic label-preserving quasistatic cycle cannot create indefinitely renewed first passages. With fast stationary thermal renewal, phase-controlled periodic loading gives
+
+$$
+\mathcal H_{\mathrm{cycle}}\propto\frac1f,
+$$
+
+so the model becomes predominantly elapsed-time controlled. External room-temperature aluminum evidence includes weak frequency sensitivity in high-purity aluminum over a broad conventional-frequency range and single-crystal crack-initiation observations tied to cyclic slip/dislocation structure. Therefore the current closure is retained as a **normal-instability submodel**, not yet as a complete room-temperature pure-Al fatigue mechanism.
+
 ## Remaining calibration and falsification
 
 1. Determine $A_c$ independently.
@@ -186,5 +197,6 @@ Registry/kink calculations remain a plasticity/defect extension; long-lived trap
 5. Validate temperature, frequency, mean-stress, amplitude, and initial-state predictions.
 6. Determine specimen correlation area/volume and local-to-specimen survival scaling later.
 7. Test whether real pure-Al single-crystal fatigue is governed by this normal route or by slip-band/dislocation evolution.
+8. If a complete cycle-controlled material model is required, derive a physical cycle-evolving internal state rather than inserting an empirical damage variable.
 
-The closure problem is therefore solved only **within the declared 1D normal-instability hypothesis and transition-state approximation**. The next stage is calibration and falsification, not another arbitrary probability closure.
+The mathematical $P_0\to P_b,S,F_{\mathrm{ci}}$ closure is solved only **within the declared 1D normal-instability hypothesis and transition-state approximation**. The full room-temperature aluminum-fatigue mechanism is not closed under the strict no-shear/no-slow-state restriction.
