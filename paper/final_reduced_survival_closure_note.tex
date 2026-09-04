@@ -1,7 +1,8 @@
-% Candidate manuscript insertion: final reduced lab-scale survival closure.
-% This note is intentionally separate from fatigue_probability_main.tex until the manuscript is restructured around the two-layer theory.
+% Active manuscript insertion: reduced lab-scale survival closure.
+% The exact finite-chain sections remain the microscopic reference layer.
 
-\section*{Reduced laboratory-scale survival closure}
+\section{Reduced laboratory-scale survival closure}
+\label{sec:reduced_survival_closure}
 
 The exact finite-chain probability projection is retained as a microscopic reference, but it is not autonomous in the initial one-point spacing marginal because microscopic ordering and correlation information is lost under projection. Laboratory-frequency audits further show that conservative normal dynamics approaches a quasistatic cycle on the atomic mechanical time scale. Therefore high-cycle accumulation is formulated as survivor first passage rather than as an imposed permanent drift of the normalized spacing density.
 
@@ -20,6 +21,13 @@ Consequently
 \begin{equation}
 \dot\Lambda=\frac{\dot q(t)}{\phi''(\Lambda)}.
 \end{equation}
+The corresponding nonabsorbing structural density obeys
+\begin{equation}
+\partial_tP+\partial_\lambda\left[
+\frac{\dot q(t)}{\phi''(\lambda)}P
+\right]=0.
+\end{equation}
+Thus the reversible mechanical part is closed directly from $P_0$ and the applied stress history under the declared quasistatic/prestress reduction.
 
 The operational instability boundary remains
 \begin{equation}
@@ -41,7 +49,9 @@ Under the explicitly declared rare-event and fast intrawell thermal re-equilibra
 k_c(\lambda,T;A_c)
 =\frac{\sqrt{\phi''(\lambda)}}{2\pi t_0}
 \exp\left[-\frac{EA_ca_0\Delta\psi_c(\lambda)}{k_BT}\right].
+\label{eq:kc_reduced}
 \end{equation}
+No fitted diffusion coefficient, damping constant, lifetime distribution, or scalar damage variable is introduced in Eq.~\eqref{eq:kc_reduced}. The additional physical assumptions are finite temperature, rapid re-equilibration inside the intact well, and rare transition-state crossing.
 
 The intact survivor subdensity therefore obeys the closed reduced equation
 \begin{equation}
@@ -52,6 +62,7 @@ The intact survivor subdensity therefore obeys the closed reduced equation
 \right]
 =-k_c(\lambda,T;A_c)P_b,
 }
+\label{eq:final_survivor_pde}
 \end{equation}
 with $P_b(\lambda,t_0)=P_0(\lambda)$. Hence
 \begin{equation}
@@ -72,8 +83,15 @@ For periodic loading, each starting spacing has an integrated one-cycle hazard
 \end{equation}
 and therefore
 \begin{equation}
+\boxed{
 S_N=\int P_0(\lambda_0)e^{-N\mathcal H_c(\lambda_0)}d\lambda_0.
+}
+\label{eq:cycle_survival}
 \end{equation}
-Permanent cycle-to-cycle drift of the normalized structural PDF is therefore not required. The cumulative history is stored in survivor mass.
+Permanent cycle-to-cycle drift of the normalized structural PDF is therefore not required. The cumulative history is stored in survivor mass, while the surviving normalized population may change only by selection.
 
-The characteristic area $A_c$ is deliberately not fitted in the present derivation. A sensitivity audit shows that the local life depends exponentially on this area, making its independent calibration or higher-fidelity calculation essential. The reduced equation is therefore mathematically closed and experimentally falsifiable, but it remains a normal-instability submodel rather than a complete dislocation theory of real single-crystal Al fatigue.
+The characteristic area $A_c$ is deliberately not fitted in the present derivation. A sensitivity audit at the current historical Al bridge, $300\,$K, and a $100\pm100\,$MPa, $20\,$Hz sinusoid gives one-cycle escape probabilities of approximately $4.66\times10^{-3}$, $2.30\times10^{-6}$, and $1.16\times10^{-9}$ for illustrative area ratios $A_c/A_0=40,50,60$, respectively. These values demonstrate exponential sensitivity only; no area ratio is adopted. In particular, a local per-cycle survival extremely close to unity is the expected high-cycle regime rather than a contradiction.
+
+In the strict quasistatic phase-controlled limit, $\mathcal H_c\propto1/f$. The reduced hypothesis therefore predicts approximately frequency-independent life in physical time and a cycle count approximately proportional to loading frequency until the quasistatic or local-equilibrium assumptions fail. This, together with the temperature, mean-stress, stress-amplitude, and $P_0$ dependence of Eq.~\eqref{eq:final_survivor_pde}, makes the closure experimentally falsifiable.
+
+The reduced equation is mathematically closed but is not asserted to be a complete dislocation theory of real single-crystal aluminum fatigue. Independent determination of $A_c$ and structural $P_0$, validation of the operational dividing surface $\lambda_c$, and any transition-state recrossing correction remain experimental or higher-fidelity tasks. Specimen-scale correlation area/volume and local-to-specimen survival scaling are deliberately deferred to a later calibration stage.
