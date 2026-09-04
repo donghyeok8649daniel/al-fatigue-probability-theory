@@ -1,4 +1,4 @@
-% Active manuscript v2 Korean symbol index.
+% Active manuscript Korean symbol index (companion to canonical v3).
 \section*{현재 이론 기호 및 계산 인덱스 (한국어)}
 \small
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.12\textwidth}>{\raggedright\arraybackslash}p{0.38\textwidth}}
@@ -51,8 +51,11 @@ $P_b$ & intact survivor subdensity & 1 per $\lambda$ & $\lambda<\lambda_c$에서
 $W(\lambda_0,t)$ & characteristic 생존가중치 & 1 & $\exp[-\int_0^t k_c(\Lambda(\lambda_0,s))ds]$. \\
 $S,F_{\rm ci}$ & 국소 생존확률과 누적 개시확률 & 1 & $S=\int_0^{\lambda_c}P_b d\lambda$, $F_{\rm ci}=1-S$. \\
 $T_f,f$ & 피로하중 1주기 시간과 주파수 & s, Hz & $T_f=1/f$. \\
-$\mathcal H_c$ & 1 cycle 누적 hazard & 1 & $\int_0^{T_f}k_c[\Lambda(\lambda_0,t),T;A_c]dt$. \\
-$N,S_N$ & cycle 수와 $N$ cycle 후 국소 생존확률 & 1 & mechanically stable label에 대해 $\int P_0e^{-N\mathcal H_c}d\lambda_0$. \\
+$\mathcal H_c$ & structural label의 1 cycle 누적 hazard & 1 & $\int_0^{T_f}k_c[\Lambda(\lambda_0,t),T;A_c]dt$. \\
+$\mathcal H_f$ & 동일한 phase-shaped 파형을 주파수 $f$로 작동할 때의 1 cycle hazard & 1 & strict quasistatic/fast-equilibration 한계에서 $\mathcal H_f=f^{-1}\int_0^1 k_c[\Lambda_*(\theta),T]d\theta$, 따라서 $\mathcal H_f\propto1/f$. \\
+$N$ & 반복 하중 cycle 수 & 1 & 동일한 loading cycle의 반복 횟수. \\
+$N_{50}$ & 국소 median cycle 수 & cycle & 해당 reduced regime에서 $S_{N_{50}}=1/2$로 정의. strict fast-equilibrium 한계에서는 $N_{50}\propto f$. \\
+$S_N$ & $N$ cycle 후 국소 생존확률 & 1 & mechanically stable label에 대해 $\int P_0e^{-N\mathcal H_c}d\lambda_0$. \\
 $A_c/A_0$ & 특성면적 비 & 1 & 현재 민감도 분석용이며 채택값 없음. \\
 $\dot D_{\rm irr}$ & 비가역 소산률 & J s$^{-1}$ & 보존 미시 baseline에서는 0; first passage와 동일시하지 않음. \\
 \end{longtable}
