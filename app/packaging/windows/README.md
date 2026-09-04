@@ -30,6 +30,22 @@ Do not treat a successful local `.exe` build as release-ready. Verify at minimum
 - application version displayed in UI/logs;
 - compatibility with project bundle format versioning.
 
+## Local build and installer
+
+Build the FEM solver first so that the packaged application contains its
+native backend:
+
+```powershell
+cd fem1d
+make
+cd ..
+.\app\packaging\windows\build.ps1
+```
+
+With Inno Setup installed, compile `app/packaging/windows/AlFatigue.iss` to
+produce `dist/installer/AlFatigue-Setup-0.1.0.exe`. The installer registers
+the per-user `.ftgsim` association and creates Start Menu/Desktop shortcuts.
+
 ## Installer responsibilities
 
 The installer should own only machine/user integration tasks:

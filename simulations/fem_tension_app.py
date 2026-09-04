@@ -28,6 +28,7 @@ from pathlib import Path
 import os
 import shutil
 import subprocess
+import sys
 from typing import Sequence
 
 import matplotlib.pyplot as plt
@@ -260,6 +261,8 @@ def initiation_snapshot(
 
 
 def repository_root() -> Path:
+    if getattr(sys, "frozen", False):
+        return Path(sys.executable).resolve().parent
     return Path(__file__).resolve().parents[1]
 
 
