@@ -1,0 +1,81 @@
+% Manuscript insertion candidate: peak-dominated hazard asymptotic.
+
+\section*{Peak-dominated cycle-hazard asymptotic}
+
+The closed reduced survivor law permits an additional high-barrier approximation for sinusoidal loading. Let
+\begin{equation}
+q(t)=q_m+q_a\sin(2\pi f t),
+\qquad q_a>0,
+\end{equation}
+and let $\lambda_p$ be the quasistatic stable spacing at the tensile peak $q_p=q_m+q_a$. Define
+\begin{equation}
+B=\frac{EA_ca_0}{k_BT},
+\qquad
+g_p=\Delta\psi_c(\lambda_p),
+\qquad
+\nu_p=\frac{\sqrt{\phi''(\lambda_p)}}{2\pi t_0}.
+\end{equation}
+
+For the effective-potential climb $g(q)$, stationarity of the stable branch gives the exact derivative
+\begin{equation}
+\frac{dg}{dq}=-(\lambda_c-\lambda_s),
+\end{equation}
+and hence
+\begin{equation}
+\frac{d^2g}{dq^2}=\frac{1}{\phi''(\lambda_s)}>0.
+\end{equation}
+Near the tensile maximum,
+\begin{equation}
+q(t)=q_p-\frac12q_a(2\pi f)^2(t-t_p)^2+O[(t-t_p)^4],
+\end{equation}
+so the rare-event cycle integral is Gaussian to leading order. The resulting one-cycle hazard is
+\begin{equation}
+\boxed{
+\mathcal H_c
+\sim
+\frac{\nu_p}{f\sqrt{2\pi Bq_a(\lambda_c-\lambda_p)}}
+\exp(-Bg_p).
+}
+\end{equation}
+For a narrow structural initial state,
+\begin{equation}
+S_N\simeq\exp(-N\mathcal H_c),
+\end{equation}
+so
+\begin{equation}
+N_p
+\sim
+\frac{-\ln(1-p)f}{\nu_p}
+\sqrt{2\pi Bq_a(\lambda_c-\lambda_p)}
+\exp(Bg_p).
+\end{equation}
+This produces an S--N-like stress sensitivity without introducing a Basquin exponent or a fitted life distribution.
+
+The same expression gives a direct temperature-identifiability transform. Writing
+\begin{equation}
+C=\frac{EA_ca_0}{k_B},
+\end{equation}
+we obtain
+\begin{equation}
+\boxed{
+\ln\left(\frac{f\mathcal H_c}{\sqrt T}\right)
+\sim
+\mathrm{const}
+-\frac{Cg_p}{T}.
+}
+\end{equation}
+Thus, if a local first-passage hazard can be measured under a fixed stress waveform,
+\begin{equation}
+\boxed{
+A_c
+\simeq
+-\frac{k_B}{Ea_0g_p}
+\frac{d}{d(1/T)}
+\ln\left(\frac{f\mathcal H_c}{\sqrt T}\right).
+}
+\end{equation}
+This is an identifiability relation rather than a present calibration.
+
+For the current diagnostic point $100\pm100$ MPa, 20 Hz, 300 K and sensitivity value $A_c/A_0=50$, direct cycle quadrature gives $\mathcal H_c\approx2.298\times10^{-6}$ and the leading peak approximation gives $2.118\times10^{-6}$, an error of about $-7.8\%$. Across the audited rare-event sweep the leading approximation is within roughly 4--15\% of direct quadrature. A synthetic 260--340 K sweep generated with $A_c/A_0=50$ returns $A_c/A_0\approx50.13$ under the transformed-slope inversion.
+
+These results provide a compact analytical prediction and a future experimental route to $A_c$, but they do not permit direct use of specimen S--N data until local-to-specimen correlation scaling is independently established.
