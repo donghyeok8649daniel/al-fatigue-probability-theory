@@ -1,0 +1,58 @@
+{
+  "classification": "collective elastic-mode laboratory-timescale scaling audit",
+  "status": "diagnostic no-go for elastic-mode fatigue timescale; not a characteristic-volume calibration",
+  "retained_calibration": {
+    "a0_m": 2.8627442948e-10,
+    "t0_s": 5.55046e-14,
+    "acoustic_speed_a0_over_t0_m_per_s": 5157.670345881243
+  },
+  "required_length_for_target_frequency": [
+    {
+      "frequency_hz": 1.0,
+      "omega_star": 3.487456872008801e-13,
+      "required_represented_spacings_M": 4504131189126.667,
+      "required_length_m": 1289.4175864703107
+    },
+    {
+      "frequency_hz": 20.0,
+      "omega_star": 6.974913744017601e-12,
+      "required_represented_spacings_M": 225206559456.3333,
+      "required_length_m": 64.47087932351552
+    },
+    {
+      "frequency_hz": 100.0,
+      "omega_star": 3.4874568720088006e-11,
+      "required_represented_spacings_M": 45041311891.26667,
+      "required_length_m": 12.894175864703106
+    },
+    {
+      "frequency_hz": 1000.0,
+      "omega_star": 3.4874568720088005e-10,
+      "required_represented_spacings_M": 4504131189.126667,
+      "required_length_m": 1.2894175864703106
+    },
+    {
+      "frequency_hz": 10000.0,
+      "omega_star": 3.487456872008801e-9,
+      "required_represented_spacings_M": 450413118.9126667,
+      "required_length_m": 0.12894175864703106
+    }
+  ],
+  "domain_fundamental_frequency": [
+    {"length_m": 1e-09, "fundamental_fixed_free_hz": 1289417586470.3105, "twenty_hz_squared_frequency_ratio": 2.405873634018831e-22},
+    {"length_m": 1e-08, "fundamental_fixed_free_hz": 128941758647.03107, "twenty_hz_squared_frequency_ratio": 2.405873634018831e-20},
+    {"length_m": 1e-07, "fundamental_fixed_free_hz": 12894175864.703108, "twenty_hz_squared_frequency_ratio": 2.405873634018831e-18},
+    {"length_m": 1e-06, "fundamental_fixed_free_hz": 1289417586.4703107, "twenty_hz_squared_frequency_ratio": 2.405873634018831e-16},
+    {"length_m": 1e-05, "fundamental_fixed_free_hz": 128941758.64703105, "twenty_hz_squared_frequency_ratio": 2.405873634018831e-14},
+    {"length_m": 0.0001, "fundamental_fixed_free_hz": 12894175.864703106, "twenty_hz_squared_frequency_ratio": 2.405873634018831e-12},
+    {"length_m": 0.001, "fundamental_fixed_free_hz": 1289417.5864703106, "twenty_hz_squared_frequency_ratio": 2.4058736340188317e-10},
+    {"length_m": 0.01, "fundamental_fixed_free_hz": 128941.75864703106, "twenty_hz_squared_frequency_ratio": 2.4058736340188313e-08},
+    {"length_m": 0.1, "fundamental_fixed_free_hz": 12894.175864703106, "twenty_hz_squared_frequency_ratio": 2.405873634018831e-06}
+  ],
+  "conclusion": [
+    "For the retained calibration, bringing the lowest longitudinal elastic mode to 20 Hz requires a segment about 64.47 m long.",
+    "A 1 mm domain has a lowest fixed-free longitudinal mode near 1.289 MHz; a 10 mm domain is near 128.9 kHz; smaller characteristic domains are still faster.",
+    "Therefore laboratory fatigue loading is adiabatic relative to purely normal elastic collective modes in a small characteristic domain.",
+    "Collective conservative elasticity by itself cannot supply the required slow cycle-by-cycle probability evolution."
+  ]
+}
