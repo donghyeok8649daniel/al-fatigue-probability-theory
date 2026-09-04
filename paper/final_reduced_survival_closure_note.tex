@@ -34,26 +34,28 @@ The operational instability boundary remains
 \lambda_c=\left(\frac{m+1}{n+1}\right)^{1/(m-n)},
 \qquad \phi''(\lambda_c)=0.
 \end{equation}
-For a stable spacing $\lambda$, define the effective-potential climb
+For a stable spacing $\lambda<\lambda_c$, define the effective-potential climb to this dividing surface by
 \begin{equation}
 \Delta\psi_c(\lambda)
 =\left[\phi(\lambda_c)-\phi'(\lambda)\lambda_c\right]
 -\left[\phi(\lambda)-\phi'(\lambda)\lambda\right].
 \end{equation}
-If $A_c$ is the characteristic cohesive area of one local event, the barrier is
+If $A_c$ is the characteristic cohesive area of one coherent local event, the associated energy climb is
 \begin{equation}
 \Delta G_c=EA_ca_0\Delta\psi_c.
 \end{equation}
-Under the explicitly declared rare-event and fast intrawell thermal re-equilibration assumptions, the positive-flux transition-state rate is
+The linear scaling with $A_c$ is itself a coherent-area hypothesis and is kept explicit rather than hidden in an empirical fatigue fit.
+
+Away from the immediate spinodal neighbourhood, and under the explicitly declared rare-event, harmonic-intrawell, and fast intrawell thermal re-equilibration assumptions, the positive-flux transition-state approximation is
 \begin{equation}
 k_c(\lambda,T;A_c)
 =\frac{\sqrt{\phi''(\lambda)}}{2\pi t_0}
 \exp\left[-\frac{EA_ca_0\Delta\psi_c(\lambda)}{k_BT}\right].
 \label{eq:kc_reduced}
 \end{equation}
-No fitted diffusion coefficient, damping constant, lifetime distribution, or scalar damage variable is introduced in Eq.~\eqref{eq:kc_reduced}. The additional physical assumptions are finite temperature, rapid re-equilibration inside the intact well, and rare transition-state crossing.
+Equation~\eqref{eq:kc_reduced} is a transition-state approximation, not an exact stochastic reduction. A dynamical transmission/recrossing factor may be required by higher-fidelity dynamics. Moreover, the harmonic prefactor is not extrapolated through $\phi''\to0$: if the quasistatic characteristic itself reaches $\lambda_c$, that label is absorbed deterministically at the operational boundary.
 
-The intact survivor subdensity therefore obeys the closed reduced equation
+The intact survivor subdensity therefore obeys the reduced equation
 \begin{equation}
 \boxed{
 \partial_tP_b
@@ -64,9 +66,13 @@ The intact survivor subdensity therefore obeys the closed reduced equation
 }
 \label{eq:final_survivor_pde}
 \end{equation}
-with $P_b(\lambda,t_0)=P_0(\lambda)$. Hence
+on the intact domain $\lambda<\lambda_c$, with absorbing loss at $\lambda_c$ and initial condition
 \begin{equation}
-S(t)=\int P_b(\lambda,t)d\lambda,
+P_b(\lambda,0)=P_0(\lambda).
+\end{equation}
+Hence
+\begin{equation}
+S(t)=\int_{\lambda<\lambda_c} P_b(\lambda,t)d\lambda,
 \qquad
 F_{\rm ci}(t)=1-S(t).
 \end{equation}
@@ -77,21 +83,21 @@ P_0+\sigma(0:t)\longrightarrow P_b(\lambda,t),\ S(t),\ F_{\rm ci}(t).
 }
 \end{equation}
 
-For periodic loading, each starting spacing has an integrated one-cycle hazard
+For periodic loading, each starting spacing that remains on the stable branch has an integrated one-cycle hazard
 \begin{equation}
 \mathcal H_c(\lambda_0)=\int_0^{T_f}k_c[\Lambda(\lambda_0,t),T;A_c]dt,
 \end{equation}
 and therefore
 \begin{equation}
 \boxed{
-S_N=\int P_0(\lambda_0)e^{-N\mathcal H_c(\lambda_0)}d\lambda_0.
+S_N=\int P_0(\lambda_0)e^{-N\mathcal H_c(\lambda_0)}d\lambda_0,
 }
 \label{eq:cycle_survival}
 \end{equation}
-Permanent cycle-to-cycle drift of the normalized structural PDF is therefore not required. The cumulative history is stored in survivor mass, while the surviving normalized population may change only by selection.
+with any characteristic that reaches $\lambda_c$ removed from the survivor integral. Permanent cycle-to-cycle drift of the normalized structural PDF is therefore not required. The cumulative history is stored in survivor mass, while the surviving normalized population may change by selection.
 
 The characteristic area $A_c$ is deliberately not fitted in the present derivation. A sensitivity audit at the current historical Al bridge, $300\,$K, and a $100\pm100\,$MPa, $20\,$Hz sinusoid gives one-cycle escape probabilities of approximately $4.66\times10^{-3}$, $2.30\times10^{-6}$, and $1.16\times10^{-9}$ for illustrative area ratios $A_c/A_0=40,50,60$, respectively. These values demonstrate exponential sensitivity only; no area ratio is adopted. In particular, a local per-cycle survival extremely close to unity is the expected high-cycle regime rather than a contradiction.
 
 In the strict quasistatic phase-controlled limit, $\mathcal H_c\propto1/f$. The reduced hypothesis therefore predicts approximately frequency-independent life in physical time and a cycle count approximately proportional to loading frequency until the quasistatic or local-equilibrium assumptions fail. This, together with the temperature, mean-stress, stress-amplitude, and $P_0$ dependence of Eq.~\eqref{eq:final_survivor_pde}, makes the closure experimentally falsifiable.
 
-The reduced equation is mathematically closed but is not asserted to be a complete dislocation theory of real single-crystal aluminum fatigue. Independent determination of $A_c$ and structural $P_0$, validation of the operational dividing surface $\lambda_c$, and any transition-state recrossing correction remain experimental or higher-fidelity tasks. Specimen-scale correlation area/volume and local-to-specimen survival scaling are deliberately deferred to a later calibration stage.
+The reduced equation is mathematically closed under its declared transition-state approximation but is not asserted to be a complete dislocation theory of real single-crystal aluminum fatigue. Independent determination of $A_c$ and structural $P_0$, validation of the operational dividing surface $\lambda_c$, and a transmission/recrossing calculation remain experimental or higher-fidelity tasks. Specimen-scale correlation area/volume and local-to-specimen survival scaling are deliberately deferred to a later calibration stage.
