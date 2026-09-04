@@ -1,57 +1,44 @@
 # Candidate spatial registry-kink feedback
 
-Status: **CANDIDATE / PROMISING EXTENSION — not active governing law.**
+Status: **CANDIDATE / PARTIAL RESULT — not active governing law.**
 
-This note keeps the current research constraints:
+This note supersedes the earlier optimistic metastability wording. The spatial registry extension remains useful, but the latest unbounded relaxation and NEB audit does **not** establish a strongly trapped residual plastic state under ideal pure-normal loading.
+
+Research constraints retained here:
 
 - no FCC geometry;
-- no arbitrary damage variable;
-- no fitted damping added only to create a fatigue clock;
+- no arbitrary scalar damage variable;
+- no fitted damping introduced only to create a fatigue clock;
 - no characteristic area/volume calibration at this stage;
 - the active normal-only paper remains unchanged.
 
-## 1. Why the single collective registry coordinate was insufficient
+## 1. Spatial registry field
 
-The retained registry surface is periodic,
+The single collective registry coordinate is periodic,
 
 $$
-U_0(a,s+b)=U_0(a,s).
+U_0(a,s+b)=U_0(a,s),
 $$
 
-Therefore a uniform completed shift from $s_0$ to $s_0+b$ lands in an energetically equivalent state. A single collective coordinate $s$ can therefore provide a barrier and a first-passage event, but it cannot by itself create a non-equivalent residual structure that changes the later normal-spacing distribution.
-
-The missing information is spatial incompatibility: a local part of a row can slip while its neighbors have not yet slipped.
-
-## 2. Promote registry from one number to a discrete local field
-
-Let $j$ index repeated units along the registry direction and define the moving-row coordinate
+so a uniform completed shift by one period is energetically equivalent. To represent local incompatibility, let $j$ index repeated units and define
 
 $$
 x_j=jb+s_j.
 $$
 
-The cross-row energy of repeat $j$ is still the already derived periodic surface
-
-$$
-U_0(a_j,s_j).
-$$
-
-The same moving repeats must also remain compatible with one another along the row. Without inserting a phenomenological gradient coefficient, retain their direct same-row pair interaction:
+Keep the cross-row energy $U_0(a_j,s_j)$ and the direct same-row compatibility energy
 
 $$
 E_{\parallel}
 =
 \sum_{j<k}
 \left[
-v_{m,n}
-\left(
-\left|(k-j)b+s_k-s_j\right|
-\right)
+v_{m,n}\left(\left|(k-j)b+s_k-s_j\right|\right)
 -v_{m,n}((k-j)b)
 \right].
 $$
 
-Hence the candidate intrinsic energy is
+The candidate spatial energy is
 
 $$
 E_{\mathrm{rk}}
@@ -59,48 +46,34 @@ E_{\mathrm{rk}}
 \sum_jU_0(a_j,s_j)+E_{\parallel}.
 $$
 
-This is a reduced-row extension of the existing interaction mechanics. It is not a 3D crystal model.
+No phenomenological gradient coefficient is inserted.
 
-## 3. Uniform slip remains exactly equivalent
+## 2. Uniform shift versus local shift
 
-For a uniform lattice-period shift,
+For
 
 $$
 s_j\rightarrow s_j+b\qquad\text{for every }j,
 $$
 
-all differences $s_k-s_j$ are unchanged, while $U_0$ is periodic. Therefore
+all $s_k-s_j$ are unchanged and $U_0$ is periodic, so the total intrinsic energy is unchanged.
 
-$$
-E_{\mathrm{rk}}[\{s_j+b\}]
-=
-E_{\mathrm{rk}}[\{s_j\}].
-$$
-
-This is required: a global relabeling by one perfect registry period must not be falsely counted as damage.
-
-## 4. A local slip is not equivalent
-
-Write
+For a local shift, write
 
 $$
 s_j=s_0+z_jb+\tilde s_j,
-\qquad z_j\in\mathbb Z.
+\qquad z_j\in\mathbb Z,
 $$
 
-If $z_j$ changes only in a finite region, then neighboring repeats at the region boundary have different registry histories. Their same-row separations contain $s_{j+1}-s_j$, so $E_{\parallel}$ changes.
-
-Define the discrete topological/kink indicator
+and define
 
 $$
 q_j^{\mathrm{k}}=z_{j+1}-z_j.
 $$
 
-A finite shifted patch inside an unshifted row contains two boundaries: a kink and an antikink. An abrupt one-period step is generally not a low-energy state because it strongly distorts same-row separations. The mechanically allowed transition therefore spreads over a finite core in which some $s_j$ lie between neighboring wells.
+A finite shifted patch contains a kink and an antikink. Their cores contain intermediate registry values and therefore are not equivalent to either far-field well.
 
-This is the first non-arbitrary post-transition structural state found in the current reduced mechanics.
-
-## 5. Why this can feed back into the normal spacing distribution
+## 3. Mechanical coupling back to normal spacing
 
 The local intrinsic normal generalized force is
 
@@ -109,140 +82,185 @@ Q_{a,j}^{\mathrm{int}}
 =-\partial_aU_0(a_j,s_j).
 $$
 
-At the exact well centers,
+At two equivalent well centers,
 
 $$
-\partial_aU_0(a,s_0+b)
-=
-\partial_aU_0(a,s_0),
+\partial_aU_0(a,s_0+b)=\partial_aU_0(a,s_0),
 $$
 
-so far from a kink the adjacent wells remain normal-force equivalent.
+but inside a kink core there is no such equality. Thus a kink core can temporarily change the locally preferred normal spacing without inventing a feedback law.
 
-Inside a kink core, however, $s_j$ is between the well centers. There is no symmetry requiring
-
-$$
-\partial_aU_0(a,s_j)
-=
-\partial_aU_0(a,s_0).
-$$
-
-Therefore a spatial registry core can change the locally preferred normal spacing even though the two far-field registry wells are equivalent.
-
-The candidate feedback chain is thus
+The mechanically allowed coupling chain remains
 
 $$
 P_a
 \rightarrow
-\Delta G_s(a)
-\rightarrow
-\text{kink-pair nucleation}
+\text{registry rare event}
 \rightarrow
 \{s_j\}_{\mathrm{core}}
 \rightarrow
 \partial_aU_0(a,s_j)
 \rightarrow
-P_a^{\mathrm{next}}.
+\text{local normal-spacing perturbation}.
 $$
 
-No scalar empirical damage variable is introduced in this chain.
+What is no longer justified is automatically appending a permanent $P_a^{\mathrm{next}}$ to that chain.
 
-## 6. Direct-sum diagnostic of normal-registry coupling
+## 4. Self-consistent row-spacing correction
 
-Using the current registry diagnostic surface
-
-$$
-m=12.19,\qquad n=6,\qquad b=\sigma_{LJ}=1,
-$$
-
-with the stable registry well at $s_0/b=0.5$, the converged direct sum gives the zero-normal-traction registry-well equilibrium
+The newer audit no longer sets $b=\sigma_{LJ}$ by convenience. For an infinite same-row chain at its equilibrium spacing,
 
 $$
-a_{0,r}/b\approx0.9910707.
-$$
-
-For fixed registry position $s$, define the stable conditional normal equilibrium by
-
-$$
-\partial_aU_0(a_{\mathrm{eq}},s)=0,
-\qquad
-\partial_a^2U_0(a_{\mathrm{eq}},s)>0.
-$$
-
-The diagnostic values are approximately:
-
-| $s/b$ | $[U_0(a_{0,r},s)-U_0(a_{0,r},s_0)]$ | $a_{\mathrm{eq}}/b$ | opening relative to $a_{0,r}$ |
-|---:|---:|---:|---:|
-| 0.50 | 0 | 0.991071 | 0 |
-| 0.40 | 0.128386 | 1.007995 | 1.71% |
-| 0.30 | 0.480899 | 1.040134 | 4.95% |
-| 0.25 | 0.710900 | 1.055051 | 6.46% |
-| 0.20 | 0.950409 | 1.067692 | 7.73% |
-| 0.10 | 1.358597 | 1.084831 | 9.46% |
-| 0.00 | 1.521402 | 1.090567 | 10.04% |
-
-Thus the registry saddle region strongly prefers a larger normal separation on this reduced surface. The saddle value corresponds to roughly a 10% normal opening relative to the registry-well equilibrium.
-
-This is a dimensionless mechanism diagnostic. It must not yet be identified quantitatively with an Al dislocation core or with the active normal-chain crack threshold because the normal-only chain and the registry surface are not yet one independently calibrated atomistic potential.
-
-Nevertheless the sign and strength of the coupling are important: the missing post-transition state can, in principle, perturb $P_a$ through the already existing $U_0(a,s)$ rather than through an invented feedback law.
-
-## 7. Correction to the earlier coherent-patch Arrhenius diagnostic
-
-The previous conditional rate used
-
-$$
-\Delta G_{s,N}=N\Delta G_s
-$$
-
-for an entire patch translating coherently. That remains a useful sensitivity toy, but it is no longer the preferred physical transition path once $s_j$ is spatially resolved.
-
-A local extended system can instead cross by nucleating a kink-antikink pair and then moving those cores. The physically relevant activation barrier is therefore
-
-$$
-\Delta G_{\mathrm{kp}}
+\frac{\sigma_{LJ}}{b}
 =
-E_{\mathrm{rk}}[\text{critical kink-pair saddle}]
--
-E_{\mathrm{rk}}[\text{initial well state}],
+\left[
+\frac{n\zeta(n)}{m\zeta(m)}
+\right]^{1/(m-n)}.
 $$
 
-not an assumed $N\Delta G_s$.
-
-The next rate calculation must use $\Delta G_{\mathrm{kp}}$ obtained from the spatial energy landscape. No value is adopted here.
-
-## 8. Relation to known mechanics
-
-This structure is closely related to the physical content of Frenkel-Kontorova and Peierls-Nabarro descriptions: a periodic misfit energy competes with elastic compatibility, producing finite-width disregistry cores and kink-type defects. This literature supports the mechanism class, but does not validate the numerical parameters of the present reduced Al model.
-
-Useful references:
-
-- G. Schoeck, *The Peierls model: Progress and limitations*, Materials Science and Engineering A 400-401 (2005) 7-17, DOI: 10.1016/j.msea.2005.03.050.
-- A. P. Sutton, *Multiscale models of dislocations*, in Physics of Elasticity and Crystal Defects, Oxford University Press (2024), DOI: 10.1093/oso/9780198908081.003.0007.
-- S. P. Fitzgerald, *Kink pair production and dislocation motion*, Scientific Reports 6, 39708 (2016), DOI: 10.1038/srep39708.
-
-## 9. What is still not solved
-
-This candidate does **not** yet prove irreversible fatigue evolution. The remaining tasks are:
-
-1. compute the minimum-energy kink and critical kink-pair saddle from $E_{\mathrm{rk}}$;
-2. verify that the core is metastable or long-lived after unloading when a finite-temperature relaxation model is declared;
-3. couple $a_j$ and $s_j$ consistently and test whether a nucleated core produces a persistent measurable change in $P_a$;
-4. only after that derive an activated rate and cycle-to-cycle $P_a$ propagator;
-5. leave characteristic area/volume calibration for later experimental scaling.
-
-The candidate should be rejected if the spatially resolved minimum-energy transition relaxes immediately back with no residual structural state and no persistent change in the normal-spacing marginal.
-
-## 10. Current verdict
-
-The single collective-registry model could provide a barrier but not a non-equivalent final state. Spatially resolving registry produces a mechanically justified candidate for that missing state: a kink/antikink core created by local incompatibility.
-
-The key new point is
+For
 
 $$
-\text{uniform registry shift is equivalent, but a local registry shift is not.}
+m=12.19,\qquad n=6,
 $$
 
-Because the kink core occupies intermediate registry values where $\partial_aU_0$ differs strongly from the well value, this route can potentially close the missing feedback from a rare plastic event back into $P_a(a,t)$.
+the current value is
 
-It remains a candidate until the spatial saddle, residual state, and $P_a$ feedback are solved numerically.
+$$
+\frac{\sigma_{LJ}}{b}\approx0.8942468263.
+$$
+
+On this corrected surface the zero-normal-traction registry-well normal equilibrium is
+
+$$
+a_{\mathrm{well}}/b\approx0.8582179181.
+$$
+
+This replaces the older $b=\sigma_{LJ}$ numerical diagnostic in this candidate route.
+
+## 5. Correction to the first metastability claim
+
+The earlier spatial audit used L-BFGS-B with registry bounds. That calculation retained a narrow nonuniform profile and classified it as metastable.
+
+Repeating the calculation without those artificial registry bounds changes the result:
+
+- initial kink-pair patches of width 16, 18 and 20 repeats relax back to the intact state;
+- sufficiently wider patches, around 21 repeats and above in the present 121-site system, can remain in lattice-pinned local minima;
+- the smallest Hessian eigenvalues of those retained states are only of order $10^{-4}$ in the present dimensionless units.
+
+Therefore the correct interpretation is
+
+$$
+\boxed{
+\text{wide kink pairs can be lattice-pinned, but the trapping mode is extremely shallow.}
+}
+$$
+
+The older statement that the first relaxed narrow pair itself demonstrated robust metastability is withdrawn.
+
+## 6. MEP / NEB audit
+
+The first robust wide-pair state used in the current zero-stress MEP audit has a formation energy relative to the relaxed intact state of approximately
+
+$$
+0.923785\ \mathrm{eV}
+$$
+
+under the retained diagnostic physical energy bridge.
+
+A 27-image FIRE/CI-NEB band does not resolve a clean interior climbing-image saddle above this very shallow product state. The band approaches the product almost monotonically at the available resolution.
+
+A dense scan of the final NEB segment finds only a very small additional corrugation of order
+
+$$
+10^{-5}\ \mathrm{eV}.
+$$
+
+That micro-eV-scale number is path- and resolution-sensitive, so it is **not** promoted as a converged value of $\Delta G_{\mathrm{kp}}$.
+
+The robust energetic statement is only that the forward rare-event scale is dominated by roughly
+
+$$
+\boxed{
+\Delta G_{\mathrm{kp}}^{\mathrm{forward}}\sim0.924\ \mathrm{eV}
+}
+$$
+
+for the present candidate zero-stress surface, while the post-formation separation/migration trapping is extremely weak.
+
+## 7. Normal-tension sensitivity
+
+The dominant pair-formation cost decreases under normal tensile loading in the current candidate calculation:
+
+| normal stress | pair-formation cost |
+|---:|---:|
+| 0 MPa | 0.923785 eV |
+| 50 MPa | 0.917359 eV |
+| 100 MPa | 0.910900 eV |
+| 150 MPa | 0.904408 eV |
+| 200 MPa | 0.897881 eV |
+
+Thus the previously established sign survives:
+
+$$
+a\uparrow
+\quad\Longrightarrow\quad
+\text{registry transition becomes energetically easier}.
+$$
+
+These are candidate formation energies, not independently calibrated Al dislocation barriers.
+
+## 8. Conditional activated-rate interpretation
+
+If the finite-temperature activated-rate assumptions are provisionally retained, an energy scale around $0.9$ eV can indeed separate a THz attempt scale from a many-cycle local-event probability.
+
+For the diagnostic case 300 K, 20 Hz, and $100\pm100$ MPa normal loading, using the stress-dependent formation-energy curve as if it were the rate barrier gives a one-cycle hazard of approximately
+
+$$
+3.74\times10^{-5}.
+$$
+
+This is only a mechanism-timescale diagnostic. It is not a fatigue-life prediction and does not include characteristic area/volume scaling.
+
+## 9. Current physical verdict
+
+The spatial registry route now has two different conclusions.
+
+First, it gives a mechanically derived rare transient state:
+
+$$
+\boxed{
+P_a\rightarrow\text{rare kink-core event}\rightarrow\text{temporary local normal opening}
+}
+$$
+
+which may still be relevant to a first-passage crack-initiation calculation.
+
+Second, it does **not** yet give the desired persistent feedback
+
+$$
+P_a(a,0)+\sigma(0:t)\rightarrow P_a(a,t)
+$$
+
+through stored kink damage, because the post-formation separation/migration mode is too weakly trapped in the ideal homogeneous pure-normal model.
+
+Therefore this candidate is not promoted as the missing progressive $P_a$ evolution law.
+
+A durable post-transition state would require additional independently justified mechanics, such as a real pinning defect, boundary incompatibility, or another non-equivalent structural constraint. None is inserted here.
+
+## 10. Relation to the active theory
+
+The active normal-only theory remains unchanged. The safe result retained from this extension is:
+
+1. normal opening reduces a registry rare-event energy scale;
+2. a spatial registry core strongly couples back to local normal spacing while it exists;
+3. rare-event first passage can occur on many-cycle timescales without slow atomic inertia;
+4. permanent plastic memory has **not** been established in the present ideal pure-normal model.
+
+The next active-theory decision should therefore be made from the original requirement
+
+$$
+P_0(a)+\sigma(0:t)\longrightarrow P(a,t),
+$$
+
+not by assuming that kink storage has already solved it.
