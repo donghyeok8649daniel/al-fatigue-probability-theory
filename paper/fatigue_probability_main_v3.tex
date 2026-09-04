@@ -1,0 +1,304 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{siunitx}
+
+\title{One-Dimensional Normal-Instability First-Passage Modeling of Pure Aluminum:\\A Closed Reduced Submodel and a No-Go Result for Pure-Normal Cycle Accumulation}
+\author{Donghyeok Kim \and Minsoo Kang \and Junhyeok Park}
+\date{Working manuscript, September 2026}
+
+\newcommand{\Eop}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We develop and delimit a one-dimensional normal-instability fatigue-initiation hypothesis for pure aluminum. The starting material state is represented by a structural probability density of local normal inter-layer spacing rather than by a fitted fatigue-life distribution or a phenomenological scalar damage variable. A finite generalized Lennard--Jones chain is retained as an exact microscopic reference; its trajectories generate an empirical spacing probability measure and exact projected transport identities, but the one-point initial marginal does not determine the future marginal without microscopic ordering information. At laboratory fatigue frequencies the retained normal elastic dynamics is quasistatic on the atomic mechanical time scale. This permits a closed structural transport law from the initial spacing density and prescribed stress history. A fast-equilibrium finite-temperature first-passage approximation then gives an explicit survivor equation with a mechanically derived energy climb and an uncalibrated characteristic cohesive area. We prove, however, that the strict pure-normal model has a cycle-accumulation limitation: deterministic label-preserving quasistatic motion saturates after repeated identical cycles, whereas fast stationary thermal renewal gives integrated hazard per cycle proportional to $1/f$, making accumulation predominantly elapsed-time controlled. Published room-temperature aluminum observations report weak frequency sensitivity in high-purity material over a broad conventional-frequency interval and link single-crystal crack initiation to persistent slip, secondary slip, subgrain structure, and dislocation activity. The present formulation is therefore a mathematically closed and falsifiable normal-instability submodel, not yet a complete room-temperature pure-aluminum fatigue theory. A full cycle-controlled material model requires an additional physically derived cycle-evolving microstructural state.
+\end{abstract}
+
+\section{Scope and target mapping}
+The present work is restricted to a one-dimensional normal-loading baseline. It does not reconstruct FCC geometry, postulate a Weibull or other life distribution, or introduce a fitted scalar fatigue-damage law. The reduced target is
+\begin{equation}
+P_0(\lambda)+\sigma(0:t)
+\longrightarrow
+P_b(\lambda,t),\;S(t),\;F_{\rm ci}(t),
+\label{eq:target}
+\end{equation}
+where $P_0$ is a structural/prestress spacing density at a declared reference loading phase, $P_b$ is the intact survivor subdensity, $S$ is local survival, and $F_{\rm ci}=1-S$ is cumulative local first passage.
+
+The mapping from local survival to specimen failure is intentionally deferred because the relevant correlation area or volume is not yet known. The characteristic cohesive area of one local event is likewise kept explicit rather than chosen to force agreement with an S--N curve.
+
+\section{Normalized generalized-Lennard--Jones normal interaction}
+Let
+\begin{equation}
+\lambda=\frac{a}{a_0},
+\end{equation}
+with normalized interaction
+\begin{equation}
+\phi(\lambda)
+=\frac{\lambda^{-m}}{m(m-n)}
+-\frac{\lambda^{-n}}{n(m-n)},
+\qquad m>n>1,
+\label{eq:phi}
+\end{equation}
+so that
+\begin{equation}
+\phi'(\lambda)=\frac{\lambda^{-n-1}-\lambda^{-m-1}}{m-n},
+\end{equation}
+\begin{equation}
+\phi''(\lambda)
+=\frac{(m+1)\lambda^{-m-2}-(n+1)\lambda^{-n-2}}{m-n}.
+\label{eq:phipp}
+\end{equation}
+The normalization gives $\phi'(1)=0$ and $\phi''(1)=1$. The active numerical calibration uses $m=12.19$ and $n=6$.
+
+With loading-axis modulus $E$, mechanical reference area $A_0$, atomic/reference mass $m_a$, and reference spacing $a_0$,
+\begin{equation}
+q(t)=\frac{\sigma(t)}{E},
+\qquad
+t_0=\sqrt{\frac{m_a a_0}{EA_0}}.
+\label{eq:scales}
+\end{equation}
+The bridge $q=\sigma/E$ is a reduced-model calibration definition, not a universal atomistic identity.
+
+\section{Layer A: exact microscopic reference and non-closure of one-point $P_0$}
+For a finite chain with $x_0=0$ and normalized spacings
+\begin{equation}
+\lambda_i=x_i-x_{i-1},
+\end{equation}
+the conservative equations are
+\begin{equation}
+\ddot x_j=\phi'(\lambda_{j+1})-\phi'(\lambda_j),
+\qquad j=1,\ldots,M-1,
+\end{equation}
+\begin{equation}
+\ddot x_M=-\phi'(\lambda_M)+q(\tau),
+\qquad \tau=t/t_0.
+\end{equation}
+The exact empirical spacing measure is
+\begin{equation}
+P_{\lambda,M}(\lambda,\tau)
+=\frac1M\sum_{i=1}^{M}\delta[\lambda-\lambda_i(\tau)].
+\end{equation}
+With $c_i=\dot\lambda_i$, define
+\begin{equation}
+F_M(\lambda,c,\tau)
+=\frac1M\sum_i\delta(\lambda-\lambda_i)\delta(c-c_i).
+\end{equation}
+The exact projected moments include
+\begin{equation}
+ u(\lambda,\tau)=\Eop[c\mid\lambda,\tau],
+\qquad
+\Theta(\lambda,\tau)=\Var(c\mid\lambda,\tau),
+\end{equation}
+and satisfy
+\begin{equation}
+\partial_\tau P+\partial_\lambda(Pu)=0,
+\end{equation}
+\begin{equation}
+D_\tau u=\mathcal A-\frac1P\partial_\lambda(P\Theta),
+\end{equation}
+\begin{equation}
+D_\tau\Theta+2\Theta\partial_\lambda u
++\frac1P\partial_\lambda(PC_3)=2\Psi,
+\end{equation}
+with $\Psi=\Cov(c,\ddot\lambda\mid\lambda,\tau)$. These are exact projections but not a closed $P$-only evolution law.
+
+The exact push-forward from a full initial microscopic measure $\mu_0$ is
+\begin{equation}
+P(\lambda,\tau)
+=\frac1M\sum_i\int
+\delta[\lambda-\Lambda_i(\tau;\Gamma_0,q)]\,\mu_0(d\Gamma_0).
+\end{equation}
+Different microscopic orderings can share the same one-point $P_0$ and still generate different future marginals. Thus the finite-chain reference is not an autonomous $P_0$-only laboratory solver.
+
+\section{Layer B: quasistatic structural transport}
+Laboratory fatigue forcing is many orders of magnitude slower than the retained atomic normal dynamics. The active reduction therefore interprets $P_0$ as a structural/prestress distribution after fast thermal motion has been averaged out.
+
+At the reference phase $q_{\rm ref}$, embed each structural label by
+\begin{equation}
+q_r(\lambda_0)=\phi'(\lambda_0)-q_{\rm ref}.
+\end{equation}
+Its intact quasistatic branch satisfies
+\begin{equation}
+\phi'[\Lambda(\lambda_0,t)]
+=\phi'(\lambda_0)+q(t)-q_{\rm ref},
+\qquad
+\phi''[\Lambda(\lambda_0,t)]>0.
+\label{eq:stablemap}
+\end{equation}
+Therefore
+\begin{equation}
+\dot\Lambda=\frac{\dot q(t)}{\phi''(\Lambda)},
+\end{equation}
+and the nonabsorbing structural density obeys the closed transport law
+\begin{equation}
+\boxed{
+\partial_tP+
+\partial_\lambda\left[
+\frac{\dot q(t)}{\phi''(\lambda)}P
+\right]=0.
+}
+\label{eq:transport}
+\end{equation}
+A closed stress cycle returns intact labels to the reference-phase structural map as long as the stable branch is not lost. Permanent normalized-$P$ drift is therefore not imposed.
+
+\section{Operational normal-instability boundary and survivor closure}
+The retained normal tangent stiffness vanishes at
+\begin{equation}
+\phi''(\lambda_c)=0,
+\qquad
+\lambda_c=\left(\frac{m+1}{n+1}\right)^{1/(m-n)}.
+\label{eq:lambdac}
+\end{equation}
+For a stable spacing $\lambda$, define the effective-potential climb to this operational absorbing surface at the same local reduced traction,
+\begin{equation}
+\Delta\psi_c(\lambda)
+=\left[\phi(\lambda_c)-\phi'(\lambda)\lambda_c\right]
+-\left[\phi(\lambda)-\phi'(\lambda)\lambda\right].
+\end{equation}
+For characteristic cohesive area $A_c$,
+\begin{equation}
+\Delta G_c(\lambda)=EA_ca_0\Delta\psi_c(\lambda).
+\end{equation}
+
+Under the explicitly declared high-barrier, harmonic-well, fast-intrawell-equilibration approximation, and away from the immediate spinodal neighborhood, the positive-flux rate to the declared absorbing surface is
+\begin{equation}
+k_c(\lambda,T;A_c)
+=\frac{\sqrt{\phi''(\lambda)}}{2\pi t_0}
+\exp\left[-\frac{EA_ca_0\Delta\psi_c(\lambda)}{k_BT}\right].
+\label{eq:kc}
+\end{equation}
+A transmission/recrossing factor may be required by higher-fidelity dynamics. If the stable mechanical branch itself reaches $\lambda_c$, the state is absorbed deterministically rather than extrapolating Eq.~\eqref{eq:kc} through $\phi''\to0$.
+
+The active survivor equation is
+\begin{equation}
+\boxed{
+\partial_tP_b
++\partial_\lambda\left[
+\frac{\dot\sigma(t)/E}{\phi''(\lambda)}P_b
+\right]
+=-k_c(\lambda,T;A_c)P_b,
+\qquad \lambda<\lambda_c.
+}
+\label{eq:survivor}
+\end{equation}
+With $P_b(\lambda,0)=P_0(\lambda)$,
+\begin{equation}
+S(t)=\int_{\lambda<\lambda_c}P_b(\lambda,t)\,d\lambda,
+\qquad
+F_{\rm ci}(t)=1-S(t).
+\end{equation}
+This completes Eq.~\eqref{eq:target} within the declared normal-instability approximation.
+
+\section{No-go theorem for strict pure-normal cycle accumulation}
+Consider a periodic waveform of frequency $f$ and phase $\theta=ft$.
+
+\subsection{Deterministic branch}
+If there is no thermal renewal or slow hidden state and
+\begin{equation}
+\Lambda(\lambda_0,t+T_f)=\Lambda(\lambda_0,t),
+\end{equation}
+then the set of labels that cross a deterministic threshold is fixed during the first completed cycle. Repeating the same cycle cannot create indefinitely new deterministic first-passage labels. Deterministic cumulative first passage therefore saturates.
+
+\subsection{Fast-equilibrium thermal branch}
+In the quasistatic limit, the stable trajectory is a function of loading phase, $\Lambda_f(t)=\Lambda_*(\theta)$. Thus
+\begin{equation}
+\mathcal H_f
+=\int_0^{1/f}k_c[\Lambda_f(t),T]dt
+=\frac1f\int_0^1k_c[\Lambda_*(\theta),T]d\theta.
+\end{equation}
+Hence
+\begin{equation}
+\boxed{\mathcal H_f\propto f^{-1}.}
+\label{eq:freq}
+\end{equation}
+For a narrow rare-event population,
+\begin{equation}
+S_N\simeq\exp(-N\mathcal H_f),
+\end{equation}
+so
+\begin{equation}
+\boxed{N_{50}\propto f}
+\end{equation}
+while median elapsed time is approximately frequency independent.
+
+Therefore, under the simultaneous assumptions of pure-normal quasistatic reversible mechanics, no slow internal state, and fast stationary thermal renewal, the model cannot produce a genuinely cycle-controlled high-cycle fatigue law. This is a structural limitation, not a parameter-calibration issue.
+
+\section{Numerical implications}
+The current historical bridge uses $E=69$ GPa, $a_0\approx2.863\times10^{-10}$ m, and $A_0\approx6.034\times10^{-20}$ m$^2$. The atomic-reference energy climb to the operational boundary is only about $0.02$ eV over the illustrative 0--200 MPa range; one reference atomic area is therefore not a rare room-temperature high-cycle event.
+
+For a diagnostic $100\pm100$ MPa, 20 Hz, 300 K protocol, the current sensitivity sweep gives
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+$A_c/A_0$ & one-cycle escape probability & local median cycles \\
+\midrule
+30 & $9.9995\times10^{-1}$ & $7.0\times10^{-2}$ \\
+40 & $4.66\times10^{-3}$ & $1.48\times10^{2}$ \\
+50 & $2.30\times10^{-6}$ & $3.02\times10^{5}$ \\
+60 & $1.16\times10^{-9}$ & $5.97\times10^{8}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+No row is adopted as the physical $A_c$.
+
+A historical high-purity-aluminum frequency interval of 25--1440 cycles/min corresponds to approximately 0.4167--24 Hz. Equation~\eqref{eq:freq} predicts a one-cycle hazard ratio
+\begin{equation}
+\frac{\mathcal H(0.4167\ \mathrm{Hz})}{\mathcal H(24\ \mathrm{Hz})}=57.6.
+\end{equation}
+Thus the strict fast-equilibrium normal model predicts a very large frequency effect in cycles across that interval.
+
+\section{External aluminum mechanism check}
+Daniels and Dorn reported room-temperature fatigue strength of high-purity aluminum to be insensitive to frequency over 25--1440 cycles/min \cite{DanielsDorn1957}. Although that historical experiment is not an exact single-crystal match, its broad frequency insensitivity is a direct warning against a dominant fast-equilibrium pure-normal thermal mechanism whose cycle hazard scales as $1/f$.
+
+Room-temperature aluminum single-crystal studies also identify cycle-evolving slip/dislocation structure. Zhai, Briggs, and Martin observed secondary slip, persistent-slip-band-related extrusions and intrusions, and later short cracks after cyclic loading; they associated crack initiation with internal stresses generated by net irreversible secondary slip \cite{Zhai1996}. Hayashi reported that fatigue crack-initiation life in 99.99\% pure aluminum single crystals depends on multiple slip systems and crystal orientation, while subgrain misorientation at initiation suggested a dislocation-density-related structural criterion \cite{Hayashi2022}.
+
+These observations do not rule out every contribution from normal opening. They do rule out promoting the present pure-normal survivor closure to a complete material law without reconciling the missing cycle-evolving microstructure.
+
+\section{Final scientific conclusion}
+The closure search yields two successful results and one hard limitation.
+
+First, the exact microscopic chain and its probability projection establish a mechanically generated spacing probability framework, while proving that one-point $P_0$ alone is insufficient for exact microscopic prediction when ordering is discarded.
+
+Second, the laboratory quasistatic reduction plus the explicit transition-state hypothesis yields a closed normal-instability mapping
+\begin{equation}
+\boxed{
+P_0+\sigma(0:t)
+\longrightarrow
+P_b(\lambda,t),\;S(t),\;F_{\rm ci}(t).
+}
+\end{equation}
+It requires no named fatigue-life distribution, arbitrary diffusion coefficient, or scalar damage law.
+
+Third, the strict pure-normal state cannot simultaneously provide reversible laboratory mechanics and a robust cycle-controlled high-cycle fatigue clock. Deterministic periodic mechanics saturates, while fast thermal renewal is elapsed-time controlled. Therefore a complete room-temperature pure-aluminum fatigue model requires at least one additional physically derived cycle-evolving microstructural state. The literature points most strongly to slip/dislocation or subgrain structure. Its initial condition may be fixed by specimen preparation, so the user-level input can still begin from $P_0$ and the applied load history, but the constitutive state cannot remain the normal spacing marginal alone.
+
+Accordingly, the present paper should be interpreted as a closed and falsifiable \emph{one-dimensional normal-instability first-passage submodel plus a no-go result for strict pure-normal cycle accumulation}. If the project retains the no-shear/no-slip restriction, this is the scientifically defensible final scope. If the objective remains a complete room-temperature pure-aluminum fatigue theory, the next step is not another probability closure but a physically derived cycle-evolving slip/dislocation state coupled back to the spacing distribution.
+
+\begin{thebibliography}{9}
+\bibitem{DanielsDorn1957}
+N. H. G. Daniels and J. E. Dorn,
+``The Effect of Temperature, Frequency, and Grain Size on the Fatigue Properties of High-Purity Aluminum,''
+ASTM STP 196, p. 94 (1957), DOI: 10.1520/STP19619570007.
+
+\bibitem{Zhai1996}
+T. Zhai, G. A. D. Briggs, and J. W. Martin,
+``Fatigue damage at room temperature in aluminium single crystals---IV. Secondary slip,''
+\emph{Acta Materialia} 44(9), 3489--3496 (1996), DOI: 10.1016/1359-6454(96)00025-0.
+
+\bibitem{Hayashi2022}
+M. Hayashi,
+``Effect of crystal orientation on fatigue crack initiation life in pure aluminum single crystals,''
+\emph{International Journal of Fatigue} 156, 106661 (2022), DOI: 10.1016/j.ijfatigue.2021.106661.
+\end{thebibliography}
+
+\appendix
+\input{symbol_index_active_v2.tex}
+
+\end{document}
