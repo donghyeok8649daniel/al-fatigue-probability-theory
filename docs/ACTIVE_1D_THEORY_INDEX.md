@@ -29,7 +29,7 @@ The finite microscopic chain is closed. Its projected one-point hierarchy is exa
 The active mean-rate symbol is
 
 $$
-u u(\lambda,\tau)=\mathrm E[c\mid\lambda,\tau].
+u(\lambda,\tau)=\mathrm E[c\mid\lambda,\tau].
 $$
 
 The general variance balance is
