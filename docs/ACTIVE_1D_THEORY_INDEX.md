@@ -12,9 +12,11 @@ The authoritative mathematical mainline is now split into two layers: an exact m
 8. `CRACK_INITIATION_DEFINITION.md` — kinetic first-passage initiation definition;
 9. `FINAL_REDUCED_P0_THERMAL_FIRST_PASSAGE_CLOSURE.md` — active reduced lab-scale $P_0\to P_b,S,F_{\mathrm{ci}}$ closure;
 10. `PERIODIC_P_FIRST_PASSAGE_SEPARATION.md` — exact separation between periodic PDF shape and cumulative first passage;
-11. `theory/normal_lj_chain.py` — closed finite microscopic chain;
-12. `theory/normal_lj_distribution_shape.py` — exact smooth density-shape reconstruction;
-13. `theory/normal_lj_moment_hierarchy.py` — corrected exact $\Theta$ balance and spacing-coordinate kinetic metric.
+11. `PEAK_HAZARD_ASYMPTOTICS_AND_IDENTIFIABILITY.md` — derived tensile-peak cycle-hazard approximation and future $A_c$ temperature-slope identifiability relation;
+12. `EXPERIMENTAL_FALSIFICATION_PLAN_REDUCED_CLOSURE.md` — ordered tests that can validate or reject the reduced laboratory mechanism without hiding failures in new fitted variables;
+13. `theory/normal_lj_chain.py` — closed finite microscopic chain;
+14. `theory/normal_lj_distribution_shape.py` — exact smooth density-shape reconstruction;
+15. `theory/normal_lj_moment_hierarchy.py` — corrected exact $\Theta$ balance and spacing-coordinate kinetic metric.
 
 ## Mandatory notation rule
 
@@ -126,6 +128,19 @@ $$
 
 This layer is a controlled reduced hypothesis. It assumes a structural/prestress $P_0$, quasistatic normal mechanics, fast thermal re-equilibration inside the intact well, and a rare-event regime. It does not claim to reconstruct the finite-chain neighbour ordering.
 
+## Derived peak-hazard consequence
+
+For a sinusoidal cycle whose rare-event integral is dominated by one smooth tensile maximum, the active closure gives the leading approximation
+
+$$
+\mathcal H_c
+\sim
+\frac{\nu_p}{f\sqrt{2\pi Bq_a(\lambda_c-\lambda_p)}}
+\exp(-Bg_p),
+$$
+
+with all local quantities defined in `PEAK_HAZARD_ASYMPTOTICS_AND_IDENTIFIABILITY.md`. This is a derived approximation to the active cycle integral, not a new governing law. It yields a direct temperature-slope identifiability route for $A_c$ if local first-passage hazard can be measured independently.
+
 ## Superseded or non-mainline routes
 
 The following material may remain in the repository for historical, verification, or future-extension purposes but is not part of the active 1D governing model unless explicitly re-justified:
@@ -138,7 +153,7 @@ The following material may remain in the repository for historical, verification
 - FCC lattice geometry as a required basis of the present reduced chain;
 - independent statistical-cell or FEM-element probability products.
 
-The active thermal sink is not the rejected arbitrary-rate route: its energy barrier and attempt frequency are derived from the retained normal potential and inertial scale, while $A_c$ remains explicit for later calibration.
+The active thermal sink is not the rejected arbitrary-rate route: its energy climb and attempt frequency are derived from the retained normal potential and inertial scale, while $A_c$ remains explicit for later identification.
 
 ## Corrections that must be preserved
 
@@ -219,7 +234,7 @@ The new laboratory closure does not replace this identity. It is an asymptotic m
 
 ## Remaining open physics and calibration
 
-1. The characteristic cohesive area $A_c$ is not yet calibrated.
+1. The characteristic cohesive area $A_c$ is not yet calibrated; the peak-hazard temperature transform provides a future local-hazard identification route.
 2. The physical structural/prestress $P_0$ must be measured or constructed independently.
 3. The operational $\lambda_c$ boundary and transition-state approximation require experimental or higher-fidelity validation.
 4. Specimen-scale correlation area/volume and local-to-specimen survival scaling remain later calibration tasks.
