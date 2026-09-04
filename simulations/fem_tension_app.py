@@ -23,6 +23,7 @@ but they do not introduce transverse degrees of freedom or constitutive laws.
 from __future__ import annotations
 
 import argparse
+import csv
 from dataclasses import asdict, dataclass
 from pathlib import Path
 import os
@@ -46,6 +47,8 @@ from simulations.fem_tension_ui import (
 )
 from simulations.ftgsim_format import create_ftgsim, extract_geometry, extract_results, open_ftgsim
 from simulations.fvm1d_solver import run as run_fvm_backend
+from solver_v1.model import ModelParams, TwoRowLJ
+from solver_v1.solver import LoadParams, SolverParams, run_ensemble
 from simulations.mesh_viewer import MeshViewport, SUPPORTED_EXTENSIONS, load_mesh
 from simulations.visualize_fem1d import load_numeric_csv
 from theory.cubic_normal_orientation import (
@@ -420,6 +423,41 @@ def run_selected_solver(
     auto_build: bool = True,
 ) -> subprocess.CompletedProcess[str]:
     """Run the selected backend while preserving the shared CSV output contract."""
+    if backend == "Theory":
+        model_p = ModelParams()
+        load_p = LoadParams(force_max=2.5 + 0.009 * config.stress_amplitude_mpa, cycles=config.cycles)
+        solver_p = SolverParams(
+            dt=load_p.period / max(config.steps_per_cycle, 2),
+            n_trajectories=32,
+            first_passage_stride=5,
+            record_stride=1,
+        )
+        out = run_ensemble(model_p, load_p, solver_p)
+        output_dir = Path(output_dir)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        with (output_dir / "nodes.csv").open("w", newline="", encoding="utf-8") as h:
+            w = csv.writer(h); w.writerow(["time_s", "step", "node", "x_m", "displacement_m", "applied_stress_pa"])
+            for step, (t, force, strain) in enumerate(zip(out["time"], out["force"], out["strain"])):
+                w.writerow([t, step, 0, 0.0, 0.0, force])
+                w.writerow([t, step, 1, 1.0, strain, force])
+        survival = np.asarray(out["survival"], dtype=float)
+        time = np.asarray(out["time"], dtype=float)
+        probability = 1.0 - survival
+        hazard = np.zeros_like(survival)
+        if len(survival) > 1:
+            safe = np.maximum(survival, 1.0e-12)
+            hazard[1:] = np.maximum(0.0, -np.diff(np.log(safe)) / np.maximum(np.diff(time), 1.0e-12))
+        with (output_dir / "elements.csv").open("w", newline="", encoding="utf-8") as h:
+            w = csv.writer(h); w.writerow(["time_s", "step", "element", "x_mid_m", "strain", "stress_pa", "applied_stress_pa"])
+            for step, (t, force, strain) in enumerate(zip(time, out["force"], out["strain"])):
+                w.writerow([t, step, 0, 0.5, strain, force, force])
+        with (output_dir / "initiation_elements.csv").open("w", newline="", encoding="utf-8") as h:
+            w = csv.writer(h); w.writerow(["time_s", "step", "element", "initiation_probability", "survival", "hazard_per_s"])
+            for step, (t, p, s, hz) in enumerate(zip(time, probability, survival, hazard)):
+                w.writerow([t, step, 0, p, s, hz])
+        with (output_dir / "metadata.csv").open("w", newline="", encoding="utf-8") as h:
+            csv.writer(h).writerows([["solver", "theory_core_v1_probability"], ["cycles", config.cycles]])
+        return subprocess.CompletedProcess(["theory_core_v1"], 0, "Theory Core v1 complete\n", "")
     if backend == "FEM":
         return run_fem_solver(config, output_dir, solver=solver, auto_build=auto_build)
     if backend != "FVM":
@@ -469,7 +507,7 @@ class FEMTensionApp:
         self.output_dir = Path(output_dir)
         self.solver = None if solver is None else Path(solver)
         self.auto_build = auto_build
-        self.backend = backend if backend in {"FEM", "FVM"} else "FVM"
+        self.backend = backend if backend in {"FEM", "FVM", "Theory"} else "Theory"
         self.nodes: np.ndarray | None = None
         self.elements: np.ndarray | None = None
         self.initiation_elements: np.ndarray | None = None
@@ -556,7 +594,8 @@ class FEMTensionApp:
             self.textboxes[key] = box
 
         backend_ax = self.fig.add_axes([0.025, 0.235, 0.175, 0.055])
-        self.backend_radio = RadioButtons(backend_ax, ("FVM", "FEM"), active=0 if self.backend == "FVM" else 1)
+        options = ("Theory", "FVM", "FEM")
+        self.backend_radio = RadioButtons(backend_ax, options, active=options.index(self.backend))
         self.backend_radio.on_clicked(self._on_backend)
 
         run_ax = self.fig.add_axes([0.025, 0.175, 0.082, 0.048])
@@ -641,7 +680,7 @@ class FEMTensionApp:
 
     def _on_backend(self, label: str) -> None:
         self.backend = label
-        if self.backend == "FVM" and self.field not in {"stress", "strain"}:
+        if self.backend != "Theory" and self.field not in {"stress", "strain"}:
             self.field = "stress"
             self.field_radio.set_active(0)
         self._set_status(f"Selected {label} backend")
@@ -744,7 +783,7 @@ class FEMTensionApp:
             self.field_radio.set_active(0)
             self._set_status(
                 f"{label} requires probability first-passage output; "
-                "FVM currently provides stress/strain only."
+                f"{self.backend} has no probability output yet. Run Theory Core v1 first."
             )
             return
         self.field = label
