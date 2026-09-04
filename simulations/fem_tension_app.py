@@ -45,6 +45,7 @@ from simulations.fem_tension_ui import (
     save_preview_images,
 )
 from simulations.ftgsim_format import create_ftgsim, extract_geometry, extract_results, open_ftgsim
+from simulations.fvm1d_solver import run as run_fvm_backend
 from simulations.mesh_viewer import MeshViewport, SUPPORTED_EXTENSIONS, load_mesh
 from simulations.visualize_fem1d import load_numeric_csv
 from theory.cubic_normal_orientation import (
@@ -411,6 +412,33 @@ def run_fem_solver(
     return completed
 
 
+def run_selected_solver(
+    config: TensionRunConfig,
+    output_dir: Path,
+    backend: str,
+    solver: Path | None = None,
+    auto_build: bool = True,
+) -> subprocess.CompletedProcess[str]:
+    """Run the selected backend while preserving the shared CSV output contract."""
+    if backend == "FEM":
+        return run_fem_solver(config, output_dir, solver=solver, auto_build=auto_build)
+    if backend != "FVM":
+        raise ValueError(f"unknown solver backend: {backend}")
+    run_fvm_backend(
+        elements=config.elements,
+        length_m=config.length_m,
+        area_m2=config.area_m2,
+        young_pa=config.young_pa,
+        stress_mean_mpa=config.stress_mean_mpa,
+        stress_amplitude_mpa=config.stress_amplitude_mpa,
+        frequency_hz=config.frequency_hz,
+        cycles=config.cycles,
+        steps_per_cycle=config.steps_per_cycle,
+        outdir=output_dir,
+    )
+    return subprocess.CompletedProcess(["fvm1d_solver"], 0, "FVM complete\n", "")
+
+
 class FEMTensionApp:
     """Matplotlib desktop app that runs the C solver and visualizes its axial output."""
 
@@ -436,10 +464,12 @@ class FEMTensionApp:
         auto_build: bool = True,
         project_path: Path | None = None,
         geometry_path: Path | None = None,
+        backend: str = "FVM",
     ) -> None:
         self.output_dir = Path(output_dir)
         self.solver = None if solver is None else Path(solver)
         self.auto_build = auto_build
+        self.backend = backend if backend in {"FEM", "FVM"} else "FVM"
         self.nodes: np.ndarray | None = None
         self.elements: np.ndarray | None = None
         self.initiation_elements: np.ndarray | None = None
@@ -507,25 +537,29 @@ class FEMTensionApp:
             box = TextBox(ax, label, initial=initial, label_pad=0.03)
             self.textboxes[key] = box
 
-        run_ax = self.fig.add_axes([0.025, 0.205, 0.082, 0.048])
-        self.run_button = Button(run_ax, "Run FEM")
+        backend_ax = self.fig.add_axes([0.025, 0.235, 0.175, 0.055])
+        self.backend_radio = RadioButtons(backend_ax, ("FVM", "FEM"), active=0 if self.backend == "FVM" else 1)
+        self.backend_radio.on_clicked(self._on_backend)
+
+        run_ax = self.fig.add_axes([0.025, 0.175, 0.082, 0.048])
+        self.run_button = Button(run_ax, "Run solver")
         self.run_button.on_clicked(self._on_run)
 
-        save_ax = self.fig.add_axes([0.118, 0.205, 0.082, 0.048])
+        save_ax = self.fig.add_axes([0.118, 0.175, 0.082, 0.048])
         self.save_button = Button(save_ax, "Save views")
         self.save_button.on_clicked(self._on_save)
 
-        project_ax = self.fig.add_axes([0.025, 0.145, 0.175, 0.040])
+        project_ax = self.fig.add_axes([0.025, 0.115, 0.175, 0.040])
         self.project_button = Button(project_ax, "Save .ftgsim")
         self.project_button.on_clicked(self._on_save_project)
 
-        geometry_ax = self.fig.add_axes([0.025, 0.095, 0.175, 0.040])
+        geometry_ax = self.fig.add_axes([0.025, 0.065, 0.175, 0.040])
         self.geometry_button = Button(geometry_ax, "Open 1D/2D/3D mesh")
         self.geometry_button.on_clicked(self._on_open_geometry)
 
         self.fig.text(
             0.025,
-            0.08,
+            0.045,
             "A = width × thickness\n2D/3D = display only\nNo shear / von-Mises / Poisson model",
             ha="left",
             va="top",
@@ -587,13 +621,18 @@ class FEMTensionApp:
         self.fig.canvas.draw_idle()
         self.fig.canvas.flush_events()
 
+    def _on_backend(self, label: str) -> None:
+        self.backend = label
+        self._set_status(f"Selected {label} backend")
+
     def _on_run(self, _event) -> None:
         try:
             self.config = self._read_config()
-            self._set_status("Running C FEM...")
-            completed = run_fem_solver(
+            self._set_status(f"Running {self.backend}...")
+            completed = run_selected_solver(
                 self.config,
                 self.output_dir,
+                self.backend,
                 solver=self.solver,
                 auto_build=self.auto_build,
             )
@@ -605,7 +644,7 @@ class FEMTensionApp:
             self.slider.set_val(0)
             self._set_status(
                 f"Solved: {self.config.elements} elements, A={self.config.area_m2:.4g} m² — "
-                + (completed.stdout.strip().splitlines()[0] if completed.stdout.strip() else "C FEM complete")
+                + (completed.stdout.strip().splitlines()[0] if completed.stdout.strip() else f"{self.backend} complete")
             )
             self.redraw()
         except Exception as exc:  # GUI boundary: surface exact failure text to the user.
@@ -789,7 +828,7 @@ def run_headless_smoke(
 
 
 def main(argv: Sequence[str] | None = None) -> None:
-    parser = argparse.ArgumentParser(description="Integrated GUI for strictly 1D tensile FEM")
+    parser = argparse.ArgumentParser(description="Integrated GUI for 1D tensile FEM/FVM")
     parser.add_argument("input", nargs="?", type=Path,
                         help="optional .ftgsim project or OBJ/STL/PLY/VTK geometry")
     parser.add_argument("--geometry", type=Path, default=None,
@@ -797,6 +836,7 @@ def main(argv: Sequence[str] | None = None) -> None:
     parser.add_argument("--output-dir", type=Path, default=Path("results/data/fem1d_ui_run"))
     parser.add_argument("--preview-dir", type=Path, default=Path("results/figures/fem1d_ui_run"))
     parser.add_argument("--solver", type=Path, default=None)
+    parser.add_argument("--backend", choices=("FVM", "FEM"), default="FVM")
     parser.add_argument("--no-auto-build", action="store_true")
     parser.add_argument("--headless-smoke", action="store_true")
     parser.add_argument("--save-project", type=Path, default=None,
@@ -833,6 +873,7 @@ def main(argv: Sequence[str] | None = None) -> None:
         auto_build=not args.no_auto_build,
         project_path=project_path,
         geometry_path=geometry_path,
+        backend=args.backend,
     )
     app.show()
 
