@@ -147,8 +147,7 @@ The active thermal sink is not the rejected arbitrary-rate route: its energy bar
 Greek $\nu$ is reserved and is **not** the exact-chain conditional mean-rate field. The active microscopic definition is
 
 $$
-\boxed{
-u(\lambda,\tau)=\mathbb E[c\mid\lambda,\tau]}
+\boxed{u(\lambda,\tau)=\mathbb E[c\mid\lambda,\tau]}
 $$
 
 The reduced thermal-closure attempt frequency is written $\nu_s$ and must not be confused with $u$.
