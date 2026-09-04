@@ -1,6 +1,6 @@
 # Auxiliary Symbol Index — spatial registry kink candidate
 
-Status: **CANDIDATE auxiliary index.** These symbols belong to `CANDIDATE_SPATIAL_REGISTRY_KINK_FEEDBACK.md` and are not promoted to the active normal-only theory.
+Status: **CANDIDATE auxiliary index.** These symbols belong to `CANDIDATE_SPATIAL_REGISTRY_KINK_FEEDBACK.md` and `CANDIDATE_SPATIAL_REGISTRY_KINK_METASTABILITY.md`; they are not promoted to the active normal-only theory.
 
 ### $j$
 - English: repeat index along the registry/slip direction
@@ -90,9 +90,41 @@ $$
 - Unit: length
 - Status: CANDIDATE DIAGNOSTIC
 
+### $\chi_{\sigma b}$
+$$
+\chi_{\sigma b}=\frac{\sigma_{LJ}}{b}
+=\left[
+\frac{n\zeta(n)}{m\zeta(m)}
+\right]^{1/(m-n)}.
+$$
+- English: self-consistent LJ-length / row-repeat ratio
+- 한국어: 자체일관 LJ 길이-행 반복간격 비
+- Physical meaning: ratio that makes an infinite 1D row stationary under the same generalized LJ pair potential
+- Unit: dimensionless
+- Status: CANDIDATE DERIVED GEOMETRIC RATIO; not a fitted parameter
+
+### $V_{\mathrm{eff}}(s;Q_a)$
+$$
+V_{\mathrm{eff}}(s;Q_a)
+=\min_{a\ \mathrm{stable}}
+\left[U_0(a,s)-Q_a a\right].
+$$
+- English: quasistatically relaxed registry substrate
+- 한국어: 준정적으로 normal 자유도를 완화한 registry 유효 퍼텐셜
+- Physical meaning: low-frequency registry energy after the fast normal coordinate is relaxed on its stable branch
+- Unit: energy
+- Status: CANDIDATE DERIVED ENERGY; no new coefficient
+
+### $\Delta E_{\mathrm{kp}}^{\mathrm{form}}$
+- English: kink-pair formation/local-minimum energy
+- 한국어: kink-pair 형성/국소최소 에너지
+- Mathematical meaning: energy excess of a metastable kink-antikink state over the uniform registry well
+- Unit: energy
+- Status: CANDIDATE NUMERICAL OUTPUT; explicitly not the activation saddle barrier
+
 ### $\Delta G_{\mathrm{kp}}$
 - English: kink-pair nucleation activation barrier
 - 한국어: kink-pair 핵생성 활성화 장벽
 - Mathematical meaning: minimum energy-saddle excess for creating a spatially nonuniform registry transition path
 - Unit: energy
-- Status: OPEN CANDIDATE QUANTITY; must be computed from $E_{\mathrm{rk}}$, not replaced by an arbitrary $N\Delta G_s$
+- Status: OPEN CANDIDATE QUANTITY; must be computed from $E_{\mathrm{rk}}$, not replaced by an arbitrary $N\Delta G_s$ or by $\Delta E_{\mathrm{kp}}^{\mathrm{form}}$
