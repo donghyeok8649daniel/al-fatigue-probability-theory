@@ -465,3 +465,53 @@ $$
 - Unit: s
 - Status: DEFINITION
 - Dependencies: loading frequency $f$
+
+### $f$
+
+- English: fatigue-loading frequency
+- 한국어: 피로하중 주파수
+- Unit: Hz
+- Status: LOADING INPUT
+- Dependencies: prescribed waveform
+
+### $\mathcal H_f$
+
+$$
+\mathcal H_f
+=\frac1f\int_0^1 k_c[\Lambda_*(\theta),T;A_c]d\theta
+$$
+
+- English: one-cycle hazard at loading frequency $f$
+- 한국어: 주파수 $f$에서의 한 사이클 누적 hazard
+- Mathematical meaning: cycle hazard for a fixed phase-shaped waveform in the strict quasistatic fast-equilibration limit
+- Physical meaning: exposes the elapsed-time-controlled scaling of the fast thermal renewal hypothesis
+- Unit/scaling: dimensionless
+- Status: DERIVED NO-GO QUANTITY
+- Dependencies: $f,k_c,\Lambda_*,T,A_c$
+- Consequence: $\mathcal H_f\propto1/f$
+
+### $N_{50}$
+
+$$
+S_{N_{50}}=\frac12
+$$
+
+- English: local median cycle count
+- 한국어: 국소 중앙 생존 cycle 수
+- Physical meaning: cycle count at 50 percent local survivor probability in the declared reduced regime
+- Unit/scaling: cycles
+- Status: DERIVED SURVIVAL OBSERVABLE
+- Dependencies: $S_N,\mathcal H_c,P_0$
+- Strict fast-equilibration consequence: $N_{50}\propto f$
+
+### $S_N$
+
+$$
+S_N=\int_{\mathrm{stable}}P_0(\lambda_0)e^{-N\mathcal H_c(\lambda_0)}d\lambda_0
+$$
+
+- English: local survival after $N$ repeated cycles
+- 한국어: $N$회 반복하중 후 국소 생존확률
+- Unit/scaling: dimensionless
+- Status: DERIVED REDUCED SURVIVAL
+- Dependencies: $P_0,N,\mathcal H_c$
