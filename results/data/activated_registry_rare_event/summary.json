@@ -1,0 +1,54 @@
+{
+  "classification": "conditional activated registry rare-event diagnostic",
+  "status": "candidate only; not active law and not characteristic-area calibration",
+  "assumptions_required_for_rate": [
+    "finite-temperature bath",
+    "fast intrawell equilibration compared with interwell escape",
+    "rare activated crossing",
+    "one coherent registry saddle for a patch of N repeats",
+    "harmonic registry frequency used as diagnostic attempt frequency",
+    "quasistatic normal response at laboratory loading frequency"
+  ],
+  "registry_surface": {
+    "m": 12.19,
+    "n": 6.0,
+    "a0_registry_over_b": 0.9910707143549122,
+    "Uaa_dimensionless": 108.34239727586235,
+    "Uss_dimensionless": 26.186821600049367,
+    "curvature_ratio": 0.24170428436590943,
+    "energy_scale_eV_per_dimensionless_energy": 0.0699043880668825,
+    "barrier_at_reference_eV_per_repeat": 0.10635270001454955,
+    "attempt_frequency_hz": 1409721517606.97,
+    "periodicity_statement": "U0(a,s+b)=U0(a,s); adjacent ideal registry wells are energetically equivalent"
+  },
+  "loading": {
+    "temperature_K": 300.0,
+    "frequency_Hz": 20.0,
+    "mean_stress_MPa": 100.0,
+    "amplitude_stress_MPa": 100.0,
+    "minimum_barrier_over_cycle_eV_per_repeat": 0.1012021686919347,
+    "maximum_barrier_over_cycle_eV_per_repeat": 0.10635270001454955
+  },
+  "barrier_samples": [
+    {"stress_mpa": 0, "stable_normal_stretch": 1.0, "registry_a_over_b": 0.9910707143549122, "barrier_eV_per_repeat": 0.10635270001454955},
+    {"stress_mpa": 50, "stable_normal_stretch": 1.0007302633831818, "registry_a_over_b": 0.9917944570077495, "barrier_eV_per_repeat": 0.10507214654513093},
+    {"stress_mpa": 100, "stable_normal_stretch": 1.0014720338979324, "registry_a_over_b": 0.9925296040416908, "barrier_eV_per_repeat": 0.10378697143965078},
+    {"stress_mpa": 150, "stable_normal_stretch": 1.002225710756953, "registry_a_over_b": 0.993276551104753, "barrier_eV_per_repeat": 0.1024970297047632},
+    {"stress_mpa": 200, "stable_normal_stretch": 1.002991715265238, "registry_a_over_b": 0.9940357157399781, "barrier_eV_per_repeat": 0.1012021686919347}
+  ],
+  "coherent_patch_sensitivity": [
+    {"coherent_repeats_N": 6, "hazard_per_cycle": 2.66250319551776, "transition_probability_per_cycle": 0.930226653365881, "local_survival_per_cycle": 0.06977334663411906, "median_cycles_if_rate_model_applied": 0.2603366567697784, "zero_load_rate_hz": 26.86909128897394, "zero_load_hazard_per_20hz_period": 1.343454564448697},
+    {"coherent_repeats_N": 7, "hazard_per_cycle": 0.04956251638437634, "transition_probability_per_cycle": 0.04835433716928174, "local_survival_per_cycle": 0.9516456628307183, "median_cycles_if_rate_model_applied": 13.985310495220276, "zero_load_rate_hz": 0.4391432926913581, "zero_load_hazard_per_20hz_period": 0.021957164634567906},
+    {"coherent_repeats_N": 8, "hazard_per_cycle": 0.0009264640793546253, "transition_probability_per_cycle": 0.0009260350440149638, "local_survival_per_cycle": 0.999073964955985, "median_cycles_if_rate_model_applied": 748.1641177527266, "zero_load_rate_hz": 0.007177274044803449, "zero_load_hazard_per_20hz_period": 0.00035886370224017243},
+    {"coherent_repeats_N": 9, "hazard_per_cycle": 1.738708953655378e-05, "transition_probability_per_cycle": 1.738693838198855e-05, "local_survival_per_cycle": 0.9999826130616181, "median_cycles_if_rate_model_applied": 39865.62438197066, "zero_load_rate_hz": 0.0001173039952369583, "zero_load_hazard_per_20hz_period": 5.865199761847915e-06},
+    {"coherent_repeats_N": 10, "hazard_per_cycle": 3.275329979969889e-07, "transition_probability_per_cycle": 3.275329443580624e-07, "local_survival_per_cycle": 0.9999996724670557, "median_cycles_if_rate_model_applied": 2116266.7114423616, "zero_load_rate_hz": 1.917194078511623e-06, "zero_load_hazard_per_20hz_period": 9.585970392558115e-08},
+    {"coherent_repeats_N": 11, "hazard_per_cycle": 6.191809050876941e-09, "transition_probability_per_cycle": 6.191809031707691e-09, "local_survival_per_cycle": 0.9999999938081909, "median_cycles_if_rate_model_applied": 111945826.31093499, "zero_load_rate_hz": 3.133425359686297e-08, "zero_load_hazard_per_20hz_period": 1.5667126798431486e-09},
+    {"coherent_repeats_N": 12, "hazard_per_cycle": 1.1744058808887938e-10, "transition_probability_per_cycle": 1.1744058808198323e-10, "local_survival_per_cycle": 0.9999999998825594, "median_cycles_if_rate_model_applied": 5902109243.827777, "zero_load_rate_hz": 5.121210520505756e-10, "zero_load_hazard_per_20hz_period": 2.560605260252878e-11}
+  ],
+  "verdict": [
+    "The barrier factor can separate a THz attempt frequency from many-cycle rare-event probabilities without assigning an unphysical slow inertia.",
+    "N is not calibrated or adopted; it is characteristic/coherent patch information deferred to later spatial calibration.",
+    "The ideal periodic registry transition changes the unwrapped well index z but does not automatically change the normal interaction branch, so it does not by itself close progressive P_a evolution.",
+    "The same activated model predicts zero-load registry hopping; equivalent-well hopping must not be called damage without a physical irreversible post-transition state."
+  ]
+}
