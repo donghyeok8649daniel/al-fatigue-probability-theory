@@ -483,6 +483,7 @@ class FEMTensionApp:
         self.geometry_source_path: Path | None = None
 
         self.fig = plt.figure(figsize=(13.4, 7.5))
+        self._place_window_on_screen()
         self.fig.canvas.manager.set_window_title("1D Tensile FEM — C Solver + 2D/3D Viewer")
         self.textboxes: dict[str, TextBox] = {}
         self._create_parameter_panel()
@@ -499,6 +500,23 @@ class FEMTensionApp:
         if geometry_path is not None:
             self._open_geometry(Path(geometry_path))
         self.redraw()
+
+    def _place_window_on_screen(self) -> None:
+        """Center the GUI on the current monitor and keep it inside the work area."""
+        window = getattr(self.fig.canvas.manager, "window", None)
+        if window is None:
+            return
+        try:
+            window.update_idletasks()
+            screen_w = int(window.winfo_screenwidth())
+            screen_h = int(window.winfo_screenheight())
+            width = min(1400, max(960, int(screen_w * 0.88)))
+            height = min(900, max(620, int(screen_h * 0.82)))
+            x = max(0, (screen_w - width) // 2)
+            y = max(0, (screen_h - height) // 2)
+            window.geometry(f"{width}x{height}+{x}+{y}")
+        except (AttributeError, RuntimeError, TypeError, ValueError):
+            return
 
     def _apply_config_to_boxes(self) -> None:
         for key, _label, _initial in self._INPUT_SPECS:
