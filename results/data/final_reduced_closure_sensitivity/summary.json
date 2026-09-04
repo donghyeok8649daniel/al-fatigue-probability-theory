@@ -1,0 +1,38 @@
+{
+  "classification": "final reduced closure sensitivity audit",
+  "status": "sensitivity only; no characteristic-area calibration",
+  "m": 12.19,
+  "n": 6.0,
+  "lambda_c": 1.1077715385524567,
+  "q_c": 0.03703426967076833,
+  "sigma_c_GPa_if_q=sigma/E": 2.555364607283015,
+  "E_GPa": 69.0,
+  "a0_m": 2.8627442948e-10,
+  "A0_m2": 6.0338e-20,
+  "E0_eV": 7.43895900738453,
+  "temperature_K": 300.0,
+  "protocol": {
+    "mean_stress_MPa": 100.0,
+    "amplitude_MPa": 100.0,
+    "frequency_Hz": 20.0
+  },
+  "atomic_reference_barrier": [
+    {"stress_MPa": 0, "stable_lambda": 1.0, "barrier_eV_for_A0": 0.02164},
+    {"stress_MPa": 50, "stable_lambda": 1.0007302634, "barrier_eV_for_A0": 0.02106},
+    {"stress_MPa": 100, "stable_lambda": 1.0014720339, "barrier_eV_for_A0": 0.02048},
+    {"stress_MPa": 150, "stable_lambda": 1.0022257108, "barrier_eV_for_A0": 0.01991},
+    {"stress_MPa": 200, "stable_lambda": 1.0029917153, "barrier_eV_for_A0": 0.01935}
+  ],
+  "area_ratio_sweep": [
+    {"A_c_over_A0": 30, "integrated_hazard_per_cycle": 9.8948519831, "escape_probability_per_cycle": 0.9999495664, "local_median_cycles": 0.0700513},
+    {"A_c_over_A0": 40, "integrated_hazard_per_cycle": 0.00467486877, "escape_probability_per_cycle": 0.00466395858, "local_median_cycles": 148.27094},
+    {"A_c_over_A0": 50, "integrated_hazard_per_cycle": 2.29792127e-6, "escape_probability_per_cycle": 2.29791863e-6, "local_median_cycles": 301640.96},
+    {"A_c_over_A0": 60, "integrated_hazard_per_cycle": 1.16100845e-9, "escape_probability_per_cycle": 1.16100845e-9, "local_median_cycles": 5.97021651e8}
+  ],
+  "verdict": [
+    "One atomic reference area is not a rare high-cycle event at 300 K.",
+    "The exponential A_c sensitivity is the dominant unresolved calibration lever.",
+    "No A_c/A0 value is adopted by this audit.",
+    "For symbolic A_c the final P0-to-survival law remains mathematically closed."
+  ]
+}
