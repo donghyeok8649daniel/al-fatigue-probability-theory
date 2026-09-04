@@ -1,0 +1,70 @@
+{
+  "classification": "candidate physical-P0 calibration and consistency audit",
+  "status": "diagnostic only; no physical P0 family adopted",
+  "retained_normal_calibration": {
+    "a_ref_m": 2.8627442948e-10,
+    "E_pa": 69000000000.0,
+    "A0_m2": 6.0338e-20,
+    "m": 12.19,
+    "n": 6.0,
+    "U_ref_j": 1.1918526302915326e-18,
+    "U_ref_eV": 7.43895900738453,
+    "effective_1d_normal_well_depth_j": 1.6295496722607774e-20,
+    "effective_1d_normal_well_depth_eV": 0.10170849066700204,
+    "harmonic_spacing_stiffness_N_per_m": 14.543115176449463,
+    "lambda_c": 1.1077715385524567,
+    "delta_a_to_lambda_c_m": 3.0852235713286366e-11,
+    "delta_a_to_lambda_c_pm": 30.852235713286365
+  },
+  "structural_P0": {
+    "preferred_for_strict_P0_only_candidate": true,
+    "definition": "spatial push-forward of a prepared slow structural spacing/microstrain field after fast phonon motion is averaged out",
+    "initial_coarse_grained_rate_condition": "c0 = 0",
+    "reference_residual_strain_scale_for_resolution_demo_only": 0.0001,
+    "corresponding_spacing_scale_m": 2.8627442948000006e-14,
+    "corresponding_spacing_scale_pm": 0.028627442948000004,
+    "warning": "the 1e-4 strain scale is not adopted as a universal aluminum P0 width"
+  },
+  "instantaneous_thermal_harmonic_diagnostic": {
+    "assumptions": [
+      "classical canonical preparation",
+      "single harmonic normal spacing coordinate around lambda=1",
+      "phi''(1)=1 so K_a=E*A0/a_ref",
+      "no quantum phonon correction",
+      "no inter-spacing displacement correlation correction"
+    ],
+    "rows": [
+      {
+        "temperature_k": 80.0,
+        "sigma_a_m": 8.714809798573025e-12,
+        "sigma_a_pm": 8.714809798573025,
+        "sigma_lambda": 0.0304421523585007,
+        "z_score_to_lambda_c": 3.540204346948786,
+        "naive_harmonic_upper_tail_above_lambda_c": 0.0001999062136912658
+      },
+      {
+        "temperature_k": 293.0,
+        "sigma_a_m": 1.6678105999638493e-11,
+        "sigma_a_pm": 16.678105999638493,
+        "sigma_lambda": 0.05825915374255833,
+        "z_score_to_lambda_c": 1.849865825245836,
+        "naive_harmonic_upper_tail_above_lambda_c": 0.03216654298264932
+      },
+      {
+        "temperature_k": 300.0,
+        "sigma_a_m": 1.6876156607619272e-11,
+        "sigma_a_pm": 16.87615660761927,
+        "sigma_lambda": 0.05895097455359104,
+        "z_score_to_lambda_c": 1.828155333623602,
+        "naive_harmonic_upper_tail_above_lambda_c": 0.03376312120269905
+      }
+    ],
+    "warning": "these positional widths are not adopted as the structural P0; a genuine thermal preparation also has nonzero initial rate statistics"
+  },
+  "consistency_conclusion": [
+    "A structural/coarse-grained P0 can be constructed from measured/computed residual spacing or microstrain by spatial push-forward without selecting a named PDF family.",
+    "An instantaneous thermal spacing marginal is not sufficient for strict P0-only initialization because the thermal phase-space state also contains nonzero rate statistics.",
+    "Naively combining the current classical harmonic thermal width with the current lambda_c gives a non-negligible instantaneous tail at room temperature, so it must not be interpreted as crack probability.",
+    "The local-traction P0-only candidate still requires a separate physically justified laboratory-time-scale/cycle-evolution mechanism before promotion."
+  ]
+}
