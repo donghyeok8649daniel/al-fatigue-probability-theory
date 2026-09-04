@@ -2,6 +2,14 @@
 
 This directory owns the end-user desktop application and distribution layer built on top of the validated `numerical-fem` implementation.
 
+The current entry point is:
+
+```powershell
+py -3 -m app.desktop_ui
+```
+
+`Theory Core v1` is always active. The Solve workspace exposes only the spatial discretization choice, `FVM` or `FEM`; FVM is the default. The application is organized into responsive Pre/Mesh, Solve, and Post workspaces, and Post provides normal stress, axial strain, first passage, survival, and hazard result modes.
+
 ## Branch responsibility
 
 The `desktop-app` branch owns:
@@ -53,6 +61,7 @@ Initial Windows packaging should be local/manual. Do not add or modify GitHub Ac
 ```text
 app/
 ├─ README.md
+├─ desktop_ui.py
 ├─ packaging/
 │  └─ windows/
 │     └─ README.md
@@ -60,7 +69,7 @@ app/
    └─ README.md
 ```
 
-Later, when the executable path is stable, add concrete build scripts/spec files under `app/packaging/windows/`.
+Windows build and installer definitions live under `app/packaging/windows/`.
 
 ---
 

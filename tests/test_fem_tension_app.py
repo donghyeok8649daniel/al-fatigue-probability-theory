@@ -12,12 +12,18 @@
 # === 한국어 파일 안내 끝 ===
 import unittest
 from pathlib import Path
+from tempfile import TemporaryDirectory
+
+import numpy as np
 
 from simulations.fem_tension_app import (
     TensionRunConfig,
+    run_python_fem_solver,
+    run_theory_spatial_solver,
     solver_command,
     validate_run_config,
 )
+from simulations.fem_tension_ui import load_fem_history
 
 
 class TestTensionRunConfig(unittest.TestCase):
@@ -95,6 +101,35 @@ class TestSolverCommand(unittest.TestCase):
         self.assertEqual(int(self._option_value(command, "--cycles")), 3)
         self.assertEqual(int(self._option_value(command, "--steps-per-cycle")), 64)
         self.assertEqual(command[-2:], ["--outdir", "output"])
+
+    def test_python_fem_fallback_preserves_uniform_bar_solution(self) -> None:
+        config = TensionRunConfig(elements=4, cycles=1, steps_per_cycle=4)
+        with TemporaryDirectory() as directory:
+            completed = run_python_fem_solver(config, Path(directory))
+            nodes, elements = load_fem_history(Path(directory))
+
+        self.assertEqual(completed.returncode, 0)
+        first_nodes = nodes[nodes["step"] == 0]
+        first_elements = elements[elements["step"] == 0]
+        np.testing.assert_allclose(first_elements["stress_pa"], 50.0e6, rtol=1.0e-12)
+        np.testing.assert_allclose(first_elements["strain"], 50.0e6 / config.young_pa, rtol=1.0e-12)
+        self.assertAlmostEqual(
+            float(first_nodes[-1]["displacement_m"]),
+            50.0e6 * config.length_m / config.young_pa,
+        )
+
+    def test_coupled_runner_always_writes_theory_and_selected_spatial_results(self) -> None:
+        config = TensionRunConfig(elements=4, cycles=1, steps_per_cycle=4)
+        with TemporaryDirectory() as directory:
+            output = Path(directory)
+            run_theory_spatial_solver(config, output, "FEM", auto_build=False)
+            nodes, elements = load_fem_history(output)
+
+            self.assertTrue((output / "theory" / "initiation_elements.csv").is_file())
+            self.assertTrue((output / "spatial" / "elements.csv").is_file())
+            self.assertTrue((output / "initiation_elements.csv").is_file())
+            self.assertGreater(nodes.size, 0)
+            self.assertGreater(elements.size, 0)
 
 
 if __name__ == "__main__":

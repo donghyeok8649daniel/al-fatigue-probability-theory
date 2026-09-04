@@ -8,8 +8,11 @@ $repo = (Resolve-Path (Join-Path $PSScriptRoot "..\..\..\")).Path
 Set-Location $repo
 
 $solver = Join-Path $repo "fem1d\bin\fem1d_solver.exe"
-if (-not (Test-Path $solver)) {
-    throw "Build fem1d\bin\fem1d_solver.exe before packaging the desktop app."
+$solverArgs = @()
+if (Test-Path $solver) {
+    $solverArgs = @("--add-binary", "$solver;fem1d\bin")
+} else {
+    Write-Host "FEM binary not found; packaging the bundled Python FEM fallback."
 }
 
 & $Python -m pip show pyinstaller *> $null
@@ -22,8 +25,8 @@ if ($LASTEXITCODE -ne 0) {
     --distpath $OutputDir `
     --workpath (Join-Path $OutputDir "build") `
     --specpath (Join-Path $OutputDir "spec") `
-    --add-binary "$solver;fem1d\bin" `
-    simulations\fem_tension_app.py
+    $solverArgs `
+    app\desktop_ui.py
 
 if ($LASTEXITCODE -ne 0) {
     throw "PyInstaller failed."

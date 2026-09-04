@@ -2,7 +2,7 @@
 
 ## Objective
 
-Produce a reproducible Windows desktop build from the validated `numerical-fem` application without changing the physics/numerics.
+Produce a reproducible Windows desktop build of the Pre/Solve/Post application without changing the physics/numerics. Theory Core v1 is always active; the user selects FVM or FEM only for the spatial reference field.
 
 ## Initial deliverables
 
@@ -32,15 +32,13 @@ Do not treat a successful local `.exe` build as release-ready. Verify at minimum
 
 ## Local build and installer
 
-Build the FEM solver first so that the packaged application contains its
-native backend:
+Run the packaging script from the repository root:
 
 ```powershell
-cd fem1d
-make
-cd ..
 .\app\packaging\windows\build.ps1
 ```
+
+If `fem1d\bin\fem1d_solver.exe` exists, it is included as the native FEM backend. Otherwise the packaged application uses the equivalent bundled Python two-node linear-bar FEM implementation. FVM remains the default spatial backend in both cases.
 
 With Inno Setup installed, compile `app/packaging/windows/AlFatigue.iss` to
 produce `dist/installer/AlFatigue-Setup-0.1.0.exe`. The installer registers

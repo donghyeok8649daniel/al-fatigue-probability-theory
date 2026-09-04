@@ -415,6 +415,81 @@ def run_fem_solver(
     return completed
 
 
+def run_python_fem_solver(
+    config: TensionRunConfig,
+    output_dir: Path,
+) -> subprocess.CompletedProcess[str]:
+    """Run the same two-node linear-bar FEM when no native binary is available."""
+    validate_run_config(config)
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    n = config.elements
+    dx = config.length_m / n
+    element_stiffness = config.young_pa * config.area_m2 / dx
+    lower = np.full(max(n - 1, 0), -element_stiffness, dtype=float)
+    diagonal = np.full(n, 2.0 * element_stiffness, dtype=float)
+    diagonal[-1] = element_stiffness
+    upper = lower.copy()
+    unit_rhs = np.zeros(n, dtype=float)
+    unit_rhs[-1] = config.area_m2
+
+    cprime = np.zeros(n, dtype=float)
+    dprime = np.zeros(n, dtype=float)
+    if n > 1:
+        cprime[0] = upper[0] / diagonal[0]
+    dprime[0] = unit_rhs[0] / diagonal[0]
+    for i in range(1, n):
+        denominator = diagonal[i] - lower[i - 1] * cprime[i - 1]
+        if i < n - 1:
+            cprime[i] = upper[i] / denominator
+        dprime[i] = (unit_rhs[i] - lower[i - 1] * dprime[i - 1]) / denominator
+    unit_displacement = np.zeros(n + 1, dtype=float)
+    unit_displacement[-1] = dprime[-1]
+    for i in range(n - 2, -1, -1):
+        unit_displacement[i + 1] = dprime[i] - cprime[i] * unit_displacement[i + 2]
+    unit_strain = np.diff(unit_displacement) / dx
+
+    total_steps = config.cycles * config.steps_per_cycle
+    with (output_dir / "nodes.csv").open("w", newline="", encoding="utf-8") as nf, (
+        output_dir / "elements.csv"
+    ).open("w", newline="", encoding="utf-8") as ef:
+        nw = csv.writer(nf)
+        ew = csv.writer(ef)
+        nw.writerow(["time_s", "step", "node", "x_m", "displacement_m", "applied_stress_pa"])
+        ew.writerow(["time_s", "step", "element", "x_mid_m", "strain", "stress_pa", "applied_stress_pa"])
+        for step in range(total_steps + 1):
+            t = step / config.steps_per_cycle / config.frequency_hz
+            applied = (
+                config.stress_mean_mpa
+                + config.stress_amplitude_mpa * np.sin(2.0 * np.pi * config.frequency_hz * t)
+            ) * 1.0e6
+            displacement = unit_displacement * applied
+            strain = unit_strain * applied
+            stress = config.young_pa * strain
+            for node, (x, u) in enumerate(zip(np.arange(n + 1) * dx, displacement)):
+                nw.writerow([t, step, node, x, u, applied])
+            for element, (eps, sigma) in enumerate(zip(strain, stress)):
+                ew.writerow([t, step, element, (element + 0.5) * dx, eps, sigma, applied])
+
+    with (output_dir / "metadata.csv").open("w", newline="", encoding="utf-8") as mf:
+        csv.writer(mf).writerows([
+            ("key", "value"),
+            ("elements", config.elements),
+            ("length_m", f"{config.length_m:.17g}"),
+            ("area_m2", f"{config.area_m2:.17g}"),
+            ("young_pa", f"{config.young_pa:.17g}"),
+            ("stress_mean_pa", f"{config.stress_mean_mpa * 1.0e6:.17g}"),
+            ("stress_amplitude_pa", f"{config.stress_amplitude_mpa * 1.0e6:.17g}"),
+            ("frequency_hz", f"{config.frequency_hz:.17g}"),
+            ("cycles", config.cycles),
+            ("steps_per_cycle", config.steps_per_cycle),
+            ("solver", "quasistatic_linear_bar_fem_python"),
+            ("probability_coupling", "theory_core_v1_always_active_in_desktop_ui"),
+        ])
+    return subprocess.CompletedProcess(["python_fem1d_solver"], 0, "Python FEM complete\n", "")
+
+
 def run_selected_solver(
     config: TensionRunConfig,
     output_dir: Path,
@@ -459,7 +534,16 @@ def run_selected_solver(
             csv.writer(h).writerows([["solver", "theory_core_v1_probability"], ["cycles", config.cycles]])
         return subprocess.CompletedProcess(["theory_core_v1"], 0, "Theory Core v1 complete\n", "")
     if backend == "FEM":
-        return run_fem_solver(config, output_dir, solver=solver, auto_build=auto_build)
+        executable = Path(solver) if solver is not None else solver_executable(repository_root())
+        if executable.exists() or solver is not None:
+            return run_fem_solver(config, output_dir, solver=executable, auto_build=auto_build)
+        if auto_build:
+            try:
+                executable = build_fem_solver(repository_root())
+                return run_fem_solver(config, output_dir, solver=executable, auto_build=False)
+            except RuntimeError:
+                pass
+        return run_python_fem_solver(config, output_dir)
     if backend != "FVM":
         raise ValueError(f"unknown solver backend: {backend}")
     run_fvm_backend(
@@ -475,6 +559,34 @@ def run_selected_solver(
         outdir=output_dir,
     )
     return subprocess.CompletedProcess(["fvm1d_solver"], 0, "FVM complete\n", "")
+
+
+def run_theory_spatial_solver(
+    config: TensionRunConfig,
+    output_dir: Path,
+    spatial_backend: str,
+    solver: Path | None = None,
+    auto_build: bool = True,
+) -> tuple[subprocess.CompletedProcess[str], subprocess.CompletedProcess[str]]:
+    """Always run Theory Core v1, coupled to the selected FVM/FEM reference field."""
+    if spatial_backend not in {"FVM", "FEM"}:
+        raise ValueError("spatial_backend must be FVM or FEM")
+    session_dir = Path(output_dir)
+    theory_dir = session_dir / "theory"
+    spatial_dir = session_dir / "spatial"
+    theory_result = run_selected_solver(config, theory_dir, "Theory")
+    spatial_result = run_selected_solver(
+        config,
+        spatial_dir,
+        spatial_backend,
+        solver=solver,
+        auto_build=auto_build,
+    )
+    session_dir.mkdir(parents=True, exist_ok=True)
+    for name in ("nodes.csv", "elements.csv", "metadata.csv"):
+        shutil.copy2(spatial_dir / name, session_dir / name)
+    shutil.copy2(theory_dir / "initiation_elements.csv", session_dir / "initiation_elements.csv")
+    return theory_result, spatial_result
 
 
 class FEMTensionApp:

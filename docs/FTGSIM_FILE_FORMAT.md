@@ -92,7 +92,7 @@ executed.
 Open an existing project:
 
 ```powershell
-py -3 -m simulations.fem_tension_app model.ftgsim
+py -3 -m app.desktop_ui model.ftgsim
 ```
 
 Run the headless FEM smoke case and save a project:
