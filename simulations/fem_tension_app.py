@@ -905,7 +905,7 @@ def main(argv: Sequence[str] | None = None) -> None:
     parser.add_argument("--output-dir", type=Path, default=Path("results/data/fem1d_ui_run"))
     parser.add_argument("--preview-dir", type=Path, default=Path("results/figures/fem1d_ui_run"))
     parser.add_argument("--solver", type=Path, default=None)
-    parser.add_argument("--backend", choices=("FVM", "FEM"), default="FVM")
+    parser.add_argument("--backend", choices=("Theory", "FVM", "FEM"), default="Theory")
     parser.add_argument("--no-auto-build", action="store_true")
     parser.add_argument("--headless-smoke", action="store_true")
     parser.add_argument("--save-project", type=Path, default=None,
