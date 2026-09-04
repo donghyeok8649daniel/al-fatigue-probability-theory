@@ -2,6 +2,8 @@
 
 Status: **CANDIDATE / PARTIAL SUCCESS — not an active governing law.**
 
+> **2026-09-04 supersession note.** The coherent-patch assumption $\Delta G_{s,N}=N\Delta G_s$ and the associated $N$-sensitivity table below are retained only as a historical/sensitivity diagnostic. After spatially resolving registry as $s_j$, the preferred physical candidate is kink-pair nucleation from `CANDIDATE_SPATIAL_REGISTRY_KINK_FEEDBACK.md`. A local extended system need not translate all $N$ repeats coherently, so the physical activation barrier must be computed from the spatial kink-pair saddle $\Delta G_{\mathrm{kp}}$, not assumed to equal $N\Delta G_s$. No $N$ value or coherent-patch rate is adopted as a governing law.
+
 ## 1. Question
 
 The previously tested conservative clocks fail at laboratory fatigue frequency:
@@ -64,20 +66,20 @@ $$
 per reference repeat. The equilibrium registry barrier is therefore
 
 $$
-\boxed{\Delta G_s(a_{0,r})\approx0.10635\ {\rm eV/repeat}.}
+\Delta G_s(a_{0,r})\approx0.10635\ {\rm eV/repeat}.
 $$
 
 This is a *diagnostic mapping*, not yet an independently calibrated Al slip barrier.
 
-## 3. Coherent-patch barrier
+## 3. Coherent-patch barrier — retained sensitivity toy only
 
-If a coherent patch contains $N$ repeats and all repeats cross the same ideal registry barrier coherently, both its energy and inertia are extensive. The natural frequency therefore does not slow with $N$, but the barrier does grow:
+If a coherent patch contains $N$ repeats and all repeats are **forced by assumption** to cross the same ideal registry barrier coherently, both its energy and inertia are extensive and the trial barrier is
 
 $$
-\boxed{\Delta G_{s,N}(a)=N\,\Delta G_s(a).}
+\Delta G_{s,N}(a)=N\,\Delta G_s(a).
 $$
 
-This distinction is important. Patch size cannot produce a slow conservative oscillator, but it can make a barrier-crossing event exponentially rare.
+This construction remains useful only to show how an exponential barrier can separate THz attempt frequencies from many-cycle event probabilities. It is no longer the preferred spatial transition path.
 
 The integer $N$ is deliberately **not calibrated here**. It is characteristic-area / coherent-event information and belongs to a later spatial calibration step.
 
@@ -90,15 +92,13 @@ Assume:
 1. a finite-temperature bath exists;
 2. intrawell relaxation is fast compared with interwell escape;
 3. crossings are rare enough for a local activated-rate description;
-4. the coherent patch follows one dominant registry saddle;
+4. for this historical diagnostic only, the coherent patch follows one dominant registry saddle;
 5. the harmonic registry frequency supplies an order-one attempt frequency.
 
-Then use the diagnostic rate
+Then the historical sensitivity rate is
 
 $$
-\boxed{
 k_N(a,T)=\nu_s(a)\exp\left[-\frac{N\Delta G_s(a)}{k_BT}\right].
-}
 $$
 
 At the reference state, the retained curvature mapping gives
@@ -107,7 +107,7 @@ $$
 \nu_s\approx1.41\times10^{12}\ {\rm Hz}.
 $$
 
-No mobility or damping coefficient is fitted in this diagnostic. Nevertheless the thermal-bath and activated-rate assumptions are real assumptions and must be validated before promotion.
+No mobility or damping coefficient is fitted in this diagnostic. Nevertheless the thermal-bath and activated-rate assumptions are real assumptions and must be validated before promotion. The spatially resolved candidate must replace $N\Delta G_s$ by the computed kink-pair saddle barrier $\Delta G_{\mathrm{kp}}$.
 
 ## 5. Quasistatic cyclic normal loading
 
@@ -123,36 +123,34 @@ $$
 a_r(t)=a_{0,r}\lambda_{\rm eq}(t).
 $$
 
-Then the activated hazard accumulated over one loading history is
+For any physically justified activated rate $k(a_r,T)$, the accumulated hazard has the general form
 
 $$
-H_N(t)=\int_0^t k_N(a_r(\tau),T)\,d\tau,
+H(t)=\int_0^t k(a_r(\tau),T)\,d\tau,
 $$
 
 with local intact survival
 
 $$
-\boxed{S_N(t)=\exp[-H_N(t)].}
+S(t)=\exp[-H(t)].
 $$
 
-This supplies a slow clock through rare barrier crossing even though the conservative coordinates themselves respond quasistatically.
+The old coherent-patch model is one conditional example, not the adopted rate.
 
 ## 6. P0-to-surviving-subprobability map
 
-Let $A(a_0,t;\sigma)$ denote the quasistatic normal-spacing map for a prepared local structural spacing label $a_0$. If the activated transition is treated as an absorbing transition out of an intact state, then
+Let $A(a_0,t;\sigma)$ denote the quasistatic normal-spacing map for a prepared local structural spacing label $a_0$. If a physically defined activated transition is treated as an absorbing transition out of an intact state, then
 
 $$
-H_N(a_0,t)=\int_0^t k_N(A(a_0,\tau),T)\,d\tau,
+H(a_0,t)=\int_0^t k(A(a_0,\tau),T)\,d\tau,
 $$
 
 and the intact subprobability measure is
 
 $$
-\boxed{
 \rho(a,t)=\int P_0(a_0)
-\exp[-H_N(a_0,t)]
+\exp[-H(a_0,t)]
 \delta[a-A(a_0,t)]\,da_0.
-}
 $$
 
 Its total mass is
@@ -167,7 +165,7 @@ $$
 P_{\rm int}(a,t)=\frac{\rho(a,t)}{S(t)}.
 $$
 
-Thus, **conditional on $T$, $N$, the barrier surface, and the activated-rate hypothesis**, the reduced map
+Thus, conditional on a justified activated rate, the reduced map
 
 $$
 P_0+\sigma(0:t)\longrightarrow \rho(a,t),\ S(t),\ P_{\rm int}(a,t)
@@ -177,9 +175,9 @@ is closed without resolving ordered atom trajectories.
 
 This is not yet the same as a closed evolution law for the full material spacing marginal after plastic transitions.
 
-## 7. Numerical sensitivity — not calibration
+## 7. Historical numerical sensitivity — not calibration
 
-For a 300 K diagnostic, 20 Hz sinusoidal tensile loading with mean stress 100 MPa and amplitude 100 MPa, the direct-sum barrier plus harmonic attempt-frequency audit gives approximately:
+For a 300 K diagnostic, 20 Hz sinusoidal tensile loading with mean stress 100 MPa and amplitude 100 MPa, the old coherent-patch rate gives approximately:
 
 | coherent repeats $N$ | hazard per cycle | local survival per cycle | median cycles from this rate |
 |---:|---:|---:|---:|
@@ -189,13 +187,11 @@ For a 300 K diagnostic, 20 Hz sinusoidal tensile loading with mean stress 100 MP
 | 10 | $3.28\times10^{-7}$ | 0.99999967 | $2.12\times10^6$ |
 | 11 | $6.19\times10^{-9}$ | 0.999999994 | $1.12\times10^8$ |
 
-The important result is not any preferred $N$. There is **no adopted $N$** here. The result only shows that an activated coherent barrier naturally separates the THz attempt scale from a many-cycle rare-event scale through the exponential barrier factor.
-
-It also matches the expected qualitative requirement that a single local domain can have survival extremely close to one per cycle.
+There is **no adopted $N$** and these values are **not** current lifetime predictions. Their only retained use is to demonstrate exponential separation between a THz attempt scale and rare many-cycle events.
 
 ## 8. Two critical limitations
 
-### 8.1 Equivalent registry wells do not by themselves evolve the normal P
+### 8.1 A single uniform registry crossing does not by itself evolve normal P
 
 The ideal registry energy is exactly periodic,
 
@@ -203,42 +199,20 @@ $$
 U_0(a,s+b)=U_0(a,s).
 $$
 
-Therefore transfer from well index $z$ to $z+1$ changes the unwrapped registry/plastic label but lands in an energetically equivalent ideal well. In the present ideal potential this transition **does not automatically change the normal interaction branch**.
-
-Hence activated registry crossing can create a slow transition/first-passage clock, but by itself it does not solve the stronger requirement
-
-$$
-P_a(a,0)+\sigma(0:t)\to P_a(a,t)
-$$
-
-for the *full* spacing marginal with progressive structural evolution.
-
-A physical post-slip defect state, boundary incompatibility, hardening/storage variable, or other non-equivalent structural state would be required for that feedback. None is inserted here.
+Therefore a uniform transfer from well index $z$ to $z+1$ lands in an energetically equivalent ideal state. Spatially nonuniform registry is required to create a non-equivalent compatibility/core state; see `CANDIDATE_SPATIAL_REGISTRY_KINK_FEEDBACK.md`.
 
 ### 8.2 Zero-load thermal crossings exist in the ideal periodic model
 
-The same activated formula gives nonzero crossing probability even at zero applied stress. That is not automatically damage: equivalent registry-well hopping in the ideal periodic surface is not the same thing as creation of an irreversible defect.
+Any finite-temperature activated model can give nonzero crossing probability at zero applied stress. Equivalent registry-well hopping is not automatically damage. A completed fatigue/plastic event must be tied to a non-equivalent residual structural state, such as a spatial kink/core configuration, before its rate can be called a damage rate.
 
-Therefore the rate cannot be labeled a fatigue-damage rate until the physical meaning of a completed transition is established.
+## 9. Updated verdict
 
-## 9. Verdict
-
-The audit gives a mixed result:
+The robust part that survives is
 
 $$
-\boxed{
-\text{activated registry barrier can provide a many-cycle rare-event clock}
-}
+\text{an activation barrier can provide a many-cycle rare-event clock without a slow natural frequency.}
 $$
 
-without lowering any natural frequency to laboratory Hz, but
+The coherent $N\Delta G_s$ implementation does **not** survive as the preferred physical barrier. The next candidate is the spatial registry field, where a local transition creates kink/antikink incompatibility and a non-equivalent core. Its activation barrier must be computed from the spatial energy landscape.
 
-$$
-\boxed{
-\text{the current periodic registry transition does not by itself drive progressive }P_a\text{ evolution.}
-}
-$$
-
-Therefore this route is retained as a **candidate rare-event / plastic first-passage mechanism**, not promoted as the missing $P_a$ evolution law.
-
-The next non-arbitrary question is whether a physically justified **non-equivalent post-transition structural state** can be derived from the existing mechanics. If not, the active theory should keep the normal first-passage model and leave irreversible G3 / plastic feedback open rather than inventing a state variable.
+Therefore this file is retained as a conditional historical stepping stone, while `CANDIDATE_SPATIAL_REGISTRY_KINK_FEEDBACK.md` is the current non-mainline candidate for the missing post-transition feedback.
