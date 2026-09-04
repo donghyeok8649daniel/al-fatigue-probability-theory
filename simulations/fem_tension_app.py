@@ -778,14 +778,6 @@ class FEMTensionApp:
         self.redraw()
 
     def _on_field(self, label: str) -> None:
-        if label in {"initiation", "survival", "hazard"} and self.initiation_elements is None:
-            self.field = "stress"
-            self.field_radio.set_active(0)
-            self._set_status(
-                f"{label} requires probability first-passage output; "
-                f"{self.backend} has no probability output yet. Run Theory Core v1 first."
-            )
-            return
         self.field = label
         self.redraw()
 
