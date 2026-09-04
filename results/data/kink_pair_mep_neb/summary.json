@@ -1,0 +1,61 @@
+{
+  "classification": "candidate spatial-registry kink-pair MEP/NEB audit",
+  "status": "candidate only; dominant energetic scale resolved, clean interior transition-state saddle not robustly resolved",
+  "model": {
+    "m": 12.19,
+    "n": 6.0,
+    "sites": 121,
+    "sigma_LJ_over_b": 0.8942468262601596,
+    "zero_stress_registry_well_a_over_b": 0.858217918140167,
+    "energy_unit_eV": 0.08112186222675706
+  },
+  "unbounded_relaxation_check": {
+    "important_correction": "The earlier narrow-pair metastability claim depended on bounded L-BFGS relaxation. Repeating the audit without the artificial registry bounds sends widths 16, 18, and 20 back to the intact basin.",
+    "examples": [
+      {"initial_patch_width": 16, "final_state": "intact", "energy_dimensionless": -6.643540954164961e-05},
+      {"initial_patch_width": 18, "final_state": "intact", "energy_dimensionless": -6.643540954497052e-05},
+      {"initial_patch_width": 20, "final_state": "intact", "energy_dimensionless": -6.643540954172513e-05},
+      {"initial_patch_width": 21, "final_state": "retained shallow kink pair", "energy_dimensionless": 11.38755227071322, "registry_excess_sum": 20.490398588792367, "minimum_hessian_eigenvalue": 0.000260158956621126},
+      {"initial_patch_width": 24, "final_state": "retained shallow kink pair", "energy_dimensionless": 11.387552462169413, "registry_excess_sum": 24.668679636841745, "minimum_hessian_eigenvalue": 0.00027520350573695396},
+      {"initial_patch_width": 30, "final_state": "retained shallow kink pair", "energy_dimensionless": 11.387552447806419, "registry_excess_sum": 28.444326831140334, "minimum_hessian_eigenvalue": 0.00011095913060898965}
+    ]
+  },
+  "zero_stress_mep": {
+    "intact_energy_dimensionless": -6.643540944436945e-05,
+    "product_width": 21,
+    "product_energy_dimensionless": 11.38755227071322,
+    "product_formation_energy_eV": 0.9237848357689242,
+    "neb_images": 27,
+    "neb_behavior": "FIRE NEB relaxed to a path whose highest resolved point was the shallow product endpoint; no robust interior climbing-image saddle above the endpoint was separated.",
+    "dense_last_segment_scan": {
+      "reverse_corrugation_estimate_eV": 1.756918220809092e-05,
+      "dominant_forward_barrier_estimate_eV": 0.9238024049511323,
+      "warning": "The reverse corrugation is on the micro-eV scale and is sensitive to path/spline resolution; it is not promoted as a converged Delta G_kp."
+    }
+  },
+  "normal_stress_formation_energy": [
+    {"stress_MPa": 0, "formation_energy_eV": 0.9237848493723368},
+    {"stress_MPa": 50, "formation_energy_eV": 0.9173589307853133},
+    {"stress_MPa": 100, "formation_energy_eV": 0.9109001418067341},
+    {"stress_MPa": 150, "formation_energy_eV": 0.9044076628192348},
+    {"stress_MPa": 200, "formation_energy_eV": 0.8978806427665733}
+  ],
+  "conditional_rate_diagnostic": {
+    "assumptions": "Arrhenius/transition-state interpretation only; attempt frequency retained from the previous registry curvature diagnostic; not an active fatigue law.",
+    "temperature_K": 300.0,
+    "frequency_Hz": 20.0,
+    "mean_stress_MPa": 100.0,
+    "amplitude_stress_MPa": 100.0,
+    "attempt_frequency_Hz": 1409721517606.97,
+    "hazard_per_cycle_using_formation_barrier_only": 3.741819918326141e-05,
+    "transition_probability_per_cycle": 3.741749913122039e-05,
+    "median_cycles_if_formation_barrier_were_the_rate_barrier": 18524.332963356945
+  },
+  "verdict": [
+    "A roughly 0.924 eV rare-event energy scale survives the removal of the artificial registry bounds.",
+    "Normal tension lowers this dominant formation cost on the candidate surface.",
+    "The post-formation kink-pair states are extremely shallow in their separation/migration mode; the current calculation does not demonstrate a long-lived residual memory at room temperature under ideal pure-normal loading.",
+    "Therefore the spatial-registry mechanism is not promoted as the missing progressive P_a evolution law.",
+    "It remains potentially relevant as a transient rare first-passage state because the kink core strongly perturbs the preferred normal spacing while it exists."
+  ]
+}
