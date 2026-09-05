@@ -103,7 +103,7 @@ def test_optional_initiation_channel_is_preserved_but_not_claimed_calibrated(tmp
     assert "results/initiation_elements.csv" in bundle.members
 
 
-def test_life_probability_and_sn_quantile_results_are_preserved(tmp_path: Path):
+def test_external_life_and_sn_files_are_not_embedded_in_native_solver_projects(tmp_path: Path):
     output = tmp_path / "results"; output.mkdir()
     (output / "life_distribution.csv").write_text(
         "initiation_cycles,probability_mass,cumulative_probability\n"
@@ -113,9 +113,8 @@ def test_life_probability_and_sn_quantile_results_are_preserved(tmp_path: Path):
         "10,500000,1000000,2000000\n", encoding="utf-8")
     project = save_tension_ftgsim(tmp_path / "life.ftgsim", TensionRunConfig(), output)
     bundle = open_ftgsim(project)
-    model = bundle.setup["slip_initiation_model"]
-    assert model["enabled"] is True
-    assert model["sn_curve_fit"] is False
-    assert model["life_distribution_fit"] is None
-    assert "results/life_distribution.csv" in bundle.members
-    assert "results/sn_curve.csv" in bundle.members
+    model = bundle.setup["native_trajectory_probability"]
+    assert model["external_life_scale"] is None
+    assert model["distribution_fit"] is None
+    assert "results/life_distribution.csv" not in bundle.members
+    assert "results/sn_curve.csv" not in bundle.members

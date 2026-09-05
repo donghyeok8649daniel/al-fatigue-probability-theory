@@ -4,7 +4,9 @@ from __future__ import annotations
 import os
 import sys
 import threading
+import time
 import tkinter as tk
+from collections import deque
 from pathlib import Path
 from tkinter import filedialog, messagebox, ttk
 
@@ -72,8 +74,7 @@ class DesktopApp:
         ("stress_amplitude_mpa", "Normal stress amplitude", "100", "MPa"),
         ("theory_stress_scale_mpa", "Theory stress scale", "40", "MPa / model force"),
         ("frequency_hz", "Loading frequency", "20", "Hz"),
-        ("cycles", "Waveform preview", "2", "cycles"),
-        ("fatigue_horizon_cycles", "Fatigue reference horizon", "10000000", "cycles"),
+        ("cycles", "Spatial preview", "2", "cycles"),
         ("steps_per_cycle", "Resolution", "80", "steps/cycle"),
         ("deformation_scale", "Display deformation", "1", "x"),
     )
@@ -86,7 +87,6 @@ class DesktopApp:
         "survival": "Survival",
         "hazard": "Hazard",
         "life": "Life distribution",
-        "sn": "S-N initiation",
     }
 
     def __init__(self, project_path: Path | None = None) -> None:
@@ -103,16 +103,13 @@ class DesktopApp:
         self.entries: dict[str, ttk.Entry] = {}
         self.nodes: np.ndarray | None = None
         self.elements: np.ndarray | None = None
-        self.initiation: np.ndarray | None = None
-        self.sn_curve: np.ndarray | None = None
-        self.life_distribution: np.ndarray | None = None
         self.current_config = None
         self.busy = False
         self.stop_event = threading.Event()
         self.live_cycles = 0.0
-        self._live_cycle_step = 1.0
-        self._live_tick_count = 0
-        self._live_job = None
+        self.live_records = deque(maxlen=5000)
+        self.live_events: list[dict] = []
+        self._last_live_draw = 0.0
         self.playing = False
         self.play_position = tk.DoubleVar(value=0.0)
         self._play_job = None
@@ -334,7 +331,6 @@ class DesktopApp:
             stress_amplitude_mpa=float(self.entries["stress_amplitude_mpa"].get()),
             theory_stress_scale_mpa=float(self.entries["theory_stress_scale_mpa"].get()),
             frequency_hz=float(self.entries["frequency_hz"].get()), cycles=int(self.entries["cycles"].get()),
-            fatigue_horizon_cycles=int(self.entries["fatigue_horizon_cycles"].get()),
             steps_per_cycle=int(self.entries["steps_per_cycle"].get()),
             deformation_scale=float(self.entries["deformation_scale"].get()),
         )
@@ -353,7 +349,9 @@ class DesktopApp:
         self.busy = True
         self.stop_event.clear()
         self.live_cycles = 0.0
-        self._live_tick_count = 0
+        self.live_records.clear()
+        self.live_events.clear()
+        self._last_live_draw = 0.0
         self._stop_playback()
         self.current_config = config
         self.run_button.configure(text="STOP ANALYSIS", state="normal")
@@ -364,11 +362,11 @@ class DesktopApp:
 
     def _solve_worker(self, config: TensionRunConfig, spatial_backend: str) -> None:
         try:
-            from simulations.fem_tension_app import run_theory_spatial_solver
+            from simulations.fem_tension_app import (
+                run_live_theory_solver,
+                run_theory_spatial_solver,
+            )
             from simulations.fem_tension_ui import load_fem_history
-            from simulations.visualize_fem1d import load_numeric_csv
-
-            theory_dir = self.output_dir / "theory"
             spatial_dir = self.output_dir / "spatial"
             run_theory_spatial_solver(
                 config,
@@ -377,15 +375,30 @@ class DesktopApp:
                 stop_requested=self.stop_event.is_set,
             )
             nodes, elements = load_fem_history(spatial_dir)
-            init_path = theory_dir / "initiation_elements.csv"
-            initiation = load_numeric_csv(init_path) if init_path.is_file() else None
-            sn_path = self.output_dir / "sn_curve.csv"
-            sn_curve = load_numeric_csv(sn_path) if sn_path.is_file() else None
-            life_path = self.output_dir / "life_distribution.csv"
-            life_distribution = load_numeric_csv(life_path) if life_path.is_file() else None
             self.root.after(0, lambda: self._solve_done(
-                nodes, elements, initiation, life_distribution, sn_curve, spatial_backend
+                nodes, elements, spatial_backend
             ))
+            last_emit = [0.0]
+            last_survival = [None]
+
+            def stream_record(record: dict) -> None:
+                now = time.monotonic()
+                survival_changed = record["survival"] != last_survival[0]
+                if survival_changed or now - last_emit[0] >= 0.10:
+                    last_emit[0] = now
+                    last_survival[0] = record["survival"]
+                    self.root.after(
+                        0,
+                        lambda record=dict(record): self._accept_live_record(record),
+                    )
+                time.sleep(0.002)
+
+            result = run_live_theory_solver(
+                config,
+                stream_record,
+                self.stop_event.is_set,
+            )
+            self.root.after(0, lambda result=result: self._native_solver_stopped(result))
         except InterruptedError:
             self.root.after(0, lambda: self._finish_live_analysis("Stopped by user"))
         except Exception as exc:
@@ -396,77 +409,34 @@ class DesktopApp:
         self,
         nodes: np.ndarray,
         elements: np.ndarray,
-        initiation: np.ndarray | None,
-        life_distribution: np.ndarray | None,
-        sn_curve: np.ndarray | None,
         spatial_backend: str,
     ) -> None:
-        self.nodes, self.elements, self.initiation, self.life_distribution, self.sn_curve = (
-            nodes, elements, initiation, life_distribution, sn_curve
-        )
+        self.nodes, self.elements = nodes, elements
         self.progress.stop()
         steps = len(np.unique(elements["step"]))
-        fp = "n/a"
-        first_passage = "none in simulated interval"
-        if initiation is not None:
-            fp = f"{float(np.nanmax(initiation['initiation_probability'])):.3f}"
-            crossed = initiation[initiation["initiation_probability"] > 0.0]
-            if crossed.size:
-                first_time_s = float(crossed[0]["time_s"])
-                first_passage = (
-                    f"{first_time_s:.6g} s "
-                    f"({first_time_s * self.current_config.frequency_hz:.4g} cycles)"
-                )
         axis = self.current_config.tensile_unit_vector if self.current_config is not None else np.array([1.0, 0.0, 0.0])
-        active_slip = self.current_config.fcc_slip_systems[0]
-        max_tau_a = active_slip.schmid_factor * self.current_config.stress_amplitude_mpa
-        tmw = self.current_config.tmw_initiation
-        tmw_life = (
-            f"{tmw.cycles_to_initiation:.4g} cycles"
-            if np.isfinite(tmw.cycles_to_initiation)
-            else "not activated in this mechanism"
-        )
-        horizon = self.current_config.fatigue_horizon_cycles
-        horizon_probability = 0.0
-        if self.life_distribution is not None:
-            reached = self.life_distribution[
-                self.life_distribution["initiation_cycles"] <= horizon
-            ]
-            if reached.size:
-                horizon_probability = float(reached[-1]["cumulative_probability"])
         self._summary(
             f"Theory core: Theory Core v1\n"
             f"Spatial backend: {spatial_backend}\n"
             f"Tensile axis: [{axis[0]:.4g}, {axis[1]:.4g}, {axis[2]:.4g}]\n"
             f"Stress ratio R: {self.current_config.stress_ratio:.4g}\n"
-            f"Maximum FCC Schmid factor: {active_slip.schmid_factor:.4g}\n"
-            f"Maximum resolved-shear amplitude: {max_tau_a:.4g} MPa\n"
-            f"FCC dislocation-initiation N50 scale: {tmw_life}\n"
-            f"Fatigue horizon: {horizon:.6g} cycles ({horizon / self.current_config.frequency_hz:.6g} s)\n"
-            f"Initiation probability at horizon: {horizon_probability:.4f}\n"
-            f"Life law: empirical Theory Core first passage scaled by the entered sinusoidal stress range\n"
-            f"S-N bridge status: conditional physical scale; no distribution fit or mean-stress correction\n"
+            f"Probability source: 64 current-load Theory Core trajectories\n"
+            f"Load map: tensile part of entered sigma(t) / theory stress scale\n"
+            f"First passage: mechanically derived opening saddle\n"
+            f"External life data / TMW / fitted distribution: none\n"
+            f"Time status: dimensionless solver time and applied-load cycles\n"
+            f"Laboratory fatigue-life calibration: not yet established\n"
             f"Applied transverse stress: 0 Pa\n"
             f"Time records: {steps}\n"
             f"Control volumes: {len(np.unique(elements['element']))}\n"
-            f"First detected passage: {first_passage}\n"
-            f"Final/maximum first passage: {fp}\n\n"
-            f"Live cycle-jump analysis continues until STOP."
+            f"\nThe native trajectory solve continues until STOP."
         )
         self.notebook.select(self.post_tab)
         if self.stop_event.is_set():
             self._finish_live_analysis("Stopped")
             return
-        horizon = max(1.0, float(self.current_config.fatigue_horizon_cycles))
-        self._live_cycle_step = max(1.0, np.floor(horizon / 2000.0)) + 1.0 / max(
-            2, self.current_config.steps_per_cycle
-        )
-        self.status.set(
-            f"LIVE | Theory Core v1 + {spatial_backend} | cycle jump {self._live_cycle_step:.5g}"
-        )
-        self.live_cycles = 1.0
+        self.status.set(f"LIVE | native Theory Core trajectories + {spatial_backend}")
         self._plot()
-        self._live_job = self.root.after(80, self._live_tick)
 
     def _solve_failed(self, detail: str) -> None:
         self.busy = False
@@ -527,8 +497,9 @@ class DesktopApp:
             index = int(np.clip(np.searchsorted(x_values, value, side="right") - 1, 0, len(x_values) - 1))
             suffix = f"  |  {self._cursor_value_name} = {y_values[index]:.4g}"
         if unit == "cycles":
-            seconds = value / self.current_config.frequency_hz if self.current_config else np.nan
-            self.timeline_label.configure(text=f"N = {value:.4g}  |  {seconds:.4g} s{suffix}")
+            self.timeline_label.configure(text=f"N = {value:.5g}{suffix}")
+        elif unit == "model_time":
+            self.timeline_label.configure(text=f"model time = {value:.5g}{suffix}")
         else:
             self.timeline_label.configure(text=f"t = {value:.5g} s{suffix}")
 
@@ -587,43 +558,36 @@ class DesktopApp:
         else:
             self._play_job = self.root.after(80, self._play_tick)
 
-    def _live_tick(self) -> None:
-        """Advance the laboratory fatigue clock until the user requests stop.
-
-        The long-life axis uses explicit cycle jumps; it does not pretend to
-        integrate millions of identical microscopic periods one by one.
-        """
-        self._live_job = None
-        if self.stop_event.is_set():
-            self._finish_live_analysis("Stopped by user")
-            return
-        self.live_cycles += self._live_cycle_step
-        self._live_tick_count += 1
-        live_seconds = self.live_cycles / self.current_config.frequency_hz
+    def _accept_live_record(self, record: dict) -> None:
+        """Accept one aggregate emitted by the native trajectory solver."""
+        self.live_records.append(record)
+        survival = float(record["survival"])
+        if not self.live_events or survival != float(self.live_events[-1]["survival"]):
+            self.live_events.append(record)
+        self.live_cycles = float(record["cycle"])
         self.status.set(
-            f"LIVE | N={self.live_cycles:.7g} cycles | t={live_seconds:.7g} s | "
-            "applied history: sinusoidal axial stress"
+            f"LIVE | model time={float(record['model_time']):.7g} | "
+            f"N={self.live_cycles:.7g} | S={survival:.5f} | native solver"
         )
-        if self._live_tick_count % 4 == 0:
+        now = time.monotonic()
+        if now - self._last_live_draw >= 0.20:
+            self._last_live_draw = now
             self.play_position.set(1.0)
             self._plot()
-        self._live_job = self.root.after(80, self._live_tick)
+
+    def _native_solver_stopped(self, _result: dict) -> None:
+        self._finish_live_analysis("Native solver stopped")
 
     def _finish_live_analysis(self, message: str) -> None:
-        if self._live_job is not None:
-            self.root.after_cancel(self._live_job)
-            self._live_job = None
         self.busy = False
         self.progress.stop()
         self.run_button.configure(text="RUN ANALYSIS", state="normal")
-        seconds = self.live_cycles / self.current_config.frequency_hz if self.current_config else 0.0
-        self.status.set(f"{message} | N={self.live_cycles:.7g} cycles | t={seconds:.7g} s")
+        model_time = float(self.live_records[-1]["model_time"]) if self.live_records else 0.0
+        self.status.set(f"{message} | model time={model_time:.7g} | N={self.live_cycles:.7g}")
         self._plot()
 
     def _close(self) -> None:
         self.stop_event.set()
-        if self._live_job is not None:
-            self.root.after_cancel(self._live_job)
         self.root.destroy()
 
     def _plot(self) -> None:
@@ -643,136 +607,89 @@ class DesktopApp:
         self._cursor_y = None
         self._cursor_value_name = None
         if field in {"initiation", "survival", "hazard", "life"}:
-            if self.life_distribution is None:
-                self.ax.text(0.5, 0.5, "Life distribution requires an analysis", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
+            if not self.live_events:
+                self.ax.text(0.5, 0.5, "Waiting for native Theory Core trajectory records", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
                 self.ax.set_axis_off(); self.canvas.draw_idle(); return
-            cycles = np.asarray(self.life_distribution["initiation_cycles"], dtype=float)
-            cdf = np.asarray(self.life_distribution["cumulative_probability"], dtype=float)
-            mass = np.asarray(self.life_distribution["probability_mass"], dtype=float)
-            horizon = float(self.current_config.fatigue_horizon_cycles)
-            display_cycles = (
-                horizon
-                if field == "life"
-                else max(1.0, self.live_cycles) if self.live_cycles > 0.0 else horizon
-            )
-            finite = np.isfinite(cycles) & np.isfinite(cdf) & (cycles <= display_cycles)
-            if field == "life" and not np.any(finite):
-                self.ax.text(0.5, 0.5, "No finite first-passage life for this mechanism", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
-                self.ax.set_axis_off(); self.canvas.draw_idle(); return
-            order = np.argsort(cycles[finite])
-            event_cycles = cycles[finite][order]
-            event_cdf = cdf[finite][order]
-            event_mass = mass[finite][order]
+            records = list(self.live_events)
+            if self.live_records and self.live_records[-1] is not records[-1]:
+                records.append(self.live_records[-1])
+            model_time = np.asarray([row["model_time"] for row in records], dtype=float)
+            cycles = np.asarray([row["cycle"] for row in records], dtype=float)
+            survival = np.asarray([row["survival"] for row in records], dtype=float)
+            initiation = 1.0 - survival
+            previous_survival = np.concatenate(([1.0], survival[:-1]))
+            event_mass = np.maximum(0.0, previous_survival - survival)
             if field == "life":
-                self.ax.vlines(event_cycles, 0.0, event_mass, color="#79a9cf", linewidth=1.0)
-                self.ax.scatter(event_cycles, event_mass, color=ACCENT, s=24, zorder=3)
+                event = event_mass > 0.0
+                if not np.any(event):
+                    self.ax.text(0.5, 0.5, "No native-solver first passage yet", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
+                    self.ax.set_axis_off(); self.canvas.draw_idle(); return
+                x = cycles[event]
+                y = event_mass[event]
+                self.ax.vlines(x, 0.0, y, color="#79a9cf", linewidth=1.0)
+                self.ax.scatter(x, y, color=ACCENT, s=24, zorder=3)
                 ylabel = "First-passage probability mass [-]"
-                title = "Life probability mass from Theory Core trajectories"
+                title = "Native Theory Core first-passage mass"
+                xlabel = "Applied-load cycles N [-]"
+                unit = "cycles"
+            elif field == "initiation":
+                x = model_time
+                y = initiation
+                ylabel = "Cumulative initiation probability [-]"
+                title = "Native first-passage probability under entered sigma(t)"
+                xlabel = "Solver model time"
+                unit = "model_time"
+                self.ax.step(x, y, where="post", color=ACCENT, linewidth=2.0)
+            elif field == "survival":
+                x = model_time
+                y = survival
+                ylabel = "Survival probability [-]"
+                title = "Native trajectory survival under entered sigma(t)"
+                xlabel = "Solver model time"
+                unit = "model_time"
+                self.ax.step(x, y, where="post", color=ACCENT, linewidth=2.0)
             else:
-                start_time = 1.0 / self.current_config.frequency_hz
-                event_time = event_cycles / self.current_config.frequency_hz
-                display_time = max(start_time, display_cycles / self.current_config.frequency_hz)
-                x = np.concatenate(([start_time], event_time, [display_time]))
-                padded_cdf = np.concatenate(([0.0], event_cdf, [event_cdf[-1] if event_cdf.size else 0.0]))
-                if field == "initiation":
-                    y = padded_cdf
-                    ylabel = "Cumulative initiation probability [-]"
-                    title = "Initiation probability under the applied stress history"
-                elif field == "survival":
-                    y = 1.0 - padded_cdf
-                    ylabel = "Survival probability [-]"
-                    title = "Survival under the applied stress history"
-                else:
-                    prior_survival = 1.0 - np.concatenate(([0.0], event_cdf[:-1]))
-                    y = np.divide(
-                        event_mass,
-                        prior_survival,
-                        out=np.zeros_like(event_mass),
-                        where=prior_survival > 0.0,
-                    )
-                    x = event_time
-                    ylabel = "Discrete conditional hazard [-]"
-                    title = "First-passage hazard under the applied stress history"
-                    self.ax.vlines(x, 0.0, y, color="#79a9cf", linewidth=1.0)
-                    self.ax.scatter(x, y, color=ACCENT, s=24, zorder=3)
-                if field != "hazard":
-                    self.ax.step(x, y, where="post", color=ACCENT, linewidth=2.0)
-            self.ax.set_xscale("log")
-            axis_end = horizon if field == "life" else display_cycles
-            axis_start = 1.0 if field == "life" else 1.0 / self.current_config.frequency_hz
-            axis_end_value = max(
-                axis_start * (1.0 + 1.0e-9),
-                axis_end if field == "life" else axis_end / self.current_config.frequency_hz,
-            )
-            self.ax.set_xlim(axis_start, axis_end_value)
+                event = event_mass > 0.0
+                x = model_time[event]
+                y = np.divide(
+                    event_mass[event],
+                    previous_survival[event],
+                    out=np.zeros(np.count_nonzero(event), dtype=float),
+                    where=previous_survival[event] > 0.0,
+                )
+                ylabel = "Discrete conditional hazard [-]"
+                title = "Native first-passage hazard under entered sigma(t)"
+                xlabel = "Solver model time"
+                unit = "model_time"
+                self.ax.vlines(x, 0.0, y, color="#79a9cf", linewidth=1.0)
+                self.ax.scatter(x, y, color=ACCENT, s=24, zorder=3)
             self.ax.set_ylim(bottom=0.0)
-            self.ax.set_xlabel("Fatigue cycles N" if field == "life" else "Time under applied load [s]")
+            self.ax.set_xlabel(xlabel)
             self.ax.set_ylabel(ylabel)
             self.ax.set_title(title, loc="left", fontsize=12, fontweight="bold")
-            self.ax.grid(True, which="both", color="#d9e0e5", linewidth=0.7, alpha=0.8)
-            cursor_x = event_cycles if field == "life" else x
-            cursor_y = event_mass if field == "life" else y
+            self.ax.grid(True, color="#d9e0e5", linewidth=0.7, alpha=0.8)
             cursor_name = "PMF" if field == "life" else {"initiation": "Pinit", "survival": "S", "hazard": "h"}[field]
+            axis_start = float(np.min(x)) if x.size else 0.0
+            axis_end = float(np.max(model_time if field != "life" else cycles))
             self._set_cursor_domain(
                 axis_start,
-                axis_end_value,
-                logarithmic=True,
-                unit="cycles" if field == "life" else "seconds",
-                x_values=cursor_x,
-                y_values=cursor_y,
+                axis_end,
+                logarithmic=False,
+                unit=unit,
+                x_values=x,
+                y_values=y,
                 value_name=cursor_name,
             )
             self.figure.tight_layout(pad=1.2)
             self.canvas.draw_idle()
             return
-        if field == "sn":
-            if self.sn_curve is None:
-                self.ax.text(0.5, 0.5, "S-N result requires an analysis", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
-                self.ax.set_axis_off(); self.canvas.draw_idle(); return
-            finite = self.sn_curve[np.isfinite(self.sn_curve["n50_cycles"])]
-            finite = finite[finite["n50_cycles"] > 0.0]
-            if not finite.size:
-                self.ax.text(0.5, 0.5, "This mechanism is below its effective shear threshold", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
-                self.ax.set_axis_off(); self.canvas.draw_idle(); return
-            cycles = np.asarray(finite["n50_cycles"], dtype=float)
-            n10 = np.asarray(finite["n10_cycles"], dtype=float)
-            n80 = np.asarray(finite["n80_cycles"], dtype=float)
-            amplitude = np.asarray(finite["axial_stress_amplitude_mpa"], dtype=float)
-            order = np.argsort(cycles)
-            self.ax.semilogx(n10[order], amplitude[order], color="#79a9cf", linewidth=1.3, label="N10")
-            self.ax.semilogx(cycles[order], amplitude[order], color=ACCENT, linewidth=2.2, label="N50")
-            self.ax.semilogx(n80[order], amplitude[order], color="#263746", linewidth=1.3, label="N80")
-            estimate = self.current_config.tmw_initiation
-            if np.isfinite(estimate.cycles_to_initiation):
-                self.ax.scatter(
-                    [estimate.cycles_to_initiation],
-                    [self.current_config.stress_amplitude_mpa],
-                    s=52, color="#d64b3c", zorder=3, label="Current load",
-                )
-            self.ax.legend(frameon=False)
-            self.ax.set_xlabel("Cycles to crack initiation, Nc")
-            self.ax.set_ylabel("Axial stress amplitude [MPa]")
-            self.ax.set_title("FCC slip-band initiation probability quantiles", loc="left", fontsize=12, fontweight="bold")
-            self.ax.grid(True, which="both", color="#d9e0e5", linewidth=0.7, alpha=0.8)
-            self._set_cursor_domain(
-                1.0,
-                float(self.current_config.fatigue_horizon_cycles),
-                logarithmic=True,
-                unit="cycles",
-            )
-            self.figure.tight_layout(pad=1.2)
-            self.canvas.draw_idle()
-            return
-        live_history = self.live_cycles > 0.0 and self.current_config is not None
+        live_history = bool(self.live_records) and self.current_config is not None
         if live_history:
             config = self.current_config
-            end_time = self.live_cycles / config.frequency_hz
-            window_cycles = max(2, config.cycles)
-            start_time = max(0.0, end_time - window_cycles / config.frequency_hz)
-            sample_count = max(80, min(1200, window_cycles * config.steps_per_cycle + 1))
-            t = np.linspace(start_time, end_time, sample_count)
-            stress_mpa = np.asarray(config.axial_stress_mpa(t), dtype=float)
-            axial_strain = stress_mpa * 1.0e6 / config.young_pa
+            records = list(self.live_records)
+            t = np.asarray([row["model_time"] for row in records], dtype=float)
+            stress_mpa = np.asarray([row["force"] for row in records], dtype=float) * config.theory_stress_scale_mpa
+            axial_strain = np.asarray([row["strain"] for row in records], dtype=float)
         if field == "stress":
             if live_history:
                 y = stress_mpa
@@ -799,7 +716,8 @@ class DesktopApp:
             ylabel = "Diameter change [µm]"
         self.ax.plot(t, y, color=ACCENT, linewidth=1.8)
         self.ax.fill_between(t, y, alpha=0.12, color=ACCENT)
-        self.ax.set_xlabel("Time [s]")
+        time_unit = "model_time" if live_history else "seconds"
+        self.ax.set_xlabel("Solver model time" if live_history else "Time [s]")
         self.ax.set_ylabel(ylabel)
         self.ax.set_title(self.FIELD_LABELS[field], loc="left", fontsize=12, fontweight="bold")
         self.ax.grid(True, color="#d9e0e5", linewidth=0.7, alpha=0.8)
@@ -807,7 +725,7 @@ class DesktopApp:
             float(np.min(t)),
             float(np.max(t)),
             logarithmic=False,
-            unit="seconds",
+            unit=time_unit,
             x_values=t,
             y_values=y,
             value_name=self.FIELD_LABELS[field],
@@ -850,7 +768,6 @@ class DesktopApp:
             from simulations.fem_tension_app import config_from_ftgsim
             from simulations.fem_tension_ui import load_fem_history
             from simulations.ftgsim_format import extract_geometry, extract_results, open_ftgsim
-            from simulations.visualize_fem1d import load_numeric_csv
 
             config, _geometry, _display = config_from_ftgsim(path)
             self.current_config = config
@@ -863,11 +780,11 @@ class DesktopApp:
                 "stress_amplitude_mpa": config.stress_amplitude_mpa,
                 "theory_stress_scale_mpa": config.theory_stress_scale_mpa,
                 "frequency_hz": config.frequency_hz, "cycles": config.cycles,
-                "fatigue_horizon_cycles": config.fatigue_horizon_cycles,
                 "steps_per_cycle": config.steps_per_cycle, "deformation_scale": config.deformation_scale,
             }
             for key, value in values.items():
-                self.entries[key].delete(0, "end"); self.entries[key].insert(0, str(value))
+                if key in self.entries:
+                    self.entries[key].delete(0, "end"); self.entries[key].insert(0, str(value))
             bundle = open_ftgsim(path)
             bundle_id = str(bundle.manifest.get("bundle_id", path.stem))
             self.output_dir = self._default_output_dir() / "opened" / bundle_id
@@ -877,12 +794,6 @@ class DesktopApp:
                 self.geometry_path = geometry_files[0]
                 self.mesh_label.configure(text=f"{self.geometry_path.name} · saved 3D geometry")
             self.nodes, self.elements = load_fem_history(self.output_dir)
-            init_path = self.output_dir / "initiation_elements.csv"
-            self.initiation = load_numeric_csv(init_path) if init_path.is_file() else None
-            sn_path = self.output_dir / "sn_curve.csv"
-            self.sn_curve = load_numeric_csv(sn_path) if sn_path.is_file() else None
-            life_path = self.output_dir / "life_distribution.csv"
-            self.life_distribution = load_numeric_csv(life_path) if life_path.is_file() else None
             self.status.set(f"Opened {path.name}")
             self.notebook.select(self.post_tab); self._plot()
         except Exception as exc:

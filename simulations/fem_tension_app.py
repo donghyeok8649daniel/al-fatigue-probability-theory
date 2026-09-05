@@ -58,15 +58,6 @@ from theory.cubic_normal_orientation import (
     directional_young_modulus,
     miller_unit_vector,
 )
-from theory.fcc_axial_slip import FCCSlipSystem, fcc_axial_slip_systems
-from theory.fcc_dislocation_initiation import (
-    AluminumSlipInitiationParameters,
-    EmpiricalFirstPassageShape,
-    SlipSystemLife,
-    axial_tmw_initiation_life,
-    empirical_first_passage_shape,
-    fcc_axial_tmw_lives,
-)
 
 
 @dataclass(frozen=True)
@@ -95,12 +86,8 @@ class TensionRunConfig:
     theory_stress_scale_mpa: float = 40.0
     frequency_hz: float = 20.0
     cycles: int = 2
-    fatigue_horizon_cycles: int = 10_000_000
     steps_per_cycle: int = 80
     deformation_scale: float = 1.0
-    aluminum_lattice_parameter_nm: float = 0.40495
-    aluminum_surface_energy_j_m2: float = 1.14
-    aluminum_friction_stress_mpa: float = 0.0
 
     @property
     def length_m(self) -> float:
@@ -180,30 +167,6 @@ class TensionRunConfig:
         )
         return float(value) if np.ndim(value) == 0 else value
 
-    @property
-    def fcc_slip_systems(self) -> tuple[FCCSlipSystem, ...]:
-        return fcc_axial_slip_systems(self.loading_h, self.loading_k, self.loading_l)
-
-    @property
-    def slip_initiation_material(self) -> AluminumSlipInitiationParameters:
-        return AluminumSlipInitiationParameters(
-            lattice_parameter_nm=self.aluminum_lattice_parameter_nm,
-            surface_energy_j_m2=self.aluminum_surface_energy_j_m2,
-            friction_stress_mpa=self.aluminum_friction_stress_mpa,
-        )
-
-    @property
-    def tmw_initiation(self) -> SlipSystemLife:
-        return axial_tmw_initiation_life(
-            self.loading_h,
-            self.loading_k,
-            self.loading_l,
-            self.stress_amplitude_mpa,
-            self.young_pa,
-            self.poisson_ratio,
-            self.slip_initiation_material,
-        )
-
 
 def validate_run_config(config: TensionRunConfig) -> None:
     """Reject nonphysical or numerically meaningless GUI inputs."""
@@ -239,15 +202,12 @@ def validate_run_config(config: TensionRunConfig) -> None:
         raise ValueError("elements must be at least 1")
     if config.cycles < 1:
         raise ValueError("cycles must be at least 1")
-    if config.fatigue_horizon_cycles < 1:
-        raise ValueError("fatigue_horizon_cycles must be at least 1")
     if config.steps_per_cycle < 2:
         raise ValueError("steps_per_cycle must be at least 2")
     if not np.isfinite(config.stress_mean_mpa):
         raise ValueError("stress_mean_mpa must be finite")
     if not np.isfinite(config.stress_amplitude_mpa) or config.stress_amplitude_mpa < 0.0:
         raise ValueError("stress_amplitude_mpa must be finite and nonnegative")
-    config.slip_initiation_material.validate()
 
 
 def theory_load_params(config: TensionRunConfig) -> LoadParams:
@@ -259,12 +219,19 @@ def theory_load_params(config: TensionRunConfig) -> LoadParams:
     """
     stress_min = max(0.0, config.stress_mean_mpa - config.stress_amplitude_mpa)
     stress_max = max(0.0, config.stress_mean_mpa + config.stress_amplitude_mpa)
+    model_period = 10.0
     return LoadParams(
         force_min=stress_min / config.theory_stress_scale_mpa,
         force_max=stress_max / config.theory_stress_scale_mpa,
-        period=10.0,
+        period=model_period,
         cycles=config.cycles,
         phase_radians=0.0,
+        value_function=lambda model_time: max(
+            0.0,
+            config.axial_stress_mpa(
+                model_time / (model_period * config.frequency_hz)
+            ),
+        ) / config.theory_stress_scale_mpa,
     )
 
 
@@ -288,158 +255,6 @@ def _default_theory_model() -> TwoRowLJ:
     return TwoRowLJ(ModelParams())
 
 
-@lru_cache(maxsize=1)
-def _reference_first_passage_shape() -> EmpiricalFirstPassageShape:
-    """Obtain a dimensionless life law directly from Theory Core v1 trajectories.
-
-    The fixed reference load is the published v1 mechanism-screening case with
-    substantial but incomplete first passage.  Non-events remain right-censored;
-    no Weibull/Gaussian kernel or tail extrapolation is applied.
-    """
-    model_p = ModelParams()
-    load_p = LoadParams(force_min=0.0, force_max=3.6, period=10.0, cycles=10)
-    solver_p = SolverParams(
-        dt=0.02,
-        n_trajectories=64,
-        seed=17,
-        first_passage_stride=5,
-        record_stride=50,
-    )
-    output = run_ensemble(
-        model_p, load_p, solver_p, model=_default_theory_model()
-    )
-    passage = np.asarray(output["first_passage_time"], dtype=float)
-    invalid = np.asarray(output["invalid_trajectory"], dtype=bool)
-    return empirical_first_passage_shape(
-        passage[~invalid] / load_p.period,
-        float(output["observation_end_time"]) / load_p.period,
-    )
-
-
-def write_axial_slip_system_summary(config: TensionRunConfig, output_dir: Path) -> Path:
-    """Write the exact Schmid projection of axial stress for all FCC systems."""
-    path = Path(output_dir) / "slip_systems.csv"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.writer(handle)
-        life_by_system = {
-            (life.system.plane_hkl, life.system.direction_uvw): life
-            for life in fcc_axial_tmw_lives(
-                config.loading_h,
-                config.loading_k,
-                config.loading_l,
-                config.stress_amplitude_mpa,
-                config.young_pa,
-                config.poisson_ratio,
-                config.slip_initiation_material,
-            )
-        }
-        writer.writerow([
-            "plane_h", "plane_k", "plane_l", "direction_u", "direction_v", "direction_w",
-            "signed_schmid_factor", "schmid_factor", "resolved_shear_mean_mpa",
-            "resolved_shear_amplitude_mpa", "resolved_shear_min_mpa", "resolved_shear_max_mpa",
-            "tmw_effective_shear_range_mpa", "tmw_initiation_cycles",
-        ])
-        for system in config.fcc_slip_systems:
-            tau_a = system.schmid_factor * config.stress_amplitude_mpa
-            end_values = (
-                system.resolved_shear_mpa(config.stress_min_mpa),
-                system.resolved_shear_mpa(config.stress_max_mpa),
-            )
-            life = life_by_system[(system.plane_hkl, system.direction_uvw)]
-            writer.writerow([
-                *system.plane_hkl,
-                *system.direction_uvw,
-                f"{system.signed_schmid_factor:.17g}",
-                f"{system.schmid_factor:.17g}",
-                f"{system.resolved_shear_mpa(config.stress_mean_mpa):.17g}",
-                f"{tau_a:.17g}",
-                f"{min(end_values):.17g}",
-                f"{max(end_values):.17g}",
-                f"{life.effective_shear_range_mpa:.17g}",
-                f"{life.cycles_to_initiation:.17g}",
-            ])
-    return path
-
-
-def write_tmw_sn_curve(config: TensionRunConfig, output_dir: Path) -> Path:
-    """Write axial life-quantile curves from the theory empirical measure.
-
-    TMW supplies the physical median scale.  Dimensionless quantile ratios come
-    from the existing Theory Core v1 first-passage ensemble.
-    """
-    path = Path(output_dir) / "sn_curve.csv"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    center = max(config.stress_amplitude_mpa, 1.0)
-    amplitudes = np.geomspace(max(0.2, center / 8.0), center * 4.0, 49)
-    amplitudes = np.unique(np.append(amplitudes, config.stress_amplitude_mpa))
-    with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.writer(handle)
-        shape = _reference_first_passage_shape()
-        q10 = shape.quantile_multiplier(0.10)
-        q50 = shape.quantile_multiplier(0.50)
-        q80 = shape.quantile_multiplier(0.80)
-        writer.writerow([
-            "axial_stress_amplitude_mpa", "resolved_shear_range_mpa",
-            "effective_shear_range_mpa", "n10_cycles", "n50_cycles", "n80_cycles",
-            "plane_h", "plane_k", "plane_l", "direction_u", "direction_v", "direction_w",
-            "reference_censored_probability", "model_status",
-        ])
-        for amplitude in amplitudes:
-            life = axial_tmw_initiation_life(
-                config.loading_h,
-                config.loading_k,
-                config.loading_l,
-                float(amplitude),
-                config.young_pa,
-                config.poisson_ratio,
-                config.slip_initiation_material,
-            )
-            writer.writerow([
-                f"{amplitude:.17g}",
-                f"{life.resolved_shear_range_mpa:.17g}",
-                f"{life.effective_shear_range_mpa:.17g}",
-                f"{life.cycles_to_initiation * q10:.17g}",
-                f"{life.cycles_to_initiation * q50:.17g}",
-                f"{life.cycles_to_initiation * q80:.17g}",
-                *life.system.plane_hkl,
-                *life.system.direction_uvw,
-                f"{shape.censored_probability:.17g}",
-                "conditional_theory_empirical_shape_plus_tmw_median_scale",
-            ])
-    return path
-
-
-def write_life_probability_distribution(config: TensionRunConfig, output_dir: Path) -> Path:
-    """Write the selected-load discrete life PMF/CDF without a PDF kernel."""
-    path = Path(output_dir) / "life_distribution.csv"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    shape = _reference_first_passage_shape()
-    median_cycles = config.tmw_initiation.cycles_to_initiation
-    with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.writer(handle)
-        writer.writerow([
-            "initiation_cycles", "probability_mass", "cumulative_probability",
-            "survival_probability", "right_censor_cycles", "right_censored_probability",
-            "model_status",
-        ])
-        for multiplier, mass, cdf in zip(
-            shape.event_cycle_multipliers,
-            shape.probability_mass,
-            shape.cumulative_probability,
-        ):
-            writer.writerow([
-                f"{median_cycles * multiplier:.17g}",
-                f"{mass:.17g}",
-                f"{cdf:.17g}",
-                f"{1.0 - cdf:.17g}",
-                f"{median_cycles * shape.censor_cycle_multiplier:.17g}",
-                f"{shape.censored_probability:.17g}",
-                "right_censored_empirical_first_passage_no_distribution_fit",
-            ])
-    return path
-
-
 def config_from_ftgsim(path: Path) -> tuple[TensionRunConfig, dict, dict]:
     """Load and validate the tensile-only setup from an `.ftgsim` bundle."""
     bundle = open_ftgsim(path)
@@ -448,6 +263,8 @@ def config_from_ftgsim(path: Path) -> tuple[TensionRunConfig, dict, dict]:
     values = bundle.setup.get("tension_run")
     if not isinstance(values, dict):
         raise ValueError("ftgsim setup is missing tension_run")
+    values = dict(values)
+    values.pop("fatigue_horizon_cycles", None)
     allowed = set(TensionRunConfig.__dataclass_fields__)
     unknown = set(values) - allowed
     if unknown:
@@ -466,8 +283,7 @@ def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path |
     if output_dir is not None:
         source_dir = Path(output_dir)
         for name in ("nodes.csv", "elements.csv", "metadata.csv", "summary.json",
-                     "probability_elements.csv", "initiation_elements.csv", "slip_systems.csv",
-                     "sn_curve.csv", "life_distribution.csv"):
+                     "probability_elements.csv", "initiation_elements.csv"):
             source = source_dir / name
             if source.is_file():
                 files[f"results/{name}"] = source
@@ -498,16 +314,12 @@ def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path |
                 "critical_stretch_rule": "((m+1)/(n+1))**(1/(m-n))",
                 "note": "Parameters and escape coupling must be supplied before activation.",
             },
-            "slip_initiation_model": {
-                "enabled": "results/sn_curve.csv" in files,
-                "status": "candidate_additional_dislocation_dipole_law",
-                "relation": "stress_controlled_tanaka_mura_wu",
-                "sn_curve_fit": False,
-                "life_probability": "theory_core_v1_empirical_first_passage_measure",
-                "life_distribution_fit": None,
-                "right_censoring": True,
-                "mean_stress_correction": None,
-                "specimen_probability_aggregation": None,
+            "native_trajectory_probability": {
+                "enabled": has_initiation_results,
+                "source": "solver_v1_current_load_trajectory_ensemble",
+                "external_life_scale": None,
+                "distribution_fit": None,
+                "time_status": "dimensionless_model_time_not_lab_calibrated",
             },
             "result_references": sorted(name for name in files if name.startswith("results/")),
         },
@@ -519,10 +331,7 @@ def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path |
                 config.loading_h, config.loading_k, config.loading_l],
             "elastic_calibration_mode": config.elastic_calibration_mode,
             "directional_young_modulus_pa": config.young_pa,
-            "maximum_fcc_schmid_factor": config.fcc_slip_systems[0].schmid_factor,
             "stress_ratio_R": config.stress_ratio,
-            "tmw_n50_scale_cycles": config.tmw_initiation.cycles_to_initiation,
-            "tmw_status": "candidate_additional_dislocation_dipole_law",
             "geometry_kind": "uniform_bar",
             "length_mm": config.length_mm,
             "width_mm": config.width_mm,
@@ -936,25 +745,63 @@ def run_theory_spatial_solver(
     for name in ("nodes.csv", "elements.csv", "metadata.csv"):
         shutil.copy2(spatial_dir / name, session_dir / name)
     shutil.copy2(theory_dir / "initiation_elements.csv", session_dir / "initiation_elements.csv")
-    write_axial_slip_system_summary(config, session_dir)
-    write_tmw_sn_curve(config, session_dir)
-    write_life_probability_distribution(config, session_dir)
-    tmw = config.tmw_initiation
     with (session_dir / "metadata.csv").open("a", newline="", encoding="utf-8") as handle:
         csv.writer(handle).writerows([
-            ["fcc_slip_projection", "exact_schmid_uniaxial"],
-            ["tmw_status", "candidate_additional_dislocation_dipole_law"],
-            ["aluminum_lattice_parameter_nm", f"{config.aluminum_lattice_parameter_nm:.17g}"],
-            ["aluminum_surface_energy_j_m2", f"{config.aluminum_surface_energy_j_m2:.17g}"],
-            ["aluminum_friction_stress_mpa", f"{config.aluminum_friction_stress_mpa:.17g}"],
-            ["tmw_n50_scale_cycles", f"{tmw.cycles_to_initiation:.17g}"],
-            ["life_distribution", "theory_core_v1_empirical_first_passage_right_censored"],
-            ["life_distribution_kernel", "none"],
-            ["tmw_mean_stress_correction", "none"],
-            ["fatigue_horizon_cycles", config.fatigue_horizon_cycles],
-            ["fatigue_horizon_seconds", f"{config.fatigue_horizon_cycles / config.frequency_hz:.17g}"],
+            ["probability_source", "solver_v1_current_load_trajectory_ensemble"],
+            ["probability_external_life_scale", "none"],
+            ["probability_distribution_fit", "none"],
+            ["solver_time_status", "dimensionless_model_time_not_lab_calibrated"],
         ])
     return theory_result, spatial_result
+
+
+def run_live_theory_solver(
+    config: TensionRunConfig,
+    record_callback,
+    stop_requested,
+) -> dict:
+    """Stream the repository's trajectory solver under the entered load.
+
+    Returned time is the solver's model time.  ``cycle`` is exact relative to
+    the declared periodic load, while a laboratory seconds calibration is not
+    claimed by this dimensionless mechanism solver.
+    """
+    validate_run_config(config)
+    base_load = theory_load_params(config)
+    live_load = LoadParams(
+        force_min=base_load.force_min,
+        force_max=base_load.force_max,
+        period=base_load.period,
+        cycles=2_000_000_000,
+        phase_radians=base_load.phase_radians,
+        value_function=base_load.value_function,
+    )
+    base_solver = theory_solver_params(config, live_load)
+    live_solver = SolverParams(
+        dt=base_solver.dt,
+        n_trajectories=64,
+        seed=17,
+        first_passage_stride=base_solver.first_passage_stride,
+        record_stride=base_solver.record_stride,
+    )
+
+    def mapped_record(record: dict) -> None:
+        model_time = float(record["time"])
+        record_callback({
+            **record,
+            "model_time": model_time,
+            "cycle": model_time / live_load.period,
+        })
+
+    return run_ensemble(
+        ModelParams(),
+        live_load,
+        live_solver,
+        model=_default_theory_model(),
+        record_callback=mapped_record,
+        stop_requested=stop_requested,
+        retain_history=False,
+    )
 
 
 class FEMTensionApp:

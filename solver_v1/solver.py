@@ -1,5 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass
+from typing import Callable
 import numpy as np
 from .model import ModelParams, TwoRowLJ
 
@@ -10,8 +11,11 @@ class LoadParams:
     period: float = 10.0
     cycles: int = 10
     phase_radians: float = -0.5*np.pi
+    value_function: Callable[[float], float] | None = None
 
     def value(self, t: float) -> float:
+        if self.value_function is not None:
+            return float(self.value_function(t))
         mid = 0.5*(self.force_max + self.force_min)
         amp = 0.5*(self.force_max - self.force_min)
         return mid + amp*np.sin(2*np.pi*t/self.period + self.phase_radians)
