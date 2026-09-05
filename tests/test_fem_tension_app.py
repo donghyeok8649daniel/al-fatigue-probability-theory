@@ -35,6 +35,20 @@ class TestTensionRunConfig(unittest.TestCase):
         self.assertAlmostEqual(config.area_m2, 1.0e-5)
         self.assertAlmostEqual(config.young_pa, 69.0e9)
 
+    def test_circular_section_and_tensile_axis_are_independent_of_crystal_direction(self) -> None:
+        config = TensionRunConfig(
+            section_shape="circular",
+            diameter_mm=6.0,
+            loading_h=1,
+            loading_k=1,
+            loading_l=1,
+            tensile_axis_x=0.0,
+            tensile_axis_y=3.0,
+            tensile_axis_z=4.0,
+        )
+        self.assertAlmostEqual(config.area_m2, np.pi * (0.006**2) / 4.0)
+        np.testing.assert_allclose(config.tensile_unit_vector, [0.0, 0.6, 0.8])
+
     def test_invalid_geometry_is_rejected(self) -> None:
         with self.assertRaises(ValueError):
             validate_run_config(TensionRunConfig(width_mm=0.0))
@@ -48,6 +62,16 @@ class TestTensionRunConfig(unittest.TestCase):
             validate_run_config(TensionRunConfig(cycles=0))
         with self.assertRaises(ValueError):
             validate_run_config(TensionRunConfig(steps_per_cycle=1))
+
+    def test_invalid_poisson_ratio_and_tensile_axis_are_rejected(self) -> None:
+        with self.assertRaises(ValueError):
+            validate_run_config(TensionRunConfig(poisson_ratio=0.5))
+        with self.assertRaises(ValueError):
+            validate_run_config(TensionRunConfig(
+                tensile_axis_x=0.0,
+                tensile_axis_y=0.0,
+                tensile_axis_z=0.0,
+            ))
 
     def test_negative_mean_stress_is_allowed_but_negative_amplitude_is_not(self) -> None:
         validate_run_config(TensionRunConfig(stress_mean_mpa=-25.0, stress_amplitude_mpa=10.0))

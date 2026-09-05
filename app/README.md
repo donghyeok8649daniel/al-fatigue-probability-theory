@@ -8,7 +8,9 @@ The current entry point is:
 py -3 -m app.desktop_ui
 ```
 
-`Theory Core v1` is always active. The Solve workspace exposes only the spatial discretization choice, `FVM` or `FEM`; FVM is the default. The application is organized into responsive Pre/Mesh, Solve, and Post workspaces, and Post provides normal stress, axial strain, first passage, survival, and hazard result modes.
+`Theory Core v1` is always active. The Solve workspace exposes only the spatial discretization choice, `FVM` or `FEM`; FVM is the default. The application is organized into responsive Pre/Mesh, Solve, and Post workspaces, and Post provides normal stress, axial strain, diameter change, first passage, survival, and hazard result modes.
+
+The default specimen is a 50 mm long, 6 mm diameter cylinder loaded along a user-entered Cartesian tensile axis. The included `examples/meshes/default_tensile_cylinder.stl` is three-dimensional presentation geometry. Current mechanics remain uniaxial: only the tensile-axis normal stress is applied. Transverse diameter change is the declared Poisson kinematic relation $\varepsilon_\perp=-\nu\varepsilon_{nn}$, with applied transverse stress fixed at zero. Registry coordinate $s$ is not converted into macroscopic diameter without an additional scale-bridging law.
 
 ## Branch responsibility
 

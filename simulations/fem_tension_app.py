@@ -16,9 +16,10 @@
 # === 한국어 파일 안내 끝 ===
 """Integrated GUI for the standalone one-dimensional tensile FEM scaffold.
 
-The application deliberately keeps mechanics one-dimensional.  Width and
-thickness define the axial cross-sectional area and the display extrusion,
-but they do not introduce transverse degrees of freedom or constitutive laws.
+The application deliberately keeps mechanics uniaxial. Rectangular or circular
+dimensions define the axial area and 3D presentation geometry. A declared
+Poisson ratio may update transverse size kinematically, while applied
+transverse stress remains zero and no multiaxial failure law is introduced.
 """
 from __future__ import annotations
 
@@ -65,10 +66,16 @@ class TensionRunConfig:
     length_mm: float = 50.0
     width_mm: float = 10.0
     thickness_mm: float = 1.0
+    section_shape: str = "rectangular"
+    diameter_mm: float = 6.0
     young_gpa: float = 69.0
+    poisson_ratio: float = 0.33
     loading_h: int = 1
     loading_k: int = 0
     loading_l: int = 0
+    tensile_axis_x: float = 1.0
+    tensile_axis_y: float = 0.0
+    tensile_axis_z: float = 0.0
     cubic_c11_gpa: float | None = None
     cubic_c12_gpa: float | None = None
     cubic_c44_gpa: float | None = None
@@ -93,8 +100,25 @@ class TensionRunConfig:
         return self.thickness_mm * 1.0e-3
 
     @property
+    def diameter_m(self) -> float:
+        return self.diameter_mm * 1.0e-3
+
+    @property
     def area_m2(self) -> float:
+        if self.section_shape == "circular":
+            return np.pi * self.diameter_m**2 / 4.0
         return self.width_m * self.thickness_m
+
+    @property
+    def tensile_unit_vector(self) -> np.ndarray:
+        axis = np.asarray(
+            [self.tensile_axis_x, self.tensile_axis_y, self.tensile_axis_z],
+            dtype=float,
+        )
+        norm = float(np.linalg.norm(axis))
+        if not np.all(np.isfinite(axis)) or norm <= 0.0:
+            raise ValueError("tensile axis must be a finite nonzero vector")
+        return axis / norm
 
     @property
     def young_pa(self) -> float:
@@ -131,6 +155,15 @@ def validate_run_config(config: TensionRunConfig) -> None:
     for name, value in positive.items():
         if not np.isfinite(value) or value <= 0.0:
             raise ValueError(f"{name} must be finite and positive")
+    if config.section_shape not in {"rectangular", "circular"}:
+        raise ValueError("section_shape must be rectangular or circular")
+    if config.section_shape == "circular" and (
+        not np.isfinite(config.diameter_mm) or config.diameter_mm <= 0.0
+    ):
+        raise ValueError("diameter_mm must be finite and positive for a circular section")
+    if not np.isfinite(config.poisson_ratio) or not -1.0 < config.poisson_ratio < 0.5:
+        raise ValueError("poisson_ratio must satisfy -1 < nu < 0.5")
+    config.tensile_unit_vector
     if not all(isinstance(value, int) for value in (config.loading_h, config.loading_k, config.loading_l)):
         raise ValueError("Miller direction components must be integers")
     miller_unit_vector(config.loading_h, config.loading_k, config.loading_l)
@@ -210,9 +243,9 @@ def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path |
             "result_references": sorted(name for name in files if name.startswith("results/")),
         },
         geometry={
-            "mesh_dimension": 1,
-            "loading_axis": miller_unit_vector(
-                config.loading_h, config.loading_k, config.loading_l).tolist(),
+            "analysis_dimension": 1,
+            "mesh_dimension": source_dimension or (3 if config.section_shape == "circular" else 1),
+            "loading_axis": config.tensile_unit_vector.tolist(),
             "crystal_loading_direction_hkl": [
                 config.loading_h, config.loading_k, config.loading_l],
             "elastic_calibration_mode": config.elastic_calibration_mode,
@@ -221,6 +254,11 @@ def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path |
             "length_mm": config.length_mm,
             "width_mm": config.width_mm,
             "thickness_mm": config.thickness_mm,
+            "section_shape": config.section_shape,
+            "diameter_mm": config.diameter_mm,
+            "poisson_ratio": config.poisson_ratio,
+            "transverse_kinematics": "epsilon_transverse=-nu*epsilon_axial",
+            "transverse_applied_stress_pa": 0.0,
             "elements": config.elements,
             "source_member": geometry_member,
             "source_dimension": source_dimension,
@@ -457,7 +495,10 @@ def run_python_fem_solver(
         nw = csv.writer(nf)
         ew = csv.writer(ef)
         nw.writerow(["time_s", "step", "node", "x_m", "displacement_m", "applied_stress_pa"])
-        ew.writerow(["time_s", "step", "element", "x_mid_m", "strain", "stress_pa", "applied_stress_pa"])
+        ew.writerow([
+            "time_s", "step", "element", "x_mid_m", "strain", "stress_pa",
+            "applied_stress_pa", "transverse_strain", "diameter_m", "transverse_stress_pa",
+        ])
         for step in range(total_steps + 1):
             t = step / config.steps_per_cycle / config.frequency_hz
             applied = (
@@ -467,10 +508,15 @@ def run_python_fem_solver(
             displacement = unit_displacement * applied
             strain = unit_strain * applied
             stress = config.young_pa * strain
+            transverse_strain = -config.poisson_ratio * strain
+            diameter = config.diameter_m * (1.0 + transverse_strain)
             for node, (x, u) in enumerate(zip(np.arange(n + 1) * dx, displacement)):
                 nw.writerow([t, step, node, x, u, applied])
             for element, (eps, sigma) in enumerate(zip(strain, stress)):
-                ew.writerow([t, step, element, (element + 0.5) * dx, eps, sigma, applied])
+                ew.writerow([
+                    t, step, element, (element + 0.5) * dx, eps, sigma, applied,
+                    transverse_strain[element], diameter[element], 0.0,
+                ])
 
     with (output_dir / "metadata.csv").open("w", newline="", encoding="utf-8") as mf:
         csv.writer(mf).writerows([
@@ -479,6 +525,10 @@ def run_python_fem_solver(
             ("length_m", f"{config.length_m:.17g}"),
             ("area_m2", f"{config.area_m2:.17g}"),
             ("young_pa", f"{config.young_pa:.17g}"),
+            ("section_shape", config.section_shape),
+            ("diameter_m", f"{config.diameter_m:.17g}"),
+            ("poisson_ratio", f"{config.poisson_ratio:.17g}"),
+            ("tensile_axis", " ".join(f"{value:.17g}" for value in config.tensile_unit_vector)),
             ("stress_mean_pa", f"{config.stress_mean_mpa * 1.0e6:.17g}"),
             ("stress_amplitude_pa", f"{config.stress_amplitude_mpa * 1.0e6:.17g}"),
             ("frequency_hz", f"{config.frequency_hz:.17g}"),
@@ -486,6 +536,7 @@ def run_python_fem_solver(
             ("steps_per_cycle", config.steps_per_cycle),
             ("solver", "quasistatic_linear_bar_fem_python"),
             ("probability_coupling", "theory_core_v1_always_active_in_desktop_ui"),
+            ("transverse_stress_pa", 0.0),
         ])
     return subprocess.CompletedProcess(["python_fem1d_solver"], 0, "Python FEM complete\n", "")
 
@@ -551,6 +602,9 @@ def run_selected_solver(
         length_m=config.length_m,
         area_m2=config.area_m2,
         young_pa=config.young_pa,
+        diameter_m=config.diameter_m,
+        poisson_ratio=config.poisson_ratio,
+        tensile_axis=tuple(config.tensile_unit_vector),
         stress_mean_mpa=config.stress_mean_mpa,
         stress_amplitude_mpa=config.stress_amplitude_mpa,
         frequency_hz=config.frequency_hz,
@@ -855,9 +909,7 @@ class FEMTensionApp:
     def _open_geometry(self, path: Path) -> None:
         mesh = load_mesh(path)
         self.geometry_source_path = Path(path)
-        loading_axis = miller_unit_vector(
-            self.config.loading_h, self.config.loading_k, self.config.loading_l)
-        viewport = MeshViewport(mesh, loading_axis=loading_axis)
+        viewport = MeshViewport(mesh, loading_axis=self.config.tensile_unit_vector)
         self.mesh_viewports.append(viewport)
         viewport.figure.show()
         self._set_status(

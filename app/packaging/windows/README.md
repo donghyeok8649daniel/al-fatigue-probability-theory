@@ -40,6 +40,8 @@ Run the packaging script from the repository root:
 
 If `fem1d\bin\fem1d_solver.exe` exists, it is included as the native FEM backend. Otherwise the packaged application uses the equivalent bundled Python two-node linear-bar FEM implementation. FVM remains the default spatial backend in both cases.
 
+The build also bundles `examples\meshes\default_tensile_cylinder.stl`, so the default 3D tensile specimen is available without a repository checkout.
+
 With Inno Setup installed, compile `app/packaging/windows/AlFatigue.iss` to
 produce `dist/installer/AlFatigue-Setup-0.1.0.exe`. The installer registers
 the per-user `.ftgsim` association and creates Start Menu/Desktop shortcuts.

@@ -8,7 +8,11 @@ recognized pre-existing `.ftgsim` format; this is a practical collision check,
 not a legal registry guarantee.
 
 The file does not broaden the physics. Its active material scope remains pure
-single-crystal aluminum, one-dimensional normal tension, and crack initiation.
+single-crystal aluminum, uniaxial normal tension, and crack initiation. A bundle
+may carry 3D specimen geometry while `analysis_dimension` remains 1. The
+`loading_axis` is the Cartesian tensile direction, distinct from
+`crystal_loading_direction_hkl`. Poisson diameter change is kinematic only and
+does not introduce transverse applied stress.
 Displaying an extruded 2D/3D bar does not add shear or multiaxial mechanics.
 
 ## Container

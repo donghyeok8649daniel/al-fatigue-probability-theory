@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pytest
 
-from simulations.mesh_viewer import CADNavigation, MeshGeometry, MeshViewport, load_mesh
+from simulations.mesh_viewer import CADNavigation, MeshGeometry, MeshViewport, load_mesh, orient_local_x
 
 
 def test_obj_lines_faces_and_dimension(tmp_path: Path):
@@ -82,3 +82,15 @@ def test_scroll_zoom_reset_and_viewport_dimensions():
     one_d = MeshViewport(MeshGeometry(np.array([[0.], [1.], [2.]]), source="line.vtk"), 1)
     assert one_d.dimension == 1
     plt.close(one_d.figure)
+
+
+def test_default_tensile_cylinder_is_a_three_dimensional_closed_surface():
+    path = Path(__file__).resolve().parents[1] / "examples" / "meshes" / "default_tensile_cylinder.stl"
+    mesh = load_mesh(path)
+    assert mesh.dimension == 3
+    assert len(mesh.faces) == 96
+    np.testing.assert_allclose(np.ptp(mesh.vertices, axis=0), [50.0, 6.0, 6.0], atol=1.0e-8)
+
+    oriented = orient_local_x(mesh, (0.0, 1.0, 0.0))
+    span = np.ptp(oriented.vertices, axis=0)
+    np.testing.assert_allclose(span, [6.0, 50.0, 6.0], atol=1.0e-8)

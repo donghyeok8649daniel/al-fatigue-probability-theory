@@ -1,4 +1,4 @@
-"""Lightweight Pre/Solve/Post desktop UI for Theory Core v1 and 1D solvers."""
+"""Lightweight Pre/Solve/Post UI for uniaxial theory and 3D geometry."""
 from __future__ import annotations
 
 import os
@@ -62,10 +62,11 @@ class DesktopApp:
 
     PARAMS = (
         ("length_mm", "Specimen length", "50", "mm"),
-        ("width_mm", "Specimen width", "10", "mm"),
-        ("thickness_mm", "Specimen thickness", "1", "mm"),
+        ("diameter_mm", "Cylinder diameter", "6", "mm"),
         ("young_gpa", "Young's modulus", "69", "GPa"),
+        ("poisson_ratio", "Poisson ratio", "0.33", "-"),
         ("loading_direction", "Crystal direction", "1 0 0", "[h k l]"),
+        ("tensile_direction", "Tensile stress direction", "1 0 0", "[x y z]"),
         ("elements", "Control volumes", "40", "cells"),
         ("stress_mean_mpa", "Mean normal stress", "50", "MPa"),
         ("stress_amplitude_mpa", "Normal stress amplitude", "100", "MPa"),
@@ -78,6 +79,7 @@ class DesktopApp:
     FIELD_LABELS = {
         "stress": "Normal stress",
         "strain": "Axial strain",
+        "diameter": "Diameter change",
         "initiation": "First passage",
         "survival": "Survival",
         "hazard": "Hazard",
@@ -91,12 +93,14 @@ class DesktopApp:
         self._center(1180, 760)
 
         self.output_dir = self._default_output_dir()
+        self.geometry_path = self._default_cylinder_path()
         self.spatial_backend = tk.StringVar(value="FVM")
         self.field = tk.StringVar(value="stress")
         self.entries: dict[str, ttk.Entry] = {}
         self.nodes: np.ndarray | None = None
         self.elements: np.ndarray | None = None
         self.initiation: np.ndarray | None = None
+        self.current_config = None
         self.busy = False
 
         self._styles()
@@ -114,6 +118,11 @@ class DesktopApp:
             base = Path(local_data) if local_data else Path.home() / "AppData" / "Local"
             return base / "AlFatigue" / "results" / "desktop_session"
         return Path("results/data/desktop_session")
+
+    @staticmethod
+    def _default_cylinder_path() -> Path:
+        root = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parents[1]))
+        return root / "examples" / "meshes" / "default_tensile_cylinder.stl"
 
     def _center(self, width: int, height: int) -> None:
         sw = self.root.winfo_screenwidth()
@@ -147,7 +156,7 @@ class DesktopApp:
         header.pack_propagate(False)
         brand = ttk.Label(header, text="AL FATIGUE", style="Header.TLabel")
         brand.pack(side="left", padx=(18, 8), pady=(10, 0), anchor="n")
-        subtitle = ttk.Label(header, text="Theory Core v1 always active · axial normal loading", style="SubHeader.TLabel")
+        subtitle = ttk.Label(header, text="Theory Core v1 always active · uniaxial stress / 3D geometry", style="SubHeader.TLabel")
         subtitle.pack(side="left", padx=4, pady=(18, 0), anchor="n")
         ttk.Button(header, text="Open project", command=self._open_project).pack(side="right", padx=(4, 16), pady=12)
         ttk.Button(header, text="Save project", command=self._save_project).pack(side="right", padx=4, pady=12)
@@ -163,7 +172,7 @@ class DesktopApp:
         self.tree = ttk.Treeview(sidebar, show="tree", selectmode="browse", height=18)
         project = self.tree.insert("", "end", text="  Fatigue Study", open=True)
         pre = self.tree.insert(project, "end", text="  Pre-processing", open=True)
-        self.tree.insert(pre, "end", text="  Geometry / Mesh")
+        self.tree.insert(pre, "end", text="  3D cylinder / FVM mesh")
         self.tree.insert(pre, "end", text="  Material / Loading")
         solve = self.tree.insert(project, "end", text="  Solvers", open=True)
         self.tree.insert(solve, "end", text="  Theory Core v1 (always on)")
@@ -189,9 +198,10 @@ class DesktopApp:
 
     def _pre_tab(self) -> None:
         ttk.Label(self.pre_tab, text="Model properties", style="Section.TLabel").grid(row=0, column=0, columnspan=6, sticky="w", padx=18, pady=(16, 10))
+        split = (len(self.PARAMS) + 1) // 2
         for i, (key, label, default, unit) in enumerate(self.PARAMS):
-            column_group = 0 if i < 6 else 3
-            row = i % 6 + 1
+            column_group = 0 if i < split else 3
+            row = i % split + 1
             ttk.Label(self.pre_tab, text=label, style="Property.TLabel").grid(row=row, column=column_group, sticky="w", padx=(18, 8), pady=7)
             entry = ttk.Entry(self.pre_tab, width=14)
             entry.insert(0, default)
@@ -200,10 +210,15 @@ class DesktopApp:
             self.entries[key] = entry
         self.pre_tab.columnconfigure(1, weight=1)
         self.pre_tab.columnconfigure(4, weight=1)
-        mesh = ttk.LabelFrame(self.pre_tab, text="Geometry and mesh", padding=12)
-        mesh.grid(row=8, column=0, columnspan=6, sticky="ew", padx=18, pady=16)
-        ttk.Button(mesh, text="Open OBJ / STL / PLY / VTK", command=self._open_geometry).pack(side="left")
-        self.mesh_label = ttk.Label(mesh, text="Uniform 1D control-volume mesh", foreground=MUTED)
+        mesh = ttk.LabelFrame(self.pre_tab, text="Geometry and mesh", padding=10)
+        mesh.grid(row=split + 2, column=0, columnspan=6, sticky="ew", padx=18, pady=10)
+        ttk.Button(mesh, text="VIEW DEFAULT CYLINDER", command=self._view_default_geometry).pack(side="left")
+        ttk.Button(mesh, text="OPEN MESH", command=self._open_geometry).pack(side="left", padx=(6, 0))
+        self.mesh_label = ttk.Label(
+            mesh,
+            text="default_tensile_cylinder.stl · 3D triangular surface · axial-only FVM",
+            foreground=MUTED,
+        )
         self.mesh_label.pack(side="left", padx=14)
 
     def _solve_tab(self) -> None:
@@ -214,7 +229,7 @@ class DesktopApp:
         ttk.Label(left, text="Spatial discretization", style="Section.TLabel").pack(anchor="w", pady=(0, 8))
         combo = ttk.Combobox(left, textvariable=self.spatial_backend, values=("FVM", "FEM"), state="readonly", width=24)
         combo.pack(anchor="w", pady=(0, 14))
-        ttk.Label(left, text="Theory computes probability, plastic memory,\nsurvival, hazard and first passage.\nFVM/FEM computes the spatial reference field.", style="Property.TLabel", justify="left").pack(anchor="w", pady=(0, 18))
+        ttk.Label(left, text="Theory computes probability and first passage.\nFVM/FEM applies stress only along the entered axis.\nDiameter change is Poisson kinematics; transverse stress is zero.", style="Property.TLabel", justify="left").pack(anchor="w", pady=(0, 18))
         self.run_button = ttk.Button(left, text="RUN ANALYSIS", style="Accent.TButton", command=self._start_solve)
         self.run_button.pack(anchor="w", fill="x")
         self.progress = ttk.Progressbar(left, mode="indeterminate", length=250)
@@ -246,14 +261,25 @@ class DesktopApp:
     def _config(self) -> TensionRunConfig:
         from simulations.fem_tension_app import TensionRunConfig
 
-        direction = self.entries["loading_direction"].get().replace(",", " ").split()
-        if len(direction) != 3:
+        crystal_direction = self.entries["loading_direction"].get().replace(",", " ").split()
+        if len(crystal_direction) != 3:
             raise ValueError("Crystal direction requires three integers: h k l")
-        h, k, l = (int(x) for x in direction)
+        h, k, l = (int(x) for x in crystal_direction)
+        tensile_direction = self.entries["tensile_direction"].get().replace(",", " ").split()
+        if len(tensile_direction) != 3:
+            raise ValueError("Tensile stress direction requires three values: x y z")
+        axis_x, axis_y, axis_z = (float(x) for x in tensile_direction)
+        diameter = float(self.entries["diameter_mm"].get())
         return TensionRunConfig(
-            length_mm=float(self.entries["length_mm"].get()), width_mm=float(self.entries["width_mm"].get()),
-            thickness_mm=float(self.entries["thickness_mm"].get()), young_gpa=float(self.entries["young_gpa"].get()),
+            length_mm=float(self.entries["length_mm"].get()),
+            width_mm=diameter,
+            thickness_mm=diameter,
+            section_shape="circular",
+            diameter_mm=diameter,
+            young_gpa=float(self.entries["young_gpa"].get()),
+            poisson_ratio=float(self.entries["poisson_ratio"].get()),
             loading_h=h, loading_k=k, loading_l=l, elements=int(self.entries["elements"].get()),
+            tensile_axis_x=axis_x, tensile_axis_y=axis_y, tensile_axis_z=axis_z,
             stress_mean_mpa=float(self.entries["stress_mean_mpa"].get()),
             stress_amplitude_mpa=float(self.entries["stress_amplitude_mpa"].get()),
             frequency_hz=float(self.entries["frequency_hz"].get()), cycles=int(self.entries["cycles"].get()),
@@ -270,6 +296,7 @@ class DesktopApp:
             messagebox.showerror("Invalid input", str(exc), parent=self.root)
             return
         self.busy = True
+        self.current_config = config
         self.run_button.configure(state="disabled")
         self.progress.start(12)
         spatial = self.spatial_backend.get()
@@ -302,7 +329,16 @@ class DesktopApp:
         fp = "n/a"
         if initiation is not None:
             fp = f"{float(np.nanmax(initiation['initiation_probability'])):.3f}"
-        self._summary(f"Theory core: Theory Core v1\nSpatial backend: {spatial_backend}\nTime records: {steps}\nControl volumes: {len(np.unique(elements['element']))}\nFinal/maximum first passage: {fp}\n\nSolve completed successfully.")
+        axis = self.current_config.tensile_unit_vector if self.current_config is not None else np.array([1.0, 0.0, 0.0])
+        self._summary(
+            f"Theory core: Theory Core v1\n"
+            f"Spatial backend: {spatial_backend}\n"
+            f"Tensile axis: [{axis[0]:.4g}, {axis[1]:.4g}, {axis[2]:.4g}]\n"
+            f"Applied transverse stress: 0 Pa\n"
+            f"Time records: {steps}\n"
+            f"Control volumes: {len(np.unique(elements['element']))}\n"
+            f"Final/maximum first passage: {fp}\n\nSolve completed successfully."
+        )
         self.status.set(f"Solved · Theory Core v1 + {spatial_backend} · {steps} records")
         self.notebook.select(self.post_tab)
         self._plot()
@@ -346,6 +382,15 @@ class DesktopApp:
         elif field == "strain":
             t, y = self._series_by_step(self.elements, "strain")
             ylabel = "Axial strain [-]"
+        elif field == "diameter":
+            config = self.current_config or self._config()
+            if "diameter_m" in (self.elements.dtype.names or ()):
+                t, diameter = self._series_by_step(self.elements, "diameter_m")
+            else:
+                t, axial_strain = self._series_by_step(self.elements, "strain")
+                diameter = config.diameter_m * (1.0 - config.poisson_ratio * axial_strain)
+            y = (diameter - config.diameter_m) * 1.0e6
+            ylabel = "Diameter change [µm]"
         else:
             if self.initiation is None:
                 self.ax.text(0.5, 0.5, "Probability fields require a Theory Core v1 solve", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
@@ -363,15 +408,26 @@ class DesktopApp:
         self.canvas.draw_idle()
 
     def _open_geometry(self) -> None:
-        from simulations.mesh_viewer import MeshViewport, load_mesh
-
         path = filedialog.askopenfilename(parent=self.root, filetypes=[("Mesh files", "*.obj *.stl *.ply *.vtk")])
         if not path:
             return
+        self.geometry_path = Path(path)
+        self._view_geometry(self.geometry_path)
+
+    def _view_default_geometry(self) -> None:
+        self.geometry_path = self._default_cylinder_path()
+        self._view_geometry(self.geometry_path)
+
+    def _view_geometry(self, path: Path) -> None:
+        from simulations.mesh_viewer import MeshViewport, load_mesh, orient_local_x
+
         try:
-            mesh = load_mesh(Path(path))
-            self.mesh_label.configure(text=f"{Path(path).name} · {len(mesh.vertices)} vertices · {mesh.dimension}D")
-            MeshViewport(mesh).figure.show()
+            mesh = load_mesh(path)
+            loading_axis = self._config().tensile_unit_vector
+            if path.resolve() == self._default_cylinder_path().resolve():
+                mesh = orient_local_x(mesh, loading_axis)
+            self.mesh_label.configure(text=f"{path.name} · {len(mesh.vertices)} vertices · {mesh.dimension}D")
+            MeshViewport(mesh, display_dimension=3, loading_axis=loading_axis).figure.show()
         except Exception as exc:
             messagebox.showerror("Mesh error", str(exc), parent=self.root)
 
@@ -385,14 +441,16 @@ class DesktopApp:
         try:
             from simulations.fem_tension_app import config_from_ftgsim
             from simulations.fem_tension_ui import load_fem_history
-            from simulations.ftgsim_format import extract_results, open_ftgsim
+            from simulations.ftgsim_format import extract_geometry, extract_results, open_ftgsim
             from simulations.visualize_fem1d import load_numeric_csv
 
             config, _geometry, _display = config_from_ftgsim(path)
+            self.current_config = config
             values = {
-                "length_mm": config.length_mm, "width_mm": config.width_mm,
-                "thickness_mm": config.thickness_mm, "young_gpa": config.young_gpa,
+                "length_mm": config.length_mm, "diameter_mm": config.diameter_mm,
+                "young_gpa": config.young_gpa, "poisson_ratio": config.poisson_ratio,
                 "loading_direction": f"{config.loading_h} {config.loading_k} {config.loading_l}",
+                "tensile_direction": " ".join(f"{value:.8g}" for value in config.tensile_unit_vector),
                 "elements": config.elements, "stress_mean_mpa": config.stress_mean_mpa,
                 "stress_amplitude_mpa": config.stress_amplitude_mpa,
                 "frequency_hz": config.frequency_hz, "cycles": config.cycles,
@@ -404,6 +462,10 @@ class DesktopApp:
             bundle_id = str(bundle.manifest.get("bundle_id", path.stem))
             self.output_dir = self._default_output_dir() / "opened" / bundle_id
             extract_results(bundle, self.output_dir)
+            geometry_files = extract_geometry(bundle, self.output_dir / "geometry")
+            if geometry_files:
+                self.geometry_path = geometry_files[0]
+                self.mesh_label.configure(text=f"{self.geometry_path.name} · saved 3D geometry")
             self.nodes, self.elements = load_fem_history(self.output_dir)
             init_path = self.output_dir / "initiation_elements.csv"
             self.initiation = load_numeric_csv(init_path) if init_path.is_file() else None
@@ -422,7 +484,14 @@ class DesktopApp:
         try:
             from simulations.fem_tension_app import save_tension_ftgsim
 
-            save_tension_ftgsim(Path(path), self._config(), self.output_dir, view="2D", field=self.field.get())
+            save_tension_ftgsim(
+                Path(path),
+                self._config(),
+                self.output_dir,
+                view="3D",
+                field=self.field.get(),
+                geometry_source=self.geometry_path if self.geometry_path.is_file() else None,
+            )
             self.status.set(f"Saved {Path(path).name}")
         except Exception as exc:
             messagebox.showerror("Save project failed", str(exc), parent=self.root)

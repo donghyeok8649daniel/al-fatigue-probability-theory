@@ -190,6 +190,26 @@ def load_mesh(path: Path) -> MeshGeometry:
             ".vtk": _load_vtk}[source.suffix.lower()](source)
 
 
+def orient_local_x(mesh: MeshGeometry, loading_axis) -> MeshGeometry:
+    """Rotate an x-aligned specimen so its longitudinal axis follows loading_axis."""
+    axis = np.asarray(loading_axis, dtype=float)
+    norm = float(np.linalg.norm(axis))
+    if axis.shape != (3,) or not np.all(np.isfinite(axis)) or norm <= 0.0:
+        raise ValueError("loading_axis must be a finite nonzero three-vector")
+    axial = axis / norm
+    helper = np.array([0.0, 0.0, 1.0]) if abs(axial[2]) < 0.9 else np.array([0.0, 1.0, 0.0])
+    transverse_1 = np.cross(helper, axial)
+    transverse_1 /= np.linalg.norm(transverse_1)
+    transverse_2 = np.cross(axial, transverse_1)
+    basis = np.column_stack((axial, transverse_1, transverse_2))
+    return MeshGeometry(
+        mesh.vertices @ basis.T,
+        faces=mesh.faces,
+        lines=mesh.lines,
+        source=mesh.source,
+    )
+
+
 def principal_coordinates(mesh: MeshGeometry, dimension: int) -> tuple[np.ndarray, np.ndarray]:
     """Project geometry to its best-fit 1D/2D basis for display only."""
     if dimension not in {1, 2, 3}:

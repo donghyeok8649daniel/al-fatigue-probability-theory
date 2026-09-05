@@ -29,7 +29,8 @@ def test_tension_project_round_trip_and_result_extraction(tmp_path: Path):
     (result_dir / "nodes.csv").write_text("step,node\n0,0\n", encoding="utf-8")
     (result_dir / "elements.csv").write_text("step,element\n0,0\n", encoding="utf-8")
     config = TensionRunConfig(elements=17, frequency_hz=8.0, deformation_scale=3.0,
-                              loading_h=1, loading_k=1, loading_l=1)
+                              loading_h=1, loading_k=1, loading_l=1,
+                              tensile_axis_x=1.0, tensile_axis_y=1.0, tensile_axis_z=1.0)
     geometry_source = tmp_path / "part.obj"
     geometry_source.write_text("v 0 0 0\nv 1 0 0\nl 1 2\n", encoding="utf-8")
     project = save_tension_ftgsim(tmp_path / "sample", config, result_dir, view="3D",
