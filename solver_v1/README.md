@@ -1,60 +1,92 @@
 # Theory Core v1 solver
 
-This package is the executable proof-of-principle solver for the paper's correlated configurational fatigue-initiation framework.
+This package contains numerical implementations of the paper's correlated configurational fatigue-initiation framework.
 
-## What it solves
+## Canonical production direction
 
-The state of one correlated representative region is
+The production fatigue-probability solver is defined by the probability density itself,
 
 \[
-q=(a_1,\ldots,a_N,s_1,\ldots,s_N),
+P_N(\mathbf q,t),\qquad
+\mathbf q=(a_1,\ldots,a_N,s_1,\ldots,s_N),
 \]
 
-with interacting Lennard-Jones geometry, cyclic normal loading, finite configurational mobility, and thermal noise. The code integrates the coupled overdamped Langevin system, equivalent to the many-body Smoluchowski equation, without imposing a product closure \(P_N=\prod_i P_i\).
+and by direct deterministic solution of the many-body Smoluchowski equation,
 
-The user-facing outputs are macroscopic: axial strain and stress-strain hysteresis, configurational well-crossing activity, local opening-barrier evolution, survival, and first-passage fraction. The microscopic coordinates remain hidden internal states.
+\[
+\partial_t P_N
+=\nabla_{\mathbf q}\cdot\left[
+\mathbf M\left(P_N\nabla_{\mathbf q}\mathcal G_N
++k_BT\nabla_{\mathbf q}P_N\right)\right].
+\]
 
-## Important scope
+Crack initiation is probability mass absorbed through the mechanically defined opening dividing surface.  The production probability is **not** defined as a Monte Carlo fraction.
 
-This is a **dimensionless mechanism solver**, not a calibrated aluminum fatigue-life predictor.
+The initial finite-temperature distribution is to be obtained from the correlated interaction energy (conditional Gibbs measure in the declared intact initial basin), not from an imposed Gaussian spacing law or a product closure.
 
-- The default LJ parameters are an analytical interaction prototype.
-- `chi_axial_projection` is an explicit geometry/coarse-graining bridge and must ultimately be derived or calibrated from a physically selected configurational mode.
-- The current crack dividing surface is the first unstable stationary point of the local normal opening potential at frozen \(s_i\).
-- Specimen-scale characteristic length/area aggregation is deliberately deferred.
-- EAM/MEAM or validated Al energy data can replace the LJ layer without changing the stochastic/state architecture.
+## Numerical implementations in this package
 
-## Run
+### `probability_pde_2d.py` -- deterministic probability reference
 
-From the repository root:
+This is the new `N=1`, two-coordinate `(a,s)` gold-standard solver.  It evolves the density directly with a conservative Scharfetter--Gummel finite-volume discretization of the Smoluchowski flux.  It contains no RNG or trajectory counting.
+
+Its purpose is to validate:
+
+- Gibbs initial normalization;
+- conservative probability transport;
+- positivity/CFL behaviour;
+- compression versus tensile-opening sign handling;
+- absorbing first passage;
+- survival monotonicity;
+- grid/time-step convergence.
+
+After the `N=1` reference is validated, an `N=2` dense correlated reference will be used to validate the eventual compressed `N=3` six-dimensional solver.
+
+See `PROBABILITY_PDE_ROADMAP.md` for the sparse-grid / tensor-train development plan.
+
+### `solver.py` -- Euler--Maruyama reference implementation
+
+`solver.py` integrates stochastic trajectories of the same correlated state.  It is retained as a **reference/cross-validation mechanism implementation**, not as the canonical production probability estimator.  Its finite ensemble first-passage fractions must not be presented as the final continuum probability law.
+
+### `model.py` -- shared interaction and opening mechanics
+
+`model.py` contains the two-row LJ geometry, correlated interaction energy, macroscopic strain bridge, periodic configurational wells, and the local normal-opening saddle/barrier lookup used by the numerical solvers.
+
+## Why the N=3 PDE needs compression
+
+For `N=3`, the density depends on six coordinates:
+
+\[
+(a_1,a_2,a_3,s_1,s_2,s_3).
+\]
+
+A full grid with `m` points per coordinate stores `m^6` values.  At `m=41`, one scalar field already contains more than 4.75 billion doubles, so a dense six-dimensional finite-volume grid is not practical.
+
+The production `N=3` solver will therefore use a validated compressed representation, with adaptive sparse-grid and tensor-train approaches compared against lower-dimensional gold standards.  Compression is numerical only: it must not impose the physical product closure
+
+\[
+P_N=\prod_i P_i.
+\]
+
+## Scientific scope
+
+All current LJ parameters, mobilities, thermal scale, and axial projection coefficients remain dimensionless mechanism-screening quantities.  Neither the stochastic reference solver nor the probability-PDE development branch is a calibrated pure-Al fatigue-life predictor.
+
+Quantitative aluminum prediction still requires:
+
+- an Al-specific EAM/MEAM or validated energy landscape;
+- mobility/time-scale calibration;
+- a physically derived axial configurational bridge;
+- characteristic correlation length/area for specimen-scale aggregation;
+- experimental validation.
+
+## Existing stochastic screening demo
+
+The historical mechanism demo remains available:
 
 ```bash
 python -m pip install -r solver_v1/requirements.txt
 python -m solver_v1.run_demo
 ```
 
-Outputs are written to `solver_v1/output/`.
-
-The default demo tests the required ordering: low-load elastic survival; intermediate configurational well crossing without crack initiation; larger-load opening-barrier reduction and nonzero first passage; and high-load first-passage accumulation.
-
-## Theory-to-code map
-
-- `model.py`: two-row LJ geometry, correlated interaction energy, macroscopic strain mapping, periodic well index \(s_i=b n_i+\xi_i\), and stable/opening-saddle lookup.
-- `solver.py`: cyclic loading, Euler-Maruyama integration of the correlated state, and absorbing first-passage check at the opening saddle.
-- `run_demo.py`: reproducible screening run with CSV/JSON summaries and figures.
-
-## Current screening parameters
-
-- \(N=3\)
-- \(b=1\)
-- \(\epsilon_{\rm LJ}=1\)
-- \(\sigma_{\rm LJ}=0.82\)
-- \(k_BT=0.009\)
-- \(M_a=1\)
-- \(M_s=0.15\)
-- \(\chi=0.40\)
-- 32 trajectories
-- 10 cycles
-- \(\Delta t=0.02\)
-
-These are **not** claimed as pure-Al material parameters.
+It is useful only as a reference mechanism check while the direct probability-PDE solver is developed.
