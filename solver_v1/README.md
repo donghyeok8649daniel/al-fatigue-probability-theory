@@ -22,35 +22,63 @@ and by direct deterministic solution of the many-body Smoluchowski equation,
 
 Crack initiation is probability mass absorbed through the mechanically defined opening dividing surface.  The production probability is **not** defined as a Monte Carlo fraction.
 
-The initial finite-temperature distribution is to be obtained from the correlated interaction energy (conditional Gibbs measure in the declared intact initial basin), not from an imposed Gaussian spacing law or a product closure.
+The initial finite-temperature distribution is obtained from the correlated interaction energy as a conditional Gibbs measure in the declared intact initial basin, not from an imposed Gaussian spacing law or a product closure.
 
 ## Numerical implementations in this package
 
-### `probability_pde_2d.py` -- deterministic probability reference
+### `probability_pde_2d.py` -- N=1 deterministic gold standard
 
-This is the new `N=1`, two-coordinate `(a,s)` gold-standard solver.  It evolves the density directly with a conservative Scharfetter--Gummel finite-volume discretization of the Smoluchowski flux.  It contains no RNG or trajectory counting.
+Directly evolves `P(a,s,t)` with conservative Scharfetter--Gummel finite-volume fluxes.  No RNG or trajectory counting is used.
 
-Its purpose is to validate:
+Primary checks are Gibbs normalization, probability conservation, positivity/CFL behaviour, compression sign handling, absorbing first passage, survival monotonicity, and grid/time-step convergence.
 
-- Gibbs initial normalization;
-- conservative probability transport;
-- positivity/CFL behaviour;
-- compression versus tensile-opening sign handling;
-- absorbing first passage;
-- survival monotonicity;
-- grid/time-step convergence.
+### `probability_pde_4d.py` -- N=2 dense correlated reference
 
-After the `N=1` reference is validated, an `N=2` dense correlated reference will be used to validate the eventual compressed `N=3` six-dimensional solver.
+Directly evolves
 
-See `PROBABILITY_PDE_ROADMAP.md` for the sparse-grid / tensor-train development plan.
+\[
+P_2(a_1,a_2,s_1,s_2,t)
+\]
+
+on a deliberately small four-dimensional tensor grid.  The energy is the interacting two-cell energy from `model.py`; no product closure is imposed.  The solver records cross-cell covariances and an explicit L1 discrepancy between the full joint density and the product of its one-cell marginals.
+
+This solver is a convergence/reference tool, not a scalable production implementation.
+
+### `tensor_train.py` -- numerical compression utility
+
+Implements TT-SVD and reconstruction diagnostics.  Tensor rank is allowed to exceed one.  A rank-one product state is never imposed as a physical assumption; higher TT ranks carry cross-coordinate correlation.
+
+### `probability_tt_6d.py` -- N=3 TT initial-state prototype
+
+Constructs the full correlated six-dimensional Gibbs initial density on a small verification grid,
+
+\[
+P_3(a_1,a_2,a_3,s_1,s_2,s_3,0),
+\]
+
+then compresses it with TT-SVD and reports ranks, storage, compression ratio, reconstruction error, mass error, and negative reconstructed mass.
+
+This is the first Layer-C prototype.  It does **not yet** time-integrate the six-dimensional Smoluchowski equation.
 
 ### `solver.py` -- Euler--Maruyama reference implementation
 
-`solver.py` integrates stochastic trajectories of the same correlated state.  It is retained as a **reference/cross-validation mechanism implementation**, not as the canonical production probability estimator.  Its finite ensemble first-passage fractions must not be presented as the final continuum probability law.
+Integrates stochastic trajectories of the correlated state.  It is retained only as a **reference/cross-validation mechanism implementation**, not as the canonical production probability estimator.  Finite-ensemble first-passage fractions must not be presented as the final continuum probability law.
 
 ### `model.py` -- shared interaction and opening mechanics
 
-`model.py` contains the two-row LJ geometry, correlated interaction energy, macroscopic strain bridge, periodic configurational wells, and the local normal-opening saddle/barrier lookup used by the numerical solvers.
+Contains the two-row LJ geometry, correlated interaction energy, macroscopic strain bridge, periodic configurational wells, and the local normal-opening saddle/barrier lookup used by all current numerical solvers.
+
+## Development sequence
+
+The numerical hierarchy is now explicit:
+
+1. `N=1`: 2D direct probability PDE gold standard;
+2. `N=2`: 4D dense correlated probability reference;
+3. `N=3`: 6D tensor-train / sparse-grid compressed production development.
+
+The next production step is a tensor-train time integrator for the six-dimensional Smoluchowski operator, with mass, positivity, equilibrium and first-passage behaviour checked against the N=1/N=2 reference solvers before any UI integration.
+
+See `PROBABILITY_PDE_ROADMAP.md` for the detailed validation plan.
 
 ## Why the N=3 PDE needs compression
 
@@ -70,7 +98,7 @@ P_N=\prod_i P_i.
 
 ## Scientific scope
 
-All current LJ parameters, mobilities, thermal scale, and axial projection coefficients remain dimensionless mechanism-screening quantities.  Neither the stochastic reference solver nor the probability-PDE development branch is a calibrated pure-Al fatigue-life predictor.
+All current LJ parameters, mobilities, thermal scale, and axial projection coefficients remain dimensionless mechanism-screening quantities.  None of these numerical implementations is yet a calibrated pure-Al fatigue-life predictor.
 
 Quantitative aluminum prediction still requires:
 
@@ -80,7 +108,7 @@ Quantitative aluminum prediction still requires:
 - characteristic correlation length/area for specimen-scale aggregation;
 - experimental validation.
 
-## Existing stochastic screening demo
+## Historical stochastic screening demo
 
 The historical mechanism demo remains available:
 
