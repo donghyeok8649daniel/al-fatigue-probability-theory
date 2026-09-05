@@ -20,7 +20,13 @@ This is a **dimensionless mechanism solver**, not a calibrated aluminum fatigue-
 
 - The default LJ parameters are an analytical interaction prototype.
 - `chi_axial_projection` is an explicit geometry/coarse-graining bridge and must ultimately be derived or calibrated from a physically selected configurational mode.
-- The current crack dividing surface is the first unstable stationary point of the local normal opening potential at frozen \(s_i\).
+- The operational crack first-passage test uses the softest opening mode of the
+  full many-body \(H_{aa}\) block at frozen \(\mathbf s\). A trajectory is
+  absorbed after it enters the negative-curvature side with outward
+  deterministic drift. The precomputed one-cell saddle/barrier remains a
+  diagnostic only; it is no longer the absorbing boundary. A future full
+  multidimensional minimum-energy-path calculation can refine this coupled
+  dividing surface.
 - Specimen-scale characteristic length/area aggregation is deliberately deferred.
 - EAM/MEAM or validated Al energy data can replace the LJ layer without changing the stochastic/state architecture.
 
@@ -40,7 +46,8 @@ The default demo tests the required ordering: low-load elastic survival; interme
 ## Theory-to-code map
 
 - `model.py`: two-row LJ geometry, correlated interaction energy, macroscopic strain mapping, periodic well index \(s_i=b n_i+\xi_i\), and stable/opening-saddle lookup.
-- `solver.py`: cyclic loading, Euler-Maruyama integration of the correlated state, and absorbing first-passage check at the opening saddle.
+- `solver.py`: cyclic loading, Euler-Maruyama integration of the correlated state,
+  strain-component output, and a full correlated opening-mode first-passage check.
 - `run_demo.py`: reproducible screening run with CSV/JSON summaries and figures.
 
 ## Current screening parameters

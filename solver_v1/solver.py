@@ -50,7 +50,9 @@ def run_ensemble(
     invalid = np.zeros(solver_p.n_trajectories, dtype=bool)
     first_passage_time = np.full(solver_p.n_trajectories, np.nan, dtype=float)
 
-    rec_t, rec_f, rec_eps, rec_alive, rec_plastic, rec_barrier = [], [], [], [], [], []
+    rec_t, rec_f, rec_eps, rec_normal, rec_intrawell, rec_eps_plastic = [], [], [], [], [], []
+    rec_alive, rec_plastic, rec_barrier = [], [], []
+    rec_opening_eigenvalue, rec_plastic_eigenvalue = [], []
     sqrta = np.sqrt(2*model_p.kT*model_p.mobility_a*solver_p.dt)
     sqrts = np.sqrt(2*model_p.kT*model_p.mobility_s*solver_p.dt)
 
@@ -65,27 +67,50 @@ def run_ensemble(
         if step % solver_p.record_stride == 0:
             idx = np.where(alive)[0]
             if len(idx):
-                pp = model.p
-                eps = float(np.mean((a[idx]-model.a0)/model.a0 + pp.chi_axial_projection*s[idx]/model.a0))
+                total_i, normal_i, intrawell_i, plastic_i = model.strain_components_batch(a[idx], s[idx])
+                eps = float(np.mean(total_i))
+                normal_strain = float(np.mean(normal_i))
+                intrawell_strain = float(np.mean(intrawell_i))
+                plastic_strain = float(np.mean(plastic_i))
                 plastic = float(np.mean(np.abs(model.well_index(s[idx]))))
+                opening_eigenvalue, plastic_eigenvalue, _ = model.modal_stability_batch(a[idx], s[idx])
+                min_opening_eigenvalue = (
+                    float(np.nanmin(opening_eigenvalue))
+                    if np.any(np.isfinite(opening_eigenvalue)) else np.nan
+                )
+                min_plastic_eigenvalue = (
+                    float(np.nanmin(plastic_eigenvalue))
+                    if np.any(np.isfinite(plastic_eigenvalue)) else np.nan
+                )
                 barriers = [model.opening_barrier(float(s[k,0]), force) for k in idx[:min(12,len(idx))]]
                 barrier = float(np.mean(barriers)) if barriers else np.nan
             else:
-                eps, plastic, barrier = np.nan, np.nan, 0.0
+                eps = normal_strain = intrawell_strain = plastic_strain = np.nan
+                plastic, barrier = np.nan, 0.0
+                min_opening_eigenvalue = min_plastic_eigenvalue = np.nan
             valid_count = int(np.count_nonzero(~invalid))
             survival = float(np.count_nonzero(alive) / valid_count) if valid_count else np.nan
             if retain_history:
                 rec_t.append(t); rec_f.append(force); rec_eps.append(eps)
+                rec_normal.append(normal_strain); rec_intrawell.append(intrawell_strain)
+                rec_eps_plastic.append(plastic_strain)
                 rec_alive.append(survival); rec_plastic.append(plastic)
                 rec_barrier.append(barrier)
+                rec_opening_eigenvalue.append(min_opening_eigenvalue)
+                rec_plastic_eigenvalue.append(min_plastic_eigenvalue)
             if record_callback is not None:
                 record_callback({
                     "time": t,
                     "force": force,
                     "strain": eps,
+                    "normal_strain": normal_strain,
+                    "intrawell_strain": intrawell_strain,
+                    "plastic_strain": plastic_strain,
                     "survival": survival,
                     "plastic_well_activity": plastic,
                     "opening_barrier": barrier,
+                    "min_opening_eigenvalue": min_opening_eigenvalue,
+                    "min_plastic_eigenvalue": min_plastic_eigenvalue,
                 })
 
         if step == nt-1:
@@ -107,21 +132,26 @@ def run_ensemble(
         if step % solver_p.first_passage_stride == 0:
             idx = np.where(alive)[0]
             if len(idx):
-                amin_b, asad_b, bound_b = model.opening_saddle_batch(s[idx], force)
-                lost_spinodal = ~np.all(bound_b, axis=1)
-                crossed = np.any(a[idx] >= asad_b, axis=1)
-                fail = lost_spinodal | crossed | ~np.all(np.isfinite(amin_b), axis=1)
+                fail, _, _, _ = model.coupled_opening_escape_batch(a[idx], s[idx], force)
                 first_passage_time[idx[fail]] = (step + 1) * solver_p.dt
                 alive[idx[fail]] = False
+                if not np.any(alive):
+                    last_time = (step + 1) * solver_p.dt
+                    break
 
     return {
         "model": model,
         "time": np.asarray(rec_t),
         "force": np.asarray(rec_f),
         "strain": np.asarray(rec_eps),
+        "normal_strain": np.asarray(rec_normal),
+        "intrawell_strain": np.asarray(rec_intrawell),
+        "plastic_strain": np.asarray(rec_eps_plastic),
         "survival": np.asarray(rec_alive),
         "plastic_well_activity": np.asarray(rec_plastic),
         "opening_barrier": np.asarray(rec_barrier),
+        "min_opening_eigenvalue": np.asarray(rec_opening_eigenvalue),
+        "min_plastic_eigenvalue": np.asarray(rec_plastic_eigenvalue),
         "first_passage_time": first_passage_time,
         "invalid_trajectory": invalid,
         "observation_end_time": last_time,

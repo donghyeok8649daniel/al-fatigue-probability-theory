@@ -566,8 +566,10 @@ class DesktopApp:
             self.live_events.append(record)
         self.live_cycles = float(record["cycle"])
         self.status.set(
-            f"LIVE | model time={float(record['model_time']):.7g} | "
-            f"N={self.live_cycles:.7g} | S={survival:.5f} | native solver"
+            f"LIVE | t*={float(record['model_time']):.6g} | "
+            f"N={self.live_cycles:.7g} | S={survival:.5f} | "
+            f"eps={float(record['strain']):.4g} | "
+            f"Haa={float(record['min_opening_eigenvalue']):.4g}"
         )
         now = time.monotonic()
         if now - self._last_live_draw >= 0.20:
@@ -690,6 +692,9 @@ class DesktopApp:
             t = np.asarray([row["model_time"] for row in records], dtype=float)
             stress_mpa = np.asarray([row["force"] for row in records], dtype=float) * config.theory_stress_scale_mpa
             axial_strain = np.asarray([row["strain"] for row in records], dtype=float)
+            normal_strain = np.asarray([row["normal_strain"] for row in records], dtype=float)
+            intrawell_strain = np.asarray([row["intrawell_strain"] for row in records], dtype=float)
+            plastic_strain = np.asarray([row["plastic_strain"] for row in records], dtype=float)
         if field == "stress":
             if live_history:
                 y = stress_mpa
@@ -700,6 +705,9 @@ class DesktopApp:
         elif field == "strain":
             if live_history:
                 y = axial_strain
+                self.ax.plot(t, normal_strain, color="#4e79a7", linewidth=1.0, label="normal opening")
+                self.ax.plot(t, intrawell_strain, color="#59a14f", linewidth=1.0, label="intrawell registry")
+                self.ax.plot(t, plastic_strain, color="#e15759", linewidth=1.2, label="well-index plastic")
             else:
                 t, y = self._series_by_step(self.elements, "strain")
             ylabel = "Axial strain [-]"
@@ -716,6 +724,9 @@ class DesktopApp:
             ylabel = "Diameter change [µm]"
         self.ax.plot(t, y, color=ACCENT, linewidth=1.8)
         self.ax.fill_between(t, y, alpha=0.12, color=ACCENT)
+        if field == "strain" and live_history:
+            self.ax.lines[-1].set_label("total")
+            self.ax.legend(loc="best", fontsize=8, frameon=False)
         time_unit = "model_time" if live_history else "seconds"
         self.ax.set_xlabel("Solver model time" if live_history else "Time [s]")
         self.ax.set_ylabel(ylabel)

@@ -661,13 +661,32 @@ def run_selected_solver(
             safe = np.maximum(survival, 1.0e-12)
             hazard[1:] = np.maximum(0.0, -np.diff(np.log(safe)) / np.maximum(np.diff(time), 1.0e-12))
         with (output_dir / "elements.csv").open("w", newline="", encoding="utf-8") as h:
-            w = csv.writer(h); w.writerow(["time_s", "step", "element", "x_mid_m", "strain", "stress_pa", "applied_stress_pa"])
-            for step, (t, stress, strain) in enumerate(zip(time, tensile_stress_pa, out["strain"])):
-                w.writerow([t, step, 0, 0.5, strain, stress, stress])
+            w = csv.writer(h); w.writerow([
+                "time_s", "step", "element", "x_mid_m", "strain", "normal_strain",
+                "intrawell_strain", "plastic_strain", "stress_pa", "applied_stress_pa",
+                "min_opening_eigenvalue", "min_plastic_eigenvalue",
+            ])
+            for step, values in enumerate(zip(
+                time, tensile_stress_pa, out["strain"], out["normal_strain"],
+                out["intrawell_strain"], out["plastic_strain"],
+                out["min_opening_eigenvalue"], out["min_plastic_eigenvalue"],
+            )):
+                t, stress, strain, normal, intrawell, plastic, opening_eig, plastic_eig = values
+                w.writerow([
+                    t, step, 0, 0.5, strain, normal, intrawell, plastic, stress, stress,
+                    opening_eig, plastic_eig,
+                ])
         with (output_dir / "initiation_elements.csv").open("w", newline="", encoding="utf-8") as h:
-            w = csv.writer(h); w.writerow(["time_s", "step", "element", "initiation_probability", "survival", "hazard_per_s"])
-            for step, (t, p, s, hz) in enumerate(zip(time, probability, survival, hazard)):
-                w.writerow([t, step, 0, p, s, hz])
+            w = csv.writer(h); w.writerow([
+                "time_s", "step", "element", "initiation_probability", "survival",
+                "hazard_per_s", "min_opening_eigenvalue", "min_plastic_eigenvalue",
+            ])
+            for step, values in enumerate(zip(
+                time, probability, survival, hazard,
+                out["min_opening_eigenvalue"], out["min_plastic_eigenvalue"],
+            )):
+                t, p, s, hz, opening_eig, plastic_eig = values
+                w.writerow([t, step, 0, p, s, hz, opening_eig, plastic_eig])
         with (output_dir / "metadata.csv").open("w", newline="", encoding="utf-8") as h:
             csv.writer(h).writerows([
                 ["solver", "theory_core_v1_probability"],
@@ -679,6 +698,9 @@ def run_selected_solver(
                 ["theory_internal_dt", f"{solver_p.dt:.17g}"],
                 ["stress_mapping", "max(0,normal_stress_mpa)/theory_stress_scale_mpa"],
                 ["stress_scale_status", "user_set_not_experimentally_calibrated"],
+                ["crack_first_passage", "full_many_body_Haa_soft_mode_outward_escape"],
+                ["strain_decomposition", "normal_plus_intrawell_plus_well_index_plastic"],
+                ["local_opening_barrier_status", "diagnostic_only_not_absorbing_boundary"],
             ])
         return subprocess.CompletedProcess(["theory_core_v1"], 0, "Theory Core v1 complete\n", "")
     if backend == "FEM":

@@ -47,6 +47,15 @@ class TwoRowLJ:
             + 6.0 * p.sigma_lj**6 * r**(-7)
         )
 
+    def ddphi(self, r):
+        """Second radial derivative of the declared LJ pair potential."""
+        p = self.p
+        r = np.asarray(r)
+        return 4.0 * p.epsilon * (
+            156.0 * p.sigma_lj**12 * r**(-14)
+            - 42.0 * p.sigma_lj**6 * r**(-8)
+        )
+
     def local_energy(self, a: float, s: float) -> float:
         p = self.p
         dx = (self.lower_n + 0.5) * p.b - np.mod(s + 0.5*p.b, p.b) + 0.5*p.b
@@ -232,9 +241,145 @@ class TwoRowLJ:
         gs -= force*p.chi_axial_projection
         return U, ga, gs
 
+    def hessian_blocks_batch(self, a: np.ndarray, s: np.ndarray):
+        """Return the exact ``aa``, ``as`` and ``ss`` Hessian blocks of ``G_N``.
+
+        The imposed-work term is linear in ``a`` and ``s`` and therefore has no
+        Hessian contribution.  Unlike the historical local opening table, these
+        blocks include every upper/lower and upper/upper pair in the same
+        many-body energy used by the trajectory integrator.
+        """
+        p = self.p
+        a = np.asarray(a, dtype=float)
+        s = np.asarray(s, dtype=float)
+        if a.ndim != 2 or s.shape != a.shape:
+            raise ValueError("a and s must be equally shaped (batch, cell) arrays")
+        batch, cells = a.shape
+        haa = np.zeros((batch, cells, cells), dtype=float)
+        has = np.zeros_like(haa)
+        hss = np.zeros_like(haa)
+
+        smod = np.mod(s + 0.5*p.b, p.b) - 0.5*p.b
+        dx = (self.lower_n[None, None, :] + 0.5) * p.b - smod[:, :, None]
+        dy = a[:, :, None]
+        radius = np.sqrt(dx*dx + dy*dy)
+        first_over_r = self.dphi(radius) / radius
+        radial_delta = self.ddphi(radius) - first_over_r
+        ea = dy / radius
+        es = -dx / radius
+        diag = np.arange(cells)
+        haa[:, diag, diag] += np.sum(first_over_r + radial_delta*ea*ea, axis=2)
+        has[:, diag, diag] += np.sum(radial_delta*ea*es, axis=2)
+        hss[:, diag, diag] += np.sum(first_over_r + radial_delta*es*es, axis=2)
+
+        for i in range(cells):
+            for j in range(i + 1, cells):
+                dx_pair = (j-i)*p.b + s[:, j] - s[:, i]
+                dy_pair = a[:, j] - a[:, i]
+                radius = np.sqrt(dx_pair*dx_pair + dy_pair*dy_pair)
+                bad = radius < 0.35*p.b
+                safe_radius = np.where(bad, 0.35*p.b, radius)
+                first_over_r = self.dphi(safe_radius) / safe_radius
+                radial_delta = self.ddphi(safe_radius) - first_over_r
+                ea = dy_pair / safe_radius
+                es = dx_pair / safe_radius
+                kaa = first_over_r + radial_delta*ea*ea
+                kas = radial_delta*ea*es
+                kss = first_over_r + radial_delta*es*es
+                for block, value in ((haa, kaa), (has, kas), (hss, kss)):
+                    block[:, i, i] += value
+                    block[:, j, j] += value
+                    block[:, i, j] -= value
+                    block[:, j, i] -= value
+                if np.any(bad):
+                    haa[bad] = np.nan
+                    has[bad] = np.nan
+                    hss[bad] = np.nan
+        return haa, has, hss
+
+    def hessian_blocks(self, a: np.ndarray, s: np.ndarray):
+        """Scalar-state wrapper for :meth:`hessian_blocks_batch`."""
+        haa, has, hss = self.hessian_blocks_batch(
+            np.asarray(a, dtype=float)[None, :],
+            np.asarray(s, dtype=float)[None, :],
+        )
+        return haa[0], has[0], hss[0]
+
+    def modal_stability_batch(self, a: np.ndarray, s: np.ndarray):
+        """Evaluate the v4 opening and relaxed-plastic stability operators."""
+        haa, has, hss = self.hessian_blocks_batch(a, s)
+        opening_min = np.full(len(haa), np.nan, dtype=float)
+        plastic_min = np.full(len(haa), np.nan, dtype=float)
+        opening_modes = np.full_like(haa[:, :, 0], np.nan)
+        for row in range(len(haa)):
+            if not np.all(np.isfinite(haa[row])):
+                continue
+            eigenvalues, eigenvectors = np.linalg.eigh(haa[row])
+            opening_min[row] = eigenvalues[0]
+            opening_modes[row] = eigenvectors[:, 0]
+            if eigenvalues[0] <= 1.0e-10:
+                continue
+            h_plastic = hss[row] - has[row].T @ np.linalg.solve(haa[row], has[row])
+            plastic_min[row] = float(np.linalg.eigvalsh(h_plastic)[0])
+        return opening_min, plastic_min, opening_modes
+
+    def coupled_opening_escape_batch(
+        self,
+        a: np.ndarray,
+        s: np.ndarray,
+        force: float,
+        *,
+        curvature_tolerance: float = 1.0e-10,
+        drive_tolerance: float = 1.0e-10,
+    ):
+        """Apply the coupled soft-mode escape test at frozen ``s``.
+
+        For one coordinate, a state is outside the opening saddle when the
+        normal potential has negative curvature and its deterministic drift is
+        outward.  This routine applies that same mechanical test to the softest
+        eigenmode of the complete ``H_aa`` block.  It therefore includes the
+        correlated upper-row interactions omitted by the old per-cell lookup.
+        A later full minimum-energy-path calculation can refine the resulting
+        operational dividing surface without reverting to an arbitrary strain
+        threshold.
+        """
+        _, ga, _ = self.energy_gradient_batch(a, s, force)
+        opening_min, plastic_min, modes = self.modal_stability_batch(a, s)
+        opening_drive = np.full(len(opening_min), np.nan, dtype=float)
+        for row, mode in enumerate(modes):
+            if not np.all(np.isfinite(mode)) or not np.all(np.isfinite(ga[row])):
+                continue
+            orientation = float(np.sum(mode))
+            if abs(orientation) <= 1.0e-12:
+                orientation = float(mode[np.argmax(np.abs(mode))])
+            if orientation < 0.0:
+                mode = -mode
+            opening_drive[row] = float(-np.dot(mode, ga[row]))
+        escaped = (
+            np.isfinite(opening_min)
+            & np.isfinite(opening_drive)
+            & (opening_min <= curvature_tolerance)
+            & (opening_drive >= -drive_tolerance)
+        )
+        return escaped, opening_min, plastic_min, opening_drive
+
     def strain(self, a: np.ndarray, s: np.ndarray) -> float:
         p = self.p
         return float(np.mean((a-self.a0)/self.a0 + p.chi_axial_projection*s/self.a0))
+
+    def strain_components_batch(self, a: np.ndarray, s: np.ndarray):
+        """Split total strain into normal, intrawell and well-index parts."""
+        p = self.p
+        a = np.asarray(a, dtype=float)
+        s = np.asarray(s, dtype=float)
+        if a.ndim != 2 or s.shape != a.shape:
+            raise ValueError("a and s must be equally shaped (batch, cell) arrays")
+        well = self.well_index(s)
+        intrawell_s = s - p.b*well
+        normal = np.mean((a-self.a0)/self.a0, axis=1)
+        intrawell = p.chi_axial_projection*np.mean(intrawell_s, axis=1)/self.a0
+        plastic = p.chi_axial_projection*p.b*np.mean(well, axis=1)/self.a0
+        return normal + intrawell + plastic, normal, intrawell, plastic
 
     def well_index(self, s: np.ndarray) -> np.ndarray:
         p = self.p
