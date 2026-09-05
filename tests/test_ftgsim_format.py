@@ -101,3 +101,21 @@ def test_optional_initiation_channel_is_preserved_but_not_claimed_calibrated(tmp
     assert model["enabled"] is True
     assert model["calibration_status"] == "parameters_not_embedded_or_calibrated"
     assert "results/initiation_elements.csv" in bundle.members
+
+
+def test_life_probability_and_sn_quantile_results_are_preserved(tmp_path: Path):
+    output = tmp_path / "results"; output.mkdir()
+    (output / "life_distribution.csv").write_text(
+        "initiation_cycles,probability_mass,cumulative_probability\n"
+        "1000000,0.5,0.5\n", encoding="utf-8")
+    (output / "sn_curve.csv").write_text(
+        "axial_stress_amplitude_mpa,n10_cycles,n50_cycles,n80_cycles\n"
+        "10,500000,1000000,2000000\n", encoding="utf-8")
+    project = save_tension_ftgsim(tmp_path / "life.ftgsim", TensionRunConfig(), output)
+    bundle = open_ftgsim(project)
+    model = bundle.setup["slip_initiation_model"]
+    assert model["enabled"] is True
+    assert model["sn_curve_fit"] is False
+    assert model["life_distribution_fit"] is None
+    assert "results/life_distribution.csv" in bundle.members
+    assert "results/sn_curve.csv" in bundle.members

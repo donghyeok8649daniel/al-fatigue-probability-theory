@@ -19,11 +19,17 @@ import numpy as np
 from simulations.fem_tension_app import (
     TensionRunConfig,
     run_python_fem_solver,
+    run_selected_solver,
     run_theory_spatial_solver,
     solver_command,
+    theory_load_params,
+    theory_solver_params,
     validate_run_config,
+    write_axial_slip_system_summary,
+    write_tmw_sn_curve,
 )
 from simulations.fem_tension_ui import load_fem_history
+from simulations.visualize_fem1d import load_numeric_csv
 
 
 class TestTensionRunConfig(unittest.TestCase):
@@ -77,6 +83,8 @@ class TestTensionRunConfig(unittest.TestCase):
         validate_run_config(TensionRunConfig(stress_mean_mpa=-25.0, stress_amplitude_mpa=10.0))
         with self.assertRaises(ValueError):
             validate_run_config(TensionRunConfig(stress_amplitude_mpa=-1.0))
+        with self.assertRaises(ValueError):
+            validate_run_config(TensionRunConfig(theory_stress_scale_mpa=0.0))
 
     def test_single_crystal_direction_is_required(self) -> None:
         with self.assertRaises(ValueError):
@@ -92,6 +100,45 @@ class TestTensionRunConfig(unittest.TestCase):
         validate_run_config(config_100); validate_run_config(config_111)
         self.assertNotAlmostEqual(config_100.young_pa, config_111.young_pa)
         self.assertEqual(config_100.elastic_calibration_mode, "cubic_direction_projection")
+
+    def test_axial_loading_exposes_stress_ratio_and_fcc_resolved_shear(self) -> None:
+        config = TensionRunConfig(
+            loading_h=0,
+            loading_k=0,
+            loading_l=1,
+            stress_mean_mpa=10.0,
+            stress_amplitude_mpa=10.0,
+        )
+        self.assertAlmostEqual(config.stress_min_mpa, 0.0)
+        self.assertAlmostEqual(config.stress_max_mpa, 20.0)
+        self.assertAlmostEqual(config.stress_ratio, 0.0)
+        self.assertAlmostEqual(config.fcc_slip_systems[0].schmid_factor, 1.0 / np.sqrt(6.0))
+
+        with TemporaryDirectory() as directory:
+            path = write_axial_slip_system_summary(config, Path(directory))
+            rows = load_numeric_csv(path)
+        self.assertEqual(rows.size, 12)
+        self.assertAlmostEqual(float(np.max(rows["resolved_shear_amplitude_mpa"])), 10.0 / np.sqrt(6.0))
+        self.assertIn("tmw_initiation_cycles", rows.dtype.names)
+
+    def test_sn_quantiles_use_theory_empirical_shape_and_physical_n50_scale(self) -> None:
+        config = TensionRunConfig(
+            loading_h=2,
+            loading_k=5,
+            loading_l=-1,
+            stress_amplitude_mpa=4.0 / 0.4898979485566356,
+        )
+        with TemporaryDirectory() as directory:
+            curve_path = write_tmw_sn_curve(config, Path(directory))
+            curve = load_numeric_csv(curve_path)
+        selected = curve[np.isclose(
+            curve["axial_stress_amplitude_mpa"], config.stress_amplitude_mpa
+        )]
+        self.assertEqual(selected.size, 1)
+        self.assertGreater(float(selected["n50_cycles"][0]), 4.0e6)
+        self.assertLess(float(selected["n50_cycles"][0]), 6.0e6)
+        self.assertLess(float(selected["n10_cycles"][0]), float(selected["n50_cycles"][0]))
+        self.assertGreater(float(selected["n80_cycles"][0]), float(selected["n50_cycles"][0]))
 
 
 class TestSolverCommand(unittest.TestCase):
@@ -152,8 +199,48 @@ class TestSolverCommand(unittest.TestCase):
             self.assertTrue((output / "theory" / "initiation_elements.csv").is_file())
             self.assertTrue((output / "spatial" / "elements.csv").is_file())
             self.assertTrue((output / "initiation_elements.csv").is_file())
+            self.assertTrue((output / "slip_systems.csv").is_file())
+            self.assertTrue((output / "sn_curve.csv").is_file())
+            self.assertTrue((output / "life_distribution.csv").is_file())
             self.assertGreater(nodes.size, 0)
             self.assertGreater(elements.size, 0)
+
+    def test_theory_load_uses_mean_amplitude_and_explicit_scale(self) -> None:
+        config = TensionRunConfig(
+            stress_mean_mpa=60.0,
+            stress_amplitude_mpa=100.0,
+            theory_stress_scale_mpa=40.0,
+            steps_per_cycle=80,
+        )
+        load = theory_load_params(config)
+        solver = theory_solver_params(config, load)
+
+        self.assertAlmostEqual(load.force_min, 0.0)
+        self.assertAlmostEqual(load.force_max, 4.0)
+        self.assertLessEqual(solver.dt, 0.02)
+        self.assertAlmostEqual(solver.dt * solver.record_stride, load.period / 80.0)
+
+    def test_higher_stress_advances_first_passage(self) -> None:
+        first_times = []
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for amplitude in (150.0, 200.0):
+                output = root / str(int(amplitude))
+                config = TensionRunConfig(
+                    stress_mean_mpa=0.0,
+                    stress_amplitude_mpa=amplitude,
+                    theory_stress_scale_mpa=40.0,
+                    frequency_hz=1.0,
+                    cycles=1,
+                    steps_per_cycle=50,
+                )
+                run_selected_solver(config, output, "Theory")
+                initiation = load_numeric_csv(output / "initiation_elements.csv")
+                crossed = initiation[initiation["initiation_probability"] > 0.0]
+                self.assertGreater(crossed.size, 0)
+                first_times.append(float(crossed[0]["time_s"]))
+
+        self.assertLess(first_times[1], first_times[0])
 
 
 if __name__ == "__main__":

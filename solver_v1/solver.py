@@ -33,6 +33,8 @@ def run_ensemble(model_p=ModelParams(), load_p=LoadParams(), solver_p=SolverPara
     s = np.zeros((solver_p.n_trajectories, n), dtype=float)
     s += rng.normal(scale=1e-3, size=s.shape)
     alive = np.ones(solver_p.n_trajectories, dtype=bool)
+    invalid = np.zeros(solver_p.n_trajectories, dtype=bool)
+    first_passage_time = np.full(solver_p.n_trajectories, np.nan, dtype=float)
 
     rec_t, rec_f, rec_eps, rec_alive, rec_plastic, rec_barrier = [], [], [], [], [], []
     sqrta = np.sqrt(2*model_p.kT*model_p.mobility_a*solver_p.dt)
@@ -53,7 +55,9 @@ def run_ensemble(model_p=ModelParams(), load_p=LoadParams(), solver_p=SolverPara
             else:
                 eps, plastic, barrier = np.nan, np.nan, 0.0
             rec_t.append(t); rec_f.append(force); rec_eps.append(eps)
-            rec_alive.append(float(np.mean(alive))); rec_plastic.append(plastic)
+            valid_count = int(np.count_nonzero(~invalid))
+            rec_alive.append(float(np.count_nonzero(alive) / valid_count) if valid_count else np.nan)
+            rec_plastic.append(plastic)
             rec_barrier.append(barrier)
 
         if step == nt-1:
@@ -64,6 +68,7 @@ def run_ensemble(model_p=ModelParams(), load_p=LoadParams(), solver_p=SolverPara
             _, ga, gs = model.energy_gradient_batch(a[idx], s[idx], force)
             good = np.all(np.isfinite(ga), axis=1) & np.all(np.isfinite(gs), axis=1)
             if np.any(~good):
+                invalid[idx[~good]] = True
                 alive[idx[~good]] = False
             good_idx = idx[good]
             if len(good_idx):
@@ -78,6 +83,7 @@ def run_ensemble(model_p=ModelParams(), load_p=LoadParams(), solver_p=SolverPara
                 lost_spinodal = ~np.all(bound_b, axis=1)
                 crossed = np.any(a[idx] >= asad_b, axis=1)
                 fail = lost_spinodal | crossed | ~np.all(np.isfinite(amin_b), axis=1)
+                first_passage_time[idx[fail]] = (step + 1) * solver_p.dt
                 alive[idx[fail]] = False
 
     return {
@@ -88,4 +94,7 @@ def run_ensemble(model_p=ModelParams(), load_p=LoadParams(), solver_p=SolverPara
         "survival": np.asarray(rec_alive),
         "plastic_well_activity": np.asarray(rec_plastic),
         "opening_barrier": np.asarray(rec_barrier),
+        "first_passage_time": first_passage_time,
+        "invalid_trajectory": invalid,
+        "observation_end_time": (nt - 1) * solver_p.dt,
     }

@@ -70,6 +70,7 @@ class DesktopApp:
         ("elements", "Control volumes", "40", "cells"),
         ("stress_mean_mpa", "Mean normal stress", "50", "MPa"),
         ("stress_amplitude_mpa", "Normal stress amplitude", "100", "MPa"),
+        ("theory_stress_scale_mpa", "Theory stress scale", "40", "MPa / model force"),
         ("frequency_hz", "Loading frequency", "20", "Hz"),
         ("cycles", "Loading cycles", "2", "cycles"),
         ("steps_per_cycle", "Resolution", "80", "steps/cycle"),
@@ -83,6 +84,8 @@ class DesktopApp:
         "initiation": "First passage",
         "survival": "Survival",
         "hazard": "Hazard",
+        "life": "Life distribution",
+        "sn": "S-N initiation",
     }
 
     def __init__(self, project_path: Path | None = None) -> None:
@@ -100,6 +103,8 @@ class DesktopApp:
         self.nodes: np.ndarray | None = None
         self.elements: np.ndarray | None = None
         self.initiation: np.ndarray | None = None
+        self.sn_curve: np.ndarray | None = None
+        self.life_distribution: np.ndarray | None = None
         self.current_config = None
         self.busy = False
 
@@ -229,7 +234,7 @@ class DesktopApp:
         ttk.Label(left, text="Spatial discretization", style="Section.TLabel").pack(anchor="w", pady=(0, 8))
         combo = ttk.Combobox(left, textvariable=self.spatial_backend, values=("FVM", "FEM"), state="readonly", width=24)
         combo.pack(anchor="w", pady=(0, 14))
-        ttk.Label(left, text="Theory computes probability and first passage.\nFVM/FEM applies stress only along the entered axis.\nDiameter change is Poisson kinematics; transverse stress is zero.", style="Property.TLabel", justify="left").pack(anchor="w", pady=(0, 18))
+        ttk.Label(left, text="Theory computes probability and first passage.\nFVM/FEM applies stress only along the entered axis.\nFCC slip projection feeds a separate dislocation-based S-N bridge.\nTheory stress scale remains an uncalibrated mechanism-screening input.\nDiameter change is Poisson kinematics; transverse stress is zero.", style="Property.TLabel", justify="left").pack(anchor="w", pady=(0, 18))
         self.run_button = ttk.Button(left, text="RUN ANALYSIS", style="Accent.TButton", command=self._start_solve)
         self.run_button.pack(anchor="w", fill="x")
         self.progress = ttk.Progressbar(left, mode="indeterminate", length=250)
@@ -241,10 +246,22 @@ class DesktopApp:
 
     def _post_tab(self) -> None:
         toolbar = ttk.Frame(self.post_tab, style="Panel.TFrame")
-        toolbar.pack(fill="x", padx=12, pady=(10, 4))
-        ttk.Label(toolbar, text="Result field", style="Section.TLabel").pack(side="left", padx=(4, 12))
-        for key, label in self.FIELD_LABELS.items():
-            ttk.Radiobutton(toolbar, text=label, value=key, variable=self.field, style="Field.Toolbutton", command=self._plot).pack(side="left", padx=2)
+        toolbar.pack(fill="x", padx=14, pady=(10, 4))
+        ttk.Label(toolbar, text="Result field", style="Section.TLabel").grid(
+            row=0, column=0, columnspan=4, sticky="w", padx=2, pady=(0, 5)
+        )
+        for index, (key, label) in enumerate(self.FIELD_LABELS.items()):
+            row, column = divmod(index, 4)
+            ttk.Radiobutton(
+                toolbar,
+                text=label,
+                value=key,
+                variable=self.field,
+                style="Field.Toolbutton",
+                command=self._plot,
+            ).grid(row=row + 1, column=column, sticky="ew", padx=2, pady=2)
+        for column in range(4):
+            toolbar.columnconfigure(column, weight=1, uniform="post_fields")
         self.figure = Figure(figsize=(8, 5), dpi=96, facecolor=PANEL_BG)
         self.ax = self.figure.add_subplot(111)
         self.canvas = FigureCanvasTkAgg(self.figure, master=self.post_tab)
@@ -282,6 +299,7 @@ class DesktopApp:
             tensile_axis_x=axis_x, tensile_axis_y=axis_y, tensile_axis_z=axis_z,
             stress_mean_mpa=float(self.entries["stress_mean_mpa"].get()),
             stress_amplitude_mpa=float(self.entries["stress_amplitude_mpa"].get()),
+            theory_stress_scale_mpa=float(self.entries["theory_stress_scale_mpa"].get()),
             frequency_hz=float(self.entries["frequency_hz"].get()), cycles=int(self.entries["cycles"].get()),
             steps_per_cycle=int(self.entries["steps_per_cycle"].get()),
             deformation_scale=float(self.entries["deformation_scale"].get()),
@@ -315,28 +333,67 @@ class DesktopApp:
             nodes, elements = load_fem_history(spatial_dir)
             init_path = theory_dir / "initiation_elements.csv"
             initiation = load_numeric_csv(init_path) if init_path.is_file() else None
-            self.root.after(0, lambda: self._solve_done(nodes, elements, initiation, spatial_backend))
+            sn_path = self.output_dir / "sn_curve.csv"
+            sn_curve = load_numeric_csv(sn_path) if sn_path.is_file() else None
+            life_path = self.output_dir / "life_distribution.csv"
+            life_distribution = load_numeric_csv(life_path) if life_path.is_file() else None
+            self.root.after(0, lambda: self._solve_done(
+                nodes, elements, initiation, life_distribution, sn_curve, spatial_backend
+            ))
         except Exception as exc:
             detail = str(exc)
             self.root.after(0, lambda detail=detail: self._solve_failed(detail))
 
-    def _solve_done(self, nodes: np.ndarray, elements: np.ndarray, initiation: np.ndarray | None, spatial_backend: str) -> None:
-        self.nodes, self.elements, self.initiation = nodes, elements, initiation
+    def _solve_done(
+        self,
+        nodes: np.ndarray,
+        elements: np.ndarray,
+        initiation: np.ndarray | None,
+        life_distribution: np.ndarray | None,
+        sn_curve: np.ndarray | None,
+        spatial_backend: str,
+    ) -> None:
+        self.nodes, self.elements, self.initiation, self.life_distribution, self.sn_curve = (
+            nodes, elements, initiation, life_distribution, sn_curve
+        )
         self.busy = False
         self.progress.stop()
         self.run_button.configure(state="normal")
         steps = len(np.unique(elements["step"]))
         fp = "n/a"
+        first_passage = "none in simulated interval"
         if initiation is not None:
             fp = f"{float(np.nanmax(initiation['initiation_probability'])):.3f}"
+            crossed = initiation[initiation["initiation_probability"] > 0.0]
+            if crossed.size:
+                first_time_s = float(crossed[0]["time_s"])
+                first_passage = (
+                    f"{first_time_s:.6g} s "
+                    f"({first_time_s * self.current_config.frequency_hz:.4g} cycles)"
+                )
         axis = self.current_config.tensile_unit_vector if self.current_config is not None else np.array([1.0, 0.0, 0.0])
+        active_slip = self.current_config.fcc_slip_systems[0]
+        max_tau_a = active_slip.schmid_factor * self.current_config.stress_amplitude_mpa
+        tmw = self.current_config.tmw_initiation
+        tmw_life = (
+            f"{tmw.cycles_to_initiation:.4g} cycles"
+            if np.isfinite(tmw.cycles_to_initiation)
+            else "not activated in this mechanism"
+        )
         self._summary(
             f"Theory core: Theory Core v1\n"
             f"Spatial backend: {spatial_backend}\n"
             f"Tensile axis: [{axis[0]:.4g}, {axis[1]:.4g}, {axis[2]:.4g}]\n"
+            f"Stress ratio R: {self.current_config.stress_ratio:.4g}\n"
+            f"Maximum FCC Schmid factor: {active_slip.schmid_factor:.4g}\n"
+            f"Maximum resolved-shear amplitude: {max_tau_a:.4g} MPa\n"
+            f"FCC dislocation-initiation N50 scale: {tmw_life}\n"
+            f"Life law: Theory Core v1 empirical first passage (right-censored)\n"
+            f"S-N bridge status: conditional physical scale; no life-distribution fit\n"
             f"Applied transverse stress: 0 Pa\n"
             f"Time records: {steps}\n"
             f"Control volumes: {len(np.unique(elements['element']))}\n"
+            f"First detected passage: {first_passage}\n"
             f"Final/maximum first passage: {fp}\n\nSolve completed successfully."
         )
         self.status.set(f"Solved · Theory Core v1 + {spatial_backend} · {steps} records")
@@ -375,6 +432,61 @@ class DesktopApp:
         field = self.field.get()
         self.ax.clear()
         self.ax.set_axis_on()
+        if field == "life":
+            if self.life_distribution is None:
+                self.ax.text(0.5, 0.5, "Life distribution requires an analysis", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
+                self.ax.set_axis_off(); self.canvas.draw_idle(); return
+            cycles = np.asarray(self.life_distribution["initiation_cycles"], dtype=float)
+            cdf = np.asarray(self.life_distribution["cumulative_probability"], dtype=float)
+            finite = np.isfinite(cycles) & np.isfinite(cdf)
+            if not np.any(finite):
+                self.ax.text(0.5, 0.5, "No finite first-passage life for this mechanism", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
+                self.ax.set_axis_off(); self.canvas.draw_idle(); return
+            order = np.argsort(cycles[finite])
+            self.ax.step(cycles[finite][order], cdf[finite][order], where="post", color=ACCENT, linewidth=2.0, label="Initiation CDF")
+            self.ax.step(cycles[finite][order], 1.0 - cdf[finite][order], where="post", color="#66727d", linewidth=1.6, label="Survival")
+            self.ax.set_xscale("log")
+            self.ax.set_ylim(0.0, 1.02)
+            self.ax.set_xlabel("Cycles to crack initiation")
+            self.ax.set_ylabel("Probability [-]")
+            self.ax.set_title("Life first-passage distribution", loc="left", fontsize=12, fontweight="bold")
+            self.ax.legend(frameon=False)
+            self.ax.grid(True, which="both", color="#d9e0e5", linewidth=0.7, alpha=0.8)
+            self.figure.tight_layout(pad=1.2)
+            self.canvas.draw_idle()
+            return
+        if field == "sn":
+            if self.sn_curve is None:
+                self.ax.text(0.5, 0.5, "S-N result requires an analysis", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
+                self.ax.set_axis_off(); self.canvas.draw_idle(); return
+            finite = self.sn_curve[np.isfinite(self.sn_curve["n50_cycles"])]
+            finite = finite[finite["n50_cycles"] > 0.0]
+            if not finite.size:
+                self.ax.text(0.5, 0.5, "This mechanism is below its effective shear threshold", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
+                self.ax.set_axis_off(); self.canvas.draw_idle(); return
+            cycles = np.asarray(finite["n50_cycles"], dtype=float)
+            n10 = np.asarray(finite["n10_cycles"], dtype=float)
+            n80 = np.asarray(finite["n80_cycles"], dtype=float)
+            amplitude = np.asarray(finite["axial_stress_amplitude_mpa"], dtype=float)
+            order = np.argsort(cycles)
+            self.ax.semilogx(n10[order], amplitude[order], color="#79a9cf", linewidth=1.3, label="N10")
+            self.ax.semilogx(cycles[order], amplitude[order], color=ACCENT, linewidth=2.2, label="N50")
+            self.ax.semilogx(n80[order], amplitude[order], color="#263746", linewidth=1.3, label="N80")
+            estimate = self.current_config.tmw_initiation
+            if np.isfinite(estimate.cycles_to_initiation):
+                self.ax.scatter(
+                    [estimate.cycles_to_initiation],
+                    [self.current_config.stress_amplitude_mpa],
+                    s=52, color="#d64b3c", zorder=3, label="Current load",
+                )
+            self.ax.legend(frameon=False)
+            self.ax.set_xlabel("Cycles to crack initiation, Nc")
+            self.ax.set_ylabel("Axial stress amplitude [MPa]")
+            self.ax.set_title("FCC slip-band initiation probability quantiles", loc="left", fontsize=12, fontweight="bold")
+            self.ax.grid(True, which="both", color="#d9e0e5", linewidth=0.7, alpha=0.8)
+            self.figure.tight_layout(pad=1.2)
+            self.canvas.draw_idle()
+            return
         if field == "stress":
             t, y = self._series_by_step(self.elements, "stress_pa")
             y = y / 1.0e6 if np.nanmax(np.abs(y)) > 1.0e5 else y
@@ -397,10 +509,10 @@ class DesktopApp:
                 self.ax.set_axis_off(); self.canvas.draw_idle(); return
             column = {"initiation": "initiation_probability", "survival": "survival", "hazard": "hazard_per_s"}[field]
             t, y = self._series_by_step(self.initiation, column)
-            ylabel = {"initiation": "First-passage probability [-]", "survival": "Survival probability [-]", "hazard": "Hazard [1 / model time]"}[field]
+            ylabel = {"initiation": "First-passage probability [-]", "survival": "Survival probability [-]", "hazard": "Hazard [1/s]"}[field]
         self.ax.plot(t, y, color=ACCENT, linewidth=1.8)
         self.ax.fill_between(t, y, alpha=0.12, color=ACCENT)
-        self.ax.set_xlabel("Model time")
+        self.ax.set_xlabel("Time [s]")
         self.ax.set_ylabel(ylabel)
         self.ax.set_title(self.FIELD_LABELS[field], loc="left", fontsize=12, fontweight="bold")
         self.ax.grid(True, color="#d9e0e5", linewidth=0.7, alpha=0.8)
@@ -453,6 +565,7 @@ class DesktopApp:
                 "tensile_direction": " ".join(f"{value:.8g}" for value in config.tensile_unit_vector),
                 "elements": config.elements, "stress_mean_mpa": config.stress_mean_mpa,
                 "stress_amplitude_mpa": config.stress_amplitude_mpa,
+                "theory_stress_scale_mpa": config.theory_stress_scale_mpa,
                 "frequency_hz": config.frequency_hz, "cycles": config.cycles,
                 "steps_per_cycle": config.steps_per_cycle, "deformation_scale": config.deformation_scale,
             }
@@ -469,6 +582,10 @@ class DesktopApp:
             self.nodes, self.elements = load_fem_history(self.output_dir)
             init_path = self.output_dir / "initiation_elements.csv"
             self.initiation = load_numeric_csv(init_path) if init_path.is_file() else None
+            sn_path = self.output_dir / "sn_curve.csv"
+            self.sn_curve = load_numeric_csv(sn_path) if sn_path.is_file() else None
+            life_path = self.output_dir / "life_distribution.csv"
+            self.life_distribution = load_numeric_csv(life_path) if life_path.is_file() else None
             self.status.set(f"Opened {path.name}")
             self.notebook.select(self.post_tab); self._plot()
         except Exception as exc:

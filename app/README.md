@@ -8,7 +8,15 @@ The current entry point is:
 py -3 -m app.desktop_ui
 ```
 
-`Theory Core v1` is always active. The Solve workspace exposes only the spatial discretization choice, `FVM` or `FEM`; FVM is the default. The application is organized into responsive Pre/Mesh, Solve, and Post workspaces, and Post provides normal stress, axial strain, diameter change, first passage, survival, and hazard result modes.
+`Theory Core v1` is always active. The Solve workspace exposes only the spatial discretization choice, `FVM` or `FEM`; FVM is the default. The application is organized into responsive Pre/Mesh, Solve, and Post workspaces, and Post provides normal stress, axial strain, diameter change, first passage, survival, hazard, life-distribution, and S--N probability-quantile result modes.
+
+The Pre workspace exposes `Theory stress scale` in MPa per model-force unit. Mean stress and stress amplitude are converted through this explicit scale before the theory solve; compressive portions are clipped because the current probability solver is opening-only. The default scale is a numerical demonstration value, not an experimentally calibrated aluminum fatigue time-scale bridge.
+
+For a declared crystal loading direction `[h k l]`, the axial normal stress is also projected exactly onto all twelve FCC $\{111\}\langle110\rangle$ slip systems. The generated `slip_systems.csv` records signed and absolute Schmid factors and the mean, amplitude, minimum, and maximum resolved shear stress. This projection introduces no applied macroscopic shear.
+
+The material bridge evaluates the stress-controlled Tanaka--Mura--Wu dislocation-dipole initiation relation on those exact slip systems. Its high-purity-Al baseline uses the declared lattice parameter, surface energy, elastic constants, and zero ideal lattice-friction stress; it does not fit a Basquin curve. The TMW value is used only as the physical `N50` scale. The probability shape comes directly from the existing Theory Core v1 trajectory ensemble: every trajectory's opening first-passage cycle is retained, non-events are right-censored, and no Gaussian, Weibull, or smoothing kernel is imposed. `life_distribution.csv` stores the discrete probability mass, CDF, and survival at the selected load; `sn_curve.csv` stores the `N10`, `N50`, and `N80` S--N quantile curves.
+
+This dimensional bridge is a **conditional model assumption** supplying the irreversible dislocation mechanism and cycle scale that the dimensionless LJ solver does not derive. Mean-stress effects, a measured physical initial measure, specimen-scale aggregation, and experimental calibration remain unresolved and are not silently added. In particular, the censored tail is not extrapolated, so an expectation is not reported when the ensemble does not identify it.
 
 The default specimen is a 50 mm long, 6 mm diameter cylinder loaded along a user-entered Cartesian tensile axis. The included `examples/meshes/default_tensile_cylinder.stl` is three-dimensional presentation geometry. Current mechanics remain uniaxial: only the tensile-axis normal stress is applied. Transverse diameter change is the declared Poisson kinematic relation $\varepsilon_\perp=-\nu\varepsilon_{nn}$, with applied transverse stress fixed at zero. Registry coordinate $s$ is not converted into macroscopic diameter without an additional scale-bridging law.
 
