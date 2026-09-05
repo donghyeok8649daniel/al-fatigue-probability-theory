@@ -182,20 +182,20 @@ class TestSolverCommand(unittest.TestCase):
             self.assertGreater(nodes.size, 0)
             self.assertGreater(elements.size, 0)
 
-    def test_theory_load_uses_mean_amplitude_and_explicit_scale(self) -> None:
+    def test_theory_load_uses_signed_stress_divided_by_young_modulus(self) -> None:
         config = TensionRunConfig(
             stress_mean_mpa=60.0,
             stress_amplitude_mpa=100.0,
-            theory_stress_scale_mpa=40.0,
+            young_gpa=40.0,
             steps_per_cycle=80,
         )
         load = theory_load_params(config)
         solver = theory_solver_params(config, load)
 
-        self.assertAlmostEqual(load.force_min, -1.0)
-        self.assertAlmostEqual(load.force_max, 4.0)
-        self.assertAlmostEqual(load.value(2.5), 4.0)
-        self.assertAlmostEqual(load.value(7.5), -1.0)
+        self.assertAlmostEqual(load.force_min, -40.0 / 40_000.0)
+        self.assertAlmostEqual(load.force_max, 160.0 / 40_000.0)
+        self.assertAlmostEqual(load.value(2.5), 160.0 / 40_000.0)
+        self.assertAlmostEqual(load.value(7.5), -40.0 / 40_000.0)
         self.assertLessEqual(solver.dt, 0.02)
         self.assertAlmostEqual(solver.dt * solver.record_stride, load.period / 80.0)
 
@@ -208,7 +208,7 @@ class TestSolverCommand(unittest.TestCase):
         scale = resolved_theory_stress_scale_mpa(config)
         load = theory_load_params(config)
 
-        self.assertAlmostEqual(scale, 728.5261047161429, places=8)
+        self.assertAlmostEqual(scale, 69_000.0, places=8)
         self.assertAlmostEqual(load.force_max, 135.0 / scale)
         self.assertAlmostEqual(load.force_min, -35.0 / scale)
 
@@ -231,20 +231,20 @@ class TestSolverCommand(unittest.TestCase):
         self.assertAlmostEqual(records[3]["applied_stress_mpa"], -35.0)
         self.assertEqual(records[3]["tensile_crack_drive_mpa"], 0.0)
         self.assertLess(records[3]["force"], 0.0)
-        self.assertEqual(records[3]["valid_trajectory_count"], 64)
-        self.assertEqual(records[3]["ensemble_size"], 64)
+        self.assertEqual(records[3]["initial_measure_atom_count"], 1)
+        self.assertEqual(records[3]["spatial_site_count"], 40)
+        self.assertAlmostEqual(records[3]["probability_resolution"], 1.0 / 40.0)
         self.assertEqual(result["time"].size, 0)
 
     def test_higher_stress_advances_first_passage(self) -> None:
         first_times = []
         with TemporaryDirectory() as directory:
             root = Path(directory)
-            for amplitude in (150.0, 200.0):
+            for amplitude in (5_000.0, 7_000.0):
                 output = root / str(int(amplitude))
                 config = TensionRunConfig(
                     stress_mean_mpa=0.0,
                     stress_amplitude_mpa=amplitude,
-                    theory_stress_scale_mpa=40.0,
                     frequency_hz=1.0,
                     cycles=1,
                     steps_per_cycle=50,

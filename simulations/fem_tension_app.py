@@ -26,7 +26,6 @@ from __future__ import annotations
 import argparse
 import csv
 from dataclasses import asdict, dataclass
-from functools import lru_cache
 from pathlib import Path
 import os
 import shutil
@@ -49,8 +48,12 @@ from simulations.fem_tension_ui import (
 )
 from simulations.ftgsim_format import create_ftgsim, extract_geometry, extract_results, open_ftgsim
 from simulations.fvm1d_solver import run as run_fvm_backend
-from solver_v1.model import ModelParams, TwoRowLJ
-from solver_v1.solver import LoadParams, SolverParams, run_ensemble
+from solver_v1.deterministic_normal import (
+    DeterministicRunParams,
+    LoadParams,
+    NormalChainParams,
+    run_deterministic_pushforward,
+)
 from simulations.mesh_viewer import MeshViewport, SUPPORTED_EXTENSIONS, load_mesh
 from simulations.visualize_fem1d import load_numeric_csv
 from theory.cubic_normal_orientation import (
@@ -83,7 +86,7 @@ class TensionRunConfig:
     elements: int = 40
     stress_mean_mpa: float = 50.0
     stress_amplitude_mpa: float = 100.0
-    theory_stress_scale_mpa: float | None = None
+    theory_stress_scale_mpa: float | None = None  # legacy project-file field; canonical UI leaves unset
     frequency_hz: float = 20.0
     cycles: int = 2
     steps_per_cycle: int = 80
@@ -207,23 +210,13 @@ def validate_run_config(config: TensionRunConfig) -> None:
         raise ValueError("stress_mean_mpa must be finite")
     if not np.isfinite(config.stress_amplitude_mpa) or config.stress_amplitude_mpa < 0.0:
         raise ValueError("stress_amplitude_mpa must be finite and nonnegative")
-    if config.theory_stress_scale_mpa is not None and (
-        not np.isfinite(config.theory_stress_scale_mpa)
-        or config.theory_stress_scale_mpa <= 0.0
-    ):
-        raise ValueError("theory_stress_scale_mpa override must be finite and positive")
-
-
-def resolved_theory_stress_scale_mpa(
-    config: TensionRunConfig,
-    model: TwoRowLJ | None = None,
-) -> float:
-    """Match the LJ reference tangent to the declared axial Young modulus."""
     if config.theory_stress_scale_mpa is not None:
-        return float(config.theory_stress_scale_mpa)
-    active_model = _default_theory_model() if model is None else model
-    tangent = active_model.reference_normal_tangent_force_per_strain()
-    return float(config.young_pa*1.0e-6 / tangent)
+        raise ValueError("legacy theory stress-scale overrides are incompatible with q=sigma_n/E")
+
+
+def resolved_theory_stress_scale_mpa(config: TensionRunConfig) -> float:
+    """Return the canonical scale in q=sigma_n/E for the normalized chain."""
+    return float(config.young_pa * 1.0e-6)
 
 
 def theory_load_params(config: TensionRunConfig) -> LoadParams:
@@ -244,24 +237,19 @@ def theory_load_params(config: TensionRunConfig) -> LoadParams:
     )
 
 
-def theory_solver_params(config: TensionRunConfig, load: LoadParams) -> SolverParams:
+def theory_solver_params(
+    config: TensionRunConfig,
+    load: LoadParams,
+) -> DeterministicRunParams:
     """Use stable internal substeps while retaining requested output resolution."""
     requested_record_dt = load.period / config.steps_per_cycle
     substeps_per_record = max(1, int(np.ceil(requested_record_dt / 0.02)))
     internal_dt = requested_record_dt / substeps_per_record
-    return SolverParams(
+    return DeterministicRunParams(
         dt=internal_dt,
-        n_trajectories=32,
-        seed=17,
-        first_passage_stride=max(1, int(round(0.1 / internal_dt))),
+        duration=load.cycles * load.period,
         record_stride=substeps_per_record,
     )
-
-
-@lru_cache(maxsize=1)
-def _default_theory_model() -> TwoRowLJ:
-    """Reuse the immutable mechanics and its expensive opening-saddle table."""
-    return TwoRowLJ(ModelParams())
 
 
 def config_from_ftgsim(path: Path) -> tuple[TensionRunConfig, dict, dict]:
@@ -274,6 +262,7 @@ def config_from_ftgsim(path: Path) -> tuple[TensionRunConfig, dict, dict]:
         raise ValueError("ftgsim setup is missing tension_run")
     values = dict(values)
     values.pop("fatigue_horizon_cycles", None)
+    values.pop("theory_stress_scale_mpa", None)
     allowed = set(TensionRunConfig.__dataclass_fields__)
     unknown = set(values) - allowed
     if unknown:
@@ -317,15 +306,15 @@ def save_tension_ftgsim(path: Path, config: TensionRunConfig, output_dir: Path |
                 "calibration_status": (
                     "parameters_not_embedded_or_calibrated" if has_initiation_results else "not_solved"
                 ),
-                "coordinate": "local_homogeneous_spacing",
-                "energy": "exact_riemann_zeta_bulk_lattice",
+                "coordinate": "finite_chain_normal_spacing",
+                "energy": "normalized_generalized_lj_chain",
                 "initiation_definition": "first_tangent_stiffness_loss",
                 "critical_stretch_rule": "((m+1)/(n+1))**(1/(m-n))",
-                "note": "Parameters and escape coupling must be supplied before activation.",
+                "note": "A physical non-degenerate specimen initial measure remains open.",
             },
             "native_trajectory_probability": {
                 "enabled": has_initiation_results,
-                "source": "solver_v1_current_load_trajectory_ensemble",
+                "source": "deterministic_mu0_pushforward_and_spatial_counting_measure",
                 "external_life_scale": None,
                 "distribution_fit": None,
                 "time_status": "dimensionless_model_time_not_lab_calibrated",
@@ -639,14 +628,13 @@ def run_selected_solver(
 ) -> subprocess.CompletedProcess[str]:
     """Run the selected backend while preserving the shared CSV output contract."""
     if backend == "Theory":
-        model_p = ModelParams()
         load_p = theory_load_params(config)
         solver_p = theory_solver_params(config, load_p)
-        out = run_ensemble(
-            model_p,
-            load_p,
+        chain_p = NormalChainParams(n_cells=config.elements)
+        out = run_deterministic_pushforward(
+            chain_p,
             solver_p,
-            model=_default_theory_model(),
+            load_p.value,
             stop_requested=stop_requested,
         )
         output_dir = Path(output_dir)
@@ -697,22 +685,23 @@ def run_selected_solver(
                 w.writerow([t, step, 0, p, s, hz, opening_eig, plastic_eig])
         with (output_dir / "metadata.csv").open("w", newline="", encoding="utf-8") as h:
             csv.writer(h).writerows([
-                ["solver", "theory_core_v1_probability"],
+                ["solver", "deterministic_normal_chain_pushforward"],
                 ["cycles", config.cycles],
                 ["frequency_hz", f"{config.frequency_hz:.17g}"],
-                ["theory_stress_scale_mpa_per_force_unit", f"{stress_scale_mpa:.17g}"],
+                ["young_modulus_mpa", f"{stress_scale_mpa:.17g}"],
                 ["theory_force_min", f"{load_p.force_min:.17g}"],
                 ["theory_force_max", f"{load_p.force_max:.17g}"],
                 ["theory_internal_dt", f"{solver_p.dt:.17g}"],
                 ["displayed_stress", "full_signed_user_applied_normal_stress"],
-                ["mechanical_load", "full_signed_normal_stress/theory_stress_scale_mpa"],
-                ["crack_opening_direction", "outward_soft_mode_under_signed_mechanical_load"],
-                ["stress_scale_status", "matched_to_declared_Young_modulus_at_LJ_reference_state"],
-                ["crack_first_passage", "full_many_body_Haa_soft_mode_outward_escape"],
-                ["strain_decomposition", "normal_plus_intrawell_plus_well_index_plastic"],
-                ["local_opening_barrier_status", "diagnostic_only_not_absorbing_boundary"],
+                ["mechanical_load", "q(tau)=sigma_n(t)/E"],
+                ["initial_measure", "single_ideal_state_delta_lambda_1_c_0"],
+                ["probability", "exact_empirical_spatial_measure_and_deterministic_pushforward"],
+                ["crack_first_passage", "lambda_i_reaches_lambda_c_from_phi_second_zero"],
+                ["stochastic_noise", "none"],
+                ["mobility_closure", "none"],
+                ["plasticity_status", "not_active_in_pure_normal_baseline"],
             ])
-        return subprocess.CompletedProcess(["theory_core_v1"], 0, "Theory Core v1 complete\n", "")
+        return subprocess.CompletedProcess(["deterministic_normal_chain"], 0, "Deterministic theory solve complete\n", "")
     if backend == "FEM":
         executable = Path(solver) if solver is not None else solver_executable(repository_root())
         if executable.exists() or solver is not None:
@@ -779,7 +768,9 @@ def run_theory_spatial_solver(
     shutil.copy2(theory_dir / "initiation_elements.csv", session_dir / "initiation_elements.csv")
     with (session_dir / "metadata.csv").open("a", newline="", encoding="utf-8") as handle:
         csv.writer(handle).writerows([
-            ["probability_source", "solver_v1_current_load_trajectory_ensemble"],
+            ["probability_source", "deterministic_mu0_pushforward_and_spatial_counting_measure"],
+            ["initial_measure", "single_ideal_state_delta_lambda_1_c_0"],
+            ["stochastic_forcing", "none"],
             ["probability_external_life_scale", "none"],
             ["probability_distribution_fit", "none"],
             ["solver_time_status", "dimensionless_model_time_not_lab_calibrated"],
@@ -792,7 +783,7 @@ def run_live_theory_solver(
     record_callback,
     stop_requested,
 ) -> dict:
-    """Stream the repository's trajectory solver under the entered load.
+    """Stream the deterministic finite-chain push-forward under the entered load.
 
     Returned time is the solver's model time.  ``cycle`` is exact relative to
     the declared periodic load, while a laboratory seconds calibration is not
@@ -809,11 +800,9 @@ def run_live_theory_solver(
         value_function=base_load.value_function,
     )
     base_solver = theory_solver_params(config, live_load)
-    live_solver = SolverParams(
+    live_solver = DeterministicRunParams(
         dt=base_solver.dt,
-        n_trajectories=64,
-        seed=17,
-        first_passage_stride=base_solver.first_passage_stride,
+        duration=live_load.cycles * live_load.period,
         record_stride=base_solver.record_stride,
     )
 
@@ -829,11 +818,10 @@ def run_live_theory_solver(
             "tensile_crack_drive_mpa": max(0.0, applied_stress_mpa),
         })
 
-    return run_ensemble(
-        ModelParams(),
-        live_load,
+    return run_deterministic_pushforward(
+        NormalChainParams(n_cells=config.elements),
         live_solver,
-        model=_default_theory_model(),
+        live_load.value,
         record_callback=mapped_record,
         stop_requested=stop_requested,
         retain_history=False,

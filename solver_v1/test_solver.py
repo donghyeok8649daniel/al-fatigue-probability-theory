@@ -1,5 +1,14 @@
 from __future__ import annotations
 import numpy as np
+from solver_v1.deterministic_normal import (
+    DeterministicRunParams,
+    InitialMeasureAtom,
+    NormalChainParams,
+    empirical_phase_space_support,
+    phi_second,
+    run_deterministic_pushforward,
+    spacing_acceleration,
+)
 from solver_v1.model import ModelParams, TwoRowLJ
 from solver_v1.solver import LoadParams, SolverParams, run_ensemble
 
@@ -113,3 +122,64 @@ def test_solver_stream_can_be_stopped_without_retaining_history():
     assert len(records) == 3
     assert result["time"].size == 0
     assert result["observation_end_time"] < 100.0
+
+def test_active_normal_potential_has_unit_reference_tangent_and_declared_boundary():
+    params = NormalChainParams(n_cells=3)
+    assert np.isclose(phi_second(np.array([1.0]), params)[0], 1.0)
+    assert np.isclose(phi_second(np.array([params.lambda_c]), params)[0], 0.0, atol=1e-12)
+
+def test_deterministic_spacing_acceleration_matches_declared_boundaries():
+    params = NormalChainParams(n_cells=3)
+    spacing = np.array([[0.98, 1.01, 1.03]])
+    traction = 0.002
+    acceleration = spacing_acceleration(spacing, traction, params)[0]
+    from solver_v1.deterministic_normal import phi_prime
+    gradient = phi_prime(spacing[0], params)
+    expected = np.array([
+        gradient[1] - gradient[0],
+        gradient[2] - 2.0*gradient[1] + gradient[0],
+        traction + gradient[1] - 2.0*gradient[2],
+    ])
+    np.testing.assert_allclose(acceleration, expected)
+
+def test_discrete_initial_measure_is_pushed_forward_without_sampling():
+    params = NormalChainParams(n_cells=2)
+    measure = (
+        InitialMeasureAtom(0.75, np.ones(2), np.zeros(2)),
+        InitialMeasureAtom(0.25, np.full(2, params.lambda_c*1.001), np.zeros(2)),
+    )
+    run = DeterministicRunParams(dt=0.01, duration=0.0, record_stride=1)
+    first = run_deterministic_pushforward(params, run, lambda _t: 0.0, initial_measure=measure)
+    second = run_deterministic_pushforward(params, run, lambda _t: 0.0, initial_measure=measure)
+
+    assert first["survival"][0] == 0.75
+    assert first["specimen_survival"][0] == 0.75
+    assert np.array_equal(first["survival"], second["survival"])
+    assert np.array_equal(first["strain"], second["strain"])
+
+    lam, velocity, mass = empirical_phase_space_support(
+        first["spacing_support"][0],
+        first["spacing_rate_support"][0],
+        first["measure_weights"],
+    )
+    assert lam.shape == velocity.shape == mass.shape == (4,)
+    assert np.isclose(np.sum(mass), 1.0)
+    np.testing.assert_allclose(mass, [0.375, 0.375, 0.125, 0.125])
+
+def test_unforced_deterministic_chain_conserves_mechanical_energy_numerically():
+    params = NormalChainParams(n_cells=3)
+    measure = (
+        InitialMeasureAtom(
+            1.0,
+            np.array([1.01, 0.995, 1.005]),
+            np.array([0.002, -0.001, 0.0005]),
+        ),
+    )
+    result = run_deterministic_pushforward(
+        params,
+        DeterministicRunParams(dt=0.001, duration=1.0, record_stride=10),
+        lambda _t: 0.0,
+        initial_measure=measure,
+    )
+    energy = result["mechanical_energy"]
+    assert np.max(np.abs(energy - energy[0])) < 1.0e-9

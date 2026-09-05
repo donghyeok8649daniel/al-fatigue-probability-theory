@@ -82,10 +82,10 @@ class DesktopApp:
         "stress": "Normal stress",
         "strain": "Axial strain",
         "diameter": "Diameter change",
-        "initiation": "First passage",
-        "survival": "Survival",
-        "hazard": "Hazard",
-        "life": "Life distribution",
+        "initiation": "Local first passage",
+        "survival": "Local survival",
+        "hazard": "Local hazard",
+        "life": "First-passage mass",
     }
 
     def __init__(self, project_path: Path | None = None) -> None:
@@ -246,7 +246,7 @@ class DesktopApp:
         ttk.Label(left, text="Spatial discretization", style="Section.TLabel").pack(anchor="w", pady=(0, 8))
         combo = ttk.Combobox(left, textvariable=self.spatial_backend, values=("FVM", "FEM"), state="readonly", width=24)
         combo.pack(anchor="w", pady=(0, 14))
-        ttk.Label(left, text="Theory computes probability and first passage.\nFVM/FEM applies stress only along the entered axis.\nThe LJ reference tangent is matched to the declared Young's modulus.\nDiameter change is Poisson kinematics; transverse stress is zero.\nNo external S-N curve or fitted life distribution is used.", style="Property.TLabel", justify="left").pack(anchor="w", pady=(0, 18))
+        ttk.Label(left, text="Theory uses deterministic finite-chain mechanics.\nThe baseline initial measure is mu0 = delta(lambda=1,c=0).\nNormal loading enters exactly as q(tau) = sigma_n(t)/E.\nFVM/FEM applies stress only along the entered axis.\nNo noise, mobility closure, or fitted life distribution is used.", style="Property.TLabel", justify="left").pack(anchor="w", pady=(0, 18))
         self.run_button = ttk.Button(left, text="RUN ANALYSIS", style="Accent.TButton", command=self._start_solve)
         self.run_button.pack(anchor="w", fill="x")
         self.progress = ttk.Progressbar(left, mode="indeterminate", length=250)
@@ -419,22 +419,23 @@ class DesktopApp:
             f"Spatial backend: {spatial_backend}\n"
             f"Tensile axis: [{axis[0]:.4g}, {axis[1]:.4g}, {axis[2]:.4g}]\n"
             f"Stress ratio R: {self.current_config.stress_ratio:.4g}\n"
-            f"Probability source: 64 current-load Theory Core trajectories\n"
-            f"Load map: full signed sigma(t), LJ tangent matched to Young's modulus\n"
-            f"First passage: outward escape of the full Haa soft mode\n"
-            f"External life data / TMW / fitted distribution: none\n"
+            f"Probability source: exact spatial counting measure over {self.current_config.elements} chain spacings\n"
+            f"Initial measure: mu0 = delta(lambda=1,c=0)\n"
+            f"Load map: q(tau) = full signed sigma_n(t) / E\n"
+            f"First passage: lambda_i reaches phi''(lambda_c)=0 boundary\n"
+            f"Noise / mobility / external fitted distribution: none\n"
             f"Time status: dimensionless solver time and applied-load cycles\n"
             f"Laboratory fatigue-life calibration: not yet established\n"
             f"Applied transverse stress: 0 Pa\n"
             f"Time records: {steps}\n"
             f"Control volumes: {len(np.unique(elements['element']))}\n"
-            f"\nThe native trajectory solve continues until STOP."
+            f"\nThe deterministic finite-chain solve continues until STOP."
         )
         self.notebook.select(self.post_tab)
         if self.stop_event.is_set():
             self._finish_live_analysis("Stopped")
             return
-        self.status.set(f"LIVE | native Theory Core trajectories + {spatial_backend}")
+        self.status.set(f"LIVE | deterministic Theory Core + {spatial_backend}")
         self._plot()
 
     def _solve_failed(self, detail: str) -> None:
@@ -558,7 +559,7 @@ class DesktopApp:
             self._play_job = self.root.after(80, self._play_tick)
 
     def _accept_live_record(self, record: dict) -> None:
-        """Accept one aggregate emitted by the native trajectory solver."""
+        """Accept one aggregate emitted by the deterministic chain solver."""
         self.live_records.append(record)
         survival = float(record["survival"])
         if not self.live_events or survival != float(self.live_events[-1]["survival"]):
@@ -566,9 +567,9 @@ class DesktopApp:
         self.live_cycles = float(record["cycle"])
         self.status.set(
             f"LIVE | t*={float(record['model_time']):.6g} | "
-            f"N={self.live_cycles:.7g} | S={survival:.5f} | "
+            f"N={self.live_cycles:.7g} | S_local={survival:.5f} | "
             f"eps={float(record['strain']):.4g} | "
-            f"Haa={float(record['min_opening_eigenvalue']):.4g}"
+            f"min phi''={float(record['min_opening_eigenvalue']):.4g}"
         )
         now = time.monotonic()
         if now - self._last_live_draw >= 0.20:
@@ -609,7 +610,7 @@ class DesktopApp:
         self._cursor_value_name = None
         if field in {"initiation", "survival", "hazard", "life"}:
             if not self.live_events:
-                self.ax.text(0.5, 0.5, "Waiting for native Theory Core trajectory records", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
+                self.ax.text(0.5, 0.5, "Waiting for deterministic Theory Core records", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
                 self.ax.set_axis_off(); self.canvas.draw_idle(); return
             records = list(self.live_events)
             if self.live_records and self.live_records[-1] is not records[-1]:
@@ -620,9 +621,7 @@ class DesktopApp:
             initiation = 1.0 - survival
             previous_survival = np.concatenate(([1.0], survival[:-1]))
             event_mass = np.maximum(0.0, previous_survival - survival)
-            valid_count = max(1, int(records[-1].get("valid_trajectory_count", 64)))
-            event_resolution = 1.0 / valid_count
-            zero_event_upper_95 = 1.0 - 0.05**(1.0/valid_count)
+            event_resolution = float(records[-1].get("probability_resolution", 1.0))
             probability_ylim = None
             if field == "life":
                 event = event_mass > 0.0
@@ -632,53 +631,50 @@ class DesktopApp:
                     self.ax.plot(x, y, color=ACCENT, linewidth=1.4)
                     self.ax.text(
                         0.5, 0.72,
-                        f"0 events / {valid_count} trajectories\n"
-                        f"cumulative Pinit < {zero_event_upper_95:.3g} (95% bound)",
+                        "Exact zero first-passage mass for the declared initial measure\n"
+                        "A nontrivial specimen probability requires a physical mu0",
                         ha="center", va="center", transform=self.ax.transAxes, color=MUTED,
                     )
-                    probability_ylim = (0.0, min(1.0, 1.2*zero_event_upper_95))
+                    probability_ylim = (0.0, min(1.0, 1.2*event_resolution))
                 else:
                     x = cycles[event]
                     y = event_mass[event]
                     self.ax.vlines(x, 0.0, y, color="#79a9cf", linewidth=1.0)
                     self.ax.scatter(x, y, color=ACCENT, s=24, zorder=3)
-                ylabel = "First-passage probability mass [-]"
-                title = "Native Theory Core first-passage mass"
+                ylabel = "Local first-passage mass [-]"
+                title = "Deterministic push-forward first-passage mass"
                 xlabel = "Applied-load cycles N [-]"
                 unit = "cycles"
             elif field == "initiation":
                 x = model_time
                 y = initiation
-                ylabel = "Cumulative initiation probability [-]"
-                title = "Native first-passage probability under entered sigma(t)"
+                ylabel = "Cumulative local first-passage mass [-]"
+                title = "Deterministic first passage under entered sigma(t)"
                 xlabel = "Solver model time"
                 unit = "model_time"
                 self.ax.step(x, y, where="post", color=ACCENT, linewidth=2.0)
                 if float(np.max(y)) == 0.0:
-                    self.ax.axhline(zero_event_upper_95, color="#e15759", linestyle="--", linewidth=1.0)
                     self.ax.text(
                         0.02, 0.90,
-                        f"0/{valid_count} events: Pinit < {zero_event_upper_95:.3g} at 95% confidence",
+                        "Pinit = 0 exactly for the declared discrete mu0 so far",
                         transform=self.ax.transAxes, color=MUTED, fontsize=9,
                     )
-                    probability_ylim = (0.0, min(1.0, 1.2*zero_event_upper_95))
+                    probability_ylim = (0.0, min(1.0, 1.2*event_resolution))
             elif field == "survival":
                 x = model_time
                 y = survival
-                ylabel = "Survival probability [-]"
-                title = "Native trajectory survival under entered sigma(t)"
+                ylabel = "Local survival mass [-]"
+                title = "Deterministic local survival under entered sigma(t)"
                 xlabel = "Solver model time"
                 unit = "model_time"
                 self.ax.step(x, y, where="post", color=ACCENT, linewidth=2.0)
                 if float(np.min(y)) == 1.0:
-                    lower_95 = 1.0 - zero_event_upper_95
-                    self.ax.axhline(lower_95, color="#e15759", linestyle="--", linewidth=1.0)
                     self.ax.text(
                         0.02, 0.10,
-                        f"0/{valid_count} events: S > {lower_95:.3g} at 95% confidence",
+                        "Slocal = 1 exactly for the declared discrete mu0 so far",
                         transform=self.ax.transAxes, color=MUTED, fontsize=9,
                     )
-                    probability_ylim = (max(0.0, lower_95 - 0.2*zero_event_upper_95), 1.001)
+                    probability_ylim = (max(0.0, 1.0 - 1.2*event_resolution), 1.001)
             else:
                 event = event_mass > 0.0
                 x = model_time[event]
@@ -688,8 +684,8 @@ class DesktopApp:
                     out=np.zeros(np.count_nonzero(event), dtype=float),
                     where=previous_survival[event] > 0.0,
                 )
-                ylabel = "Discrete conditional hazard [-]"
-                title = "Native first-passage hazard under entered sigma(t)"
+                ylabel = "Discrete local conditional hazard [-]"
+                title = "Deterministic first-passage flux ratio under entered sigma(t)"
                 xlabel = "Solver model time"
                 unit = "model_time"
                 self.ax.vlines(x, 0.0, y, color="#79a9cf", linewidth=1.0)
@@ -697,7 +693,7 @@ class DesktopApp:
                 if not np.any(event):
                     self.ax.text(
                         0.5, 0.72,
-                        f"No event resolved; one trajectory = {event_resolution:.3g}",
+                        "Exact zero crossing flux for the declared initial measure",
                         ha="center", va="center", transform=self.ax.transAxes, color=MUTED,
                     )
                     probability_ylim = (0.0, min(1.0, 1.2*event_resolution))
