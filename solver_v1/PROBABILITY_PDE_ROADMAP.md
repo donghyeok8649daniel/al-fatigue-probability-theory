@@ -154,6 +154,29 @@ For a fixed dividing surface,
 
 Numerically, mass that crosses the opening dividing surface is absorbed and accumulated as initiated probability.  Failed mass is never renormalized back into the intact density.
 
+## Implementation status on `probability-pde-solver-v1`
+
+### Implemented
+
+- `probability_pde_2d.py`: N=1 direct deterministic Smoluchowski PDE reference using conservative Scharfetter--Gummel fluxes.
+- `test_probability_pde_2d.py`: Gibbs normalization, zero-load mass conservation, compression/no-tensile-opening check, spinodal absorption, and monotone survival checks.
+- `probability_pde_4d.py`: N=2 dense correlated Smoluchowski PDE reference on `(a1,a2,s1,s2)` without product closure.
+- `test_probability_pde_4d.py`: N=2 normalization, explicit non-product correlation diagnostic, mass conservation, compression check, and monotone survival checks.
+- `tensor_train.py`: rank-adaptive TT-SVD compression utility; rank one is not imposed.
+- `probability_tt_6d.py`: N=3 six-dimensional correlated Gibbs initial-density construction and TT compression prototype on small verification grids.
+- `test_tensor_train.py` and `test_probability_tt_6d.py`: reconstruction, nontrivial rank, mass, error, and positivity diagnostics.
+
+### Not yet implemented
+
+- TT time integration of the six-dimensional Smoluchowski operator;
+- positivity-preserving TT truncation / correction;
+- TT representation of the moving absorbing opening boundary and first-passage flux;
+- sparse-grid competitor;
+- systematic grid/time/rank convergence tables;
+- calibrated aluminum energy/mobility data.
+
+The N=2 dense solver and N=3 TT prototype are reference-development code.  They must not be connected to the UI as production physics until the lower-dimensional tests pass locally and the compressed time integrator reproduces those references.
+
 ## Scientific status
 
 This branch is numerical-method development.  The current LJ parameters and mobilities remain dimensionless mechanism parameters.  The compressed high-dimensional solver must not be described as a calibrated pure-Al lifetime predictor until Al-specific energy/mobility calibration and experimental validation are completed.
