@@ -41,3 +41,19 @@ def test_solver_returns_per_trajectory_first_passage_or_censoring():
     assert not np.any(result["invalid_trajectory"] & np.isfinite(passage))
     assert np.all(np.isnan(passage) | ((passage > 0.0) & (passage <= 1.0)))
     assert result["observation_end_time"] == 1.0
+
+def test_solver_stream_can_be_stopped_without_retaining_history():
+    records = []
+
+    result = run_ensemble(
+        ModelParams(),
+        LoadParams(force_min=0.0, force_max=1.0, period=1.0, cycles=100),
+        SolverParams(dt=0.02, n_trajectories=4, seed=7, record_stride=1),
+        record_callback=records.append,
+        stop_requested=lambda: len(records) >= 3,
+        retain_history=False,
+    )
+
+    assert len(records) == 3
+    assert result["time"].size == 0
+    assert result["observation_end_time"] < 100.0

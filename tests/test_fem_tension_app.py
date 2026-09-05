@@ -40,6 +40,11 @@ class TestTensionRunConfig(unittest.TestCase):
         self.assertAlmostEqual(config.thickness_m, 0.001)
         self.assertAlmostEqual(config.area_m2, 1.0e-5)
         self.assertAlmostEqual(config.young_pa, 69.0e9)
+        self.assertAlmostEqual(config.axial_stress_mpa(0.0), config.stress_mean_mpa)
+        self.assertAlmostEqual(
+            config.axial_stress_mpa(0.25 / config.frequency_hz),
+            config.stress_max_mpa,
+        )
 
     def test_circular_section_and_tensile_axis_are_independent_of_crystal_direction(self) -> None:
         config = TensionRunConfig(

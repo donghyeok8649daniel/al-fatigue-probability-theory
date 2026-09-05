@@ -9,11 +9,12 @@ class LoadParams:
     force_min: float = 0.0
     period: float = 10.0
     cycles: int = 10
+    phase_radians: float = -0.5*np.pi
 
     def value(self, t: float) -> float:
         mid = 0.5*(self.force_max + self.force_min)
         amp = 0.5*(self.force_max - self.force_min)
-        return mid - amp*np.cos(2*np.pi*t/self.period)
+        return mid + amp*np.sin(2*np.pi*t/self.period + self.phase_radians)
 
 @dataclass
 class SolverParams:
@@ -23,7 +24,16 @@ class SolverParams:
     first_passage_stride: int = 10
     record_stride: int = 10
 
-def run_ensemble(model_p=ModelParams(), load_p=LoadParams(), solver_p=SolverParams(), model=None):
+def run_ensemble(
+    model_p=ModelParams(),
+    load_p=LoadParams(),
+    solver_p=SolverParams(),
+    model=None,
+    *,
+    record_callback=None,
+    stop_requested=None,
+    retain_history: bool = True,
+):
     model = TwoRowLJ(model_p) if model is None else model
     rng = np.random.default_rng(solver_p.seed)
 
@@ -40,8 +50,12 @@ def run_ensemble(model_p=ModelParams(), load_p=LoadParams(), solver_p=SolverPara
     sqrta = np.sqrt(2*model_p.kT*model_p.mobility_a*solver_p.dt)
     sqrts = np.sqrt(2*model_p.kT*model_p.mobility_s*solver_p.dt)
 
+    last_time = 0.0
     for step in range(nt):
+        if stop_requested is not None and stop_requested():
+            break
         t = step*solver_p.dt
+        last_time = t
         force = load_p.value(t)
 
         if step % solver_p.record_stride == 0:
@@ -54,11 +68,21 @@ def run_ensemble(model_p=ModelParams(), load_p=LoadParams(), solver_p=SolverPara
                 barrier = float(np.mean(barriers)) if barriers else np.nan
             else:
                 eps, plastic, barrier = np.nan, np.nan, 0.0
-            rec_t.append(t); rec_f.append(force); rec_eps.append(eps)
             valid_count = int(np.count_nonzero(~invalid))
-            rec_alive.append(float(np.count_nonzero(alive) / valid_count) if valid_count else np.nan)
-            rec_plastic.append(plastic)
-            rec_barrier.append(barrier)
+            survival = float(np.count_nonzero(alive) / valid_count) if valid_count else np.nan
+            if retain_history:
+                rec_t.append(t); rec_f.append(force); rec_eps.append(eps)
+                rec_alive.append(survival); rec_plastic.append(plastic)
+                rec_barrier.append(barrier)
+            if record_callback is not None:
+                record_callback({
+                    "time": t,
+                    "force": force,
+                    "strain": eps,
+                    "survival": survival,
+                    "plastic_well_activity": plastic,
+                    "opening_barrier": barrier,
+                })
 
         if step == nt-1:
             break
@@ -96,5 +120,5 @@ def run_ensemble(model_p=ModelParams(), load_p=LoadParams(), solver_p=SolverPara
         "opening_barrier": np.asarray(rec_barrier),
         "first_passage_time": first_passage_time,
         "invalid_trajectory": invalid,
-        "observation_end_time": (nt - 1) * solver_p.dt,
+        "observation_end_time": last_time,
     }

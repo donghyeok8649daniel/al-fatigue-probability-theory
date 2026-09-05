@@ -168,6 +168,18 @@ class TensionRunConfig:
     def stress_ratio(self) -> float:
         return self.stress_min_mpa / self.stress_max_mpa if self.stress_max_mpa != 0.0 else np.nan
 
+    def axial_stress_mpa(self, time_s: np.ndarray | float) -> np.ndarray | float:
+        """Evaluate the single declared axial load history.
+
+        The present application implements a sinusoid.  Keeping this evaluator
+        as the common boundary for theory, spatial fields, and fatigue output
+        allows a future user-edited history without duplicating load formulas.
+        """
+        value = self.stress_mean_mpa + self.stress_amplitude_mpa * np.sin(
+            2.0 * np.pi * self.frequency_hz * np.asarray(time_s, dtype=float)
+        )
+        return float(value) if np.ndim(value) == 0 else value
+
     @property
     def fcc_slip_systems(self) -> tuple[FCCSlipSystem, ...]:
         return fcc_axial_slip_systems(self.loading_h, self.loading_k, self.loading_l)
@@ -252,6 +264,7 @@ def theory_load_params(config: TensionRunConfig) -> LoadParams:
         force_max=stress_max / config.theory_stress_scale_mpa,
         period=10.0,
         cycles=config.cycles,
+        phase_radians=0.0,
     )
 
 
@@ -761,10 +774,7 @@ def run_python_fem_solver(
         ])
         for step in range(total_steps + 1):
             t = step / config.steps_per_cycle / config.frequency_hz
-            applied = (
-                config.stress_mean_mpa
-                + config.stress_amplitude_mpa * np.sin(2.0 * np.pi * config.frequency_hz * t)
-            ) * 1.0e6
+            applied = config.axial_stress_mpa(t) * 1.0e6
             displacement = unit_displacement * applied
             strain = unit_strain * applied
             stress = config.young_pa * strain
@@ -807,13 +817,20 @@ def run_selected_solver(
     backend: str,
     solver: Path | None = None,
     auto_build: bool = True,
+    stop_requested=None,
 ) -> subprocess.CompletedProcess[str]:
     """Run the selected backend while preserving the shared CSV output contract."""
     if backend == "Theory":
         model_p = ModelParams()
         load_p = theory_load_params(config)
         solver_p = theory_solver_params(config, load_p)
-        out = run_ensemble(model_p, load_p, solver_p, model=_default_theory_model())
+        out = run_ensemble(
+            model_p,
+            load_p,
+            solver_p,
+            model=_default_theory_model(),
+            stop_requested=stop_requested,
+        )
         output_dir = Path(output_dir)
         output_dir.mkdir(parents=True, exist_ok=True)
         model_time = np.asarray(out["time"], dtype=float)
@@ -892,6 +909,7 @@ def run_theory_spatial_solver(
     spatial_backend: str,
     solver: Path | None = None,
     auto_build: bool = True,
+    stop_requested=None,
 ) -> tuple[subprocess.CompletedProcess[str], subprocess.CompletedProcess[str]]:
     """Always run Theory Core v1, coupled to the selected FVM/FEM reference field."""
     if spatial_backend not in {"FVM", "FEM"}:
@@ -899,7 +917,14 @@ def run_theory_spatial_solver(
     session_dir = Path(output_dir)
     theory_dir = session_dir / "theory"
     spatial_dir = session_dir / "spatial"
-    theory_result = run_selected_solver(config, theory_dir, "Theory")
+    theory_result = run_selected_solver(
+        config,
+        theory_dir,
+        "Theory",
+        stop_requested=stop_requested,
+    )
+    if stop_requested is not None and stop_requested():
+        raise InterruptedError("analysis stopped by user")
     spatial_result = run_selected_solver(
         config,
         spatial_dir,

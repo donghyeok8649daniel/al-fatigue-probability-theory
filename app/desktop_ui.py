@@ -73,7 +73,7 @@ class DesktopApp:
         ("theory_stress_scale_mpa", "Theory stress scale", "40", "MPa / model force"),
         ("frequency_hz", "Loading frequency", "20", "Hz"),
         ("cycles", "Waveform preview", "2", "cycles"),
-        ("fatigue_horizon_cycles", "Fatigue horizon", "10000000", "cycles"),
+        ("fatigue_horizon_cycles", "Fatigue reference horizon", "10000000", "cycles"),
         ("steps_per_cycle", "Resolution", "80", "steps/cycle"),
         ("deformation_scale", "Display deformation", "1", "x"),
     )
@@ -108,6 +108,11 @@ class DesktopApp:
         self.life_distribution: np.ndarray | None = None
         self.current_config = None
         self.busy = False
+        self.stop_event = threading.Event()
+        self.live_cycles = 0.0
+        self._live_cycle_step = 1.0
+        self._live_tick_count = 0
+        self._live_job = None
         self.playing = False
         self.play_position = tk.DoubleVar(value=0.0)
         self._play_job = None
@@ -122,6 +127,7 @@ class DesktopApp:
         self._header()
         self._workspace()
         self._statusbar()
+        self.root.protocol("WM_DELETE_WINDOW", self._close)
         self._show_empty_plot()
         if project_path is not None:
             self.root.after(0, lambda: self._load_project(Path(project_path)))
@@ -335,6 +341,9 @@ class DesktopApp:
 
     def _start_solve(self) -> None:
         if self.busy:
+            self.stop_event.set()
+            self.run_button.configure(text="STOPPING...", state="disabled")
+            self.status.set("Stopping after the current solver operation...")
             return
         try:
             config = self._config()
@@ -342,8 +351,12 @@ class DesktopApp:
             messagebox.showerror("Invalid input", str(exc), parent=self.root)
             return
         self.busy = True
+        self.stop_event.clear()
+        self.live_cycles = 0.0
+        self._live_tick_count = 0
+        self._stop_playback()
         self.current_config = config
-        self.run_button.configure(state="disabled")
+        self.run_button.configure(text="STOP ANALYSIS", state="normal")
         self.progress.start(12)
         spatial = self.spatial_backend.get()
         self.status.set(f"Solving Theory Core v1 + {spatial}…")
@@ -357,7 +370,12 @@ class DesktopApp:
 
             theory_dir = self.output_dir / "theory"
             spatial_dir = self.output_dir / "spatial"
-            run_theory_spatial_solver(config, self.output_dir, spatial_backend)
+            run_theory_spatial_solver(
+                config,
+                self.output_dir,
+                spatial_backend,
+                stop_requested=self.stop_event.is_set,
+            )
             nodes, elements = load_fem_history(spatial_dir)
             init_path = theory_dir / "initiation_elements.csv"
             initiation = load_numeric_csv(init_path) if init_path.is_file() else None
@@ -368,6 +386,8 @@ class DesktopApp:
             self.root.after(0, lambda: self._solve_done(
                 nodes, elements, initiation, life_distribution, sn_curve, spatial_backend
             ))
+        except InterruptedError:
+            self.root.after(0, lambda: self._finish_live_analysis("Stopped by user"))
         except Exception as exc:
             detail = str(exc)
             self.root.after(0, lambda detail=detail: self._solve_failed(detail))
@@ -384,9 +404,7 @@ class DesktopApp:
         self.nodes, self.elements, self.initiation, self.life_distribution, self.sn_curve = (
             nodes, elements, initiation, life_distribution, sn_curve
         )
-        self.busy = False
         self.progress.stop()
-        self.run_button.configure(state="normal")
         steps = len(np.unique(elements["step"]))
         fp = "n/a"
         first_passage = "none in simulated interval"
@@ -426,23 +444,34 @@ class DesktopApp:
             f"FCC dislocation-initiation N50 scale: {tmw_life}\n"
             f"Fatigue horizon: {horizon:.6g} cycles ({horizon / self.current_config.frequency_hz:.6g} s)\n"
             f"Initiation probability at horizon: {horizon_probability:.4f}\n"
-            f"Life law: Theory Core v1 empirical first passage (right-censored)\n"
-            f"S-N bridge status: conditional physical scale; no life-distribution fit\n"
+            f"Life law: empirical Theory Core first passage scaled by the entered sinusoidal stress range\n"
+            f"S-N bridge status: conditional physical scale; no distribution fit or mean-stress correction\n"
             f"Applied transverse stress: 0 Pa\n"
             f"Time records: {steps}\n"
             f"Control volumes: {len(np.unique(elements['element']))}\n"
             f"First detected passage: {first_passage}\n"
-            f"Final/maximum first passage: {fp}\n\nSolve completed successfully."
+            f"Final/maximum first passage: {fp}\n\n"
+            f"Live cycle-jump analysis continues until STOP."
         )
-        self.status.set(f"Solved · Theory Core v1 + {spatial_backend} · {steps} records")
         self.notebook.select(self.post_tab)
+        if self.stop_event.is_set():
+            self._finish_live_analysis("Stopped")
+            return
+        horizon = max(1.0, float(self.current_config.fatigue_horizon_cycles))
+        self._live_cycle_step = max(1.0, np.floor(horizon / 2000.0)) + 1.0 / max(
+            2, self.current_config.steps_per_cycle
+        )
+        self.status.set(
+            f"LIVE | Theory Core v1 + {spatial_backend} | cycle jump {self._live_cycle_step:.5g}"
+        )
+        self.live_cycles = 1.0
         self._plot()
-        self._start_playback()
+        self._live_job = self.root.after(80, self._live_tick)
 
     def _solve_failed(self, detail: str) -> None:
         self.busy = False
         self.progress.stop()
-        self.run_button.configure(state="normal")
+        self.run_button.configure(text="RUN ANALYSIS", state="normal")
         self.status.set("Solve failed")
         messagebox.showerror("Solver error", detail, parent=self.root)
 
@@ -517,6 +546,8 @@ class DesktopApp:
         self.canvas.draw_idle()
 
     def _toggle_playback(self) -> None:
+        if self.busy:
+            return
         if self.playing:
             self._stop_playback()
         else:
@@ -556,6 +587,45 @@ class DesktopApp:
         else:
             self._play_job = self.root.after(80, self._play_tick)
 
+    def _live_tick(self) -> None:
+        """Advance the laboratory fatigue clock until the user requests stop.
+
+        The long-life axis uses explicit cycle jumps; it does not pretend to
+        integrate millions of identical microscopic periods one by one.
+        """
+        self._live_job = None
+        if self.stop_event.is_set():
+            self._finish_live_analysis("Stopped by user")
+            return
+        self.live_cycles += self._live_cycle_step
+        self._live_tick_count += 1
+        live_seconds = self.live_cycles / self.current_config.frequency_hz
+        self.status.set(
+            f"LIVE | N={self.live_cycles:.7g} cycles | t={live_seconds:.7g} s | "
+            "applied history: sinusoidal axial stress"
+        )
+        if self._live_tick_count % 4 == 0:
+            self.play_position.set(1.0)
+            self._plot()
+        self._live_job = self.root.after(80, self._live_tick)
+
+    def _finish_live_analysis(self, message: str) -> None:
+        if self._live_job is not None:
+            self.root.after_cancel(self._live_job)
+            self._live_job = None
+        self.busy = False
+        self.progress.stop()
+        self.run_button.configure(text="RUN ANALYSIS", state="normal")
+        seconds = self.live_cycles / self.current_config.frequency_hz if self.current_config else 0.0
+        self.status.set(f"{message} | N={self.live_cycles:.7g} cycles | t={seconds:.7g} s")
+        self._plot()
+
+    def _close(self) -> None:
+        self.stop_event.set()
+        if self._live_job is not None:
+            self.root.after_cancel(self._live_job)
+        self.root.destroy()
+
     def _plot(self) -> None:
         if self.elements is None:
             self._show_empty_plot()
@@ -563,7 +633,7 @@ class DesktopApp:
         field = self.field.get()
         if field != self._last_plot_field:
             self._stop_playback()
-            self.play_position.set(0.0)
+            self.play_position.set(1.0 if self.busy else 0.0)
             self._last_plot_field = field
         self.ax.clear()
         self.ax.set_axis_on()
@@ -580,7 +650,12 @@ class DesktopApp:
             cdf = np.asarray(self.life_distribution["cumulative_probability"], dtype=float)
             mass = np.asarray(self.life_distribution["probability_mass"], dtype=float)
             horizon = float(self.current_config.fatigue_horizon_cycles)
-            finite = np.isfinite(cycles) & np.isfinite(cdf) & (cycles <= horizon)
+            display_cycles = (
+                horizon
+                if field == "life"
+                else max(1.0, self.live_cycles) if self.live_cycles > 0.0 else horizon
+            )
+            finite = np.isfinite(cycles) & np.isfinite(cdf) & (cycles <= display_cycles)
             if field == "life" and not np.any(finite):
                 self.ax.text(0.5, 0.5, "No finite first-passage life for this mechanism", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
                 self.ax.set_axis_off(); self.canvas.draw_idle(); return
@@ -594,37 +669,55 @@ class DesktopApp:
                 ylabel = "First-passage probability mass [-]"
                 title = "Life probability mass from Theory Core trajectories"
             else:
-                x = np.concatenate(([1.0], event_cycles, [horizon]))
+                start_time = 1.0 / self.current_config.frequency_hz
+                event_time = event_cycles / self.current_config.frequency_hz
+                display_time = max(start_time, display_cycles / self.current_config.frequency_hz)
+                x = np.concatenate(([start_time], event_time, [display_time]))
                 padded_cdf = np.concatenate(([0.0], event_cdf, [event_cdf[-1] if event_cdf.size else 0.0]))
                 if field == "initiation":
                     y = padded_cdf
                     ylabel = "Cumulative initiation probability [-]"
-                    title = "Fatigue crack-initiation probability"
+                    title = "Initiation probability under the applied stress history"
                 elif field == "survival":
                     y = 1.0 - padded_cdf
                     ylabel = "Survival probability [-]"
-                    title = "Fatigue survival"
+                    title = "Survival under the applied stress history"
                 else:
-                    y = -np.log(np.maximum(1.0 - padded_cdf, 1.0e-12))
-                    ylabel = "Cumulative hazard H(N) [-]"
-                    title = "Fatigue cumulative hazard"
-                self.ax.step(x, y, where="post", color=ACCENT, linewidth=2.0)
+                    prior_survival = 1.0 - np.concatenate(([0.0], event_cdf[:-1]))
+                    y = np.divide(
+                        event_mass,
+                        prior_survival,
+                        out=np.zeros_like(event_mass),
+                        where=prior_survival > 0.0,
+                    )
+                    x = event_time
+                    ylabel = "Discrete conditional hazard [-]"
+                    title = "First-passage hazard under the applied stress history"
+                    self.ax.vlines(x, 0.0, y, color="#79a9cf", linewidth=1.0)
+                    self.ax.scatter(x, y, color=ACCENT, s=24, zorder=3)
+                if field != "hazard":
+                    self.ax.step(x, y, where="post", color=ACCENT, linewidth=2.0)
             self.ax.set_xscale("log")
-            self.ax.set_xlim(1.0, horizon)
-            if field != "hazard":
-                self.ax.set_ylim(bottom=0.0)
-            self.ax.set_xlabel("Fatigue cycles N")
+            axis_end = horizon if field == "life" else display_cycles
+            axis_start = 1.0 if field == "life" else 1.0 / self.current_config.frequency_hz
+            axis_end_value = max(
+                axis_start * (1.0 + 1.0e-9),
+                axis_end if field == "life" else axis_end / self.current_config.frequency_hz,
+            )
+            self.ax.set_xlim(axis_start, axis_end_value)
+            self.ax.set_ylim(bottom=0.0)
+            self.ax.set_xlabel("Fatigue cycles N" if field == "life" else "Time under applied load [s]")
             self.ax.set_ylabel(ylabel)
             self.ax.set_title(title, loc="left", fontsize=12, fontweight="bold")
             self.ax.grid(True, which="both", color="#d9e0e5", linewidth=0.7, alpha=0.8)
             cursor_x = event_cycles if field == "life" else x
             cursor_y = event_mass if field == "life" else y
-            cursor_name = "PMF" if field == "life" else {"initiation": "Pinit", "survival": "S", "hazard": "H"}[field]
+            cursor_name = "PMF" if field == "life" else {"initiation": "Pinit", "survival": "S", "hazard": "h"}[field]
             self._set_cursor_domain(
-                1.0,
-                horizon,
+                axis_start,
+                axis_end_value,
                 logarithmic=True,
-                unit="cycles",
+                unit="cycles" if field == "life" else "seconds",
                 x_values=cursor_x,
                 y_values=cursor_y,
                 value_name=cursor_name,
@@ -670,16 +763,34 @@ class DesktopApp:
             self.figure.tight_layout(pad=1.2)
             self.canvas.draw_idle()
             return
+        live_history = self.live_cycles > 0.0 and self.current_config is not None
+        if live_history:
+            config = self.current_config
+            end_time = self.live_cycles / config.frequency_hz
+            window_cycles = max(2, config.cycles)
+            start_time = max(0.0, end_time - window_cycles / config.frequency_hz)
+            sample_count = max(80, min(1200, window_cycles * config.steps_per_cycle + 1))
+            t = np.linspace(start_time, end_time, sample_count)
+            stress_mpa = np.asarray(config.axial_stress_mpa(t), dtype=float)
+            axial_strain = stress_mpa * 1.0e6 / config.young_pa
         if field == "stress":
-            t, y = self._series_by_step(self.elements, "stress_pa")
-            y = y / 1.0e6 if np.nanmax(np.abs(y)) > 1.0e5 else y
-            ylabel = "Normal stress [MPa]" if np.nanmax(np.abs(y)) > 1.0e-3 else "Normalized tensile force"
+            if live_history:
+                y = stress_mpa
+            else:
+                t, y = self._series_by_step(self.elements, "stress_pa")
+                y = y / 1.0e6 if np.nanmax(np.abs(y)) > 1.0e5 else y
+            ylabel = "Normal stress [MPa]"
         elif field == "strain":
-            t, y = self._series_by_step(self.elements, "strain")
+            if live_history:
+                y = axial_strain
+            else:
+                t, y = self._series_by_step(self.elements, "strain")
             ylabel = "Axial strain [-]"
         elif field == "diameter":
             config = self.current_config or self._config()
-            if "diameter_m" in (self.elements.dtype.names or ()):
+            if live_history:
+                diameter = config.diameter_m * (1.0 - config.poisson_ratio * axial_strain)
+            elif "diameter_m" in (self.elements.dtype.names or ()):
                 t, diameter = self._series_by_step(self.elements, "diameter_m")
             else:
                 t, axial_strain = self._series_by_step(self.elements, "strain")
