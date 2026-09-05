@@ -183,3 +183,13 @@ def test_unforced_deterministic_chain_conserves_mechanical_energy_numerically():
     )
     energy = result["mechanical_energy"]
     assert np.max(np.abs(energy - energy[0])) < 1.0e-9
+
+def test_specimen_is_absorbed_at_first_passage_before_post_failure_runaway():
+    params = NormalChainParams(n_cells=4)
+    run = DeterministicRunParams(dt=0.002, duration=20.0, record_stride=25)
+    result = run_deterministic_pushforward(params, run, lambda _t: 0.2)
+
+    assert result["observation_end_time"] < run.duration
+    assert result["specimen_survival"][-1] == 0.0
+    assert np.max(result["spacing_support"][-1]) >= params.lambda_c
+    assert np.max(result["spacing_support"][-1]) < 1.25

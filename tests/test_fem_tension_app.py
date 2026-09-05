@@ -233,7 +233,7 @@ class TestSolverCommand(unittest.TestCase):
         self.assertLess(records[3]["force"], 0.0)
         self.assertEqual(records[3]["initial_measure_atom_count"], 1)
         self.assertEqual(records[3]["spatial_site_count"], 40)
-        self.assertAlmostEqual(records[3]["probability_resolution"], 1.0 / 40.0)
+        self.assertAlmostEqual(records[3]["probability_resolution"], 1.0)
         self.assertEqual(result["time"].size, 0)
 
     def test_higher_stress_advances_first_passage(self) -> None:

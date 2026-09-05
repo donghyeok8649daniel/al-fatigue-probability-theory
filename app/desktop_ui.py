@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import os
+import queue
 import sys
 import threading
 import time
@@ -82,9 +83,9 @@ class DesktopApp:
         "stress": "Normal stress",
         "strain": "Axial strain",
         "diameter": "Diameter change",
-        "initiation": "Local first passage",
-        "survival": "Local survival",
-        "hazard": "Local hazard",
+        "initiation": "Specimen first passage",
+        "survival": "Specimen survival",
+        "hazard": "First-passage flux",
         "life": "First-passage mass",
     }
 
@@ -108,6 +109,8 @@ class DesktopApp:
         self.live_cycles = 0.0
         self.live_records = deque(maxlen=5000)
         self.live_events: list[dict] = []
+        self._live_queue: queue.Queue[tuple[str, object]] = queue.Queue(maxsize=512)
+        self._live_poll_job = None
         self._last_live_draw = 0.0
         self.playing = False
         self.play_position = tk.DoubleVar(value=0.0)
@@ -350,6 +353,11 @@ class DesktopApp:
         self.live_cycles = 0.0
         self.live_records.clear()
         self.live_events.clear()
+        try:
+            while True:
+                self._live_queue.get_nowait()
+        except queue.Empty:
+            pass
         self._last_live_draw = 0.0
         self._stop_playback()
         self.current_config = config
@@ -357,6 +365,8 @@ class DesktopApp:
         self.progress.start(12)
         spatial = self.spatial_backend.get()
         self.status.set(f"Solving Theory Core v1 + {spatial}…")
+        if self._live_poll_job is None:
+            self._live_poll_job = self.root.after(20, self._drain_live_queue)
         threading.Thread(target=self._solve_worker, args=(config, spatial), daemon=True).start()
 
     def _solve_worker(self, config: TensionRunConfig, spatial_backend: str) -> None:
@@ -377,27 +387,23 @@ class DesktopApp:
             self.root.after(0, lambda: self._solve_done(
                 nodes, elements, spatial_backend
             ))
-            last_emit = [0.0]
-            last_survival = [None]
-
             def stream_record(record: dict) -> None:
-                now = time.monotonic()
-                survival_changed = record["survival"] != last_survival[0]
-                if survival_changed or now - last_emit[0] >= 0.10:
-                    last_emit[0] = now
-                    last_survival[0] = record["survival"]
-                    self.root.after(
-                        0,
-                        lambda record=dict(record): self._accept_live_record(record),
-                    )
-                time.sleep(0.002)
+                while not self.stop_event.is_set():
+                    try:
+                        self._live_queue.put(("record", dict(record)), timeout=0.05)
+                        break
+                    except queue.Full:
+                        continue
+                # Keep every phase sample, while pacing the producer so the
+                # plot does not alias a sinusoid into a triangle or beat.
+                time.sleep(0.003)
 
             result = run_live_theory_solver(
                 config,
                 stream_record,
                 self.stop_event.is_set,
             )
-            self.root.after(0, lambda result=result: self._native_solver_stopped(result))
+            self._live_queue.put(("done", result))
         except InterruptedError:
             self.root.after(0, lambda: self._finish_live_analysis("Stopped by user"))
         except Exception as exc:
@@ -419,7 +425,8 @@ class DesktopApp:
             f"Spatial backend: {spatial_backend}\n"
             f"Tensile axis: [{axis[0]:.4g}, {axis[1]:.4g}, {axis[2]:.4g}]\n"
             f"Stress ratio R: {self.current_config.stress_ratio:.4g}\n"
-            f"Probability source: exact spatial counting measure over {self.current_config.elements} chain spacings\n"
+            f"Phase-space P: exact spatial counting over {self.current_config.elements} chain spacings\n"
+            f"Specimen survival: deterministic push-forward of the declared mu0\n"
             f"Initial measure: mu0 = delta(lambda=1,c=0)\n"
             f"Load map: q(tau) = full signed sigma_n(t) / E\n"
             f"First passage: lambda_i reaches phi''(lambda_c)=0 boundary\n"
@@ -567,7 +574,7 @@ class DesktopApp:
         self.live_cycles = float(record["cycle"])
         self.status.set(
             f"LIVE | t*={float(record['model_time']):.6g} | "
-            f"N={self.live_cycles:.7g} | S_local={survival:.5f} | "
+            f"N={self.live_cycles:.7g} | S_spec={survival:.5f} | "
             f"eps={float(record['strain']):.4g} | "
             f"min phi''={float(record['min_opening_eigenvalue']):.4g}"
         )
@@ -576,6 +583,22 @@ class DesktopApp:
             self._last_live_draw = now
             self.play_position.set(1.0)
             self._plot()
+
+    def _drain_live_queue(self) -> None:
+        """Move an ordered batch of complete solver records onto the Tk thread."""
+        self._live_poll_job = None
+        for _ in range(128):
+            try:
+                kind, payload = self._live_queue.get_nowait()
+            except queue.Empty:
+                break
+            if kind == "record":
+                self._accept_live_record(payload)
+            elif kind == "done":
+                self._native_solver_stopped(payload)
+                return
+        if self.busy or not self._live_queue.empty():
+            self._live_poll_job = self.root.after(20, self._drain_live_queue)
 
     def _native_solver_stopped(self, _result: dict) -> None:
         self._finish_live_analysis("Native solver stopped")
@@ -641,14 +664,14 @@ class DesktopApp:
                     y = event_mass[event]
                     self.ax.vlines(x, 0.0, y, color="#79a9cf", linewidth=1.0)
                     self.ax.scatter(x, y, color=ACCENT, s=24, zorder=3)
-                ylabel = "Local first-passage mass [-]"
+                ylabel = "Specimen first-passage mass [-]"
                 title = "Deterministic push-forward first-passage mass"
                 xlabel = "Applied-load cycles N [-]"
                 unit = "cycles"
             elif field == "initiation":
                 x = model_time
                 y = initiation
-                ylabel = "Cumulative local first-passage mass [-]"
+                ylabel = "Cumulative specimen first-passage mass [-]"
                 title = "Deterministic first passage under entered sigma(t)"
                 xlabel = "Solver model time"
                 unit = "model_time"
@@ -663,15 +686,15 @@ class DesktopApp:
             elif field == "survival":
                 x = model_time
                 y = survival
-                ylabel = "Local survival mass [-]"
-                title = "Deterministic local survival under entered sigma(t)"
+                ylabel = "Specimen survival mass [-]"
+                title = "Deterministic specimen survival under entered sigma(t)"
                 xlabel = "Solver model time"
                 unit = "model_time"
                 self.ax.step(x, y, where="post", color=ACCENT, linewidth=2.0)
                 if float(np.min(y)) == 1.0:
                     self.ax.text(
                         0.02, 0.10,
-                        "Slocal = 1 exactly for the declared discrete mu0 so far",
+                        "Sspec = 1 exactly for the declared discrete mu0 so far",
                         transform=self.ax.transAxes, color=MUTED, fontsize=9,
                     )
                     probability_ylim = (max(0.0, 1.0 - 1.2*event_resolution), 1.001)
@@ -684,7 +707,7 @@ class DesktopApp:
                     out=np.zeros(np.count_nonzero(event), dtype=float),
                     where=previous_survival[event] > 0.0,
                 )
-                ylabel = "Discrete local conditional hazard [-]"
+                ylabel = "Discrete conditional first-passage flux ratio [-]"
                 title = "Deterministic first-passage flux ratio under entered sigma(t)"
                 xlabel = "Solver model time"
                 unit = "model_time"

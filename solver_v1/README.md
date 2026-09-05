@@ -12,13 +12,15 @@ $$
 
 It integrates the conservative spacing equations from the active theory under $q(\tau)=\sigma_n(t)/E$. A weighted discrete initial measure is pushed forward without thermal noise, mobility, diffusion, resampling, or a named probability distribution. The default is the single ideal state $\mu_0=\delta_{(\lambda=1,c=0)}$.
 
-The local probability is the exact $1/M$ spatial counting measure, extended by the declared weights when a nontrivial discrete $\mu_0$ is supplied. First passage occurs when a spacing reaches
+The one-point phase-space probability uses the exact $1/M$ spatial counting measure, extended by the declared weights when a nontrivial discrete $\mu_0$ is supplied. Specimen survival is the total $\mu_0$ weight of full states with no spacing crossing. First passage occurs when a spacing reaches
 
 $$
 \lambda_c=\left(\frac{m+1}{n+1}\right)^{1/(m-n)},
 $$
 
 where $\phi''(\lambda_c)=0$.
+
+First-passage states are absorbed from survivor-conditioned strain and moment outputs. The solver records the terminal crossing state and does not evolve an already failed specimen into the negative-curvature runaway regime.
 
 ## Important scope
 

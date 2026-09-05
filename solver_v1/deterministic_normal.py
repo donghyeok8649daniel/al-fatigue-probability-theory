@@ -191,28 +191,43 @@ def run_deterministic_pushforward(
         name: [] for name in (
             "time", "force", "strain", "normal_strain", "intrawell_strain",
             "plastic_strain", "mean_spacing_rate", "global_spacing_rate_variance",
-            "survival", "specimen_survival",
+            "survival", "local_survival", "specimen_survival",
             "intrinsic_energy", "mechanical_energy", "min_opening_eigenvalue",
             "min_plastic_eigenvalue",
         )
     }
     support_spacing: list[np.ndarray] = []
     support_rate: list[np.ndarray] = []
+    support_intact_atoms: list[np.ndarray] = []
     steps = int(round(run.duration / run.dt))
     last_time = 0.0
 
     def aggregate(t: float, traction: float) -> dict:
-        mean_spacing = float(np.sum(site_weight * spacing))
-        mean_rate = float(np.sum(site_weight * rate))
-        global_rate_variance = float(np.sum(site_weight * (rate - mean_rate) ** 2))
-        local_survival = float(np.sum(site_weight * (~crossed)))
         intact_atoms = ~np.any(crossed, axis=1)
         specimen_survival = float(np.sum(weights * intact_atoms))
-        energy = float(np.sum(site_weight * (phi(spacing, chain) - phi(np.ones_like(spacing), chain))))
+        if specimen_survival > 0.0:
+            observable_weights = weights * intact_atoms / specimen_survival
+        else:
+            # This terminal state is recorded immediately at first passage,
+            # before any post-failure evolution can contaminate the strain.
+            observable_weights = weights
+        observable_site_weight = observable_weights[:, None] / site_count
+        mean_spacing = float(np.sum(observable_site_weight * spacing))
+        mean_rate = float(np.sum(observable_site_weight * rate))
+        global_rate_variance = float(
+            np.sum(observable_site_weight * (rate - mean_rate) ** 2)
+        )
+        local_survival = float(np.sum(site_weight * (~crossed)))
+        energy = float(np.sum(
+            observable_site_weight
+            * (phi(spacing, chain) - phi(np.ones_like(spacing), chain))
+        ))
         indices = np.arange(site_count)
         spacing_metric = site_count - np.maximum(indices[:, None], indices[None, :])
         kinetic_by_atom = 0.5 * np.einsum("ai,ij,aj->a", rate, spacing_metric, rate)
-        mechanical_energy = energy + float(np.sum(weights * kinetic_by_atom) / site_count)
+        mechanical_energy = energy + float(
+            np.sum(observable_weights * kinetic_by_atom) / site_count
+        )
         return {
             "time": t,
             "force": traction,
@@ -222,7 +237,8 @@ def run_deterministic_pushforward(
             "plastic_strain": 0.0,
             "mean_spacing_rate": mean_rate,
             "global_spacing_rate_variance": global_rate_variance,
-            "survival": local_survival,
+            "survival": specimen_survival,
+            "local_survival": local_survival,
             "specimen_survival": specimen_survival,
             "plastic_well_activity": 0.0,
             "opening_barrier": np.nan,
@@ -232,7 +248,7 @@ def run_deterministic_pushforward(
             "min_plastic_eigenvalue": np.nan,
             "initial_measure_atom_count": atom_count,
             "spatial_site_count": site_count,
-            "probability_resolution": float(np.min(weights[weights > 0.0]) / site_count),
+            "probability_resolution": float(np.min(weights[weights > 0.0])),
             "lambda_c": chain.lambda_c,
         }
 
@@ -249,29 +265,49 @@ def run_deterministic_pushforward(
                     history[name].append(float(record[name]))
                 support_spacing.append(spacing.copy())
                 support_rate.append(rate.copy())
+                support_intact_atoms.append(~np.any(crossed, axis=1))
             if record_callback is not None:
                 record_callback(dict(record))
         if step == steps:
             break
 
-        acceleration = spacing_acceleration(spacing, traction, chain)
-        next_spacing = spacing + run.dt * rate + 0.5 * run.dt**2 * acceleration
-        if not np.all(np.isfinite(next_spacing)) or np.any(next_spacing <= 0.0):
+        active = ~np.any(crossed, axis=1)
+        if not np.any(active):
+            break
+        acceleration = spacing_acceleration(spacing[active], traction, chain)
+        next_spacing = spacing.copy()
+        next_spacing[active] = (
+            spacing[active] + run.dt * rate[active] + 0.5 * run.dt**2 * acceleration
+        )
+        if not np.all(np.isfinite(next_spacing[active])) or np.any(next_spacing[active] <= 0.0):
             raise FloatingPointError("deterministic chain left the positive finite spacing domain")
         next_t = (step + 1) * run.dt
         next_traction = float(reduced_traction(next_t))
-        next_acceleration = spacing_acceleration(next_spacing, next_traction, chain)
-        rate += 0.5 * run.dt * (acceleration + next_acceleration)
+        next_acceleration = spacing_acceleration(next_spacing[active], next_traction, chain)
+        rate[active] += 0.5 * run.dt * (acceleration + next_acceleration)
         spacing = next_spacing
         newly_crossed = (~crossed) & (spacing >= chain.lambda_c)
         first_passage_time[newly_crossed] = next_t
         crossed |= newly_crossed
+        if not np.any(~np.any(crossed, axis=1)):
+            last_time = next_t
+            terminal = aggregate(next_t, next_traction)
+            if retain_history:
+                for name in history:
+                    history[name].append(float(terminal[name]))
+                support_spacing.append(spacing.copy())
+                support_rate.append(rate.copy())
+                support_intact_atoms.append(~np.any(crossed, axis=1))
+            if record_callback is not None:
+                record_callback(dict(terminal))
+            break
 
     phase_weights = np.broadcast_to(weights[:, None] / site_count, spacing.shape).copy()
     return {
         **{name: np.asarray(values, dtype=float) for name, values in history.items()},
         "spacing_support": np.asarray(support_spacing, dtype=float),
         "spacing_rate_support": np.asarray(support_rate, dtype=float),
+        "intact_atom_support": np.asarray(support_intact_atoms, dtype=bool),
         "phase_space_weights": phase_weights,
         "first_passage_time": first_passage_time,
         "measure_weights": weights,
