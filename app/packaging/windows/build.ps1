@@ -26,6 +26,10 @@ if ($LASTEXITCODE -ne 0) {
     --distpath $OutputDir `
     --workpath (Join-Path $OutputDir "build") `
     --specpath (Join-Path $OutputDir "spec") `
+    --exclude-module torch `
+    --exclude-module torchvision `
+    --exclude-module pytest `
+    --exclude-module sympy `
     --add-data "$cylinder;examples\meshes" `
     $solverArgs `
     app\desktop_ui.py
