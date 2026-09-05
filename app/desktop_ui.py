@@ -72,7 +72,6 @@ class DesktopApp:
         ("elements", "Control volumes", "40", "cells"),
         ("stress_mean_mpa", "Mean normal stress", "50", "MPa"),
         ("stress_amplitude_mpa", "Normal stress amplitude", "100", "MPa"),
-        ("theory_stress_scale_mpa", "Theory stress scale", "40", "MPa / model force"),
         ("frequency_hz", "Loading frequency", "20", "Hz"),
         ("cycles", "Spatial preview", "2", "cycles"),
         ("steps_per_cycle", "Resolution", "80", "steps/cycle"),
@@ -247,7 +246,7 @@ class DesktopApp:
         ttk.Label(left, text="Spatial discretization", style="Section.TLabel").pack(anchor="w", pady=(0, 8))
         combo = ttk.Combobox(left, textvariable=self.spatial_backend, values=("FVM", "FEM"), state="readonly", width=24)
         combo.pack(anchor="w", pady=(0, 14))
-        ttk.Label(left, text="Theory computes probability and first passage.\nFVM/FEM applies stress only along the entered axis.\nFCC slip projection feeds a separate dislocation-based S-N bridge.\nTheory stress scale remains an uncalibrated mechanism-screening input.\nDiameter change is Poisson kinematics; transverse stress is zero.", style="Property.TLabel", justify="left").pack(anchor="w", pady=(0, 18))
+        ttk.Label(left, text="Theory computes probability and first passage.\nFVM/FEM applies stress only along the entered axis.\nThe LJ reference tangent is matched to the declared Young's modulus.\nDiameter change is Poisson kinematics; transverse stress is zero.\nNo external S-N curve or fitted life distribution is used.", style="Property.TLabel", justify="left").pack(anchor="w", pady=(0, 18))
         self.run_button = ttk.Button(left, text="RUN ANALYSIS", style="Accent.TButton", command=self._start_solve)
         self.run_button.pack(anchor="w", fill="x")
         self.progress = ttk.Progressbar(left, mode="indeterminate", length=250)
@@ -329,7 +328,7 @@ class DesktopApp:
             tensile_axis_x=axis_x, tensile_axis_y=axis_y, tensile_axis_z=axis_z,
             stress_mean_mpa=float(self.entries["stress_mean_mpa"].get()),
             stress_amplitude_mpa=float(self.entries["stress_amplitude_mpa"].get()),
-            theory_stress_scale_mpa=float(self.entries["theory_stress_scale_mpa"].get()),
+            theory_stress_scale_mpa=None,
             frequency_hz=float(self.entries["frequency_hz"].get()), cycles=int(self.entries["cycles"].get()),
             steps_per_cycle=int(self.entries["steps_per_cycle"].get()),
             deformation_scale=float(self.entries["deformation_scale"].get()),
@@ -421,8 +420,8 @@ class DesktopApp:
             f"Tensile axis: [{axis[0]:.4g}, {axis[1]:.4g}, {axis[2]:.4g}]\n"
             f"Stress ratio R: {self.current_config.stress_ratio:.4g}\n"
             f"Probability source: 64 current-load Theory Core trajectories\n"
-            f"Load map: tensile part of entered sigma(t) / theory stress scale\n"
-            f"First passage: mechanically derived opening saddle\n"
+            f"Load map: full signed sigma(t), LJ tangent matched to Young's modulus\n"
+            f"First passage: outward escape of the full Haa soft mode\n"
             f"External life data / TMW / fitted distribution: none\n"
             f"Time status: dimensionless solver time and applied-load cycles\n"
             f"Laboratory fatigue-life calibration: not yet established\n"
@@ -621,15 +620,28 @@ class DesktopApp:
             initiation = 1.0 - survival
             previous_survival = np.concatenate(([1.0], survival[:-1]))
             event_mass = np.maximum(0.0, previous_survival - survival)
+            valid_count = max(1, int(records[-1].get("valid_trajectory_count", 64)))
+            event_resolution = 1.0 / valid_count
+            zero_event_upper_95 = 1.0 - 0.05**(1.0/valid_count)
+            probability_ylim = None
             if field == "life":
                 event = event_mass > 0.0
                 if not np.any(event):
-                    self.ax.text(0.5, 0.5, "No native-solver first passage yet", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
-                    self.ax.set_axis_off(); self.canvas.draw_idle(); return
-                x = cycles[event]
-                y = event_mass[event]
-                self.ax.vlines(x, 0.0, y, color="#79a9cf", linewidth=1.0)
-                self.ax.scatter(x, y, color=ACCENT, s=24, zorder=3)
+                    x = np.asarray([cycles[0], cycles[-1]], dtype=float)
+                    y = np.zeros(2, dtype=float)
+                    self.ax.plot(x, y, color=ACCENT, linewidth=1.4)
+                    self.ax.text(
+                        0.5, 0.72,
+                        f"0 events / {valid_count} trajectories\n"
+                        f"cumulative Pinit < {zero_event_upper_95:.3g} (95% bound)",
+                        ha="center", va="center", transform=self.ax.transAxes, color=MUTED,
+                    )
+                    probability_ylim = (0.0, min(1.0, 1.2*zero_event_upper_95))
+                else:
+                    x = cycles[event]
+                    y = event_mass[event]
+                    self.ax.vlines(x, 0.0, y, color="#79a9cf", linewidth=1.0)
+                    self.ax.scatter(x, y, color=ACCENT, s=24, zorder=3)
                 ylabel = "First-passage probability mass [-]"
                 title = "Native Theory Core first-passage mass"
                 xlabel = "Applied-load cycles N [-]"
@@ -642,6 +654,14 @@ class DesktopApp:
                 xlabel = "Solver model time"
                 unit = "model_time"
                 self.ax.step(x, y, where="post", color=ACCENT, linewidth=2.0)
+                if float(np.max(y)) == 0.0:
+                    self.ax.axhline(zero_event_upper_95, color="#e15759", linestyle="--", linewidth=1.0)
+                    self.ax.text(
+                        0.02, 0.90,
+                        f"0/{valid_count} events: Pinit < {zero_event_upper_95:.3g} at 95% confidence",
+                        transform=self.ax.transAxes, color=MUTED, fontsize=9,
+                    )
+                    probability_ylim = (0.0, min(1.0, 1.2*zero_event_upper_95))
             elif field == "survival":
                 x = model_time
                 y = survival
@@ -650,6 +670,15 @@ class DesktopApp:
                 xlabel = "Solver model time"
                 unit = "model_time"
                 self.ax.step(x, y, where="post", color=ACCENT, linewidth=2.0)
+                if float(np.min(y)) == 1.0:
+                    lower_95 = 1.0 - zero_event_upper_95
+                    self.ax.axhline(lower_95, color="#e15759", linestyle="--", linewidth=1.0)
+                    self.ax.text(
+                        0.02, 0.10,
+                        f"0/{valid_count} events: S > {lower_95:.3g} at 95% confidence",
+                        transform=self.ax.transAxes, color=MUTED, fontsize=9,
+                    )
+                    probability_ylim = (max(0.0, lower_95 - 0.2*zero_event_upper_95), 1.001)
             else:
                 event = event_mass > 0.0
                 x = model_time[event]
@@ -665,7 +694,23 @@ class DesktopApp:
                 unit = "model_time"
                 self.ax.vlines(x, 0.0, y, color="#79a9cf", linewidth=1.0)
                 self.ax.scatter(x, y, color=ACCENT, s=24, zorder=3)
-            self.ax.set_ylim(bottom=0.0)
+                if not np.any(event):
+                    self.ax.text(
+                        0.5, 0.72,
+                        f"No event resolved; one trajectory = {event_resolution:.3g}",
+                        ha="center", va="center", transform=self.ax.transAxes, color=MUTED,
+                    )
+                    probability_ylim = (0.0, min(1.0, 1.2*event_resolution))
+            if probability_ylim is None:
+                finite_y = y[np.isfinite(y)]
+                if field == "survival":
+                    low = float(np.min(finite_y)); high = float(np.max(finite_y))
+                    pad = max(0.15*(high-low), 0.5*event_resolution)
+                    probability_ylim = (max(0.0, low-pad), min(1.001, high+pad))
+                else:
+                    high = float(np.max(finite_y)) if finite_y.size else 0.0
+                    probability_ylim = (0.0, min(1.0, high + max(0.2*high, 0.5*event_resolution)))
+            self.ax.set_ylim(*probability_ylim)
             self.ax.set_xlabel(xlabel)
             self.ax.set_ylabel(ylabel)
             self.ax.set_title(title, loc="left", fontsize=12, fontweight="bold")
@@ -789,7 +834,6 @@ class DesktopApp:
                 "tensile_direction": " ".join(f"{value:.8g}" for value in config.tensile_unit_vector),
                 "elements": config.elements, "stress_mean_mpa": config.stress_mean_mpa,
                 "stress_amplitude_mpa": config.stress_amplitude_mpa,
-                "theory_stress_scale_mpa": config.theory_stress_scale_mpa,
                 "frequency_hz": config.frequency_hz, "cycles": config.cycles,
                 "steps_per_cycle": config.steps_per_cycle, "deformation_scale": config.deformation_scale,
             }

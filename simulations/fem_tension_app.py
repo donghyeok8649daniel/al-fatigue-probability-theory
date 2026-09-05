@@ -83,7 +83,7 @@ class TensionRunConfig:
     elements: int = 40
     stress_mean_mpa: float = 50.0
     stress_amplitude_mpa: float = 100.0
-    theory_stress_scale_mpa: float = 40.0
+    theory_stress_scale_mpa: float | None = None
     frequency_hz: float = 20.0
     cycles: int = 2
     steps_per_cycle: int = 80
@@ -176,7 +176,6 @@ def validate_run_config(config: TensionRunConfig) -> None:
         "thickness_mm": config.thickness_mm,
         "young_gpa": config.young_gpa,
         "frequency_hz": config.frequency_hz,
-        "theory_stress_scale_mpa": config.theory_stress_scale_mpa,
         "deformation_scale": config.deformation_scale,
     }
     for name, value in positive.items():
@@ -208,30 +207,40 @@ def validate_run_config(config: TensionRunConfig) -> None:
         raise ValueError("stress_mean_mpa must be finite")
     if not np.isfinite(config.stress_amplitude_mpa) or config.stress_amplitude_mpa < 0.0:
         raise ValueError("stress_amplitude_mpa must be finite and nonnegative")
+    if config.theory_stress_scale_mpa is not None and (
+        not np.isfinite(config.theory_stress_scale_mpa)
+        or config.theory_stress_scale_mpa <= 0.0
+    ):
+        raise ValueError("theory_stress_scale_mpa override must be finite and positive")
+
+
+def resolved_theory_stress_scale_mpa(
+    config: TensionRunConfig,
+    model: TwoRowLJ | None = None,
+) -> float:
+    """Match the LJ reference tangent to the declared axial Young modulus."""
+    if config.theory_stress_scale_mpa is not None:
+        return float(config.theory_stress_scale_mpa)
+    active_model = _default_theory_model() if model is None else model
+    tangent = active_model.reference_normal_tangent_force_per_strain()
+    return float(config.young_pa*1.0e-6 / tangent)
 
 
 def theory_load_params(config: TensionRunConfig) -> LoadParams:
-    """Map tensile MPa to the solver's dimensionless normal-force coordinate.
-
-    ``theory_stress_scale_mpa`` is an explicit user calibration: it is the
-    physical tensile stress represented by one model-force unit.  Compression
-    is clipped because this theory solver currently models opening only.
-    """
-    stress_min = max(0.0, config.stress_mean_mpa - config.stress_amplitude_mpa)
-    stress_max = max(0.0, config.stress_mean_mpa + config.stress_amplitude_mpa)
+    """Map the full signed normal stress to the LJ force coordinate."""
+    stress_scale_mpa = resolved_theory_stress_scale_mpa(config)
+    stress_min = config.stress_mean_mpa - config.stress_amplitude_mpa
+    stress_max = config.stress_mean_mpa + config.stress_amplitude_mpa
     model_period = 10.0
     return LoadParams(
-        force_min=stress_min / config.theory_stress_scale_mpa,
-        force_max=stress_max / config.theory_stress_scale_mpa,
+        force_min=stress_min / stress_scale_mpa,
+        force_max=stress_max / stress_scale_mpa,
         period=model_period,
         cycles=config.cycles,
         phase_radians=0.0,
-        value_function=lambda model_time: max(
-            0.0,
-            config.axial_stress_mpa(
-                model_time / (model_period * config.frequency_hz)
-            ),
-        ) / config.theory_stress_scale_mpa,
+        value_function=lambda model_time: config.axial_stress_mpa(
+            model_time / (model_period * config.frequency_hz)
+        ) / stress_scale_mpa,
     )
 
 
@@ -644,12 +653,9 @@ def run_selected_solver(
         output_dir.mkdir(parents=True, exist_ok=True)
         model_time = np.asarray(out["time"], dtype=float)
         time = model_time / (load_p.period * config.frequency_hz)
-        tensile_drive_stress_pa = (
-            np.asarray(out["force"], dtype=float)
-            * config.theory_stress_scale_mpa
-            * 1.0e6
-        )
+        stress_scale_mpa = resolved_theory_stress_scale_mpa(config)
         applied_stress_pa = np.asarray(config.axial_stress_mpa(time), dtype=float) * 1.0e6
+        tensile_drive_stress_pa = np.maximum(0.0, applied_stress_pa)
         with (output_dir / "nodes.csv").open("w", newline="", encoding="utf-8") as h:
             w = csv.writer(h); w.writerow(["time_s", "step", "node", "x_m", "displacement_m", "applied_stress_pa"])
             for step, (t, stress, strain) in enumerate(zip(time, applied_stress_pa, out["strain"])):
@@ -694,13 +700,14 @@ def run_selected_solver(
                 ["solver", "theory_core_v1_probability"],
                 ["cycles", config.cycles],
                 ["frequency_hz", f"{config.frequency_hz:.17g}"],
-                ["theory_stress_scale_mpa_per_force_unit", f"{config.theory_stress_scale_mpa:.17g}"],
+                ["theory_stress_scale_mpa_per_force_unit", f"{stress_scale_mpa:.17g}"],
                 ["theory_force_min", f"{load_p.force_min:.17g}"],
                 ["theory_force_max", f"{load_p.force_max:.17g}"],
                 ["theory_internal_dt", f"{solver_p.dt:.17g}"],
                 ["displayed_stress", "full_signed_user_applied_normal_stress"],
-                ["crack_drive", "max(0,normal_stress_mpa)/theory_stress_scale_mpa"],
-                ["stress_scale_status", "user_set_not_experimentally_calibrated"],
+                ["mechanical_load", "full_signed_normal_stress/theory_stress_scale_mpa"],
+                ["crack_opening_direction", "outward_soft_mode_under_signed_mechanical_load"],
+                ["stress_scale_status", "matched_to_declared_Young_modulus_at_LJ_reference_state"],
                 ["crack_first_passage", "full_many_body_Haa_soft_mode_outward_escape"],
                 ["strain_decomposition", "normal_plus_intrawell_plus_well_index_plastic"],
                 ["local_opening_barrier_status", "diagnostic_only_not_absorbing_boundary"],

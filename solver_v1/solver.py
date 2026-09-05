@@ -111,6 +111,9 @@ def run_ensemble(
                     "opening_barrier": barrier,
                     "min_opening_eigenvalue": min_opening_eigenvalue,
                     "min_plastic_eigenvalue": min_plastic_eigenvalue,
+                    "ensemble_size": solver_p.n_trajectories,
+                    "valid_trajectory_count": valid_count,
+                    "alive_trajectory_count": int(np.count_nonzero(alive)),
                 })
 
         if step == nt-1:

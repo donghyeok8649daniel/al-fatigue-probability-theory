@@ -22,6 +22,7 @@ from simulations.fem_tension_app import (
     run_live_theory_solver,
     run_selected_solver,
     run_theory_spatial_solver,
+    resolved_theory_stress_scale_mpa,
     solver_command,
     theory_load_params,
     theory_solver_params,
@@ -191,12 +192,25 @@ class TestSolverCommand(unittest.TestCase):
         load = theory_load_params(config)
         solver = theory_solver_params(config, load)
 
-        self.assertAlmostEqual(load.force_min, 0.0)
+        self.assertAlmostEqual(load.force_min, -1.0)
         self.assertAlmostEqual(load.force_max, 4.0)
         self.assertAlmostEqual(load.value(2.5), 4.0)
-        self.assertAlmostEqual(load.value(7.5), 0.0)
+        self.assertAlmostEqual(load.value(7.5), -1.0)
         self.assertLessEqual(solver.dt, 0.02)
         self.assertAlmostEqual(solver.dt * solver.record_stride, load.period / 80.0)
+
+    def test_default_theory_scale_matches_declared_elastic_tangent(self) -> None:
+        config = TensionRunConfig(
+            young_gpa=69.0,
+            stress_mean_mpa=50.0,
+            stress_amplitude_mpa=85.0,
+        )
+        scale = resolved_theory_stress_scale_mpa(config)
+        load = theory_load_params(config)
+
+        self.assertAlmostEqual(scale, 728.5261047161429, places=8)
+        self.assertAlmostEqual(load.force_max, 135.0 / scale)
+        self.assertAlmostEqual(load.force_min, -35.0 / scale)
 
     def test_live_theory_stream_uses_native_solver_and_user_stop(self) -> None:
         records = []
@@ -216,7 +230,9 @@ class TestSolverCommand(unittest.TestCase):
         self.assertAlmostEqual(records[1]["applied_stress_mpa"], 135.0)
         self.assertAlmostEqual(records[3]["applied_stress_mpa"], -35.0)
         self.assertEqual(records[3]["tensile_crack_drive_mpa"], 0.0)
-        self.assertEqual(records[3]["force"], 0.0)
+        self.assertLess(records[3]["force"], 0.0)
+        self.assertEqual(records[3]["valid_trajectory_count"], 64)
+        self.assertEqual(records[3]["ensemble_size"], 64)
         self.assertEqual(result["time"].size, 0)
 
     def test_higher_stress_advances_first_passage(self) -> None:

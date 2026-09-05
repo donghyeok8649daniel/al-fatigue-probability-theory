@@ -381,6 +381,20 @@ class TwoRowLJ:
         plastic = p.chi_axial_projection*p.b*np.mean(well, axis=1)/self.a0
         return normal + intrawell + plastic, normal, intrawell, plastic
 
+    def reference_normal_tangent_force_per_strain(self) -> float:
+        """Return the small-strain normal tangent of the LJ reference state."""
+        cells = self.p.n_cells
+        a = np.full(cells, self.a0, dtype=float)
+        s = np.zeros(cells, dtype=float)
+        haa, _, _ = self.hessian_blocks(a, s)
+        direction = np.ones(cells, dtype=float)
+        compliance = float(
+            direction @ np.linalg.solve(haa, direction) / (cells*self.a0)
+        )
+        if not np.isfinite(compliance) or compliance <= 0.0:
+            raise ValueError("reference normal LJ state has no positive tangent compliance")
+        return 1.0 / compliance
+
     def well_index(self, s: np.ndarray) -> np.ndarray:
         p = self.p
         return np.floor((np.asarray(s) + 0.5*p.b)/p.b).astype(int)

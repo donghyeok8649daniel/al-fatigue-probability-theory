@@ -42,6 +42,20 @@ def test_strain_components_sum_to_declared_total_strain():
     assert np.isclose(total[0], m.strain(a[0], s[0]))
     assert np.isclose(total[0], normal[0] + intrawell[0] + plastic[0])
 
+def test_reference_normal_tangent_matches_uniform_finite_difference():
+    m = TwoRowLJ(ModelParams(n_cells=3))
+    tangent = m.reference_normal_tangent_force_per_strain()
+    delta = 1.0e-6
+    a_plus = np.full(3, m.a0*(1.0 + delta))
+    a_minus = np.full(3, m.a0*(1.0 - delta))
+    s = np.zeros(3)
+    _, ga_plus, _ = m.energy_gradient(a_plus, s, 0.0)
+    _, ga_minus, _ = m.energy_gradient(a_minus, s, 0.0)
+    numerical = float(np.mean(ga_plus - ga_minus) / (2.0*delta))
+
+    assert tangent > 0.0
+    assert np.isclose(tangent, numerical, rtol=2.0e-7, atol=2.0e-7)
+
 def test_coupled_opening_escape_uses_outward_full_normal_mode():
     m = TwoRowLJ(ModelParams(n_cells=1))
     force = 3.0
