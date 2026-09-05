@@ -67,6 +67,8 @@ class TestTensionRunConfig(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_run_config(TensionRunConfig(cycles=0))
         with self.assertRaises(ValueError):
+            validate_run_config(TensionRunConfig(fatigue_horizon_cycles=0))
+        with self.assertRaises(ValueError):
             validate_run_config(TensionRunConfig(steps_per_cycle=1))
 
     def test_invalid_poisson_ratio_and_tensile_axis_are_rejected(self) -> None:

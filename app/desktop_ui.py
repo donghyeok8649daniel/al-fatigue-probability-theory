@@ -72,7 +72,8 @@ class DesktopApp:
         ("stress_amplitude_mpa", "Normal stress amplitude", "100", "MPa"),
         ("theory_stress_scale_mpa", "Theory stress scale", "40", "MPa / model force"),
         ("frequency_hz", "Loading frequency", "20", "Hz"),
-        ("cycles", "Loading cycles", "2", "cycles"),
+        ("cycles", "Waveform preview", "2", "cycles"),
+        ("fatigue_horizon_cycles", "Fatigue horizon", "10000000", "cycles"),
         ("steps_per_cycle", "Resolution", "80", "steps/cycle"),
         ("deformation_scale", "Display deformation", "1", "x"),
     )
@@ -107,6 +108,15 @@ class DesktopApp:
         self.life_distribution: np.ndarray | None = None
         self.current_config = None
         self.busy = False
+        self.playing = False
+        self.play_position = tk.DoubleVar(value=0.0)
+        self._play_job = None
+        self._cursor_line = None
+        self._cursor_domain = None
+        self._cursor_x = None
+        self._cursor_y = None
+        self._cursor_value_name = None
+        self._last_plot_field = None
 
         self._styles()
         self._header()
@@ -262,6 +272,23 @@ class DesktopApp:
             ).grid(row=row + 1, column=column, sticky="ew", padx=2, pady=2)
         for column in range(4):
             toolbar.columnconfigure(column, weight=1, uniform="post_fields")
+        timeline = ttk.Frame(self.post_tab, style="Panel.TFrame")
+        timeline.pack(fill="x", padx=14, pady=(2, 2))
+        self.play_button = ttk.Button(timeline, text="PLAY", command=self._toggle_playback)
+        self.play_button.pack(side="left", padx=(2, 8))
+        ttk.Button(timeline, text="RESET", command=self._reset_playback).pack(side="left", padx=(0, 8))
+        self.timeline = ttk.Scale(
+            timeline,
+            from_=0.0,
+            to=1.0,
+            variable=self.play_position,
+            command=self._on_timeline,
+        )
+        self.timeline.pack(side="left", fill="x", expand=True, padx=4)
+        self.timeline_label = ttk.Label(
+            timeline, text="Time: 0", style="Property.TLabel", width=38, anchor="e"
+        )
+        self.timeline_label.pack(side="right", padx=(8, 2))
         self.figure = Figure(figsize=(8, 5), dpi=96, facecolor=PANEL_BG)
         self.ax = self.figure.add_subplot(111)
         self.canvas = FigureCanvasTkAgg(self.figure, master=self.post_tab)
@@ -301,6 +328,7 @@ class DesktopApp:
             stress_amplitude_mpa=float(self.entries["stress_amplitude_mpa"].get()),
             theory_stress_scale_mpa=float(self.entries["theory_stress_scale_mpa"].get()),
             frequency_hz=float(self.entries["frequency_hz"].get()), cycles=int(self.entries["cycles"].get()),
+            fatigue_horizon_cycles=int(self.entries["fatigue_horizon_cycles"].get()),
             steps_per_cycle=int(self.entries["steps_per_cycle"].get()),
             deformation_scale=float(self.entries["deformation_scale"].get()),
         )
@@ -380,6 +408,14 @@ class DesktopApp:
             if np.isfinite(tmw.cycles_to_initiation)
             else "not activated in this mechanism"
         )
+        horizon = self.current_config.fatigue_horizon_cycles
+        horizon_probability = 0.0
+        if self.life_distribution is not None:
+            reached = self.life_distribution[
+                self.life_distribution["initiation_cycles"] <= horizon
+            ]
+            if reached.size:
+                horizon_probability = float(reached[-1]["cumulative_probability"])
         self._summary(
             f"Theory core: Theory Core v1\n"
             f"Spatial backend: {spatial_backend}\n"
@@ -388,6 +424,8 @@ class DesktopApp:
             f"Maximum FCC Schmid factor: {active_slip.schmid_factor:.4g}\n"
             f"Maximum resolved-shear amplitude: {max_tau_a:.4g} MPa\n"
             f"FCC dislocation-initiation N50 scale: {tmw_life}\n"
+            f"Fatigue horizon: {horizon:.6g} cycles ({horizon / self.current_config.frequency_hz:.6g} s)\n"
+            f"Initiation probability at horizon: {horizon_probability:.4f}\n"
             f"Life law: Theory Core v1 empirical first passage (right-censored)\n"
             f"S-N bridge status: conditional physical scale; no life-distribution fit\n"
             f"Applied transverse stress: 0 Pa\n"
@@ -399,6 +437,7 @@ class DesktopApp:
         self.status.set(f"Solved · Theory Core v1 + {spatial_backend} · {steps} records")
         self.notebook.select(self.post_tab)
         self._plot()
+        self._start_playback()
 
     def _solve_failed(self, detail: str) -> None:
         self.busy = False
@@ -425,33 +464,171 @@ class DesktopApp:
         y = np.array([np.mean(data[data["step"] == step][column]) for step in steps])
         return t, y
 
+    def _set_cursor_domain(
+        self,
+        start: float,
+        end: float,
+        *,
+        logarithmic: bool,
+        unit: str,
+        x_values=None,
+        y_values=None,
+        value_name: str | None = None,
+    ) -> None:
+        start = max(float(start), np.finfo(float).tiny) if logarithmic else float(start)
+        end = max(float(end), start * (1.0 + 1.0e-12))
+        self._cursor_domain = (start, end, logarithmic, unit)
+        self._cursor_x = None if x_values is None else np.asarray(x_values, dtype=float)
+        self._cursor_y = None if y_values is None else np.asarray(y_values, dtype=float)
+        self._cursor_value_name = value_name
+        position = float(self.play_position.get())
+        if logarithmic:
+            value = 10.0 ** (np.log10(start) + position * (np.log10(end) - np.log10(start)))
+        else:
+            value = start + position * (end - start)
+        self._cursor_line = self.ax.axvline(value, color="#d64b3c", linewidth=1.2, alpha=0.9)
+        self._update_timeline_label(value, unit)
+
+    def _update_timeline_label(self, value: float, unit: str) -> None:
+        suffix = ""
+        if self._cursor_x is not None and self._cursor_y is not None and self._cursor_x.size:
+            order = np.argsort(self._cursor_x)
+            x_values = self._cursor_x[order]
+            y_values = self._cursor_y[order]
+            index = int(np.clip(np.searchsorted(x_values, value, side="right") - 1, 0, len(x_values) - 1))
+            suffix = f"  |  {self._cursor_value_name} = {y_values[index]:.4g}"
+        if unit == "cycles":
+            seconds = value / self.current_config.frequency_hz if self.current_config else np.nan
+            self.timeline_label.configure(text=f"N = {value:.4g}  |  {seconds:.4g} s{suffix}")
+        else:
+            self.timeline_label.configure(text=f"t = {value:.5g} s{suffix}")
+
+    def _on_timeline(self, _value=None) -> None:
+        if self._cursor_domain is None or self._cursor_line is None:
+            return
+        start, end, logarithmic, unit = self._cursor_domain
+        position = float(self.play_position.get())
+        if logarithmic:
+            value = 10.0 ** (np.log10(start) + position * (np.log10(end) - np.log10(start)))
+        else:
+            value = start + position * (end - start)
+        self._cursor_line.set_xdata([value, value])
+        self._update_timeline_label(value, unit)
+        self.canvas.draw_idle()
+
+    def _toggle_playback(self) -> None:
+        if self.playing:
+            self._stop_playback()
+        else:
+            self._start_playback()
+
+    def _start_playback(self) -> None:
+        if self._cursor_domain is None:
+            return
+        if float(self.play_position.get()) >= 1.0:
+            self.play_position.set(0.0)
+        self.playing = True
+        self.play_button.configure(text="PAUSE")
+        if self._play_job is None:
+            self._play_job = self.root.after(80, self._play_tick)
+
+    def _stop_playback(self) -> None:
+        self.playing = False
+        self.play_button.configure(text="PLAY")
+        if self._play_job is not None:
+            self.root.after_cancel(self._play_job)
+            self._play_job = None
+
+    def _reset_playback(self) -> None:
+        self._stop_playback()
+        self.play_position.set(0.0)
+        self._on_timeline()
+
+    def _play_tick(self) -> None:
+        self._play_job = None
+        if not self.playing:
+            return
+        position = min(1.0, float(self.play_position.get()) + 0.008)
+        self.play_position.set(position)
+        self._on_timeline()
+        if position >= 1.0:
+            self._stop_playback()
+        else:
+            self._play_job = self.root.after(80, self._play_tick)
+
     def _plot(self) -> None:
         if self.elements is None:
             self._show_empty_plot()
             return
         field = self.field.get()
+        if field != self._last_plot_field:
+            self._stop_playback()
+            self.play_position.set(0.0)
+            self._last_plot_field = field
         self.ax.clear()
         self.ax.set_axis_on()
-        if field == "life":
+        self._cursor_line = None
+        self._cursor_domain = None
+        self._cursor_x = None
+        self._cursor_y = None
+        self._cursor_value_name = None
+        if field in {"initiation", "survival", "hazard", "life"}:
             if self.life_distribution is None:
                 self.ax.text(0.5, 0.5, "Life distribution requires an analysis", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
                 self.ax.set_axis_off(); self.canvas.draw_idle(); return
             cycles = np.asarray(self.life_distribution["initiation_cycles"], dtype=float)
             cdf = np.asarray(self.life_distribution["cumulative_probability"], dtype=float)
-            finite = np.isfinite(cycles) & np.isfinite(cdf)
-            if not np.any(finite):
+            mass = np.asarray(self.life_distribution["probability_mass"], dtype=float)
+            horizon = float(self.current_config.fatigue_horizon_cycles)
+            finite = np.isfinite(cycles) & np.isfinite(cdf) & (cycles <= horizon)
+            if field == "life" and not np.any(finite):
                 self.ax.text(0.5, 0.5, "No finite first-passage life for this mechanism", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
                 self.ax.set_axis_off(); self.canvas.draw_idle(); return
             order = np.argsort(cycles[finite])
-            self.ax.step(cycles[finite][order], cdf[finite][order], where="post", color=ACCENT, linewidth=2.0, label="Initiation CDF")
-            self.ax.step(cycles[finite][order], 1.0 - cdf[finite][order], where="post", color="#66727d", linewidth=1.6, label="Survival")
+            event_cycles = cycles[finite][order]
+            event_cdf = cdf[finite][order]
+            event_mass = mass[finite][order]
+            if field == "life":
+                self.ax.vlines(event_cycles, 0.0, event_mass, color="#79a9cf", linewidth=1.0)
+                self.ax.scatter(event_cycles, event_mass, color=ACCENT, s=24, zorder=3)
+                ylabel = "First-passage probability mass [-]"
+                title = "Life probability mass from Theory Core trajectories"
+            else:
+                x = np.concatenate(([1.0], event_cycles, [horizon]))
+                padded_cdf = np.concatenate(([0.0], event_cdf, [event_cdf[-1] if event_cdf.size else 0.0]))
+                if field == "initiation":
+                    y = padded_cdf
+                    ylabel = "Cumulative initiation probability [-]"
+                    title = "Fatigue crack-initiation probability"
+                elif field == "survival":
+                    y = 1.0 - padded_cdf
+                    ylabel = "Survival probability [-]"
+                    title = "Fatigue survival"
+                else:
+                    y = -np.log(np.maximum(1.0 - padded_cdf, 1.0e-12))
+                    ylabel = "Cumulative hazard H(N) [-]"
+                    title = "Fatigue cumulative hazard"
+                self.ax.step(x, y, where="post", color=ACCENT, linewidth=2.0)
             self.ax.set_xscale("log")
-            self.ax.set_ylim(0.0, 1.02)
-            self.ax.set_xlabel("Cycles to crack initiation")
-            self.ax.set_ylabel("Probability [-]")
-            self.ax.set_title("Life first-passage distribution", loc="left", fontsize=12, fontweight="bold")
-            self.ax.legend(frameon=False)
+            self.ax.set_xlim(1.0, horizon)
+            if field != "hazard":
+                self.ax.set_ylim(bottom=0.0)
+            self.ax.set_xlabel("Fatigue cycles N")
+            self.ax.set_ylabel(ylabel)
+            self.ax.set_title(title, loc="left", fontsize=12, fontweight="bold")
             self.ax.grid(True, which="both", color="#d9e0e5", linewidth=0.7, alpha=0.8)
+            cursor_x = event_cycles if field == "life" else x
+            cursor_y = event_mass if field == "life" else y
+            cursor_name = "PMF" if field == "life" else {"initiation": "Pinit", "survival": "S", "hazard": "H"}[field]
+            self._set_cursor_domain(
+                1.0,
+                horizon,
+                logarithmic=True,
+                unit="cycles",
+                x_values=cursor_x,
+                y_values=cursor_y,
+                value_name=cursor_name,
+            )
             self.figure.tight_layout(pad=1.2)
             self.canvas.draw_idle()
             return
@@ -484,6 +661,12 @@ class DesktopApp:
             self.ax.set_ylabel("Axial stress amplitude [MPa]")
             self.ax.set_title("FCC slip-band initiation probability quantiles", loc="left", fontsize=12, fontweight="bold")
             self.ax.grid(True, which="both", color="#d9e0e5", linewidth=0.7, alpha=0.8)
+            self._set_cursor_domain(
+                1.0,
+                float(self.current_config.fatigue_horizon_cycles),
+                logarithmic=True,
+                unit="cycles",
+            )
             self.figure.tight_layout(pad=1.2)
             self.canvas.draw_idle()
             return
@@ -503,19 +686,21 @@ class DesktopApp:
                 diameter = config.diameter_m * (1.0 - config.poisson_ratio * axial_strain)
             y = (diameter - config.diameter_m) * 1.0e6
             ylabel = "Diameter change [µm]"
-        else:
-            if self.initiation is None:
-                self.ax.text(0.5, 0.5, "Probability fields require a Theory Core v1 solve", ha="center", va="center", transform=self.ax.transAxes, color=MUTED)
-                self.ax.set_axis_off(); self.canvas.draw_idle(); return
-            column = {"initiation": "initiation_probability", "survival": "survival", "hazard": "hazard_per_s"}[field]
-            t, y = self._series_by_step(self.initiation, column)
-            ylabel = {"initiation": "First-passage probability [-]", "survival": "Survival probability [-]", "hazard": "Hazard [1/s]"}[field]
         self.ax.plot(t, y, color=ACCENT, linewidth=1.8)
         self.ax.fill_between(t, y, alpha=0.12, color=ACCENT)
         self.ax.set_xlabel("Time [s]")
         self.ax.set_ylabel(ylabel)
         self.ax.set_title(self.FIELD_LABELS[field], loc="left", fontsize=12, fontweight="bold")
         self.ax.grid(True, color="#d9e0e5", linewidth=0.7, alpha=0.8)
+        self._set_cursor_domain(
+            float(np.min(t)),
+            float(np.max(t)),
+            logarithmic=False,
+            unit="seconds",
+            x_values=t,
+            y_values=y,
+            value_name=self.FIELD_LABELS[field],
+        )
         self.figure.tight_layout(pad=1.2)
         self.canvas.draw_idle()
 
@@ -567,6 +752,7 @@ class DesktopApp:
                 "stress_amplitude_mpa": config.stress_amplitude_mpa,
                 "theory_stress_scale_mpa": config.theory_stress_scale_mpa,
                 "frequency_hz": config.frequency_hz, "cycles": config.cycles,
+                "fatigue_horizon_cycles": config.fatigue_horizon_cycles,
                 "steps_per_cycle": config.steps_per_cycle, "deformation_scale": config.deformation_scale,
             }
             for key, value in values.items():

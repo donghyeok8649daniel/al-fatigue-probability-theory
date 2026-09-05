@@ -95,6 +95,7 @@ class TensionRunConfig:
     theory_stress_scale_mpa: float = 40.0
     frequency_hz: float = 20.0
     cycles: int = 2
+    fatigue_horizon_cycles: int = 10_000_000
     steps_per_cycle: int = 80
     deformation_scale: float = 1.0
     aluminum_lattice_parameter_nm: float = 0.40495
@@ -226,6 +227,8 @@ def validate_run_config(config: TensionRunConfig) -> None:
         raise ValueError("elements must be at least 1")
     if config.cycles < 1:
         raise ValueError("cycles must be at least 1")
+    if config.fatigue_horizon_cycles < 1:
+        raise ValueError("fatigue_horizon_cycles must be at least 1")
     if config.steps_per_cycle < 2:
         raise ValueError("steps_per_cycle must be at least 2")
     if not np.isfinite(config.stress_mean_mpa):
@@ -923,6 +926,8 @@ def run_theory_spatial_solver(
             ["life_distribution", "theory_core_v1_empirical_first_passage_right_censored"],
             ["life_distribution_kernel", "none"],
             ["tmw_mean_stress_correction", "none"],
+            ["fatigue_horizon_cycles", config.fatigue_horizon_cycles],
+            ["fatigue_horizon_seconds", f"{config.fatigue_horizon_cycles / config.frequency_hz:.17g}"],
         ])
     return theory_result, spatial_result
 

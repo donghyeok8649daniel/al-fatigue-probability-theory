@@ -10,6 +10,8 @@ py -3 -m app.desktop_ui
 
 `Theory Core v1` is always active. The Solve workspace exposes only the spatial discretization choice, `FVM` or `FEM`; FVM is the default. The application is organized into responsive Pre/Mesh, Solve, and Post workspaces, and Post provides normal stress, axial strain, diameter change, first passage, survival, hazard, life-distribution, and S--N probability-quantile result modes.
 
+`Waveform preview` controls the small number of cycles integrated explicitly for the stress/strain loop. `Fatigue horizon` is a separate reporting interval (default $10^7$ cycles) for initiation, survival, cumulative hazard, and life probability. The Post timeline provides Play/Pause/Reset and continuous cursor updates. Probability playback uses cycle jumping through the solver-generated first-passage empirical measure; it does not pretend to integrate all $10^7$ cycles one by one.
+
 The Pre workspace exposes `Theory stress scale` in MPa per model-force unit. Mean stress and stress amplitude are converted through this explicit scale before the theory solve; compressive portions are clipped because the current probability solver is opening-only. The default scale is a numerical demonstration value, not an experimentally calibrated aluminum fatigue time-scale bridge.
 
 For a declared crystal loading direction `[h k l]`, the axial normal stress is also projected exactly onto all twelve FCC $\{111\}\langle110\rangle$ slip systems. The generated `slip_systems.csv` records signed and absolute Schmid factors and the mean, amplitude, minimum, and maximum resolved shear stress. This projection introduces no applied macroscopic shear.
