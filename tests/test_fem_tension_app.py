@@ -201,13 +201,22 @@ class TestSolverCommand(unittest.TestCase):
     def test_live_theory_stream_uses_native_solver_and_user_stop(self) -> None:
         records = []
         result = run_live_theory_solver(
-            TensionRunConfig(cycles=1, steps_per_cycle=4),
+            TensionRunConfig(
+                stress_mean_mpa=50.0,
+                stress_amplitude_mpa=85.0,
+                cycles=1,
+                steps_per_cycle=4,
+            ),
             records.append,
-            lambda: len(records) >= 3,
+            lambda: len(records) >= 4,
         )
 
-        self.assertEqual(len(records), 3)
-        self.assertTrue(all(records[i]["cycle"] < records[i + 1]["cycle"] for i in range(2)))
+        self.assertEqual(len(records), 4)
+        self.assertTrue(all(records[i]["cycle"] < records[i + 1]["cycle"] for i in range(3)))
+        self.assertAlmostEqual(records[1]["applied_stress_mpa"], 135.0)
+        self.assertAlmostEqual(records[3]["applied_stress_mpa"], -35.0)
+        self.assertEqual(records[3]["tensile_crack_drive_mpa"], 0.0)
+        self.assertEqual(records[3]["force"], 0.0)
         self.assertEqual(result["time"].size, 0)
 
     def test_higher_stress_advances_first_passage(self) -> None:

@@ -690,7 +690,7 @@ class DesktopApp:
             config = self.current_config
             records = list(self.live_records)
             t = np.asarray([row["model_time"] for row in records], dtype=float)
-            stress_mpa = np.asarray([row["force"] for row in records], dtype=float) * config.theory_stress_scale_mpa
+            stress_mpa = np.asarray([row["applied_stress_mpa"] for row in records], dtype=float)
             axial_strain = np.asarray([row["strain"] for row in records], dtype=float)
             normal_strain = np.asarray([row["normal_strain"] for row in records], dtype=float)
             intrawell_strain = np.asarray([row["intrawell_strain"] for row in records], dtype=float)

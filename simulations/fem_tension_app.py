@@ -644,14 +644,15 @@ def run_selected_solver(
         output_dir.mkdir(parents=True, exist_ok=True)
         model_time = np.asarray(out["time"], dtype=float)
         time = model_time / (load_p.period * config.frequency_hz)
-        tensile_stress_pa = (
+        tensile_drive_stress_pa = (
             np.asarray(out["force"], dtype=float)
             * config.theory_stress_scale_mpa
             * 1.0e6
         )
+        applied_stress_pa = np.asarray(config.axial_stress_mpa(time), dtype=float) * 1.0e6
         with (output_dir / "nodes.csv").open("w", newline="", encoding="utf-8") as h:
             w = csv.writer(h); w.writerow(["time_s", "step", "node", "x_m", "displacement_m", "applied_stress_pa"])
-            for step, (t, stress, strain) in enumerate(zip(time, tensile_stress_pa, out["strain"])):
+            for step, (t, stress, strain) in enumerate(zip(time, applied_stress_pa, out["strain"])):
                 w.writerow([t, step, 0, 0.0, 0.0, stress])
                 w.writerow([t, step, 1, 1.0, strain, stress])
         survival = np.asarray(out["survival"], dtype=float)
@@ -664,17 +665,18 @@ def run_selected_solver(
             w = csv.writer(h); w.writerow([
                 "time_s", "step", "element", "x_mid_m", "strain", "normal_strain",
                 "intrawell_strain", "plastic_strain", "stress_pa", "applied_stress_pa",
-                "min_opening_eigenvalue", "min_plastic_eigenvalue",
+                "tensile_crack_drive_pa", "min_opening_eigenvalue", "min_plastic_eigenvalue",
             ])
             for step, values in enumerate(zip(
-                time, tensile_stress_pa, out["strain"], out["normal_strain"],
+                time, applied_stress_pa, tensile_drive_stress_pa,
+                out["strain"], out["normal_strain"],
                 out["intrawell_strain"], out["plastic_strain"],
                 out["min_opening_eigenvalue"], out["min_plastic_eigenvalue"],
             )):
-                t, stress, strain, normal, intrawell, plastic, opening_eig, plastic_eig = values
+                t, stress, crack_drive, strain, normal, intrawell, plastic, opening_eig, plastic_eig = values
                 w.writerow([
                     t, step, 0, 0.5, strain, normal, intrawell, plastic, stress, stress,
-                    opening_eig, plastic_eig,
+                    crack_drive, opening_eig, plastic_eig,
                 ])
         with (output_dir / "initiation_elements.csv").open("w", newline="", encoding="utf-8") as h:
             w = csv.writer(h); w.writerow([
@@ -696,7 +698,8 @@ def run_selected_solver(
                 ["theory_force_min", f"{load_p.force_min:.17g}"],
                 ["theory_force_max", f"{load_p.force_max:.17g}"],
                 ["theory_internal_dt", f"{solver_p.dt:.17g}"],
-                ["stress_mapping", "max(0,normal_stress_mpa)/theory_stress_scale_mpa"],
+                ["displayed_stress", "full_signed_user_applied_normal_stress"],
+                ["crack_drive", "max(0,normal_stress_mpa)/theory_stress_scale_mpa"],
                 ["stress_scale_status", "user_set_not_experimentally_calibrated"],
                 ["crack_first_passage", "full_many_body_Haa_soft_mode_outward_escape"],
                 ["strain_decomposition", "normal_plus_intrawell_plus_well_index_plastic"],
@@ -809,10 +812,14 @@ def run_live_theory_solver(
 
     def mapped_record(record: dict) -> None:
         model_time = float(record["time"])
+        physical_time_s = model_time / (live_load.period * config.frequency_hz)
+        applied_stress_mpa = float(config.axial_stress_mpa(physical_time_s))
         record_callback({
             **record,
             "model_time": model_time,
             "cycle": model_time / live_load.period,
+            "applied_stress_mpa": applied_stress_mpa,
+            "tensile_crack_drive_mpa": max(0.0, applied_stress_mpa),
         })
 
     return run_ensemble(
