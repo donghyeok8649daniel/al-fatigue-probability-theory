@@ -41,6 +41,13 @@ def _zero_mode(a: np.ndarray, p: int, b: float) -> tuple[np.ndarray, np.ndarray]
     return value, deda
 
 
+def _zero_mode_second_deda(a: np.ndarray, p: int, b: float) -> np.ndarray:
+    """Exact d^2 A_p / da^2 for the m=0 Poisson term."""
+
+    value, _ = _zero_mode(a, p, b)
+    return (1 - 2 * p) * (-2 * p) * value / (a * a)
+
+
 def _mode_coefficient_and_deda(
     a: np.ndarray,
     p: int,
@@ -66,6 +73,33 @@ def _mode_coefficient_and_deda(
         + a_power * c * kvp(nu, z, 1)
     )
     return coefficient, dcoefficient
+
+
+def _mode_coefficient_second_deda(
+    a: np.ndarray,
+    p: int,
+    m: int,
+    b: float,
+) -> np.ndarray:
+    """Exact second a-derivative of B_{p,m}(a)."""
+
+    nu = p - 0.5
+    c = 2.0 * math.pi * m / b
+    z = c * a
+    prefactor = (
+        4.0
+        * math.sqrt(math.pi)
+        / (b * gamma(p))
+        * (math.pi * m / b) ** nu
+    )
+    kval = kv(nu, z)
+    kprime = kvp(nu, z, 1)
+    ksecond = kvp(nu, z, 2)
+    return prefactor * (
+        nu * (nu + 1.0) * a ** (-nu - 2.0) * kval
+        - 2.0 * nu * a ** (-nu - 1.0) * c * kprime
+        + a ** (-nu) * c * c * ksecond
+    )
 
 
 def power_lattice_sum_and_gradient(
@@ -148,6 +182,53 @@ def power_lattice_sum_and_gradient(
     return total, deda, deds, modes_used
 
 
+def power_lattice_normal_second_derivative(
+    a,
+    s,
+    *,
+    p: int,
+    b: float = 1.0,
+    config: FourierLatticeConfig = FourierLatticeConfig(),
+) -> tuple[np.ndarray, int]:
+    """Evaluate the exact Poisson-summed d^2 S_p / da^2.
+
+    This is used only to identify the tangent normal stiffness of the canonical
+    lattice potential. It does not linearize the subsequent nonlinear PDE.
+    """
+
+    if p <= 0:
+        raise ValueError("p must be positive")
+    if b <= 0.0:
+        raise ValueError("b must be positive")
+    if (
+        config.tol <= 0.0
+        or config.max_modes < 1
+        or config.consecutive_small < 1
+    ):
+        raise ValueError("invalid Fourier lattice controls")
+
+    aa, ss = _as_arrays(a, s)
+    second = _zero_mode_second_deda(aa, p, b)
+    small_count = 0
+    modes_used = config.max_modes
+
+    for m in range(1, config.max_modes + 1):
+        phase = 2.0 * math.pi * m * (0.5 - ss / b)
+        term = _mode_coefficient_second_deda(aa, p, m, b) * np.cos(phase)
+        second = second + term
+        scale = max(1.0, float(np.max(np.abs(second))))
+        term_size = float(np.max(np.abs(term)))
+        if term_size <= config.tol * scale:
+            small_count += 1
+            if small_count >= config.consecutive_small:
+                modes_used = m
+                break
+        else:
+            small_count = 0
+
+    return second, modes_used
+
+
 def two_row_lj_infinite_energy_gradient(
     a,
     s,
@@ -180,6 +261,31 @@ def two_row_lj_infinite_energy_gradient(
     deda = factor * (sigma_lj**12 * s6a - sigma_lj**6 * s3a)
     deds = factor * (sigma_lj**12 * s6s - sigma_lj**6 * s3s)
     return energy, deda, deds, max(modes6, modes3)
+
+
+def two_row_lj_infinite_normal_stiffness(
+    a,
+    s,
+    *,
+    epsilon: float,
+    sigma_lj: float,
+    b: float = 1.0,
+    config: FourierLatticeConfig = FourierLatticeConfig(),
+) -> tuple[np.ndarray, int]:
+    """Exact normal tangent stiffness d^2 W/da^2 of the infinite LJ row."""
+
+    if epsilon <= 0.0 or sigma_lj <= 0.0:
+        raise ValueError("epsilon and sigma_lj must be positive")
+    s6aa, modes6 = power_lattice_normal_second_derivative(
+        a, s, p=6, b=b, config=config
+    )
+    s3aa, modes3 = power_lattice_normal_second_derivative(
+        a, s, p=3, b=b, config=config
+    )
+    stiffness = 4.0 * epsilon * (
+        sigma_lj**12 * s6aa - sigma_lj**6 * s3aa
+    )
+    return stiffness, max(modes6, modes3)
 
 
 def two_row_lj_direct_reference(
