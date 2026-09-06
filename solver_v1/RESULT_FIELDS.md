@@ -2,13 +2,32 @@
 
 This file defines the user-facing meaning of the probability-PDE outputs. The UI should use these meanings directly and should not reinterpret the fields as Monte Carlo statistics.
 
+## Load calibration used before characteristic-scale work
+
+The current probability solver deliberately does **not** introduce a characteristic length, area, or volume. The user-entered signed normal stress is first reduced by the user/material Young modulus,
+
+\[
+q(t)=\frac{\sigma(t)}{E},
+\]
+
+but `q` is not the LJ generalized force itself. The pristine Bessel-LJ normal tangent stiffness defines the dimensionless force conversion
+
+\[
+\boxed{f^*(t)=\kappa_a q(t)},\qquad
+\boxed{\kappa_a=a_0 W_{aa}(a_0,0)}.
+\]
+
+This is a tangent calibration of the force coordinate only. It guarantees that the **fast normal-opening branch** reproduces \(\varepsilon_a\simeq\sigma/E\) at infinitesimal load while the actual PDE continues to use the full nonlinear Bessel-LJ energy. Configurational/intrawell and inter-well responses are additional model predictions rather than being absorbed into the Young-modulus calibration.
+
+The implementation is `TwoRowLJ.force_from_sigma_over_E(...)` and `cyclic_load_from_sigma_over_E(...)`.
+
 ## Core probability fields
 
 ### `time`
 Physical/model time coordinate used by the probability PDE. In the present dimensionless mechanism solver this is not yet calibrated to seconds for pure Al.
 
 ### `force`
-Current dimensionless normal loading value passed into the effective free-energy landscape. In a calibrated model this corresponds to the stress/work term used in `G_N`.
+Current dimensionless generalized normal load \(f^*\) passed into the effective energy landscape. It should be produced from \(\sigma/E\) through the tangent conversion above, not by setting `force = sigma/E` directly.
 
 ### `survival`
 Current intact probability mass,
@@ -39,21 +58,45 @@ This can vary strongly within each load cycle even though survival itself should
 
 ## Mechanical/configurational fields
 
-### `strain`
-Survivor-conditioned macroscopic axial strain obtained by averaging the microscopic strain bridge over the intact probability density. For the current model,
+The unwrapped configurational coordinate is decomposed exactly as
 
 \[
-\varepsilon(\mathbf q)=\frac{1}{Na_0}\sum_i[(a_i-a_0)+\chi s_i].
+s=bn+\xi,\qquad n\in\mathbb Z,\quad -b/2\le\xi<b/2.
 \]
+
+For N=1 the survivor-conditioned strain decomposition is
+
+\[
+\boxed{\varepsilon=\varepsilon_a+\varepsilon_\xi+\varepsilon_p}
+\]
+
+with
+
+\[
+\varepsilon_a=\left\langle\frac{a-a_0}{a_0}\right\rangle_S,
+\qquad
+\varepsilon_\xi=\left\langle\frac{\chi\xi}{a_0}\right\rangle_S,
+\qquad
+\varepsilon_p=\left\langle\frac{\chi b n}{a_0}\right\rangle_S.
+\]
+
+### `strain`
+Total survivor-conditioned axial strain \(\varepsilon\). This is the sum of the three fields below.
+
+### `normal_strain`
+Fast normal-opening contribution \(\varepsilon_a\). Its infinitesimal elastic slope is the branch matched to the entered Young modulus.
+
+### `intrawell_strain`
+Reversible/anelastic registry contribution \(\varepsilon_\xi\) from motion inside the current configurational well.
+
+### `plastic_strain`
+Signed permanent well-index contribution \(\varepsilon_p\). This is computed from the PDE probability carried by nonzero well indices. It must **not** be hard-coded to zero. It may nevertheless remain zero or extremely small for a particular load if the solved PDE carries no appreciable probability across a well boundary.
+
+### `mean_well_index`
+Survivor-conditioned signed mean \(\langle n\rangle_S\). Its sign distinguishes positive and negative accumulated configurational registry changes.
 
 ### `plastic_well_activity`
-For the N=1 reference solver, the survivor-conditioned activity of the configurational well index associated with
-
-\[
-s=bn+\xi.
-\]
-
-This is a diagnostic of inter-well configurational rearrangement; it is not a scalar empirical fatigue-damage variable.
+Survivor-conditioned \(\langle|n|\rangle_S\). This is a nonnegative diagnostic of inter-well rearrangement. It is not the same quantity as signed plastic strain and is not an empirical damage variable.
 
 ### `cov_a12`
 For the N=2 dense reference solver, covariance between the two normal-spacing coordinates `a1` and `a2` among survivors. Nonzero values indicate explicit cross-cell correlation.
