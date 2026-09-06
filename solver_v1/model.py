@@ -4,13 +4,23 @@ import numpy as np
 from scipy.optimize import minimize_scalar
 from scipy.interpolate import RegularGridInterpolator
 
+from .lattice_bessel import (
+    FourierLatticeConfig,
+    two_row_lj_infinite_energy_gradient,
+)
+
+
 @dataclass
 class ModelParams:
     n_cells: int = 3
     b: float = 1.0
     epsilon: float = 1.0
     sigma_lj: float = 0.82
+    # Deprecated compatibility field. Production lower-row interactions are
+    # evaluated by the analytic Poisson/Bessel infinite-lattice kernel.
     lower_images: int = 14
+    lattice_fourier_tol: float = 1.0e-13
+    lattice_fourier_max_modes: int = 64
     mobility_a: float = 1.0
     mobility_s: float = 0.15
     kT: float = 0.009
@@ -18,11 +28,17 @@ class ModelParams:
     a_min: float = 0.65
     a_max: float = 3.0
 
+
 class TwoRowLJ:
     """Dimensionless interacting two-row LJ model.
 
     Lower row: x_j = j*b, y=0.
     Upper cells: x_i = i*b + b/2 + s_i, y=a_i.
+
+    The interaction between each upper cell and the infinite lower row is the
+    canonical Poisson-summed Bessel lattice kernel W(a_i,s_i). Upper-cell
+    interactions remain explicit pair interactions so cell-cell correlation is
+    retained without product closure.
 
     s_i is an unwrapped configurational coordinate. Its periodic part controls
     lower-row registry, while differences s_j-s_i enter upper-row interactions.
@@ -30,7 +46,10 @@ class TwoRowLJ:
 
     def __init__(self, p: ModelParams):
         self.p = p
-        self.lower_n = np.arange(-p.lower_images, p.lower_images + 1, dtype=float)
+        self._lattice_config = FourierLatticeConfig(
+            tol=p.lattice_fourier_tol,
+            max_modes=p.lattice_fourier_max_modes,
+        )
         self.a0 = self._find_reference_a()
         self._opening_table_ready = False
 
@@ -47,32 +66,34 @@ class TwoRowLJ:
             + 6.0 * p.sigma_lj**6 * r**(-7)
         )
 
-    def local_energy(self, a: float, s: float) -> float:
+    def _lower_lattice_energy_gradient(self, a, s):
         p = self.p
-        dx = (self.lower_n + 0.5) * p.b - np.mod(s + 0.5*p.b, p.b) + 0.5*p.b
-        r = np.sqrt(dx*dx + a*a)
-        return float(np.sum(self.phi(r)))
+        return two_row_lj_infinite_energy_gradient(
+            a,
+            s,
+            epsilon=p.epsilon,
+            sigma_lj=p.sigma_lj,
+            b=p.b,
+            config=self._lattice_config,
+        )
+
+    def local_energy(self, a: float, s: float) -> float:
+        energy, _, _, _ = self._lower_lattice_energy_gradient(float(a), float(s))
+        return float(energy)
 
     def local_deda(self, a: float, s: float) -> float:
-        p = self.p
-        dx = (self.lower_n + 0.5) * p.b - np.mod(s + 0.5*p.b, p.b) + 0.5*p.b
-        r = np.sqrt(dx*dx + a*a)
-        return float(np.sum(self.dphi(r) * a / r))
+        _, deda, _, _ = self._lower_lattice_energy_gradient(float(a), float(s))
+        return float(deda)
 
     def local_deds(self, a: float, s: float) -> float:
-        p = self.p
-        smod = np.mod(s + 0.5*p.b, p.b) - 0.5*p.b
-        dx = (self.lower_n + 0.5) * p.b - smod
-        r = np.sqrt(dx*dx + a*a)
-        return float(np.sum(-self.dphi(r) * dx / r))
+        _, _, deds, _ = self._lower_lattice_energy_gradient(float(a), float(s))
+        return float(deds)
 
     def local_deda_array(self, a, s: float):
-        p = self.p
-        aa = np.asarray(a, dtype=float)[:, None]
-        smod = np.mod(s + 0.5*p.b, p.b) - 0.5*p.b
-        dx = ((self.lower_n + 0.5) * p.b - smod)[None, :]
-        r = np.sqrt(dx*dx + aa*aa)
-        return np.sum(self.dphi(r) * aa / r, axis=1)
+        aa = np.asarray(a, dtype=float)
+        ss = np.full_like(aa, float(s), dtype=float)
+        _, deda, _, _ = self._lower_lattice_energy_gradient(aa, ss)
+        return np.asarray(deda, dtype=float)
 
     def _build_opening_table(self, force_max: float = 6.0):
         p = self.p
@@ -166,14 +187,10 @@ class TwoRowLJ:
         ga = np.zeros_like(a)
         gs = np.zeros_like(s)
 
-        for i in range(p.n_cells):
-            smod = np.mod(s[i] + 0.5*p.b, p.b) - 0.5*p.b
-            dx = (self.lower_n + 0.5) * p.b - smod
-            r = np.sqrt(dx*dx + a[i]*a[i])
-            dp = self.dphi(r)
-            U += float(np.sum(self.phi(r)))
-            ga[i] += float(np.sum(dp * a[i] / r))
-            gs[i] += float(np.sum(-dp * dx / r))
+        local_u, local_ga, local_gs, _ = self._lower_lattice_energy_gradient(a, s)
+        U += float(np.sum(local_u))
+        ga += local_ga
+        gs += local_gs
 
         for i in range(p.n_cells):
             for j in range(i + 1, p.n_cells):
@@ -203,13 +220,10 @@ class TwoRowLJ:
         gs = np.zeros_like(s)
         U = np.zeros(B, dtype=float)
 
-        smod = np.mod(s + 0.5*p.b, p.b) - 0.5*p.b
-        dx = (self.lower_n[None,None,:] + 0.5) * p.b - smod[:,:,None]
-        rr = np.sqrt(dx*dx + a[:,:,None]**2)
-        dp = self.dphi(rr)
-        U += np.sum(self.phi(rr), axis=(1,2))
-        ga += np.sum(dp * a[:,:,None] / rr, axis=2)
-        gs += np.sum(-dp * dx / rr, axis=2)
+        local_u, local_ga, local_gs, _ = self._lower_lattice_energy_gradient(a, s)
+        U += np.sum(local_u, axis=1)
+        ga += local_ga
+        gs += local_gs
 
         for i in range(N):
             for j in range(i+1, N):
