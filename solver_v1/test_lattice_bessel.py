@@ -4,6 +4,7 @@ from solver_v1.lattice_bessel import (
     FourierLatticeConfig,
     two_row_lj_direct_reference,
     two_row_lj_infinite_energy_gradient,
+    two_row_lj_infinite_normal_stiffness,
 )
 from solver_v1.model import ModelParams, TwoRowLJ
 
@@ -70,6 +71,24 @@ def test_bessel_analytic_gradients_match_finite_difference():
     assert abs(float(deda) - fd_a) < 2.0e-7
     assert abs(float(deds) - fd_s) < 2.0e-7
     assert np.isfinite(float(energy))
+
+
+def test_bessel_exact_normal_stiffness_matches_gradient_difference():
+    model = TwoRowLJ(ModelParams(n_cells=1, lattice_fourier_tol=1.0e-13))
+    a = model.a0
+    h = 2.0e-5
+    exact, modes = two_row_lj_infinite_normal_stiffness(
+        a,
+        0.0,
+        epsilon=model.p.epsilon,
+        sigma_lj=model.p.sigma_lj,
+        b=model.p.b,
+        config=CFG,
+    )
+    fd = (model.local_deda(a + h, 0.0) - model.local_deda(a - h, 0.0)) / (2.0 * h)
+    assert abs(float(exact) - float(fd)) < 2.0e-5
+    assert float(exact) > 0.0
+    assert modes < CFG.max_modes
 
 
 def test_model_scalar_and_batch_energy_gradients_agree_with_bessel_kernel():
