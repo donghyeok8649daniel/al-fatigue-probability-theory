@@ -4,14 +4,17 @@ State
 -----
 q = (a1, a2, s1, s2)
 
-This module is the first explicit cell-cell correlation reference.  It solves
-exactly the same deterministic Smoluchowski probability equation as the N=1
-2D gold-standard solver, but on a small four-dimensional tensor grid.  It is
-intentionally limited to modest grids and short convergence cases; the N=3
-production solver must use a compressed representation.
+This module is the first explicit cell-cell correlation reference. It solves
+the same deterministic Smoluchowski probability equation as the N=1 2D
+gold-standard solver on a small four-dimensional tensor grid. No random-number
+sampling, Monte Carlo resampling, product closure, named life distribution, or
+empirical crack-probability law appears here.
 
-No random-number sampling, Monte Carlo resampling, product closure, named life
-distribution, or empirical crack-probability law appears here.
+The Scharfetter--Gummel spatial discretization is retained, but the default
+time step is backward Euler on the resulting conservative Markov generator.
+This removes the pathological explicit CFL restriction produced by very steep
+LJ cells with negligible probability mass. The change is numerical only: the
+governing probability PDE and first-passage definition are unchanged.
 """
 from __future__ import annotations
 
@@ -19,6 +22,8 @@ from dataclasses import dataclass
 from typing import Callable
 
 import numpy as np
+from scipy import sparse
+from scipy.sparse.linalg import spsolve
 
 from .model import ModelParams, TwoRowLJ
 from .probability_pde_2d import _bernoulli
@@ -39,6 +44,7 @@ class PDE4DTimeParams:
     cfl: float = 0.35
     record_interval: float = 5.0e-3
     negative_tolerance: float = 5.0e-12
+    integrator: str = "implicit"
 
 
 @dataclass(frozen=True)
@@ -161,7 +167,12 @@ def _sg_rhs_4d(
     model: TwoRowLJ,
     grid: Grid4D,
 ) -> tuple[np.ndarray, float]:
-    """Conservative four-dimensional Scharfetter--Gummel semi-discretization."""
+    """Conservative four-dimensional Scharfetter--Gummel semi-discretization.
+
+    Retained as an explicit-reference operator and for diagnostic CFL estimates.
+    Production reference stepping uses the same operator through
+    ``_sg_generator_4d`` and backward Euler.
+    """
 
     if model.p.kT <= 0.0:
         raise ValueError("Smoluchowski diffusion requires kT > 0")
@@ -196,6 +207,91 @@ def _sg_rhs_4d(
         outgoing[right_t] += (diffusivity / spacing**2) * bm
 
     return rhs, float(np.max(outgoing))
+
+
+def _sg_generator_4d(
+    energy: np.ndarray,
+    model: TwoRowLJ,
+    grid: Grid4D,
+) -> sparse.csr_matrix:
+    """Assemble the conservative SG Markov generator A with dp/dt = A p.
+
+    Off-diagonal entries are nonnegative transition rates and each column sums
+    to zero for the reflecting computational boundary. Therefore backward
+    Euler, ``(I-dt*A) p_new = p_old``, is an M-matrix solve and avoids the tiny
+    explicit positivity CFL imposed by the stiff repulsive tail.
+    """
+
+    if model.p.kT <= 0.0:
+        raise ValueError("Smoluchowski diffusion requires kT > 0")
+
+    shape = grid.shape
+    index = np.arange(np.prod(shape), dtype=np.int64).reshape(shape)
+    beta = 1.0 / model.p.kT
+    rows: list[np.ndarray] = []
+    cols: list[np.ndarray] = []
+    data: list[np.ndarray] = []
+
+    axis_data = (
+        (0, model.p.mobility_a * model.p.kT, grid.da),
+        (1, model.p.mobility_a * model.p.kT, grid.da),
+        (2, model.p.mobility_s * model.p.kT, grid.ds),
+        (3, model.p.mobility_s * model.p.kT, grid.ds),
+    )
+
+    for axis, diffusivity, spacing in axis_data:
+        left = [slice(None)] * 4
+        right = [slice(None)] * 4
+        left[axis] = slice(0, -1)
+        right[axis] = slice(1, None)
+        left_t = tuple(left)
+        right_t = tuple(right)
+
+        left_idx = index[left_t].ravel()
+        right_idx = index[right_t].ravel()
+        psi = beta * (energy[right_t] - energy[left_t])
+        rate_lr = (diffusivity / spacing**2) * _bernoulli(psi)
+        rate_rl = (diffusivity / spacing**2) * _bernoulli(-psi)
+        rate_lr = rate_lr.ravel()
+        rate_rl = rate_rl.ravel()
+
+        # L -> R transition and matching loss from L.
+        rows.extend((right_idx, left_idx))
+        cols.extend((left_idx, left_idx))
+        data.extend((rate_lr, -rate_lr))
+
+        # R -> L transition and matching loss from R.
+        rows.extend((left_idx, right_idx))
+        cols.extend((right_idx, right_idx))
+        data.extend((rate_rl, -rate_rl))
+
+    matrix = sparse.coo_matrix(
+        (np.concatenate(data), (np.concatenate(rows), np.concatenate(cols))),
+        shape=(index.size, index.size),
+    )
+    return matrix.tocsr()
+
+
+def _implicit_step_4d(
+    density: np.ndarray,
+    energy: np.ndarray,
+    model: TwoRowLJ,
+    grid: Grid4D,
+    dt: float,
+    negative_tolerance: float,
+) -> np.ndarray:
+    generator = _sg_generator_4d(energy, model, grid)
+    identity = sparse.eye(generator.shape[0], format="csr")
+    system = identity - dt * generator
+    updated = np.asarray(spsolve(system, density.ravel()), dtype=float).reshape(grid.shape)
+    minimum = float(np.min(updated))
+    if minimum < -negative_tolerance:
+        raise FloatingPointError(
+            f"implicit 4D probability density lost positivity: min={minimum:.3e}"
+        )
+    # Roundoff-level negatives may occur in the sparse solve. Clipping at the
+    # declared tolerance is numerical cleanup, not survivor renormalization.
+    return np.maximum(updated, 0.0)
 
 
 def _absorb_4d(
@@ -240,7 +336,6 @@ def observables_4d(
         ) / (2.0 * model.a0)
         strain = float(np.sum(p * strain_field) * volume)
 
-        # Exact one-cell joint marginals from the full correlated N=2 density.
         p1 = np.sum(p, axis=(1, 3)) * grid.da * grid.ds
         p2 = np.sum(p, axis=(0, 2)) * grid.da * grid.ds
         product = p1[:, None, :, None] * p2[None, :, None, :]
@@ -280,6 +375,8 @@ def run_probability_pde_4d(
         raise ValueError("invalid 4D PDE time controls")
     if time_params.record_interval <= 0.0:
         raise ValueError("record_interval must be positive")
+    if time_params.integrator not in {"implicit", "explicit"}:
+        raise ValueError("4D integrator must be 'implicit' or 'explicit'")
 
     model = TwoRowLJ(p)
     model._build_opening_table()
@@ -325,22 +422,31 @@ def run_probability_pde_4d(
         if t >= duration - 1.0e-14 or float(np.sum(density)) == 0.0:
             break
 
-        energy = energy_grid_4d(model, grid, force)
-        rhs, max_rate = _sg_rhs_4d(density, energy, model, grid)
-        stable_dt = time_params.max_dt
-        if max_rate > 0.0:
-            stable_dt = min(stable_dt, time_params.cfl / max_rate)
-        dt = min(stable_dt, duration - t)
+        dt = min(time_params.max_dt, duration - t)
         if dt <= 0.0:
             break
 
-        updated = density + dt * rhs
-        minimum = float(np.min(updated))
-        if minimum < -time_params.negative_tolerance:
-            raise FloatingPointError(
-                f"4D probability density lost positivity: min={minimum:.3e}"
+        energy = energy_grid_4d(model, grid, force)
+        if time_params.integrator == "implicit":
+            updated = _implicit_step_4d(
+                density,
+                energy,
+                model,
+                grid,
+                dt,
+                time_params.negative_tolerance,
             )
-        updated = np.maximum(updated, 0.0)
+        else:
+            rhs, max_rate = _sg_rhs_4d(density, energy, model, grid)
+            if max_rate > 0.0:
+                dt = min(dt, time_params.cfl / max_rate)
+            updated = density + dt * rhs
+            minimum = float(np.min(updated))
+            if minimum < -time_params.negative_tolerance:
+                raise FloatingPointError(
+                    f"explicit 4D probability density lost positivity: min={minimum:.3e}"
+                )
+            updated = np.maximum(updated, 0.0)
 
         next_t = t + dt
         next_force = load.value(next_t)
