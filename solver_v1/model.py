@@ -7,6 +7,7 @@ from scipy.interpolate import RegularGridInterpolator
 from .lattice_bessel import (
     FourierLatticeConfig,
     two_row_lj_infinite_energy_gradient,
+    two_row_lj_infinite_normal_stiffness,
 )
 
 
@@ -94,6 +95,52 @@ class TwoRowLJ:
         ss = np.full_like(aa, float(s), dtype=float)
         _, deda, _, _ = self._lower_lattice_energy_gradient(aa, ss)
         return np.asarray(deda, dtype=float)
+
+    def normal_tangent_stiffness(self) -> float:
+        """Return exact dimensionless W_aa at the pristine staggered minimum.
+
+        This is the fast normal-opening tangent stiffness. It is used only to
+        map the macroscopic reduced stress sigma/E into the dimensionless LJ
+        force coordinate. The nonlinear Bessel-LJ energy remains unchanged in
+        the actual probability PDE.
+        """
+
+        p = self.p
+        value, _ = two_row_lj_infinite_normal_stiffness(
+            self.a0,
+            0.0,
+            epsilon=p.epsilon,
+            sigma_lj=p.sigma_lj,
+            b=p.b,
+            config=self._lattice_config,
+        )
+        stiffness = float(value)
+        if not np.isfinite(stiffness) or stiffness <= 0.0:
+            raise FloatingPointError("pristine normal LJ tangent stiffness must be positive")
+        return stiffness
+
+    def sigma_over_E_force_scale(self) -> float:
+        r"""Return kappa such that f*=kappa*(sigma/E) in the elastic limit.
+
+        With s frozen in the pristine well, the exact local equilibrium law is
+
+            W_a(a,0) = f*.
+
+        At the equilibrium spacing a0, d epsilon_a / da = 1/a0. Therefore the
+        tangent matching condition epsilon_a = sigma/E gives
+
+            kappa = a0 * W_aa(a0,0).
+
+        No characteristic length, area, or volume is introduced here. This is
+        a dimensionless tangent calibration of the force coordinate only.
+        """
+
+        return float(self.a0 * self.normal_tangent_stiffness())
+
+    def force_from_sigma_over_E(self, sigma_over_E):
+        """Map signed macroscopic sigma/E to the canonical dimensionless force."""
+
+        return self.sigma_over_E_force_scale() * np.asarray(sigma_over_E, dtype=float)
 
     def _build_opening_table(self, force_max: float = 6.0):
         p = self.p
