@@ -20,15 +20,39 @@ and by direct deterministic solution of the many-body Smoluchowski equation,
 +k_BT\nabla_{\mathbf q}P_N\right)\right].
 \]
 
-Crack initiation is probability mass absorbed through the mechanically defined opening dividing surface.  The production probability is **not** defined as a Monte Carlo fraction.
+Crack initiation is probability mass absorbed through the mechanically defined opening dividing surface. The production probability is **not** defined as a Monte Carlo fraction.
 
 The initial finite-temperature distribution is obtained from the correlated interaction energy as a conditional Gibbs measure in the declared intact initial basin, not from an imposed Gaussian spacing law or a product closure.
 
+## Canonical infinite-lattice LJ kernel
+
+The lower row is now represented analytically by the Poisson-summed infinite-lattice kernel rather than by a fixed finite image cutoff. For one upper cell,
+
+\[
+W(a,s)=4\epsilon\left[\sigma^{12}S_6(a,s)-\sigma^6S_3(a,s)\right],
+\]
+
+with
+
+\[
+S_p(a,s)=\sum_{n=-\infty}^{\infty}[a^2+((n+1/2)b-s)^2]^{-p}.
+\]
+
+Poisson summation gives a reciprocal-lattice cosine series whose coefficients contain modified Bessel functions `K_{p-1/2}`. The energy and its exact first derivatives with respect to `a` and `s` are implemented in `lattice_bessel.py`. These derivatives generate the conservative drift term in the probability PDE.
+
+`model.py` uses this Bessel kernel as the canonical lower-row interaction. The historical `lower_images` parameter remains only for API compatibility and no longer controls production lower-row physics. A large finite direct sum is retained only as a verification reference.
+
+See `BESSEL_LATTICE_DERIVATION.md` for the derivation and phase convention.
+
 ## Numerical implementations in this package
+
+### `lattice_bessel.py` -- canonical infinite lower-row interaction
+
+Evaluates the exact Poisson/Bessel representation of the staggered infinite lower lattice with tolerance-controlled reciprocal-space truncation. It returns `W`, `dW/da`, and `dW/ds`. The Bessel representation is an energy kernel, not a separate empirical dynamics law.
 
 ### `probability_pde_2d.py` -- N=1 deterministic gold standard
 
-Directly evolves `P(a,s,t)` with conservative Scharfetter--Gummel finite-volume fluxes.  No RNG or trajectory counting is used.
+Directly evolves `P(a,s,t)` with conservative Scharfetter--Gummel finite-volume fluxes. No RNG or trajectory counting is used.
 
 Primary checks are Gibbs normalization, probability conservation, positivity/CFL behaviour, compression sign handling, absorbing first passage, survival monotonicity, and grid/time-step convergence.
 
@@ -40,13 +64,13 @@ Directly evolves
 P_2(a_1,a_2,s_1,s_2,t)
 \]
 
-on a deliberately small four-dimensional tensor grid.  The energy is the interacting two-cell energy from `model.py`; no product closure is imposed.  The solver records cross-cell covariances and an explicit L1 discrepancy between the full joint density and the product of its one-cell marginals.
+on a deliberately small four-dimensional tensor grid. The energy is the interacting two-cell energy from `model.py`; no product closure is imposed. The solver records cross-cell covariances and an explicit L1 discrepancy between the full joint density and the product of its one-cell marginals.
 
 This solver is a convergence/reference tool, not a scalable production implementation.
 
 ### `tensor_train.py` -- numerical compression utility
 
-Implements TT-SVD and reconstruction diagnostics.  Tensor rank is allowed to exceed one.  A rank-one product state is never imposed as a physical assumption; higher TT ranks carry cross-coordinate correlation.
+Implements TT-SVD and reconstruction diagnostics. Tensor rank is allowed to exceed one. A rank-one product state is never imposed as a physical assumption; higher TT ranks carry cross-coordinate correlation.
 
 ### `probability_tt_6d.py` -- N=3 TT initial-state prototype
 
@@ -58,27 +82,27 @@ P_3(a_1,a_2,a_3,s_1,s_2,s_3,0),
 
 then compresses it with TT-SVD and reports ranks, storage, compression ratio, reconstruction error, mass error, and negative reconstructed mass.
 
-This is the first Layer-C prototype.  It does **not yet** time-integrate the six-dimensional Smoluchowski equation.
+This is the first Layer-C prototype. It does **not yet** time-integrate the six-dimensional Smoluchowski equation.
 
 ### `solver.py` -- Euler--Maruyama reference implementation
 
-Integrates stochastic trajectories of the correlated state.  It is retained only as a **reference/cross-validation mechanism implementation**, not as the canonical production probability estimator.  Finite-ensemble first-passage fractions must not be presented as the final continuum probability law.
+Integrates stochastic trajectories of the same correlated state. It is retained only as a historical/reference cross-check and is **not** the canonical production probability estimator. Finite-ensemble first-passage fractions must not be presented as the final continuum probability law.
 
 ### `model.py` -- shared interaction and opening mechanics
 
-Contains the two-row LJ geometry, correlated interaction energy, macroscopic strain bridge, periodic configurational wells, and the local normal-opening saddle/barrier lookup used by all current numerical solvers.
+Contains the two-row geometry, analytic infinite-lattice lower-row interaction, explicit upper-cell correlations, macroscopic strain bridge, periodic configurational wells, and the local normal-opening saddle/barrier lookup used by all current numerical solvers.
 
 ## Development sequence
 
-The numerical hierarchy is now explicit:
+The numerical hierarchy is explicit:
 
 1. `N=1`: 2D direct probability PDE gold standard;
 2. `N=2`: 4D dense correlated probability reference;
 3. `N=3`: 6D tensor-train / sparse-grid compressed production development.
 
-The next production step is a tensor-train time integrator for the six-dimensional Smoluchowski operator, with mass, positivity, equilibrium and first-passage behaviour checked against the N=1/N=2 reference solvers before any UI integration.
+The next production step is a tensor-train time integrator for the six-dimensional Smoluchowski operator, with mass, positivity, equilibrium and first-passage behaviour checked against the N=1/N=2 reference solvers before final UI integration.
 
-See `PROBABILITY_PDE_ROADMAP.md` for the detailed validation plan.
+See `PROBABILITY_PDE_ROADMAP.md` for the detailed validation plan and `RESULT_FIELDS.md` for user-facing output meanings.
 
 ## Why the N=3 PDE needs compression
 
@@ -88,9 +112,9 @@ For `N=3`, the density depends on six coordinates:
 (a_1,a_2,a_3,s_1,s_2,s_3).
 \]
 
-A full grid with `m` points per coordinate stores `m^6` values.  At `m=41`, one scalar field already contains more than 4.75 billion doubles, so a dense six-dimensional finite-volume grid is not practical.
+A full grid with `m` points per coordinate stores `m^6` values. At `m=41`, one scalar field already contains more than 4.75 billion doubles, so a dense six-dimensional finite-volume grid is not practical.
 
-The production `N=3` solver will therefore use a validated compressed representation, with adaptive sparse-grid and tensor-train approaches compared against lower-dimensional gold standards.  Compression is numerical only: it must not impose the physical product closure
+The production `N=3` solver will therefore use a validated compressed representation, with adaptive sparse-grid and tensor-train approaches compared against lower-dimensional gold standards. Compression is numerical only: it must not impose the physical product closure
 
 \[
 P_N=\prod_i P_i.
@@ -98,7 +122,7 @@ P_N=\prod_i P_i.
 
 ## Scientific scope
 
-All current LJ parameters, mobilities, thermal scale, and axial projection coefficients remain dimensionless mechanism-screening quantities.  None of these numerical implementations is yet a calibrated pure-Al fatigue-life predictor.
+All current LJ parameters, mobilities, thermal scale, and axial projection coefficients remain dimensionless mechanism-screening quantities. None of these numerical implementations is yet a calibrated pure-Al fatigue-life predictor.
 
 Quantitative aluminum prediction still requires:
 
