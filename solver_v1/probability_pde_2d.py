@@ -1,27 +1,27 @@
 """Deterministic probability-density reference solver for Theory Core v1.
 
 This module solves the N=1, two-coordinate state q=(a,s) directly as a
-Smoluchowski/Fokker--Planck PDE.  It contains no random-number sampling.
+Smoluchowski/Fokker--Planck PDE. It contains no random-number sampling.
 
 The purpose is numerical validation before compressing the full N=3,
 six-dimensional probability density with a sparse-grid or tensor method.
 
 Discretization
 --------------
-A cell-centred conservative finite-volume method is used.  Interior fluxes use
+A cell-centred conservative finite-volume method is used. Interior fluxes use
 the Scharfetter--Gummel exponential fitting formula,
 
     J = D/h [ B(beta*DeltaG) P_L - B(-beta*DeltaG) P_R ],
 
-where B(x)=x/(exp(x)-1), D=M*kT.  This flux has the correct discrete Gibbs
+where B(x)=x/(exp(x)-1), D=M*kT. This flux has the correct discrete Gibbs
 stationary ratio on a fixed energy landscape and is much more robust than a
 naive centred drift-diffusion stencil in steep LJ regions.
 
 Crack first passage
 -------------------
 The mechanically defined local opening saddle from ``TwoRowLJ`` defines the
-intact normal-opening basin.  Probability outside that basin is absorbed and
-is never renormalized into the surviving density.  The cumulative initiated
+intact normal-opening basin. Probability outside that basin is absorbed and
+is never renormalized into the surviving density. The cumulative initiated
 probability is therefore 1-S, where S is the remaining intact probability
 mass.
 
@@ -53,7 +53,7 @@ class Grid2DParams:
 class PDETimeParams:
     """Explicit conservative integration controls.
 
-    ``max_dt`` is only an upper bound.  The solver computes a positivity CFL
+    ``max_dt`` is only an upper bound. The solver computes a positivity CFL
     bound from the Scharfetter--Gummel transition rates at every step.
     """
 
@@ -86,6 +86,45 @@ class CyclicLoad2D:
             + amplitude
             * np.sin(2.0 * np.pi * time / self.period + self.phase_radians)
         )
+
+
+def cyclic_load_from_sigma_over_E(
+    model: TwoRowLJ,
+    *,
+    sigma_over_E_min: float,
+    sigma_over_E_max: float,
+    period: float = 1.0,
+    cycles: float = 1.0,
+    phase_radians: float = 0.0,
+    value_function: Callable[[float], float] | None = None,
+) -> CyclicLoad2D:
+    r"""Build a force history from the signed reduced stress sigma/E.
+
+    The conversion is not ``force = sigma/E``. The Bessel-LJ force coordinate
+    has its own dimensionless tangent stiffness. We match the pristine fast
+    normal-opening branch to Young's law through
+
+        f* = [a0 W_aa(a0,0)] (sigma/E).
+
+    This introduces no characteristic length, area, or volume. The tangent
+    mapping only sets the dimensionless force coordinate; the PDE still uses
+    the full nonlinear Bessel-LJ energy at every state and time.
+    """
+
+    scale = model.sigma_over_E_force_scale()
+    mapped_function = None
+    if value_function is not None:
+        mapped_function = lambda time: float(
+            model.force_from_sigma_over_E(value_function(time))
+        )
+    return CyclicLoad2D(
+        force_min=float(scale * sigma_over_E_min),
+        force_max=float(scale * sigma_over_E_max),
+        period=period,
+        cycles=cycles,
+        phase_radians=phase_radians,
+        value_function=mapped_function,
+    )
 
 
 @dataclass(frozen=True)
@@ -185,7 +224,7 @@ def initial_gibbs_density(
 ) -> np.ndarray:
     """Conditional Gibbs density in the declared intact initial basin.
 
-    The baseline uses the principal configurational well |s|<b/2.  This is a
+    The baseline uses the principal configurational well |s|<b/2. This is a
     conditional metastable initial ensemble, not an imposed Gaussian spacing
     law and not a product closure.
     """
@@ -227,7 +266,6 @@ def _sg_rates_and_rhs(
     rhs = np.zeros_like(density)
     outgoing = np.zeros_like(density)
 
-    # a-direction faces; external domain faces are reflecting (zero flux).
     psi_a = beta * (energy[1:, :] - energy[:-1, :])
     bp_a = _bernoulli(psi_a)
     bm_a = _bernoulli(-psi_a)
@@ -239,8 +277,6 @@ def _sg_rates_and_rhs(
     outgoing[:-1, :] += (d_a / grid.da**2) * bp_a
     outgoing[1:, :] += (d_a / grid.da**2) * bm_a
 
-    # s-direction faces.  The computational truncation is reflecting; a
-    # boundary-mass diagnostic tells us when s_wells must be enlarged.
     psi_s = beta * (energy[:, 1:] - energy[:, :-1])
     bp_s = _bernoulli(psi_s)
     bm_s = _bernoulli(-psi_s)
@@ -278,23 +314,48 @@ def observables(
     *,
     first_passage_flux: float = 0.0,
 ) -> dict[str, float]:
-    """Compute survivor-conditioned macroscopic and diagnostic observables."""
+    """Compute survivor-conditioned mechanical/configurational observables.
+
+    The unwrapped configurational coordinate is split exactly as
+
+        s = b*n + xi,  xi in [-b/2,b/2),
+
+    so the axial strain bridge is reported as three additive parts:
+
+        epsilon = epsilon_a + epsilon_xi + epsilon_p.
+
+    ``plastic_strain`` is the signed mean well-index contribution. It is not
+    the nonnegative activity diagnostic ``plastic_well_activity``.
+    """
 
     volume = grid.cell_volume
     survival = float(np.sum(density) * volume)
     aa, ss = _mesh(grid)
     if survival > 0.0:
         conditional = density / survival
-        strain_field = ((aa - model.a0) + model.p.chi_axial_projection * ss) / model.a0
-        strain = float(np.sum(conditional * strain_field) * volume)
-        nwell = np.floor((ss + 0.5 * model.p.b) / model.p.b)
+        nwell = model.well_index(ss)
+        xi = ss - model.p.b * nwell
+
+        normal_field = (aa - model.a0) / model.a0
+        intrawell_field = model.p.chi_axial_projection * xi / model.a0
+        plastic_field = (
+            model.p.chi_axial_projection * model.p.b * nwell / model.a0
+        )
+
+        normal_strain = float(np.sum(conditional * normal_field) * volume)
+        intrawell_strain = float(np.sum(conditional * intrawell_field) * volume)
+        plastic_strain = float(np.sum(conditional * plastic_field) * volume)
+        strain = normal_strain + intrawell_strain + plastic_strain
+        mean_well_index = float(np.sum(conditional * nwell) * volume)
         well_activity = float(np.sum(conditional * np.abs(nwell)) * volume)
     else:
         strain = np.nan
+        normal_strain = np.nan
+        intrawell_strain = np.nan
+        plastic_strain = np.nan
+        mean_well_index = np.nan
         well_activity = np.nan
 
-    # Probability near artificial truncation boundaries is a convergence flag,
-    # not a physical observable.
     edge = max(1, min(2, grid.s.size // 4))
     s_boundary_mass = float(
         (np.sum(density[:, :edge]) + np.sum(density[:, -edge:])) * volume
@@ -308,6 +369,10 @@ def observables(
         "initiation_probability": max(0.0, 1.0 - survival),
         "first_passage_flux": float(first_passage_flux),
         "strain": strain,
+        "normal_strain": normal_strain,
+        "intrawell_strain": intrawell_strain,
+        "plastic_strain": plastic_strain,
+        "mean_well_index": mean_well_index,
         "plastic_well_activity": well_activity,
         "s_truncation_boundary_mass": s_boundary_mass,
         "a_lower_boundary_mass": a_lower_mass,
@@ -351,6 +416,10 @@ def run_probability_pde_2d(
             "initiation_probability",
             "first_passage_flux",
             "strain",
+            "normal_strain",
+            "intrawell_strain",
+            "plastic_strain",
+            "mean_well_index",
             "plastic_well_activity",
             "s_truncation_boundary_mass",
             "a_lower_boundary_mass",
@@ -377,9 +446,6 @@ def run_probability_pde_2d(
             density, model, grid, force
         )
         if instant_loss > 0.0:
-            # A moving spinodal/dividing surface can instantaneously remove
-            # mass.  Report it over the next numerical interval as a flux-like
-            # rate; cumulative initiation remains exactly 1-S.
             last_flux = instant_loss / max(time_params.max_dt, np.finfo(float).eps)
 
         if t + 1.0e-14 >= next_record:
@@ -413,9 +479,9 @@ def run_probability_pde_2d(
         trial, removed = _absorb_outside_opening_basin(
             trial, model, grid, next_force
         )
-        after_absorb = float(np.sum(trial) * grid.cell_volume)
-        # The conservative SG update should preserve mass before absorption.
-        numerical_mass_error = abs(before_absorb - float(np.sum(density) * grid.cell_volume))
+        numerical_mass_error = abs(
+            before_absorb - float(np.sum(density) * grid.cell_volume)
+        )
         if numerical_mass_error > 5.0e-10:
             raise FloatingPointError(
                 f"finite-volume mass conservation error {numerical_mass_error:.3e}"
@@ -425,8 +491,6 @@ def run_probability_pde_2d(
         density = trial
         t = next_t
 
-    # Ensure the terminal state is present even if it does not land exactly on
-    # the record interval.
     if not records["time"] or abs(records["time"][-1] - t) > 1.0e-12:
         append_record(t, load.value(t))
 
