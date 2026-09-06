@@ -5,7 +5,10 @@ from solver_v1.probability_pde_4d import (
     CyclicLoad4D,
     Grid4DParams,
     PDE4DTimeParams,
+    _sg_generator_4d,
+    _sg_rhs_4d,
     build_grid_4d,
+    energy_grid_4d,
     initial_gibbs_density_4d,
     observables_4d,
     run_probability_pde_4d,
@@ -27,7 +30,12 @@ def _grid() -> Grid4DParams:
 
 
 def _time() -> PDE4DTimeParams:
-    return PDE4DTimeParams(max_dt=5.0e-4, cfl=0.30, record_interval=0.004)
+    return PDE4DTimeParams(
+        max_dt=5.0e-4,
+        cfl=0.30,
+        record_interval=0.004,
+        integrator="implicit",
+    )
 
 
 def test_n2_gibbs_density_normalizes_and_is_nonnegative():
@@ -46,10 +54,22 @@ def test_n2_interaction_produces_non_product_joint_density():
     grid = build_grid_4d(model, _grid())
     density = initial_gibbs_density_4d(model, grid)
     obs = observables_4d(density, model, grid, 0.0)
-    # The full interacting two-cell energy should not collapse to a product of
-    # independent one-cell joint densities.  Coarse grids can weaken the
-    # measured discrepancy, so only require a clear nonzero signal.
     assert obs["product_closure_l1_error"] > 1.0e-8
+
+
+def test_n2_sparse_generator_matches_explicit_sg_rhs():
+    model = TwoRowLJ(_params())
+    model._build_opening_table()
+    grid = build_grid_4d(model, _grid())
+    density = initial_gibbs_density_4d(model, grid)
+    energy = energy_grid_4d(model, grid, 0.17)
+    rhs, _ = _sg_rhs_4d(density, energy, model, grid)
+    generator = _sg_generator_4d(energy, model, grid)
+    matrix_rhs = (generator @ density.ravel()).reshape(grid.shape)
+    scale = max(1.0, float(np.max(np.abs(rhs))))
+    assert float(np.max(np.abs(rhs - matrix_rhs))) < 1.0e-11 * scale
+    column_sum = np.asarray(generator.sum(axis=0)).ravel()
+    assert float(np.max(np.abs(column_sum))) < 1.0e-8
 
 
 def test_n2_zero_load_mass_is_conserved():
