@@ -370,7 +370,7 @@ def observables(
     return {
         "force": float(force),
         "survival": survival,
-        "initiation_probability": max(0.0, 1.0 - survival),
+        "initiation_probability": 1.0 - survival,
         "first_passage_flux": float(first_passage_flux),
         "strain": strain,
         "normal_strain": normal_strain,
@@ -391,6 +391,8 @@ def run_probability_pde_2d(
     time_params: PDETimeParams = PDETimeParams(),
     load: CyclicLoad2D = CyclicLoad2D(),
     preload_force: float = 0.0,
+    record_callback: Callable[[dict[str, float]], None] | None = None,
+    stop_requested: Callable[[], bool] | None = None,
 ) -> dict[str, np.ndarray | Grid2D | TwoRowLJ]:
     """Solve the deterministic N=1 probability PDE under a cyclic load."""
 
@@ -428,6 +430,11 @@ def run_probability_pde_2d(
             "s_truncation_boundary_mass",
             "a_lower_boundary_mass",
             "a_upper_boundary_mass",
+            "intact_probability_mass",
+            "cumulative_absorbed_mass",
+            "mass_balance_residual",
+            "negative_mass_correction",
+            "minimum_density",
         )
     }
 
@@ -435,14 +442,29 @@ def run_probability_pde_2d(
     next_record = 0.0
     last_flux = 0.0
     duration = load.duration
+    cumulative_absorbed_mass = 0.0
+    maximum_negative_mass_correction = 0.0
+    minimum_density = float(np.min(density))
 
     def append_record(now: float, force: float) -> None:
         obs = observables(
             density, model, grid, force, first_passage_flux=last_flux
         )
-        records["time"].append(float(now))
-        for name, value in obs.items():
-            records[name].append(float(value))
+        snapshot = {
+            "time": float(now),
+            **{name: float(value) for name, value in obs.items()},
+            "intact_probability_mass": float(obs["survival"]),
+            "cumulative_absorbed_mass": float(cumulative_absorbed_mass),
+            "mass_balance_residual": float(
+                obs["survival"] + cumulative_absorbed_mass - 1.0
+            ),
+            "negative_mass_correction": float(maximum_negative_mass_correction),
+            "minimum_density": float(minimum_density),
+        }
+        for name in records:
+            records[name].append(snapshot[name])
+        if record_callback is not None:
+            record_callback(dict(snapshot))
 
     while True:
         force = load.value(t)
@@ -450,6 +472,7 @@ def run_probability_pde_2d(
             density, model, grid, force
         )
         if instant_loss > 0.0:
+            cumulative_absorbed_mass += instant_loss
             last_flux = instant_loss / max(time_params.max_dt, np.finfo(float).eps)
 
         if t + 1.0e-14 >= next_record:
@@ -457,6 +480,8 @@ def run_probability_pde_2d(
             next_record += time_params.record_interval
 
         if t >= duration - 1.0e-14 or np.sum(density) == 0.0:
+            break
+        if stop_requested is not None and stop_requested():
             break
 
         energy = energy_grid(model, grid, force)
@@ -471,10 +496,17 @@ def run_probability_pde_2d(
 
         trial = density + dt * rhs
         min_value = float(np.min(trial))
+        minimum_density = min(minimum_density, min_value)
         if min_value < -time_params.negative_tolerance:
             raise FloatingPointError(
                 f"probability density became negative ({min_value:.3e}); refine dt/grid"
             )
+        negative_mass_correction = float(
+            np.sum(np.maximum(-trial, 0.0)) * grid.cell_volume
+        )
+        maximum_negative_mass_correction = max(
+            maximum_negative_mass_correction, negative_mass_correction
+        )
         trial = np.maximum(trial, 0.0)
 
         next_t = t + dt
@@ -483,6 +515,7 @@ def run_probability_pde_2d(
         trial, removed = _absorb_outside_opening_basin(
             trial, model, grid, next_force
         )
+        cumulative_absorbed_mass += removed
         numerical_mass_error = abs(
             before_absorb - float(np.sum(density) * grid.cell_volume)
         )

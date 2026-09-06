@@ -19,13 +19,44 @@ The macroscopic target remains stress/strain hysteresis, residual plastic respon
 
 ## Solver
 
-`solver_v1/` contains the executable dimensionless mechanism solver.
+`solver_v1/` contains the executable dimensionless mechanism solver. The
+canonical probability calculation is the direct conservative
+Smoluchowski/Fokker--Planck finite-volume PDE; Monte Carlo trajectory counts are
+not the production probability source.
 
-- `model.py`: two-row LJ geometry, correlated interaction, strain bridge, well index, normal opening saddle/barrier.
-- `solver.py`: cyclic load and Euler-Maruyama integration of the full correlated state.
-- `run_demo.py`: reproducible four-load screening.
-- `test_solver.py`: gradient, periodicity, and barrier-ordering checks.
-- `output/summary.csv`: committed numerical screening provenance.
+- `model.py`: Poisson/Bessel infinite-lattice energy, relaxed axial calibration,
+  strain bridge, well index, and opening mechanics.
+- `probability_pde_2d.py`: direct N=1 probability-PDE reference used by the UI.
+- `probability_pde_4d.py`: dense correlated N=2 reference.
+- `probability_tt_6d.py`: N=3 initial-Gibbs TT compression prototype only; it
+  is not yet a time-dependent 6D solver.
+- `solver.py`: historical stochastic cross-check, not the production estimator.
+
+## Desktop application
+
+The desktop entry point is:
+
+```bash
+python -m pip install -r solver_v1/requirements.txt
+python -m app.desktop_ui
+```
+
+The application always runs the probability theory. FVM/FEM is a separate
+spatial-display selection, not an alternative to the theory. Its testable data
+path is `app/solver_adapter.py`:
+
+`physical stress -> sigma/E -> relaxed axial kappa -> N=1 probability PDE -> result fields`.
+
+The conditional Gibbs initial density is prepared at the applied load at
+`t=0`, which is the entered mean stress for the current sinusoid. The UI plots
+normal-opening, intrawell-registry, well-index-plastic, and total axial strain
+directly from the PDE result. It also exposes survival, cumulative initiation,
+first-passage flux, intact/absorbed mass, mass-balance residual, and positivity
+diagnostics without reconstructing them from a deterministic trajectory count.
+
+Solver time remains dimensionless model time. The entered frequency maps load
+phase to display seconds but does not constitute an atomic-to-laboratory fatigue
+time calibration.
 
 Run from repository root:
 
@@ -34,7 +65,7 @@ python -m pip install -r solver_v1/requirements.txt
 python -m solver_v1.run_demo
 ```
 
-## Current mechanism-screening result
+## Historical mechanism-screening result
 
 One dimensionless parameter set produces the required ordering:
 

@@ -31,7 +31,7 @@ The implementation is `TwoRowLJ.force_from_sigma_over_E(...)` and `cyclic_load_f
 ## Core probability fields
 
 ### `time`
-Physical/model time coordinate used by the probability PDE. In the present dimensionless mechanism solver this is not yet calibrated to seconds for pure Al.
+Dimensionless model-time coordinate used by the probability PDE. It is not yet calibrated to laboratory seconds for pure Al.
 
 ### `force`
 Current dimensionless generalized normal load \(f^*\) passed into the effective energy landscape. It should be produced from \(\sigma/E\) through the tangent conversion above, not by setting `force = sigma/E` directly.
@@ -131,13 +131,15 @@ Probability mass near the lower numerical `a` boundary. This should remain negli
 ### `a_upper_boundary_mass`
 Probability mass near the upper numerical `a` boundary. This is separate from the mechanically defined crack-opening dividing surface and should remain negligible unless the computational domain is too small.
 
-## Recommended production-only diagnostics
+## Probability bookkeeping diagnostics
 
-The UI integration should additionally expose the following once the probability bookkeeping is upgraded:
+The N=1 PDE and desktop adapter expose:
 
-- `raw_intact_mass`: direct numerical integral of the current intact density;
+- `intact_probability_mass`: direct numerical integral of the current intact density;
 - `cumulative_absorbed_mass`: accumulated first-passage mass through the crack boundary;
-- `mass_balance_residual = raw_intact_mass + cumulative_absorbed_mass - 1`.
+- `mass_balance_residual = intact_probability_mass + cumulative_absorbed_mass - 1`;
+- `negative_mass_correction`: largest roundoff-level negative mass removed so far;
+- `minimum_density`: smallest uncorrected density encountered so positivity loss is visible.
 
 These fields are necessary when displaying rare probabilities near machine/numerical tolerance, because they distinguish physical first-passage probability from numerical mass drift.
 
