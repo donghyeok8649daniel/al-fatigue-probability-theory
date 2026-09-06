@@ -1,12 +1,13 @@
 from __future__ import annotations
 from dataclasses import dataclass
 import numpy as np
-from scipy.optimize import minimize_scalar
+from scipy.optimize import minimize_scalar, root_scalar
 from scipy.interpolate import RegularGridInterpolator
 
 from .lattice_bessel import (
     FourierLatticeConfig,
     two_row_lj_infinite_energy_gradient,
+    two_row_lj_infinite_hessian,
     two_row_lj_infinite_normal_stiffness,
 )
 
@@ -99,10 +100,10 @@ class TwoRowLJ:
     def normal_tangent_stiffness(self) -> float:
         """Return exact dimensionless W_aa at the pristine staggered minimum.
 
-        This is the fast normal-opening tangent stiffness. It is used only to
-        map the macroscopic reduced stress sigma/E into the dimensionless LJ
-        force coordinate. The nonlinear Bessel-LJ energy remains unchanged in
-        the actual probability PDE.
+        This is the fast normal-opening tangent stiffness. It is retained as a
+        frozen-registry diagnostic; the canonical macroscopic mapping uses the
+        relaxed ``(a,s)`` Hessian. The nonlinear Bessel-LJ energy remains
+        unchanged in the actual probability PDE.
         """
 
         p = self.p
@@ -119,23 +120,53 @@ class TwoRowLJ:
             raise FloatingPointError("pristine normal LJ tangent stiffness must be positive")
         return stiffness
 
+    def local_hessian(self, a: float, s: float) -> np.ndarray:
+        """Return the exact symmetric Hessian of the local Bessel-LJ energy."""
+
+        p = self.p
+        waa, was, wss, _ = two_row_lj_infinite_hessian(
+            float(a),
+            float(s),
+            epsilon=p.epsilon,
+            sigma_lj=p.sigma_lj,
+            b=p.b,
+            config=self._lattice_config,
+        )
+        return np.array(
+            [[float(waa), float(was)], [float(was), float(wss)]],
+            dtype=float,
+        )
+
+    def frozen_normal_sigma_over_E_force_scale(self) -> float:
+        """Return the diagnostic force scale with registry ``s`` held fixed."""
+
+        return float(self.a0 * self.normal_tangent_stiffness())
+
     def sigma_over_E_force_scale(self) -> float:
         r"""Return kappa such that f*=kappa*(sigma/E) in the elastic limit.
 
-        With s frozen in the pristine well, the exact local equilibrium law is
+        Let ``c = (1, chi)^T`` be the gradient of the axial extension
+        ``(a-a0) + chi*s`` and let ``H0`` be the exact local energy Hessian at
+        the pristine state. Linear equilibrium gives ``H0*dq = f*c`` and hence
 
-            W_a(a,0) = f*.
-
-        At the equilibrium spacing a0, d epsilon_a / da = 1/a0. Therefore the
-        tangent matching condition epsilon_a = sigma/E gives
-
-            kappa = a0 * W_aa(a0,0).
+            kappa = a0 / (c^T H0^{-1} c).
 
         No characteristic length, area, or volume is introduced here. This is
-        a dimensionless tangent calibration of the force coordinate only.
+        a dimensionless relaxed total-axial-strain calibration. The frozen-s
+        normal scale remains available as a separately named diagnostic.
         """
 
-        return float(self.a0 * self.normal_tangent_stiffness())
+        hessian = self.local_hessian(self.a0, 0.0)
+        if not np.all(np.isfinite(hessian)):
+            raise FloatingPointError("pristine local LJ Hessian must be finite")
+        eigenvalues = np.linalg.eigvalsh(hessian)
+        if np.min(eigenvalues) <= 0.0:
+            raise FloatingPointError("pristine local LJ Hessian must be positive definite")
+        c = np.array([1.0, self.p.chi_axial_projection], dtype=float)
+        compliance = float(c @ np.linalg.solve(hessian, c))
+        if not np.isfinite(compliance) or compliance <= 0.0:
+            raise FloatingPointError("relaxed axial compliance must be positive")
+        return float(self.a0 / compliance)
 
     def force_from_sigma_over_E(self, sigma_over_E):
         """Map signed macroscopic sigma/E to the canonical dimensionless force."""
@@ -219,12 +250,28 @@ class TwoRowLJ:
         return float(np.mod(s + 0.5*p.b, p.b) - 0.5*p.b)
 
     def _find_reference_a(self) -> float:
-        out = minimize_scalar(
-            lambda a: self.local_energy(float(a), 0.0),
-            bounds=(self.p.a_min, 1.8),
-            method="bounded",
+        lower = float(self.p.a_min)
+        upper = float(min(1.8, self.p.a_max))
+        if upper <= lower:
+            raise ValueError("reference-spacing bracket must have positive width")
+        f_lower = self.local_deda(lower, 0.0)
+        f_upper = self.local_deda(upper, 0.0)
+        if not np.isfinite(f_lower) or not np.isfinite(f_upper) or f_lower * f_upper > 0.0:
+            raise ValueError("reference-spacing bracket does not contain W_a(a,0)=0")
+        out = root_scalar(
+            lambda a: self.local_deda(float(a), 0.0),
+            bracket=(lower, upper),
+            method="brentq",
+            xtol=5.0e-15,
+            rtol=4.0 * np.finfo(float).eps,
         )
-        return float(out.x)
+        if not out.converged:
+            raise RuntimeError("reference-spacing root solve did not converge")
+        a0 = float(out.root)
+        residual = abs(self.local_deda(a0, 0.0))
+        if residual > 1.0e-10:
+            raise FloatingPointError("reference spacing does not satisfy W_a(a0,0)=0")
+        return a0
 
     def energy_gradient(self, a: np.ndarray, s: np.ndarray, force: float):
         p = self.p

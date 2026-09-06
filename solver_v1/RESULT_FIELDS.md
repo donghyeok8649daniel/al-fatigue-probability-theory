@@ -10,14 +10,21 @@ The current probability solver deliberately does **not** introduce a characteris
 q(t)=\frac{\sigma(t)}{E},
 \]
 
-but `q` is not the LJ generalized force itself. The pristine Bessel-LJ normal tangent stiffness defines the dimensionless force conversion
+but `q` is not the LJ generalized force itself. Define the extension gradient and pristine local Hessian by
 
 \[
-\boxed{f^*(t)=\kappa_a q(t)},\qquad
-\boxed{\kappa_a=a_0 W_{aa}(a_0,0)}.
+\mathbf c=\begin{bmatrix}1\\ \chi\end{bmatrix},\qquad
+H_0=\begin{bmatrix}W_{aa}&W_{as}\\W_{as}&W_{ss}\end{bmatrix}_{(a_0,0)}.
 \]
 
-This is a tangent calibration of the force coordinate only. It guarantees that the **fast normal-opening branch** reproduces \(\varepsilon_a\simeq\sigma/E\) at infinitesimal load while the actual PDE continues to use the full nonlinear Bessel-LJ energy. Configurational/intrawell and inter-well responses are additional model predictions rather than being absorbed into the Young-modulus calibration.
+The relaxed total-axial-strain calibration is
+
+\[
+\boxed{f^*(t)=\kappa_{\rm axial}q(t)},\qquad
+\boxed{\kappa_{\rm axial}=\frac{a_0}{\mathbf c^T H_0^{-1}\mathbf c}}.
+\]
+
+This is a tangent calibration of the force coordinate only. It guarantees that the **relaxed total axial strain** reproduces \(\varepsilon\simeq\sigma/E\) at infinitesimal signed load while the actual PDE continues to use the full nonlinear Bessel-LJ energy. The frozen-registry scale \(a_0W_{aa}(a_0,0)\) remains available as a diagnostic and is not the canonical load mapping.
 
 The implementation is `TwoRowLJ.force_from_sigma_over_E(...)` and `cyclic_load_from_sigma_over_E(...)`.
 
@@ -84,7 +91,7 @@ with
 Total survivor-conditioned axial strain \(\varepsilon\). This is the sum of the three fields below.
 
 ### `normal_strain`
-Fast normal-opening contribution \(\varepsilon_a\). Its infinitesimal elastic slope is the branch matched to the entered Young modulus.
+Fast normal-opening contribution \(\varepsilon_a\). The entered Young modulus calibrates the relaxed total strain, not this component in isolation.
 
 ### `intrawell_strain`
 Reversible/anelastic registry contribution \(\varepsilon_\xi\) from motion inside the current configurational well.

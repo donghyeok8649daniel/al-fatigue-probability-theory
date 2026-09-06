@@ -137,6 +137,24 @@ def initial_gibbs_density_6d(
     return density / z
 
 
+def cell_product_closure_l1_error_6d(density: np.ndarray, grid: Grid6D) -> float:
+    """Return the exact L1 error from a product of the three cell marginals."""
+
+    density = np.asarray(density, dtype=float)
+    if density.shape != grid.shape:
+        raise ValueError("density shape does not match the six-dimensional grid")
+    probability_mass = density * grid.cell_volume
+    p1 = np.sum(probability_mass, axis=(1, 2, 4, 5))
+    p2 = np.sum(probability_mass, axis=(0, 2, 3, 5))
+    p3 = np.sum(probability_mass, axis=(0, 1, 3, 4))
+    product_mass = (
+        p1[:, None, None, :, None, None]
+        * p2[None, :, None, None, :, None]
+        * p3[None, None, :, None, None, :]
+    )
+    return float(np.sum(np.abs(probability_mass - product_mass)))
+
+
 def compress_initial_gibbs_6d(
     *,
     model_params: ModelParams | None = None,
@@ -169,6 +187,7 @@ def compress_initial_gibbs_6d(
     positive_mass = float(
         np.sum(np.maximum(reconstructed, 0.0)) * grid.cell_volume
     )
+    product_closure_l1_error = cell_product_closure_l1_error_6d(density, grid)
 
     return {
         "model": model,
@@ -185,4 +204,5 @@ def compress_initial_gibbs_6d(
         "reconstructed_mass": reconstructed_mass,
         "negative_mass": negative_mass,
         "positive_mass": positive_mass,
+        "product_closure_l1_error": product_closure_l1_error,
     }

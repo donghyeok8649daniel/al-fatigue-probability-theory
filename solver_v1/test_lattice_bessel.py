@@ -4,6 +4,7 @@ from solver_v1.lattice_bessel import (
     FourierLatticeConfig,
     two_row_lj_direct_reference,
     two_row_lj_infinite_energy_gradient,
+    two_row_lj_infinite_hessian,
     two_row_lj_infinite_normal_stiffness,
 )
 from solver_v1.model import ModelParams, TwoRowLJ
@@ -88,6 +89,33 @@ def test_bessel_exact_normal_stiffness_matches_gradient_difference():
     fd = (model.local_deda(a + h, 0.0) - model.local_deda(a - h, 0.0)) / (2.0 * h)
     assert abs(float(exact) - float(fd)) < 2.0e-5
     assert float(exact) > 0.0
+    assert modes < CFG.max_modes
+
+
+def test_bessel_exact_hessian_matches_gradient_differences():
+    a = 0.91
+    s = 0.23
+    h = 2.0e-5
+    waa, was, wss, modes = two_row_lj_infinite_hessian(
+        a,
+        s,
+        epsilon=1.0,
+        sigma_lj=0.82,
+        b=1.0,
+        config=CFG,
+    )
+    _, gap, gsp, _ = _analytic(a + h, s)
+    _, gam, gsm, _ = _analytic(a - h, s)
+    _, gpa, gps, _ = _analytic(a, s + h)
+    _, gma, gms, _ = _analytic(a, s - h)
+    fd_aa = float((gap - gam) / (2.0 * h))
+    fd_as_from_a = float((gpa - gma) / (2.0 * h))
+    fd_as_from_s = float((gsp - gsm) / (2.0 * h))
+    fd_ss = float((gps - gms) / (2.0 * h))
+    assert abs(float(waa) - fd_aa) < 2.0e-5
+    assert abs(float(was) - fd_as_from_a) < 2.0e-5
+    assert abs(float(was) - fd_as_from_s) < 2.0e-5
+    assert abs(float(wss) - fd_ss) < 2.0e-5
     assert modes < CFG.max_modes
 
 

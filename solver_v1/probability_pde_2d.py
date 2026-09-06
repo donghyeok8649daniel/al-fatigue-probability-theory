@@ -101,10 +101,14 @@ def cyclic_load_from_sigma_over_E(
     r"""Build a force history from the signed reduced stress sigma/E.
 
     The conversion is not ``force = sigma/E``. The Bessel-LJ force coordinate
-    has its own dimensionless tangent stiffness. We match the pristine fast
-    normal-opening branch to Young's law through
+    has its own dimensionless tangent stiffness. We match the pristine relaxed
+    total axial response to Young's law through
 
-        f* = [a0 W_aa(a0,0)] (sigma/E).
+        f* = {a0 / [c^T H0^{-1} c]} (sigma/E),
+
+    where ``c=(1,chi)^T`` and ``H0`` is the local ``(a,s)`` Hessian. The
+    frozen-s value ``a0 W_aa`` remains a diagnostic rather than the canonical
+    macroscopic mapping.
 
     This introduces no characteristic length, area, or volume. The tangent
     mapping only sets the dimensionless force coordinate; the PDE still uses

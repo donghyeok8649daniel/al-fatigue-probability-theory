@@ -196,6 +196,22 @@ def power_lattice_normal_second_derivative(
     lattice potential. It does not linearize the subsequent nonlinear PDE.
     """
 
+    second_aa, _, _, modes_used = power_lattice_hessian(
+        a, s, p=p, b=b, config=config
+    )
+    return second_aa, modes_used
+
+
+def power_lattice_hessian(
+    a,
+    s,
+    *,
+    p: int,
+    b: float = 1.0,
+    config: FourierLatticeConfig = FourierLatticeConfig(),
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, int]:
+    """Evaluate the exact ``aa``, ``as``, and ``ss`` derivatives of ``S_p``."""
+
     if p <= 0:
         raise ValueError("p must be positive")
     if b <= 0.0:
@@ -208,16 +224,37 @@ def power_lattice_normal_second_derivative(
         raise ValueError("invalid Fourier lattice controls")
 
     aa, ss = _as_arrays(a, s)
-    second = _zero_mode_second_deda(aa, p, b)
+    second_aa = _zero_mode_second_deda(aa, p, b)
+    second_as = np.zeros_like(second_aa)
+    second_ss = np.zeros_like(second_aa)
     small_count = 0
     modes_used = config.max_modes
 
     for m in range(1, config.max_modes + 1):
+        coefficient, dcoefficient = _mode_coefficient_and_deda(aa, p, m, b)
+        wave_number = 2.0 * math.pi * m / b
         phase = 2.0 * math.pi * m * (0.5 - ss / b)
-        term = _mode_coefficient_second_deda(aa, p, m, b) * np.cos(phase)
-        second = second + term
-        scale = max(1.0, float(np.max(np.abs(second))))
-        term_size = float(np.max(np.abs(term)))
+        cphase = np.cos(phase)
+        sphase = np.sin(phase)
+
+        aa_term = _mode_coefficient_second_deda(aa, p, m, b) * cphase
+        as_term = wave_number * dcoefficient * sphase
+        ss_term = -(wave_number**2) * coefficient * cphase
+        second_aa = second_aa + aa_term
+        second_as = second_as + as_term
+        second_ss = second_ss + ss_term
+
+        scale = max(
+            1.0,
+            float(np.max(np.abs(second_aa))),
+            float(np.max(np.abs(second_as))),
+            float(np.max(np.abs(second_ss))),
+        )
+        term_size = max(
+            float(np.max(np.abs(aa_term))),
+            float(np.max(np.abs(as_term))),
+            float(np.max(np.abs(ss_term))),
+        )
         if term_size <= config.tol * scale:
             small_count += 1
             if small_count >= config.consecutive_small:
@@ -226,7 +263,7 @@ def power_lattice_normal_second_derivative(
         else:
             small_count = 0
 
-    return second, modes_used
+    return second_aa, second_as, second_ss, modes_used
 
 
 def two_row_lj_infinite_energy_gradient(
@@ -274,18 +311,41 @@ def two_row_lj_infinite_normal_stiffness(
 ) -> tuple[np.ndarray, int]:
     """Exact normal tangent stiffness d^2 W/da^2 of the infinite LJ row."""
 
+    haa, _, _, modes = two_row_lj_infinite_hessian(
+        a,
+        s,
+        epsilon=epsilon,
+        sigma_lj=sigma_lj,
+        b=b,
+        config=config,
+    )
+    return haa, modes
+
+
+def two_row_lj_infinite_hessian(
+    a,
+    s,
+    *,
+    epsilon: float,
+    sigma_lj: float,
+    b: float = 1.0,
+    config: FourierLatticeConfig = FourierLatticeConfig(),
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, int]:
+    """Exact Hessian ``(W_aa, W_as, W_ss)`` of the infinite LJ row."""
+
     if epsilon <= 0.0 or sigma_lj <= 0.0:
         raise ValueError("epsilon and sigma_lj must be positive")
-    s6aa, modes6 = power_lattice_normal_second_derivative(
+    s6aa, s6as, s6ss, modes6 = power_lattice_hessian(
         a, s, p=6, b=b, config=config
     )
-    s3aa, modes3 = power_lattice_normal_second_derivative(
+    s3aa, s3as, s3ss, modes3 = power_lattice_hessian(
         a, s, p=3, b=b, config=config
     )
-    stiffness = 4.0 * epsilon * (
-        sigma_lj**12 * s6aa - sigma_lj**6 * s3aa
-    )
-    return stiffness, max(modes6, modes3)
+    factor = 4.0 * epsilon
+    haa = factor * (sigma_lj**12 * s6aa - sigma_lj**6 * s3aa)
+    has = factor * (sigma_lj**12 * s6as - sigma_lj**6 * s3as)
+    hss = factor * (sigma_lj**12 * s6ss - sigma_lj**6 * s3ss)
+    return haa, has, hss, max(modes6, modes3)
 
 
 def two_row_lj_direct_reference(
