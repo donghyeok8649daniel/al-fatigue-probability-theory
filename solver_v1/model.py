@@ -83,6 +83,32 @@ class TwoRowLJ:
         energy, _, _, _ = self._lower_lattice_energy_gradient(float(a), float(s))
         return float(energy)
 
+    def energy(self, a: float, s: float) -> float:
+        """Energy-surface interface alias for the local two-coordinate cell."""
+
+        return self.local_energy(a, s)
+
+    def grad(self, a: float, s: float) -> np.ndarray:
+        """Return ``(W_a,W_s)`` through the common energy-surface interface."""
+
+        return np.array([self.local_deda(a, s), self.local_deds(a, s)])
+
+    def hessian(self, a: float, s: float) -> np.ndarray:
+        """Energy-surface interface alias for the symmetric local Hessian."""
+
+        return self.local_hessian(a, s)
+
+    def local_energy_gradient_array(self, a, s):
+        """Return vectorized local energy and first derivatives.
+
+        This small energy-surface interface preserves the original LJ result
+        and lets optional analytic extensions participate in the same
+        conditional-free-energy and N=1 PDE machinery.
+        """
+
+        energy, deda, deds, _ = self._lower_lattice_energy_gradient(a, s)
+        return np.asarray(energy), np.asarray(deda), np.asarray(deds)
+
     def local_deda(self, a: float, s: float) -> float:
         _, deda, _, _ = self._lower_lattice_energy_gradient(float(a), float(s))
         return float(deda)

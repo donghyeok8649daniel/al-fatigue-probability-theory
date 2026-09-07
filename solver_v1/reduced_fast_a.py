@@ -44,7 +44,7 @@ def _generalized_energy_derivatives(
     energy_offset: float = 0.0,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     aa, ss = np.broadcast_arrays(np.asarray(a, dtype=float), np.asarray(s, dtype=float))
-    energy, deda, deds, _ = model._lower_lattice_energy_gradient(aa, ss)
+    energy, deda, deds = model.local_energy_gradient_array(aa, ss)
     generalized = (
         energy
         - float(force)

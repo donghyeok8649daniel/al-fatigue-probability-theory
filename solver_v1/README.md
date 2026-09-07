@@ -127,6 +127,12 @@ flux balances, the separation of interwell plastic flow from selective crack
 absorption, the candidate crystallographic interpretation of $\chi$, and the
 current (conservative) numerical classification of the LJ slip mechanism.
 
+See `ANALYTIC_LJ_EAM_HYBRID.md` for the optional analytic LJ--EAM hybrid. The
+verified Poisson/Bessel LJ pair term remains the base interaction; an
+exponential environment-density lattice sum and differentiable embedding term
+are added in a separate `AnalyticLJEAM` model. Its default parameter set is a
+mathematical sensitivity example, not calibrated aluminum data.
+
 ## Why the N=3 PDE needs compression
 
 For `N=3`, the density depends on six coordinates:
