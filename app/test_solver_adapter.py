@@ -5,6 +5,7 @@ import numpy as np
 from app.solver_adapter import (
     PDE_RESULT_FIELDS,
     UIAnalysisConfig,
+    physical_probability_bookkeeping,
     physical_load_conversion,
     result_field_mapping,
     run_ui_analysis,
@@ -41,8 +42,17 @@ def _assert_common_invariants(result: dict[str, object]) -> None:
     plastic = np.asarray(result["plastic_strain"], dtype=float)
     survival = np.asarray(result["survival"], dtype=float)
     initiation = np.asarray(result["initiation_probability"], dtype=float)
+    absorbed = np.asarray(result["cumulative_absorbed_mass"], dtype=float)
+    raw_intact = np.asarray(result["raw_intact_mass"], dtype=float)
     np.testing.assert_allclose(total, normal + intrawell + plastic, rtol=0.0, atol=2e-12)
-    np.testing.assert_array_equal(initiation, 1.0 - survival)
+    np.testing.assert_array_equal(initiation, absorbed)
+    np.testing.assert_array_equal(survival, 1.0 - absorbed)
+    np.testing.assert_array_equal(result["survival_probability"], survival)
+    np.testing.assert_array_equal(result["raw_one_minus_survival"], 1.0 - raw_intact)
+    np.testing.assert_allclose(
+        result["mass_balance_residual"], raw_intact + absorbed - 1.0,
+        rtol=0.0, atol=2e-15,
+    )
     assert np.all(np.diff(survival) <= 1e-10)
     assert np.all(np.diff(initiation) >= -1e-10)
     assert np.max(np.abs(np.asarray(result["mass_balance_residual"]))) < 1e-8
@@ -72,6 +82,21 @@ def test_physical_stress_uses_verified_relaxed_axial_force_mapping() -> None:
     assert np.isclose(conversion["de_slow"], 62.39808635219237)
 
 
+def test_physical_probability_uses_absorbed_mass_not_roundoff_residual() -> None:
+    raw_intact = np.array([1.0, 0.800001])
+    absorbed = np.array([0.0, 0.2])
+    mapped = physical_probability_bookkeeping(raw_intact, absorbed)
+    np.testing.assert_array_equal(mapped["initiation_probability"], absorbed)
+    np.testing.assert_array_equal(mapped["survival"], 1.0 - absorbed)
+    np.testing.assert_array_equal(mapped["survival_probability"], 1.0 - absorbed)
+    np.testing.assert_array_equal(mapped["raw_intact_mass"], raw_intact)
+    np.testing.assert_allclose(
+        mapped["raw_one_minus_survival"], np.array([0.0, 0.199999]),
+        rtol=0.0, atol=2e-16,
+    )
+    assert mapped["initiation_probability"][1] != mapped["raw_one_minus_survival"][1]
+
+
 def test_ui_result_registry_maps_required_pde_fields_directly() -> None:
     result, records = _physical_case("compression")
     fields = result_field_mapping(result)
@@ -89,6 +114,7 @@ def test_ui_result_registry_maps_required_pde_fields_directly() -> None:
         ("intrawell_strain", "intrawell_strain"),
         ("plastic_strain", "plastic_strain"),
         ("survival", "survival"),
+        ("survival_probability", "survival_probability"),
         ("initiation_probability", "initiation_probability"),
         ("first_passage_flux", "first_passage_flux"),
     ):

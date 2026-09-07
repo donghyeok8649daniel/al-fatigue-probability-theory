@@ -28,6 +28,7 @@ PDE_RESULT_FIELDS = (
     "plastic_strain",
     "strain",
     "survival",
+    "survival_probability",
     "initiation_probability",
     "first_passage_flux",
     "intact_probability_mass",
@@ -35,6 +36,8 @@ PDE_RESULT_FIELDS = (
     "mass_balance_residual",
     "negative_mass_correction",
     "minimum_density",
+    "raw_intact_mass",
+    "raw_one_minus_survival",
 )
 
 
@@ -141,14 +144,42 @@ def physical_load_conversion(config: UIAnalysisConfig) -> dict[str, float]:
     }
 
 
+def physical_probability_bookkeeping(
+    raw_intact_mass,
+    cumulative_absorbed_mass,
+) -> dict[str, np.ndarray]:
+    """Separate physical first-passage probability from numerical mass error.
+
+    Physical initiation is the mass actually removed at the opening boundary.
+    ``1 - raw_intact_mass`` also contains any conservative-solve roundoff and is
+    retained only as an explicitly named numerical diagnostic.  No clipping or
+    rounding is applied to either quantity.
+    """
+
+    raw_intact = np.asarray(raw_intact_mass, dtype=float)
+    absorbed = np.asarray(cumulative_absorbed_mass, dtype=float)
+    survival = 1.0 - absorbed
+    return {
+        "survival": survival,
+        "survival_probability": survival,
+        "initiation_probability": absorbed,
+        "raw_intact_mass": raw_intact,
+        "raw_one_minus_survival": 1.0 - raw_intact,
+    }
+
+
 def _decorate_record(
     config: UIAnalysisConfig,
     record: dict[str, float],
 ) -> dict[str, float]:
     model_time = float(record["time"])
     cycle = model_time / config.model_period
+    probability = physical_probability_bookkeeping(
+        record["survival"], record["cumulative_absorbed_mass"]
+    )
     return {
         **record,
+        **{key: float(value) for key, value in probability.items()},
         "model_time": model_time,
         "load_cycle": float(cycle),
         "applied_stress_mpa": float(config.stress_mpa(model_time)),
@@ -169,6 +200,9 @@ def result_field_mapping(result: dict[str, object]) -> dict[str, np.ndarray]:
         "plastic_strain": np.asarray(result["plastic_strain"], dtype=float),
         "strain": np.asarray(result["strain"], dtype=float),
         "survival": np.asarray(result["survival"], dtype=float),
+        "survival_probability": np.asarray(
+            result["survival_probability"], dtype=float
+        ),
         "initiation_probability": np.asarray(
             result["initiation_probability"], dtype=float
         ),
@@ -186,6 +220,10 @@ def result_field_mapping(result: dict[str, object]) -> dict[str, np.ndarray]:
             result["negative_mass_correction"], dtype=float
         ),
         "minimum_density": np.asarray(result["minimum_density"], dtype=float),
+        "raw_intact_mass": np.asarray(result["raw_intact_mass"], dtype=float),
+        "raw_one_minus_survival": np.asarray(
+            result["raw_one_minus_survival"], dtype=float
+        ),
     }
 
 
@@ -245,8 +283,12 @@ def run_ui_analysis(
     dynamics = model_frequency_diagnostics(
         calibration_model, config.model_frequency
     )
+    probability = physical_probability_bookkeeping(
+        raw["survival"], raw["cumulative_absorbed_mass"]
+    )
     result: dict[str, object] = {
         **raw,
+        **probability,
         "model_time": model_time,
         "load_cycle": load_cycle,
         "applied_stress_mpa": np.asarray(config.stress_mpa(model_time), dtype=float),

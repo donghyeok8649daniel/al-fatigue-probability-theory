@@ -54,8 +54,25 @@ Plastic strain is not forced to be nonzero. It appears only when the solved PDE
 carries probability into a nonzero configurational well index.
 
 Probability views use the PDE outputs `survival`, `initiation_probability`, and
-`first_passage_flux` directly. The mass-diagnostics view also shows intact mass,
-cumulative absorbed mass, mass-balance residual, and negative-mass correction.
+`first_passage_flux`. At the UI boundary the physical fields are defined by
+
+```text
+initiation_probability = cumulative_absorbed_mass
+survival_probability   = 1 - cumulative_absorbed_mass
+```
+
+The raw intact mass, `1 - raw_intact_mass`, mass-balance residual, and
+negative-mass correction remain explicitly labeled numerical diagnostics. A
+roundoff-scale raw mass discrepancy is never presented as physical crack
+initiation.
+
+## Language
+
+The desktop defaults to Korean and can switch between **한국어** and **English**
+from the header without restarting. `app.i18n` owns stable translation keys and
+both locale dictionaries. Switching language redraws widget and plot text only:
+entered values, solver settings, selected result, completed arrays, and saved
+zoom/pan limits are retained, and the PDE is not rerun.
 
 The calculation runs on a background worker thread. Completed PDE records are
 sent to Tk through a queue so the GUI event loop remains responsive. Plot views
