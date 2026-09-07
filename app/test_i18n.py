@@ -102,7 +102,27 @@ def test_probability_and_plasticity_terms_use_required_precise_korean() -> None:
         "diagnostic.interwell_flux": "우물 간 확률 플럭스",
         "diagnostic.transition_onset": "모델 구성전이 개시 응력",
         "diagnostic.residual_plasticity": "잔류 소성 검증",
+        "diagnostic.intrawell_motion": "구성 우물 내부 운동",
+        "diagnostic.interwell_transfer": "우물 간 구성 이동",
+        "diagnostic.model_plastic_flow": "모델 소성 유동",
+        "diagnostic.residual_plastic_deformation": "잔류 소성 변형",
+        "status.plastic_below_numerical_resolution": "소성 수치 해상도 이하",
+        "diagnostic.configurational_barrier": "구성 장벽",
+        "diagnostic.opening_barrier": "개구 장벽",
     }
     for key, value in expected.items():
         assert tr(key, "ko") == value
         assert tr(key, "en")
+
+
+def test_plastic_flow_plot_separates_interwell_flow_from_opening_loss() -> None:
+    english = plot_strings("plastic_flow", "en")
+    assert english["title"] == "Model plastic flow"
+    assert english["legend"] == (
+        "Net interwell plastic flow",
+        "Gross configurational slip activity",
+        "Selective opening-loss contribution (not plastic)",
+    )
+    assert plot_strings("registry_transfer", "ko")["title"] == (
+        "누적 순 레지스트리 이동"
+    )

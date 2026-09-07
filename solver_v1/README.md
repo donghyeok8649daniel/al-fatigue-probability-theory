@@ -122,6 +122,11 @@ The next production step is a tensor-train time integrator for the six-dimension
 
 See `PROBABILITY_PDE_ROADMAP.md` for the detailed validation plan and `RESULT_FIELDS.md` for user-facing output meanings.
 
+See `CONFIGURATIONAL_PLASTICITY.md` for the exact registry-well population and
+flux balances, the separation of interwell plastic flow from selective crack
+absorption, the candidate crystallographic interpretation of $\chi$, and the
+current (conservative) numerical classification of the LJ slip mechanism.
+
 ## Why the N=3 PDE needs compression
 
 For `N=3`, the density depends on six coordinates:

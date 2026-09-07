@@ -93,11 +93,12 @@ def _physical_run(
     force: float = 3.0,
     duration: float = 0.1,
     value_function=None,
+    s_wells: int = 3,
 ) -> dict[str, object]:
     return run_probability_pde_2d(
         prepared_model=model,
         grid_params=Grid2DParams(
-            n_a=n_a, n_s=n_s, s_wells=3, a_upper=1.6
+            n_a=n_a, n_s=n_s, s_wells=s_wells, a_upper=1.6
         ),
         time_params=PDETimeParams(
             max_dt=2.0e-3,
@@ -161,6 +162,33 @@ def test_zero_load_hold_does_not_promote_unresolved_transfer_to_residual_plastic
     )
     assert assessment.classification == UNRESOLVED
     assert classification == UNRESOLVED
+
+
+def test_zero_load_hold_is_not_created_by_outer_s_domain_boundaries(
+    model: TwoRowLJ,
+) -> None:
+    def load_then_hold(time: float) -> float:
+        if time < 0.02:
+            return float(1.5 * (1.0 - np.cos(100.0 * np.pi * time)))
+        return 0.0
+
+    results = [
+        _physical_run(
+            model,
+            11,
+            6 * wells,
+            duration=0.04,
+            value_function=load_then_hold,
+            s_wells=wells,
+        )
+        for wells in (3, 5, 7)
+    ]
+    final_plastic = np.asarray(
+        [result["plastic_strain"][-1] for result in results], dtype=float
+    )
+    assert np.ptp(final_plastic) < 1.0e-12
+    assert max(abs(final_plastic)) < 1.0e-9
+    assert np.max(results[-1]["s_truncation_boundary_mass"]) < 1.0e-14
 
 
 def test_compressive_control_absorption_is_below_convergence_floor(

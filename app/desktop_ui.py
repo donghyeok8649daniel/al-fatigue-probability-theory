@@ -122,6 +122,8 @@ class DesktopApp:
         self.specimen_N_eff = tk.StringVar(value="N_eff = —")
         self.local_floor_display = tk.StringVar(value="—")
         self.plastic_floor_display = tk.StringVar(value="—")
+        self.configurational_barrier_display = tk.StringVar(value="—")
+        self.opening_barrier_display = tk.StringVar(value="—")
         self.probability_status_display = tk.StringVar(value="—")
         self._specimen_status_key = "status.local_result_required"
         self.field = tk.StringVar(value="strain_components")
@@ -444,6 +446,20 @@ class DesktopApp:
         ttk.Label(specimen, textvariable=self.probability_status_display).grid(
             row=7, column=0, columnspan=3, sticky="w"
         )
+        mechanism = self._bind_text(
+            ttk.LabelFrame(left, padding=8), "section.mechanism_diagnostics"
+        )
+        mechanism.pack(fill="x", pady=(0, 10))
+        ttk.Label(
+            mechanism, textvariable=self.configurational_barrier_display
+        ).pack(anchor="w")
+        ttk.Label(
+            mechanism, textvariable=self.opening_barrier_display
+        ).pack(anchor="w")
+        self._bind_text(
+            ttk.Label(mechanism, wraplength=235, justify="left"),
+            "diagnostic.barrier_scope",
+        ).pack(anchor="w", pady=(3, 0))
         self.run_button = ttk.Button(
             left, text=self._tr("button.run"), style="Accent.TButton",
             command=self._start_solve
@@ -630,6 +646,16 @@ class DesktopApp:
             if self.result is not None
             else None
         )
+        configurational_barrier = (
+            self.result.get("configurational_barrier")
+            if self.result is not None
+            else None
+        )
+        opening_barrier = (
+            self.result.get("opening_barrier_at_configurational_saddle")
+            if self.result is not None
+            else None
+        )
         self.specimen_N_eff.set(
             f"{self._tr('diagnostic.N_eff')}: "
             + (f"{float(N_eff):.8g}" if N_eff is not None else "—")
@@ -645,6 +671,24 @@ class DesktopApp:
                 f" ({self._tr('status.requires_convergence')})"
                 if plastic_floor is not None
                 else ""
+            )
+        )
+        self.configurational_barrier_display.set(
+            f"{self._tr('diagnostic.configurational_barrier')}: "
+            + (
+                f"{float(configurational_barrier):.3e}"
+                if configurational_barrier is not None
+                and np.isfinite(float(configurational_barrier))
+                else "—"
+            )
+        )
+        self.opening_barrier_display.set(
+            f"{self._tr('diagnostic.opening_barrier')}: "
+            + (
+                f"{float(opening_barrier):.3e}"
+                if opening_barrier is not None
+                and np.isfinite(float(opening_barrier))
+                else "—"
             )
         )
         self.probability_status_display.set(
@@ -1002,6 +1046,30 @@ class DesktopApp:
                         linewidth=1.0, linestyle="--",
                     )
                 self.ax.legend(loc="best", fontsize=7, frameon=False)
+        elif field == "plastic_flow":
+            for key, label, style in zip(
+                (
+                    "net_plastic_flow_rate",
+                    "gross_configurational_slip_activity",
+                    "selective_opening_plastic_rate",
+                ),
+                text["legend"],
+                ("-", "--", ":"),
+            ):
+                self.ax.plot(
+                    x, data[key], label=label, linewidth=1.5, linestyle=style
+                )
+            self.ax.legend(loc="best", fontsize=7, frameon=False)
+        elif field == "registry_transfer":
+            for key, label, style in zip(
+                ("accumulated_net_registry_transfer", "absorbed_registry_moment"),
+                text["legend"],
+                ("-", "--"),
+            ):
+                self.ax.plot(
+                    x, data[key], label=label, linewidth=1.5, linestyle=style
+                )
+            self.ax.legend(loc="best", fontsize=7, frameon=False)
         else:
             key = "applied_stress_mpa" if field == "stress" else field
             self.ax.plot(x, data[key], color=ACCENT, linewidth=1.8)

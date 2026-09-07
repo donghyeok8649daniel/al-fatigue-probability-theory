@@ -144,8 +144,27 @@ def test_ui_result_registry_maps_required_pde_fields_directly() -> None:
         ("survival_probability", "survival_probability"),
         ("initiation_probability", "initiation_probability"),
         ("first_passage_flux", "first_passage_flux"),
+        ("net_plastic_flow_rate", "net_plastic_flow_rate"),
+        (
+            "gross_configurational_slip_activity",
+            "gross_configurational_slip_activity",
+        ),
+        ("selective_opening_plastic_rate", "selective_opening_plastic_rate"),
+        (
+            "accumulated_net_registry_transfer",
+            "accumulated_net_registry_transfer",
+        ),
     ):
         assert np.shares_memory(fields[mapped], np.asarray(result[source]))
+    # The diagnostic follows the increasing-s saddle.  Under compression that
+    # directional metastable branch may not be represented, in which case NaN
+    # and the explicit status are preferable to a fabricated barrier.
+    assert "configurational_barrier" in result
+    assert "opening_barrier_at_configurational_saddle" in result
+    assert result["configurational_barrier_status"] in {
+        "metastable branch resolved",
+        "no distinct metastable minimum/saddle",
+    }
 
 
 def test_compression_only_ui_data_path_is_physically_consistent() -> None:

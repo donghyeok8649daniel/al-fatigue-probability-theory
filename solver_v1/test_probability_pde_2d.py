@@ -277,6 +277,44 @@ def test_aligned_well_populations_obey_interwell_flux_balance():
     assert np.all(gross + 1.0e-30 >= np.abs(net))
     assert np.max(np.abs(result["interwell_boundary_alignment_error"])) < 1.0e-14
     assert np.max(np.abs(result["well_population_balance_residual"])) < 1.0e-12
+    np.testing.assert_allclose(
+        np.sum(populations, axis=1),
+        result["intact_probability_mass"],
+        rtol=0.0,
+        atol=2.0e-14,
+    )
+    assert np.max(np.abs(result["registry_moment_balance_residual"])) < 1.0e-12
+    factor = (
+        result["model"].p.chi_axial_projection
+        * result["model"].p.b
+        / result["model"].a0
+    )
+    np.testing.assert_allclose(
+        result["plastic_strain"],
+        factor
+        * result["unnormalized_registry_moment"]
+        / result["intact_probability_mass"],
+        rtol=0.0,
+        atol=2.0e-14,
+    )
+
+
+def test_initial_crack_absorption_does_not_create_interwell_plastic_flow():
+    result = run_probability_pde_2d(
+        model_params=_params(),
+        grid_params=Grid2DParams(n_a=11, n_s=18, s_wells=3, a_upper=1.55),
+        time_params=PDETimeParams(
+            max_dt=2.0e-3,
+            cfl=0.40,
+            record_interval=0.01,
+            integrator="implicit",
+        ),
+        load=CyclicLoad2D(force_min=6.0, force_max=6.0, period=1.0, cycles=0.0),
+        preload_force=0.0,
+    )
+    assert result["cumulative_absorbed_mass"][-1] > 1.0 - 1.0e-12
+    assert result["accumulated_net_registry_transfer"][-1] == 0.0
+    assert result["net_interwell_registry_rate"][-1] == 0.0
 
 
 def test_configurational_interface_flux_is_zero_for_discrete_gibbs_state():

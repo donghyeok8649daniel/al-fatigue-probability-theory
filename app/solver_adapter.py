@@ -12,6 +12,7 @@ from typing import Callable
 import numpy as np
 
 from solver_v1.dynamics_diagnostics import model_frequency_diagnostics
+from solver_v1.configurational_landscape import bound_configurational_barrier
 from solver_v1.model import ModelParams, TwoRowLJ
 from solver_v1.probability_pde_2d import (
     Grid2D,
@@ -47,6 +48,17 @@ PDE_RESULT_FIELDS = (
     "minimum_density",
     "raw_intact_mass",
     "raw_one_minus_survival",
+    "mean_well_index",
+    "plastic_well_activity",
+    "unnormalized_registry_moment",
+    "accumulated_net_registry_transfer",
+    "absorbed_registry_moment",
+    "registry_moment_balance_residual",
+    "net_interwell_registry_rate",
+    "gross_interwell_activity_rate",
+    "net_plastic_flow_rate",
+    "gross_configurational_slip_activity",
+    "selective_opening_plastic_rate",
 )
 
 
@@ -294,6 +306,37 @@ def result_field_mapping(result: dict[str, object]) -> dict[str, np.ndarray]:
         "raw_one_minus_survival": np.asarray(
             result["raw_one_minus_survival"], dtype=float
         ),
+        "mean_well_index": np.asarray(result["mean_well_index"], dtype=float),
+        "plastic_well_activity": np.asarray(
+            result["plastic_well_activity"], dtype=float
+        ),
+        "unnormalized_registry_moment": np.asarray(
+            result["unnormalized_registry_moment"], dtype=float
+        ),
+        "accumulated_net_registry_transfer": np.asarray(
+            result["accumulated_net_registry_transfer"], dtype=float
+        ),
+        "absorbed_registry_moment": np.asarray(
+            result["absorbed_registry_moment"], dtype=float
+        ),
+        "registry_moment_balance_residual": np.asarray(
+            result["registry_moment_balance_residual"], dtype=float
+        ),
+        "net_interwell_registry_rate": np.asarray(
+            result["net_interwell_registry_rate"], dtype=float
+        ),
+        "gross_interwell_activity_rate": np.asarray(
+            result["gross_interwell_activity_rate"], dtype=float
+        ),
+        "net_plastic_flow_rate": np.asarray(
+            result["net_plastic_flow_rate"], dtype=float
+        ),
+        "gross_configurational_slip_activity": np.asarray(
+            result["gross_configurational_slip_activity"], dtype=float
+        ),
+        "selective_opening_plastic_rate": np.asarray(
+            result["selective_opening_plastic_rate"], dtype=float
+        ),
     }
 
 
@@ -356,6 +399,29 @@ def run_ui_analysis(
     probability = physical_probability_bookkeeping(
         raw["intact_probability_mass"], raw["cumulative_absorbed_mass"]
     )
+    peak_force = float(max(load.force_min, load.force_max))
+    barrier = bound_configurational_barrier(
+        calibration_model,
+        peak_force,
+        n_s=61,
+        quadrature_order=24,
+    )
+    landscape_diagnostics = {
+        "barrier_diagnostic_force": peak_force,
+        "configurational_barrier": (
+            float(barrier.barrier) if barrier is not None else np.nan
+        ),
+        "opening_barrier_at_configurational_saddle": (
+            float(barrier.opening_barrier_at_saddle)
+            if barrier is not None
+            else np.nan
+        ),
+        "configurational_barrier_status": (
+            "metastable branch resolved"
+            if barrier is not None
+            else "no distinct metastable minimum/saddle"
+        ),
+    }
     result: dict[str, object] = {
         **raw,
         **probability,
@@ -374,6 +440,7 @@ def run_ui_analysis(
         "analysis_quality": config.analysis_quality,
         "integration_method": config.integration_method,
         "grid_shape": (config.grid_n_a, config.grid_n_s),
+        **landscape_diagnostics,
         **dynamics,
     }
     assessment = assess_local_rare_event(result)

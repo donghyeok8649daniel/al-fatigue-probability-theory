@@ -39,6 +39,7 @@ from scipy import sparse
 from scipy.sparse.linalg import spsolve
 
 from .model import ModelParams, TwoRowLJ
+from .configurational_plasticity import registry_rate_terms
 
 
 @dataclass(frozen=True)
@@ -590,13 +591,16 @@ def run_probability_pde_2d(
     cumulative_interwell_net = np.zeros(boundary_interfaces.size, dtype=float)
     cumulative_interwell_gross = np.zeros(boundary_interfaces.size, dtype=float)
     cumulative_opening_by_well = np.zeros(well_indices.size, dtype=float)
+    interval_opening_by_well = np.zeros(well_indices.size, dtype=float)
     initial_well_population: np.ndarray | None = None
+    initial_registry_moment: float | None = None
     well_population_records: list[np.ndarray] = []
     interwell_net_flux_records: list[np.ndarray] = []
     interwell_gross_flux_records: list[np.ndarray] = []
     cumulative_interwell_net_records: list[np.ndarray] = []
     cumulative_interwell_gross_records: list[np.ndarray] = []
     well_balance_residual_records: list[np.ndarray] = []
+    cumulative_opening_by_well_records: list[np.ndarray] = []
 
     records: dict[str, list[float]] = {
         key: []
@@ -625,6 +629,15 @@ def run_probability_pde_2d(
             "negative_mass_correction",
             "cumulative_negative_mass_correction",
             "minimum_density",
+            "unnormalized_registry_moment",
+            "accumulated_net_registry_transfer",
+            "absorbed_registry_moment",
+            "registry_moment_balance_residual",
+            "net_interwell_registry_rate",
+            "gross_interwell_activity_rate",
+            "net_plastic_flow_rate",
+            "gross_configurational_slip_activity",
+            "selective_opening_plastic_rate",
         )
     }
 
@@ -641,7 +654,8 @@ def run_probability_pde_2d(
     minimum_density = float(np.min(density))
 
     def append_record(now: float, force: float) -> None:
-        nonlocal interval_absorbed_mass, last_record_time, initial_well_population
+        nonlocal interval_absorbed_mass, last_record_time
+        nonlocal initial_well_population, initial_registry_moment
         elapsed = float(now - last_record_time)
         interval_flux = (
             interval_absorbed_mass / elapsed
@@ -657,6 +671,7 @@ def run_probability_pde_2d(
         population = well_obs["well_population"]
         if initial_well_population is None:
             initial_well_population = population.copy()
+            initial_registry_moment = float(well_indices @ population)
         expected_population = initial_well_population - cumulative_opening_by_well
         if cumulative_interwell_net.size:
             expected_population[1:] += cumulative_interwell_net
@@ -668,6 +683,32 @@ def run_probability_pde_2d(
         cumulative_interwell_gross_records.append(cumulative_interwell_gross.copy())
         well_balance_residual_records.append(
             (population - expected_population).copy()
+        )
+        cumulative_opening_by_well_records.append(
+            cumulative_opening_by_well.copy()
+        )
+        opening_rate_by_well = (
+            interval_opening_by_well / elapsed
+            if elapsed > 10.0 * np.finfo(float).eps
+            else np.zeros_like(interval_opening_by_well)
+        )
+        registry_terms = registry_rate_terms(
+            well_indices=well_indices,
+            well_populations=population,
+            interwell_net_flux=well_obs["interwell_net_flux"],
+            interwell_gross_flux=well_obs["interwell_gross_flux"],
+            opening_absorption_rate_by_well=opening_rate_by_well,
+        )
+        accumulated_registry_transfer = float(np.sum(cumulative_interwell_net))
+        absorbed_registry_moment = float(well_indices @ cumulative_opening_by_well)
+        registry_balance_residual = float(
+            registry_terms.unnormalized_registry_moment
+            - float(initial_registry_moment)
+            - accumulated_registry_transfer
+            + absorbed_registry_moment
+        )
+        plastic_factor = (
+            model.p.chi_axial_projection * model.p.b / model.a0
         )
         snapshot = {
             "time": float(now),
@@ -698,6 +739,29 @@ def run_probability_pde_2d(
                 cumulative_negative_mass_correction
             ),
             "minimum_density": float(minimum_density),
+            "unnormalized_registry_moment": float(
+                registry_terms.unnormalized_registry_moment
+            ),
+            "accumulated_net_registry_transfer": accumulated_registry_transfer,
+            "absorbed_registry_moment": absorbed_registry_moment,
+            "registry_moment_balance_residual": registry_balance_residual,
+            "net_interwell_registry_rate": float(
+                registry_terms.net_registry_flow_rate
+            ),
+            "gross_interwell_activity_rate": float(
+                registry_terms.gross_configurational_activity_rate
+            ),
+            "net_plastic_flow_rate": float(
+                plastic_factor * registry_terms.conditional_net_registry_flow_rate
+            ),
+            "gross_configurational_slip_activity": float(
+                abs(plastic_factor)
+                * registry_terms.gross_configurational_activity_rate
+                / max(float(np.sum(population)), np.finfo(float).tiny)
+            ),
+            "selective_opening_plastic_rate": float(
+                plastic_factor * registry_terms.conditional_selective_opening_rate
+            ),
         }
         for name in records:
             records[name].append(snapshot[name])
@@ -708,6 +772,7 @@ def run_probability_pde_2d(
                 float(now), float(force), density.copy(), model, grid
             )
         interval_absorbed_mass = 0.0
+        interval_opening_by_well.fill(0.0)
         last_record_time = float(now)
 
     while True:
@@ -727,6 +792,9 @@ def run_probability_pde_2d(
                 for index, well in enumerate(well_indices):
                     columns = well_structure["cell_well_index"] == well
                     cumulative_opening_by_well[index] += float(
+                        np.sum(removed_density[:, columns]) * grid.cell_volume
+                    )
+                    interval_opening_by_well[index] += float(
                         np.sum(removed_density[:, columns]) * grid.cell_volume
                     )
 
@@ -804,6 +872,9 @@ def run_probability_pde_2d(
                 cumulative_opening_by_well[index] += float(
                     np.sum(removed_density[:, columns]) * grid.cell_volume
                 )
+                interval_opening_by_well[index] += float(
+                    np.sum(removed_density[:, columns]) * grid.cell_volume
+                )
         numerical_mass_error = abs(
             before_absorb - float(np.sum(density) * grid.cell_volume)
         )
@@ -845,6 +916,9 @@ def run_probability_pde_2d(
             cumulative_interwell_gross_records, dtype=float
         ),
         "cumulative_opening_absorption_by_well": cumulative_opening_by_well.copy(),
+        "cumulative_opening_absorption_by_well_history": np.asarray(
+            cumulative_opening_by_well_records, dtype=float
+        ),
         "well_population_balance_residual": np.asarray(
             well_balance_residual_records, dtype=float
         ),

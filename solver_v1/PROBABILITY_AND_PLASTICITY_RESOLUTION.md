@@ -91,17 +91,19 @@ the observed grid variation, so the absorption mechanism is demonstrably
 active. This corresponds to roughly 4.08 GPa through the present mapping and
 is explicitly an extreme mechanism control.
 
-The fixed-domain potential-of-mean-force profile loses its forward
-configurational barrier near $f^*\approx2$, before the pristine normal opening
-spinodal near $f^*=5.25$. However, the scanned finite-time full-2D runs did not
-show a convergence-resolved interwell population transfer before opening loss
-became resolved. Static barrier loss and dynamically resolved transfer are
-therefore reported as separate indicators; no experimental Al yield stress is
-claimed.
+The earlier fixed-$a$-domain potential-of-mean-force estimate that lost its
+forward barrier near $f^*\approx2$ was contaminated by the tensile-tilted,
+large-$a$ unbound tail. It is not the physical bound-basin barrier. Repeating
+the calculation with the actual opening saddle as the normal integration limit
+places the merger of the principal configurational minimum and saddle at
+$4.025<f^*<4.030$. The principal $s=0$ normal-opening spinodal is near
+$f^*=5.25$, but opening stability varies with $s$ and opening absorption is
+already dynamically resolved before a separate, converged plastic transition
+is established. No experimental Al yield stress is claimed.
 
 The one-cycle, one-model-time mechanism sweep was:
 
-| Stress amplitude (MPa) | Peak $f^*$ | Min forward configurational barrier | Center opening barrier | Max outside-well mass | Absorbed mass |
+| Stress amplitude (MPa) | Peak $f^*$ | Earlier fixed-box barrier diagnostic | Center opening barrier | Max outside-well mass | Absorbed mass |
 |---:|---:|---:|---:|---:|---:|
 | 50 | 0.0625 | 0.709 | 1.997 | $1.76\times10^{-15}$ | 0 |
 | 150 | 0.1876 | 0.679 | 1.846 | $1.78\times10^{-15}$ | 0 |
@@ -112,12 +114,12 @@ The one-cycle, one-model-time mechanism sweep was:
 | 3000 | 3.7519 | 0 | 0.208 | $1.93\times10^{-9}$ | $1.52\times10^{-5}$ |
 | 3500 | 4.3772 | 0 | 0.0898 | $2.37\times10^{-9}$ | $6.59\times10^{-3}$ |
 
-These sweep values locate candidate mechanisms but do not by themselves certify
-the very small well populations. The dedicated aligned-grid refinement above
-classifies their interwell/plastic signal as unresolved. Thus the model's
-static configurational barrier indicator changes first, while a dynamically
-resolved configurational-transition onset was not established in the scanned
-range before resolved opening loss.
+The third column is retained only as a record of the superseded fixed-box scan;
+it must not be interpreted as the bound-basin configurational barrier. The
+dedicated aligned-grid refinement classifies these small interwell/plastic
+signals as unresolved. The corrected landscape and slow-loading audit are in
+`CONFIGURATIONAL_PLASTICITY.md`; current evidence classifies opening as
+resolved before any independently resolved interwell plastic transition.
 
 ## Statistical specimen aggregation
 

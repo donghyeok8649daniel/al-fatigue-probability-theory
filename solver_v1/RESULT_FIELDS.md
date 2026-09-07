@@ -131,6 +131,63 @@ Difference between directly integrated $P_n(t)$ and the population reconstructed
 from cumulative left/right boundary fluxes and opening absorption. This is a
 numerical diagnostic, not plastic strain.
 
+### `unnormalized_registry_moment`
+$M_n=\sum_n nP_n$, formed from unnormalized intact well masses. This quantity
+can change by both interwell transport and selective opening absorption.
+
+### `accumulated_net_registry_transfer`
+Time integral of the signed interwell interface fluxes, summed over represented
+interfaces. Positive sign means accumulated transport toward increasing $s$.
+
+### `absorbed_registry_moment`
+$\sum_n nA_n(t)$, the well-index moment of probability removed by the opening
+boundary. It is a crack-loss term, not plastic flow.
+
+### `registry_moment_balance_residual`
+Numerical residual of
+
+$$
+M_n(t)-M_n(0)-\sum_n\int_0^t\mathcal J_{n+1/2}\,dt'
++\sum_n nA_n(t)=0.
+$$
+
+### `net_interwell_registry_rate`
+$\sum_n\mathcal J_{n+1/2}$ for the unnormalized intact density. It measures
+directional interwell registry transport.
+
+### `gross_interwell_activity_rate`
+Sum of all SG forward-plus-backward one-way crossing rates. It is not
+$|\mathcal J_{\rm net}|$ and can be nonzero for symmetric thermal hopping.
+
+### `net_plastic_flow_rate`
+The survivor-conditioned axial rate contribution
+
+$$
+\frac{\chi b}{a_0S}\sum_n\mathcal J_{n+1/2}.
+$$
+
+This is the model plastic-flow term. A numerical nonzero is still subject to
+grid, timestep, interface-alignment, and domain convergence tests.
+
+### `selective_opening_plastic_rate`
+The change in survivor-conditioned $\epsilon_p$ caused solely by selective
+opening absorption,
+
+$$
+\frac{\chi b}{a_0S}
+\left(-\sum_n n\dot A_n+\langle n\rangle_S\sum_n\dot A_n\right).
+$$
+
+It is exposed specifically so it cannot be misclassified as plastic flow.
+
+### `gross_configurational_slip_activity`
+Axially scaled survivor-conditioned gross SG interwell activity. It records
+forward-plus-backward configurational traffic and is distinct from signed net
+plastic flow.
+
+The complete derivation and current convergence classification are in
+`CONFIGURATIONAL_PLASTICITY.md`.
+
 ### `cov_a12`
 For the N=2 dense reference solver, covariance between the two normal-spacing coordinates `a1` and `a2` among survivors. Nonzero values indicate explicit cross-cell correlation.
 
