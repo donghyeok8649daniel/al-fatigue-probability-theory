@@ -290,8 +290,11 @@ not calibrated slip-first Al plasticity.
 `model_comparison.csv` separates the original dimensionless `TwoRowLJ`, the
 previous uncalibrated hybrid sensitivity set, the failed square-root fit, and
 the best-feasible extension. The original LJ reference retains
-$a_0=0.7713438268704838$ and $\kappa=86.29296488740997$ exactly; calibration
-does not modify it.
+$a_0=0.7713438268704838$. Its $\chi=0$ frozen-normal scale is
+$94.7109672665$, while the separately verified default $\chi=0.2$ relaxed
+scale remains $86.29296488740997$ exactly; calibration does not modify either
+value. The comparison CSV uses $\chi=0$ throughout so the listed scales are
+comparable.
 
 ## 14. Static energy versus probability dynamics
 
