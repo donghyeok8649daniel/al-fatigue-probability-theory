@@ -20,6 +20,8 @@ from solver_v1.probability_pde_2d import (
     cyclic_load_from_sigma_over_E,
     run_probability_pde_2d,
 )
+from solver_v1.plasticity_diagnostics import single_run_plasticity_lower_bound
+from .specimen_probability import assess_local_rare_event
 
 
 PDE_RESULT_FIELDS = (
@@ -29,12 +31,19 @@ PDE_RESULT_FIELDS = (
     "strain",
     "survival",
     "survival_probability",
+    "local_survival_probability",
     "initiation_probability",
+    "local_initiation_probability",
     "first_passage_flux",
     "intact_probability_mass",
     "cumulative_absorbed_mass",
+    "absorbed_mass_increment",
+    "initial_absorbed_mass",
+    "integrated_first_passage_flux",
+    "flux_consistency_residual",
     "mass_balance_residual",
     "negative_mass_correction",
+    "cumulative_negative_mass_correction",
     "minimum_density",
     "raw_intact_mass",
     "raw_one_minus_survival",
@@ -106,6 +115,44 @@ class UIAnalysisConfig:
             raise ValueError("analysis_quality must be 'preview' or 'resolved'")
 
 
+def load_interpretation(
+    *, young_gpa: float, stress_mean_mpa: float, stress_amplitude_mpa: float
+) -> dict[str, float | str]:
+    """Return a display-only signed stress range and mechanism-regime label.
+
+    The regime never clamps or modifies solver input.  Thresholds are only UI
+    context for distinguishing small-signal checks from extreme reduced-stress
+    mechanism probes.
+    """
+
+    young_mpa = float(young_gpa) * 1000.0
+    mean = float(stress_mean_mpa)
+    amplitude = float(stress_amplitude_mpa)
+    if not np.isfinite(young_mpa) or young_mpa <= 0.0:
+        raise ValueError("young_gpa must be finite and positive")
+    if not np.isfinite(mean) or not np.isfinite(amplitude) or amplitude < 0.0:
+        raise ValueError("stress inputs must be finite and amplitude nonnegative")
+    minimum, maximum = mean - amplitude, mean + amplitude
+    reduced_min, reduced_max = minimum / young_mpa, maximum / young_mpa
+    maximum_reduced_magnitude = max(abs(reduced_min), abs(reduced_max))
+    if maximum < 0.0 and maximum_reduced_magnitude <= 2.0e-2:
+        regime = "compression"
+    elif maximum_reduced_magnitude <= 1.0e-3:
+        regime = "small"
+    elif maximum_reduced_magnitude <= 1.0e-2:
+        regime = "moderate"
+    else:
+        regime = "extreme"
+    return {
+        "stress_min_mpa": float(minimum),
+        "stress_max_mpa": float(maximum),
+        "reduced_stress_min": float(reduced_min),
+        "reduced_stress_max": float(reduced_max),
+        "maximum_reduced_stress_magnitude": float(maximum_reduced_magnitude),
+        "regime": regime,
+    }
+
+
 def canonical_model_params() -> ModelParams:
     """Return the verified N=1 UI mechanism parameters."""
 
@@ -162,7 +209,9 @@ def physical_probability_bookkeeping(
     return {
         "survival": survival,
         "survival_probability": survival,
+        "local_survival_probability": survival,
         "initiation_probability": absorbed,
+        "local_initiation_probability": absorbed,
         "raw_intact_mass": raw_intact,
         "raw_one_minus_survival": 1.0 - raw_intact,
     }
@@ -175,7 +224,7 @@ def _decorate_record(
     model_time = float(record["time"])
     cycle = model_time / config.model_period
     probability = physical_probability_bookkeeping(
-        record["survival"], record["cumulative_absorbed_mass"]
+        record["intact_probability_mass"], record["cumulative_absorbed_mass"]
     )
     return {
         **record,
@@ -203,8 +252,14 @@ def result_field_mapping(result: dict[str, object]) -> dict[str, np.ndarray]:
         "survival_probability": np.asarray(
             result["survival_probability"], dtype=float
         ),
+        "local_survival_probability": np.asarray(
+            result["local_survival_probability"], dtype=float
+        ),
         "initiation_probability": np.asarray(
             result["initiation_probability"], dtype=float
+        ),
+        "local_initiation_probability": np.asarray(
+            result["local_initiation_probability"], dtype=float
         ),
         "first_passage_flux": np.asarray(result["first_passage_flux"], dtype=float),
         "intact_probability_mass": np.asarray(
@@ -213,11 +268,26 @@ def result_field_mapping(result: dict[str, object]) -> dict[str, np.ndarray]:
         "cumulative_absorbed_mass": np.asarray(
             result["cumulative_absorbed_mass"], dtype=float
         ),
+        "absorbed_mass_increment": np.asarray(
+            result["absorbed_mass_increment"], dtype=float
+        ),
+        "initial_absorbed_mass": np.asarray(
+            result["initial_absorbed_mass"], dtype=float
+        ),
+        "integrated_first_passage_flux": np.asarray(
+            result["integrated_first_passage_flux"], dtype=float
+        ),
+        "flux_consistency_residual": np.asarray(
+            result["flux_consistency_residual"], dtype=float
+        ),
         "mass_balance_residual": np.asarray(
             result["mass_balance_residual"], dtype=float
         ),
         "negative_mass_correction": np.asarray(
             result["negative_mass_correction"], dtype=float
+        ),
+        "cumulative_negative_mass_correction": np.asarray(
+            result["cumulative_negative_mass_correction"], dtype=float
         ),
         "minimum_density": np.asarray(result["minimum_density"], dtype=float),
         "raw_intact_mass": np.asarray(result["raw_intact_mass"], dtype=float),
@@ -284,7 +354,7 @@ def run_ui_analysis(
         calibration_model, config.model_frequency
     )
     probability = physical_probability_bookkeeping(
-        raw["survival"], raw["cumulative_absorbed_mass"]
+        raw["intact_probability_mass"], raw["cumulative_absorbed_mass"]
     )
     result: dict[str, object] = {
         **raw,
@@ -306,5 +376,19 @@ def run_ui_analysis(
         "grid_shape": (config.grid_n_a, config.grid_n_s),
         **dynamics,
     }
+    assessment = assess_local_rare_event(result)
+    result.update(
+        {
+            "local_rare_event_floor": assessment.floor,
+            "probability_resolution_status": assessment.status,
+            "rare_event_floor_mass_residual": assessment.mass_residual,
+            "rare_event_floor_accumulated_repair": assessment.accumulated_repair,
+            "rare_event_floor_flux_discrepancy": assessment.flux_discrepancy,
+            "rare_event_floor_resolution_change": assessment.resolution_change,
+            "rare_event_floor_scope": "single-run lower bound",
+            "probability_resolution_certified": False,
+        }
+    )
+    result.update(single_run_plasticity_lower_bound(result))
     result_field_mapping(result)
     return result

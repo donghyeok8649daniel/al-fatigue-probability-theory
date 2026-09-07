@@ -45,7 +45,7 @@ def test_runtime_language_switch_is_render_only() -> None:
         "initiation_probability": np.array([0.0, 2.0e-12]),
         "survival": np.array([1.0, 1.0 - 2.0e-12]),
     }
-    selected_field = "initiation_probability"
+    selected_field = "local_initiation_probability"
     view_limits = {selected_field: ((0.0, 0.01), (0.0, 3.0e-12))}
     identities = {key: id(value) for key, value in result.items()}
     renders: list[dict[str, object]] = []
@@ -63,22 +63,22 @@ def test_runtime_language_switch_is_render_only() -> None:
         "stress_mean_mpa": "-500",
         "analysis_quality": "resolved",
     }
-    assert selected_field == "initiation_probability"
+    assert selected_field == "local_initiation_probability"
     assert view_limits[selected_field] == ((0.0, 0.01), (0.0, 3.0e-12))
     assert {key: id(value) for key, value in result.items()} == identities
 
 
 def test_plot_titles_axes_and_legends_switch_language() -> None:
-    english = plot_strings("initiation_probability", "en")
-    korean = plot_strings("initiation_probability", "ko")
+    english = plot_strings("local_initiation_probability", "en")
+    korean = plot_strings("local_initiation_probability", "ko")
     assert english == {
-        "title": "Initiation probability",
+        "title": "Local initiation probability",
         "xlabel": "Dimensionless solver time",
         "ylabel": "Initiation probability [-]",
         "legend": (),
     }
     assert korean == {
-        "title": "균열 개시 확률",
+        "title": "국소 균열 개시 확률",
         "xlabel": "무차원 솔버 시간",
         "ylabel": "균열 개시 확률 [-]",
         "legend": (),
@@ -88,3 +88,21 @@ def test_plot_titles_axes_and_legends_switch_language() -> None:
     )
     assert tr("legend.mass_residual", "ko") == "확률질량 보존 잔차"
     assert "균열" not in tr("legend.mass_residual", "ko")
+
+
+def test_probability_and_plasticity_terms_use_required_precise_korean() -> None:
+    expected = {
+        "plot.local_initiation": "국소 균열 개시 확률",
+        "plot.specimen_initiation": "시편 균열 개시 확률",
+        "field.correlation_area": "특성 상관 면적 A_c",
+        "field.stressed_area": "유효 응력 작용 면적 A_stressed",
+        "diagnostic.N_eff": "유효 독립 영역 수 N_eff",
+        "status.below_numerical_resolution": "수치 해상도 이하",
+        "diagnostic.well_population": "구성 우물 점유 확률",
+        "diagnostic.interwell_flux": "우물 간 확률 플럭스",
+        "diagnostic.transition_onset": "모델 구성전이 개시 응력",
+        "diagnostic.residual_plasticity": "잔류 소성 검증",
+    }
+    for key, value in expected.items():
+        assert tr(key, "ko") == value
+        assert tr(key, "en")

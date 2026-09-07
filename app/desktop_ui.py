@@ -29,7 +29,16 @@ from .i18n import (
     plot_strings,
     tr,
 )
-from .solver_adapter import UIAnalysisConfig, physical_load_conversion, run_ui_analysis
+from .solver_adapter import (
+    UIAnalysisConfig,
+    load_interpretation,
+    physical_load_conversion,
+    run_ui_analysis,
+)
+from .specimen_probability import (
+    BELOW_RESOLUTION,
+    aggregate_specimen_probability,
+)
 
 
 APP_BG = "#eef1f4"
@@ -84,6 +93,13 @@ class DesktopApp:
         ("steps_per_cycle", "field.output_resolution", "40", "unit.steps_cycle"),
         ("tensile_direction", "field.axial_direction", "1 0 0", "unit.direction"),
     )
+    LOAD_PRESETS = {
+        "custom": ("preset.custom", None, None),
+        "small_signal": ("preset.small_signal", 0.0, 50.0),
+        "moderate": ("preset.moderate", 0.0, 150.0),
+        "compression": ("preset.compression", -500.0, 400.0),
+        "extreme": ("preset.extreme", 900.0, 2000.0),
+    }
 
     def __init__(self) -> None:
         self.localizer = Localizer(DEFAULT_LANGUAGE)
@@ -98,6 +114,16 @@ class DesktopApp:
         self.spatial_backend = tk.StringVar(value="FVM")
         self.analysis_quality = tk.StringVar(value=self._tr("quality.preview_option"))
         self.analysis_quality_code = "preview"
+        self.probability_scale = tk.StringVar(value=self._tr("option.local"))
+        self.probability_scale_code = "local"
+        self.load_preset = tk.StringVar(value=self._tr("preset.custom"))
+        self.load_preset_code = "custom"
+        self.stress_context = tk.StringVar(value="")
+        self.specimen_N_eff = tk.StringVar(value="N_eff = —")
+        self.local_floor_display = tk.StringVar(value="—")
+        self.plastic_floor_display = tk.StringVar(value="—")
+        self.probability_status_display = tk.StringVar(value="—")
+        self._specimen_status_key = "status.local_result_required"
         self.field = tk.StringVar(value="strain_components")
         self.status = tk.StringVar(value=self._tr("status.ready"))
         self.busy = False
@@ -124,6 +150,8 @@ class DesktopApp:
         self._statusbar()
         self._connect_plot_events()
         self.root.protocol("WM_DELETE_WINDOW", self._close)
+        self._update_stress_context()
+        self._refresh_specimen_labels()
         self._plot()
 
     def _tr(self, key: str, **values: object) -> str:
@@ -284,10 +312,52 @@ class DesktopApp:
             )
             self.entries[key] = entry
         self.pre_tab.columnconfigure(1, weight=1)
+        preset_frame = self._bind_text(
+            ttk.LabelFrame(self.pre_tab, padding=10), "section.load_presets"
+        )
+        preset_frame.grid(
+            row=len(self.PARAMS) + 1,
+            column=0,
+            columnspan=3,
+            sticky="ew",
+            padx=20,
+            pady=(10, 4),
+        )
+        preset_label = self._bind_text(
+            ttk.Label(preset_frame, style="Property.TLabel"), "field.load_preset"
+        )
+        preset_label.grid(row=0, column=0, sticky="w", padx=(0, 8))
+        self.preset_selector = ttk.Combobox(
+            preset_frame,
+            textvariable=self.load_preset,
+            values=self._preset_values(),
+            state="readonly",
+            width=31,
+        )
+        self.preset_selector.grid(row=0, column=1, sticky="ew")
+        self.preset_selector.bind("<<ComboboxSelected>>", self._on_preset_selected)
+        self.apply_preset_button = self._bind_text(
+            ttk.Button(preset_frame, command=self._apply_load_preset),
+            "button.apply_preset",
+        )
+        self.apply_preset_button.grid(row=0, column=2, padx=(8, 0))
+        preset_frame.columnconfigure(1, weight=1)
+        self.stress_context_label = ttk.Label(
+            preset_frame,
+            textvariable=self.stress_context,
+            style="Unit.TLabel",
+            justify="left",
+        )
+        self.stress_context_label.grid(
+            row=1, column=0, columnspan=3, sticky="ew", pady=(8, 0)
+        )
+        for key in ("young_gpa", "stress_mean_mpa", "stress_amplitude_mpa"):
+            self.entries[key].bind("<FocusOut>", self._update_stress_context)
+            self.entries[key].bind("<Return>", self._update_stress_context)
         note = self._bind_text(
             ttk.LabelFrame(self.pre_tab, padding=12), "section.scope"
         )
-        note.grid(row=len(self.PARAMS) + 2, column=0, columnspan=3, sticky="ew", padx=20, pady=14)
+        note.grid(row=len(self.PARAMS) + 2, column=0, columnspan=3, sticky="ew", padx=20, pady=8)
         scope = self._bind_text(ttk.Label(note, justify="left"), "scope.text")
         scope.pack(anchor="w")
 
@@ -326,7 +396,54 @@ class DesktopApp:
             ttk.Label(left, style="Property.TLabel", justify="left"),
             "solve.explanation",
         )
-        explanation.pack(anchor="w", pady=(0, 16))
+        explanation.pack(anchor="w", pady=(0, 10))
+        specimen = self._bind_text(
+            ttk.LabelFrame(left, padding=8), "section.specimen_probability"
+        )
+        specimen.pack(fill="x", pady=(0, 10))
+        scale_label = self._bind_text(
+            ttk.Label(specimen), "field.probability_scale"
+        )
+        scale_label.grid(row=0, column=0, columnspan=2, sticky="w")
+        self.probability_scale_selector = ttk.Combobox(
+            specimen,
+            textvariable=self.probability_scale,
+            values=self._probability_scale_values(),
+            state="readonly",
+            width=20,
+        )
+        self.probability_scale_selector.grid(
+            row=1, column=0, columnspan=3, sticky="ew", pady=(3, 6)
+        )
+        self.probability_scale_selector.bind(
+            "<<ComboboxSelected>>", self._on_probability_scale_selected
+        )
+        for row, (key, text_key) in enumerate((
+            ("correlation_area_mm2", "field.correlation_area"),
+            ("stressed_area_mm2", "field.stressed_area"),
+        ), start=2):
+            label = self._bind_text(ttk.Label(specimen), text_key)
+            label.grid(row=row, column=0, sticky="w", pady=2)
+            entry = ttk.Entry(specimen, width=10)
+            entry.grid(row=row, column=1, sticky="ew", padx=4, pady=2)
+            entry.bind("<FocusOut>", self._update_specimen_probability)
+            entry.bind("<Return>", self._update_specimen_probability)
+            self.entries[key] = entry
+            unit = self._bind_text(ttk.Label(specimen), "unit.mm2")
+            unit.grid(row=row, column=2, sticky="w", pady=2)
+        specimen.columnconfigure(1, weight=1)
+        ttk.Label(specimen, textvariable=self.specimen_N_eff).grid(
+            row=4, column=0, columnspan=3, sticky="w", pady=(5, 0)
+        )
+        ttk.Label(specimen, textvariable=self.local_floor_display).grid(
+            row=5, column=0, columnspan=3, sticky="w"
+        )
+        ttk.Label(specimen, textvariable=self.plastic_floor_display).grid(
+            row=6, column=0, columnspan=3, sticky="w"
+        )
+        ttk.Label(specimen, textvariable=self.probability_status_display).grid(
+            row=7, column=0, columnspan=3, sticky="w"
+        )
         self.run_button = ttk.Button(
             left, text=self._tr("button.run"), style="Accent.TButton",
             command=self._start_solve
@@ -380,6 +497,161 @@ class DesktopApp:
             self._tr("quality.resolved_option"),
         )
 
+    def _preset_values(self) -> tuple[str, ...]:
+        return tuple(self._tr(values[0]) for values in self.LOAD_PRESETS.values())
+
+    def _on_preset_selected(self, _event=None) -> None:
+        selected = self.load_preset.get()
+        for code, (key, _mean, _amplitude) in self.LOAD_PRESETS.items():
+            if selected == self._tr(key):
+                self.load_preset_code = code
+                return
+
+    def _apply_load_preset(self) -> None:
+        self._on_preset_selected()
+        _key, mean, amplitude = self.LOAD_PRESETS[self.load_preset_code]
+        if mean is None or amplitude is None:
+            return
+        for field, value in (
+            ("stress_mean_mpa", mean),
+            ("stress_amplitude_mpa", amplitude),
+        ):
+            self.entries[field].delete(0, "end")
+            self.entries[field].insert(0, f"{value:g}")
+        self._update_stress_context()
+
+    def _update_stress_context(self, _event=None) -> None:
+        """Update a non-blocking load interpretation without changing inputs."""
+
+        try:
+            values = load_interpretation(
+                young_gpa=float(self.entries["young_gpa"].get()),
+                stress_mean_mpa=float(self.entries["stress_mean_mpa"].get()),
+                stress_amplitude_mpa=float(
+                    self.entries["stress_amplitude_mpa"].get()
+                ),
+            )
+        except ValueError:
+            self.stress_context.set("—")
+            return
+        regime_key = f"stress.regime.{values['regime']}"
+        self.stress_context.set(
+            self._tr(
+                "stress.context",
+                sigma_min=values["stress_min_mpa"],
+                sigma_max=values["stress_max_mpa"],
+                reduced_min=values["reduced_stress_min"],
+                reduced_max=values["reduced_stress_max"],
+                regime=self._tr(regime_key),
+            )
+        )
+
+    def _probability_scale_values(self) -> tuple[str, str]:
+        return self._tr("option.local"), self._tr("option.specimen")
+
+    def _on_probability_scale_selected(self, _event=None) -> None:
+        self.probability_scale_code = (
+            "specimen"
+            if self.probability_scale.get() == self._tr("option.specimen")
+            else "local"
+        )
+        counterpart = {
+            ("local", "specimen_survival_probability"): "local_survival_probability",
+            ("local", "specimen_initiation_probability"): "local_initiation_probability",
+            ("specimen", "local_survival_probability"): "specimen_survival_probability",
+            ("specimen", "local_initiation_probability"): "specimen_initiation_probability",
+        }.get((self.probability_scale_code, self.field.get()))
+        if counterpart is not None:
+            self.field.set(counterpart)
+        self._update_specimen_probability()
+
+    def _update_specimen_probability(self, _event=None) -> None:
+        """Recompute cheap specimen post-processing; never invoke the PDE."""
+
+        if self.result is None:
+            self._specimen_status_key = "status.local_result_required"
+            self._refresh_specimen_labels()
+            return
+        try:
+            correlation = float(self.entries["correlation_area_mm2"].get())
+            stressed = float(self.entries["stressed_area_mm2"].get())
+        except ValueError:
+            self._specimen_status_key = "status.area_required"
+            self.result.pop("specimen_initiation_probability", None)
+            self.result.pop("specimen_survival_probability", None)
+            self._refresh_specimen_labels()
+            self._plot()
+            return
+        aggregated = aggregate_specimen_probability(
+            self.result["local_initiation_probability"],
+            correlation_area_mm2=correlation,
+            stressed_area_mm2=stressed,
+            local_numerical_floor=float(self.result["local_rare_event_floor"]),
+            resolution_certified=bool(
+                self.result.get("probability_resolution_certified", False)
+            ),
+        )
+        self.result.update(
+            {
+                "specimen_initiation_probability": (
+                    aggregated.specimen_initiation_probability
+                ),
+                "specimen_survival_probability": (
+                    aggregated.specimen_survival_probability
+                ),
+                "specimen_probability_extrapolation": (
+                    aggregated.mathematical_extrapolation
+                ),
+                "specimen_probability_resolved_mask": aggregated.resolved_mask,
+                "N_eff": aggregated.N_eff,
+                "specimen_probability_status": aggregated.status,
+            }
+        )
+        if self.result.get("probability_resolution_status") == BELOW_RESOLUTION:
+            self._specimen_status_key = "status.below_numerical_resolution"
+        elif not bool(self.result.get("probability_resolution_certified", False)):
+            self._specimen_status_key = "status.requires_convergence"
+        elif aggregated.status == BELOW_RESOLUTION:
+            self._specimen_status_key = "status.below_numerical_resolution"
+        else:
+            self._specimen_status_key = "status.resolved"
+        self._refresh_specimen_labels()
+        self._plot()
+
+    def _refresh_specimen_labels(self) -> None:
+        N_eff = self.result.get("N_eff") if self.result is not None else None
+        floor = (
+            self.result.get("local_rare_event_floor")
+            if self.result is not None
+            else None
+        )
+        plastic_floor = (
+            self.result.get("plastic_signal_floor")
+            if self.result is not None
+            else None
+        )
+        self.specimen_N_eff.set(
+            f"{self._tr('diagnostic.N_eff')}: "
+            + (f"{float(N_eff):.8g}" if N_eff is not None else "—")
+        )
+        self.local_floor_display.set(
+            f"{self._tr('diagnostic.rare_event_floor')}: "
+            + (f"{float(floor):.3e}" if floor is not None else "—")
+        )
+        self.plastic_floor_display.set(
+            f"{self._tr('diagnostic.plastic_floor')}: "
+            + (f"{float(plastic_floor):.3e}" if plastic_floor is not None else "—")
+            + (
+                f" ({self._tr('status.requires_convergence')})"
+                if plastic_floor is not None
+                else ""
+            )
+        )
+        self.probability_status_display.set(
+            f"{self._tr(self._specimen_status_key)} · "
+            f"{self._tr('status.independence_assumption')}"
+        )
+
     def _quality_text(self, code: str) -> str:
         return self._tr(f"quality.{code}")
 
@@ -419,9 +691,19 @@ class DesktopApp:
         self.analysis_quality.set(
             self._tr(f"quality.{self.analysis_quality_code}_option")
         )
+        self.preset_selector.configure(values=self._preset_values())
+        self.load_preset.set(
+            self._tr(self.LOAD_PRESETS[self.load_preset_code][0])
+        )
+        self.probability_scale_selector.configure(
+            values=self._probability_scale_values()
+        )
+        self.probability_scale.set(self._tr(f"option.{self.probability_scale_code}"))
         self._set_status(self._status_key, **self._status_values)
         self.run_button.configure(text=self._tr(self._button_key))
         self._render_summary()
+        self._update_stress_context()
+        self._refresh_specimen_labels()
         self._plot()
 
     def _set_status(self, key: str, **values: object) -> None:
@@ -531,6 +813,8 @@ class DesktopApp:
         self.busy = True
         self.stop_event.clear()
         self.result = None
+        self._specimen_status_key = "status.local_result_required"
+        self._refresh_specimen_labels()
         self.live_records.clear()
         self._view_limits.clear()
         self._set_button("button.stop")
@@ -605,6 +889,7 @@ class DesktopApp:
             survival=float(np.asarray(result["survival"])[-1]),
         )
         self._show_summary("complete", result)
+        self._update_specimen_probability()
         self._plot(force_auto=True)
 
     def _solve_failed(self, detail: str) -> None:
@@ -650,6 +935,16 @@ class DesktopApp:
             return
         self.ax.set_axis_on()
         x = np.asarray(data["model_time"], dtype=float)
+        if field.startswith("specimen_") and (
+            field not in data or not np.any(np.isfinite(data[field]))
+        ):
+            self.ax.text(
+                0.5, 0.5, self._tr("plot.specimen_unavailable"),
+                ha="center", va="center", transform=self.ax.transAxes, color=MUTED,
+            )
+            self.ax.set_axis_off()
+            self.canvas.draw_idle()
+            return
         if field == "strain_components":
             for (key, color), label in zip((
                 ("normal_strain", "#4e79a7"),
@@ -666,9 +961,47 @@ class DesktopApp:
                 "cumulative_absorbed_mass",
                 "mass_balance_residual",
                 "negative_mass_correction",
+                "cumulative_negative_mass_correction",
+                "flux_consistency_residual",
             ), text["legend"]):
                 self.ax.plot(x, data[key], label=label, linewidth=1.5)
             self.ax.legend(loc="best", fontsize=8, frameon=False)
+        elif field == "well_populations":
+            if "well_populations" not in data:
+                self.ax.text(
+                    0.5, 0.5, self._tr("status.local_result_required"),
+                    ha="center", va="center", transform=self.ax.transAxes,
+                    color=MUTED,
+                )
+            else:
+                for index, well in enumerate(data["well_indices"]):
+                    self.ax.plot(
+                        x, data["well_populations"][:, index],
+                        label=f"P_{int(well):+d}", linewidth=1.5,
+                    )
+                self.ax.legend(loc="best", fontsize=8, frameon=False)
+        elif field == "interwell_flux":
+            if "interwell_net_flux" not in data:
+                self.ax.text(
+                    0.5, 0.5, self._tr("status.local_result_required"),
+                    ha="center", va="center", transform=self.ax.transAxes,
+                    color=MUTED,
+                )
+            else:
+                boundaries = data["interwell_boundary_lower_index"]
+                for index, lower in enumerate(boundaries):
+                    tag = f"{int(lower):+d}→{int(lower) + 1:+d}"
+                    self.ax.plot(
+                        x, data["interwell_net_flux"][:, index],
+                        label=f"{tag} {self._tr('legend.interwell_net')}",
+                        linewidth=1.5,
+                    )
+                    self.ax.plot(
+                        x, data["interwell_gross_flux"][:, index],
+                        label=f"{tag} {self._tr('legend.interwell_gross')}",
+                        linewidth=1.0, linestyle="--",
+                    )
+                self.ax.legend(loc="best", fontsize=7, frameon=False)
         else:
             key = "applied_stress_mpa" if field == "stress" else field
             self.ax.plot(x, data[key], color=ACCENT, linewidth=1.8)

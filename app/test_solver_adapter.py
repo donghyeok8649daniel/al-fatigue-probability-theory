@@ -7,6 +7,7 @@ from app.solver_adapter import (
     UIAnalysisConfig,
     physical_probability_bookkeeping,
     physical_load_conversion,
+    load_interpretation,
     result_field_mapping,
     run_ui_analysis,
 )
@@ -48,6 +49,8 @@ def _assert_common_invariants(result: dict[str, object]) -> None:
     np.testing.assert_array_equal(initiation, absorbed)
     np.testing.assert_array_equal(survival, 1.0 - absorbed)
     np.testing.assert_array_equal(result["survival_probability"], survival)
+    np.testing.assert_array_equal(result["local_survival_probability"], survival)
+    np.testing.assert_array_equal(result["local_initiation_probability"], absorbed)
     np.testing.assert_array_equal(result["raw_one_minus_survival"], 1.0 - raw_intact)
     np.testing.assert_allclose(
         result["mass_balance_residual"], raw_intact + absorbed - 1.0,
@@ -56,6 +59,9 @@ def _assert_common_invariants(result: dict[str, object]) -> None:
     assert np.all(np.diff(survival) <= 1e-10)
     assert np.all(np.diff(initiation) >= -1e-10)
     assert np.max(np.abs(np.asarray(result["mass_balance_residual"]))) < 1e-8
+    assert np.max(np.abs(np.asarray(result["flux_consistency_residual"]))) < 1e-12
+    assert result["plastic_floor_scope"] == "single-run lower bound"
+    assert result["plastic_resolution_status"] == "requires_convergence"
     for key in PDE_RESULT_FIELDS:
         assert np.all(np.isfinite(np.asarray(result[key], dtype=float)))
 
@@ -82,6 +88,25 @@ def test_physical_stress_uses_verified_relaxed_axial_force_mapping() -> None:
     assert np.isclose(conversion["de_slow"], 62.39808635219237)
 
 
+def test_load_interpretation_warns_without_modifying_signed_inputs() -> None:
+    case_a = load_interpretation(
+        young_gpa=69.0,
+        stress_mean_mpa=-500.0,
+        stress_amplitude_mpa=400.0,
+    )
+    case_b = load_interpretation(
+        young_gpa=69.0,
+        stress_mean_mpa=900.0,
+        stress_amplitude_mpa=2000.0,
+    )
+    assert case_a["stress_min_mpa"] == -900.0
+    assert case_a["stress_max_mpa"] == -100.0
+    assert case_a["regime"] == "compression"
+    assert case_b["stress_min_mpa"] == -1100.0
+    assert case_b["stress_max_mpa"] == 2900.0
+    assert case_b["regime"] == "extreme"
+
+
 def test_physical_probability_uses_absorbed_mass_not_roundoff_residual() -> None:
     raw_intact = np.array([1.0, 0.800001])
     absorbed = np.array([0.0, 0.2])
@@ -89,6 +114,8 @@ def test_physical_probability_uses_absorbed_mass_not_roundoff_residual() -> None
     np.testing.assert_array_equal(mapped["initiation_probability"], absorbed)
     np.testing.assert_array_equal(mapped["survival"], 1.0 - absorbed)
     np.testing.assert_array_equal(mapped["survival_probability"], 1.0 - absorbed)
+    np.testing.assert_array_equal(mapped["local_survival_probability"], 1.0 - absorbed)
+    np.testing.assert_array_equal(mapped["local_initiation_probability"], absorbed)
     np.testing.assert_array_equal(mapped["raw_intact_mass"], raw_intact)
     np.testing.assert_allclose(
         mapped["raw_one_minus_survival"], np.array([0.0, 0.199999]),

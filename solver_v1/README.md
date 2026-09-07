@@ -69,6 +69,11 @@ truncated-Gibbs/QSD distinction, and experimental slow-$s$ solver are in
 2D solver remains the reference, and the reduced module does not provide a
 validated crack probability.
 
+Local absorbed-mass bookkeeping, configurational well fluxes, convergence
+floors, and the strictly post-processing statistical correlation-area layer
+are documented in
+[`PROBABILITY_AND_PLASTICITY_RESOLUTION.md`](PROBABILITY_AND_PLASTICITY_RESOLUTION.md).
+
 ### `probability_pde_4d.py` -- N=2 dense correlated reference
 
 Directly evolves
@@ -142,7 +147,7 @@ Quantitative aluminum prediction still requires:
 - an Al-specific EAM/MEAM or validated energy landscape;
 - mobility/time-scale calibration;
 - a physically derived axial configurational bridge;
-- characteristic correlation length/area for specimen-scale aggregation;
+- externally calibrated statistical correlation area for specimen-scale aggregation;
 - experimental validation.
 
 ## Historical stochastic screening demo

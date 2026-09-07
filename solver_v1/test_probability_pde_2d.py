@@ -7,7 +7,10 @@ from solver_v1.probability_pde_2d import (
     Grid2DParams,
     PDETimeParams,
     build_grid,
+    configurational_interface_fluxes,
+    configurational_well_observables,
     cyclic_load_from_sigma_over_E,
+    energy_grid,
     initial_gibbs_density,
     observables,
     run_probability_pde_2d,
@@ -214,3 +217,82 @@ def test_survival_is_monotone_nonincreasing():
     )
     survival = np.asarray(result["survival"], dtype=float)
     assert np.all(np.diff(survival) <= 1.0e-10)
+
+
+def test_physical_first_passage_bookkeeping_matches_discrete_absorption_flux():
+    result = run_probability_pde_2d(
+        model_params=_params(),
+        grid_params=Grid2DParams(n_a=11, n_s=18, s_wells=3, a_upper=1.55),
+        time_params=PDETimeParams(
+            max_dt=2.0e-3,
+            cfl=0.40,
+            record_interval=4.0e-3,
+            integrator="implicit",
+        ),
+        load=CyclicLoad2D(force_min=4.2, force_max=4.2, period=1.0, cycles=0.008),
+    )
+    absorbed = np.asarray(result["cumulative_absorbed_mass"], dtype=float)
+    survival = np.asarray(result["survival"], dtype=float)
+    time = np.asarray(result["time"], dtype=float)
+    flux = np.asarray(result["first_passage_flux"], dtype=float)
+    integrated_from_records = float(np.sum(flux[1:] * np.diff(time)))
+
+    assert absorbed[-1] > 1.0e-8
+    assert np.all(np.diff(absorbed) >= -1.0e-15)
+    np.testing.assert_allclose(survival, 1.0 - absorbed, rtol=0.0, atol=0.0)
+    assert np.isclose(
+        integrated_from_records,
+        float(result["integrated_first_passage_flux"][-1]),
+        rtol=2.0e-14,
+        atol=1.0e-18,
+    )
+    assert np.isclose(
+        absorbed[-1],
+        float(result["initial_absorbed_mass"][-1]) + integrated_from_records,
+        rtol=2.0e-14,
+        atol=1.0e-18,
+    )
+    assert np.max(np.abs(result["flux_consistency_residual"])) < 1.0e-14
+    assert np.max(np.abs(result["mass_balance_residual"])) < 1.0e-12
+
+
+def test_aligned_well_populations_obey_interwell_flux_balance():
+    result = run_probability_pde_2d(
+        model_params=_params(),
+        grid_params=Grid2DParams(n_a=11, n_s=18, s_wells=3, a_upper=1.55),
+        time_params=PDETimeParams(
+            max_dt=2.0e-3,
+            cfl=0.40,
+            record_interval=4.0e-3,
+            integrator="implicit",
+        ),
+        load=CyclicLoad2D(force_min=0.5, force_max=0.5, period=1.0, cycles=0.008),
+    )
+    populations = np.asarray(result["well_populations"], dtype=float)
+    net = np.asarray(result["interwell_net_flux"], dtype=float)
+    gross = np.asarray(result["interwell_gross_flux"], dtype=float)
+
+    assert populations.shape[1] == 3
+    assert net.shape[1] == 2
+    assert np.all(gross + 1.0e-30 >= np.abs(net))
+    assert np.max(np.abs(result["interwell_boundary_alignment_error"])) < 1.0e-14
+    assert np.max(np.abs(result["well_population_balance_residual"])) < 1.0e-12
+
+
+def test_configurational_interface_flux_is_zero_for_discrete_gibbs_state():
+    model = TwoRowLJ(_params())
+    model._build_opening_table()
+    grid = build_grid(
+        model,
+        Grid2DParams(n_a=17, n_s=30, s_wells=3, a_upper=1.55),
+    )
+    density = initial_gibbs_density(
+        model, grid, preload_force=0.0, principal_well_only=False
+    )
+    energy = energy_grid(model, grid, force=0.0)
+    signed, gross = configurational_interface_fluxes(density, energy, model, grid)
+    well = configurational_well_observables(density, energy, model, grid)
+
+    assert np.max(np.abs(signed)) < 1.0e-12
+    assert np.all(gross >= 0.0)
+    assert np.max(np.abs(well["interwell_net_flux"])) < 1.0e-12

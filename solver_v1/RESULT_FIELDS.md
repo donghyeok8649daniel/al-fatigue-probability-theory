@@ -37,31 +37,39 @@ Dimensionless model-time coordinate used by the probability PDE. It is not yet c
 Current dimensionless generalized normal load \(f^*\) passed into the effective energy landscape. It should be produced from \(\sigma/E\) through the tangent conversion above, not by setting `force = sigma/E` directly.
 
 ### `survival`
-Current intact probability mass,
+Physical local survival defined from accumulated opening absorption,
 
-\[
-S(t)=\int_{\Omega_b(t)}P_N(\mathbf q,t)\,d\mathbf q.
-\]
+$$
+S_{\mathrm{local}}(t)=1-A_{\mathrm{abs}}(t).
+$$
 
-For a correct absorbing first-passage calculation, physical survival is non-increasing. The UI should retain enough numerical precision to reveal tiny changes near one.
+It is non-increasing by construction. The independently integrated intact
+density is `intact_probability_mass`, not this physical bookkeeping field.
 
 ### `initiation_probability`
 Cumulative crack-initiation probability,
 
-\[
-P_{\rm init}(t)=1-S(t),
-\]
+$$
+P_{\mathrm{init,local}}(t)=A_{\mathrm{abs}}(t)
+=1-S_{\mathrm{local}}(t).
+$$
 
-or, in the preferred production accounting, the cumulative probability mass absorbed through the crack-opening boundary. It is not a fraction of randomly sampled trajectories.
+Only mass removed by the opening absorbing mask enters $A_{\mathrm{abs}}$.
+Numerical positivity repair and conservative-solve roundoff do not. It is not
+a fraction of randomly sampled trajectories.
 
 ### `first_passage_flux`
-Instantaneous rate at which intact probability mass crosses the crack-opening dividing surface. For a fixed boundary,
+Record-interval average rate at which probability is removed at the opening
+dividing surface. For records $t_{k-1}<t_k$,
 
-\[
--\dot S(t)=\int_{\Gamma_c}\mathbf J\cdot\mathbf n\,dS.
-\]
+$$
+\Phi_k=\frac{A_{\mathrm{abs}}(t_k)-A_{\mathrm{abs}}(t_{k-1})}
+{t_k-t_{k-1}}.
+$$
 
-This can vary strongly within each load cycle even though survival itself should not increase.
+The initial mask removal is reported separately and is not assigned an
+artificial finite rate. `integrated_first_passage_flux` accumulates later
+discrete absorption, while `flux_consistency_residual` exposes their mismatch.
 
 ## Mechanical/configurational fields
 
@@ -105,6 +113,24 @@ Survivor-conditioned signed mean \(\langle n\rangle_S\). Its sign distinguishes 
 ### `plastic_well_activity`
 Survivor-conditioned \(\langle|n|\rangle_S\). This is a nonnegative diagnostic of inter-well rearrangement. It is not the same quantity as signed plastic strain and is not an empirical damage variable.
 
+### `well_populations`
+Absolute survivor masses $P_n(t)$ in each configurational partition
+$s\in[(n-1/2)b,(n+1/2)b)$. At least $n=-1,0,+1$ are retained on the default
+three-well domain.
+
+### `interwell_net_flux`
+Signed finite-volume configurational flux through each represented well
+boundary. Positive sign points toward increasing $s$.
+
+### `interwell_gross_flux`
+Sum of the two nonnegative one-way SG rates at a well boundary. It detects
+bidirectional thermal crossing even when signed net transfer is nearly zero.
+
+### `well_population_balance_residual`
+Difference between directly integrated $P_n(t)$ and the population reconstructed
+from cumulative left/right boundary fluxes and opening absorption. This is a
+numerical diagnostic, not plastic strain.
+
 ### `cov_a12`
 For the N=2 dense reference solver, covariance between the two normal-spacing coordinates `a1` and `a2` among survivors. Nonzero values indicate explicit cross-cell correlation.
 
@@ -137,11 +163,41 @@ The N=1 PDE and desktop adapter expose:
 
 - `intact_probability_mass`: direct numerical integral of the current intact density;
 - `cumulative_absorbed_mass`: accumulated first-passage mass through the crack boundary;
+- `absorbed_mass_increment`: opening mass removed since the previous record;
+- `initial_absorbed_mass`: mass removed by the opening mask at the initial instant;
+- `integrated_first_passage_flux`: accumulated post-initial discrete opening flux;
+- `flux_consistency_residual = cumulative_absorbed_mass - initial_absorbed_mass - integrated_first_passage_flux`;
 - `mass_balance_residual = intact_probability_mass + cumulative_absorbed_mass - 1`;
 - `negative_mass_correction`: largest roundoff-level negative mass removed so far;
+- `cumulative_negative_mass_correction`: accumulated numerical positivity repair;
 - `minimum_density`: smallest uncorrected density encountered so positivity loss is visible.
 
 These fields are necessary when displaying rare probabilities near machine/numerical tolerance, because they distinguish physical first-passage probability from numerical mass drift.
+
+The local rare-event floor is the maximum observed scale from mass residual,
+accumulated numerical repair, flux/absorption discrepancy, and grid/time/
+integrator variation. A single PDE run supplies only a lower bound and does not
+certify a signal for specimen amplification.
+
+## Specimen aggregation fields
+
+$A_c$ is a statistical correlation area and
+$A_{\mathrm{stressed}}$ is the effective specimen surface area under the
+modeled loading. They are distinct from the atomic geometry and from the
+effective free energy $\mathcal F_{\mathrm{eff}}$. Neither enters the
+constitutive force mapping.
+
+For the independent-equivalent-region approximation,
+
+$$
+N_{\mathrm{eff}}=\frac{A_{\mathrm{stressed}}}{A_c},\qquad
+\log S_{\mathrm{spec}}=N_{\mathrm{eff}}\log(1-P_{\mathrm{init,local}}).
+$$
+
+`specimen_initiation_probability` and `specimen_survival_probability` are
+exposed as physical fields only when the local signal is convergence-certified.
+Otherwise they remain unavailable and `specimen_probability_extrapolation` is
+diagnostic only.
 
 ## UI plotting behaviour
 

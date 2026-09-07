@@ -53,6 +53,13 @@ The strain view displays four distinct PDE results:
 Plastic strain is not forced to be nonzero. It appears only when the solved PDE
 carries probability into a nonzero configurational well index.
 
+A nonzero floating-point value is not, by itself, evidence of plasticity. The
+solver also reports $P_n(t)$, signed and gross Scharfetter--Gummel fluxes across
+$s=(n+1/2)b$, and a discrete well-population balance residual. A residual
+plastic-strain claim additionally requires persistence after unloading and a
+zero-stress hold. The convergence audit is documented in
+[`solver_v1/PROBABILITY_AND_PLASTICITY_RESOLUTION.md`](../solver_v1/PROBABILITY_AND_PLASTICITY_RESOLUTION.md).
+
 Probability views use the PDE outputs `survival`, `initiation_probability`, and
 `first_passage_flux`. At the UI boundary the physical fields are defined by
 
@@ -65,6 +72,34 @@ The raw intact mass, `1 - raw_intact_mass`, mass-balance residual, and
 negative-mass correction remain explicitly labeled numerical diagnostics. A
 roundoff-scale raw mass discrepancy is never presented as physical crack
 initiation.
+
+## Local and specimen probability
+
+The local PDE probability and specimen aggregation are separate layers. The
+optional UI inputs are the characteristic correlation area $A_c$ and the
+effective stressed area $A_{\mathrm{stressed}}$, both in mm$^2$. They define
+
+$$
+N_{\mathrm{eff}}=\frac{A_{\mathrm{stressed}}}{A_c}.
+$$
+
+Under the explicitly declared independent-equivalent-region approximation,
+
+$$
+S_{\mathrm{spec}}=S_{\mathrm{local}}^{N_{\mathrm{eff}}},
+\qquad
+P_{\mathrm{init,spec}}=1-S_{\mathrm{spec}}.
+$$
+
+The implementation uses `log1p`/`expm1` arithmetic. $A_c$ is an external
+statistical calibration input; no physical default is supplied. It never
+enters `f* = kappa_axial sigma/E` and never scales strain or well activity.
+Changing either area only reruns this cheap post-processing, not the PDE.
+
+Specimen probability is withheld unless the local absorbed-mass signal has a
+grid/time/integrator convergence certificate. The mathematical extrapolation
+is retained as a separately named diagnostic, but an unresolved local signal
+is never area-amplified and displayed as resolved physical probability.
 
 ## Language
 
@@ -93,6 +128,12 @@ grid and the same SG operator with backward-Euler time integration. The latter
 is slower, remains a numerical-resolution mode rather than a different physical
 model, and still requires ordinary grid/time convergence checks for publication
 results.
+
+Editable load presets provide small-signal, moderate mechanism-probe,
+all-compressive control, and extreme mechanism-stress-test inputs. They do not
+clamp or reinterpret entered stresses. The UI displays $\sigma_{\min}$,
+$\sigma_{\max}$, and their signed $\sigma/E$ values and marks multi-GPa inputs
+as mechanism stress tests rather than calibrated pure-Al fatigue loads.
 
 ## Scientific scope
 

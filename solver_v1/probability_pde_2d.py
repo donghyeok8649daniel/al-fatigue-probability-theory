@@ -22,8 +22,9 @@ Crack first passage
 The mechanically defined local opening saddle from ``TwoRowLJ`` defines the
 intact normal-opening basin. Probability outside that basin is absorbed and
 is never renormalized into the surviving density. The cumulative initiated
-probability is therefore 1-S, where S is the remaining intact probability
-mass.
+probability is the mass explicitly removed by that opening operation. Physical
+survival is one minus this absorbed mass; the direct intact-density integral is
+retained independently so numerical mass residuals remain visible.
 
 This N=1 module is a gold-standard/reference calculation, not the production
 N=3 solver and not a calibrated pure-Al fatigue-life predictor.
@@ -210,6 +211,91 @@ def energy_grid(model: TwoRowLJ, grid: Grid2D, force: float) -> np.ndarray:
         aa.reshape(-1, 1), ss.reshape(-1, 1), float(force)
     )
     return energy.reshape(aa.shape)
+
+
+def configurational_interface_fluxes(
+    density: np.ndarray,
+    energy: np.ndarray,
+    model: TwoRowLJ,
+    grid: Grid2D,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Return signed and gross probability rates at every ``s`` interface.
+
+    Positive signed flux is toward increasing ``s``.  Gross flux is the sum of
+    the two nonnegative SG one-way rates; unlike signed flux it detects
+    balanced bidirectional thermal hopping.
+    """
+
+    density = np.asarray(density, dtype=float)
+    energy = np.asarray(energy, dtype=float)
+    if density.shape != energy.shape or density.shape != (grid.a.size, grid.s.size):
+        raise ValueError("density/energy shape does not match the 2D grid")
+    beta = 1.0 / model.p.kT
+    diffusivity = model.p.mobility_s * model.p.kT
+    psi = beta * (energy[:, 1:] - energy[:, :-1])
+    forward = (diffusivity / grid.ds) * _bernoulli(psi) * density[:, :-1]
+    reverse = (diffusivity / grid.ds) * _bernoulli(-psi) * density[:, 1:]
+    signed = np.sum(forward - reverse, axis=0) * grid.da
+    gross = np.sum(forward + reverse, axis=0) * grid.da
+    return np.asarray(signed, dtype=float), np.asarray(gross, dtype=float)
+
+
+def configurational_well_structure(
+    model: TwoRowLJ,
+    grid: Grid2D,
+) -> dict[str, np.ndarray]:
+    """Map configurational wells to cells and their nearest FV interfaces."""
+
+    cell_wells = np.asarray(model.well_index(grid.s), dtype=int)
+    well_indices = np.arange(int(np.min(cell_wells)), int(np.max(cell_wells)) + 1)
+    boundary_wells = well_indices[:-1]
+    target_boundaries = (boundary_wells + 0.5) * model.p.b
+    interfaces = 0.5 * (grid.s[:-1] + grid.s[1:])
+    interface_indices = np.asarray(
+        [int(np.argmin(np.abs(interfaces - boundary))) for boundary in target_boundaries],
+        dtype=int,
+    )
+    represented_boundaries = interfaces[interface_indices]
+    return {
+        "cell_well_index": cell_wells,
+        "well_indices": well_indices,
+        "boundary_lower_well_index": boundary_wells,
+        "boundary_target_s": np.asarray(target_boundaries, dtype=float),
+        "boundary_interface_index": interface_indices,
+        "boundary_interface_s": np.asarray(represented_boundaries, dtype=float),
+        "boundary_alignment_error": np.asarray(
+            represented_boundaries - target_boundaries, dtype=float
+        ),
+    }
+
+
+def configurational_well_observables(
+    density: np.ndarray,
+    energy: np.ndarray,
+    model: TwoRowLJ,
+    grid: Grid2D,
+) -> dict[str, np.ndarray]:
+    """Return absolute well populations and nearest-boundary SG fluxes."""
+
+    structure = configurational_well_structure(model, grid)
+    populations = np.asarray(
+        [
+            np.sum(density[:, structure["cell_well_index"] == well])
+            * grid.cell_volume
+            for well in structure["well_indices"]
+        ],
+        dtype=float,
+    )
+    signed_all, gross_all = configurational_interface_fluxes(
+        density, energy, model, grid
+    )
+    interface_indices = structure["boundary_interface_index"]
+    return {
+        **structure,
+        "well_population": populations,
+        "interwell_net_flux": signed_all[interface_indices],
+        "interwell_gross_flux": gross_all[interface_indices],
+    }
 
 
 def opening_intact_mask(
@@ -472,7 +558,7 @@ def run_probability_pde_2d(
         Callable[[float, float, np.ndarray, TwoRowLJ, Grid2D], None] | None
     ) = None,
     stop_requested: Callable[[], bool] | None = None,
-) -> dict[str, np.ndarray | Grid2D | TwoRowLJ]:
+) -> dict[str, np.ndarray | Grid2D | TwoRowLJ | str]:
     """Solve the deterministic N=1 probability PDE under a cyclic load."""
 
     if prepared_model is not None and model_params is not None:
@@ -498,6 +584,19 @@ def run_probability_pde_2d(
     density = initial_gibbs_density(
         model, grid, preload_force=preload_force, principal_well_only=True
     )
+    well_structure = configurational_well_structure(model, grid)
+    well_indices = well_structure["well_indices"]
+    boundary_interfaces = well_structure["boundary_interface_index"]
+    cumulative_interwell_net = np.zeros(boundary_interfaces.size, dtype=float)
+    cumulative_interwell_gross = np.zeros(boundary_interfaces.size, dtype=float)
+    cumulative_opening_by_well = np.zeros(well_indices.size, dtype=float)
+    initial_well_population: np.ndarray | None = None
+    well_population_records: list[np.ndarray] = []
+    interwell_net_flux_records: list[np.ndarray] = []
+    interwell_gross_flux_records: list[np.ndarray] = []
+    cumulative_interwell_net_records: list[np.ndarray] = []
+    cumulative_interwell_gross_records: list[np.ndarray] = []
+    well_balance_residual_records: list[np.ndarray] = []
 
     records: dict[str, list[float]] = {
         key: []
@@ -518,33 +617,86 @@ def run_probability_pde_2d(
             "a_upper_boundary_mass",
             "intact_probability_mass",
             "cumulative_absorbed_mass",
+            "absorbed_mass_increment",
+            "initial_absorbed_mass",
+            "integrated_first_passage_flux",
+            "flux_consistency_residual",
             "mass_balance_residual",
             "negative_mass_correction",
+            "cumulative_negative_mass_correction",
             "minimum_density",
         )
     }
 
     t = 0.0
     next_record = 0.0
-    last_flux = 0.0
     duration = load.duration
     cumulative_absorbed_mass = 0.0
+    initial_absorbed_mass = 0.0
+    interval_absorbed_mass = 0.0
+    integrated_first_passage_flux = 0.0
+    last_record_time = 0.0
     maximum_negative_mass_correction = 0.0
+    cumulative_negative_mass_correction = 0.0
     minimum_density = float(np.min(density))
 
     def append_record(now: float, force: float) -> None:
+        nonlocal interval_absorbed_mass, last_record_time, initial_well_population
+        elapsed = float(now - last_record_time)
+        interval_flux = (
+            interval_absorbed_mass / elapsed
+            if elapsed > 10.0 * np.finfo(float).eps
+            else 0.0
+        )
         obs = observables(
-            density, model, grid, force, first_passage_flux=last_flux
+            density, model, grid, force, first_passage_flux=interval_flux
+        )
+        well_obs = configurational_well_observables(
+            density, energy_grid(model, grid, force), model, grid
+        )
+        population = well_obs["well_population"]
+        if initial_well_population is None:
+            initial_well_population = population.copy()
+        expected_population = initial_well_population - cumulative_opening_by_well
+        if cumulative_interwell_net.size:
+            expected_population[1:] += cumulative_interwell_net
+            expected_population[:-1] -= cumulative_interwell_net
+        well_population_records.append(population.copy())
+        interwell_net_flux_records.append(well_obs["interwell_net_flux"].copy())
+        interwell_gross_flux_records.append(well_obs["interwell_gross_flux"].copy())
+        cumulative_interwell_net_records.append(cumulative_interwell_net.copy())
+        cumulative_interwell_gross_records.append(cumulative_interwell_gross.copy())
+        well_balance_residual_records.append(
+            (population - expected_population).copy()
         )
         snapshot = {
             "time": float(now),
             **{name: float(value) for name, value in obs.items()},
+            # The physical first-passage fields are defined by probability
+            # actually removed at the opening boundary.  The independently
+            # integrated survivor mass is retained below as a numerical
+            # diagnostic and may differ at roundoff/discretization level.
+            "survival": float(1.0 - cumulative_absorbed_mass),
+            "initiation_probability": float(cumulative_absorbed_mass),
             "intact_probability_mass": float(obs["survival"]),
             "cumulative_absorbed_mass": float(cumulative_absorbed_mass),
+            "absorbed_mass_increment": float(interval_absorbed_mass),
+            "initial_absorbed_mass": float(initial_absorbed_mass),
+            "integrated_first_passage_flux": float(
+                integrated_first_passage_flux
+            ),
+            "flux_consistency_residual": float(
+                cumulative_absorbed_mass
+                - initial_absorbed_mass
+                - integrated_first_passage_flux
+            ),
             "mass_balance_residual": float(
                 obs["survival"] + cumulative_absorbed_mass - 1.0
             ),
             "negative_mass_correction": float(maximum_negative_mass_correction),
+            "cumulative_negative_mass_correction": float(
+                cumulative_negative_mass_correction
+            ),
             "minimum_density": float(minimum_density),
         }
         for name in records:
@@ -555,15 +707,28 @@ def run_probability_pde_2d(
             density_record_callback(
                 float(now), float(force), density.copy(), model, grid
             )
+        interval_absorbed_mass = 0.0
+        last_record_time = float(now)
 
     while True:
         force = load.value(t)
+        density_before_instant_absorption = density
         density, instant_loss = _absorb_outside_opening_basin(
             density, model, grid, force
         )
         if instant_loss > 0.0:
             cumulative_absorbed_mass += instant_loss
-            last_flux = instant_loss / max(time_params.max_dt, np.finfo(float).eps)
+            if t <= 10.0 * np.finfo(float).eps and not records["time"]:
+                initial_absorbed_mass += instant_loss
+            else:
+                interval_absorbed_mass += instant_loss
+                integrated_first_passage_flux += instant_loss
+                removed_density = density_before_instant_absorption - density
+                for index, well in enumerate(well_indices):
+                    columns = well_structure["cell_well_index"] == well
+                    cumulative_opening_by_well[index] += float(
+                        np.sum(removed_density[:, columns]) * grid.cell_volume
+                    )
 
         if t + 1.0e-14 >= next_record:
             append_record(t, force)
@@ -576,6 +741,9 @@ def run_probability_pde_2d(
 
         if time_params.integrator == "explicit":
             energy = energy_grid(model, grid, force)
+            step_net_all, step_gross_all = configurational_interface_fluxes(
+                density, energy, model, grid
+            )
             rhs, max_outgoing_rate = _sg_rates_and_rhs(density, energy, model, grid)
             if max_outgoing_rate > 0.0:
                 stable_dt = time_params.cfl / max_outgoing_rate
@@ -604,6 +772,9 @@ def run_probability_pde_2d(
                 dt,
                 time_params.negative_tolerance,
             )
+            step_net_all, step_gross_all = configurational_interface_fluxes(
+                trial, implicit_energy, model, grid
+            )
         minimum_density = min(minimum_density, min_value)
         if min_value < -time_params.negative_tolerance:
             raise FloatingPointError(
@@ -612,14 +783,27 @@ def run_probability_pde_2d(
         maximum_negative_mass_correction = max(
             maximum_negative_mass_correction, negative_mass_correction
         )
+        cumulative_negative_mass_correction += negative_mass_correction
+        cumulative_interwell_net += dt * step_net_all[boundary_interfaces]
+        cumulative_interwell_gross += dt * step_gross_all[boundary_interfaces]
 
         next_t = t + dt
         next_force = load.value(next_t)
         before_absorb = float(np.sum(trial) * grid.cell_volume)
+        trial_before_absorption = trial
         trial, removed = _absorb_outside_opening_basin(
-            trial, model, grid, next_force
+            trial_before_absorption, model, grid, next_force
         )
         cumulative_absorbed_mass += removed
+        interval_absorbed_mass += removed
+        integrated_first_passage_flux += removed
+        if removed > 0.0:
+            removed_density = trial_before_absorption - trial
+            for index, well in enumerate(well_indices):
+                columns = well_structure["cell_well_index"] == well
+                cumulative_opening_by_well[index] += float(
+                    np.sum(removed_density[:, columns]) * grid.cell_volume
+                )
         numerical_mass_error = abs(
             before_absorb - float(np.sum(density) * grid.cell_volume)
         )
@@ -628,7 +812,6 @@ def run_probability_pde_2d(
                 f"finite-volume mass conservation error {numerical_mass_error:.3e}"
             )
 
-        last_flux = removed / dt
         density = trial
         t = next_t
 
@@ -637,7 +820,41 @@ def run_probability_pde_2d(
 
     return {
         **{name: np.asarray(values, dtype=float) for name, values in records.items()},
+        "well_indices": well_indices.copy(),
+        "well_populations": np.asarray(well_population_records, dtype=float),
+        "interwell_boundary_lower_index": well_structure[
+            "boundary_lower_well_index"
+        ].copy(),
+        "interwell_boundary_s": well_structure["boundary_target_s"].copy(),
+        "interwell_boundary_grid_s": well_structure[
+            "boundary_interface_s"
+        ].copy(),
+        "interwell_boundary_alignment_error": well_structure[
+            "boundary_alignment_error"
+        ].copy(),
+        "interwell_net_flux": np.asarray(
+            interwell_net_flux_records, dtype=float
+        ),
+        "interwell_gross_flux": np.asarray(
+            interwell_gross_flux_records, dtype=float
+        ),
+        "cumulative_interwell_net_transfer": np.asarray(
+            cumulative_interwell_net_records, dtype=float
+        ),
+        "cumulative_interwell_gross_transfer": np.asarray(
+            cumulative_interwell_gross_records, dtype=float
+        ),
+        "cumulative_opening_absorption_by_well": cumulative_opening_by_well.copy(),
+        "well_population_balance_residual": np.asarray(
+            well_balance_residual_records, dtype=float
+        ),
         "density": density,
         "grid": grid,
         "model": model,
+        "first_passage_flux_definition": (
+            "record-interval absorbed mass divided by record elapsed time"
+        ),
+        "absorbed_mass_definition": (
+            "mass removed only by the opening absorbing-boundary mask"
+        ),
     }
