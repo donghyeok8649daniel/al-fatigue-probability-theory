@@ -176,7 +176,7 @@ If an adiabatic one-dimensional slow equation is later validated, its exact
 finite-temperature free energy is
 
 $$
-A_{\mathrm{eff}}(s;f^*)=-k_BT\ln Z_a(s;f^*),
+\mathcal{F}_{\mathrm{eff}}(s;f^*)=-k_BT\ln Z_a(s;f^*),
 $$
 
 not merely $G(a^*,s;f^*)$ except in the low-temperature approximation.
@@ -265,7 +265,7 @@ show that initial transient is secondary.
 The intended fast/slow architecture is plausible and its singular limit is
 demonstrated, but adiabatic elimination is not accurate for the current default
 finite-$M_a$ PDE at period 0.04. The production PDE is therefore not replaced.
-A slow-$s$ solver should use $A_{\mathrm{eff}}$, retain moving opening
+A slow-$s$ solver should use $\mathcal{F}_{\mathrm{eff}}$, retain moving opening
 first-passage accounting, and be validated against full 2D calculations in a
 resolved fast-$a$ regime before becoming canonical.
 
@@ -300,5 +300,5 @@ not supply a validated dimensional mobility or friction for this reduced
 coordinate. Model time to seconds is therefore unresolved. It requires
 atomistic relaxation data, measured dynamic modulus/phase, experimental
 relaxation time, or another justified mobility/friction source. A specimen
-characteristic length, area, or volume is not introduced for this microscopic
-time nondimensionalization.
+specimen-scale geometric factors are not part of this microscopic time
+nondimensionalization.

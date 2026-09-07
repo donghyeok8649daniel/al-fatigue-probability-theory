@@ -59,6 +59,9 @@ model-time unit, not hertz, and is not mapped to display seconds. A physical
 conversion requires an independently justified reduced-coordinate mobility or
 friction. Current finite-mobility and fast-normal-coordinate diagnostics are in
 [`solver_v1/DYNAMICS_FAST_A_DIAGNOSTICS.md`](solver_v1/DYNAMICS_FAST_A_DIAGNOSTICS.md).
+The subsequent finite-temperature fast-$a$ derivation and its restricted
+slow-$s$ validation are documented in
+[`solver_v1/FAST_A_REDUCTION.md`](solver_v1/FAST_A_REDUCTION.md).
 
 Run from repository root:
 

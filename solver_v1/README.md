@@ -63,6 +63,12 @@ stable $a^*(s,f)$, and finite-temperature conditional fast-$a$ references are
 implemented in `dynamics_diagnostics.py` and described in
 [`DYNAMICS_FAST_A_DIAGNOSTICS.md`](DYNAMICS_FAST_A_DIAGNOSTICS.md).
 
+The finite-temperature elimination derivation, moving-boundary correction,
+truncated-Gibbs/QSD distinction, and experimental slow-$s$ solver are in
+[`FAST_A_REDUCTION.md`](FAST_A_REDUCTION.md) and `reduced_fast_a.py`. The full
+2D solver remains the reference, and the reduced module does not provide a
+validated crack probability.
+
 ### `probability_pde_4d.py` -- N=2 dense correlated reference
 
 Directly evolves
