@@ -1,0 +1,8 @@
+observable,target,reduced_quantity,conversion,mapping_class,fit_scale_fraction
+equilibrium spacing,4.05 angstrom,a0/b,"b=a_lat/sqrt(2); a0=h111=a_lat/sqrt(3)",GEOMETRICALLY PROJECTABLE,0.005
+cohesive energy,3.36 eV/atom,E_coh,"atomization energy of full two-row cell divided by 2",EFFECTIVE / COARSE-GRAINED,0.02
+fixed-lateral [111] curvature,122 GPa,W_aa,"C111=(C11+2C12+4C44)/3; multiply by A_atomic_cell*b^2/h111",GEOMETRICALLY PROJECTABLE,0.05
+direct <110> GSF saddle,0.250 J/m^2,Delta_W_s,"multiply by A_atomic_cell",DIRECTLY MAPPABLE,0.10
+clean (111) work of separation,2.12 J/m^2,W_sep,"2*gamma_111*A_atomic_cell",GEOMETRICALLY PROJECTABLE,0.10
+intrinsic stacking fault,0.164 J/m^2,none,"no independent partial-fault minimum in one-period path",NOT CURRENTLY MAPPABLE,
+vacancy formation,0.68 eV,none,"no vacancy degree of freedom",NOT CURRENTLY MAPPABLE,

@@ -1,0 +1,6 @@
+set,status,epsilon_LJ_eV,sigma_LJ_over_b,beta_b_over_re,A_eV,B_eV,rho0_gauge,rho_ref_gauge
+square_root_best,structurally_insufficient,0.000330091899,1.35,1.32264547,3.15753750,0,1,rho_at_ideal_geometry
+linear_best_feasible,good_fit_but_practically_nonidentifiable,0.1551326727,0.8524688688,1.6951301716,6.1512658971,3.1077175868,1,rho_at_ideal_geometry
+near_null_minus_0.25,representative_near_equivalent,0.1632943608,0.8524015565,1.3272273819,6.1434325212,3.1160751656,1,rho_at_ideal_geometry
+near_null_plus_0.25,representative_near_equivalent,0.1473789176,0.8525361864,2.1650143281,6.1591092612,3.0993824237,1,rho_at_ideal_geometry
+hypothetical_v1,uncalibrated_sensitivity_set,0.02,1.0,3.0,0.08,0,1,1

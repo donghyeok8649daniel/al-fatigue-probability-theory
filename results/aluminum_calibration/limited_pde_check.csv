@@ -1,0 +1,5 @@
+case,n_a,n_s,dt,duration,force,chi,P_minus1_final,P_0_final,P_plus1_final,epsilon_plastic_final,opening_absorbed,mass_residual_max,status
+hold_force_refinement,15,30,0.004,0.5,0.45,0.5,0.000062337,0.999731217,0.000206446,0.0000882485,0,1.04e-14,coarse_candidate
+hold_force_refinement,21,42,0.002,0.5,0.45,0.5,0.0000988565,0.999659617,0.000241527,0.0000873673,0,1.13e-14,reference_candidate
+hold_force_refinement,27,54,0.001,0.5,0.45,0.5,0.000129403,0.999600843,0.000269753,0.0000859468,0,1.91e-14,finer_candidate
+load_then_short_hold,21,42,0.002,1.0,"0.45 to t=0.5 then 0",0.5,0.000231692,0.999390630,0.000377666,0.0000893904,1.2729153e-8,1.73e-14,coupled_unresolved_not_residual_validation

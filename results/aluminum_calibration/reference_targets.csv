@@ -1,0 +1,15 @@
+target_id,value,units,temperature_K,orientation_or_path,method,source,used_for_fit,mapping
+mishin_lattice,4.05,angstrom,0,FCC,EAM,doi:10.1103/PhysRevB.59.3393,yes,GEOMETRICALLY PROJECTABLE
+mishin_cohesion,3.36,eV/atom,0,FCC,EAM,doi:10.1103/PhysRevB.59.3393,yes,EFFECTIVE / COARSE-GRAINED
+mishin_c11,114,GPa,0,cubic axes,EAM,doi:10.1103/PhysRevB.59.3393,yes,GEOMETRICALLY PROJECTABLE
+mishin_c12,62,GPa,0,cubic axes,EAM,doi:10.1103/PhysRevB.59.3393,yes,GEOMETRICALLY PROJECTABLE
+mishin_c44,32,GPa,0,cubic axes,EAM,doi:10.1103/PhysRevB.59.3393,yes,GEOMETRICALLY PROJECTABLE
+lu_usf110,0.250,J/m^2,0,(111) a/4<101>,LDA-DFT,doi:10.1103/PhysRevB.62.3099,yes,DIRECTLY MAPPABLE
+wei_surface111,1.06,J/m^2,0,(111),DFT,doi:10.1039/C6RA08958E,yes,GEOMETRICALLY PROJECTABLE
+lu_usf112,0.224,J/m^2,0,(111) a/6<112>,LDA-DFT,doi:10.1103/PhysRevB.62.3099,no,GEOMETRICALLY PROJECTABLE
+lu_isf,0.164,J/m^2,0,(111) a/6<112>,LDA-DFT,doi:10.1103/PhysRevB.62.3099,no,NOT CURRENTLY MAPPABLE
+mishin_surface111,0.870,J/m^2,0,(111),EAM,doi:10.1103/PhysRevB.59.3393,no,GEOMETRICALLY PROJECTABLE
+mishin_vacancy,0.68,eV,0,FCC bulk,EAM,doi:10.1103/PhysRevB.59.3393,no,NOT CURRENTLY MAPPABLE
+yamakov_c11_100K,109.1,GPa,100,cubic axes,MD/EAM,doi:10.1016/j.jmps.2006.03.004,no,GEOMETRICALLY PROJECTABLE
+yamakov_c12_100K,58.5,GPa,100,cubic axes,MD/EAM,doi:10.1016/j.jmps.2006.03.004,no,GEOMETRICALLY PROJECTABLE
+yamakov_c44_100K,33.0,GPa,100,cubic axes,MD/EAM,doi:10.1016/j.jmps.2006.03.004,no,GEOMETRICALLY PROJECTABLE

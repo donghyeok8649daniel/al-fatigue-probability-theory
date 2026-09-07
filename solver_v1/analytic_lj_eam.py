@@ -71,6 +71,56 @@ class SquareRootEmbedding:
 
 
 @dataclass(frozen=True)
+class SquareRootLinearEmbedding:
+    r"""Minimal extension ``F(x)=-A*sqrt(x)+B*(x-1)``.
+
+    Here ``x=rho/rho_ref`` and ``B>=0``.  In an unrestricted EAM decomposition
+    this linear term is gauge-equivalent to a pair redistribution.  It is
+    separately identifiable here only under the declared fixed-LJ pair gauge.
+    This is an identifiability experiment, not an Al EAM claim.
+    """
+
+    amplitude: float
+    linear: float
+    rho_ref: float
+
+    def validate(self) -> None:
+        if not np.isfinite(self.amplitude) or self.amplitude < 0.0:
+            raise ValueError("embedding amplitude must be finite and nonnegative")
+        if not np.isfinite(self.linear) or self.linear < 0.0:
+            raise ValueError("linear coefficient must be finite and nonnegative")
+        if not np.isfinite(self.rho_ref) or self.rho_ref <= 0.0:
+            raise ValueError("rho_ref must be finite and positive")
+
+    def value(self, density):
+        self.validate()
+        rho = np.asarray(density, dtype=float)
+        if np.any(rho < 0.0):
+            raise ValueError("environment density cannot be negative")
+        x = rho / self.rho_ref
+        return -self.amplitude * np.sqrt(x) + self.linear * (x - 1.0)
+
+    def first_derivative(self, density):
+        self.validate()
+        rho = np.asarray(density, dtype=float)
+        if np.any(rho <= 0.0):
+            raise ValueError("embedding derivative requires rho > 0")
+        x = rho / self.rho_ref
+        return (
+            -self.amplitude / (2.0 * self.rho_ref * np.sqrt(x))
+            + self.linear / self.rho_ref
+        )
+
+    def second_derivative(self, density):
+        self.validate()
+        rho = np.asarray(density, dtype=float)
+        if np.any(rho <= 0.0):
+            raise ValueError("embedding derivative requires rho > 0")
+        x = rho / self.rho_ref
+        return self.amplitude / (4.0 * self.rho_ref**2 * x ** 1.5)
+
+
+@dataclass(frozen=True)
 class HybridLocalTerms:
     density: np.ndarray
     density_cross: ExponentialDensityResult
@@ -106,7 +156,7 @@ class AnalyticLJEAM(TwoRowLJ):
         if p.n_cells != 1:
             raise ValueError("AnalyticLJEAM currently requires ModelParams(n_cells=1)")
         density_params.validate()
-        if isinstance(embedding, SquareRootEmbedding):
+        if isinstance(embedding, (SquareRootEmbedding, SquareRootLinearEmbedding)):
             embedding.validate()
         if not isinstance(embedding, AnalyticEmbedding):
             raise TypeError("embedding must provide value and first/second derivatives")
@@ -116,8 +166,12 @@ class AnalyticLJEAM(TwoRowLJ):
 
     @property
     def embedding_is_zero(self) -> bool:
+        if self.density_params.rho0 == 0.0:
+            return True
+        if isinstance(self.embedding, SquareRootLinearEmbedding):
+            return self.embedding.amplitude == 0.0 and self.embedding.linear == 0.0
         amplitude = getattr(self.embedding, "amplitude", None)
-        return self.density_params.rho0 == 0.0 or amplitude == 0.0
+        return amplitude == 0.0
 
     def local_environment_density(self, a, s) -> ExponentialDensityResult:
         cross = exponential_cross_density(

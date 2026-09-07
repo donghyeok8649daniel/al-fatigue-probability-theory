@@ -74,6 +74,13 @@ floors, and the strictly post-processing statistical correlation-area layer
 are documented in
 [`PROBABILITY_AND_PLASTICITY_RESOLUTION.md`](PROBABILITY_AND_PLASTICITY_RESOLUTION.md).
 
+The analytic LJ--EAM construction and its pure-Al target/identifiability audit
+are documented separately in
+[`ANALYTIC_LJ_EAM_HYBRID.md`](ANALYTIC_LJ_EAM_HYBRID.md) and
+[`ALUMINUM_ANALYTIC_CALIBRATION.md`](ALUMINUM_ANALYTIC_CALIBRATION.md). The
+result is explicitly best-feasible and practically non-identifiable; it is not
+labeled a calibrated aluminum potential.
+
 ### `probability_pde_4d.py` -- N=2 dense correlated reference
 
 Directly evolves

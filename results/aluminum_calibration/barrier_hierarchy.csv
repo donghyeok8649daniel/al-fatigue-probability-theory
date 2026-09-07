@@ -1,0 +1,9 @@
+model,chi_assumption,force,configurational_barrier_eV,opening_barrier_at_s_saddle_eV,R,static_classification
+linear_best_feasible,maximum_Schmid_chi_0.5,0.05,0.09005596,0.67442588,0.13353,slip_barrier_lower
+linear_best_feasible,maximum_Schmid_chi_0.5,0.10,0.07111838,0.56454439,0.12597,slip_barrier_lower
+linear_best_feasible,maximum_Schmid_chi_0.5,0.20,0.04606436,0.39448943,0.11677,slip_barrier_lower
+linear_best_feasible,maximum_Schmid_chi_0.5,0.30,0.01872739,0.27566386,0.06794,slip_barrier_lower
+linear_best_feasible,maximum_Schmid_chi_0.5,0.40,0.00258043,0.18854298,0.01369,slip_barrier_lower
+linear_best_feasible,maximum_Schmid_chi_0.5,0.50,,,,configurational_spinodal_bracket_0.4_to_0.5
+near_null_minus_0.25,maximum_Schmid_chi_0.5,0.30,0.01873589,0.18251320,0.10266,parameter_uncertainty_example
+near_null_plus_0.25,maximum_Schmid_chi_0.5,0.30,0.02193296,0.35811872,0.06124,parameter_uncertainty_example
