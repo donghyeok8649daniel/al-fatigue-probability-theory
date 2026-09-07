@@ -62,6 +62,21 @@ sent to Tk through a queue so the GUI event loop remains responsive. Plot views
 support cursor-centred wheel zoom, Shift+wheel X-only zoom, Ctrl+wheel Y-only
 zoom, left-drag pan, double-click/Home reset, and per-result-field view memory.
 
+The frequency control is **cycles per model-time unit**, not hertz. The result
+metadata and Solve summary expose local-pristine $\tau_{\mathrm{fast}}$,
+$\tau_{\mathrm{slow}}$, $\omega\tau_{\mathrm{fast}}$,
+$\omega\tau_{\mathrm{slow}}$, and small-signal transfer diagnostics. These are
+diagnostics of the current finite-mobility model, not exact nonlinear response
+values. See
+[`solver_v1/DYNAMICS_FAST_A_DIAGNOSTICS.md`](../solver_v1/DYNAMICS_FAST_A_DIAGNOSTICS.md).
+
+The default 21 by 31 explicit grid is labeled **Preview** because it does not
+resolve the small Case-A normal displacement. **Resolved** selects an 81 by 91
+grid and the same SG operator with backward-Euler time integration. The latter
+is slower, remains a numerical-resolution mode rather than a different physical
+model, and still requires ordinary grid/time convergence checks for publication
+results.
+
 ## Scientific scope
 
 This is a dimensionless mechanism solver, not a quantitatively calibrated

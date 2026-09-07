@@ -11,8 +11,10 @@ from typing import Callable
 
 import numpy as np
 
+from solver_v1.dynamics_diagnostics import model_frequency_diagnostics
 from solver_v1.model import ModelParams, TwoRowLJ
 from solver_v1.probability_pde_2d import (
+    Grid2D,
     Grid2DParams,
     PDETimeParams,
     cyclic_load_from_sigma_over_E,
@@ -43,15 +45,16 @@ class UIAnalysisConfig:
     young_gpa: float = 69.0
     stress_mean_mpa: float = 50.0
     stress_amplitude_mpa: float = 100.0
-    frequency_hz: float = 20.0
+    model_frequency: float = 25.0
     cycles: float = 1.0
     steps_per_cycle: int = 40
-    model_period: float = 0.04
     grid_n_a: int = 21
     grid_n_s: int = 31
     s_wells: int = 3
     a_upper: float = 1.60
     max_dt: float = 1.0e-3
+    integration_method: str = "explicit"
+    analysis_quality: str = "preview"
 
     @property
     def young_mpa(self) -> float:
@@ -65,6 +68,10 @@ class UIAnalysisConfig:
     def stress_max_mpa(self) -> float:
         return float(self.stress_mean_mpa + self.stress_amplitude_mpa)
 
+    @property
+    def model_period(self) -> float:
+        return 1.0 / float(self.model_frequency)
+
     def stress_mpa(self, model_time):
         phase = 2.0 * np.pi * np.asarray(model_time, dtype=float) / self.model_period
         value = self.stress_mean_mpa + self.stress_amplitude_mpa * np.sin(phase)
@@ -73,9 +80,8 @@ class UIAnalysisConfig:
     def validate(self) -> None:
         positive = {
             "young_gpa": self.young_gpa,
-            "frequency_hz": self.frequency_hz,
+            "model_frequency": self.model_frequency,
             "cycles": self.cycles,
-            "model_period": self.model_period,
             "max_dt": self.max_dt,
         }
         for name, value in positive.items():
@@ -91,6 +97,10 @@ class UIAnalysisConfig:
             raise ValueError("grid dimensions must both be at least 5")
         if self.s_wells < 1 or self.s_wells % 2 == 0:
             raise ValueError("s_wells must be a positive odd integer")
+        if self.integration_method not in {"explicit", "implicit"}:
+            raise ValueError("integration_method must be 'explicit' or 'implicit'")
+        if self.analysis_quality not in {"preview", "resolved"}:
+            raise ValueError("analysis_quality must be 'preview' or 'resolved'")
 
 
 def canonical_model_params() -> ModelParams:
@@ -114,6 +124,7 @@ def physical_load_conversion(config: UIAnalysisConfig) -> dict[str, float]:
     reduced_min = config.stress_min_mpa / config.young_mpa
     reduced_max = config.stress_max_mpa / config.young_mpa
     reduced_initial = config.stress_mean_mpa / config.young_mpa
+    dynamics = model_frequency_diagnostics(model, config.model_frequency)
     return {
         "a0": float(model.a0),
         "relaxed_axial_kappa": float(kappa),
@@ -126,6 +137,7 @@ def physical_load_conversion(config: UIAnalysisConfig) -> dict[str, float]:
         "force_min": float(model.force_from_sigma_over_E(reduced_min)),
         "force_max": float(model.force_from_sigma_over_E(reduced_max)),
         "preload_force": float(model.force_from_sigma_over_E(reduced_initial)),
+        **dynamics,
     }
 
 
@@ -139,7 +151,6 @@ def _decorate_record(
         **record,
         "model_time": model_time,
         "load_cycle": float(cycle),
-        "display_time_s": float(cycle / config.frequency_hz),
         "applied_stress_mpa": float(config.stress_mpa(model_time)),
     }
 
@@ -182,6 +193,9 @@ def run_ui_analysis(
     config: UIAnalysisConfig,
     *,
     record_callback: Callable[[dict[str, float]], None] | None = None,
+    density_record_callback: (
+        Callable[[float, float, np.ndarray, TwoRowLJ, Grid2D], None] | None
+    ) = None,
     stop_requested: Callable[[], bool] | None = None,
 ) -> dict[str, object]:
     """Run the canonical PDE path used by the desktop application."""
@@ -218,19 +232,23 @@ def run_ui_analysis(
             max_dt=min(config.max_dt, config.model_period / config.steps_per_cycle),
             cfl=0.40,
             record_interval=config.model_period / config.steps_per_cycle,
+            integrator=config.integration_method,
         ),
         load=load,
         preload_force=preload_force,
         record_callback=forward,
+        density_record_callback=density_record_callback,
         stop_requested=stop_requested,
     )
     model_time = np.asarray(raw["time"], dtype=float)
     load_cycle = model_time / config.model_period
+    dynamics = model_frequency_diagnostics(
+        calibration_model, config.model_frequency
+    )
     result: dict[str, object] = {
         **raw,
         "model_time": model_time,
         "load_cycle": load_cycle,
-        "display_time_s": load_cycle / config.frequency_hz,
         "applied_stress_mpa": np.asarray(config.stress_mpa(model_time), dtype=float),
         "initial_stress_mpa": float(config.stress_mean_mpa),
         "initial_force": preload_force,
@@ -241,6 +259,10 @@ def run_ui_analysis(
         ),
         "solver_time_status": "dimensionless model time; not calibrated seconds",
         "probability_source": "N=1 direct Smoluchowski/Fokker-Planck PDE",
+        "analysis_quality": config.analysis_quality,
+        "integration_method": config.integration_method,
+        "grid_shape": (config.grid_n_a, config.grid_n_s),
+        **dynamics,
     }
     result_field_mapping(result)
     return result

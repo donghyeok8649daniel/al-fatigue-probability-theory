@@ -25,7 +25,7 @@ def _physical_case(name: str) -> tuple[dict[str, object], tuple[dict[str, float]
             young_gpa=69.0,
             stress_mean_mpa=mean,
             stress_amplitude_mpa=amplitude,
-            frequency_hz=20.0,
+            model_frequency=25.0,
             cycles=1.0,
             steps_per_cycle=40,
         ),
@@ -66,6 +66,10 @@ def test_physical_stress_uses_verified_relaxed_axial_force_mapping() -> None:
         conversion["force_min"],
         conversion["relaxed_axial_kappa"] * (-900.0 / 69000.0),
     )
+    assert conversion["model_frequency"] == 25.0
+    assert conversion["model_period"] == 0.04
+    assert np.isclose(conversion["de_fast"], 1.279285899947692)
+    assert np.isclose(conversion["de_slow"], 62.39808635219237)
 
 
 def test_ui_result_registry_maps_required_pde_fields_directly() -> None:
@@ -75,6 +79,10 @@ def test_ui_result_registry_maps_required_pde_fields_directly() -> None:
     assert records
     assert records[0]["applied_stress_mpa"] == -500.0
     assert result["initial_condition"] == "conditional Gibbs at sigma(t=0)"
+    assert result["model_frequency"] == 25.0
+    assert result["solver_time_status"] == (
+        "dimensionless model time; not calibrated seconds"
+    )
     for source, mapped in (
         ("strain", "strain"),
         ("normal_strain", "normal_strain"),

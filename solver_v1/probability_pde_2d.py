@@ -34,6 +34,8 @@ from dataclasses import dataclass
 from typing import Callable
 
 import numpy as np
+from scipy import sparse
+from scipy.sparse.linalg import spsolve
 
 from .model import ModelParams, TwoRowLJ
 
@@ -51,16 +53,20 @@ class Grid2DParams:
 
 @dataclass(frozen=True)
 class PDETimeParams:
-    """Explicit conservative integration controls.
+    """Conservative integration controls.
 
-    ``max_dt`` is only an upper bound. The solver computes a positivity CFL
-    bound from the Scharfetter--Gummel transition rates at every step.
+    The validated production default remains explicit.  For ``integrator``
+    equal to ``"explicit"``, ``max_dt`` is only an upper bound and the solver
+    computes a positivity CFL bound from the Scharfetter--Gummel rates.  The
+    optional backward-Euler path exists for stiff convergence diagnostics and
+    uses the identical conservative spatial generator.
     """
 
     max_dt: float = 2.0e-3
     cfl: float = 0.45
     record_interval: float = 2.0e-2
     negative_tolerance: float = 2.0e-12
+    integrator: str = "explicit"
 
 
 @dataclass(frozen=True)
@@ -295,6 +301,75 @@ def _sg_rates_and_rhs(
     return rhs, float(np.max(outgoing))
 
 
+def _sg_generator_2d(
+    energy: np.ndarray,
+    model: TwoRowLJ,
+    grid: Grid2D,
+) -> sparse.csr_matrix:
+    """Assemble the same SG semi-discretization as ``dp/dt=A p``."""
+
+    if model.p.kT <= 0.0:
+        raise ValueError("Smoluchowski diffusion requires kT > 0")
+    shape = energy.shape
+    index = np.arange(np.prod(shape), dtype=np.int64).reshape(shape)
+    beta = 1.0 / model.p.kT
+    rows: list[np.ndarray] = []
+    columns: list[np.ndarray] = []
+    values: list[np.ndarray] = []
+    for axis, diffusivity, spacing in (
+        (0, model.p.mobility_a * model.p.kT, grid.da),
+        (1, model.p.mobility_s * model.p.kT, grid.ds),
+    ):
+        left = [slice(None)] * 2
+        right = [slice(None)] * 2
+        left[axis] = slice(0, -1)
+        right[axis] = slice(1, None)
+        left_t = tuple(left)
+        right_t = tuple(right)
+        left_index = index[left_t].ravel()
+        right_index = index[right_t].ravel()
+        psi = beta * (energy[right_t] - energy[left_t])
+        rate_left_right = (diffusivity / spacing**2) * _bernoulli(psi)
+        rate_right_left = (diffusivity / spacing**2) * _bernoulli(-psi)
+        rate_left_right = rate_left_right.ravel()
+        rate_right_left = rate_right_left.ravel()
+        rows.extend((right_index, left_index, left_index, right_index))
+        columns.extend((left_index, left_index, right_index, right_index))
+        values.extend(
+            (rate_left_right, -rate_left_right, rate_right_left, -rate_right_left)
+        )
+    return sparse.coo_matrix(
+        (np.concatenate(values), (np.concatenate(rows), np.concatenate(columns))),
+        shape=(index.size, index.size),
+    ).tocsr()
+
+
+def _implicit_step_2d(
+    density: np.ndarray,
+    energy: np.ndarray,
+    model: TwoRowLJ,
+    grid: Grid2D,
+    dt: float,
+    negative_tolerance: float,
+) -> tuple[np.ndarray, float, float]:
+    """Take one conservative backward-Euler step with the SG generator."""
+
+    generator = _sg_generator_2d(energy, model, grid)
+    system = sparse.eye(generator.shape[0], format="csr") - dt * generator
+    updated = np.asarray(spsolve(system, density.ravel()), dtype=float).reshape(
+        density.shape
+    )
+    minimum = float(np.min(updated))
+    if minimum < -negative_tolerance:
+        raise FloatingPointError(
+            f"implicit 2D probability density lost positivity ({minimum:.3e})"
+        )
+    negative_mass_correction = float(
+        np.sum(np.maximum(-updated, 0.0)) * grid.cell_volume
+    )
+    return np.maximum(updated, 0.0), negative_mass_correction, minimum
+
+
 def _absorb_outside_opening_basin(
     density: np.ndarray,
     model: TwoRowLJ,
@@ -387,27 +462,38 @@ def observables(
 def run_probability_pde_2d(
     *,
     model_params: ModelParams | None = None,
+    prepared_model: TwoRowLJ | None = None,
     grid_params: Grid2DParams = Grid2DParams(),
     time_params: PDETimeParams = PDETimeParams(),
     load: CyclicLoad2D = CyclicLoad2D(),
     preload_force: float = 0.0,
     record_callback: Callable[[dict[str, float]], None] | None = None,
+    density_record_callback: (
+        Callable[[float, float, np.ndarray, TwoRowLJ, Grid2D], None] | None
+    ) = None,
     stop_requested: Callable[[], bool] | None = None,
 ) -> dict[str, np.ndarray | Grid2D | TwoRowLJ]:
     """Solve the deterministic N=1 probability PDE under a cyclic load."""
 
-    p = model_params or ModelParams(n_cells=1)
+    if prepared_model is not None and model_params is not None:
+        raise ValueError("pass either model_params or prepared_model, not both")
+    p = prepared_model.p if prepared_model is not None else (
+        model_params or ModelParams(n_cells=1)
+    )
     if p.n_cells != 1:
         raise ValueError("N=1 reference solver requires n_cells=1")
     if time_params.max_dt <= 0.0 or not 0.0 < time_params.cfl < 1.0:
         raise ValueError("invalid PDE time controls")
     if time_params.record_interval <= 0.0:
         raise ValueError("record_interval must be positive")
+    if time_params.integrator not in {"explicit", "implicit"}:
+        raise ValueError("2D integrator must be 'explicit' or 'implicit'")
     if load.period <= 0.0 or load.cycles < 0.0:
         raise ValueError("invalid cyclic load duration")
 
-    model = TwoRowLJ(p)
-    model._build_opening_table()
+    model = prepared_model if prepared_model is not None else TwoRowLJ(p)
+    if not model._opening_table_ready:
+        model._build_opening_table()
     grid = build_grid(model, grid_params)
     density = initial_gibbs_density(
         model, grid, preload_force=preload_force, principal_well_only=True
@@ -465,6 +551,10 @@ def run_probability_pde_2d(
             records[name].append(snapshot[name])
         if record_callback is not None:
             record_callback(dict(snapshot))
+        if density_record_callback is not None:
+            density_record_callback(
+                float(now), float(force), density.copy(), model, grid
+            )
 
     while True:
         force = load.value(t)
@@ -484,30 +574,44 @@ def run_probability_pde_2d(
         if stop_requested is not None and stop_requested():
             break
 
-        energy = energy_grid(model, grid, force)
-        rhs, max_outgoing_rate = _sg_rates_and_rhs(density, energy, model, grid)
-        if max_outgoing_rate > 0.0:
-            stable_dt = time_params.cfl / max_outgoing_rate
+        if time_params.integrator == "explicit":
+            energy = energy_grid(model, grid, force)
+            rhs, max_outgoing_rate = _sg_rates_and_rhs(density, energy, model, grid)
+            if max_outgoing_rate > 0.0:
+                stable_dt = time_params.cfl / max_outgoing_rate
+            else:
+                stable_dt = time_params.max_dt
+            dt = min(time_params.max_dt, stable_dt, duration - t)
+            if not np.isfinite(dt) or dt <= 0.0:
+                raise FloatingPointError("failed to obtain a positive stable PDE step")
+            trial = density + dt * rhs
+            min_value = float(np.min(trial))
+            negative_mass_correction = float(
+                np.sum(np.maximum(-trial, 0.0)) * grid.cell_volume
+            )
+            trial = np.maximum(trial, 0.0)
         else:
-            stable_dt = time_params.max_dt
-        dt = min(time_params.max_dt, stable_dt, duration - t)
-        if not np.isfinite(dt) or dt <= 0.0:
-            raise FloatingPointError("failed to obtain a positive stable PDE step")
-
-        trial = density + dt * rhs
-        min_value = float(np.min(trial))
+            dt = min(time_params.max_dt, duration - t)
+            if not np.isfinite(dt) or dt <= 0.0:
+                raise FloatingPointError("failed to obtain a positive implicit PDE step")
+            implicit_force = load.value(t + dt)
+            implicit_energy = energy_grid(model, grid, implicit_force)
+            trial, negative_mass_correction, min_value = _implicit_step_2d(
+                density,
+                implicit_energy,
+                model,
+                grid,
+                dt,
+                time_params.negative_tolerance,
+            )
         minimum_density = min(minimum_density, min_value)
         if min_value < -time_params.negative_tolerance:
             raise FloatingPointError(
                 f"probability density became negative ({min_value:.3e}); refine dt/grid"
             )
-        negative_mass_correction = float(
-            np.sum(np.maximum(-trial, 0.0)) * grid.cell_volume
-        )
         maximum_negative_mass_correction = max(
             maximum_negative_mass_correction, negative_mass_correction
         )
-        trial = np.maximum(trial, 0.0)
 
         next_t = t + dt
         next_force = load.value(next_t)

@@ -82,7 +82,7 @@ class DesktopApp:
         ("young_gpa", "Young's modulus", "69", "GPa"),
         ("stress_mean_mpa", "Mean axial stress", "50", "MPa"),
         ("stress_amplitude_mpa", "Stress amplitude", "100", "MPa"),
-        ("frequency_hz", "Display frequency", "20", "Hz"),
+        ("model_frequency", "Model frequency", "25", "cycles / model time"),
         ("cycles", "Load cycles", "1", "cycles"),
         ("steps_per_cycle", "Output resolution", "40", "steps/cycle"),
         ("tensile_direction", "Axial direction", "1 0 0", "[x y z]"),
@@ -97,6 +97,7 @@ class DesktopApp:
 
         self.entries: dict[str, ttk.Entry] = {}
         self.spatial_backend = tk.StringVar(value="FVM")
+        self.analysis_quality = tk.StringVar(value="Preview (21 x 31, explicit)")
         self.field = tk.StringVar(value="strain_components")
         self.status = tk.StringVar(value="Ready · probability PDE always active")
         self.busy = False
@@ -255,6 +256,19 @@ class DesktopApp:
             left, textvariable=self.spatial_backend, values=("FVM", "FEM"),
             state="readonly", width=22
         ).pack(anchor="w", pady=(6, 15))
+        ttk.Label(left, text="Probability grid quality", style="Section.TLabel").pack(
+            anchor="w"
+        )
+        ttk.Combobox(
+            left,
+            textvariable=self.analysis_quality,
+            values=(
+                "Preview (21 x 31, explicit)",
+                "Resolved (81 x 91, implicit)",
+            ),
+            state="readonly",
+            width=29,
+        ).pack(anchor="w", pady=(6, 15))
         ttk.Label(
             left,
             text=(
@@ -313,13 +327,18 @@ class DesktopApp:
         direction = self.entries["tensile_direction"].get().replace(",", " ").split()
         if len(direction) != 3 or np.linalg.norm([float(v) for v in direction]) == 0.0:
             raise ValueError("Axial direction requires three values and must be nonzero")
+        resolved = self.analysis_quality.get().startswith("Resolved")
         return UIAnalysisConfig(
             young_gpa=float(self.entries["young_gpa"].get()),
             stress_mean_mpa=float(self.entries["stress_mean_mpa"].get()),
             stress_amplitude_mpa=float(self.entries["stress_amplitude_mpa"].get()),
-            frequency_hz=float(self.entries["frequency_hz"].get()),
+            model_frequency=float(self.entries["model_frequency"].get()),
             cycles=float(self.entries["cycles"].get()),
             steps_per_cycle=int(self.entries["steps_per_cycle"].get()),
+            grid_n_a=81 if resolved else 21,
+            grid_n_s=91 if resolved else 31,
+            integration_method="implicit" if resolved else "explicit",
+            analysis_quality="resolved" if resolved else "preview",
         )
 
     def _start_solve(self) -> None:
@@ -345,9 +364,14 @@ class DesktopApp:
         self.status.set("Solving direct probability PDE in background…")
         self._set_summary(
             f"Spatial display: {self.spatial_backend.get()}\n"
+            f"Probability solve quality: {config.analysis_quality} "
+            f"({config.grid_n_a} x {config.grid_n_s}, {config.integration_method})\n"
             f"Stress: {config.stress_min_mpa:.6g} to {config.stress_max_mpa:.6g} MPa\n"
             f"Reduced stress: {conversion['reduced_stress_min']:.6g} to "
             f"{conversion['reduced_stress_max']:.6g}\n"
+            f"Model period: {conversion['model_period']:.8g}\n"
+            f"Local pristine De_fast / De_slow: {conversion['de_fast']:.6g} / "
+            f"{conversion['de_slow']:.6g}\n"
             f"Relaxed axial κ: {conversion['relaxed_axial_kappa']:.12g}\n"
             f"Initial Gibbs preload force: {conversion['preload_force']:.12g}\n"
             "Computing…\n"
@@ -411,8 +435,18 @@ class DesktopApp:
         )
         self._set_summary(
             f"Probability source: {result['probability_source']}\n"
+            f"Solve quality: {result['analysis_quality']} "
+            f"{result['grid_shape']}, {result['integration_method']}\n"
             f"Initial condition: {result['initial_condition']}\n"
             f"Initial stress: {result['initial_stress_mpa']:.8g} MPa\n"
+            f"Model frequency: {result['model_frequency']:.8g} cycles/model time\n"
+            f"Model period: {result['model_period']:.8g}\n"
+            f"Local pristine tau_fast / tau_slow: {result['tau_fast']:.8g} / "
+            f"{result['tau_slow']:.8g}\n"
+            f"Local pristine omega*tau_fast / omega*tau_slow: "
+            f"{result['de_fast']:.8g} / {result['de_slow']:.8g}\n"
+            f"Local linear |G| / phase: {result['linear_transfer_magnitude']:.8g} / "
+            f"{result['linear_transfer_phase_degrees']:.6g} deg\n"
             f"Relaxed axial κ: {result['relaxed_axial_kappa']:.12g}\n"
             f"Final survival: {float(np.asarray(result['survival'])[-1]):.12g}\n"
             f"Final initiation: {float(np.asarray(result['initiation_probability'])[-1]):.12g}\n"
@@ -589,6 +623,7 @@ def startup_smoke() -> dict[str, float]:
     return {
         "a0": conversion["a0"],
         "relaxed_axial_kappa": conversion["relaxed_axial_kappa"],
+        "model_frequency": conversion["model_frequency"],
     }
 
 

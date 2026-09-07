@@ -56,6 +56,13 @@ Directly evolves `P(a,s,t)` with conservative Scharfetter--Gummel finite-volume 
 
 Primary checks are Gibbs normalization, probability conservation, positivity/CFL behaviour, compression sign handling, absorbing first passage, survival monotonicity, and grid/time-step convergence.
 
+An optional backward-Euler mode uses the same conservative
+Scharfetter--Gummel generator for stiff timestep and fast/slow diagnostics; the
+validated default remains explicit. Linear relaxation, harmonic response,
+stable $a^*(s,f)$, and finite-temperature conditional fast-$a$ references are
+implemented in `dynamics_diagnostics.py` and described in
+[`DYNAMICS_FAST_A_DIAGNOSTICS.md`](DYNAMICS_FAST_A_DIAGNOSTICS.md).
+
 ### `probability_pde_4d.py` -- N=2 dense correlated reference
 
 Directly evolves
