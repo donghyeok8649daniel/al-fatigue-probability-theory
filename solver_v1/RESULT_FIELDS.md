@@ -256,6 +256,21 @@ exposed as physical fields only when the local signal is convergence-certified.
 Otherwise they remain unavailable and `specimen_probability_extrapolation` is
 diagnostic only.
 
+## Time-basis metadata
+
+- `model_time`: canonical nondimensional solver time;
+- `physical_time_seconds`: available only with validated kinetic mobility;
+- `plot_time`: selected display basis without altering `model_time`;
+- `time_basis`: `model` or `physical`;
+- `t0_seconds`, `frequency_hz`, `physical_period_seconds`, and
+  `physical_duration_seconds`: null in uncalibrated model-time mode;
+- `physical_M_a`, `physical_M_s`, and `kinetic_calibration_source`: provenance
+  for enabled physical-time mode.
+
+`per_cycle_diagnostics` contains each cycle's absorbed opening mass, sampled
+minimum opening barrier, peak first-passage flux, and end survival. It helps
+identify first-cycle Gibbs-tail depletion but does not alone certify an event.
+
 ## UI plotting behaviour
 
 Plots should preserve scientific-axis offset notation rather than forcing survival to the full 0--1 range. The user should be able to zoom and pan interactively:

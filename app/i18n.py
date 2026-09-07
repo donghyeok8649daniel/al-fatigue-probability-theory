@@ -173,6 +173,35 @@ _ROWS = (
     ("stress.regime.moderate", "비선형 메커니즘 탐색 범위", "Nonlinear mechanism-probe regime"),
     ("stress.regime.compression", "인장 opening 대조용 전압축 하중", "All-compressive tensile-opening control"),
     ("stress.regime.extreme", "주의: 정량 보정된 순수 Al 피로하중이 아닌 극한 메커니즘 스트레스 테스트입니다.", "Caution: extreme mechanism stress test, not a quantitatively calibrated pure-Al fatigue load."),
+    ("field.time_basis", "시간 기준", "Time basis"),
+    ("option.model_time", "모델 시간", "Model time"),
+    ("option.physical_time", "물리 시간", "Physical time"),
+    ("field.frequency", "주파수", "Frequency"),
+    ("unit.hz", "Hz", "Hz"),
+    ("axis.time_seconds", "시간 [s]", "Time [s]"),
+    ("axis.first_passage_flux_seconds", "최초통과 플럭스 [1/s]", "First-passage flux [1/s]"),
+    ("axis.interwell_flux_seconds", "확률 플럭스 [1/s]", "Probability flux [1/s]"),
+    ("axis.plastic_flow_seconds", "변형률률 [1/s]", "Strain rate [1/s]"),
+    ("status.kinetic_uncalibrated", "동역학 이동도 미보정: 현재 시간과 주파수는 물리적 초/Hz가 아닙니다.", "Kinetic mobility is uncalibrated: time and frequency are not physical seconds/Hz."),
+    ("status.kinetic_calibrated", "동역학 이동도 보정됨: 물리 시간 변환이 활성화되었습니다.", "Kinetic mobility calibrated: physical-time conversion is enabled."),
+    ("status.physical_time_unavailable", "유효한 동역학 이동도 보정이 없어 물리 시간을 선택할 수 없습니다.", "Physical time is unavailable without a valid kinetic-mobility calibration."),
+    ("diagnostic.t0", "모델 시간척도 t0", "Model time scale t0"),
+    ("diagnostic.physical_mobility_a", "물리 이동도 M_a", "Physical mobility M_a"),
+    ("diagnostic.physical_mobility_s", "물리 이동도 M_s", "Physical mobility M_s"),
+    ("diagnostic.calibration_source", "동역학 보정 출처", "Kinetic calibration source"),
+    ("button.run_convergence", "수렴 검증 실행", "RUN CONVERGENCE CHECK"),
+    ("button.convergence_running", "수렴 검증 중…", "CHECKING CONVERGENCE…"),
+    ("status.convergence_complete", "수렴 검증 완료", "Convergence check complete"),
+    ("status.preview_uncertified", "미리보기 결과는 수렴 검증되지 않았습니다.", "Preview results are not convergence-certified."),
+    ("diagnostic.local_probability", "국소 물리 PDE 확률", "Local physical PDE probability"),
+    ("diagnostic.specimen_extrapolation", "시편 수학적 외삽값 (미인증)", "Mathematical specimen extrapolation (uncertified)"),
+    ("diagnostic.specimen_certified", "인증된 물리 시편 확률", "Certified physical specimen probability"),
+    ("plot.specimen_extrapolation", "시편 확률 수학적 외삽값 (미인증)", "Mathematical specimen probability extrapolation (uncertified)"),
+    ("plot.specimen_extrapolation_note", "이 값은 독립영역 수학적 외삽이며 수렴 인증된 물리 확률이 아닙니다.", "This is an independent-region mathematical extrapolation, not a convergence-certified physical probability."),
+    ("section.cycle_diagnostics", "사이클별 최초통과 진단", "Per-cycle first-passage diagnostics"),
+    ("cycle.table_header", "사이클 | 흡수 질량 | 최소 개구 장벽 | 최대 플럭스 | 종료 생존확률", "Cycle | absorbed mass | min opening barrier | peak flux | end survival"),
+    ("summary.model_time_basis", "시간 기준: 모델 시간\n동역학 이동도 미보정: 현재 시간과 주파수는 물리적 초/Hz가 아닙니다.\n", "Time basis: model time\nKinetic mobility is uncalibrated: time and frequency are not physical seconds/Hz.\n"),
+    ("summary.physical_time_basis", "시간 기준: 물리 시간\n주파수: {frequency_hz:.8g} Hz\n주기: {period_seconds:.8g} s\n총 시간: {duration_seconds:.8g} s\nt0: {t0:.8g} s\ntau_fast / tau_slow: {tau_fast:.8g} / {tau_slow:.8g} s\nM_a: {mobility_a:.8g} m²/(J·s)\nM_s: {mobility_s:.8g} m²/(J·s)\n출처: {source}\n", "Time basis: physical time\nFrequency: {frequency_hz:.8g} Hz\nPeriod: {period_seconds:.8g} s\nTotal time: {duration_seconds:.8g} s\nt0: {t0:.8g} s\ntau_fast / tau_slow: {tau_fast:.8g} / {tau_slow:.8g} s\nM_a: {mobility_a:.8g} m²/(J·s)\nM_s: {mobility_s:.8g} m²/(J·s)\nSource: {source}\n"),
 )
 
 
@@ -255,6 +284,7 @@ FIELD_TEXT_KEYS = {
     "local_initiation_probability": "plot.local_initiation",
     "specimen_survival_probability": "plot.specimen_survival",
     "specimen_initiation_probability": "plot.specimen_initiation",
+    "specimen_probability_extrapolation": "plot.specimen_extrapolation",
     "first_passage_flux": "plot.first_passage_flux",
     "well_populations": "plot.well_populations",
     "interwell_flux": "plot.interwell_flux",
@@ -264,7 +294,12 @@ FIELD_TEXT_KEYS = {
 }
 
 
-def plot_strings(field: str, language: str = DEFAULT_LANGUAGE) -> dict[str, object]:
+def plot_strings(
+    field: str,
+    language: str = DEFAULT_LANGUAGE,
+    *,
+    time_basis: str = "model",
+) -> dict[str, object]:
     """Return localized plot metadata without touching numerical arrays."""
 
     if field not in FIELD_TEXT_KEYS:
@@ -280,6 +315,7 @@ def plot_strings(field: str, language: str = DEFAULT_LANGUAGE) -> dict[str, obje
         "local_initiation_probability": "axis.initiation_probability",
         "specimen_survival_probability": "axis.survival",
         "specimen_initiation_probability": "axis.initiation_probability",
+        "specimen_probability_extrapolation": "axis.initiation_probability",
         "first_passage_flux": "axis.first_passage_flux",
         "well_populations": "axis.probability_mass",
         "interwell_flux": "axis.interwell_flux",
@@ -310,9 +346,20 @@ def plot_strings(field: str, language: str = DEFAULT_LANGUAGE) -> dict[str, obje
             "legend.registry_absorption",
         ),
     }.get(field, ())
+    if time_basis not in {"model", "physical"}:
+        raise ValueError("time_basis must be 'model' or 'physical'")
+    if time_basis == "physical":
+        ylabel_key = {
+            "first_passage_flux": "axis.first_passage_flux_seconds",
+            "interwell_flux": "axis.interwell_flux_seconds",
+            "plastic_flow": "axis.plastic_flow_seconds",
+        }.get(field, ylabel_key)
     return {
         "title": tr(FIELD_TEXT_KEYS[field], language),
-        "xlabel": tr("axis.time", language),
+        "xlabel": tr(
+            "axis.time_seconds" if time_basis == "physical" else "axis.time",
+            language,
+        ),
         "ylabel": tr(ylabel_key, language),
         "legend": tuple(tr(key, language) for key in legend_keys),
     }

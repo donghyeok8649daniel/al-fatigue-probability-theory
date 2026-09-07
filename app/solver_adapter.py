@@ -22,6 +22,11 @@ from solver_v1.probability_pde_2d import (
     run_probability_pde_2d,
 )
 from solver_v1.plasticity_diagnostics import single_run_plasticity_lower_bound
+from solver_v1.physical_time import (
+    PhysicalTimeCalibration,
+    hz_to_model_frequency,
+    model_time_to_seconds,
+)
 from .specimen_probability import assess_local_rare_event
 
 
@@ -79,6 +84,9 @@ class UIAnalysisConfig:
     max_dt: float = 1.0e-3
     integration_method: str = "explicit"
     analysis_quality: str = "preview"
+    time_basis: str = "model"
+    physical_frequency_hz: float | None = None
+    time_calibration: PhysicalTimeCalibration | None = None
 
     @property
     def young_mpa(self) -> float:
@@ -94,17 +102,61 @@ class UIAnalysisConfig:
 
     @property
     def model_period(self) -> float:
-        return 1.0 / float(self.model_frequency)
+        return 1.0 / self.effective_model_frequency
+
+    @property
+    def effective_model_frequency(self) -> float:
+        if self.time_basis == "model":
+            return float(self.model_frequency)
+        if self.time_basis != "physical":
+            raise ValueError("time_basis must be 'model' or 'physical'")
+        if self.time_calibration is None or self.physical_frequency_hz is None:
+            raise ValueError("physical time requires a kinetic calibration and Hz input")
+        return float(
+            hz_to_model_frequency(self.physical_frequency_hz, self.time_calibration)
+        )
+
+    @property
+    def frequency_hz(self) -> float | None:
+        if self.time_basis != "physical":
+            return None
+        self.validate_time_basis()
+        return float(self.physical_frequency_hz)
+
+    @property
+    def physical_period_seconds(self) -> float | None:
+        frequency = self.frequency_hz
+        return None if frequency is None else 1.0 / frequency
+
+    @property
+    def physical_duration_seconds(self) -> float | None:
+        period = self.physical_period_seconds
+        return None if period is None else self.cycles * period
 
     def stress_mpa(self, model_time):
         phase = 2.0 * np.pi * np.asarray(model_time, dtype=float) / self.model_period
         value = self.stress_mean_mpa + self.stress_amplitude_mpa * np.sin(phase)
         return float(value) if np.ndim(value) == 0 else value
 
+    def validate_time_basis(self) -> None:
+        if self.time_basis not in {"model", "physical"}:
+            raise ValueError("time_basis must be 'model' or 'physical'")
+        if self.time_basis == "physical":
+            if self.time_calibration is None:
+                raise ValueError("physical time requires a kinetic calibration")
+            self.time_calibration.require_calibrated()
+            if (
+                self.physical_frequency_hz is None
+                or not np.isfinite(self.physical_frequency_hz)
+                or self.physical_frequency_hz <= 0.0
+            ):
+                raise ValueError("physical_frequency_hz must be finite and positive")
+
     def validate(self) -> None:
+        self.validate_time_basis()
         positive = {
             "young_gpa": self.young_gpa,
-            "model_frequency": self.model_frequency,
+            "model_frequency": self.effective_model_frequency,
             "cycles": self.cycles,
             "max_dt": self.max_dt,
         }
@@ -186,7 +238,7 @@ def physical_load_conversion(config: UIAnalysisConfig) -> dict[str, float]:
     reduced_min = config.stress_min_mpa / config.young_mpa
     reduced_max = config.stress_max_mpa / config.young_mpa
     reduced_initial = config.stress_mean_mpa / config.young_mpa
-    dynamics = model_frequency_diagnostics(model, config.model_frequency)
+    dynamics = model_frequency_diagnostics(model, config.effective_model_frequency)
     return {
         "a0": float(model.a0),
         "relaxed_axial_kappa": float(kappa),
@@ -199,6 +251,15 @@ def physical_load_conversion(config: UIAnalysisConfig) -> dict[str, float]:
         "force_min": float(model.force_from_sigma_over_E(reduced_min)),
         "force_max": float(model.force_from_sigma_over_E(reduced_max)),
         "preload_force": float(model.force_from_sigma_over_E(reduced_initial)),
+        "time_basis": config.time_basis,
+        "frequency_hz": config.frequency_hz,
+        "physical_period_seconds": config.physical_period_seconds,
+        "physical_duration_seconds": config.physical_duration_seconds,
+        "t0_seconds": (
+            float(config.time_calibration.t0_seconds)
+            if config.time_basis == "physical" and config.time_calibration is not None
+            else None
+        ),
         **dynamics,
     }
 
@@ -238,10 +299,17 @@ def _decorate_record(
     probability = physical_probability_bookkeeping(
         record["intact_probability_mass"], record["cumulative_absorbed_mass"]
     )
+    physical_time = (
+        float(model_time_to_seconds(model_time, config.time_calibration))
+        if config.time_basis == "physical"
+        else None
+    )
     return {
         **record,
         **{key: float(value) for key, value in probability.items()},
         "model_time": model_time,
+        "physical_time_seconds": physical_time,
+        "plot_time": physical_time if physical_time is not None else model_time,
         "load_cycle": float(cycle),
         "applied_stress_mpa": float(config.stress_mpa(model_time)),
     }
@@ -340,6 +408,56 @@ def result_field_mapping(result: dict[str, object]) -> dict[str, np.ndarray]:
     }
 
 
+def per_cycle_first_passage_diagnostics(
+    result: dict[str, object],
+) -> list[dict[str, float]]:
+    """Summarize absorbed mass and opening diagnostics for every load cycle."""
+
+    cycle = np.asarray(result["load_cycle"], dtype=float)
+    absorbed = np.asarray(result["cumulative_absorbed_mass"], dtype=float)
+    survival = np.asarray(result["survival"], dtype=float)
+    flux = np.asarray(result["first_passage_flux"], dtype=float)
+    force = np.asarray(result["force"], dtype=float)
+    model = result["model"]
+    if cycle.size == 0:
+        return []
+    last_cycle = int(np.ceil(float(cycle[-1]) - 1.0e-12))
+    s_probe = np.linspace(-0.5 * model.p.b, 0.5 * model.p.b, 33)
+    barrier_cache: dict[float, float] = {}
+
+    def minimum_barrier(load_force: float) -> float:
+        key = round(float(load_force), 12)
+        if key not in barrier_cache:
+            barrier_cache[key] = float(
+                min(model.opening_barrier(float(s), key) for s in s_probe)
+            )
+        return barrier_cache[key]
+
+    rows: list[dict[str, float]] = []
+    for number in range(1, last_cycle + 1):
+        start = float(number - 1)
+        end = min(float(number), float(cycle[-1]))
+        mask = (cycle >= start - 1.0e-12) & (cycle <= end + 1.0e-12)
+        if not np.any(mask):
+            continue
+        absorbed_start = float(np.interp(start, cycle, absorbed))
+        absorbed_end = float(np.interp(end, cycle, absorbed))
+        survival_end = float(np.interp(end, cycle, survival))
+        rows.append(
+            {
+                "cycle": float(number),
+                "cycle_end": end,
+                "absorbed_mass": absorbed_end - absorbed_start,
+                "minimum_opening_barrier": min(
+                    minimum_barrier(value) for value in force[mask]
+                ),
+                "peak_first_passage_flux": float(np.max(flux[mask])),
+                "survival_at_cycle_end": survival_end,
+            }
+        )
+    return rows
+
+
 def run_ui_analysis(
     config: UIAnalysisConfig,
     *,
@@ -394,7 +512,17 @@ def run_ui_analysis(
     model_time = np.asarray(raw["time"], dtype=float)
     load_cycle = model_time / config.model_period
     dynamics = model_frequency_diagnostics(
-        calibration_model, config.model_frequency
+        calibration_model, config.effective_model_frequency
+    )
+    tau_fast_seconds = (
+        dynamics["tau_fast"] * float(config.time_calibration.t0_seconds)
+        if config.time_basis == "physical" and config.time_calibration is not None
+        else None
+    )
+    tau_slow_seconds = (
+        dynamics["tau_slow"] * float(config.time_calibration.t0_seconds)
+        if config.time_basis == "physical" and config.time_calibration is not None
+        else None
     )
     probability = physical_probability_bookkeeping(
         raw["intact_probability_mass"], raw["cumulative_absorbed_mass"]
@@ -422,10 +550,46 @@ def run_ui_analysis(
             else "no distinct metastable minimum/saddle"
         ),
     }
+    if config.time_basis == "physical":
+        physical_time = np.asarray(
+            model_time_to_seconds(model_time, config.time_calibration), dtype=float
+        )
+        solver_time_status = "physical seconds from calibrated kinetic mobility"
+    else:
+        physical_time = None
+        solver_time_status = "dimensionless model time; not calibrated seconds"
     result: dict[str, object] = {
         **raw,
         **probability,
         "model_time": model_time,
+        "physical_time_seconds": physical_time,
+        "plot_time": physical_time if physical_time is not None else model_time,
+        "time_basis": config.time_basis,
+        "frequency_hz": config.frequency_hz,
+        "physical_period_seconds": config.physical_period_seconds,
+        "physical_duration_seconds": config.physical_duration_seconds,
+        "tau_fast_seconds": tau_fast_seconds,
+        "tau_slow_seconds": tau_slow_seconds,
+        "t0_seconds": (
+            float(config.time_calibration.t0_seconds)
+            if config.time_basis == "physical" and config.time_calibration is not None
+            else None
+        ),
+        "physical_M_a": (
+            config.time_calibration.M_a_phys_m2_per_J_s
+            if config.time_basis == "physical" and config.time_calibration is not None
+            else None
+        ),
+        "physical_M_s": (
+            config.time_calibration.M_s_phys_m2_per_J_s
+            if config.time_basis == "physical" and config.time_calibration is not None
+            else None
+        ),
+        "kinetic_calibration_source": (
+            config.time_calibration.source
+            if config.time_basis == "physical" and config.time_calibration is not None
+            else None
+        ),
         "load_cycle": load_cycle,
         "applied_stress_mpa": np.asarray(config.stress_mpa(model_time), dtype=float),
         "initial_stress_mpa": float(config.stress_mean_mpa),
@@ -435,7 +599,7 @@ def run_ui_analysis(
         "frozen_normal_kappa": float(
             calibration_model.frozen_normal_sigma_over_E_force_scale()
         ),
-        "solver_time_status": "dimensionless model time; not calibrated seconds",
+        "solver_time_status": solver_time_status,
         "probability_source": "N=1 direct Smoluchowski/Fokker-Planck PDE",
         "analysis_quality": config.analysis_quality,
         "integration_method": config.integration_method,
@@ -457,5 +621,6 @@ def run_ui_analysis(
         }
     )
     result.update(single_run_plasticity_lower_bound(result))
+    result["per_cycle_diagnostics"] = per_cycle_first_passage_diagnostics(result)
     result_field_mapping(result)
     return result

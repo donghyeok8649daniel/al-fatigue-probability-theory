@@ -35,10 +35,12 @@ from .solver_adapter import (
     physical_load_conversion,
     run_ui_analysis,
 )
+from .convergence_check import run_convergence_check
 from .specimen_probability import (
     BELOW_RESOLUTION,
     aggregate_specimen_probability,
 )
+from solver_v1.physical_time import load_time_calibration
 
 
 APP_BG = "#eef1f4"
@@ -103,6 +105,10 @@ class DesktopApp:
 
     def __init__(self) -> None:
         self.localizer = Localizer(DEFAULT_LANGUAGE)
+        self.time_calibration = load_time_calibration(
+            Path(__file__).resolve().parents[1]
+            / "solver_v1" / "data" / "aluminum_kinetic_calibration.json"
+        )
         self.root = tk.Tk()
         self.root.title(self._tr("app.title"))
         self.root.configure(bg=APP_BG)
@@ -118,6 +124,10 @@ class DesktopApp:
         self.probability_scale_code = "local"
         self.load_preset = tk.StringVar(value=self._tr("preset.custom"))
         self.load_preset_code = "custom"
+        self.time_basis_code = "model"
+        self.time_basis_display = tk.StringVar(value=self._tr("option.model_time"))
+        self.time_warning_display = tk.StringVar(value="")
+        self._frequency_values = {"model": "25", "physical": "1"}
         self.stress_context = tk.StringVar(value="")
         self.specimen_N_eff = tk.StringVar(value="N_eff = —")
         self.local_floor_display = tk.StringVar(value="—")
@@ -125,6 +135,9 @@ class DesktopApp:
         self.configurational_barrier_display = tk.StringVar(value="—")
         self.opening_barrier_display = tk.StringVar(value="—")
         self.probability_status_display = tk.StringVar(value="—")
+        self.local_probability_display = tk.StringVar(value="—")
+        self.specimen_extrapolation_display = tk.StringVar(value="—")
+        self.specimen_certified_display = tk.StringVar(value="—")
         self._specimen_status_key = "status.local_result_required"
         self.field = tk.StringVar(value="strain_components")
         self.status = tk.StringVar(value=self._tr("status.ready"))
@@ -145,6 +158,7 @@ class DesktopApp:
         self._summary_kind = "ready"
         self._summary_payload: dict[str, object] = {}
         self._button_key = "button.run"
+        self.last_config: UIAnalysisConfig | None = None
 
         self._styles()
         self._header()
@@ -153,6 +167,7 @@ class DesktopApp:
         self._connect_plot_events()
         self.root.protocol("WM_DELETE_WINDOW", self._close)
         self._update_stress_context()
+        self._refresh_time_basis_ui()
         self._refresh_specimen_labels()
         self._plot()
 
@@ -296,7 +311,30 @@ class DesktopApp:
         section.grid(
             row=0, column=0, columnspan=3, sticky="w", padx=20, pady=(18, 10)
         )
-        for row, (key, label_key, default, unit_key) in enumerate(self.PARAMS, start=1):
+        time_label = self._bind_text(
+            ttk.Label(self.pre_tab, style="Property.TLabel"), "field.time_basis"
+        )
+        time_label.grid(row=1, column=0, sticky="w", padx=(20, 8), pady=7)
+        self.time_basis_selector = ttk.Combobox(
+            self.pre_tab,
+            textvariable=self.time_basis_display,
+            values=self._time_basis_values(),
+            state="readonly",
+            width=20,
+        )
+        self.time_basis_selector.grid(row=1, column=1, sticky="ew", padx=4, pady=7)
+        self.time_basis_selector.bind(
+            "<<ComboboxSelected>>", self._on_time_basis_selected
+        )
+        self.time_warning_label = ttk.Label(
+            self.pre_tab,
+            textvariable=self.time_warning_display,
+            style="Unit.TLabel",
+            wraplength=360,
+            justify="left",
+        )
+        self.time_warning_label.grid(row=1, column=2, sticky="w", padx=(6, 20), pady=7)
+        for row, (key, label_key, default, unit_key) in enumerate(self.PARAMS, start=2):
             label = self._bind_text(
                 ttk.Label(self.pre_tab, style="Property.TLabel"), label_key
             )
@@ -313,12 +351,15 @@ class DesktopApp:
                 row=row, column=2, sticky="w", padx=(6, 20), pady=7
             )
             self.entries[key] = entry
+            if key == "model_frequency":
+                self.frequency_label = label
+                self.frequency_unit = unit
         self.pre_tab.columnconfigure(1, weight=1)
         preset_frame = self._bind_text(
             ttk.LabelFrame(self.pre_tab, padding=10), "section.load_presets"
         )
         preset_frame.grid(
-            row=len(self.PARAMS) + 1,
+            row=len(self.PARAMS) + 2,
             column=0,
             columnspan=3,
             sticky="ew",
@@ -359,7 +400,7 @@ class DesktopApp:
         note = self._bind_text(
             ttk.LabelFrame(self.pre_tab, padding=12), "section.scope"
         )
-        note.grid(row=len(self.PARAMS) + 2, column=0, columnspan=3, sticky="ew", padx=20, pady=8)
+        note.grid(row=len(self.PARAMS) + 3, column=0, columnspan=3, sticky="ew", padx=20, pady=8)
         scope = self._bind_text(ttk.Label(note, justify="left"), "scope.text")
         scope.pack(anchor="w")
 
@@ -443,8 +484,17 @@ class DesktopApp:
         ttk.Label(specimen, textvariable=self.plastic_floor_display).grid(
             row=6, column=0, columnspan=3, sticky="w"
         )
-        ttk.Label(specimen, textvariable=self.probability_status_display).grid(
+        ttk.Label(specimen, textvariable=self.local_probability_display).grid(
             row=7, column=0, columnspan=3, sticky="w"
+        )
+        ttk.Label(specimen, textvariable=self.specimen_extrapolation_display).grid(
+            row=8, column=0, columnspan=3, sticky="w"
+        )
+        ttk.Label(specimen, textvariable=self.specimen_certified_display).grid(
+            row=9, column=0, columnspan=3, sticky="w"
+        )
+        ttk.Label(specimen, textvariable=self.probability_status_display).grid(
+            row=10, column=0, columnspan=3, sticky="w"
         )
         mechanism = self._bind_text(
             ttk.LabelFrame(left, padding=8), "section.mechanism_diagnostics"
@@ -465,6 +515,16 @@ class DesktopApp:
             command=self._start_solve
         )
         self.run_button.pack(fill="x")
+        self.convergence_button = ttk.Button(
+            left,
+            text=self._tr("button.run_convergence"),
+            command=self._start_convergence_check,
+            state="disabled",
+        )
+        self.convergence_button.pack(fill="x", pady=(6, 0))
+        self._text_bindings.append(
+            (self.convergence_button, "text", "button.run_convergence")
+        )
         self.progress = ttk.Progressbar(left, mode="indeterminate", length=235)
         self.progress.pack(fill="x", pady=12)
         self.summary = tk.Text(
@@ -512,6 +572,68 @@ class DesktopApp:
             self._tr("quality.preview_option"),
             self._tr("quality.resolved_option"),
         )
+
+    def _time_basis_values(self) -> tuple[str, ...]:
+        values = [self._tr("option.model_time")]
+        if self.time_calibration.calibrated:
+            values.append(self._tr("option.physical_time"))
+        return tuple(values)
+
+    def _on_time_basis_selected(self, _event=None) -> None:
+        selected = self.time_basis_display.get()
+        requested = (
+            "physical" if selected == self._tr("option.physical_time") else "model"
+        )
+        if requested == "physical" and not self.time_calibration.calibrated:
+            self.time_basis_code = "model"
+            self.time_basis_display.set(self._tr("option.model_time"))
+            self._set_status("status.physical_time_unavailable")
+            self._refresh_time_basis_ui()
+            return
+        if hasattr(self, "entries") and "model_frequency" in self.entries:
+            self._frequency_values[self.time_basis_code] = self.entries[
+                "model_frequency"
+            ].get()
+            self.time_basis_code = requested
+            entry = self.entries["model_frequency"]
+            entry.delete(0, "end")
+            entry.insert(0, self._frequency_values[requested])
+        else:
+            self.time_basis_code = requested
+        self._refresh_time_basis_ui()
+
+    def _refresh_time_basis_ui(self) -> None:
+        if not hasattr(self, "time_basis_selector"):
+            return
+        self.time_basis_selector.configure(values=self._time_basis_values())
+        self.time_basis_display.set(
+            self._tr(
+                "option.physical_time"
+                if self.time_basis_code == "physical"
+                else "option.model_time"
+            )
+        )
+        if hasattr(self, "frequency_label"):
+            self.frequency_label.configure(
+                text=self._tr(
+                    "field.frequency"
+                    if self.time_basis_code == "physical"
+                    else "field.model_frequency"
+                )
+            )
+            self.frequency_unit.configure(
+                text=self._tr(
+                    "unit.hz"
+                    if self.time_basis_code == "physical"
+                    else "unit.cycles_model_time"
+                )
+            )
+        warning = (
+            "status.kinetic_calibrated"
+            if self.time_calibration.calibrated
+            else "status.kinetic_uncalibrated"
+        )
+        self.time_warning_display.set(self._tr(warning))
 
     def _preset_values(self) -> tuple[str, ...]:
         return tuple(self._tr(values[0]) for values in self.LOAD_PRESETS.values())
@@ -595,6 +717,7 @@ class DesktopApp:
             self._specimen_status_key = "status.area_required"
             self.result.pop("specimen_initiation_probability", None)
             self.result.pop("specimen_survival_probability", None)
+            self.result.pop("specimen_probability_extrapolation", None)
             self._refresh_specimen_labels()
             self._plot()
             return
@@ -656,6 +779,25 @@ class DesktopApp:
             if self.result is not None
             else None
         )
+        local_probability = None
+        extrapolation = None
+        certified = None
+        if self.result is not None:
+            local_values = np.asarray(
+                self.result.get("local_initiation_probability", []), dtype=float
+            )
+            if local_values.size:
+                local_probability = float(local_values[-1])
+            extrapolated_values = np.asarray(
+                self.result.get("specimen_probability_extrapolation", []), dtype=float
+            )
+            if extrapolated_values.size:
+                extrapolation = float(extrapolated_values[-1])
+            certified_values = np.asarray(
+                self.result.get("specimen_initiation_probability", []), dtype=float
+            )
+            if certified_values.size and np.isfinite(certified_values[-1]):
+                certified = float(certified_values[-1])
         self.specimen_N_eff.set(
             f"{self._tr('diagnostic.N_eff')}: "
             + (f"{float(N_eff):.8g}" if N_eff is not None else "—")
@@ -690,6 +832,18 @@ class DesktopApp:
                 and np.isfinite(float(opening_barrier))
                 else "—"
             )
+        )
+        self.local_probability_display.set(
+            f"{self._tr('diagnostic.local_probability')}: "
+            + (f"{local_probability:.8g}" if local_probability is not None else "—")
+        )
+        self.specimen_extrapolation_display.set(
+            f"{self._tr('diagnostic.specimen_extrapolation')}: "
+            + (f"{extrapolation:.8g}" if extrapolation is not None else "—")
+        )
+        self.specimen_certified_display.set(
+            f"{self._tr('diagnostic.specimen_certified')}: "
+            + (f"{certified:.8g}" if certified is not None else "—")
         )
         self.probability_status_display.set(
             f"{self._tr(self._specimen_status_key)} · "
@@ -743,6 +897,7 @@ class DesktopApp:
             values=self._probability_scale_values()
         )
         self.probability_scale.set(self._tr(f"option.{self.probability_scale_code}"))
+        self._refresh_time_basis_ui()
         self._set_status(self._status_key, **self._status_values)
         self.run_button.configure(text=self._tr(self._button_key))
         self._render_summary()
@@ -812,11 +967,70 @@ class DesktopApp:
                 survival=float(np.asarray(result["survival"])[-1]),
                 initiation=float(np.asarray(result["initiation_probability"])[-1]),
                 residual=float(np.max(np.abs(result["mass_balance_residual"]))),
-                time_status=self._tr("model.time_warning"),
+                time_status=self._tr(
+                    "status.kinetic_calibrated"
+                    if result.get("time_basis") == "physical"
+                    else "status.kinetic_uncalibrated"
+                ),
             )
         else:
             text = str(self._summary_payload.get("text", ""))
+        if self._summary_kind == "solving":
+            config = self._summary_payload["config"]
+            conversion = self._summary_payload["conversion"]
+            text += "\n" + self._time_summary_text(config.time_basis, conversion)
+        elif self._summary_kind == "complete":
+            text += "\n" + self._time_summary_text(
+                str(self._summary_payload.get("time_basis", "model")),
+                self._summary_payload,
+            )
+            if self._summary_payload.get("analysis_quality") == "preview":
+                text += "\n" + self._tr("status.preview_uncertified") + "\n"
+            rows = self._summary_payload.get("per_cycle_diagnostics", [])
+            if rows:
+                text += "\n" + self._tr("section.cycle_diagnostics") + "\n"
+                text += self._tr("cycle.table_header") + "\n"
+                for row in rows[:12]:
+                    text += (
+                        f"{int(row['cycle']):>5d} | {row['absorbed_mass']:.3e} | "
+                        f"{row['minimum_opening_barrier']:.3e} | "
+                        f"{row['peak_first_passage_flux']:.3e} | "
+                        f"{row['survival_at_cycle_end']:.10g}\n"
+                    )
         self._set_summary(text)
+
+    def _time_summary_text(
+        self, time_basis: str, values: dict[str, object]
+    ) -> str:
+        if time_basis != "physical":
+            return self._tr("summary.model_time_basis")
+        return self._tr(
+            "summary.physical_time_basis",
+            frequency_hz=values["frequency_hz"],
+            period_seconds=values["physical_period_seconds"],
+            duration_seconds=values["physical_duration_seconds"],
+            t0=values["t0_seconds"],
+            tau_fast=(
+                values.get("tau_fast_seconds")
+                or float(values["tau_fast"]) * float(values["t0_seconds"])
+            ),
+            tau_slow=(
+                values.get("tau_slow_seconds")
+                or float(values["tau_slow"]) * float(values["t0_seconds"])
+            ),
+            mobility_a=(
+                values.get("physical_M_a")
+                or self.time_calibration.M_a_phys_m2_per_J_s
+            ),
+            mobility_s=(
+                values.get("physical_M_s")
+                or self.time_calibration.M_s_phys_m2_per_J_s
+            ),
+            source=(
+                values.get("kinetic_calibration_source")
+                or self.time_calibration.source
+            ),
+        )
 
     def _config(self) -> UIAnalysisConfig:
         direction = self.entries["tensile_direction"].get().replace(",", " ").split()
@@ -824,11 +1038,21 @@ class DesktopApp:
             raise ValueError(self._tr("error.direction"))
         self._on_quality_selected()
         resolved = self.analysis_quality_code == "resolved"
+        entered_frequency = float(self.entries["model_frequency"].get())
         return UIAnalysisConfig(
             young_gpa=float(self.entries["young_gpa"].get()),
             stress_mean_mpa=float(self.entries["stress_mean_mpa"].get()),
             stress_amplitude_mpa=float(self.entries["stress_amplitude_mpa"].get()),
-            model_frequency=float(self.entries["model_frequency"].get()),
+            model_frequency=(
+                entered_frequency if self.time_basis_code == "model" else 1.0
+            ),
+            physical_frequency_hz=(
+                entered_frequency if self.time_basis_code == "physical" else None
+            ),
+            time_basis=self.time_basis_code,
+            time_calibration=(
+                self.time_calibration if self.time_basis_code == "physical" else None
+            ),
             cycles=float(self.entries["cycles"].get()),
             steps_per_cycle=int(self.entries["steps_per_cycle"].get()),
             grid_n_a=81 if resolved else 21,
@@ -855,6 +1079,7 @@ class DesktopApp:
             )
             return
         self.busy = True
+        self.last_config = config
         self.stop_event.clear()
         self.result = None
         self._specimen_status_key = "status.local_result_required"
@@ -862,6 +1087,7 @@ class DesktopApp:
         self.live_records.clear()
         self._view_limits.clear()
         self._set_button("button.stop")
+        self.convergence_button.configure(state="disabled")
         self.progress.start(12)
         self._set_status("status.solving")
         self._show_summary(
@@ -893,6 +1119,39 @@ class DesktopApp:
         except Exception as exc:
             self._queue.put(("error", str(exc)))
 
+    def _start_convergence_check(self) -> None:
+        if self.busy:
+            return
+        if (
+            self.result is None
+            or self.last_config is None
+            or self.result.get("analysis_quality") != "resolved"
+        ):
+            self._set_status("status.preview_uncertified")
+            return
+        self.busy = True
+        self.stop_event.clear()
+        self.run_button.configure(state="disabled")
+        self.convergence_button.configure(
+            text=self._tr("button.convergence_running"), state="disabled"
+        )
+        self.progress.start(12)
+        self._set_status("button.convergence_running")
+        threading.Thread(target=self._convergence_worker, daemon=True).start()
+        if self._poll_job is None:
+            self._poll_job = self.root.after(30, self._drain_queue)
+
+    def _convergence_worker(self) -> None:
+        try:
+            report = run_convergence_check(
+                self.last_config,
+                reference_result=self.result,
+                stop_requested=self.stop_event.is_set,
+            )
+            self._queue.put(("convergence_done", report.certified_result))
+        except Exception as exc:
+            self._queue.put(("error", str(exc)))
+
     def _drain_queue(self) -> None:
         self._poll_job = None
         for _ in range(128):
@@ -915,6 +1174,9 @@ class DesktopApp:
             elif kind == "done":
                 self._solve_done(payload)
                 return
+            elif kind == "convergence_done":
+                self._convergence_done(payload)
+                return
             elif kind == "error":
                 self._solve_failed(str(payload))
                 return
@@ -926,6 +1188,9 @@ class DesktopApp:
         self.busy = False
         self.progress.stop()
         self._set_button("button.run")
+        self.convergence_button.configure(
+            state=("normal" if result["analysis_quality"] == "resolved" else "disabled")
+        )
         self.notebook.select(self.post_tab)
         self._set_status(
             "status.complete",
@@ -936,10 +1201,32 @@ class DesktopApp:
         self._update_specimen_probability()
         self._plot(force_auto=True)
 
+    def _convergence_done(self, result: dict[str, object]) -> None:
+        self.result = result
+        self.busy = False
+        self.progress.stop()
+        self._set_button("button.run")
+        self.convergence_button.configure(
+            text=self._tr("button.run_convergence"), state="normal"
+        )
+        self._set_status("status.convergence_complete")
+        self._show_summary("complete", result)
+        self._update_specimen_probability()
+        self._plot(force_auto=True)
+
     def _solve_failed(self, detail: str) -> None:
         self.busy = False
         self.progress.stop()
         self._set_button("button.run")
+        self.convergence_button.configure(
+            state=(
+                "normal"
+                if self.result is not None
+                and self.result.get("analysis_quality") == "resolved"
+                else "disabled"
+            )
+        )
+        self.convergence_button.configure(text=self._tr("button.run_convergence"))
         self._set_status("status.failed")
         messagebox.showerror(
             self._tr("dialog.solver_title"),
@@ -963,7 +1250,14 @@ class DesktopApp:
 
     def _plot(self, force_auto: bool = False) -> None:
         field = self.field.get()
-        text = plot_strings(field, self.localizer.language)
+        time_basis = (
+            str(self.result.get("time_basis", "model"))
+            if self.result is not None
+            else self.time_basis_code
+        )
+        text = plot_strings(
+            field, self.localizer.language, time_basis=time_basis
+        )
         if self._last_field is not None and self._last_field != field and self.ax.has_data():
             self._view_limits[self._last_field] = (self.ax.get_xlim(), self.ax.get_ylim())
         self._last_field = field
@@ -978,7 +1272,23 @@ class DesktopApp:
             self.canvas.draw_idle()
             return
         self.ax.set_axis_on()
-        x = np.asarray(data["model_time"], dtype=float)
+        x = np.asarray(data.get("plot_time", data["model_time"]), dtype=float)
+        rate_scale = 1.0
+        if time_basis == "physical" and self.result is not None:
+            rate_scale = 1.0 / float(self.result["t0_seconds"])
+
+        def y_values(key: str) -> np.ndarray:
+            values = np.asarray(data[key], dtype=float)
+            if key in {
+                "first_passage_flux",
+                "interwell_net_flux",
+                "interwell_gross_flux",
+                "net_plastic_flow_rate",
+                "gross_configurational_slip_activity",
+                "selective_opening_plastic_rate",
+            }:
+                return values * rate_scale
+            return values
         if field.startswith("specimen_") and (
             field not in data or not np.any(np.isfinite(data[field]))
         ):
@@ -1036,12 +1346,12 @@ class DesktopApp:
                 for index, lower in enumerate(boundaries):
                     tag = f"{int(lower):+d}→{int(lower) + 1:+d}"
                     self.ax.plot(
-                        x, data["interwell_net_flux"][:, index],
+                        x, y_values("interwell_net_flux")[:, index],
                         label=f"{tag} {self._tr('legend.interwell_net')}",
                         linewidth=1.5,
                     )
                     self.ax.plot(
-                        x, data["interwell_gross_flux"][:, index],
+                        x, y_values("interwell_gross_flux")[:, index],
                         label=f"{tag} {self._tr('legend.interwell_gross')}",
                         linewidth=1.0, linestyle="--",
                     )
@@ -1057,7 +1367,7 @@ class DesktopApp:
                 ("-", "--", ":"),
             ):
                 self.ax.plot(
-                    x, data[key], label=label, linewidth=1.5, linestyle=style
+                    x, y_values(key), label=label, linewidth=1.5, linestyle=style
                 )
             self.ax.legend(loc="best", fontsize=7, frameon=False)
         elif field == "registry_transfer":
@@ -1072,7 +1382,16 @@ class DesktopApp:
             self.ax.legend(loc="best", fontsize=7, frameon=False)
         else:
             key = "applied_stress_mpa" if field == "stress" else field
-            self.ax.plot(x, data[key], color=ACCENT, linewidth=1.8)
+            self.ax.plot(x, y_values(key), color=ACCENT, linewidth=1.8)
+        if field == "specimen_probability_extrapolation":
+            self.ax.text(
+                0.01,
+                0.02,
+                self._tr("plot.specimen_extrapolation_note"),
+                transform=self.ax.transAxes,
+                fontsize=8,
+                color=MUTED,
+            )
         self.ax.set_xlabel(text["xlabel"])
         self.ax.set_ylabel(text["ylabel"])
         self.ax.set_title(text["title"], loc="left", fontsize=12, fontweight="bold")

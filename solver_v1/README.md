@@ -81,6 +81,10 @@ are documented separately in
 result is explicitly best-feasible and practically non-identifiable; it is not
 labeled a calibrated aluminum potential.
 
+The exact mobility/time nondimensionalization, uncalibrated kinetic-data
+status, calibration routes, and physical-time UI gate are documented in
+[`PHYSICAL_TIME_AND_MOBILITY.md`](PHYSICAL_TIME_AND_MOBILITY.md).
+
 ### `probability_pde_4d.py` -- N=2 dense correlated reference
 
 Directly evolves

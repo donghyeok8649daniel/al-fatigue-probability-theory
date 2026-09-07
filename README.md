@@ -54,11 +54,14 @@ directly from the PDE result. It also exposes survival, cumulative initiation,
 first-passage flux, intact/absorbed mass, mass-balance residual, and positivity
 diagnostics without reconstructing them from a deterministic trajectory count.
 
-Solver time remains dimensionless model time. The UI frequency is cycles per
-model-time unit, not hertz, and is not mapped to display seconds. A physical
-conversion requires an independently justified reduced-coordinate mobility or
-friction. Current finite-mobility and fast-normal-coordinate diagnostics are in
+Solver time defaults to dimensionless model time. Without a validated kinetic
+calibration, the UI frequency is cycles per model-time unit, not hertz, and is
+not mapped to display seconds. A physical conversion requires independently
+justified reduced-coordinate mobilities or friction. Current finite-mobility
+and fast-normal-coordinate diagnostics are in
 [`solver_v1/DYNAMICS_FAST_A_DIAGNOSTICS.md`](solver_v1/DYNAMICS_FAST_A_DIAGNOSTICS.md).
+The exact conversion framework and kinetic-calibration gate are documented in
+[`solver_v1/PHYSICAL_TIME_AND_MOBILITY.md`](solver_v1/PHYSICAL_TIME_AND_MOBILITY.md).
 The subsequent finite-temperature fast-$a$ derivation and its restricted
 slow-$s$ validation are documented in
 [`solver_v1/FAST_A_REDUCTION.md`](solver_v1/FAST_A_REDUCTION.md).

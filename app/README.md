@@ -114,7 +114,7 @@ sent to Tk through a queue so the GUI event loop remains responsive. Plot views
 support cursor-centred wheel zoom, Shift+wheel X-only zoom, Ctrl+wheel Y-only
 zoom, left-drag pan, double-click/Home reset, and per-result-field view memory.
 
-The frequency control is **cycles per model-time unit**, not hertz. The result
+The default frequency control is **cycles per model-time unit**, not hertz. The result
 metadata and Solve summary expose local-pristine $\tau_{\mathrm{fast}}$,
 $\tau_{\mathrm{slow}}$, $\omega\tau_{\mathrm{fast}}$,
 $\omega\tau_{\mathrm{slow}}$, and small-signal transfer diagnostics. These are
@@ -128,6 +128,17 @@ grid and the same SG operator with backward-Euler time integration. The latter
 is slower, remains a numerical-resolution mode rather than a different physical
 model, and still requires ordinary grid/time convergence checks for publication
 results.
+
+The **Time basis** selector retains this model-time mode. Physical seconds and
+hertz appear only when a validated kinetic calibration supplies both
+reduced-coordinate mobilities and the common time scale. The committed Al
+kinetic file is deliberately uncalibrated, so it cannot enable fake seconds.
+
+The specimen panel separately displays local PDE probability, an explicitly
+uncertified mathematical independent-region extrapolation, and certified
+physical specimen probability. The last requires the background **Run
+convergence check** workflow; Preview never certifies it. Completed solves also
+include a per-cycle absorbed-mass/barrier/flux/survival table.
 
 Editable load presets provide small-signal, moderate mechanism-probe,
 all-compressive control, and extreme mechanism-stress-test inputs. They do not
