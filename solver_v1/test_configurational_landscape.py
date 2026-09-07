@@ -51,4 +51,3 @@ def test_bound_configurational_minimum_and_saddle_merge_near_force_4p03(
     assert before is not None
     assert before.barrier < 5.0e-5
     assert after is None
-
