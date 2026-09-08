@@ -1,0 +1,71 @@
+{
+  "angular_even_odd": {
+    "scalar_decay": 1.9388928377620271,
+    "angular_decay": 4.877232382551694,
+    "convex_embedding": true,
+    "signed_quadrupole": true,
+    "signed_linear_embedding": true,
+    "coefficients": [
+      0.12127453162909568,
+      0.44666197931823315,
+      5.363682822318158,
+      5.853921444360449,
+      1.357874175196231,
+      105.92094854176611,
+      -0.821452605480396,
+      81.84302725657338
+    ],
+    "coefficient_order": [
+      "u",
+      "v",
+      "A",
+      "B",
+      "C",
+      "D3",
+      "D1",
+      "D2"
+    ],
+    "predictions": [
+      4.884981308350689e-15,
+      3.360000000000002,
+      67.10834860922397,
+      14.459532178793431,
+      2.50231947920808,
+      0.05945077260161328,
+      0.0775900803259272,
+      0.29887187970860585,
+      0.15171781961790137,
+      0.7758732782195485,
+      22.985204386873754
+    ],
+    "residuals": [
+      4.884981308350689e-14,
+      3.304235192336776e-14,
+      -1.8651632166034549,
+      2.868081035039441,
+      -2.7567138063588996,
+      -1.4378847933017027,
+      0.8104669624497282,
+      1.1799492466179113,
+      -1.7054630345227801,
+      0.05126145429670881,
+      1.6908123985387582
+    ],
+    "squared_loss": 29.19092172479083,
+    "success": true,
+    "admissible": true,
+    "inner_message": "Optimization terminated successfully",
+    "inner_nit": 29,
+    "exact_constraints": [
+      "normal_force_at_target=0",
+      "cohesion=3.36 eV/atom"
+    ],
+    "pair_elimination_roundoff": [
+      1.3146212300677626e-13,
+      2.6722269991262505e-13
+    ],
+    "strictly_positive_LJ_resolved": true,
+    "physical_candidate_accepted": false,
+    "total_stability_checked": false
+  }
+}

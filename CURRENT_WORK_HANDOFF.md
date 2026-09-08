@@ -1,7 +1,244 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
-기록일: 2026-09-09. 영구 이론/작업 원칙은 AGENTS.md를 따른다.
-이 문서는 현재 계산의 근거, 부정적 결과, 미완료 과제와 재현 순서를 보존한다.
+## 최신 상태: matched_v3 연구 감사 (2026-09-09)
+
+이 절이 아래 archived audited_v2보다 최신이다. 마지막 원격 checkpoint는
+fee1da7a5e856bd9120a12f0c40e6afb79ec8c6e이며 시작 fetch로 일치를 확인했다.
+이번 새 연구의 최종 검증은 완료했고 이 문서를 포함하는 후속 커밋에 보존한다.
+commit/push의 최종 상태는 git log/status 및 새 fetch로 확인한다.
+자기 자신의 commit SHA를 문서에 예측하지 않는다.
+
+사용자의 최신 뜻:
+- 물리적으로 말이 되도록 조건 안에서 실제 수정/계산할 것;
+- 응력을 바꾸며 여러 시나리오를 실제로 실행하고 다음 단계 채택 여부를 판단할 것;
+- LJ 급수합/Bessel 수식 틀을 보존하고 이론의 논문 가치도 중요하게 다룰 것;
+- 가능한 경우 통계적 특성 상관 면적도 검토할 것;
+- 검증된 solver 준비 상태를 먼저 보고하고, 사용자 확인 뒤 UI workflow로 이동할 것.
+
+현재 결정:
+- 기존 TwoRowLJ / reduced hybrid / production probability PDE / UI default: 변경 없음.
+- 새 full-FCC angular/interface surface: STATIC RESEARCH ONLY.
+- 정적 평형과 여러 안정성 검사는 개선/통과했지만, Al 독립 탄성/곡선 적합은 미통과.
+- quantitative Al potential 또는 fatigue solver 완성 선언 없음.
+- physical mobility/seconds/Hz: 모두 unavailable; A_c도 외부 미보정.
+- UI CAD/cylinder/mesh redesign은 아직 시작하지 않음. Gate를 숨기지 않는다.
+
+### A. 실제 작업 위치와 보호
+
+과학 브랜치는 basename aft-pde-bessel-38969ad인 별도 worktree의
+probability-pde-solver-v1이다. original workspace는 detached c43d8e0이며
+많은 사용자 미추적 파일이 있다. 원본 코드를 reset/checkout/덮어쓰기하지 않는다.
+발견용 AGENTS.md와 이 인계 문서만 소유/이전 버전을 확인한 뒤 동기화한다.
+main local ref 80cacb4180dbfbcd36a2964270703bc6cf1653ec는 건드리지 않았다.
+py launcher가 없으므로 실제 Python3.13 interpreter로 동등 명령을 사용했다.
+개인 절대 경로나 test XML을 커밋하지 않는다. XML은 *.local.xml로 ignore한다.
+
+### B. 같은 조건의 원자 기준을 먼저 마련했다
+
+reference_eam_targets.py는 NIST Al99.eam.alloy를 target 생성에만 사용한다.
+절대로 LJ pair/production potential/PDE selector로 등록하지 않는다.
+캐시: ignored .cache/al-reference/Al99.eam.alloy
+SHA256: 60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284
+DOI:10.1103/PhysRevB.59.3393; NIST source URL은 코드/문서에 기록했다.
+다운로드는 명시적 --download, checksum 확인, 다른 기존 파일 덮어쓰기 거부.
+자료가 없으면 원자 수치를 만들어 넣지 말 것.
+
+동일 rigid FCC half-crystal, 0 K, a_lat=4.05 angstrom:
+cohesion=3.359999988239 eV/atom;
+W_sep=1.741285308649 J/m2;
+direct110 sampled maximum~.6030383534 J/m2;
+Shockley maximum~.1897111890 J/m2;
+ISF=.156630432472 J/m2=.06943467959308 eV/interface cell.
+Source local normal tangent=126.44968004 GPa; registry tangent28.25750958 GPa.
+원자모델 reference이지 실제 Al experimental truth가 아니다.
+예전 relaxed Lu DFT .250/.224/.164, a_lat3.94와 조건을 혼합하지 않는다.
+C11/C12/C44=114/62/32 GPa는 기존 rounded 0 K Mishin targets를 유지했다.
+
+L0=4.05/sqrt(2) angstrom, E0=1eV, target atomic area7.1024908428 angstrom^2.
+불완전 fit은 b와 h를 함께 isotropic relaxation한다. L0와 rho_ref는 고정.
+실제 평형의 atomic area/volume으로 J/m2/GPa를 환산한다. A_c 사용 안 함.
+
+### C. 정확한 first-plane cancellation
+
+tau ABC에서 3tau는 lattice vector이고 radial plane energy는 inversion symmetric:
+w(h,tau)=w(h,2tau). Shockley partial의 첫 상대 평면 ISF 기여는 정확히 0.
+G=0도 fixed-opening registry difference에서 상쇄된다.
+첫 비자명 plane k=2의 최소 reciprocal exponential attenuation:
+exp(-2h Gmin)=exp(-8 pi sqrt(2)/3)=7.1550809226e-6.
+이는 prefactor 없는 attenuation이며 완전한 에너지 bound가 아니다.
+
+동일 target geometry에서 scalar joint hybrid:
+pair ISF=-.0001497678823 eV, embedding=-.0000072921670 eV.
+Mishin source:
+pair=.06941007609 eV, embedding=.00002460350 eV.
+즉 이 source는 farther-shell pair radial shape로 큰 부분을 만든다.
+그것을 tabulated pair로 교체하지 않는다. 현 LJ+scalar 환경의 구체적 결핍 근거다.
+
+### D. 실제 재보정/식별성 결과
+
+고정 density decay에서 u=4 eps sigma^12, v=4 eps sigma^6.
+F(x)=-A sqrt(x)+B(x-1)+C(x-1)^2; F(0)=-B+C 포함.
+Bulk5 독립 관측량 + interface5 특정 상태로 시작했다.
+규격화: force .10eV/unit strain, cohesion2%, independent curvature5%,
+interface energies10%. 측정 불확도/통계적 표준편차가 아니라 model discrepancy scale.
+
+실제 실행된 nested 결과:
+- sqrt: loss300.38761;
+- linear:121.38024, Wsep 개선~1.80754J/m2지만 ISF 음수~-.00036268;
+- convex C 추가:C=0, 개선 없음;
+- positive two exponential density: single exponential로 퇴화, 같은 loss;
+- positive squared envelope q(1-dq)^2: loss109.52176, ISF 부호 실패;
+- signed C probe도 실패하고 LJ attractive coefficient boundary 선호;
+- 고정 decay LP upper-bound feasibility는 다른 targets를 3scale 내 허용해도
+  decay2.8에서 ISF<=-8.40874e-5eV/cell. 연속 전 parameter space 불가능 정리 아님.
+
+다음은 별도 analytic angular research hierarchy이며 canonical EAM 변경이 아니다.
+per-atom environment moment를 모두 합산한 뒤 회전불변 norm을 취한다.
+Fourier transform H=2pi k exp(-dQ)(1+dQ)/Q^3, Q=sqrt(k^2+G^2)를 G로
+미분하여 moments를 얻는다. H는 Bessel K_3/2 형태와 동일하다. Canonical cutoff 없음.
+
+I3=2 sum_depth||Delta STF rank3||^2, I1=2 sum_depth||Delta vector||^2.
+홀수차는 ANY affine centrosymmetric FCC bulk에서 정확히 0이라 bulk 탄성 수정 불가.
+I2=2 sum_depth||Delta STF rank2||^2는 cubic FCC에서 0이지만 anisotropic
+affine strain에 반응한다. SAME angular decay, 추가 radial range 없음.
+noncubic background Q_bulk!=0인 rank2는 구현 범위 밖이므로 명시적으로 거부한다.
+D1/D2 signed study는 total energy 안정성을 따로 검사한다.
+
+I3 tied/independent range losses44.37151/28.29377 (10 targets).
+I1+I3는 actual normal interface curvature를 11번째 target으로 추가:
+loss33.87411, epsLJ8.81eV, actual C44=54.37 vs32GPa. 채택 불가.
+I1+I3+C exact force/cohesion fit33.10337, v~1e-16이 cancellation floor 이하:
+positive LJ라고 주장하지 않고 거부.
+I1+I2+I3 exact fit29.70446 역시 v=0: 거부.
+
+I1+I2+I3+C signed B/D1/D2 sector의 finite-LJ 후보:
+scalar decay1.9388928377620271, angular4.877232382551694,
+eps=.411271272477eV, sigma=2.304473908549angstrom,
+alat4.05, cohesion3.36 exactly;
+C11/C12/C44=86.435833/64.684362/50.670331GPa.
+ISF=.134108780770J/m2;
+heldout direct/partial RMSE=.04689350/.01349077J/m2 (각46점, training fractions 제외).
+normal interface tangent147.82995 vs126.44968GPa.
+Loss29.19092; full signed-logabs SVD condition4685.63,
+두 exact bulk constraints tangent condition1833.91. Confidence interval 아님.
+
+그 후보는 intermediate opening overshoot도 발견:
+a/h=3 W=1.88623J/m2, Tn=-.65538GPa, separated limit~1.7502J/m2.
+같은 source curve와 맞지 않아 채택하지 않는다.
+
+### E. 실제 opening-path 수정과 수렴
+
+monotone_opening_calibration은 같은 targets/weights를 유지한 채,
+analytic W_a>=0을 declared grid a/h=1.1,1.2,1.5,2,2.5,3,4,5,8에서 부과했다.
+처음 grid는 a/h3.5에서 negative force -.002706 eV/coordinate를 놓쳤다.
+run_monotone_opening_refinement는 analytic W_aa=0을 찾아 actual force minima를
+추가하고 fixed radial parameters에서 coefficient QP를 다시 풀었다.
+4회의 exchange, 독립80/160 bracket, reciprocal tolerance refinement를 수행했다.
+마지막 min force~-1.03e-14, a/h3.57358204, observed arithmetic/refinement floor
+수준이며 raw 값은 유지한다. Force clipping/strain clipping 없음.
+
+최종 refined 후보 JSON:
+monotone_opening_refined.json.
+scalar decay1.287051801314886, angular4.898979485566356;
+coeff order [u,v,A,B,C,D3,D1,D2], 전체 정밀값은 JSON을 읽는다.
+Loss29.47407475, normal-force max~1.240518eV/coordinate at a/h1.1904995.
+검사 구간1.001..12, 전체 continuum monotonicity interval-proof는 아니다.
+거의 0 견인력 plateau가 reference와 동등하다고 주장하지 않는다.
+Independent Al elasticity/heldout fit는 여전히 부족하다. PDE 승격 안 함.
+
+최종 refined 후보의 실제 재실행:
+alat4.05 angstrom, cohesion3.36eV/atom, epsLJ=.154457514727eV,
+sigmaLJ=2.452464388775angstrom;
+C11/C12/C44=87.8161695/64.8326341/49.2710486 GPa;
+ISF=.131005541319 J/m2, separation1.763013746519 J/m2;
+normal/registry local tangents147.2948633/31.8052565GPa.
+Held-out direct/partial RMSE=.05270159259/.01601694045J/m2.
+Full signed-logabs condition1093.33. Bulk-equality-only tangent condition580.08은
+active opening inequalities까지 포함한 confidence 계산이 아니다.
+Fixed-s normal traction peak9.7715342GPa, source12.9695677GPa.
+이 수치로 coupled dynamic slip/opening ordering을 주장하지 않는다.
+
+### F. 실제 물리/전산 시나리오
+
+모든 stress 입력은 explicit normal traction/resolved shear GPa:
+normal tension .05..10, compression -.1..-2, pure shear .05..4,
+explicit45degree axis: normal=shear=sigma/2,
+static load/unload [0,0]->[.5,.2]->[1,.4]->[.5,.2]->0.
+direct110/partial112 두 경로, a/s Hessian, derivative checks, 2D surfaces를 실제 계산.
+큰 GPa는 ideal mechanism probe이지 보정된 피로 실험 조건이 아니다.
+
+Continuation step .2/.1/.05GPa 비교. 이것은 PDE dt refinement가 아니다.
+실패한 root를 spinodal/registry jump로 위장하지 않는다.
+Fixed s normal saddle는 coupled2D saddle 또는 dynamic event ordering이 아니다.
+Quasistatic unload return은 동적 zero-stress hold/잔류 소성 증거가 아니다.
+
+Finite-q STATIC second variation K(q):
+LJ+scalar EAM pair redistribution, F'' term, odd/even moment gradients 포함.
+odd derivative는 cos-1, even derivative는 sin; 그 차이를 시험했다.
+Radius5/8/12 L0, GX/GL/GK 각20점; 지금까지 계산한 candidates 모두
+sampled positive. 직접 sinusoidal displacement energy variation과 독립 검증.
+전체 BZ/finite-amplitude stability 증명 아님, 원자질량/Hz 사용 없음.
+마지막 후보는 direct radius20도 추가했다: 최소 eigenvalue .08074286975,
+radius12의 .08074197056과 같은 양의 부호이며 차이~8.99e-7.
+3개 high-symmetry directions의60개 sampled wavevectors만 검증한 것이다.
+
+### G. 데이터·문서·재현 명령
+
+기존 결과 audited_v2와 기존 Al calibration/static parameter 파일은 보존한다.
+새 결과 ROOT=results/fcc111_active_interface/matched_v3.
+하위 odd_moment/even_moment/monotone_opening은 각 후보의 새 실행이다.
+fitted_candidates, nested profiles, residuals, SVD/correlations, stress_scenarios,
+opening/registry curves, constrained barriers, finite-q, coupled grids를 저장한다.
+원시 fit와 summary 재생을 구별한다.
+
+문서:
+- MATCHED_INTERFACE_CALIBRATION.md: source mapping, 실패/수정/fit/응력;
+- ANALYTIC_ANGULAR_ENVIRONMENT.md: rank1/2/3 infinite transforms, derivatives, K(q);
+- STATISTICAL_CORRELATION_AREA.md: covariance-derived area와 void probability는
+  자동 동일하지 않음, local N=1은 A_c 식별 불가. K(q)^-1도 곧바로 crack covariance 아님.
+
+재현 (실제 Python3 interpreter 사용):
+python -m solver_v1.reference_eam_targets --download
+python -m solver_v1.run_matched_interface_study --phase calibration
+python -m solver_v1.odd_moment_calibration
+python -m solver_v1.run_constrained_odd_calibration
+python -m solver_v1.even_moment_calibration --convex --signed --free-linear
+python -m solver_v1.monotone_opening_calibration
+python -m solver_v1.run_monotone_opening_refinement
+python -m solver_v1.run_matched_interface_study --phase monotone-scenarios
+python -m solver_v1.run_extended_identifiability
+python -m solver_v1.run_static_bulk_stability
+python -m solver_v1.run_matched_research_summary
+
+마지막 summary 명령은 저장된 fit 요약/실제 separation 계산이지 최적화 재실행 아님.
+Source 없으면 다운로드 허가와 checksum 확인 후 실행하거나 unavailable 보고.
+A_c, physical mobility, empirical fatigue/yield를 어떤 fit에도 넣지 않는다.
+
+### H. 검증/다음 단계
+
+이번 턴 actual records (최종 갱신은 matched_v3/validation_record.json 참조):
+targeted35 passed4.90s;
+최종 full solver212 passed491.96s;
+최종 app27 passed2 skipped50.96s;
+desktop smokePASS a0=.7713438268704838,kappa86.29296488740997.
+이전 full199/202/209도 실행했으나 최신 tests의 대체가 아니다.
+처음 rank2 perfect-force 테스트에서1.1e-20 roundoff vs1e-20 assertion 실패가
+있었고 arithmetic tolerance로 수정했다. 물리 force=0 clamp는 없다.
+최종 smoke와 변경 코어 불변 diff도 실제 통과했다.
+stage된 새 파일까지 diff --check하고 정상 commit/push 한다.
+
+물리적으로 수용할 수 있는 수준:
+- 검증된 analytic framework + 개선된 STATIC mechanistic candidate.
+- 아직 quantitative Al calibration/unique material parameters/kinetics 아님.
+- Al C11/C44 및 held-out opening shape 충돌은 남아 있다.
+- Future 방향은 독립 atomistic environment/relaxation targets와 최소 analytic
+  environment의 표현력을 함께 검사하는 것. 단지 polynomial 차수를 늘려 fit 금지.
+- 이 결과를 졸속 PDE/UI 승격하지 말고 사용자에게 현재 solver readiness를 보고.
+- 진짜 spatial mechanics/correlation 없이 mesh에 global probability를 칠하지 않는다.
+
+## 아래는 fee1da7 이전 audited_v2의 보존 기록
+
+아래 '현재/다음'이라는 문구는 당시 기록이다. 후속 근거와 결정은 위 절을 우선한다.
 
 ## 1. 최신 사용자 지시와 현재 결정
 

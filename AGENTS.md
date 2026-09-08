@@ -481,6 +481,29 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 ## 16. 문서 라우팅
 
+추가 연구는 기존 canonical model과 구분한다:
+
+- MATCHED_INTERFACE_CALIBRATION.md / matched_v3: 같은 rigid FCC 조건의 NIST
+  source를 target으로만 재계산하고 joint fit/응력 시나리오를 실제 실행한다.
+- reference_eam_targets.py의 tabulated EAM은 target 생성/비교 전용이다.
+  LJ/Bessel production potential이나 PDE energy selector로 사용하지 않는다.
+- ANALYTIC_ANGULAR_ENVIRONMENT.md: per-atom STF 1/2/3차 moment invariant의
+  별도 연구 가설. 홀수차는 affine centrosymmetric bulk에서 0이지만,
+  짝수차 Q2는 cubic bulk에서만 0이다. noncubic Q_bulk 누락 금지.
+  수치 검증/적합 개선만으로 calibrated Al/standard MEAM이라
+  부르지 않으며 생산 모델에 자동 추가하지 않는다.
+- STATISTICAL_CORRELATION_AREA.md: 공간 covariance에서 얻는 variance-matching
+  area가 void/survival probability의 독립영역 area와 자동으로 같지 않다.
+  A_c의 값/공간독립성/kinetics는 여전히 보정되지 않았다.
+
+응력 시나리오의 root 실패는 확인된 spinodal과 구별한다. 정적 unload는
+동적 zero-stress hold나 잔류 소성 검증을 대신하지 않는다. 같은 상태/이완/단위의
+source 비교를 우선하고, fit에 쓴 점을 held-out RMSE에 섞지 않는다.
+개구 energy endpoint만 맞추고 중간 traction overshoot를 숨기지 않는다.
+coarse W_a>=0 grid는 연속 단조성 증명이 아니다. 실제 W_aa=0 극값과
+독립 bracket/tolerance refinement를 검사한다. Force clipping 금지.
+Finite-q K(q)도 static Hessian이다. 질량/kinetic calibration 없이 Hz로 바꾸지 않는다.
+
 작업별 관련 문서를 실제 최신 코드와 함께 읽는다:
 
 - solver_v1/RESULT_FIELDS.md
@@ -497,8 +520,9 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 경로가 없거나 stale이면 새 경로를 검색하고 그 사실을 밝힌다.
 문서의 주장과 코드/검증이 충돌하면 숨기지 않고 최소 재현 검사를 추가한다.
-Full-FCC calibration/interface의 현재 근거는 audited_v2 하위 결과이며,
-상위 legacy CSV/그림은 superseded 역사적 기록이다. 무비판적으로 재사용하지 않는다.
+Full-FCC 독립 bulk 감사의 근거는 audited_v2이며, 후속 matched-condition
+계면 보정/응력 검사는 matched_v3에 별도로 저장한다. 상위 legacy CSV/그림은
+superseded 역사적 기록이다. CURRENT_WORK_HANDOFF.md의 최신 상태를 우선한다.
 
 ## 17. 검증과 최종 보고
 

@@ -1,0 +1,100 @@
+[
+  {
+    "candidate": "linear",
+    "radii_L0": [
+      5.0,
+      8.0,
+      12.0
+    ],
+    "minima_by_radius": [
+      0.11425630344654822,
+      0.11408669871277077,
+      0.1140499046373624
+    ],
+    "sampled_nonnegative": true,
+    "conclusion": "sampled directions only, not proof for the entire Brillouin zone",
+    "physical_Hz_available": false
+  },
+  {
+    "candidate": "angular_tied",
+    "radii_L0": [
+      5.0,
+      8.0,
+      12.0
+    ],
+    "minima_by_radius": [
+      0.0849817747680141,
+      0.08462648833224812,
+      0.08454758444622061
+    ],
+    "sampled_nonnegative": true,
+    "conclusion": "sampled directions only, not proof for the entire Brillouin zone",
+    "physical_Hz_available": false
+  },
+  {
+    "candidate": "angular_independent_range",
+    "radii_L0": [
+      5.0,
+      8.0,
+      12.0
+    ],
+    "minima_by_radius": [
+      0.08978731069386713,
+      0.08967609662030995,
+      0.08965698019744292
+    ],
+    "sampled_nonnegative": true,
+    "conclusion": "sampled directions only, not proof for the entire Brillouin zone",
+    "physical_Hz_available": false
+  },
+  {
+    "candidate": "angular_vector_and_third",
+    "radii_L0": [
+      5.0,
+      8.0,
+      12.0
+    ],
+    "minima_by_radius": [
+      0.08192493665672228,
+      0.07957278676950381,
+      0.07906051096467652
+    ],
+    "sampled_nonnegative": true,
+    "conclusion": "sampled directions only, not proof for the entire Brillouin zone",
+    "physical_Hz_available": false
+  },
+  {
+    "candidate": "angular_even_odd",
+    "radii_L0": [
+      5.0,
+      8.0,
+      12.0
+    ],
+    "minima_by_radius": [
+      0.07630217364809415,
+      0.07875568964255261,
+      0.07871061100283712
+    ],
+    "sampled_nonnegative": true,
+    "conclusion": "sampled directions only, not proof for the entire Brillouin zone",
+    "physical_Hz_available": false
+  },
+  {
+    "candidate": "angular_monotone_opening",
+    "radii_L0": [
+      5.0,
+      8.0,
+      12.0,
+      20.0
+    ],
+    "minima_by_radius": [
+      0.07594486647969266,
+      0.0801694201364901,
+      0.08074197056196647,
+      0.08074286974510632
+    ],
+    "sampled_nonnegative": true,
+    "conclusion": "sampled directions only, not proof for the entire Brillouin zone",
+    "physical_Hz_available": false
+  }
+]

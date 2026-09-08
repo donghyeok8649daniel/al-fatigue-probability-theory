@@ -1,0 +1,7 @@
+candidate,path,heldout_count,curve_rmse_J_m2,maximum_absolute_error_J_m2,endpoint_prediction_J_m2,endpoint_reference_J_m2,fitted_fractions_excluded,endpoint_is_fit_or_periodic_reference,convention
+linear,direct_110,46,0.06733812798140001,0.11372425381378515,1.2512231665873894e-16,0.0,"(0.0, 0.5, 1.0)",True,rigid halves; candidate's own relaxed bulk lattice; training points excluded from RMSE
+angular_tied,direct_110,46,0.08535278677547603,0.13937276186908398,-3.9575331650800166e-16,0.0,"(0.0, 0.5, 1.0)",True,rigid halves; candidate's own relaxed bulk lattice; training points excluded from RMSE
+angular_independent_range,direct_110,46,0.087027258163314,0.13564719815973147,3.799338444558172e-16,0.0,"(0.0, 0.5, 1.0)",True,rigid halves; candidate's own relaxed bulk lattice; training points excluded from RMSE
+linear,shockley_112,46,0.08456643284953834,0.1567567580687574,-0.00036267677041465203,0.15663043247184877,"(0.0, 0.16666666666666666, 0.3333333333333333)",True,rigid halves; candidate's own relaxed bulk lattice; training points excluded from RMSE
+angular_tied,shockley_112,46,0.020708955084063212,0.03947609363886745,0.1170678077261758,0.15663043247184877,"(0.0, 0.16666666666666666, 0.3333333333333333)",True,rigid halves; candidate's own relaxed bulk lattice; training points excluded from RMSE
+angular_independent_range,shockley_112,46,0.022943669984136047,0.04111256195453812,0.11538283914248658,0.15663043247184877,"(0.0, 0.16666666666666666, 0.3333333333333333)",True,rigid halves; candidate's own relaxed bulk lattice; training points excluded from RMSE

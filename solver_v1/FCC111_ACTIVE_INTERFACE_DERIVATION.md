@@ -1,5 +1,9 @@
 # FCC(111) active-interface static reference
 
+Follow-up static evidence: MATCHED_INTERFACE_CALIBRATION.md and
+ANALYTIC_ANGULAR_ENVIRONMENT.md. The latter is a SEPARATE experimental
+environmental invariant; the scalar-EAM interface derived here is unchanged.
+
 **Status: research only, not a validated Al constitutive surface.** Initial
 parameter examples below are legacy underidentified candidates. Current
 independent-mode calibration and physical gates are in

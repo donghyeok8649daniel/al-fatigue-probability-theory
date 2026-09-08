@@ -1,0 +1,34 @@
+[
+  {
+    "candidate": "angular_vector_and_third",
+    "path": "direct_110",
+    "sampled_minimum_J_m2": -6.911516125763521e-16,
+    "sampled_maximum_J_m2": 1.9947644704175498,
+    "global_minimum_certified": false,
+    "interpretation": "saddle regions may have negative Hessian; this is not instability of every intact state"
+  },
+  {
+    "candidate": "angular_vector_and_third",
+    "path": "shockley_112",
+    "sampled_minimum_J_m2": 8.311252384315192e-39,
+    "sampled_maximum_J_m2": 0.7283499491643226,
+    "global_minimum_certified": false,
+    "interpretation": "saddle regions may have negative Hessian; this is not instability of every intact state"
+  },
+  {
+    "candidate": "Mishin_source_rigid",
+    "path": "direct_110",
+    "sampled_minimum_J_m2": 0.0,
+    "sampled_maximum_J_m2": 1.617927635216703,
+    "global_minimum_certified": false,
+    "interpretation": "saddle regions may have negative Hessian; this is not instability of every intact state"
+  },
+  {
+    "candidate": "Mishin_source_rigid",
+    "path": "shockley_112",
+    "sampled_minimum_J_m2": 0.0,
+    "sampled_maximum_J_m2": 1.5927120330000084,
+    "global_minimum_certified": false,
+    "interpretation": "saddle regions may have negative Hessian; this is not instability of every intact state"
+  }
+]

@@ -1,0 +1,17 @@
+candidate,observation_count,squared_loss,max_absolute_normalized_residual,each_fit_residual_within_one_declared_scale,strictly_positive_LJ_resolved,u,v,physical_candidate_accepted,status
+sqrt,10,300.38760759626035,12.244300110801813,False,,0.08819913713318858,0.0138310429298423,False,research only; actual branch/held-out/mobility validation separate
+linear,10,121.38023960932364,10.022619827768974,False,,0.12399652256731622,0.20603390512408915,False,research only; actual branch/held-out/mobility validation separate
+quadratic,10,121.38023960906739,10.02261982758184,False,,0.12399652175026826,0.20603390152424525,False,research only; actual branch/held-out/mobility validation separate
+signed_quadratic_exploratory,10,119.86672694981782,10.022372716339648,False,,0.09418335398014858,4.335397700762761e-20,False,research only; actual branch/held-out/mobility validation separate
+positive_two_exponential,10,121.38023961003117,10.022619770928314,False,,0.12399627455304235,0.2060328122178131,False,research only; actual branch/held-out/mobility validation separate
+squared_envelope,10,109.52176452925728,10.022584629407028,False,,0.11423416207947193,0.20033990916410757,False,research only; actual branch/held-out/mobility validation separate
+angular_tied,10,44.37150554561806,4.76980465395155,False,,0.1312967020855319,0.4618462077984966,False,research only; actual branch/held-out/mobility validation separate
+angular_independent_range,10,28.293773664553555,2.9181341140167865,False,,0.09376693330400986,0.08831853093033329,False,research only; actual branch/held-out/mobility validation separate
+angular_quadratic_extension,10,27.300895950729732,2.9373668726262347,False,,0.11540874805680643,0.21612697275428056,False,research only; actual branch/held-out/mobility validation separate
+odd_moment_fit,11,33.87410785883954,3.233629024310895,False,,0.13625798532567873,2.1913757558150917,False,research only; actual branch/held-out/mobility validation separate
+odd_moment_quadratic_probe,11,30.101110590573164,2.7990588426263776,False,,0.08336503282392377,0.03622685094839323,False,research only; actual branch/held-out/mobility validation separate
+constrained_odd_fit,11,33.10337045822855,2.87148678798558,False,False,0.0764620433519127,1.1102230246251565e-16,False,research only; actual branch/held-out/mobility validation separate
+even_moment_fit,11,29.70445521920168,2.7419253439618925,False,False,0.06285498711379411,0.0,False,research only; actual branch/held-out/mobility validation separate
+even_moment_convex_signed_free_B_fit,11,29.19092172479083,2.868081035039441,False,True,0.12127453162909568,0.44666197931823315,False,research only; actual branch/held-out/mobility validation separate
+monotone_opening_fit,11,29.44860020805417,2.7969986139652687,False,True,0.09610174640747071,0.24511417873627706,False,research only; actual branch/held-out/mobility validation separate
+monotone_opening_refined,11,29.474074749072173,2.7965276224670936,False,True,0.09612165681770302,0.24369417082501654,False,research only; actual branch/held-out/mobility validation separate

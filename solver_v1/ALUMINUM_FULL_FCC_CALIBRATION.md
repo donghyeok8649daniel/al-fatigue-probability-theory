@@ -1,5 +1,11 @@
 # Full-FCC Al static calibration: independent-mode audit
 
+Follow-up: MATCHED_INTERFACE_CALIBRATION.md and
+results/fcc111_active_interface/matched_v3 add same-condition source targets,
+joint interface fitting, minimal analytic-extension tests, and actual stress
+scenarios. This audited_v2 document remains the preserved bulk-only stage.
+No follow-up candidate is silently promoted to the production PDE.
+
 ## Status
 
 This is a static research calibration, NOT a validated Al fatigue solver.

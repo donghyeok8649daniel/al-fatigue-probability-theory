@@ -1,0 +1,34 @@
+[
+  {
+    "candidate": "angular_monotone_opening",
+    "path": "direct_110",
+    "sampled_minimum_J_m2": -1.478343677523292e-16,
+    "sampled_maximum_J_m2": 2.2914417405228127,
+    "global_minimum_certified": false,
+    "interpretation": "saddle regions may have negative Hessian; this is not instability of every intact state"
+  },
+  {
+    "candidate": "angular_monotone_opening",
+    "path": "shockley_112",
+    "sampled_minimum_J_m2": 8.549870571670686e-40,
+    "sampled_maximum_J_m2": 1.4520177842991449,
+    "global_minimum_certified": false,
+    "interpretation": "saddle regions may have negative Hessian; this is not instability of every intact state"
+  },
+  {
+    "candidate": "Mishin_source_rigid",
+    "path": "direct_110",
+    "sampled_minimum_J_m2": 0.0,
+    "sampled_maximum_J_m2": 1.617927635216703,
+    "global_minimum_certified": false,
+    "interpretation": "saddle regions may have negative Hessian; this is not instability of every intact state"
+  },
+  {
+    "candidate": "Mishin_source_rigid",
+    "path": "shockley_112",
+    "sampled_minimum_J_m2": 0.0,
+    "sampled_maximum_J_m2": 1.5927120330000084,
+    "global_minimum_certified": false,
+    "interpretation": "saddle regions may have negative Hessian; this is not instability of every intact state"
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "date": "2026-09-09",
+  "base_commit": "fee1da7a5e856bd9120a12f0c40e6afb79ec8c6e",
+  "interpreter": "Python 3.13 on Windows; py launcher unavailable",
+  "commands_executed_with_verified_python_executable": true,
+  "targeted": {
+    "scope": "five new test modules: joint calibration, static scenarios, angular moments, even moments, finite-q static stability",
+    "passed": 35,
+    "skipped": 0,
+    "elapsed_seconds_reported_by_pytest": 4.90,
+    "exit_code": 0
+  },
+  "solver_v1": {
+    "command": "python -m pytest solver_v1 -q -p no:cacheprovider",
+    "passed": 212,
+    "skipped": 0,
+    "elapsed_seconds_reported_by_pytest": 491.96,
+    "exit_code": 0
+  },
+  "app": {
+    "command": "python -m pytest app -q -p no:cacheprovider",
+    "passed": 27,
+    "skipped": 2,
+    "elapsed_seconds_reported_by_pytest": 50.96,
+    "exit_code": 0
+  },
+  "smoke": {
+    "command": "python -m app.desktop_ui --smoke",
+    "passed": true,
+    "a0": 0.7713438268704838,
+    "kappa": 86.29296488740997,
+    "interactive_gui_rendering_claimed": false
+  },
+  "core_unchanged_diff_check": {
+    "baseline": "fee1da7",
+    "paths": ["app", "solver_v1/data", "solver_v1/model.py", "solver_v1/lattice_bessel.py", "solver_v1/probability_pde_2d.py", "solver_v1/energy_model_registry.py", "solver_v1/fcc111_geometry.py", "solver_v1/fcc111_lattice_sum.py", "solver_v1/fcc111_full_energy.py", "solver_v1/fcc111_active_interface.py", "solver_v1/reduced_fast_a.py"],
+    "exit_code": 0
+  },
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "raw_test_xml": "local-only ignored files; machine metadata not committed",
+  "material_calibration_accepted": false,
+  "production_interface_PDE_enabled": false,
+  "physical_seconds_enabled": false,
+  "physical_Hz_enabled": false
+}

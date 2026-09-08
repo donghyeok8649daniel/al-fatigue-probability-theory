@@ -1,0 +1,3 @@
+candidate,path,heldout_count,curve_rmse_J_m2,maximum_absolute_error_J_m2,endpoint_prediction_J_m2,endpoint_reference_J_m2,fitted_fractions_excluded,endpoint_is_fit_or_periodic_reference,convention
+angular_even_odd,direct_110,46,0.04689350392888439,0.07275071559950397,-3.259648175491797e-16,0.0,"(0.0, 0.5, 1.0)",True,rigid halves; candidate's own relaxed bulk lattice; training points excluded from RMSE
+angular_even_odd,shockley_112,46,0.013490772101390693,0.02265823546599227,0.13410878076990285,0.15663043247184877,"(0.0, 0.16666666666666666, 0.3333333333333333)",True,rigid halves; candidate's own relaxed bulk lattice; training points excluded from RMSE

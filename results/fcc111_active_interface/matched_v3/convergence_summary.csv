@@ -1,0 +1,49 @@
+set,study,field,value,reference,absolute_error,tolerance,layers_used,shells_used,tail_status,direct_radius,direct_layers
+linear_joint_fit,reference,energy,0.04956441283234663,0.04956441283252782,1.8118839761882555e-13,2e-08,13,27,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,reference,d_da,0.13485637173573273,0.13485637173948295,3.750222354881316e-12,2e-08,13,27,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,reference,d_ds,0.38672890510342967,0.38672890510343,3.3306690738754696e-16,2e-08,13,27,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,reference,d2_daa,21.22656145994625,21.226561459940562,5.687894599759602e-12,2e-08,13,27,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,reference,d2_das,-6.450987724042382,-6.4509877240424425,6.039613253960852e-14,2e-08,13,27,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,reference,d2_dss,1.8856251006141331,1.8856251006140854,4.773959005888173e-14,2e-08,13,27,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,density_layer_refined,energy,0.04956441283250473,0.04956441283252782,2.3092638912203256e-14,2e-10,18,27,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,density_layer_refined,d_da,0.13485637173948567,0.13485637173948295,2.7200464103316335e-15,2e-10,18,27,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,density_layer_refined,d_ds,0.38672890510342917,0.38672890510343,8.326672684688674e-16,2e-10,18,27,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,density_layer_refined,d2_daa,21.226561459940484,21.226561459940562,7.815970093361102e-14,2e-10,18,27,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,density_layer_refined,d2_das,-6.45098772404239,-6.4509877240424425,5.240252676230739e-14,2e-10,18,27,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,density_layer_refined,d2_dss,1.8856251006141314,1.8856251006140854,4.596323321948148e-14,2e-10,18,27,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,reciprocal_and_layer_refined,energy,0.04956441283252782,0.04956441283252782,0.0,2e-12,20,30,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,reciprocal_and_layer_refined,d_da,0.134856371739483,0.13485637173948295,5.551115123125783e-17,2e-12,20,30,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,reciprocal_and_layer_refined,d_ds,0.38672890510343,0.38672890510343,0.0,2e-12,20,30,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,reciprocal_and_layer_refined,d2_daa,21.226561459940562,21.226561459940562,0.0,2e-12,20,30,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,reciprocal_and_layer_refined,d2_das,-6.4509877240424425,-6.4509877240424425,0.0,2e-12,20,30,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,reciprocal_and_layer_refined,d2_dss,1.8856251006140854,1.8856251006140854,0.0,2e-12,20,30,empirical proxy; refinement differences authoritative,,
+linear_joint_fit,independent_real_space,energy,0.04956005828302589,0.04956441283252782,4.354549501928151e-06,,,,,24,24
+linear_joint_fit,independent_real_space,d_da,0.13474718601775615,0.13485637173948295,0.00010918572172680108,,,,,24,24
+linear_joint_fit,independent_real_space,d_ds,0.38672969028009097,0.38672890510343,7.851766609667798e-07,,,,,24,24
+linear_joint_fit,independent_real_space,d2_daa,21.2265797143941,21.226561459940562,1.825445353631494e-05,,,,,24,24
+linear_joint_fit,independent_real_space,d2_das,-6.450987821181009,-6.4509877240424425,9.713856652382447e-08,,,,,24,24
+linear_joint_fit,independent_real_space,d2_dss,1.8856279240859883,1.8856251006140854,2.823471902946295e-06,,,,,24,24
+linear_joint_fit,independent_real_space,energy,0.04956047653090361,0.04956441283252782,3.936301624207772e-06,,,,,48,24
+linear_joint_fit,independent_real_space,d_da,0.1347597148060812,0.13485637173948295,9.66569334017453e-05,,,,,48,24
+linear_joint_fit,independent_real_space,d_ds,0.3867289278563198,0.38672890510343,2.2752889794475095e-08,,,,,48,24
+linear_joint_fit,independent_real_space,d2_daa,21.22657954284836,21.226561459940562,1.8082907796923564e-05,,,,,48,24
+linear_joint_fit,independent_real_space,d2_das,-6.450987724929164,-6.4509877240424425,8.86721807091817e-10,,,,,48,24
+linear_joint_fit,independent_real_space,d2_dss,1.885625184780961,1.8856251006140854,8.416687569123837e-08,,,,,48,24
+linear_joint_fit,independent_real_space,energy,0.04956295554707413,0.04956441283252782,1.4572854536917812e-06,,,,,24,48
+linear_joint_fit,independent_real_space,d_da,0.13481780059837223,0.13485637173948295,3.857114111072146e-05,,,,,24,48
+linear_joint_fit,independent_real_space,d_ds,0.3867298479149167,0.38672890510343,9.42811486714934e-07,,,,,24,48
+linear_joint_fit,independent_real_space,d2_daa,21.226563929096592,21.226561459940562,2.469156029860642e-06,,,,,24,48
+linear_joint_fit,independent_real_space,d2_das,-6.45098784699209,-6.4509877240424425,1.2294964779613338e-07,,,,,24,48
+linear_joint_fit,independent_real_space,d2_dss,1.885628578933646,1.8856251006140854,3.478319560601406e-06,,,,,24,48
+linear_joint_fit,independent_real_space,energy,0.04956384783179669,0.04956441283252782,5.650007311314154e-07,,,,,48,48
+linear_joint_fit,independent_real_space,d_da,0.13484233398706721,0.13485637173948295,1.403775241573535e-05,,,,,48,48
+linear_joint_fit,independent_real_space,d_ds,0.3867289543932404,0.38672890510343,4.928981039986624e-08,,,,,48,48
+linear_joint_fit,independent_real_space,d2_daa,21.226562653700217,21.226561459940562,1.1937596546829354e-06,,,,,48,48
+linear_joint_fit,independent_real_space,d2_das,-6.450987726918139,-6.4509877240424425,2.8756961256704017e-09,,,,,48,48
+linear_joint_fit,independent_real_space,d2_dss,1.8856252746375408,1.8856251006140854,1.7402345542372188e-07,,,,,48,48
+linear_joint_fit,independent_real_space,energy,0.04956428882799525,0.04956441283252782,1.2400453257288557e-07,,,,,80,80
+linear_joint_fit,independent_real_space,d_da,0.13485330428335754,0.13485637173948295,3.0674561254107058e-06,,,,,80,80
+linear_joint_fit,independent_real_space,d_ds,0.38672891086567995,0.38672890510343,5.762249954965881e-09,,,,,80,80
+linear_joint_fit,independent_real_space,d2_daa,21.226561617489693,21.226561459940562,1.575491310745747e-07,,,,,80,80
+linear_joint_fit,independent_real_space,d2_das,-6.450987724233954,-6.4509877240424425,1.915116953910001e-10,,,,,80,80
+linear_joint_fit,independent_real_space,d2_dss,1.8856251230852474,1.8856251006140854,2.247116204223687e-08,,,,,80,80

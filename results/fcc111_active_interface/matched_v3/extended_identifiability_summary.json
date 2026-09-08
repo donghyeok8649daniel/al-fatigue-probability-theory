@@ -1,0 +1,125 @@
+[
+  {
+    "candidate": "odd_I1_I3",
+    "coefficient_signs": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      -1.0
+    ],
+    "singular_values": [
+      945.2522055466998,
+      322.46465792893787,
+      79.25204118261497,
+      35.772038731634446,
+      20.017478434148753,
+      11.724581205663966,
+      2.5337469793834715,
+      2.175642290830845
+    ],
+    "condition_number": 434.47041341787957,
+    "max_stencil_change": 1.5678528484386334e-05,
+    "hard_constraints_used_in_fit": false,
+    "tangent_covers_two_bulk_equalities_only": true,
+    "additional_active_opening_inequalities": false,
+    "exact_constraint_tangent_singular_values": [
+      82.838300890528,
+      46.03494104252671,
+      37.65471489887664,
+      13.459450417889403,
+      2.752401685147021,
+      2.1978112625112076
+    ],
+    "exact_constraint_tangent_condition": 37.691271449704644,
+    "confidence_intervals_available": false,
+    "material_accepted": false
+  },
+  {
+    "candidate": "even_I1_I2_I3_C",
+    "coefficient_signs": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      -1.0,
+      1.0
+    ],
+    "singular_values": [
+      212.75459780296856,
+      98.83523612499118,
+      62.78962552148132,
+      35.38701441982025,
+      17.041622403329313,
+      13.457351237970014,
+      5.732318590126836,
+      1.5829432998559771,
+      0.5172332195471694,
+      0.04540573263946258
+    ],
+    "condition_number": 4685.632968249067,
+    "max_stencil_change": 9.714180007946993e-06,
+    "hard_constraints_used_in_fit": true,
+    "tangent_covers_two_bulk_equalities_only": true,
+    "additional_active_opening_inequalities": false,
+    "exact_constraint_tangent_singular_values": [
+      89.59923439459908,
+      49.117878760173696,
+      18.696678476180047,
+      14.508493279363165,
+      6.57400847880613,
+      1.5904149100413358,
+      0.5495871490223276,
+      0.04885695136739055
+    ],
+    "exact_constraint_tangent_condition": 1833.9096461594177,
+    "confidence_intervals_available": false,
+    "material_accepted": false
+  },
+  {
+    "candidate": "monotone_I1_I2_I3_C",
+    "coefficient_signs": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      -1.0,
+      1.0
+    ],
+    "singular_values": [
+      133.58311520372567,
+      76.62094536144593,
+      49.12498760513472,
+      24.60028867152668,
+      14.307210909924146,
+      10.70009220193928,
+      4.124047179309466,
+      1.4438713878748555,
+      0.20999285578792548,
+      0.1221805138221123
+    ],
+    "condition_number": 1093.3258588044152,
+    "max_stencil_change": 3.258261767058457e-06,
+    "hard_constraints_used_in_fit": true,
+    "tangent_covers_two_bulk_equalities_only": true,
+    "additional_active_opening_inequalities": true,
+    "exact_constraint_tangent_singular_values": [
+      72.24569571797088,
+      36.17878514794352,
+      14.472711669689845,
+      13.443202947210374,
+      4.622417777288936,
+      1.4492593833923588,
+      0.23726884300608353,
+      0.12454491515956881
+    ],
+    "exact_constraint_tangent_condition": 580.0774413424153,
+    "confidence_intervals_available": false,
+    "material_accepted": false
+  }
+]

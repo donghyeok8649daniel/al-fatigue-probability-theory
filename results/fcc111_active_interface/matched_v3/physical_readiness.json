@@ -1,0 +1,29 @@
+{
+  "status": "not accepted for quantitative Al or production interface PDE",
+  "mathematical_research_extensions_implemented": true,
+  "remaining_gates": [
+    "large independent elastic mismatch",
+    "parameter sensitivity",
+    "held-out curve mismatch",
+    "broader material/kinetic validation absent"
+  ],
+  "historical_failures_not_hidden": [
+    "large pair/embedding cancellation in prior candidates",
+    "unconstrained intermediate opening overshoot"
+  ],
+  "monotone_constraints_are_not_global_proof": true,
+  "all_family_impossibility_proven": false,
+  "production_defaults_changed": false,
+  "kinetic_mobility_calibrated": false,
+  "physical_seconds_enabled": false,
+  "physical_Hz_enabled": false,
+  "specimen_correlation_area_calibrated": false,
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "fit_input_hashes": {
+    "constrained_odd_fit.json": "f9c3560a0fd237fb4e876e68cf530b3ea39eb5ca24a5ab45c5692827aa4505cf",
+    "even_moment_convex_signed_free_B_fit.json": "664b4c6751384920895471ece120389cfdecd80792eb1aa5375ca5f4802df6e8",
+    "even_moment_fit.json": "d00c7bafbb9c9d4ac498565e9b4d80fedfc05bda5685336f4bb6d04c6f6692d8",
+    "monotone_opening_fit.json": "d46c1f18ffba7a20ad9b060bedb5feea0eabad18c82725856b266979d1867a4f",
+    "odd_moment_fit.json": "5ba6109fee99afe86dfd5b111338ed9c0cea50229e69b968d40751ef36ad49ea"
+  }
+}
