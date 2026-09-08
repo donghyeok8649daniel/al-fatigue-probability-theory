@@ -1,0 +1,7 @@
+model,geometry,status,a0,W_a,W_s,minimum_hessian_eigenvalue,kappa_axial_chi_0p2,normalization
+two_row_lj_reference,reduced_two_row,dimensionless reference; not calibrated Al,0.7713438268704838,-3.552713678800501e-14,9.813175938081775e-16,50.347580146252554,86.29296488740997,energy per reduced two-row cell
+two_row_lj_reference,full_fcc111_homogeneous_stack,stable_same_parameters_unrefitted,0.6845871380591213,4.263256414560601e-14,7.956868037194287e-15,78.76610337079178,135.17737716036478,energy per atom
+analytic_lj_eam_hypothetical,reduced_two_row,hypothetical sensitivity set; uncalibrated,0.9677866043190319,2.636779683484747e-16,1.4472312366559458e-17,0.7425179283185191,2.5668896260112026,energy per reduced two-row cell
+analytic_lj_eam_hypothetical,full_fcc111_homogeneous_stack,stable_same_parameters_unrefitted,0.8983754061234529,-3.7470027081099033e-16,3.869050825580852e-17,0.9290922748133599,4.002031174584873,energy per atom
+al_target_best_feasible_hybrid,reduced_two_row,Al-target best-feasible; practically non-identifiable,0.8164957221838465,-8.81239525796218e-16,1.2451230867570878e-16,6.388241156380062,13.855051447120799,energy per reduced two-row cell
+al_target_best_feasible_hybrid,full_fcc111_homogeneous_stack,full FCC surface has no stable zero-load normal root,,,,,,energy per atom

@@ -1,0 +1,9 @@
+quantity,value,units,note
+a_lat,1.4142135623730951,b units,sqrt(2)*b
+b,1.0,b units,in-plane nearest-neighbor spacing
+h111,0.8164965809277261,b units,a_lat/sqrt(3)
+A_atomic_cell,0.8660254037844386,b^2,not statistical A_c
+tau_x,0.5,b units,ABC shift component
+tau_y,0.28867513459481287,b units,ABC shift component
+direct_110_period,1.0,b,current calibrated scalar path
+shockley_112_period,1.7320508075688772,b,held-out configurable path

@@ -149,6 +149,13 @@ exponential environment-density lattice sum and differentiable embedding term
 are added in a separate `AnalyticLJEAM` model. Its default parameter set is a
 mathematical sensitivity example, not calibrated aluminum data.
 
+See `FCC111_FULL_STACK_DERIVATION.md` for the separate full FCC(111)
+infinite-plane-stack static reference. It derives the triangular reciprocal
+lattice, exact ABC phases, two-dimensional Poisson/Bessel plane kernels,
+zeta(4)/zeta(10) layer means, and the rule that the embedding function is
+applied once after summing the complete environment density. This research
+model does not replace the reduced production energy surfaces.
+
 ## Why the N=3 PDE needs compression
 
 For `N=3`, the density depends on six coordinates:

@@ -1,0 +1,13 @@
+model,geometry,force,force_fraction_opening_spinodal,configurational_barrier,opening_barrier,barrier_ratio,configurational_spinodal,opening_spinodal,status
+two_row_lj_reference,reduced_two_row,0.0,0.0,0.7150606915722968,,,,,reduced reference; opening metric uses different geometry
+two_row_lj_reference,full_fcc111_homogeneous_stack,0.0,0.0,1.5608449387687324,4.7770996516422315,0.3267348501369776,8.317266533542936,10.544077665154338,static barriers; no dynamic ordering claim
+two_row_lj_reference,full_fcc111_homogeneous_stack,2.6360194162885846,0.25,0.9496562377498989,2.361451030113515,0.40214945202748875,8.317266533542936,10.544077665154338,static barriers; no dynamic ordering claim
+two_row_lj_reference,full_fcc111_homogeneous_stack,5.272038832577169,0.5,0.3940470685013455,1.1476117018004652,0.3433627139590272,8.317266533542936,10.544077665154338,static barriers; no dynamic ordering claim
+two_row_lj_reference,full_fcc111_homogeneous_stack,7.908058248865753,0.75,0.019439666305009595,0.37430813053834733,0.0519349293242724,8.317266533542936,10.544077665154338,static barriers; no dynamic ordering claim
+analytic_lj_eam_hypothetical,reduced_two_row,0.0,0.0,0.017387217944129146,,,,,reduced reference; opening metric uses different geometry
+analytic_lj_eam_hypothetical,full_fcc111_homogeneous_stack,0.0,0.0,0.02831354972848532,0.16632656946554975,0.17022866412422305,0.19808093375839486,0.295489421388974,static barriers; no dynamic ordering claim
+analytic_lj_eam_hypothetical,full_fcc111_homogeneous_stack,0.0738723553472435,0.25,0.015430155780368993,0.08132885448765939,0.18972547784636903,0.19808093375839486,0.295489421388974,static barriers; no dynamic ordering claim
+analytic_lj_eam_hypothetical,full_fcc111_homogeneous_stack,0.147744710694487,0.5,0.00442285305015544,0.03902518970032082,0.11333328765648717,0.19808093375839486,0.295489421388974,static barriers; no dynamic ordering claim
+analytic_lj_eam_hypothetical,full_fcc111_homogeneous_stack,0.22161706604173048,0.75,,0.012607276918639498,,0.19808093375839486,0.295489421388974,static barriers; no dynamic ordering claim
+al_target_best_feasible_hybrid,reduced_two_row,0.0,0.0,0.11037247841352382,,,,,reduced reference; opening metric uses different geometry
+al_target_best_feasible_hybrid,full_fcc111_homogeneous_stack,,,,,,,,unavailable: no stable full-stack equilibrium

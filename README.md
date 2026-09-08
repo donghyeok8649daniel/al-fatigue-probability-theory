@@ -76,6 +76,10 @@ slow-$s$ validation are documented in
 The exact surviving-ensemble strain decomposition, registry-flux bookkeeping,
 current refinement study, unload/hold result, and active-UI-model audit are in
 [`solver_v1/PLASTICITY_AND_STRAIN_AUDIT.md`](solver_v1/PLASTICITY_AND_STRAIN_AUDIT.md).
+The separate full FCC(111) infinite-plane-stack static reference and its
+direct-sum validation are documented in
+[`solver_v1/FCC111_FULL_STACK_DERIVATION.md`](solver_v1/FCC111_FULL_STACK_DERIVATION.md).
+It remains a research reference and is not the desktop default.
 
 Run from repository root:
 
