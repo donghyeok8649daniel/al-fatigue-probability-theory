@@ -1,4 +1,5 @@
 import numpy as np
+import pytest
 from scipy.optimize import root, root_scalar
 
 from solver_v1.model import ModelParams, TwoRowLJ
@@ -169,6 +170,32 @@ def test_principal_well_intrawell_strain_does_not_create_plastic_strain():
     )
 
 
+def test_strain_is_conditioned_on_surviving_mass_and_excludes_absorbed_mass():
+    model = TwoRowLJ(_params())
+    model._build_opening_table()
+    grid = build_grid(
+        model, Grid2DParams(n_a=17, n_s=30, s_wells=3, a_upper=1.6)
+    )
+    density = initial_gibbs_density(
+        model, grid, preload_force=0.3, principal_well_only=False
+    )
+    full = observables(density, model, grid, force=0.3)
+    survivor_fraction = 0.37
+    survivor = observables(
+        survivor_fraction * density, model, grid, force=0.3
+    )
+    assert survivor["survival"] == pytest.approx(survivor_fraction)
+    for key in (
+        "strain",
+        "normal_strain",
+        "intrawell_strain",
+        "plastic_strain",
+        "mean_well_index",
+    ):
+        assert survivor[key] == pytest.approx(full[key], abs=2.0e-15)
+    assert abs(survivor["strain_decomposition_residual"]) < 2.0e-17
+
+
 def test_zero_load_probability_mass_is_conserved():
     result = run_probability_pde_2d(
         model_params=_params(),
@@ -334,3 +361,17 @@ def test_configurational_interface_flux_is_zero_for_discrete_gibbs_state():
     assert np.max(np.abs(signed)) < 1.0e-12
     assert np.all(gross >= 0.0)
     assert np.max(np.abs(well["interwell_net_flux"])) < 1.0e-12
+    np.testing.assert_allclose(
+        well["interwell_forward_flux"] - well["interwell_backward_flux"],
+        well["interwell_net_flux"],
+        rtol=0.0,
+        atol=1.0e-16,
+    )
+    np.testing.assert_allclose(
+        well["interwell_forward_flux"] + well["interwell_backward_flux"],
+        well["interwell_gross_flux"],
+        rtol=0.0,
+        atol=1.0e-16,
+    )
+    assert np.all(well["interwell_forward_flux"] >= 0.0)
+    assert np.all(well["interwell_backward_flux"] >= 0.0)

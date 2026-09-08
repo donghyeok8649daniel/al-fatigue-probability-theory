@@ -1,0 +1,49 @@
+{
+  "energy_model": "two_row_lj_reference",
+  "time_basis": "model",
+  "representative_case": {
+    "young_modulus_gpa": 69.0,
+    "mean_stress_mpa": 900.0,
+    "stress_amplitude_mpa": 2000.0,
+    "model_frequency_cycles_per_model_time": 25.0,
+    "cycles": 3.0
+  },
+  "finest_run": {
+    "grid_a": 41,
+    "grid_s": 60,
+    "dt": 0.00025,
+    "integrator": "implicit",
+    "maximum_strain_decomposition_residual": 5.26e-18,
+    "maximum_plastic_strain": 2.61234844327e-12,
+    "cumulative_net_registry_transfer": 1.00754163158e-11,
+    "cumulative_gross_registry_activity": 1.05106712054e-11,
+    "opening_absorbed_mass": 4.07280984495e-14
+  },
+  "plasticity_resolution": {
+    "aligned_grid_plastic_strain_floor": 4.4652422774e-13,
+    "signal_to_floor_ratio": 5.850413509,
+    "all_aligned_reference_spread_fraction": 0.170946,
+    "finest_two_grid_change_fraction": 0.012356,
+    "classification": "resolved_extremely_small_model_interwell_flow"
+  },
+  "opening_resolution": {
+    "aligned_grid_observed_floor": 6.33549631677e-12,
+    "signal_to_floor_ratio": 0.00642855,
+    "classification": "unresolved_below_spatial_convergence_floor"
+  },
+  "unload_hold": {
+    "hold_model_time": 2.0,
+    "coarse_final_plastic_strain": 1.99373472106e-11,
+    "fine_final_plastic_strain": 1.58442564421e-11,
+    "two_grid_difference": 4.0930907685e-12,
+    "classification": "persistent_candidate_not_converged"
+  },
+  "physical_time": {
+    "dimensionalization_complete": true,
+    "M_a_phys_available": false,
+    "M_s_phys_available": false,
+    "t0_seconds_available": false,
+    "physical_seconds_enabled": false,
+    "physical_hz_enabled": false
+  }
+}

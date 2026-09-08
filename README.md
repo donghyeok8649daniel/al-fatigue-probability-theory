@@ -47,6 +47,14 @@ path is `app/solver_adapter.py`:
 
 `physical stress -> sigma/E -> relaxed axial kappa -> N=1 probability PDE -> result fields`.
 
+The desktop setup now identifies the active energy surface explicitly. It can
+run the original `TwoRowLJ` reference, a clearly labeled hypothetical analytic
+LJ--EAM sensitivity surface, or the stored Al-target best-feasible hybrid. Each
+choice uses its own equilibrium and relaxed axial kappa, and the exact model ID,
+parameter source, and calibration status remain attached to results. The
+default remains the `TwoRowLJ` reference; it is never presented as calibrated
+aluminum.
+
 The conditional Gibbs initial density is prepared at the applied load at
 `t=0`, which is the entered mean stress for the current sinusoid. The UI plots
 normal-opening, intrawell-registry, well-index-plastic, and total axial strain
@@ -65,6 +73,9 @@ The exact conversion framework and kinetic-calibration gate are documented in
 The subsequent finite-temperature fast-$a$ derivation and its restricted
 slow-$s$ validation are documented in
 [`solver_v1/FAST_A_REDUCTION.md`](solver_v1/FAST_A_REDUCTION.md).
+The exact surviving-ensemble strain decomposition, registry-flux bookkeeping,
+current refinement study, unload/hold result, and active-UI-model audit are in
+[`solver_v1/PLASTICITY_AND_STRAIN_AUDIT.md`](solver_v1/PLASTICITY_AND_STRAIN_AUDIT.md).
 
 Run from repository root:
 

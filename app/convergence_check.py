@@ -6,6 +6,7 @@ from typing import Callable
 
 from .solver_adapter import UIAnalysisConfig, run_ui_analysis
 from .specimen_probability import attach_convergence_certificate
+from solver_v1.plasticity_diagnostics import assess_plasticity_convergence
 
 
 @dataclass(frozen=True)
@@ -71,6 +72,19 @@ def run_convergence_check(
     )
     spatial_result = runner(spatial_config, **common)
     attach_convergence_certificate(spatial_result, comparisons)
+    plasticity = assess_plasticity_convergence([*comparisons, spatial_result])
+    spatial_result.update(
+        {
+            "plastic_signal_floor": plasticity.plastic_strain_floor,
+            "plastic_well_mass_floor": plasticity.well_mass_floor,
+            "plastic_interwell_transfer_floor": (
+                plasticity.interwell_transfer_floor
+            ),
+            "plastic_resolution_status": plasticity.classification,
+            "plastic_resolution_certified": True,
+            "plastic_floor_scope": "grid/time/integrator convergence",
+        }
+    )
     spatial_result["convergence_check_runs"] = tuple(
         [*labels, f"finer-grid-{spatial_config.grid_n_a}x{spatial_config.grid_n_s}"]
     )

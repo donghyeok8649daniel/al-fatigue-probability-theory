@@ -41,6 +41,12 @@ from .specimen_probability import (
     aggregate_specimen_probability,
 )
 from solver_v1.physical_time import load_time_calibration
+from solver_v1.energy_model_registry import (
+    AL_TARGET_BEST_FEASIBLE,
+    ANALYTIC_LJ_EAM_HYPOTHETICAL,
+    TWO_ROW_LJ_REFERENCE,
+    energy_model_metadata,
+)
 
 
 APP_BG = "#eef1f4"
@@ -126,6 +132,10 @@ class DesktopApp:
         self.load_preset_code = "custom"
         self.time_basis_code = "model"
         self.time_basis_display = tk.StringVar(value=self._tr("option.model_time"))
+        self.energy_model_code = TWO_ROW_LJ_REFERENCE
+        self.energy_model_display = tk.StringVar(
+            value=self._tr("energy_model.lj_reference")
+        )
         self.time_warning_display = tk.StringVar(value="")
         self._frequency_values = {"model": "25", "physical": "1"}
         self.stress_context = tk.StringVar(value="")
@@ -134,6 +144,7 @@ class DesktopApp:
         self.plastic_floor_display = tk.StringVar(value="—")
         self.configurational_barrier_display = tk.StringVar(value="—")
         self.opening_barrier_display = tk.StringVar(value="—")
+        self.plasticity_detail_display = tk.StringVar(value="—")
         self.probability_status_display = tk.StringVar(value="—")
         self.local_probability_display = tk.StringVar(value="—")
         self.specimen_extrapolation_display = tk.StringVar(value="—")
@@ -311,10 +322,27 @@ class DesktopApp:
         section.grid(
             row=0, column=0, columnspan=3, sticky="w", padx=20, pady=(18, 10)
         )
+        energy_label = self._bind_text(
+            ttk.Label(self.pre_tab, style="Property.TLabel"), "field.energy_model"
+        )
+        energy_label.grid(row=1, column=0, sticky="w", padx=(20, 8), pady=7)
+        self.energy_model_selector = ttk.Combobox(
+            self.pre_tab,
+            textvariable=self.energy_model_display,
+            values=self._energy_model_values(),
+            state="readonly",
+            width=36,
+        )
+        self.energy_model_selector.grid(
+            row=1, column=1, columnspan=2, sticky="ew", padx=(4, 20), pady=7
+        )
+        self.energy_model_selector.bind(
+            "<<ComboboxSelected>>", self._on_energy_model_selected
+        )
         time_label = self._bind_text(
             ttk.Label(self.pre_tab, style="Property.TLabel"), "field.time_basis"
         )
-        time_label.grid(row=1, column=0, sticky="w", padx=(20, 8), pady=7)
+        time_label.grid(row=2, column=0, sticky="w", padx=(20, 8), pady=7)
         self.time_basis_selector = ttk.Combobox(
             self.pre_tab,
             textvariable=self.time_basis_display,
@@ -322,7 +350,7 @@ class DesktopApp:
             state="readonly",
             width=20,
         )
-        self.time_basis_selector.grid(row=1, column=1, sticky="ew", padx=4, pady=7)
+        self.time_basis_selector.grid(row=2, column=1, sticky="ew", padx=4, pady=7)
         self.time_basis_selector.bind(
             "<<ComboboxSelected>>", self._on_time_basis_selected
         )
@@ -333,8 +361,8 @@ class DesktopApp:
             wraplength=360,
             justify="left",
         )
-        self.time_warning_label.grid(row=1, column=2, sticky="w", padx=(6, 20), pady=7)
-        for row, (key, label_key, default, unit_key) in enumerate(self.PARAMS, start=2):
+        self.time_warning_label.grid(row=2, column=2, sticky="w", padx=(6, 20), pady=7)
+        for row, (key, label_key, default, unit_key) in enumerate(self.PARAMS, start=3):
             label = self._bind_text(
                 ttk.Label(self.pre_tab, style="Property.TLabel"), label_key
             )
@@ -359,7 +387,7 @@ class DesktopApp:
             ttk.LabelFrame(self.pre_tab, padding=10), "section.load_presets"
         )
         preset_frame.grid(
-            row=len(self.PARAMS) + 2,
+            row=len(self.PARAMS) + 3,
             column=0,
             columnspan=3,
             sticky="ew",
@@ -400,7 +428,7 @@ class DesktopApp:
         note = self._bind_text(
             ttk.LabelFrame(self.pre_tab, padding=12), "section.scope"
         )
-        note.grid(row=len(self.PARAMS) + 3, column=0, columnspan=3, sticky="ew", padx=20, pady=8)
+        note.grid(row=len(self.PARAMS) + 4, column=0, columnspan=3, sticky="ew", padx=20, pady=8)
         scope = self._bind_text(ttk.Label(note, justify="left"), "scope.text")
         scope.pack(anchor="w")
 
@@ -506,6 +534,12 @@ class DesktopApp:
         ttk.Label(
             mechanism, textvariable=self.opening_barrier_display
         ).pack(anchor="w")
+        ttk.Label(
+            mechanism,
+            textvariable=self.plasticity_detail_display,
+            justify="left",
+            wraplength=235,
+        ).pack(anchor="w", pady=(3, 0))
         self._bind_text(
             ttk.Label(mechanism, wraplength=235, justify="left"),
             "diagnostic.barrier_scope",
@@ -578,6 +612,30 @@ class DesktopApp:
         if self.time_calibration.calibrated:
             values.append(self._tr("option.physical_time"))
         return tuple(values)
+
+    def _energy_model_values(self) -> tuple[str, ...]:
+        return tuple(
+            self._tr(energy_model_metadata(model_id).display_key)
+            for model_id in (
+                TWO_ROW_LJ_REFERENCE,
+                ANALYTIC_LJ_EAM_HYPOTHETICAL,
+                AL_TARGET_BEST_FEASIBLE,
+            )
+        )
+
+    def _on_energy_model_selected(self, _event=None) -> None:
+        selected = self.energy_model_display.get()
+        for model_id in (
+            TWO_ROW_LJ_REFERENCE,
+            ANALYTIC_LJ_EAM_HYPOTHETICAL,
+            AL_TARGET_BEST_FEASIBLE,
+        ):
+            if selected == self._tr(energy_model_metadata(model_id).display_key):
+                self.energy_model_code = model_id
+                break
+        self.energy_model_display.set(
+            self._tr(energy_model_metadata(self.energy_model_code).display_key)
+        )
 
     def _on_time_basis_selected(self, _event=None) -> None:
         selected = self.time_basis_display.get()
@@ -810,7 +868,15 @@ class DesktopApp:
             f"{self._tr('diagnostic.plastic_floor')}: "
             + (f"{float(plastic_floor):.3e}" if plastic_floor is not None else "—")
             + (
-                f" ({self._tr('status.requires_convergence')})"
+                " ("
+                + self._tr(
+                    "status.plasticity_resolved"
+                    if self.result is not None
+                    and self.result.get("plastic_resolution_status")
+                    == "resolved_interwell_transfer"
+                    else "status.plasticity_unresolved"
+                )
+                + ")"
                 if plastic_floor is not None
                 else ""
             )
@@ -833,6 +899,38 @@ class DesktopApp:
                 else "—"
             )
         )
+        if self.result is None or not np.asarray(
+            self.result.get("plastic_strain", []), dtype=float
+        ).size:
+            self.plasticity_detail_display.set("—")
+        else:
+            plastic = np.asarray(self.result.get("plastic_strain", []), dtype=float)
+            net = np.asarray(
+                self.result.get("accumulated_net_registry_transfer", []), dtype=float
+            )
+            gross = np.asarray(
+                self.result.get("cumulative_gross_registry_activity", []), dtype=float
+            )
+            status = str(
+                self.result.get("plastic_resolution_status", "requires_convergence")
+            )
+            status_key = (
+                "status.plasticity_resolved"
+                if status == "resolved_interwell_transfer"
+                else "status.plasticity_unresolved"
+            )
+            self.plasticity_detail_display.set(
+                f"{self._tr('diagnostic.max_plastic_strain')}: "
+                f"{float(np.max(np.abs(plastic))):.3e}\n"
+                f"{self._tr('diagnostic.final_plastic_strain')}: "
+                f"{float(plastic[-1]):.3e}\n"
+                f"{self._tr('diagnostic.cumulative_net_registry')}: "
+                f"{float(net[-1]):.3e}\n"
+                f"{self._tr('diagnostic.cumulative_gross_registry')}: "
+                f"{float(gross[-1]):.3e}\n"
+                f"{self._tr('diagnostic.plasticity_status')}: "
+                f"{self._tr(status_key)}"
+            )
         self.local_probability_display.set(
             f"{self._tr('diagnostic.local_probability')}: "
             + (f"{local_probability:.8g}" if local_probability is not None else "—")
@@ -897,6 +995,10 @@ class DesktopApp:
             values=self._probability_scale_values()
         )
         self.probability_scale.set(self._tr(f"option.{self.probability_scale_code}"))
+        self.energy_model_selector.configure(values=self._energy_model_values())
+        self.energy_model_display.set(
+            self._tr(energy_model_metadata(self.energy_model_code).display_key)
+        )
         self._refresh_time_basis_ui()
         self._set_status(self._status_key, **self._status_values)
         self.run_button.configure(text=self._tr(self._button_key))
@@ -978,8 +1080,10 @@ class DesktopApp:
         if self._summary_kind == "solving":
             config = self._summary_payload["config"]
             conversion = self._summary_payload["conversion"]
+            text += "\n" + self._energy_model_summary(conversion)
             text += "\n" + self._time_summary_text(config.time_basis, conversion)
         elif self._summary_kind == "complete":
+            text += "\n" + self._energy_model_summary(self._summary_payload)
             text += "\n" + self._time_summary_text(
                 str(self._summary_payload.get("time_basis", "model")),
                 self._summary_payload,
@@ -992,12 +1096,34 @@ class DesktopApp:
                 text += self._tr("cycle.table_header") + "\n"
                 for row in rows[:12]:
                     text += (
-                        f"{int(row['cycle']):>5d} | {row['absorbed_mass']:.3e} | "
+                        f"{int(row['cycle']):>5d} | {row['mean_total_strain']:.3e} | "
+                        f"{row['total_strain_amplitude']:.3e} | "
+                        f"{row['mean_normal_strain']:.3e} | "
+                        f"{row['mean_intrawell_strain']:.3e} | "
+                        f"{row['plastic_strain_increment']:.3e} | "
+                        f"{row['cumulative_plastic_strain']:.3e} | "
+                        f"{row['net_registry_transfer']:.3e} | "
+                        f"{row['gross_registry_activity']:.3e} | "
+                        f"{row['absorbed_mass']:.3e} | "
+                        f"{row['minimum_configurational_barrier']:.3e} | "
                         f"{row['minimum_opening_barrier']:.3e} | "
                         f"{row['peak_first_passage_flux']:.3e} | "
                         f"{row['survival_at_cycle_end']:.10g}\n"
                     )
         self._set_summary(text)
+
+    def _energy_model_summary(self, values: dict[str, object]) -> str:
+        return self._tr(
+            "summary.energy_model",
+            name=self._tr(str(values["energy_model_display_key"])),
+            python_class=values["energy_model_python_class"],
+            status=values["energy_model_calibration_status"],
+            source=values["energy_model_parameter_source"],
+            a0=values["energy_model_a0"],
+            b=values["energy_model_b"],
+            chi=values["energy_model_chi"],
+            kappa=values["energy_model_kappa_axial"],
+        )
 
     def _time_summary_text(
         self, time_basis: str, values: dict[str, object]
@@ -1053,6 +1179,7 @@ class DesktopApp:
             time_calibration=(
                 self.time_calibration if self.time_basis_code == "physical" else None
             ),
+            energy_model=self.energy_model_code,
             cycles=float(self.entries["cycles"].get()),
             steps_per_cycle=int(self.entries["steps_per_cycle"].get()),
             grid_n_a=81 if resolved else 21,
@@ -1166,8 +1293,16 @@ class DesktopApp:
                     self._last_draw = now
                     self._plot()
                 self._set_status(
-                    "status.live",
-                    time=payload["model_time"],
+                    (
+                        "status.live_physical"
+                        if payload.get("physical_time_seconds") is not None
+                        else "status.live"
+                    ),
+                    time=(
+                        payload["physical_time_seconds"]
+                        if payload.get("physical_time_seconds") is not None
+                        else payload["model_time"]
+                    ),
                     survival=payload["survival"],
                     strain=payload["strain"],
                 )
@@ -1375,6 +1510,20 @@ class DesktopApp:
                 ("accumulated_net_registry_transfer", "absorbed_registry_moment"),
                 text["legend"],
                 ("-", "--"),
+            ):
+                self.ax.plot(
+                    x, data[key], label=label, linewidth=1.5, linestyle=style
+                )
+            self.ax.legend(loc="best", fontsize=7, frameon=False)
+        elif field == "gross_registry_activity":
+            for key, label, style in zip(
+                (
+                    "cumulative_forward_registry_activity",
+                    "cumulative_backward_registry_activity",
+                    "cumulative_gross_registry_activity",
+                ),
+                text["legend"],
+                ("-", "--", ":"),
             ):
                 self.ax.plot(
                     x, data[key], label=label, linewidth=1.5, linestyle=style

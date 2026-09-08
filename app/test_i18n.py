@@ -115,6 +115,17 @@ def test_probability_and_plasticity_terms_use_required_precise_korean() -> None:
         assert tr(key, "en")
 
 
+def test_uncalibrated_time_warning_and_energy_models_are_explicit() -> None:
+    warning = tr("status.kinetic_uncalibrated", "en")
+    assert warning == (
+        "Collective-coordinate mobility is uncalibrated: physical seconds and "
+        "Hz are not yet available."
+    )
+    assert tr("energy_model.lj_reference", "en") == "TwoRowLJ reference"
+    assert "hypothetical" in tr("energy_model.hybrid_hypothetical", "en")
+    assert "best-feasible" in tr("energy_model.al_best_feasible", "en")
+
+
 def test_plastic_flow_plot_separates_interwell_flow_from_opening_loss() -> None:
     english = plot_strings("plastic_flow", "en")
     assert english["title"] == "Model plastic flow"

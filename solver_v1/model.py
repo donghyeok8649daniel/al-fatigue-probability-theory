@@ -10,6 +10,7 @@ from .lattice_bessel import (
     two_row_lj_infinite_hessian,
     two_row_lj_infinite_normal_stiffness,
 )
+from .configurational_plasticity import registry_decomposition
 
 
 @dataclass
@@ -371,8 +372,8 @@ class TwoRowLJ:
         return float(np.mean((a-self.a0)/self.a0 + p.chi_axial_projection*s/self.a0))
 
     def well_index(self, s: np.ndarray) -> np.ndarray:
-        p = self.p
-        return np.floor((np.asarray(s) + 0.5*p.b)/p.b).astype(int)
+        indices, _ = registry_decomposition(s, self.p.b)
+        return indices.astype(int, copy=False)
 
     def opening_saddle_batch(self, s: np.ndarray, force: float):
         if not self._opening_table_ready:

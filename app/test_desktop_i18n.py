@@ -4,6 +4,11 @@ import numpy as np
 import pytest
 
 import app.desktop_ui as desktop_ui
+from solver_v1.energy_model_registry import (
+    AL_TARGET_BEST_FEASIBLE,
+    TWO_ROW_LJ_REFERENCE,
+    energy_model_metadata,
+)
 
 
 def test_desktop_language_switch_preserves_state_and_does_not_run_solver(
@@ -33,6 +38,12 @@ def test_desktop_language_switch_preserves_state_and_does_not_run_solver(
             "local_initiation_probability": np.array([0.0, 1.0e-12, 2.0e-12]),
         }
         app.result = result
+        assert app.energy_model_code == TWO_ROW_LJ_REFERENCE
+        app.energy_model_display.set(
+            app._tr(energy_model_metadata(AL_TARGET_BEST_FEASIBLE).display_key)
+        )
+        app._on_energy_model_selected()
+        assert app.energy_model_code == AL_TARGET_BEST_FEASIBLE
         identities = {key: id(value) for key, value in result.items()}
         app._plot()
         app.ax.set_xlim(0.004, 0.016)
@@ -46,6 +57,8 @@ def test_desktop_language_switch_preserves_state_and_does_not_run_solver(
         assert app.entries["young_gpa"].get() == "70.5"
         assert app.analysis_quality_code == "resolved"
         assert app.field.get() == "local_initiation_probability"
+        assert app.energy_model_code == AL_TARGET_BEST_FEASIBLE
+        assert "best-feasible" in app.energy_model_display.get()
         assert {key: id(value) for key, value in app.result.items()} == identities
         np.testing.assert_allclose(app.ax.get_xlim(), (0.004, 0.016))
         np.testing.assert_allclose(app.ax.get_ylim(), (0.4e-12, 1.6e-12))

@@ -13,6 +13,12 @@ import numpy as np
 
 from solver_v1.dynamics_diagnostics import model_frequency_diagnostics
 from solver_v1.configurational_landscape import bound_configurational_barrier
+from solver_v1.energy_model_registry import (
+    ENERGY_MODEL_IDS,
+    TWO_ROW_LJ_REFERENCE,
+    build_energy_model,
+    energy_model_result_metadata,
+)
 from solver_v1.model import ModelParams, TwoRowLJ
 from solver_v1.probability_pde_2d import (
     Grid2D,
@@ -34,6 +40,7 @@ PDE_RESULT_FIELDS = (
     "normal_strain",
     "intrawell_strain",
     "plastic_strain",
+    "strain_decomposition_residual",
     "strain",
     "survival",
     "survival_probability",
@@ -64,6 +71,9 @@ PDE_RESULT_FIELDS = (
     "net_plastic_flow_rate",
     "gross_configurational_slip_activity",
     "selective_opening_plastic_rate",
+    "cumulative_forward_registry_activity",
+    "cumulative_backward_registry_activity",
+    "cumulative_gross_registry_activity",
 )
 
 
@@ -87,6 +97,7 @@ class UIAnalysisConfig:
     time_basis: str = "model"
     physical_frequency_hz: float | None = None
     time_calibration: PhysicalTimeCalibration | None = None
+    energy_model: str = TWO_ROW_LJ_REFERENCE
 
     @property
     def young_mpa(self) -> float:
@@ -177,6 +188,8 @@ class UIAnalysisConfig:
             raise ValueError("integration_method must be 'explicit' or 'implicit'")
         if self.analysis_quality not in {"preview", "resolved"}:
             raise ValueError("analysis_quality must be 'preview' or 'resolved'")
+        if self.energy_model not in ENERGY_MODEL_IDS:
+            raise ValueError(f"unknown energy model: {self.energy_model}")
 
 
 def load_interpretation(
@@ -229,11 +242,11 @@ def canonical_model_params() -> ModelParams:
     )
 
 
-def physical_load_conversion(config: UIAnalysisConfig) -> dict[str, float]:
+def physical_load_conversion(config: UIAnalysisConfig) -> dict[str, object]:
     """Map physical stress inputs through sigma/E and relaxed axial kappa."""
 
     config.validate()
-    model = TwoRowLJ(canonical_model_params())
+    model = build_energy_model(config.energy_model, chi=0.20, kT=0.02)
     kappa = model.sigma_over_E_force_scale()
     reduced_min = config.stress_min_mpa / config.young_mpa
     reduced_max = config.stress_max_mpa / config.young_mpa
@@ -251,7 +264,12 @@ def physical_load_conversion(config: UIAnalysisConfig) -> dict[str, float]:
         "force_min": float(model.force_from_sigma_over_E(reduced_min)),
         "force_max": float(model.force_from_sigma_over_E(reduced_max)),
         "preload_force": float(model.force_from_sigma_over_E(reduced_initial)),
+        **energy_model_result_metadata(config.energy_model, model),
         "time_basis": config.time_basis,
+        "time_unit": "s" if config.time_basis == "physical" else "model time",
+        "frequency_unit": (
+            "Hz" if config.time_basis == "physical" else "cycles / model time"
+        ),
         "frequency_hz": config.frequency_hz,
         "physical_period_seconds": config.physical_period_seconds,
         "physical_duration_seconds": config.physical_duration_seconds,
@@ -327,6 +345,9 @@ def result_field_mapping(result: dict[str, object]) -> dict[str, np.ndarray]:
         "normal_strain": np.asarray(result["normal_strain"], dtype=float),
         "intrawell_strain": np.asarray(result["intrawell_strain"], dtype=float),
         "plastic_strain": np.asarray(result["plastic_strain"], dtype=float),
+        "strain_decomposition_residual": np.asarray(
+            result["strain_decomposition_residual"], dtype=float
+        ),
         "strain": np.asarray(result["strain"], dtype=float),
         "survival": np.asarray(result["survival"], dtype=float),
         "survival_probability": np.asarray(
@@ -405,19 +426,43 @@ def result_field_mapping(result: dict[str, object]) -> dict[str, np.ndarray]:
         "selective_opening_plastic_rate": np.asarray(
             result["selective_opening_plastic_rate"], dtype=float
         ),
+        "cumulative_forward_registry_activity": np.asarray(
+            result["cumulative_forward_registry_activity"], dtype=float
+        ),
+        "cumulative_backward_registry_activity": np.asarray(
+            result["cumulative_backward_registry_activity"], dtype=float
+        ),
+        "cumulative_gross_registry_activity": np.asarray(
+            result["cumulative_gross_registry_activity"], dtype=float
+        ),
     }
 
 
 def per_cycle_first_passage_diagnostics(
     result: dict[str, object],
 ) -> list[dict[str, float]]:
-    """Summarize absorbed mass and opening diagnostics for every load cycle."""
+    """Summarize mechanical, registry, and opening diagnostics by cycle."""
 
     cycle = np.asarray(result["load_cycle"], dtype=float)
     absorbed = np.asarray(result["cumulative_absorbed_mass"], dtype=float)
     survival = np.asarray(result["survival"], dtype=float)
     flux = np.asarray(result["first_passage_flux"], dtype=float)
     force = np.asarray(result["force"], dtype=float)
+    total_strain = np.asarray(result["strain"], dtype=float)
+    normal_strain = np.asarray(result["normal_strain"], dtype=float)
+    intrawell_strain = np.asarray(result["intrawell_strain"], dtype=float)
+    plastic_strain = np.asarray(result["plastic_strain"], dtype=float)
+    net_transfer = np.asarray(
+        result.get("cumulative_forward_registry_activity", np.zeros_like(cycle)),
+        dtype=float,
+    ) - np.asarray(
+        result.get("cumulative_backward_registry_activity", np.zeros_like(cycle)),
+        dtype=float,
+    )
+    gross_activity = np.asarray(
+        result.get("cumulative_gross_registry_activity", np.zeros_like(cycle)),
+        dtype=float,
+    )
     model = result["model"]
     if cycle.size == 0:
         return []
@@ -443,11 +488,30 @@ def per_cycle_first_passage_diagnostics(
         absorbed_start = float(np.interp(start, cycle, absorbed))
         absorbed_end = float(np.interp(end, cycle, absorbed))
         survival_end = float(np.interp(end, cycle, survival))
+        plastic_start = float(np.interp(start, cycle, plastic_strain))
+        plastic_end = float(np.interp(end, cycle, plastic_strain))
+        net_start = float(np.interp(start, cycle, net_transfer))
+        net_end = float(np.interp(end, cycle, net_transfer))
+        gross_start = float(np.interp(start, cycle, gross_activity))
+        gross_end = float(np.interp(end, cycle, gross_activity))
         rows.append(
             {
                 "cycle": float(number),
                 "cycle_end": end,
+                "mean_total_strain": float(np.mean(total_strain[mask])),
+                "total_strain_amplitude": float(
+                    0.5 * np.ptp(total_strain[mask])
+                ),
+                "mean_normal_strain": float(np.mean(normal_strain[mask])),
+                "mean_intrawell_strain": float(np.mean(intrawell_strain[mask])),
+                "plastic_strain_increment": plastic_end - plastic_start,
+                "cumulative_plastic_strain": plastic_end,
+                "net_registry_transfer": net_end - net_start,
+                "gross_registry_activity": gross_end - gross_start,
                 "absorbed_mass": absorbed_end - absorbed_start,
+                "minimum_configurational_barrier": float(
+                    result.get("configurational_barrier", np.nan)
+                ),
                 "minimum_opening_barrier": min(
                     minimum_barrier(value) for value in force[mask]
                 ),
@@ -470,8 +534,7 @@ def run_ui_analysis(
     """Run the canonical PDE path used by the desktop application."""
 
     config.validate()
-    model_params = canonical_model_params()
-    calibration_model = TwoRowLJ(model_params)
+    calibration_model = build_energy_model(config.energy_model, chi=0.20, kT=0.02)
     load = cyclic_load_from_sigma_over_E(
         calibration_model,
         sigma_over_E_min=config.stress_min_mpa / config.young_mpa,
@@ -490,7 +553,7 @@ def run_ui_analysis(
             record_callback(_decorate_record(config, record))
 
     raw = run_probability_pde_2d(
-        model_params=model_params,
+        prepared_model=calibration_model,
         grid_params=Grid2DParams(
             n_a=config.grid_n_a,
             n_s=config.grid_n_s,
@@ -565,6 +628,10 @@ def run_ui_analysis(
         "physical_time_seconds": physical_time,
         "plot_time": physical_time if physical_time is not None else model_time,
         "time_basis": config.time_basis,
+        "time_unit": "s" if config.time_basis == "physical" else "model time",
+        "frequency_unit": (
+            "Hz" if config.time_basis == "physical" else "cycles / model time"
+        ),
         "frequency_hz": config.frequency_hz,
         "physical_period_seconds": config.physical_period_seconds,
         "physical_duration_seconds": config.physical_duration_seconds,
@@ -601,6 +668,7 @@ def run_ui_analysis(
         ),
         "solver_time_status": solver_time_status,
         "probability_source": "N=1 direct Smoluchowski/Fokker-Planck PDE",
+        **energy_model_result_metadata(config.energy_model, calibration_model),
         "analysis_quality": config.analysis_quality,
         "integration_method": config.integration_method,
         "grid_shape": (config.grid_n_a, config.grid_n_s),
@@ -608,6 +676,19 @@ def run_ui_analysis(
         **dynamics,
     }
     assessment = assess_local_rare_event(result)
+    result.update(
+        {
+            "cumulative_forward_registry_activity": np.sum(
+                np.asarray(result["cumulative_interwell_forward_transfer"]), axis=1
+            ),
+            "cumulative_backward_registry_activity": np.sum(
+                np.asarray(result["cumulative_interwell_backward_transfer"]), axis=1
+            ),
+            "cumulative_gross_registry_activity": np.sum(
+                np.asarray(result["cumulative_interwell_gross_transfer"]), axis=1
+            ),
+        }
+    )
     result.update(
         {
             "local_rare_event_floor": assessment.floor,

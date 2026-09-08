@@ -241,6 +241,27 @@ def configurational_interface_fluxes(
     return np.asarray(signed, dtype=float), np.asarray(gross, dtype=float)
 
 
+def configurational_interface_one_way_fluxes(
+    density: np.ndarray,
+    energy: np.ndarray,
+    model: TwoRowLJ,
+    grid: Grid2D,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Return nonnegative increasing-s and decreasing-s SG activities.
+
+    These are reconstructed from the exact signed/gross SG decomposition,
+    not from ``abs(net flux)``.
+    """
+
+    signed, gross = configurational_interface_fluxes(density, energy, model, grid)
+    forward = 0.5 * (gross + signed)
+    backward = 0.5 * (gross - signed)
+    roundoff = 64.0 * np.finfo(float).eps * np.maximum(1.0, gross)
+    if np.any(forward < -roundoff) or np.any(backward < -roundoff):
+        raise FloatingPointError("invalid SG forward/backward flux decomposition")
+    return np.maximum(forward, 0.0), np.maximum(backward, 0.0)
+
+
 def configurational_well_structure(
     model: TwoRowLJ,
     grid: Grid2D,
@@ -296,6 +317,10 @@ def configurational_well_observables(
         "well_population": populations,
         "interwell_net_flux": signed_all[interface_indices],
         "interwell_gross_flux": gross_all[interface_indices],
+        "interwell_forward_flux": 0.5
+        * (gross_all[interface_indices] + signed_all[interface_indices]),
+        "interwell_backward_flux": 0.5
+        * (gross_all[interface_indices] - signed_all[interface_indices]),
     }
 
 
@@ -512,6 +537,9 @@ def observables(
         intrawell_strain = float(np.sum(conditional * intrawell_field) * volume)
         plastic_strain = float(np.sum(conditional * plastic_field) * volume)
         strain = normal_strain + intrawell_strain + plastic_strain
+        strain_decomposition_residual = (
+            strain - normal_strain - intrawell_strain - plastic_strain
+        )
         mean_well_index = float(np.sum(conditional * nwell) * volume)
         well_activity = float(np.sum(conditional * np.abs(nwell)) * volume)
     else:
@@ -519,6 +547,7 @@ def observables(
         normal_strain = np.nan
         intrawell_strain = np.nan
         plastic_strain = np.nan
+        strain_decomposition_residual = np.nan
         mean_well_index = np.nan
         well_activity = np.nan
 
@@ -538,6 +567,7 @@ def observables(
         "normal_strain": normal_strain,
         "intrawell_strain": intrawell_strain,
         "plastic_strain": plastic_strain,
+        "strain_decomposition_residual": strain_decomposition_residual,
         "mean_well_index": mean_well_index,
         "plastic_well_activity": well_activity,
         "s_truncation_boundary_mass": s_boundary_mass,
@@ -614,6 +644,7 @@ def run_probability_pde_2d(
             "normal_strain",
             "intrawell_strain",
             "plastic_strain",
+            "strain_decomposition_residual",
             "mean_well_index",
             "plastic_well_activity",
             "s_truncation_boundary_mass",
@@ -638,6 +669,9 @@ def run_probability_pde_2d(
             "net_plastic_flow_rate",
             "gross_configurational_slip_activity",
             "selective_opening_plastic_rate",
+            "cumulative_forward_registry_activity",
+            "cumulative_backward_registry_activity",
+            "cumulative_gross_registry_activity",
         )
     }
 
@@ -700,6 +734,7 @@ def run_probability_pde_2d(
             opening_absorption_rate_by_well=opening_rate_by_well,
         )
         accumulated_registry_transfer = float(np.sum(cumulative_interwell_net))
+        accumulated_gross_activity = float(np.sum(cumulative_interwell_gross))
         absorbed_registry_moment = float(well_indices @ cumulative_opening_by_well)
         registry_balance_residual = float(
             registry_terms.unnormalized_registry_moment
@@ -762,6 +797,11 @@ def run_probability_pde_2d(
             "selective_opening_plastic_rate": float(
                 plastic_factor * registry_terms.conditional_selective_opening_rate
             ),
+            "cumulative_forward_registry_activity": 0.5
+            * (accumulated_gross_activity + accumulated_registry_transfer),
+            "cumulative_backward_registry_activity": 0.5
+            * (accumulated_gross_activity - accumulated_registry_transfer),
+            "cumulative_gross_registry_activity": accumulated_gross_activity,
         }
         for name in records:
             records[name].append(snapshot[name])
@@ -909,11 +949,31 @@ def run_probability_pde_2d(
         "interwell_gross_flux": np.asarray(
             interwell_gross_flux_records, dtype=float
         ),
+        "interwell_forward_flux": 0.5
+        * (
+            np.asarray(interwell_gross_flux_records, dtype=float)
+            + np.asarray(interwell_net_flux_records, dtype=float)
+        ),
+        "interwell_backward_flux": 0.5
+        * (
+            np.asarray(interwell_gross_flux_records, dtype=float)
+            - np.asarray(interwell_net_flux_records, dtype=float)
+        ),
         "cumulative_interwell_net_transfer": np.asarray(
             cumulative_interwell_net_records, dtype=float
         ),
         "cumulative_interwell_gross_transfer": np.asarray(
             cumulative_interwell_gross_records, dtype=float
+        ),
+        "cumulative_interwell_forward_transfer": 0.5
+        * (
+            np.asarray(cumulative_interwell_gross_records, dtype=float)
+            + np.asarray(cumulative_interwell_net_records, dtype=float)
+        ),
+        "cumulative_interwell_backward_transfer": 0.5
+        * (
+            np.asarray(cumulative_interwell_gross_records, dtype=float)
+            - np.asarray(cumulative_interwell_net_records, dtype=float)
         ),
         "cumulative_opening_absorption_by_well": cumulative_opening_by_well.copy(),
         "cumulative_opening_absorption_by_well_history": np.asarray(

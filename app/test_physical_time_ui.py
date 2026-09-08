@@ -60,6 +60,10 @@ def test_uncalibrated_physical_mode_is_rejected_and_model_mode_is_unchanged() ->
     default.validate()
     assert default.effective_model_frequency == pytest.approx(25.0)
     assert default.frequency_hz is None
+    metadata = physical_load_conversion(default)
+    assert metadata["time_unit"] == "model time"
+    assert metadata["frequency_unit"] == "cycles / model time"
+    assert "Hz" not in metadata["frequency_unit"]
 
 
 def test_physical_and_model_time_inputs_map_to_identical_pde_controls() -> None:
@@ -144,6 +148,13 @@ def _fake_result(signal: float, quality: str = "resolved") -> dict[str, object]:
         "mass_balance_residual": np.array([0.0, 1.0e-12]),
         "cumulative_negative_mass_correction": np.zeros(2),
         "flux_consistency_residual": np.zeros(2),
+        "plastic_strain": np.zeros(2),
+        "mean_well_index": np.zeros(2),
+        "well_indices": np.array([-1, 0, 1]),
+        "well_populations": np.array([[0.0, 1.0, 0.0], [0.0, 1.0, 0.0]]),
+        "cumulative_interwell_net_transfer": np.zeros((2, 2)),
+        "cumulative_interwell_gross_transfer": np.zeros((2, 2)),
+        "well_population_balance_residual": np.zeros((2, 3)),
     }
 
 
@@ -209,6 +220,20 @@ def test_per_cycle_absorption_table_distinguishes_first_cycle_transient() -> Non
         "survival": np.array([1.0, 0.90, 0.88, 0.875, 0.87]),
         "first_passage_flux": np.array([0.0, 0.2, 0.04, 0.01, 0.01]),
         "force": np.array([0.0, 1.0, 0.0, 1.0, 0.0]),
+        "strain": np.array([0.0, 0.2, 0.0, 0.1, 0.0]),
+        "normal_strain": np.array([0.0, 0.18, 0.0, 0.09, 0.0]),
+        "intrawell_strain": np.array([0.0, 0.02, 0.0, 0.01, 0.0]),
+        "plastic_strain": np.zeros(5),
+        "cumulative_forward_registry_activity": np.array(
+            [0.0, 0.02, 0.04, 0.05, 0.06]
+        ),
+        "cumulative_backward_registry_activity": np.array(
+            [0.0, 0.01, 0.02, 0.025, 0.03]
+        ),
+        "cumulative_gross_registry_activity": np.array(
+            [0.0, 0.03, 0.06, 0.075, 0.09]
+        ),
+        "configurational_barrier": 0.5,
         "model": _BarrierModel(),
     }
     rows = per_cycle_first_passage_diagnostics(result)
@@ -217,3 +242,5 @@ def test_per_cycle_absorption_table_distinguishes_first_cycle_transient() -> Non
     assert rows[1]["absorbed_mass"] == pytest.approx(0.01)
     assert rows[0]["peak_first_passage_flux"] > rows[1]["peak_first_passage_flux"]
     assert rows[0]["minimum_opening_barrier"] == pytest.approx(1.0)
+    assert rows[0]["gross_registry_activity"] == pytest.approx(0.06)
+    assert rows[0]["net_registry_transfer"] == pytest.approx(0.02)

@@ -62,6 +62,7 @@ _ROWS = (
     ("status.stopping", "현재 PDE 스텝이 끝난 뒤 중지합니다…", "Stopping after the current PDE step…"),
     ("status.solving", "백그라운드에서 확률 PDE 직접 해석 중…", "Solving direct probability PDE in background…"),
     ("status.live", "PDE 모델 시간 {time:.5g} · S={survival:.12g} · ε={strain:.6g}", "PDE model time {time:.5g} · S={survival:.12g} · ε={strain:.6g}"),
+    ("status.live_physical", "PDE 물리 시간 {time:.5g} s · S={survival:.12g} · ε={strain:.6g}", "PDE physical time {time:.5g} s · S={survival:.12g} · ε={strain:.6g}"),
     ("status.complete", "완료 · 기록 {records}개 · S={survival:.12g}", "Complete · {records} records · S={survival:.12g}"),
     ("status.failed", "해석 실패", "Solve failed"),
     ("dialog.invalid_title", "입력값 오류", "Invalid input"),
@@ -182,7 +183,7 @@ _ROWS = (
     ("axis.first_passage_flux_seconds", "최초통과 플럭스 [1/s]", "First-passage flux [1/s]"),
     ("axis.interwell_flux_seconds", "확률 플럭스 [1/s]", "Probability flux [1/s]"),
     ("axis.plastic_flow_seconds", "변형률률 [1/s]", "Strain rate [1/s]"),
-    ("status.kinetic_uncalibrated", "동역학 이동도 미보정: 현재 시간과 주파수는 물리적 초/Hz가 아닙니다.", "Kinetic mobility is uncalibrated: time and frequency are not physical seconds/Hz."),
+    ("status.kinetic_uncalibrated", "집단좌표 이동도 미보정: 실제 초와 Hz는 아직 사용할 수 없습니다.", "Collective-coordinate mobility is uncalibrated: physical seconds and Hz are not yet available."),
     ("status.kinetic_calibrated", "동역학 이동도 보정됨: 물리 시간 변환이 활성화되었습니다.", "Kinetic mobility calibrated: physical-time conversion is enabled."),
     ("status.physical_time_unavailable", "유효한 동역학 이동도 보정이 없어 물리 시간을 선택할 수 없습니다.", "Physical time is unavailable without a valid kinetic-mobility calibration."),
     ("diagnostic.t0", "모델 시간척도 t0", "Model time scale t0"),
@@ -199,8 +200,25 @@ _ROWS = (
     ("plot.specimen_extrapolation", "시편 확률 수학적 외삽값 (미인증)", "Mathematical specimen probability extrapolation (uncertified)"),
     ("plot.specimen_extrapolation_note", "이 값은 독립영역 수학적 외삽이며 수렴 인증된 물리 확률이 아닙니다.", "This is an independent-region mathematical extrapolation, not a convergence-certified physical probability."),
     ("section.cycle_diagnostics", "사이클별 최초통과 진단", "Per-cycle first-passage diagnostics"),
-    ("cycle.table_header", "사이클 | 흡수 질량 | 최소 개구 장벽 | 최대 플럭스 | 종료 생존확률", "Cycle | absorbed mass | min opening barrier | peak flux | end survival"),
-    ("summary.model_time_basis", "시간 기준: 모델 시간\n동역학 이동도 미보정: 현재 시간과 주파수는 물리적 초/Hz가 아닙니다.\n", "Time basis: model time\nKinetic mobility is uncalibrated: time and frequency are not physical seconds/Hz.\n"),
+    ("cycle.table_header", "사이클 | 평균 ε | 진폭 | 평균 ε_a | 평균 ε_xi | Δε_p | ε_p | 순이동 | 총활동 | 흡수 | ΔG_s | ΔG_open | 최대플럭스 | 종료S", "Cycle | mean ε | amplitude | mean ε_a | mean ε_xi | Δε_p | ε_p | net transfer | gross activity | absorbed | ΔG_s | ΔG_open | peak flux | end S"),
+    ("summary.model_time_basis", "시간 기준: 모델 시간\n집단좌표 이동도 미보정: 실제 초와 Hz는 아직 사용할 수 없습니다.\n", "Time basis: model time\nCollective-coordinate mobility is uncalibrated: physical seconds and Hz are not yet available.\n"),
+    ("field.energy_model", "에너지 모델", "Energy model"),
+    ("energy_model.lj_reference", "TwoRowLJ 기준 모델", "TwoRowLJ reference"),
+    ("energy_model.hybrid_hypothetical", "해석적 LJ–EAM 가상 민감도 모델", "Analytic LJ–EAM hypothetical sensitivity"),
+    ("energy_model.al_best_feasible", "Al 목표 최적가능 하이브리드", "Al-target best-feasible hybrid"),
+    ("summary.energy_model", "활성 에너지 모델: {name}\nPython 클래스: {python_class}\n보정 상태: {status}\n매개변수 출처: {source}\na0 / b / chi / kappa: {a0:.10g} / {b:.8g} / {chi:.8g} / {kappa:.10g}\n", "Active energy model: {name}\nPython class: {python_class}\nCalibration status: {status}\nParameter source: {source}\na0 / b / chi / kappa: {a0:.10g} / {b:.8g} / {chi:.8g} / {kappa:.10g}\n"),
+    ("plot.gross_registry_activity", "누적 총 레지스트리 활동", "Cumulative gross registry activity"),
+    ("axis.gross_registry_activity", "누적 우물 횡단 확률질량 [-]", "Cumulative well-crossing probability mass [-]"),
+    ("legend.registry_forward", "증가 s 방향", "Increasing-s activity"),
+    ("legend.registry_backward", "감소 s 방향", "Decreasing-s activity"),
+    ("legend.registry_gross", "총 양방향 활동", "Gross bidirectional activity"),
+    ("diagnostic.plasticity_status", "소성 해상도 상태", "Plasticity resolution status"),
+    ("diagnostic.max_plastic_strain", "최대 |소성 변형률|", "Max |plastic strain|"),
+    ("diagnostic.final_plastic_strain", "최종 소성 변형률", "Final plastic strain"),
+    ("diagnostic.cumulative_net_registry", "누적 순 레지스트리 이동", "Cumulative net registry transfer"),
+    ("diagnostic.cumulative_gross_registry", "누적 총 레지스트리 활동", "Cumulative gross registry activity"),
+    ("status.plasticity_unresolved", "수치적 또는 미해결", "Numerical or unresolved"),
+    ("status.plasticity_resolved", "우물 간 이동 해상됨", "Resolved interwell transfer"),
     ("summary.physical_time_basis", "시간 기준: 물리 시간\n주파수: {frequency_hz:.8g} Hz\n주기: {period_seconds:.8g} s\n총 시간: {duration_seconds:.8g} s\nt0: {t0:.8g} s\ntau_fast / tau_slow: {tau_fast:.8g} / {tau_slow:.8g} s\nM_a: {mobility_a:.8g} m²/(J·s)\nM_s: {mobility_s:.8g} m²/(J·s)\n출처: {source}\n", "Time basis: physical time\nFrequency: {frequency_hz:.8g} Hz\nPeriod: {period_seconds:.8g} s\nTotal time: {duration_seconds:.8g} s\nt0: {t0:.8g} s\ntau_fast / tau_slow: {tau_fast:.8g} / {tau_slow:.8g} s\nM_a: {mobility_a:.8g} m²/(J·s)\nM_s: {mobility_s:.8g} m²/(J·s)\nSource: {source}\n"),
 )
 
@@ -290,6 +308,7 @@ FIELD_TEXT_KEYS = {
     "interwell_flux": "plot.interwell_flux",
     "plastic_flow": "plot.plastic_flow",
     "registry_transfer": "plot.registry_transfer",
+    "gross_registry_activity": "plot.gross_registry_activity",
     "mass_diagnostics": "plot.mass_diagnostics",
 }
 
@@ -321,6 +340,7 @@ def plot_strings(
         "interwell_flux": "axis.interwell_flux",
         "plastic_flow": "axis.plastic_flow",
         "registry_transfer": "axis.registry_transfer",
+        "gross_registry_activity": "axis.gross_registry_activity",
         "mass_diagnostics": "axis.probability_mass",
     }[field]
     legend_keys = {
@@ -344,6 +364,11 @@ def plot_strings(
         "registry_transfer": (
             "legend.registry_transfer",
             "legend.registry_absorption",
+        ),
+        "gross_registry_activity": (
+            "legend.registry_forward",
+            "legend.registry_backward",
+            "legend.registry_gross",
         ),
     }.get(field, ())
     if time_basis not in {"model", "physical"}:

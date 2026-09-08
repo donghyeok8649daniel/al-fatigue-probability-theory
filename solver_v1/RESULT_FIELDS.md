@@ -26,7 +26,12 @@ The relaxed total-axial-strain calibration is
 
 This is a tangent calibration of the force coordinate only. It guarantees that the **relaxed total axial strain** reproduces \(\varepsilon\simeq\sigma/E\) at infinitesimal signed load while the actual PDE continues to use the full nonlinear Bessel-LJ energy. The frozen-registry scale \(a_0W_{aa}(a_0,0)\) remains available as a diagnostic and is not the canonical load mapping.
 
-The implementation is `TwoRowLJ.force_from_sigma_over_E(...)` and `cyclic_load_from_sigma_over_E(...)`.
+The implementation uses the selected energy surface's
+`force_from_sigma_over_E(...)` together with
+`cyclic_load_from_sigma_over_E(...)`. Each surface recomputes its own $a_0$,
+Hessian, and relaxed axial kappa. Result metadata records the exact model ID,
+Python class, parameter source, calibration status, and kappa; a `TwoRowLJ`
+result must not be labeled as the Al-target hybrid.
 
 ## Core probability fields
 
@@ -126,6 +131,18 @@ boundary. Positive sign points toward increasing $s$.
 Sum of the two nonnegative one-way SG rates at a well boundary. It detects
 bidirectional thermal crossing even when signed net transfer is nearly zero.
 
+### `interwell_forward_flux` and `interwell_backward_flux`
+The two nonnegative one-way SG interface rates. With positive direction toward
+increasing $s$,
+
+$$
+J_{+}=\frac{J_{\mathrm{gross}}+J_{\mathrm{net}}}{2},\qquad
+J_{-}=\frac{J_{\mathrm{gross}}-J_{\mathrm{net}}}{2}.
+$$
+
+They expose whether small net flow comes from genuinely small activity or from
+large forward/backward cancellation.
+
 ### `well_population_balance_residual`
 Difference between directly integrated $P_n(t)$ and the population reconstructed
 from cumulative left/right boundary fluxes and opening absorption. This is a
@@ -138,6 +155,17 @@ can change by both interwell transport and selective opening absorption.
 ### `accumulated_net_registry_transfer`
 Time integral of the signed interwell interface fluxes, summed over represented
 interfaces. Positive sign means accumulated transport toward increasing $s$.
+
+### `cumulative_interwell_forward_transfer`,
+`cumulative_interwell_backward_transfer`, and
+`cumulative_interwell_gross_transfer`
+Interface-resolved time integrals of the corresponding one-way/gross SG rates.
+Their interface sums are exposed to the UI as
+`cumulative_forward_registry_activity`,
+`cumulative_backward_registry_activity`, and
+`cumulative_gross_registry_activity`. These are probability-traffic measures;
+they are never multiplied by specimen area and do not replace signed plastic
+strain.
 
 ### `absorbed_registry_moment`
 $\sum_n nA_n(t)$, the well-index moment of probability removed by the opening
@@ -185,8 +213,9 @@ Axially scaled survivor-conditioned gross SG interwell activity. It records
 forward-plus-backward configurational traffic and is distinct from signed net
 plastic flow.
 
-The complete derivation and current convergence classification are in
-`CONFIGURATIONAL_PLASTICITY.md`.
+The complete derivation is in `CONFIGURATIONAL_PLASTICITY.md`. The current
+survivor-normalization, energy-model-path, refinement, unload/hold, and barrier
+audit is in `PLASTICITY_AND_STRAIN_AUDIT.md`.
 
 ### `cov_a12`
 For the N=2 dense reference solver, covariance between the two normal-spacing coordinates `a1` and `a2` among survivors. Nonzero values indicate explicit cross-cell correlation.
@@ -262,6 +291,8 @@ diagnostic only.
 - `physical_time_seconds`: available only with validated kinetic mobility;
 - `plot_time`: selected display basis without altering `model_time`;
 - `time_basis`: `model` or `physical`;
+- `time_unit` and `frequency_unit`: explicitly `model time` and
+  `cycles / model time` unless a validated physical calibration is loaded;
 - `t0_seconds`, `frequency_hz`, `physical_period_seconds`, and
   `physical_duration_seconds`: null in uncalibrated model-time mode;
 - `physical_M_a`, `physical_M_s`, and `kinetic_calibration_source`: provenance

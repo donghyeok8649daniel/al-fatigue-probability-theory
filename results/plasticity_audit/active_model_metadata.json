@@ -1,0 +1,39 @@
+{
+  "previous_ui_default": "two_row_lj_reference",
+  "current_ui_default": "two_row_lj_reference",
+  "selector_options": [
+    "two_row_lj_reference",
+    "analytic_lj_eam_hypothetical",
+    "al_target_best_feasible_hybrid"
+  ],
+  "two_row_lj_reference": {
+    "python_class": "solver_v1.model.TwoRowLJ",
+    "parameter_source": "app canonical N=1 reference parameters",
+    "calibration_status": "dimensionless reference; not calibrated Al",
+    "a0": 0.7713438268704838,
+    "b": 1.0,
+    "chi": 0.2,
+    "kappa_axial": 86.29296488740997
+  },
+  "analytic_lj_eam_hypothetical": {
+    "python_class": "solver_v1.analytic_lj_eam.AnalyticLJEAM",
+    "parameter_source": "results/aluminum_calibration/parameter_sets.csv:hypothetical_v1",
+    "calibration_status": "hypothetical sensitivity set; uncalibrated",
+    "a0": 0.9677866043190319,
+    "b": 1.0,
+    "chi": 0.2,
+    "kappa_axial": 2.5668896260112026
+  },
+  "al_target_best_feasible_hybrid": {
+    "python_class": "solver_v1.analytic_lj_eam.AnalyticLJEAM",
+    "parameter_source": "results/aluminum_calibration/parameter_sets.csv:linear_best_feasible",
+    "calibration_status": "Al-target best-feasible; practically non-identifiable",
+    "a0": 0.8164957221838465,
+    "b": 1.0,
+    "chi": 0.2,
+    "kappa_axial": 13.855051447120799
+  },
+  "time_basis": "model",
+  "physical_seconds_available": false,
+  "physical_hz_available": false
+}

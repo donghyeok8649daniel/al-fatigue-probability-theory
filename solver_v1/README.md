@@ -138,6 +138,11 @@ flux balances, the separation of interwell plastic flow from selective crack
 absorption, the candidate crystallographic interpretation of $\chi$, and the
 current (conservative) numerical classification of the LJ slip mechanism.
 
+See `PLASTICITY_AND_STRAIN_AUDIT.md` for the production survivor-normalized
+strain audit, deterministic grid/time/interface refinement, unload/zero-stress
+hold study, barrier comparison, exact desktop energy-model path, and the
+separate crack/plasticity resolution classifications.
+
 See `ANALYTIC_LJ_EAM_HYBRID.md` for the optional analytic LJ--EAM hybrid. The
 verified Poisson/Bessel LJ pair term remains the base interaction; an
 exponential environment-density lattice sum and differentiable embedding term

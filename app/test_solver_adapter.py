@@ -11,6 +11,11 @@ from app.solver_adapter import (
     result_field_mapping,
     run_ui_analysis,
 )
+from solver_v1.energy_model_registry import (
+    AL_TARGET_BEST_FEASIBLE,
+    ANALYTIC_LJ_EAM_HYPOTHETICAL,
+    TWO_ROW_LJ_REFERENCE,
+)
 
 
 @lru_cache(maxsize=2)
@@ -86,6 +91,32 @@ def test_physical_stress_uses_verified_relaxed_axial_force_mapping() -> None:
     assert conversion["model_period"] == 0.04
     assert np.isclose(conversion["de_fast"], 1.279285899947692)
     assert np.isclose(conversion["de_slow"], 62.39808635219237)
+    assert conversion["energy_model_id"] == TWO_ROW_LJ_REFERENCE
+    assert "not calibrated Al" in conversion["energy_model_calibration_status"]
+
+
+def test_ui_energy_selection_uses_distinct_constructors_and_metadata() -> None:
+    conversions = {
+        model_id: physical_load_conversion(UIAnalysisConfig(energy_model=model_id))
+        for model_id in (
+            TWO_ROW_LJ_REFERENCE,
+            ANALYTIC_LJ_EAM_HYPOTHETICAL,
+            AL_TARGET_BEST_FEASIBLE,
+        )
+    }
+    assert conversions[TWO_ROW_LJ_REFERENCE]["energy_model_python_class"].endswith(
+        "TwoRowLJ"
+    )
+    assert conversions[ANALYTIC_LJ_EAM_HYPOTHETICAL][
+        "energy_model_python_class"
+    ].endswith("AnalyticLJEAM")
+    assert conversions[AL_TARGET_BEST_FEASIBLE]["energy_model_id"] == (
+        AL_TARGET_BEST_FEASIBLE
+    )
+    assert np.isclose(
+        conversions[AL_TARGET_BEST_FEASIBLE]["energy_model_a0"], 0.8164957221,
+        rtol=3.0e-8,
+    )
 
 
 def test_load_interpretation_warns_without_modifying_signed_inputs() -> None:
