@@ -282,6 +282,11 @@ It is **not** `sum_l F(rho_l)` and it is not a sum of old two-row hybrid
 energies. This per-atom convention differs from the reduced two-row cell,
 whose two symmetry-equivalent sites give `2F(rho)`.
 
+The same-plane exponential term is evaluated by an independent complete-disk
+real-space sum whose radius doubles until its analytic continuum-tail bound is
+below the declared tolerance. Thus radius 32 is an initial value, not an
+unexplained production cutoff. Cross-plane terms use the reciprocal formula.
+
 ## 11. Analytic derivatives
 
 For either plane kernel, write a reciprocal coefficient `C_G(d)`:

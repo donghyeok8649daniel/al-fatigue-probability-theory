@@ -46,6 +46,7 @@ class StackSumConfig:
         tol=2.0e-13, max_shell_index=32, consecutive_small_shells=3
     )
     same_plane_density_radius: int = 32
+    max_same_plane_density_radius: int = 256
 
     def validate(self) -> None:
         if not np.isfinite(self.tol) or self.tol <= 0.0:
@@ -54,6 +55,8 @@ class StackSumConfig:
             raise ValueError("invalid layer convergence controls")
         if self.same_plane_density_radius < 4:
             raise ValueError("same-plane density radius must be at least 4")
+        if self.max_same_plane_density_radius < self.same_plane_density_radius:
+            raise ValueError("maximum same-plane radius must not be smaller than initial radius")
         self.reciprocal.validate()
 
 
@@ -306,12 +309,19 @@ class FullFCC111StackEnergy:
     def _same_plane_density(self) -> tuple[float, int, float]:
         if self.density_params is None:
             return 0.0, 0, 0.0
-        return same_plane_exponential_density_direct(
-            kappa=self.density_params.kappa,
-            amplitude=self.density_params.C_rho,
-            geometry=self.geometry,
-            radius_index=self.stack_config.same_plane_density_radius,
-        )
+        radius = self.stack_config.same_plane_density_radius
+        while radius <= self.stack_config.max_same_plane_density_radius:
+            result = same_plane_exponential_density_direct(
+                kappa=self.density_params.kappa,
+                amplitude=self.density_params.C_rho,
+                geometry=self.geometry,
+                radius_index=radius,
+            )
+            value, _, tail = result
+            if tail <= self.stack_config.tol * max(1.0, abs(value)):
+                return result
+            radius *= 2
+        raise RuntimeError("same-plane environment density did not meet tail tolerance")
 
     def full_environment_density(self, a: float, s: float) -> ScalarDerivatives:
         """Sum all neighbors first; no embedding function is applied here."""

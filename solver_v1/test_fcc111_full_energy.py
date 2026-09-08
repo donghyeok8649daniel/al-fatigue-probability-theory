@@ -59,6 +59,9 @@ def test_full_hybrid_applies_embedding_once_after_total_density(full_hypothetica
     assert result.energy == pytest.approx(
         result.pair.value + result.embedding_energy, rel=2e-14
     )
+    same_plane_value, points, tail = full_hypothetical._same_plane_density()
+    assert same_plane_value > 0.0 and points > 0
+    assert tail <= full_hypothetical.stack_config.tol * max(1.0, same_plane_value)
 
 
 def test_zero_embedding_recovers_full_lj_pair_exactly(full_lj):
