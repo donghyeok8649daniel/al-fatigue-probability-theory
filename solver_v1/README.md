@@ -156,6 +156,20 @@ zeta(4)/zeta(10) layer means, and the rule that the embedding function is
 applied once after summing the complete environment density. This research
 model does not replace the reduced production energy surfaces.
 
+See `ALUMINUM_FULL_FCC_CALIBRATION.md` and
+`FCC111_ACTIVE_INTERFACE_DERIVATION.md` for the deterministic bulk refit and
+the localized half-crystal opening/slip construction. The independent-mode
+audit rejects the initial six-observation rank-five claim and adds the missing
+homogeneous shear information. A new linear-embedding candidate fits the bulk
+targets with strong pair/embedding cancellation, but its interface is not
+physically validated. Another locally stable candidate has negative separation
+work. Neither is connected to the production probability PDE.
+
+Run the actual optimization with `python -m solver_v1.run_full_fcc_calibration_audit`.
+Current tables are in the `audited_v2/` result directories; the earlier tables
+are explicitly superseded historical evidence. `SOLVER_VALIDATION_GATES.md`
+records the required physical checks before any specimen UI or PDE promotion.
+
 ## Why the N=3 PDE needs compression
 
 For `N=3`, the density depends on six coordinates:

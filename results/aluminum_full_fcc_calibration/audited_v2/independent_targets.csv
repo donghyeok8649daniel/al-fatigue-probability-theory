@@ -1,0 +1,6 @@
+observable,target,scale,units,temperature_K,method,source,used_for_fit
+normal_strain_force_ev,0.0,0.1,eV/atom; derivatives with respect to dimensionless strain,0,Mishin 1999 EAM reference,doi:10.1103/PhysRevB.59.3393,True
+cohesive_ev_atom,3.36,0.0672,eV/atom; derivatives with respect to dimensionless strain,0,Mishin 1999 EAM reference,doi:10.1103/PhysRevB.59.3393,True
+hydrostatic_strain_curvature_ev,74.01042469890372,3.700521234945186,eV/atom; derivatives with respect to dimensionless strain,0,Mishin 1999 EAM reference,doi:10.1103/PhysRevB.59.3393,True
+normal_strain_curvature_ev,12.646038954154417,0.6323019477077209,eV/atom; derivatives with respect to dimensionless strain,0,Mishin 1999 EAM reference,doi:10.1103/PhysRevB.59.3393,True
+simple_shear_strain_curvature_ev,2.90236959603544,0.145118479801772,eV/atom; derivatives with respect to dimensionless strain,0,Mishin 1999 EAM reference,doi:10.1103/PhysRevB.59.3393,True

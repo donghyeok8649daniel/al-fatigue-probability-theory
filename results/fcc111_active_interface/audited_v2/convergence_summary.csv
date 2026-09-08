@@ -1,0 +1,145 @@
+set,study,field,value,reference,absolute_error,tolerance,layers_used,shells_used,tail_status,direct_radius,direct_layers
+linear_profile,reference,energy,0.026104677225792017,0.0261046772257556,3.6415315207705135e-14,2e-08,9,27,empirical proxy; refinement differences authoritative,,
+linear_profile,reference,d_da,-0.28267699500719345,-0.2826769950075345,3.410605131648481e-13,2e-08,9,27,empirical proxy; refinement differences authoritative,,
+linear_profile,reference,d_ds,0.20217594093267266,0.20217594093269087,1.8207657603852567e-14,2e-08,9,27,empirical proxy; refinement differences authoritative,,
+linear_profile,reference,d2_daa,36.71503142013131,36.71503142013319,1.8758328224066645e-12,2e-08,9,27,empirical proxy; refinement differences authoritative,,
+linear_profile,reference,d2_das,-12.783527519908558,-12.783527519909514,9.556799795973347e-13,2e-08,9,27,empirical proxy; refinement differences authoritative,,
+linear_profile,reference,d2_dss,2.966523313425153,2.966523313424922,2.3092638912203256e-13,2e-08,9,27,empirical proxy; refinement differences authoritative,,
+linear_profile,density_layer_refined,energy,0.0261046772257556,0.0261046772257556,0.0,2e-10,13,27,empirical proxy; refinement differences authoritative,,
+linear_profile,density_layer_refined,d_da,-0.2826769950075203,-0.2826769950075345,1.4210854715202004e-14,2e-10,13,27,empirical proxy; refinement differences authoritative,,
+linear_profile,density_layer_refined,d_ds,0.20217594093267266,0.20217594093269087,1.8207657603852567e-14,2e-10,13,27,empirical proxy; refinement differences authoritative,,
+linear_profile,density_layer_refined,d2_daa,36.71503142013296,36.71503142013319,2.2737367544323206e-13,2e-10,13,27,empirical proxy; refinement differences authoritative,,
+linear_profile,density_layer_refined,d2_das,-12.783527519908558,-12.783527519909514,9.556799795973347e-13,2e-10,13,27,empirical proxy; refinement differences authoritative,,
+linear_profile,density_layer_refined,d2_dss,2.966523313425153,2.966523313424922,2.3092638912203256e-13,2e-10,13,27,empirical proxy; refinement differences authoritative,,
+linear_profile,reciprocal_and_layer_refined,energy,0.0261046772257556,0.0261046772257556,0.0,2e-12,14,30,empirical proxy; refinement differences authoritative,,
+linear_profile,reciprocal_and_layer_refined,d_da,-0.2826769950075345,-0.2826769950075345,0.0,2e-12,14,30,empirical proxy; refinement differences authoritative,,
+linear_profile,reciprocal_and_layer_refined,d_ds,0.20217594093269087,0.20217594093269087,0.0,2e-12,14,30,empirical proxy; refinement differences authoritative,,
+linear_profile,reciprocal_and_layer_refined,d2_daa,36.71503142013319,36.71503142013319,0.0,2e-12,14,30,empirical proxy; refinement differences authoritative,,
+linear_profile,reciprocal_and_layer_refined,d2_das,-12.783527519909514,-12.783527519909514,0.0,2e-12,14,30,empirical proxy; refinement differences authoritative,,
+linear_profile,reciprocal_and_layer_refined,d2_dss,2.966523313424922,2.966523313424922,0.0,2e-12,14,30,empirical proxy; refinement differences authoritative,,
+linear_profile,independent_real_space,energy,0.025934363356275192,0.0261046772257556,0.0001703138694804096,,,,,24,24
+linear_profile,independent_real_space,d_da,-0.2869763939112886,-0.2826769950075345,0.004299398903754081,,,,,24,24
+linear_profile,independent_real_space,d_ds,0.20221933996754382,0.20217594093269087,4.339903485295338e-05,,,,,24,24
+linear_profile,independent_real_space,d2_daa,36.715746191700646,36.71503142013319,0.0007147715674591382,,,,,24,24
+linear_profile,independent_real_space,d2_das,-12.783532328241321,-12.783527519909514,4.80833180738216e-06,,,,,24,24
+linear_profile,independent_real_space,d2_dss,2.966633983393562,2.966523313424922,0.00011066996863995371,,,,,24,24
+linear_profile,independent_real_space,energy,0.025948885483583872,0.0261046772257556,0.0001557917421717292,,,,,48,24
+linear_profile,independent_real_space,d_da,-0.2864829019283519,-0.2826769950075345,0.0038059069208173923,,,,,48,24
+linear_profile,independent_real_space,d_ds,0.20217725308857792,0.20217594093269087,1.3121558870565764e-06,,,,,48,24
+linear_profile,independent_real_space,d2_daa,36.71573947270576,36.71503142013319,0.0007080525725768894,,,,,48,24
+linear_profile,independent_real_space,d2_das,-12.783527572479038,-12.783527519909514,5.2569523845136246e-08,,,,,48,24
+linear_profile,independent_real_space,d2_dss,2.966526610121667,2.966523313424922,3.296696744925498e-06,,,,,48,24
+linear_profile,independent_real_space,energy,0.026048784726977914,0.0261046772257556,5.589249877768765e-05,,,,,24,48
+linear_profile,independent_real_space,d_da,-0.2841958696004383,-0.2826769950075345,0.001518874592903785,,,,,24,48
+linear_profile,independent_real_space,d_ds,0.20222379860270268,0.20217594093269087,4.7857670011808295e-05,,,,,24,48
+linear_profile,independent_real_space,d2_daa,36.71512809551342,36.71503142013319,9.667538023450106e-05,,,,,24,48
+linear_profile,independent_real_space,d2_das,-12.783533057854832,-12.783527519909514,5.537945318323523e-06,,,,,24,48
+linear_profile,independent_real_space,d2_dss,2.9666596263960674,2.966523313424922,0.00013631297114535812,,,,,24,48
+linear_profile,independent_real_space,energy,0.02608229594782241,0.0261046772257556,2.2381277933192223e-05,,,,,48,48
+linear_profile,independent_real_space,d_da,-0.283229733671007,-0.2826769950075345,0.0005527386634724962,,,,,48,48
+linear_profile,independent_real_space,d_ds,0.20217783052852578,0.20217594093269087,1.889595834914104e-06,,,,,48,48
+linear_profile,independent_real_space,d2_daa,36.715078162438715,36.71503142013319,4.674230552836889e-05,,,,,48,48
+linear_profile,independent_real_space,d2_das,-12.783527613766099,-12.783527519909514,9.38565847263817e-08,,,,,48,48
+linear_profile,independent_real_space,d2_dss,2.9665301281759255,2.966523313424922,6.814751003503261e-06,,,,,48,48
+linear_profile,independent_real_space,energy,0.026099762125149972,0.0261046772257556,4.9151006056291635e-06,,,,,80,80
+linear_profile,independent_real_space,d_da,-0.2827977770223242,-0.2826769950075345,0.00012078201478971096,,,,,80,80
+linear_profile,independent_real_space,d_ds,0.2021761388127774,0.20217594093269087,1.9788008653875977e-07,,,,,80,80
+linear_profile,independent_real_space,d2_daa,36.715037589105634,36.71503142013319,6.16897244754e-06,,,,,80,80
+linear_profile,independent_real_space,d2_das,-12.78352752595679,-12.783527519909514,6.047276457366024e-09,,,,,80,80
+linear_profile,independent_real_space,d2_dss,2.9665241933135036,2.966523313424922,8.798885815508584e-07,,,,,80,80
+linear_historical_box,reference,energy,0.025886363903317222,0.025886359846256757,4.057060465356699e-09,2e-08,21,27,empirical proxy; refinement differences authoritative,,
+linear_historical_box,reference,d_da,-0.681554847327245,-0.6815549440976731,9.677042811517822e-08,2e-08,21,27,empirical proxy; refinement differences authoritative,,
+linear_historical_box,reference,d_ds,0.3027444405260879,0.3027444405260728,1.509903313490213e-14,2e-08,21,27,empirical proxy; refinement differences authoritative,,
+linear_historical_box,reference,d2_daa,7.368634211813315,7.3686343409303925,1.2911707791829485e-07,2e-08,21,27,empirical proxy; refinement differences authoritative,,
+linear_historical_box,reference,d2_das,-7.927929587292244,-7.927929587292709,4.654054919228656e-13,2e-08,21,27,empirical proxy; refinement differences authoritative,,
+linear_historical_box,reference,d2_dss,1.955534118852576,1.9555341188524216,1.545430450278218e-13,2e-08,21,27,empirical proxy; refinement differences authoritative,,
+linear_historical_box,density_layer_refined,energy,0.025886359848772078,0.025886359846256757,2.5153212845907547e-12,2e-10,28,27,empirical proxy; refinement differences authoritative,,
+linear_historical_box,density_layer_refined,d_da,-0.6815549440376927,-0.6815549440976731,5.998046503918886e-11,2e-10,28,27,empirical proxy; refinement differences authoritative,,
+linear_historical_box,density_layer_refined,d_ds,0.3027444405260699,0.3027444405260728,2.886579864025407e-15,2e-10,28,27,empirical proxy; refinement differences authoritative,,
+linear_historical_box,density_layer_refined,d2_daa,7.368634340850546,7.3686343409303925,7.984635175262156e-11,2e-10,28,27,empirical proxy; refinement differences authoritative,,
+linear_historical_box,density_layer_refined,d2_das,-7.927929587292568,-7.927929587292709,1.412203687323199e-13,2e-10,28,27,empirical proxy; refinement differences authoritative,,
+linear_historical_box,density_layer_refined,d2_dss,1.9555341188525128,1.9555341188524216,9.126033262418787e-14,2e-10,28,27,empirical proxy; refinement differences authoritative,,
+linear_historical_box,reciprocal_and_layer_refined,energy,0.025886359845937013,0.025886359846256757,3.197442310920451e-13,2e-12,32,30,empirical proxy; refinement differences authoritative,,
+linear_historical_box,reciprocal_and_layer_refined,d_da,-0.6815549441049242,-0.6815549440976731,7.251088618431822e-12,2e-12,32,30,empirical proxy; refinement differences authoritative,,
+linear_historical_box,reciprocal_and_layer_refined,d_ds,0.3027444405260728,0.3027444405260728,0.0,2e-12,32,30,empirical proxy; refinement differences authoritative,,
+linear_historical_box,reciprocal_and_layer_refined,d2_daa,7.368634340940128,7.3686343409303925,9.735323658333073e-12,2e-12,32,30,empirical proxy; refinement differences authoritative,,
+linear_historical_box,reciprocal_and_layer_refined,d2_das,-7.927929587292709,-7.927929587292709,0.0,2e-12,32,30,empirical proxy; refinement differences authoritative,,
+linear_historical_box,reciprocal_and_layer_refined,d2_dss,1.9555341188524216,1.9555341188524216,0.0,2e-12,32,30,empirical proxy; refinement differences authoritative,,
+linear_historical_box,independent_real_space,energy,0.025867237678100286,0.025886359846256757,1.9122168156471275e-05,,,,,24,24
+linear_historical_box,independent_real_space,d_da,-0.6820340244111804,-0.6815549440976731,0.0004790803135072963,,,,,24,24
+linear_historical_box,independent_real_space,d_ds,0.30274834598436545,0.3027444405260728,3.90545829265232e-06,,,,,24,24
+linear_historical_box,independent_real_space,d2_daa,7.368714044312497,7.3686343409303925,7.970338210494532e-05,,,,,24,24
+linear_historical_box,independent_real_space,d2_das,-7.927930014702325,-7.927929587292709,4.2740961525566945e-07,,,,,24,24
+linear_historical_box,independent_real_space,d2_dss,1.9555464545960326,1.9555341188524216,1.2335743611036065e-05,,,,,24,24
+linear_historical_box,independent_real_space,energy,0.025869006694779928,0.025886359846256757,1.735315147682881e-05,,,,,48,24
+linear_historical_box,independent_real_space,d_da,-0.6819790503656771,-0.6815549440976731,0.00042410626800393203,,,,,48,24
+linear_historical_box,independent_real_space,d_ds,0.30274455234946207,0.3027444405260728,1.118233892705156e-07,,,,,48,24
+linear_historical_box,independent_real_space,d2_daa,7.368713296619037,7.3686343409303925,7.895568864491054e-05,,,,,48,24
+linear_historical_box,independent_real_space,d2_das,-7.927929591585581,-7.927929587292709,4.292871835787082e-09,,,,,48,24
+linear_historical_box,independent_real_space,d2_dss,1.9555344863997102,1.9555341188524216,3.6754728860444175e-07,,,,,48,24
+linear_historical_box,independent_real_space,energy,0.025880049058721988,0.025886359846256757,6.310787534768991e-06,,,,,24,48
+linear_historical_box,independent_real_space,d_da,-0.6817241929689679,-0.6815549440976731,0.0001692488712947693,,,,,24,48
+linear_historical_box,independent_real_space,d_ds,0.30274925858853863,0.3027444405260728,4.818062465827833e-06,,,,,24,48
+linear_historical_box,independent_real_space,d2_daa,7.368645122477848,7.3686343409303925,1.0781547455707141e-05,,,,,24,48
+linear_historical_box,independent_real_space,d2_das,-7.927930164585365,-7.927929587292709,5.77292655457029e-07,,,,,24,48
+linear_historical_box,independent_real_space,d2_dss,1.9555493143373268,1.9555341188524216,1.5195484905250467e-05,,,,,24,48
+linear_historical_box,independent_real_space,energy,0.025883872069715874,0.025886359846256757,2.4877765408826136e-06,,,,,48,48
+linear_historical_box,independent_real_space,d_da,-0.6816165389726914,-0.6815549440976731,6.15948750182227e-05,,,,,48,48
+linear_historical_box,independent_real_space,d_ds,0.3027446768666427,0.3027444405260728,2.363405698924126e-07,,,,,48,48
+linear_historical_box,independent_real_space,d2_daa,7.36863955365463,7.3686343409303925,5.212724237146915e-06,,,,,48,48
+linear_historical_box,independent_real_space,d2_das,-7.927929600546197,-7.927929587292709,1.3253488084785658e-08,,,,,48,48
+linear_historical_box,independent_real_space,d2_dss,1.9555348788122768,1.9555341188524216,7.599598552676667e-07,,,,,48,48
+linear_historical_box,independent_real_space,energy,0.025885813664873747,0.025886359846256757,5.461813830098805e-07,,,,,80,80
+linear_historical_box,independent_real_space,d_da,-0.6815684034859189,-0.6815549440976731,1.3459388245706805e-05,,,,,80,80
+linear_historical_box,independent_real_space,d_ds,0.30274446915137077,0.3027444405260728,2.8625297965323426e-08,,,,,80,80
+linear_historical_box,independent_real_space,d2_daa,7.36863502890213,7.3686343409303925,6.879717373564631e-07,,,,,80,80
+linear_historical_box,independent_real_space,d2_das,-7.927929588231741,-7.927929587292709,9.390319632984756e-10,,,,,80,80
+linear_historical_box,independent_real_space,d2_dss,1.9555342169803276,1.9555341188524216,9.812790602303778e-08,,,,,80,80
+legacy_unidentified,reference,energy,0.032368327601975354,0.03236832760197358,1.7763568394002505e-15,2e-08,10,27,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,reference,d_da,0.1537523609805218,0.1537523609805212,6.106226635438361e-16,2e-08,10,27,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,reference,d_ds,0.23943441919660202,0.23943441919660258,5.551115123125783e-16,2e-08,10,27,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,reference,d2_daa,14.622141532134421,14.622141532134465,4.440892098500626e-14,2e-08,10,27,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,reference,d2_das,-4.056298889937229,-4.0562988899372625,3.375077994860476e-14,2e-08,10,27,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,reference,d2_dss,1.1772257048426134,1.1772257048425852,2.8199664825478976e-14,2e-08,10,27,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,density_layer_refined,energy,0.032368327601975354,0.03236832760197358,1.7763568394002505e-15,2e-10,13,27,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,density_layer_refined,d_da,0.15375236098052228,0.1537523609805212,1.0824674490095276e-15,2e-10,13,27,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,density_layer_refined,d_ds,0.23943441919660202,0.23943441919660258,5.551115123125783e-16,2e-10,13,27,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,density_layer_refined,d2_daa,14.622141532134421,14.622141532134465,4.440892098500626e-14,2e-10,13,27,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,density_layer_refined,d2_das,-4.056298889937229,-4.0562988899372625,3.375077994860476e-14,2e-10,13,27,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,density_layer_refined,d2_dss,1.1772257048426134,1.1772257048425852,2.8199664825478976e-14,2e-10,13,27,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,reciprocal_and_layer_refined,energy,0.03236832760197358,0.03236832760197358,0.0,2e-12,14,30,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,reciprocal_and_layer_refined,d_da,0.1537523609805212,0.1537523609805212,0.0,2e-12,14,30,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,reciprocal_and_layer_refined,d_ds,0.23943441919660258,0.23943441919660258,0.0,2e-12,14,30,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,reciprocal_and_layer_refined,d2_daa,14.622141532134465,14.622141532134465,0.0,2e-12,14,30,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,reciprocal_and_layer_refined,d2_das,-4.0562988899372625,-4.0562988899372625,0.0,2e-12,14,30,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,reciprocal_and_layer_refined,d2_dss,1.1772257048425852,1.1772257048425852,0.0,2e-12,14,30,empirical proxy; refinement differences authoritative,,
+legacy_unidentified,independent_real_space,energy,0.032365640097939616,0.03236832760197358,2.6875040339616185e-06,,,,,24,24
+legacy_unidentified,independent_real_space,d_da,0.15368543750354507,0.1537523609805212,6.692347697612178e-05,,,,,24,24
+legacy_unidentified,independent_real_space,d_ds,0.23943488121459303,0.23943441919660258,4.6201799044909286e-07,,,,,24,24
+legacy_unidentified,independent_real_space,d2_daa,14.622152658614088,14.622141532134465,1.1126479622092234e-05,,,,,24,24
+legacy_unidentified,independent_real_space,d2_das,-4.056298942913325,-4.0562988899372625,5.2976062647758226e-08,,,,,24,24
+legacy_unidentified,independent_real_space,d2_dss,1.177227426055666,1.1772257048425852,1.7212130809518555e-06,,,,,24,24
+legacy_unidentified,independent_real_space,energy,0.03236590135557771,0.03236832760197358,2.426246395868803e-06,,,,,48,24
+legacy_unidentified,independent_real_space,d_da,0.1536931158425634,0.1537523609805212,5.92451379577974e-05,,,,,48,24
+legacy_unidentified,independent_real_space,d_ds,0.23943443319207855,0.23943441919660258,1.3995475972583549e-08,,,,,48,24
+legacy_unidentified,independent_real_space,d2_daa,14.622152554137477,14.622141532134465,1.1022003011618153e-05,,,,,48,24
+legacy_unidentified,independent_real_space,d2_das,-4.056298890494333,-4.0562988899372625,5.570708339064367e-10,,,,,48,24
+legacy_unidentified,independent_real_space,d2_dss,1.1772257561500659,1.1772257048425852,5.130748070847346e-08,,,,,48,24
+legacy_unidentified,independent_real_space,energy,0.032367424416775536,0.03236832760197358,9.031851980409455e-07,,,,,24,48
+legacy_unidentified,independent_real_space,d_da,0.15372872038865493,0.1537523609805212,2.3640591866269656e-05,,,,,24,48
+legacy_unidentified,independent_real_space,d_ds,0.2394349692256006,0.23943441919660258,5.500289980142625e-07,,,,,24,48
+legacy_unidentified,independent_real_space,d2_daa,14.622143037025085,14.622141532134465,1.5048906192305367e-06,,,,,24,48
+legacy_unidentified,independent_real_space,d2_das,-4.056298957420056,-4.0562988899372625,6.748279357537967e-08,,,,,24,48
+legacy_unidentified,independent_real_space,d2_dss,1.1772278252195734,1.1772257048425852,2.1203769882127688e-06,,,,,24,48
+legacy_unidentified,independent_real_space,energy,0.032367978468076625,0.03236832760197358,3.491338969527358e-07,,,,,48,48
+legacy_unidentified,independent_real_space,d_da,0.15374375671709753,0.1537523609805212,8.604263423667158e-06,,,,,48,48
+legacy_unidentified,independent_real_space,d_ds,0.23943444430063476,0.23943441919660258,2.51040321863627e-08,,,,,48,48
+legacy_unidentified,independent_real_space,d2_daa,14.622142259757034,14.622141532134465,7.27622568419406e-07,,,,,48,48
+legacy_unidentified,independent_real_space,d2_das,-4.0562988912787805,-4.0562988899372625,1.3415180077913647e-09,,,,,48,48
+legacy_unidentified,independent_real_space,d2_dss,1.17722581091377,1.1772257048425852,1.0607118494654344e-07,,,,,48,48
+legacy_unidentified,independent_real_space,energy,0.0323682511241027,0.03236832760197358,7.647787087644575e-08,,,,,80,80
+legacy_unidentified,independent_real_space,d_da,0.1537504808075827,0.1537523609805212,1.880172938506508e-06,,,,,80,80
+legacy_unidentified,independent_real_space,d_ds,0.23943442247520808,0.23943441919660258,3.2786054982025803e-09,,,,,80,80
+legacy_unidentified,independent_real_space,d2_daa,14.622141628164817,14.622141532134465,9.603035167060625e-08,,,,,80,80
+legacy_unidentified,independent_real_space,d2_das,-4.056298890047921,-4.0562988899372625,1.106581493104386e-10,,,,,80,80
+legacy_unidentified,independent_real_space,d2_dss,1.1772257185392057,1.1772257048425852,1.3696620504433099e-08,,,,,80,80

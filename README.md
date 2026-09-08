@@ -80,6 +80,16 @@ The separate full FCC(111) infinite-plane-stack static reference and its
 direct-sum validation are documented in
 [`solver_v1/FCC111_FULL_STACK_DERIVATION.md`](solver_v1/FCC111_FULL_STACK_DERIVATION.md).
 It remains a research reference and is not the desktop default.
+The subsequent full-FCC static refit and localized active-interface audit are
+in [`solver_v1/ALUMINUM_FULL_FCC_CALIBRATION.md`](solver_v1/ALUMINUM_FULL_FCC_CALIBRATION.md)
+and [`solver_v1/FCC111_ACTIVE_INTERFACE_DERIVATION.md`](solver_v1/FCC111_ACTIVE_INTERFACE_DERIVATION.md).
+Their negative held-out validation result is retained explicitly; the active
+interface is not connected to the production PDE.
+The independent-elastic-mode audit and actual deterministic optimization run
+with `python -m solver_v1.run_full_fcc_calibration_audit`; current evidence is
+saved under the two `audited_v2/` result directories. See
+[`solver_v1/SOLVER_VALIDATION_GATES.md`](solver_v1/SOLVER_VALIDATION_GATES.md)
+for physical readiness gates and the deferred specimen/meshing UI workflow.
 
 Run from repository root:
 

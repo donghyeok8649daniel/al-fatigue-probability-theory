@@ -1,0 +1,11 @@
+model,geometry,a0_over_b,bulk_cohesion_eV_atom,direct_GSF_eV_cell,shockley_GSF_eV_cell,work_separation_eV_cell,status
+linear_joint_start0,newly_calibrated_full_FCC_bulk,0.816496172881018,3.3599999959916955,not a homogeneous-bulk observable,not a homogeneous-bulk observable,not a homogeneous-bulk observable,bulk fit exact but practically non-identifiable
+linear_joint_start0,full_FCC_active_interface,0.816496172881018,inherited bulk candidate,0.19887750526148637,0.03406538719502868,0.5078234696744237,static interface held-out targets fail; not production-valid
+linear_joint_start1,newly_calibrated_full_FCC_bulk,0.8164961820694091,3.359999998491277,not a homogeneous-bulk observable,not a homogeneous-bulk observable,not a homogeneous-bulk observable,bulk fit exact but practically non-identifiable
+linear_joint_start1,full_FCC_active_interface,0.8164961820694091,inherited bulk candidate,0.19398385908364357,0.03388452478485408,0.4827052086012928,static interface held-out targets fail; not production-valid
+two_row_lj_reference,existing_reduced_model,0.7713438268704838,not comparable from reduced normalization,homogeneous/reduced barrier only,not represented,homogeneous/reduced opening only,existing model preserved
+two_row_lj_reference,same_parameters_full_FCC_transfer,0.6845871380591213,not refitted,homogeneous shear is not GSF,not evaluated,uniform dilation is not cleavage,stable but unrefitted transfer
+analytic_lj_eam_hypothetical,existing_reduced_model,0.9677866043190319,not comparable from reduced normalization,homogeneous/reduced barrier only,not represented,homogeneous/reduced opening only,existing model preserved
+analytic_lj_eam_hypothetical,same_parameters_full_FCC_transfer,0.8983754061234529,not refitted,homogeneous shear is not GSF,not evaluated,uniform dilation is not cleavage,stable but unrefitted transfer
+al_target_best_feasible_hybrid,existing_reduced_model,0.8164957221838465,not comparable from reduced normalization,homogeneous/reduced barrier only,not represented,homogeneous/reduced opening only,existing model preserved
+al_target_best_feasible_hybrid,same_parameters_full_FCC_transfer,,not refitted,homogeneous shear is not GSF,not evaluated,uniform dilation is not cleavage,full FCC surface has no stable zero-load normal root

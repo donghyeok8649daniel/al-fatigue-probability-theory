@@ -1,0 +1,45 @@
+{
+  "date": "2026-09-09",
+  "base_commit": "b819abea7e8514d04698e6ab0e391b940262d16c",
+  "snapshot": "research audit commit containing this record",
+  "python": "3.13; verified interpreter used because py -3 launcher unavailable",
+  "calibration_and_interface_runner": {
+    "completed": true,
+    "elapsed_seconds": 297.762219,
+    "actual_optimization_not_replay": true,
+    "subsequent_first_branch_barrier_recalculation_rows": 12,
+    "coordinate_columns": "fixed L0 and actual equilibrium b distinguished"
+  },
+  "targeted": {
+    "modules": [
+      "solver_v1/test_aluminum_full_fcc_calibration.py",
+      "solver_v1/test_fcc111_active_interface.py",
+      "solver_v1/test_full_fcc_calibration_audit.py"
+    ],
+    "passed": 32,
+    "failed": 0,
+    "elapsed_seconds": 47.71
+  },
+  "solver_v1": {
+    "passed": 177,
+    "failed": 0,
+    "elapsed_seconds": 759.98
+  },
+  "app": {
+    "passed": 27,
+    "skipped": 2,
+    "failed": 0,
+    "elapsed_seconds": 64.24
+  },
+  "desktop_smoke": {
+    "passed": true,
+    "reference_a0": 0.7713438268704838,
+    "reference_kappa": 86.29296488740997
+  },
+  "git_diff_check": "passed including staged new files",
+  "original_production_and_static_calibration_files": "unchanged from base",
+  "full_fcc_interface_physical_validation": "not passed",
+  "physical_mobility_and_Hz": "unavailable",
+  "UI_redesign": "deferred; physical readiness and user confirmation required",
+  "local_xml_note": "Raw test XML is local-only because it includes host metadata. Timings include concurrent CPU workload."
+}

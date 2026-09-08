@@ -134,6 +134,7 @@ class FullFCC111StackEnergy:
         embedding: AnalyticEmbedding | None = None,
         stack_config: StackSumConfig = StackSumConfig(),
         require_stable_equilibrium: bool = True,
+        find_equilibrium: bool = True,
     ):
         if p.n_cells != 1:
             raise ValueError("full FCC homogeneous reference requires n_cells=1")
@@ -154,13 +155,17 @@ class FullFCC111StackEnergy:
         self.embedding = embedding
         self.stack_config = stack_config
         self.equilibrium_error: str | None = None
-        try:
-            self.a0 = self._find_reference_a()
-        except ValueError as exc:
-            if require_stable_equilibrium:
-                raise
+        if not find_equilibrium:
             self.a0 = float("nan")
-            self.equilibrium_error = str(exc)
+            self.equilibrium_error = "equilibrium search not requested"
+        else:
+            try:
+                self.a0 = self._find_reference_a()
+            except ValueError as exc:
+                if require_stable_equilibrium:
+                    raise
+                self.a0 = float("nan")
+                self.equilibrium_error = str(exc)
 
     @classmethod
     def from_reduced_model(

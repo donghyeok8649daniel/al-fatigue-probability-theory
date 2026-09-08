@@ -1,0 +1,16 @@
+set,observable,prediction_J_m2,reference_J_m2,used_for_fit,source,comparison_status,relative_error
+linear_profile,direct_110_usf,1.3544987631906444,0.25,False,doi:10.1103/PhysRevB.62.3099,relaxed DFT/different lattice vs rigid model; context only,4.417995052762578
+linear_profile,shockley_112_usf,0.09290091407287325,0.224,False,doi:10.1103/PhysRevB.62.3099,relaxed DFT/different lattice vs rigid model; context only,-0.5852637764603873
+linear_profile,intrinsic_fault,0.004989943926193276,0.164,False,doi:10.1103/PhysRevB.62.3099,relaxed DFT vs rigid model; context only,-0.969573512645163
+linear_profile,work_separation,12.75507354463629,1.74,False,doi:10.1103/PhysRevB.59.3393,unrelaxed model vs source surface convention,6.330502037147292
+linear_profile,work_separation,12.75507354463629,2.12,False,doi:10.1039/C6RA08958E,unrelaxed model vs source surface convention,5.016544124828438
+linear_historical_box,direct_110_usf,0.8122206546310057,0.25,False,doi:10.1103/PhysRevB.62.3099,relaxed DFT/different lattice vs rigid model; context only,2.2488826185240227
+linear_historical_box,shockley_112_usf,0.10868028793994168,0.224,False,doi:10.1103/PhysRevB.62.3099,relaxed DFT/different lattice vs rigid model; context only,-0.5148201431252604
+linear_historical_box,intrinsic_fault,-0.0017481366116341424,0.164,False,doi:10.1103/PhysRevB.62.3099,relaxed DFT vs rigid model; context only,-1.010659369583135
+linear_historical_box,work_separation,-12.289392833780205,1.74,False,doi:10.1103/PhysRevB.59.3393,unrelaxed model vs source surface convention,-8.062869444701267
+linear_historical_box,work_separation,-12.289392833780205,2.12,False,doi:10.1039/C6RA08958E,unrelaxed model vs source surface convention,-6.796883412160474
+legacy_unidentified,direct_110_usf,0.4486257556642283,0.25,False,doi:10.1103/PhysRevB.62.3099,relaxed DFT/different lattice vs rigid model; context only,0.7945030226569132
+legacy_unidentified,shockley_112_usf,0.07684438710641635,0.224,False,doi:10.1103/PhysRevB.62.3099,relaxed DFT/different lattice vs rigid model; context only,-0.6569447004177842
+legacy_unidentified,intrinsic_fault,-0.00024097409823121372,0.164,False,doi:10.1103/PhysRevB.62.3099,relaxed DFT vs rigid model; context only,-1.0014693542575075
+legacy_unidentified,work_separation,1.1455454049109668,1.74,False,doi:10.1103/PhysRevB.59.3393,unrelaxed model vs source surface convention,-0.341640571890249
+legacy_unidentified,work_separation,1.1455454049109668,2.12,False,doi:10.1039/C6RA08958E,unrelaxed model vs source surface convention,-0.4596483939099214
