@@ -237,7 +237,7 @@ def run(output_dir: Path) -> dict[str, object]:
                  "reciprocal_density_layers": analytic.density.layers_used,
                  "maximum_plane_shells": max(analytic.pair.maximum_plane_shells,
                                                analytic.density.maximum_plane_shells),
-                 "cached_evaluation_ms": elapsed_ms}
+                 "reciprocal_evaluation_ms": elapsed_ms}
             )
         validation_rows.append(
             {"kernel": f"full_{model_id}", "quantity": "energy", "reciprocal": analytic.energy,
