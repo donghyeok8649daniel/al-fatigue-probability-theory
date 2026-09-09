@@ -1,0 +1,10 @@
+images_each_direction,quantity,points,max_absolute_error,max_scaled_error,max_relative_error_away_from_zero,relative_display_exclusion
+96,value,12,1.1675355127138687e-11,1.161282270943448e-11,9.32999988403828e-08,"sqrt(machine_epsilon)*max(1,max_reference); not a physical floor"
+96,gradient,12,1.4210854715202004e-13,4.3407877868819574e-14,2.3735981838783777e-09,"sqrt(machine_epsilon)*max(1,max_reference); not a physical floor"
+96,hessian,12,5.115907697472721e-13,3.7467904287854633e-14,3.830123788667066e-11,"sqrt(machine_epsilon)*max(1,max_reference); not a physical floor"
+192,value,12,3.7481129311345285e-13,3.6825170889548864e-13,2.9652195547413745e-09,"sqrt(machine_epsilon)*max(1,max_reference); not a physical floor"
+192,gradient,12,1.4210854715202004e-13,1.8591410454393418e-15,1.9146850766462997e-11,"sqrt(machine_epsilon)*max(1,max_reference); not a physical floor"
+192,hessian,12,5.115907697472721e-13,3.2992254787599215e-15,3.666232715891473e-13,"sqrt(machine_epsilon)*max(1,max_reference); not a physical floor"
+384,value,12,1.7763568394002505e-14,1.1593804114535874e-14,9.335853714179344e-11,"sqrt(machine_epsilon)*max(1,max_reference); not a physical floor"
+384,gradient,12,1.4210854715202004e-13,2.4401226221391374e-15,1.0898985420220258e-12,"sqrt(machine_epsilon)*max(1,max_reference); not a physical floor"
+384,hessian,12,5.115907697472721e-13,3.2992254787599215e-15,3.666232715891473e-13,"sqrt(machine_epsilon)*max(1,max_reference); not a physical floor"

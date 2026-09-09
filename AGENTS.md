@@ -496,6 +496,25 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- VECTOR_FCC_CORE_DERIVATION.md / vector_core_v8: 동일 LJ/Bessel 후보의 실제
+  3성분 무한 원자열 코어 이완이다. 실제 y,z 반경이 변하므로 고정계수 FFT를
+  재사용하지 않고 m=0 포함 원자열 급수/analytic vector Hessian을 계산한다.
+  각 site의 모든 환경 변화를 합산한 뒤 F(rho_i), D_r||Q_ri||²를 적용한다.
+  세 local displacement는 자유지만 transverse periodic cell shape는 고정이다.
+  무한 직선 원자열이지 유한 전위 loop/source나 3D 동역학이 아니다.
+  v7의 큰 omitted force를 줄였지만 가까운 반대 전위쌍은 소멸할 수 있고,
+  작은 주기 cell에는 cell-spanning registry fault가 남을 수 있다.
+  x winding=0만으로 full vector defect 소멸을 선언하지 않는다. 실제 벡터
+  minimum이 x=b/2 scalar partition에 있을 수 있으므로 기존 scalar n을
+  벡터 소성 지표로 쓰지 않는다. layer_registry의 두 slip 성분, 0/tau/2tau
+  lattice-equivalent 거리, opening, row dispersion을 함께 본다.
+  횡변위는 LJ zero-mode algebraic tail을 살린다. v7의 작은 tail error를
+  복사하지 않는다. 에너지/force 및 전체 Hessian symbol의 ring 수렴을 본다.
+  최소 고유값만 같아도 polarization이 교차해 전체 matrix 오차가 남을 수 있다.
+  continuation은 source state/parameter binding을 기록하고 중단된 계산을
+  완료라고 보고하지 않는다. static unload는 물리 시간 hold가 아니다.
+  Al material fit, finite-source geometry, kinetics, production/UI gate는 미완료다.
+
 - KINETICS_LOADING_AND_STRESS_AUDIT.md / kinetics_loading_audit:
   실제 covariance CSV에서 B=-log(Ct C0^-1)/t 및 M=B H^-1를 검증한다.
   file binding은 source의 물리적 진실성 인증이 아니다. Physical mode는

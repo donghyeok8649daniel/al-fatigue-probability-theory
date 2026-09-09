@@ -79,7 +79,24 @@ Next is actual transverse/vector core relaxation under the same analytic
 energy, then matched-material/partial-core validation, finite-source geometry
 and calibrated kinetics. No production registration or UI redesign is enabled.
 
-## Intended UI after validation and confirmation
+## Vector-row update (vector_core_v8)
+
+The next research step releases all three local row displacements and evaluates
+actual-distance infinite Bessel sums with per-site nonlinear embedding/angular
+energies. Independent direct-atom values/gradients/Hessians agree. Actual
+vector relaxation removes the v7 excluded-force obstruction, but does not
+certify a material or fatigue model. A close pair can annihilate; a small
+periodic cell can instead retain a cell-spanning registry fault.
+
+Zero x winding does NOT imply a perfect vector state. An additional vector
+minimum can lie at the old scalar x=b/2 partition. Use vector layer registry
+and full forces/stability, not that scalar well index, for this research model.
+Transverse motion also revives an algebraic LJ zero-mode tail; v7's much
+smaller anti-plane tail error must not be reused. The infinite lines and fixed
+transverse cell shape still exclude finite sources and general specimen
+mechanics. Kinetic and UI gates remain closed. See VECTOR_FCC_CORE_DERIVATION.md.
+
+## Intended UI after validation and confirmation (unchanged scope)
 
 The requested workflow is retained:
 

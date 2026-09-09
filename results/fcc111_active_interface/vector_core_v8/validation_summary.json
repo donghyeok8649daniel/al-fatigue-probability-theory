@@ -1,0 +1,21 @@
+{
+  "starting_branch_head": "e964d824b6ffbff330df5d3c2410cd131b3aa4eb",
+  "fresh_starting_remote_head": "e964d824b6ffbff330df5d3c2410cd131b3aa4eb",
+  "branch": "probability-pde-solver-v1",
+  "initial_scientific_worktree_clean": true,
+  "original_detached_worktree_and_user_files_preserved": true,
+  "interpreter": "Python 3.13; py launcher unavailable",
+  "targeted": {"passed": 34, "new_vector_tests": 17, "failed": 0, "skipped": 0, "wall_seconds": 100.54},
+  "solver_v1": {"passed": 305, "failed": 0, "skipped": 0, "wall_seconds": 1154.60},
+  "app": {"passed": 31, "failed": 0, "skipped": 0, "wall_seconds": 268.00},
+  "desktop_smoke": {"passed": true, "wall_seconds": 2.80, "a0_lj": 0.7713438268704838, "kappa_lj": 86.29296488740997},
+  "diff_check_including_new_files": "passed",
+  "initial_failed_new_test": "A proposed perfect-state assertion was disproved by a stable vector registry fault; the counterexample is now tested explicitly. No previous validated test was weakened.",
+  "direct_atomic_hessian_worst_absolute_error": 5.115907697472721e-13,
+  "independent_bulk_fourier_hessian_product_error": 2.842170943040401e-14,
+  "some_regressions_and_research_jobs_ran_concurrently": true,
+  "material_calibration_accepted": false,
+  "kinetic_calibration_available": false,
+  "production_or_ui_gate_passed": false,
+  "static_parameter_sha256_unchanged": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655"
+}

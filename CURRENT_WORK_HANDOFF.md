@@ -1,6 +1,113 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
-## 최신 상태: nonlinear_screw_v7 — 이상강도에서 결함 지배 강도로 가는 첫 비선형 단계
+## 최신 상태: vector_core_v8 — 수직·횡방향 구속을 실제로 해제
+
+사용자의 최신 ㄱㄱ는 v7에서 발견한 omitted transverse force를 해결하는
+다음 단계 승인으로 해석했다. 추가 agent 없음. 아래 v7 기록은 역사적 근거다.
+이번 시작 fresh fetch에서 branch/origin은 모두
+e964d824b6ffbff330df5d3c2410cd131b3aa4eb, 과학 worktree는 깨끗했다.
+작업 위치는 기존 aft-pde-bessel-38969ad / probability-pde-solver-v1이다.
+원래 OneDrive 폴더는 detached c43d8e0 및 사용자 파일을 그대로 보존한다.
+AGENTS/인계 discovery 사본의 변경 전 SHA가 두 폴더에서 같음을 확인했다.
+
+### 구현과 이론
+
+- vector_fcc_rows.py: 원자열마다 실제 U=(u,v,w), affine gamma를 둔다.
+  실제 원자열 반경이 바뀌므로 Bessel m=0과 모든 필요한 양의 mode를
+  재평가한다. LJ pair/밀도/embedding/angular 후보를 refit하지 않았다.
+  같은 행의 거리 및 완전 FCC bulk reference는 상쇄/정확한 배경으로 처리한다.
+  각 site 환경을 합산한 뒤 nonlinear F 및 angular norm을 적용한다.
+- 반대 row의 parity를 이용해 half-neighbor만 계산하되 per-site counting과
+  odd/even moment 부호를 보존한다. analytic gradient/Hessian-vector 및
+  3 translation gauge를 제거한 안정성 검사가 있다.
+- 세 local displacement는 자유지만 transverse periodic cell vector는 고정이다.
+  무한 직선 line 연구이지 finite source/3D specimen/물리 시간 dynamics가 아니다.
+- vector_fcc_validation.py는 독립 direct atom 값/기울기/Hessian 확인 전용.
+  canonical x방향 원자 합은 계속 infinite Poisson/Bessel이다.
+- runner는 실제 최적화, reporter는 저장 상태 재검증이다. 둘을 혼동하지 않는다.
+  root parameter SHA256는 계속
+  9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655이다.
+
+### 이미 실제 실행된 핵심 결과
+
+24x24 ring6에서 기존 scalar 평형을 풀자 E=2.22178949에서 약1.4e-13eV/
+line repeat로 내려가고 x winding 쌍과 모든 nonuniform vector displacement가
+사라졌다. full force residual6.09e-8eV/L0, minimum curvature0.25513782.
+0,4,25,50,0,-50,0MPa 정적 continuation을 실행했다. +50MPa shear 증가
+약0.002076, 새로운 registry winding 없음. 이것은 주어진 가까운 반대 전위쌍의
+이완/소멸이지 Al yield=0, 생성속도, 피로 검증이 아니다.
+
+24x24 ring10 및32x32 ring8도 독립 실행했다. L-BFGS가 거의 무결정 상태의
+작은 탄성 잔차를 느리게 줄이던 중 저장한 iteration100/80에서 동일 함수의
+analytic Newton 단계로 이어갔다. 원래 partial 폴더/기록을 삭제하지 않았고
+summary.completed=false와 continuation_case를 기록했다. *_newton 폴더의
+parameter/source binding 및 actual force/stability 결과를 확인한다.
+
+중요한 반례: 8x8, seed3b에서는 x winding=0이어도 vector fault가 남았다.
+ring4 E=.575047975, force7.22e-8, lambda_min1.33224;
+ring10 E=.585289091, force8.17e-8, lambda_min1.39727.
+한 layer에 추가 shift≈(.5,.25579)L0, opening .01553L0, 다른 layer의
+횡변위가 fixed cell shape를 보상한다. j 방향으로 거의 일정한 cell-spanning
+registry fault이지 localized screw pair가 아니다. extra tau=(.5,.288675)
+근처지만 독립 Al partial/core 검증은 아니다. 16x16에서 같은 seed protocol은
+초기 scalar 단계부터 pair가 소멸했다. 따라서 동일 final core의 domain 수렴이라고
+하지 않는다. 작은 영역의 fault 결과를 material residual plasticity로 승격하지 않는다.
+
+이 반례를 보고 새 테스트의 잘못된 기대(“x winding=0이면 모든 성분=0”)를
+수정했다. 힘 residual/positive Hessian은 통과하되 실제 남은 vector 상태를
+확인하는 회귀 테스트로 만들었다. 기존 production/기존 테스트는 약화하지 않았다.
+특히 fault의 x slip≈b/2라 scalar n=floor(x/b+.5)가 수치적으로 모호하다.
+`layer_registry`는 slip 두 성분/격자 동치 0,tau,2tau 거리/normal change/
+row dispersion/scalar partition margin을 저장한다. Raw case의 registry_shear는
+오직 x projection이며 full vector plastic strain이 아니다. Consolidated CSV는
+이를 x_projected_ 접두어로 표시한다. Production s=bn+xi 규약은 그대로다.
+
+### 수치 검증과 한계
+
+- 12개 고정점 direct ±384 atoms vs reciprocal: max abs value1.78e-14,
+  gradient1.42e-13, Hessian5.12e-13. 서로 다른 channel units를 한 물리 floor로
+  합치지 않는다. 최대14 reciprocal modes, 마지막 envelope8.28e-15.
+- 실제 nonzero transverse checkpoint에서 ring8->16 energy difference
+  .000196158eV, force1.10746e-4eV/L0; ring12->16 force1.11542e-6.
+  v7의 transverse tail≈machine precision 결과는 여기로 전이되지 않는다.
+- LJ m=0의 force/energy tail bound를 유도했고 actual shell difference로 시험했다.
+  density/angular/nonzero modes 전체에 대한 rigorous bound라고 하지 않는다.
+- 독립 3x3 bulk Fourier Hessian assembly와 actual vector Hessian product의
+  차이2.84e-14. 24x24 최소값은 ring6 .255138 -> ring10 .257829 ->
+  ring16/20/28 .257935. 그러나 최소값이 같아도 polarization이 y/z에서 x로
+  교차해 전체 Hessian 오차가 남는다. full symbol ring20->28 norm차3.81e-6도 저장했다.
+- 8x8 vector fault를 ring16에서 실제 재이완: E=.585337628233541,
+  force1.36e-9, lambda_min1.39755637. 0->50->0MPa 제하 후 실제 x phase 변화
+  1.20e-10L0, transverse 변화1.51e-10L0지만 scalar index 변화는 -.07654655로
+  나올 수 있다(ring10에서는 +.07654655). 이것은 b/2 partition의 가짜 변화다.
+  최종19 static states/7 completed cases; precursor2개는 partial로 보존했다.
+  최종 숫자는 vector_core_v8/scientific_status.json 및 실행 summary가 기준이다.
+
+### 실제 검증 결과
+
+새 vector tests17개 + 기존 nonlinear17개 =34 passed/100.54s를 실제 실행했다.
+app31 passed/268.00s,0 skipped. desktop smoke PASS(2.80s).
+Full solver305 passed/1154.60s,0 skipped. 연구 계산과 일부 동시 실행한 실제 wall time이다.
+py launcher가 없어 설치된 Python3.13 interpreter로 동등 명령을 실행했다.
+모든 새 파일까지 포함한 git diff --check PASS. 새 JSON40개 및 압축 상태54개의
+parse/unique site index 검사도 통과했다. 그림은 실제 저장 상태를 그려 육안 확인했다.
+연구 결과 폴더는 약1.1MB이며 중단 precursor와 잘못된 x-index 판정의 반례도 남긴다.
+변경은 새 vector 연구/검증/runner/reporter/results와 지침/인계/gate 문서뿐이다.
+기존 core/PDE/Al static parameter/Ac/time/UI selector는 변경하지 않았다.
+최종 commit SHA는 이 변경을 담은 git log와 사용자 최종 보고를 확인한다.
+push 직전 remote 재확인과 fast-forward만 허용한다. main은 수정/병합하지 않는다.
+
+### 다음에 이어갈 때
+
+VECTOR_FCC_CORE_DERIVATION.md, vector_core_v8 결과, 실행/partial summary를 먼저 읽는다.
+누락된 local normal/transverse force 문제는 실제 vector 이완으로 해결되는 방향을
+확인했지만, 이를 actual Al strength/fatigue solver 완성으로 부르지 않는다.
+독립 Al material/core/GSF 보정, finite line/source geometry, 실제 kinetics가 필요하다.
+Mobility, physical seconds/Hz, A_c, production energy selector, UI gate는 그대로다.
+임의 pin/holding force, stress threshold, 선 길이, mobility fitting으로 다음 결과를
+만들지 않는다. 셀을 통과하는 fault와 고립된 partial/core 및 기존 결함의 소멸을 구분한다.
+
+## 이전 상태: nonlinear_screw_v7 — 이상강도에서 결함 지배 강도로 가는 첫 비선형 단계
 
 이 절이 아래 kinetics_loading_audit보다 최신이다. 최신 요청은
 “이상강도를 임의 보정할 것이 아니라 실제 결함이 있는 금속의 강도로 나아갈
