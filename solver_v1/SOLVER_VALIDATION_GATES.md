@@ -14,6 +14,21 @@ confused with a fully calibrated spatial aluminum fatigue solver.
 
 ## Gates
 
+The yield_bridge_v11 study now obtains an actual published0.2%-plastic-shear
+CRSS/G criterion and derives/solves a double-ended finite-source leading-log
+reference from the SAME potential's anisotropic elastic tensor. Hypothetical
+micrometre pin spacings giveMPa outer-elastic bow-out stresses. This advances
+the mechanism/units check, not the experimental yield, core or production gate.
+Actual source geometry, finite/core terms and0.2% accumulated strain are absent.
+The published single-arm source assumption is not this double-ended geometry.
+
+Independent-C calibration improves C44 but misses C11. An exact-three-C fit
+instead misses fault/saddle energies severely and has worse held-out error.
+Both new parameter vectors are explicitly rejected, not adopted to make low
+stress plasticity appear. A change of discrepancy metric is not a unit bug.
+Read YIELD_STRENGTH_BRIDGE.md and yield_bridge_v11/decision.json. Finite-source
+reference numerics pass; material/kinetics/actual-yield/UI gates remain closed.
+
 The material_strength_v10 follow-up ran a new deterministic joint calibration
 of the unchanged analytic family. An inter-sample negative opening traction
 was found and removed by actual-extremum coefficient constraints, without

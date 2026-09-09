@@ -1,0 +1,89 @@
+{
+  "doi": "10.1038/nmat4911",
+  "source_url": "https://eprints.whiterose.ac.uk/id/eprint/126662/1/Article%20Text.pdf",
+  "source_pdf_page": 6,
+  "figure": "2d",
+  "pdf_sha256": "74a38ad5d4b9597abb34c5a16b32853bac03996bd2e62ea0b77d841d35467fa5",
+  "figure_sha256": "a05485e5c480a12b36459c8061a96e75243157b8d1396756fd197d403ff5b0c2",
+  "supplement_url": "https://infoscience.epfl.ch/server/api/core/bitstreams/2cff7b76-19e7-4591-b7ca-370af1bcd090/content",
+  "supplement_sha256": "16cec3051cd27303f3a77c20779c5aaf19c2714d1c2664c72e6667b663ebdb74",
+  "supplement_repository_md5": "7787b4507b8f25b0da6f17a829b02abb",
+  "supplement_md5": "7787b4507b8f25b0da6f17a829b02abb",
+  "axis_pixels": {
+    "x_zero": 2053,
+    "x_6e_5": 2893,
+    "y_zero": 2140.5,
+    "y_6e_4": 1300.5
+  },
+  "marker_boxes": [
+    [
+      2610,
+      1394,
+      2640,
+      1425
+    ],
+    [
+      2637,
+      1476,
+      2666,
+      1504
+    ],
+    [
+      2637,
+      1537,
+      2666,
+      1566
+    ],
+    [
+      2610,
+      1674,
+      2640,
+      1700
+    ],
+    [
+      2627,
+      1698,
+      2657,
+      1727
+    ],
+    [
+      2309,
+      1844,
+      2339,
+      1874
+    ],
+    [
+      2245,
+      1916,
+      2274,
+      1945
+    ]
+  ],
+  "reading_halfwidth_pixels": 12,
+  "selection": "seven isolated red squares; legend, occluded/merged markers not inverted",
+  "marker_center_uncertainty": "conservative full half-marker width plus spine reading; not specimen scatter",
+  "normalizing_shear_modulus_unavailable": true,
+  "physical_strength_MPa_not_invented": true,
+  "physical_time_calibrated": false,
+  "experimental_strength_used_in_fit": false,
+  "supplementary_model_assumptions_not_measurements": {
+    "source_span_L_over_D": 0.3333333333333333,
+    "alternative_L_over_D": 0.5,
+    "single_arm_prefactor_range": [
+      0.068,
+      0.148
+    ],
+    "page_range": [
+      23,
+      25
+    ],
+    "used_as_our_material_law": false
+  },
+  "followup_source": {
+    "doi": "10.1016/j.scriptamat.2018.10.009",
+    "url": "https://infoscience.epfl.ch/server/api/core/bitstreams/417397b5-3810-49ce-9e27-7ef484515775/content",
+    "pdf_sha256": "b72ed6ff8b6855a99669f5db6cc9f7f4e2541636e9bf24b76996012e1e5079db",
+    "condition": "99.99%Al annealed500C2h underAr, wire14/23um; not as-cast benchmark",
+    "adopted_as_our_fit": false
+  }
+}

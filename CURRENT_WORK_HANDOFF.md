@@ -1,6 +1,144 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
-## 최신 상태: material_strength_v10 — 실제 강도와 소재 보정의 검증 조건 분리
+## 최신 상태: yield_bridge_v11 — 실제 항복 기준, 독립 탄성, 유한 전위원 reference
+
+최신 요청: “실제 항복강도에 점점 맞춰가야지”. 실제 과학 worktree는
+OneDrive 밖 al-fatigue-probability-worktrees/aft-pde-bessel-38969ad,
+branch probability-pde-solver-v1이다. 시작 fresh fetch에서 local/origin 모두
+**062c83d14f33f8ac0c1c4d6bdff25804394ff2bd**, clean. 추가 agent 없음.
+다른 worktree, migration 백업, main은 변경하지 않았다.
+
+### 이번에 무엇이 진전되었고, 무엇이 아직 안 되었는가
+
+1. 실제 실험의 **0.002 plastic-shear CRSS/G** 점을 확보했다. 과거 .1/.5/.8
+   large-strain flow와 달리 항복 판정 기준이 명시되어 있다. 다만 공개된
+   정규화 계수 G의 수치를 확인하지 못해 MPa는 null이다.
+2. 같은 LJ/Bessel 에너지의 독립 C11/C12/C44 metric을 새로 검사하고 실제
+   최적화를 재실행했다. C44만 개선하거나 bulk 전체를 정확히 맞춰도 계면과
+   함께 Al을 만족하지 못한다. 새 파라미터는 **채택하지 않았다**.
+3. 같은 전위의 탄성 tensor에서 **유한 양단 고정 전위원의 leading-log
+   외부 탄성 reference**를 유도하고 실제 shape 평형을 풀었다. 가정한
+   micrometre 크기 전위원이면 MPa bow-out 척도가 나온다. 이것은 새 경험적
+   yield law, atomistic core 검증, 실제 시편 항복 또는 fatigue 예측이 아니다.
+
+자세한 수식은 solver_v1/YIELD_STRENGTH_BRIDGE.md,
+결과는 results/fcc111_active_interface/yield_bridge_v11/SCHEMA.md를 읽는다.
+Production energy/PDE/UI, 기존 파라미터 파일, kinetic calibration, A_c 변경 없음.
+
+### 실제 항복 기준과 출처
+
+Krebs2017 doi10.1038/nmat4911 Fig2d 원본 3508x2480 그림의 서로 겹치지 않는
+빨간 marker 7개를 centroid/pixel box/축 좌표와 저장했다. 조건은99.99% as-cast
+Al single-crystal wire, 실온, tensile displacement300nm/s, gamma_p=.002.
+CRSS/G는1.5085e-4–5.2216e-4, 판독 halfwidth8.57e-6. 이는 전체 표본 범위나
+실험 scatter가 아니다. MPa/G 숫자, axial Schmid factor, source geometry를
+추정해 넣지 않았다. 과거 Fig2b flow 점의 의미는 그대로 보존한다.
+
+공식 EPFL ORIGINAL bundle의 SI를 실제 획득했다. Legacy URL 실패를 우회한
+정상 공개 API이며 fetch_strength_reference.py의 URL만 갱신했다.
+SI SHA256=16cec3051cd27303f3a77c20779c5aaf19c2714d1c2664c72e6667b663ebdb74,
+공식 MD5=7787b4507b8f25b0da6f17a829b02abb와 일치한다. SI23–25쪽의L=D/3와
+대안D/2는 single-arm 모델 가정이지 실측 pin 길이가 아니다. 논문의 DD 이동도를
+우리 집단좌표 M으로 옮기지 않는다. 2019 annealed-wire 논문도 확보했으나
+열처리/산화막/하중 조건이 달라 별도 provenance로 남겼고 fit에 사용하지 않았다.
+PDF/원본 이미지는 ignored cache, 7개 읽은 점과 출처만 커밋한다.
+
+### 탄성 metric 감사와 실제 재보정
+
+H=Q C의 정확한 rank3 변환을 사용한다. 기존 diagonal H metric을 순수하게
+좌표 변경하려면 Sigma_C=Q^-1 Sigma_H Q^-T의 상관을 유지해야 한다.
+이번 diagonal 5%-C metric은 **다른 discrepancy 가정**이지 단위 버그 수정이
+아니다. 새로운 target/weight를 실제 실험 불확실성이라고 주장하지 않는다.
+
+26개 고정 radial starts와 Powell을 실행했다. cubic_5pct는70평가 후 local
+수렴, bulk_exact는100평가 예산소진. 후자는 optimizer 반환223.0933보다
+마지막 평가점223.0087이 조금 더 좋아 전체 evaluated best를 저장했다.
+5bulk exact일 때 남는 3개 null 방향은 active-face 선형대수 QP로 해결한다.
+A=0 같은 활성 경계는 제약식이지 energy/force clipping이 아니다.
+최초 SLSQP run의 경계 roundoff 문제 때문에 active-face로 재실행했으며,
+초기 material_metric은 superseded, 최종은 **material_metric_refined**다.
+
+| 항목 | 기존 후보 | C별5% metric | 5bulk exact | 0K source |
+|---|---:|---:|---:|---:|
+| C11/C12/C44 GPa |87.82/64.83/49.27|85.73/70.68/32.46|114/62/32|114/62/32|
+| relaxed fault J/m2 |.126800|.145773|.027060|.150479|
+| index-one stationary energy J/m2 |.173238|.178987|.042449|.172002|
+| opening at40h J/m2 |1.762768|1.798845|1.741053|1.741285|
+| heldout normalizedRMS |15.6863|12.2948|25.4113|—|
+
+모두 equilibrium/cohesion을 맞추고 perfect-interface H는 positive지만,
+C별 fit은 C11 약24.8% 오류, bulk_exact는 fault/안장 energy 약82.0%/75.3%
+과소평가다. Opening endpoint만 잘 맞는 것으로 채택하지 않는다. Finite-q
+전체 안정성/새 global MEP는 이번에 인증하지 않았다. 후보 두 개의 실패가
+전체 analytic family 불가능의 증명도 아니다. 두 radial과 활성경계를 제외한
+conditional coefficient SVD를 물리 parameter confidence로 부르지 않는다.
+기존 SHA9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655 불변.
+
+### 유한 source의 수학과 실제 응력 실행
+
+기존 Schur K(q)=|q|K0와 step disregistry b/(iq)에서 +/-q를 함께 적분:
+
+    k_line(theta)=b^T Re[K0(n_perp)] b/(2pi) [J/m]
+    gamma(theta)=k_line(theta) ln(R/r_core)
+    E[y]=integral gamma(theta) dl - tau*b*integral y dx
+    T=gamma+gamma'', Q=gamma sin(theta)+gamma' cos(theta)
+    p=tau*b=2Q(theta_e)/L
+    tau_c,outer=2gamma(pi/2)/(b L)
+
+양의 line stiffness와 mirror symmetry를 확인한 local-line leading-log 문제다.
+R/r_core는 변분 동안 고정한다. Finite core와 nonlocal finite part는 미포함이며,
+물리적으로0이라고 보정한 것이 아니다. 같은 원자 전위 tensor를 유지하며
+source 탄성값은 별도 comparator로만 둔다. 경험적 line prefactor를 fit하지 않는다.
+
+기존 후보, R=L, r_core=b라는 **명시적 가정**의 outer-only 값:
+
+| 가정한 pin 간격L um | critical resolved shear MPa |
+|---:|---:|
+|.5|29.0441|
+|1|15.8705|
+|2|8.60943|
+|5|3.80027|
+|10|2.03498|
+
+L=1um에서 r_core/b=.5/1/2이면17.2189/15.8705/14.5221MPa. 이것은 실측
+source나 Al 항복값이 아니다. 5모델 x5길이 x2/4/10/25/50MPa의125사례 중
+53개 subcritical graph를 실제 풀고,72개는 이 branch의 fold 위라 제외했다.
+Fold 위라고 atomistic source operation/multiplication을 확인했다고 하지 않는다.
+32/64/128/256segment 독립 Newton과 analytic parametric shape를 비교했다.
+기존 후보 theta=.8의 max-bow/L 오류2.033e-4→5.134e-5→1.287e-5→3.220e-6.
+theta1.4 근처256segment는 model에 따라6.33e-4–9.92e-4L 오차가 남는다.
+80개 refinement force residual 최대1.99e-10(normalized). 각도64→128 k오류
+≤1.16e-23J/m, k+k''오류≤4.82e-20J/m. 실제 작은 수치오차와 아직 큰
+물리 core/source 불확실성을 구별한다. Subcritical bow는 정적 제하 시 가역이다.
+
+b*swept_area/V_specimen은 slip의 부피평균 운동학일 뿐, source 첫 작동이
+0.2%plastic shear에 도달한다는 뜻이 아니다. 실제 pin/표면/전위밀도와
+loop traffic/상호작용이 추가로 필요하다. V는 실제 specimen geometry일 때만
+사용하며 임의 activation volume/A_c로 대체하지 않는다.
+
+### 실제 검증과 다음 단계
+
+최초 targeted19개 중 새 spectral second-derivative test1개가 Schur/FFT의
+N^2 증폭 roundoff 때문에 실패했다. 에너지/힘을 바꾸지 않고 epsilon*N^2*k
+오차 유도를 시험에 반영했다. 기존 테스트를 완화한 것은 아니다.
+추가 benchmark를 포함한 최종 targeted22PASS3.99s, fullsolver371PASS767.52s,
+app31PASS91.74s, smokePASS2.14s. 전부0skip. Solver/app은 연구 실행과 일부
+겹쳐 고립 performance benchmark가 아니다. 실제 JUnit output 확인 완료.
+초기 material run517.66s, 최종402.17s, source28.71s, stationary/FD/report18.43s.
+FD step4e-5→2e-5에서 오차약4배감소; fine max gradient2.07e-8eV/L0,
+Hessian5.91e-7eV/L0². 새 두SVG는 실제 결과로 생성/시각 확인했다.
+JSON/CSV parse 및 private-path/nonfinite 검사, working/staged git diff check
+통과. Commit 직전 fresh origin도 시작062c83d와 같았고 main은 불변이다.
+
+현재 결론: **MPa source 메커니즘 reference 진전, 실제 항복 재현은 미완료**.
+다음은 joint material compatibility, 독립적으로 검증한 vector/partial core,
+유한 선방향 source 및 실제 미세조직/시편 조건이다. 원자 이상강도를 낮추거나
+실험에 맞는 L을 역산해 끝내지 않는다. 물리 M_a/M_s/t0와 초/Hz는 여전히
+unavailable. UI redesign gate와 production 승격은 열리지 않았다.
+새 source/재료 모듈과 실험 데이터는 별도 연구이며 완료된 calibratedAl로
+보고하지 않는다. Git 최종 해시는 포함 커밋/실제 remote 확인을 따른다.
+
+## 이전 상태: material_strength_v10 — 실제 강도와 소재 보정의 검증 조건 분리
 
 최신 요청은 “실제강도에 가까워야” 및 “해봐”였다. 실제 과학 worktree는
 OneDrive 밖 al-fatigue-probability-worktrees/aft-pde-bessel-38969ad,

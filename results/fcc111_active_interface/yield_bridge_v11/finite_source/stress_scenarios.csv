@@ -1,0 +1,126 @@
+model,span_um,shear_MPa,endpoint_angle_rad,maximum_bow_nm,swept_area_m2,state
+historical_candidate,0.5,2.0,0.03347275093797938,4.179668593100714,1.3935360872142125e-15,reversible subcritical outer-elastic bow; NOT 0.2% yield
+historical_candidate,0.5,4.0,0.06745439491960813,8.395651092575433,2.801615209721558e-15,reversible subcritical outer-elastic bow; NOT 0.2% yield
+historical_candidate,0.5,10.0,0.17880959239189312,21.687040626886706,7.285452330991827e-15,reversible subcritical outer-elastic bow; NOT 0.2% yield
+historical_candidate,0.5,25.0,0.7884146701386732,80.53734607034872,2.933137101488773e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+historical_candidate,0.5,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+historical_candidate,1.0,2.0,0.061621021695020824,15.350117624296226,1.0242669752448495e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+historical_candidate,1.0,4.0,0.12656031149330144,31.165399444402798,2.0859101170753373e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+historical_candidate,1.0,10.0,0.4257525615711761,90.38816076451224,6.250357198382253e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+historical_candidate,1.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+historical_candidate,1.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+historical_candidate,2.0,2.0,0.116008807354247,57.27230241116322,7.661683857230516e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+historical_candidate,2.0,4.0,0.25881237692923953,121.48632442010715,1.6453432254927294e-13,reversible subcritical outer-elastic bow; NOT 0.2% yield
+historical_candidate,2.0,10.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+historical_candidate,2.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+historical_candidate,2.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+historical_candidate,5.0,2.0,0.3093706770865881,353.44045616666995,1.2037893956191349e-12,reversible subcritical outer-elastic bow; NOT 0.2% yield
+historical_candidate,5.0,4.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+historical_candidate,5.0,10.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+historical_candidate,5.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+historical_candidate,5.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+historical_candidate,10.0,2.0,1.226052706673944,2269.5574292182723,1.712473561606674e-11,reversible subcritical outer-elastic bow; NOT 0.2% yield
+historical_candidate,10.0,4.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+historical_candidate,10.0,10.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+historical_candidate,10.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+historical_candidate,10.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v10_exchange_rejected,0.5,2.0,0.031059231151684023,3.8784882878481257,1.293094018345372e-15,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v10_exchange_rejected,0.5,4.0,0.06256173474855438,7.788271501053173,2.598720040562757e-15,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v10_exchange_rejected,0.5,10.0,0.1652018564294829,20.068548399827733,6.7377538600129574e-15,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v10_exchange_rejected,0.5,25.0,0.7758914700733416,75.71587569743266,2.7750484114915662e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v10_exchange_rejected,0.5,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v10_exchange_rejected,1.0,2.0,0.05715729980550157,14.240584793511276,9.501660896558103e-15,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v10_exchange_rejected,1.0,4.0,0.1171949607718722,28.88091849264914,1.9324432033579723e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v10_exchange_rejected,1.0,10.0,0.38896369611949483,82.74027310604924,5.705363063832101e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v10_exchange_rejected,1.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v10_exchange_rejected,1.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v10_exchange_rejected,2.0,2.0,0.10746267950862962,53.08637220556667,7.09996256494145e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v10_exchange_rejected,2.0,4.0,0.23791242234975946,112.07443833297721,1.5159734142451122e-13,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v10_exchange_rejected,2.0,10.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v10_exchange_rejected,2.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v10_exchange_rejected,2.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v10_exchange_rejected,5.0,2.0,0.2833173810733348,325.2854815255605,1.1059365957460418e-12,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v10_exchange_rejected,5.0,4.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v10_exchange_rejected,5.0,10.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v10_exchange_rejected,5.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v10_exchange_rejected,5.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v10_exchange_rejected,10.0,2.0,1.1547181512674394,2130.9932758587456,1.6117222150859097e-11,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v10_exchange_rejected,10.0,4.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v10_exchange_rejected,10.0,10.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v10_exchange_rejected,10.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v10_exchange_rejected,10.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,0.5,2.0,0.044261262278821635,5.5214748864706875,1.8413619482101295e-15,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_cubic_5pct_not_adopted,0.5,4.0,0.08980922957016967,11.133427352597254,3.718993625468181e-15,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_cubic_5pct_not_adopted,0.5,10.0,0.2534725586425845,29.722128778879433,1.0064478572001296e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_cubic_5pct_not_adopted,0.5,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,0.5,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,1.0,2.0,0.08191797240177556,20.338526036751066,1.358279732628203e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_cubic_5pct_not_adopted,1.0,4.0,0.17265420554610225,41.87814041777175,2.8134136669375926e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_cubic_5pct_not_adopted,1.0,10.0,0.745180133958326,151.14852661028672,1.0949039584990342e-13,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_cubic_5pct_not_adopted,1.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,1.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,2.0,2.0,0.15737021201184392,76.72755832915637,1.0296316585660948e-13,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_cubic_5pct_not_adopted,2.0,4.0,0.4088396653233882,175.18615474602134,2.4195513272412236e-13,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_cubic_5pct_not_adopted,2.0,10.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,2.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,2.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,5.0,2.0,0.53258326455948,535.0953285715406,1.8795235999759707e-12,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_cubic_5pct_not_adopted,5.0,4.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,5.0,10.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,5.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,5.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,10.0,2.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,10.0,4.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,10.0,10.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,10.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_cubic_5pct_not_adopted,10.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_bulk_exact_not_adopted,0.5,2.0,0.048789820779239906,6.097614015248705,2.032810499798514e-15,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_bulk_exact_not_adopted,0.5,4.0,0.09792099366482003,12.23117402908468,4.080008245130014e-15,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_bulk_exact_not_adopted,0.5,10.0,0.25106606831637135,31.23837457216851,1.0465286447046065e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_bulk_exact_not_adopted,0.5,25.0,0.7830762343505276,94.07142184279638,3.279961185652139e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_bulk_exact_not_adopted,0.5,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_bulk_exact_not_adopted,1.0,2.0,0.08953324035519108,22.369609605451558,1.492194892873447e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_bulk_exact_not_adopted,1.0,4.0,0.1812066926437181,45.19028004202028,3.020557346128937e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_bulk_exact_not_adopted,1.0,10.0,0.49808583816588514,122.47456073348809,8.323501627622141e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_bulk_exact_not_adopted,1.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_bulk_exact_not_adopted,1.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_bulk_exact_not_adopted,2.0,2.0,0.16661438461977998,83.13333493261439,1.1108852530350463e-13,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_bulk_exact_not_adopted,2.0,4.0,0.34781043987106197,172.4219508955533,2.32109311491815e-13,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_bulk_exact_not_adopted,2.0,10.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_bulk_exact_not_adopted,2.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_bulk_exact_not_adopted,2.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_bulk_exact_not_adopted,5.0,2.0,0.40091587729446176,495.59233571741015,1.6729982101831596e-12,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_bulk_exact_not_adopted,5.0,4.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_bulk_exact_not_adopted,5.0,10.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_bulk_exact_not_adopted,5.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_bulk_exact_not_adopted,5.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_bulk_exact_not_adopted,10.0,2.0,1.0645841520794417,2452.5564536991983,1.7658718795486713e-11,reversible subcritical outer-elastic bow; NOT 0.2% yield
+v11_bulk_exact_not_adopted,10.0,4.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_bulk_exact_not_adopted,10.0,10.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_bulk_exact_not_adopted,10.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+v11_bulk_exact_not_adopted,10.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+source_elastic_comparator_0K,0.5,2.0,0.048789820779219645,6.097614015242862,2.032810499797095e-15,reversible subcritical outer-elastic bow; NOT 0.2% yield
+source_elastic_comparator_0K,0.5,4.0,0.09792099366478942,12.231174029083531,4.0800082451303965e-15,reversible subcritical outer-elastic bow; NOT 0.2% yield
+source_elastic_comparator_0K,0.5,10.0,0.2510660683164422,31.238374572167338,1.0465286447045733e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+source_elastic_comparator_0K,0.5,25.0,0.7830762343505365,94.07142184279765,3.2799611856521957e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+source_elastic_comparator_0K,0.5,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+source_elastic_comparator_0K,1.0,2.0,0.08953324035521286,22.369609605447845,1.492194892873504e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+source_elastic_comparator_0K,1.0,4.0,0.1812066926437284,45.19028004202112,3.020557346129178e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+source_elastic_comparator_0K,1.0,10.0,0.49808583816586766,122.47456073348825,8.323501627622175e-14,reversible subcritical outer-elastic bow; NOT 0.2% yield
+source_elastic_comparator_0K,1.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+source_elastic_comparator_0K,1.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+source_elastic_comparator_0K,2.0,2.0,0.16661438461980677,83.13333493261584,1.1108852530351527e-13,reversible subcritical outer-elastic bow; NOT 0.2% yield
+source_elastic_comparator_0K,2.0,4.0,0.3478104398710024,172.4219508955531,2.321093114918162e-13,reversible subcritical outer-elastic bow; NOT 0.2% yield
+source_elastic_comparator_0K,2.0,10.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+source_elastic_comparator_0K,2.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+source_elastic_comparator_0K,2.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+source_elastic_comparator_0K,5.0,2.0,0.40091587729448336,495.5923357174118,1.672998210183176e-12,reversible subcritical outer-elastic bow; NOT 0.2% yield
+source_elastic_comparator_0K,5.0,4.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+source_elastic_comparator_0K,5.0,10.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+source_elastic_comparator_0K,5.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+source_elastic_comparator_0K,5.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+source_elastic_comparator_0K,10.0,2.0,1.064584152079642,2452.5564536992824,1.76587187954875e-11,reversible subcritical outer-elastic bow; NOT 0.2% yield
+source_elastic_comparator_0K,10.0,4.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+source_elastic_comparator_0K,10.0,10.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+source_elastic_comparator_0K,10.0,25.0,,,,above outer-only local-line fold; no atomistic operation/yield claim
+source_elastic_comparator_0K,10.0,50.0,,,,above outer-only local-line fold; no atomistic operation/yield claim

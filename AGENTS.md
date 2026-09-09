@@ -496,6 +496,28 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- YIELD_STRENGTH_BRIDGE.md / yield_bridge_v11: 실제 항복의 검증 기준과
+  finite-source leading-log reference를 분리한다. Krebs2017 Fig2d의 0.002
+  plastic-shear CRSS/G 7개를 원본 픽셀/공식 SI와 연결했다. G의 수치 미확인으로
+  MPa는 null; 이전 large-strain flow를 항복으로 바꾸지 않는다. Wire D와
+  source pin spacing L은 다르다. 문헌 L=D/3, D/2는 가정이지 실측값이 아니다.
+  C11/C12/C44와 hydro/normal/shear mode는 정확한 선형 변환이다. 기존 metric을
+  좌표만 바꾸려면 공분산의 off-diagonal도 유지해야 한다. 독립 5%-C metric은
+  새 discrepancy 가정이지 단위 버그 수정이 아니다. material_metric_refined가
+  최종이며 초기 SLSQP material_metric은 보존된 superseded 기록이다.
+  5개 bulk를 exact하게 맞춘 최종 연구 후보도 fault/saddle 및 held-out 실패로
+  채택하지 않았다. Fixed-decay SVD를 radial 포함 식별성/신뢰구간으로 부르지 않는다.
+  같은 전위의 K(q)=|q|K0에서 k_line=b^T ReK0 b/(2pi)를 유도한다.
+  양단 고정선의 outer energy gamma=k_line ln(R/r_core), line stiffness는
+  gamma+gamma''다. 이를 써서 실제 정적 graph를 풀고 독립 parametric branch와
+  격자 수렴을 비교했다. L=.5–10um, r_core/b=.5–2는 명시적 가정이며 보정값 아님.
+  MPa bow-out threshold는 유한 atomistic core/source 활성화나 0.2% 항복 예측이
+  아니다. Single-arm 실험 모델과 double-ended reference도 구별한다.
+  Core/finite nonlocal energy와 실제 source geometry가 빠져 있다. 임의 길이를
+  Arrhenius energy로 곱하지 않는다. b*swept_area/specimen_volume은 기하학적
+  변형률 관계이지 한 bow-out이 proof strain에 도달했다는 뜻이 아니다.
+  기존 energy/PDE/UI/physical-time/A_c는 바꾸지 않았고 gate는 미통과다.
+
 - MATERIAL_TO_SPECIMEN_STRENGTH.md / material_strength_v10:
   같은 기존 LJ/Bessel+STF 가족의 exact coefficient basis로 0K bulk와 vector
   interface를 공동 fit했다. Initial Powell은 예산소진이며 global optimum 아님.
@@ -507,7 +529,8 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
   Source 빈 neighbor sum은 정확히 zero jet로 처리한다. 이는 source-only
   빈 einsum NaN 재현에 대한 정확한 identity 처리이지 LJ cutoff/force clipping이 아니다.
   실온 Krebs2017 Al wire 흐름점은 validation-only이며
-  0.2%CRSS/finite-source geometry는 미지다. Flow stress, first slip, uniform
+  v10에서 0.2%CRSS/finite-source geometry는 미지였다(후속 v11 참조).
+  Flow stress, first slip, uniform
   ideal fold와 axial/resolved shear를 등치하지 않는다. 직경을 source length나
   A_c로 바꾸지 않는다. Static MPa probe는 실제 plasticity/physical-time hold가 아니다.
 

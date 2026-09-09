@@ -16,7 +16,10 @@ ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT/'.cache/strength-reference'
 URLS = {
     'article': 'https://eprints.whiterose.ac.uk/id/eprint/126662/1/Article%20Text.pdf',
-    'supplement': 'https://infoscience.epfl.ch/record/228486/files/Supplementary%20Information.pdf',
+    # Official ORIGINAL bundle of item d8d8ebd9-c735-4079-a5ce-bbb0cbfffbd1,
+    # DOI 10.1038/nmat4911. The legacy /record/228486/files route returns405.
+    'supplement': 'https://infoscience.epfl.ch/server/api/core/bitstreams/2cff7b76-19e7-4591-b7ca-370af1bcd090/content',
+    'annealed_article': 'https://infoscience.epfl.ch/server/api/core/bitstreams/417397b5-3810-49ce-9e27-7ef484515775/content',
 }
 
 

@@ -1,0 +1,97 @@
+{
+  "stage": "yield_bridge_v11",
+  "starting_HEAD": "062c83d14f33f8ac0c1c4d6bdff25804394ff2bd",
+  "fresh_remote_at_start": "062c83d14f33f8ac0c1c4d6bdff25804394ff2bd",
+  "branch": "probability-pde-solver-v1",
+  "worktree_clean_at_start": true,
+  "interpreter": "Python 3.13.5; py launcher unavailable; equivalent python -m commands used",
+  "tests": {
+    "targeted": {
+      "command": "python -m pytest solver_v1/test_yield_elastic_metric.py solver_v1/test_finite_source_reference.py solver_v1/test_yield_benchmark.py -q",
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 3.99
+    },
+    "solver": {
+      "command": "python -m pytest solver_v1 -q --junitxml=.cache/yield_bridge_v11_solver_tests.xml",
+      "passed": 371,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 767.52,
+      "actual_junit_checked": true
+    },
+    "app": {
+      "command": "python -m pytest app -q --junitxml=.cache/yield_bridge_v11_app_tests.xml",
+      "passed": 31,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 91.74,
+      "actual_junit_checked": true
+    },
+    "smoke": {
+      "command": "python -m app.desktop_ui --smoke",
+      "exit_code": 0,
+      "elapsed_seconds": 2.14,
+      "reported_a0": 0.7713438268704838,
+      "reported_kappa": 86.29296488740997
+    },
+    "timing_note": "Solver/app overlapped some research calculations; these are observed elapsed times, not isolated benchmarks.",
+    "initial_new_test_failure": "One new isotropic spectral-stiffness test exceeded its overly tight bound; corrected using derived eps*N^2*k roundoff amplification. No energy/force or pre-existing test tolerance changed. Final targeted/full suites pass."
+  },
+  "executed_research": {
+    "initial_SLSQP_material_seconds": 517.6569461,
+    "final_active_face_material_seconds": 402.1721463,
+    "final_predeclared_radial_starts": 26,
+    "cubic_metric_Powell_evaluations": 70,
+    "cubic_metric_Powell_converged": true,
+    "exact_bulk_Powell_evaluations": 100,
+    "exact_bulk_Powell_converged": false,
+    "exact_bulk_budget_exhausted": true,
+    "finite_source_seconds": 28.7139555,
+    "material_stationary_and_report_seconds": 18.4317889,
+    "stress_combinations": 125,
+    "subcritical_independent_graph_solves": 53,
+    "above_reference_fold_exclusions": 72,
+    "independent_graph_refinements": 80,
+    "angular_refinements": 15,
+    "graph_force_residual_max_dimensionless": 1.9810131313136e-10,
+    "historical_angle_0_8_max_bow_error_over_span": [
+      0.0002033254467273002,
+      0.00005134471382733703,
+      0.000012870957395642432,
+      0.000003219952133037307
+    ],
+    "graph_segments": [32, 64, 128, 256],
+    "fine_material_gradient_error_eV_per_L0_max": 2.06524966017696e-8,
+    "fine_material_Hessian_error_eV_per_L0sq_max": 5.905950324347486e-7,
+    "fine_FD_step_L0": 0.00002,
+    "two_computed_figures_visually_inspected": true
+  },
+  "provenance_checks": {
+    "prior_material_file_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "prior_material_file_unchanged": true,
+    "supplement_sha256": "16cec3051cd27303f3a77c20779c5aaf19c2714d1c2664c72e6667b663ebdb74",
+    "official_supplement_md5_matches": true,
+    "computed_JSON_and_CSV_parse_checked": true,
+    "local_private_paths_in_new_results": false,
+    "working_tree_tracked_diff_check_passed": true,
+    "staged_diff_check": "passed"
+  },
+  "scientific_classification": {
+    "finite_source_leading_log_math_and_static_numerics_verified": true,
+    "finite_atomistic_core_or_source_validated": false,
+    "source_sizes_measured": false,
+    "core_cutoff_calibrated": false,
+    "material_candidates_adopted": false,
+    "actual_Al_yield_reproduced": false,
+    "actual_Al_yield_MPa": null,
+    "physical_M_a": null,
+    "physical_M_s": null,
+    "t0_seconds": null,
+    "physical_Hz_available": false,
+    "production_energy_PDE_UI_changed": false,
+    "A_c_semantics_changed": false,
+    "empirical_yield_or_hardening_law_added": false
+  }
+}
