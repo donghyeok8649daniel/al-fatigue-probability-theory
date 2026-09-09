@@ -1,0 +1,51 @@
+{
+  "completed": true,
+  "inputs": [
+    {
+      "path": "results/fcc111_active_interface/range_core_v12/material/calibration.json",
+      "sha256": "d338b42a6beba4fd9bc912a49d24e1b1772ad90c8cd8b3de87997388ba36beae"
+    },
+    {
+      "path": "results/fcc111_active_interface/stable_core_v13/material_reprofile/calibration.json",
+      "sha256": "cbb6d33c443afb0188d87cda2032ffed4ce9b5e903d28b9670e90bd08a5706f4"
+    },
+    {
+      "path": "results/fcc111_active_interface/stable_core_v13/material_spectral/profiles.json",
+      "sha256": "2df9e842c973baa877a45bf16bca44764fa69cc7f79188b7908f9613141c20dc"
+    },
+    {
+      "path": "results/fcc111_active_interface/stable_core_v13/material_stable_ranges/calibration.json",
+      "sha256": "133b7862d8b5979e13ac88a676ee026d2eeeb668d4bd52ea575b37f5fd053c90"
+    }
+  ],
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "material_accepted": false,
+  "physical_yield_validated": false,
+  "whole_zone_stability_certified": false,
+  "new_energy_terms_added": false,
+  "physical_seconds": false,
+  "physical_Hz": false,
+  "conclusion": "Fit loss alone is not adoption; finite-q, held-out, and core/source gates remain separate.",
+  "targeted_tail_classification": [
+    {
+      "candidate": "v13_fixed_range_spectral",
+      "path": "Gamma_K",
+      "fraction": 0.5,
+      "minimum_radius20_H": -0.0028145707945417264,
+      "radius16_to20_matrix_change": 6.361467939441923e-05,
+      "negative_sign_above_last_radius_change": true,
+      "radius_change_is_not_rigorous_tail_bound": true,
+      "material_accepted": false
+    },
+    {
+      "candidate": "v13_reoptimized_necessary_spectral",
+      "path": "Gamma_K",
+      "fraction": 0.5,
+      "minimum_radius20_H": -0.0035414961405813503,
+      "radius16_to20_matrix_change": 8.001031993210006e-05,
+      "negative_sign_above_last_radius_change": true,
+      "radius_change_is_not_rigorous_tail_bound": true,
+      "material_accepted": false
+    }
+  ]
+}

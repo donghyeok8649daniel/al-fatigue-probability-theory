@@ -1,5 +1,117 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 최신 작업: stable_core_v13 — 안정 branch 수렴과 소재 최적화/불안정성 분리
+
+최신 “ㄱㄱㄱ” 요청으로 fab84ddc6ad922923b5f83af076eda92f56cc318에서 시작.
+fresh fetch 후 local/origin 동일, 작업 트리 clean이었다. OneDrive 밖의 기존
+과학 worktree, probability-pde-solver-v1에서 작업했다. 추가 agent, main 수정,
+reset, 기존 파일 삭제, production/PDE/UI/kinetics/A_c 변경은 없다.
+
+### 완료된 실제 연구 계산 — Al 채택/실제 항복 완료는 아님
+
+1. **안정 코어에서만 domain continuation.** `core_continuation.py`는 소재
+   hash/L0/center/논리적 row를 검증하고 기존 내부 변위를 새 문제의 초기값으로
+   전달한다. `--extend-domain`, `--require-stable-source`가 명시적 gate다.
+   새 영역/경계의 모든 affected-site F와 실제 analytic force/Hessian을 재계산.
+   기존 L-BFGS default는 그대로이고 선택적인 analytic Newton-CG만 추가했다.
+   R6/r6의 두 알고리즘 에너지는1.8e-13 eV/row 차이, 내부 변위는1.48e-7 L0 차이.
+
+2. **새 8개 실제 코어 최소화 + 기존 4개를 포함한 12개 재평가 완료.**
+   Ring8의 R6/R8/R10 최소 고유값은+.405864/+.261534/+.172356 eV/L0².
+   무하중 R10/r8 force2.80e-10. 모든 새 상태의 force/Morse/에너지 방향차분과
+   winding1을 확인했다. 원 데이터를 다시 평가한 energy 차이는 모두0이었다.
+   이는 검증한 fixed boundary의 안정성이며 infinite-domain 인증은 아니다.
+   Ring8에서 R6→8→10 내부 18행의 최대 변화는.004714→.002672 L0.
+   Ring6→8 영향은 R6/R8/R10에서.000198/.000269/.000303 L0다.
+
+3. **수치 partition과 물리 core radius를 분리.** `core_matching.py`의 smooth
+   window에는 직접 유도한 logarithmic 상수 c_w를 뺀다. 원 에너지/힘은 불변.
+   Ring8, 각 free radius의 finite part(alpha=.75)는 R6/R8/R10에서
+   .377033/.372631/.369518 eV/row다. 하지만 같은 적분 반경에서 domain을
+   바꾼 차이도 남으므로 완전한 outer-core matching으로 채택하지 않았다.
+
+4. **큰 영역에서도 실제 0→50→0 MPa 전단 검사.** R8/r8의 내부 변위 증분은
+   .0080933 L0, unloading 후7.10e-10 L0. Final force4.20e-10, minH+.261534.
+   안정 초기점으로 회복했고 잔류 변화는 분해되지 않았다. 이를 거시 epsilon_p,
+   실측0.2% 항복, kinetics/zero-stress time hold라 하지 않는다. 50MPa 단계는
+   Newton optimizer precision-loss warning이 있지만 실제 force4.87e-10과
+   독립 Morse/energy curvature는 통과했다. Warning도 원본 summary에 보존한다.
+   작은 R4 비교는 symmetry-related 반대 stable branch이므로 동일 branch의
+   하중-domain 인증으로 오해하지 않는다. Dirichlet boundary는 실측 pinning 아님.
+
+5. **같은 소재식의 최적화 재실행.** 새 F 항/target/scale을 추가하지 않았다.
+   고정 range의 coefficient problem은 exact force/cohesion + 기존 부호 bounds
+   하에서 active-face convex profile로 풀었다. 실제 log-range least squares
+   3 starts,588 profiles. Loss38.9096→38.9065 및 다른 basin23.9148을 찾았다.
+   세 번째는65nfev budget stop(loss49.1963); global optimum이라 하지 않는다.
+   최저 loss 후보 C99.649/66.016/31.187GPa, heldout RMS19.56, finite-q min
+   약-76.96 eV/L0²: **불안정성을 이용한 낮은 손실이어서 채택하지 않았다.**
+   Local9-direction condition3676, A=0 active face. Rank9가 물리 식별성/CI는 아니다.
+
+6. **수정: spectral necessary constraint + 실제 range 재최적화.**
+   H(q;c)=sum c_j H_j(q)에서 negative polarization v는 vᵀH v>=0라는 선형
+   halfspace를 준다. Energy/force를 clipping한 것이 아니다. 고정 두 range의
+   실제 constraint profile 후, 원인 모드를 유지하고 radial 재최적화도 수행했다
+   (2 starts,99 profiles). 고정-range loss103.622→재최적화31.6247.
+   최종 decays(5.3707449113,5.6320174464,3.2556291352), 계수 순서
+   (u,v,A,B,C,D3,D1,D2): (.4130652816,3.4917299050,4.0910969697,
+   23.4600618913,0,65.6450471980,-2.1169476521,-58.3030883841).
+   C98.3205/68.0336/30.6618GPa, C'=15.1434 vs source26, heldout17.3383.
+   Own fault/saddle .141521/.170555 J/m²는 그럴듯해도 Al 채택 근거로 부족하다.
+
+7. **중요: cutoff 하나에서의 constrained zero는 안정성이 아니다.**
+   위 후보 minH는 radius8≈0, radius10=-.0023415. 추가 radius12/16/20 검사에서
+   -0.00354150, 마지막 matrix 변화8.00e-5로 음수가 약44배 크다. 고정-range
+   constrained 후보도 -0.00281457 vs6.36e-5. 둘 다 음의 모드가 수렴하므로 거부.
+   `material_comparison.csv`는 radius10 상태와 final refined 상태를 구별한다.
+   실제 다음 해결점은 tail-controlled stability margin/adaptive q 검사를
+   radial fit 내부에 포함하는 것이다. 검사 한 점/유한 radius의 조건으로
+   whole-zone 안정성을 인증하지 않는다. 관측한 몇 basin만으로 전체 analytic
+   family가 불가능하다고 단정하지 않는다. 임의 positive margin도 새 경험항도 금지.
+
+### 파일 / 재개 경로
+
+- `solver_v1/STABLE_CORE_AND_MATERIAL_DIAGNOSTICS.md`: 수식, 수치, 단위, 제한.
+- `results/fcc111_active_interface/stable_core_v13/`: 실제 자료, old v12는 보존.
+  `isolated_core/*/{metadata,summary}.json,state.csv`가 actual minimized state.
+  `core_*` CSV와 SVG는 동일 state 재평가/수렴 비교. `core_decision.json` 참조.
+  `material_reprofile`, `material_spectral`, `material_stable_ranges`의 completed
+  JSON은 실제 최적화 기록. `material_*` 비교/잔차/고파수/반경12–20 검사가 있다.
+- `run_profiled_range_calibration`, `run_spectral_material_profiles`,
+  `run_spectral_range_continuation`은 실제 fit을 수행한다. `report_stable_*`는
+  저장된 결과를 검증/재평가할 뿐 fit 재실행이 아니다. 실행 기본 경로는 기존
+  결과 덮어쓰기를 거부한다. 중복 중간 optimizer snapshot은 ignored .cache의
+  stable_core_v13 아래로 보관했고, complete profiles는 final JSON에 모두 남았다.
+- Historical 소재 hash9d00fbf5...과 source Al99 hash60c8a085...는 불변이며
+  문서/데이터에 full SHA256을 기록한다. 새 fitted 후보로 코어를 바꾸지 않았다.
+
+최종 실제 검증: 새/기존 코어 및 profile targeted34PASS42.53s,
+전체 solver415PASS1810.82s(30분10초), app31PASS200.25s(skip0),
+desktop smokePASS2.51s. 실제 연구 계산/전체 테스트가 모두 종료됐다.
+git diff --check와 staged diff check도 통과했다. 새 자료 JSON36개/CSV45개/
+SVG1개를 파싱/검사했고, curve를 실제로 확인했다. 모든 기존 테스트는 유지했다.
+이번 source/code/data 변경은 과학 검증을 마친 연구 결과로 커밋하는 것이며,
+소재 채택 성공으로 커밋하는 것이 아니다. 이 문서는 해당 커밋에 포함되는
+커밋 직전 인계다. 자기 자신의 SHA를 이 문서에 쓰지 말고 실제 git log 및
+fresh origin/probability-pde-solver-v1로 최종 commit/push를 확인한다.
+커밋 전 다시 fetch한 origin은 fab84ddc6ad922923b5f83af076eda92f56cc318로
+시작과 같았다. main local80cacb4/remote c43d8e0는 건드리지 않았다.
+일부 초기 계산의 긴 wall-clock 공백 원인은 미확인이다. CPU benchmark로
+해석하지 말고 실제 iteration/evaluation 수를 함께 본다.
+
+### 다음에 할 일 / 아직 넘지 못한 gate
+
+- 먼저 아래 최종 검증/Git 기록 또는 실제 Git log를 확인하고 중복 재실행하지 않는다.
+- 소재: finite-q tail/전 q 안정성을 포함한 견고한 constrained optimization,
+  독립 탄성/계면 곡률 검증. 기존 조건 실패만으로 새 F 항을 무작정 늘리지 않는다.
+- 코어: 더 큰 domain 또는 일관된 outer response, 모든 line character/partial
+  core와 finite-source matching. 현재 straight screw만으로 finite-loop/source
+  energy를 완성하지 않는다. 새 core-radius나 가상 pin length로 실측 항복을 맞추지 않는다.
+- 실제 source/결함 geometry,0.2% strain까지의 거시 연결, physical mobility는 여전히
+  필요하다. Static source/core와 probability/PDE kinetics를 혼동하지 않는다.
+- 실측 Al 항복/피로, physical seconds/Hz, A_c 보정은 미완료. Production/UI gate는
+  닫혀 있으며 사용자 확인 없는 meshing UI 재설계는 하지 않았다.
+
 ## 최신 작업: range_core_v12 — 소재 range 분리와 단일 전위 코어 경계
 
 요청: “이제 좀고쳐라 걔네도”. b84eaf4d9a449a16476ab69d8d3de30496c6c00c에서

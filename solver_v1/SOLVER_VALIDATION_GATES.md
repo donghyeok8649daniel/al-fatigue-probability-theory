@@ -14,6 +14,20 @@ confused with a fully calibrated spatial aluminum fatigue solver.
 
 ## Gates
 
+The stable_core_v13 continuation follows the verified lower core, not the
+centered saddle, to independently larger free disks and environment rings.
+Same-energy Newton/Hessian checks and declared smooth radial finite parts
+separate optimizer, shell-partition and boundary errors. They do not establish
+all-domain core matching or a finite-source yield prediction.
+
+Exact coefficient profiling of the unchanged family reveals a lower-loss
+radial basin with a large negative finite-q eigenvalue. Necessary spectral
+halfspaces and subsequent radial optimization are a physical admissibility
+check, not a fitted yield law. A sampled zero Hessian eigenvalue is NOT a
+stability margin, and a fixed-polarization constraint is not whole-zone PSD.
+Held-out errors and tail/domain uncertainty still control adoption. Read
+STABLE_CORE_AND_MATERIAL_DIAGNOSTICS.md before reusing these research states.
+
 The range_core_v12 follow-up separates the rank2 microscopic angular range
 from ranks1/3, preserving the equal-range analytic limit. Actual fitting
 improves the joint residual, but C11 and held-out vector curvature still fail.

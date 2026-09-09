@@ -1,0 +1,49 @@
+{
+  "energy": 1.1725333662100428,
+  "maximum_free_force": 4.868455950879369e-10,
+  "force_converged": true,
+  "optimizer_success": false,
+  "optimizer_message": "Warning: Desired error not necessarily achieved due to precision loss.",
+  "iterations": 7,
+  "evaluations": 40,
+  "polish_steps": 0,
+  "boundary_winding": 1.0,
+  "minimum_density": 56.345156310998114,
+  "minimum_transverse_radius": 0.8500050439030447,
+  "minimizer": "newton_cg",
+  "final_stability_probe": {
+    "minimum_eigenvalue": 0.26093682430496895,
+    "eigenpair_residual": 1.6265109709649672e-09,
+    "energy_curvature_checks": [
+      {
+        "step_over_L0": 0.002,
+        "curvature": 0.26093696769979857,
+        "eigenvalue_error": 1.43394829621446e-07,
+        "plus_energy_change": 5.218753558189348e-07,
+        "minus_energy_change": 5.218725149802594e-07
+      },
+      {
+        "step_over_L0": 0.001,
+        "curvature": 0.2609369094130898,
+        "eigenvalue_error": 8.510812082862529e-08,
+        "plus_energy_change": 1.304688068692883e-07,
+        "minus_energy_change": 1.3046810254380148e-07
+      }
+    ],
+    "maximum_free_force": 4.868454840656344e-10,
+    "force_tolerance": 3e-07,
+    "positive_hessian_on_tested_fixed_boundary": true,
+    "stable_on_tested_fixed_boundary": true
+  },
+  "initial_energy": 1.172673167076155,
+  "initial_maximum_free_force": 0.007670481136258761,
+  "energy_decrease": 0.0001398008661122052,
+  "maximum_transverse_relaxation": 0.0717494875317186,
+  "reciprocal_modes": 10,
+  "last_mode_envelope": 1.7610652540559804e-14,
+  "elapsed_seconds": 1158.9284537000058,
+  "completed": true,
+  "domain_converged": false,
+  "physical_yield_validated": false,
+  "core_energy_matched_to_outer_elasticity": false
+}

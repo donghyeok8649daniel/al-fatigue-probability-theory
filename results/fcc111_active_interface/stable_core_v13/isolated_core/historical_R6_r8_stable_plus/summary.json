@@ -1,0 +1,48 @@
+{
+  "energy": 1.12885706436068,
+  "maximum_free_force": 1.5837161806723176e-07,
+  "force_converged": true,
+  "optimizer_success": true,
+  "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+  "iterations": 88,
+  "evaluations": 121,
+  "polish_steps": 0,
+  "boundary_winding": 1.0000000000000002,
+  "minimum_density": 56.399726123149875,
+  "minimum_transverse_radius": 0.8489360055856613,
+  "final_stability_probe": {
+    "minimum_eigenvalue": 0.40586437485812654,
+    "eigenpair_residual": 3.885118076608006e-09,
+    "energy_curvature_checks": [
+      {
+        "step_over_L0": 0.002,
+        "curvature": 0.40587070460063046,
+        "eigenvalue_error": 6.329742503918823e-06,
+        "plus_energy_change": 8.120499797037439e-07,
+        "minus_energy_change": 8.114328389208225e-07
+      },
+      {
+        "step_over_L0": 0.001,
+        "curvature": 0.40586598881731106,
+        "eigenvalue_error": 1.6139591845210077e-06,
+        "plus_energy_change": 2.0307138437480887e-07,
+        "minus_energy_change": 2.0279460422045759e-07
+      }
+    ],
+    "maximum_free_force": 1.5837161803925934e-07,
+    "force_tolerance": 3e-07,
+    "positive_hessian_on_tested_fixed_boundary": true,
+    "stable_on_tested_fixed_boundary": true
+  },
+  "initial_energy": 1.128858208797979,
+  "initial_maximum_free_force": 0.0005231503981892871,
+  "energy_decrease": 1.1444372991498142e-06,
+  "maximum_transverse_relaxation": 0.06944036574720804,
+  "reciprocal_modes": 10,
+  "last_mode_envelope": 1.713530546389215e-14,
+  "elapsed_seconds": 3467.5157548999996,
+  "completed": true,
+  "domain_converged": false,
+  "physical_yield_validated": false,
+  "core_energy_matched_to_outer_elasticity": false
+}

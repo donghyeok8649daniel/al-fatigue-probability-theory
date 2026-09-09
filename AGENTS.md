@@ -496,6 +496,21 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- STABLE_CORE_AND_MATERIAL_DIAGNOSTICS.md / stable_core_v13: 안정 source의
+  hash/L0/논리적 row/경계를 묶어 실제 domain continuation을 한다. 초기 변위
+  전달은 수렴 인증이 아니다. 선택적 Newton-CG도 같은 analytic Hessian을
+  사용하며 force와 Morse를 독립 확인한다. Optimizer warning과 실제 잔차를
+  함께 보존한다. Smooth radial window는 고정된 수치 partition이며 정확한
+  logarithmic subtraction 상수가 필요하다. 이를 material core radius로
+  피팅하지 않는다. Domain/ring/window 차이는 무한영역 오차와 별도 보고한다.
+  같은 에너지에서 coefficient-linear H(q)의 negative mode는 necessary
+  stability halfspace를 준다. 이 제약은 물리적 허용성 검사이지 새 yield law가
+  아니다. Fixed-range convex profile와 실제 radial 재최적화를 구분한다.
+  한 q/polarization의 조건은 전 Brillouin-zone 안정성 인증이 아니며,
+  cutoff 한 곳의 minH≈0도 양의 안정성 margin으로 인정하지 않는다.
+  더 작은 fit loss가 finite-q 불안정성/held-out 악화에서 온 것인지 확인한다.
+  정적 0→50→0 MPa screw 비교를 거시 0.2% 항복이나 kinetic hold로 부르지 않는다.
+
 - RANGE_AND_CORE_REPAIR.md / range_core_v12: STF rank2 radial range와 ranks1/3
   range 분리는 별도 analytic 연구 가설이다. Common-range limit을 보존하며,
   이를 지원하지 않는 scalar FFT row로 몰래 전달하지 않는다. 새 loss 개선이

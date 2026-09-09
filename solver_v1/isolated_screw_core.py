@@ -231,19 +231,39 @@ class IsolatedScrewCore:
                 +np.einsum('c,ci,cj->ij',2*self.rows.angular_weights,first[2:],first[2:]))
         return result/(self.rows.b*self.rows.d*self.rows.h)
 
-    def relax(self,initial=None,*,max_iterations=150,force_tolerance=2e-6,polish_steps=3,callback=None):
+    def relax(self,initial=None,*,max_iterations=150,force_tolerance=2e-6,polish_steps=3,callback=None,
+              method='lbfgs'):
         if max_iterations<1 or not np.isfinite(force_tolerance) or force_tolerance<=0:
             raise ValueError('positive iterations and force tolerance required')
+        if method not in ('lbfgs','newton_cg'):
+            raise ValueError('explicit lbfgs or analytic newton_cg method required')
         shape=(len(self.free_ids),3); initial=self.initial if initial is None else initial
         self.full_field(initial); count=[0]
+        cached_x=None; cached_out=None; cached_apply=None
         def fun(x):
+            if cached_x is not None and np.array_equal(x,cached_x):
+                return cached_out['energy'],cached_out['gradient'].ravel()
             out=self.evaluate(x.reshape(shape)); return out['energy'],out['gradient'].ravel()
+        def hessp(x,v):
+            nonlocal cached_x,cached_out,cached_apply
+            if cached_x is None or not np.array_equal(x,cached_x):
+                cached_out,cached_apply=self.linearize(x.reshape(shape)); cached_x=x.copy()
+            return cached_apply(v.reshape(shape)).ravel()
         def progress(x):
             count[0]+=1
             if callback is not None:
                 callback(count[0],x.reshape(shape).copy())
-        result=minimize(fun,np.asarray(initial).ravel(),jac=True,method='L-BFGS-B',callback=progress,
-                        options=dict(maxiter=max_iterations,gtol=force_tolerance/10,ftol=1e-14,maxls=35,maxcor=24))
+        if method=='lbfgs':
+            result=minimize(fun,np.asarray(initial).ravel(),jac=True,method='L-BFGS-B',callback=progress,
+                            options=dict(maxiter=max_iterations,gtol=force_tolerance/10,ftol=1e-14,maxls=35,maxcor=24))
+        else:
+            # The same full analytic energy/Hessian, not a harmonic replacement.
+            # Newton-CG handles curvature in its search; the independent final
+            # force/Morse gates still decide whether the result is a minimum.
+            result=minimize(fun,np.asarray(initial).ravel(),jac=True,hessp=hessp,
+                method='Newton-CG',callback=progress,
+                options=dict(maxiter=max_iterations,xtol=force_tolerance/100))
+        cached_x=cached_out=cached_apply=None
         x=result.x.reshape(shape).copy(); polished=0
         for _ in range(polish_steps):
             out,apply=self.linearize(x); g=out['gradient'].ravel()
@@ -265,4 +285,5 @@ class IsolatedScrewCore:
                     force_converged=bool(residual<=force_tolerance),optimizer_success=bool(result.success),
                     optimizer_message=str(result.message),iterations=int(result.nit),evaluations=int(result.nfev),
                     polish_steps=polished,boundary_winding=self.boundary_winding(x),
-                    minimum_density=out['minimum_density'],minimum_transverse_radius=out['minimum_transverse_radius'])
+                    minimum_density=out['minimum_density'],minimum_transverse_radius=out['minimum_transverse_radius'],
+                    minimizer=method)

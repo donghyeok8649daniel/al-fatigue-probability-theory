@@ -11,6 +11,7 @@ import numpy as np
 from .even_moment_calibration import even_basis
 from .full_fcc_calibration_audit import cubic_constants_gpa
 from .core_stability import lowest_core_mode
+from .core_continuation import continue_core_field
 from .isolated_screw_core import IsolatedScrewCore,ScrewFarField
 from .nonlocal_interface_elasticity import cubic_elastic_tensor,rotate_elastic_tensor
 from .range_resolved_material import build_range_surface
@@ -52,7 +53,9 @@ def execute(args):
     started=time.perf_counter()
     if not args.label or any(c not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-' for c in args.label):
         raise ValueError('simple case label required')
-    out=OUT/args.label
+    output_root=Path(getattr(args,'output_root',None) or OUT)
+    source_root=Path(getattr(args,'source_root',None) or OUT)
+    out=output_root/args.label
     if out.exists():
         raise FileExistsError('preserve existing case; use a fresh label')
     surface,tensor,meta=material(args.model); b=surface.interface.bulk.geometry.b
@@ -65,18 +68,20 @@ def execute(args):
     if args.from_case:
         if any(c not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-' for c in args.from_case):
             raise ValueError('simple source-case label required')
-        origin=OUT/args.from_case
+        origin=source_root/args.from_case
         prior=json.loads((origin/'metadata.json').read_bytes())
-        if prior['parameter_sha256']!=meta['parameter_sha256']:
-            raise ValueError('continuation cannot switch the material potential')
-        if prior['radius_over_L0']!=args.radius:
-            raise ValueError('continuation must preserve the free disk')
         with (origin/'state.csv').open(newline='') as stream:
-            saved={(int(r['j']),int(r['l'])):np.array([float(r[k]) for k in ('ux','uy','uz')]) for r in csv.DictReader(stream)}
-        seed=np.array([saved[tuple(i)] for i in core.indices[core.free_ids]])
-        delta=(args.shear_mpa-prior['shear_traction_MPa'])*1e6*meta['length_scale_m']**3/EV_J
-        seed+=far.displacement(core.xyz[core.free_ids],shear_traction=delta,burgers_sign=0)
+            records=list(csv.DictReader(stream))
+        saved={(int(r['j']),int(r['l'])):np.array([float(r[k]) for k in ('ux','uy','uz')]) for r in records}
+        if len(saved)!=len(records):
+            raise ValueError('duplicate saved row indices')
+        prior_summary=json.loads((origin/'summary.json').read_bytes())
+        seed,transfer=continue_core_field(core,prior,saved,
+            parameter_sha256=meta['parameter_sha256'],length_scale_m=meta['length_scale_m'],
+            shear_mpa=args.shear_mpa,allow_expansion=getattr(args,'extend_domain',False),
+            require_stable=getattr(args,'require_stable_source',False),prior_summary=prior_summary)
         meta.update(continued_from=args.from_case,
+            continuation=transfer,
             source_state_sha256=hashlib.sha256((origin/'state.csv').read_bytes()).hexdigest())
     if args.escape_sign:
         if not args.from_case or not np.isfinite(args.escape_amplitude) or args.escape_amplitude<=0:
@@ -105,7 +110,8 @@ def execute(args):
             save_json(out/'progress.json',dict(completed=False,iteration=iteration,elapsed_seconds=time.perf_counter()-started))
             print(f'{args.label}: iteration {iteration}, elapsed {time.perf_counter()-started:.1f}s',flush=True)
     initial=core.evaluate(seed)
-    result=core.relax(seed,max_iterations=args.iterations,force_tolerance=args.force_tolerance,callback=checkpoint)
+    result=core.relax(seed,max_iterations=args.iterations,force_tolerance=args.force_tolerance,callback=checkpoint,
+        method=getattr(args,'minimizer','lbfgs'))
     final=core.evaluate(result['field'])
     # Mandatory for new runs: a force-converged symmetric saddle is NOT a
     # stable core. Preserve it as evidence and expose the negative mode.
@@ -134,10 +140,16 @@ def main():
     p.add_argument('--ring',type=int,default=3)
     p.add_argument('--shear-mpa',type=float,default=0.)
     p.add_argument('--from-case',help='same-material/same-disk saved state for static continuation')
+    p.add_argument('--output-root',type=Path,default=OUT,help='separate research result root; existing cases are never overwritten')
+    p.add_argument('--source-root',type=Path,default=OUT,help='root containing the saved source case')
+    p.add_argument('--extend-domain',action='store_true',help='explicit same-material larger-disk initialization')
+    p.add_argument('--require-stable-source',action='store_true',help='reject a source without positive Morse and force checks')
     p.add_argument('--escape-sign',type=int,choices=[-1,0,1],default=0,
                    help='explicit two-sided negative-Hessian-mode exploration; no force/energy change')
     p.add_argument('--escape-amplitude',type=float,default=.02)
     p.add_argument('--iterations',type=int,default=150)
+    p.add_argument('--minimizer',choices=['lbfgs','newton_cg'],default='lbfgs',
+                   help='same-energy optimization method; final force/Morse gates unchanged')
     p.add_argument('--force-tolerance',type=float,default=2e-6)
     p.add_argument('--tolerance',type=float,default=2e-12)
     execute(p.parse_args())
