@@ -61,6 +61,21 @@ class FCC111Geometry:
 
         return int(layer) % 3 * self.tau
 
+    def plane_basis_in_stacked_cubic_axes(self) -> np.ndarray:
+        """Plane-frame axes expressed in the cubic axes of THIS +ABC stack.
+
+        The stored e1,e2,e3 are the geometric/laboratory construction frame.
+        With +tau=(a1+a2)/3 and +h, that frame is NOT the conventional cubic
+        orientation often attached to the -tau FCC representative. A proper
+        pi rotation about [111] supplies the cubic axes of the generated
+        crystal: rows (-e1,-e2,e3). In these axes every neighbor is a_lat/2
+        times an integer triplet of even sum. No atom/energy/path is changed.
+
+        Use these rows for cubic elastic tensors and labeled cubic q paths.
+        RegistryPath.direction_3d remains in the original geometric frame.
+        """
+        return np.stack((-self.e1, -self.e2, self.e3))
+
 
 def fcc111_geometry(lattice_constant: float) -> FCC111Geometry:
     """Build the exact FCC(111) basis for a positive lattice constant."""

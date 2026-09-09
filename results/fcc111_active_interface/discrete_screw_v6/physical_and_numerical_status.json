@@ -1,0 +1,22 @@
+{
+  "rigid_hessian_absolute_error": 9.769962616701378e-15,
+  "direct_3d_radius32_max_absolute_error": 2.5864679820131187e-07,
+  "direct_3d_radius32_max_relative_error": 5.247244366392144e-06,
+  "all_profile_max_projected_force_residual_MPa": 4.691352225389277e-10,
+  "exact_harmonic_infinite_row_reduction_verified": true,
+  "full_continuum_profile_force_balance_verified": true,
+  "full_nonlinear_atomistic_core_verified": false,
+  "unresolved_physical_items": [
+    "nonlinear, vector/normal-relaxed atomic core",
+    "independent Al material fit",
+    "finite loop / activation-energy normalization",
+    "collective kinetic mobility"
+  ],
+  "physical_hz_available": false,
+  "production_solver_changed": false,
+  "ui_gate_passed": false,
+  "matched_separation_protocol_performed": true,
+  "matched_geometry_max_error_b": 1.0225562618870754e-09,
+  "matched_geometry_last_mesh_traction_change_MPa": 1.951256933807599e-10,
+  "matched_domain64_remaining_isolated_difference_fraction": 0.0008090025180115257
+}

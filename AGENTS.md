@@ -331,6 +331,15 @@ ABC 위상을 보존하고 scalar path u=s e_s를 명시한다.
 direct_110와 Shockley_112 경로를 혼동하지 않는다.
 Partial translation과 full registry period는 다르다.
 
+**+ABC 방향 감사(nonlocal_v5):** 기존 e1/e2/e3는 기하학적 구성 프레임이다.
+`+tau,+h`로 생성된 FCC의 실제 cubic axes에 대한 plane basis는
+`(-e1,-e2,e3)`이다. `plane_basis_in_stacked_cubic_axes()`를 사용해 탄성
+텐서와 cubic Gamma-X/L/K 경로를 변환한다. 기존 원자 위치/에너지는 바꾸지 않는다.
+잘못된 축 대응은 일부 acoustic matrix의 약37–40% 오차를 만들었다.
+RegistryPath.direction_3d는 기존 기하학 프레임 벡터로 보존한다.
+과거 finite-q CSV의 cubic path 이름은 이 감사 이전 기록이며, 수정된 경로 검사는
+nonlocal_v5/finite_q_corrected_paths.csv에 별도 저장한다.
+
     R_mn=m a1+n a2
     |R_mn|^2=b^2(m^2+mn+n^2)
     r_mnl^2=(l a)^2+|R_mn+Delta_l|^2
@@ -486,6 +495,32 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 ## 16. 문서 라우팅
 
 추가 연구는 기존 canonical model과 구분한다:
+
+- DISCRETE_FCC_SCREW_DERIVATION.md / discrete_screw_v6: 같은 LJ/Bessel 전위의
+  무한 원자열을 먼저 합산하고 transverse row/layer를 이산적으로 남기는
+  anti-plane harmonic reference. q_x=0, line=e1에만 해당한다.
+  Scalar F''가 사라지는 것은 각 완전한 row의 rho_x=0인 이 subspace에서만이다.
+  Angular moment는 모든 row를 합친 후 제곱한다. per-atom EAM을 보존한다.
+  논리적 인접 row jump와 spectral same-y jump는 finite-q에서 다른 제약이다.
+  `K_jump=(B H^+ B^dagger)^-1`에는 local K0가 이미 들어 있으므로
+  기존 gamma Hessian을 더해 이중 계산하지 않는다. K0를 뺀 후 rigid gamma를
+  붙이는 것도 nonlinear relaxation convention 검증 없이 채택하지 않는다.
+  같은 continuum reference의 전체 profile Euler 방정식은 별도로 풀었다.
+  Mean-content 제약의 반력은 holding traction이고 내부 force residual과 다르다.
+  고정 mean content와 실제 core separation은 다르다. Domain 비교는 실제
+  crossing 간격을 맞추고 해야 한다. Mesh pinning을 atomistic Peierls로 부르지 않는다.
+  Atomistic nonlinear/vector/normal-relaxed core, finite-loop activation 및
+  독립 Al material fit/kinetics는 아직 미완료. Production/UI gate 미통과.
+
+- NONLOCAL_INTERFACE_ELASTICITY.md / nonlocal_v5: 같은 LJ/Bessel 후보의 bulk
+  C_ijkl에서 두 반무한 결정의 static Schur kernel을 유도한 long-wave reference.
+  `K=|q|(Z_plus^-1+Z_minus^-1)^-1`, K(0)=0이며 local gamma Hessian을 중복하지 않는다.
+  Straight screw 에너지는 J/m 또는 eV/L0(line)이며 유한 activation energy가 아니다.
+  임의 선 길이/A_c를 곱해 Arrhenius 확률로 만들지 않는다. 현재 arctangent trial의
+  폭~0.28b, full Euler residual~1.2GPa: 실제 atomistic core를 푼 것이 아니다.
+  4–50MPa에서의 기존 전위쌍 구동력은 생성/속도/피로/잔류소성 검증과 구별한다.
+  후보와 source 탄성값은 서로 다른 결과를 주므로 교체해 성공을 만들지 않는다.
+  다음은 discrete half-crystal kernel, core 및 vector registry/finite-loop 검증이다.
 
 - LOW_STRESS_CYCLIC_AUDIT.md / low_stress_v4: 10–50 MPa 축응력 및 4 MPa 전단
   실제 주기 SG 가설 검사를 무하중 대조군/격자/dt/hold와 비교한다. Production

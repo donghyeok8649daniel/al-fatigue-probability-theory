@@ -58,6 +58,23 @@ def test_abc_translation_repeats_after_three_planes_modulo_lattice():
     )
 
 
+def test_positive_abc_actual_cubic_orientation_not_silently_negative_abc():
+    geometry = fcc111_geometry(4.05)
+    basis = geometry.plane_basis_in_stacked_cubic_axes()
+    assert np.linalg.det(basis) == pytest.approx(1.)
+    for layer in range(-3, 4):
+        for m, n in ((0, 0), (-1, 1), (2, -3)):
+            xy = geometry.lattice_vector(m,n)+geometry.abc_shift(layer)
+            local = np.r_[xy,layer*geometry.h111]
+            cubic = local@basis/(geometry.lattice_constant/2)
+            np.testing.assert_allclose(cubic,np.rint(cubic),atol=3e-15)
+            assert int(np.rint(cubic).sum()) % 2 == 0
+    # Demonstrate the previously tempting mapping is a different orientation.
+    local = np.r_[geometry.tau,geometry.h111]
+    wrong = local@np.stack((geometry.e1,geometry.e2,geometry.e3))/(geometry.lattice_constant/2)
+    assert np.max(abs(wrong-np.rint(wrong))) > .3
+
+
 def test_named_registry_paths_are_explicit_and_have_distinct_periods():
     direct = registry_path(DIRECT_110)
     shockley = registry_path(SHOCKLEY_112)

@@ -1,6 +1,233 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
-## 최신 상태: low_stress_v4 실제 저응력 주기 검사
+## 최신 상태: discrete_screw_v6 — 미해결 원인을 실제로 고치는 후속 감사
+
+이 절이 아래 nonlocal_v5보다 최신이다. 사용자 최신 지시는
+“왜 미해결인거 같냐 계속 원인 찾아서 고쳐봐 좀”이었다. 신규 agent 없음.
+동일 a485bc4 기반 probability-pde-solver-v1 과학 worktree에서 이어서 수행한다.
+원래 detached 폴더/사용자 파일은 보존. discovery 문서는 hash 일치 확인 후 동기화.
+최종 코드 검증은 완료했다. 이 절을 포함하는 검증 checkpoint의 SHA와 원격 상태는
+git log/status/fetch로 확인한다. 최종 응답에도 실제 commit/push 결과를 기록한다.
+
+### 실제 고친 것
+
+1. 폭 한 개의 arctangent trial -> 전체 profile의 constrained Euler 방정식을
+   실제로 푼다. 기존 continuum 에너지는 그대로. Fourier preconditioning과
+   L-BFGS 후 projected Newton-CG로 objective 종료와 실제 force 균형을 구별한다.
+   `int s dx=Q` 제약의 반력 lambda는 holding traction; 내부 force error 아님.
+   실제10개 profile의 최대 projected residual4.6914e-10MPa.
+   기존 trial의 약1.2GPa 불균형을 인위적 mobility/energy tuning 없이 제거했다.
+   하지만 이는 continuum PN의 stationary profile이지 atomistic core 인증 아님.
+2. 새 discrete_fcc_screw.py는 line=e1을 따라 무한 LJ/Bessel sum을 정확히 하고,
+   transverse row(j),layer(l)는 이산적으로 남긴다:
+   R=(nb+(j+l)b/2, d(j+l/3),hl), d=sqrt(3)b/2.
+   Scalar density와 rank1/2/3 STF derivative도 같은 Poisson 방식으로 전개한다.
+   General scalar F''를 삭제한 것이 아니라 row rho_x=0인 anti-plane subspace만
+   적용. full per-atom angular sum 후 norm 제곱; 기존 D1/D2/D3 모두 그대로.
+3. 실제 bulk symbol K(q_y,theta), ABC phase, infinite-layer Green/Schur 및
+   independent direct3D/finite-layer checks 구현.
+   기존 W_int,ss=4.945211215219163과 row reconstruction=4.945211215219173:
+   difference9.77e-15. R32 direct3D maxabs2.5865e-7,
+   maxrelative5.2473e-6(작은 q 포함); R8/12/16/24/32 tail 감소 실제 비교.
+   8rings/288rows/11modes, extra16rings 검증. Tail diagnostics는
+   2 sum|Phi|+16 sum|D_r| S_r T_r의 같은 stiffness 단위로 산정한다.
+   마지막ring1.4043e-14, omitted-validation bound3.3466e-17.
+   이는 finite validation window bound + empirical infinite remainder 검증이지
+   무증명 exact infinite error bound를 주장한 것이 아니다.
+4. Relaxed K_jump(0)=4.795625552378889, rigid보다3.02486%낮다.
+   논리적 인접 row와 spectral same-y interpolation은 finite-q에서 다른 제약이다.
+   qL0=1:8.83393/8.08444; zone edge26.19934/22.34258.
+   이전 continuum+rigid-local kernel을 원자 scale까지 쓰면 큰 오차다.
+   Acoustic-pole slope도 따로 유도/검증:2.099137/1.089480(해당 reduced 단위).
+   단순 mu|q|/2 coefficient 교체/fit은 하지 않았다.
+5. K_jump는 local stiffness를 포함한다. 기존 gamma Hessian을 더하면 이중 계산.
+   K0를 빼고 nonlinear rigid gamma를 넣는 것도 아직 정당화되지 않아 하지 않는다.
+
+### 실제 낮은 응력 / refinement
+
+- 4/15/25/50MPa, 4/8/16/32/128/512 atomic-row spatial periods,
+  두 명시된 jump constraints의 실제 harmonic static response48개.
+  Dynamic trajectory/Hz/피로 수명 계산이 아니다.
+- 같은 continuum의 fixed-content d/b32/128/512/1024, L/d8, dx/b.0625:
+  holding stress115.205590/28.231490/7.023611/3.508895MPa.
+  외력0/4/5/10/15/25/50MPa에 대한 signed drive를 저장한다.
+  이 제약에서 uniform 외력은 energy -tau*Q만 바꾸므로 여러 동적 실행인 척하지 않는다.
+- d_content128,L/d8, dx/b.25/.125/.0625/.03125:
+  9.842586/26.003904/28.231490/28.231613MPa.
+  모든 force residual이 작아도 coarse mesh는 numerical pinning으로 틀렸다.
+  마지막 refinement change.000123MPa. physical Peierls/소성 floor로 오해 금지.
+- Mean content를 고정한 domain 증가가 실제 defect separation을 바꾼다는
+  추가 protocol 오류를 찾아 수정했다. L/content4/8/16/32에서 실제 간격은
+  127.6933/127.2580/126.4450/124.8193b였다. 서로 같은 결함이 아니었다.
+  새 --matched-domains는 actual s=b/2 crossings를128b로 맞추는 outer bracket solve.
+  현재 완료 L/d4/8/16/32:23.237335/28.049974/29.205530/29.491616MPa.
+  L/d64도 완료:29.5629654769MPa 대 isolated29.5869013546MPa,
+  남은 periodic effect.0809%. L/d8 실제 간격128b에서 dx/b.0625->.03125 변화
+  1.95e-10MPa. 총38회 constrained profile solve,850.30s.
+  실제 crossing 오차<=1.03e-9b. matched_separation_domain_refinement.csv 확인.
+
+### 원시 파일과 재현
+
+- solver_v1/DISCRETE_FCC_SCREW_DERIVATION.md에 자세한 식/정규화/오류 원인.
+- solver_v1/discrete_fcc_screw.py: harmonic row/Bessel/Green reduction.
+- nonlocal_registry_reference.py에 solve_fixed_registry_content 추가.
+- run_discrete_screw_reference.py가 실제 연구 실행:
+  `python -m solver_v1.run_discrete_screw_reference --kernel --profiles --matched-domains --report`
+- results/fcc111_active_interface/discrete_screw_v6/에 작은 CSV/JSON/PNG/SVG.
+- fitted candidate SHA256는 여전히
+  9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655.
+  production models/PDE/app/static fit/kinetic calibration 파일은 그대로다.
+
+### 완료된 검증 체크포인트
+
+- nonlocal_v5 전체 solver242passed(1117.29s)는 실제 완료했다.
+- v6 targeted47passed(18.20s), tail-bound 별도15passed(11.66s).
+- app27passed/2skipped(203.40s), desktop smoke PASS(2.626s).
+- v6 첫 전체 실행은 tail-bound 단위 감사를 반영하기 위해 55%에서 중단;
+  PASS 아님. 최신 코드를 fresh basetemp로 재실행:
+  .cache/discrete-reviewed-full-regression.xml.
+- 일부 첫 targeted 실패는 3D direct tail/작은q quadrature 해상도 부족이었다.
+  tolerance를 풀지 않고 radius32 및 Ntheta8192 이상으로 검증했고 통과했다.
+- matched domain 계산과 최종 전체 검사는 완료.
+  최신 solver_v1 **260passed /903.34s**, app **27passed/2skipped /203.40s**,
+  startup smoke PASS, a0=.7713438268704838, kappa=86.29296488740997.
+  Tk의 init.tcl/display를 이 실행 환경에서 찾지 못해 rendering 관련2개만 제외됨.
+  실제 GUI rendering을 검증했다고 하지는 않는다.
+- git diff --check 및 --cached --check PASS. 새 Matplotlib SVG의 후행 공백을
+  생성 코드에서 형식 정리하고 두 SVG XML parse도 확인했다. 수치/그림 내용 불변.
+- 결과/명령/timing/status는 discrete_screw_v6/validation_status.json에 보존.
+- 재확인 remote는 작업 전과 같은 a485bc4였다. main/origin-main 불변:
+  80cacb4 /c43d8e0. 정상 fast-forward 외 push 방식은 사용하지 않는다.
+- 이 checkpoint는 검증된 연구 단계의 완료일 뿐,
+  nonlinear atomistic core / Al fatigue / physical kinetics 완료 선언이 아니다.
+
+### 다음 진짜 물리 단계
+
+Full nonlinear discrete row/cross-section 에너지 및 relaxed local GSF를
+동일 constraint에서 유도해야 한다. 현재 exact harmonic + continuum profile을
+그냥 붙여 atomistic core 완성이라 부르면 안 된다. Vector registry, normal
+relaxation, finite-loop/patch의 유한 활성화 에너지, 독립 재료 적합/kinetics도 남아 있다.
+현재 연구 후보 C11/C12/C44=87.816/64.833/49.271GPa 대 target114/62/32GPa:
+재료 적합 자체도 여전히 불충분. 기존 파라미터 재보정/값 이동은 이번에 하지 않았다.
+Straight line 에너지는 J/m이며 임의 선길이/A_c로 eV thermal barrier를 만들지 않는다.
+M_a,phys/M_s,phys/t0 unavailable, seconds/Hz disabled, UI gate 미통과.
+DISCRETE_FCC_SCREW_DERIVATION.md 마지막 절에 다음 nonlinear row functional을
+명시했다. F'_bulk를 nonlinear 상태에 동결하면 안 된다. 각 site의 rho/Q를 먼저
+합산해 F/norm을 적용하고, harmonic limit가 새 정확한 K와 일치해야 한다.
+한 infinite row를 b만큼 옮기는 것은 atomic position relabeling과도 같으므로
+unwrapped registry와 Burgers/winding/boundary 조건을 별도로 검증할 것.
+
+## 최신 상태: nonlocal_v5 — 비국소 탄성 비용과 축 대응 감사
+
+이 절이 아래 low_stress_v4 / matched_v3 기록보다 최신이다. 사용자 최신 요청은
+남은 문제를 이어서 해결하라는 것이었다. 시작 fresh fetch에서 과학 worktree의
+HEAD와 origin 모두 a485bc4ba977914a159acd2d59b256e5bfca399b, 깨끗한 상태였다.
+실제 작업은 aft-pde-bessel-38969ad의 probability-pde-solver-v1에서 수행한다.
+원래 사용자 폴더는 detached c43d8e0와 사용자 파일을 보존한다. 두 discovery 문서는
+변경 전 hash 일치 확인 후 동기화한다. 최종 commit/push는 실제 git로 확인한다.
+
+### 실제 구현 및 실행
+
+- 같은 angular_monotone_opening 후보를 사용하며 재보정 없음. 기존 SHA256:
+  9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655.
+- 새 nonlocal_interface_elasticity.py: cubic C 회전, 두 half-space의 static
+  ordered-Schur impedance, `K=|q|(Z_plus^-1+Z_minus^-1)^-1`.
+  Bulk positivity, Hermitian/Riccati residual, translation K(0)=0 검사.
+- 독립 isotropic 해석해, finite-depth FEM Schur, screw analytic reduction과 일치.
+  LJ/Bessel의 continuum/long-wave 한계다. atomically exact finite-q 계면 kernel 아님.
+- 새 nonlocal_registry_reference.py: 같은 analytic W_int의 검증된 Fourier gamma,
+  에너지/gradient/Hessian, nonlinear intrawell Newton-CG static solve,
+  명시된 기존 screw dipole의 제한 arctangent trial-width 최적화.
+- 에너지 단위는 eV/L0 of dislocation LINE = J/m. 이를 eV activation barrier로
+  사용하지 않는다. 임의 선 길이/집단 면적/A_c를 곱하지 않는다.
+- 128 analytic samples, 64/128 비교, off-grid energy/force/Hessian 검사 실제 수행.
+  최대 오차3.275e-15 /7.262e-13 /1.372e-10(해당 reduced 단위).
+- bulk C=87.81616955/64.83263414/49.27104858 GPa. derived screw mu=23.79519794GPa.
+  기존114/62/32GPa 타깃 불일치는 그대로이며 보정 성공으로 승격하지 않는다.
+
+### 독립 검사로 찾아 고친 방향 버그
+
+기존 +tau,+h FCC 원자 위치는 바꾸지 않았다. 다만 generated stack의 actual
+cubic axes와 기존 geometric/lab e1/e2/e3를 동일시한 변환은 잘못이었다.
+actual cubic에 대한 plane basis는 (-e1,-e2,e3)이며 proper rotation이다.
+이 좌표에서 모든 sampled lattice vector는 (a_lat/2)*integer, even-sum FCC다.
+`geometry.plane_basis_in_stacked_cubic_axes()` 추가,
+`StaticBulkHessian.crystallographic_wavevector()` 수정.
+옛 Gamma-X/L/K CSV는 그대로 두되 잘못 붙었던 labels를 문서에 명시했다.
+RegistryPath.direction_3d는 원래 geometric frame; scalar path/에너지 불변.
+잘못된 frame acoustic discrepancy37–40% -> 올바른 frame에서1.8525e-5 이하
+(q L0=.005, independent radius32L0, 4directions).
+새12/20/32L0의 60방향 점씩 corrected finite-q 검사는 모두 양수,
+최소0.0669003eV/L0^2. full Brillouin zone/비선형 안정성 증명 아님.
+
+### 낮은 응력과 기존 결함 — 완성된 피로가 아님
+
+4/15/25MPa sinusoidal spatial traction, wavelength4/8/16/32/128/512b:
+실제18개 static nonlinear solve. 최대force residual6.52e-8MPa,
+static unload slip/b<=9.87e-16. short-wavelength atomistic 정확도는 미인증.
+정적 unload는 동적 hold/잔류소성/주기 피로 검증이 아니다.
+
+지정된 pre-existing opposite screw pair d/b32/128/512/1024:
+d=9.164/36.656/146.626/293.251nm. L/d8, dx/b.0625에서 trial balance
+112.2174/28.05040/7.01254/3.50627MPa.
+각각에0/4/5/10/15/25/50MPa를 넣고 separation 에너지 미분을 실제 계산.
+구동력이지 속도/생성/피로수명이 아니다. defect spacing은 주어진 시나리오다.
+고정 normal-gap perfect registry의 ideal shear는7.543359GPa:
+실험 yield나 mixed a-s spinodal 아님. 기존결함 이동과 pristine 생성은 다르다.
+
+독립 수렴:
+- d/b128,L/d8,dx/b=.25/.125/.0625/.03125:
+  balance28.63133374/28.05266482/28.05040423/28.05040422MPa.
+  마지막 차이1.143e-8MPa.
+- d/b128,dx/b.0625,L/d4/8/16/32/64:
+  23.23775308/28.05040423/29.20596108/29.49204783/29.56339690MPa.
+  isolated far-field29.58690135MPa; 마지막periodic effect~.0794%.
+  L/d8 한 번으로 domain-converged라고 하면 안 된다.
+- analytic infinite Fourier elastic energy와도 비교; finest차이~1e-14.
+- d/b1024, core widths.15/.28/.5/1b sensitivity spread~6e-5MPa.
+
+하지만 trial width=.27789b(~.0796nm), full Euler residual~1.2GPa,
+q90b~.67–1.23이다. 폭 하나를 최적화했을 뿐 실제 전위 core를 푼 것이 아니다.
+숫자 mesh 수렴은 atomistic core 정확도/유한 nucleation barrier를 인증하지 못한다.
+Candidate/0K source elastic mu=23.795/28.844GPa로 d293nm isolated attraction은
+3.698/4.483MPa. 따라서4MPa에서 expansion 여부조차 material comparator에 따라
+바뀐다. 낮은 응력의 Al 소성 검증 성공을 주장하지 않는다.
+
+### 남은 다음 단계와 금지 사항
+
+1. 같은 infinite LJ/Bessel + many-body에서 discrete half-crystal force constants/
+   Green/Schur kernel을 유도. 실제 interface jump constraint B, ABC Bloch phases,
+   zero-mode/gauge 및 relaxed local Hessian을 먼저 일치시킬 것.
+   `(B H^+ B^T)^-1`은 명시된 constraint에 대한 선형식이지 현재 완성된 코드 아님.
+2. 원자적 core, vector registry/partial splitting, normal relaxation 검증.
+   현재 rigid direct110 scalar path를 최저에너지 2D GSF 경로라 하지 말 것.
+3. finite loop/patch와 실제 spatial activation energy를 유도한 뒤 확률 이론 연결.
+   현재 straight-line J/m에 임의길이를 곱해 thermal probability 생성 금지.
+4. 독립 material fit/validation 및 collective kinetic data는 여전히 미완료.
+   M_a,phys/M_s,phys/t0 unavailable, seconds/Hz disabled. A_c도 별도 미보정.
+5. production PDE/energy registry/static parameter/UI는 그대로. UI gate 미통과.
+   사용자 확인 없이 geometry-import/mesh UI로 넘어가지 않는다.
+
+### 파일 / 재현 / 검증 상태
+
+핵심 solver_v1/NONLOCAL_INTERFACE_ELASTICITY.md.
+results/fcc111_active_interface/nonlocal_v5/에 작은 CSV/JSON/NPZ/PNG/SVG 저장.
+`python -m solver_v1.run_nonlocal_interface_reference --prepare --scenarios`
+가 실제 Bessel+탄성+정적 시나리오 실행이다.
+`python -m solver_v1.report_nonlocal_interface_reference`는 저장 결과 summary/plot.
+물리/수치 결과는 numerical_and_physical_status.json에 명시적으로 분리한다.
+
+이번 targeted(새 이론+geometry+기존 finite-q)29passed(4.02s).
+App27passed/2skipped(126.65s), desktop smoke PASS(1.7524s),
+TwoRowLJ a0=.7713438268704838,kappa=86.29296488740997 불변.
+첫 full-suite 실행은 새 안정성 보호 검사를 넣기 위해 중단했으므로 PASS 아님.
+이 nonlocal_v5 full solver는 .cache/nonlocal-solver-final-regression.xml로
+242passed(1117.29s) 실제 완료했다. 그 뒤 사용자 지시에 따라 위 discrete_screw_v6로
+작업을 이어갔으므로 이 절만 보고 최신 검증/완료 상태를 추정하지 않는다.
+
+
+
+## 이전 완료 상태: low_stress_v4 실제 저응력 주기 검사
 
 이 절이 아래 matched_v3 / audited_v2 기록보다 최신이다. 이번 시작은 fresh
 fetch로 local/origin 모두55a0d514eee99ec3f141a972b07d477135fe62a7임을 확인했고

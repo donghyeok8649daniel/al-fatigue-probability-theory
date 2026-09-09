@@ -1,0 +1,11 @@
+{
+  "elapsed_seconds": 17.878067499999815,
+  "no_refit": true,
+  "no_physical_kinetics": true,
+  "no_probability_computed": true,
+  "exact_core_solved": false,
+  "finite_loop_nucleation_solved": false,
+  "production_unchanged": true,
+  "physical_fatigue_validation": false,
+  "command": "python -m solver_v1.run_nonlocal_interface_reference --scenarios"
+}

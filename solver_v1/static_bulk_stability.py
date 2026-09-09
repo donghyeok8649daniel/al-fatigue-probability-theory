@@ -102,6 +102,7 @@ class StaticBulkHessian:
                     pair=pair,scalar_density=scalar,angular=angular)
 
     def crystallographic_wavevector(self,fractional_cubic):
+        """Cubic q labels in the actual +ABC orientation, not the lab frame."""
         q=2*math.pi/self.bulk.geometry.lattice_constant*np.asarray(fractional_cubic)
         geometry=self.bulk.geometry
-        return np.array([q@geometry.e1,q@geometry.e2,q@geometry.e3])
+        return geometry.plane_basis_in_stacked_cubic_axes()@q

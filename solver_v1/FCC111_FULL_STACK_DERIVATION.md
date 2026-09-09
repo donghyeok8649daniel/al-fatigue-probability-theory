@@ -1,5 +1,12 @@
 # Full FCC(111) infinite-plane-stack reference
 
+**Later orientation audit (nonlocal_v5):** the +tau,+h construction is FCC,
+but its cubic axes are not the naive e1/e2/e3 laboratory association. Use
+`geometry.plane_basis_in_stacked_cubic_axes()`, rows(-e1,-e2,e3), when rotating
+cubic tensors or naming cubic reciprocal directions. Atomic positions and
+all existing energy sums are unchanged. The explicit proof and independent
+acoustic checks are in [NONLOCAL_INTERFACE_ELASTICITY.md](NONLOCAL_INTERFACE_ELASTICITY.md).
+
 ## 1. Scope and model status
 
 This document defines a new **static research/reference** geometry. It does

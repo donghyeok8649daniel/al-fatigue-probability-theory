@@ -33,6 +33,33 @@ Completed numerical tests do not automatically satisfy physical gates.
 Read results/aluminum_full_fcc_calibration/audited_v2/readiness.json.
 Steps 3 onward must not be silently unlocked by a small bulk least-squares loss.
 
+## Later spatial audit: nonlocal_v5 and discrete_screw_v6
+
+These separate research references advance geometry/derivative and static
+spatial-energy checks. They do **not** change the production default or pass
+the material, fatigue, kinetic, and UI gates:
+
+- Corrected the +ABC stack's cubic frame when labeling wavevectors and
+  comparing elastic tensors; atomic positions and fitted parameters unchanged.
+- Derived two-half-space continuum impedance from the same potential's C.
+- Derived an exact infinite-row LJ/Bessel anti-plane harmonic FCC symbol and
+  a declared adjacent-layer jump Schur stiffness. Direct 3D, rigid-interface,
+  finite-layer and acoustic-pole checks agree under refinement.
+- Solved all continuum PN profile modes rather than an arctangent width only.
+  Actual core crossing separation must be held fixed in a domain comparison;
+  fixed mean content alone does not do this. Coarse-grid pinning is numerical.
+
+The full discrete jump kernel includes local stiffness. Do not add a rigid
+GSF Hessian a second time or splice a different nonlinear relaxation convention
+onto it without derivation. An exact *harmonic* symbol is not a nonlinear atomic
+core, a finite loop/nucleation energy, or quantitative low-MPa aluminum fatigue.
+The existing research candidate's elastic errors remain; no refit was performed.
+Energy per dislocation line is J/m, not a finite eV activation barrier.
+
+See `DISCRETE_FCC_SCREW_DERIVATION.md`, its nonlinear next-stage contract, and
+`results/fcc111_active_interface/discrete_screw_v6/physical_and_numerical_status.json`.
+The user's confirmation gate for a CAD/meshing UI redesign remains closed.
+
 ## Intended UI after validation and confirmation
 
 The requested workflow is retained:

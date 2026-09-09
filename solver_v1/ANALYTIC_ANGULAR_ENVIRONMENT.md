@@ -303,3 +303,12 @@ force constants, not phonon frequencies or physical Hz. The independent direct
 validator refines neighbor radii 5/8/12 L0 and compares K against sinusoidal
 displacement energy variations. Sampling 20 points on each Gamma-X/L/K does
 not prove positivity over the entire Brillouin zone or finite-amplitude stability.
+
+Later nonlocal_v5 audit: the old cubic q-path labels used the wrong orientation
+for the unchanged +ABC stack. The corrected conversion is now explicit in
+`FCC111Geometry.plane_basis_in_stacked_cubic_axes()`. New radius12/20/32
+Gamma-X/L/K results are saved separately under nonlocal_v5. Old vectors were
+valid samples, but their path names must not be retroactively certified.
+The acoustic-limit matrix and independent affine cubic tensor now agree
+after correcting the normal/in-plane coupling sign; see
+[NONLOCAL_INTERFACE_ELASTICITY.md](NONLOCAL_INTERFACE_ELASTICITY.md).

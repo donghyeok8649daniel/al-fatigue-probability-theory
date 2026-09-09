@@ -1,0 +1,57 @@
+{
+  "starting_head": "a485bc4ba977914a159acd2d59b256e5bfca399b",
+  "branch": "probability-pde-solver-v1",
+  "python_version": "3.13.5",
+  "py_launcher_available": false,
+  "equivalent_python3_commands_actually_executed": true,
+  "targeted_combined": {
+    "passed": 47,
+    "elapsed_seconds": 18.20,
+    "scope": "nonlocal, discrete row, full profile, material bridge, geometry, static bulk"
+  },
+  "final_discrete_tail_bound_checks": {
+    "passed": 15,
+    "elapsed_seconds": 11.66
+  },
+  "full_solver": {
+    "command": "python -m pytest solver_v1 -q",
+    "passed": 260,
+    "failed": 0,
+    "elapsed_seconds": 903.34,
+    "local_report": ".cache/discrete-reviewed-full-regression.xml"
+  },
+  "app": {
+    "command": "python -m pytest app -q",
+    "passed": 27,
+    "skipped": 2,
+    "failed": 0,
+    "elapsed_seconds": 203.40,
+    "skip_reason": "Tk display unavailable: usable init.tcl could not be found in this execution environment",
+    "local_report": ".cache/discrete-app-final-regression.xml"
+  },
+  "desktop_smoke": {
+    "command": "python -m app.desktop_ui --smoke",
+    "passed": true,
+    "tool_wall_time_seconds": 2.6264676,
+    "a0": 0.7713438268704838,
+    "kappa": 86.29296488740997,
+    "interactive_tk_rendering_certified": false
+  },
+  "git_diff_check": true,
+  "git_cached_diff_check": true,
+  "generated_svg_xml_parse": true,
+  "numerical_harmonic_reference_verified": true,
+  "continuum_constrained_stationarity_verified": true,
+  "matched_separation_profiles_solved": 38,
+  "matched_separation_elapsed_seconds": 850.2974774,
+  "same_static_parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+  "production_pde_changed": false,
+  "ui_changed": false,
+  "static_calibration_changed": false,
+  "physical_al_fatigue_validated": false,
+  "nonlinear_atomistic_core_validated": false,
+  "physical_mobility_available": false,
+  "physical_seconds_or_hz_available": false,
+  "ui_promotion_gate_passed": false,
+  "interrupted_runs_are_not_counted_as_passed": true
+}

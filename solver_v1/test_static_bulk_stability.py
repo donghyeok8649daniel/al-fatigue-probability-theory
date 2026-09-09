@@ -25,6 +25,16 @@ def test_translational_invariance_parity_and_positive_I3_increment(bulk):
     assert np.linalg.eigvalsh(v["matrix"]-base.evaluate(q)["matrix"])[0]>=-1e-14
 
 
+def test_cubic_wavevector_labels_match_positive_abc_crystal(bulk):
+    evaluator=StaticBulkHessian(bulk,cutoff=3.)
+    g=bulk.geometry
+    fraction=np.array([.2,.4,.1])
+    q=evaluator.crystallographic_wavevector(fraction)
+    qcubic=fraction*2*np.pi/g.lattice_constant
+    np.testing.assert_allclose(evaluator.R@q,
+        (evaluator.R@g.plane_basis_in_stacked_cubic_axes())@qcubic,atol=1e-15)
+
+
 @pytest.mark.parametrize("D2",[0.,.3])
 def test_force_constant_matrix_matches_direct_sinusoidal_energy_variation(bulk,D2):
     evaluator=StaticBulkHessian(bulk,cutoff=10.,D3=2.,D1=-.15,D2=D2)
