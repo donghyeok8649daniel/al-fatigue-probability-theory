@@ -1,5 +1,114 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 최신 작업: tail_calibration_v14 — 실제 벌크 보정 완료, 계면 형상은 미채택
+
+최신 사용자 요청: “몇번째 미보정이야 보정좀 해라”. 진단만 반복하지 않고
+실제 정적 Al 재보정을 수행했다. 시작 HEAD는
+`a47869cdfbd9d425fa66f89380553f36e6f0e118`, fresh fetch 후 local/origin 동일,
+작업 트리 clean이었다. 이전 이관된 OneDrive 밖 과학 worktree의
+probability-pde-solver-v1에서 계속했다. Main/reset/force-push/agent 생성은 없다.
+
+### 이번에 실제로 달라진 것
+
+1. **FCC 무한 tail을 보정 제약 안에 넣었다.** `FCCTailEnvelope`는 FCC
+   Voronoi cover로 power/exponential tail 적분을 상계한다. 각 coefficient의
+   finite-q Hessian에 대해 H_R - sum|c|error I >=0를 polarization halfspace로
+   풀었다. 유한 radius 하나에서0인 eigenvalue를 안정이라고 하지 않는다.
+   코드는 무한 Poisson/Bessel 에너지를 보존하고 direct operator는 독립
+   허용성 검사다. 같은8-coefficient family actual fit loss31.6274는 여전히
+   C98.3205/68.0351/30.6616GPa라서 독립 탄성 오차를 해결하지 못했다.
+
+2. **최소 대칭 채널을 유도하여 벌크를 실제 보정했다.** 기존 두 radial Q2의
+   signed T2g strain response를 제거하는 Q_E=(Qodd-eta Qeven)/N을 구성.
+   ONE amplitude D_E>=0가 Eg(C')를 독립 제약한다. Site 환경을 모두 더한 후
+   norm을 취하고, 새 fitted orientation/length/yield cutoff는 없다.
+   C11/C12/C44=114/62/32GPa, cohesion3.36eV/atom, force≈0인 후보를 실제로
+   얻었다. 이 부분을 다시 “보정 안 됨”이라고 뭉뚱그리지 말 것.
+
+3. **계면 형상 실패 후 별도 최소 ablation을 실제로 실행했다.**
+   Eg만 exact-bulk loss52.3792. Density cubic는52.3156로 개선 미미하여 미선택.
+   Per-atom K3||Q3||^4는 pristine harmonic stiffness를 바꾸지 않는 최소
+   nonlinear angular test로 loss14.2312까지 개선. Rational I²/(1+alpha I)는
+   loss13.4472지만 held-out 개선이 거의 없어 미선택. 이들을 모두 합친
+   potential을 자동으로 채택하지 않았다. 새3 radial bounds/starts도 기록했다.
+   Even range bound12→24 continuation은 loss9.85820이나 heldout18.39→34.02로
+   악화. 범위에 걸린 fitted value/작은 training loss를 물리 최적값으로 위장하지 않는다.
+
+4. **선택은 scoped bulk/static reference일 뿐 full Al 채택은 아니다.**
+   Quartic range12 decays=(2.7829540002,5.6468406898,11.9999999974),
+   coefficients(u,v,A,B,C,D3,D1,D2,D_E,K3)=
+   (.3265081091,1.5095995104,10.7472347065,16.5382804733,.2218083326,
+    4.3273088458,8.4877976488,.7980971836,.2647734651,139933.994322).
+   L0=4.05/sqrt(2)Angstrom, energy=eV, per-atom density normalization 고정.
+   K3는 작은 fourth-power invariant의 계수이며 그 자체가 bond energy 아님.
+   기존 소재 파일 hash9d00fbf5...와 source60c8a085...는 바꾸지 않았다.
+
+5. **독립 정적 검증 결과.** 실제 perfect/fault/saddle roots의 Morse0/0/1,
+   force norm<2e-15. Own relaxed ISF .149229 vs source.150479J/m²(-.831%),
+   saddle .179127 vs.172002(+4.142%). PerfectHaa24.0919 vs19.6607(+22.54%),
+   faultHaa30.1750 vs14.1406(+113%), saddleHaa29.2931 vs12.7173(+130%).
+   Direct110 curve도 크게 틀림. Work40h1.73238 vs1.74129J/m²는 약-.51%지만
+   중간 opening shape는 실패. Candidate negative-traction lobe -1278.06MPa,
+   source에도 -785.675MPa lobe가 있다. 129/257 curvature-root bracket으로
+   같은 극값 확인; clipping이나 source-negative-lobe 은폐는 없다.
+
+6. **과거 finite-q 불안정은 이번 후보에서 재현되지 않았다.** 독립155q,
+   radius12/16의 min robust margins+.00620815/+.00642097eV/L0². 세 연속
+   lambda_min/q² 검색이 L 부근의 positiveH14.4943, tail.000739로 수렴.
+   이것은 전 Brillouin-zone/finite-strain/defect stability 증명은 아님.
+   Local11-direction SVD condition1955.64, log step반감시Jac change5.12e-5.
+   Rank11을 material confidence/unique parameter set으로 부르지 않는다.
+
+7. **실제 낮은 MPa 시나리오도 수행.** Source/candidate 합32 static states:
+   pure shear, mixed normal+2shear, compression/shear, unload, -150~150MPa.
+   Candidate force residual<=1.64e-14eV/L0, unload registry<=1.61e-16L0.
+   국소 탄성 상태로 회복한다. 실측 항복/피로, dynamic hold, kinetics가 아님.
+   새 후보로 기존 screw core나 production PDE 결과를 재명명하지 않았다.
+
+### 파일과 재개 시 먼저 볼 것
+
+- `solver_v1/TAIL_CONTROLLED_AL_CALIBRATION.md`: 모든 유도/값/분류/한계.
+- `tail_constrained_material`, `symmetry_resolved_material`, `quartic_angular_material`:
+  기존 LJ/PDE와 분리된 검증된 수학/연구 energy helpers.
+- `run_tail_constrained_calibration`: 실제 최적화. 기존 out 덮어쓰기 거부.
+- `validate_tail_calibration`: completed fit replay+독립 root/q/sensitivity 검사.
+- `report_tail_calibration`: 실제 MPa 정적 이완 및 saved fits 비교. refit 아님.
+- `results/fcc111_active_interface/tail_calibration_v14/README.md`: 결과 라우팅.
+  `calibration.json`은 실제 종료, checkpoint는 미완료. 초기3 numerical-failure
+  디렉터리는 `attempt_status.json`으로 구별한다. 수정된 QP는 반환된 최종
+  계수에 대해 KKT/primal/complementarity를 다시 검사한다.
+  `quartic_exact_bulk/validation_refined`가 최신 독립 검증.
+  `scoped_report`/존재하면 `final_report`에 portable scoped parameter JSON,
+  단위/소재범위/적용불가 상태, 실제 CSV/검사한 curve 그림이 있다.
+
+### 검증/Git — 완료 계산, 커밋 직전 인계
+
+새 targeted22PASS67.94s. App31PASS108.85s(skip0), desktop smokePASS2.17s.
+전체 solver437PASS792.45s(13분12초), 제외0. 모든 실제 계산이 종료됐다.
+`.cache/tail_calibration_v14/tests_run1/`에 full solver/app 원본 로그가 있다.
+`final_report`가 최종 완료-run inventory/portable parameter/정적 MPa 결과다.
+Source/candidate curve를 실제로 시각 검사했고, 좋은 relaxed fault 숫자와
+큰 fixed-a direct110 오류를 구별했다. Commit/push SHA는 이 문서 자기참조로
+꾸며 쓰지 말고 실제 git log와 fresh origin을 확인한다. 이 문서는 커밋 직전
+인계이며 후속 최종 응답이 push 검증 결과를 보고한다. Main에는 손대지 않았다.
+최종 artifact JSON41/CSV24/SVG2 파싱, 이미지 시각 검사, working/staged
+diff --check를 통과했다. Matplotlib SVG의 무의미한 trailing whitespace만
+포맷 정리했고, 수정된 보고기 재실행도 완료했다. 수치 CSV는 동일했다.
+완료 run의 중복 checkpoint6개는 final JSON의 profiles/optimizer가 정확히
+동일함을 확인한 뒤 ignored `.cache/tail_calibration_v14/optimizer_checkpoints/`
+로 복구 가능하게 이동했다. 원자료 삭제는 없다. 초기 실패 checkpoint는 보존.
+커밋 전 fresh origin은 시작 a47869c와 동일했고 main local80cacb4,
+origin/main c43d8e0도 변경하지 않았다.
+
+### 미완료/다음 판단
+
+벌크 보정은 완료, full-vector 계면 강성/direct110/개구 shape가 미채택 사유다.
+이 검증 자료를 새 loss에 쓰면 development targets로 재분류하고 독립 검증점을
+따로 남겨야 한다. 단순히 최고차항을 계속 늘리거나 mobility/source length를
+맞춰 결과를 만들지 않는다. 새 소재를 core/finite-source 경로에 전달하려면
+per-site angular 구현과 material gate를 먼저 통과해야 한다. 현재 production,
+UI, 물리 M_a/M_s/t0/초/Hz, A_c는 변경하지 않았다. 실측 항복 완료도 아니다.
+
 ## 최신 작업: stable_core_v13 — 안정 branch 수렴과 소재 최적화/불안정성 분리
 
 최신 “ㄱㄱㄱ” 요청으로 fab84ddc6ad922923b5f83af076eda92f56cc318에서 시작.

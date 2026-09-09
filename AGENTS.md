@@ -496,6 +496,20 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- TAIL_CONTROLLED_AL_CALIBRATION.md / tail_calibration_v14: 실제 FCC Voronoi
+  tail bound를 coefficient-linear finite-q PSD 제약에 포함한 정적 재보정이다.
+  기존 두 radial quadrupole을 결합한 Eg 채널은 signed cubic response로
+  유도하고 amplitude gauge를 고정한다. 같은 per-atom 환경을 모두 합친 후
+  norm을 취한다. Quartic rank3는 per-site ||Q3||^4이며 global norm 제곱 아님.
+  별도 cubic-density/rational-shape ablation을 자동으로 합치지 않는다.
+  **C11/C12/C44와 cohesion의 벌크 보정은 완료**됐지만 full-vector 계면 강성,
+  direct110/개구 곡선 검증은 실패했다. 이를 전부 미보정 또는 완전 Al 채택으로
+  뭉뚱그리지 않는다. 155q/radius12,16/tail/연속검색 양성은 전 q 안정성 증명 아님.
+  Radial bound 확장에서 training loss가 내려가도 held-out 오차가 커진다.
+  실패한 checkpoint와 완료된 calibration.json을 구별한다. Static MPa 이완/
+  unload는 kinetics/실측 항복을 보정하지 않는다. 새 후보를 이전 screw core,
+  production PDE/UI에 몰래 대입하지 않는다. Physical seconds/Hz 상태는 불변.
+
 - STABLE_CORE_AND_MATERIAL_DIAGNOSTICS.md / stable_core_v13: 안정 source의
   hash/L0/논리적 row/경계를 묶어 실제 domain continuation을 한다. 초기 변위
   전달은 수렴 인증이 아니다. 선택적 Newton-CG도 같은 analytic Hessian을

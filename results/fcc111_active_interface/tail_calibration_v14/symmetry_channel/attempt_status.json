@@ -1,0 +1,7 @@
+{
+  "completed": false,
+  "classification": "in-turn numerical optimizer development failure",
+  "reason": "Polarization separation exhausted its iterations near a small constraint residual before coefficient-face polishing was corrected.",
+  "checkpoint_is_final_fit": false,
+  "note": "Do not label the best checkpoint a completed joint fit. Subsequent exact-bulk stages are separate objectives."
+}

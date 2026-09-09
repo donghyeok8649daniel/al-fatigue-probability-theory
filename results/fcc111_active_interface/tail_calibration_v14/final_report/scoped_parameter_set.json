@@ -1,0 +1,74 @@
+{
+  "name": "Al99_matched_bulk_quartic_v14",
+  "model_class": "QuarticSymmetryInterface",
+  "status": "bulk-calibrated static research candidate; interface validation failed",
+  "production_registered": false,
+  "full_material_accepted": false,
+  "source_title": "Mishin et al. (1999), Al99 EAM matched 0 K reference",
+  "source_doi": "10.1103/PhysRevB.59.3393",
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "calibration_result_sha256": "67919caa8e2a784c6eea9bdb319e49b6d48c43030ce5aa368c31e355bf801bc7",
+  "target_temperature_K": 0.0,
+  "energy_unit": "eV",
+  "length_scale_m": 2.863782463805517e-10,
+  "atomic_interface_area_m2": 7.102490842787125e-20,
+  "coefficient_names": [
+    "u",
+    "v",
+    "A",
+    "B",
+    "C",
+    "D3",
+    "D1",
+    "D2",
+    "D_E",
+    "K3"
+  ],
+  "coefficient_unit": "eV; coordinates and per-site environment moments reduced by L0",
+  "coefficients": [
+    0.3265081090541026,
+    1.5095995103677002,
+    10.747234706529515,
+    16.53828047329518,
+    0.2218083326229816,
+    4.327308845811441,
+    8.487797648795736,
+    0.7980971835516364,
+    0.2647734651412821,
+    139933.99432203436
+  ],
+  "decays": [
+    2.7829540002031936,
+    5.646840689773203,
+    11.99999999743871
+  ],
+  "density_scale_convention": "rho_ref=perfect bulk density for each fixed radial channel",
+  "quadrupole_gauge": {
+    "eta": 0.22825533418080496,
+    "normalization": 0.038938621966484475,
+    "normal_response_residual": 3.052263611779199e-15,
+    "bulk_column": [
+      0.0,
+      0.0,
+      0.0,
+      6.380698876928432e-29,
+      1.0
+    ]
+  },
+  "epsilon_LJ_eV": 1.7448959294643327,
+  "sigma_LJ_L0": 0.7747686470225489,
+  "sigma_LJ_angstrom": 2.218768864849502,
+  "lattice_constant_angstrom": 4.05,
+  "bulk_cohesive_energy_eV_atom": 3.3599999999999977,
+  "bulk_cubic_GPa": [
+    113.99999999999987,
+    61.99999999999988,
+    31.999999999999858
+  ],
+  "whole_Brillouin_zone_proved": false,
+  "physical_mobility_calibrated": false,
+  "physical_seconds": false,
+  "physical_Hz": false,
+  "experimental_yield_validated": false,
+  "permitted_use": "scoped static comparisons only; not a production PDE or specimen-strength model"
+}

@@ -1,0 +1,8 @@
+{
+  "completed": false,
+  "classification": "partial multi-start run interrupted by numerical verification failure",
+  "reason": "The first start converged, but a later spectral profile failed the numerical face verification; the old runner stopped.",
+  "checkpoint_is_final_fit": false,
+  "superseded_by_completed_run": "../symmetry_exact_verified/calibration.json",
+  "note": "The subsequent actual rerun reproduces the first basin with returned-coefficient KKT verification. The first-start result here is historical partial evidence only."
+}

@@ -14,6 +14,23 @@ confused with a fully calibrated spatial aluminum fatigue solver.
 
 ## Gates
 
+The tail_calibration_v14 study now actually calibrates cohesion and all three
+independent cubic elastic constants, with the previously observed finite-q
+instability absent above analytic tail bounds on an independent155-point grid
+and continuous local searches. A derived Eg radial moment and one per-site
+quartic rank3 invariant are separate analytic research extensions. LJ and the
+infinite Poisson/Bessel sums are retained. This is concrete **scoped bulk
+calibration progress**, not a still-unattempted fit.
+
+It does not pass the full material/interface gate: vector fault/saddle normal
+curvatures are about twice the source, the direct110 path and opening shape
+remain inaccurate. Enlarging the radial search bound lowers training loss but
+worsens validation. Alternative cubic-density/rational extensions are ablations,
+not automatically adopted energy terms. Low-MPa static unload returns to the
+initial registry; it is not physical yield or a dynamic hold. The new candidate
+is not propagated into old core states or the production PDE. Read
+TAIL_CONTROLLED_AL_CALIBRATION.md and the completed validation/report tables.
+
 The stable_core_v13 continuation follows the verified lower core, not the
 centered saddle, to independently larger free disks and environment rings.
 Same-energy Newton/Hessian checks and declared smooth radial finite parts
