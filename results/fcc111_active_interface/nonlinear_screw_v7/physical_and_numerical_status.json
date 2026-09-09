@@ -1,0 +1,22 @@
+{
+  "static_scalar_force_balance": true,
+  "new_net_registry_transfer_observed": false,
+  "final_registry_and_core_locations_recovered": true,
+  "maximum_unloaded_affine_change": 2.125383202766784e-13,
+  "interval_mpa": [
+    -50.0,
+    50.0
+  ],
+  "experimental_strength_determined": false,
+  "full_vector_core_validated": false,
+  "omitted_transverse_force_max_ev_per_L0": 2.2833823395099233,
+  "max_last_ring_force_change": 1.6986705035746015e-10,
+  "independent_transverse_energy_derivative_error": 9.033906955835391e-11,
+  "material_candidate_accepted": false,
+  "physical_seconds_hz_available": false,
+  "nonlinear_infinite_row_identity_verified": true,
+  "finite_nucleation_energy_available": false,
+  "production_ui_gate": false,
+  "conclusion": "restricted scalar force balance only; inspect omitted transverse forces and refinements before a vector-core claim",
+  "wall_seconds": 6.381137899999885
+}

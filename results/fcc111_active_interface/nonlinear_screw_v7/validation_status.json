@@ -1,0 +1,27 @@
+{
+  "starting_head": "b8e91777a4e32d695ecca04f93eb4be338f12add",
+  "starting_remote_head": "b8e91777a4e32d695ecca04f93eb4be338f12add",
+  "branch": "probability-pde-solver-v1",
+  "starting_scientific_worktree_clean": true,
+  "original_detached_user_work_preserved": true,
+  "parameter_source_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+  "parameters_changed": false,
+  "production_pde_or_ui_changed": false,
+  "git_diff_check": "passed, including staged new files",
+  "tests": {
+    "new_targeted": {"passed": 17, "failed": 0, "skipped": 0, "wall_seconds": 9.99},
+    "combined_targeted": {"passed": 42, "failed": 0, "skipped": 0, "wall_seconds": 16.59},
+    "solver_v1": {"passed": 288, "failed": 0, "skipped": 0, "wall_seconds": 716.12},
+    "app": {"passed": 31, "failed": 0, "skipped": 0, "wall_seconds": 89.23},
+    "desktop_smoke": {"status": "passed", "wall_seconds": 1.464,
+                      "a0": 0.7713438268704838, "kappa_axial": 86.29296488740997}
+  },
+  "first_targeted_failure_preserved": "One new STF trace assertion used an unscaled 2e-15 tolerance; replaced with norm-scaled arithmetic bound and rerun. No existing test weakened.",
+  "static_scenarios": {"states": 44, "wall_seconds": 656.0834024, "force_balance_passed": true},
+  "physical_acceptance": false,
+  "full_vector_equilibrium": false,
+  "actual_al_strength_calibrated": false,
+  "actual_al_mobility_available": false,
+  "physical_seconds_hz_available": false,
+  "production_ui_gate": false
+}

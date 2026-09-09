@@ -1,5 +1,167 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 최신 상태: nonlinear_screw_v7 — 이상강도에서 결함 지배 강도로 가는 첫 비선형 단계
+
+이 절이 아래 kinetics_loading_audit보다 최신이다. 최신 요청은
+“이상강도를 임의 보정할 것이 아니라 실제 결함이 있는 금속의 강도로 나아갈
+방법을 구현하자”였고 사용자가 ㄱㄱ로 진행을 승인했다. 추가 agent 없음.
+
+시작 fresh fetch, branch HEAD와 origin은 모두
+b8e91777a4e32d695ecca04f93eb4be338f12add, 작업 트리는 깨끗했다.
+과학 worktree aft-pde-bessel-38969ad / probability-pde-solver-v1에서만 구현했다.
+원래 폴더는 detached c43d8e0과 사용자 파일들을 그대로 보존한다.
+원래 폴더와 과학 worktree의 AGENTS.md/이 문서는 변경 전 SHA가 일치함을
+검사했다. 마지막 검증 후 discovery 문서만 같은 내용으로 동기화한다.
+
+### 구현한 것 — 단순 계획이나 harmonic 재생이 아님
+
+- nonlinear_fcc_screw.py: 무한 e1 원자열은 기존 Poisson/Bessel로 합산하고,
+  각 단면 원자열에 독립적인 비선형 x slip을 허용한다.
+  전체 site 환경을 합친 후 F(rho_i), D_r||Q_ri||²를 적용한다.
+  scalar F'_bulk를 고정하지 않고 F''를 실제 nonlinear Hessian에 포함한다.
+  scalar/각도 density kernel, LJ 계수 및 이전 fit은 전혀 바꾸지 않았다.
+- FFT는 보존된 reciprocal row coefficient의 정확한 convolution이다.
+  새로운 empirical PN/pinning law나 continuum stiffness splice가 아니다.
+  rigid cut 비선형 에너지/힘은 독립 full-plane W_int와 일치하고,
+  harmonic 한계는 기존 FCCScrewRowHessian의 symbol과 일치한다.
+- per-cell u_i와 affine engineering shear gamma를 함께 풀 수 있다.
+  응력 제어에서 G=E-tau*V_cell*gamma이며
+  V_cell=N*b*d*h*L0³는 실제 원자 cell의 기하학적 부피다.
+  임의 activation volume/길이를 도입한 것이 아니다.
+  1MPa -> .00014659180163330851 eV/L0³; L0=2.863782463805517e-10m.
+- gamma=0은 strain-control이다. 전위쌍이 있는 상태에서 zero stress와 다르다.
+  initial zero-stress equilibrium를 먼저 구해 이후의 새 registry 변화와
+  원래 있던 결함의 slip content를 분리했다.
+- integer row relabeling u_i->u_i+b*k_i는 같은 원자 위치다.
+  b-step만 있는 field는 core로 세지 않는다. plaquette winding ±1,
+  실제 core 위치/간격, half-period margin을 계산한다.
+- layer-bond b*k+xi 분해는 gamma=gamma_registry+gamma_intrabond를 만족한다.
+  기존 production chi axial-strain bridge/P_n/SG flux와 같은 양이라 부르지 않는다.
+- optimizer 종료와 실제 force convergence를 구별한다.
+  필요시 analytic Newton-CG polish. material mode를 고치는 damping/clip 없음.
+  scalar+affine Hessian의 최소 nongauge eigenvalue를 별도 검사한다.
+  gauge shift=1을 잘못 최소 물리 고유값으로 보고하지 않는 test도 추가했다.
+
+### 실제 실행한 ±50MPa / domain / unload
+
+runner: python -m solver_v1.run_nonlinear_screw_study --sizes 24 32 48
+656.0834 wall seconds, 실제 정적 평형44개.
+하중 MPa: 0,4,15,25,50,25,0,-25,-50,-25,0.
+무결함24x24와 같은 초기 screw pair의24/32/48 cross-section을 비교했다.
+모든 경우 scalar/affine force balance 성공:
+max field force residual2.401589e-11 eV/L0,
+max shear decomposition error2.507218e-18.
+
+중요: atomic sites를 더 촘촘하게 만든 것이 아니다. 영역의 원자열 수/주기
+image 간격을 늘렸다. 실제 pair separation은 모두1.98408669165nm다.
+seed의7.3b 값을 실제 defect separation으로 보고하지 않는다.
+
+| domain | 초기 E [eV/b-repeat] | 초기 registry shear | +50MPa affine 증가 |
+|---|---:|---:|---:|
+|24x24|2.22178949153|.017010345436|.002083009966|
+|32x32|2.26973529530|.009568319308|.002080243615|
+|48x48|2.30313892346|.004252586359|.002078031671|
+
+모든 단계에서 새 net registry 변화=0, 각 ±core 위치 동일.
+제하 후 affine 변화 최대2.12538e-13, 새 registry 변화0.
+이전부터 있던 registry content를 residual plasticity 생성으로 부르지 않는다.
+이것은 athermal static unload이지 finite-T/time zero-stress hold가 아니다.
+
+32->48 energy 차이 .03340363eV (약1.45%)가 남는다.
+따라서 isolated dipole energy가 domain-converged라고 하지 않는다.
++50MPa incremental response 차이2.21194e-6 (약.106%).
+±50MPa 구간에서 이동 없음은 세 domain에서 유지되지만 Peierls/yield threshold
+전체를 구한 것은 아니다. 실제 Al 항복강도/피로 검증 아님.
+
+24x24 scalar+affine 최소고유값:
+0,+50,-50MPa에서 .252714014,.252835457,.252579727.
+eigen residual<=3.20e-8. 물리 Hz가 아닌 static curvature다.
+
+### 핵심 원인 발견: scalar 힘 평형은 full core 평형이 아니다
+
+nonlinear_screw_transverse_audit.py로 고정한 실제 y,z 방향 힘을 독립 계산했다.
+LJ radial derivative/analytic exponential Bessel derivative/STF polynomial
+derivative를 사용한다. x-slip에서 소거되던 m=0 term을 반드시 포함했다.
+m=0 scalar density force가 site별 다른 F'(rho_i)와 결합한다.
+잘못 생략하면 vector extension이 틀린다.
+
+실제 zero-stress 최대 omitted gradient:
+24:2.2298290, 32:2.2610920, 48:2.28338234 eV/L0 (최대약1.28nN).
++50MPa에서도2.2146541,2.2448068,2.2661844가 남는다.
+14->20 transverse ring change<=1.69867e-10 eV/L0.
+실제 y,z를 미소 변경해 real-index nonlinear energy를 재평가한 독립
+directional FD check error9.03391e-11.
+rigid-plane normal-force, zero-force perfect bulk, total force balance도 시험했다.
+
+즉 residual이 작고 Hessian이 양수인 것은 scalar 구속 부분공간에 한정된다.
+큰 빠진 힘이 core 근처에 집중되며 잡음/급수 truncation이 아니다.
+현재 해를 완전한 Al screw core나 “전위를 넣어서 실제강도 해결”로 채택하면 안 된다.
+이것은 명확한 다음 수정 원인을 찾은 결과다. Mobility/온도/장벽/재료 계수를
+낮춰서 해결한 것이 아니다.
+
+### 수렴과 실제 데이터
+
+- infinite-row default6rings/168rows/11modes, extra14rings 확인.
+- 실제 core6->8rings energy<=1.60e-14eV,
+  x-force<=2.71e-15eV/L0, stress<=4.22e-13MPa.
+- nonlinear FFT vs real-index channel discrepancy2.22e-16.
+- directional energy gradient FD1.24e-9, Hessian-vector7.66e-10.
+- bounds는 per-channel 단위로 노출; finite extra-ring bounds를
+  무한합 rigorous theorem으로 부풀리지 않는다.
+- transverse audit는 별도로6/10/14/20rings를 실제 실행했다.
+
+원시 자료:
+results/fcc111_active_interface/nonlinear_screw_v7/
+metadata.json, stress_history.csv, static_states.csv.gz,
+stability.csv, tail_refinement.csv, relaxed_core_tail_refinement.csv,
+domain_and_unload_summary.csv, transverse_force_audit.csv,
+transverse_energy_derivative_validation.csv, execution_summary.json,
+physical_and_numerical_status.json, static_defect_audit.png.
+
+report_nonlinear_screw_study는 saved state를 읽고 omitted force를 실제 재평가한다.
+plot을 만든 것을 새 time dynamics 실행으로 부르지 않는다.
+저장된 모델 SHA는
+9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655.
+기존 candidate C11/12/44~87.816/64.833/49.271GPa의 재료 fit 한계도 그대로다.
+
+### 검증 기록
+
+- 처음 신규 targeted: 1failed/10passed; rank3 STF trace가2.9976e-15인
+  norm-scaled arithmetic error를 fixed2e-15로 검사한 새 test만 실패했다.
+  8 eps ||tensor|| 기준으로 새 assertion을 바로잡고 재실행했다.
+  기존 검증을 약화시킨 것이 아니다.
+- 중간 scalar-only11passed/5.00s; 후속15passed/17.32s.
+- 최종 신규 nonlinear+transverse targeted:17passed/9.99s.
+- 최종 combined nonlinear/discrete/nonlocal:42passed/16.59s.
+- app:31passed/89.23s, 제외0. 실제 Tk tests 포함.
+- desktop --smoke: PASS, wall1.464s; LJ a0/kappa 역사값 그대로.
+- full solver regression: **288passed /716.12s**, 실패0/제외0/exit0.
+  실행 완료 출력과 .cache/nonlinear-screw-full.xml을 직접 확인했다.
+- git diff --check 및 git diff --cached --check: 신규23개 변경 파일까지
+  모두 통과했다. 최종 검사 결과는 validation_status.json에 기록한다.
+- 최종 수치검증은 완료됐으며 본 문서가 포함된 checkpoint의 commit/push
+  상태는 실제 git log/fetch/status로 확인한다. 물리 채택 gate는 미통과다.
+
+### 다음 단계 — 무엇을 해결해야 하는지 이제 구체적임
+
+1. 같은 비선형 per-site energy에서 y,z/vector core를 실제 이완한다.
+   A_(iR)가 위치마다 달라지므로 fixed-coefficient FFT를 그대로 쓰지 않는다.
+   Infinite row Bessel sum은 보존하되 state-dependent radius/STF/G=0 terms와
+   tails, analytic vector forces/Hessian을 검증한다.
+   단순 frozen harmonic correction만으로 큰 core reconstruction을 인증하지 않는다.
+2. vector/normal-relaxed core와 partial splitting, slip path/GSF/source material
+   검증 후 실제 이동 saddle/임계하중을 구한다. 현재 ±50MPa 비이동만으로
+   실제 Al 강도/Peierls를 단정하지 않는다.
+3. finite curved line/source/loop 및 결함의 실제 밀도·길이·경계조건이 필요하다.
+   무한 직선 energy는 J/m이고 임의 line length/A_c로 activation eV를 만들지 않는다.
+4. 그 후 coarse probability variables/finite-event energy/kinetic mobility를
+   정당화한다. 현재 물리 M_a/M_s/t0/초/Hz는 여전히 없다.
+5. Production PDE/energy registry/UI/calibration/Ac는 그대로이며
+   solver/UI gate 미통과다. UI 재설계는 여전히 사용자 확인 전 진행하지 않는다.
+
+상세 유도: solver_v1/NONLINEAR_FCC_SCREW_DERIVATION.md.
+단계적 연구진전은 검증됐지만 실험적 Al 강도/피로의 완성 선언은 아니다.
+
 ## 최신 상태: kinetics_loading_audit — 시간·하중·GPa 원인 감사
 
 이 절이 아래 discrete_screw_v6보다 최신이다. 요청은 “초/Hz 사용, 전단·차원

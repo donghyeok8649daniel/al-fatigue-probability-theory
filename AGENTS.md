@@ -509,6 +509,22 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
   Native Tcl 오류를 headless skip로 숨기지 말고 실제 GUI 결과를 확인한다.
 
 
+- NONLINEAR_FCC_SCREW_DERIVATION.md / nonlinear_screw_v7: 같은 LJ/Bessel 후보의
+  per-site nonlinear scalar anti-plane row energy. 전체 환경 합 후 F 적용,
+  FFT는 retained row coefficient의 정확한 convolution이다. x-force 평형과
+  full vector core 평형을 구별한다. 실제 frozen y/z force~2.28eV/L0가
+  tail error~1.7e-10보다 커서 현재 core는 full mechanical equilibrium 아님.
+  Transverse force는 x-slip에서 소거된 reciprocal m=0을 반드시 포함한다.
+  고정 gamma=0은 전위가 있는 cell의 zero stress가 아니다. 실제 cell volume의
+  -tau*V*gamma로 stress-control하고 initial defect content를 새 slip과 분리한다.
+  24/32/48 원자열 domain, +/-50MPa 정적44개에서 새 registry 변화0.
+  초기 winding pair가 있다는 이유로 생성/잔류소성/Al 강도 검증이라 하지 않는다.
+  Static unload는 physical-time hold가 아니다. Energy/b-repeat는 J/m이며
+  finite activation energy가 아니다. Full transverse/vector relaxation,
+  partial core, finite-source geometry, material/kinetics 및 production gate 미완료.
+  y,z를 실제 움직이면 radius가 site-dependent여서 고정계수 FFT를 그대로
+  canonical vector energy로 재사용하지 않는다. Bessel/G=0/tails를 보존한다.
+
 - DISCRETE_FCC_SCREW_DERIVATION.md / discrete_screw_v6: 같은 LJ/Bessel 전위의
   무한 원자열을 먼저 합산하고 transverse row/layer를 이산적으로 남기는
   anti-plane harmonic reference. q_x=0, line=e1에만 해당한다.

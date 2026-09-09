@@ -1,0 +1,30 @@
+{
+  "elapsed_seconds": 656.0834023999996,
+  "states": 44,
+  "all_force_balanced": true,
+  "max_force_residual": 2.401589454610114e-11,
+  "max_shear_identity_error": 2.507217523872729e-18,
+  "max_absolute_new_registry_shear": 0.0,
+  "domain_sizes": [
+    24,
+    32,
+    48
+  ],
+  "stress_protocol_mpa": [
+    0.0,
+    4.0,
+    15.0,
+    25.0,
+    50.0,
+    25.0,
+    0.0,
+    -25.0,
+    -50.0,
+    -25.0,
+    0.0
+  ],
+  "experiment_type": "athermal quasistatic local minimization; NOT cyclic kinetics or a hold in physical time",
+  "physical_al_strength_validated": false,
+  "physical_time_available": false,
+  "production_gate": false
+}

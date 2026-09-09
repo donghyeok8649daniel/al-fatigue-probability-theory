@@ -60,6 +60,25 @@ See `DISCRETE_FCC_SCREW_DERIVATION.md`, its nonlinear next-stage contract, and
 `results/fcc111_active_interface/discrete_screw_v6/physical_and_numerical_status.json`.
 The user's confirmation gate for a CAD/meshing UI redesign remains closed.
 
+## Nonlinear row follow-up: nonlinear_screw_v7
+
+The same LJ/Bessel candidate now has a fully nonlinear **scalar anti-plane**
+row-field energy, per-site embedding, analytic gradients/Hessian-vector
+products, and actual stress-controlled screw-pair calculations. It recovers
+the harmonic symbol and rigid-plane nonlinear energy without adding local
+energy twice. Existing slip content and new registry transport are separated.
+
+The executed 44 static states (+/-50 MPa, three periodic domains) show no new
+registry transport. More importantly, although x-force residuals are about
+2.4e-11 eV/L0, the excluded transverse gradients reach 2.28 eV/L0, with
+refinement changes below 1.7e-10. Full vector mechanical equilibrium is thus
+not satisfied. Neither a positive scalar Hessian nor the presence of a
+pre-existing winding pair passes the physical core/strength gate.
+
+Next is actual transverse/vector core relaxation under the same analytic
+energy, then matched-material/partial-core validation, finite-source geometry
+and calibrated kinetics. No production registration or UI redesign is enabled.
+
 ## Intended UI after validation and confirmation
 
 The requested workflow is retained:

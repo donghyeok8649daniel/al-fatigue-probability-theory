@@ -443,11 +443,19 @@ listed in `NONLOCAL_INTERFACE_ELASTICITY.md` (Nabarro 1947; Lu et al. 2000).
 All numerical values above were computed from this repository's candidate,
 not copied from those papers or claimed as experimental Al predictions.
 
-## 12. Next nonlinear calculation: explicit contract, NOT completed code
+## 12. Nonlinear calculation contract (follow-up now in nonlinear_screw_v7)
+
+The nonlinear **fixed-transverse scalar** energy below has subsequently been
+implemented and tested in `nonlinear_fcc_screw.py`; see
+`NONLINEAR_FCC_SCREW_DERIVATION.md`. It does not supersede this harmonic audit.
+The later study solves a restricted screw pair but finds large forces in its
+frozen transverse coordinates, so it is still not a full relaxed Al core.
+The following original contract describes the state-space extension, not a
+claim that vector/normal relaxation or finite source kinetics are complete.
 
 To close the remaining atomic-core gap, the same row sum permits a full
 nonlinear discrete anti-plane energy before any continuum approximation.
-This is the next proposed calculation, not a result produced by this module.
+This is not a result produced by the harmonic module itself.
 For cross-section sites i and neighboring rows R define
 
 \[
