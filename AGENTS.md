@@ -496,6 +496,22 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- RANGE_AND_CORE_REPAIR.md / range_core_v12: STF rank2 radial range와 ranks1/3
+  range 분리는 별도 analytic 연구 가설이다. Common-range limit을 보존하며,
+  이를 지원하지 않는 scalar FFT row로 몰래 전달하지 않는다. 새 loss 개선이
+  Al 채택을 뜻하지 않는다. Exact C11/C12/C44 후보의 finite-q 불안정도 확인했다.
+  Isolated straight screw는 고정 anisotropic far-field 경계와 모든 affected
+  site의 per-atom F를 포함한다. Periodic 반대전위쌍 소멸과 다른 문제이며,
+  fixed boundary의 image force와 free disk/ring 수렴을 별도 검사한다.
+  Centered core는 force≈0이어도 negative-Hessian saddle일 수 있다. 실제
+  에너지 방향차분과 양쪽 negative-mode 이완을 확인한다. 불안정 초기점에서
+  하중 후 남은 변위는 zero-load control과 비교하기 전 소성 증거가 아니다.
+  Partial raw site-energy 합의 Taylor-linear reference work는 탄성 quadratic
+  annulus energy와 구별한다. 이 항의 전체 합/변분이 불변임을 확인한 뒤
+  raw/linear/remainder를 함께 보고한다. Core finite part의 reference와
+  outer logarithm을 일치시키고, straight core를 finite activation energy나
+  모든 character의 curved source/yield로 승격하지 않는다.
+
 - YIELD_STRENGTH_BRIDGE.md / yield_bridge_v11: 실제 항복의 검증 기준과
   finite-source leading-log reference를 분리한다. Krebs2017 Fig2d의 0.002
   plastic-shear CRSS/G 7개를 원본 픽셀/공식 SI와 연결했다. G의 수치 미확인으로

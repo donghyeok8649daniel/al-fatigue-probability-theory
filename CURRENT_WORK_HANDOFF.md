@@ -1,6 +1,119 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
-## 최신 상태: yield_bridge_v11 — 실제 항복 기준, 독립 탄성, 유한 전위원 reference
+## 최신 작업: range_core_v12 — 소재 range 분리와 단일 전위 코어 경계
+
+요청: “이제 좀고쳐라 걔네도”. b84eaf4d9a449a16476ab69d8d3de30496c6c00c에서
+fresh fetch, local/origin 동일, clean으로 시작했다. 같은 OneDrive 밖 과학
+worktree/branch에서 작업하며 추가 agent, main 변경, reset은 없다.
+
+### 완료된 계산과 물리 판정
+
+이번 단계의 실제 보정, 21개 코어 계산, 원 상태 재평가, 전체 회귀 검사를
+완료했다. **실제 Al 항복강도/유한 전위원/피로 솔버 검증 완료가 아니다.**
+새 소재 후보는 채택하지 않았고 production/PDE/UI는 바꾸지 않았다.
+
+**핵심 원인과 수정:** centered Volterra seed는 force가 작아도 대칭 안장점에
+멈춘다. Historical R4/r4, R6/r4, R6/r8, R8/r6의 최소 고유값은 각각
+-0.83311, -0.74230, -0.75406, -0.71322 eV/L0^2였다. 새 소재 R4/r4도
+-1.02819였다. `core_stability.py`에서 analytic Hessian-vector 최소 모드와
+독립 실제 에너지 방향차분을 검사한다. 새 core 실행은 이 Morse 검사가 필수다.
+음의 모드 양쪽을 명시적 deterministic seed로 검사하되 전위/경계/힘은 불변이다.
+
+Historical R6/r4의 양쪽 이완 결과는 energy 1.032538443572 eV/row,
+minH +0.3977618, force≤2.38e-7 eV/L0로 낮은 안정점에 도달했다.
+원 안장점보다 0.00922177 eV 낮으며 양쪽 에너지는 6.4e-14 eV 이내로 같다.
+R6/r6 같은 안정 branch는 minH +0.4045673, force 1.94e-7이다.
+단, R4→R6 stable-domain 변화는 내부 동일 18개 row에서 0.013723 L0,
+R6의 ring4→6 변화는 0.0012741 L0이다. 완전한 core/domain 수렴이 아니다.
+
+**가짜 잔류 원인 분리:** 원 R4/r4 안장점에서 25→50→0 MPa 후 변위는
+초기점과 0.125795 L0 달랐다. 그러나 무하중 negative-mode control과는
+5.32e-8 L0 이내로 같았다. 이것은 stress-induced residual plasticity의
+증거가 아니라 잘못된 초기 안장점 이완이다. 안정 무하중점에서 다시
+25→50→0 MPa를 실행하니 내부 최대 변화는 각각 0.0037046, 0.0073759,
+1.0143e-7 L0였다. 세 단계 모두 minH>0.64, force≤2.05e-7이다.
+이 static branch에서는 분해 가능한 잔류 변형이 확인되지 않았다.
+이는 core 변위이지 거시 epsilon_p가 아니며, 물리 시간 hold도 아니다.
+
+- `range_resolved_material.py`: STF ranks1/3와 rank2의 analytic exponential
+  range를 분리했다. 추가 microscopic shape 변수는 한 개이며 LJ/Bessel,
+  scalar density/per-atom embedding과 기존 파라미터는 불변. Common-range
+  limit의 전체 energy/gradient/Hessian이 기존 코드와 일치한다.
+- 실제 고정39 starts와 두 metric의 Powell 프로파일292개 실행(438.55s).
+  C별5% loss46.7495→38.9096, heldout normalizedRMS12.2948→9.4344.
+  새 C는87.5166/69.9978/32.8059GPa: target114/62/32를 아직 만족하지 못한다.
+  relaxed fault=.151279, index-one stationary energy=.168804J/m2;
+  source=.150479/.172002. Opening40h=1.827637 vs source1.741285J/m2.
+  Source saddle Hxx heldout 부호/크기도 부정확하다. **채택하지 않았다.**
+- Full local sensitivity rank9, condition196.70(명시한 coefficient/log-range
+  좌표), radial step refinement 차이1.85e-4. 이를 confidence나 global unique
+  calibration이라 하지 않는다. C별 Powell180평가 예산소진; bulk_exact
+  Powell34평가 종료점은 incumbent보다 나빠 전체 best를 보존했다.
+- 중요한 새 원인: 기존 exact-C 후보는 positive bulk/perfect-interface H에도
+  finite-q Gamma-K halfway에서 eigenvalue=-25.829eV/L0^2. 반경6/8/10으로
+  재확인한 불안정이며 exactC가 채택 근거가 될 수 없다. 새 C별 후보는
+  검사한 finite-q에서 양수지만 global stability/material validation은 아니다.
+- `isolated_screw_core.py`: 같은 원자 전위의 anisotropic single-screw
+  far-field Dirichlet 경계, 내부3성분 이완. 영향 받는 **고정 원자의 F까지**
+  에너지 closure에 포함한다. x는 무한 Poisson/Bessel, transverse environment
+  변화의 ring은 독립 수렴 대상. 주기 반대전위쌍 소멸과 다른 실험이다.
+- 새 row kernel은 rank별 range를 정확히 사용한다. 기존 common-range scalar
+  FFT에 새 range surface를 넣으면 명시적으로 거부한다. 기존 같은-range
+  연구/production 계산은 바꾸지 않는다.
+- R2/3/4/6/8, ring3/4/6/8, 무하중 ±mode control 및 안정/불안정 초기점의
+  25→50→0 MPa를 포함한 21개 실제 코어 계산을 완료했다. force는 대략
+  1e-7–1e-6 eV/L0이고 winding 1을 유지한다. 9개 case는 검사한 고정 경계에서
+  안정 후보다. 미검사된 예전 소규모 case는 stability_unchecked로 남겼다.
+- 코어 raw partial-site energy와 탄성 annulus 불일치의 선형 경계 에너지항을
+  유도했다. `e_remainder=e_raw-sum g_ref·Du`의 전체 합은 원래 에너지와 같고
+  free gradient/Hessian은 불변이다. Partial radial sum만 다른 partition이다.
+  Raw/linear/remainder를 모두 보존한다. 임의 energy 보정/force clipping이 아니다.
+  무한 row affine Hessian은 같은 full-bulk tensor와 독립적으로 일치한다.
+
+### 재개 위치 / 파일
+
+`solver_v1/RANGE_AND_CORE_REPAIR.md` 수식, 새 runner/report/test를 읽는다.
+결과 `results/fcc111_active_interface/range_core_v12/`:
+material/calibration.json은 실제 최적화 결과(모든 평가 포함),
+material/validated_summary.csv,finite_q_validation.csv,static_load_unload.csv,
+isolated_core/각case/{metadata,summary,progress}.json,state.csv.
+`report_range_core_repair.py`는 저장 state의 analytic audit이며 최적화 재실행이
+아니다. 모든 계산 종료 후 실제 실행하여 core_* CSV, decision.json과 두 SVG를
+생성했다(최종 재평가 68.31s). core_morse_audit.csv에는 독립 에너지 차분을
+저장한다. 원 안장점 기록/raw partition도 삭제하지 않았다.
+한 코어 force 수렴이 all-domain/core/finite-source/실제항복 수렴을 뜻하지 않는다.
+Straight x-line core만으로 curved source 전체 character energy를 만들지 않는다.
+실측 source geometry, 실제0.2%plastic strain, kinetics, material gate 미완료.
+물리 seconds/Hz/A_c 및 production/UI default는 변경하지 않는다.
+
+### 실제 검증 결과 / 재현
+
+- 새 stability/core/range targeted: **23 passed, 16.52s**.
+- 새+기존 vector row targeted: **36 passed, 52.08s** (최종 두 Morse test 추가 전).
+- 최종 `pytest solver_v1 -q`: **394 passed, 631.95s**.
+- `pytest app -q`: **31 passed, 148.56s**, skip 0.
+- `app.desktop_ui --smoke`: **PASS, 4.66s**. LJ a0/kappa 역사값 그대로.
+- `git diff --check` 및 새 파일을 포함한 `git diff --cached --check`: **PASS**.
+- py launcher 대신 설치된 Python 3.13을 사용했다. 최종 solver 실행의
+  OPENBLAS_NUM_THREADS=1, OMP_NUM_THREADS=1은 해당 프로세스 성능 설정뿐이다.
+  로그는 ignored .cache/range_core_v12_*tests.log 및 smoke.log에 있다.
+- 기존 파라미터 SHA256는
+  9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655로 불변.
+- 이 인계 문서 자체가 v12 변경에 포함된다. 최종 commit/push 여부와 SHA는
+  Git 실제 log/remote로 확인한다. 테스트 통과를 소재 채택으로 해석하지 않는다.
+
+### 다음 단계의 정확한 미완료 문제
+
+1. 소재: 독립 탄성 세 값, vector saddle curvature, finite-q 안정성을 동시에
+   만족하는 작은 analytic family/후보가 아직 없다. 이번 range 한 개 추가만으로
+   해결되지 않았으며, 전체 family 불가능을 증명한 것도 아니다.
+2. Core: 낮은 안정 branch를 R8 이상/ring8 등으로 이어서 domain/tail/Morse
+   수렴을 확인한다. 안장점의 그럴듯한 annular plateau를 채택하지 않는다.
+3. 실제 항복: edge/mixed character, 유한 전위원/실측 source geometry,
+   안정 초기상태에서의 방출과 실제 plastic-strain 기준 연결이 아직 필요하다.
+4. 실제 Al kinetics/초/Hz, A_c 보정은 여전히 없다. UI 재설계 gate 미통과.
+
+## 이전 완료 상태: yield_bridge_v11 — 실제 항복 기준, 독립 탄성, 유한 전위원 reference
 
 최신 요청: “실제 항복강도에 점점 맞춰가야지”. 실제 과학 worktree는
 OneDrive 밖 al-fatigue-probability-worktrees/aft-pde-bessel-38969ad,

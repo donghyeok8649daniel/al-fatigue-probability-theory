@@ -1,0 +1,35 @@
+{
+  "completed": true,
+  "material_accepted": false,
+  "physical_yield_validated": false,
+  "physical_seconds": false,
+  "physical_Hz": false,
+  "production_PDE_UI_changed": false,
+  "single_screw_fixed_boundary_force_balance_verified": true,
+  "all_tested_core_stationary_points_are_stable": false,
+  "stable_core_cases": [
+    "historical_R4_r4_mode_minus",
+    "historical_R4_r4_mode_plus",
+    "historical_R4_r4_stable25MPa",
+    "historical_R4_r4_stable50MPa",
+    "historical_R4_r4_stable_unload",
+    "historical_R4_r4_unload",
+    "historical_R6_r4_mode_minus",
+    "historical_R6_r4_mode_plus",
+    "historical_R6_r6_stable_plus"
+  ],
+  "initial_saddle_unload_matches_zero_load_control": {
+    "common_rows": 18,
+    "maximum_vector_change_over_L0": 5.319607107817386e-08,
+    "rms_vector_change_over_L0": 3.087637297903633e-08
+  },
+  "stable_initial_unload_residual": {
+    "common_rows": 18,
+    "maximum_vector_change_over_L0": 1.0143333419260795e-07,
+    "rms_vector_change_over_L0": 6.178976119927479e-08
+  },
+  "finite_source_core_matching_validated": false,
+  "all_character_core_energy_available": false,
+  "explanation": "Improved material fit still misses C11 and held-out curvature; isolated straight core is not a calibrated finite source.",
+  "reporting_elapsed_seconds": 68.30785640000249
+}

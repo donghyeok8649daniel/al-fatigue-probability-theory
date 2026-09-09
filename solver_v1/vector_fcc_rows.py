@@ -129,9 +129,16 @@ class VectorRowKernel:
             values.append(val[:,None]);gradients.append(grad[:,None,:])
             if order==2:
                 hessians.append(hess[:,None,:,:])
-        angular=self.rows.surface.angular
-        H,Ha,Haa=exponential_radial(radius,g,angular.kappa)
+        # Each STF rank may have its own analytically summed radial range.
+        # Missing zero-amplitude ranks use the historical common-range channel;
+        # their energy weight is zero. Equal ranges retain the old arithmetic.
+        transforms={}
         for rank in (1,2,3):
+            name={1:'vector',2:'quadrupole',3:'angular'}[rank]
+            angular=getattr(self.rows.surface,name,None) or self.rows.surface.angular
+            if angular.kappa not in transforms:
+                transforms[angular.kappa]=exponential_radial(radius,g,angular.kappa)
+            H,Ha,Haa=transforms[angular.kappa]
             exponents,basis=symmetric_monomials(rank)
             raw=[];rawgrad=[];rawhess=[]
             for nx,ny,nz in exponents:

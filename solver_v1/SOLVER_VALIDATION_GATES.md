@@ -14,6 +14,27 @@ confused with a fully calibrated spatial aluminum fatigue solver.
 
 ## Gates
 
+The range_core_v12 follow-up separates the rank2 microscopic angular range
+from ranks1/3, preserving the equal-range analytic limit. Actual fitting
+improves the joint residual, but C11 and held-out vector curvature still fail.
+The exact-C candidate has a resolved negative finite-q bulk eigenvalue and
+must not be promoted on the basis of uniform moduli.
+
+A separate single-screw fixed-far-field core now includes all affected-site
+embedding energies and full vector relaxation. Crucially, the centered state
+can have tiny force and NEGATIVE Hessian curvature. The runner now requires
+a final Morse/independent-energy-curvature audit. Two-sided negative-mode
+relaxation finds lower stable cores without tuning the potential. Compare
+loaded/unloaded states against these zero-load controls: departure from an
+unstable initial saddle is not evidence of low-stress plastic yield.
+
+Raw partial site energy includes Taylor-linear boundary work. Its exact
+redistribution changes neither total fixed-boundary energy nor forces, but
+must be declared when comparing radial energy to quadratic continuum
+elasticity. A plausible plateau for an unstable core is not an adopted core
+energy. Domain/ring, all line characters, finite-source geometry and kinetics
+remain independent gates. See RANGE_AND_CORE_REPAIR.md and range_core_v12.
+
 The yield_bridge_v11 study now obtains an actual published0.2%-plastic-shear
 CRSS/G criterion and derives/solves a double-ended finite-source leading-log
 reference from the SAME potential's anisotropic elastic tensor. Hypothetical

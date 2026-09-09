@@ -58,6 +58,10 @@ class NonlinearScrewRows:
     """
     def __init__(self, surface, *, tolerance=1e-11, max_ring=14,
                  fixed_ring=None, max_modes=64):
+        for name in ('vector','quadrupole'):
+            moment=getattr(surface,name,None)
+            if moment is not None and moment.kappa!=surface.angular.kappa:
+                raise ValueError('scalar FFT rows require a common angular range; use the range-aware vector row kernel')
         self.surface = surface
         self.bulk = surface.interface.bulk
         self.b = float(self.bulk.geometry.b)

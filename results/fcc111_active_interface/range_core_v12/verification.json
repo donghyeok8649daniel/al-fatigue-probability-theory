@@ -1,0 +1,43 @@
+{
+  "starting_head": "b84eaf4d9a449a16476ab69d8d3de30496c6c00c",
+  "branch": "probability-pde-solver-v1",
+  "starting_remote_verified_by_fresh_fetch": true,
+  "starting_worktree_clean": true,
+  "git_diff_check_passed": true,
+  "git_staged_diff_check_passed": true,
+  "interpreter": "Python 3.13",
+  "targeted": {
+    "command": "python -m pytest solver_v1/test_core_stability.py solver_v1/test_isolated_screw_core.py solver_v1/test_range_resolved_material.py -q",
+    "passed": 23,
+    "failed": 0,
+    "elapsed_seconds": 16.52
+  },
+  "solver_regression": {
+    "command": "python -m pytest solver_v1 -q",
+    "passed": 394,
+    "failed": 0,
+    "elapsed_seconds": 631.95,
+    "process_local_threads": {"OPENBLAS_NUM_THREADS": 1, "OMP_NUM_THREADS": 1}
+  },
+  "app_regression": {
+    "command": "python -m pytest app -q",
+    "passed": 31,
+    "failed": 0,
+    "skipped": 0,
+    "elapsed_seconds": 148.56
+  },
+  "desktop_smoke": {
+    "command": "python -m app.desktop_ui --smoke",
+    "passed": true,
+    "elapsed_seconds": 4.66,
+    "a0": 0.7713438268704838,
+    "kappa_axial": 86.29296488740997
+  },
+  "material_accepted": false,
+  "physical_yield_validated": false,
+  "physical_seconds_available": false,
+  "physical_Hz_available": false,
+  "production_PDE_UI_changed": false,
+  "historical_parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+  "source_Al99_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284"
+}
