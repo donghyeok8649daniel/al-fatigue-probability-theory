@@ -1,0 +1,56 @@
+{
+  "comparisons": [
+    {
+      "experimental_flow_MPa": 4.595238095238095,
+      "experimental_plastic_shear_strain": 0.1,
+      "uniform_ideal_MPa": 2581.739867778301,
+      "comparable": false,
+      "reasons": [
+        "observable",
+        "plastic_strain_level",
+        "material_state",
+        "temperature_condition",
+        "loading_protocol_binding",
+        "missing_microstructure_binding"
+      ],
+      "absolute_error_mpa": null,
+      "relative_error": null
+    },
+    {
+      "experimental_flow_MPa": 6.928571428571429,
+      "experimental_plastic_shear_strain": 0.5,
+      "uniform_ideal_MPa": 2581.739867778301,
+      "comparable": false,
+      "reasons": [
+        "observable",
+        "plastic_strain_level",
+        "material_state",
+        "temperature_condition",
+        "loading_protocol_binding",
+        "missing_microstructure_binding"
+      ],
+      "absolute_error_mpa": null,
+      "relative_error": null
+    },
+    {
+      "experimental_flow_MPa": 9.880952380952381,
+      "experimental_plastic_shear_strain": 0.8,
+      "uniform_ideal_MPa": 2581.739867778301,
+      "comparable": false,
+      "reasons": [
+        "observable",
+        "plastic_strain_level",
+        "material_state",
+        "temperature_condition",
+        "loading_protocol_binding",
+        "missing_microstructure_binding"
+      ],
+      "absolute_error_mpa": null,
+      "relative_error": null
+    }
+  ],
+  "experimental_strength_prediction_available": false,
+  "finite_source_validated": false,
+  "source_length_inferred_from_wire_diameter": false,
+  "physical_mobility_calibrated": false
+}

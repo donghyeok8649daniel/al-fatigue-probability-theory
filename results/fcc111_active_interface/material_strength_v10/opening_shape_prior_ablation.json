@@ -1,0 +1,311 @@
+{
+  "radial_decays": [
+    2.906199643752374,
+    5.308553273298447
+  ],
+  "result_without_monotonicity": {
+    "coefficients": [
+      0.22112779615686085,
+      1.2041593842282647,
+      8.6179817796072,
+      13.79836334004745,
+      1.1793171941310834,
+      89.93566322167469,
+      5.966152583190107,
+      90.11413001515821
+    ],
+    "coefficient_order": [
+      "u",
+      "v",
+      "A",
+      "B",
+      "C",
+      "D3",
+      "D1",
+      "D2"
+    ],
+    "predictions": [
+      -1.7763568394002505e-15,
+      3.3599999999999994,
+      66.3294327121998,
+      14.6535510594002,
+      2.5495395931340763,
+      22.83731098432459,
+      4.752963721402527,
+      0.07327738910194048,
+      0.0036027341349651465,
+      0.06770847631554326,
+      0.02564934043806577,
+      0.0004932344376373243,
+      0.04967233611947475,
+      0.4061198196771465,
+      0.6787008436727384,
+      0.8206293920957757
+    ],
+    "residuals": [
+      -1.7763568394002505e-14,
+      -6.608470384673551e-15,
+      -2.075651374236119,
+      3.174926334678552,
+      -2.4313237251611235,
+      1.6155903559115508,
+      0.8179425891436379,
+      -0.38973686281267755,
+      0.11351464403680786,
+      0.14998682268069596,
+      0.8081572607174102,
+      0.01554078916667958,
+      -1.2398575141681605,
+      -1.3780705407052005,
+      -0.38740070085610634,
+      0.6310667071345832
+    ],
+    "squared_loss": 28.404268872062623,
+    "success": true,
+    "admissible": true,
+    "inner_message": "Optimization terminated successfully",
+    "inner_nit": 26,
+    "exact_constraints": [
+      "normal_force_at_target=0",
+      "cohesion=3.36 eV/atom"
+    ],
+    "pair_elimination_roundoff": [
+      1.8143575922698e-13,
+      4.1765850180621233e-13
+    ],
+    "strictly_positive_LJ_resolved": true,
+    "extra_inequality_observations": [],
+    "physical_candidate_accepted": false,
+    "total_stability_checked": false,
+    "selected_rows": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "bulk_constants": {
+    "C11_GPa": 85.15864257207437,
+    "C12_GPa": 64.07055303725792,
+    "C44_GPa": 52.70035081950684,
+    "bulk_modulus_GPa": 71.09991621553007,
+    "normal_stress_GPa": -1.7137028850890596e-14
+  },
+  "observations": [
+    {
+      "name": "normal_strain_force_ev",
+      "role": "exact",
+      "reference": 0.0,
+      "prediction": -1.7763568394002505e-15,
+      "units": "eV/strain",
+      "normalized_residual": -1.7763568394002505e-14
+    },
+    {
+      "name": "cohesive_ev_atom",
+      "role": "exact",
+      "reference": 3.36,
+      "prediction": 3.3599999999999994,
+      "units": "eV/atom",
+      "normalized_residual": -6.608470384673551e-15
+    },
+    {
+      "name": "hydrostatic_strain_curvature_ev",
+      "role": "fit",
+      "reference": 74.01042469890372,
+      "prediction": 66.3294327121998,
+      "units": "eV/strain^2",
+      "normalized_residual": -2.075651374236119
+    },
+    {
+      "name": "normal_strain_curvature_ev",
+      "role": "fit",
+      "reference": 12.646038954154417,
+      "prediction": 14.6535510594002,
+      "units": "eV/strain^2",
+      "normalized_residual": 3.174926334678552
+    },
+    {
+      "name": "simple_shear_strain_curvature_ev",
+      "role": "fit",
+      "reference": 2.90236959603544,
+      "prediction": 2.5495395931340763,
+      "units": "eV/strain^2",
+      "normalized_residual": -2.4313237251611235
+    },
+    {
+      "name": "perfect_Haa",
+      "role": "fit",
+      "reference": 19.66091286328976,
+      "prediction": 22.83731098432459,
+      "units": "eV/L0^2",
+      "normalized_residual": 1.6155903559115508
+    },
+    {
+      "name": "perfect_Hxx",
+      "role": "fit",
+      "reference": 4.393593035123306,
+      "prediction": 4.752963721402527,
+      "units": "eV/L0^2",
+      "normalized_residual": 0.8179425891436379
+    },
+    {
+      "name": "saddle_energy_at_source_state",
+      "role": "fit",
+      "reference": 0.07624909750742465,
+      "prediction": 0.07327738910194048,
+      "units": "eV/cell",
+      "normalized_residual": -0.38973686281267755
+    },
+    {
+      "name": "saddle_normal_force_at_source_state",
+      "role": "fit",
+      "reference": 1.4903612010162394e-15,
+      "prediction": 0.0036027341349651465,
+      "units": "eV/L0",
+      "normalized_residual": 0.11351464403680786
+    },
+    {
+      "name": "fault_energy_at_source_state",
+      "role": "fit",
+      "reference": 0.06670794504308616,
+      "prediction": 0.06770847631554326,
+      "units": "eV/cell",
+      "normalized_residual": 0.14998682268069596
+    },
+    {
+      "name": "fault_normal_force_at_source_state",
+      "role": "fit",
+      "reference": 5.29078226360765e-15,
+      "prediction": 0.02564934043806577,
+      "units": "eV/L0",
+      "normalized_residual": 0.8081572607174102
+    },
+    {
+      "name": "saddle_path_force_at_source_state",
+      "role": "fit",
+      "reference": 2.296700476743968e-16,
+      "prediction": 0.0004932344376373243,
+      "units": "eV/L0",
+      "normalized_residual": 0.01554078916667958
+    },
+    {
+      "name": "opening_1.1h_energy",
+      "role": "fit",
+      "reference": 0.05670265774764735,
+      "prediction": 0.04967233611947475,
+      "units": "eV/cell",
+      "normalized_residual": -1.2398575141681605
+    },
+    {
+      "name": "opening_1.5h_energy",
+      "role": "fit",
+      "reference": 0.4710312483934004,
+      "prediction": 0.4061198196771465,
+      "units": "eV/cell",
+      "normalized_residual": -1.3780705407052005
+    },
+    {
+      "name": "opening_2h_energy",
+      "role": "fit",
+      "reference": 0.7060534019484034,
+      "prediction": 0.6787008436727384,
+      "units": "eV/cell",
+      "normalized_residual": -0.38740070085610634
+    },
+    {
+      "name": "opening_40h_energy",
+      "role": "fit",
+      "reference": 0.7719163228888833,
+      "prediction": 0.8206293920957757,
+      "units": "eV/cell",
+      "normalized_residual": 0.6310667071345832
+    },
+    {
+      "name": "direct_quarter_energy",
+      "role": "heldout",
+      "reference": 0.117221996542065,
+      "prediction": 0.14407969976116605,
+      "units": "eV/cell",
+      "normalized_residual": 2.29118288472959
+    },
+    {
+      "name": "direct_half_energy",
+      "role": "heldout",
+      "reference": 0.26732847628894163,
+      "prediction": 0.3408014712313923,
+      "units": "eV/cell",
+      "normalized_residual": 2.7484163289449755
+    },
+    {
+      "name": "oblique_energy",
+      "role": "heldout",
+      "reference": 0.13339289745734875,
+      "prediction": 0.09060231995507367,
+      "units": "eV/cell",
+      "normalized_residual": -3.207860262271985
+    },
+    {
+      "name": "opening_1.25h_energy",
+      "role": "heldout",
+      "reference": 0.24853683654490819,
+      "prediction": 0.18567120291945705,
+      "units": "eV/cell",
+      "normalized_residual": -2.5294292185976195
+    },
+    {
+      "name": "opening_3h_energy",
+      "role": "heldout",
+      "reference": 0.7719163228888833,
+      "prediction": 0.730413386779281,
+      "units": "eV/cell",
+      "normalized_residual": -0.5376610764529283
+    },
+    {
+      "name": "saddle_Haa",
+      "role": "heldout",
+      "reference": 12.717337762538286,
+      "prediction": 19.11301435056204,
+      "units": "eV/L0^2",
+      "normalized_residual": 5.0291001996216735
+    },
+    {
+      "name": "saddle_Hxx",
+      "role": "heldout",
+      "reference": -0.18642463121762062,
+      "prediction": 0.30692780175091894,
+      "units": "eV/L0^2",
+      "normalized_residual": 26.46390821568156
+    },
+    {
+      "name": "fault_Haa",
+      "role": "heldout",
+      "reference": 14.140554350039636,
+      "prediction": 18.00511710609304,
+      "units": "eV/L0^2",
+      "normalized_residual": 2.732964111864942
+    },
+    {
+      "name": "fault_Hxx",
+      "role": "heldout",
+      "reference": 2.4858929774856264,
+      "prediction": 1.7322509117403202,
+      "units": "eV/L0^2",
+      "normalized_residual": -3.0316754283910594
+    }
+  ],
+  "not_adopted": true,
+  "full_stability_not_validated": true,
+  "interpretation": "monotonicity is a declared shape prior; SOURCE curve has a resolved negative-traction lobe"
+}

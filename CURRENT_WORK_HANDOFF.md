@@ -1,6 +1,106 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
-## 최신 상태: vector_registry_v9 — 지정 직선의 장벽과 실제 벡터 경로를 분리
+## 최신 상태: material_strength_v10 — 실제 강도와 소재 보정의 검증 조건 분리
+
+최신 요청은 “실제강도에 가까워야” 및 “해봐”였다. 실제 과학 worktree는
+OneDrive 밖 al-fatigue-probability-worktrees/aft-pde-bessel-38969ad,
+branch probability-pde-solver-v1이다. 시작 fresh fetch에서 local/origin 모두
+0f0a3b43b6dd3b39d3f898671702d309d8e85c94, clean. 추가 agent 없음.
+이전 migration과 다른 worktree/main은 변경하지 않았다.
+
+### 실제 실행한 것과 채택하지 않은 것
+
+같은 LJ/Bessel + 기존 per-atom scalar embedding/STF1/2/3 가족을 사용했다.
+vector_material_calibration.py에서 고정 두 radial decay에 대해 전체 energy,
+force, Hessian을 8개 coefficient의 **정확한 선형 basis**로 계산한다.
+Finite table surrogate가 아니다. Bulk force/cohesion 두 제약을 정확히 제거,
+14 fit/9 held-out +2 exact 관측량으로 실제 constrained fit을 수행했다.
+Saddle/fault는 source full-vector stationary state, reverse barrier는 종속량으로
+중복 fit하지 않는다. 0K source와 실온 실험 강도는 분리했다.
+
+25-point grid+old decay와 Powell160회를 실제 실행했다. Powell은 평가 예산을
+소진하여 global/local radial optimum 수렴을 주장하지 않는다. Inner coefficient
+QP는 수렴했다. Runner는 fit/validate를 분리한다. staged coefficient ablation은
+최종 decay에서 실행했으며 각 stage의 independent radial fit이 아니다.
+
+첫 joint fit은 sample 사이 a/h=2.79634에서 -46.4765MPa 개구력을 냈다.
+이를 숨기지 않고 W_aa=0 실제 극값을 찾아 세 차례 coefficient constraint
+exchange를 수행했다. Raw 힘을 clipping하지 않았다. 최종 zero-registry
+음의 값은 -5.72e-15eV/L0, 측정/roundoff floor3.77e-14보다 작다.
+121/241 bracket와 tolerance2e-11/2e-13로 확인했다. 전체 registry/무한 구간의
+전역 단조성 증명으로 과장하지 않는다.
+
+**추가 반례:** 최종 그림 검사에서 SOURCE 자체의 a/h2.386631 개구력이
+-785.6754MPa였다. 181/361 bracket, energy FD, 별도 scalar-sourceenergy가
+일치한다. 따라서 nonnegative-traction/단조 energy 제약은 이번 fit의 명시적
+shape prior이지 보편 물리 법칙이나 source의 검증 성질이 아니다.
+그 제약을 빼는 추가 QP도 실제 실행: loss28.4043, C11/C12/C44
+85.16/64.07/52.70GPa로 탄성 문제는 그대로다. Source cutoff/interpolation
+때문인지 본래 potential인지 더 검증 없이 단정하지 않는다. 음의 힘만으로
+bug/불가능한 물리라고 주장하지 않는다. Raw source curve를 보존했다.
+
+최종 연구 후보 계수와 모든 결과는 material_strength_v10/opening_exchange에 있다.
+과거 parameter SHA256
+9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655는 **그대로**다.
+Production energy/PDE/UI 변경 없음.
+
+| 항목 | source | 이전 후보 | 새 연구 후보 |
+|---|---:|---:|---:|
+| C11/C12/C44 GPa | 114/62/32 | 87.82/64.83/49.27 | 85.26/64.24/52.54 |
+| forward saddle J/m2 | .172002 | .173238 | .166823 |
+| intrinsic fault J/m2 | .150479 | .126800 | .151991 |
+| reverse barrier J/m2 | .021523 | .046438 | .014831 |
+
+Loss87.4386->28.6052지만 heldout normalizedRMS9.7749이며 source-state saddle Hxx도
+부호가 다르다. 자기 saddle의 Morseindex1과는 구별한다. **채택하지 않는다.**
+전체 analytic family 불가능을 증명한 것은 아니다. Initial joint Jacobian8개
+singular values최소1.592/최대328.949,condition206.60; A/C sensitivity cosine.9913.
+활성 부등식/model discrepancy 때문에 이를 parameter confidence로 해석하지 않는다.
+
+### 실제 강도에 관한 진전/한계
+
+Krebs2017 doi10.1038/nmat4911 원문 Fig2b의 99.99%Al,103um 단결정 와이어,
+실온300nm/s 조건에서 plastic shear strain .1/.5/.8의 resolved shear flow
+4.595/6.929/9.881MPa를 픽셀/출처/hash와 저장했다. 판독오차약.1905MPa.
+이 값은 항복강도가 아니다. .2점은 cyan curve에 가려 null,0.2%CRSS는
+이미지 strain해상도 부족으로 null이다. Orientation/source geometry도 없다.
+와이어 직경을 source length로 바꾸지 않는다. 실험 강도를 energy loss에 넣지 않았다.
+
+같은 MPa 응력을 old/new/source 세 rigid-interface 모델에 실제 적용했다.
+최종 후보 ux/L0는 약.000121/.000183/.000261이고 static unload 차이8.72e-16L0.
+33개 저응력 상태와 32개25–150MPa mixed/static 상태를 저장했다.
+단일 homogeneous 계면은 finite source가 아니므로 실제 와이어 소성 재현이 아니다.
+새 ideal fold2.58174GPa를 실제 항복 개선이라고 말하지 않는다.
+StrengthConditions 비교기는 observable/응력성분/straincriterion/microstructure/
+온도/protocol이 달라지거나 미지이면 prediction error를 null로 둔다.
+유한 source/core, 소재 곡면, kinetics가 여전히 필요하다. 초/Hz는 unavailable.
+
+### 실패 기록과 수치 검증
+
+첫 root폴더 fit-report는 bulk-only zeroD1/D3 sensitivity column 때문에 실패했다.
+Zero column을 stage에서 제외하여 고쳤고 미완료 파일은 SCHEMA에 명시해 보존했다.
+최종 계산 경로는 joint_fit와opening_exchange다. 첫 exchange launch는 SOURCE의
+완전히 빈 이웃 배열에서 einsum gradient가 NaN인 사례를 포착했다(NumPy2.5).
+빈 합의 정확한0을 명시 반환하도록 **source-only evaluator**를 수정했다.
+라이브러리 내부 allocation 버그의 독립 재현/근본 해결을 주장하지 않는다.
+Nonempty nonfinite guard유지. 빈 einsum을 금지하는 test와30회 separated반복검증.
+수정 후 source fit target 재계산차이0이다.
+
+독립 direct24/48/72 maxenergyerror4.01e-5->5.24e-6->1.58e-6eV/cell,
+reciprocal refinementHerror6.39e-14eV/L0². FD fine gradient7.24e-9/H1.18e-7.
+Finite-q8/12컷오프 sampledpositive이나 전BZ 증명 아님. Independent fold31/61.
+최종 targeted27PASS18.92s, fullsolver349PASS1429.02s(23분49초),
+app31PASS161.37s, 최종smokePASS2.73s. 모두0skip. Full/app은 다른 연구 검증과
+동시 실행되어 timing은 고립된 성능 benchmark가 아니다. git diff --check 및
+staged diff check PASS. CSV/JSON syntax, source target변화0, historical parameter
+hash보존 확인. 실제 verification.json과 포함 커밋의 Git이 최종 근거다.
+
+자세한 수식/결과: MATERIAL_TO_SPECIMEN_STRENGTH.md,
+results/fcc111_active_interface/material_strength_v10/SCHEMA.md 및verification.json.
+다음은 탄성+held-out vector shape의 공통 material compatibility/정규화 민감도,
+그 뒤 finite-source/core다. 소재 gate를 건너뛰어 무리하게 UI로 넘어가지 않는다.
+
+## 이전 상태: vector_registry_v9 — 지정 직선의 장벽과 실제 벡터 경로를 분리
 
 최신 사용자 요청은 “이제 다시 연구해.”였다. 연구 전체를 OneDrive 밖으로
 옮긴 뒤, 실제 probability-pde-solver-v1 과학 worktree에서 재개했다.

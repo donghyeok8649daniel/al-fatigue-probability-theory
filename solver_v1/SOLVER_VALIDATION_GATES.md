@@ -14,6 +14,23 @@ confused with a fully calibrated spatial aluminum fatigue solver.
 
 ## Gates
 
+The material_strength_v10 follow-up ran a new deterministic joint calibration
+of the unchanged analytic family. An inter-sample negative opening traction
+was found and removed by actual-extremum coefficient constraints, without
+clipping forces. This passes neither the material gate nor specimen strength:
+elastic constants and held-out vector curvatures remain inaccurate.
+The SOURCE curve itself has a verified negative traction lobe, so nonnegative
+traction is a declared shape prior here, not a universal acceptance theorem.
+Removing that prior in an additional coefficient solve did not fix elasticity.
+
+Room-temperature high-purity Al wire flow data are now provenance-bound as a
+validation benchmark, not a fit to lower the ideal interface stress. A GPa
+uniform fold and MPa finite-defect flow are different observables. The new
+strength-comparison helper rejects missing/mismatched microstructure, protocol,
+temperature, stress projection or strain criterion. Finite-source dynamics,
+physical mobility and the UI redesign approval gate remain outstanding.
+See MATERIAL_TO_SPECIMEN_STRENGTH.md and material_strength_v10/material_decision.json.
+
 1. Geometry and energy: infinite lattice, counting, analytic derivatives,
    independent direct sums and numerical tails.
 2. Material calibration: independent observables, stability, identifiability,

@@ -1,0 +1,119 @@
+{
+  "stage": "material_strength_v10",
+  "date": "2026-09-09",
+  "branch": "probability-pde-solver-v1",
+  "starting_HEAD": "0f0a3b43b6dd3b39d3f898671702d309d8e85c94",
+  "starting_fresh_remote_HEAD": "0f0a3b43b6dd3b39d3f898671702d309d8e85c94",
+  "starting_worktree_clean": true,
+  "local_main_unchanged": "80cacb4180dbfbcd36a2964270703bc6cf1653ec",
+  "final_commit_reference": "The containing Git commit; no self-referential hash is embedded",
+  "environment": {
+    "platform": "Windows",
+    "python": "3.13.5",
+    "numpy": "2.5.0",
+    "py_launcher_available": false,
+    "actual_python3_interpreter_used": true,
+    "additional_agents": 0
+  },
+  "tests": {
+    "targeted": {
+      "command": "python -m pytest solver_v1/test_strength_validation.py solver_v1/test_vector_material_calibration.py -q",
+      "passed": 27,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 18.92
+    },
+    "full_solver": {
+      "command": "python -m pytest solver_v1 -q",
+      "passed": 349,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 1429.02
+    },
+    "app": {
+      "command": "python -m pytest app -q",
+      "passed": 31,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 161.37
+    },
+    "desktop_smoke": {
+      "command": "python -m app.desktop_ui --smoke",
+      "passed": true,
+      "seconds": 2.73,
+      "a0": 0.7713438268704838,
+      "kappa": 86.29296488740997
+    },
+    "timing_note": "Full/app ran concurrently with research calculations; not isolated performance benchmarks",
+    "diff_check": true,
+    "staged_diff_check": true,
+    "CSV_rectangularity": true,
+    "JSON_finite_values_and_syntax": true,
+    "generated_plots_visually_inspected": true
+  },
+  "calculations": {
+    "joint_fit_seconds": 693.4347372,
+    "joint_validation_seconds": 161.4784347,
+    "opening_constraint_exchange_seconds": 149.9453126,
+    "exchange_validation_seconds": 289.4755411,
+    "independent_lattice_derivative_fold_stress_checks_seconds": 338.9468579,
+    "actual_radial_grid_and_reference_evaluations": 26,
+    "actual_local_Powell_evaluations": 160,
+    "radial_optimizer_converged": false,
+    "radial_status": "maximum function evaluations; best feasible observed point, not global optimum",
+    "final_coefficient_QP_converged": true,
+    "opening_exchange_resolves_tested_negative_extremum": true,
+    "opening_exchange_added_constraint_solves": 3,
+    "independent_extremum_brackets": [121, 241],
+    "finite_q_direct_validation_cutoffs_L0": [8, 12],
+    "independent_direct_radii_and_layers": [24, 48, 72],
+    "max_fine_direct_energy_error_eV_cell": 0.000001577847588016268,
+    "max_fine_FD_gradient_error_eV_L0": 0.000000007235147481132742,
+    "max_fine_FD_Hessian_error_eV_L0sq": 0.00000011718527304083182,
+    "max_reciprocal_refinement_Hessian_change_eV_L0sq": 0.00000000000006394884621840902,
+    "independent_uniform_fold_brackets": [31, 61],
+    "uniform_fold_MPa_NOT_yield": 2581.739867778301,
+    "new_low_stress_range_states": 33,
+    "mixed_static_states_per_validation": 32,
+    "source_target_recalculation_max_change_after_empty_sum_fix": 0.0,
+    "source_negative_traction_minimum_MPa": -785.6754390524287,
+    "source_FD_traction_max_difference_MPa": 0.000004405095385312544,
+    "source_independent_scalar_energy_max_difference_eV": 0.00000000000000011102230246251565,
+    "opening_monotonicity_is_declared_shape_prior_not_universal_law": true,
+    "without_shape_prior_coefficient_loss": 28.404268872062623
+  },
+  "preserved": {
+    "historical_parameter_SHA256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "production_energy_registry": true,
+    "LJ_Bessel_kernel": true,
+    "per_atom_embedding_and_STF_family": true,
+    "production_PDE_and_probability_bookkeeping": true,
+    "app_and_UI_defaults": true,
+    "existing_static_calibration_data": true,
+    "kinetic_calibration_JSON": true,
+    "specimen_correlation_area_semantics": true,
+    "other_worktrees_and_relocation_backup": true
+  },
+  "development_failures_and_repairs": [
+    "Initial fit-report failed on structurally unobserved bulk-only coefficient columns; fixed by excluding those stage columns. Incomplete root artifacts retained and labeled.",
+    "SOURCE empty-neighbor einsum gradient produced NaN in an actual launch; exact zero-neighbor identity added. Underlying NumPy internal allocation cause not claimed as fully reproduced.",
+    "A synthetic extremum test omitted two dataclass metadata arguments; corrected test fixture, no physical tolerance weakened.",
+    "An occluded experimental trace point stays unavailable; it was not manufactured by interpolation.",
+    "Generated SVG trailing whitespace normalized; final staged diff check passed."
+  ],
+  "scientific_status": {
+    "material_accepted": false,
+    "whole_analytic_family_impossibility_proved": false,
+    "actual_specimen_strength_reproduced": false,
+    "finite_dislocation_source_implemented_in_this_stage": false,
+    "residual_plasticity_demonstrated": false,
+    "experimental_flow_reference_available": true,
+    "experimental_0_2_percent_CRSS_from_figure_available": false,
+    "kinetic_mobility_available": false,
+    "physical_seconds_enabled": false,
+    "physical_Hz_enabled": false,
+    "fatigue_validation_passed": false,
+    "production_or_UI_promotion": false,
+    "decision": "Research verification complete; bulk elasticity and held-out interface discrepancies prevent physical adoption. Finite-source and kinetic validation remain separate."
+  }
+}

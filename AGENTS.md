@@ -496,6 +496,21 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- MATERIAL_TO_SPECIMEN_STRENGTH.md / material_strength_v10:
+  같은 기존 LJ/Bessel+STF 가족의 exact coefficient basis로 0K bulk와 vector
+  interface를 공동 fit했다. Initial Powell은 예산소진이며 global optimum 아님.
+  Sample 사이 음의 개구력은 W_aa 극값 기반 coefficient constraint exchange로
+  수정했지만 탄성/heldout shape 불일치로 새 후보도 채택하지 않았다.
+  SOURCE 자체도 -785.7MPa opening lobe가 energy FD와 일치하므로 양의 견인력
+  조건은 이번 shape prior이지 보편 법칙이 아니다. Prior 제거 QP에서도 탄성
+  오차가 남았다. 음의 견인력만으로 구현 bug/비물리라고 단정하지 않는다.
+  Source 빈 neighbor sum은 정확히 zero jet로 처리한다. 이는 source-only
+  빈 einsum NaN 재현에 대한 정확한 identity 처리이지 LJ cutoff/force clipping이 아니다.
+  실온 Krebs2017 Al wire 흐름점은 validation-only이며
+  0.2%CRSS/finite-source geometry는 미지다. Flow stress, first slip, uniform
+  ideal fold와 axial/resolved shear를 등치하지 않는다. 직경을 source length나
+  A_c로 바꾸지 않는다. Static MPa probe는 실제 plasticity/physical-time hold가 아니다.
+
 - VECTOR_REGISTRY_AND_STRENGTH_AUDIT.md / vector_registry_v9: 기존 후보 그대로
   q=(a,ux,uy)의 full registry 계면을 계산한다. 각 site 환경 합 뒤 F 및 STF
   norm을 적용하며, 원래 scalar PDE/production selector는 바꾸지 않는다.

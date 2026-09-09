@@ -242,6 +242,12 @@ class MishinVectorInterfaceReference:
         v = np.column_stack([np.full(len(xy), d), xy])
         radii = np.linalg.norm(v, axis=1)
         select = (radii > 0) & (radii < obj.r[-1])
+        if not np.any(select):
+            # Exactly empty SOURCE-neighbor sums, not small-force clipping.
+            # A captured Windows/NumPy run returned NaN from the empty einsum
+            # gradient. Its allocation-dependent internals are not diagnosed;
+            # the exact zero-neighbor identity must not depend on that path.
+            return np.zeros(10), np.zeros(10)
         r = radii[select]; n = v[select]/r[:, None]
         z = obj._rphi(r); zp = obj._rphi(r, 1); zpp = obj._rphi(r, 2)
         def pack(value, first, second):

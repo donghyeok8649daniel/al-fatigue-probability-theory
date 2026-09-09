@@ -1,0 +1,28 @@
+{
+  "doi": "10.1038/nmat4911",
+  "title": "Cast aluminium single crystals cross the threshold from bulk to size-dependent stochastic plasticity",
+  "authors": "J. Krebs; S. I. Rao; S. Verheyden; C. Miko; R. Goodall; W. A. Curtin; A. Mortensen",
+  "year": 2017,
+  "source_url": "https://eprints.whiterose.ac.uk/id/eprint/126662/1/Article%20Text.pdf",
+  "source_pdf_sha256": "74a38ad5d4b9597abb34c5a16b32853bac03996bd2e62ea0b77d841d35467fa5",
+  "figure_sha256": "a05485e5c480a12b36459c8061a96e75243157b8d1396756fd197d403ff5b0c2",
+  "source_pdf_page": 6,
+  "figure": "2b",
+  "axis_pixels": {
+    "x_strain_zero": 2053.0,
+    "x_strain_one": 2893.0,
+    "y_stress_zero": 1031.0,
+    "y_stress_20MPa": 191.0
+  },
+  "extraction": "dark-blue RGB inequalities; connected 4-to-16-row stroke in five-pixel x strip; median y",
+  "missing_points": "gamma=.2 is occluded by the cyan trace and retained as unavailable, not interpolated",
+  "pixel_uncertainty_not_measurement_uncertainty": true,
+  "displacement_rate_m_s": 3e-07,
+  "critical_resolved_shear_at_0_2_percent": null,
+  "unavailable_reason": "0.002 strain is below the declared digitization halfwidth on this wide-axis figure",
+  "exact_specimen_loading_vector": null,
+  "source_geometry_population": null,
+  "numerical_strength_prediction_available": false,
+  "material_parameters_fitted_to_experiment": false,
+  "physical_mobility_calibrated": false
+}
