@@ -1,0 +1,33 @@
+{
+  "completed": false,
+  "parameter_metadata": {
+    "model": "angular_monotone_opening",
+    "path": "direct_110",
+    "parameter_source": "results/fcc111_active_interface/matched_v3/monotone_opening/fitted_candidates.json",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "no_refit": true,
+    "research_only": true,
+    "length_scale_m": 2.863782463805517e-10,
+    "atomic_cell_area_m2": 7.102490842787125e-20,
+    "energy_unit": "eV/atomic interface cell",
+    "h_reduced": 0.816496580927726,
+    "registry_period_reduced": 1.0,
+    "lattice_stretch": 1.0,
+    "tolerance": 2e-11,
+    "physical_hz": false,
+    "material_calibration_accepted": false
+  },
+  "source_url": "https://www.ctcms.nist.gov/potentials/Download/1999--Mishin-Y-Farkas-D-Mehl-M-J-Papaconstantopoulos-D-A--Al/2/Al99.eam.alloy",
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "source_status": "matched 0-K rigid Mishin-EAM benchmark, NOT experimental truth",
+  "coordinate_order": [
+    "a",
+    "ux",
+    "uy"
+  ],
+  "source_code_sha256": {
+    "run_vector_registry_audit.py": "52e0078a6bb4e2ec49a12e315253c1410fb4f3298d24d06c97940c25b936e20e",
+    "vector_interface_reference.py": "e43cba658e6c7ef9309a3fa2a389587f7e270c03a31a1264ef7e9c8a43c83732",
+    "vector_registry_audit.py": "24a39aebe5ef03874080496f2aa6bb4a0f9b89fc1c340b2117e01fcb814a4ca8"
+  }
+}

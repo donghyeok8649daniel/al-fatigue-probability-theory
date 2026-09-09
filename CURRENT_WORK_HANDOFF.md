@@ -1,6 +1,100 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
-## 최신 상태: vector_core_v8 — 수직·횡방향 구속을 실제로 해제
+## 최신 상태: vector_registry_v9 — 지정 직선의 장벽과 실제 벡터 경로를 분리
+
+최신 사용자 요청은 “이제 다시 연구해.”였다. 연구 전체를 OneDrive 밖으로
+옮긴 뒤, 실제 probability-pde-solver-v1 과학 worktree에서 재개했다.
+Fresh fetch에서 local/origin 모두 f603fb81674333356d84a0bf959c4a9c95100ae2였고
+작업 트리는 깨끗했다. 이전 migration 백업/다른 worktree/사용자 파일은 건드리지
+않았다. 아래 OneDrive/Temp 경로 언급은 이전 단계의 역사적 기록이다.
+추가 agent 없음. 현재 연구 위치는 로컬 GitHub 트리 안의
+al-fatigue-probability-worktrees/aft-pde-bessel-38969ad이다.
+
+### 이번에 실제로 한 단계
+
+v8의 작은 셀 fault를 해석하기 전에 같은 후보의 full registry 계면을 검사했다.
+vector_interface_reference.py: q=(a,ux,uy), 전체 analytic gradient/Hessian.
+기존 plane LJ/Bessel, exact Hurwitz-zeta G=0, density 합 뒤 per-atom F,
+STF1/2/3 norm을 그대로 사용한다. 새 경험식/파라미터 fit/kinetics 없음.
+MishinVectorInterfaceReference는 checksum 검증 NIST Al99 source의 동일 rigid
+half-crystal 비교 전용이다. Production energy/PDE/UI에는 연결하지 않았다.
+
+vector_registry_audit.py: full Hessian index를 확인한 minimum/saddle,
+saddle 양쪽 downhill 연결, 고정 x에서 a,y 이완 후 Schur curvature를 구한다.
+이 local constrained branch는 global MEP 증명이 아니다.
+run_vector_registry_audit.py와 run_vector_registry_rechecks.py는 실제 계산을
+다시 실행한다. 결과 재생을 최적화/실행이라고 보고하지 않는다.
+
+### 실제 결과 / 해석
+
+기존 direct110 중간(h,.5,0)은 W_x≈0여도 candidate W_a=-3.4654,
+W_y=-1.82985eV/L0가 남아 full stationary saddle이 아니다. 정상/횡방향
+구속 반력이 필요한 경로였다. 새 결과:
+
+| [J/m2] | 후보 | 동일 조건 Al source |
+|---|---:|---:|
+| a 이완 후 연결된 forward saddle | .173237970 | .172002365 |
+| intrinsic fault | .126800169 | .150479477 |
+| fault에서 돌아가는 barrier | .046437801 | .021522888 |
+
+Forward saddle은 약0.72% 차이지만 reverse barrier는 약2.16배다. 이것만으로
+Al material gate를 통과시키지 않는다. C11/C12/C44≈87.82/64.83/49.27GPa의
+기존 탄성 오차도 그대로다. 모든 fit 파일 및 candidate SHA
+9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655를 보존했다.
+
+구속 조건만 바꾼 첫 shear-traction 최대값:
+
+| [GPa] | 후보 | source |
+|---|---:|---:|
+| a,y 고정 | 7.54336 | 6.46164 |
+| a 자유, y 고정 | 4.76890 | 4.39037 |
+| a,y 자유 | 3.12402 | 2.76750 |
+
+마지막 행만 H_zz>0 및 full Hessian zero-mode를 확인한 uniform-interface fold.
+41/81 및31/61 독립 bracket을 검사했다. Source도 GPa가 나온다는 결과는
+단위가 틀렸다는 뜻이 아니라 flawless rigid-half ideal loading의 결과다.
+이를 실험 항복으로 낮추는 임의 factor/mobility/barrier fitting은 금지한다.
+Finite source, 실제 core/material, kinetic mapping이 다른 문제로 남아 있다.
+
+25–150MPa pure shear / 두 전단성분 mixed / 압축+shear의32개 정적 상태 실행.
+모든 경우 intact positive-Hessian branch; 제하 후 registry 차이≤1.76e-15L0.
+소성/피로가 생겼다고 하지 않는다. 정적 제하는 physical-time hold가 아니다.
+
+### 수치 검증과 저장
+
+vector_registry_v9/SCHEMA.md와 VECTOR_REGISTRY_AND_STRENGTH_AUDIT.md를 읽는다.
+주 계산122.69s, 제약/stencil 재검사29.46s. 882 grid points,22 special states,
+32 load/unload states. 직접합24/48/72의 일반 off-path energy 오차는
+8.85e-6 -> 1.16e-6 -> 3.48e-7eV/cell: algebraic tail을 machine epsilon으로
+위장하지 않았다. reciprocal/depth tol2e-11->2e-13의 Hessian 차이≤4.50e-12.
+Source finite-difference의 spline-knot crossing 오차를 숨기지 않고 별도
+stencil refinement에서 2.48e-10eV/L0²까지 감소한 결과를 저장했다.
+
+새 targeted17 tests PASS(23.63s), 재실행17 PASS(23.92s), 기존 vector와 합쳐
+34 PASS(31.04s). App31 PASS(58.43s), smoke PASS, 기존 LJ a0/kappa 불변.
+첫 full suite는321 passed / 새 source FD test1 failed(497.22s): FD 배열 NaN.
+단독 및9600 derivative /3000 allocation 반복은 재현하지 못했다.
+원인을 지레 단정하지 않고 source plane/최종 jet의 nonfinite fail-fast 진단을
+추가했다. 전체 재실행의 최종 결과와 이 anomaly의 상태는 verification.json을
+확인한다. 허용오차/skip으로 실패를 없애거나 원인이 밝혀졌다고 꾸미지 않는다.
+
+최종 full 재실행322 PASS,0 skipped(508.27s), 이후 targeted17 PASS(19.82s).
+최종 smoke1.26s PASS, git diff --check PASS. 새 fail-fast 코드로 특별 상태22,
+하중32, fold4, energy grid882를 재계산했을 때 저장값과 차이0이었다.
+postguard_data_revalidation.json에 현재 kernel hash와 검사 내용을 기록한다.
+이 반복 성공을 단발 NaN의 원인 규명/완전 제거 증명으로 과장하지 않는다.
+기존 app/data/PDE/LJ 및 v7/v8 코드와 후보 parameter는 시작 HEAD 대비 변경0.
+
+### 다음 단계 / gate
+
+먼저 vector_registry_v9의 최종 verification.json과 git log를 확인한다.
+독립 탄성, intrinsic-fault 및 reverse barrier/위치/곡률을 함께 제약하는
+material compatibility/identifiability를 감사한 뒤 필요한 최소 analytic
+extension만 검토한다. 다음 finite source/core 연구는 그러한 surface 검증과
+별도로 요구된다. 현재 source는 검증용이지 production LJ 대체물이 아니다.
+Mobility/seconds/Hz/A_c 및 UI redesign gate는 미완료 상태 그대로다.
+
+## 이전 상태: vector_core_v8 — 수직·횡방향 구속을 실제로 해제
 
 사용자의 최신 ㄱㄱ는 v7에서 발견한 omitted transverse force를 해결하는
 다음 단계 승인으로 해석했다. 추가 agent 없음. 아래 v7 기록은 역사적 근거다.

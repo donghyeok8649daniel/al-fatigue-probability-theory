@@ -1,0 +1,23 @@
+{
+  "completed": true,
+  "wall_seconds": 9.483481299997948,
+  "state_counts": {
+    "stationary_points.csv": 22,
+    "stress_and_unload.csv": 32,
+    "uniform_interface_folds.csv": 4,
+    "vector_energy_grid.csv": 882
+  },
+  "maximum_errors": {
+    "energy_eV_cell": 0.0,
+    "gradient_eV_L0": 0.0,
+    "hessian_eV_L0sq": 0.0,
+    "grid_J_m2": 0.0
+  },
+  "nonfinite_guard_checked": true,
+  "flat_stationary_rejection_checked": true,
+  "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+  "current_kernel_sha256": "c89e20c5c4399315594465bc42152c5c7fe9eeba15f6b2c2ba9f9f35fd3cdb21",
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "does_not_prove_absence_of_intermittent_native_or_allocator_errors": true,
+  "original_single_full_suite_nan_root_cause": "not reproduced or identified"
+}

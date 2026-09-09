@@ -1,0 +1,5 @@
+state,tolerance_coarse,tolerance_fine,energy_error_eV_cell,gradient_max_error_eV_L0,hessian_max_error_eV_L0sq
+perfect_stationary,2e-11,2e-13,0.0,1.255218151641196e-12,1.7621459846850485e-12
+partial_saddle_guess_stationary,2e-11,2e-13,3.284872374109682e-14,1.210184730204844e-12,1.673328142715036e-12
+intrinsic_fault_stationary,2e-11,2e-13,1.865174681370263e-14,1.2313414177178572e-12,1.673328142715036e-12
+on_top_stationary,2e-11,2e-13,4.630740235711528e-13,2.803118848149211e-12,4.4995118742008344e-12

@@ -496,6 +496,21 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- VECTOR_REGISTRY_AND_STRENGTH_AUDIT.md / vector_registry_v9: 기존 후보 그대로
+  q=(a,ux,uy)의 full registry 계면을 계산한다. 각 site 환경 합 뒤 F 및 STF
+  norm을 적용하며, 원래 scalar PDE/production selector는 바꾸지 않는다.
+  direct110 중간의 W_x=0만으로 saddle이라 하지 않는다. W_a/W_y가 남으면
+  구속 반력이 필요한 경로다. 전체 Hessian index와 saddle 양방향 descent로
+  연결된 minimum을 검증한다. 고정-x에서 a,y를 이완한 branch는 local constrained
+  branch이지 global MEP 증명이 아니다. Schur curvature의 첫 root와 H_zz>0으로
+  uniform-interface fold를 확인한다. 그 GPa 이상강도를 실험 항복으로 바꾸지 않는다.
+  Al 기준 전위도 동일한 rigid-half geometry에서는 GPa 이상강도를 준다.
+  후보의 forward saddle 일치만으로 material 통과 불가: reverse fault barrier와
+  independent elastic tensor 오차가 남는다. Static unload는 dynamic hold가 아니다.
+  SOURCE 전위는 target/검증 전용이며, cutoff 밖의 평탄한 zero-force 상태를
+  intact minimum으로 승인하지 않는다. Nonfinite jet은 실패로 처리한다.
+  Physical kinetics, finite source, production 및 UI gate는 여전히 미통과다.
+
 - VECTOR_FCC_CORE_DERIVATION.md / vector_core_v8: 동일 LJ/Bessel 후보의 실제
   3성분 무한 원자열 코어 이완이다. 실제 y,z 반경이 변하므로 고정계수 FFT를
   재사용하지 않고 m=0 포함 원자열 급수/analytic vector Hessian을 계산한다.

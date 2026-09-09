@@ -1,0 +1,78 @@
+{
+  "starting_head": "f603fb81674333356d84a0bf959c4a9c95100ae2",
+  "starting_remote_head_fresh_fetch": "f603fb81674333356d84a0bf959c4a9c95100ae2",
+  "starting_scientific_worktree_clean": true,
+  "branch": "probability-pde-solver-v1",
+  "python": "3.13.5",
+  "targeted_final": {
+    "command": "python -m pytest solver_v1/test_vector_interface_reference.py -q",
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 19.82
+  },
+  "targeted_prior_runs": [
+    {"passed": 17, "seconds": 23.63},
+    {"passed": 17, "seconds": 23.92},
+    {"scope": "previous vector-row plus new interface tests", "passed": 34, "seconds": 31.04}
+  ],
+  "solver_full_initial": {
+    "command": "python -m pytest solver_v1 -q",
+    "passed": 321,
+    "failed": 1,
+    "seconds": 497.22,
+    "failed_test": "test_source_matches_existing_path_and_full_derivatives",
+    "observed": "analytic source Hessian finite; finite-difference comparison array contained NaN",
+    "root_cause": "not reproduced or identified",
+    "must_not_be_called_a_resolved_root_cause": true
+  },
+  "source_anomaly_followup": {
+    "isolated_tests_passed": true,
+    "deterministic_source_derivative_evaluations_finite": 9600,
+    "allocation_stress_source_evaluations_finite": 3000,
+    "change": "fail-fast checks on source-plane and final interface jets; no numerical clipping, tolerance relaxation or skips",
+    "anomaly_reproduced": false,
+    "cause_identified": false,
+    "postguard_data_check": "postguard_data_revalidation.json",
+    "zero_observed_errors_is_not_proof_no_intermittent_error_exists": true
+  },
+  "solver_full_final": {
+    "command": "python -m pytest solver_v1 -q --maxfail=1",
+    "passed": 322,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 508.27,
+    "complete_suite_ran": true
+  },
+  "app": {
+    "command": "python -m pytest app -q",
+    "passed": 31,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 58.43
+  },
+  "desktop_smoke": {
+    "command": "python -m app.desktop_ui --smoke",
+    "exit_code": 0,
+    "seconds": 1.2605678,
+    "a0_LJ": 0.7713438268704838,
+    "kappa_LJ": 86.29296488740997
+  },
+  "git_diff_check": {"exit_code": 0},
+  "protected_diff_against_start": {
+    "exit_code": 0,
+    "paths": [
+      "app", "solver_v1/data", "solver_v1/probability_pde_2d.py",
+      "solver_v1/energy_model_registry.py", "solver_v1/lattice_bessel.py",
+      "solver_v1/nonlinear_fcc_screw.py", "solver_v1/vector_fcc_rows.py",
+      "results/fcc111_active_interface/matched_v3/monotone_opening/fitted_candidates.json"
+    ]
+  },
+  "parameter_sha256_unchanged": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "material_calibration_accepted": false,
+  "physical_seconds_available": false,
+  "physical_Hz_available": false,
+  "production_or_UI_gate_opened": false,
+  "main_modified_or_merged": false
+}

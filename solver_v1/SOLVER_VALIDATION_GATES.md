@@ -98,6 +98,16 @@ mechanics. Kinetic and UI gates remain closed. See VECTOR_FCC_CORE_DERIVATION.md
 
 ## Intended UI after validation and confirmation (unchanged scope)
 
+The vector_registry_v9 follow-up now checks the unchanged candidate's full
+(a,ux,uy) rigid-interface energy against the matching Mishin source. Releasing
+normal/transverse path constraints lowers ideal shear maxima, but does not
+provide a finite-defect strength law: the both-free candidate/source folds
+are about3.12/2.77GPa. Their connected forward saddles agree closely while
+the candidate reverse fault barrier is about2.16 times the benchmark.
+Independent elastic errors remain. Neither this static advance nor a full
+numerical test pass opens the material, kinetic, probability or UI gates.
+See VECTOR_REGISTRY_AND_STRENGTH_AUDIT.md and the actual verification ledger.
+
 The requested workflow is retained:
 
     Geometry import / editable cylinder specimen default
