@@ -1,0 +1,623 @@
+[
+  {
+    "stored_run": "axial10_p40_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial10 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 4.49832460000016,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial10_p40_a61_s49_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial10 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 15.05223179999939,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial10_p4_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial10 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 4 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 3.9397718999998688,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial20_p40_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial20 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 4.5708998999998585,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial20_p40_a61_s49_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial20 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 16.926785499999824,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial20_p4_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial20 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 4 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 4.742125100000521,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p0.05_a31_s25_w3_dt128_upper2_c2_h0",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 0.05 --steps 128 --cycles 2 --hold 0 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 0.8871679000003496,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p0.05_a31_s25_w3_dt128_upper2_c2_h0_explicit",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 0.05 --steps 128 --cycles 2 --hold 0 --integrator explicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 0.3882884999993621,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p0.05_a31_s25_w3_dt64_upper2_c2_h0",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 0.05 --steps 64 --cycles 2 --hold 0 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 0.47135309999976016,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p0.05_a31_s25_w3_dt64_upper2_c2_h0_explicit",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 0.05 --steps 64 --cycles 2 --hold 0 --integrator explicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 0.2925712999995085,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p40_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 4.607180299999527,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p40_a61_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 61 --cells-per-well 25 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 4.839875399999983,
+    "grid_sha256": "6b9c5b7a4a9450bec8e867bd91a823d5240dbb5cdb2d39a2a1ff81acab5d1e93",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p40_a61_s49_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 14.045200499999737,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p40_a61_s49_w3_dt128_upper2_globalgibbs",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit --global-gibbs",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 16.117234299999836,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p40_a61_s49_w3_dt256_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 256 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 35.08420509999996,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p40_a61_s49_w3_dt512_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 512 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 87.94890450000003,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p40_a61_s49_w3_dt64_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 64 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 3.3108717000004617,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p40_a61_s49_w5_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 61 --cells-per-well 49 --wells 5 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 20.013367300000027,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p40_a61_s49_w7_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 61 --cells-per-well 49 --wells 7 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 35.69980680000026,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p40_a61_s49_w7_dt128_upper2_c16_h32",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 61 --cells-per-well 49 --wells 7 --upper 2 --period 40 --steps 128 --cycles 16 --hold 32 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 58.91427040000053,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p40_a85_s49_w3_dt128_upper2.5",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 85 --cells-per-well 49 --wells 3 --upper 2.5 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 85 --cells-per-well 49 --upper 2.5",
+    "elapsed_seconds": 18.131934799999726,
+    "grid_sha256": "c46e738e87000b118dbeaa9ef8a0590d7a4a29701c7181baf0c6d6ccb3b9f8d3",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p40_a91_s73_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 91 --cells-per-well 73 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 91 --cells-per-well 73 --upper 2",
+    "elapsed_seconds": 28.383257000000413,
+    "grid_sha256": "9781340437c94a0ed923d021a72fbb95989fa89263bcca89ec6add2340da7ae1",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p40_a91_s73_w3_dt256_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 91 --cells-per-well 73 --wells 3 --upper 2 --period 40 --steps 256 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 91 --cells-per-well 73 --upper 2",
+    "elapsed_seconds": 61.1584413999999,
+    "grid_sha256": "9781340437c94a0ed923d021a72fbb95989fa89263bcca89ec6add2340da7ae1",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p4_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 4 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 3.9373231999998097,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p4_a61_s49_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 4 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 15.474800500000129,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial30_p4_a61_s49_w3_dt128_upper2_c16_h80",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial30 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 4 --steps 128 --cycles 16 --hold 80 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 50.596580899999935,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial50_p0.4_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial50 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 0.4 --steps 128 --cycles 64 --hold 80 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 17.752930200000264,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial50_p40_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial50 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 4.629409499999383,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial50_p40_a61_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial50 --n-a 61 --cells-per-well 25 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 3.2667372000005344,
+    "grid_sha256": "6b9c5b7a4a9450bec8e867bd91a823d5240dbb5cdb2d39a2a1ff81acab5d1e93",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial50_p40_a61_s49_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial50 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 14.54026900000008,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial50_p40_a61_s49_w3_dt256_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial50 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 256 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 39.09888359999968,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial50_p40_a61_s49_w3_dt512_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial50 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 512 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 87.26332749999983,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial50_p40_a61_s49_w3_dt64_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial50 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 64 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 3.09113570000045,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial50_p40_a91_s73_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial50 --n-a 91 --cells-per-well 73 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 91 --cells-per-well 73 --upper 2",
+    "elapsed_seconds": 27.13353360000019,
+    "grid_sha256": "9781340437c94a0ed923d021a72fbb95989fa89263bcca89ec6add2340da7ae1",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial50_p4_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial50 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 4 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 4.963853499999459,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "axial50_p4_a61_s49_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case axial50 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 4 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 14.537122800000361,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "nonproportional30_p40_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case nonproportional30 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 4.306529899999987,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "nonproportional30_p40_a61_s49_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case nonproportional30 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 14.045960399999785,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "nonproportional30_p40_a91_s73_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case nonproportional30 --n-a 91 --cells-per-well 73 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 91 --cells-per-well 73 --upper 2",
+    "elapsed_seconds": 27.314535700000306,
+    "grid_sha256": "9781340437c94a0ed923d021a72fbb95989fa89263bcca89ec6add2340da7ae1",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "nonproportional30_p4_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case nonproportional30 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 4 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 5.295109200000297,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "normal15_p40_a61_s49_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case normal15 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 13.324511199999506,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "reversed30_p40_a61_s49_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case reversed30 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 13.185822800000096,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "shear15_p40_a61_s49_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case shear15 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 12.481563999999707,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "shear4_p0.4_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case shear4 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 0.4 --steps 128 --cycles 64 --hold 80 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 17.14187909999964,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "shear4_p40_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case shear4 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 4.303554500000246,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "shear4_p40_a61_s49_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case shear4 --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 14.74042819999977,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "shear4_p40_a91_s73_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case shear4 --n-a 91 --cells-per-well 73 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 91 --cells-per-well 73 --upper 2",
+    "elapsed_seconds": 30.40482460000021,
+    "grid_sha256": "9781340437c94a0ed923d021a72fbb95989fa89263bcca89ec6add2340da7ae1",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "shear4_p4_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case shear4 --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 4 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 2.883856399999786,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p0.05_a31_s25_w3_dt128_upper2_c2_h0",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 0.05 --steps 128 --cycles 2 --hold 0 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 0.7814818999995623,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p0.05_a31_s25_w3_dt128_upper2_c2_h0_explicit",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 0.05 --steps 128 --cycles 2 --hold 0 --integrator explicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 0.3910297000002174,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p0.05_a31_s25_w3_dt64_upper2_c2_h0",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 0.05 --steps 64 --cycles 2 --hold 0 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 0.4580572000004395,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p0.05_a31_s25_w3_dt64_upper2_c2_h0_explicit",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 0.05 --steps 64 --cycles 2 --hold 0 --integrator explicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 0.3308500000002823,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p0.4_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 0.4 --steps 128 --cycles 64 --hold 80 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 17.43851799999993,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p40_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 1.9319650000006732,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p40_a61_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 61 --cells-per-well 25 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 4.894543800000065,
+    "grid_sha256": "6b9c5b7a4a9450bec8e867bd91a823d5240dbb5cdb2d39a2a1ff81acab5d1e93",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p40_a61_s49_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 12.097681100000045,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p40_a61_s49_w3_dt128_upper2_globalgibbs",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit --global-gibbs",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 16.765528700000687,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p40_a61_s49_w3_dt256_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 256 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 38.95431720000033,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p40_a61_s49_w3_dt512_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 512 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 83.03915859999961,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p40_a61_s49_w3_dt64_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 40 --steps 64 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 3.0039350999995804,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p40_a61_s49_w5_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 61 --cells-per-well 49 --wells 5 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 10.466140699999414,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p40_a61_s49_w7_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 61 --cells-per-well 49 --wells 7 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 38.00049829999989,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p40_a61_s49_w7_dt128_upper2_c16_h32",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 61 --cells-per-well 49 --wells 7 --upper 2 --period 40 --steps 128 --cycles 16 --hold 32 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 59.62569409999924,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p40_a85_s49_w3_dt128_upper2.5",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 85 --cells-per-well 49 --wells 3 --upper 2.5 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 85 --cells-per-well 49 --upper 2.5",
+    "elapsed_seconds": 19.236963399999695,
+    "grid_sha256": "c46e738e87000b118dbeaa9ef8a0590d7a4a29701c7181baf0c6d6ccb3b9f8d3",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p40_a91_s73_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 91 --cells-per-well 73 --wells 3 --upper 2 --period 40 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 91 --cells-per-well 73 --upper 2",
+    "elapsed_seconds": 29.558277199999793,
+    "grid_sha256": "9781340437c94a0ed923d021a72fbb95989fa89263bcca89ec6add2340da7ae1",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p40_a91_s73_w3_dt256_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 91 --cells-per-well 73 --wells 3 --upper 2 --period 40 --steps 256 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 91 --cells-per-well 73 --upper 2",
+    "elapsed_seconds": 59.92083530000036,
+    "grid_sha256": "9781340437c94a0ed923d021a72fbb95989fa89263bcca89ec6add2340da7ae1",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p4_a31_s25_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 31 --cells-per-well 25 --wells 3 --upper 2 --period 4 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 31 --cells-per-well 25 --upper 2",
+    "elapsed_seconds": 1.6245095000003857,
+    "grid_sha256": "600e20f30fdfd15a6bd4c6190be6433030f27052f5748154c8d7e5e02cb52a1c",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p4_a61_s49_w3_dt128_upper2",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 4 --steps 128 --cycles 16 --hold 8 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 13.47981179999988,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  },
+  {
+    "stored_run": "zero_p4_a61_s49_w3_dt128_upper2_c16_h80",
+    "rerun_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase cycles --case zero --n-a 61 --cells-per-well 49 --wells 3 --upper 2 --period 4 --steps 128 --cycles 16 --hold 80 --integrator implicit",
+    "grid_prepare_command": "python -m solver_v1.run_low_stress_cyclic_diagnostic --phase grid --n-a 61 --cells-per-well 49 --upper 2",
+    "elapsed_seconds": 47.93906259999949,
+    "grid_sha256": "41ae9af6267e7879848475a502177e20f4fa8c78f0e75b44e69dafe79a39f05b",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "actual_evolution_executed": true
+  }
+]

@@ -1,6 +1,85 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
-## 최신 상태: matched_v3 연구 감사 (2026-09-09)
+## 최신 상태: low_stress_v4 실제 저응력 주기 검사
+
+이 절이 아래 matched_v3 / audited_v2 기록보다 최신이다. 이번 시작은 fresh
+fetch로 local/origin 모두55a0d514eee99ec3f141a972b07d477135fe62a7임을 확인했고
+과학 worktree는 깨끗했다. 실제 위치는 기존 aft-pde-bessel-38969ad worktree의
+probability-pde-solver-v1. 원래 폴더는 detached c43d8e0 + 사용자 미추적 파일을
+보존한다. 커밋/원격 최종 상태는 git log/status/fetch로 확인한다.
+
+사용자의 최신 질문은 “혼합하중 결과를 일반적인 금속 피로라고 볼 수 있는가”,
+“2 GPa는 너무 크지 않은가”였고, MPa 범위에서 실제 주기 검사를 하도록 승인했다.
+과거 큰 static 미션을 다시 시작하거나 UI를 재설계하지 않는다.
+
+### 이번에 실제 완료한 계산
+
+- 기존 refined angular_monotone_opening 계수를 그대로 사용. 새 fit 없음.
+- parameter file SHA256:
+  9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655.
+- LJ/Poisson/Bessel, 모든 production energy/PDE, UI, A_c, mobility, static fit 파일 불변.
+- 새 low_stress_cyclic_diagnostic는 생산 energy selector 연결이 아닌 별도
+  reflecting-box 가설/반증 검사. 검증된 SG energy-array generator만 재사용.
+  Opening sink 없음: opening_probability=null, 균열 없음/확률0이라는 뜻 아님.
+- 온도293.15 K, kT=.02526171246eV를 명시. 단위가 맞는 room-T 가설이지
+  finite-T material calibration이 아니다. M*=(1,.05), 실제 초/Hz 없음.
+- 0,4 MPa resolved shear,10/20/30/50 MPa axial의45도 명시 예제,
+  15/15 MPa90도 비비례 혼합, normal-only/shear-only/reversed-shear controls.
+- 실제69개 cyclic/hold 프로토콜. grid31x75,61x75,61x147,91x219;
+  정상 domain2h->2.5h; well3/5/7; steps64/128/256/512; explicit/implicit 짧은 비교.
+- static direct110/partial112 두 주기씩10–50 MPa: 모든 점 같은 stable well,
+  repeat-coordinate error<=2.31e-15. 이것은 dynamic hold와 별개다.
+
+### 해석의 핵심
+
+period40,16cycles,61x147,128steps 조건에서 zero-load P_out=.02202894954.
+30 MPa P_out=.02203167161, paired excess2.7220677e-6.
+50 MPa excess6.6030413e-6. Raw outside population 대부분은 무하중 열적 퍼짐이다.
+그러나 작은 directional transfer는 수렴해 남는다. 무조건 “전부 roundoff”도 틀리다.
+91x219,256steps30 MPa paired excess2.6984433e-6; observed envelope1.6216931e-8.
+hold n9.1177955e-7; observed envelope1.8402984e-8. 통계 confidence나 물리 인증 아님.
+3/5/7well hold n=9.14542e-7/9.32945e-7/9.33098e-7.
+7well zero hold320->1280model time 후9.33093e-7, xi/h~1.4e-13.
+따라서 이 가설 안의 작은 persistent registry memory는 있으나 residual Al plasticity
+검증이라고 할 수 없다. period4 짧은 hold endpoint는 xi 회복이 덜 되어 residual 선언 금지.
+Shear를 뒤집으면 n부호가 뒤집힘; normal-only는 n~-9e-15.
+Global Gibbs 무하중 control은 stationary. 중앙 well에 제한한 초기 Gibbs를 해제한
+열확산을 fatigue accumulation으로 오인하지 않는다.
+
+Gross SG plus+minus는 grid spacing ds에 대해~1/ds인 Brownian recrossing traffic이다.
+Signed flux/occupation balance는 유효하지만 gross를 물리 hop 횟수라 하면 안 된다.
+실제 모든 run 최대mass residual9.6541e-12, well step balance4.2262e-15,
+registry balance9.4560e-16, decomposition2.0007e-16; repair0.
+
+### 아직 미완료인 물리 문제 / 다음 선택
+
+이 에너지는 rigid infinite-interface의 원자 cell당 에너지다. 이것을 국소
+thermal activation barrier로 간주하는 집단좌표/공간 정규화는 아직 유도되지 않았다.
+국소 slip nucleus/결함, 주변 탄성 cost, 독립 재료 적합, collective kinetic data가
+필요하다. 이를 A_c나 임의 energy multiplier로 고치지 않는다. LJ/Bessel에서
+비국소 interface Hessian/Schur kernel을 유도하는 경로는 문서의 제안이지 완성된 solver 아님.
+새 모델을 “일반 Al 피로/균열 모델 완성”이라고 보고하지 않는다. UI gate 미통과.
+생산 TwoRowLJ/reduced hybrid와 기존 opening bookkeeping은 그대로 유지한다.
+
+### 파일 / 재현 / 백업
+
+핵심 문서 solver_v1/LOW_STRESS_CYCLIC_AUDIT.md.
+원시 출력 results/fcc111_active_interface/low_stress_v4/.
+execution_manifest.json의 CLI로 실제 재실행; summary CLI는 계산 재실행이 아니다.
+history.csv.gz는 무손실. 모든 cycle 통계와 선택된 full-precision density snapshots
+저장. 기존 full snapshots57개는 .cache/low-stress-full-snapshots에 보존 후
+명시된 cycle index로 repository output만 축소. 사용자/기존 결과 삭제 없음.
+
+이번 새 targeted tests11passed(1.26s). 첫 tmp_path 실행은 OS Temp permission error
+(10passed/1error)였고, worktree 내부의 별도 .cache basetemp에서11passed 재검증했다.
+App27passed/2skipped(155.84s), desktop smoke a0/kappa historical값으로 통과.
+Full solver223passed(1192.85s), app27passed/2skipped(155.84s), smoke1.1416s로
+실제 완료했다. git diff --check 및 staged --check 통과. 모든57개 full-snapshot
+백업의 SHA256도 독립 확인했다. 결과 validation_status.json에 수치/물리 상태를 분리했다.
+이 문서의 후속 커밋에 보존하며 commit/push 최종 SHA는 실제 git로 확인한다.
+물리적 피로 검증/solver 완성/production 승격은 여전히 NOT VALIDATED다.
+
+## 이전 완료 상태: matched_v3 연구 감사 (2026-09-09)
 
 이 절이 아래 archived audited_v2보다 최신이다. 마지막 원격 checkpoint는
 fee1da7a5e856bd9120a12f0c40e6afb79ec8c6e이며 시작 fetch로 일치를 확인했다.

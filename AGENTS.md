@@ -153,6 +153,10 @@ SG 인터페이스 양방향 분해:
 
 j_gross를 abs(j_net)로 대체하지 않는다.
 대칭 열활동은 gross>0, net≈0, epsilon_p≈0를 동시에 만들 수 있다.
+다만 smooth continuum density에서 nearest-neighbor SG gross는 대략
+2 D_s P_s(face)/ds로 발산하는 grid recrossing traffic이다. 이를 mesh-independent
+committed hopping 횟수로 부르지 않는다. 물리 transition count에는 well core /
+committor와 별도의 reactive-flux 유도가 필요하다. 기존 signed SG balance는 유지한다.
 
 ## 6. 소성의 증거 수준과 수렴
 
@@ -483,6 +487,11 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- LOW_STRESS_CYCLIC_AUDIT.md / low_stress_v4: 10–50 MPa 축응력 및 4 MPa 전단
+  실제 주기 SG 가설 검사를 무하중 대조군/격자/dt/hold와 비교한다. Production
+  등록이 아닌 별도 reflecting-domain 수치 실험이며 opening_probability=null이다.
+  Uniform infinite-interface per-cell energy를 곧바로 국소 activation energy로
+  간주하는 정규화는 미검증이다. 작은 수렴한 순이동도 Al 피로 검증과 구별한다.
 - MATCHED_INTERFACE_CALIBRATION.md / matched_v3: 같은 rigid FCC 조건의 NIST
   source를 target으로만 재계산하고 joint fit/응력 시나리오를 실제 실행한다.
 - reference_eam_targets.py의 tabulated EAM은 target 생성/비교 전용이다.

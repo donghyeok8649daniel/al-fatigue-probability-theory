@@ -1,0 +1,6 @@
+grid,temperature_K,sampled_F_barrier_ev,barrier_over_kT,barrier_s_reduced,thermal_normal_strain_at_s0,interpretation,physical_activation_normalization_validated
+grid_a31_s25_upper2.npz,293.15,0.18519658622605825,7.3311176561813065,-0.48,0.010338120123771333,"fixed reflecting-domain one-cell PMF; sampled maximum, not a coupled saddle",False
+grid_a61_s25_upper2.npz,293.15,0.18519705608824077,7.331136255956888,-0.48,0.01033605044010577,"fixed reflecting-domain one-cell PMF; sampled maximum, not a coupled saddle",False
+grid_a61_s49_upper2.npz,293.15,0.1856015131972434,7.347146932575721,-0.489795918367347,0.01033605044010577,"fixed reflecting-domain one-cell PMF; sampled maximum, not a coupled saddle",False
+grid_a85_s49_upper2.5.npz,293.15,0.18560151289467575,7.347146920598399,-0.489795918367347,0.010336050448622514,"fixed reflecting-domain one-cell PMF; sampled maximum, not a coupled saddle",False
+grid_a91_s73_upper2.npz,293.15,0.18567973930819032,7.350243559974874,-0.4931506849315068,0.010336050440084676,"fixed reflecting-domain one-cell PMF; sampled maximum, not a coupled saddle",False
