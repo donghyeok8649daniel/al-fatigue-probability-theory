@@ -42,14 +42,24 @@ class PhysicalTimeCalibration:
     notes: str = ""
     model_mobility_a: float = 1.0
     model_mobility_s: float = 0.05
+    energy_model_id: str | None = None
+    energy_model_fingerprint: str | None = None
+    coordinate_definition: str | None = None
 
     def validate(self, *, relative_tolerance: float = 2.0e-8) -> None:
+        if type(self.calibrated) is not bool:
+            raise ValueError("calibrated must be a JSON boolean, not a text label")
         if not np.isfinite(self.length_scale_m) or self.length_scale_m <= 0.0:
             raise ValueError("length_scale_m must be finite and positive")
         if not np.isfinite(self.energy_scale_J) or self.energy_scale_J <= 0.0:
             raise ValueError("energy_scale_J must be finite and positive")
-        if self.model_mobility_a <= 0.0 or self.model_mobility_s <= 0.0:
+        if any(not np.isfinite(x) or x <= 0.0 for x in
+               (self.model_mobility_a, self.model_mobility_s)):
             raise ValueError("model mobilities must be positive")
+        if self.temperature_K is not None and (
+            not np.isfinite(self.temperature_K) or self.temperature_K <= 0.0
+        ):
+            raise ValueError("temperature_K must be finite and positive")
         if not self.calibrated:
             return
         values = (
@@ -60,7 +70,7 @@ class PhysicalTimeCalibration:
         )
         if any(value is None or not np.isfinite(value) or value <= 0.0 for value in values):
             raise ValueError("calibrated time data must be finite and positive")
-        if not self.source:
+        if not isinstance(self.source, str) or not self.source.strip():
             raise ValueError("a calibrated time scale requires a source")
         t0_a = self.model_mobility_a * self.length_scale_m**2 / (
             float(self.M_a_phys_m2_per_J_s) * self.energy_scale_J
@@ -75,7 +85,7 @@ class PhysicalTimeCalibration:
         ratio = float(self.M_s_phys_m2_per_J_s) / float(
             self.M_a_phys_m2_per_J_s
         )
-        if not np.isclose(ratio, self.mobility_ratio, rtol=relative_tolerance):
+        if not np.isclose(ratio, self.mobility_ratio, rtol=relative_tolerance, atol=0.0):
             raise ValueError("mobility_ratio is inconsistent with physical mobilities")
 
     def require_calibrated(self) -> None:
@@ -137,6 +147,13 @@ def calibration_from_mobilities(
     model_mobility_a: float = 1.0,
     model_mobility_s: float = 0.05,
 ) -> PhysicalTimeCalibration:
+    if not isinstance(source, str) or not source.strip():
+        raise ValueError("calibration requires a nonempty source provenance string")
+    if any(not np.isfinite(v) or v <= 0 for v in (
+        length_scale_m, energy_scale_J, M_a_phys_m2_per_J_s,
+        M_s_phys_m2_per_J_s, model_mobility_a, model_mobility_s,
+    )):
+        raise ValueError("finite positive coordinate/energy scales and mobilities required")
     t0 = float(model_mobility_a) * float(length_scale_m) ** 2 / (
         float(M_a_phys_m2_per_J_s) * float(energy_scale_J)
     )
@@ -221,7 +238,7 @@ def mobility_from_decoupled_relaxation(
 
     tau = float(relaxation_seconds)
     curvature = float(physical_curvature_J_per_m2)
-    if tau <= 0.0 or curvature <= 0.0:
+    if not np.all(np.isfinite([tau, curvature])) or tau <= 0.0 or curvature <= 0.0:
         raise ValueError("relaxation time and curvature must be positive")
     return 1.0 / (tau * curvature)
 
@@ -288,8 +305,10 @@ def physical_relaxation_spectrum(
 
     calibration.require_calibrated()
     h_star = np.asarray(reduced_hessian, dtype=float)
-    if h_star.shape != (2, 2):
-        raise ValueError("reduced_hessian must be 2x2")
+    if (h_star.shape != (2, 2) or not np.all(np.isfinite(h_star))
+            or not np.allclose(h_star, h_star.T)
+            or np.min(np.linalg.eigvalsh(h_star)) <= 0.0):
+        raise ValueError("reduced_hessian must be finite symmetric positive definite 2x2")
     h_phys = calibration.energy_scale_J / calibration.length_scale_m**2 * h_star
     mobility = np.diag(
         [calibration.M_a_phys_m2_per_J_s, calibration.M_s_phys_m2_per_J_s]

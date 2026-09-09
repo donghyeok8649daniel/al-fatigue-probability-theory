@@ -31,6 +31,13 @@ class InterfaceUnits:
     def force_to_traction(self,force):
         return np.asarray(force)*EV_J/(1e9*self.atomic_cell_area_m2*self.length_scale_m)
 
+    def traction_mpa_to_force(self, traction_mpa):
+        """Explicit MPa boundary: avoid unit-ambiguous research load arrays."""
+        return self.traction_to_force(np.asarray(traction_mpa)/1000.)
+
+    def force_to_traction_mpa(self, force):
+        return self.force_to_traction(force)*1000.
+
     def energy_to_surface(self,energy_ev):
         return np.asarray(energy_ev)*EV_J/self.atomic_cell_area_m2
 
@@ -46,6 +53,27 @@ def resolved_uniaxial_tractions(stress_gpa,loading_direction,plane_normal,slip_d
     if abs(n@m)>1e-12:
         raise ValueError("slip direction must lie in interface plane")
     return np.array([stress_gpa*(e@n)**2,stress_gpa*(e@n)*(e@m)])
+
+
+def resolved_tensor_tractions(stress_tensor, plane_normal, slip_direction):
+    """Project a symmetric 3D Cauchy stress into (normal, slip1, slip2).
+
+    Units are preserved (e.g. input MPa -> output MPa). Tangent2=n cross m.
+    ALL vectors/tensor must be in the same explicitly supplied physical frame.
+    This is a geometry/work helper, NOT a three-state or spatial 3D PDE.
+    A scalar-s model cannot silently discard the returned second shear load.
+    """
+    stress = np.asarray(stress_tensor, dtype=float)
+    n, m = np.asarray(plane_normal, dtype=float), np.asarray(slip_direction, dtype=float)
+    if (stress.shape != (3,3) or not np.all(np.isfinite(stress))
+            or not np.allclose(stress, stress.T, rtol=1e-12, atol=1e-12)):
+        raise ValueError("finite symmetric 3x3 stress tensor required")
+    if (n.shape != (3,) or m.shape != (3,) or not np.all(np.isfinite([n,m]))
+            or not np.allclose([np.linalg.norm(n),np.linalg.norm(m)],1.,atol=1e-12,rtol=0)
+            or abs(n@m)>1e-12):
+        raise ValueError("orthogonal unit plane normal and slip direction required")
+    basis = np.array([n, m, np.cross(n,m)])
+    return basis @ (stress @ n)
 
 
 def packed_evaluation(interface,a,s):

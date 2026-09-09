@@ -496,6 +496,19 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- KINETICS_LOADING_AND_STRESS_AUDIT.md / kinetics_loading_audit:
+  실제 covariance CSV에서 B=-log(Ct C0^-1)/t 및 M=B H^-1를 검증한다.
+  file binding은 source의 물리적 진실성 인증이 아니다. Physical mode는
+  보정의 T와 mobility ratio를 같은 PDE에 적용; model mode 기본값 불변.
+  actual Al mobility/t0는 여전히 없다. Dislocation-line drag를 cell a/s에
+  대입 금지. UI direction placeholder는 미연결로 명시한다.
+  3x3 tensor traction projection/연구 혼합하중은 3D PDE나 spatial solver가 아니다.
+  고정-a first traction peak와 normal-relaxed Schur spinodal, 나중 registry
+  peak를 구별한다. 다중 curvature root를 포함하는 큰 bracket에서 brentq
+  한 번으로 첫 물리 불안정점을 골랐다고 주장하지 않는다.
+  Native Tcl 오류를 headless skip로 숨기지 말고 실제 GUI 결과를 확인한다.
+
+
 - DISCRETE_FCC_SCREW_DERIVATION.md / discrete_screw_v6: 같은 LJ/Bessel 전위의
   무한 원자열을 먼저 합산하고 transverse row/layer를 이산적으로 남기는
   anti-plane harmonic reference. q_x=0, line=e1에만 해당한다.

@@ -1,0 +1,25 @@
+{
+  "elapsed_seconds": 307.67884839999897,
+  "parameter_metadata": {
+    "model": "angular_monotone_opening",
+    "path": "shockley_112",
+    "parameter_source": "results/fcc111_active_interface/matched_v3/monotone_opening/fitted_candidates.json",
+    "parameter_sha256": "9d00fbf54831c134fe9961e17f0603defdc7958bc3590743b2094264a31b6655",
+    "no_refit": true,
+    "research_only": true,
+    "length_scale_m": 2.863782463805517e-10,
+    "atomic_cell_area_m2": 7.102490842787125e-20,
+    "energy_unit": "eV/atomic interface cell",
+    "h_reduced": 0.816496580927726,
+    "registry_period_reduced": 1.7320508075688772,
+    "lattice_stretch": 1.0,
+    "tolerance": 2e-10,
+    "physical_hz": false,
+    "material_calibration_accepted": false
+  },
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "refit": false,
+  "physical_time_available": false,
+  "macroscopic_yield_prediction": false,
+  "remaining": "scalar path and rigid half-crystals; no vector/full atomic relaxation or nucleation"
+}

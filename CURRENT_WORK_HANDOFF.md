@@ -1,5 +1,122 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 최신 상태: kinetics_loading_audit — 시간·하중·GPa 원인 감사
+
+이 절이 아래 discrete_screw_v6보다 최신이다. 요청은 “초/Hz 사용, 전단·차원
+지원 여부, 반복 제외2개, 실제 소재 대비 GPa 응력의 원인 수정”이었다.
+과학 worktree aft-pde-bessel-38969ad, probability-pde-solver-v1에서 수행.
+시작 fresh fetch/HEAD/origin 모두09e0dc6ce85e0a81656a92995cb3c0816bb96e97,
+작업 트리 깨끗함. 원래 detached 사용자 폴더의 다른 파일은 보존한다.
+
+### 시간 연결에서 실제 수정한 결함
+
+- 기존 변환식은 맞았지만 UI에 보정 파일 불러오기 기능이 없었다.
+  이제 Load kinetic calibration / 동역학 보정 불러오기로 명시된 JSON을 읽는다.
+- 기존 physical mode는 calibration의 온도/상대 이동도가 달라도
+  generator를 M=(1,.05),kT=.02로 만들었다. 이제 선택한 물리 보정의
+  kBT/E0 및 두 M*를 같은 energy/PDE에 적용한다. model mode는 기존값 그대로.
+- 모델 ID, static parameter fingerprint, 동일 a/s cell 좌표, eV 및 Al-target
+  L0를 검증한다. 다른 모델/온도누락/잘못된 ratio/t0를 거부한다.
+  모델 변경시 incompatible physical mode 해제. 언어/보정 로드로 기존 결과의
+  시간축/배열/zoom을 바꾸지 않는다. basis 변경은 동일 model frequency 유지.
+- solver_v1/kinetic_calibration_workflow.py:
+  C(t)=exp(-B t) C0, B=M H, C0=kBT H^-1,
+  B=-log(C(t) C0^-1)/t, M=B H^-1의 행렬식으로 실제 CSV를 분석한다.
+  여러 lag, 평형 covariance, diagonal-M, real log, 재구성 오차를 검사.
+  t0는 M_a*=1로 정하고 M_s*에는 측정 mobility ratio를 쓴다.
+- import_kinetic_calibration CLI: meta JSON + physical covariance CSV ->
+  새 clock JSON + fit diagnostics. 덮어쓰기 금지. sample은 tests에서만
+  exact synthetic C; Monte Carlo/가짜 Al 자료 없음.
+- 문헌은 dislocation centre mobility/line drag를 다룬다. a/s cell mobility와
+  에너지 정규화/단위부터 다르고 M_a도 주지 않으므로 대입하지 않았다.
+  실제 repository Al M_a,phys/M_s,phys/t0는 여전히 unavailable,
+  default kinetic JSON unchanged. 물리 시간이 보정됐다고 보고하지 말 것.
+
+### 전단/차원 및 UI 실제 지원
+
+- Desktop 여전히 scalar axial sigma/E + chi=.2, P(a,s,t).
+  독립 normal/shear/phase는 low_stress_v4 연구용 reflecting SG에만 있다.
+- UI tensile_direction은 검증만 하고 실제 config/PDE에 전달하지 않는
+  placeholder였는데 적용된다고 설명했다. 설명 수정, 입력 disabled/not connected.
+- 실제 capability flags를 result/conversion metadata에 저장한다.
+  independent_shear_input, orientation_input_active, vector_registry_pde,
+  spatial_specimen_solver는 현재 false.
+- 연구용 resolved_tensor_tractions 추가: 대칭3x3 sigma와 명시된 동일frame
+  n,m에서 [n.sigma.n, m.sigma.n, (n cross m).sigma.n] 반환.
+  두 전단의 존재를 숨기지 않지만 이것을 3D PDE 완료라고 부르지 않는다.
+- Full3D FCC geometry, transverse2D/one-component harmonic screw,
+  2D probability state를 구별한다. CAD/mesh UI gate는 그대로 닫혀 있다.
+
+### GPa 원인과 실제 새 계산
+
+같은 연구 후보/파라미터와 같은 rigid-interface Mishin source를 비교했다.
+원자적 work=T*Area_atomic*L0, MPa/Pa/eV 변환을4/15/25/50/100/2000MPa에
+독립 재계산. factor1000 오류 없음; saved work error0, round-trip roundoff뿐.
+Production kappa*sigma/E는 변경하지 않는다.
+
+고정 normal gap만의 peak를 물리 임계로 쓰지 않고 W_a=f_n,W_aa>0의 branch,
+Phi''=W_ss-W_as^2/W_aa로 첫 scalar-path shear spinodal을 계산한다.
+Normal traction=0,33/65 bracketing 실제 실행:
+- analytic direct110: fixed first7543.359226MPa -> normal-relaxed4768.897903MPa.
+- source direct110: fixed6461.635050 -> relaxed4390.365017MPa.
+- analytic Shockley112: fixed first3012.198345 -> relaxed2685.841510MPa.
+- source Shockley112: fixed 약2405.245MPa -> relaxed2345.062485MPa.
+뒤쪽 registry peak(Shockley에서~14/11GPa)를 첫 불안정점으로 사용하면 안 됨.
+Source의 coarse fixed peak bracket에 curvature root가 여러 개 있어서 brentq
+한 번으로 뒤쪽 근을 선택한 것도 발견. report script에서 구간을 세분화하고
+첫 +->- curvature root를 검사한다. 최종 first_branch_comparison.csv 확인.
+
+normal equilibrium residual<=1.7e-14 eV/reduced coordinate,
+relaxed Schur residual<1e-12. 동일 제한조건의 source도GPa이다.
+GPa 이상 강도와 defect-bearing 실험 시편의MPa 항복/피로를 동일시한 것이
+핵심 물리 비교 오류. Normal accommodation/path 구속도 값을 높였다.
+동시에 candidate C11/C12/C44=87.816/64.833/49.271GPa vs114/62/32GPa로
+재료 적합은 불충분. 수직 이완으로 낮아졌다고 Al fatigue 채택하지 않는다.
+기존 defect MPa 구동력은 static/line energy이지 kinetics나 nucleation 인증 아님.
+에너지 파라미터/온도/M을 보기 좋은 소성을 위해 바꾼 적 없음.
+
+### 재현 / 원시 기록 / 최종 실행된 검증
+
+- solver_v1/KINETICS_LOADING_AND_STRESS_AUDIT.md 자세한 식/근거/현재 한계.
+- python -m solver_v1.run_stress_scale_audit (실제8 curve runs,307.679s).
+- python -m solver_v1.report_stress_scale_audit (첫 fixed peak 추가곡률 검증/그림).
+- results/kinetics_loading_audit/ CSV/JSON/PNG. 출처·기존 파라미터 SHA 저장.
+- targeted solver time+stress: **17passed /2.32s**.
+- combined targeted35passed/61.78s checkpoint 뒤 native Tcl read 오류가 재현됨.
+  mixed targeted35passed/1failed 및 app30passed/1failed(162.11s)는 실패 기록이며,
+  그보다 이른 app31passed/152.50s만으로 최종 성공을 선언하지 않았음.
+- 실제 Tk12회/App10회+12회 단독 생성/종료 정상이어도 mixed 실행에서
+  두 번째/세 번째 Tcl 인터프리터 script read 접근 오류가 남았다.
+  최종 수정은 한 module-scoped Tk + 테스트별 Toplevel/root injection.
+  Production도 원래 한 Tk이다. 반복 retry나 Windows Tcl skip으로 숨기지 않는다.
+  실제 platform 접근 오류의 모든 원인을 규명했다고 주장하지 않는다.
+- 최종 lifecycle targeted: **10passed /2.37s**.
+- 최종 full solver: **271passed /1236.63s**, 실패0, 제외0, exit0.
+  .cache/time-shear-full.xml 및 실행 완료 출력을 직접 확인.
+- 최종 full app: **31passed /161.26s**, 실패0, 제외0, exit0.
+  .cache/time-shear-app-single-interpreter.xml 및 완료 출력 확인.
+  실제 Tk3개 포함. 이전에 매번 제외되던2개도 실제 실행했다.
+- 최신 desktop --smoke: **PASS /1.487s**. Smoke와 실제 Tk 검사는 별개.
+- 위 결과는 results/kinetics_loading_audit/validation_status.json에도 기록한다.
+  개인 machine 정보가 든 .cache JUnit XML은 커밋하지 않는다.
+- static calibration/Bessel/production energy registry/kinetic default JSON unchanged.
+- 이 절을 포함한 checkpoint의 commit/원격 상태는 git log/fetch/status로 재확인.
+  최종 diff check 후 probability-pde-solver-v1에만 정상 commit/push한다.
+  main 및 원래 detached 사용자 폴더의 다른 파일은 변경하지 않는다.
+
+### 다음 단계 / 아직 해결되지 않은 것
+
+- 사용자의 실제 a/s 집단좌표 covariance/relaxation 데이터가 필요하다.
+  실제 Al M_a,phys/M_s,phys/t0를 제공한 적 없으며 seconds/Hz 기본은 disabled.
+  소스의 물리적 대응까지 파일 validator가 자동으로 증명하는 것은 아니다.
+- 독립 전단/normal 연구 입력은 있지만 production은 scalar axial load이다.
+  독립 전단을 desktop에 켰다고, vector-registry/3D spatial PDE가 완성됐다고
+  보고하지 않는다. UI의 가짜 orientation 적용 설명을 이번에 제거했다.
+- 이번 완화된 ideal interface peak도 실험 시편 항복/피로 응력이 아니다.
+  Matched bulk elasticity 오류, 실제 결함 생성/공간 연결 및 kinetics가 남았다.
+  채택 gate는 미통과다. 단위를 바꾸거나 stress/M/온도/장벽을 조정해 통과시키지 않는다.
+
+
 ## 최신 상태: discrete_screw_v6 — 미해결 원인을 실제로 고치는 후속 감사
 
 이 절이 아래 nonlocal_v5보다 최신이다. 사용자 최신 지시는

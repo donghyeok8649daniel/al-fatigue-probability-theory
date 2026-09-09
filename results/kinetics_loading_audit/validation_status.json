@@ -1,0 +1,68 @@
+{
+  "starting_head": "09e0dc6ce85e0a81656a92995cb3c0816bb96e97",
+  "branch": "probability-pde-solver-v1",
+  "tests": [
+    {
+      "scope": "targeted solver time/kinetic workflow/stress scale",
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 2.32
+    },
+    {
+      "scope": "final Tk lifecycle and i18n targeted",
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 2.37
+    },
+    {
+      "scope": "solver_v1 full regression",
+      "passed": 271,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 1236.627,
+      "process_exit_code": 0
+    },
+    {
+      "scope": "app full regression with one Tcl interpreter",
+      "passed": 31,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 161.256,
+      "process_exit_code": 0
+    },
+    {
+      "scope": "desktop --smoke",
+      "status": "passed",
+      "elapsed_seconds": 1.487
+    }
+  ],
+  "earlier_failed_checks": [
+    {
+      "scope": "combined targeted before lifecycle fix",
+      "passed": 35,
+      "failed": 1,
+      "reason": "native Tcl script read access failure; not skipped"
+    },
+    {
+      "scope": "full app before lifecycle fix",
+      "passed": 30,
+      "failed": 1,
+      "elapsed_seconds": 162.11,
+      "reason": "native Tcl script read access failure on repeated interpreter creation"
+    }
+  ],
+  "gui_change": "single shared Tcl interpreter, isolated Toplevel per test; no retry and no Windows Tcl skip",
+  "known_two_previously_skipped_gui_tests": "executed and passed in final app suite",
+  "evidence": "completed process exit/output and local JUnit reports checked; personal-machine JUnit metadata excluded",
+  "energy_parameters_refitted": false,
+  "lj_bessel_kernel_changed": false,
+  "diff_check_before_staging": "passed",
+  "al_default_kinetic_json_changed": false,
+  "physical_Al_mobilities_available": false,
+  "physical_Al_seconds_hz_available": false,
+  "normal_relaxation_study_executed": true,
+  "study_elapsed_seconds": 307.6788484,
+  "calibration_and_production_promotion_gate_passed": false
+}

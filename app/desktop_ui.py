@@ -8,7 +8,7 @@ import threading
 import time
 import tkinter as tk
 from pathlib import Path
-from tkinter import messagebox, ttk
+from tkinter import filedialog, messagebox, ttk
 
 import matplotlib
 
@@ -41,6 +41,7 @@ from .specimen_probability import (
     aggregate_specimen_probability,
 )
 from solver_v1.physical_time import load_time_calibration
+from solver_v1.kinetic_calibration_workflow import validate_for_energy_model
 from solver_v1.energy_model_registry import (
     AL_TARGET_BEST_FEASIBLE,
     ANALYTIC_LJ_EAM_HYPOTHETICAL,
@@ -109,13 +110,16 @@ class DesktopApp:
         "extreme": ("preset.extreme", 900.0, 2000.0),
     }
 
-    def __init__(self) -> None:
+    def __init__(self, *, root=None) -> None:
         self.localizer = Localizer(DEFAULT_LANGUAGE)
         self.time_calibration = load_time_calibration(
             Path(__file__).resolve().parents[1]
             / "solver_v1" / "data" / "aluminum_kinetic_calibration.json"
         )
-        self.root = tk.Tk()
+        # One interpreter per desktop process. Tests/embedded workspaces can
+        # supply a Toplevel in that interpreter instead of repeatedly loading
+        # and destroying independent native Tcl/Tk runtimes.
+        self.root = root if root is not None else tk.Tk()
         self.root.title(self._tr("app.title"))
         self.root.configure(bg=APP_BG)
         self.root.minsize(940, 620)
@@ -354,6 +358,11 @@ class DesktopApp:
         self.time_basis_selector.bind(
             "<<ComboboxSelected>>", self._on_time_basis_selected
         )
+        self.load_kinetics_button = self._bind_text(
+            ttk.Button(self.pre_tab, command=self._choose_kinetic_calibration),
+            "button.load_kinetics",
+        )
+        self.load_kinetics_button.grid(row=3, column=0, sticky="w", padx=(20, 8), pady=7)
         self.time_warning_label = ttk.Label(
             self.pre_tab,
             textvariable=self.time_warning_display,
@@ -361,8 +370,8 @@ class DesktopApp:
             wraplength=360,
             justify="left",
         )
-        self.time_warning_label.grid(row=2, column=2, sticky="w", padx=(6, 20), pady=7)
-        for row, (key, label_key, default, unit_key) in enumerate(self.PARAMS, start=3):
+        self.time_warning_label.grid(row=2, column=2, rowspan=2, sticky="w", padx=(6, 20), pady=7)
+        for row, (key, label_key, default, unit_key) in enumerate(self.PARAMS, start=4):
             label = self._bind_text(
                 ttk.Label(self.pre_tab, style="Property.TLabel"), label_key
             )
@@ -379,6 +388,8 @@ class DesktopApp:
                 row=row, column=2, sticky="w", padx=(6, 20), pady=7
             )
             self.entries[key] = entry
+            if key == "tensile_direction":
+                entry.configure(state="disabled")
             if key == "model_frequency":
                 self.frequency_label = label
                 self.frequency_unit = unit
@@ -387,7 +398,7 @@ class DesktopApp:
             ttk.LabelFrame(self.pre_tab, padding=10), "section.load_presets"
         )
         preset_frame.grid(
-            row=len(self.PARAMS) + 3,
+            row=len(self.PARAMS) + 4,
             column=0,
             columnspan=3,
             sticky="ew",
@@ -428,7 +439,7 @@ class DesktopApp:
         note = self._bind_text(
             ttk.LabelFrame(self.pre_tab, padding=12), "section.scope"
         )
-        note.grid(row=len(self.PARAMS) + 4, column=0, columnspan=3, sticky="ew", padx=20, pady=8)
+        note.grid(row=len(self.PARAMS) + 5, column=0, columnspan=3, sticky="ew", padx=20, pady=8)
         scope = self._bind_text(ttk.Label(note, justify="left"), "scope.text")
         scope.pack(anchor="w")
 
@@ -609,9 +620,46 @@ class DesktopApp:
 
     def _time_basis_values(self) -> tuple[str, ...]:
         values = [self._tr("option.model_time")]
-        if self.time_calibration.calibrated:
+        if self._kinetics_available():
             values.append(self._tr("option.physical_time"))
         return tuple(values)
+
+    def _kinetics_available(self) -> bool:
+        try:
+            validate_for_energy_model(self.time_calibration, self.energy_model_code)
+            return True
+        except ValueError:
+            return False
+
+    def load_kinetic_calibration_path(self, path) -> None:
+        """Validate before modifying setup; keep all existing result arrays/views."""
+        if self.busy:
+            raise ValueError(self._tr("error.kinetics_busy"))
+        calibration = load_time_calibration(path)
+        validate_for_energy_model(calibration, self.energy_model_code)
+        if self.time_basis_code == "physical":
+            # Return to the same model frequency before replacing the clock.
+            self.time_basis_display.set(self._tr("option.model_time"))
+            self._on_time_basis_selected()
+            if self.time_basis_code != "model":
+                raise ValueError(self._tr("error.time_frequency"))
+        self.time_calibration = calibration
+        self._refresh_time_basis_ui()
+        self._set_status("status.kinetics_loaded")
+
+    def _choose_kinetic_calibration(self) -> None:
+        if self.busy:
+            self._set_status("error.kinetics_busy")
+            return
+        path = filedialog.askopenfilename(title=self._tr("dialog.kinetics_title"),
+            filetypes=[(self._tr("filetype.kinetics_json"), "*.json")])
+        if not path:
+            return
+        try:
+            self.load_kinetic_calibration_path(path)
+        except (ValueError, TypeError, OSError) as exc:
+            messagebox.showerror(self._tr("dialog.kinetics_title"),
+                self._tr("error.kinetics_invalid", detail=str(exc)))
 
     def _energy_model_values(self) -> tuple[str, ...]:
         return tuple(
@@ -624,6 +672,13 @@ class DesktopApp:
         )
 
     def _on_energy_model_selected(self, _event=None) -> None:
+        if self.time_basis_code == "physical":
+            self.time_basis_display.set(self._tr("option.model_time"))
+            self._on_time_basis_selected()
+            if self.time_basis_code != "model":
+                self.energy_model_display.set(self._tr(
+                    energy_model_metadata(self.energy_model_code).display_key))
+                return
         selected = self.energy_model_display.get()
         for model_id in (
             TWO_ROW_LJ_REFERENCE,
@@ -636,19 +691,33 @@ class DesktopApp:
         self.energy_model_display.set(
             self._tr(energy_model_metadata(self.energy_model_code).display_key)
         )
+        self._refresh_time_basis_ui()
 
     def _on_time_basis_selected(self, _event=None) -> None:
         selected = self.time_basis_display.get()
         requested = (
             "physical" if selected == self._tr("option.physical_time") else "model"
         )
-        if requested == "physical" and not self.time_calibration.calibrated:
+        if requested == "physical" and not self._kinetics_available():
             self.time_basis_code = "model"
             self.time_basis_display.set(self._tr("option.model_time"))
             self._set_status("status.physical_time_unavailable")
             self._refresh_time_basis_ui()
             return
         if hasattr(self, "entries") and "model_frequency" in self.entries:
+            if requested != self.time_basis_code:
+                try:
+                    old = float(self.entries["model_frequency"].get())
+                    if not np.isfinite(old) or old <= 0:
+                        raise ValueError("frequency")
+                    t0 = float(self.time_calibration.t0_seconds)
+                    converted = old / t0 if requested == "physical" else old * t0
+                    self._frequency_values[requested] = f"{converted:.16g}"
+                except (ValueError, TypeError):
+                    self.time_basis_display.set(self._tr("option.physical_time"
+                        if self.time_basis_code == "physical" else "option.model_time"))
+                    self._set_status("error.time_frequency")
+                    return
             self._frequency_values[self.time_basis_code] = self.entries[
                 "model_frequency"
             ].get()
@@ -688,10 +757,14 @@ class DesktopApp:
             )
         warning = (
             "status.kinetic_calibrated"
-            if self.time_calibration.calibrated
+            if self._kinetics_available()
             else "status.kinetic_uncalibrated"
         )
         self.time_warning_display.set(self._tr(warning))
+        if self._kinetics_available():
+            c = self.time_calibration
+            self.time_warning_display.set(self._tr("status.kinetics_details",
+                t0=c.t0_seconds, temperature=c.temperature_K, source=c.source))
 
     def _preset_values(self) -> tuple[str, ...]:
         return tuple(self._tr(values[0]) for values in self.LOAD_PRESETS.values())
@@ -1159,9 +1232,6 @@ class DesktopApp:
         )
 
     def _config(self) -> UIAnalysisConfig:
-        direction = self.entries["tensile_direction"].get().replace(",", " ").split()
-        if len(direction) != 3 or np.linalg.norm([float(v) for v in direction]) == 0.0:
-            raise ValueError(self._tr("error.direction"))
         self._on_quality_selected()
         resolved = self.analysis_quality_code == "resolved"
         entered_frequency = float(self.entries["model_frequency"].get())

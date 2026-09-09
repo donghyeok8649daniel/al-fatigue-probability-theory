@@ -14,20 +14,23 @@ from app.solver_adapter import (
 from app.specimen_probability import aggregate_specimen_probability
 from solver_v1.physical_time import calibration_from_mobilities
 from solver_v1.physical_time import uncalibrated_time_calibration
+from solver_v1.physical_time import BOLTZMANN_J_PER_K
+from solver_v1.kinetic_calibration_workflow import bind_to_energy_model
+from solver_v1.energy_model_registry import TWO_ROW_LJ_REFERENCE
 
 
 def _calibration(t0: float = 0.2):
     length = 2.8e-10
     energy = 1.6e-19
     mobility_a = length**2 / (t0 * energy)
-    return calibration_from_mobilities(
+    return bind_to_energy_model(calibration_from_mobilities(
         length_scale_m=length,
         energy_scale_J=energy,
         M_a_phys_m2_per_J_s=mobility_a,
         M_s_phys_m2_per_J_s=0.05 * mobility_a,
         source="hypothetical UI regression fixture",
-        temperature_K=300.0,
-    )
+        temperature_K=.02 * energy / BOLTZMANN_J_PER_K,
+    ), TWO_ROW_LJ_REFERENCE)
 
 
 def test_physical_frequency_and_cycles_define_one_consistent_duration() -> None:
@@ -244,3 +247,28 @@ def test_per_cycle_absorption_table_distinguishes_first_cycle_transient() -> Non
     assert rows[0]["minimum_opening_barrier"] == pytest.approx(1.0)
     assert rows[0]["gross_registry_activity"] == pytest.approx(0.06)
     assert rows[0]["net_registry_transfer"] == pytest.approx(0.02)
+
+
+def test_actual_capabilities_and_kinetic_evidence_are_not_inferred_from_labels():
+    from app.solver_adapter import production_capabilities
+    from solver_v1.kinetic_calibration_workflow import build_time_basis_model
+    c = _calibration(.2)
+    capabilities = production_capabilities()
+    assert capabilities["state_coordinates"] == ["a", "s"]
+    assert capabilities["probability_state_dimension"] == 2
+    for field in ("independent_shear_input", "orientation_input_active",
+                  "vector_registry_pde", "spatial_specimen_solver"):
+        assert capabilities[field] is False
+    wrong = replace(c, energy_model_fingerprint="stale")
+    with pytest.raises(ValueError, match="fingerprint"):
+        UIAnalysisConfig(time_basis="physical", physical_frequency_hz=5.,
+                         time_calibration=wrong).validate()
+    # Measured ratio and T really change the existing generator, not axis labels.
+    evidence = replace(c, model_mobility_s=.10,
+        M_s_phys_m2_per_J_s=2*c.M_s_phys_m2_per_J_s, mobility_ratio=.10,
+        temperature_K=2*c.temperature_K)
+    m = build_time_basis_model(TWO_ROW_LJ_REFERENCE,time_basis="physical",calibration=evidence)
+    assert m.p.mobility_s == .10
+    assert m.p.kT == pytest.approx(.04)
+    assert m.a0 == pytest.approx(.7713438268704838,abs=1e-13)
+    assert m.sigma_over_E_force_scale() == pytest.approx(86.29296488740997,rel=1e-13)

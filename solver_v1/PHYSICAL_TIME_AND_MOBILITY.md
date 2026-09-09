@@ -239,3 +239,23 @@ remain unavailable until $M_{a,\mathrm{phys}}$ and
 $M_{s,\mathrm{phys}}$ are obtained from kinetic data mapping to these
 collective coordinates. Static Al fitting, fatigue lifetime, and specimen
 probability cannot supply them.
+
+## 16. Evidence-bound import and physical-generator audit
+
+`kinetic_calibration_workflow.py` and `import_kinetic_calibration.py` now accept
+actual matrix correlation data, check the harmonic fluctuation/relaxation
+relations, and bind the result to a static parameter fingerprint and coordinate
+definition. The UI has a calibration-file loader; it no longer requires editing
+the committed default. The default remains uncalibrated.
+
+Physical mode uses the supplied temperature through kBT/E0 and both declared
+model mobilities. The old axis conversion alone failed to propagate those
+values if they differed from the reference. Model mode still uses exactly
+M_a=1, M_s=.05, kT=.02. Keeping the old generator requires the old ratio;
+independently measured different ratios now have an explicit same-PDE path.
+No ratio or temperature is changed without selecting the supplied calibration.
+
+See `KINETICS_LOADING_AND_STRESS_AUDIT.md` for matrix-log derivation, CSV units,
+provenance requirements, limitations, and the rejected dislocation-mobility
+shortcut. Validation of a file's internal consistency is not certification of
+its experimental/MD provenance or quantitative Al fatigue predictions.

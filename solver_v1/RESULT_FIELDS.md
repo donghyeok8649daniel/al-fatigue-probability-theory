@@ -304,6 +304,18 @@ identify first-cycle Gibbs-tail depletion but does not alone certify an event.
 
 ## UI plotting behaviour
 
+`kinetic_calibration` stores the full supplied, model-bound calibration when
+physical mode is used (including temperature, mobilities and parameter
+fingerprint). It is null in model mode. Loading a new calibration never changes
+the old result's `time_basis` or arrays.
+
+`state_coordinates`, `probability_state_dimension`, `loading_mode`,
+`independent_shear_input`, `orientation_input_active`, `vector_registry_pde`,
+and `spatial_specimen_solver` describe the actual production path. Current UI
+state is `[a,s]`; the four latter feature flags are false. Separate tensor
+traction projection/research mixed-load experiments do not change these flags.
+The former orientation widget was unused and is now explicitly disabled.
+
 Plots should preserve scientific-axis offset notation rather than forcing survival to the full 0--1 range. The user should be able to zoom and pan interactively:
 
 - mouse wheel: zoom about the cursor;

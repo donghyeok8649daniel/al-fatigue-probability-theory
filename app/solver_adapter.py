@@ -34,6 +34,9 @@ from solver_v1.physical_time import (
     model_time_to_seconds,
 )
 from .specimen_probability import assess_local_rare_event
+from solver_v1.kinetic_calibration_workflow import (
+    build_time_basis_model, validate_for_energy_model,
+)
 
 
 PDE_RESULT_FIELDS = (
@@ -156,6 +159,7 @@ class UIAnalysisConfig:
             if self.time_calibration is None:
                 raise ValueError("physical time requires a kinetic calibration")
             self.time_calibration.require_calibrated()
+            validate_for_energy_model(self.time_calibration, self.energy_model)
             if (
                 self.physical_frequency_hz is None
                 or not np.isfinite(self.physical_frequency_hz)
@@ -246,7 +250,8 @@ def physical_load_conversion(config: UIAnalysisConfig) -> dict[str, object]:
     """Map physical stress inputs through sigma/E and relaxed axial kappa."""
 
     config.validate()
-    model = build_energy_model(config.energy_model, chi=0.20, kT=0.02)
+    model = build_time_basis_model(config.energy_model, time_basis=config.time_basis,
+                                  calibration=config.time_calibration)
     kappa = model.sigma_over_E_force_scale()
     reduced_min = config.stress_min_mpa / config.young_mpa
     reduced_max = config.stress_max_mpa / config.young_mpa
@@ -265,6 +270,7 @@ def physical_load_conversion(config: UIAnalysisConfig) -> dict[str, object]:
         "force_max": float(model.force_from_sigma_over_E(reduced_max)),
         "preload_force": float(model.force_from_sigma_over_E(reduced_initial)),
         **energy_model_result_metadata(config.energy_model, model),
+        **production_capabilities(),
         "time_basis": config.time_basis,
         "time_unit": "s" if config.time_basis == "physical" else "model time",
         "frequency_unit": (
@@ -278,8 +284,22 @@ def physical_load_conversion(config: UIAnalysisConfig) -> dict[str, object]:
             if config.time_basis == "physical" and config.time_calibration is not None
             else None
         ),
+        "physical_M_a": (config.time_calibration.M_a_phys_m2_per_J_s
+                          if config.time_basis == "physical" else None),
+        "physical_M_s": (config.time_calibration.M_s_phys_m2_per_J_s
+                          if config.time_basis == "physical" else None),
+        "kinetic_calibration_source": (config.time_calibration.source
+                          if config.time_basis == "physical" else None),
         **dynamics,
     }
+
+
+def production_capabilities() -> dict[str, object]:
+    """Actual UI/PDE capabilities, not research scripts or placeholder controls."""
+    return dict(state_coordinates=["a", "s"], probability_state_dimension=2,
+                loading_mode="scalar axial sigma/E with fixed chi=0.2",
+                independent_shear_input=False, orientation_input_active=False,
+                vector_registry_pde=False, spatial_specimen_solver=False)
 
 
 def physical_probability_bookkeeping(
@@ -534,7 +554,8 @@ def run_ui_analysis(
     """Run the canonical PDE path used by the desktop application."""
 
     config.validate()
-    calibration_model = build_energy_model(config.energy_model, chi=0.20, kT=0.02)
+    calibration_model = build_time_basis_model(config.energy_model, time_basis=config.time_basis,
+                                              calibration=config.time_calibration)
     load = cyclic_load_from_sigma_over_E(
         calibration_model,
         sigma_over_E_min=config.stress_min_mpa / config.young_mpa,
@@ -669,6 +690,10 @@ def run_ui_analysis(
         "solver_time_status": solver_time_status,
         "probability_source": "N=1 direct Smoluchowski/Fokker-Planck PDE",
         **energy_model_result_metadata(config.energy_model, calibration_model),
+        **production_capabilities(),
+        "kinetic_calibration": (
+            config.time_calibration.to_dict() if config.time_basis == "physical" else None
+        ),
         "analysis_quality": config.analysis_quality,
         "integration_method": config.integration_method,
         "grid_shape": (config.grid_n_a, config.grid_n_s),

@@ -1,0 +1,9 @@
+model,path,samples,first_fixed_peak_s_reduced,first_fixed_peak_shear_MPa,fixed_curvature_residual,first_normal_relaxed_peak_MPa,relaxation_reduction_fraction,interpretation
+unchanged_analytic_research_candidate,direct_110,33,0.27741092990838473,7543.359225710519,-2.870287341139033e-12,4768.897903072569,0.3678018293470069,ideal scalar-path interface instability; NOT yield/fatigue strength
+unchanged_analytic_research_candidate,direct_110,65,0.2774109299083289,7543.359225710513,-6.217526493657033e-13,4768.897903072564,0.367801829347007,ideal scalar-path interface instability; NOT yield/fatigue strength
+Mishin_reference_same_interface,direct_110,33,0.28470962045933673,6461.635049569927,1.6823310322947034e-15,4390.365016824213,0.32054890393160995,ideal scalar-path interface instability; NOT yield/fatigue strength
+Mishin_reference_same_interface,direct_110,65,0.2847096204593328,6461.635049569924,8.91564312611656e-14,4390.3650168242075,0.3205489039316105,ideal scalar-path interface instability; NOT yield/fatigue strength
+unchanged_analytic_research_candidate,shockley_112,33,0.15330870433548577,3012.198344619529,3.5110803153770576e-15,2685.841510437496,0.10834506790197951,ideal scalar-path interface instability; NOT yield/fatigue strength
+unchanged_analytic_research_candidate,shockley_112,65,0.15330870433548605,3012.198344619534,-4.385380947269368e-15,2685.8415104375035,0.10834506790197851,ideal scalar-path interface instability; NOT yield/fatigue strength
+Mishin_reference_same_interface,shockley_112,33,0.1498937116319088,2405.245411227743,1.0878244106286154e-14,2345.0624845146895,0.025021532701868132,ideal scalar-path interface instability; NOT yield/fatigue strength
+Mishin_reference_same_interface,shockley_112,65,0.149893711632009,2405.2454112277364,-1.7234058735768502e-12,2345.0624845146895,0.02502153270186558,ideal scalar-path interface instability; NOT yield/fatigue strength
