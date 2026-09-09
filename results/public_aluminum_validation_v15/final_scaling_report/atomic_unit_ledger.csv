@@ -1,0 +1,15 @@
+quantity,value,units,scope,actual_strength_calibrated,physical_PDE_time_calibrated
+reference_b_L0,2.863782463805517e-10,m,declared FCC4.05Angstrom reference,False,False
+reference_h111,2.338268590217984e-10,m,crystallographic plane spacing,False,False
+atomic_interface_cell_area,7.102490842787125e-20,m^2,microscopic crystallography; NOT A_c,False,False
+crystallographic_per_atom_volume,1.6607531249999993e-29,m^3,FCC atom volume; NOT activation volume,False,False
+energy_unit,1.602176634e-19,J,one electronvolt,False,False
+one_eV_per_interface_cell,2.2557954236957265,J/m^2,surface/GSF conversion,False,False
+one_eV_per_reduced_coordinate_traction,7.876978968221381,GPa,unit conversion; NOT ideal or actual strength,False,False
+one_eV_per_reduced_coordinate_force,5.594617099061912e-10,N,conjugate coordinate force,False,False
+one_eV_per_reduced_coordinate_squared,1.9535761426611802,J/m^2,physical coordinate Hessian,False,False
+one_eV_per_atom_energy_density,9.647289593388546,GPa,bulk energy-density unit; NOT yield,False,False
+one_eV_per_L0_line_energy,5.594617099061912e-10,J/m,line energy; NOT finite activation energy,False,False
+mobility_time_scale_numerator,0.5118817629692132,m^2/J,M_phys=M_star*this/t0; t0 unavailable,False,False
+one_MPa_interface_force,0.00012695222420097433,eV/reduced_coordinate,explicit microscopic work conversion; not production kappa replacement,False,False
+source_300K_thermal_energy,0.025851999786435535,eV,actual MD temperature; not default production kT,False,False

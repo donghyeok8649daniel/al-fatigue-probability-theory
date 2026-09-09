@@ -1,0 +1,11 @@
+{
+  "points": [[0.14463521202111632,0.14463521202111632,0.14463521202111632]],
+  "provenance": {
+    "run": "grid_svd_certified",
+    "source": "validation_exact_tangent/continuous_q_search.json",
+    "source_search_index": 2,
+    "minimum_H_eV_per_L0_squared": -5.082149299931706,
+    "tail_bound_eV_per_L0_squared": 0.0020596656464113967,
+    "purpose": "Refine actual stability constraints after independent rejection; not an Al target or a whole-zone certificate."
+  }
+}

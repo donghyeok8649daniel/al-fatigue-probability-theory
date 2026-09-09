@@ -1,0 +1,259 @@
+{
+  "completed": true,
+  "source_doi": "10.5281/zenodo.10014454",
+  "source_potential_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "projection_sha256": "2037b0104c33573abc27532517610ff84f308e6ba55ded08a0b0b2bf834a7eb6",
+  "reference_length_scale_m": 2.863782463805517e-10,
+  "actual_box_stretch": 1.0037037037037038,
+  "temperature_K": 300,
+  "atoms_per_plane": 576,
+  "plane_classes": 12,
+  "model_records": [
+    {
+      "model": "quartic_exact_bulk",
+      "radius": 12.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          1.6026436111777963e-25,
+          1.8245364417236798e-40,
+          -1.0848732850818651e-40
+        ],
+        [
+          1.82453644172368e-40,
+          9.686034102444543e-25,
+          -6.828468596635861e-40
+        ],
+        [
+          -1.0848732850818651e-40,
+          -6.828468596635861e-40,
+          9.686034102444569e-25
+        ]
+      ],
+      "normalized_density": 0.986278985140779,
+      "minimum_sampled_robust_margin": 0.005158364345490068,
+      "radius_matrix_change": null,
+      "fixed_reference_density": 19.563744459115494,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    },
+    {
+      "model": "quartic_exact_bulk",
+      "radius": 16.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          1.6026597755373563e-25,
+          -1.2959510893763134e-40,
+          -1.6258584775850594e-40
+        ],
+        [
+          -1.2959510893763132e-40,
+          9.686484009454829e-25,
+          -5.441138921634463e-40
+        ],
+        [
+          -1.6258584775850594e-40,
+          -5.441138921634465e-40,
+          9.686484009454803e-25
+        ]
+      ],
+      "normalized_density": 0.986278985140779,
+      "minimum_sampled_robust_margin": 0.005367695117816933,
+      "radius_matrix_change": 0.0001801101345044742,
+      "fixed_reference_density": 19.563744459115494,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    },
+    {
+      "model": "joint_quartic",
+      "radius": 12.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          1.4593198343726285e-25,
+          2.881693661828868e-40,
+          -3.7482279438315665e-40
+        ],
+        [
+          2.8816936618288685e-40,
+          8.977312489313258e-25,
+          -5.179166766729234e-40
+        ],
+        [
+          -3.748227943831566e-40,
+          -5.179166766729234e-40,
+          8.9773124893133e-25
+        ]
+      ],
+      "normalized_density": 0.9867516217408986,
+      "minimum_sampled_robust_margin": 0.0039397640170017395,
+      "radius_matrix_change": null,
+      "fixed_reference_density": 21.373115262661038,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    },
+    {
+      "model": "joint_quartic",
+      "radius": 16.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          1.4593769435625326e-25,
+          -3.708663540692615e-40,
+          -4.7096168213925285e-40
+        ],
+        [
+          -3.708663540692615e-40,
+          8.978257936927696e-25,
+          -3.910596154045207e-40
+        ],
+        [
+          -4.7096168213925285e-40,
+          -3.910596154045207e-40,
+          8.978257936927642e-25
+        ]
+      ],
+      "normalized_density": 0.9867516217408986,
+      "minimum_sampled_robust_margin": 0.0043659549823073344,
+      "radius_matrix_change": 0.000366635769871948,
+      "fixed_reference_density": 21.373115262661038,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    },
+    {
+      "model": "spatial_stiffness_fit",
+      "radius": 12.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          1.6991759436950318e-25,
+          4.3170287790188025e-40,
+          -2.9096635963022063e-40
+        ],
+        [
+          4.317028779018802e-40,
+          1.32476153651934e-24,
+          -2.1467892047903876e-39
+        ],
+        [
+          -2.909663596302207e-40,
+          -2.1467892047903873e-39,
+          1.3247615365193475e-24
+        ]
+      ],
+      "normalized_density": 0.9860291351513301,
+      "minimum_sampled_robust_margin": 0.004193463423252221,
+      "radius_matrix_change": null,
+      "fixed_reference_density": 18.830075291775433,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    },
+    {
+      "model": "spatial_stiffness_fit",
+      "radius": 16.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          1.6992104266847661e-25,
+          -4.553864780394782e-40,
+          -3.840826747179346e-40
+        ],
+        [
+          -4.55386478039478e-40,
+          1.324880079312451e-24,
+          -1.5488341632507265e-39
+        ],
+        [
+          -3.840826747179346e-40,
+          -1.5488341632507265e-39,
+          1.3248800793124512e-24
+        ]
+      ],
+      "normalized_density": 0.9860291351513301,
+      "minimum_sampled_robust_margin": 0.00457427115038729,
+      "radius_matrix_change": 0.0003276558406710706,
+      "fixed_reference_density": 18.830075291775433,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    },
+    {
+      "model": "cross_verified_polish",
+      "radius": 12.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          1.7291726472095692e-25,
+          3.2123381334472915e-40,
+          -5.306700546011368e-40
+        ],
+        [
+          3.2123381334472903e-40,
+          7.892265053778567e-25,
+          -8.393481750873719e-40
+        ],
+        [
+          -5.3067005460113686e-40,
+          -8.393481750873717e-40,
+          7.892265053778611e-25
+        ]
+      ],
+      "normalized_density": 0.9866126307358177,
+      "minimum_sampled_robust_margin": 0.003934819281317382,
+      "radius_matrix_change": null,
+      "fixed_reference_density": 20.77047566919949,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    },
+    {
+      "model": "cross_verified_polish",
+      "radius": 16.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          1.729258834697059e-25,
+          -4.95386056884289e-40,
+          -6.325376266736744e-40
+        ],
+        [
+          -4.9538605688428895e-40,
+          7.8931736223602515e-25,
+          -8.716866471679826e-40
+        ],
+        [
+          -6.325376266736744e-40,
+          -8.716866471679826e-40,
+          7.893173622360181e-25
+        ]
+      ],
+      "normalized_density": 0.9866126307358177,
+      "minimum_sampled_robust_margin": 0.004390649918853135,
+      "radius_matrix_change": 0.0003921703627085549,
+      "fixed_reference_density": 20.77047566919949,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    }
+  ],
+  "parameter_refit": false,
+  "anharmonic_thermal_renormalization": false,
+  "physical_time_calibrated": false,
+  "production_model_changed": false,
+  "whole_zone_stability_proof": false,
+  "elapsed_seconds": 9.376135599988629
+}

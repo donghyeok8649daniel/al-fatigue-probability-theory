@@ -1,0 +1,53 @@
+[
+  {
+    "start": [
+      0.2,
+      0.1,
+      0.1
+    ],
+    "q": [
+      0.14471271845721356,
+      0.14471265788006837,
+      0.14471265788006837
+    ],
+    "minimum_H": -4.94063100626248,
+    "tail_bound": 0.0020616317488708013,
+    "success": true,
+    "message": "Optimization terminated successfully",
+    "nfev": 30
+  },
+  {
+    "start": [
+      0.2,
+      0.2,
+      0.1
+    ],
+    "q": [
+      0.14471273140858834,
+      0.14471273140858837,
+      0.14471273140858837
+    ],
+    "minimum_H": -4.940634648164506,
+    "tail_bound": 0.0020616317488708017,
+    "success": true,
+    "message": "Optimization terminated successfully",
+    "nfev": 30
+  },
+  {
+    "start": [
+      0.2,
+      0.2,
+      0.0
+    ],
+    "q": [
+      0.14471274704618844,
+      0.14471274359355946,
+      0.14471274359355946
+    ],
+    "minimum_H": -4.940635558759238,
+    "tail_bound": 0.002061631748870802,
+    "success": true,
+    "message": "Optimization terminated successfully",
+    "nfev": 65
+  }
+]

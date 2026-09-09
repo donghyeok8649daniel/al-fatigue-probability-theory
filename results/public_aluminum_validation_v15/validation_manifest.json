@@ -1,0 +1,105 @@
+{
+  "completed": true,
+  "starting_head": "d7ef95cf7d8c814053d0caa741b2f2b1e3f4d338",
+  "branch": "probability-pde-solver-v1",
+  "environment": {
+    "system": "Windows",
+    "python": "3.13.5",
+    "numpy": "2.5.0",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.0",
+    "blas_threads": 1
+  },
+  "tests": [
+    {
+      "name": "targeted",
+      "files": [
+        "solver_v1/test_tail_constrained_material.py",
+        "solver_v1/test_activation_stress_sensitivity.py",
+        "solver_v1/test_density_angular_cross_material.py",
+        "solver_v1/test_finite_source_barrier.py",
+        "solver_v1/test_interface_development_targets.py",
+        "solver_v1/test_isotropic_bulk_validation.py",
+        "solver_v1/test_line_drag_reference.py",
+        "solver_v1/test_mixed_density_material.py",
+        "solver_v1/test_periodic_plane_covariance.py",
+        "solver_v1/test_profiled_identifiability.py",
+        "solver_v1/test_public_activation_reference.py",
+        "solver_v1/test_public_aluminum_kinetics.py",
+        "solver_v1/test_public_core_reference.py",
+        "solver_v1/test_public_wire_validation.py",
+        "solver_v1/test_report_interface_development.py",
+        "solver_v1/test_scale_ledger.py",
+        "solver_v1/test_static_bloch_targets.py",
+        "solver_v1/test_tensor_traction_audit.py",
+        "solver_v1/test_zero_frequency_kinetics.py"
+      ],
+      "passed": 73,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 18.73,
+      "exit_code": 0
+    },
+    {
+      "name": "solver_v1",
+      "command": "python -m pytest solver_v1 -q",
+      "passed": 504,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 530.11,
+      "exit_code": 0
+    },
+    {
+      "name": "app",
+      "command": "python -m pytest app -q",
+      "passed": 31,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 66.83,
+      "exit_code": 0
+    },
+    {
+      "name": "desktop_smoke",
+      "command": "python -m app.desktop_ui --smoke",
+      "exit_code": 0,
+      "tool_wall_seconds": 1.2079083,
+      "a0": 0.7713438268704838,
+      "kappa_axial": 86.29296488740997
+    }
+  ],
+  "scientific_reproducibility": {
+    "actual_independent_reoptimization": "frozen_reoptimization_cross",
+    "original_run": "strain_stable_cross",
+    "profiles_each": 112,
+    "elapsed_seconds": 532.3112412999908,
+    "squared_loss_each": 1128.2343520341506,
+    "max_absolute_differences": {
+      "decays": 0,
+      "coefficients": 0,
+      "predictions": 0,
+      "residuals": 0,
+      "cubic_GPa": 0
+    },
+    "timings_excluded_from_numerical_equality": true,
+    "offline_MD_integral_decision_exactly_reproduced": true,
+    "material_accepted": false,
+    "global_minimum_proved": false
+  },
+  "source_audit": {
+    "full_MD_frames": 1024,
+    "source_temperature_setpoint_K": 300,
+    "raw_wire_traces": 692,
+    "source_selected_activation_rows": 643,
+    "longer_MD_download_attempts_failed": 3
+  },
+  "production": {
+    "energy_registry_changed": false,
+    "default_parameters_changed": false,
+    "PDE_changed": false,
+    "independent_shear_UI_connected": false,
+    "physical_seconds": false,
+    "physical_Hz": false,
+    "A_c_calibrated": false
+  },
+  "git_note": "Final commit is the commit containing this manifest; verify HEAD and origin after normal push. Test passes are not a material-adoption certificate."
+}

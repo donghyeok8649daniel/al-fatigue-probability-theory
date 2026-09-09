@@ -124,3 +124,18 @@ spatial information, calibration parameter. The correct next step is to
 derive or measure correlations and test the independence approximation, not
 to select an attractive numerical area. Physical seconds/Hz are also still
 unavailable and are a separate missing kinetic calibration.
+
+## 7. Actual source evidence added in v15
+
+The periodic-plane covariance normalization above has now been tested against
+public300K Al99 MD. The exact projection contains12 periodic plane classes,
+576 atoms each; finite-mode equipartition includes those counts explicitly.
+This is displacement covariance, NOT a first-passage indicator or an
+independent-initiation count. See `PUBLIC_ALUMINUM_CALIBRATION_EVIDENCE.md`.
+
+That audit also retrieves experimental apparent activation areas/volumes
+from stress-relaxation rate derivatives. They are a_app=(kBT/b)d ln(rate)/d tau
+and V_app=b a_app. Despite the word "area", a_app is not the spatial-statistical
+A_c; V_app/b³ is not literally a count of independent atoms. Neither these
+data nor the crystallographic576-atom plane counting calibrates A_c.
+No source area is inserted into specimen aggregation by this update.

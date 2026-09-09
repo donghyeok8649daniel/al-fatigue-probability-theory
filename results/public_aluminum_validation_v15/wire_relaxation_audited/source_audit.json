@@ -1,0 +1,194 @@
+{
+  "completed": true,
+  "doi": "10.1016/j.dib.2018.11.047",
+  "source_sha256": "5fad0398a11c6f4bc8daea12edad0a2875106d6d8f0ed133c248f422d1b8b7be",
+  "source_bytes": 83134534,
+  "specimens": 29,
+  "parsed_traces": 692,
+  "parse_failures": [],
+  "counts": [
+    {
+      "sample": "Al_20_r_9",
+      "declared": 8,
+      "parsed": 8,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "Al_20_r_10",
+      "declared": 8,
+      "parsed": 8,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "Al_20_r_11",
+      "declared": 9,
+      "parsed": 9,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "Al_20_r_14",
+      "declared": 18,
+      "parsed": 18,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "Al_20_r_15",
+      "declared": 9,
+      "parsed": 9,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "Al_20_r_16",
+      "declared": 21,
+      "parsed": 21,
+      "marked_not_considered": 2
+    },
+    {
+      "sample": "Al_20_r_18",
+      "declared": 8,
+      "parsed": 8,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "Al_20_r_19",
+      "declared": 11,
+      "parsed": 11,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "Al_20_r_25",
+      "declared": 37,
+      "parsed": 37,
+      "marked_not_considered": 6
+    },
+    {
+      "sample": "Al_20_r_28",
+      "declared": 13,
+      "parsed": 13,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "Al_27_r_7",
+      "declared": 37,
+      "parsed": 38,
+      "marked_not_considered": 2
+    },
+    {
+      "sample": "Al_27_r_8",
+      "declared": 59,
+      "parsed": 59,
+      "marked_not_considered": 2
+    },
+    {
+      "sample": "Al_27_r_9",
+      "declared": 18,
+      "parsed": 18,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "Al_27_r_10",
+      "declared": 15,
+      "parsed": 15,
+      "marked_not_considered": 2
+    },
+    {
+      "sample": "Al_27_r_12",
+      "declared": 19,
+      "parsed": 18,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "Al_27_r_13",
+      "declared": 37,
+      "parsed": 37,
+      "marked_not_considered": 1
+    },
+    {
+      "sample": "Al_100_r_1",
+      "declared": 48,
+      "parsed": 48,
+      "marked_not_considered": 3
+    },
+    {
+      "sample": "Al_100_r_3",
+      "declared": 29,
+      "parsed": 29,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "5N_27_r_1",
+      "declared": 43,
+      "parsed": 43,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "5N_27_r_2",
+      "declared": 23,
+      "parsed": 23,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "5N_27_r_3",
+      "declared": 19,
+      "parsed": 19,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "5N_27_r_4",
+      "declared": 20,
+      "parsed": 20,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "5N_100_r_4",
+      "declared": 38,
+      "parsed": 40,
+      "marked_not_considered": 2
+    },
+    {
+      "sample": "5N_100_r_7",
+      "declared": 22,
+      "parsed": 24,
+      "marked_not_considered": 2
+    },
+    {
+      "sample": "5N_100_r_8",
+      "declared": 35,
+      "parsed": 36,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "5N_100_r_9",
+      "declared": 24,
+      "parsed": 25,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "5N_100_r_10",
+      "declared": 24,
+      "parsed": 24,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "AN_20_3",
+      "declared": 11,
+      "parsed": 11,
+      "marked_not_considered": 0
+    },
+    {
+      "sample": "AN_27_2",
+      "declared": 23,
+      "parsed": 23,
+      "marked_not_considered": 1
+    }
+  ],
+  "source_marked_not_considered": 23,
+  "source_exclusions_preserved": true,
+  "declared_count_mismatch_not_silently_repaired": true,
+  "specimen_data_scope": "room-temperature monotonic tension with separate60s relaxation holds; not cyclic fatigue",
+  "units": "measured mN,um,MPa,s; not a model-time conversion",
+  "yield_criterion_not_established": true,
+  "source_geometry_unknown": true,
+  "a_s_cell_mobility_available": false,
+  "production_physical_seconds_available": false
+}

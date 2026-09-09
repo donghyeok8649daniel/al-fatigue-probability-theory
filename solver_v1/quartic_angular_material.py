@@ -46,7 +46,7 @@ class QuarticMoment:
         if self.moment.invariant.rank!=3: raise ValueError('derived rank3 environment required')
 
     @lru_cache(maxsize=128)
-    def jet(self,state):
+    def site_jets(self,state):
         a,x,y=state;obj=self.moment.invariant;terms=[];small=0;maxshell=0
         for layer in range(1,obj.max_layers+1):
             delta=self.base.geometry.abc_shift(layer)
@@ -57,8 +57,13 @@ class QuarticMoment:
             last=float(np.max(abs(value)));small=small+1 if last<obj.tolerance else 0
             if small>=4:
                 depths=np.cumsum(np.array(terms)[::-1],axis=0)[::-1]
-                return 2*per_site_quartic_jet(depths,self.saturation),dict(layers=layer,shells=maxshell,last=last)
+                return depths,dict(layers=layer,shells=maxshell,last=last)
         raise ArithmeticError('quartic angular neighborhood did not converge')
+
+    @lru_cache(maxsize=128)
+    def jet(self,state):
+        depths,diag=self.site_jets(state)
+        return 2*per_site_quartic_jet(depths,self.saturation),diag
 
 
 class QuarticSymmetryInterface(SymmetryResolvedInterface):

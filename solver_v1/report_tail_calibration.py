@@ -58,7 +58,7 @@ def main():
     if out.exists(): raise FileExistsError('preserve existing report')
     start=time.perf_counter()
     data,definition,model,_,_=load_material(directory)
-    if not definition.get('quartic_angular_extension') or definition.get('rational_angular_extension'):
+    if not definition.get('quartic_angular_extension') or definition.get('rational_angular_extension') or definition.get('density_mixture_extension'):
         raise ValueError('this scoped report requires the unsaturated quartic candidate, not another ablation')
     validation=directory/args.validation_name
     decision=json.loads((validation/'decision.json').read_bytes())

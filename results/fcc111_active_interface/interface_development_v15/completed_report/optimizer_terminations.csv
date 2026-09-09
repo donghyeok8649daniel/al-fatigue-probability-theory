@@ -1,0 +1,27 @@
+run,start_index,start,success,message,nfev,njev,optimality,final_decays,final_loss,numerical_stop
+continuation_quartic,0,"[2.782954000203, 5.646840689773, 11.99999999744]",True,`ftol` termination condition is satisfied.,18,14,0.4293490494240776,"[2.548243567480851, 4.678198533437055, 11.048610572164959]",1251.0688758161398,
+continuation_quartic,1,"[2.54825785609907, 4.678211074906818, 11.048742006284282]",True,`ftol` termination condition is satisfied.,6,2,0.47431408110303397,"[2.5482564861748984, 4.678210160575956, 11.048731242038116]",1251.068873227198,
+continuation_quartic,2,"[3.8, 5.0, 10.0]",True,`ftol` termination condition is satisfied.,19,13,0.47080255465816184,"[2.548256196804632, 4.678208398070376, 11.048723976921705]",1251.0688736070317,
+continuation_quartic,3,"[2.8, 8.0, 10.0]",False,"spectral separation did not converge: {'loss': 2077.4937109428256, 'minimum_robust_margin': -6.347006007573208e-09, 'worst_index': 19}",,,,,,True
+cross_factored_inverse,0,"[2.5482578561, 4.6782110749, 11.0487420063]",False,returned profile not verified: primal=1.9051427102567686e-13; KKT=0.0030047190818641156; pre-polish KKT=8.352693536828326e-14,,,,,,True
+cross_factored_inverse,1,"[2.7829540002, 5.6468406898, 11.999]",False,returned profile not verified: primal=5.1514348342607263e-14; KKT=33.92223172035198; pre-polish KKT=1.4405143744511406e-14,,,,,,True
+cross_verified_polish,0,"[2.5482578561, 4.6782110749, 11.0487420063]",True,`ftol` termination condition is satisfied.,17,12,1.0921047101856243,"[2.6194872262250746, 4.704313897380939, 9.987267051202513]",1128.2343511314982,
+cross_verified_polish,1,"[2.7829540002, 5.6468406898, 11.999]",True,`ftol` termination condition is satisfied.,20,13,0.49442408969675383,"[2.619286641089717, 4.704066971260766, 9.986318616621928]",1128.2343256621602,
+density_angular_cross,0,"[2.5482578561, 4.6782110749, 11.0487420063]",False,returned profile not verified: primal=2.842170943040401e-14; KKT=0.0030047190815536973,,,,,,True
+density_angular_cross,1,"[2.7829540002, 5.6468406898, 11.999]",False,returned profile not verified: primal=2.5758950528143032e-11; KKT=33.922231720347035,,,,,,True
+grid_continuation,0,"[2.6, 3.2, 7.0]",False,returned profile not verified: primal=9.458744898438454e-11; KKT=11.041872859742718,,,,,,True
+grid_continuation,1,"[1.6, 2.3, 7.0]",False,"spectral separation did not converge: {'loss': 1148962.3095512828, 'minimum_robust_margin': -1.5773896380050223e-08, 'worst_index': 19}",,,,,,True
+grid_verified_polish,0,"[2.6, 3.2, 7.0]",False,"spectral separation did not converge: {'loss': 2979.7895243881367, 'minimum_robust_margin': -5.9344692267954136e-09, 'worst_index': 19}",,,,,,True
+grid_verified_polish,1,"[1.6, 2.3, 7.0]",False,"spectral separation did not converge: {'loss': 1148962.3095512828, 'minimum_robust_margin': -1.5773896380050223e-08, 'worst_index': 19}",,,,,,True
+joint_bulk_interface,0,"[2.5482578561, 4.6782110749, 11.0487420063]",True,`xtol` termination condition is satisfied.,20,11,0.366786273307174,"[2.539351315850726, 5.010403018443008, 5.234212337788883]",311.2212512490274,
+joint_bulk_interface,1,"[2.7829540002, 5.6468406898, 11.999]",True,`xtol` termination condition is satisfied.,22,13,0.6182579030182633,"[2.5394818243561468, 5.010816519316839, 5.235317693279496]",311.2212387946836,
+joint_quartic,0,"[2.579101374767287, 5.996534839345317, 4.962329189737055]",False,"spectral separation did not converge: {'loss': 3174.482825537145, 'minimum_robust_margin': -6.136851542562494e-09, 'worst_index': 19}",,,,,,True
+joint_quartic,1,"[5.3707449112586065, 5.6320174463985, 3.2556291351974864]",False,returned profile not verified: primal=1.7575985111761838e-10; KKT=32346.69495159259,,,,,,True
+joint_quartic,2,"[3.0, 8.0, 7.0]",True,`xtol` termination condition is satisfied.,21,14,0.47779233087122835,"[2.54825785609907, 4.678211074906818, 11.048742006284282]",1251.06887355315,
+mixed_density,0,"[2.5482578561, 4.6782110749, 11.0487420063, 0.2]",True,`ftol` termination condition is satisfied.,16,11,0.8040296683249876,"[2.5478221300690027, 4.678180067918288, 11.049028943485336, 0.001172026862356677]",1251.3359979237662,
+mixed_density,1,"[2.5482578561, 4.6782110749, 11.0487420063, 0.7]",True,`ftol` termination condition is satisfied.,50,41,0.7804355424084821,"[2.5482640352947623, 4.678254073131572, 11.049380156445192, 0.00012341292282683943]",1251.0969861798426,
+rational_development,0,"[2.782954, 5.646841, 11.999, 1000.0]",True,`xtol` termination condition is satisfied.,22,15,0.5300524555870377,"[2.359476304043065, 4.400023998396962, 11.50241316101267, 934.8749637387139]",1146.171119796483,
+rational_development,1,"[2.782954, 5.646841, 11.999, 100000.0]",False,"spectral separation did not converge: {'loss': 1927.3942280668223, 'minimum_robust_margin': -1.7101475132709487e-08, 'worst_index': 19}",,,,,,True
+rational_development,2,"[2.782954, 5.646841, 11.999, 10000000.0]",False,"spectral separation did not converge: {'loss': 1962.9047944841732, 'minimum_robust_margin': -1.9461411957660824e-08, 'worst_index': 19}",,,,,,True
+spatial_stiffness_fit,0,"[2.5482578561, 4.6782110749, 11.0487420063]",True,`ftol` termination condition is satisfied.,9,9,0.8730235025705658,"[2.9001205503037526, 5.106153345950392, 11.999999999999995]",2300.2895749640834,
+spatial_stiffness_fit,1,"[2.7829540002, 5.6468406898, 11.999]",False,"spectral separation did not converge: {'loss': 2545.5813548741407, 'minimum_robust_margin': -1.7200897513627855e-08, 'worst_index': 19}",,,,,,True

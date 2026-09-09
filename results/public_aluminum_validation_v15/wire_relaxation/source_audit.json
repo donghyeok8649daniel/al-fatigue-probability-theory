@@ -1,0 +1,2475 @@
+{
+  "completed": true,
+  "doi": "10.1016/j.dib.2018.11.047",
+  "source_sha256": "5fad0398a11c6f4bc8daea12edad0a2875106d6d8f0ed133c248f422d1b8b7be",
+  "source_bytes": 83134534,
+  "specimens": 29,
+  "parsed_traces": 114,
+  "parse_failures": [
+    {
+      "source_member": "Data in brief/Annealed/AN_20_3/Stress relaxation txt files/AN_20_3_Relaxcycle0001.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_20_3/Stress relaxation txt files/AN_20_3_Relaxcycle0002.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_20_3/Stress relaxation txt files/AN_20_3_Relaxcycle0010.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_20_3/Stress relaxation txt files/AN_20_3_Relaxcycle0011.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0001.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0003.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0004.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0005.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0009.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0010.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0011.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0012.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0013.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0014.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0015.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0016.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0017.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0019.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0020.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0021.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0022.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/An_27_2_Relaxcycle0023.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/Annealed/AN_27_2/Stress relaxation txt files/Not considered/An_27_2_Relaxcycle0002.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0004.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0005.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0009.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0010.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0011.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0012.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0013.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0017.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0018.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0019.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0020.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0021.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0022.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0027.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0028.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0029.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0030.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0033.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0037.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0038.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0039.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0040.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0041.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0044.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0045.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Al_100_relax_1_Relaxcycle0046.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Not considered/Al_100_relax_1_Relaxcycle0001.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Not considered/Al_100_relax_1_Relaxcycle0002.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_1/Stress relax txt files/Not considered/Al_100_relax_1_Relaxcycle0003.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0001.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0002.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0003.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0004.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0005.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0006.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0007.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0008.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0009.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0010.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0011.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0012.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0013.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0014.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0015.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0016.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0017.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0018.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0019.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0020.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0021.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0022.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0023.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0024.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0025.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0026.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0027.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0028.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_100_r_3/Stress relax txt files/Al_100_r_3_Relaxcycle0029.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_10/Stress relaxation txt files/Al_20_r_10_StressStrain.txt_Relaxcycle2.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_10/Stress relaxation txt files/Al_20_r_10_StressStrain.txt_Relaxcycle3.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_10/Stress relaxation txt files/Al_20_r_10_StressStrain.txt_Relaxcycle4.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_10/Stress relaxation txt files/Al_20_r_10_StressStrain.txt_Relaxcycle5.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_10/Stress relaxation txt files/Al_20_r_10_StressStrain.txt_Relaxcycle6.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_10/Stress relaxation txt files/Al_20_r_10_StressStrain.txt_Relaxcycle8.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_11/Stress relaxation txt files/Al_20_r_11_Relaxcycle0001.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_11/Stress relaxation txt files/Al_20_r_11_Relaxcycle0002.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_11/Stress relaxation txt files/Al_20_r_11_Relaxcycle0003.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_11/Stress relaxation txt files/Al_20_r_11_Relaxcycle0004.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_11/Stress relaxation txt files/Al_20_r_11_Relaxcycle0005.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_11/Stress relaxation txt files/Al_20_r_11_Relaxcycle0006.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_11/Stress relaxation txt files/Al_20_r_11_Relaxcycle0007.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_11/Stress relaxation txt files/Al_20_r_11_Relaxcycle0008.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_11/Stress relaxation txt files/Al_20_r_11_Relaxcycle0009.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_14/Stress relaxation txt files/Al_20_r_14_Relaxcycle0001.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_14/Stress relaxation txt files/Al_20_r_14_Relaxcycle0002.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_14/Stress relaxation txt files/Al_20_r_14_Relaxcycle0003.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_14/Stress relaxation txt files/Al_20_r_14_Relaxcycle0004.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_14/Stress relaxation txt files/Al_20_r_14_Relaxcycle0005.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_14/Stress relaxation txt files/Al_20_r_14_Relaxcycle0007.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_14/Stress relaxation txt files/Al_20_r_14_Relaxcycle0012.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_14/Stress relaxation txt files/Al_20_r_14_Relaxcycle0013.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_14/Stress relaxation txt files/Al_20_r_14_Relaxcycle0014.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_14/Stress relaxation txt files/Al_20_r_14_Relaxcycle0015.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_14/Stress relaxation txt files/Al_20_r_14_Relaxcycle0018.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_15/Stress relax txt files/Al_20_r_15_Relaxcycle0001.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_15/Stress relax txt files/Al_20_r_15_Relaxcycle0002.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_15/Stress relax txt files/Al_20_r_15_Relaxcycle0003.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_15/Stress relax txt files/Al_20_r_15_Relaxcycle0004.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_15/Stress relax txt files/Al_20_r_15_Relaxcycle0005.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_15/Stress relax txt files/Al_20_r_15_Relaxcycle0006.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_15/Stress relax txt files/Al_20_r_15_Relaxcycle0007.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_15/Stress relax txt files/Al_20_r_15_Relaxcycle0008.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_15/Stress relax txt files/Al_20_r_15_Relaxcycle0009.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0004.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0005.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0006.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0007.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0008.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0009.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0010.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0011.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0012.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0013.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0014.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0015.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0016.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0017.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0018.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_16/Stress relax txt files/Al_20_r_16_Relaxcycle0021.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_18/Stress relax txt files/Al_20_r_18_Relaxcycle0001.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_18/Stress relax txt files/Al_20_r_18_Relaxcycle0002.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_18/Stress relax txt files/Al_20_r_18_Relaxcycle0003.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_18/Stress relax txt files/Al_20_r_18_Relaxcycle0004.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_18/Stress relax txt files/Al_20_r_18_Relaxcycle0005.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_18/Stress relax txt files/Al_20_r_18_Relaxcycle0006.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_18/Stress relax txt files/Al_20_r_18_Relaxcycle0007.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_18/Stress relax txt files/Al_20_r_18_Relaxcycle0008.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_19/Stress relax txt files/Al_20_r_19_Relaxcycle0001.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_19/Stress relax txt files/Al_20_r_19_Relaxcycle0002.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_19/Stress relax txt files/Al_20_r_19_Relaxcycle0005.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_19/Stress relax txt files/Al_20_r_19_Relaxcycle0009.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_19/Stress relax txt files/Al_20_r_19_Relaxcycle0010.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_19/Stress relax txt files/Al_20_r_19_Relaxcycle0011.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0007.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0008.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0009.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0010.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0011.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0012.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0013.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0014.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0015.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0016.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0017.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0018.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0019.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0023.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0024.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0025.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0026.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0027.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0028.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0029.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0030.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0034.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0035.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0036.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Al_20_r_25_Relaxcycle0037.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_25/Stress relax txt files/Not considered/Al_20_r_25_Relaxcycle0002.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_28/Stress relax txt files/Al_20_r_28_Relaxcycle0001.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_28/Stress relax txt files/Al_20_r_28_Relaxcycle0002.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_28/Stress relax txt files/Al_20_r_28_Relaxcycle0003.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_28/Stress relax txt files/Al_20_r_28_Relaxcycle0004.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_28/Stress relax txt files/Al_20_r_28_Relaxcycle0005.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_28/Stress relax txt files/Al_20_r_28_Relaxcycle0006.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_28/Stress relax txt files/Al_20_r_28_Relaxcycle0007.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_28/Stress relax txt files/Al_20_r_28_Relaxcycle0008.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_28/Stress relax txt files/Al_20_r_28_Relaxcycle0009.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_28/Stress relax txt files/Al_20_r_28_Relaxcycle0010.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_28/Stress relax txt files/Al_20_r_28_Relaxcycle0011.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_28/Stress relax txt files/Al_20_r_28_Relaxcycle0012.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_28/Stress relax txt files/Al_20_r_28_Relaxcycle0013.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_9/Stress relaxation txt files/Al_20_r_9_Relaxcycle4.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_9/Stress relaxation txt files/Al_20_r_9_Relaxcycle5.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_9/Stress relaxation txt files/Al_20_r_9_Relaxcycle6.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_20_r_9/Stress relaxation txt files/Al_20_r_9_Relaxcycle7.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_10/Stress relax txt files/Al_27_r_10_Relaxcycle0007.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_10/Stress relax txt files/Al_27_r_10_Relaxcycle0008.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_10/Stress relax txt files/Al_27_r_10_Relaxcycle0009.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_10/Stress relax txt files/Al_27_r_10_Relaxcycle0010.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_10/Stress relax txt files/Al_27_r_10_Relaxcycle0011.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_10/Stress relax txt files/Al_27_r_10_Relaxcycle0012.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_10/Stress relax txt files/Al_27_r_10_Relaxcycle0014.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_10/Stress relax txt files/Al_27_r_10_Relaxcycle0015.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_10/Stress relax txt files/Not considered/Al_27_r_10_Relaxcycle0001.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_12/Stress relax txt files/Al_27_r_12_Relaxcycle0002.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_12/Stress relax txt files/Al_27_r_12_Relaxcycle0003.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_12/Stress relax txt files/Al_27_r_12_Relaxcycle0004.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_12/Stress relax txt files/Al_27_r_12_Relaxcycle0006.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_12/Stress relax txt files/Al_27_r_12_Relaxcycle0007.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_12/Stress relax txt files/Al_27_r_12_Relaxcycle0008.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_12/Stress relax txt files/Al_27_r_12_Relaxcycle0009.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_12/Stress relax txt files/Al_27_r_12_Relaxcycle0010.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_12/Stress relax txt files/Al_27_r_12_Relaxcycle0014.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_12/Stress relax txt files/Al_27_r_12_Relaxcycle0015.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_12/Stress relax txt files/Al_27_r_12_Relaxcycle0016.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_12/Stress relax txt files/Al_27_r_12_Relaxcycle0017.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_12/Stress relax txt files/Al_27_r_12_Relaxcycle0019.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0002.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0003.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0004.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0005.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0006.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0007.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0008.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0009.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0010.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0011.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0012.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0013.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0014.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0015.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0016.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0017.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0018.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0019.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0020.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0021.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0022.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0023.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0024.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0025.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0026.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0027.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0028.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0029.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0030.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0031.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0032.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0033.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0034.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0035.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0036.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Al_27_r_13_Relaxcycle0037.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_13/Stress relax txt files/Not considered/Al_27_r_13_Relaxcycle0001.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0003.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0004.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0005.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0006.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0007.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0008.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0009.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0010.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0012.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0014.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0015.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0020.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0021.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0022.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0023.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0024.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0025.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0026.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0027.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0032.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0033.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0034.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0035.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0036.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0037.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_7/Stress relax txt files/Al_27_r_7_Relaxcycle0038.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0003.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0004.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0005.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0006.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0007.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0008.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0009.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0010.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0011.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0012.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0013.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0014.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0015.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0016.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0017.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0018.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0019.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0020.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0021.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0022.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0023.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0024.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0025.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0026.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0027.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0028.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0029.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0030.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0031.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0032.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0033.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0034.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0035.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0036.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0037.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0038.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0039.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0040.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0041.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0042.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0043.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0044.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0045.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0046.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0047.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0048.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0049.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0050.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0051.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0052.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0053.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0054.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0055.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0056.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0057.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0058.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Al_27_r_8_Relaxcycle0059.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Not considered/Al_27_r_8_Relaxcycle0001.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_8/Stress relax txt files/Not considered/Al_27_r_8_Relaxcycle0002.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_9/Stress relax txt files/Al_27_r_9_Relaxcycle0001.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_9/Stress relax txt files/Al_27_r_9_Relaxcycle0007.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_9/Stress relax txt files/Al_27_r_9_Relaxcycle0008.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_9/Stress relax txt files/Al_27_r_9_Relaxcycle0009.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_9/Stress relax txt files/Al_27_r_9_Relaxcycle0010.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_9/Stress relax txt files/Al_27_r_9_Relaxcycle0011.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_9/Stress relax txt files/Al_27_r_9_Relaxcycle0012.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_9/Stress relax txt files/Al_27_r_9_Relaxcycle0013.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_9/Stress relax txt files/Al_27_r_9_Relaxcycle0015.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_9/Stress relax txt files/Al_27_r_9_Relaxcycle0016.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_9/Stress relax txt files/Al_27_r_9_Relaxcycle0017.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al4N/Al_27_r_9/Stress relax txt files/Al_27_r_9_Relaxcycle0018.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0001.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0002.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0003.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0004.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0005.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0006.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0007.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0008.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0009.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0010.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0011.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0012.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0013.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0014.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0015.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0016.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0017.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0018.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0019.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0020.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0022.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0023.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0024.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_10/Stress relax txt files/5N_100_r_10_Relaxcycle0025.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0002.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0003.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0004.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0005.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0006.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0007.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0008.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0009.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0010.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0011.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0012.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0013.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0014.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0015.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0016.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0017.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0018.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0019.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0020.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0021.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0022.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0023.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0024.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0025.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0026.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0027.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0028.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0029.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0030.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0031.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0032.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0033.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0034.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0035.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0036.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0038.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0039.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/5N_100_r_4_Relaxcycle0040.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/Not considered/5N_100_r_4_Relaxcycle0001.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_4/Stress relax txt files/Not considered/5N_100_r_4_Relaxcycle0037.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0002.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0003.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0004.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0005.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0006.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0007.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0008.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0009.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0010.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0011.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0012.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0013.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0015.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0016.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0017.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0018.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0019.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0020.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0021.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0022.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0023.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/5N_100_r_7_Combined_Relaxcycle0024.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/Not considered/5N_100_r_7_Combined_Relaxcycle0001.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_7/Stress relax txt files/Not considered/5N_100_r_7_Combined_Relaxcycle0014.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0001.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0002.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0003.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0004.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0005.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0006.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0007.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0008.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0009.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0010.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0011.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0012.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0013.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0014.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0015.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0016.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0017.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0018.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0019.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0020.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0021.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0022.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0023.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0024.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0025.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0026.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0027.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0028.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0029.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0030.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0031.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0032.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0033.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0034.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0035.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_8/Stress relax txt files/5N_100_r_8_Combined_Relaxcycle0036.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0001.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0002.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0003.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0004.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0005.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0006.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0007.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0008.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0009.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0010.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0011.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0012.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0013.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0014.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0015.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0016.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0017.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0018.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0019.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0020.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0021.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0022.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0023.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0024.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_100_r_9/Stress relax txt files/5N_100_r_9_Combined_Relaxcycle0025.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0001.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0002.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0003.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0004.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0005.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0006.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0007.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0008.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0012.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0013.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0014.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0015.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0016.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0017.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0021.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0022.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0023.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0026.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0027.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0028.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0029.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0030.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0031.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0034.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0035.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0036.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0037.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0038.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0042.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_1/Stress relax txt files/5N_27_r_1_Relaxcycle0043.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_2/Stress relax txt files/5N_27_r_2_Relaxcycle0002.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_2/Stress relax txt files/5N_27_r_2_Relaxcycle0006.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_2/Stress relax txt files/5N_27_r_2_Relaxcycle0007.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_2/Stress relax txt files/5N_27_r_2_Relaxcycle0008.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_2/Stress relax txt files/5N_27_r_2_Relaxcycle0009.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_2/Stress relax txt files/5N_27_r_2_Relaxcycle0011.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_2/Stress relax txt files/5N_27_r_2_Relaxcycle0012.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_2/Stress relax txt files/5N_27_r_2_Relaxcycle0013.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_2/Stress relax txt files/5N_27_r_2_Relaxcycle0014.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_2/Stress relax txt files/5N_27_r_2_Relaxcycle0016.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_2/Stress relax txt files/5N_27_r_2_Relaxcycle0017.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_2/Stress relax txt files/5N_27_r_2_Relaxcycle0018.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_2/Stress relax txt files/5N_27_r_2_Relaxcycle0019.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_2/Stress relax txt files/5N_27_r_2_Relaxcycle0021.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_2/Stress relax txt files/5N_27_r_2_Relaxcycle0022.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0001.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0002.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0003.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0004.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0005.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0006.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0007.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0008.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0009.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0010.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0011.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0012.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0013.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0014.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0015.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0016.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0017.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0018.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_3/Stress relax txt files/5N_27_r_3_Combined_Relaxcycle0019.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0001.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0002.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0003.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0004.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0005.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0006.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0007.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0008.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0009.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0010.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0011.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0012.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0013.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0014.txt",
+      "reason": "physical measurement time must increase"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0015.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0016.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0017.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0018.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0019.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    },
+    {
+      "source_member": "Data in brief/As-cast/Al5N/5N_27_r_4/Stress relax txt files/5N_27_r_4_Combined_Relaxcycle0020.txt",
+      "reason": "finite seven-column physical measurement rows required"
+    }
+  ],
+  "counts": [
+    {
+      "sample": "Al_20_r_9",
+      "declared": 8,
+      "parsed": 4
+    },
+    {
+      "sample": "Al_20_r_10",
+      "declared": 8,
+      "parsed": 2
+    },
+    {
+      "sample": "Al_20_r_11",
+      "declared": 9,
+      "parsed": 0
+    },
+    {
+      "sample": "Al_20_r_14",
+      "declared": 18,
+      "parsed": 7
+    },
+    {
+      "sample": "Al_20_r_15",
+      "declared": 9,
+      "parsed": 0
+    },
+    {
+      "sample": "Al_20_r_16",
+      "declared": 21,
+      "parsed": 5
+    },
+    {
+      "sample": "Al_20_r_18",
+      "declared": 8,
+      "parsed": 0
+    },
+    {
+      "sample": "Al_20_r_19",
+      "declared": 11,
+      "parsed": 5
+    },
+    {
+      "sample": "Al_20_r_25",
+      "declared": 37,
+      "parsed": 11
+    },
+    {
+      "sample": "Al_20_r_28",
+      "declared": 13,
+      "parsed": 0
+    },
+    {
+      "sample": "Al_27_r_7",
+      "declared": 37,
+      "parsed": 12
+    },
+    {
+      "sample": "Al_27_r_8",
+      "declared": 59,
+      "parsed": 0
+    },
+    {
+      "sample": "Al_27_r_9",
+      "declared": 18,
+      "parsed": 6
+    },
+    {
+      "sample": "Al_27_r_10",
+      "declared": 15,
+      "parsed": 6
+    },
+    {
+      "sample": "Al_27_r_12",
+      "declared": 19,
+      "parsed": 5
+    },
+    {
+      "sample": "Al_27_r_13",
+      "declared": 37,
+      "parsed": 0
+    },
+    {
+      "sample": "Al_100_r_1",
+      "declared": 48,
+      "parsed": 19
+    },
+    {
+      "sample": "Al_100_r_3",
+      "declared": 29,
+      "parsed": 0
+    },
+    {
+      "sample": "5N_27_r_1",
+      "declared": 43,
+      "parsed": 13
+    },
+    {
+      "sample": "5N_27_r_2",
+      "declared": 23,
+      "parsed": 8
+    },
+    {
+      "sample": "5N_27_r_3",
+      "declared": 19,
+      "parsed": 0
+    },
+    {
+      "sample": "5N_27_r_4",
+      "declared": 20,
+      "parsed": 0
+    },
+    {
+      "sample": "5N_100_r_4",
+      "declared": 38,
+      "parsed": 0
+    },
+    {
+      "sample": "5N_100_r_7",
+      "declared": 22,
+      "parsed": 0
+    },
+    {
+      "sample": "5N_100_r_8",
+      "declared": 35,
+      "parsed": 0
+    },
+    {
+      "sample": "5N_100_r_9",
+      "declared": 24,
+      "parsed": 0
+    },
+    {
+      "sample": "5N_100_r_10",
+      "declared": 24,
+      "parsed": 0
+    },
+    {
+      "sample": "AN_20_3",
+      "declared": 11,
+      "parsed": 7
+    },
+    {
+      "sample": "AN_27_2",
+      "declared": 23,
+      "parsed": 4
+    }
+  ],
+  "specimen_data_scope": "room-temperature monotonic tension with separate60s relaxation holds; not cyclic fatigue",
+  "units": "measured mN,um,MPa,s; not a model-time conversion",
+  "yield_criterion_not_established": true,
+  "source_geometry_unknown": true,
+  "a_s_cell_mobility_available": false,
+  "production_physical_seconds_available": false
+}

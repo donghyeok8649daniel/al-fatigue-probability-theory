@@ -1,0 +1,23 @@
+{
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "profile_index": 4,
+  "base_decays": [
+    3.0817573228610886,
+    3.7395656537112285,
+    6.846328291246644
+  ],
+  "shape_index": 2,
+  "probe_decays": [
+    3.0817573228610886,
+    3.7395656537112285,
+    6.848962871484222
+  ],
+  "log_relative_step": 0.0002,
+  "max_cuts": 32,
+  "no_material_or_tolerance_change": true,
+  "accepted_as_material": false,
+  "numerically_verified": false,
+  "numerical_failure": "spectral separation did not converge: {'loss': 2979.7895243881367, 'minimum_robust_margin': -5.9344692267954136e-09, 'worst_index': 19}",
+  "completed": true,
+  "elapsed_seconds": 6.484774299999117
+}

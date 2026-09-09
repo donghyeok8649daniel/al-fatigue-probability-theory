@@ -1,0 +1,26 @@
+{
+  "completed": true,
+  "doi": "10.1016/j.dib.2018.11.047",
+  "source_sha256": "5fad0398a11c6f4bc8daea12edad0a2875106d6d8f0ed133c248f422d1b8b7be",
+  "workbook_sha256": "5bff81967902792d3704adfc83f48fb3de046475cf2c54d811e834dfa3b8cd9b",
+  "source_constants": {
+    "burgers_m": 2.86e-10,
+    "temperature_K": 293.0,
+    "boltzmann_J_K": 1.3806487999999998e-23
+  },
+  "source_constant_status": "published workbook analysis constants, not new thermometry/lattice measurement",
+  "selected_rows": 643,
+  "samples": 30,
+  "unmatched_samples": [
+    "5N_100_r_3"
+  ],
+  "minimum_volume_over_b3": 42.334661,
+  "maximum_volume_over_b3": 45756.40033,
+  "negative_source_inverse_errors": 643,
+  "signed_source_errors_not_silently_repaired": true,
+  "final_effective_stress_not_identified_with_raw_tau": true,
+  "formulas_executed": false,
+  "source_selection_not_independently_rederived": true,
+  "model_activation_volume_fitted": false,
+  "collective_coordinate_mobility_calibrated": false
+}

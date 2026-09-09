@@ -143,6 +143,23 @@ class TailBulkCoefficientBasis:
         return np.array(columns), np.array(errors)
 
 
+def project_affine_face(matrix, rhs, point):
+    """Euclidean projection onto a consistent affine face without A A^T.
+
+    Nearly parallel spectral polarizations can be independently resolvable
+    in A but vanish in the squared-condition Gram matrix. Solve for a
+    particular point and its orthogonal null space directly. The caller
+    independently checks primal/dual/KKT, including an inconsistent face.
+    """
+    A=np.asarray(matrix,float);h=np.asarray(rhs,float);x=np.asarray(point,float)
+    if (A.ndim!=2 or h.shape!=(len(A),) or x.shape!=(A.shape[1],)
+            or any(np.any(~np.isfinite(v)) for v in (A,h,x))):
+        raise ValueError('finite affine constraint matrix, right side and point required')
+    particular=np.linalg.lstsq(A,h,rcond=None)[0]
+    Z=null_space(A)
+    return particular+Z@(Z.T@(x-particular))
+
+
 def convex_profile(matrix, observations, inequalities=None, *, nonnegative=(0,1,2,4,5)):
     """Equality-eliminated, whitened convex LS with verified linear inequalities.
 
@@ -185,9 +202,13 @@ def convex_profile(matrix, observations, inequalities=None, *, nonnegative=(0,1,
         multipliers = nnls(A[active].T,x-x0,maxiter=max(500,20*len(active)))[0]
         support=active[multipliers>1e-10*max(1.,np.max(multipliers))]
         if len(support):
-            dual=np.linalg.lstsq(A[support]@A[support].T,h[support]-A[support]@x0,rcond=None)[0]
-            polished=x0+A[support].T@dual
-            if np.min(A@polished-h)>=-1e-8 and np.min(dual)>=-1e-8:
+            polished=project_affine_face(A[support],h[support],x0)
+            dual=nnls(A[support].T,polished-x0,maxiter=max(500,20*len(support)))[0]
+            # NNLS returning nonnegative duals alone is insufficient: an
+            # over-screened equality face can have a nonzero dual residual.
+            # Never replace the raw point with such a feasible non-optimum.
+            face_kkt=np.linalg.norm(polished-x0-A[support].T@dual,np.inf)
+            if np.min(A@polished-h)>=-1e-8 and face_kkt<=1e-6:
                 x=polished;active=support;multipliers=dual
     else:
         multipliers = np.empty(0)
@@ -199,51 +220,76 @@ def convex_profile(matrix, observations, inequalities=None, *, nonnegative=(0,1,
     # Re-solve the accepted active face in physical coefficient coordinates.
     # In particular active nonnegative amplitudes are coordinates fixed to
     # zero, not a cancellation of two large whitened numbers followed by clip.
-    active_raw=row_ids[active]
+    # A near-active inequality with ZERO dual weight is not an equality of
+    # the optimal face. Forcing all slack-tolerance neighbors to equality
+    # can produce a feasible but nonstationary, much worse coefficient point.
+    active_raw=row_ids[active[np.asarray(multipliers)>0]]
     zero=[nonnegative[i] for i in active_raw if i<len(nonnegative)]
     free=[i for i in range(p) if i not in zero]
     other=[i for i in active_raw if i>=len(nonnegative)]
-    face_eq=np.vstack([eq[:,free],G[np.ix_(other,free)]])
+    # Coefficient units can differ by many orders (quartic moment amplitudes).
+    # Equilibrate columns for this *numerical solve*, preserving the exact
+    # physical coefficients, objective and constraints on reconstruction.
+    column_norm=np.linalg.norm(np.vstack([eq[:,free],matrix[np.ix_(selected,free)]/scales[selected,None]]),axis=0)
+    if np.any(column_norm==0):raise ValueError('unidentified free coefficient in active face')
+    column_scale=1/column_norm
+    face_eq=np.vstack([eq[:,free],G[np.ix_(other,free)]])*column_scale
     face_rhs=np.r_[rhs,np.zeros(len(other))]
     eqnorm=np.linalg.norm(face_eq,axis=1)
     face_eq=face_eq/eqnorm[:,None];face_rhs=face_rhs/eqnorm
     particular=np.linalg.lstsq(face_eq,face_rhs,rcond=None)[0];Z=null_space(face_eq)
-    design_face=matrix[np.ix_(selected,free)]@Z/scales[selected,None]
-    z=np.linalg.lstsq(design_face,(target[selected]-matrix[np.ix_(selected,free)]@particular)/scales[selected],rcond=None)[0]
-    candidate=np.zeros(p);candidate[free]=particular+Z@z
-    if np.min(G@candidate)>=-1e-9 and np.max(abs(eq@candidate-rhs))<1e-8:
-        c=candidate
+    scaled_design=matrix[np.ix_(selected,free)]*column_scale
+    design_face=scaled_design@Z/scales[selected,None]
+    z=np.linalg.lstsq(design_face,(target[selected]-scaled_design@particular)/scales[selected],rcond=None)[0]
+    candidate=np.zeros(p);candidate[free]=column_scale*(particular+Z@z)
     # Certify the returned coefficients, not the pre-polish optimizer point.
     # The equality-eliminated map is full column rank. Its inverse recovers
     # the objective's whitened coordinates without changing the coefficients.
-    final_x=np.linalg.lstsq(transform,c-offset,rcond=None)[0]
-    final_slack=A@final_x-h
-    final_active=np.flatnonzero(final_slack<=1e-7*max(1.,np.linalg.norm(final_x)))
-    dual=(nnls(A[final_active].T,final_x-x0,
-               maxiter=max(500,20*len(final_active)))[0]
-          if len(final_active) else np.empty(0))
-    final_kkt=float(np.linalg.norm(final_x-x0-A[final_active].T@dual,np.inf))
-    final_violation=max(0.,float(-np.min(final_slack)))
-    complementarity=float(np.max(abs(dual*final_slack[final_active]),initial=0.))
+    # transform=T V diag(1/sv) is ALREADY factorized, with orthonormal T,V.
+    # A second least-squares SVD of the physical transform can discard or
+    # contaminate directions merely because coefficient units differ greatly
+    # (e.g. a quartic invariant amplitude). Use its exact factored left inverse.
+    # This changes no objective/constraint/tolerance or material coefficient.
+    def certificate(coefficients):
+        final_x=sv*(Vt@(T.T@(coefficients-offset)))
+        final_slack=A@final_x-h
+        final_active=np.flatnonzero(final_slack<=1e-7*max(1.,np.linalg.norm(final_x)))
+        dual=(nnls(A[final_active].T,final_x-x0,
+                   maxiter=max(500,20*len(final_active)))[0]
+              if len(final_active) else np.empty(0))
+        stationarity=float(np.linalg.norm(final_x-x0-A[final_active].T@dual,np.inf))
+        primal=max(0.,float(-np.min(final_slack)))
+        complementarity=float(np.max(abs(dual*final_slack[final_active]),initial=0.))
+        return stationarity,primal,complementarity
+    polish_accepted=False
+    if np.min(G@candidate)>=-1e-9 and np.max(abs(eq@candidate-rhs))<1e-8:
+        candidate_certificate=certificate(candidate)
+        if candidate_certificate[0]<=1e-6 and candidate_certificate[1]<=1e-7:
+            c=candidate;polish_accepted=True
+    # Never replace a verified primal point merely because an unverified
+    # physical-coordinate polish happened to be feasible. Certify the actual
+    # returned vector with the SAME existing tolerances in either case.
+    final_kkt,final_violation,complementarity=certificate(c)
     if final_kkt>1e-6 or final_violation>1e-7:
-        raise ArithmeticError(f'returned profile not verified: primal={final_violation}; KKT={final_kkt}')
+        raise ArithmeticError(f'returned profile not verified: primal={final_violation}; KKT={final_kkt}; pre-polish KKT={kkt}')
     residual = (matrix@c-target)/scales
     return dict(coefficients=c,residuals=residual,predictions=matrix@c,
         squared_loss=float(residual[selected]@residual[selected]), selected_rows=selected,
         exact_residual=float(np.max(abs(residual[exact]))),kkt_residual=final_kkt,
         pre_polish_kkt_residual=kkt,complementarity_residual=complementarity,
+        active_face_polish_accepted=polish_accepted,
         scaled_primal_violation=final_violation,optimizer_success=bool(run.success),
         optimizer_message=str(run.message),strictly_positive_LJ=bool(np.all(c[:2]>0)))
 
 
-def spectral_profile(matrix, observations, columns, tails, *, max_cuts=32, nonnegative=(0,1,2,4,5)):
+def spectral_profile(matrix, observations, columns, tails, *, max_cuts=32, nonnegative=(0,1,2,4,5), inequalities=None):
     """Adaptive polarization separation at EVERY supplied q, including tails."""
     columns,tails=np.asarray(columns),np.asarray(tails)
     p=matrix.shape[1]; signed=[i for i in range(p) if i not in nonnegative]
     signs=np.ones((2**len(signed),p))
     signs[:,signed]=np.array(list(product((-1.,1.),repeat=len(signed))))
-    cuts=[]; history=[]
-    fit=convex_profile(matrix,observations,nonnegative=nonnegative)
+    cuts=[] if inequalities is None else list(np.asarray(inequalities,float).reshape(-1,p)); history=[]
+    fit=convex_profile(matrix,observations,cuts,nonnegative=nonnegative)
     for iteration in range(max_cuts+1):
         c=fit['coefficients']; operators=np.einsum('c,qcij->qij',c,columns)
         eigen,vec=np.linalg.eigh(operators); uncertainty=tails@abs(c)
@@ -272,3 +318,21 @@ def declared_wavepoints(step=.25):
             if 0<=z<=y<=x<=1 and 0<x+y+z<=1.5+1e-12}
     points.update({(.375,.375,0.),(.01,0.,0.),(.01,.01,0.),(.01,.01,.01)})
     return np.array(sorted(points))
+
+
+def augmented_wavepoints(step=.25, additional=()):
+    """Deterministic stability-constraint refinement, never target fitting.
+
+    Independent validation counterexamples may be added explicitly. The
+    resulting finite set is STILL not a proof over the whole Brillouin zone.
+    Coordinates use the existing corrected cubic reciprocal convention.
+    """
+    base=declared_wavepoints(step)
+    extra=np.asarray(additional,float)
+    if extra.size==0:return base
+    if (extra.ndim!=2 or extra.shape[1]!=3 or np.any(~np.isfinite(extra))
+            or np.any(extra[:,2]<0) or np.any(extra[:,0]>1)
+            or np.any(extra[:,0]<extra[:,1]) or np.any(extra[:,1]<extra[:,2])
+            or np.any(extra.sum(axis=1)<=0) or np.any(extra.sum(axis=1)>1.5+1e-12)):
+        raise ValueError('nonzero finite wavepoints in the declared FCC irreducible wedge required')
+    return np.unique(np.vstack([base,extra]),axis=0)

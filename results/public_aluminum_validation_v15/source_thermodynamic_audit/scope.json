@@ -1,0 +1,37 @@
+{
+  "completed": true,
+  "source_doi": "10.5281/zenodo.10014454",
+  "source_file": "log.lammps",
+  "verified_published_md5": "28a50d823517269ca0fef426c17a6874",
+  "source_sha256": "e21801207f5a2097620567fea5c8129b2c6f67df4d37853779bbfa1a163a871e",
+  "thermo_header": "Step Temp Press Volume PotEng KinEng TotEng",
+  "source_units": "LAMMPS metal: ps, K, bar, Angstrom^3, eV",
+  "equilibration_thermo_excluded": true,
+  "pressure_MPa_per_bar": 0.1,
+  "prefix": {
+    "thermo_samples": 6,
+    "maximum_thermo_step": 5000,
+    "maximum_projected_step": 5115,
+    "sampled_temperature_mean_K": 299.10801,
+    "sampled_temperature_min_K": 293.51939,
+    "sampled_temperature_max_K": 303.47586,
+    "sampled_pressure_mean_MPa": 8.464125516666668
+  },
+  "whole_log": {
+    "thermo_samples": 101,
+    "maximum_step": 100000,
+    "duration_ps": 500,
+    "sampled_temperature_mean_K": 299.93017861386153,
+    "sampled_temperature_min_K": 292.8244,
+    "sampled_temperature_max_K": 307.03059,
+    "sampled_pressure_mean_MPa": 9.832249426237619,
+    "whole_log_is_NOT_a_completed_coordinate_trajectory_analysis": true
+  },
+  "source_temperature_setpoint_K": 300,
+  "coarse_samples_not_claimed_full_time_average": true,
+  "positive_pressure_means_compression": true,
+  "NVT_not_zero_pressure_ensemble": true,
+  "material_parameters_refitted": false,
+  "production_temperature_changed": false,
+  "production_time_calibrated": false
+}

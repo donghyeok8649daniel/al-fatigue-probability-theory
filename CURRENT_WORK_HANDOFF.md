@@ -1,5 +1,353 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 최종 연구 인계 v15 — UTC 2026-09-09 22:50
+
+**이 블록이 최신이다. 아래22:43/21:28/20:38 기록은 진행 당시의 역사 기록이다.**
+약4시간의 외부자료·단위·보정 감사에서 실제 실행과 검증을 마쳤다.
+연구/수치 구현의 검증 완료와 Al 계면/실제강도/kinetics 채택은 다르다.
+후자는 아래 이유로 아직 통과하지 못했다. 기존 이론/production을 바꾸지 않았다.
+
+- 최종 **21 runs /1770 coefficient profiles**; 마지막112profiles는 frozen
+  code의 독립 재최적화다.532.31s 실제 실행에서 원래 strain_stable_cross와
+  decays/coefficients/predictions/residuals/Cubic/loss 차이 모두0.
+  독립243q×radius12/16,stationary/curve/SVD를 다시 실행(46.22s)했다.
+  최신 합산 결과는 `interface_development_v15/release_report/`.
+  이전 `final_report/`는20run snapshot이며 curvature term budget도 그곳에 있다.
+- 코드 고정 후 **target73PASS18.73s / solver504PASS530.11s /
+  app31PASS66.83s,skips0 / smokeexit0,1.21s**. 기록은
+  `results/public_aluminum_validation_v15/validation_manifest.json`.
+  보고 이후 Python 수정 없음. 마지막Gitdiffcheck는 커밋 시 다시 수행한다.
+- Source thermo log의 6prefix/101whole coarse samples를 추가 확인.
+  Source300K는 setpoint, prefix snapshotmean299.108K,압력+8.464MPa.
+  500ps scalarlog를500ps좌표분석으로 부르면 안 됨. 실제좌표분석1024frames만.
+- 원자면적·peratomvolume·lineenergy·cellenergy·traction/mobility units를
+  모두 명시했다. 특히 coherentNp 모드에서 percellG*를 쓰면
+  M*=t0*Np*E0*M_N/L0²와 kT*=kBT/(Np*E0)가 **동시에** 필요하다.
+  소스576atoms/plane을 A_c나 현재PDE 독립영역 개수로 대체하지 않는다.
+- Production thermal audit:TwoRowLJ kT=.02는 무차원이라Kelvin미정.
+  Reducedhybrid의 kT_ev=.02는232.09036K에 상당하며300K가 아니다.
+  이를 조용히실온으로고치거나 M과동시에재조절하지 않았다.
+
+### 최종 물리적 결론
+
+1. 정확 bulkC114/62/32GPa,cohesion3.36eV,scale은 보존/검증됐다.
+   그러나 최신 안정 후보도 source계면 heldoutRMS71–79:재료 채택 불가.
+   DirectregistryHaa source36.32 vs369–424eV/L0². 부정확한 수치가 아니라
+   같은단위 에너지항들의 잘못된 지형이며, 보정 후 물리검증 실패다.
+2. 더 낮은loss 후보는 finite-q 또는 작은dilation에서 불안정으로 탈락.
+   QP 결함은 수정했지만 그 수정으로 물리 실패를 숨기지 않았다.
+3. 실제MD,실험wire,문헌line/core의 값/단위/좌표를 구분했다.
+   Shortlag와저주파적분 둘다 현재 a/s시계 보정으로 채택하지 못한다.
+4. 유한전위원의 외부 탄성기하학으로 MPa 규모가 유도되지만 현재 pin/core
+   가설값이다. 실험yield/작동segment/속도/잔류소성/피로 검증으로 채택 금지.
+5. 전단/방향 tensor는 연구static/vector/reflectingSG까지만 연결돼있다.
+   Production/UI는 여전히scalaraxial P(a,s). DefaultTwoRowLJ 불변.
+6. Ma_phys/Ms_phys/t0는없고 실제PDE 초/Hz 사용불가. A_c도미보정.
+   Mesh/UI gate는 닫힌 상태이며 사용자승인없는 UI재설계를 하지 않았다.
+
+### 재개할 때
+
+`V15_REPRODUCTION_AND_STATUS.md`에 실제재최적화/오프라인MD재생 명령이 있다.
+다음 연구는 정확한 안정 계면/core 에너지와 유한 활성화좌표, matchedPMF/
+kinetics를 우선한다. 같은holdout을 새loss에쓰면 development로 재분류할 것.
+이미 실패한 family를 설명없이 다시 돌리거나 알고리즘실패와 물리실패를 섞지 않는다.
+이번 동안 유지된 브랜치는 `probability-pde-solver-v1`, 시작 HEAD d7ef95cf...
+이다. 이 문서가 담긴 커밋과 최종origin상태는 git log/fetch로 확인할 것.
+main/reset/forcepush는 사용하지 않았다. 상세 scientific기록은 아래와6개v15문서.
+
+## 최신 진행 인계: UTC 2026-09-09 22:43 — 검증 완료, 독립 재최적화 진행 중
+
+**아래21:28 및 이전 진행 기록은 역사적 checkpoint다. 처음부터 재시작하지 말 것.**
+사용자 최신 우선순위는 전단/방향 연결 상태를 먼저 브리핑하고 약4시간 동안 실제
+외부 자료로 보정/단위/척도를 검증하는 것. 브리핑은 이미 전달했고 연구는19:15경
+시작,23:15경까지 마무리 목표다. 새 에이전트는 생성하지 않았다.
+
+Git: 시작 local/fresh-origin 둘 다
+`d7ef95cf7d8c814053d0caa741b2f2b1e3f4d338`, clean,
+`probability-pde-solver-v1`. 실제 worktree는 OneDrive 밖
+`aft-pde-bessel-38969ad`다. main/local=`80cacb4180dbfbcd36a2964270703bc6cf1653ec`,
+origin/main=`c43d8e096f2a329c7cdfad31e546c70fb36fe592`. Main 수정/reset/force 없음.
+모든 v15 변경은 이 턴에서 만든 것. **현재 아직 commit/push 전**.
+
+### 실제 완료
+
+- 최종 코드 고정 후 targeted **73PASS18.73s**, full solver **504PASS530.11s**,
+  app **31PASS66.83s**, skips0, desktop smoke **exit0/1.21s**,
+  a0=.7713438268704838,kappa=86.29296488740997. `git diff --check` 통과.
+  `.cache/public_aluminum_v15/`의 `targeted_final_confirmed.log`,
+  `solver_frozen.log`, `app_frozen.log`, `smoke_frozen.log`에 실제 결과.
+  이 결과 이후 연구 Python 코드는 바꾸지 않았다(문서/데이터 보고만 추가).
+- 현재20개 실제 최적화 run/1658 성공 coefficient profiles를
+  `interface_development_v15/final_report/`에 합쳤다. 이 수는 독립 재료 수가
+  아니다. 실패 profile/optimizer 종료/모든 정확 residual과 SVD 보존.
+- QP zero-dual near-active 및 Gram condition 제곱 문제를 같은 검증 tolerance로
+  수정. 단일 probe:32cuts,-5.93e-9 실패→1cut,-1.59e-12,KKT1.87e-12.
+- 낮은loss1084.85 basin은 독립 finite-q에서 Hmin=-5.08215,tail=.00205967로
+  실제 불안정. 그 q를 추가한 spectral 후보도 실제MD dilation4.065/4.05에서
+  불안정. 수치오차/whole-zone proof/재료 실패를 서로 구별하고 모두 기록.
+- `.99/1/MD/1.01` strain을 포함해 다시 보정한 결과:
+  strain_stable_quartic62profiles396.01s, loss1251.068874,heldoutRMS78.29824;
+  strain_stable_cross112profiles720.95s,loss1128.234352,RMS71.20608;
+  strain_cross_bloch95profiles503.31s,loss1957.053393,interfaceRMS78.90034,
+  BlochRMS8.70063. 세 후보 모두 독립6stretches×254q×radius12/16 통과.
+  Reference continuous searches도 양성. **계면 오차로 모두 미채택**.
+  exact-tangent conditions311.58/920.60/207.26, 전체zone증명/CI 아님.
+- 실제 same-unit heldout direct(.39L0)의 Haa budget:source36.3168 vs
+  candidates403.575/369.201/424.413eV/L0². Pair/scalar/angular 합의 큰오차로,
+  단위변환/strain plot문제가 아님. `heldout_curvature_term_budget.csv`.
+- 실제 source1024MD frame의 short-lag + zero-frequency integral을 모두 검사.
+  후자3.15ps eigen=-.01078,-.00676,-.00419ps vs floor.03825ps: **unresolved**,
+  음의물리마찰/양수window선택으로 M 만들지 않음. Offline projected NPZ로
+  실제 재실행했으며 `decision.json` 문자열까지 동일했다.
+- 고정재료의 실제 MD box covariance: v14합산normal이잘맞아도 individualmode
+  -25%~+37%오차.3후보MD normalvariance -8.89/+7.94/+30.94% 등 공개.
+  Fixed density gauge/L0/coeff 유지, positive Hessian만 covariance역산.
+- Source thermo log도 실제 확인:projection내6coarse samples 평균T299.108K,
+  pressure+8.464MPa;전체500ps log101samples T299.930K,+9.832MPa.
+  NVT는zero-pressure아님. 완전log가500ps좌표분석을 뜻하지 않음.
+- 외부wire692raw traces/29specimens,643selected apparentactivation rows/30labels,
+  물리line-drag6행,Lu2000 PN core/Peierls8행/units/DOI/SHA 보존.
+  686/692/23excluded,114/112um불일치와raw/processedoffset을 숨기지 않음.
+- Actual mixed-load saddle84cases, 추가cubic tensor **297staticstates70.86s**:
+  x/y/z normal,xy/xz/yz shear,localtwo shear 및mixedtensor를 실제로 실행.
+  LocalH positive,maximumstaticreturnerror3.72e-15L0. PDE/dynamichold 아님.
+- SameLJ/Bessel elasticSchur의 finite pinned-line min/saddle/barrier를 유도.
+  54HYPOTHETICAL source geometry/loadcases, angular/quadrature/FDrefinement.
+  L.2/1/5um,rcore2b의critical59.139/15.079/3.666MPa. 실제yield/rate 미보정.
+- 정확unitledger:1eV/cell=2.255795J/m²,tractionunit7.876979GPa(**yield아님**),
+  1MPa=.0001269522eV/reducedcoordinate. CoherentNp mode는 drift와diffusion을
+  함께 rescale해야한다는 유도 추가. Np=576은 source원자수,A_c가 아니다.
+
+### 지금 실행 중 / 다음 처리
+
+- session **18427**: 최종동일코드에서 `frozen_reoptimization_cross`를 실제
+  2start/24nfev로 새로 최적화. 단순 best-vector replay 아님.22:42경47profiles.
+  `.cache/public_aluminum_v15/frozen_reoptimization_cross.log` 확인.
+- 완료 후 이전 strain_stable_cross와loss/coefficients/predictions 비교,
+  새 `validate_tail_calibration ... --grid-step .08` 독립검증 실행.
+  보고 directory는 새 이름으로 만들고20/1658 count를 actual최종수로 갱신.
+- Python코드가 바뀌면 해당tests/full다시. 현재 data/docs추가만 있으므로위
+  frozenfulltests가 해당코드기준이다. 마지막diffcheck/문서review는 다시 할 것.
+- Beforecommit 관련파일검사. Beforepush freshfetch→topic/main확인→normalpush만.
+  아직완료하지않은 Git결과를 완료라쓰지 말고 실제SHA/remoteHEAD를 보고.
+
+### 절대 바뀌지 않은 adoption 상태
+
+전단/다른방향은 연구 tensorprojection/vectorstatic/reflectingSG에만 연결.
+Production `desktop_ui -> solver_adapter -> build_energy_model -> P(a,s)`는
+scalaraxial이고 독립shear/direction입력은 미연결. DefaultTwoRowLJ 불변.
+과거 matched_v3 연구SG를 최신v15 후보PDE처럼 말하지 않는다.
+**Ma_phys/Ms_phys/t0 unavailable, physicalseconds/Hz disabled**.
+실제강도/유한 core·source state/계면 정확성/공간A_c 미해결. 원자 LJ/Bessel,
+확률/흡수/registry이론과 기존보정파일,productionsettings는 보존했다.
+
+문서: `V15_REPRODUCTION_AND_STATUS.md`(실제실행재현),
+`INTERFACE_CALIBRATION_DEVELOPMENT_V15.md`, `PUBLIC_ALUMINUM_CALIBRATION_EVIDENCE.md`,
+`LOADING_CONNECTIONS_AND_CALIBRATION_V15.md`, `ZERO_FREQUENCY_MOBILITY_AUDIT.md`,
+`FINITE_SOURCE_BARRIER_DERIVATION.md`. 위의미완료/검증실패를 지우지 말 것.
+
+## 추가 진행 백업: UTC 2026-09-09 21:28 — 아직 최종 완료 아님
+
+사용자 요청 약4시간 중19:15경 시작,23:15경까지 작업 목표. **재시작하지 말고
+이 진행을 이어갈 것.** 아래20:38 기록보다 최신. 시작 HEAD/fetched origin
+`d7ef95cf7d8c814053d0caa741b2f2b1e3f4d338`, 브랜치 동일, main/reset/force/agent 없음.
+모든 v15 변경은 아직 uncommitted이며 실제 작업 worktree는 OneDrive 밖이다.
+
+새 완료 사항:
+
+- 기존 후보의 물리 척도를 유지한 채4.065/4.05배 cubic dilation에서 MD 비교.
+  `isotropic_bulk_validation.py`: density gauge/L0/coefficients를 재설정하지 않음.
+  H_A=-R/sqrt(x)+gg/(4x^1.5), H_B=2R, H_C=4(x-1)R+2gg;
+  cross항 harmonic=(x-1)H_D3를 포함. 직접 site-energy/진폭/tail검증 통과.
+  `fixed_material_modes/`: v14합산normal RMS4.00332e-13m vs MD4.00226e-13,
+  shear9.84199e-13 vs1.00902e-12/9.64049e-13. 그러나 normal개별mode오차는
+  -25%~+37%; block편차도커서 시간/완전한재료검증으로 채택 안 함.
+- periodic plane sum=0은 stationarity증거가 아님을 명시하고 plane별 block평균
+  진단 추가. `kinetic_plane_stationarity/`는 실제1024frame재실행 완료.
+  Covariance/kinetic decision불변, M_a/M_s/t0 여전히null.
+- `finite_source_barrier.py`: 같은 Schur/탄성 line모형의 minorminimum/overhanging
+  saddle 및 양의 유한DeltaG, -dDeltaG/dtau=bDeltaArea를 유도. Second variation
+  p*integral[(eta_theta)^2-eta^2]로 index0/1 검증. 원자core검증 아님.
+  `finite_source_refined/`:54hypothetical spans/core/loadcases, 각도32/64,
+  quadrature/stressFD refinements 완료. L.2/1/5um,r_core2b의 critical59.139/
+  15.079/3.666MPa. **실측source길이/항복/확률로 채택금지**. 별도유도문서 작성.
+- Lu2000 PRB62,3099 원문TableII 실제시각확인/PDFSHA보존.
+  `data/aluminum_core_validation.json`:8DFT/EAM입력PN core/Peierls행.
+  1meV/Å³=160.2176634MPa. DFT입력screw256.35/edge3.204MPa는 PN저항,
+  실험yield/normalcellmobility가 아니다. EAM은Ercolessi–Adams, Mishin아님.
+- Exact-stage sensitivity는5bulk등식 전체를소거. `validation_exact_tangent/`.
+  quarticrank8/cond311.58,mixture9/6.06e6,cross9/921.72,
+  rational9/3006.47, jointnonexactC11/3497.86. Inequalitycone/confidence미포함.
+- `joint_bulk_interface`114profiles387.81s, loss311.22124/holdRMS14.82148지만
+  C83.425/70.943/34.248GPa로부적합. `rational_development`96profiles258.22s,
+  loss1146.17112/hold79.79577. 둘다독립검증완료, 채택안함.
+- `completed_report/`는 지금까지11runs의실제fit/heldout/parameters/SVD/figure.
+  `report_interface_development.py`는재최적화아닌보고. 추후완료run추가해서
+  **새report디렉터리**로갱신할것. `scaling_report/`actualmode/barrier그림완료.
+
+추가 실제 QP 수치결함 감사:
+
+- 기존Gram(A A^T) 제약면투영은조건수를제곱하여 거의평행한spectralcut정밀도상실.
+  특정실패probe k=(3.08175732286109,3.73956565371123,6.84896287148422)를
+  재현한 `precision_probe_before/`:32cuts실패,margin-5.93447e-9.
+  directaffineSVD+nullspace로같은probe는1cut,margin-1.59333e-12,KKT1.87e-12.
+  원래sameprimal/KKT/spectralroundoff/tail기준유지. 독립near-parallel test추가.
+- 단, rawSVDface는over-screenedface일수있으므로 primal뿐아니라dualstationarity도
+  검사하여받아들여야함. 이추가guard를현재코드에반영. 첫 `grid_direct_svd`는
+  이guard전의실패기록이며성공으로보면안됨.
+
+현재 돌아가는 실제 세션(로그 먼저 확인; 이미끝났으면 결과수집):
+
+- `77672`: `grid_svd_certified` (guard포함최신QP) profiles53근처/loss1084.90,
+  아직completed아님. 이전막힌grid출발점이더낮은lossbasin으로진행중.
+- `57259`: `rational_direct_svd` (직접SVD이지만guard전import),profiles136근처,
+  best1146.17. 완료후 실제실패/종료조건을보존하고필요시최신guard로재실행.
+- `49805`: app regression, `.cache/public_aluminum_v15/app_release.log`.
+
+실제시험결과:
+
+- targeted63PASS18.51s (최종SVD수정/새coretest이전).
+- core-unit2PASS.65s, SVD/cross target14PASS9.70s.
+- full494PASS520.77s **최종수정이검사실행중생겼으므로최종회귀로간주하지말것**.
+- 최종target/fullsolver/app/smoke/diffcheck/문서/commit/push는계속수행해야함.
+
+다음: 위보정종료후새best의독립validation,summary갱신. Fullmaterial가진짜검증되지
+않으면PDE/UI에추가하지말것. 사용자처음요청한연결경로브리핑은이미전달:
+전단/타축normal은연구tensorprojection/vectorstatic/reflecting연구SG까지만,
+productionUI/PDE는scalaraxial P(a,s),독립전단/방향미연결. PhysicalHz불가.
+
+## 진행 중 추가 인계: v15 실제 자료·보정 감사 (UTC 2026-09-09 20:38)
+
+아래 초기 진행 기록은 **역사 기록**이며 다음이 더 최신이다. 사용자가 약4시간
+지정한 작업은 UTC19:15경 시작, 대략23:15까지를 목표로 계속 중이다.
+현재 모든 변경은 아직 uncommitted. 시작/fresh origin d7ef95cf... 보존.
+실제 scientific worktree/branch 동일, main/reset/force/agent 사용 없음.
+
+### 완료된 실제 결과
+
+- 1024frame 공개300K Al MD 감사 완료. Source와 동일 EAM의 Bloch Hessian을
+  독립 sinusoidal-displacement energy로 검증하고 정확한576atoms/plane,
+  12periodic plane mode normalization을 유도했다. 정적 예측/실제MD RMS:
+  normal4.18743e-13/4.00226e-13m, shear8.90817e-13/1.00902e-12m,
+  transverse8.90817e-13/9.64049e-13m. Scale fitting 없음. Sample/anharmonic
+  차이를 남기며 이로 kinetic t0를 얻었다고 하지 않는다. `plane_normalization/`.
+- MD8192frame 확대는 두 번 네트워크 실패. `zenodo_range_8192`에는128frame
+  checkpoint만 있으며 **완료 아님**.1024frame 결과/원본은 그대로 보존.
+- Wire 최신 결과는 `wire_relaxation_audited/`:692parsed,0parsefailures,
+  23source `Not considered/`. Published686과 같다고 하지 않는다. D114/112um
+  불일치 및 중복 timestamps를 유지. 원자료 코드/notebook 실행 없음.
+- 실제 final-selected643 activation rows/30labels 파싱. Raw29와 다른 이유,
+  source analysis T293K,b.286nm, signed inverse-error fields를 그대로 기록.
+  대표 Al20r10의 apparent stress derivative1021.36–2988.90b³를 source slope에서
+  재계산(relative4e-10). `apparent_activation/`. 이것은 A_c/임의체적이 아니다.
+- Source+v14+rejectedv15 총63 actual mixed-load saddle/minimum 검사를 수행.
+  Tn=-25/0/+25MPa, shear0–10MPa. Envelope derivative
+  -dDeltaG/dT=A_atomic_cell L0(q_saddle-q_min)를 독립FD로 검증.
+  Source uniform-cell shear derivative.321647b³, barrier.0762491eV.
+  실험 apparent derivative보다 수천 배 작다. 임의cell곱셈 금지; finite collective
+  event/core/source state가 없는 것이 실제강도 연결의 핵심 한계.
+- 실제 dislocation line drag 원문을 검토하고6source records를 저장.
+  Olmsted2005MD/Ercolessi–Adams, Gorman1969experiment를 source별로 분리.
+  B_line[Pa s]는 a/s mobility[m²/(Js)]가 아님. Conditional core-friction
+  M_s=integral(s')²dx/(B_line A_atomic_cell) 유도/시험, 가정미검증으로 명시.
+  M_a,t0 생성/생산JSON 변경 없음.
+
+### v15 보정 실행 결과
+
+- Baseline continuation154profiles 완료, loss1251.068873, holdoutRMS78.30.
+- Declared100shape grid85verified/15numericfailed. Sign constraint 해제도 best
+  loss1251.068874: 그 shape에서 residual 원인이 sign 제한은 아님.
+- Positive full-density mixture1weight,274profiles/761s, w→.0001234,
+  loss1251.096986, independent validation 완료. 개선없어 미채택.
+- Source staticBloch 7fit+7heldout 추가보정41profiles,
+  loss2300.28957(다른loss), independent validation36.58s. Interface 미채택.
+- One analytic site term E_xI(x-1)||Q3||²를 별도 최소연구 확장으로 유도/시험.
+  [[C,E/2],[E/2,K3]]PSD를 실제profile에 제약. Pair/원자당count불변.
+  초기2runs는 active-face numerical failure, 잘못된 성공으로 부르지 않는다.
+- 실제 QP 결함 수정: zero-dual near-active constraint를 등식으로 강제하던
+  physical-face polish가 verified KKT~1e-14해를 KKT.003/33.9로 훼손.
+  positive-dual face/열스케일링/factoredinverse 사용, 반환해는 기존 SAME
+  primal/KKT tolerance를 통과해야 한다. 물리제약/오차허용을 완화하지 않음.
+  독립 단순QP 재현 포함 관련8tests PASS4.01s.
+- `cross_verified_polish`:112profiles actual completed, loss1128.23432566,
+  heldoutRMS71.20138. Exact C114/62/32 유지, source-shape는 여전히 부적합.
+  독립155q+3continuous checks positive above tail; validation49.26s 완료.
+  decays(2.61928664,4.70406697,9.98631862), E_xI=-983.74934, PSD경계 근처.
+  **full Al/actual yield/kinetics 채택 아님**.
+- FixedQP `grid_verified_polish`도 실행종료.2starts는 이번에는 spectral cut
+  residual(-5.9e-9/-1.6e-8)에서 거부됨. best2978.85는 미수렴 연구checkpoint.
+  초기 numericalfail들을 최적점/physicalfailure로 재해석하지 않는다.
+
+### 코드/테스트/다음
+
+새핵심문서 `PUBLIC_ALUMINUM_CALIBRATION_EVIDENCE.md`,
+`INTERFACE_CALIBRATION_DEVELOPMENT_V15.md`. 아직 finaltable/최종상태 추가 필요.
+현재초기full449PASS532.65s/app31PASS63.77s 이후 많은 새코드가 생겼다.
+최신full regression,smoke,diffcheck/최종commit/push는 **아직 실행해야 함**.
+새수학targeted들은 실제 통과(공개reader,mixture,line-drag,activation,
+Bloch/covariance,crossderivatives,QP 등); 최종수는 finalrun으로 갱신할 것.
+다음은 actual exact-bulk tangent SVD, source/fit/heldout summary, 검증/문서와
+물리적 한계 정리. Production PDE/UI/time/calibration defaults는 바꾸지 않는다.
+
+## 초기 진행 기록: public_aluminum_v15 / interface_development_v15 (2026-09-10)
+
+**이 구간은 아직 미완료 인계다.** 사용자 최신 우선순위는 모든 보정/단위/척도의
+근거를 외부 원자료까지 찾아 검증하는 것. 약4시간 작업 요청(UTC2026-09-09
+19:15 부근 시작)을 받았다. UI 재설계가 우선이 아니다. 전단/방향 상태는
+이미 브리핑했다: tensor traction projection 및 W_int(a,s1,s2) STATIC은 있으나
+production UI/PDE는 scalar axial, P(a,s), 독립전단/방향 입력 미연결이다.
+
+시작 local/fresh-origin=`d7ef95cf7d8c814053d0caa741b2f2b1e3f4d338`, clean.
+실제 작업은 OneDrive 밖 기존 scientific worktree. Main/reset/force/agent 없음.
+현재 아래 작업은 아직 커밋/푸시하지 않았다. 기존 bulk v14/production은 보존.
+
+- 실제 공개 crystalline Al MD: Fransson/Erhart Zenodo10014454,300K,Al99,
+  6912atoms,4.065Angstrom,12 cubic repeats,NVT damping1ps,5fs integration,
+  25fs saved sampling.1024frames(25.575ps)를 bounded HTTP range로 실제 읽고
+  adjacent(111) periodic-plane mean3-vector를 추출했다. 전체3.5GB 파일은
+  저장하지 않았고 full gzip checksum도 검증했다고 주장하지 않는다.
+  source main MD5는 확인했고 potential SHA60c8a085...는 기존 static source와 같다.
+  full whitened covariance min eigen=-.594207 at.150ps, empirical block+
+  antisym floor.172295. First-half/8blocks/stride2에서도 negative mode를 확인.
+  직접 overdamped a/s clock으로 채택 불가. 실제MD의fs/ps는 우리 solver t0 아님.
+  `results/public_aluminum_validation_v15/crystalline_kinetics/`에 실제 값.
+
+- 실제 Al wire 원자료: Verheyden/Deillon/Mortensen2018,
+  DOI10.1016/j.dib.2018.11.047,PMC6265499. 공개83MB supplementary zip을 받아
+  29specimen692rawrelaxation traces를 읽었다. Macro room-T monotonic tension+
+  60s holds이며 fatigue/cell mobility가 아님. 대표Al_20_r_10(4N,D14.7um,
+  axis[7,-1,-2]) 5.67–18.93MPa, Schmid.4838498257. Downloaded notebooks/code는
+  실행하지 않았고 데이터만 파싱했다. 최종parse는692/0failures; 초기strict
+  `wire_relaxation/`보고는 superseded, `wire_relaxation_verified/`가 최신.
+  **추가 감사 필요:** 일부 원자료는 `Not considered/`하위 source제외기록이다.
+ 692를 published accepted count686과 같은 것으로 부르면 안 된다.
+  5N_100_r_4의 rawforce/stress impliedD112um지만 table/notebook은114um;
+  최대1.006MPa 차이를 숨기거나 임의로 고치지 말 것. No derivatives at duplicate
+  timestamps;60000여 repeatedtimestamps와 unnamedextra2columns는 보존했다.
+
+- v14 inspected heldout9rows는 이제 development로 재분류.30newoffgrid/offpath
+  validation points를 loss에서 제외. Same quartic family actual joint v15fit
+  71profiles loss1251.06887, heldoutRMS78.30, interface shape FAILED.
+  Two starts numerical rejected;1xtolstop optimality.4778. Bulk114/62/32 유지.
+  Ownfault/saddle.218260/.218464J/m2로 reversebarrier도 부적합. 범위 전체의
+  불가능성 증명으로 과장하지 않는다. Independent validation47.82s완료.
+- 이를 단순 최적화 초기점 문제와 구별하려고 v14best/v15best+fixed2starts에서
+  max_nfev100 continuation을 실행 중. `continuation_starts.json`과
+  `continuation_quartic/`, ignoredcache continuation_fit.log 참조.
+  에너지 추가항/생산모델 변경 없이 기존family에 대한 추가 실제보정이다.
+
+현재 실제 테스트: targeted42PASS24.26s; app31PASS63.77s(skip0);
+full solver449PASS532.65s. 이 이후 code edits는 다시 검증해야 한다.
+Smoke/diff/문서완료/최종Git은 아직. 원자료는 ignored `.cache/public_aluminum_v15/`;
+대형rawzip/gzip을 커밋하지 말 것. CURRENT에 적힌 완료와 실행 중을 구분한다.
+
+다음: continuation확인 → constrained/unconstrained residual 및 descriptor
+표현력 진단 → 정량 실패가 확인되면 최소 analytic exponential-density extension만
+별도 연구 가설로 검토. LJ/Bessel/원자당환경합 우선순위 불변. 새로운 density
+형상은 gauge/미분/finite-qtail/heldout를 통과해야 하며 자동채택 금지.
+MD/실험 source provenance, 제외기록/지름불일치, 실제 보정 실패를 문서화.
+물리 M_a/M_s/t0, 실제항복완료, A_c는 여전히 얻었다고 주장할 근거 없음.
+
 ## 최신 작업: tail_calibration_v14 — 실제 벌크 보정 완료, 계면 형상은 미채택
 
 최신 사용자 요청: “몇번째 미보정이야 보정좀 해라”. 진단만 반복하지 않고

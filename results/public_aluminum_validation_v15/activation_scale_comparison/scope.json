@@ -1,0 +1,16 @@
+{
+  "completed": true,
+  "elapsed_seconds": 43.31808130000718,
+  "actual_static_cases": 63,
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "static_temperature_K": 0.0,
+  "comparison_experimental_analysis_temperature_K": 293.0,
+  "geometry": "uniform infinite half-crystal displacement; energy/atomic interface cell",
+  "shear": "local resolved direct_110 shear1; shear2=0; three-state stationary solve",
+  "source_and_model_saddle": "continued local index-one saddle, not global minimum-path proof",
+  "finite_source_or_loop_activation_solved": false,
+  "experimental_activation_fitted": false,
+  "apparent_activation_equal_to_specimen_correlation_area": false,
+  "production_pde_changed": false,
+  "physical_seconds_available": false
+}

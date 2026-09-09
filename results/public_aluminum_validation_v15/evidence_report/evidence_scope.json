@@ -1,0 +1,29 @@
+{
+  "completed": true,
+  "MD_source_assets": [
+    {
+      "file": "source_Al99.eam.alloy",
+      "sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "published_md5_verified": true
+    },
+    {
+      "file": "source_log.lammps",
+      "sha256": "e21801207f5a2097620567fea5c8129b2c6f67df4d37853779bbfa1a163a871e",
+      "published_md5_verified": true
+    }
+  ],
+  "projected_coordinate_sha256": "2037b0104c33573abc27532517610ff84f308e6ba55ded08a0b0b2bf834a7eb6",
+  "trajectory_full_checksum_verified": false,
+  "kinetic_source_temperature_K": 300.0,
+  "static_fit_reference_temperature_K": 0.0,
+  "raw_experimental_traces": 692,
+  "source_marked_not_considered": 23,
+  "duplicate_timestamps": 60166,
+  "files_with_unnamed_columns": 276,
+  "source_notebooks_executed": false,
+  "source_discrepancies_repaired": false,
+  "physics_scope": "actual source measurements/projections, not current LJ/Bessel model predictions",
+  "accepted_a_s_mobility": false,
+  "production_seconds_available": false,
+  "actual_yield_reproduced": false
+}

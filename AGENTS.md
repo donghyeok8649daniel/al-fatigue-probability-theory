@@ -496,6 +496,20 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- LOADING_CONNECTIONS_AND_CALIBRATION_V15.md / interface_development_v15 /
+  public_aluminum_validation_v15: 실제 production은 여전히 scalar축응력 P(a,s).
+  연구 tensorprojection/vectorstatic/reflectingSG와 혼동하지 않는다. 실제Al99
+  MD의576atoms/plane,12periodic class 정규화를 확인하되, 개별mode오차와
+  thermostat/통계오차를 무시하지 않는다. 공개 line drag, PN Peierls, 실험
+  apparentactivation derivative는 서로 다른 척도이며 a/s mobility/A_c가 아니다.
+  ZERO_FREQUENCY_MOBILITY_AUDIT.md의 Gamma0=kBT C0^-1 (int Cdt) C0^-1는
+  동일coordinate/PMF와 수렴한 적분을 요구한다. 음의 짧은시간 상관만으로
+  모든 저주파 reduction을 부정하지도, 양수인 적분창만 골라 M을 만들지도 않는다.
+  QP near-active/Gram수치결함은 원래 certificate를 유지하여 수정했다.
+  낮은fitloss라도 독립 finite-q/작은strain의 불안정·계면오차가 있으면 탈락이다.
+  FINITE_SOURCE_BARRIER_DERIVATION.md의 유한장벽과 Morse index는 지정된
+  anisotropic outerline 모델의 결과이지 검증된 atomisticcore/피로확률이 아니다.
+
 - TAIL_CONTROLLED_AL_CALIBRATION.md / tail_calibration_v14: 실제 FCC Voronoi
   tail bound를 coefficient-linear finite-q PSD 제약에 포함한 정적 재보정이다.
   기존 두 radial quadrupole을 결합한 Eg 채널은 signed cubic response로

@@ -1,0 +1,99 @@
+{
+  "completed": true,
+  "studies": [
+    {
+      "study": "first_half",
+      "frames": 512,
+      "blocks": 4,
+      "stride": 1,
+      "covariance_rms_coordinate_m": [
+        4.288762524970984e-13,
+        1.025378182126838e-12,
+        9.167283887576352e-13
+      ],
+      "first_resolved_negative_lag_seconds": 5e-14,
+      "most_negative": -0.6394096765617242,
+      "lag_at_minimum_seconds": 1.25e-13,
+      "error_at_minimum": 0.3115888237286107,
+      "interpretation": "negative eigenvalue contradicts reversible harmonic overdamped Markov reduction"
+    },
+    {
+      "study": "full",
+      "frames": 1024,
+      "blocks": 4,
+      "stride": 1,
+      "covariance_rms_coordinate_m": [
+        4.002259412507674e-13,
+        1.0090164355735016e-12,
+        9.640493658747906e-13
+      ],
+      "first_resolved_negative_lag_seconds": 5e-14,
+      "most_negative": -0.5942070150895034,
+      "lag_at_minimum_seconds": 1.5000000000000002e-13,
+      "error_at_minimum": 0.17229527839755923,
+      "interpretation": "negative eigenvalue contradicts reversible harmonic overdamped Markov reduction"
+    },
+    {
+      "study": "eight_blocks",
+      "frames": 1024,
+      "blocks": 8,
+      "stride": 1,
+      "covariance_rms_coordinate_m": [
+        4.002259412507674e-13,
+        1.0090164355735016e-12,
+        9.640493658747906e-13
+      ],
+      "first_resolved_negative_lag_seconds": 7.500000000000001e-14,
+      "most_negative": -0.5942070150895034,
+      "lag_at_minimum_seconds": 1.5000000000000002e-13,
+      "error_at_minimum": 0.33437056047890606,
+      "interpretation": "negative eigenvalue contradicts reversible harmonic overdamped Markov reduction"
+    },
+    {
+      "study": "stride2",
+      "frames": 512,
+      "blocks": 4,
+      "stride": 2,
+      "covariance_rms_coordinate_m": [
+        4.0175320631414776e-13,
+        1.0090067570898487e-12,
+        9.639420704041492e-13
+      ],
+      "first_resolved_negative_lag_seconds": 5e-14,
+      "most_negative": -0.5943946249636495,
+      "lag_at_minimum_seconds": 1.5000000000000002e-13,
+      "error_at_minimum": 0.17225241191142432,
+      "interpretation": "negative eigenvalue contradicts reversible harmonic overdamped Markov reduction"
+    }
+  ],
+  "temperature_K": 300,
+  "source_doi": "10.5281/zenodo.10014454",
+  "inverse_covariance_curvature_J_per_m2": [
+    [
+      25859.4928628097,
+      64.2744975176914,
+      42.8668506650773
+    ],
+    [
+      64.2744975176914,
+      4101.6762635344085,
+      -386.48193089644985
+    ],
+    [
+      42.86685066507731,
+      -386.4819308964498,
+      4493.132919999191
+    ]
+  ],
+  "covariance_curvature_scope": "local Gaussian PMF diagnostic of these periodic plane-mean coordinates, not rigid-interface W Hessian",
+  "coordinate_equivalent_to_production": false,
+  "reversible_harmonic_overdamped_consistent": false,
+  "M_a_phys": null,
+  "M_s_phys": null,
+  "t0_seconds": null,
+  "physical_seconds_enabled": false,
+  "physical_Hz_enabled": false,
+  "source_time_is_physical": true,
+  "source_time_is_solver_calibration": false,
+  "next_requirement": "matched collective coordinates/PMF and a resolved Markov lag window; defect kinetics requires defect-containing data"
+}

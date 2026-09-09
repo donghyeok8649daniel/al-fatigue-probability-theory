@@ -14,6 +14,32 @@ confused with a fully calibrated spatial aluminum fatigue solver.
 
 ## Gates
 
+The v15 actual public-source study adds matched300K plane covariance, raw
+MPa wire relaxation/activation observations, and provenance-bound line-drag
+and core-resistance references. They do NOT identify production a/s mobility.
+The sampled MD short-lag covariance contradicts a direct reversible overdamped
+clock fit; exact plane-count normalization is separately verified.
+
+New deterministic full-interface fits, mixed-density/cross-invariant/rational
+ablations and elasticity tradeoffs were executed. Numerical QP face defects
+were reproduced and repaired with unchanged certificates. The tested material
+surfaces still fail independent interface observations. A finite pinned-line
+outer barrier now has a derived stress sensitivity and a verified local-line
+Morse index, but unknown source/core geometry and missing finite-part energy
+prevent its use as an atomistic event or yield calibration. Read
+`INTERFACE_CALIBRATION_DEVELOPMENT_V15.md`,
+`PUBLIC_ALUMINUM_CALIBRATION_EVIDENCE.md` and
+`FINITE_SOURCE_BARRIER_DERIVATION.md`. No PDE/UI gate is opened by these tests.
+
+Subsequent v15 independent q and fixed-material strain tests rejected lower
+training-loss candidates: a stable exact-reference Hessian was insufficient
+at the actual MD box dilation. Counterexamples are fed back into explicitly
+recorded stability constraints, not hidden by a fit score. Correlation-integral
+tests also examined a lower-frequency alternative to the rejected direct
+short-lag clock, but the measured integrals remain unresolved. See
+`ZERO_FREQUENCY_MOBILITY_AUDIT.md` and
+`LOADING_CONNECTIONS_AND_CALIBRATION_V15.md` for the exact scope and paths.
+
 The tail_calibration_v14 study now actually calibrates cohesion and all three
 independent cubic elastic constants, with the previously observed finite-q
 instability absent above analytic tail bounds on an independent155-point grid

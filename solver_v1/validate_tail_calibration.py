@@ -6,6 +6,7 @@ import time
 
 import numpy as np
 from scipy.optimize import minimize
+from scipy.special import expit, logit
 
 from .range_resolved_material import build_range_surface,RangeObservationCache
 from .symmetry_resolved_material import (SymmetryResolvedInterface,SymmetryObservationCache,
@@ -25,7 +26,15 @@ def load_material(directory):
     if not data['completed']: raise ValueError('completed actual calibration required')
     definition=json.loads((directory/'definition.json').read_bytes())
     best=data['best'];decays=best['decays'];c=np.asarray(best['coefficients'])
-    if definition.get('quartic_angular_extension'):
+    if definition.get('density_angular_cross_extension'):
+        from .density_angular_cross_material import CrossDensityAngularInterface,CrossDensityAngularCache,CrossDensityAngularBulk
+        model=CrossDensityAngularInterface(decays,c)
+        cache_type,bulk_type=CrossDensityAngularCache,CrossDensityAngularBulk
+    elif definition.get('density_mixture_extension'):
+        from .mixed_density_material import MixedDensityQuarticInterface, MixedDensityObservationCache, MixedDensityTailBulkBasis
+        model=MixedDensityQuarticInterface(decays,c)
+        cache_type,bulk_type=MixedDensityObservationCache,MixedDensityTailBulkBasis
+    elif definition.get('quartic_angular_extension'):
         model=QuarticSymmetryInterface(decays[:3],c,saturation=decays[3] if len(decays)==4 else 0.)
         cache_type,bulk_type=QuarticSymmetryObservationCache,QuarticSymmetryTailBulkBasis
     elif definition.get('cubic_density_extension'):
@@ -46,12 +55,21 @@ def main():
     if out.exists(): raise FileExistsError('preserve existing validation')
     began=time.perf_counter();data,definition,model,cache_type,bulk_type=load_material(directory)
     source,observations,states=source_and_targets();best=data['best'];c=np.asarray(best['coefficients']);decays=best['decays']
+    if definition.get('interface_development'):
+        from .interface_development_targets import development_observations
+        observations,_=development_observations(source,observations,states)
     if source.reference.sha256!=definition['source_sha256']: raise ValueError('source hash mismatch')
     cache=cache_type(observations);raw=cache.matrix(decays)
     matrix,obs=cubic_metric_problem(raw[:,:8],observations)
     if raw.shape[1]>8:
         extra=raw[:,8:].copy();extra[2:5]=np.linalg.solve(cubic_to_mode_matrix(),extra[2:5])
         matrix=np.column_stack([matrix,extra])
+    bloch_targets=()
+    if definition.get('static_bloch_targets'):
+        from .static_bloch_targets import source_bloch_targets,append_bloch_problem
+        bloch_targets=source_bloch_targets(source.reference)
+        basis=bulk_type(decays if definition.get('density_mixture_extension') else decays[:3],radius=definition['radius_over_L0'])
+        matrix,obs,_=append_bloch_problem(matrix,obs,basis,bloch_targets)
     predictions=matrix@c
     if np.max(abs(predictions-np.asarray(best['predictions'])))>2e-8:
         raise ArithmeticError('saved fit fails exact analytic replay')
@@ -78,7 +96,7 @@ def main():
     print('stationary and curve checks complete',flush=True)
     points=declared_wavepoints(args.grid_step);waves=[];previous=None;worst=None
     for radius in (12.,16.):
-        basis=bulk_type(decays[:3],radius=radius);current=[]
+        basis=bulk_type(decays if definition.get('density_mixture_extension') else decays[:3],radius=radius);current=[]
         for i,q in enumerate(points):
             columns,tails=basis.evaluate(q);H=np.einsum('c,cij->ij',c,columns)
             values=np.linalg.eigvalsh(H);bound=float(tails@abs(c));current.append(H)
@@ -91,7 +109,7 @@ def main():
     write_csv(out/'finite_q_validation.csv',waves)
     # Continuous local minimizations over the irreducible wedge. Normalizing
     # by |q|^2 distinguishes acoustic zero from a true soft finite-q mode.
-    basis=bulk_type(decays[:3],radius=16.)
+    basis=bulk_type(decays if definition.get('density_mixture_extension') else decays[:3],radius=16.)
     def objective(q):
         cols,_=basis.evaluate(q);H=np.einsum('c,cij->ij',c,cols)
         return np.linalg.eigvalsh(H)[0]/(q@q)
@@ -116,20 +134,30 @@ def main():
     tangent=np.vstack([-np.linalg.solve(equal[:,:2],equal[:,2:]),np.eye(len(c)-2)])
     scale=np.array([o.scale for o in obs]);normalization=np.maximum(1.,abs(c[2:]))
     jac=(matrix[fit_selected]@tangent)*normalization/scale[fit_selected,None]
-    radial_refinements=[]
+    radial_refinements=[];matrix_derivative_refinements=[]
     for step in (2e-4,1e-4):
-        radial=[]
+        radial=[];matrix_derivatives=[]
         for axis in range(len(decays)):
-            ps=[]
+            ps=[];matrices=[]
             for sign in (-1,1):
-                d=np.array(decays);d[axis]*=np.exp(sign*step);r=cache.matrix(d)
+                d=np.array(decays)
+                if definition.get('density_mixture_extension') and axis==3:
+                    d[axis]=expit(logit(d[axis])+sign*step)
+                else:d[axis]*=np.exp(sign*step)
+                r=cache.matrix(d)
                 m,_=cubic_metric_problem(r[:,:8],observations)
                 if r.shape[1]>8:
                     extra=r[:,8:].copy();extra[2:5]=np.linalg.solve(cubic_to_mode_matrix(),extra[2:5]);m=np.column_stack([m,extra])
+                if bloch_targets:
+                    basis=bulk_type(d if definition.get('density_mixture_extension') else d[:3],radius=definition['radius_over_L0'])
+                    m,_,_=append_bloch_problem(m,observations,basis,bloch_targets)
+                matrices.append(m)
                 z=c.copy();z[:2]=np.linalg.solve(m[:2,:2],np.array([o.target for o in obs[:2]])-m[:2,2:]@c[2:])
                 ps.append(m@z)
             radial.append((ps[1]-ps[0])[fit_selected]/(2*step*scale[fit_selected]))
+            matrix_derivatives.append((matrices[1]-matrices[0])/(2*step))
         radial_refinements.append(np.column_stack(radial))
+        matrix_derivative_refinements.append(np.array(matrix_derivatives))
     full=np.column_stack([jac,radial_refinements[-1]])
     _,singular,vt=np.linalg.svd(full,full_matrices=False)
     norms=np.linalg.norm(full,axis=0)
@@ -139,7 +167,22 @@ def main():
         column_cosines=full.T@full/(norms[:,None]*norms[None,:]),
         coefficient_normalization=normalization,condition_number=float(singular[0]/singular[-1]),
         rank=int(np.linalg.matrix_rank(full)),statistical_confidence_claimed=False,
-        coordinate_system='force/cohesion eliminated; normalized energy coefficients + log microscopic ranges/shape'))
+        coordinate_system=('force/cohesion eliminated; normalized energy coefficients + log microscopic ranges + logit density mixture'
+            if definition.get('density_mixture_extension') else
+            'force/cohesion eliminated; normalized energy coefficients + log microscopic ranges/shape')))
+    # The historical diagnostic above allows the three elastic constants to
+    # vary. It is NOT the tangent of an exact-bulk stage. Record the actual
+    # staged equality manifold separately rather than interpreting numerical
+    # full rank in a larger parameter space as identifiability of this fit.
+    from .profiled_identifiability import equality_tangent_sensitivity
+    exact_rows=list(range(5)) if definition.get('exact_bulk_stage') else [i for i,o in enumerate(obs) if o.role=='exact']
+    tangent_checks=[equality_tangent_sensitivity(matrix,obs,c,d,exact_rows=exact_rows)
+                    for d in matrix_derivative_refinements]
+    exact_tangent=tangent_checks[-1]
+    exact_tangent['shape_derivative_steps']=[2e-4,1e-4]
+    exact_tangent['jacobian_step_refinement_change']=float(np.max(abs(
+        tangent_checks[1]['jacobian']-tangent_checks[0]['jacobian'])))
+    save_json(out/'exact_stage_identifiability.json',exact_tangent)
     sampled_stable=bool(worst['robust_margin']>0)
     continuous_stable=all(r['success'] and r['minimum_H']>r['tail_bound'] for r in minima)
     save_json(out/'decision.json',dict(completed=True,source_sha256=source.reference.sha256,

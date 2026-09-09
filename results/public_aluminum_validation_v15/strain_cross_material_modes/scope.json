@@ -1,0 +1,90 @@
+{
+  "completed": true,
+  "source_doi": "10.5281/zenodo.10014454",
+  "source_potential_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "projection_sha256": "2037b0104c33573abc27532517610ff84f308e6ba55ded08a0b0b2bf834a7eb6",
+  "reference_length_scale_m": 2.863782463805517e-10,
+  "actual_box_stretch": 1.0037037037037038,
+  "temperature_K": 300,
+  "atoms_per_plane": 576,
+  "plane_classes": 12,
+  "model_records": [
+    {
+      "model": "strain_stable_cross",
+      "radius": 12.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          1.728983678394729e-25,
+          4.114523777767098e-40,
+          -5.606527258995282e-40
+        ],
+        [
+          4.114523777767098e-40,
+          7.892344765748825e-25,
+          -6.257815011928915e-40
+        ],
+        [
+          -5.606527258995282e-40,
+          -6.257815011928915e-40,
+          7.892344765748874e-25
+        ]
+      ],
+      "normalized_density": 0.9866122346943542,
+      "minimum_sampled_robust_margin": 0.0039348157020736825,
+      "radius_matrix_change": null,
+      "fixed_reference_density": 20.768853667103844,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    },
+    {
+      "model": "strain_stable_cross",
+      "radius": 16.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          1.7290698152203867e-25,
+          -4.3560266288055364e-40,
+          -6.691741294741162e-40
+        ],
+        [
+          -4.3560266288055364e-40,
+          7.893253319473967e-25,
+          -6.763792609524761e-40
+        ],
+        [
+          -6.691741294741162e-40,
+          -6.763792609524761e-40,
+          7.893253319473899e-25
+        ]
+      ],
+      "normalized_density": 0.9866122346943542,
+      "minimum_sampled_robust_margin": 0.00439063427001291,
+      "radius_matrix_change": 0.0003921600518950185,
+      "fixed_reference_density": 20.768853667103844,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    }
+  ],
+  "parameter_refit": false,
+  "model_bindings": [
+    {
+      "model": "strain_stable_cross",
+      "calibration_sha256": "3cb511eb71805f10531548304f3fbbf3fd972ca4c207635646cf44bcc907a1b8"
+    }
+  ],
+  "additional_stretches": [
+    0.995,
+    1.005
+  ],
+  "wavepoint_grid_step": 0.08,
+  "anharmonic_thermal_renormalization": false,
+  "physical_time_calibrated": false,
+  "production_model_changed": false,
+  "whole_zone_stability_proof": false,
+  "elapsed_seconds": 12.031149599992204
+}

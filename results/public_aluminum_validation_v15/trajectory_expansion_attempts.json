@@ -1,0 +1,13 @@
+{
+  "completed_source_analysis_frames": 1024,
+  "completed_projection_sha256": "2037b0104c33573abc27532517610ff84f308e6ba55ded08a0b0b2bf834a7eb6",
+  "source_doi": "10.5281/zenodo.10014454",
+  "expansions": [
+    {"requested_frames":8192,"method":"ordinary stream","completed":false,"reason":"HTTP read timed out","checkpoint_is_completed_analysis":false},
+    {"requested_frames":8192,"method":"bounded retryable byte ranges","completed":false,"failed_byte_start":25165824,"reason":"read timed out after retries","checkpoint_frames":128,"checkpoint_is_completed_analysis":false},
+    {"requested_frames":2048,"method":"bounded retryable byte ranges, cached checksum-verified main.in","completed":false,"failed_byte_start":0,"reason":"read timed out after retries","checkpoint_is_completed_analysis":false}
+  ],
+  "old_complete_data_preserved":true,
+  "upstream_whole_trajectory_checksum_verified":false,
+  "physical_PDE_clock_certified":false
+}

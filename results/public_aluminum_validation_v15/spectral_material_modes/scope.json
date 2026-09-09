@@ -1,0 +1,43 @@
+{
+  "completed": true,
+  "source_doi": "10.5281/zenodo.10014454",
+  "source_potential_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "projection_sha256": "2037b0104c33573abc27532517610ff84f308e6ba55ded08a0b0b2bf834a7eb6",
+  "reference_length_scale_m": 2.863782463805517e-10,
+  "actual_box_stretch": 1.0037037037037038,
+  "temperature_K": 300,
+  "atoms_per_plane": 576,
+  "plane_classes": 12,
+  "model_records": [
+    {
+      "model": "spectral_refined_fit",
+      "radius": 12.0,
+      "stable_plane_modes": false,
+      "covariance_not_computed": "unstable or unresolved mode"
+    },
+    {
+      "model": "spectral_refined_fit",
+      "radius": 16.0,
+      "stable_plane_modes": false,
+      "covariance_not_computed": "unstable or unresolved mode"
+    },
+    {
+      "model": "spectral_cross_fit",
+      "radius": 12.0,
+      "stable_plane_modes": false,
+      "covariance_not_computed": "unstable or unresolved mode"
+    },
+    {
+      "model": "spectral_cross_fit",
+      "radius": 16.0,
+      "stable_plane_modes": false,
+      "covariance_not_computed": "unstable or unresolved mode"
+    }
+  ],
+  "parameter_refit": false,
+  "anharmonic_thermal_renormalization": false,
+  "physical_time_calibrated": false,
+  "production_model_changed": false,
+  "whole_zone_stability_proof": false,
+  "elapsed_seconds": 4.630870099994354
+}

@@ -1,0 +1,111 @@
+{
+  "completed": true,
+  "bindings": [
+    {
+      "run": "central_shape_refinement",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "4c59510b9f984b1249a0d4b43a6de5529bdd9df2d4a3c2437f803177f0955505"
+    },
+    {
+      "run": "continuation_quartic",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "5aac6c03bf140a2fe7615278842833f5aae2e8c76ae0e633fe1bcb598cbd5641"
+    },
+    {
+      "run": "cross_factored_inverse",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "53a5ce19fb2a6d6f1969dd6ac3d4af82b140908be116e9eb622c90c7acfb0344"
+    },
+    {
+      "run": "cross_verified_polish",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "d20a1bbb50fda882bdac6b26df430a8afc7807111798b67c303bc40240f07f66"
+    },
+    {
+      "run": "density_angular_cross",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "09bbd55730be7257115d67f9395266a5ccababcceb406f42e754da6e3ae73609"
+    },
+    {
+      "run": "grid_continuation",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "de1cbae99d39419fba074b91dbbe3674f103d206a005aa80c1678bf12eeac6fd"
+    },
+    {
+      "run": "grid_direct_svd",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "a4c33f9b34fde3655cb9efda6002346ea5c6884629df5526e44574f6374b7b1d"
+    },
+    {
+      "run": "grid_svd_certified",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "9ae02ca5ce7551f2b291276b169fff9914725e8062518ad84fcebc2afc09246d"
+    },
+    {
+      "run": "grid_verified_polish",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "3c74a31035cb7acc948bc983dbea40c938863fb7bb46c53f52047748be6fc8d7"
+    },
+    {
+      "run": "joint_bulk_interface",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "6ebcf814d5292bcabca27b4b9dedca799877a955a734784d0867d486f5ff495f"
+    },
+    {
+      "run": "joint_quartic",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "664f4221af3cfa382077e92aa3ad6216099563083d47a5c9658a29e073bcb0f0"
+    },
+    {
+      "run": "mixed_density",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "4e32c3ad65aa664b0e3e07c8053cbeb290c6c6b26053c3375e80be102e5d0c85"
+    },
+    {
+      "run": "rational_development",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "81c12b9fc8fb0ba4360f916ab6fc35f47a203db0493e2091fcd96a145a9af818"
+    },
+    {
+      "run": "rational_direct_svd",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "ba901ec0bf7b5c8bab75497a94ab65c020ea9ab9964fc3cb8af673785047fc00"
+    },
+    {
+      "run": "spatial_stiffness_fit",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "153165d2608abfcf6c8dfcb939f221105ef33c1138b92cd7be38266e0f19a085"
+    },
+    {
+      "run": "spectral_cross_fit",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "2b6c6444d97e3657823654504d97c7224e70c3549614abba047c7a5b58523471"
+    },
+    {
+      "run": "spectral_refined_fit",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "b3f516898501fb344dcc5910b7b0d069d8bde2840a4bbd69f5f0a6779f93ca46"
+    },
+    {
+      "run": "strain_cross_bloch",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "ee519d2da13df145675026a86a7246d39ae16e0a0d54b9bf68c458db7b89ff22"
+    },
+    {
+      "run": "strain_stable_cross",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "3cb511eb71805f10531548304f3fbbf3fd972ca4c207635646cf44bcc907a1b8"
+    },
+    {
+      "run": "strain_stable_quartic",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "b42399297109ac2cdc408ed52b6e4f672b24b453afdfce7cb6e008f9af625785"
+    }
+  ],
+  "optimization_rerun_by_report": false,
+  "global_minimum_proved": false,
+  "full_material_accepted": false,
+  "production_model_changed": false,
+  "kinetic_time_calibrated": false,
+  "interpretation": "ftol/xtol termination is not material validation; failed starts and heldout residuals retained"
+}

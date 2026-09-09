@@ -1,0 +1,89 @@
+{
+  "status": "external_static_validation_only_not_fitted",
+  "source_title": "Generalized-stacking-fault energy surface and dislocation properties of aluminum",
+  "authors": [
+    "Gang Lu",
+    "Nicholas Kioussis",
+    "Vasily V. Bulatov",
+    "Efthimios Kaxiras"
+  ],
+  "year": 2000,
+  "doi": "10.1103/PhysRevB.62.3099",
+  "source_url": "https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevB.62.3099/fulltext",
+  "pdf_sha256": "e0b3156919d4d195ee8061889b157e62f7d8f72390947ae9cc6c3390b6bd9b39",
+  "source_location": "published Table II, p.3105, visually checked",
+  "plane_family": "FCC {111}",
+  "burgers_family": "a/2<110>",
+  "method": "semidiscrete variational Peierls-Nabarro with DFT or Ercolessi-Adams EAM GSF input",
+  "condition": "static athermal lattice resistance; not finite-temperature yield",
+  "PN_shear_modulus_GPa": 28.8,
+  "PN_Poisson_ratio": 0.344,
+  "PN_burgers_angstrom": 2.85,
+  "DFT_lattice_angstrom": 3.94,
+  "GSF_atomic_and_volume_relaxations": true,
+  "EAM_potential": "Ercolessi-Adams (not Mishin Al99)",
+  "peierls_units": "meV/angstrom^3",
+  "width_units": "angstrom",
+  "width_convention": "Published zeta_I/zeta_II labels; not silently converted to an arctangent core radius",
+  "rows": [
+    {
+      "GSF_method": "DFT_LDA",
+      "character_degrees": 0,
+      "zeta_I": 2.1,
+      "zeta_II": 2.1,
+      "peierls": 1.6
+    },
+    {
+      "GSF_method": "DFT_LDA",
+      "character_degrees": 30,
+      "zeta_I": 2.5,
+      "zeta_II": 2.4,
+      "peierls": 0.33
+    },
+    {
+      "GSF_method": "DFT_LDA",
+      "character_degrees": 60,
+      "zeta_I": 3.0,
+      "zeta_II": 2.9,
+      "peierls": 0.61
+    },
+    {
+      "GSF_method": "DFT_LDA",
+      "character_degrees": 90,
+      "zeta_I": 3.5,
+      "zeta_II": 3.2,
+      "peierls": 0.02
+    },
+    {
+      "GSF_method": "EAM_Ercolessi_Adams",
+      "character_degrees": 0,
+      "zeta_I": 3.7,
+      "zeta_II": 3.4,
+      "peierls": 0.55
+    },
+    {
+      "GSF_method": "EAM_Ercolessi_Adams",
+      "character_degrees": 30,
+      "zeta_I": 4.3,
+      "zeta_II": 3.8,
+      "peierls": 0.21
+    },
+    {
+      "GSF_method": "EAM_Ercolessi_Adams",
+      "character_degrees": 60,
+      "zeta_I": 5.4,
+      "zeta_II": 4.7,
+      "peierls": 0.28
+    },
+    {
+      "GSF_method": "EAM_Ercolessi_Adams",
+      "character_degrees": 90,
+      "zeta_I": 6.4,
+      "zeta_II": 5.2,
+      "peierls": 0.15
+    }
+  ],
+  "experimental_yield": false,
+  "collective_coordinate_mobility": null,
+  "production_calibration": false
+}

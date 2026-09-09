@@ -1,0 +1,22 @@
+{
+  "completed": true,
+  "elapsed_seconds": 93.68831310000678,
+  "actual_static_cases": 84,
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "additional_model_bindings": [
+    {
+      "model": "spectral_refined_fit_research_only",
+      "calibration_sha256": "b3f516898501fb344dcc5910b7b0d069d8bde2840a4bbd69f5f0a6779f93ca46"
+    }
+  ],
+  "static_temperature_K": 0.0,
+  "comparison_experimental_analysis_temperature_K": 293.0,
+  "geometry": "uniform infinite half-crystal displacement; energy/atomic interface cell",
+  "shear": "local resolved direct_110 shear1; shear2=0; three-state stationary solve",
+  "source_and_model_saddle": "continued local index-one saddle, not global minimum-path proof",
+  "finite_source_or_loop_activation_solved": false,
+  "experimental_activation_fitted": false,
+  "apparent_activation_equal_to_specimen_correlation_area": false,
+  "production_pde_changed": false,
+  "physical_seconds_available": false
+}

@@ -1,0 +1,11 @@
+{
+  "points": [[0.14463521202111632,0.14463521202111632,0.14463521202111632],[0.08333333333333333,0.08333333333333333,0.08333333333333333],[0.16666666666666666,0.16666666666666666,0.16666666666666666]],
+  "provenance": {
+    "static_counterexample": "grid_svd_certified/validation_exact_tangent/continuous_q_search.json",
+    "strain_counterexamples": "results/public_aluminum_validation_v15/spectral_material_modes/strained_static_modes.csv",
+    "source_MD_doi": "10.5281/zenodo.10014454",
+    "actual_box_stretch": 1.0037037037037038,
+    "projection_sha256": "2037b0104c33573abc27532517610ff84f308e6ba55ded08a0b0b2bf834a7eb6",
+    "purpose": "Positive fixed-material stiffness over a declared small-strain neighborhood. No finite-temperature free-energy or kinetic target is fitted."
+  }
+}

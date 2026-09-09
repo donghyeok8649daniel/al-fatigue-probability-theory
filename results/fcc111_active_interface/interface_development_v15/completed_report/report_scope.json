@@ -1,0 +1,66 @@
+{
+  "completed": true,
+  "bindings": [
+    {
+      "run": "continuation_quartic",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "5aac6c03bf140a2fe7615278842833f5aae2e8c76ae0e633fe1bcb598cbd5641"
+    },
+    {
+      "run": "cross_factored_inverse",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "53a5ce19fb2a6d6f1969dd6ac3d4af82b140908be116e9eb622c90c7acfb0344"
+    },
+    {
+      "run": "cross_verified_polish",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "d20a1bbb50fda882bdac6b26df430a8afc7807111798b67c303bc40240f07f66"
+    },
+    {
+      "run": "density_angular_cross",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "09bbd55730be7257115d67f9395266a5ccababcceb406f42e754da6e3ae73609"
+    },
+    {
+      "run": "grid_continuation",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "de1cbae99d39419fba074b91dbbe3674f103d206a005aa80c1678bf12eeac6fd"
+    },
+    {
+      "run": "grid_verified_polish",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "3c74a31035cb7acc948bc983dbea40c938863fb7bb46c53f52047748be6fc8d7"
+    },
+    {
+      "run": "joint_bulk_interface",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "6ebcf814d5292bcabca27b4b9dedca799877a955a734784d0867d486f5ff495f"
+    },
+    {
+      "run": "joint_quartic",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "664f4221af3cfa382077e92aa3ad6216099563083d47a5c9658a29e073bcb0f0"
+    },
+    {
+      "run": "mixed_density",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "4e32c3ad65aa664b0e3e07c8053cbeb290c6c6b26053c3375e80be102e5d0c85"
+    },
+    {
+      "run": "rational_development",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "81c12b9fc8fb0ba4360f916ab6fc35f47a203db0493e2091fcd96a145a9af818"
+    },
+    {
+      "run": "spatial_stiffness_fit",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "153165d2608abfcf6c8dfcb939f221105ef33c1138b92cd7be38266e0f19a085"
+    }
+  ],
+  "optimization_rerun_by_report": false,
+  "global_minimum_proved": false,
+  "full_material_accepted": false,
+  "production_model_changed": false,
+  "kinetic_time_calibrated": false,
+  "interpretation": "ftol/xtol termination is not material validation; failed starts and heldout residuals retained"
+}

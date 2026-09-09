@@ -1,0 +1,29 @@
+{
+  "completed": true,
+  "cases": 54,
+  "cubic_GPa": [
+    114.0,
+    62.0,
+    32.0
+  ],
+  "bulk_condition": "shared rounded 0K target and exact-bulk analytic calibration",
+  "underlying_path": "same infinite-LJ/Bessel bulk elasticity -> half-space Schur kernel -> outer line energy",
+  "burgers_m": 2.863782463805517e-10,
+  "normal": [
+    1,
+    1,
+    1
+  ],
+  "line_at_zero_bow": "direct110 screw",
+  "source_lengths_measured": false,
+  "source_geometry_fitted": false,
+  "core_energy_included": false,
+  "nonlocal_finite_part_included": false,
+  "actual_dislocation_source_population": null,
+  "experimental_continuous_relaxation_matched": false,
+  "finite_source_atomistically_validated": false,
+  "thermally_activated_rate": null,
+  "production_probability": null,
+  "physical_PDE_time": false,
+  "elapsed_seconds": 0.5208681999938563
+}
