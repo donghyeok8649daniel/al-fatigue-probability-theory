@@ -1,5 +1,77 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 실제 항복 연결 v21 — 2026-09-10~11 (계산·전체 회귀 완료; 실제 항복 미보정)
+
+최신 요청은 이상강도를 낮추지 말고 같은 LJ/Bessel에서 결함을 통한 실제
+항복으로 나아가라는 지시 후 "그치 계속해라"이다. Fresh fetch 성공;
+시작 local/origin 모두 `a0b611b1b3b29c6bef86dcb2e4b5b23c79228d04`, clean,
+branch probability-pde-solver-v1, 실제 worktree aft-pde-bessel-38969ad.
+OneDrive는 migration stub이다. Main/production/기존보정/이동도/Ac 불변.
+새 agent 없음. 현재 사용자 우선순위는 **source motion→시편 변형률→항복**;
+아래 v20의 scalar embedding refit만 무작정 다시 시작하지 않는다.
+
+읽을 문서 `solver_v1/SPECIMEN_YIELD_AND_SLIP_BUDGET_V21.md`.
+새 모듈 `specimen_slip_kinematics.py`는 signed swept area의 tensor 관측량이다:
+
+    beta_slip=Σ A_k b_k⊗n_k / V
+    eps_slip=sym(beta_slip)
+    V sigma:deps=Σ(b·sigma·n)dA
+
+실제 물리적 specimen volume/표면 기하학 정규화이며 activation volume이나
+Ac가 아니다. 기존 positive scalar area helper를 바꾸지 않고 negative slip,
+여러 slip system, frame rotation, initial-slip subtraction, reversible/gross
+분리를 추가한다. 운동법칙/empirical plasticity/production PDE가 아니다.
+확률밀도에서 같은 observable의 transport와 opening-selective 항도 유도했다.
+
+실제 runner `run_specimen_yield_bridge.py`는 새 directory에만 실행한다.
+v20 positive old-family의 이전 bulk C11/C12/C44=114/62/32GPa를 hash결합
+재사용; 새 fit 아님. 기존 same-energy Schur line을 edge 방향으로 계산한다.
+Hypothetical L=.2/1/5um, R=L, r_core=2b 그대로; 실측/항복 튜닝값 아님.
+[100]/[110]/[111] crystal projection을 명시했다. 72 stress cases
+(0,2,5,10,15,20,30,50MPa), 297 static cycle states, 36 independent grid checks,
+9 dynamic line hold histories를 실제 실행했다. Source 각도32/64,
+적분1e-9/1e-11 비교 포함. 수치 본체17.18s 완료.
+
+새 정량적 진단: L=1um, [100]의 outer-only first-source 축응력24.03976MPa지만,
+선언한 dilute eta=NL³/V=.01에서 fold 최대 축변형률6.89449e-7이다.
+0.002를 순간 휨으로만 만들려면 eta=29.0087 (약2900.87배 strain demand)이어서
+선언한 희박 독립-source 가정과 양립하지 않는다. 전체9경우 요구 eta=5.8017–217.5649.
+이는 필요 density 진단이지 fit할 density가 아니다. 모든 전위 배치에 관한
+불가능성 증명도 아니다. 임계 분해전단9.81419MPa와 실제 시편 YS를 등치하지 않는다.
+Static 제하에서는 signed 변위0/gross>0. 별도 기존 linear-line 계산을 실제 실행:
+6 cycles와 >24tau hold, finest peak3.87441e-10, final-1.25857e-20,
+ratio3.2484e-11; decay이지 잔류소성이 아니다. Hold 끝시각은64 steps에서
+24.05282tau, 128/256에서24.00373tau이므로 엄밀히 같은 끝시각 수렴표는 아니다.
+V18 조건부 line drag를 재사용했으며 production a/s 초·Hz 보정은 아니다.
+
+새 primary source Pigato et al.2026 doi10.3390/ma19061195 원본 XML을 다운로드했다.
+`yield_reference_data.py`가 Table2의 YS12개를 직접 파싱한다. 실온6N16.4±1.3,
+5N5 74.6±3.7, 5N34.1±1.1MPa는 서로 다른 초기조직이다. 원문은 YS로만 표기하고
+정확한 수치 offset 명시가 없어 plastic_strain_criterion=null이다.
+실측 source 간격/이동전위 밀도 없음; 이 값들은 loss에 넣지 않았으며,
+측정된 재료 항복으로 candidate를 인증하지 않는다.
+원본은 .cache/specimen_yield_bridge_v21/pigato2026.xml; XML SHA는 assessment.json.
+
+결과 `results/specimen_yield_bridge_v21/`: strain_budget, stress_sweep,
+static_cycle_transport, spatial_refinement, unload_hold, reported_yield_references
+CSV와 assessment/plot. 도면을 실제로 보며 log-x label 중첩을 수정했다.
+독립 재생을 .cache/specimen_yield_bridge_v21/reproduction에 완료(6.48s),
+여섯 CSV가 원본 실행과 바이트 단위로 일치함을 확인했다. 도면만 최종 갱신했다.
+Targeted62PASS4.01s, 최종 재실행62PASS1.75s; app34PASS65.89s, smoke exit0/1.28s.
+첫 임시 test에서 kinetic JSON의 status 대신 실제 calibrated 필드를 써야 한 오류를
+수정했다. 잘못된 기존 test 파일명으로1회 collection 실패 후 정확한 목록으로 실행했다.
+전체 solver591PASS988.27s(16분28초), skip/failure 없음. 최종 JUnit은
+.cache/specimen_yield_bridge_v21/, 검증 요약은 results/specimen_yield_bridge_v21/
+verification.json. 여섯 결과 CSV hash와 독립 재생 일치를 보존했다.
+Commit/push 직전 diff/원격 확인을 수행하며, 정확한 최종 SHA와 push 여부는
+최종 응답 및 git log/fetch로 확인한다.
+
+다음 필요한 기구는 minor branch 소실 뒤의 실제 전위 방출/유한선 전파/상호작용과
+same-energy의 검증된 core 및 실측 source/obstacle population이다. 현 모델을
+임의 밀도로 곱해 YS에 맞추지 않는다. Static material/interface gate 불통과도
+독립 과제다. 실제 항복/피로 승인 미완료; Ma_phys/Ms_phys/t0 null,
+production 초/Hz disabled.
+
 ## 보정 재개 v20 — 2026-09-10 (범위 내 계산·회귀 완료; 물성 채택하지 않음)
 
 최신 요청 "계속해". Fresh fetch 성공; 시작 local/origin 모두

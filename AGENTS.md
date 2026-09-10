@@ -500,6 +500,18 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- SPECIMEN_YIELD_AND_SLIP_BUDGET_V21.md / specimen_yield_bridge_v21:
+  실제 signed swept area에서 beta_slip=Σ A b⊗n/V와 symmetric strain을
+  계산한다. Uniform stress의 V sigma:deps와 Σ(b·sigma·n)dA가 일치해야 한다.
+  Initial defect slip은 새 transfer에서 빼고, 회복하는 휨의 gross 면적을
+  영구소성으로 더하지 않는다. Saved area 사이 숨은 역전은 시간해상도 문제다.
+  동일 LJ/Bessel bulk 탄성의 finite-source MPa fold는 시편 항복이 아니다.
+  rho_line=NL/V와 eta=NL³/V의 strain budget에서 필요한 밀도는 수요 진단이지
+  문헌 보정값이 아니다. 이를 실제 항복에 맞추는 adjustable multiplier로 쓰지 않는다.
+  Pigato2026 XML의 reportedYS12개는 source/온도/초기조직을 분리하며,
+  수치 offset이 명시되지 않았으므로 Rp0.2로 바꾸지 않는다. 전위 방출/상호작용,
+  실측 source population/코어/kinetic/production gate는 미완료다.
+
 - TANGENT_CONSTRAINED_CALIBRATION_V20.md / tangent_calibration_v20:
   새 energy항 없이 기존 shape/10개 coefficient에서 5개 exact bulk와
   source pristine Haa/Hxx를 동시에 등식으로 시험한다. MPa/Å/eV 변환과

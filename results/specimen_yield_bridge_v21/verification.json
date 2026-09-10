@@ -1,0 +1,85 @@
+{
+  "verified_date_KST": "2026-09-11",
+  "starting_head": "a0b611b1b3b29c6bef86dcb2e4b5b23c79228d04",
+  "fresh_starting_remote_head": "a0b611b1b3b29c6bef86dcb2e4b5b23c79228d04",
+  "branch": "probability-pde-solver-v1",
+  "initial_worktree_clean": true,
+  "scope": "signed specimen slip kinematics and source-to-yield strain-budget diagnostic; not material adoption",
+  "execution": {
+    "research_numerical_seconds": 17.18455009997706,
+    "independent_replay_numerical_seconds": 6.476391299976967,
+    "stress_cases": 72,
+    "static_cycle_states": 297,
+    "spatial_refinement_cases": 36,
+    "time_grid_hold_cases": 9,
+    "condition_separated_experimental_YS_records": 12,
+    "six_result_csvs_byte_identical_on_replay": true,
+    "timing_note": "research timing excludes plotting; no material optimization performed"
+  },
+  "tests": {
+    "targeted": {
+      "passed": 62,
+      "failed": 0,
+      "skipped": 0,
+      "pytest_reported_seconds": 1.75,
+      "exit_code": 0,
+      "modules": [
+        "solver_v1/test_specimen_slip_kinematics.py",
+        "solver_v1/test_yield_reference_data.py",
+        "solver_v1/test_strength_validation.py",
+        "solver_v1/test_yield_benchmark.py",
+        "solver_v1/test_finite_source_reference.py",
+        "solver_v1/test_finite_source_barrier.py",
+        "solver_v1/test_line_kinetic_validation.py"
+      ]
+    },
+    "solver_v1": {
+      "passed": 591,
+      "failed": 0,
+      "skipped": 0,
+      "pytest_reported_seconds": 988.27,
+      "exit_code": 0
+    },
+    "app": {
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0,
+      "pytest_reported_seconds": 65.89,
+      "exit_code": 0
+    },
+    "desktop_smoke": {
+      "command": "python -X utf8 -m app.desktop_ui --smoke",
+      "exit_code": 0,
+      "tool_wall_seconds": 1.2808191,
+      "reference_a0": 0.7713438268704838,
+      "reference_kappa_axial": 86.29296488740997
+    },
+    "git_diff_check": "passed; repeated after final documentation and staging",
+    "earlier_attempts": "An initial new-test assertion used status instead of the existing kinetic calibrated field and was corrected. One targeted collection attempt named a nonexistent existing test module, then the corrected seven-module command passed. No failure is hidden by skipping."
+  },
+  "replayed_csv_sha256": {
+    "reported_yield_references.csv": "cf4d860ea1f595d0b8b002a9e8b9cdb41829d3245288b937a35352752c3fc340",
+    "strain_budget.csv": "08b443fbdf86175794bc311b342cfd267f1931a20b58c720ea6f645c94f560d7",
+    "stress_sweep.csv": "0f14f262f1dd5d233e0a8c8314138f6aa2d76e0cd7d369cb846aa6236add3e09",
+    "static_cycle_transport.csv": "bf6896ae755e31b4be1225af375f0b509ac8b03be944bc3d01777e98e632b1b5",
+    "spatial_refinement.csv": "aa8c84b83c900b060acbab8fe3a2c504c1b00bde7c82294ae3da69249c127ca8",
+    "unload_hold.csv": "3a84c8d1382e830a46ef0b90d3fea1ef4176274634880dc7d0ac960f86a72310"
+  },
+  "scientific_limits": {
+    "actual_specimen_yield_calibrated": false,
+    "source_population_calibrated": false,
+    "emitted_line_transport_implemented": false,
+    "residual_material_plasticity_certified": false,
+    "same_energy_core_validated": false,
+    "static_material_adopted": false,
+    "hold_endpoint_note": "All hold runs exceed24 line relaxation times;64 steps ends at24.05282tau versus24.00373tau for128/256. This is not an exactly common-endpoint residual convergence table.",
+    "production_energy_PDE_UI_changed": false,
+    "production_physical_seconds_enabled": false,
+    "production_physical_Hz_enabled": false
+  },
+  "main_refs_untouched": {
+    "main": "80cacb4180dbfbcd36a2964270703bc6cf1653ec",
+    "origin/main": "c43d8e096f2a329c7cdfad31e546c70fb36fe592"
+  },
+  "git_note": "Final commit and freshly verified remote are reported in the task response; this file does not claim a self-referential commit hash."
+}

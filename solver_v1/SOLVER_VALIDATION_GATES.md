@@ -14,6 +14,19 @@ confused with a fully calibrated spatial aluminum fatigue solver.
 
 ## Gates
 
+The v21 source-to-specimen study implements signed slip-surface tensor
+kinematics and independently checks traction/tensor work. The actual72
+stress cases,297 static cycle states,36 spatial refinements and9 line-time
+holds distinguish gross recoverable motion from persistent slip. A1um
+hypothetical source has an outer-only[100] first-source scale24.04MPa,
+but its declared dilute-population bow strain is2900.9 times below the
+.002 axial demand even at the fold. Increasing source count to close that
+gap leaves the assumed dilute regime and still does not create persistence.
+New condition-separated primary experimental YS records do not supply the
+missing emission/interactions/core/source population or a/s clock. Read
+`SPECIMEN_YIELD_AND_SLIP_BUDGET_V21.md`. No specimen-yield or production
+gate is opened by this kinematic/mechanism diagnostic.
+
 The completed v20 tangent-constrained study tested260 recorded profiles of
 the SAME existing research energy families, with five bulk and two initial
 interface equalities. No new energy term or stress rescaling was introduced.
