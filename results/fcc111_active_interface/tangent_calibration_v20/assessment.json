@@ -1,0 +1,129 @@
+{
+  "study": "v20 exact bulk and initial-interface tangent constraints",
+  "completed_scoped_study": true,
+  "source": {
+    "model": "Mishin et al. 1999 Al99; matched rigid 0 K target only",
+    "sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+    "experimental_yield_data": false,
+    "L0_m": 2.863782463805517e-10,
+    "E0_J": 1.602176634e-19,
+    "area": "sqrt(3) L0^2 / 2; atomic interface cell, never A_c"
+  },
+  "scope": {
+    "new_energy_term": false,
+    "pair_functional_form_changed": false,
+    "infinite_lattice_changed": false,
+    "production_PDE_changed": false,
+    "UI_changed": false,
+    "existing_static_parameter_files_changed": false,
+    "model_time_or_kinetic_parameters_changed": false,
+    "specimen_aggregation_changed": false,
+    "hypothesis": "whether existing research families can match both initial interface tangents without losing finite-opening agreement"
+  },
+  "executed_profiles": {
+    "fixed_shape_controls": 16,
+    "old_family_shape_profiles": 82,
+    "power_family_shape_profiles": 162,
+    "total_recorded": 260,
+    "selected_profile_replays_additional": true,
+    "failed_numerical_profiles": 0,
+    "shape_search_wall_seconds": 3126.494053500006,
+    "both_selected_positive_trials_are_optimizer_endpoints": false,
+    "whole_family_infeasibility_proved": false
+  },
+  "selected_positive_trials": {
+    "old_family": {
+      "definition": "v19 p=0 research many-body family, not production TwoRowLJ",
+      "path": "shape_refinement/old_family/calibration.json",
+      "sha256": "8736cb9d28f1430e3991b1046ef42544cefaa3c9a4f5d743e0d02931329f5c2e",
+      "source_loss_104": 2215.203159042821,
+      "lowest_recorded_closure_loss": 2012.434779088693,
+      "outer_stop": "ftol at ineligible zero-attraction LJ closure; earlier positive trial selected",
+      "positive_material_shape_optimizer_converged": false,
+      "local_sensitivity_rank": 8,
+      "local_sensitivity_dimension": 8,
+      "local_sensitivity_condition": 300.9428202143143
+    },
+    "power_family": {
+      "path": "shape_refinement/power_family/calibration.json",
+      "sha256": "98296c0220e57df9710cd0980eca3f3d3b3f62bc905ca836638e8e5c19514cd3",
+      "source_loss_104": 2223.2001357386766,
+      "lowest_recorded_closure_loss": 2014.0024763214478,
+      "outer_stop": "30 nfev evaluation budget, not converged; earlier positive trial selected",
+      "positive_material_shape_optimizer_converged": false,
+      "local_sensitivity_rank": 9,
+      "local_sensitivity_dimension": 9,
+      "local_sensitivity_condition": 4280.321061825746
+    },
+    "both_initial_tangents_fitted": true,
+    "tangent_targets_eV_per_L0_squared": [19.66091286328976, 4.393593035123306],
+    "tangent_fit_is_heldout_validation": false,
+    "active_inequality_cones_in_SVD": false,
+    "statistical_confidence_claimed": false
+  },
+  "independent_material_comparison": {
+    "predeclared_excluded_jets": 48,
+    "observations_per_field": 12,
+    "fields": ["energy", "normal_force", "Haa", "Hxx"],
+    "normalized_RMS_v19_power": [1.0024582394877983, 5.615322392719905, 6.026294366845604, 6.164988705795717],
+    "normalized_RMS_v20_old": [0.878558752701505, 7.864933610736051, 6.059558913399627, 5.133547855409945],
+    "normalized_RMS_v20_power": [0.8752354030501397, 7.877986935686393, 6.071421332845461, 5.13760828464211],
+    "scales_are_experimental_standard_errors": false,
+    "normal_force_within_scale_old": 1,
+    "normal_force_within_scale_power": 1,
+    "material_accepted": false,
+    "reason": "initial compliance improved, but finite-opening force and curvature remain incompatible with declared source discrepancy scales"
+  },
+  "static_scenarios": {
+    "actual_verified_signed_tensor_states": 396,
+    "models_including_source": 4,
+    "cases_per_model": 11,
+    "states_per_case": 9,
+    "normal_traction_MPa": 50.0,
+    "delta_a_angstrom_source": 0.0009253659033620126,
+    "delta_a_angstrom_v19_power": 0.0006562111178222094,
+    "delta_a_angstrom_v20_old": 0.0009286879721594242,
+    "delta_a_angstrom_v20_power": 0.0009286672203226877,
+    "max_static_return_error_L0": 3.61371574457526e-15,
+    "all_components_exported": true,
+    "static_return_is_dynamic_hold": false,
+    "residual_plasticity_validated": false,
+    "actual_yield_validated": false
+  },
+  "cause_attribution": {
+    "path": "final_tail_audit/per_term_tail.csv",
+    "model": "shape_refinement/old_family",
+    "a_over_h": 2.5,
+    "total_traction_MPa_rounded": 1242.61,
+    "pair_traction_MPa_rounded": 29.86,
+    "environment_traction_MPa_rounded": 1212.74,
+    "scalar_embedding_traction_MPa_rounded": 1093.50,
+    "source_traction_MPa_rounded": 4.06,
+    "infinite_LJ_tail_is_main_mismatch_here": false,
+    "candidate_cutoff_added": false,
+    "source_targets_removed": false
+  },
+  "numerical_checks": {
+    "max_finest_FD_Hessian_error_eV_per_L0_squared": 3.75249253892207e-7,
+    "max_reciprocal_tolerance_Hessian_change": 8.65973959207622e-14,
+    "max_fine_per_site_unit_channel_direct_error": 9.71445146547012e-16,
+    "min_independent_tail_subtracted_spectral_margin": 0.005650739939484665,
+    "independent_dilations": [0.98, 0.995, 1.0, 1.007, 1.02],
+    "independent_radii_L0": [12.0, 16.0],
+    "independent_q_points": 243,
+    "whole_zone_stability_proved": false,
+    "final_validation_wall_seconds": 1221.6068352000002,
+    "source_later_extremum_locations_all_converged": false
+  },
+  "remaining_gates": {
+    "full_Al_interface_material_fit": false,
+    "actual_yield_strength_validated": false,
+    "fatigue_validated": false,
+    "a_s_mobility_calibrated": false,
+    "t0_seconds": null,
+    "production_seconds_enabled": false,
+    "production_Hz_enabled": false,
+    "promote_research_model_to_production": false
+  },
+  "next_question": "Derive remaining partial-coordination scalar embedding derivative freedom under seven equalities; review prior v14 cubic-density and v15 mixture ablations before any new term. Do not repair by mobility, LJ cutoff, force clipping, area scaling or target removal."
+}

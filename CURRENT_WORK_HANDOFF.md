@@ -1,5 +1,120 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 보정 재개 v20 — 2026-09-10 (범위 내 계산·회귀 완료; 물성 채택하지 않음)
+
+최신 요청 "계속해". Fresh fetch 성공; 시작 local/origin 모두
+`56e1c3ab0f570bf7628a320e03b7cf4eb3f1cb22`, clean,
+branch `probability-pde-solver-v1`. 실제 작업은 기존
+`aft-pde-bessel-38969ad` worktree이며 OneDrive 폴더는 이동 안내 stub이다.
+Main/production PDE/UI/kinetic/static parameter 불변. 새 agent 없음.
+최종 commit/push SHA는 git log와 fresh fetch 및 최종 응답으로 확인한다.
+
+### 이론과 실제 보정
+
+읽을 파일: `solver_v1/TANGENT_CONSTRAINED_CALIBRATION_V20.md`,
+`interface_tangent_calibration.py`. v19의 약41% 높은 initial Haa를
+고치려면 기존 에너지 family 안에서 어떤 tradeoff가 생기는지 유도했다.
+새 energy항 없이5개 exactbulk와 source pristine Haa/Hxx를 동시에 제약한다.
+상태/단위는 E0=1eV, L0=4.05/sqrt(2)Å, atomic area=sqrt(3)L0²/2이다.
+Source는0K Al99 rigid interface target-only, fatigue/yield/실험 kinetic 아님.
+old_family라는 새 결과 레이블은 v19 p=0 연구 family이며 TwoRowLJ가 아니다.
+
+Fixed-shape CONTROL16개 완료52.95s. Both-exact loss old2831.110021,
+power2859.423588이고 u>0,v=0 closure이다. Phi=u/r^12-v/r^6에서
+v=0은 finite positive LJ가 아니므로 물성으로 채택하지 않는다.
+Source target와 imposed control은 CSV에서 별도로 유지한다.
+Fixed-shape V(t)의 convexity를 유도하고 actual scan으로 확인했다.
+이 결과만으로 nonconvex 전체 family 불가능성을 주장하지 않는다.
+
+Actual shape refit82old+162power profiles=244개,3126.49s 완료.
+Controls포함 총260 recorded profiles(추가 selected-profile replay 별도).
+기존 bounds/동일102 loss/48새 사전선언 heldout분리, 임의 양수 floor없음.
+
+- Old:17nfev/13njev,ftol종료,optimality1.408. Last accepted loss2012.434839;
+  최저 difference trial2012.434779도 v=0이다. 선택된 positive trial
+  loss2215.203159는 optimizer endpoint가 아니다. u=.00469129023710,
+  v=.0107489011795,eps=.006157094889eV,sigma/L0=.8709396023.
+- Power:30nfev/22njev **budget종료, optimizer수렴 아님**,optimality4.716.
+  Last accepted loss2014.002599, 최저 difference trial2014.002476, v=0.
+  선택된 positive trial loss2223.200136, u=.00673566805554,v=.0198388390094.
+  이것 역시 optimizer endpoint가 아니다. 추가 shape가 이 실험을 개선하지 못함.
+- 두 positive trial은 bulk5+Haa19.6609128633/Hxx4.39359303512의7등식,
+  sign/샘플 spectral/KKT를 충족한다. Exact residual<4.45e-14,KKT<1.44e-11.
+  Feasible coefficient profile과 채택 가능한 물성/전역 최적해는 다르다.
+
+### 독립 검증과 실제 저응력 응답
+
+`final_validation/`에서 source+v19parent+두v20후보를 동일하게 검사했다.
+11tensor scenarios×9signedstatic states×4models=396root 모두 검증.
+50MPa normal delta a[Å]: source.0009253659034,parent.0006562111178,
+old.0009286879722,power.0009286672203. 오차 -29.09%→+.3590%/+.3568%.
+4MPa shear1 slip source.0003309978847 vs old.0003309946228Å.
+초기 tangent를 fit한 결과여서 independent yield검증으로 부르지 않는다.
+Shear의 secondary normal변위 old8.67e-8Å vs source2.57e-8Å는 여전히 다름.
+전체 성분/혼합하중/음의 하중 모두 CSV에 있고 staticreturn≠dynamic hold이다.
+
+48새 excluded jet RMS(energy,force,Haa,Hxx):
+parent=(1.0025,5.6153,6.0263,6.1650),
+old=(.8786,7.8649,6.0596,5.1335),
+power=(.8752,7.8780,6.0714,5.1376).
+두 후보 모두 force는1/12만 선언 scale이내: **full material gate실패**.
+Fault/saddle[J/m²] source.150479/.172002,old.122424/.162561,
+power.123257/.162566. First fixed-registry ideal traction source12.96957GPa,
+old10.33897,power10.33844GPa. 실제 항복/동적 eventordering이 아니다.
+W(40h)[J/m²] source1.741285,old1.883279,power1.887106. Candidate는40h에서도
+약한LJ attraction이 있어 정확한 무한분리라 하지 않는다. Source의 이후 cutoff
+진동/negative traction도 그대로 기록했다. 두 bracket에서 source의 첫 peak는
+일치하지만 이후 작은 minimum위치는 약.000588h차이가 있어 무조건 수렴이라 안함.
+
+수치: finestFD Hessian error3.7525e-7eV/L0². Tolerance2e-11/2e-13,
+per-site direct6/10/16, full nonlinear/BlochFD를 구별해 기록.
+5dilation×243q×radius12/16 minimumtail-subtracted margin.00565074.
+모든 q/strain 안정성 증명 아님. 최종validation walltime1221.61s.
+
+### 원인 분해와 식별성
+
+`final_tail_audit/`는3후보/sourceSHA/계수hash 모두 결합된 최종 tail감사다.
+Al99 declared cutoff6.28721Å, effective support6.286581279Å.
+LJ meanforce Hurwitz식/large-a~a^-3를 유도, exact mean오차5.42e-20eV/L0.
+이는 확률정밀도 주장이 아니다. a/h2.5의 old total1242.61MPa 중
+LJ29.86, 환경항1212.74이며 그중scalar1093.50MPa. Source4.06MPa.
+따라서 큰 개구 force오차의 주원인을 unavoidable LJtail로 돌릴 수 없다.
+Source cutoff를 candidate에 도입하거나 target를 버리지 않았다.
+
+Exact7등식 tangent SVD: oldrank8/8,condition300.943;
+powerrank9/9,condition4280.321. Saved-vector replay오차0,
+2e-4→1e-4derivative step변화<1.925e-4. Activeinequalitycone/통계CI/
+전체 family식별성증명은 포함하지 않는다. Powershape의 conditioning악화도 기록.
+
+### 재개 경로 / 끝난 것과 남은 것
+
+결과root `results/fcc111_active_interface/tangent_calibration_v20/`:
+`controls/`,`shape_refinement/`는 실제 optimization;
+`old_report/`,`power_report/`는 저장계수 replay/SVD;
+`final_validation/`,`final_tail_audit/`,`response_report/`는 최종 비교다.
+`old_independent_check/`,`tail_diagnosis/`,`tail_decomposition/`는 보존한 중간완료자료.
+`checkpoint.json`,`progress.json`의 completed=false는 중간스냅샷이며
+최종 completion/calibration와 optimizerstop이 우선한다. 원시CSV/JSON의
+bytehash보존은 local .gitattributes로만 설정했다.
+
+기존QP empty-inequality SciPy 오류를 최소재현 후 고쳤다. 모든 부등식이
+등식manifold에서 상수일 때 해석적 least-squares해를 equality/KKT/원래상수
+잔차/sign으로 검증한다. Varyingconstraint삭제/계수clipping은 없다.
+최종 targeted47PASS59.99s, fullsolver565PASS923.85s,
+app34PASS86.14s, desktop smokeexit0/.977s, 실패/오류/skip모두0.
+JUnit은 `.cache/tangent_calibration_v20/*_final.xml`, 커밋요약verification.json.
+Working/staged diffcheck PASS. 원시JSON/CSV/PNG102개 index/working bytes동일
+검사 완료. Per-study 속성으로CRLF를 인식하되 다른 whitespace검사는 유지한다.
+최종freshfetch에서도 origin은 시작56e1c3a와 동일, main/originmain불변이었다.
+UI scroll은v18에서 이미 구현·검증되어 이번에 변경하지 않았다.
+
+다음 연구는 **partial-coordination scalar embedding의 derivative 자유도**다.
+먼저v14cubic-density와v15positive-mixture의 기존실패/계수예산을 읽고,
+7등식하 남은 독립방향/rank/force·curvaturetradeoff를 유도한다. 무작정 polynomial
+추가나 shapebounds확장 금지. v20에서 새term은 아직 도입하지 않았다.
+부분 개선은 실제 수행했으나 실제Al항복/피로/검증된interface/물리시간은 미완료.
+Ma_phys,Ms_phys,t0 null/초·Hzdisabled. Production/PDE/UI승격gate는 닫혀 있다.
+
 ## 보정 재개 v19 — 2026-09-10 (과학 계산 완료; 채택하지 않음)
 
 최신 요청은 "그럼 보정 계속해". Fresh fetch 후 시작 actual HEAD와 origin은

@@ -190,6 +190,28 @@ def convex_profile(matrix, observations, inequalities=None, *, nonnegative=(0,1,
         if np.any(h[redundant] > 1e-10): raise ArithmeticError('infeasible constant constraint')
         A,h,norms,row_ids = A[~redundant],h[~redundant],norms[~redundant],row_ids[~redundant]
     A /= norms[:,None]; h /= norms
+    if not len(A):
+        # Every inequality is already constant and satisfied on the equality
+        # manifold. The whitened projection is EXACTLY x0; do not send an
+        # empty LinearConstraint to SLSQP (SciPy raises IndexError). This does
+        # not drop a varying inequality or relax a physical constraint.
+        c = offset+transform@x0
+        residual = (matrix@c-target)/scales
+        exact_residual = float(np.max(abs(residual[exact])))
+        reconstructed = sv*(Vt@(T.T@(c-offset)))
+        kkt_residual = float(np.linalg.norm(reconstructed-x0, np.inf))
+        constant_violation = float(np.max(-(G@c), initial=0.))
+        if (np.any(~np.isfinite(c)) or exact_residual > 1e-8 or kkt_residual > 1e-6
+                or constant_violation > 1e-10 or np.any(c[list(nonnegative)] < 0)):
+            raise ArithmeticError('constant-inequality equality solution not verified')
+        return dict(coefficients=c, residuals=residual, predictions=matrix@c,
+            squared_loss=float(residual[selected]@residual[selected]), selected_rows=selected,
+            exact_residual=exact_residual, kkt_residual=kkt_residual, pre_polish_kkt_residual=0.,
+            complementarity_residual=0., active_face_polish_accepted=False,
+            exact_nonnegative_boundary_resolve=[], scaled_primal_violation=0.,
+            constant_inequality_violation=constant_violation,
+            optimizer_success=True, optimizer_message='analytic unconstrained equality-manifold least squares',
+            strictly_positive_LJ=bool(np.all(c[:2]>0)))
     run = minimize(lambda x:.5*np.sum((x-x0)**2),x0,
         jac=lambda x:x-x0, method='SLSQP', constraints=[LinearConstraint(A,h,np.inf)],
         options=dict(ftol=2e-12,maxiter=350))

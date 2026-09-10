@@ -1,0 +1,78 @@
+{
+  "study": "tangent_calibration_v20",
+  "starting_HEAD": "56e1c3ab0f570bf7628a320e03b7cf4eb3f1cb22",
+  "freshly_fetched_remote_at_start": "56e1c3ab0f570bf7628a320e03b7cf4eb3f1cb22",
+  "branch": "probability-pde-solver-v1",
+  "starting_worktree": "clean",
+  "python": "3.13.5, Windows, -X utf8",
+  "executed_tests": [
+    {
+      "suite": "targeted",
+      "command": "python -X utf8 -m pytest solver_v1/test_interface_tangent_calibration.py solver_v1/test_tail_constrained_material.py solver_v1/test_yield_elastic_metric.py solver_v1/test_coordination_screening.py -q --junitxml=.cache/tangent_calibration_v20/targeted_final.xml",
+      "passed": 47,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "pytest_wall_seconds": 59.99,
+      "junit_seconds": 59.978,
+      "junit_sha256": "770ce90e72829fd046e2a58023b25df272a10964dca5c62ba2d7d8742b571248"
+    },
+    {
+      "suite": "full_solver",
+      "command": "python -X utf8 -m pytest solver_v1 -q --junitxml=.cache/tangent_calibration_v20/solver_final.xml",
+      "passed": 565,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "pytest_wall_seconds": 923.85,
+      "junit_seconds": 923.838,
+      "junit_sha256": "3a48a5c666866fb08fed1aca205914fbd3b763a39c93107edc17888fd040f39b"
+    },
+    {
+      "suite": "app",
+      "command": "python -X utf8 -m pytest app -q --junitxml=.cache/tangent_calibration_v20/app_final.xml",
+      "passed": 34,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "pytest_wall_seconds": 86.14,
+      "junit_seconds": 86.129,
+      "junit_sha256": "6eccd2986b3f9048451358c104f094c69125baf93ce39b0ebb2b786fd6df3fd6"
+    },
+    {
+      "suite": "desktop_startup_smoke",
+      "command": "python -X utf8 -m app.desktop_ui --smoke",
+      "exit_code": 0,
+      "wall_seconds": 0.9773,
+      "reported_a0": 0.7713438268704838,
+      "reported_kappa_axial": 86.29296488740997
+    }
+  ],
+  "export_audit": {
+    "checked_rows_including_aggregate_tables": 10260,
+    "max_source_or_imposed_residual_formula_error": 4.440892098500626e-16,
+    "source_sha256_verified": true,
+    "raw_outputs_have_no_NaN_or_Infinity_tokens": true,
+    "raw_outputs_have_no_personal_absolute_path_tokens": true,
+    "working_diff_check_passed": true,
+    "staged_diff_check_passed": true,
+    "raw_JSON_CSV_PNG_index_bytes_verified_files": 102,
+    "line_endings": "Per-study attributes preserve raw bytes and recognize CRLF; other whitespace checks remain enabled.",
+    "final_comparison_plot_visually_inspected": true
+  },
+  "completion": {
+    "fixed_controls": true,
+    "bounded_shape_experiments": true,
+    "both_outer_optimizers_converged": false,
+    "independent_source_and_three_candidate_validation": true,
+    "source_cutoff_and_infinite_LJ_tail_audit": true,
+    "old_and_power_sensitivity": true,
+    "material_accepted": false,
+    "physical_a_s_clock_calibrated": false
+  },
+  "timing_note": "All seconds in this execution record are computer wall-clock runtimes, not calibrated probability-PDE time.",
+  "commit_note": "The enclosing commit identifies these files; final push and remote verification are recorded in the user handoff response and must be freshly verified before the next task."
+}

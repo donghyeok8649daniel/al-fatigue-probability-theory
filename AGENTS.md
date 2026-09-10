@@ -500,6 +500,17 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- TANGENT_CONSTRAINED_CALIBRATION_V20.md / tangent_calibration_v20:
+  새 energy항 없이 기존 shape/10개 coefficient에서 5개 exact bulk와
+  source pristine Haa/Hxx를 동시에 등식으로 시험한다. MPa/Å/eV 변환과
+  LJ/Bessel은 불변. Imposed tangent CONTROL과 original source target를
+  분리하며 common102 loss와 original104 loss를 모두 보고한다.
+  Fixed-shape LP equality/sign feasibility와 spectral QP 검증은 다른 주장이다.
+  v=0 LJ-attraction closure를 finite positive LJ 물성으로 채택하지 않는다.
+  Shape optimizer가 zero-pair에서 멈췄는데 과거 positive trial을 골랐다면
+  그 trial을 optimizer-converged라고 하지 않는다. 48개 새 heldout은
+  fit/selection에서 제외. 현재 결과·실행/검증 상태는 최신 인계를 읽는다.
+
 - COORDINATION_SCREENING_V19.md / coordination_screening_v19:
   같은 무한 scalar 환경 x와 rank1 벡터 Q를 site마다 합한 뒤
   D1||Q||² g(x)를 적용하는 별도 연구 가설이다. g=1/(1-z+zx)와 g=x^p는

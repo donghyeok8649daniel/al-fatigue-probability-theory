@@ -14,6 +14,23 @@ confused with a fully calibrated spatial aluminum fatigue solver.
 
 ## Gates
 
+The completed v20 tangent-constrained study tested260 recorded profiles of
+the SAME existing research energy families, with five bulk and two initial
+interface equalities. No new energy term or stress rescaling was introduced.
+Two positive-LJ trials improve the source50MPa normal displacement error from
+-29.09% to about+.36%, but these are earlier trials, not converged positive-LJ
+outer-optimizer endpoints. Both lowest coefficient profiles approach v=0;
+the power search stops at its evaluation budget. Those closures are not
+admissible finite LJ material sets.48 predeclared excluded jets show worse
+finite-opening force error despite the corrected initial compliance.396
+signed static tensor states and independent numerical checks are complete.
+Local sensitivity conditioning worsens from301 to4280 with the power shape.
+The major moderate-opening force mismatch comes from the environmental
+response, especially scalar embedding, not mainly the infinite LJ tail.
+Read `TANGENT_CONSTRAINED_CALIBRATION_V20.md`; v14/v15 embedding ablations
+must be reviewed before any next extension. No material/actual-yield/fatigue,
+production PDE, physical seconds/Hz or specimen UI gate is opened.
+
 The completed v19 coordination-dependent rank1 study actually ran260 fixed/
 joint coefficient profiles while preserving LJ and infinite per-atom sums.
 The joint power candidate lowers the bounded-study loss by0.89% relative to
