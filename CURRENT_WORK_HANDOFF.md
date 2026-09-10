@@ -1,5 +1,105 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 연구/사용성 인계 v18 — 2026-09-10
+
+최신 연구 요청은 실제 항복·피로·물리 초/Hz의 검증/보정. 추가 요청은 UI를
+켜고, 사용자가 확인한 뒤 해석 버튼을 가리는 긴 설정에 스크롤을 추가하는 것.
+Fresh fetch 후 시작 local/origin은 모두
+`35b2c5c94f9237bf871eeb6011d1fbdb28726aa9`, clean이었다.
+실제 위치는 기존 연구 worktree `aft-pde-bessel-38969ad`, branch
+`probability-pde-solver-v1`. OneDrive 경로는 이동 안내 stub이다.
+추가 agent/리셋/main변경/force push 없음. 최종 commit과 origin은 git log와
+fresh fetch로 확인한다. UI는 실제 실행하여 사용자가 확인했고 이후 수정했다.
+
+### 완료된 범위와 채택하지 않은 것
+
+- `solver_v1/LINE_KINETICS_AND_FATIGUE_VALIDATION.md`에 전위선 kinetics,
+  pinned-line 모델의 유도/단위/수렴/hold/물리 한계를 정리했다.
+- 실제 Gorman1969 원본 Fig5c(23°C)10개 isolated marker를 읽고7fit/3heldout
+  보정을 실행했다. 새 사실은 **실험 전위선 v/전단 계수의 제한된 추정**이다.
+  a/s 이동도나 전체 Al 물성 보정이 아니다. Heldout scatter도 크게 남는다.
+- 같은 LJ/Bessel bulk Schur 탄성으로부터 작은 pinned-line bow 동역학을
+  유도하고64/128/256/512 timestep,16/32/64/128 spatial grid,20tau hold를
+  실제 풀었다. 이것은 가역 휨의 음성 대조군이며 fatigue/PDE 새 경로가 아니다.
+- Deschanel2017의7개 실제 Al fatigue 실험군을 source/단위/endpoint별로
+  정리했다. Delta stress50/62MPa는 full range, 진폭은25/31MPa다.
+  Nf17200/5300은 final fracture이고 local opening initiation이 아니다.
+- 실제 yield, fatigue, production M_a/M_s/t0는 **여전히 미검증**.
+  v17 normal-force/Haa 물성 gate 실패를 뒤집거나 새 항을 채택하지 않았다.
+  Production kinetic JSON, LJ/embedding/기존 static calibration/PDE/Ac 불변.
+
+### 재현 경로와 정확한 결과
+
+`results/strength_fatigue_kinetics_v18/`에 약0.75MB의 표/그림/범위를 저장했다.
+두 runner는 기존 폴더를 덮어쓰지 않는다. 캐시에 별도 재실행하여6개 dynamics
+CSV와 calibration JSON의 byte-identical 재현을 확인했다(그림은 별도 시각 확인).
+`scope.json`에는 v17 원본 raw SHA와0K/23°C 불일치, 가상 pin 조건이 명시된다.
+
+1. `run_line_kinetic_benchmark.py` / `data/gorman1969_velocity_benchmark.json`
+   - Source DOI10.1063/1.1657472,99.999%Al leading edge/mixed 전위.
+   - 원본 PDF SHA `b4536b12a161babc565460facb83b4c64a685bced57cf0f48da9f7cb79df44d3`.
+   - Native2490×3305 page5 image를 lossless추출. 각도약간틀어진축을affine역변환.
+   - 1e6dyn/cm²=1e5Pa,cm/s=.01m/s. 겹친marker는 추측하지 않고 제외.
+   - mu_tau=1.1627233044e-5 m/(Pa s),trainRMSE2.38329m/s,
+     heldoutRMSE3.50119m/s=heldout평균의23.62%. 정확한 universal mobility 아님.
+   - Reading-only bound[1.040818,1.299157]e-5,LOO[1.104298,1.218419]e-5.
+     둘 다 independent confidence interval이 아니다.
+2. `dislocation_line_kinetics.py`, `run_line_timescale_validation.py`
+   - B_line y_t=T_line y_xx+tau b;T_line=gamma+gamma'';fixed pinned endpoints.
+   - G=(96/pi⁴)Σodd1/[n⁴(1+iomega tau1/n²)],tail<=32/(pi⁴N³).
+   - v17의 변하지 않은bulk114/62/32GPa와 model0K b=2.8637824638Å를 사용한
+     조건부 B=2.4629956698e-5Pa s. 실제296K b/line character 보정은 아니다.
+   - 가상pin L=.2/1/5um,R=L,r_core=2b. yield/life에 맞춰 고르지 않았다.
+   - tau1=1.913839e-10/3.753056e-9/7.718548e-8s. 이는 선 좌표/가상geometry,
+     production time이 아니다. MHz/GHz rolloff는 상수drag 방정식 수치검증용.
+   - 0.1/1/25/100Hz에서 거의평형휨. 가장큰100Hzlag도.00274244deg.
+   - omega tau=1의공간error .00421475→.00105455→.000263690→.000065926.
+     전체60case work/dissipation 상대잔차최대3.07e-15.
+   - dtcomplexerror .0236542→.0119804→.00603896→.00304153(약1차수렴).
+     마지막20tau hold meanbow4.108e-19m,static대비1.1446e-9; clipping안함.
+   - .01/.1/1/4MPa stress sweep은 선형/비선형bow차이를 실제계산.5um,4MPa는
+     outergraphfold밖이므로 해를만들지않음. fold38.49/9.81/2.39MPa는
+     unknown source/core의 outer-only 연구값, 실제항복/핵생성장벽아님.
+3. `fatigue_validation_reference.py`, `data/aluminum_fatigue_validation_v18.json`
+   - DOI10.1038/s41598-017-13226-1,99.95%Al,roomT(numericK임의삽입없음),R=-1.
+   - stress2군+totalstrain5군,printedrate와2fDelta확인. sourceN/f는 진짜실험초다.
+   - PSB100cycle/균열징후600cycle/AE1200이후/파단을 동일 firstpassage로 취급금지.
+   - Endpoint/clock/specimen/control/microstructure/convergence의6조건이
+     충족되지 않아 현 PDE와수명오차/보정성공을 계산하지 않는다. S-N fit 없음.
+4. 기존300K MD의1MiB range를 다시요청했으나20s에응답headers전timeout.
+   추가frames없음. 기존1024frame25.575ps의low-frequency적분미해결판정보존.
+
+### UI 수정 및 실제 확인
+
+- `app/scrollable_panel.py`: 독립bindtag 세로스크롤; MouseWheel/PageUpDown,
+  Tab으로필드보이기. Combobox휠이값을바꾸거나 Matplotlibzoom을가로채지않음.
+- Pre/Solve설정과summary스크롤; 해석/수렴버튼과progress는고정아래row.
+- 실제940×620및940×480Windows Tk창을검사하고nativewindowcapture로시각확인.
+  최소창높이를480으로낮췄고 두높이×ko/en에서고정버튼가시성을시험했다.
+  버튼가시성/입력·결과·zoom보존/언어전환/cleanup테스트추가. UI새physics없음.
+- 테스트로그는 `.cache/research_validation_v18/`에보존. 실제python3.13으로실행.
+- 최종 확인: **targeted22PASS8.57s / solver537PASS1708.52s /
+  app34PASS172.38s / smokeexit0,2.49s / staged및working diffcheckPASS**.
+  모든세트skips0. 최종XML은targeted_final.xml/solver.xml/app_final.xml이다.
+  이전targeted21/app33는480높이추가전기록이고최종22/34검사로대체했다.
+- `validation_manifest.json`에최종검증/범위/보존을집계했다. CSV6개및kinetic
+  calibrationJSON 재현동일,rawJSON의index/worktree SHA결합동일도확인했다.
+  두MatplotlibSVG의생성trailingwhitespace만정규화했고non-whitespace불변이다.
+  연구용lineJSON은productionclock로더에서TypeError로거부됨을별도실행확인했다.
+
+### 다음 실제 연구 과제
+
+1. 전위선 이동계수가 있다고 a/s cell friction을 채울 수는 없다. 검증된
+   collective-coordinate metric/slow reduction 또는 적합한장시간MD가 필요하다.
+2. 실제yield는 core/source/domain/밀도/누적sweptarea와0.002 criterion이 필요하다.
+   새외부mu나가상pin값으로 GPa이상강도를MPa실제강도로rescale하지 않는다.
+3. v17계면force/Hessian오차와 defectcore gate는그대로다. 피로 데이터가 있다고
+   localabsorption을specimenfracture로바꾸지않는다. 새명시모델/독립검증이 필요하다.
+4. 이번 구현은 검증된수치reference와구체적실험비교조건을 추가한것이다.
+   솔버완성/생산physicalHz/공간meshUI gate통과로보고하지않는다.
+
+아래 v17 및 이전은 완료된 역사 기록이다. 최신 범위는 위 v18을 우선한다.
+
 ## 최종 연구 인계 v17 — 2026-09-10
 
 최신 요청은 "남은거 해봐". Fresh fetch 후 시작 local/origin은 모두

@@ -5,6 +5,11 @@ Actual published trajectory, line-drag and experimental relaxation data have
 now been retrieved and analyzed; see the v15 update below. "No accepted cell
 mobility" must not be paraphrased as "no physical kinetic data exist."
 
+The v18 follow-up now re-digitizes and fits an experimental velocity/shear
+benchmark, with held-out markers and independent pinned-line numerical tests.
+See `LINE_KINETICS_AND_FATIGUE_VALIDATION.md`. Its new measured-coordinate
+estimate is not a production clock; the distinctions below still apply.
+
 The repository contains static geometry, cohesion, elasticity, generalized
 stacking-fault, surface, and vacancy data. It contains no trajectory or
 published coefficient that maps without extra assumptions to the collective
@@ -83,3 +88,29 @@ proposed. Finite integrals change sign and remain below their empirical
 block/quadrature/antisymmetry floor; no positive converged mobility is inferred.
 The source NVT thermostat and all-mobile plane coordinate require independent
 audits. A positive selected cutoff is not a production clock certificate.
+
+## v18: quantitative line benchmark and independent fatigue endpoints
+
+Gorman, Wood & Vreeland Jr1969, DOI
+[10.1063/1.1657472](https://doi.org/10.1063/1.1657472), Figure5c at23 deg C:
+ten isolated source markers were replayed from the original page image,
+seven fitted and three held out. The zero-intercept velocity/shear estimate
+is1.1627233e-5 m/(Pa s); held-out RMSE3.5012 m/s is23.62% of held-out mean
+velocity. This is substantial source/selection scatter, not precision given
+by the pixels. Source character is pooled edge/mixed and source span unknown.
+Details, units, full raw hashes and exclusions are in
+`data/gorman1969_velocity_benchmark.json`. Conditional line-drag/bow-time
+conversions require explicit b, stiffness and pins and do not infer M_a/M_s.
+
+Deschanel, Ben Rhouma & Weiss2017, DOI
+[10.1038/s41598-017-13226-1](https://doi.org/10.1038/s41598-017-13226-1),
+adds seven99.95%Al specimen-fatigue groups to
+`data/aluminum_fatigue_validation_v18.json`. Source Delta sigma50/62MPa is
+full range, i.e. amplitude25/31MPa under R=-1, not50/62MPa amplitude.
+Fracture life, interrupted crack observations and AE growth onset are distinct
+endpoints. None calibrates a/s mobility, specimen independence or local
+absorbed probability. No lifetime is in the calibration loss.
+
+The source1024-frame NVT record was not extended: a new1MiB ranged request
+timed out before headers after20seconds. No extra trajectory data were
+obtained or substituted. The kinetic JSON remains unchanged and uncalibrated.

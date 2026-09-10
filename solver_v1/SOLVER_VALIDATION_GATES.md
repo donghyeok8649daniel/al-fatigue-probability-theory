@@ -14,6 +14,22 @@ confused with a fully calibrated spatial aluminum fatigue solver.
 
 ## Gates
 
+The v18 line-kinetics benchmark fits actual23 deg C line velocity data and
+checks held-out points, pinned-line spatial/time refinement, work balance and
+unload/hold. It is explicitly a line-coordinate/assumed-geometry reference,
+not a/s mobility or a new production clock. Source specimen fatigue stress
+ranges and failure endpoints are now audited separately; no S-N/lifetime fit
+is performed. Actual yield, fatigue, material/interface adoption, specimen
+mapping and production seconds/Hz gates remain closed. Form scrolling and
+fixed solve buttons are accessibility fixes, not approval of a spatial UI
+redesign. See `LINE_KINETICS_AND_FATIGUE_VALIDATION.md` for exact scope.
+
+The preceding v17 independent-rank1-range test did not resolve the normal
+force/Hessian material error; its additional parameter was not adopted.
+Completed365coefficient profiles and all independent checks are recorded in
+`NORMAL_ENVIRONMENT_RESPONSE_V17.md`, not evidence of a full calibrated Al
+fatigue surface. The v16 and earlier paragraphs below are historical progress.
+
 The v16 even-environment extension is now derived and actually fitted/tested.
 One per-site rational invariant shape preserves the LJ/infinite-sum structure
 and the cubic harmonic operator. On the SAME enlarged development data, the

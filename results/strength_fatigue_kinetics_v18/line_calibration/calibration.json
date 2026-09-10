@@ -1,0 +1,63 @@
+{
+  "velocity_per_stress_m_per_Pa_s": 1.1627233043636777e-05,
+  "training_rmse_m_s": 2.3832937918024015,
+  "heldout_rmse_m_s": 3.5011853903519077,
+  "training_points": 7,
+  "heldout_points": 3,
+  "prediction_m_s": [
+    4.584857674275201,
+    7.47455256767313,
+    9.767988874338043,
+    12.058484459139448,
+    12.918101026093561,
+    12.939067283824153,
+    13.188538521912008,
+    13.867028405198758,
+    15.05551570055553,
+    16.086020882467015
+  ],
+  "residual_m_s": [
+    -0.8356129117593358,
+    2.5577411529662806,
+    -1.145635718264998,
+    3.930490244503021,
+    3.1073007134115667,
+    1.623808285823964,
+    -3.1706821317832556,
+    4.536247334933977,
+    1.8719908682542137,
+    -2.471196683018748
+  ],
+  "leave_one_out_slopes_m_per_Pa_s": [
+    1.166895803502251e-05,
+    1.1758237304669926e-05,
+    1.1042977617996236e-05,
+    1.13620434232037e-05,
+    1.2158792668421725e-05,
+    1.1247053009280194e-05,
+    1.2184192716167125e-05
+  ],
+  "all_point_refit_slope_for_sensitivity_only": 1.2571865655666664e-05,
+  "source_mean_ratio_for_sensitivity_only": 1.2613530582957323e-05,
+  "independent_specimen_validation": false,
+  "production_clock_calibrated": false,
+  "temperature_K": 296.15,
+  "temperature_accuracy_K": 5,
+  "source_doi": "10.1063/1.1657472",
+  "source_pdf_sha256": "b4536b12a161babc565460facb83b4c64a685bced57cf0f48da9f7cb79df44d3",
+  "data_sha256": "741730447d9877cd819f6b923f30def12426c88b7a292cee3348cc9196c21c48",
+  "source_pixels_replayed": true,
+  "reading_only_slope_bounds": [
+    1.0408180083458751e-05,
+    1.2991573691065222e-05
+  ],
+  "observed_stress_range_Pa": [
+    394320.61411931115,
+    1383477.9798509665
+  ],
+  "validation_scope": "selected isolated leading edge/mixed dislocation markers at 23 C; not all source data",
+  "full_population_calibrated": false,
+  "line_character_resolved": false,
+  "physical_a_s_mobility_available": false,
+  "t0_seconds": null
+}

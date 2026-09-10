@@ -191,3 +191,100 @@ def test_load_bound_kinetics_switch_units_and_preserve_results(tmp_path, monkeyp
         assert len(app._time_basis_values()) == 1
     finally:
         app.root.destroy()
+
+
+@pytest.mark.parametrize("height", [620, 480])
+def test_small_window_scroll_and_fixed_solve_actions(monkeypatch, tk_root, height):
+    def forbidden(*_args, **_kwargs):
+        raise AssertionError("scrolling/resize/language must not run the PDE")
+    monkeypatch.setattr(desktop_ui, "run_ui_analysis", forbidden)
+    app = desktop_for_test(tk_root)
+    try:
+        app.root.geometry(f"940x{height}+0+0")
+        app.root.deiconify()
+        app.notebook.select(app.solve_tab)
+        app.root.update()
+        values = {key: entry.get() for key, entry in app.entries.items()}
+        result = {"model_time": np.array([0., 1.]), "strain": np.array([0., .001])}
+        app.result = result
+        app.field.set("strain")
+        app._plot()
+        app.ax.set_xlim(.2, .7)
+        app._remember_view()
+
+        def visible(widget):
+            assert widget.winfo_ismapped()
+            top = widget.winfo_rooty()
+            assert app.solve_tab.winfo_rooty() <= top
+            assert top + widget.winfo_height() <= (
+                app.solve_tab.winfo_rooty() + app.solve_tab.winfo_height()
+            )
+
+        for language in ("English", "한국어"):
+            app.language_display.set(language)
+            app._on_language_selected()
+            app.root.update()
+            visible(app.run_button)
+            visible(app.convergence_button)
+            assert app.solve_scroll.canvas.yview()[1] < 1
+            quality = app.analysis_quality.get()
+            # Scoped handler runs BEFORE Combobox's native wheel-selection.
+            app.quality_selector.event_generate("<MouseWheel>", delta=-120)
+            app.root.update()
+            assert app.solve_scroll.canvas.yview()[0] > 0
+            assert app.analysis_quality.get() == quality
+            app.solve_scroll.canvas.yview_moveto(1)
+            app.root.update()
+            visible(app.run_button)
+            visible(app.convergence_button)
+            app.solve_scroll.canvas.yview_moveto(0)
+
+        assert {key: entry.get() for key, entry in app.entries.items()} == values
+        assert app.result is result
+        np.testing.assert_array_equal(app.result["strain"], [0., .001])
+        np.testing.assert_allclose(app.ax.get_xlim(), [.2, .7])
+        # The form bindtag must not intercept Matplotlib zoom events.
+        assert app.solve_scroll._tag not in app.canvas.get_tk_widget().bindtags()
+        assert app.summary.cget("yscrollcommand")
+
+        app.notebook.select(app.pre_tab)
+        app.root.update()
+        assert app.pre_scroll.canvas.yview()[1] < 1
+        app.pre_scroll.canvas.focus_force()
+        app.root.update()
+        app.pre_scroll.canvas.event_generate("<Next>")
+        app.root.update()
+        assert app.pre_scroll.canvas.yview()[0] > 0
+    finally:
+        app.root.destroy()
+
+
+def test_scroll_tab_focus_reveals_fields_and_cleans_private_bindings(tk_root):
+    from app.scrollable_panel import ScrollablePanel
+    from tkinter import ttk
+    window = tk.Toplevel(tk_root)
+    window.geometry("340x240+0+0")
+    try:
+        panel = ScrollablePanel(window)
+        panel.pack(fill="both", expand=True)
+        fields = []
+        for index in range(30):
+            field = ttk.Entry(panel.content)
+            field.insert(0, str(index))
+            field.pack(pady=4)
+            fields.append(field)
+        window.update()
+        fields[-1].event_generate("<FocusIn>")
+        window.update()
+        assert panel.canvas.yview()[0] > .5
+        assert fields[-1].winfo_rooty() >= panel.canvas.winfo_rooty()
+        assert fields[-1].winfo_rooty() + fields[-1].winfo_height() <= (
+            panel.canvas.winfo_rooty() + panel.canvas.winfo_height() + 18
+        )
+        assert [field.get() for field in fields] == [str(i) for i in range(30)]
+        tag = panel._tag
+        assert window.bind_class(tag, "<MouseWheel>")
+        panel.destroy()
+        assert not window.bind_class(tag, "<MouseWheel>")
+    finally:
+        window.destroy()

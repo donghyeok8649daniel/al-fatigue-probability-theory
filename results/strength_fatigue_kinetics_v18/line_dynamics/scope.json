@@ -1,0 +1,45 @@
+{
+  "completed": true,
+  "elapsed_seconds": 1.452229400005308,
+  "material_file": "results\\fcc111_active_interface\\normal_response_v17\\nested_range\\calibration.json",
+  "material_sha256": "4f68d9edd148a51f0b311f5d8d96a27641ec92e956a3e3c1592d353014135166",
+  "material_accepted": false,
+  "cubic_GPa": [
+    114.00000000000023,
+    62.00000000000048,
+    31.99999999999964
+  ],
+  "material_temperature": "0 K static comparator; NOT matched to measured 23 C elasticity",
+  "mobility_source_doi": "10.1063/1.1657472",
+  "kinetic_file_sha256": "da4d1c338d3cb760a72e0a434531b59b251e69aef24ae9972cf063803b4cec62",
+  "velocity_slope_m_per_Pa_s": 1.1627233043636777e-05,
+  "conditional_drag_Pa_s": 2.462995669784718e-05,
+  "burgers_m": 2.863782463805517e-10,
+  "burgers_convention": "fixed model 0K b; not a new measured 23 C Burgers vector",
+  "line_character": "explicit edge reference; measured kinetic data pool edge/mixed",
+  "source_spans_are_measured": false,
+  "core_radius_over_b": 2,
+  "outer_radius_over_span": 1,
+  "geometry_or_drag_fitted_to_yield_or_fatigue": false,
+  "source_coordinate_seconds_available": true,
+  "matched_production_seconds_available": false,
+  "production_M_a_phys": null,
+  "production_M_s_phys": null,
+  "production_t0_seconds": null,
+  "fatigue_comparison": {
+    "comparable": false,
+    "reasons": [
+      "local opening / AE growth / final fracture are distinct endpoints",
+      "matched PDE physical clock unavailable",
+      "specimen-scale mapping unvalidated",
+      "loading control/waveform/frequency not matched",
+      "grain/orientation/defect state not matched",
+      "probability resolution uncertified"
+    ],
+    "lifetime_error_available": false,
+    "empirical_lifetime_fit_performed": false
+  },
+  "actual_yield_calibrated": false,
+  "fatigue_calibrated": false,
+  "production_changed": false
+}

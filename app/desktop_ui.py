@@ -36,6 +36,7 @@ from .solver_adapter import (
     run_ui_analysis,
 )
 from .convergence_check import run_convergence_check
+from .scrollable_panel import ScrollablePanel
 from .specimen_probability import (
     BELOW_RESOLUTION,
     aggregate_specimen_probability,
@@ -122,7 +123,7 @@ class DesktopApp:
         self.root = root if root is not None else tk.Tk()
         self.root.title(self._tr("app.title"))
         self.root.configure(bg=APP_BG)
-        self.root.minsize(940, 620)
+        self.root.minsize(940, 480)
         self._center(1180, 760)
 
         self.entries: dict[str, ttk.Entry] = {}
@@ -197,7 +198,7 @@ class DesktopApp:
     def _center(self, width: int, height: int) -> None:
         sw, sh = self.root.winfo_screenwidth(), self.root.winfo_screenheight()
         width = min(width, max(900, sw - 60))
-        height = min(height, max(600, sh - 90))
+        height = min(height, max(480, sh - 90))
         x, y = max(0, (sw - width) // 2), max(0, (sh - height) // 2)
         self.root.geometry(f"{width}x{height}+{x}+{y}")
 
@@ -320,18 +321,23 @@ class DesktopApp:
         self._post_tab()
 
     def _pre_tab(self) -> None:
+        self.pre_scroll = ScrollablePanel(
+            self.pre_tab, background=PANEL_BG, style="Panel.TFrame"
+        )
+        self.pre_scroll.pack(fill="both", expand=True)
+        form = self.pre_scroll.content
         section = self._bind_text(
-            ttk.Label(self.pre_tab, style="Section.TLabel"), "section.axial_inputs"
+            ttk.Label(form, style="Section.TLabel"), "section.axial_inputs"
         )
         section.grid(
             row=0, column=0, columnspan=3, sticky="w", padx=20, pady=(18, 10)
         )
         energy_label = self._bind_text(
-            ttk.Label(self.pre_tab, style="Property.TLabel"), "field.energy_model"
+            ttk.Label(form, style="Property.TLabel"), "field.energy_model"
         )
         energy_label.grid(row=1, column=0, sticky="w", padx=(20, 8), pady=7)
         self.energy_model_selector = ttk.Combobox(
-            self.pre_tab,
+            form,
             textvariable=self.energy_model_display,
             values=self._energy_model_values(),
             state="readonly",
@@ -344,11 +350,11 @@ class DesktopApp:
             "<<ComboboxSelected>>", self._on_energy_model_selected
         )
         time_label = self._bind_text(
-            ttk.Label(self.pre_tab, style="Property.TLabel"), "field.time_basis"
+            ttk.Label(form, style="Property.TLabel"), "field.time_basis"
         )
         time_label.grid(row=2, column=0, sticky="w", padx=(20, 8), pady=7)
         self.time_basis_selector = ttk.Combobox(
-            self.pre_tab,
+            form,
             textvariable=self.time_basis_display,
             values=self._time_basis_values(),
             state="readonly",
@@ -359,12 +365,12 @@ class DesktopApp:
             "<<ComboboxSelected>>", self._on_time_basis_selected
         )
         self.load_kinetics_button = self._bind_text(
-            ttk.Button(self.pre_tab, command=self._choose_kinetic_calibration),
+            ttk.Button(form, command=self._choose_kinetic_calibration),
             "button.load_kinetics",
         )
         self.load_kinetics_button.grid(row=3, column=0, sticky="w", padx=(20, 8), pady=7)
         self.time_warning_label = ttk.Label(
-            self.pre_tab,
+            form,
             textvariable=self.time_warning_display,
             style="Unit.TLabel",
             wraplength=360,
@@ -373,16 +379,16 @@ class DesktopApp:
         self.time_warning_label.grid(row=2, column=2, rowspan=2, sticky="w", padx=(6, 20), pady=7)
         for row, (key, label_key, default, unit_key) in enumerate(self.PARAMS, start=4):
             label = self._bind_text(
-                ttk.Label(self.pre_tab, style="Property.TLabel"), label_key
+                ttk.Label(form, style="Property.TLabel"), label_key
             )
             label.grid(
                 row=row, column=0, sticky="w", padx=(20, 8), pady=7
             )
-            entry = ttk.Entry(self.pre_tab, width=20)
+            entry = ttk.Entry(form, width=20)
             entry.insert(0, default)
             entry.grid(row=row, column=1, sticky="ew", padx=4, pady=7)
             unit = self._bind_text(
-                ttk.Label(self.pre_tab, style="Unit.TLabel"), unit_key
+                ttk.Label(form, style="Unit.TLabel"), unit_key
             )
             unit.grid(
                 row=row, column=2, sticky="w", padx=(6, 20), pady=7
@@ -393,9 +399,9 @@ class DesktopApp:
             if key == "model_frequency":
                 self.frequency_label = label
                 self.frequency_unit = unit
-        self.pre_tab.columnconfigure(1, weight=1)
+        form.columnconfigure(1, weight=1)
         preset_frame = self._bind_text(
-            ttk.LabelFrame(self.pre_tab, padding=10), "section.load_presets"
+            ttk.LabelFrame(form, padding=10), "section.load_presets"
         )
         preset_frame.grid(
             row=len(self.PARAMS) + 4,
@@ -437,15 +443,24 @@ class DesktopApp:
             self.entries[key].bind("<FocusOut>", self._update_stress_context)
             self.entries[key].bind("<Return>", self._update_stress_context)
         note = self._bind_text(
-            ttk.LabelFrame(self.pre_tab, padding=12), "section.scope"
+            ttk.LabelFrame(form, padding=12), "section.scope"
         )
         note.grid(row=len(self.PARAMS) + 5, column=0, columnspan=3, sticky="ew", padx=20, pady=8)
         scope = self._bind_text(ttk.Label(note, justify="left"), "scope.text")
         scope.pack(anchor="w")
 
     def _solve_tab(self) -> None:
-        left = ttk.Frame(self.solve_tab, style="Panel.TFrame")
-        left.pack(side="left", fill="y", padx=20, pady=18)
+        # Reserve the action row BEFORE the expanding settings viewport. The
+        # solve button remains reachable even when diagnostics grow after a run.
+        controls = ttk.Frame(self.solve_tab, style="Panel.TFrame")
+        controls.pack(side="left", fill="y", padx=(12, 10), pady=12)
+        self.solve_actions = ttk.Frame(controls, style="Panel.TFrame")
+        self.solve_actions.pack(side="bottom", fill="x", pady=(8, 0))
+        self.solve_scroll = ScrollablePanel(
+            controls, width=365, background=PANEL_BG, style="Panel.TFrame"
+        )
+        self.solve_scroll.pack(fill="both", expand=True)
+        left = self.solve_scroll.content
         self._bind_text(
             ttk.Label(left, style="Section.TLabel"), "section.probability_pde"
         ).pack(anchor="w")
@@ -475,7 +490,7 @@ class DesktopApp:
         self.quality_selector.pack(anchor="w", pady=(6, 15))
         self.quality_selector.bind("<<ComboboxSelected>>", self._on_quality_selected)
         explanation = self._bind_text(
-            ttk.Label(left, style="Property.TLabel", justify="left"),
+            ttk.Label(left, style="Property.TLabel", justify="left", wraplength=350),
             "solve.explanation",
         )
         explanation.pack(anchor="w", pady=(0, 10))
@@ -504,7 +519,7 @@ class DesktopApp:
             ("correlation_area_mm2", "field.correlation_area"),
             ("stressed_area_mm2", "field.stressed_area"),
         ), start=2):
-            label = self._bind_text(ttk.Label(specimen), text_key)
+            label = self._bind_text(ttk.Label(specimen, wraplength=200), text_key)
             label.grid(row=row, column=0, sticky="w", pady=2)
             entry = ttk.Entry(specimen, width=10)
             entry.grid(row=row, column=1, sticky="ew", padx=4, pady=2)
@@ -514,25 +529,25 @@ class DesktopApp:
             unit = self._bind_text(ttk.Label(specimen), "unit.mm2")
             unit.grid(row=row, column=2, sticky="w", pady=2)
         specimen.columnconfigure(1, weight=1)
-        ttk.Label(specimen, textvariable=self.specimen_N_eff).grid(
+        ttk.Label(specimen, textvariable=self.specimen_N_eff, wraplength=335).grid(
             row=4, column=0, columnspan=3, sticky="w", pady=(5, 0)
         )
-        ttk.Label(specimen, textvariable=self.local_floor_display).grid(
+        ttk.Label(specimen, textvariable=self.local_floor_display, wraplength=335).grid(
             row=5, column=0, columnspan=3, sticky="w"
         )
-        ttk.Label(specimen, textvariable=self.plastic_floor_display).grid(
+        ttk.Label(specimen, textvariable=self.plastic_floor_display, wraplength=335).grid(
             row=6, column=0, columnspan=3, sticky="w"
         )
-        ttk.Label(specimen, textvariable=self.local_probability_display).grid(
+        ttk.Label(specimen, textvariable=self.local_probability_display, wraplength=335).grid(
             row=7, column=0, columnspan=3, sticky="w"
         )
-        ttk.Label(specimen, textvariable=self.specimen_extrapolation_display).grid(
+        ttk.Label(specimen, textvariable=self.specimen_extrapolation_display, wraplength=335).grid(
             row=8, column=0, columnspan=3, sticky="w"
         )
-        ttk.Label(specimen, textvariable=self.specimen_certified_display).grid(
+        ttk.Label(specimen, textvariable=self.specimen_certified_display, wraplength=335).grid(
             row=9, column=0, columnspan=3, sticky="w"
         )
-        ttk.Label(specimen, textvariable=self.probability_status_display).grid(
+        ttk.Label(specimen, textvariable=self.probability_status_display, wraplength=335).grid(
             row=10, column=0, columnspan=3, sticky="w"
         )
         mechanism = self._bind_text(
@@ -556,12 +571,12 @@ class DesktopApp:
             "diagnostic.barrier_scope",
         ).pack(anchor="w", pady=(3, 0))
         self.run_button = ttk.Button(
-            left, text=self._tr("button.run"), style="Accent.TButton",
+            self.solve_actions, text=self._tr("button.run"), style="Accent.TButton",
             command=self._start_solve
         )
         self.run_button.pack(fill="x")
         self.convergence_button = ttk.Button(
-            left,
+            self.solve_actions,
             text=self._tr("button.run_convergence"),
             command=self._start_convergence_check,
             state="disabled",
@@ -570,13 +585,20 @@ class DesktopApp:
         self._text_bindings.append(
             (self.convergence_button, "text", "button.run_convergence")
         )
-        self.progress = ttk.Progressbar(left, mode="indeterminate", length=235)
-        self.progress.pack(fill="x", pady=12)
+        self.progress = ttk.Progressbar(self.solve_actions, mode="indeterminate", length=235)
+        self.progress.pack(fill="x", pady=(8, 0))
+        summary_frame = ttk.Frame(self.solve_tab, style="Panel.TFrame")
+        summary_frame.pack(side="left", fill="both", expand=True, padx=(0, 12), pady=12)
         self.summary = tk.Text(
-            self.solve_tab, wrap="word", relief="flat", bg="#f7f9fa",
+            summary_frame, wrap="word", relief="flat", bg="#f7f9fa",
             fg=TEXT, font=("Consolas", 9), padx=14, pady=12
         )
-        self.summary.pack(side="left", fill="both", expand=True, padx=(0, 20), pady=18)
+        self.summary_scrollbar = ttk.Scrollbar(
+            summary_frame, orient="vertical", command=self.summary.yview
+        )
+        self.summary_scrollbar.pack(side="right", fill="y")
+        self.summary.configure(yscrollcommand=self.summary_scrollbar.set)
+        self.summary.pack(side="left", fill="both", expand=True)
         self._render_summary()
 
     def _post_tab(self) -> None:

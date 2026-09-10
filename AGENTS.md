@@ -482,6 +482,10 @@ Negative work of separation 후보는 물리적으로 채택하지 않는다.
   원래 데이터를 증폭하지 않는다.
 - Stress input을 임의 clamp하지 않는다. 큰 sigma/E는 해석 경고만 낸다.
 - Ac/Astressed 변경은 post-processing이며 PDE를 다시 풀지 않는다.
+- 긴 Pre/Solve 폼은 `app/scrollable_panel.py`의 세로 viewport로 접근한다.
+  Solve/수렴 버튼은 스크롤 바깥 고정 action row에 둔다. 전역 wheel 바인딩으로
+  Matplotlib zoom/다른 위젯을 가로채지 않는다. 스크롤/resize/Tab/언어 전환은
+  입력값·결과·PDE 실행을 바꾸지 않아야 한다. 작은 창에서 버튼 가시성을 시험한다.
 
 사용자가 요청한 후속 UI는 geometry import / 기본 편집 가능한 원통 시편 ->
 meshing -> pre조건 -> solving/posting 순서다. 다만 각 솔버 단계의 실제 실행과
@@ -495,6 +499,20 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 ## 16. 문서 라우팅
 
 추가 연구는 기존 canonical model과 구분한다:
+
+- LINE_KINETICS_AND_FATIGUE_VALIDATION.md / strength_fatigue_kinetics_v18:
+  실제23°C Gorman 전위속도–전단10개 isolated marker에서7fit/3heldout을
+  분리했다. mu_tau=1.1627e-5 m/(Pa s), heldout RMSE3.50m/s(평균의23.6%).
+  원본 이미지/축/CGS변환/선택편향을 저장한다. 전위선 좌표의 제한된 보정이지
+  a/s 이동도나 production clock이 아니다. B_line=b/mu_tau는 b의 조건을
+  명시하고, B_line L²/(pi² T_line)은 hypothetical pin과0K 탄성 비교값을 쓴다.
+  높은 rolloff주파수는 상수drag 수치모델 검증이며 실험 broadband 보정 아님.
+  Pinned-line 작은 휨은 같은 LJ/Bessel longwave Schur stiffness에서 유도;
+  analyticseries/finitegrid/time/hold/dissipation을 실제 검사했다. 회복하는 휨의
+  루프를 피로/영구소성으로 부르지 않는다. 미지 L/core로 실제yield에 맞추지 않는다.
+  Deschanel2017의 Al fatigue Delta50/62MPa는 full range(진폭25/31MPa)다.
+  PSB/균열관찰/AE multiplet/final fracture/local absorption을 구분하고 Nf를
+  M이나S-Nloss로 쓰지 않는다. 실제yield/Al fatigue/a-s초·Hz는 계속미검증이다.
 
 - NORMAL_ENVIRONMENT_RESPONSE_V17.md / normal_response_v17:
   v16의 normal force/Haa 오차를 실제 coefficient control로 분해한 후 rank1

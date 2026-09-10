@@ -1,0 +1,29 @@
+{
+  "source_title": "Acoustic emission multiplets as early warnings of fatigue failure in metallic materials",
+  "authors": ["S. Deschanel", "W. Ben Rhouma", "J. Weiss"],
+  "year": 2017,
+  "doi": "10.1038/s41598-017-13226-1",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5654477/",
+  "location": "Table 1, Experiments, Figure 1, Results and Discussion",
+  "license": "CC BY 4.0; numeric transcription with derived range/amplitude conversions",
+  "temperature": "room temperature; numeric K not specified",
+  "purity_percent": 99.95,
+  "microstructure": "polycrystal; elongated grains approximately 10 mm by 3 mm",
+  "sample_orientation_distribution": null,
+  "range_convention": "Delta epsilon = epsilon_max - epsilon_min; Delta sigma = sigma_max - sigma_min",
+  "waveform": "constant-rate branches are consistent with triangular cycling; no sinusoidal substitution",
+  "reported_ranges_are_confidence_intervals": false,
+  "individual_replicate_rows_available": false,
+  "used_in_kinetic_or_energy_fit": false,
+  "records": [
+    {"id":"Al_Mateis_strain_0p5", "control":"total_axial_strain", "full_range":0.005, "full_range_unit":"1", "ratio":-1, "frequency_Hz":0.1, "reported_rate":0.001, "rate_rounding_halfwidth":0.0005, "rate_unit":"1/s", "gauge_length_mm":18, "diameter_mm":9, "tests":2, "failure_cycles_min":11600, "failure_cycles_max":15500, "first_AE_multiplet_life_fraction_min":0.24, "first_AE_multiplet_life_fraction_max":0.59},
+    {"id":"Al_Mateis_strain_0p95", "control":"total_axial_strain", "full_range":0.0095, "full_range_unit":"1", "ratio":-1, "frequency_Hz":0.1, "reported_rate":0.0019, "rate_rounding_halfwidth":0.00005, "rate_unit":"1/s", "gauge_length_mm":18, "diameter_mm":9, "tests":8, "failure_cycles_min":3000, "failure_cycles_max":3800, "first_AE_multiplet_life_fraction_min":0.4, "first_AE_multiplet_life_fraction_max":0.7},
+    {"id":"Al_Mateis_strain_1p5", "control":"total_axial_strain", "full_range":0.015, "full_range_unit":"1", "ratio":-1, "frequency_Hz":0.1, "reported_rate":0.003, "rate_rounding_halfwidth":0.0005, "rate_unit":"1/s", "gauge_length_mm":18, "diameter_mm":9, "tests":1, "failure_cycles_min":580, "failure_cycles_max":580, "first_AE_multiplet_life_fraction_min":null, "first_AE_multiplet_life_fraction_max":null},
+    {"id":"Al_Mateis_stress_50", "control":"axial_stress", "full_range":50, "full_range_unit":"MPa", "ratio":-1, "frequency_Hz":0.1, "reported_rate":10, "rate_rounding_halfwidth":0.5, "rate_unit":"MPa/s", "gauge_length_mm":18, "diameter_mm":9, "tests":1, "failure_cycles_min":17200, "failure_cycles_max":17200, "first_AE_multiplet_life_fraction_min":0.59, "first_AE_multiplet_life_fraction_max":0.59},
+    {"id":"Al_Mateis_stress_62", "control":"axial_stress", "full_range":62, "full_range_unit":"MPa", "ratio":-1, "frequency_Hz":0.1, "reported_rate":12.4, "rate_rounding_halfwidth":0.05, "rate_unit":"MPa/s", "gauge_length_mm":18, "diameter_mm":9, "tests":1, "failure_cycles_min":5300, "failure_cycles_max":5300, "first_AE_multiplet_life_fraction_min":0.45, "first_AE_multiplet_life_fraction_max":0.45},
+    {"id":"Al_MTS_strain_0p76", "control":"total_axial_strain", "full_range":0.0076, "full_range_unit":"1", "ratio":-1, "frequency_Hz":1, "reported_rate":0.015, "rate_rounding_halfwidth":0.0005, "rate_unit":"1/s", "gauge_length_mm":32, "diameter_mm":14, "tests":2, "failure_cycles_min":1360, "failure_cycles_max":5040, "first_AE_multiplet_life_fraction_min":0.64, "first_AE_multiplet_life_fraction_max":0.82},
+    {"id":"Al_MTS_strain_1p5", "control":"total_axial_strain", "full_range":0.015, "full_range_unit":"1", "ratio":-1, "frequency_Hz":1, "reported_rate":0.03, "rate_rounding_halfwidth":0.005, "rate_unit":"1/s", "gauge_length_mm":32, "diameter_mm":14, "tests":1, "failure_cycles_min":1450, "failure_cycles_max":1450, "first_AE_multiplet_life_fraction_min":0.56, "first_AE_multiplet_life_fraction_max":0.56}
+  ],
+  "interrupted_microscopy": {"full_total_strain_range":0.0095, "PSB_observed_by_cycles":100, "crack_signs_observed_by_cycles":600, "interpretation":"Interrupted observations, not exact first-passage times or per-specimen probability samples", "first_AE_multiplet_not_before_cycles":1200},
+  "do_not_equate": ["PSB formation", "first detectable crack", "stage-II AE multiplet", "final specimen fracture", "local atomic opening absorption"]
+}
