@@ -1,4 +1,4 @@
-"""Independent v16 interface/curvature checks, not an optimizer or PDE run."""
+"""Independent v16/v17 interface/curvature checks, not an optimizer or PDE run."""
 import argparse
 import hashlib
 from pathlib import Path
@@ -87,20 +87,25 @@ def main():
     budget, derivatives, truncation, direct, extrema, waves, bindings, widths = [], [], [], [], [], [], [], []
     for directory in args.models:
         data, definition, model, _, _ = load_material(directory)
-        if not definition.get('even_development'):
-            raise ValueError('explicit v16 dataset required')
+        if not (definition.get('even_development') or definition.get('normal_development')):
+            raise ValueError('explicit v16/v17 dataset required')
         if definition['source_sha256'] != source.reference.sha256:
             raise ValueError('target-source mismatch')
         name = directory.name
         shape = np.asarray(data['best']['decays'])
         c = np.asarray(data['best']['coefficients'])
         alpha = float(shape[3]) if definition.get('quadrupole_saturation_extension') else 0.
-        tighter = (SaturatedQuadrupoleInterface(shape, c, tolerance=2e-13) if alpha else
-                   QuarticSymmetryInterface(shape[:3], c, tolerance=2e-13))
+        if definition.get('rank_one_range_extension'):
+            from .rank_one_range_material import RankOneRangeInterface
+            tighter = RankOneRangeInterface(shape, c, tolerance=2e-13)
+        else:
+            tighter = (SaturatedQuadrupoleInterface(shape, c, tolerance=2e-13) if alpha else
+                       QuarticSymmetryInterface(shape[:3], c, tolerance=2e-13))
         bindings.append(dict(model=name,
             calibration_sha256=hashlib.sha256((directory/'calibration.json').read_bytes()).hexdigest(),
             shape=shape, strictly_positive_LJ=bool(np.all(c[:2] > 0)),
-            quadrupole_saturation=alpha))
+            quadrupole_saturation=alpha,
+            rank1_decay=shape[4] if definition.get('rank_one_range_extension') else shape[1]))
         if alpha:
             for label, sites, normalization in (
                 ('rank2', model.even_sites, model.even_reference_curvature),
@@ -147,9 +152,18 @@ def main():
                         direct.append(dict(model=name, state=label, channel=channel,
                             radius=radius, layers=radius, reciprocal=exact[j], direct=finite[j],
                             absolute_error=abs(finite[j]-exact[j]), validation_cutoff_only=True))
+            if definition.get('rank_one_range_extension'):
+                moment = next(m for _, m in model.base.moments if m.invariant.rank == 1)
+                rank1_exact = model.base._angular(q, moment)[0][0]
+                for radius in (6, 12, 18):
+                    finite = model.direct_rank1_energy(q, radius=radius, layers=radius)
+                    direct.append(dict(model=name, state=label, channel='rank1_independent_range',
+                        radius=radius, layers=radius, reciprocal=rank1_exact, direct=finite,
+                        absolute_error=abs(finite-rank1_exact), validation_cutoff_only=True))
         for samples in (129, 257):
             extrema.extend(dict(model=name, **row) for row in resolved_opening_extrema(model, samples))
-        basis = IsotropicBulkBasis(shape[:3], stretch=1.007, radius=12.)
+        basis = IsotropicBulkBasis(shape[:3], stretch=1.007, radius=12.,
+            rank1_decay=shape[4] if definition.get('rank_one_range_extension') else None)
         for j, v in enumerate(np.eye(3)):
             waves.extend(dict(model=name, polarization=j, alpha=alpha, **row)
                          for row in curvature_refinement(basis, c, alpha=alpha, polarization=v))
@@ -164,6 +178,8 @@ def main():
     save_json(args.out/'scope.json', dict(completed=True, bindings=bindings,
         source_sha256=source.reference.sha256, per_site_nonlinearity=True,
         canonical_finite_neighbor_cutoff=False, whole_zone_proof=False,
+        validation_state_labels_are_historical=True,
+        blind_fit_validation=False,
         full_material_accepted=False, physical_yield_validated=False,
         physical_seconds=False, physical_Hz=False, production_changed=False,
         elapsed_seconds=time.perf_counter()-began))

@@ -1,0 +1,22 @@
+{
+  "completed": true,
+  "bindings": [
+    {
+      "model": "saturated",
+      "calibration_sha256": "bcc8e2cbfe3c05faf89ade54e428d3f2fad18ae4b8864918729af844e15f9f8e"
+    },
+    {
+      "model": "positive_pair_refinement",
+      "calibration_sha256": "1ca347f9da60ac8301d2543d2417377392d460254bab38c07c1196977ec7f3f8"
+    }
+  ],
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "actual_shape_optimization": false,
+  "existing_shape_local_controls_only": true,
+  "entire_family_impossibility_proved": false,
+  "heldout_points_already_inspected": true,
+  "new_physical_targets": false,
+  "production_changed": false,
+  "physical_seconds": false,
+  "elapsed_seconds": 41.1700395999942
+}

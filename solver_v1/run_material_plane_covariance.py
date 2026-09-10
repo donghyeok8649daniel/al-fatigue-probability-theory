@@ -60,10 +60,12 @@ def main():
         saturation=data['best']['decays'][3] if definition.get('rational_angular_extension') else 0.
         even_saturation=(data['best']['decays'][3]
                          if definition.get('quadrupole_saturation_extension') else 0.)
+        rank1_decay=(data['best']['decays'][4] if definition.get('rank_one_range_extension') else None)
         for dilation in sorted(set([.99,1.,stretch,1.01]+args.additional_stretches)):
             previous=None
             for radius in (12.,16.):
-                basis=IsotropicBulkBasis(decays,stretch=dilation,radius=radius,include_cross=cross)
+                basis=IsotropicBulkBasis(decays,stretch=dilation,radius=radius,include_cross=cross,
+                                         rank1_decay=rank1_decay)
                 # Eleven actual MD plane modes, plus a fixed off-axis static
                 # wedge test. No phonon frequency/mass/kinetic fit is performed.
                 plane_points=[tuple(np.ones(3)*k/N) for k in range(1,N)]
@@ -131,6 +133,7 @@ def main():
                             fourth_order_richardson=(4*fd[1]-fd[0])/3,
                             absolute_richardson_error=abs((4*fd[1]-fd[0])/3-v@H@v),
                             quadrupole_saturation=even_saturation,
+                            rank1_decay=basis.rank1_decay,
                             resolved_from_two_amplitudes_only=False,
                             density_truncation=basis.density_series_tail))
         print('actual fixed-parameter MD-box validation',name,flush=True)

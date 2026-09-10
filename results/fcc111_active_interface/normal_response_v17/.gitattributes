@@ -1,0 +1,6 @@
+# These JSON records bind one another by raw-byte SHA256.
+# Preserve the actually validated bytes; do not rewrite scientific records
+# solely because a checkout uses a different platform's line endings.
+# Recognize CR as the saved line terminator, retaining all ordinary whitespace
+# checks (blank lines at EOF, trailing blanks, and spaces before tabs).
+*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

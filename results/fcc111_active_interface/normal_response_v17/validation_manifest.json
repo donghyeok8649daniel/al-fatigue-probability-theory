@@ -1,0 +1,355 @@
+{
+  "schema_version": 1,
+  "git_evidence_preservation": {
+    "scoped_attributes": "*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+    "raw_index_JSON_identity_passed": true,
+    "JSON_records_checked": 72,
+    "calibration_SHA256_bindings_passed": true,
+    "historical_files_rewritten": false,
+    "semantic_cross_platform_hash_claimed": false
+  },
+  "study": "normal_response_v17",
+  "completed": true,
+  "status": "bounded study complete; material acceptance failed; no production promotion",
+  "starting_git": {
+    "branch": "probability-pde-solver-v1",
+    "HEAD": "1818cf9cf630fd094597d919429a7c0499fcb0b5",
+    "fetched_remote_HEAD": "1818cf9cf630fd094597d919429a7c0499fcb0b5",
+    "worktree_clean": true
+  },
+  "model": "RankOneRangeInterface: separate static LJ/Poisson-Bessel per-atom environment reference",
+  "hypothesis": "one independent rank1 exponential decay, exactly nested at k1=k_odd",
+  "physical_units": {
+    "L0_m": 2.863782463805517e-10,
+    "E0_J": 1.602176634e-19,
+    "A_atomic_cell_formula": "sqrt(3)*L0^2/2",
+    "energy": "eV/interface cell",
+    "Hessian": "eV/L0^2",
+    "traction": "MPa",
+    "displacement": "Angstrom",
+    "A_c_used": false
+  },
+  "source": {
+    "static_potential": "Mishin et al. Al99, same-condition rigid-half reference",
+    "DOI": "10.1103/PhysRevB.59.3393",
+    "sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+    "static_temperature_K": 0,
+    "MD_DOI": "10.5281/zenodo.10014454",
+    "MD_temperature_K": 300,
+    "MD_frames_actually_processed": 1024,
+    "MD_atoms_per_plane": 576,
+    "MD_plane_classes": 12,
+    "new_MD_simulation": false,
+    "MD_in_current_loss": false
+  },
+  "observations": {
+    "exact_bulk": 5,
+    "interface_fit": 104,
+    "heldout_states": 12,
+    "heldout_rows": 48,
+    "inherited_pair_control_rows": 2,
+    "controls_are_measurements": false,
+    "duplicate_state_jet_groups": 0,
+    "heldout_excluded_from_current_loss": true,
+    "heldout_already_inspected_for_future_studies": true,
+    "discrepancy_scales_are_experimental_error_bars": false
+  },
+  "fits": {
+    "run_directories": 7,
+    "actual_verified_profiles": 365,
+    "nonlinear_profiles": 360,
+    "nonlinear_starts": 4,
+    "nonlinear_stopping_criteria_satisfied": 0,
+    "nonlinear_stops": "predeclared evaluation budgets",
+    "coefficient_only_profiles": 5,
+    "failed_coefficient_profiles": 0,
+    "all_stored_profiles_strictly_positive_LJ": true,
+    "global_optimum_proved": false,
+    "entire_analytic_family_impossibility_proved": false,
+    "initial_v16_fixed_shape_control_profiles_separate": 8
+  },
+  "controls": [
+    {
+      "run": "tied_free_pair",
+      "scope": "fixed-shape coefficient-only; inherited pair control removed",
+      "fit_loss": 1255.4173853908783,
+      "heldout_normalized_rms": 4.996998130579069,
+      "independent_full_validation": false
+    },
+    {
+      "run": "nested_free_pair",
+      "scope": "fixed-shape coefficient-only; inherited pair control removed",
+      "fit_loss": 1254.6575056231463,
+      "heldout_normalized_rms": 5.004517677878437,
+      "independent_full_validation": false
+    },
+    {
+      "run": "separate_free_pair",
+      "scope": "fixed-shape coefficient-only; inherited pair control removed",
+      "fit_loss": 1258.2938948149902,
+      "heldout_normalized_rms": 4.982405489771672,
+      "independent_full_validation": false
+    },
+    {
+      "run": "even_bound_probe",
+      "scope": "two fixed-shape coefficient-only profiles; k_even=15 and18",
+      "losses": [
+        1293.022045427851,
+        1401.7799630229397
+      ],
+      "independent_full_validation": false
+    }
+  ],
+  "independent_validation": [
+    {
+      "model": "tied_control",
+      "completed": true,
+      "profiles": 96,
+      "fit_loss": 1256.9468355849278,
+      "heldout_normalized_rms": 4.999087774392228,
+      "shape": [
+        2.3141605533261544,
+        6.276933465571603,
+        12,
+        458.710781847525
+      ],
+      "calibration_sha256": "2091414877c3242de8288099de30d34123eb7157b477a93efdc31ff55607d388",
+      "finite_q_grid_positive": true,
+      "continuous_q_search_positive": true,
+      "exact_tangent_rank": 7,
+      "exact_tangent_condition": 125.84038326594984,
+      "exact_derivative_residual": 3.965082230804131e-14,
+      "singular_values": [
+        934.5781352946824,
+        107.02307760792756,
+        28.849391126338645,
+        23.055178459526562,
+        20.294926225785993,
+        11.50543460113874,
+        7.4266949212921105
+      ],
+      "derivative_H_max_at_step_1e_5": 8.394790285137788e-8,
+      "direct_unit_energy_max_at_18": 1.1275702593849246e-17,
+      "reciprocal_H_max_change": 4.476419235288631e-13,
+      "dilation_radius_records": 12,
+      "minimum_dilation_robust_margin": 0.00602270524235312,
+      "all_dilation_records_sampled_positive": true,
+      "actual_static_states": 198,
+      "invalid_static_states": 0,
+      "max_static_force_residual": 1.7484731584891002e-14,
+      "max_static_return_L0": 3.6137157445752645e-15,
+      "pure_normal_50MPa_displacement_error": -0.28984525362770663,
+      "pure_shear_4MPa_displacement_error": -0.03109427295469025,
+      "md_variance_errors": [
+        -0.12622971502831526,
+        -0.23162255114281183,
+        -0.15827050713532465
+      ],
+      "elapsed_wall_seconds": {
+        "static_spectral_validation": 162.46860570000717,
+        "jet_checks": 128.89543109999795,
+        "covariance": 19.72564040000725,
+        "fit": 2998.8258222000004,
+        "tensor": 59.92714949999936
+      }
+    },
+    {
+      "model": "nested_range",
+      "completed": true,
+      "profiles": 72,
+      "fit_loss": 1256.8219412157046,
+      "heldout_normalized_rms": 5.00890045320046,
+      "shape": [
+        2.317200161027302,
+        6.271955678357825,
+        11.999999999999995,
+        436.65760955292114,
+        6.280114065024814
+      ],
+      "calibration_sha256": "4f68d9edd148a51f0b311f5d8d96a27641ec92e956a3e3c1592d353014135166",
+      "finite_q_grid_positive": true,
+      "continuous_q_search_positive": true,
+      "exact_tangent_rank": 8,
+      "exact_tangent_condition": 119.67005096799359,
+      "exact_derivative_residual": 3.302913498259841e-14,
+      "singular_values": [
+        902.8181344132648,
+        181.92992605070805,
+        75.899133815846,
+        27.030352243017663,
+        22.065991184507247,
+        20.20902140367329,
+        10.744973276143142,
+        7.544227875817723
+      ],
+      "derivative_H_max_at_step_1e_5": 8.625092817737823e-8,
+      "direct_unit_energy_max_at_18": 3.0531133177191805e-16,
+      "reciprocal_H_max_change": 4.405364961712621e-13,
+      "dilation_radius_records": 12,
+      "minimum_dilation_robust_margin": 0.006022583840682046,
+      "all_dilation_records_sampled_positive": true,
+      "actual_static_states": 198,
+      "invalid_static_states": 0,
+      "max_static_force_residual": 2.6857856216810916e-14,
+      "max_static_return_L0": 3.6137157445752645e-15,
+      "pure_normal_50MPa_displacement_error": -0.28756838438515697,
+      "pure_shear_4MPa_displacement_error": -0.02048286643090058,
+      "md_variance_errors": [
+        -0.12407816791664761,
+        -0.2226245433322772,
+        -0.14841351749772247
+      ],
+      "elapsed_wall_seconds": {
+        "static_spectral_validation": 278.4717371999868,
+        "jet_checks": 171.0314836000034,
+        "covariance": 17.896364100000937,
+        "fit": 1533.1006915000034,
+        "tensor": 52.91768179999781
+      }
+    },
+    {
+      "model": "separate_range",
+      "completed": true,
+      "profiles": 192,
+      "fit_loss": 1263.2421027892008,
+      "heldout_normalized_rms": 4.95701110945284,
+      "shape": [
+        2.48414976579741,
+        6.309982474983895,
+        11.982353106638238,
+        485.2569646247867,
+        6.331001989463463
+      ],
+      "calibration_sha256": "b799eac1eabac7822ab250f44695c8a79f072c114ef710482270c5dee0d5c8c4",
+      "finite_q_grid_positive": true,
+      "continuous_q_search_positive": true,
+      "exact_tangent_rank": 8,
+      "exact_tangent_condition": 122.82204887806945,
+      "exact_derivative_residual": 5.235578052969161e-14,
+      "singular_values": [
+        876.6605346138334,
+        179.59397882304557,
+        72.31469060451063,
+        27.702135502087906,
+        22.58841168379542,
+        19.38026709776636,
+        9.9159936401784,
+        7.137647862267228
+      ],
+      "derivative_H_max_at_step_1e_5": 8.395721806664369e-8,
+      "direct_unit_energy_max_at_18": 7.28583859910259e-17,
+      "reciprocal_H_max_change": 4.334310688136611e-13,
+      "dilation_radius_records": 12,
+      "minimum_dilation_robust_margin": 0.00602280954687992,
+      "all_dilation_records_sampled_positive": true,
+      "actual_static_states": 198,
+      "invalid_static_states": 0,
+      "max_static_force_residual": 1.8246472041627548e-14,
+      "max_static_return_L0": 3.6137157445752645e-15,
+      "pure_normal_50MPa_displacement_error": -0.29282887591801376,
+      "pure_shear_4MPa_displacement_error": -0.056839819593721086,
+      "md_variance_errors": [
+        -0.1359449660236538,
+        -0.25293004693417964,
+        -0.18161209225518948
+      ],
+      "elapsed_wall_seconds": {
+        "static_spectral_validation": 207.14349180000136,
+        "jet_checks": 195.97287539999525,
+        "covariance": 16.44175030000042,
+        "fit": 5686.741164499996,
+        "tensor": 75.25323980000394
+      }
+    }
+  ],
+  "validation_scope": {
+    "independent_q_points": 243,
+    "radii_over_L0": [
+      12,
+      16
+    ],
+    "fixed_material_dilations": [
+      0.99,
+      0.995,
+      1,
+      1.0037037037037038,
+      1.007,
+      1.01
+    ],
+    "q_points_per_dilation": 254,
+    "actual_dilation_radius_records": 36,
+    "actual_static_load_states": 594,
+    "source_static_states_recomputed_per_candidate": 99,
+    "independent_experiments_claimed": false,
+    "dynamic_PDE_run": false,
+    "dynamic_zero_stress_hold": false,
+    "whole_Brillouin_zone_proof": false,
+    "source_cutoff_crossings": 5,
+    "source_derivative_states": 31,
+    "source_error_explains_candidate_Haa_discrepancy": false
+  },
+  "regression": {
+    "targeted": {
+      "passed": 29,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 129.63,
+      "command": "python -m pytest solver_v1/test_rank_one_range_material.py solver_v1/test_quadrupole_saturation.py solver_v1/test_isotropic_bulk_validation.py solver_v1/test_material_calibration_controls.py solver_v1/test_profiled_identifiability.py -q"
+    },
+    "solver": {
+      "passed": 528,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 1102.12,
+      "command": "python -m pytest solver_v1 -q"
+    },
+    "app": {
+      "passed": 31,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 214.92,
+      "command": "python -m pytest app -q"
+    },
+    "smoke": {
+      "exit_code": 0,
+      "seconds": 0.9803203,
+      "command": "python -m app.desktop_ui --smoke",
+      "a0": 0.7713438268704838,
+      "kappa": 86.29296488740997
+    },
+    "diff_check": {
+      "exit_code": 0,
+      "informational_warning": "Windows LF/CRLF conversion only"
+    },
+    "timing_scope": "observed wall times, with concurrent independent calculations; not standalone CPU benchmarks"
+  },
+  "decision": {
+    "full_Al_material_accepted": false,
+    "independent_rank1_range_adopted": false,
+    "positive_LJ_base_preserved": true,
+    "infinite_Poisson_Bessel_theory_preserved": true,
+    "historical_calibration_files_changed": false,
+    "production_model_changed": false,
+    "probability_theory_changed": false,
+    "physical_yield_validated": false,
+    "Ma_phys": null,
+    "Ms_phys": null,
+    "t0_seconds": null,
+    "physical_seconds_enabled": false,
+    "physical_Hz_enabled": false,
+    "specimen_A_c_calibrated": false,
+    "solver_complete_for_material_validated_UI_gate": false
+  },
+  "evidence": {
+    "derivation": "solver_v1/NORMAL_ENVIRONMENT_RESPONSE_V17.md",
+    "replayed_same_dataset": "normal_comparison/comparison.csv",
+    "all_v17_residuals": "normal_comparison/all_residuals.csv",
+    "heldout_by_quantity": "normal_comparison/validation_groups.csv",
+    "curvature_components": "normal_comparison/curvature_components.csv",
+    "normal_curves": "normal_comparison/normal_curves.csv",
+    "optimizer_terminations": "final_report/optimizer_terminations.csv",
+    "full_run_comparison": "final_report/model_comparison.csv",
+    "source_normal_audit": "source_normal_audit/",
+    "protocol": "validation_protocol.json"
+  }
+}

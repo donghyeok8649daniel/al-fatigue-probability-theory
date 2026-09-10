@@ -1,0 +1,30 @@
+{
+  "completed": true,
+  "bindings": [
+    {
+      "model": "tied_control",
+      "calibration_sha256": "2091414877c3242de8288099de30d34123eb7157b477a93efdc31ff55607d388",
+      "shape": [
+        2.3141605533261544,
+        6.276933465571603,
+        12.0,
+        458.710781847525
+      ],
+      "strictly_positive_LJ": true,
+      "quadrupole_saturation": 458.710781847525,
+      "rank1_decay": 6.276933465571603
+    }
+  ],
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "per_site_nonlinearity": true,
+  "canonical_finite_neighbor_cutoff": false,
+  "whole_zone_proof": false,
+  "validation_state_labels_are_historical": true,
+  "blind_fit_validation": false,
+  "full_material_accepted": false,
+  "physical_yield_validated": false,
+  "physical_seconds": false,
+  "physical_Hz": false,
+  "production_changed": false,
+  "elapsed_seconds": 128.89543109999795
+}

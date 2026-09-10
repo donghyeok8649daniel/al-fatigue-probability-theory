@@ -81,6 +81,10 @@ def main():
         help='simplex rejects undefined profiles with +inf; no unstable finite penalty fit')
     parser.add_argument('--profile-only',action='store_true',
         help='re-solve coefficients at each exact declared shape; no shape optimization')
+    parser.add_argument('--normal-development',action='store_true',
+        help='v17: inspected v16 states become development, new normal/vector validation')
+    parser.add_argument('--rank-one-range',action='store_true',
+        help='v17: one independent rank1 exponential range, not a new force law')
     args=parser.parse_args(); out=args.out
     if not np.isfinite(args.difference_step) or args.difference_step<=0:
         raise ValueError('finite positive declared numerical derivative step required')
@@ -113,6 +117,11 @@ def main():
             raise ValueError('select one target generation, not both v15 and v16')
         from .interface_even_development_targets import even_development_observations
         observations,observation_provenance=even_development_observations(source,observations,states)
+    if args.normal_development:
+        if args.even_development or args.interface_development:
+            raise ValueError('choose exactly one generation of development observations')
+        from .interface_normal_development_targets import normal_development_observations
+        observations,observation_provenance=normal_development_observations(source,observations,states)
     bloch_targets=()
     if args.static_bloch_targets:
         from .static_bloch_targets import source_bloch_targets,append_bloch_problem
@@ -135,14 +144,19 @@ def main():
             # alpha is a dimensionless moment-shape parameter, never an area.
             starts=[[2.782954,5.646841,11.999,alpha] for alpha in (1.e3,1.e5,1.e7)]
     if args.quadrupole_saturation:
-        if (not args.even_development or not args.quartic_angular or not args.symmetry_channel
+        if (not (args.even_development or args.normal_development) or not args.quartic_angular or not args.symmetry_channel
                 or args.saturating_angular or args.mixed_density or args.density_angular_cross
                 or args.cubic_embedding):
             raise ValueError('even saturation is a separate v16 quartic-family ablation')
         if not args.starts:
             starts=[[2.5482578561,4.6782110749,11.0487420063,a] for a in (1.,10.)]
-        if any(len(s)!=4 or s[3]<=0 for s in starts):
+        if any(len(s)!=(5 if args.rank_one_range else 4) or s[3]<=0 for s in starts):
             raise ValueError('three decays and positive saturation starts required')
+    if args.rank_one_range:
+        if not (args.normal_development and args.quadrupole_saturation and args.starts):
+            raise ValueError('independent rank1 range requires v17 saturation and explicit five-component starts')
+        if any(s[4]<=0 for s in starts):
+            raise ValueError('positive rank1 microscopic decay required')
     wavepoint_provenance=None;additional=()
     if args.additional_wavepoints:
         raw=args.additional_wavepoints.read_bytes();record=json.loads(raw)
@@ -181,6 +195,9 @@ def main():
     if args.quadrupole_saturation:
         from .quadrupole_saturation import SaturatedQuadrupoleCache,SaturatedQuadrupoleBulk
         cache=SaturatedQuadrupoleCache(observations);bulk_type=SaturatedQuadrupoleBulk
+    if args.rank_one_range:
+        from .rank_one_range_material import RankOneRangeCache, RankOneRangeBulk
+        cache=RankOneRangeCache(observations);bulk_type=RankOneRangeBulk
     def problem(decays,basis=None):
         raw=cache.matrix(decays)
         matrix,obs=cubic_metric_problem(raw[:,:8],observations)
@@ -190,7 +207,7 @@ def main():
         if args.exact_bulk:
             obs=[replace(o,role='exact') if i<5 else o for i,o in enumerate(obs)]
         if bloch_targets:
-            if basis is None:basis=bulk_type(decays if args.mixed_density else decays[:3],radius=args.radius)
+            if basis is None:basis=bulk_type(decays if (args.mixed_density or args.rank_one_range) else decays[:3],radius=args.radius)
             matrix,obs,_=append_bloch_problem(matrix,obs,basis,bloch_targets)
         matrix,obs=append_fixed_pair(matrix,obs,fixed_pair)
         return matrix,obs
@@ -199,6 +216,8 @@ def main():
         observations=[asdict(o) for o in observations],source_states=states,starts=starts,
         interface_development=bool(args.interface_development),
         even_development=bool(args.even_development),
+        normal_development=bool(args.normal_development),
+        rank_one_range_extension=bool(args.rank_one_range),
         quadrupole_saturation_extension=bool(args.quadrupole_saturation),
         fixed_pair_control=fixed_pair,
         optimizer_backend=args.optimizer,
@@ -226,12 +245,13 @@ def main():
         lower_decays=[.7,2.,2.],upper_decays=args.upper_decays,
         numerical_derivative_scheme=args.difference_scheme,numerical_relative_step=args.difference_step,
         max_nfev_per_start=args.max_nfev,
+        rank1_decay_bounds=[2.,12.] if args.rank_one_range else None,
         physical_kinetics_calibrated=False))
     @lru_cache(maxsize=192)
     def evaluate(logs):
         before=time.perf_counter(); decays=np.exp(logs)
         if args.mixed_density:decays[3]=expit(logs[3])
-        basis=bulk_type(decays if args.mixed_density else decays[:3],radius=args.radius)
+        basis=bulk_type(decays if (args.mixed_density or args.rank_one_range) else decays[:3],radius=args.radius)
         matrix,obs=problem(decays,basis)
         computed=[]
         for stretch in stretches:
@@ -239,7 +259,8 @@ def main():
             if stretch!=1.:
                 from .isotropic_bulk_validation import IsotropicBulkBasis
                 state_basis=IsotropicBulkBasis(decays[:3],stretch=stretch,radius=args.radius,
-                    include_cross=args.density_angular_cross)
+                    include_cross=args.density_angular_cross,
+                    rank1_decay=decays[4] if args.rank_one_range else None)
             computed.extend(state_basis.evaluate(q) for q in points)
         columns,tails=map(np.asarray,zip(*computed))
         try:
@@ -268,6 +289,7 @@ def main():
             bounds=[[.7,2.,2.],args.upper_decays]
             if args.saturating_angular: bounds=[bounds[0]+[1e-3],bounds[1]+[1e9]]
             if args.quadrupole_saturation: bounds=[bounds[0]+[1e-5],bounds[1]+[1e6]]
+            if args.rank_one_range: bounds=[bounds[0]+[2.],bounds[1]+[12.]]
             initial=np.log(start);log_bounds=np.log(bounds)
             if args.mixed_density:
                 initial[3]=logit(start[3]);log_bounds=np.column_stack([log_bounds,[-9.,9.]])

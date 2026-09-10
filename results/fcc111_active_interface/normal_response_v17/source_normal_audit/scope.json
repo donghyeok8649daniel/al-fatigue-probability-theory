@@ -1,0 +1,24 @@
+{
+  "completed": true,
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "nominal_cutoff_angstrom": 6.28721,
+  "actual_last_tabulated_radius_angstrom": 6.286581279000001,
+  "radial_table_spacing_angstrom": 0.000628721,
+  "last_pair_eV": -5.3091742533851435e-12,
+  "last_pair_first_eV_angstrom": 2.547490689579625e-08,
+  "last_pair_second_eV_angstrom_sq": -8.118650212343984e-05,
+  "last_density": [
+    1.1869459682199748e-66,
+    2.0572713827512221e-47,
+    9.816459364732017e-44
+  ],
+  "outside_source_cutoff_jets": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "source_modified": false,
+  "fitting_observations_modified": false,
+  "candidate_error_explained_by_cutoff": false,
+  "interpretation": "quantitative source smoothness audit; do not excuse candidate errors without comparison"
+}

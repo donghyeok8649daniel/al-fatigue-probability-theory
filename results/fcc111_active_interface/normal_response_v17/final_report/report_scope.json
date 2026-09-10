@@ -1,0 +1,52 @@
+{
+  "completed": true,
+  "bindings": [
+    {
+      "run": "even_bound_probe",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "3cdf8d3a706e1b8bb986e86ef9d5bc232ac901249c1c5e8c0c7bfe4d97f4c1a0"
+    },
+    {
+      "run": "nested_free_pair",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "831365c235f47be7001c28b123ef6eaa84b89d19b433bc6303a86a39516f9a57"
+    },
+    {
+      "run": "nested_range",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "4f68d9edd148a51f0b311f5d8d96a27641ec92e956a3e3c1592d353014135166"
+    },
+    {
+      "run": "separate_free_pair",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "87bb5da56c0bd98a4fa5adcf03046e4ac0e48e148ca20eb5b35b87aa6c1580ee"
+    },
+    {
+      "run": "separate_range",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "b799eac1eabac7822ab250f44695c8a79f072c114ef710482270c5dee0d5c8c4"
+    },
+    {
+      "run": "tied_control",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "2091414877c3242de8288099de30d34123eb7157b477a93efdc31ff55607d388"
+    },
+    {
+      "run": "tied_free_pair",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "adcf7758eaa998dca70248352a506680de9e342b35df8460353636734c16d7bb"
+    }
+  ],
+  "study_label": "v17",
+  "plot_runs": [
+    "tied_control",
+    "nested_range",
+    "separate_range"
+  ],
+  "optimization_rerun_by_report": false,
+  "global_minimum_proved": false,
+  "full_material_accepted": false,
+  "production_model_changed": false,
+  "kinetic_time_calibrated": false,
+  "interpretation": "ftol/xtol termination is not material validation; failed starts and heldout residuals retained"
+}

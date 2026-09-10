@@ -30,12 +30,15 @@ class IsotropicBulkBasis(TailBulkCoefficientBasis):
     The quartic invariant has no harmonic term; the mixed (x-1)||Q3||² term
     DOES have one away from x=1: H_cross=(x-1) H_D3.
     """
-    def __init__(self,decays,*,stretch=1.,radius=12.,include_cross=False):
+    def __init__(self,decays,*,stretch=1.,radius=12.,include_cross=False,rank1_decay=None):
         decays=tuple(map(float,decays))
         if len(decays)!=3 or np.any(~np.isfinite(decays)) or min(decays)<=0:
             raise ValueError('three fixed positive reference decays required')
         if not np.isfinite(stretch) or stretch<=0:raise ValueError('positive cubic dilation required')
         self.decays=decays;self.stretch=float(stretch);self.radius=float(radius)
+        self.rank1_decay=float(decays[1] if rank1_decay is None else rank1_decay)
+        if not np.isfinite(self.rank1_decay) or self.rank1_decay<=0:
+            raise ValueError('finite positive fixed rank1 decay required')
         self.include_cross=bool(include_cross)
         reference=build_range_surface(*decays,np.ones(8)).face.bulk
         self.reference_density=reference.embedding.rho_ref
@@ -63,7 +66,7 @@ class IsotropicBulkBasis(TailBulkCoefficientBasis):
             # limit; its ratio is identically one, not two independent errors.
             self.x=1.;self.density_series_tail=0.
         if self.x<=0:raise ArithmeticError('positive full environment required')
-        self.moments=[(3,decays[1]),(1,decays[1]),(2,decays[2])]
+        self.moments=[(3,decays[1]),(1,self.rank1_decay),(2,decays[2])]
         self.gradients=[self._moment_gradient(rank,k) for rank,k in self.moments]
         self.gauge=quadrupole_channel_gauge(decays[1],decays[2])
         self.extra_gradient=(self._moment_gradient(2,decays[1])
@@ -131,7 +134,9 @@ class IsotropicBulkBasis(TailBulkCoefficientBasis):
             positions=R+shift[:,None]*v;r=np.linalg.norm(positions,axis=1)
             weights=[normalized_amplitude(k)*np.exp(-k*r) for k in self.decays]
             x=weights[0].sum()
-            Q1=weights[1]@positions
+            vector_weight=(weights[1] if self.rank1_decay==self.decays[1] else
+                normalized_amplitude(self.rank1_decay)*np.exp(-self.rank1_decay*r))
+            Q1=vector_weight@positions
             Q3=traceless_third(np.einsum('n,ni,nj,nk->ijk',weights[1],positions,positions,positions))
             oddQ2=traceless_second(np.einsum('n,ni,nj->ij',weights[1],positions,positions))
             Q2=traceless_second(np.einsum('n,ni,nj->ij',weights[2],positions,positions))

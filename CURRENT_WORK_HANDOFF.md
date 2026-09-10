@@ -1,5 +1,131 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 최종 연구 인계 v17 — 2026-09-10
+
+최신 요청은 "남은거 해봐". Fresh fetch 후 시작 local/origin은 모두
+`1818cf9cf630fd094597d919429a7c0499fcb0b5`, clean이었다. 실제 위치는 기존
+연구 worktree `aft-pde-bessel-38969ad`, branch `probability-pde-solver-v1`.
+OneDrive 경로는 이동 안내 stub이다. Main/reset/force/추가 agent 사용 없음.
+최종 커밋과 원격은 이 문서를 포함하는 git log/fresh fetch로 확인한다.
+
+### 완료 범위와 판정
+
+v16 후속인 **normal force/Haa 불일치 감사 및 한 개 rank1 범위 가설**을
+실제로 유도·구현·최적화·독립 검증했다. 이 단계는 완료했지만 **Al 계면
+물성 채택은 실패**다. 추가 k1를 production/default에 채택하지 않았다.
+연구 모듈/반례/수치 검증으로만 보존한다. "전체 analytic family 불가능",
+"실제 항복 보정 완료", "솔버 완성"으로 읽으면 안 된다.
+
+- 유도 및 재실행 명령: `solver_v1/NORMAL_ENVIRONMENT_RESPONSE_V17.md`.
+- 전체 원시 결과: `results/fcc111_active_interface/normal_response_v17/`.
+- 같은 자료로 재생한 비교/그림: `normal_comparison/`.
+- 모든7run/종료이유/계수/SVD: `final_report/`.
+- 테스트와 수치 검증 요약: `validation_manifest.json`.
+- `nested_comparison/`은 먼저 완료한3모델의 중간 비교이며 삭제하지 않았다.
+  최종 판정은 위4모델 `normal_comparison` 및7run `final_report`를 사용한다.
+
+### 왜 안 맞는지 확인한 것
+
+1. 두 v16 후보의8개 실제 fixed-shape coefficient control을 먼저 풀었다.
+   마지막 perfect Haa27.9164중 rank1기여13.3095,source19.6609eV/L0².
+   Haa를 정확히 맞추면 loss596.14->1373.60,Hxx4.7624->2.2565
+   (source4.3936). D1=0이면5679.94. Spectral 제약 제거는 optimum 불변.
+   이는 그 fixed shape의 tradeoff이며 전체 nonlinear 불가능성 증명 아님.
+2. Source 자체의 cutoff5개 및31개 normal state 미분을 독립 검사했다.
+   sourceHaa의 step1e-5 FD오차최대9.07e-5, 문제의1.62h는6.21e-9eV/L0².
+   기존후보~1.4곡률 차이는 source cutoff/보간/미분 오차로 설명되지 않는다.
+   source의 작은 total curvature는 pair/embedding cancellation이다.
+   분해는 gauge-dependent이므로 tabulated pair를 LJ로 교체하자는 뜻이 아니다.
+3. Rank1만 독립 exponential decay k1로 일반화했다. k1=k_odd면 기존 full
+   jet가 정확히 복원된다. Per-atom 합 후 norm,LJ/무한 Poisson–Bessel 보존.
+   Rank3와radial Eg의k_odd는 그대로다. Affine inversion에서Q1=0이므로
+   bulkC는 불변이나 interface/finite-q O(q^4)는 달라져 모두 재검증했다.
+
+### 실제 보정/대조군 — 종료 이유를 숨기지 말 것
+
+- 5exactbulk+104interfacefit+미리 정한48heldout. 과거v16검증36개는
+  development로 재분류했다. 새48개도 이제 검사했으므로 미래blind가 아니다.
+  동일state/jet중복0개. 10%/0.01J/m²/0.1eV/L0²/250MPa척도는 측정오차가 아니다.
+- v16양의pair(u=.01719039249,v=.10069343124)를 유지한 실험은 **CONTROL**,
+  새 물성2개가 아니다. L0=2.8637824638Å,E0=1eV,A_atomic_cell=sqrt(3)L0²/2.
+- 7run에 실제365coefficient profiles:4nonlinearstarts중360회+고정형상5회.
+  Tied96회/nested72회/독립k1=3,9각96회. 모두 양의LJ이고 failedprofile0.
+  **4nonlinearstarts 모두 평가예산 종료**. Profile-only 성공은 shape수렴이 아니다.
+- 같은v17자료의 loss/heldoutRMS:
+  oldv16재생1335.56/4.8765;
+  tied1256.9468/4.9991;
+  nested1256.8219/5.0089;
+  독립2시작점1263.2421/4.9570.
+  Old596.14는 이전자료의loss라 직접 비교하면 안 된다.
+- Nested shape=[2.3172001610,6.2719556784,12,436.6576096,6.2801140650].
+  독립시작점best=[2.4841497658,6.3099824750,11.9823531066,485.2569646,6.3310019895].
+  k1가k_odd근처로 복귀. 추가자유도로 nested fit개선~0.01%,검증은 약간 악화.
+  최종budget trial과optimizer의lastaccepted가 다를 수 있어 둘 다 저장했다.
+- 같은shape에서 pairCONTROL해제: tied1255.4174/nested1254.6575/
+  separate1258.2939. 정상곡률 불일치가 해소되지 않았다. 이들은 nonlinear
+  joint재최적화나 독립fullvalidation을 한 후보가 아니라1회 coefficient control.
+- k_even=12경계에 대한15/18고정shape검사 loss1293.02/1401.78로 악화.
+  이것만으로 더 큰범위의 전체최적화도 불가능하다고 말하지 않는다.
+- Exact equality tangent rank/cond: tied7/125.84,nested8/119.67,separate8/122.82.
+  Bounds/cones/목표불일치를 고려한CI가 아니고 uniqueAl물성증명이 아니다.
+
+### 물리 및 전산 검증 결과
+
+- Source perfectHaa19.6609대비 tied27.7419/nested27.6537/separate27.8577,
+  +40.7~41.7%오차. Nested fault/saddle energy=.175144/.198270J/m²,
+  source=.150479/.172002. SaddleHaa24.3787vs12.7173: 힘/곡률 gate 미통과.
+- Nested heldout RMS(energy/force/Haa/Hxx)=.8817/4.6549/5.8300/6.6274.
+  Energy도8/12만척도이내이므로 RMS<1을 전부PASS로 읽지 않는다.
+- 세후보 모두 독립243q×radii12/16+연속국소검색,6dilation×254q×2radii
+  완료. 총36dilation기록은 tail이상양수, whole-zone안정성증명은 아니다.
+- 세후보의 Hessian FD오차(step1e-5)최대8.63e-8,reciprocalH변화4.48e-13.
+  Direct per-site unit-energy합은최대3.06e-16. 가장 작은FDstep에서 roundoff
+  증가도 원시CSV에 그대로 저장했다. Canonical finite-neighbor cutoff 아님.
+- 11개MPa tensor×9signedstate×(source+candidate)×3회=실제594states.
+  Source99states가 후보마다 반복됐음을 명시. 모두root검증통과.
+  Nested50MPa수직개구변위오차-28.76%,4MPa전단-2.05%.
+  Tied는-28.98%/-3.11%,separate는-29.28%/-5.68%.
+  Staticunload최대3.62e-15L0. PDE/zero-stressdynamic hold/소성검증이 아니다.
+- 후보opening극값은[h,5h]의129/257혼합격자에서1개,source는5개.
+  후보첫traction~10.27GPa/source12.97GPa는 이상 coherent 계면이지
+  실제 시편 항복이 아니다. Source의 뒤쪽 작은 음의lobe도 숨기지 않는다.
+- 기존source300K MD1024frames/576atoms/plane/12classes,실제boxstretch로
+  고정물성비교. Nestedvariance오차(-12.41,-22.26,-14.84)%,
+  tied(-12.62,-23.16,-15.83)%,separate(-13.59,-25.29,-18.16)%.
+  새MD실행/운동보정은 아니며0Kloss에 넣지 않았다.
+
+### 최종 코드 실제 회귀와 보존
+
+**targeted29PASS129.63s / solver528PASS1102.12s /
+app31PASS214.92s,skips0 / smokeexit0,최종0.98s / diffcheckPASS**.
+첫526PASS2099.85s는 마지막2테스트추가전 실행이고 최종528완주로 대체했다.
+XML은 `.cache/normal_response_v17/` 로컬로그, 집계는 trackedmanifest에 있다.
+동시계산 중 측정한walltime이며CPU성능벤치마크가 아니다.
+Productiona0=.7713438268704838,kappa=86.29296488740997불변.
+App/PDE/과거staticparameter파일은 수정하지 않았다. Main도 건드리지 않았다.
+v17 JSON은raw-byteSHA256으로 서로연결돼 있으므로 해당결과폴더에만
+`.gitattributes`의 `*.json -text`를 설정했다. Git줄바꿈변환으로 원시검증
+바이트가 바뀌는 것을 막는다. 과거폴더/계산값은 바꾸지 않았고 raw/index
+동일성을 별도확인한다. SemanticJSONhash나 타플랫폼재실행동일성 인증은 아니다.
+
+### 다음 단계 — 이 실험을 다시 무작정 반복하지 말 것
+
+1. 추가range만으로 해결되지 않은 **total nonlinear normal environment**
+   force/Hessian형상을 항별budget/equalitytangent와 함께 분석한다.
+   새항은 명시적유도/최소자유도/검증을 먼저 하고LJ/Bessel틀은 보존한다.
+   같은가족continuation을 더 하면 예산/대조군을 기록하고v17heldout은재분류한다.
+2. Static재료gate를 통과한 뒤에만 nonlinear/vector/normal-relaxed discrete
+   core와finite-source/loop 및collective PMF로 실제강도 문제를 진행한다.
+   Source자체가13GPa인uniforminterface를 맞춰도 실제항복이 되는 것은 아니다.
+   A_c/임의line길이를 곱해activationenergy를 만들지 않는다.
+3. Ma_phys/Ms_phys/t0와실제초/Hz는 여전히 unavailable/disabled다.
+   Tensor는연구3×3traction/staticstate경로이고 production다축PDE/UI연결아님.
+   실제yield/fatigue/A_c/생산solver완성/UI모델링-meshing gate는 아직미통과.
+4. 완료 계산/부정적 결과는 위원시파일과문서에 보존했다. 새 kinetic자료나
+   새로운수학적환경가설 없이 같은몇개숫자를고쳐 성공으로보고하지 않는다.
+
+아래 v16 및 이전은 완료된 역사 기록이다. 최신 판정은 위 v17을 우선한다.
+
 ## 최종 연구 인계 v16 — 2026-09-10
 
 최신 요청은 "남은 작업 ㄱㄱ". Fresh fetch 후 시작 local/origin은 둘 다

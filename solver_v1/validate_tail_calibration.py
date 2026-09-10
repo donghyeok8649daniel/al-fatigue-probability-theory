@@ -20,6 +20,7 @@ from .vector_registry_audit import stationary_state
 from .vector_material_calibration import UNITS,IDEAL_H,LENGTH_M
 from .yield_elastic_metric import cubic_metric_problem,cubic_to_mode_matrix
 from .material_calibration_controls import append_fixed_pair
+from .rank_one_range_material import shape_for_bulk
 
 
 def load_material(directory):
@@ -29,7 +30,11 @@ def load_material(directory):
     best=data['best'];decays=best['decays'];c=np.asarray(best['coefficients'])
     if not best['strictly_positive_LJ'] or not data.get('admissible_solution_found',True):
         raise ValueError('diagnostic zero-pair closure is not an admissible LJ material')
-    if definition.get('quadrupole_saturation_extension'):
+    if definition.get('rank_one_range_extension'):
+        from .rank_one_range_material import RankOneRangeInterface, RankOneRangeCache, RankOneRangeBulk
+        model=RankOneRangeInterface(decays,c)
+        cache_type,bulk_type=RankOneRangeCache,RankOneRangeBulk
+    elif definition.get('quadrupole_saturation_extension'):
         from .quadrupole_saturation import SaturatedQuadrupoleInterface,SaturatedQuadrupoleCache,SaturatedQuadrupoleBulk
         model=SaturatedQuadrupoleInterface(decays,c)
         cache_type,bulk_type=SaturatedQuadrupoleCache,SaturatedQuadrupoleBulk
@@ -68,6 +73,9 @@ def main():
     if definition.get('even_development'):
         from .interface_even_development_targets import even_development_observations
         observations,_=even_development_observations(source,observations,states)
+    if definition.get('normal_development'):
+        from .interface_normal_development_targets import normal_development_observations
+        observations,_=normal_development_observations(source,observations,states)
     if source.reference.sha256!=definition['source_sha256']: raise ValueError('source hash mismatch')
     cache=cache_type(observations);raw=cache.matrix(decays)
     matrix,obs=cubic_metric_problem(raw[:,:8],observations)
@@ -78,7 +86,7 @@ def main():
     if definition.get('static_bloch_targets'):
         from .static_bloch_targets import source_bloch_targets,append_bloch_problem
         bloch_targets=source_bloch_targets(source.reference)
-        basis=bulk_type(decays if definition.get('density_mixture_extension') else decays[:3],radius=definition['radius_over_L0'])
+        basis=bulk_type(shape_for_bulk(decays,definition),radius=definition['radius_over_L0'])
         matrix,obs,_=append_bloch_problem(matrix,obs,basis,bloch_targets)
     matrix,obs=append_fixed_pair(matrix,obs,definition.get('fixed_pair_control'))
     predictions=matrix@c
@@ -107,7 +115,7 @@ def main():
     print('stationary and curve checks complete',flush=True)
     points=declared_wavepoints(args.grid_step);waves=[];previous=None;worst=None
     for radius in (12.,16.):
-        basis=bulk_type(decays if definition.get('density_mixture_extension') else decays[:3],radius=radius);current=[]
+        basis=bulk_type(shape_for_bulk(decays,definition),radius=radius);current=[]
         for i,q in enumerate(points):
             columns,tails=basis.evaluate(q);H=np.einsum('c,cij->ij',c,columns)
             values=np.linalg.eigvalsh(H);bound=float(tails@abs(c));current.append(H)
@@ -120,7 +128,7 @@ def main():
     write_csv(out/'finite_q_validation.csv',waves)
     # Continuous local minimizations over the irreducible wedge. Normalizing
     # by |q|^2 distinguishes acoustic zero from a true soft finite-q mode.
-    basis=bulk_type(decays if definition.get('density_mixture_extension') else decays[:3],radius=16.)
+    basis=bulk_type(shape_for_bulk(decays,definition),radius=16.)
     def objective(q):
         cols,_=basis.evaluate(q);H=np.einsum('c,cij->ij',c,cols)
         return np.linalg.eigvalsh(H)[0]/(q@q)
@@ -160,7 +168,7 @@ def main():
                 if r.shape[1]>8:
                     extra=r[:,8:].copy();extra[2:5]=np.linalg.solve(cubic_to_mode_matrix(),extra[2:5]);m=np.column_stack([m,extra])
                 if bloch_targets:
-                    basis=bulk_type(d if definition.get('density_mixture_extension') else d[:3],radius=definition['radius_over_L0'])
+                    basis=bulk_type(shape_for_bulk(d,definition),radius=definition['radius_over_L0'])
                     m,_,_=append_bloch_problem(m,observations,basis,bloch_targets)
                 m,_=append_fixed_pair(m,observations,definition.get('fixed_pair_control'))
                 matrices.append(m)

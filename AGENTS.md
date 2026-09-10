@@ -496,6 +496,25 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- NORMAL_ENVIRONMENT_RESPONSE_V17.md / normal_response_v17:
+  v16의 normal force/Haa 오차를 실제 coefficient control로 분해한 후 rank1
+  microscopic decay k1만 독립화하는 한-parameter nested 연구 가설이다.
+  k1=k_odd는 이전 full jet를 정확히 복원한다. Rank3/radial Eg 안의 k_odd를
+  k1로 바꾸지 않는다. Per-atom vector 환경 합 후 norm, LJ/무한 Poisson–Bessel
+  구조와 normalization은 보존한다. Affine inversion에서 Q1=0이므로 bulk
+  C는 불변이지만 finite-q O(q^4) 및 interface response는 바뀐다. Full shape
+  5개를 bulk/tail/direct/MD 검증에 전달하며 [:3]으로 k1를 유실하지 않는다.
+  원래 양의 pair를 고정한 실험은 물리 관측값이 아닌 inherited CONTROL이다.
+  v16 validation은 이제 development다. 고정-shape control의 tradeoff는 전체
+  nonlinear 가족 불가능성 증명이 아니므로 같은 자료의 shape 대조군을 실행한다.
+  새 heldout/analytic derivative/direct/finite-q/dilation/normal-shear-mixed
+  응답을 재검사하기 전 material이나 core/PDE에 채택하지 않는다. 실제 완료/
+  예산종료/물리적 실패는 CURRENT_WORK_HANDOFF와 원시 결과를 확인한다.
+  완료된 v17은365profile/4nonlinear budget-stops와3후보 독립검증에도
+  perfectHaa오차~41%가 남아 **추가 k1를 물리보정으로 채택하지 않았다**.
+  Source1.62h곡률차이는 sourcecutoff/미분오차로 설명되지 않는다. 기존
+  48heldout도 이제 검사한 자료다. Global가족불가능성/실제yield/Hz를 주장하지 않는다.
+
 - EVEN_ENVIRONMENT_CALIBRATION_V16.md / even_environment_v16:
   기존 rank2/Eg per-site I=Q:Q에 한 개 공통 무차원 alpha의
   `D I/(1+alpha I/N^2)`를 적용한 별도 정적 연구 후보. 모든 환경을 합한 뒤

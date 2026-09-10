@@ -1,0 +1,31 @@
+{
+  "completed": true,
+  "bindings": [
+    {
+      "model": "separate_range",
+      "calibration_sha256": "b799eac1eabac7822ab250f44695c8a79f072c114ef710482270c5dee0d5c8c4",
+      "shape": [
+        2.48414976579741,
+        6.309982474983895,
+        11.982353106638238,
+        485.2569646247867,
+        6.331001989463463
+      ],
+      "strictly_positive_LJ": true,
+      "quadrupole_saturation": 485.2569646247867,
+      "rank1_decay": 6.331001989463463
+    }
+  ],
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "per_site_nonlinearity": true,
+  "canonical_finite_neighbor_cutoff": false,
+  "whole_zone_proof": false,
+  "validation_state_labels_are_historical": true,
+  "blind_fit_validation": false,
+  "full_material_accepted": false,
+  "physical_yield_validated": false,
+  "physical_seconds": false,
+  "physical_Hz": false,
+  "production_changed": false,
+  "elapsed_seconds": 195.97287539999525
+}

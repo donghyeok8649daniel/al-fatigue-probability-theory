@@ -62,8 +62,10 @@ def main():
             derivative_scheme=definition.get('numerical_derivative_scheme','2-point (historical runner)'),
             derivative_step=definition.get('numerical_relative_step',2e-4),
             exact_bulk=definition.get('exact_bulk_stage',False),
-            target_generation=('v16' if definition.get('even_development') else 'v15'),
+            target_generation=('v17' if definition.get('normal_development') else
+                               'v16' if definition.get('even_development') else 'v15'),
             quadrupole_saturation=definition.get('quadrupole_saturation_extension',False),
+            rank_one_range=definition.get('rank_one_range_extension',False),
             inherited_pair_control=bool(definition.get('fixed_pair_control')),
             fit_loss=best['squared_loss'],profile_heldout_normalized_rms=best['heldout_normalized_rms'],
             best_strictly_positive_LJ=bool(best['strictly_positive_LJ']),
@@ -82,7 +84,9 @@ def main():
         for name,value in zip(names,best['coefficients']):
             parameters.append(dict(run=directory.name,parameter=name,value=value,units='eV per normalized site basis'))
         for i,value in enumerate(best['decays']):
-            parameters.append(dict(run=directory.name,parameter='shape_'+str(i),value=value,
+            shape_name = (['k_scalar','k_odd','k_even','alpha_even','k_rank1'][i]
+                          if definition.get('rank_one_range_extension') else 'shape_'+str(i))
+            parameters.append(dict(run=directory.name,parameter=shape_name,value=value,
                 units='see definition.json: reduced exponential decay or declared extension shape'))
         validation=directory/'validation_exact_tangent'
         if (validation/'decision.json').exists():

@@ -1,0 +1,17 @@
+model,field,count,normalized_rms,normalized_max,count_within_declared_scale,scales_are_experimental_uncertainties
+positive_pair_refinement,energy,12,0.7249832607849022,1.2053226345081869,10,False
+positive_pair_refinement,normal_force,12,4.803706125798703,8.512328923823599,2,False
+positive_pair_refinement,Haa,12,6.221577749789056,12.97770314635439,5,False
+positive_pair_refinement,Hxx,12,5.728198540918468,13.95610555658179,3,False
+tied_control,energy,12,0.8906812551912013,1.66465232608223,8,False
+tied_control,normal_force,12,4.632802828691258,9.483819517422361,2,False
+tied_control,Haa,12,5.8324906047641205,12.114244158018412,5,False
+tied_control,Hxx,12,6.609795193632774,15.650815059654004,5,False
+nested_range,energy,12,0.8816809524596976,1.609641870760043,8,False
+nested_range,normal_force,12,4.654887661113225,9.539145202134295,2,False
+nested_range,Haa,12,5.830006209195364,12.109072299688835,5,False
+nested_range,Hxx,12,6.6273691734742055,15.610669287453046,5,False
+separate_range,energy,12,0.8671239179981641,1.679781882235099,9,False
+separate_range,normal_force,12,4.572601511204085,9.459988117438552,1,False
+separate_range,Haa,12,5.933190127875471,12.198798567829877,4,False
+separate_range,Hxx,12,6.436186991845885,15.488169792726701,5,False
