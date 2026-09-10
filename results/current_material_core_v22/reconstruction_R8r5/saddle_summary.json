@@ -1,0 +1,79 @@
+{
+  "completed": true,
+  "force_converged": true,
+  "maximum_force": 2.5485022425719706e-10,
+  "negative_eigenvalues": 1,
+  "unresolved_eigenvalues": 0,
+  "hessian_resolution_floor": 1.6337545720267152e-10,
+  "saddle_energy": 0.9888252329856912,
+  "original_energy": 0.9739906442209206,
+  "partner_energy": 0.973990644220921,
+  "barrier_eV_per_straight_row_repeat": 0.014834588764770618,
+  "minimum_mode_probe": {
+    "minimum_eigenvalue": -1.2997514466428786,
+    "hessian_method": "assembled",
+    "eigenpair_residual": 1.850170615713133e-13,
+    "energy_curvature_checks": [
+      {
+        "step_over_L0": 0.002,
+        "curvature": -1.2994032424495927,
+        "eigenvalue_error": 0.0003482041932858504,
+        "plus_energy_change": -2.59880648367794e-06,
+        "minus_energy_change": -2.598806486231453e-06
+      },
+      {
+        "step_over_L0": 0.001,
+        "curvature": -1.2996643845575306,
+        "eigenvalue_error": 8.706208534792204e-05,
+        "plus_energy_change": -6.498321909464977e-07,
+        "minus_energy_change": -6.498321935000106e-07
+      }
+    ],
+    "maximum_free_force": 2.5485022425719706e-10,
+    "force_tolerance": 5e-08,
+    "positive_hessian_on_tested_fixed_boundary": false,
+    "stable_on_tested_fixed_boundary": false
+  },
+  "descents": [
+    {
+      "sign": -1,
+      "energy": 0.9739906442209214,
+      "maximum_force": 2.7204042967951536e-10,
+      "stable_fixed_boundary": true,
+      "minimum_H": 0.2162692373183971,
+      "difference_to_original": {
+        "rows": 18,
+        "maximum_vector_change_over_L0": 0.24851530989391107,
+        "rms_vector_change_over_L0": 0.10290306094895481
+      },
+      "difference_to_partner": {
+        "rows": 18,
+        "maximum_vector_change_over_L0": 2.331899957294917e-10,
+        "rms_vector_change_over_L0": 1.3180893898203958e-10
+      }
+    },
+    {
+      "sign": 1,
+      "energy": 0.9739906442209219,
+      "maximum_force": 2.696855750327319e-10,
+      "stable_fixed_boundary": true,
+      "minimum_H": 0.21626923731835584,
+      "difference_to_original": {
+        "rows": 18,
+        "maximum_vector_change_over_L0": 2.4109645889283573e-10,
+        "rms_vector_change_over_L0": 1.3382152374432735e-10
+      },
+      "difference_to_partner": {
+        "rows": 18,
+        "maximum_vector_change_over_L0": 0.24851530990019888,
+        "rms_vector_change_over_L0": 0.10290306095096609
+      }
+    }
+  ],
+  "full_translation_Peierls_validated": false,
+  "finite_loop_activation_validated": false,
+  "material_accepted": false,
+  "physical_yield_validated": false,
+  "physical_Hz": false,
+  "elapsed_seconds": 916.1844691000006
+}

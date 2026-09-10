@@ -1,0 +1,68 @@
+{
+  "energy": 0.9466752953383905,
+  "maximum_free_force": 5.9132987577717455e-09,
+  "force_converged": true,
+  "optimizer_success": false,
+  "optimizer_message": "Warning: Desired error not necessarily achieved due to precision loss.",
+  "iterations": 12,
+  "evaluations": 29,
+  "polish_steps": 0,
+  "boundary_winding": 0.9999999999999999,
+  "minimum_density": 20.006483481011188,
+  "minimum_transverse_radius": 0.8572585408026518,
+  "minimizer": "newton_cg",
+  "final_stability_probe": {
+    "minimum_eigenvalue": 0.21619453807118663,
+    "hessian_method": "assembled",
+    "eigenpair_residual": 1.098352259350018e-13,
+    "energy_curvature_checks": [
+      {
+        "step_over_L0": 0.002,
+        "curvature": 0.21619453122179166,
+        "eigenvalue_error": 6.849394967867184e-09,
+        "plus_energy_change": 4.323881651613348e-07,
+        "minus_energy_change": 4.3238995983685413e-07
+      },
+      {
+        "step_over_L0": 0.001,
+        "curvature": 0.21619455536914245,
+        "eigenvalue_error": 1.729795581772997e-08,
+        "plus_energy_change": 1.0809682637891171e-07,
+        "minus_energy_change": 1.0809772910125304e-07
+      }
+    ],
+    "maximum_free_force": 5.9132987577717455e-09,
+    "force_tolerance": 5e-07,
+    "positive_hessian_on_tested_fixed_boundary": true,
+    "stable_on_tested_fixed_boundary": true
+  },
+  "completed": true,
+  "initial_energy": 1.054131485561502,
+  "initial_maximum_free_force": 0.5605293694862433,
+  "reciprocal_modes": 9,
+  "last_mode_envelope": 3.903111010751573e-15,
+  "analytic_affine_hessian": [
+    [
+      4.3977540489596105,
+      0.41462422794894305
+    ],
+    [
+      0.4146242279489527,
+      4.10457044573266
+    ]
+  ],
+  "continuum_antiplane_hessian": [
+    [
+      4.3977540489992535,
+      0.41462422800506477
+    ],
+    [
+      0.41462422800506477,
+      4.104570445732634
+    ]
+  ],
+  "actual_yield_calibrated": false,
+  "domain_converged": false,
+  "material_accepted": false,
+  "elapsed_seconds": 414.31971730000805
+}

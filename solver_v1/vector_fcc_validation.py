@@ -6,7 +6,7 @@ import numpy as np
 from .nonlinear_fcc_screw import stf_basis
 
 
-def direct_row_channels(rows,vector,*,images=384):
+def direct_row_channels(rows,vector,*,images=384,include_odd_quadrupole=False):
     """Value/gradient/Hessian from direct atom distances and product rules.
 
     LJ tail needs image-count refinement. Electronic-density tails decay
@@ -34,8 +34,12 @@ def direct_row_channels(rows,vector,*,images=384):
     den=rows.bulk.density_params;density,dgrad,dhess=exponential(den.C_rho,den.kappa)
     values=[pair.sum(),density.sum()];gradients=[grad.sum(axis=0),dgrad.sum(axis=0)]
     hessians=[hess.sum(axis=0),dhess.sum(axis=0)]
-    angular=rows.surface.angular;weight,wgrad,whess=exponential(angular.amplitude,angular.kappa)
-    for rank in (1,2,3):
+    ranks=[(rank, getattr(rows.surface, name, None) or rows.surface.angular)
+           for rank,name in ((1,'vector'),(2,'quadrupole'),(3,'angular'))]
+    if include_odd_quadrupole:
+        ranks.append((2,rows.surface.angular))
+    for rank,angular in ranks:
+        weight,wgrad,whess=exponential(angular.amplitude,angular.kappa)
         raw=[];rawgrad=[];rawhess=[]
         for indices in product(range(3),repeat=rank):
             powers=np.array([indices.count(axis) for axis in range(3)])

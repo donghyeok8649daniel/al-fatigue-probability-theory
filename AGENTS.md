@@ -500,6 +500,37 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- CURRENT_MATERIAL_CORE_BRIDGE_V22.md / current_material_core_v22:
+  최신 per-atom law의22채널(pair,rho,Q1,Q2even,Q3,Q2odd)을 무한 Bessel row에
+  모두 유지한다. Eg/rank3 quartic/even saturation/density-screening 항이 있는
+  후보를 base.surface만으로 예전17채널 core에 넘기지 않는다. 이는 연구 연결부이며
+  기존 canonical energy/PDE는 변경하지 않는다. 각 atom의 환경 합 후 비선형 에너지,
+  전체 chain-rule Hessian 및 영향받는 exterior site energy를 유지한다.
+  Target-only Al99 core는 같은 FCC/벡터/경계/단위 비교용이며 LJ/Bessel 대체물이 아니다.
+  Force convergence만으로 stable이라고 하지 말고 Morse index/eigenpair/FD를 확인한다.
+  Reconstruction saddle, full lattice glide, finite-loop activation, 실제 항복은 다르다.
+  직선 row-repeat당 energy에 임의 선 길이/Ac를 곱해 activation energy로 쓰지 않는다.
+  Static ±5/20/50MPa load-return은 kinetic hold/잔류시편변형 검증이 아니다.
+  Projected x-phase triangle crossing 위치는 연속 core 위치/partial 분리와 다르다.
+  Source frozen-core force의 fixed-shape exact7/null3 lower bound는 해당 shape만의
+  호환성 진단이다. 전체 family 불가능성을 증명하지 않는다. Core-only 계수 fit이
+  다른 계면오차를 키우면 채택하지 않는다. Local joint shape trial도 실제 optimizer
+  endpoint/제외검증/재이완과 구별한다. Parameter/default/material/kinetic gate 불변.
+  Source 좌표 multistart는 own potential/exterior를 바꾸지 않는 초기값 검사다.
+  Budget/급수실패 checkpoint를 certified minimum으로 승격하지 않는다; 명시적
+  recovery와 새 force/Morse 검증이 필요하다. Coefficient energy분해는 고정gauge에서만
+  해석하고, 임의 보간경로의 비용을 MEP/activation barrier로 부르지 않는다.
+  새 Hurwitz-zeta majorant는 infinite transverse **LJ pair-force tail만** 상계한다.
+  비선형 environment tail/free-domain/Al material 인증과 구분한다. Absolute normal
+  prestress tail과 shear-response/국소force convergence를 혼동하지 않는다.
+  Full atomistic core에는 elastic far-field energy가 이미 있으므로 v21 outer-line
+  energy에 그대로 더하지 않는다. Same-energy matching/subtraction이 먼저다.
+  넓힌 shape 탐색의 force RMS 개선을 material 채택으로 혼동하지 않는다. 잘못된
+  opening/registry curvature 부호, outer optimizer 예산종료, active bounds를 공개한다.
+  기존 x^z screening의 고정-shape scan은 새 에너지법칙이나 전체family 적합이 아니다.
+  N-atom superperiod B=Nb와 basis regrouping은 문서의 후속 유도이며 아직 finite-kink
+  구현이 아니다. Coincident-row self항을 positive-radius Bessel에 넣지 않는다.
+
 - SPECIMEN_YIELD_AND_SLIP_BUDGET_V21.md / specimen_yield_bridge_v21:
   실제 signed swept area에서 beta_slip=Σ A b⊗n/V와 symmetric strain을
   계산한다. Uniform stress의 V sigma:deps와 Σ(b·sigma·n)dA가 일치해야 한다.

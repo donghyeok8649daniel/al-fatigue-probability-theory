@@ -1,0 +1,140 @@
+{
+  "source_only": true,
+  "saddle": {
+    "completed": true,
+    "force_converged": true,
+    "maximum_force": 2.50005958643551e-10,
+    "negative_eigenvalues": 1,
+    "unresolved_eigenvalues": 0,
+    "hessian_resolution_floor": 1.164176615450555e-10,
+    "saddle_energy": 1.3923169177150467,
+    "original_energy": 1.3902285442246662,
+    "partner_energy": 1.391986573541316,
+    "barrier_eV_per_straight_row_repeat": 0.0020883734903804907,
+    "stationary_root_is_index_one": true,
+    "endpoint_kind": "independently_supplied",
+    "partner_means_second_reference_endpoint": true,
+    "minimum_mode_probe": {
+      "minimum_eigenvalue": -0.11179016870284708,
+      "hessian_method": "assembled",
+      "eigenpair_residual": 4.605060746391439e-14,
+      "energy_curvature_checks": [
+        {
+          "step_over_L0": 0.002,
+          "curvature": -0.11192510362967312,
+          "eigenvalue_error": 0.0001349349268260358,
+          "plus_energy_change": -2.218215833238446e-07,
+          "minus_energy_change": -2.2587883119484786e-07
+        },
+        {
+          "step_over_L0": 0.001,
+          "curvature": -0.11200392124877112,
+          "eigenvalue_error": 0.0002137525459240397,
+          "plus_energy_change": -5.585542828256962e-08,
+          "minus_energy_change": -5.61484929662015e-08
+        }
+      ],
+      "maximum_free_force": 2.50005958643551e-10,
+      "force_tolerance": 5e-08,
+      "positive_hessian_on_tested_fixed_boundary": false,
+      "stable_on_tested_fixed_boundary": false
+    },
+    "descents": [
+      {
+        "sign": -1,
+        "energy": 1.3919865735413284,
+        "maximum_force": 4.330848930346465e-10,
+        "stable_fixed_boundary": true,
+        "minimum_H": 0.06518987276358869,
+        "difference_to_original": {
+          "rows": 18,
+          "maximum_vector_change_over_L0": 0.09437850185659347,
+          "rms_vector_change_over_L0": 0.0630703342754945
+        },
+        "difference_to_partner": {
+          "rows": 18,
+          "maximum_vector_change_over_L0": 9.805681060062429e-10,
+          "rms_vector_change_over_L0": 8.888626156538851e-10
+        }
+      },
+      {
+        "sign": 1,
+        "energy": 1.3902285442246707,
+        "maximum_force": 5.345202344761088e-09,
+        "stable_fixed_boundary": true,
+        "minimum_H": 0.065183483827759,
+        "difference_to_original": {
+          "rows": 18,
+          "maximum_vector_change_over_L0": 5.610795385902377e-09,
+          "rms_vector_change_over_L0": 3.6446127280465074e-09
+        },
+        "difference_to_partner": {
+          "rows": 18,
+          "maximum_vector_change_over_L0": 0.09437850336013068,
+          "rms_vector_change_over_L0": 0.06307033750797703
+        }
+      }
+    ],
+    "full_translation_Peierls_validated": false,
+    "finite_loop_activation_validated": false,
+    "material_accepted": false,
+    "physical_yield_validated": false,
+    "physical_Hz": false,
+    "elapsed_seconds": 230.3236580999801
+  },
+  "independent_translation_checks": [
+    {
+      "comparison": "source_independent_translation",
+      "first": "results/current_material_core_v22/source_reference/translated_plus_R16r5",
+      "second": "results/current_material_core_v22/source_reference/stress_R16r5/positive_3_0MPa",
+      "energy_difference_eV": -1.7763568394002505e-15,
+      "energy_difference_uses_identical_operator": true,
+      "energy_difference_is_a_transition_barrier": false,
+      "common_rows": 4,
+      "comparison_radius_over_L0": 1.0,
+      "maximum_vector_change_over_L0": 2.714780594051441e-09,
+      "rms_vector_change_over_L0": 1.8772683249939375e-09,
+      "maximum_screw_change_over_L0": 2.6570908251422054e-09,
+      "maximum_transverse_change_over_L0": 5.566884413955516e-10,
+      "infinite_domain_certified": false,
+      "macroscopic_residual_plasticity": false
+    },
+    {
+      "comparison": "source_independent_translation",
+      "first": "results/current_material_core_v22/source_reference/translated_plus_R16r5",
+      "second": "results/current_material_core_v22/source_reference/stress_R16r5/positive_3_0MPa",
+      "energy_difference_eV": -1.7763568394002505e-15,
+      "energy_difference_uses_identical_operator": true,
+      "energy_difference_is_a_transition_barrier": false,
+      "common_rows": 18,
+      "comparison_radius_over_L0": 2.0,
+      "maximum_vector_change_over_L0": 2.981095963118512e-09,
+      "rms_vector_change_over_L0": 1.7636354396892008e-09,
+      "maximum_screw_change_over_L0": 2.921513281295418e-09,
+      "maximum_transverse_change_over_L0": 6.322097486215039e-10,
+      "infinite_domain_certified": false,
+      "macroscopic_residual_plasticity": false
+    },
+    {
+      "comparison": "source_independent_translation",
+      "first": "results/current_material_core_v22/source_reference/translated_plus_R16r5",
+      "second": "results/current_material_core_v22/source_reference/stress_R16r5/positive_3_0MPa",
+      "energy_difference_eV": -1.7763568394002505e-15,
+      "energy_difference_uses_identical_operator": true,
+      "energy_difference_is_a_transition_barrier": false,
+      "common_rows": 72,
+      "comparison_radius_over_L0": 4.0,
+      "maximum_vector_change_over_L0": 3.166779902802242e-09,
+      "rms_vector_change_over_L0": 1.5325309062794405e-09,
+      "maximum_screw_change_over_L0": 3.087034960991275e-09,
+      "maximum_transverse_change_over_L0": 7.061940968386628e-10,
+      "infinite_domain_certified": false,
+      "macroscopic_residual_plasticity": false
+    }
+  ],
+  "source_path": "results/current_material_core_v22/source_reference/endpoint_saddle_R16r5/saddle_summary.json",
+  "source_sha256": "36c7b5c33d30735524b766f22adcca1009fd777dbd9cb650189a6769aa0760fb",
+  "experimental_yield": false,
+  "infinite_domain_Peierls": false,
+  "finite_loop_activation": false
+}

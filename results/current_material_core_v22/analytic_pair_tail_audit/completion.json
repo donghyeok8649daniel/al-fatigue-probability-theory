@@ -1,0 +1,18 @@
+{
+  "completed": true,
+  "parameter_sha256": {
+    "unchanged": "8736cb9d28f1430e3991b1046ef42544cefaa3c9a4f5d743e0d02931329f5c2e",
+    "joint_trial": "4de32a6ce355a9f3a7203f56dc9b3714bbc1560ca5f144bd4c966225fa267cdd"
+  },
+  "source": "analytic LJ/Bessel infinite atomic rows and exact Hurwitz-zeta upper series",
+  "arbitrary_neighbor_cutoff_as_theory": false,
+  "force_repaired": false,
+  "full_environmental_tail_certified": false,
+  "finite_free_boundary_certified": false,
+  "physical_yield_calibrated": false,
+  "csv_sha256": {
+    "actual_pair_force_changes.csv": "362b0d1af11c65784635e2573e403a2d90c13826325140b9ab86e592a2297419",
+    "infinite_pair_force_majorants.csv": "9467009dcbbf77f51286b974f9a7d14d43fcc5f70d0c97becf1c9adac51c847f",
+    "pair_gradient_components.csv": "714e52945accc4958baedf42f60db9dfbd23148efdadfc45a977db0097bd505c"
+  }
+}

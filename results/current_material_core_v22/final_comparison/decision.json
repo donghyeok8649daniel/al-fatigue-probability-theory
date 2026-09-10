@@ -1,0 +1,20 @@
+{
+  "completed": true,
+  "actual_static_stress_cases": 56,
+  "source_is_validation_target_only": true,
+  "full_current_energy_retained": true,
+  "force_compatibility_failure_fixed_shape_only": true,
+  "current_parameters_adopted": false,
+  "infinite_domain_Peierls_certified": false,
+  "finite_loop_activation_validated": false,
+  "physical_yield_validated": false,
+  "physical_seconds": false,
+  "physical_Hz": false,
+  "production_changed": false,
+  "files_sha256": {
+    "independent_state_checks.csv": "f433446b11abdb2b2a041c51beb244cc23d676158d3d93110f53e1ae090abef4",
+    "reconstruction_barriers.csv": "21725e3cc1ea3dee14474efe195c60349674f6bc102b08c28694dd6700d37712",
+    "sampled_registry_spans.csv": "d18a9dcde516535e87add5d1b8348af22aa6754962c1b4c63a2294eca8c7a2d7",
+    "signed_static_stress_return.csv": "ce8ca382921e2cf75c0bcb71dbb7aa6ac2d031182688f5fee680e21c07381a5c"
+  }
+}

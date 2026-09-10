@@ -1,0 +1,73 @@
+{
+  "parameter_source": "results/current_material_core_v22/core_informed_validation/research_candidate_snapshot.json",
+  "parameter_sha256": "4de32a6ce355a9f3a7203f56dc9b3714bbc1560ca5f144bd4c966225fa267cdd",
+  "material_shape": [
+    2.6505268445838444,
+    7.397281700619044,
+    11.701165299296147,
+    115.79257728168376,
+    6.797081537823065,
+    0.0
+  ],
+  "coefficients": [
+    0.02139892192015777,
+    0.0531534074601997,
+    2.1866875333336475,
+    1.2974820541950236,
+    2.2164615220788026,
+    15.743141295923653,
+    2.4672340474281707,
+    1.6473518749931575,
+    1.4885969841711904,
+    417.4069957261452
+  ],
+  "screening_law": "power",
+  "material_accepted": false,
+  "energy_terms_omitted": false,
+  "length_scale_m": 2.863782463805517e-10,
+  "energy_unit": "eV per infinite straight-row repeat b*L0",
+  "tensor_unit": "eV/L0^3",
+  "elastic_tensor_same_candidate": true,
+  "C11_C12_C44_GPa": [
+    113.99999999999987,
+    61.999999999999936,
+    31.999999999999993
+  ],
+  "physical_time": false,
+  "physical_Hz": false,
+  "actual_yield_calibrated": false,
+  "production_changed": false,
+  "radius_over_L0": 8.0,
+  "ring": 5,
+  "center_over_L0": [
+    0.14433756729740643,
+    0.408248290463863
+  ],
+  "b_reduced": 1.0,
+  "h_reduced": 0.816496580927726,
+  "shear_traction_MPa": 0.0,
+  "burgers_sign": 1,
+  "force_tolerance_eV_L0": 5e-07,
+  "reciprocal_tolerance": 2e-12,
+  "free_sites": 286,
+  "energy_sites": 776,
+  "explicit_environment_rows": 120,
+  "channels": 22,
+  "farfield_log_coefficient_eV_per_repeat": 0.3364817248013292,
+  "boundary": "fixed same-material Volterra plus prescribed affine shear",
+  "boundary_is_not_measured_pinning": true,
+  "domain_converged": false,
+  "max_iterations": 100,
+  "wall_budget_seconds": 900.0,
+  "stability_method": "assembled",
+  "configuration_seed": {
+    "source": "results/current_material_core_v22/source_reference/escaped_plus_R8r5",
+    "source_parameter_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+    "source_state_sha256": "faf248d517597881b6fbb66d6e090a03406d703bc3911b3471b85a506b99762b",
+    "coordinates_only": true,
+    "source_energy_adopted": false,
+    "source_elasticity_adopted": false,
+    "target_exterior_unchanged": true,
+    "final_position_constrained": false
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "completed": true,
+  "current_candidate_sha256": "8736cb9d28f1430e3991b1046ef42544cefaa3c9a4f5d743e0d02931329f5c2e",
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "static_profile_replayed": true,
+  "actual_excluded_force_evaluations": true,
+  "finite_q_scope": "unchanged sampled points and analytic tail inequalities only",
+  "signs_satisfied": true,
+  "material_accepted": false,
+  "physical_yield_validated": false,
+  "physical_Hz": false,
+  "files_sha256": {
+    "excluded_core_force_audit.csv": "013ba519a6ab6d6ec45c680fe6cfc08cc55c9a05a3f6a13e56a5ba16927f99b0",
+    "shape_sensitivity_matrix.csv": "02827a9fd1073a774c97124620c0e18c5aea24465d53cf07059cd6c032b06a50",
+    "static_observable_audit.csv": "0657e817e59051eecc9c582f8901b8895b339513c41a8682c4555b774ed4ac2f"
+  }
+}

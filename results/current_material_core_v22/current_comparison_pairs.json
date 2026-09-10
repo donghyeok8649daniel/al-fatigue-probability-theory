@@ -1,0 +1,15 @@
+[
+  ["stable_plus_R2r3", "stable_plus_R3r4", "combined_domain_ring"],
+  ["stable_plus_R3r4", "stable_plus_R4r5", "combined_domain_ring"],
+  ["stable_plus_R4r5", "newton_plus_R4r5", "independent_minimizer"],
+  ["stable_plus_R4r5", "stable_plus_R6r5", "domain"],
+  ["stable_plus_R6r5", "stable_plus_R8r5", "domain"],
+  ["stable_plus_R8r5", "stable_plus_R10r5", "domain"],
+  ["stable_plus_R4r5", "stable_plus_R4r7", "ring"],
+  ["stable_plus_R6r5", "stable_plus_R6r7", "ring"],
+  ["stable_plus_R8r5", "stable_plus_R8r7", "ring"],
+  ["stable_plus_R10r5", "stable_plus_R10r7", "ring"],
+  ["stable_plus_R4r5", "plus_50MPa_R4r5", "static_50MPa"],
+  ["stable_plus_R4r5", "plus_unload50_R4r5", "static_return"],
+  ["stable_plus_R4r5", "translated_j1_R4r5", "lattice_translated_seed"]
+]

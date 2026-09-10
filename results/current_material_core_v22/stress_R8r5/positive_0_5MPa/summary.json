@@ -1,0 +1,68 @@
+{
+  "energy": 0.9737643479067262,
+  "maximum_free_force": 5.060740346750359e-10,
+  "force_converged": true,
+  "optimizer_success": false,
+  "optimizer_message": "Warning: Desired error not necessarily achieved due to precision loss.",
+  "iterations": 4,
+  "evaluations": 34,
+  "polish_steps": 0,
+  "boundary_winding": 1.0000000000000002,
+  "minimum_density": 18.637426476931186,
+  "minimum_transverse_radius": 0.8587260765723264,
+  "minimizer": "newton_cg",
+  "final_stability_probe": {
+    "minimum_eigenvalue": 0.21633874212474796,
+    "hessian_method": "assembled",
+    "eigenpair_residual": 1.7277607607508476e-13,
+    "energy_curvature_checks": [
+      {
+        "step_over_L0": 0.002,
+        "curvature": 0.2163387297082764,
+        "eigenvalue_error": 1.2416471573128973e-08,
+        "plus_energy_change": 4.3267762861454173e-07,
+        "minus_energy_change": 4.3267729032958613e-07
+      },
+      {
+        "step_over_L0": 0.001,
+        "curvature": 0.21633876534643548,
+        "eigenvalue_error": 2.3221687517338552e-08,
+        "plus_energy_change": 1.0816942364044735e-07,
+        "minus_energy_change": 1.0816934170598813e-07
+      }
+    ],
+    "maximum_free_force": 5.060740207972481e-10,
+    "force_tolerance": 5e-07,
+    "positive_hessian_on_tested_fixed_boundary": true,
+    "stable_on_tested_fixed_boundary": true
+  },
+  "completed": true,
+  "initial_energy": 0.9737660640527115,
+  "initial_maximum_free_force": 0.000599620647987107,
+  "reciprocal_modes": 9,
+  "last_mode_envelope": 1.5695947127201135e-14,
+  "analytic_affine_hessian": [
+    [
+      4.397754048985112,
+      0.4146242279851758
+    ],
+    [
+      0.41462422798517,
+      4.104570445732545
+    ]
+  ],
+  "continuum_antiplane_hessian": [
+    [
+      4.397754048999252,
+      0.414624228005055
+    ],
+    [
+      0.414624228005055,
+      4.104570445732639
+    ]
+  ],
+  "actual_yield_calibrated": false,
+  "domain_converged": false,
+  "material_accepted": false,
+  "elapsed_seconds": 229.2466993999842
+}

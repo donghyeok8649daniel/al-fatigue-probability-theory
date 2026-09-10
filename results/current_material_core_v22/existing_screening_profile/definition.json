@@ -1,0 +1,26 @@
+{
+  "completed": false,
+  "exponents": [
+    0.0,
+    -0.5,
+    0.5,
+    -1.0,
+    1.0
+  ],
+  "frozen_five_shapes": [
+    2.703305047819125,
+    7.633706329130604,
+    11.044328645438164,
+    172.74231833476296,
+    6.911784604905995
+  ],
+  "source_probe_sha256": "028a439c4c7e063b5f2ca8b9b35d93094d1b08f158490075af01b071100079b0",
+  "candidate_sha256": "8736cb9d28f1430e3991b1046ef42544cefaa3c9a4f5d743e0d02931329f5c2e",
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "objective": "static_loss/static_baseline_loss + core_loss/core_baseline_loss",
+  "existing_family_only": true,
+  "new_energy_term": false,
+  "seven_exact_anchors_unchanged": true,
+  "physical_yield_used": false,
+  "production_changed": false
+}

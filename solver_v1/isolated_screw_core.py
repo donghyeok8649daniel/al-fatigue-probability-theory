@@ -85,7 +85,7 @@ class IsolatedScrewCore:
     """
     def __init__(self,surface,far_field,*,free_radius=3.,ring=3,tolerance=2e-12,
                  shear_traction=0.,burgers_sign=1,chunk_size=4096):
-        self.rows=row_environment(surface); self.far_field=far_field
+        self.rows=self._make_rows(surface); self.far_field=far_field
         if (not np.isfinite(free_radius) or free_radius<=0 or int(ring)!=ring or ring<1
                 or int(chunk_size)!=chunk_size or chunk_size<1):
             raise ValueError('positive radius, integer neighborhood and chunk size required')
@@ -93,13 +93,14 @@ class IsolatedScrewCore:
             raise ValueError('far-field Burgers translation differs from the atomic row repeat')
         self.free_radius=float(free_radius); self.ring=int(ring); self.chunk_size=int(chunk_size)
         self.shear_traction=float(shear_traction); self.burgers_sign=burgers_sign
-        self.kernel=VectorRowKernel(self.rows,tolerance=tolerance)
+        self.kernel=self._make_kernel(tolerance)
         offsets=[(j,l) for j,l in product(range(-ring,ring+1),repeat=2) if j or l]
         self.offsets=np.array(offsets,int); self.reference=self.positions(self.offsets)
         reference=self.kernel.evaluate(self.reference)
         self.reference_channels=reference['value']
-        self.reference_bond_gradient=(.5*reference['gradient'][:,0,:]
-            +self.rows.embedding.first_derivative(self.rows.rho_bulk)*reference['gradient'][:,1,:])
+        self.channel_count=self.reference_channels.shape[1]
+        reference_weights=self._site_response(np.zeros((1,self.channel_count)),second=False)[1][0]
+        self.reference_bond_gradient=np.einsum('c,rci->ri',reference_weights,reference['gradient'])
         transform=np.array([[self.rows.d,self.rows.d/3],[0.,self.rows.h]])
         extent=int(np.ceil((free_radius+np.linalg.norm(far_field.center))/
                            np.linalg.svd(transform,compute_uv=False).min()))+1
@@ -143,11 +144,36 @@ class IsolatedScrewCore:
         return np.stack([np.bincount(self._flat_destination,weights=flat[:,i],
                                     minlength=len(self.indices)) for i in range(flat.shape[1])],axis=1)
 
+    def _make_kernel(self,tolerance):
+        return VectorRowKernel(self.rows,tolerance=tolerance)
+
+    def _make_rows(self,surface):
+        return row_environment(surface)
+
+    def _site_response(self,channels,*,second):
+        """Historical per-atom law; subclasses must supply ALL their site terms."""
+        rho=self.rows.rho_bulk+channels[:,1]; F=self.rows.embedding
+        if np.any(rho<=0) or not np.all(np.isfinite(rho)):
+            raise ValueError('invalid actual site density; no clipping/repair')
+        weights=np.empty_like(channels); weights[:,0]=.5; weights[:,1]=F.first_derivative(rho)
+        weights[:,2:]=2*self.rows.angular_weights*channels[:,2:]
+        energy=.5*channels[:,0]+F.value(rho)-F.value(self.rows.rho_bulk)
+        energy+=np.sum(self.rows.angular_weights*channels[:,2:]**2,axis=1)
+        apply=None
+        if second:
+            fsecond=F.second_derivative(rho)
+            def apply(dc):
+                dw=np.zeros_like(dc); dw[:,1]=fsecond*dc[:,1]
+                dw[:,2:]=2*self.rows.angular_weights*dc[:,2:]
+                return dw
+        return energy,weights,apply
+
     def _assemble(self,free,*,second=False):
         field=self.full_field(free); ns,nr=self.destination.shape
         vectors=self.reference[None,:,:]+field[self.destination]-field[self.energy_ids,None,:]
-        flat=vectors.reshape((-1,3)); values=np.empty((len(flat),17)); grads=np.empty((len(flat),17,3))
-        tensors=np.empty((len(flat),17,3,3)) if second else None
+        nc=self.channel_count
+        flat=vectors.reshape((-1,3)); values=np.empty((len(flat),nc)); grads=np.empty((len(flat),nc,3))
+        tensors=np.empty((len(flat),nc,3,3)) if second else None
         modes=0; envelope=0.
         for start in range(0,len(flat),self.chunk_size):
             stop=min(start+self.chunk_size,len(flat))
@@ -156,21 +182,16 @@ class IsolatedScrewCore:
             if second:
                 tensors[start:stop]=r['hessian']
             modes=max(modes,r['modes_used']); envelope=max(envelope,r['maximum_last_mode_envelope'])
-        channels=(values.reshape((ns,nr,17))-self.reference_channels).sum(axis=1)
-        rho=self.rows.rho_bulk+channels[:,1]; F=self.rows.embedding
-        if np.any(rho<=0) or not np.all(np.isfinite(rho)):
-            raise ValueError('invalid actual site density; no clipping/repair')
-        weights=np.empty_like(channels); weights[:,0]=.5; weights[:,1]=F.first_derivative(rho)
-        weights[:,2:]=2*self.rows.angular_weights*channels[:,2:]
-        site_energy=.5*channels[:,0]+F.value(rho)-F.value(self.rows.rho_bulk)
-        site_energy+=np.sum(self.rows.angular_weights*channels[:,2:]**2,axis=1)
+        channels=(values.reshape((ns,nr,nc))-self.reference_channels).sum(axis=1)
+        rho=self.rows.rho_bulk+channels[:,1]
+        site_energy,weights,site_hessian=self._site_response(channels,second=second)
         # Exact Taylor-linear site-energy redistribution. Its summed free-row
         # derivative is zero in the perfect equilibrated lattice. Keep both
         # partitions: partial raw site sums include this boundary work and are
         # not directly the quadratic continuum strain energy in an annulus.
         linear_site_work=np.einsum('ri,nri->n',self.reference_bond_gradient,
                                   field[self.destination]-field[self.energy_ids,None,:])
-        gradients=grads.reshape((ns,nr,17,3))
+        gradients=grads.reshape((ns,nr,nc,3))
         bond=np.einsum('nc,nrci->nri',weights,gradients)
         gradient=self._scatter(bond); gradient[self.energy_ids]-=bond.sum(axis=1)
         out=dict(energy=float(site_energy.sum()),gradient=gradient[self.free_ids],
@@ -183,17 +204,20 @@ class IsolatedScrewCore:
                  all_channel_infinite_tail_certified=False)
         if not second:
             return out,None
-        local=np.einsum('nc,nrcij->nrij',weights,tensors.reshape((ns,nr,17,3,3)))
-        fsecond=F.second_derivative(rho)
+        local=np.einsum('nc,nrcij->nrij',weights,tensors.reshape((ns,nr,nc,3,3)))
         def apply(direction):
             v=np.zeros_like(field); v[self.free_ids]=np.asarray(direction).reshape((-1,3))
             dv=v[self.destination]-v[self.energy_ids,None,:]
             dc=np.einsum('nrci,nri->nc',gradients,dv)
-            dw=np.zeros_like(dc); dw[:,1]=fsecond*dc[:,1]
-            dw[:,2:]=2*self.rows.angular_weights*dc[:,2:]
+            dw=site_hessian(dc)
             dbond=np.einsum('nc,nrci->nri',dw,gradients)+np.einsum('nrij,nrj->nri',local,dv)
             result=self._scatter(dbond); result[self.energy_ids]-=dbond.sum(axis=1)
             return result[self.free_ids]
+        def explicit_matrix():
+            from .explicit_core_hessian import assemble_core_hessian
+            return assemble_core_hessian(self.free_ids,self.energy_ids,self.destination,
+                                         gradients,local,site_hessian)
+        apply.explicit_matrix=explicit_matrix
         return out,apply
 
     def evaluate(self,free):
@@ -225,10 +249,9 @@ class IsolatedScrewCore:
         r=self.kernel.evaluate(self.reference,order=2); R=self.reference[:,1:]
         first=np.einsum('nc,ni->ci',r['gradient'][:,:,0],R)
         second=np.einsum('nc,ni,nj->cij',r['hessian'][:,:,0,0],R,R)
-        F=self.rows.embedding; rho=self.rows.rho_bulk
-        result=(.5*second[0]+F.first_derivative(rho)*second[1]
-                +F.second_derivative(rho)*np.outer(first[1],first[1])
-                +np.einsum('c,ci,cj->ij',2*self.rows.angular_weights,first[2:],first[2:]))
+        _,weights,apply=self._site_response(np.zeros((1,self.channel_count)),second=True)
+        response=np.column_stack([apply(first[:,i][None,:])[0] for i in range(2)])
+        result=np.einsum('c,cij->ij',weights[0],second)+first.T@response
         return result/(self.rows.b*self.rows.d*self.rows.h)
 
     def relax(self,initial=None,*,max_iterations=150,force_tolerance=2e-6,polish_steps=3,callback=None,

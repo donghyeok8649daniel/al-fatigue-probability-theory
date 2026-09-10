@@ -1,0 +1,35 @@
+{
+  "targeted": {
+    "tests": 77,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 48.545,
+    "passed": 77,
+    "sha256": "a8c08f62e6bfefaa6b7aae8a234390ce19d8d16f10b2cf99299724eb08df6ae6"
+  },
+  "solver_v1": {
+    "tests": 638,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 1195.887,
+    "passed": 638,
+    "sha256": "0563c2e1b57a03b1a8edfd93e7bdc7d14b61dd4a3cf6e91d90cfcbd1f9d51200"
+  },
+  "app": {
+    "tests": 34,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 60.627,
+    "passed": 34,
+    "sha256": "ce1ca63e36eea51329e2bcbe113c9795119f2f95e9303a2204a2cd774f3a9bdb"
+  },
+  "desktop_smoke": {
+    "exit_code": 0,
+    "elapsed_seconds": 0.9066583000239916,
+    "stdout": "desktop-ui smoke OK: a0=0.7713438268704838, kappa=86.29296488740997",
+    "stderr": ""
+  }
+}

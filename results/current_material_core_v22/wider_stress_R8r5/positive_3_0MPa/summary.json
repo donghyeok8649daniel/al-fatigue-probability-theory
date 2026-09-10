@@ -1,0 +1,68 @@
+{
+  "energy": 0.8758608332558899,
+  "maximum_free_force": 6.382353139045005e-09,
+  "force_converged": true,
+  "optimizer_success": true,
+  "optimizer_message": "Optimization terminated successfully.",
+  "iterations": 7,
+  "evaluations": 54,
+  "polish_steps": 0,
+  "boundary_winding": 0.9999999999999999,
+  "minimum_density": 19.643778617956507,
+  "minimum_transverse_radius": 0.857005900014342,
+  "minimizer": "newton_cg",
+  "final_stability_probe": {
+    "minimum_eigenvalue": 0.19770670090943032,
+    "hessian_method": "assembled",
+    "eigenpair_residual": 1.0509299084619753e-13,
+    "energy_curvature_checks": [
+      {
+        "step_over_L0": 0.002,
+        "curvature": 0.19770668818752668,
+        "eigenvalue_error": 1.272190364165482e-08,
+        "plus_energy_change": 3.9540167162677164e-07,
+        "minus_energy_change": 3.954250811233351e-07
+      },
+      {
+        "step_over_L0": 0.001,
+        "curvature": 0.1977067090042084,
+        "eigenvalue_error": 8.094778070066866e-09,
+        "plus_energy_change": 9.884722851349892e-08,
+        "minus_energy_change": 9.885948049070947e-08
+      }
+    ],
+    "maximum_free_force": 6.382353139045005e-09,
+    "force_tolerance": 5e-07,
+    "positive_hessian_on_tested_fixed_boundary": true,
+    "stable_on_tested_fixed_boundary": true
+  },
+  "completed": true,
+  "initial_energy": 0.8760889745940741,
+  "initial_maximum_free_force": 0.003994195176064003,
+  "reciprocal_modes": 9,
+  "last_mode_envelope": 2.6338612144362764e-15,
+  "analytic_affine_hessian": [
+    [
+      4.397754049014575,
+      0.41462422802667603
+    ],
+    [
+      0.41462422802667714,
+      4.104570445732688
+    ]
+  ],
+  "continuum_antiplane_hessian": [
+    [
+      4.3977540489992535,
+      0.4146242280050687
+    ],
+    [
+      0.4146242280050687,
+      4.104570445732633
+    ]
+  ],
+  "actual_yield_calibrated": false,
+  "domain_converged": false,
+  "material_accepted": false,
+  "elapsed_seconds": 485.4089046000154
+}

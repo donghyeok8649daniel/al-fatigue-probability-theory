@@ -1,5 +1,291 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## v22 최종 연구 인계 — 2026-09-11 08:35KST
+
+이번 약4시간 연구의 계산과 최종 검증은 끝났다. 아래08:10/07:31/06:10 기록은
+실행 중 남긴 역사적 백업이며, **현재 상태는 이 단락과 validation_ledger가 우선**한다.
+시작 fresh fetch/local/origin은 `a8e4130934ab8bb67f2a657a489d269d10b20b73`, clean,
+branch `probability-pde-solver-v1`. 실제 작업은 이전에 이전된
+`aft-pde-bessel-38969ad` worktree다. OneDrive의 migration stub에서 재개하지 않는다.
+이 문서를 포함하는 커밋과 원격 상태는 재개 시 git으로 다시 확인한다.
+
+### 완료된 이론·계산과 물리적 결론
+
+- 최신 후보의 **22채널 무한 LJ/Bessel row + 원자별 전체 비선형 환경항**을
+  vector screw core에 연결했다. 기존17채널 연구 인터페이스로는 전체 후보항을
+  전달할 수 없던 연결 문제를 해결한 것이며, production에서 항을 누락해 실행했다는
+  뜻이 아니다. 독립 직접 원자합: small-core energy6.66e-16eV,
+  gradient2.73e-14eV/L0 오차. Gradient/Hessian 및 matrix-free/dense 교차검증 완료.
+- 원래 candidate/source/첫 trial/넓힌 trial의 실제 static stress states **56개**,
+  양방향 resolved shear0→5→20→50→0MPa를 계산했다. 각 물질의 own C/exterior 사용.
+  Nominal50MPa의 직접 atomistic stress49.9891/49.9884/50.0034MPa:
+  MPa/GPa1000배 환산오류로 강도 차이가 생긴 것은 아니다.
+- 원래 source-core force RMS .2888336013→넓힌 후보 .1524166786eV/L0,
+  **47.23% 감소**. 기존 exact7 bulk/tangent anchors 유지(<5.95e-14 scaled residual).
+  다른 계면 normalized loss2215.203→2276.471, **2.77% 증가**.
+  새 energy항/항복목표/임의 strength multiplier 없이 기존 family를 profile했다.
+- 넓힌 후보 실제 R8/r5 index-one reconstruction saddle와 양쪽 descent 완료:
+  barrier .009778537325eV/straight-row repeat, 원래 .014834588765보다 **34.08% 감소**.
+  그러나 R10 sampled25–75% span .87783192L0 vs source2.79084554L0로 아직 너무 좁다.
+  이 barrier는 core reconstruction이며 full translation Peierls/finite-loop activation이 아니다.
+- 최종 후보는 **채택 불가**: registry-saddle Hxx +.182166 vs target-.186425,
+  제외 opening Haa -1.234287 vs +.903279eV/L0²로 부호가 틀린다.
+  Outer optimizer도 max_nfev15/bound-active 종료이며 수렴한 유일 Al parameter가 아니다.
+  Local numerical sensitivity rank5/condition7.494는 구조적 식별성/신뢰구간이 아니다.
+- Frozen force ring7→9 RMS1.216e-6/max3.240e-6eV/L0, tolerance refinement 표시차이0:
+  현재 material force error .1524는 이 측정 수치 변화보다 훨씬 크다.
+  LJ transverse tail의 analytic Hurwitz-zeta 상계도 유도/검증했다. 이 상계는
+  **pair force만** 보증하며 nonlinear environment나 infinite free-domain 인증은 아니다.
+- 넓은 source 초기값을 사용해도 넓힌 후보는 독립 회복계산에서 같은 좁은 core로
+  돌아왔다(field8.13e-10L0). R8 ring5→7 field9.27e-7L0,
+  R8→10 same-ring7 field.00185908L0. 단일 정밀 실행을 무한영역 수렴이라 하지 않는다.
+- 넓힌 후보 ±50→0의 core return 오차7.98e-9/1.03e-9L0: 이 경계에서 지속하는
+  registry shift는 확인되지 않았다. Source는 R16 j+1, R20 j+2 shifted zero-load
+  endpoint를 독립 재현했지만 이동거리가 domain 의존한다. 실제 거시항복/잔류소성 인증 아님.
+- Source R16의 두 shifted branch 사이 index-one saddle와 양쪽 descent도 완료:
+  forward .00208837349/reverse .00033034417eV/repeat. Source-only 비교이며
+  우리 potential 대체 아님. Static load-return은 시간적 hold/피로/Hz 결과가 아니다.
+- 같은 법칙의 screening exponent z=0,±.5,±1 다섯 profile도 실제 실행했다.
+  이 제한된 scan에서는 joint loss 개선 없음. 전체 analytic family 불가능성 증명 아님.
+- Finite line-period B=Nb의 basis별 Bessel regrouping과 self-term 유도는 문서에
+  추가했다. **유도만 완료**, kink/loop solver·finite activation·kinetics는 미구현이다.
+
+### 최종 산출물과 검증 — 실제 실행 완료
+
+상세 유도: `solver_v1/CURRENT_MATERIAL_CORE_BRIDGE_V22.md`.
+최종 결과 안내: `results/current_material_core_v22/README.md`.
+최종 비교는 `final_comparison`, 실제 에너지 재생은 `wider_replay_final`.
+완전한 fit residual/제외 상태/parameter snapshot은 `wider_probe_validation`.
+`validation_ledger`: 원자계산 항목107개, 실패 시도4개 보존, 미완료 atomic case0개.
+실패한 Newton/L-BFGS budget-stop은 별도 성공 recovery로 덮어쓰지 않고 함께 남겼다.
+Optimizer budget termination은 원자계산 완료 여부와 별개의 미해결 보정 상태다.
+
+최종 실제 검증(모두 failures/errors/skips0):
+
+- targeted77 passed,48.56s (`targeted_final.xml`).
+- solver_v1 **638 passed,1195.90s** (`solver_final.xml`).
+- app **34 passed,60.64s** (`app_release_final.xml`); 더 이상 GUI2개 skip 없음.
+- ledger가 desktop smoke 재실행: exit0,0.90666s, 기존 a0/kappa 확인.
+- 실행 XML 요약/hash와 smoke stdout은 `validation_ledger/executed_tests.json`.
+- Artifact byte inventory는 `validation_ledger/artifact_hashes.csv`.
+  이 manifest 생성 후 결과 파일 내용을 바꾸면 반드시 ledger를 다시 생성한다.
+  Local .gitattributes가 scientific result byte/newline을 보존한다.
+
+Production PDE/UI/default energy, 과거 static calibration, mobility와 A_c는 불변.
+원래 candidate SHA8736cb9d28f1430e3991b1046ef42544cefaa3c9a4f5d743e0d02931329f5c2e
+보존. 새 후보는 별도 research snapshot이며 SHA
+2fd94b89168b173378f4c67d9d6faf52c0363292fc66d8d7e705f214a55de23a.
+Source Al99는 기존 SHA60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284.
+Physical a/s M_a,M_s,t0/seconds/Hz는 계속 unavailable; 생산/UI gate는 닫혀 있다.
+
+### 다음 연구 순서
+
+1. 같은 source 상태의 atomic force와 local opening/registry jets를 함께 제약하되,
+   현재 sign conflict를 풀지 못한 원인을 analytic coefficient/shape sensitivity로
+   더 조사한다. 제한된 local search 실패를 family 전체 불가능으로 확대하지 않는다.
+2. 최소 추가 analytic term을 검토한다면 기존 family의 구체적 compatibility/rank
+   실패와 독립 제외상태 개선을 먼저 요구한다. LJ/Bessel·per-atom law 유지.
+3. 새 material이 나오면 반드시 실제 core 재이완→load-return→domain/ring/saddle
+   검증을 반복한다. Frozen-source force error 개선만으로 core/강도 개선이라 하지 않는다.
+4. Finite-period atom basis를 구현하기 전 이 문서의 self exclusion/row regrouping을
+   시험한다. Straight-line energy에 임의 길이를 곱해 activation energy를 만들지 않는다.
+5. 실제 source population/interactions, finite line/loop energy, 집단좌표 mobility가
+   있어야 실제 항복·피로·시간으로 이어진다. 현재 static core 결과로 이를 인증하지 않는다.
+
+## v22 추가 진행 백업 — 2026-09-11 08:10KST (아직 최종 commit 전)
+
+아래07:31 이후 `core_informed_wider_search`가 실제70profiles/945.07s 완료.
+선택profile=accepted endpoint이지만 max_nfev15로 outer stop, optimality5.98e-4,
+even saturation log상한active. Core force RMS .15241668 (기존.28883360보다47.23%
+감소), other-interface loss2276.471 (기준2215.203보다2.77% 증가). 모든exact7
+scaled residual<5.95e-14. 물리채택 아님: registry saddle curvature 부호오류,
+제외 opening curvature 부호오류, 중간opening force 약32%부족을 docs/CSV에 공개.
+`wider_probe_validation`의 실제제외R10/R16 RMS .15133584/.1497450, perturbedR16
+.1554813/.1548614. Local SVDcondition7.494, numerical rank5일 뿐 구조식별성 아님.
+
+새wide candidate를 실제실행:
+
+- `wider_core_near_R8r5`: stable force4.889e-10, minH.19770670, E.875860833256.
+- Sourcewide 초기값 Newton은 reciprocal40 exhaustion. `wider_core_R8r5` 실패보존.
+- `wider_core_lbfgs_R8r5`는480s budget stop, 미완료이며 checkpoint보존.
+- 그checkpoint `wider_core_recovered_R8r5`는 독립stationary root로
+  force3.752e-11, minH.19770670, E.875860833256 통과. 다른seed와 비교예정.
+- `wider_core_R10r7`: 실제stable force3.680e-7(default5e-7이하), minH.13952580.
+- `wider_replay`가 위3상태 에너지 독립재계산0차이 확인.
+- `wider_frozen_refinement`: ring7→9 force최대3.24e-6/RMS1.22e-6eV/L0,
+  재료오차.1524보다 작음. Tol2e-12→2e-13 표시정밀도에서0차이.
+- `existing_screening_profile`: 기존 x^z의z0/±.5/±1 5개 실제QP. Zero기준replay,
+  어느점도joint objective개선 못함. 새potential항/새보정기본값 없음.
+- SourceR20의j+2 독립zero seed가 +50→0 결과와 E9.33e-15/inner2field1.63e-9
+  일치. R16과 이동거리다름: 무한계Peierls/거시잔류변형률 인증 아님.
+
+08:10 실행중(완료로그확인 필요): `wider_stress_R8r5` 양방향8상태,
+`reconstruction_wider_R8r5` saddle양쪽실제descents, `wider_core_R8r7` 독립ring검사.
+Targeted최종77PASS48.56s(`targeted_final.xml`), 전체최종재실행중(`solver_final.xml`).
+이미 앞전체638PASS823.59s(`solver_release.xml`), app34PASS128.74s/skips0 실제완료.
+Core/stress끝나면 `report_core_research_v22 --trial .../core_informed_validation/
+research_candidate_snapshot.json --wider .../wider_probe_validation/research_candidate_snapshot.json`
+로 새report 생성. source/초기trial/넓힌trial을 구분. 그 후 docs와README 최종수치,
+ledger실제smoke/해시, stage검토/diffcheck/freshfetch/정상commit/push가 남음.
+새스크립트 `run_core_screening_profile.py`는 기존shape별5점검사이며제로profile
+replay를 강제한다. AGENTS/GATES/상세유도/README 갱신, default/production불변.
+Finite-period Nbasis/B=Nb의 Bessel regrouping은 문서에 유도만 추가; finite-kink
+구현/activation energy/새PDE로 잘못 말하지 말 것. 물리seconds/Hz 계속없음.
+
+## v22 최신 진행 백업 — 2026-09-11 07:31KST (최종 commit 전)
+
+사용자 최신 지시: 약4시간 동안 연구 계속. 시작04:49KST, 대략08:49까지.
+실제 worktree는 migration 이후 `aft-pde-bessel-38969ad`, branch는
+probability-pde-solver-v1. 이 turn fresh fetch/local/origin 모두
+`a8e4130934ab8bb67f2a657a489d269d10b20b73`, 시작 clean. 이후 변경은 이번 연구;
+아직 commit/push 안 함. Main/production/default/기존 material parameter는 불변.
+이 단락 아래의06:10 백업은 중간 기록이며 여기와 충돌하면 여기가 최신이다.
+
+핵심: 같은 LJ/Bessel의 **full current22채널 vector atomistic screw core**를
+실제로 연결/검증했다. 이론/정량은 `solver_v1/CURRENT_MATERIAL_CORE_BRIDGE_V22.md`.
+Al99는 target-only source이며 우리 potential/production 대체 아님.
+Source R20까지 늘려 양방향0→5→20→50→0MPa8상태를 추가 실행했다.
+Original R8, trial R8, source R8/R10/R16/R20 =48 static stress states.
+Candidate/source 각자 자신의 C를 사용. Model-time PDE/kinetic hold는 실행 아님.
+
+정량적으로 끝난 내용:
+
+- Original core와 source core의 sampled25–75% span: R10에서.87408 vs2.79085L0,
+  source R16/20는2.83015/2.83868. 단순 sampled span이며 continuum core radius 아님.
+- Same-source-state original gradient RMS .2888336eV/L0. 고정shape exact7/null3
+  부호까지 풀어도 하한.1132313이며 K3<0 필요. 선언부호/sampled spectrum QP는
+  .1152431까지 되지만 다른계면 loss2215.20→17100.51(7.72배). 채택 금지.
+- Joint local shape 첫38profiles/492s: core RMS .166348, 계면loss2473.438(+11.66%).
+  best는 optimizer endpoint 아님. `core_informed_validation/research_candidate_snapshot.json`
+  에 별도 보존했고 default를 바꾸지 않았다. Original parameter SHA8736…2e 불변.
+- 그 trial을 실제 재이완: 첫R4 root는 saddle, mode descent 후R8/R10 안정.
+  R10 Newton-CG와 full-matrix stationary root E차1.93e-14eV, field차3.19e-8L0.
+  trial span .87750L0로 원자 force error 개선과 달리 core 폭은 거의 개선 안 됨.
+  trial R8±load return field오차1.89e-9/1.35e-9L0. 잔류시편소성 아님.
+- 넓은 source core를 좌표 초기값으로만 복사해도 두 후보 모두 좁은 원래 core로
+  돌아왔다. Own material/exterior/C 유지. Original 첫 Newton은 reciprocal exhausted,
+  L-BFGS는1000s budget stop(둘 다 failure.json 보존). 그 checkpoint를 명시적으로
+  재개한 `source_seed_current_recovered_R8r5`는 force4.36e-11/minH.2162692 통과;
+  original stable state와 field차1.48e-10L0. Trial independently차2.80e-9L0.
+- Source R16의 +50→0 endpoint는 independent j+1 seed와 field2.98e-9L0/E1.78e-15
+  일치. 실제 index1 연결saddle: forward .00208837349, reverse .00033034417
+  eV/직선row repeat, 양쪽 descent endpoint 확인. Source R20에서는 제하 후 더 큰
+  shift가 남아(domain 의존) 무한계 Peierls/실제 yield 인증 아님.
+- 실제 farfield stress: nominal50MPa→original49.989066/trial49.988367/source50.003387.
+  MPa/GPa 환산오류 아님. Normal prestress의 algebraic ring tail은 별도 미수렴:
+  original ring7/11/15 -1.49/-.417/-.170MPa; 실제 load reaction과 구분한다.
+- `core_energy_mechanism`: 좁은→source넓은 동일 내부경로(각자 own exterior)에서
+  E변화 original+.210119, trial+.097749, source-.150291eV/row repeat.
+  현재 gauge의D3/Eg/K3가 주된 양의 비용. 이 경로는 MEP/activation barrier 아님.
+- `core_pair_tail_bound.py`: 무한 transverse LJ force remainder를 Hessian majorant,
+  8k square shells, Hurwitz-zeta로 엄밀 상계. Force 수정/finite cutoff 도입 아님.
+  Only pair tail: nonlinear environment/free-domain/material certificate 아님.
+  `analytic_pair_tail_with_source`에 own/source frozen 상태 및ring3/5/7/9/13 검증.
+
+계속된 동일목적함수 최적화:
+
+`core_informed_shape_continuation` 실제27profiles 완료, xtol success지만
+optimality2.26e-4>gtol이고 saturation 상한 active. Loss1.44825896,
+core RMS .166719, static2470.133. 채택 아님. 제한된상자의 수치종료로 명시.
+현재 `core_informed_wider_search`가 같은 source/목적함수/7anchors/부호/finite-q를
+유지하고, 원래 baseline 중심 log범위만±.2→±.6으로 명시 확대해 실제 계산 중.
+새 energy term이나yield 목표는 없다. max_nfev15, wall1000s; 끝나면 반드시
+completion/실제외부검증/optimizer endpoint 여부 확인. 실패/미완료면 그대로 보고.
+`continued_probe_validation`은 앞 continuation의 제외 force검증 계산 중.
+
+실행·검증 상태(07:31기준):
+
+- 최초 전체627 passed780.60s; 후속 전체632 passed1276.46s 실제 완료.
+- 최신 targeted77 passed22.56s: `.cache/current_material_core_v22/targeted_release.xml`.
+- 최신 전체(추가tail/ledger6개 포함) 실행 중: `solver_release.xml` 결과 확인 필요.
+- app34 passed128.74s, skipped0: `app_full_final.xml`.
+- 앞 smoke실제exit0; 최종ledger가 smoke를 다시 실제실행한다.
+- diff check 현재통과; untracked를 stage한 뒤 cached diff check도 필수.
+- `report_core_validation_ledger.py`는 실제XML+실제smoke+case상태/hash를 모은다.
+  모든 계산 종료 후 새out예:`validation_ledger`에 실행할 것. hash manifest 이후
+  같은 study결과파일을 수정하면 새ledger 필요. Tests PASS와material 채택을 구별.
+- `study_summary` 현재 completed48stress states/독립seed확인/기존trial comparison.
+  연구단계별 old `combined_analysis`, `final_analysis*`는 과거중간 replay이다.
+
+남은 마무리: 넓힌 search 결과 확인→제외검증(좋아져도 재이완 없이는core개선 아님),
+현재 실험/실패/수치결과를 docs/README에 요약, full regression 최종확인,
+실제ledger 실행, 변경파일검토·stage·diff check, fresh fetch·정상commit/push·원격확인.
+Main기준 local80cacb4180dbfbcd36a2964270703bc6cf1653ec,
+remote c43d8e096f2a329c7cdfad31e546c70fb36fe592 유지 확인.
+실제 Al 항복/피로/production a/s mobility·초Hz는 여전히 미검증. UI승격 금지.
+
+## v22 진행 중 — 2026-09-11 약04:49KST 시작 (아직 최종 검증/commit 아님)
+
+### 06:10KST 부근 추가 백업 — 최신 진행은 이 단락 우선
+
+22채널 current-material/nonlinear vector row core 연결과 독립 실원자 검증 완료.
+Source-only Al99도 같은 원자열/벡터/경계에서 실제 계산했다(우리 potential 대체 아님).
+Current R4/6/8/10의 ring5/7 안정 branch를 실행; R8→10 inner2L0 최대변화
+.00208094L0, ring5→7 .00000031636L0. 무한domain/Peierls 인증은 아직 아니다.
+Morse index1 reconstruction saddle: current R8/r5 .01483458876eV/row repeat,
+R10/r5 .014553901, R8/r7 .014834180; source R8/10/12/16 각각
+.0003362987/.0006445512/.0008267211/.0010162721. Source domain효과 큼.
+R8 current/source 양방향 descent는 실제 두 안정 endpoint를 확인했다.
+이는 core symmetry reconstruction이며 full-lattice glide 또는 유한 loop activation과 다르다.
+Current R8 및 source R8/R10의 0→±5→±20→±50→0MPa 모두8상태 안정.
+정적 load-return만 실행; dynamic hold/잔류변형률/실험적 항복 인증 아님.
+Source spline Hessian coarse energy FD 오차는 실제13-step refinement 수행:
+gradient-directional curvature는 analytic eigenvalue에 약2.84e-11까지 일치.
+
+`force_compatibility/`: source stable core에 동일 위치로 current energy를 적용.
+원자 gradient RMS .2888336eV/L0(inner2). 기존 exact7조건을 유지한 고정-shape
+계수nullspace는3차원; 부호제약마저 풀어도 최소RMS .1132313, K3<0요구.
+`constrained_force_profile/`: 양의LJ/선언부호/기존 finite-q tail constraints
+유지하면 RMS .1152431, K3=0, 다른계면 loss17100.51로 악화(기준2215.20).
+따라서 어느 vector도 채택하지 않았다. 전체analytic family 불가능성 증명 아님.
+
+`core_informed_shape_probe/` 실제 실행 중: 에너지항 추가 없이 기존5개log-shape만
+±.2의 작은영역에서 source core+계면 공동profile. objective는 두 data block의
+기준 squared loss로 나눈 합(weight1), 물리uncertainty/유일Al fit 아님.
+모든trial/checkpoint보존, max_nfev8/max1800s. endpoint와 최적trial 구별필수.
+신규+기존 core targeted57PASS10.80s. 전체 solver/app 회귀는 새로 실행중;
+완료로그 나오기 전 PASS 금지. 현재 core/study files 외 생산/PDE/UI/물성/Hz 불변.
+
+최신 사용자: 베셀 기본틀과 전위선의 연결을 설명한 뒤 아침까지 약4시간 연구 요청.
+Fresh fetch 성공, local/origin a8e4130934ab8bb67f2a657a489d269d10b20b73, clean.
+기존 문서/원자열 코어 코드를 확인했다. v21은 C와 b만 쓰는 outer line이고,
+초기 isolated-core의17채널은 최신 v20의 Eg/Quartic/even saturation 전체를
+지원하지 않는다. 최신 후보를 base.surface로만 코어에 전달하면 항 누락이다.
+과거 production에서 이 누락을 실행했다는 뜻은 아니다; 아직 연결하지 않았다.
+
+현재 작업: `current_material_rows.py`의22채널 무한 Bessel row와 원자별 전체
+에너지/gradient/Hessian. `isolated_screw_core.py`에 kernel/site-response hook을
+넣되 default energy는 유지한다. 새 `test_current_material_rows.py` 및 기존
+core targeted 실행 중. 유도/계획 `CURRENT_MATERIAL_CORE_BRIDGE_V22.md`.
+모든 결과는 연구 진단이며 v20 static-material gate 불통과는 그대로다.
+초기 targeted29PASS15.53s, 확장 row/core25PASS16.56s,
+protocol11PASS1.65s, source+legacy15PASS11.18s. 전체회귀는 아직이다.
+`run_current_core_validation`은 실제 독립 실공간 원자/force 합산을 실행했다:
+nonuniform small core fine energy error6.66e-16eV, force2.73e-14eV/L0.
+이것은 에너지표현 검증이지 rare probability 또는 재료 정확도 인증이 아니다.
+
+v22 현재계수 SHA8736cb9d28f1430e3991b1046ef42544cefaa3c9a4f5d743e0d02931329f5c2e
+불변. 최초R2/r3 centered force1.19e-7이나 minH=-2.17874: saddle.
+양쪽 mode descent에서 E=.68878052884, minH1.58268 stable fixed-boundary.
+R3/r4, R4/r5, R6/r5, R8/r5 실제 안정해; R8 minH.216269.
+R4 Newton/기존 L-BFGS E차4.6e-14eV. R4 j+1 결정학 translation 초기화는
+다른 안정위치로 수렴했다(외부경계 고정; 무한계 Peierls/유한 activation 아님).
+R4 0→50→0MPa 계산완료; 정적 제하이고 kinetic hold 아니다. 자세한 비교 진행중.
+R4/R6/R8 ring5→7 독립refinement 실행 중. `run_current_material_core`의
+mode/source stability gate를 준수한다. relative path `.resolve()` 오류수정;
+최초 실패계산은 새결과를 만들기 전에 중단되었다.
+
+추가 검증범위: 같은 FCC/벡터/경계 프로토콜의 **target-only Mishin Al99 core**.
+`source_core_reference.py`, `run_source_core_reference.py`. published source cutoff는
+source에만 사용, 우리 LJ/Bessel교체/생산selector등록 아님. 각자 자기C를 사용.
+NIST 원문 페이지 재확인; 파일hash 기존60c8…e8a284 그대로. Source bulk/row
+탄성항도 독립일치. Source R4/R6 안정이나 R8 centered minH=-.01736523였고,
+그상태를 stable로 넘기려던 R10 실행은 guard가 거부했다(결과directory미생성).
+원본R8의 path명 stable_R8r5는 요청label일 뿐 실제 summary는 unstable이다.
+현재 양쪽 negative-mode descent 후 R10 확장검사 중. Source stable상태와
+후보 core를 같은 물리상태/단위에서 비교한 뒤 다음 판단을 한다.
+실제항복/피로/물성/초Hz 보정 성공 없음. 전체회귀/최종검증 전commit금지.
+
 ## 실제 항복 연결 v21 — 2026-09-10~11 (계산·전체 회귀 완료; 실제 항복 미보정)
 
 최신 요청은 이상강도를 낮추지 말고 같은 LJ/Bessel에서 결함을 통한 실제

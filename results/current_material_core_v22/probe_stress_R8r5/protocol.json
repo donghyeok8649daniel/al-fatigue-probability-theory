@@ -1,0 +1,18 @@
+{
+  "schedule_absolute_MPa": [
+    5.0,
+    20.0,
+    50.0,
+    0.0
+  ],
+  "signs": [
+    1,
+    -1
+  ],
+  "source_reference_only": false,
+  "zero_return_is_static": true,
+  "physical_hold": false,
+  "fatigue_cycles": false,
+  "actual_yield_calibrated": false,
+  "baseline": "results/current_material_core_v22/probe_core_plus_R8r5"
+}

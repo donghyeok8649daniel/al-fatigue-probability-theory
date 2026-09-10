@@ -14,6 +14,26 @@ confused with a fully calibrated spatial aluminum fatigue solver.
 
 ## Gates
 
+The v22 bridge retains ALL current22 nonlinear site channels on infinite Bessel
+atomic rows, with independent atom-sum/derivative/Morse checks. The unchanged
+candidate now has actually relaxed vector cores, not only an outer elastic
+line estimate. Same-geometry Mishin Al99 is a TARGET comparator, never a
+replacement potential. Fixed-shape source-core force residuals remain large
+even with all signs relaxed; enforcing the declared signs and sampled bulk
+inequalities worsens other interface targets by a factor7.72 in squared loss.
+A limited core-informed shape probe and an explicitly wider continuation
+reduce same-source-state force RMS by47.23%, with other-interface squared
+loss+2.77%. Excluded opening/registry curvatures still have wrong signs; the
+outer optimizer stops at its evaluation limit. The extra five existing
+density-screening profiles do not improve the joint objective at those shapes.
+These are diagnostic improvements, not passed material validation. Actual
+core re-relaxation is checked separately from frozen-force fitting.
+See `CURRENT_MATERIAL_CORE_BRIDGE_V22.md`.
+Static load-return, finite-boundary reconstruction saddles and source reference
+activity do not certify infinite-domain Peierls stress, finite-loop activation,
+macroscopic yield/fatigue, residual specimen strain or physical a/s time.
+No material, PDE, kinetic or specimen-UI adoption gate is opened.
+
 The v21 source-to-specimen study implements signed slip-surface tensor
 kinematics and independently checks traction/tensor work. The actual72
 stress cases,297 static cycle states,36 spatial refinements and9 line-time

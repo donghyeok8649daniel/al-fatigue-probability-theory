@@ -1,0 +1,68 @@
+{
+  "energy": 0.9739906442209215,
+  "maximum_free_force": 1.3227660734110858e-08,
+  "force_converged": true,
+  "optimizer_success": false,
+  "optimizer_message": "Warning: Desired error not necessarily achieved due to precision loss.",
+  "iterations": 6,
+  "evaluations": 55,
+  "polish_steps": 0,
+  "boundary_winding": 1.0000000000000002,
+  "minimum_density": 18.637102265757512,
+  "minimum_transverse_radius": 0.8586973810548874,
+  "minimizer": "newton_cg",
+  "final_stability_probe": {
+    "minimum_eigenvalue": 0.21626923731725678,
+    "hessian_method": "assembled",
+    "eigenpair_residual": 1.677774308675644e-13,
+    "energy_curvature_checks": [
+      {
+        "step_over_L0": 0.002,
+        "curvature": 0.2162692314122694,
+        "eigenvalue_error": 5.9049873879502e-09,
+        "plus_energy_change": 4.325334636012812e-07,
+        "minus_energy_change": 4.3254346204779637e-07
+      },
+      {
+        "step_over_L0": 0.001,
+        "curvature": 0.21626922852568953,
+        "eigenvalue_error": 8.791567251975607e-09,
+        "plus_energy_change": 1.0813203976667296e-07,
+        "minus_energy_change": 1.0813718864799426e-07
+      }
+    ],
+    "maximum_free_force": 1.3227660734110858e-08,
+    "force_tolerance": 5e-07,
+    "positive_hessian_on_tested_fixed_boundary": true,
+    "stable_on_tested_fixed_boundary": true
+  },
+  "completed": true,
+  "initial_energy": 0.9741618734444166,
+  "initial_maximum_free_force": 0.0058828570135252105,
+  "reciprocal_modes": 9,
+  "last_mode_envelope": 1.5684888832606454e-14,
+  "analytic_affine_hessian": [
+    [
+      4.397754048985112,
+      0.4146242279851758
+    ],
+    [
+      0.41462422798517,
+      4.104570445732545
+    ]
+  ],
+  "continuum_antiplane_hessian": [
+    [
+      4.397754048999252,
+      0.414624228005055
+    ],
+    [
+      0.414624228005055,
+      4.104570445732639
+    ]
+  ],
+  "actual_yield_calibrated": false,
+  "domain_converged": false,
+  "material_accepted": false,
+  "elapsed_seconds": 482.6231555000122
+}

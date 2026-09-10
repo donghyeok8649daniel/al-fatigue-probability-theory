@@ -1,0 +1,68 @@
+{
+  "energy": 0.8440600840793886,
+  "maximum_free_force": 5.729155119066354e-09,
+  "force_converged": true,
+  "optimizer_success": false,
+  "optimizer_message": "Warning: Desired error not necessarily achieved due to precision loss.",
+  "iterations": 11,
+  "evaluations": 33,
+  "polish_steps": 0,
+  "boundary_winding": 1.0,
+  "minimum_density": 20.066654565828454,
+  "minimum_transverse_radius": 0.8545607461365758,
+  "minimizer": "newton_cg",
+  "final_stability_probe": {
+    "minimum_eigenvalue": -1.2294046439550703,
+    "hessian_method": "assembled",
+    "eigenpair_residual": 9.359586547720361e-14,
+    "energy_curvature_checks": [
+      {
+        "step_over_L0": 0.002,
+        "curvature": -1.2291662370711443,
+        "eigenvalue_error": 0.0002384068839260678,
+        "plus_energy_change": -2.4583324271798546e-06,
+        "minus_energy_change": -2.4583325211047224e-06
+      },
+      {
+        "step_over_L0": 0.001,
+        "curvature": -1.2293450240008497,
+        "eigenvalue_error": 5.961995422065769e-05,
+        "plus_energy_change": -6.146724946809456e-07,
+        "minus_energy_change": -6.14672529319904e-07
+      }
+    ],
+    "maximum_free_force": 5.729155146821929e-09,
+    "force_tolerance": 5e-07,
+    "positive_hessian_on_tested_fixed_boundary": false,
+    "stable_on_tested_fixed_boundary": false
+  },
+  "completed": true,
+  "initial_energy": 0.9840990652193831,
+  "initial_maximum_free_force": 2.224167249578085,
+  "reciprocal_modes": 9,
+  "last_mode_envelope": 6.904174538459608e-15,
+  "analytic_affine_hessian": [
+    [
+      4.3977540489596105,
+      0.41462422794894305
+    ],
+    [
+      0.4146242279489527,
+      4.10457044573266
+    ]
+  ],
+  "continuum_antiplane_hessian": [
+    [
+      4.3977540489992535,
+      0.41462422800506477
+    ],
+    [
+      0.41462422800506477,
+      4.104570445732634
+    ]
+  ],
+  "actual_yield_calibrated": false,
+  "domain_converged": false,
+  "material_accepted": false,
+  "elapsed_seconds": 112.66151619999437
+}

@@ -1,0 +1,21 @@
+{
+  "completed": true,
+  "actual_represented_state_evaluations": true,
+  "coefficient_parameter_sha256": {
+    "unchanged": "8736cb9d28f1430e3991b1046ef42544cefaa3c9a4f5d743e0d02931329f5c2e",
+    "joint_trial": "4de32a6ce355a9f3a7203f56dc9b3714bbc1560ca5f144bd4c966225fa267cdd"
+  },
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "source_state_sha256": "faf248d517597881b6fbb66d6e090a03406d703bc3911b3471b85a506b99762b",
+  "source_free_radius": 8.0,
+  "force_observation_radius": 2.0,
+  "source_positions_frozen": true,
+  "measured_changes_are_not_rigorous_infinite_tail_bounds": true,
+  "material_accepted": false,
+  "elapsed_seconds": 23.948444099980406,
+  "files_sha256": {
+    "gradient_components.csv": "1b38da3d911a8ade79ffa376014cd83cad549438bd4c9ed258e0cb4bacee5f4f",
+    "material_signal.csv": "45710e375211558f339d497714d4524c12cb0c5b537f14453d472bf46b86fe46",
+    "numerical_changes.csv": "d2ec4eeea7702d561a1d6b32ec2cf7f7d9d7b5905dea19d870fd6c05d85bc9d4"
+  }
+}

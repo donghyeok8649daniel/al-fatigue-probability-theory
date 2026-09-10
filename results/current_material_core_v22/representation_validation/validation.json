@@ -1,0 +1,55 @@
+{
+  "completed": true,
+  "parameter_source": "results/fcc111_active_interface/tangent_calibration_v20/shape_refinement/old_family/calibration.json",
+  "parameter_sha256": "8736cb9d28f1430e3991b1046ef42544cefaa3c9a4f5d743e0d02931329f5c2e",
+  "material_shape": [
+    2.85886119378847,
+    6.746880127140937,
+    10.63009069883441,
+    94.80299451626864,
+    5.694618712357865,
+    0.0
+  ],
+  "coefficients": [
+    0.004691290237097735,
+    0.010748901179499448,
+    2.164270267643741,
+    1.1151150845574143,
+    2.2616200179977715,
+    25.907737627659625,
+    2.3233021601990624,
+    2.6384659593382307,
+    1.6254251376231954,
+    9456.761143180593
+  ],
+  "screening_law": "power",
+  "material_accepted": false,
+  "energy_terms_omitted": false,
+  "length_scale_m": 2.863782463805517e-10,
+  "energy_unit": "eV per infinite straight-row repeat b*L0",
+  "tensor_unit": "eV/L0^3",
+  "elastic_tensor_same_candidate": true,
+  "C11_C12_C44_GPa": [
+    114.00000000000003,
+    61.99999999999996,
+    31.99999999999993
+  ],
+  "physical_time": false,
+  "physical_Hz": false,
+  "actual_yield_calibrated": false,
+  "production_changed": false,
+  "row_points": 7,
+  "all_22_channels": true,
+  "independent_direct_assembly": true,
+  "maximum_fine_core_energy_error": 6.661338147750939e-16,
+  "maximum_fine_core_force_error": 2.731148640577885e-14,
+  "actual_relaxations_performed": false,
+  "material_validation_passed": false,
+  "elapsed_seconds": 2.2996872999938205,
+  "result_sha256": {
+    "direct_row_convergence.csv": "ed6eec1114d413287618bb94037ca5237cf7e5833f42dcc95351d31edd10b8f8",
+    "independent_core_assembly.csv": "cd0d573e64cc9777b99955e673bd55a121d529427b0f2d3f24f5d609723580fc",
+    "nonuniform_core_derivatives.csv": "e2061e2c90fb117950cabe0722fccea6a235234950ddbe4b400b6d3f6d13d049",
+    "reciprocal_refinement.csv": "f3f6dbdabb62542090d4eeb21d29a0894d031ef6f3705aacc7d80982417eba3c"
+  }
+}

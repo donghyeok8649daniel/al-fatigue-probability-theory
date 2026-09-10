@@ -1,0 +1,92 @@
+{
+  "energy": 1.0324061688744304,
+  "maximum_free_force": 2.841691725680162e-13,
+  "force_converged": true,
+  "optimizer_success": true,
+  "optimizer_message": "stationary Newton root; final Morse gate separately decides minimum",
+  "iterations": 3,
+  "evaluations": null,
+  "polish_steps": 0,
+  "minimizer": "stationary_root",
+  "energy_descent_path": false,
+  "physical_dynamics": false,
+  "stationary_history": [
+    {
+      "iteration": 0,
+      "energy": 1.0361623678701681,
+      "maximum_force": 0.08412742582348236
+    },
+    {
+      "iteration": 1,
+      "energy": 1.032407234724833,
+      "maximum_force": 0.0019784861416611986
+    },
+    {
+      "iteration": 2,
+      "energy": 1.0324061688746298,
+      "maximum_force": 6.84909920394168e-07
+    },
+    {
+      "iteration": 3,
+      "energy": 1.0324061688744304,
+      "maximum_force": 2.841691725680162e-13
+    }
+  ],
+  "boundary_winding": 0.9999999999999999,
+  "minimum_density": 20.002585852364884,
+  "minimum_transverse_radius": 0.857635233520079,
+  "final_stability_probe": {
+    "minimum_eigenvalue": 0.1485687170652486,
+    "hessian_method": "assembled",
+    "eigenpair_residual": 1.3285112794319122e-13,
+    "energy_curvature_checks": [
+      {
+        "step_over_L0": 0.002,
+        "curvature": 0.14856871988211395,
+        "eigenvalue_error": 2.8168653520843634e-09,
+        "plus_energy_change": 2.9713776217299426e-07,
+        "minus_energy_change": 2.9713711735546156e-07
+      },
+      {
+        "step_over_L0": 0.001,
+        "curvature": 0.1485687310953665,
+        "eigenvalue_error": 1.4030117900798444e-08,
+        "plus_energy_change": 7.428440418344451e-08,
+        "minus_energy_change": 7.4284326911922e-08
+      }
+    ],
+    "maximum_free_force": 2.841691725680162e-13,
+    "force_tolerance": 5e-07,
+    "positive_hessian_on_tested_fixed_boundary": true,
+    "stable_on_tested_fixed_boundary": true
+  },
+  "completed": true,
+  "initial_energy": 1.0361623678701681,
+  "initial_maximum_free_force": 0.08412742582348234,
+  "reciprocal_modes": 9,
+  "last_mode_envelope": 3.811015947172685e-15,
+  "analytic_affine_hessian": [
+    [
+      4.397754048959579,
+      0.41462422794895826
+    ],
+    [
+      0.4146242279489494,
+      4.104570445732645
+    ]
+  ],
+  "continuum_antiplane_hessian": [
+    [
+      4.3977540489992535,
+      0.41462422800506477
+    ],
+    [
+      0.41462422800506477,
+      4.104570445732634
+    ]
+  ],
+  "actual_yield_calibrated": false,
+  "domain_converged": false,
+  "material_accepted": false,
+  "elapsed_seconds": 421.76863700000104
+}

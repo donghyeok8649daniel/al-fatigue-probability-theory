@@ -1,0 +1,20 @@
+{
+  "completed": true,
+  "parameter_sha256": {
+    "unchanged": "8736cb9d28f1430e3991b1046ef42544cefaa3c9a4f5d743e0d02931329f5c2e",
+    "joint_trial": "4de32a6ce355a9f3a7203f56dc9b3714bbc1560ca5f144bd4c966225fa267cdd",
+    "unchanged_at_source": "8736cb9d28f1430e3991b1046ef42544cefaa3c9a4f5d743e0d02931329f5c2e",
+    "joint_trial_at_source": "4de32a6ce355a9f3a7203f56dc9b3714bbc1560ca5f144bd4c966225fa267cdd"
+  },
+  "source": "analytic LJ/Bessel infinite atomic rows and exact Hurwitz-zeta upper series",
+  "arbitrary_neighbor_cutoff_as_theory": false,
+  "force_repaired": false,
+  "full_environmental_tail_certified": false,
+  "finite_free_boundary_certified": false,
+  "physical_yield_calibrated": false,
+  "csv_sha256": {
+    "actual_pair_force_changes.csv": "24505378b0f80882556a42e2495f3921ed82b78a7352aef7dab590deaa5261fe",
+    "infinite_pair_force_majorants.csv": "1a710ce0d07060a6d0af9b330b9bd9cc898ac0d4f08993ceb7465ac1d423c9e9",
+    "pair_gradient_components.csv": "28c117992c0e4c0b0eacda77503a6c8383bfd166f0ff8289d5a24f1b8eb9bea2"
+  }
+}

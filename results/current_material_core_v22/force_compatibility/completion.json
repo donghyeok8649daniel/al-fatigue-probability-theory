@@ -1,0 +1,19 @@
+{
+  "completed": true,
+  "actual_force_calculations": true,
+  "fixed_shape_only": true,
+  "inequalities_relaxed": true,
+  "global_family_impossibility_claimed": false,
+  "material_accepted": false,
+  "relaxed_candidate_recomputed": false,
+  "production_changed": false,
+  "physical_yield_calibrated": false,
+  "elapsed_seconds": 148.19914280000376,
+  "files_sha256": {
+    "counterfactual_parameters_NOT_ADOPTED.csv": "61fd6042f9f416835303cb454031d8389fc1f3298317adb767898db4b5c90916",
+    "fixed_shape_lower_bounds.csv": "86231ec9ed4d10c44519bf8ff5adf68f2078f2353e779bb783d473991fe11027",
+    "force_coefficient_matrix.csv": "4b37365ec130890017a1855a08edc2665a1802c2300ebf3bce85b4b95abd9f9e",
+    "frozen_source_force_audit.csv": "a5d0e4956902e5e5dc34f4f17ffd93105e5647de95772c78c014a4b024994a1f",
+    "heldout_force_predictions.csv": "19d339ca58c0bdfd0f32b1f32a8eb3b5046531c8d7bd9e12114c9c61e583c61b"
+  }
+}

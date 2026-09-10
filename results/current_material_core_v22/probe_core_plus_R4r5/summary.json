@@ -1,0 +1,68 @@
+{
+  "energy": 0.8329233192000312,
+  "maximum_free_force": 2.433856569235282e-08,
+  "force_converged": true,
+  "optimizer_success": false,
+  "optimizer_message": "Warning: Desired error not necessarily achieved due to precision loss.",
+  "iterations": 16,
+  "evaluations": 71,
+  "polish_steps": 0,
+  "boundary_winding": 1.0,
+  "minimum_density": 20.038336940406143,
+  "minimum_transverse_radius": 0.8554640098374325,
+  "minimizer": "newton_cg",
+  "final_stability_probe": {
+    "minimum_eigenvalue": 0.6189835668914977,
+    "hessian_method": "assembled",
+    "eigenpair_residual": 8.675495587921954e-14,
+    "energy_curvature_checks": [
+      {
+        "step_over_L0": 0.002,
+        "curvature": 0.6189839079073778,
+        "eigenvalue_error": 3.410158800898344e-07,
+        "plus_energy_change": 1.2380572584902438e-06,
+        "minus_energy_change": 1.237878373028245e-06
+      },
+      {
+        "step_over_L0": 0.001,
+        "curvature": 0.618983666100803,
+        "eigenvalue_error": 9.920930532647532e-08,
+        "plus_energy_change": 3.0950737828217e-07,
+        "minus_energy_change": 3.094762877076107e-07
+      }
+    ],
+    "maximum_free_force": 2.433856574786397e-08,
+    "force_tolerance": 5e-07,
+    "positive_hessian_on_tested_fixed_boundary": true,
+    "stable_on_tested_fixed_boundary": true
+  },
+  "completed": true,
+  "initial_energy": 0.8438189697526075,
+  "initial_maximum_free_force": 0.015875157363714837,
+  "reciprocal_modes": 9,
+  "last_mode_envelope": 4.379643913849649e-15,
+  "analytic_affine_hessian": [
+    [
+      4.3977540489596105,
+      0.41462422794894305
+    ],
+    [
+      0.4146242279489527,
+      4.10457044573266
+    ]
+  ],
+  "continuum_antiplane_hessian": [
+    [
+      4.3977540489992535,
+      0.41462422800506477
+    ],
+    [
+      0.41462422800506477,
+      4.104570445732634
+    ]
+  ],
+  "actual_yield_calibrated": false,
+  "domain_converged": false,
+  "material_accepted": false,
+  "elapsed_seconds": 157.51768849999644
+}

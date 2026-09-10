@@ -1,0 +1,87 @@
+{
+  "energy": 0.9619815257433113,
+  "maximum_free_force": 3.6798574133022803e-07,
+  "force_converged": true,
+  "optimizer_success": true,
+  "optimizer_message": "stationary Newton root; final Morse gate separately decides minimum",
+  "iterations": 2,
+  "evaluations": null,
+  "polish_steps": 0,
+  "minimizer": "stationary_root",
+  "energy_descent_path": false,
+  "physical_dynamics": false,
+  "stationary_history": [
+    {
+      "iteration": 0,
+      "energy": 0.9649043867385841,
+      "maximum_force": 0.07244500040184418
+    },
+    {
+      "iteration": 1,
+      "energy": 0.9619820695465817,
+      "maximum_force": 0.0013115714390675138
+    },
+    {
+      "iteration": 2,
+      "energy": 0.9619815257433113,
+      "maximum_force": 3.6798574133022803e-07
+    }
+  ],
+  "boundary_winding": 1.0,
+  "minimum_density": 19.639720140344913,
+  "minimum_transverse_radius": 0.8573478320272064,
+  "final_stability_probe": {
+    "minimum_eigenvalue": 0.13952580071627382,
+    "hessian_method": "assembled",
+    "eigenpair_residual": 1.1645404183937584e-13,
+    "energy_curvature_checks": [
+      {
+        "step_over_L0": 0.002,
+        "curvature": 0.13952579425158262,
+        "eigenvalue_error": 6.464691199026262e-09,
+        "plus_energy_change": 2.790396079754842e-07,
+        "minus_energy_change": 2.79063568919824e-07
+      },
+      {
+        "step_over_L0": 0.001,
+        "curvature": 0.13952580313336682,
+        "eigenvalue_error": 2.41709299797499e-09,
+        "plus_energy_change": 6.97566975293995e-08,
+        "minus_energy_change": 6.976910560396732e-08
+      }
+    ],
+    "maximum_free_force": 3.6798574133022803e-07,
+    "force_tolerance": 5e-07,
+    "positive_hessian_on_tested_fixed_boundary": true,
+    "stable_on_tested_fixed_boundary": true
+  },
+  "completed": true,
+  "initial_energy": 0.9649043867385841,
+  "initial_maximum_free_force": 0.07244500040184419,
+  "reciprocal_modes": 9,
+  "last_mode_envelope": 2.576807270250737e-15,
+  "analytic_affine_hessian": [
+    [
+      4.397754049014555,
+      0.41462422802668475
+    ],
+    [
+      0.41462422802668664,
+      4.10457044573266
+    ]
+  ],
+  "continuum_antiplane_hessian": [
+    [
+      4.3977540489992535,
+      0.4146242280050687
+    ],
+    [
+      0.4146242280050687,
+      4.104570445732633
+    ]
+  ],
+  "actual_yield_calibrated": false,
+  "domain_converged": false,
+  "material_accepted": false,
+  "elapsed_seconds": 367.01166690001264
+}

@@ -1,0 +1,7 @@
+model,study,first_ring,second_ring,first_tolerance,second_tolerance,maximum_force_change,RMS_force_change,units,infinite_domain_certified
+unchanged,row_ring,5,7,2e-12,2e-12,5.357298900610097e-06,2.008421523021527e-06,eV/L0,False
+unchanged,row_ring,7,9,2e-12,2e-12,9.402407535885615e-07,3.521979508077415e-07,eV/L0,False
+unchanged,reciprocal,7,7,2e-12,2e-13,0.0,0.0,eV/L0,False
+joint_trial,row_ring,5,7,2e-12,2e-12,1.3335285280413611e-05,4.8940154273675854e-06,eV/L0,False
+joint_trial,row_ring,7,9,2e-12,2e-12,3.240067320608997e-06,1.2162186433014917e-06,eV/L0,False
+joint_trial,reciprocal,7,7,2e-12,2e-13,0.0,0.0,eV/L0,False

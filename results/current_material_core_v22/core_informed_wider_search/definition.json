@@ -1,0 +1,104 @@
+{
+  "candidate_sha256": "8736cb9d28f1430e3991b1046ef42544cefaa3c9a4f5d743e0d02931329f5c2e",
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "source_state": "results/current_material_core_v22/source_reference/escaped_plus_R8r5",
+  "initial_shape": [
+    2.85886119378847,
+    6.746880127140937,
+    10.63009069883441,
+    94.80299451626864,
+    5.694618712357865,
+    0.0
+  ],
+  "baseline_coefficients": [
+    0.004691290237097735,
+    0.010748901179499448,
+    2.164270267643741,
+    1.1151150845574143,
+    2.2616200179977715,
+    25.907737627659625,
+    2.3233021601990624,
+    2.6384659593382307,
+    1.6254251376231954,
+    9456.761143180593
+  ],
+  "target_radius_over_L0": 2.0,
+  "source_free_radius_over_L0": 8.0,
+  "candidate_ring": 7,
+  "exact_observations": [
+    "normal_strain_force_ev",
+    "cohesive_ev_atom",
+    "C11_GPa",
+    "C12_GPa",
+    "C44_GPa",
+    "perfect_Haa",
+    "perfect_Hxx"
+  ],
+  "static_baseline_squared_loss": 2215.2031590428205,
+  "core_baseline_squared_loss": 4.5049418578414295,
+  "objective": "static_loss/static_baseline_loss + core_loss/core_baseline_loss",
+  "block_scales_are_not_uncertainties": true,
+  "core_block_weight": 1.0,
+  "log_shape_bounds": [
+    [
+      0.4504233615454204,
+      1.3090801946490003,
+      1.7636887246631203,
+      3.951800996486447,
+      1.139521643359803
+    ],
+    [
+      1.6504233615454202,
+      2.4849066497880004,
+      2.4849066497880004,
+      5.151800996486447,
+      2.3395216433598027
+    ]
+  ],
+  "screening_exponent_fixed": 0.0,
+  "log_search_radius": 0.6,
+  "local_probe_not_global_fit": true,
+  "max_nfev": 15,
+  "max_seconds": 1000.0,
+  "actual_start_log_coordinates": [
+    0.9756313589356236,
+    2.0014362858091004,
+    2.4562721769711655,
+    4.751800996422881,
+    1.917902401695667
+  ],
+  "resume": {
+    "source": "results/current_material_core_v22/core_informed_shape_continuation",
+    "completion_sha256": "604b22dfbed02879f272b00f45c75161bc45ddbd1712c0c5f5e655a75662f166",
+    "accepted_coordinates": [
+      0.9756313589356236,
+      2.0014362858091004,
+      2.4562721769711655,
+      4.751800996422881,
+      1.917902401695667
+    ],
+    "new_bounds_centered_on_previous_point": false,
+    "explicit_superset_search_box": true,
+    "previous_log_bounds": [
+      [
+        0.8504233615454204,
+        1.7090801946490002,
+        2.1636887246631202,
+        4.351800996486447,
+        1.539521643359803
+      ],
+      [
+        1.2504233615454203,
+        2.109080194649,
+        2.4849066497880004,
+        4.751800996486447,
+        1.9395216433598028
+      ]
+    ]
+  },
+  "no_new_energy_term": true,
+  "physical_yield_used": false,
+  "material_accepted": false,
+  "core_columns_are_energy_gradients": true,
+  "production_changed": false
+}

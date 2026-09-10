@@ -1,0 +1,81 @@
+{
+  "completed": false,
+  "shape": [
+    2.85886119378847,
+    6.746880127140937,
+    10.63009069883441,
+    94.80299451626864,
+    5.694618712357865,
+    0.0
+  ],
+  "baseline_coefficients": [
+    0.004691290237097735,
+    0.010748901179499448,
+    2.164270267643741,
+    1.1151150845574143,
+    2.2616200179977715,
+    25.907737627659625,
+    2.3233021601990624,
+    2.6384659593382307,
+    1.6254251376231954,
+    9456.761143180593
+  ],
+  "coefficient_order": [
+    "u",
+    "v",
+    "A",
+    "B",
+    "C",
+    "D3",
+    "D1",
+    "D2",
+    "D_Eg",
+    "K3"
+  ],
+  "candidate_sha256": "8736cb9d28f1430e3991b1046ef42544cefaa3c9a4f5d743e0d02931329f5c2e",
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "configurations": [
+    [
+      "R8_zero",
+      "escaped_plus_R8r5",
+      0.0
+    ],
+    [
+      "R10_zero",
+      "stable_plus_R10r5",
+      0.0
+    ],
+    [
+      "R8_perturbed_plus",
+      "escaped_plus_R8r5",
+      0.002
+    ],
+    [
+      "R8_perturbed_minus",
+      "escaped_plus_R8r5",
+      -0.002
+    ]
+  ],
+  "exact_observations": [
+    "normal_strain_force_ev",
+    "cohesive_ev_atom",
+    "C11_GPa",
+    "C12_GPa",
+    "C44_GPa",
+    "perfect_Haa",
+    "perfect_Hxx"
+  ],
+  "fit_configuration": "R8_zero",
+  "heldout": [
+    "R10_zero",
+    "R8_perturbed_plus",
+    "R8_perturbed_minus"
+  ],
+  "force_units": "eV/L0 per straight atomic-row repeat",
+  "force_metric": "equal-weight Euclidean force-component norm",
+  "source_boundary_frozen": true,
+  "same_physical_positions_for_both_energies": true,
+  "source_potential_is_only_a_target": true,
+  "physical_yield_used": false,
+  "new_energy_term": false
+}

@@ -1,0 +1,44 @@
+{
+  "completed": true,
+  "force_converged": true,
+  "maximum_force": 4.476378772863554e-11,
+  "negative_eigenvalues": 1,
+  "unresolved_eigenvalues": 0,
+  "hessian_resolution_floor": 1.158849026141508e-10,
+  "saddle_energy": 1.3912448163406523,
+  "original_energy": 1.3902285442246662,
+  "partner_energy": 1.390228544224673,
+  "barrier_eV_per_straight_row_repeat": 0.0010162721159860943,
+  "minimum_mode_probe": {
+    "minimum_eigenvalue": -0.053509273284550476,
+    "hessian_method": "assembled",
+    "eigenpair_residual": 5.070134875194043e-14,
+    "energy_curvature_checks": [
+      {
+        "step_over_L0": 0.002,
+        "curvature": -0.05269130243235054,
+        "eigenvalue_error": 0.0008179708521999368,
+        "plus_energy_change": -1.0538260086789819e-07,
+        "minus_energy_change": -1.0538260886150397e-07
+      },
+      {
+        "step_over_L0": 0.001,
+        "curvature": -0.05316132023480691,
+        "eigenvalue_error": 0.00034795304974356844,
+        "plus_energy_change": -2.658065900718043e-08,
+        "minus_energy_change": -2.658066122762648e-08
+      }
+    ],
+    "maximum_free_force": 4.476378772863554e-11,
+    "force_tolerance": 5e-08,
+    "positive_hessian_on_tested_fixed_boundary": false,
+    "stable_on_tested_fixed_boundary": false
+  },
+  "descents": [],
+  "full_translation_Peierls_validated": false,
+  "finite_loop_activation_validated": false,
+  "material_accepted": false,
+  "physical_yield_validated": false,
+  "physical_Hz": false,
+  "elapsed_seconds": 82.58472480002092
+}

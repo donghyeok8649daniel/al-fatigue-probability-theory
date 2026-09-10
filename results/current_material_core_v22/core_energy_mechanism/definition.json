@@ -1,0 +1,25 @@
+{
+  "completed": true,
+  "parameter_sha256": {
+    "unchanged": "8736cb9d28f1430e3991b1046ef42544cefaa3c9a4f5d743e0d02931329f5c2e",
+    "joint_trial": "4de32a6ce355a9f3a7203f56dc9b3714bbc1560ca5f144bd4c966225fa267cdd",
+    "Mishin_target": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284"
+  },
+  "narrow_state": "results/current_material_core_v22/stable_plus_R8r5",
+  "wide_state": "results/current_material_core_v22/source_reference/escaped_plus_R8r5",
+  "narrow_state_sha256": "97b1872496da414cf381089731d5b4cb05ec30160e3e547e8af90737135a73bf",
+  "wide_state_sha256": "faf248d517597881b6fbb66d6e090a03406d703bc3911b3471b85a506b99762b",
+  "interpolation": "q(lambda)=q_narrow+lambda*nearest_row_phase(q_wide-q_narrow)",
+  "radius_over_L0": 8.0,
+  "ring": 5,
+  "own_material_exterior": true,
+  "not_minimum_energy_path": true,
+  "not_relaxed_barrier": true,
+  "no_material_adoption": true,
+  "physical_yield": false,
+  "physical_Hz": false,
+  "csv_sha256": {
+    "frozen_atomic_path.csv": "911ba9c6c260b04410652a52341a5b4135bb30fe3250fa9c5765641e48fd25d2",
+    "gauge_fixed_term_contributions.csv": "b406baace077b98ae0c8e9699bee16e81f4aeafb45af5017864257ed740fff4a"
+  }
+}

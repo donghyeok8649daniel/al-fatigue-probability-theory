@@ -1,0 +1,79 @@
+{
+  "completed": true,
+  "force_converged": true,
+  "maximum_force": 6.07924821593997e-12,
+  "negative_eigenvalues": 1,
+  "unresolved_eigenvalues": 0,
+  "hessian_resolution_floor": 2.9306428456538615e-11,
+  "saddle_energy": 1.2331457803071442,
+  "original_energy": 1.2328094816359978,
+  "partner_energy": 1.2328094816360005,
+  "barrier_eV_per_straight_row_repeat": 0.00033629867114637335,
+  "minimum_mode_probe": {
+    "minimum_eigenvalue": -0.01736521633751109,
+    "hessian_method": "assembled",
+    "eigenpair_residual": 4.2582774131912424e-14,
+    "energy_curvature_checks": [
+      {
+        "step_over_L0": 0.002,
+        "curvature": -0.016323304152798812,
+        "eigenvalue_error": 0.0010419121847122792,
+        "plus_energy_change": -3.264660763946381e-08,
+        "minus_energy_change": -3.264660897173144e-08
+      },
+      {
+        "step_over_L0": 0.001,
+        "curvature": -0.016565386395939186,
+        "eigenvalue_error": 0.0007998299415719057,
+        "plus_energy_change": -8.282690977523544e-09,
+        "minus_energy_change": -8.282695418415642e-09
+      }
+    ],
+    "maximum_free_force": 6.07924821593997e-12,
+    "force_tolerance": 5e-08,
+    "positive_hessian_on_tested_fixed_boundary": false,
+    "stable_on_tested_fixed_boundary": false
+  },
+  "descents": [
+    {
+      "sign": -1,
+      "energy": 1.2328094816359951,
+      "maximum_force": 9.484461306608072e-10,
+      "stable_fixed_boundary": true,
+      "minimum_H": 0.14244589519757672,
+      "difference_to_original": {
+        "rows": 18,
+        "maximum_vector_change_over_L0": 0.07926041214346854,
+        "rms_vector_change_over_L0": 0.05423576865280563
+      },
+      "difference_to_partner": {
+        "rows": 18,
+        "maximum_vector_change_over_L0": 6.550276978914153e-13,
+        "rms_vector_change_over_L0": 4.2400314065720956e-13
+      }
+    },
+    {
+      "sign": 1,
+      "energy": 1.2328094816359978,
+      "maximum_force": 9.496976538514446e-10,
+      "stable_fixed_boundary": true,
+      "minimum_H": 0.14244589519754253,
+      "difference_to_original": {
+        "rows": 18,
+        "maximum_vector_change_over_L0": 6.520452622502831e-13,
+        "rms_vector_change_over_L0": 4.2355613112627465e-13
+      },
+      "difference_to_partner": {
+        "rows": 18,
+        "maximum_vector_change_over_L0": 0.07926041214347124,
+        "rms_vector_change_over_L0": 0.05423576865280536
+      }
+    }
+  ],
+  "full_translation_Peierls_validated": false,
+  "finite_loop_activation_validated": false,
+  "material_accepted": false,
+  "physical_yield_validated": false,
+  "physical_Hz": false,
+  "elapsed_seconds": 35.04217649999191
+}
