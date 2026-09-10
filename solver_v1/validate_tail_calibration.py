@@ -19,6 +19,7 @@ from .run_low_stress_cyclic_diagnostic import write_csv
 from .vector_registry_audit import stationary_state
 from .vector_material_calibration import UNITS,IDEAL_H,LENGTH_M
 from .yield_elastic_metric import cubic_metric_problem,cubic_to_mode_matrix
+from .material_calibration_controls import append_fixed_pair
 
 
 def load_material(directory):
@@ -26,7 +27,13 @@ def load_material(directory):
     if not data['completed']: raise ValueError('completed actual calibration required')
     definition=json.loads((directory/'definition.json').read_bytes())
     best=data['best'];decays=best['decays'];c=np.asarray(best['coefficients'])
-    if definition.get('density_angular_cross_extension'):
+    if not best['strictly_positive_LJ'] or not data.get('admissible_solution_found',True):
+        raise ValueError('diagnostic zero-pair closure is not an admissible LJ material')
+    if definition.get('quadrupole_saturation_extension'):
+        from .quadrupole_saturation import SaturatedQuadrupoleInterface,SaturatedQuadrupoleCache,SaturatedQuadrupoleBulk
+        model=SaturatedQuadrupoleInterface(decays,c)
+        cache_type,bulk_type=SaturatedQuadrupoleCache,SaturatedQuadrupoleBulk
+    elif definition.get('density_angular_cross_extension'):
         from .density_angular_cross_material import CrossDensityAngularInterface,CrossDensityAngularCache,CrossDensityAngularBulk
         model=CrossDensityAngularInterface(decays,c)
         cache_type,bulk_type=CrossDensityAngularCache,CrossDensityAngularBulk
@@ -58,6 +65,9 @@ def main():
     if definition.get('interface_development'):
         from .interface_development_targets import development_observations
         observations,_=development_observations(source,observations,states)
+    if definition.get('even_development'):
+        from .interface_even_development_targets import even_development_observations
+        observations,_=even_development_observations(source,observations,states)
     if source.reference.sha256!=definition['source_sha256']: raise ValueError('source hash mismatch')
     cache=cache_type(observations);raw=cache.matrix(decays)
     matrix,obs=cubic_metric_problem(raw[:,:8],observations)
@@ -70,6 +80,7 @@ def main():
         bloch_targets=source_bloch_targets(source.reference)
         basis=bulk_type(decays if definition.get('density_mixture_extension') else decays[:3],radius=definition['radius_over_L0'])
         matrix,obs,_=append_bloch_problem(matrix,obs,basis,bloch_targets)
+    matrix,obs=append_fixed_pair(matrix,obs,definition.get('fixed_pair_control'))
     predictions=matrix@c
     if np.max(abs(predictions-np.asarray(best['predictions'])))>2e-8:
         raise ArithmeticError('saved fit fails exact analytic replay')
@@ -151,6 +162,7 @@ def main():
                 if bloch_targets:
                     basis=bulk_type(d if definition.get('density_mixture_extension') else d[:3],radius=definition['radius_over_L0'])
                     m,_,_=append_bloch_problem(m,observations,basis,bloch_targets)
+                m,_=append_fixed_pair(m,observations,definition.get('fixed_pair_control'))
                 matrices.append(m)
                 z=c.copy();z[:2]=np.linalg.solve(m[:2,:2],np.array([o.target for o in obs[:2]])-m[:2,2:]@c[2:])
                 ps.append(m@z)
@@ -175,7 +187,8 @@ def main():
     # staged equality manifold separately rather than interpreting numerical
     # full rank in a larger parameter space as identifiability of this fit.
     from .profiled_identifiability import equality_tangent_sensitivity
-    exact_rows=list(range(5)) if definition.get('exact_bulk_stage') else [i for i,o in enumerate(obs) if o.role=='exact']
+    exact_rows=sorted(set(([0,1,2,3,4] if definition.get('exact_bulk_stage') else [])
+                         +[i for i,o in enumerate(obs) if o.role=='exact']))
     tangent_checks=[equality_tangent_sensitivity(matrix,obs,c,d,exact_rows=exact_rows)
                     for d in matrix_derivative_refinements]
     exact_tangent=tangent_checks[-1]

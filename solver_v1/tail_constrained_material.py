@@ -272,12 +272,39 @@ def convex_profile(matrix, observations, inequalities=None, *, nonnegative=(0,1,
     final_kkt,final_violation,complementarity=certificate(c)
     if final_kkt>1e-6 or final_violation>1e-7:
         raise ArithmeticError(f'returned profile not verified: primal={final_violation}; KKT={final_kkt}; pre-polish KKT={kkt}')
+    # A whitened-coordinate certificate can resolve the optimum extremely
+    # well yet leave a negative physical amplitude through offset cancellation
+    # (actual v16: K3=-1.7e-9, KKT=3.6e-15). That cannot instantiate a model
+    # whose analytic family requires K3>=0. Do NOT clip the coefficient.
+    # Re-solve on its exact nonnegative boundary, retaining every original
+    # equality/inequality. Recheck the resulting point's ORIGINAL full-space
+    # KKT certificate; this rejects an incorrectly guessed active boundary.
+    boundary_resolved=[i for i in nonnegative if c[i]<0]
+    if boundary_resolved:
+        remaining=[i for i in range(p) if i not in boundary_resolved]
+        restricted=eq[:,remaining]
+        candidate=np.zeros(p)
+        if np.linalg.matrix_rank(restricted)==len(remaining):
+            candidate[remaining]=np.linalg.lstsq(restricted,rhs,rcond=None)[0]
+        else:
+            remapped=tuple(remaining.index(i) for i in nonnegative if i in remaining)
+            reduced=convex_profile(matrix[:,remaining],observations,extra[:,remaining],
+                                   nonnegative=remapped)
+            candidate[remaining]=reduced['coefficients']
+        new_certificate=certificate(candidate)
+        if (np.any(candidate[list(nonnegative)]<0)
+                or np.max(abs(eq@candidate-rhs))>1e-8
+                or new_certificate[0]>1e-6 or new_certificate[1]>1e-7):
+            raise ArithmeticError('exact nonnegative boundary re-solve failed original KKT/feasibility')
+        c=candidate
+        final_kkt,final_violation,complementarity=new_certificate
     residual = (matrix@c-target)/scales
     return dict(coefficients=c,residuals=residual,predictions=matrix@c,
         squared_loss=float(residual[selected]@residual[selected]), selected_rows=selected,
         exact_residual=float(np.max(abs(residual[exact]))),kkt_residual=final_kkt,
         pre_polish_kkt_residual=kkt,complementarity_residual=complementarity,
         active_face_polish_accepted=polish_accepted,
+        exact_nonnegative_boundary_resolve=boundary_resolved,
         scaled_primal_violation=final_violation,optimizer_success=bool(run.success),
         optimizer_message=str(run.message),strictly_positive_LJ=bool(np.all(c[:2]>0)))
 

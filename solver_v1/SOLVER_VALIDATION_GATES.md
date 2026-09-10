@@ -14,6 +14,25 @@ confused with a fully calibrated spatial aluminum fatigue solver.
 
 ## Gates
 
+The v16 even-environment extension is now derived and actually fitted/tested.
+One per-site rational invariant shape preserves the LJ/infinite-sum structure
+and the cubic harmonic operator. On the SAME enlarged development data, the
+positive-LJ candidate reduces independent normalized RMS from 19.73 to 4.01.
+Its 12 held-out energy observations meet the declared scales, and stationary
+fault/saddle energies improve materially. This is genuine scoped energy
+calibration progress, not a merely proposed fit.
+
+It still fails the force/curvature gate: perfect normal curvature is about
+42% high and saddle normal curvature about 90% high in the final positive-pair
+section. The 300 K covariance comparison retains component errors. Independent
+finite-q and six fixed-material dilations pass their sampled/tail checks, not
+a whole-zone proof. All shape-optimizer budget stops, nonpositive-LJ closures
+and fixed-pair CONTROL constraints remain explicit. An independently reproduced
+QP offset error is repaired by an exact-boundary re-solve, not coefficient
+clipping. Read `EVEN_ENVIRONMENT_CALIBRATION_V16.md` and its completed result
+tables. No physical mobility, real yield, production PDE or specimen UI gate
+is opened; the next material question is the remaining normal-force response.
+
 The v15 actual public-source study adds matched300K plane covariance, raw
 MPa wire relaxation/activation observations, and provenance-bound line-drag
 and core-resistance references. They do NOT identify production a/s mobility.

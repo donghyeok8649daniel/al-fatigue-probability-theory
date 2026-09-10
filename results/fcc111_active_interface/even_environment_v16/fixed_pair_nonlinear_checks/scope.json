@@ -1,0 +1,27 @@
+{
+  "completed": true,
+  "bindings": [
+    {
+      "model": "fixed_saturated_reprofile",
+      "calibration_sha256": "98d9c8d995a86306857ba8844c06cdbffb967b84c7193ad776382e09aa73d70c",
+      "shape": [
+        3.31997022737737,
+        3.919564945214352,
+        11.916047300075677,
+        242075.99633372846
+      ],
+      "strictly_positive_LJ": true,
+      "quadrupole_saturation": 242075.99633372846
+    }
+  ],
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "per_site_nonlinearity": true,
+  "canonical_finite_neighbor_cutoff": false,
+  "whole_zone_proof": false,
+  "full_material_accepted": false,
+  "physical_yield_validated": false,
+  "physical_seconds": false,
+  "physical_Hz": false,
+  "production_changed": false,
+  "elapsed_seconds": 96.90312180000183
+}

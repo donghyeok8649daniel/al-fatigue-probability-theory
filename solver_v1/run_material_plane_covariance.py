@@ -58,6 +58,8 @@ def main():
         bindings.append(dict(model=name,calibration_sha256=hashlib.sha256((directory/'calibration.json').read_bytes()).hexdigest()))
         cross=definition.get('density_angular_cross_extension',False)
         saturation=data['best']['decays'][3] if definition.get('rational_angular_extension') else 0.
+        even_saturation=(data['best']['decays'][3]
+                         if definition.get('quadrupole_saturation_extension') else 0.)
         for dilation in sorted(set([.99,1.,stretch,1.01]+args.additional_stretches)):
             previous=None
             for radius in (12.,16.):
@@ -116,7 +118,8 @@ def main():
                     for j,v in enumerate(np.eye(3)):
                         H=matrices[3]  # k=4/N, an explicitly fixed nonzero mode
                         keyword=dict(planes=N,mode=4,polarization_plane=v,
-                                     validation_radius=radius,saturation=saturation)
+                                     validation_radius=radius,saturation=saturation,
+                                     quadrupole_saturation=even_saturation)
                         zero=basis.direct_sinusoidal_energy(c,amplitude=0.,**keyword)
                         fd=[]
                         for amplitude in (4e-4,2e-4):
@@ -127,6 +130,8 @@ def main():
                             analytic_H=float(v@H@v),central_4e4=fd[0],central_2e4=fd[1],
                             fourth_order_richardson=(4*fd[1]-fd[0])/3,
                             absolute_richardson_error=abs((4*fd[1]-fd[0])/3-v@H@v),
+                            quadrupole_saturation=even_saturation,
+                            resolved_from_two_amplitudes_only=False,
                             density_truncation=basis.density_series_tail))
         print('actual fixed-parameter MD-box validation',name,flush=True)
     write_csv(args.out/'material_MD_variance.csv',results)

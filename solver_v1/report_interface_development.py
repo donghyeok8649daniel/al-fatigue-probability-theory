@@ -1,4 +1,4 @@
-"""Summarize actual v15 optimizations and independent validation, not refit.
+"""Summarize actual interface optimizations and independent validation, not refit.
 
 Numerical termination, exact-bulk constraints, held-out tests and material
 acceptance are distinct. Incomplete/failed starts stay visible in the report.
@@ -42,6 +42,9 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('directory',type=Path)
     parser.add_argument('--out',type=Path,required=True)
+    parser.add_argument('--study-label',default='v15')
+    parser.add_argument('--plot-runs',nargs='+',
+        help='explicit completed run names; default preserves the historical v15 plot')
     args=parser.parse_args()
     if args.out.exists():raise FileExistsError('preserve existing report')
     comparisons=[];optimizers=[];residuals=[];parameters=[];svd=[];stationary=[];curves={};bindings=[]
@@ -54,17 +57,23 @@ def main():
             successful_stopping_criteria=sum(bool(o['success']) for o in data['optimizers']),
             numerical_stops=sum(bool(o.get('numerical_stop')) for o in data['optimizers']),
             failed_profile_evaluations=len(data.get('failed_profiles',[])),
+            nonpositive_LJ_profiles=sum(not bool(p['strictly_positive_LJ']) for p in data['profiles']),
             stability_wavepoint_count=len(definition['wavepoints_cubic']),
             derivative_scheme=definition.get('numerical_derivative_scheme','2-point (historical runner)'),
             derivative_step=definition.get('numerical_relative_step',2e-4),
             exact_bulk=definition.get('exact_bulk_stage',False),
+            target_generation=('v16' if definition.get('even_development') else 'v15'),
+            quadrupole_saturation=definition.get('quadrupole_saturation_extension',False),
+            inherited_pair_control=bool(definition.get('fixed_pair_control')),
             fit_loss=best['squared_loss'],profile_heldout_normalized_rms=best['heldout_normalized_rms'],
+            best_strictly_positive_LJ=bool(best['strictly_positive_LJ']),
             C11_GPa=best['cubic_GPa'][0],C12_GPa=best['cubic_GPa'][1],C44_GPa=best['cubic_GPa'][2],
             independent_validation=False,full_material_accepted=False,
             physical_time_calibrated=False)
         for i,opt in enumerate(data['optimizers']):
             optimizers.append(dict(run=directory.name,start_index=i,
                 **{k:json.dumps(v) if isinstance(v,(list,dict)) else v for k,v in opt.items()}))
+        row['admissible_solution_found']=bool(best['strictly_positive_LJ'])
         if not definition.get('quartic_angular_extension'):
             raise ValueError('this v15 report requires an explicitly defined quartic-family basis')
         names=['u','v','A','B','C','D3','D1','D2','D_E','K3']
@@ -109,6 +118,10 @@ def main():
         write_csv(args.out/(name+'.csv'),rectangular(rows))
     import matplotlib.pyplot as plt
     chosen=[name for name in ('joint_quartic','spectral_refined_fit','spectral_cross_fit','joint_bulk_interface') if name in curves]
+    if args.plot_runs:
+        if any(name not in curves for name in args.plot_runs):
+            raise ValueError('each requested curve must have completed independent validation')
+        chosen=args.plot_runs
     fig,axes=plt.subplots(1,3,figsize=(13,4),layout='constrained')
     for axis,path,title in zip(axes,('shockley','direct110','opening'),
                                ('Rigid Shockley path','Rigid direct <110> path','Rigid opening')):
@@ -120,9 +133,10 @@ def main():
         axis.set(title=title,xlabel='a / h' if path=='opening' else 'Path fraction',ylabel='Energy [J / m²]')
         axis.grid(alpha=.2)
     axes[0].legend(fontsize=6)
-    fig.suptitle('Actual v15 fits: no candidate accepted as a full Al interface')
+    fig.suptitle(f'Actual {args.study_label} fits: no automatic full Al interface acceptance')
     save_figure(fig,args.out/'interface_tradeoffs.svg')
     save_json(args.out/'report_scope.json',dict(completed=True,bindings=bindings,
+        study_label=args.study_label,plot_runs=chosen,
         optimization_rerun_by_report=False,global_minimum_proved=False,full_material_accepted=False,
         production_model_changed=False,kinetic_time_calibrated=False,
         interpretation='ftol/xtol termination is not material validation; failed starts and heldout residuals retained'))

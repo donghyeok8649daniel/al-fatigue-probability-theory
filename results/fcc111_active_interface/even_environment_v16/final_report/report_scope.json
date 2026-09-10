@@ -1,0 +1,52 @@
+{
+  "completed": true,
+  "bindings": [
+    {
+      "run": "baseline",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "9be73a0bffc7077fabd275af580a8cecdee89c253ee172cab1cf7ae0f15bf5d8"
+    },
+    {
+      "run": "fixed_baseline",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "fd3775f880930723624748a192f3e40efbb65a390b0ba974dbbb109f66272ed2"
+    },
+    {
+      "run": "fixed_baseline_continuation",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "b7fb7fc4eee76d8cdf3323d4d38eee4f62d90072076bc271566e5249f9c8433d"
+    },
+    {
+      "run": "fixed_saturated",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "1b50382939506480cf6534a238dccda8e6532475d52d4d9ad27ebbfdef0b600f"
+    },
+    {
+      "run": "fixed_saturated_reprofile",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "98d9c8d995a86306857ba8844c06cdbffb967b84c7193ad776382e09aa73d70c"
+    },
+    {
+      "run": "positive_pair_refinement",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "1ca347f9da60ac8301d2543d2417377392d460254bab38c07c1196977ec7f3f8"
+    },
+    {
+      "run": "saturated",
+      "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "calibration_sha256": "bcc8e2cbfe3c05faf89ade54e428d3f2fad18ae4b8864918729af844e15f9f8e"
+    }
+  ],
+  "study_label": "v16",
+  "plot_runs": [
+    "baseline",
+    "saturated",
+    "positive_pair_refinement"
+  ],
+  "optimization_rerun_by_report": false,
+  "global_minimum_proved": false,
+  "full_material_accepted": false,
+  "production_model_changed": false,
+  "kinetic_time_calibrated": false,
+  "interpretation": "ftol/xtol termination is not material validation; failed starts and heldout residuals retained"
+}

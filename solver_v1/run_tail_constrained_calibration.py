@@ -17,10 +17,27 @@ from .run_vector_registry_audit import save_json
 from .run_low_stress_cyclic_diagnostic import write_csv
 from .tail_constrained_material import TailBulkCoefficientBasis, augmented_wavepoints, spectral_profile
 from .yield_elastic_metric import cubic_metric_problem, cubic_to_mode_matrix
+from .material_calibration_controls import append_fixed_pair, select_profile_result, feasible_simplex_search
 
 
 ROOT=Path(__file__).resolve().parents[1]
 DEFAULT_OUT=ROOT/'results/fcc111_active_interface/tail_calibration_v14/baseline'
+
+
+def finalize_profile_run(out, profiles, stops, failed_profiles, observations, *, elapsed_seconds, source_sha256):
+    """Save actual finished attempts, including the no-admissible-LJ outcome."""
+    best, admissible = select_profile_result(profiles)
+    write_csv(out/'residuals.csv',[dict(observable=o.name,role=o.role,units=o.units,
+        target=o.target,prediction=p,scale=o.scale,normalized_residual=r)
+        for o,p,r in zip(observations,best['predictions'],best['residuals'])])
+    save_json(out/'calibration.json',dict(completed=True,best=best,profiles=profiles,
+        optimizers=stops,failed_profiles=failed_profiles,elapsed_seconds=elapsed_seconds,
+        source_sha256=source_sha256,admissible_solution_found=admissible,
+        best_is_diagnostic_closure_only=not admissible,material_accepted=False))
+    save_json(out/'failed_profiles.json',dict(completed=True,failures=failed_profiles))
+    save_json(out/'progress.json',dict(completed=True,profiles=len(profiles),best_loss=best['squared_loss'],
+        admissible_solution_found=admissible))
+    print('completed actual calibration',best['squared_loss'],'admissible LJ:',admissible,flush=True)
 
 
 def main():
@@ -54,6 +71,16 @@ def main():
         help='source spatial Hessian magnitudes, NOT phonon Hz; separate declared fit/heldout q')
     parser.add_argument('--density-angular-cross',action='store_true',
         help='one density/rank3 mixed invariant with an explicit convex nonlinear-sector constraint')
+    parser.add_argument('--even-development',action='store_true',
+        help='v16: inspected v15 holdouts become development, with new heldout states')
+    parser.add_argument('--quadrupole-saturation',action='store_true',
+        help='v16: one shear-gauge-normalized shape for the two rank2 site invariants')
+    parser.add_argument('--fixed-pair-from',type=Path,
+        help='explicit embedding-only ablation: inherit two positive LJ coefficients from a completed fit')
+    parser.add_argument('--optimizer',choices=('least-squares','feasible-simplex'),default='least-squares',
+        help='simplex rejects undefined profiles with +inf; no unstable finite penalty fit')
+    parser.add_argument('--profile-only',action='store_true',
+        help='re-solve coefficients at each exact declared shape; no shape optimization')
     args=parser.parse_args(); out=args.out
     if not np.isfinite(args.difference_step) or args.difference_step<=0:
         raise ValueError('finite positive declared numerical derivative step required')
@@ -66,10 +93,26 @@ def main():
         raise ValueError('finite upper decays greater than lower bounds required')
     if out.exists(): raise FileExistsError('a fresh result directory is required')
     started=time.perf_counter(); source,observations,states=source_and_targets()
+    fixed_pair=None
+    if args.fixed_pair_from:
+        raw=(args.fixed_pair_from/'calibration.json').read_bytes();inherited=json.loads(raw)
+        if not inherited['completed'] or not inherited['best']['strictly_positive_LJ']:
+            raise ValueError('completed positive-LJ reference required for pair control')
+        if inherited['source_sha256']!=source.reference.sha256:
+            raise ValueError('pair reference target-source mismatch')
+        fixed_pair=dict(coefficients=inherited['best']['coefficients'][:2],
+            calibration_sha256=hashlib.sha256(raw).hexdigest(),
+            reference_run=args.fixed_pair_from.name,
+            interpretation='inherited LJ control, NOT two new observed Al data')
     observation_provenance=None
     if args.interface_development:
         from .interface_development_targets import development_observations
         observations,observation_provenance=development_observations(source,observations,states)
+    if args.even_development:
+        if args.interface_development:
+            raise ValueError('select one target generation, not both v15 and v16')
+        from .interface_even_development_targets import even_development_observations
+        observations,observation_provenance=even_development_observations(source,observations,states)
     bloch_targets=()
     if args.static_bloch_targets:
         from .static_bloch_targets import source_bloch_targets,append_bloch_problem
@@ -91,6 +134,15 @@ def main():
             # Three fixed starts around the already completed quartic basin;
             # alpha is a dimensionless moment-shape parameter, never an area.
             starts=[[2.782954,5.646841,11.999,alpha] for alpha in (1.e3,1.e5,1.e7)]
+    if args.quadrupole_saturation:
+        if (not args.even_development or not args.quartic_angular or not args.symmetry_channel
+                or args.saturating_angular or args.mixed_density or args.density_angular_cross
+                or args.cubic_embedding):
+            raise ValueError('even saturation is a separate v16 quartic-family ablation')
+        if not args.starts:
+            starts=[[2.5482578561,4.6782110749,11.0487420063,a] for a in (1.,10.)]
+        if any(len(s)!=4 or s[3]<=0 for s in starts):
+            raise ValueError('three decays and positive saturation starts required')
     wavepoint_provenance=None;additional=()
     if args.additional_wavepoints:
         raw=args.additional_wavepoints.read_bytes();record=json.loads(raw)
@@ -126,6 +178,9 @@ def main():
         from .density_angular_cross_material import CrossDensityAngularCache,CrossDensityAngularBulk,cross_sector_profile
         cache=CrossDensityAngularCache(observations);bulk_type=CrossDensityAngularBulk
         profile_function=cross_sector_profile
+    if args.quadrupole_saturation:
+        from .quadrupole_saturation import SaturatedQuadrupoleCache,SaturatedQuadrupoleBulk
+        cache=SaturatedQuadrupoleCache(observations);bulk_type=SaturatedQuadrupoleBulk
     def problem(decays,basis=None):
         raw=cache.matrix(decays)
         matrix,obs=cubic_metric_problem(raw[:,:8],observations)
@@ -137,11 +192,18 @@ def main():
         if bloch_targets:
             if basis is None:basis=bulk_type(decays if args.mixed_density else decays[:3],radius=args.radius)
             matrix,obs,_=append_bloch_problem(matrix,obs,basis,bloch_targets)
+        matrix,obs=append_fixed_pair(matrix,obs,fixed_pair)
         return matrix,obs
     profiles=[]; stops=[]; failed_profiles=[]
     save_json(out/'definition.json',dict(source_sha256=source.reference.sha256,
         observations=[asdict(o) for o in observations],source_states=states,starts=starts,
         interface_development=bool(args.interface_development),
+        even_development=bool(args.even_development),
+        quadrupole_saturation_extension=bool(args.quadrupole_saturation),
+        fixed_pair_control=fixed_pair,
+        optimizer_backend=args.optimizer,
+        profile_only=bool(args.profile_only),
+        quadrupole_saturation_gauge='fixed reference 2||d_gamma Q2||^2; Eg gauge=1' if args.quadrupole_saturation else None,
         observation_provenance=observation_provenance,
         static_bloch_targets=[asdict(t) for t in bloch_targets],
         static_bloch_target_scale='10% per directional restoring stiffness; model discrepancy, NOT measured uncertainty',
@@ -205,32 +267,40 @@ def main():
         try:
             bounds=[[.7,2.,2.],args.upper_decays]
             if args.saturating_angular: bounds=[bounds[0]+[1e-3],bounds[1]+[1e9]]
+            if args.quadrupole_saturation: bounds=[bounds[0]+[1e-5],bounds[1]+[1e6]]
             initial=np.log(start);log_bounds=np.log(bounds)
             if args.mixed_density:
                 initial[3]=logit(start[3]);log_bounds=np.column_stack([log_bounds,[-9.,9.]])
-            run=least_squares(fun,initial,jac=args.difference_scheme,diff_step=args.difference_step,
-                bounds=log_bounds,max_nfev=args.max_nfev,
-                ftol=1e-7,xtol=1e-7,gtol=2e-6)
+            if args.profile_only:
+                if np.any(initial<log_bounds[0]) or np.any(initial>log_bounds[1]):
+                    raise ValueError('declared profile-only shape is outside the recorded bounds')
+                row=evaluate(tuple(initial))
+                stops.append(dict(start=start,success=True,message='coefficient profile verified; shape not optimized',
+                    backend='coefficient-profile-only',nfev=1,njev=0,optimality=None,
+                    shape_optimization_performed=False,final_decays=row['decays'],final_loss=row['squared_loss']))
+                save_json(out/'checkpoint.json',dict(completed=False,profiles=profiles,optimizers=stops))
+                continue
+            if args.optimizer=='feasible-simplex':
+                run=feasible_simplex_search(fun,initial,log_bounds,max_evaluations=args.max_nfev)
+            else:
+                run=least_squares(fun,initial,jac=args.difference_scheme,diff_step=args.difference_step,
+                    bounds=log_bounds,max_nfev=args.max_nfev,
+                    ftol=1e-7,xtol=1e-7,gtol=2e-6)
             final=np.exp(run.x)
             if args.mixed_density:final[3]=expit(run.x[3])
             stops.append(dict(start=start,success=bool(run.success),message=str(run.message),
-                nfev=run.nfev,njev=run.njev,optimality=float(run.optimality),
-                final_decays=final,final_loss=float(run.fun@run.fun)))
+                backend=args.optimizer,nfev=run.nfev,njev=getattr(run,'njev',None),
+                optimality=float(run.optimality) if hasattr(run,'optimality') else None,
+                rejected_profiles=getattr(run,'rejected_profiles',[]),
+                final_decays=final,final_loss=float(run.fun if args.optimizer=='feasible-simplex' else run.fun@run.fun)))
         except (ArithmeticError,ValueError) as exc:
             stops.append(dict(start=start,success=False,message=str(exc),numerical_stop=True))
             print(f'REJECTED numerical profile in start {start}: {exc}',flush=True)
         save_json(out/'checkpoint.json',dict(completed=False,profiles=profiles,optimizers=stops))
-    best=min((r for r in profiles if r['strictly_positive_LJ']),key=lambda r:r['squared_loss'])
+    best,_=select_profile_result(profiles)
     matrix,obs=problem(best['decays'])
-    write_csv(out/'residuals.csv',[dict(observable=o.name,role=o.role,units=o.units,
-        target=o.target,prediction=p,scale=o.scale,normalized_residual=r)
-        for o,p,r in zip(obs,best['predictions'],best['residuals'])])
-    save_json(out/'calibration.json',dict(completed=True,best=best,profiles=profiles,
-        optimizers=stops,failed_profiles=failed_profiles,elapsed_seconds=time.perf_counter()-started,
-        source_sha256=source.reference.sha256,material_accepted=False))
-    save_json(out/'failed_profiles.json',dict(completed=True,failures=failed_profiles))
-    save_json(out/'progress.json',dict(completed=True,profiles=len(profiles),best_loss=best['squared_loss']))
-    print('completed actual calibration',best['squared_loss'],flush=True)
+    finalize_profile_run(out,profiles,stops,failed_profiles,obs,
+        elapsed_seconds=time.perf_counter()-started,source_sha256=source.reference.sha256)
 
 
 if __name__=='__main__': main()

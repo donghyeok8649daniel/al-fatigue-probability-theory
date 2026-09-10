@@ -1,8 +1,99 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 최종 연구 인계 v16 — 2026-09-10
+
+최신 요청은 "남은 작업 ㄱㄱ". Fresh fetch 후 시작 local/origin은 둘 다
+`6afa55ebe60e2808523219e03da4f4eb5ea276c4`, clean이었다. 실제 worktree는
+이전과 같은 `aft-pde-bessel-38969ad`, branch는 `probability-pde-solver-v1`.
+OneDrive 경로는 저장소 이동 안내용 stub이며 실제 연구 파일이 아니다.
+추가 agent는 생성하지 않았다. Main/reset/force 사용 없음. 최종 커밋/원격은
+이 문서를 포함하는 git log와 fresh fetch로 확인한다.
+
+### 실제 완료 및 보존 경계
+
+- v15의 계면 Haa 오차를 항별로 분해한 뒤 rank2와 결합 Eg의 비선형 응답에
+  **한 개 무차원 shape**를 추가한 별도 연구 가설을 유도/실행했다.
+  `D I/(1+alpha I/N^2)`이며 각 원자의 무한 환경을 먼저 합한다. Cubic Q=0의
+  조화 탄성 및 모든 finite-q Hessian은 보존되지만 비cubic 상태까지 불변은 아니다.
+  LJ, Poisson–Bessel, 기존 보정 파일/생산 기본값/확률 이론은 바꾸지 않았다.
+- 유도/검증/재실행: `solver_v1/EVEN_ENVIRONMENT_CALIBRATION_V16.md`.
+  원시 결과: `results/fcc111_active_interface/even_environment_v16/`.
+  합산 표/그림: 그 아래 `final_report/`; 자동 요약: `validation_manifest.json`.
+- v15에서 이미 본 holdout은 v16 development로 재분류했다. 5개 exact bulk,
+  60개 fitted interface, 36개 새 off-grid/off-path heldout(12상태×3관측량).
+  후자는 loss에서 제외했지만 이제 이미 검사한 검증 자료다. 계속 blind라 하지 않는다.
+- **7개 run / 420개 실제 성공 coefficient profiles**를 저장했다. 여기에는
+  한 개 fixed-shape 재프로파일도 있으므로 7개 독립 재료/완료 최적화라 하지 않는다.
+  Baseline loss31834.68/heldoutRMS19.725 → free saturated616.16/4.0069 →
+  positive-pair refinement596.14/4.1397. 마지막은 train은 개선, heldout은 악화.
+  모든 종료 이유/failed trial/예산소진도 보존했고 global optimum은 주장하지 않는다.
+- 초기 진행 기록과 달리 free saturated에서 **20개 양의 LJ profile**을 찾았다.
+  나머지172개의 zero-pair closure와 더 낮은 loss553.91은 비허용 진단이다.
+  전부 비허용일 때도 runner는 진단 결과를 저장하고 material loader는 거부한다.
+  Old-pair 고정 대조군은 v15 값, 마지막 positive-pair section은 free saturated의
+  양의 pair를 고정했다. 이 두 정확 제약은 Al 측정값이 아닌 CONTROL이다.
+
+### 물리적으로 개선된 것과 아직 실패한 것
+
+- 정확한 bulk cohesion3.36eV, C11/C12/C44=114/62/32GPa, L0=2.86378246Å 유지.
+  원자 면적은 sqrt(3)L0²/2, 에너지는 eV/interface cell. A_c와 무관하다.
+- 정상 이완 fault energy[J/m²]: source0.150479, baseline0.373858,
+  saturated0.167822, 마지막0.163016. Full-vector saddle: source0.172002,
+  baseline0.421187, saturated0.190537, 마지막0.186420.
+  Free saturated의 비적합 energy12개는 모두 선언한10%/0.01J/m² 척도 안이다.
+  따라서 에너지 수준의 개선은 확인됐다. 이전 "아무 보정도 안 됨"과는 다르다.
+- 그러나 perfect Haa는 source19.6609 대비 마지막27.9164eV/L0²(+42%),
+  saddle Haa는12.7173 대비24.1127(+90%)다. Free saturated의 heldout force/Haa
+  정규화 RMS5.0716/4.7053. **힘/곡률까지 맞춘 Al 계면으로 채택하지 않는다.**
+- 개구 traction 극값을 near-h 로그격자+전체 균일격자129/257로 재검사했다.
+  Baseline의 -4.284GPa 포켓은 두 양의 포화 후보에서 검출되지 않았다([h,5h]).
+  최고 traction10.57/10.49GPa, source12.97GPa는 **이상 균일계면 견인력**이지
+  실험 항복이 아니다. Source 자체의 뒤쪽 -0.786GPa lobe도 숨기지 않았다.
+  큰 alpha의 비균일 극한/좁은 tangent 가능성을 수식과 synthetic test로 검사했다.
+- 독립243q×radius12/16 및 연속 국소 검색, 고정재료6dilations×254q×2radii를
+  baseline/free saturated/마지막 후보에서 완료했다. 모든36개 dilation 기록은
+  analytic tail보다 양수지만 whole-zone stability 증명은 아니다.
+- Direct/reciprocal, analytic jets와3단계FD, reciprocal tolerance 비교 완료.
+  첫 saturated의 최종 H 차분오차8.00e-8, 직접합 unit-energy 오차1.04e-17.
+  새 alpha를 적용한 per-site direct sinusoidal energy로 finite-q도 독립 검증했다.
+- 실제297개(source/baseline/saturated)+198개(source/마지막) 정적 tensor 시나리오:
+  축별 수직/전단/혼합응력과 정적 unload 실행. 첫 saturated는4MPa 전단 변위
+  source오차-0.47%, 50MPa normal변위-29.7%. PDE/동적 hold/실제 소성 결과 아님.
+- 기존 실제 source300K MD1024frames도 고정재료로 비교. 첫 saturated의
+  normal/slip/transverse variance오차(-14.4%,-20.9%,-13.3%), 마지막은
+  (-14.3%,-26.9%,-19.9%). 0K loss에 넣지 않았고 kinetic fit도 아니다.
+
+### 독립 재현한 수치 결함과 최종 테스트
+
+- 실제 fixed_saturated QP에서 K3=-1.714886e-9인데 whitened KKT3.55e-15인
+  변환 오차를 `boundary_reproduction/actual_qp.npz`로 bitwise 재현했다.
+  Constructor의 거부는 옳았다. 계수를 clip하지 않고 정확한 활성 경계에서
+  다시 풀어 원래 full-space KKT/feasibility를 재검증하도록 수정했다.
+  Fixed-shape 재프로파일 K3=0, prediction변화5.90e-13, exact잔차2.04e-13.
+  수치 수정이 그 old-pair 후보의 재료적 오차를 고치지는 않았다.
+- 최종 코드로 **target40PASS39.02s / solver518PASS585.55s /
+  app31PASS63.25s, skips0 / smokeexit0,1.01s** 실제 완료.
+  `.cache/even_environment_v16/*_final.xml`은 로컬 검증 로그이며 개인 절대경로는
+  커밋하지 않는다. 앞서 중단한 full run은 PASS가 아니며 최종 완주만 센다.
+  Smoke의 기존 a0=.7713438268704838, kappa=86.29296488740997 불변.
+
+### 다음 작업 — 처음부터 다시 하지 말 것
+
+1. 우선 잔여 normal force/curvature 오차의 항별 원인을 두 양의 후보로 비교한다.
+   작은 bulk/energy residual만으로 surface Hessian 채택을 선언하지 않는다.
+   새 물리 항은 기존 가족 실패/식별성 검토 뒤 최소한만. 이미 본 heldout 재분류 필수.
+2. Shape optimization은 예산종료/경계 및 pair tradeoff가 남는다. fixed control을
+   새 물리 정보라 하지 않는다. Exact-tangent cond146.4/122.5도 유일성/CI가 아니다.
+3. 재료 검증 뒤에만 finite core/source와 올바른 collective-coordinate PMF/kinetics로
+   이어간다. 이번 새 후보로 옛 core 결과를 재생 없이 재해석하지 않는다.
+4. Ma_phys/Ms_phys/t0, 실제 초/Hz, A_c, 실제 항복/피로 및 생산/PDE/UI gate는
+   여전히 미완료다. Mesh UI 재설계는 solver 검증과 사용자 확인 전 진행하지 않는다.
+
+아래는 완료된 v15와 그 이전 역사 기록이다. 최신 판단은 위 v16을 우선한다.
+
 ## 최종 연구 인계 v15 — UTC 2026-09-09 22:50
 
-**이 블록이 최신이다. 아래22:43/21:28/20:38 기록은 진행 당시의 역사 기록이다.**
+**이 블록은 v15 종료 당시 인계다. 아래22:43/21:28/20:38도 역사 기록이다.**
 약4시간의 외부자료·단위·보정 감사에서 실제 실행과 검증을 마쳤다.
 연구/수치 구현의 검증 완료와 Al 계면/실제강도/kinetics 채택은 다르다.
 후자는 아래 이유로 아직 통과하지 못했다. 기존 이론/production을 바꾸지 않았다.

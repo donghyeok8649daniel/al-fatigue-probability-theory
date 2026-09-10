@@ -1,0 +1,19 @@
+{
+  "completed": true,
+  "failures": [
+    {
+      "log_shape": [
+        0.6057534962026433,
+        1.2856489485913851,
+        0.972328787374819
+      ],
+      "decays": [
+        1.8326325704545419,
+        3.6170144521915644,
+        2.6440948297794855
+      ],
+      "message": "spectral separation did not converge: {'loss': 2882301.7982601607, 'minimum_robust_margin': -1.9474460603158272e-09, 'worst_index': 477}",
+      "elapsed_seconds": 28.15333690000989
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "completed": true,
+  "bindings": [
+    {
+      "model": "positive_pair_refinement",
+      "calibration_sha256": "1ca347f9da60ac8301d2543d2417377392d460254bab38c07c1196977ec7f3f8",
+      "shape": [
+        2.612878645738997,
+        6.42710026911652,
+        11.957043235970591,
+        425.060826360985
+      ],
+      "strictly_positive_LJ": true,
+      "quadrupole_saturation": 425.060826360985
+    }
+  ],
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "per_site_nonlinearity": true,
+  "canonical_finite_neighbor_cutoff": false,
+  "whole_zone_proof": false,
+  "full_material_accepted": false,
+  "physical_yield_validated": false,
+  "physical_seconds": false,
+  "physical_Hz": false,
+  "production_changed": false,
+  "elapsed_seconds": 78.48531940000248
+}

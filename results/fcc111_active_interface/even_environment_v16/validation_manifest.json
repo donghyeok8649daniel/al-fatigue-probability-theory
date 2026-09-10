@@ -1,0 +1,144 @@
+{
+  "study": "even_environment_v16",
+  "date": "2026-09-10",
+  "starting_head": "6afa55ebe60e2808523219e03da4f4eb5ea276c4",
+  "branch": "probability-pde-solver-v1",
+  "scope": "Separate static analytic material research, not a production PDE or kinetic calibration",
+  "source": {
+    "name": "Matched 0 K Al99 target-only reference",
+    "sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+    "temperature_K": 0,
+    "independent_MD_validation_temperature_K": 300,
+    "condition_warning": "300 K MD is validation only, excluded from the 0 K loss"
+  },
+  "units": {
+    "energy": "eV per active-interface atomic cell",
+    "coordinate_length_scale_angstrom": 2.863782463805517,
+    "atomic_cell_area": "sqrt(3)*L0^2/2",
+    "traction": "MPa",
+    "hessian": "eV/L0^2",
+    "statistical_correlation_area_used": false
+  },
+  "experiment": {
+    "completed_run_records": 7,
+    "certified_coefficient_profiles": 420,
+    "fixed_shape_reprofiles_included": 1,
+    "exact_bulk_constraints": 5,
+    "fitted_interface_observations": 60,
+    "heldout_interface_observations": 36,
+    "heldout_energy_observations": 12,
+    "old_holdouts_reclassified_as_development": true,
+    "pair_controls_are_new_physical_observations": false,
+    "full_shape_optimization_converged": false,
+    "global_minimum_proved": false,
+    "comparison": "final_report/model_comparison.csv",
+    "all_terminations": "final_report/optimizer_terminations.csv"
+  },
+  "scientific_result": {
+    "material_energy_improvement_demonstrated": true,
+    "all_free_saturated_heldout_energy_values_within_declared_scales": true,
+    "maximum_normalized_heldout_energy_error": 0.93468075,
+    "baseline_heldout_normalized_rms": 19.725180094500736,
+    "saturated_heldout_normalized_rms": 4.006880452725344,
+    "positive_pair_refinement_heldout_normalized_rms": 4.13966408551185,
+    "final_refinement_improves_training_but_worsens_heldout": true,
+    "physical_material_adoption": false,
+    "physical_material_blocker": "Normal forces/curvatures and 300 K covariance remain inaccurate",
+    "perfect_Haa_relative_error_approx": 0.42,
+    "saddle_Haa_relative_error_approx": 0.9,
+    "identifiability_unique": false,
+    "whole_brillouin_zone_stability_proved": false
+  },
+  "independent_checks": {
+    "reference_wavepoints": 243,
+    "reference_radii_over_L0": [
+      12,
+      16
+    ],
+    "continuous_local_wavevector_searches_completed": true,
+    "dilation_models": [
+      "baseline",
+      "saturated",
+      "positive_pair_refinement"
+    ],
+    "dilations_per_model": 6,
+    "wavepoints_per_dilation": 254,
+    "dilation_radius_records": 36,
+    "all_tested_dilation_margins_above_analytic_tail": true,
+    "static_tensor_state_evaluations": [
+      297,
+      198
+    ],
+    "repeated_source_states_included": true,
+    "final_static_tensor_failed_roots": 0,
+    "final_static_tensor_maximum_force_residual_eV_over_L0": 1.6869101601702e-14,
+    "per_site_direct_nonlinear_energy_checks": "admissible_nonlinear_checks/nonlinear_finite_q.csv",
+    "refined_candidate_checks": "refined_nonlinear_checks/scope.json",
+    "fixed_material_MD_validation": "strain_and_MD_validation/material_MD_variance.csv",
+    "original_QP_failure_fixture": "boundary_reproduction/actual_qp.npz",
+    "QP_repair": "Exact active-boundary re-solve with original full-space KKT; no coefficient clipping"
+  },
+  "tests": {
+    "interpreter": "Python 3.13",
+    "targeted": {
+      "passed": 40,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "pytest_seconds": 39.02,
+      "junit_seconds": 39.021,
+      "modules": [
+        "test_material_calibration_controls",
+        "test_quadrupole_saturation",
+        "test_isotropic_bulk_validation",
+        "test_quartic_angular_material",
+        "test_tail_constrained_material",
+        "test_tail_calibration_result",
+        "test_profiled_identifiability",
+        "test_report_interface_development"
+      ]
+    },
+    "solver_v1": {
+      "command": "python -m pytest solver_v1 -q",
+      "passed": 518,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "pytest_seconds": 585.55,
+      "junit_seconds": 585.541
+    },
+    "app": {
+      "command": "python -m pytest app -q",
+      "passed": 31,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "pytest_seconds": 63.25,
+      "junit_seconds": 63.241
+    },
+    "desktop_smoke": {
+      "command": "python -m app.desktop_ui --smoke",
+      "exit_code": 0,
+      "original_wall_seconds": 1.0147,
+      "final_repeat_command_wall_seconds": 2.4998697,
+      "output": "desktop-ui smoke OK: a0=0.7713438268704838, kappa=86.29296488740997"
+    },
+    "interrupted_earlier_full_test_not_counted_as_pass": true,
+    "local_junit_logs": ".cache/even_environment_v16/*_final.xml"
+  },
+  "unchanged_or_unavailable": {
+    "original_LJ_and_Poisson_Bessel": "preserved",
+    "production_model_default": "unchanged",
+    "production_probability_PDE": "unchanged",
+    "physical_Ma": null,
+    "physical_Ms": null,
+    "t0_seconds": null,
+    "physical_seconds_enabled": false,
+    "physical_Hz_enabled": false,
+    "actual_specimen_yield_validated": false,
+    "fatigue_lifetime_validated": false,
+    "A_c_calibrated": false,
+    "specimen_UI_redesign_gate_passed": false
+  },
+  "next_step": "Diagnose remaining normal-force/curvature coupling before a further material extension, core/source or PDE adoption"
+}

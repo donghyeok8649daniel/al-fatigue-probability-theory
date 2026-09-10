@@ -1,0 +1,52 @@
+{
+  "completed": true,
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "length_scale_m": 2.863782463805517e-10,
+  "energy_scale_J": 1.602176634e-19,
+  "cubic_GPa": [
+    113.99999999999986,
+    62.000000000000206,
+    32.000000000000064
+  ],
+  "cohesive_eV_atom": 3.360000000000003,
+  "normal_force_eV_strain": -2.220446049250313e-16,
+  "root_data": {
+    "perfect": {
+      "q": [
+        0.8164965809277399,
+        -2.9162104212382677e-18,
+        -2.9034404575388455e-18
+      ],
+      "valid": true,
+      "morse_index": 0
+    },
+    "fault": {
+      "q": [
+        0.8374189321703328,
+        0.5000000000000006,
+        0.28867513459481403
+      ],
+      "valid": true,
+      "morse_index": 0
+    },
+    "saddle": {
+      "q": [
+        0.8436840411995403,
+        0.3550535705296953,
+        0.2049902745220577
+      ],
+      "valid": true,
+      "morse_index": 1
+    }
+  },
+  "finite_q_grid_positive_above_tail": true,
+  "continuous_searches_positive_above_tail": true,
+  "whole_zone_proof": false,
+  "heldout_normalized_rms": 4.13966408551185,
+  "bulk_calibration_only": true,
+  "full_Al_material_accepted": false,
+  "experimental_yield_validated": false,
+  "physical_seconds": false,
+  "physical_Hz": false,
+  "elapsed_seconds": 69.94923930001096
+}

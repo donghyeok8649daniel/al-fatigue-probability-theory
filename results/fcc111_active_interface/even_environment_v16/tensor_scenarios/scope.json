@@ -1,0 +1,41 @@
+{
+  "completed": true,
+  "actual_states": 297,
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "model_bindings": [
+    {
+      "model": "baseline",
+      "calibration_sha256": "9be73a0bffc7077fabd275af580a8cecdee89c253ee172cab1cf7ae0f15bf5d8"
+    },
+    {
+      "model": "saturated",
+      "calibration_sha256": "bcc8e2cbfe3c05faf89ade54e428d3f2fad18ae4b8864918729af844e15f9f8e"
+    }
+  ],
+  "cubic_interface_normal": [
+    0.5773502691896258,
+    0.5773502691896258,
+    0.5773502691896258
+  ],
+  "cubic_slip1": [
+    -0.7071067811865475,
+    0.7071067811865475,
+    -0.0
+  ],
+  "cubic_slip2": [
+    -0.4082482904638631,
+    -0.4082482904638631,
+    0.8164965809277261
+  ],
+  "physical_stress_unit": "MPa",
+  "physical_displacement_unit": "Angstrom",
+  "orientation": "explicit +ABC cubic basis, not an inferred calibrated specimen orientation",
+  "shear_work": "A_atomic_cell*L0*[Tn,tau1,tau2] dot deltaq; no fitted chi",
+  "temperature_scope": "static0K energy surfaces",
+  "model_parameters_changed": false,
+  "production_tensor_input_connected": false,
+  "probability_PDE_run": false,
+  "dynamic_residual_or_yield_inferred": false,
+  "physical_PDE_Hz": false,
+  "elapsed_seconds": 58.2840034999972
+}

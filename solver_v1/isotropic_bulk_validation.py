@@ -102,7 +102,7 @@ class IsotropicBulkBasis(TailBulkCoefficientBasis):
         return columns,errors
 
     def direct_sinusoidal_energy(self,coefficients,*,planes,mode,polarization_plane,
-                                  amplitude,validation_radius,saturation=0.):
+                                  amplitude,validation_radius,saturation=0.,quadrupole_saturation=0.):
         """Independent finite direct neighbor validation of the same site law.
 
         NOT a replacement cutoff potential. Radius/amplitude refinement and
@@ -114,10 +114,16 @@ class IsotropicBulkBasis(TailBulkCoefficientBasis):
                 or int(planes)!=planes or planes<3 or int(mode)!=mode or not 0<mode<planes
                 or v.shape!=(3,) or not np.isclose(v@v,1.,rtol=1e-12,atol=1e-12)
                 or np.any(~np.isfinite(v)) or not np.isfinite(amplitude)
-                or not np.isfinite(saturation) or saturation<0):
+                or not np.isfinite(saturation) or saturation<0
+                or not np.isfinite(quadrupole_saturation) or quadrupole_saturation<0):
             raise ValueError('fixed finite coefficients, unit polarization and periodic mode required')
         bulk=SimpleNamespace(geometry=self.geometry,a0=self.geometry.h111)
         R=neighbors_in_plane_frame(bulk,validation_radius)
+        even_gauge=1.
+        if quadrupole_saturation:
+            from .even_moment_calibration import quadrupole_bulk_curvatures
+            reference=build_range_surface(*self.decays,np.ones(8))
+            even_gauge=float(quadrupole_bulk_curvatures(reference.surface.quadrupole)[2])
         layer=np.rint(R[:,2]/self.geometry.h111).astype(int)
         phase=2*np.pi*mode/planes;values=[]
         for site in range(planes):
@@ -131,9 +137,12 @@ class IsotropicBulkBasis(TailBulkCoefficientBasis):
             Q2=traceless_second(np.einsum('n,ni,nj->ij',weights[2],positions,positions))
             QE=(oddQ2-self.gauge['eta']*Q2)/self.gauge['normalization']
             I=float(np.sum(Q3*Q3))
+            I2=float(np.sum(Q2*Q2));IE=float(np.sum(QE*QE))
             energy=(.5*np.sum(c[0]*r**-12-c[1]*r**-6)
                 -c[2]*np.sqrt(x)+c[3]*(x-1)+c[4]*(x-1)**2
-                +c[5]*I+c[6]*(Q1@Q1)+c[7]*np.sum(Q2*Q2)+c[8]*np.sum(QE*QE)
+                +c[5]*I+c[6]*(Q1@Q1)
+                +c[7]*I2/(1+quadrupole_saturation*I2/even_gauge)
+                +c[8]*IE/(1+quadrupole_saturation*IE)
                 +c[9]*I*I/(1+saturation*I))
             if self.include_cross:energy+=c[10]*(x-1)*I
             values.append(energy)

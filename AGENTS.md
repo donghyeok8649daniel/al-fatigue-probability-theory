@@ -496,6 +496,19 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- EVEN_ENVIRONMENT_CALIBRATION_V16.md / even_environment_v16:
+  기존 rank2/Eg per-site I=Q:Q에 한 개 공통 무차원 alpha의
+  `D I/(1+alpha I/N^2)`를 적용한 별도 정적 연구 후보. 모든 환경을 합한 뒤
+  site별 비선형 함수를 적용한다. 고정 cubic shear gauge이며 alpha=0은 기존 모델.
+  Cubic Q=0의 모든 harmonic finite-q 및 cubic dilation은 불변이나 noncubic은 아니다.
+  큰 alpha의 비균일 극한을 near-equilibrium 로그+균일 bracket으로 검사한다.
+  기존 holdout은 development로 재분류했고 새36개 heldout을 loss에 넣지 않았다.
+  7runs/420profiles의 에너지 장벽 개선은 실제 결과지만 force/Haa와300K covariance
+  오차가 남아 Al 계면/PDE/kinetics/UI 채택은 안 됐다. Fixed-pair는 새 측정값 아닌
+  CONTROL; zero-LJ closure는 재료가 아니다. 실제 QP의 작은 음의 물리계수는 clipping
+  아닌 정확 활성경계 재해+원래 KKT 검사로 수정했다. 정적 MPa 시나리오는 실제 항복,
+  dynamic hold, 잔류소성 증거가 아니다. 다음은 잔여 normal-response 원인 검증이다.
+
 - LOADING_CONNECTIONS_AND_CALIBRATION_V15.md / interface_development_v15 /
   public_aluminum_validation_v15: 실제 production은 여전히 scalar축응력 P(a,s).
   연구 tensorprojection/vectorstatic/reflectingSG와 혼동하지 않는다. 실제Al99

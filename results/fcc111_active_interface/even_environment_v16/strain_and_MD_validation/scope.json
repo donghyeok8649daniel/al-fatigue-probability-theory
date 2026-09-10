@@ -1,0 +1,218 @@
+{
+  "completed": true,
+  "source_doi": "10.5281/zenodo.10014454",
+  "source_potential_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "projection_sha256": "2037b0104c33573abc27532517610ff84f308e6ba55ded08a0b0b2bf834a7eb6",
+  "reference_length_scale_m": 2.863782463805517e-10,
+  "actual_box_stretch": 1.0037037037037038,
+  "temperature_K": 300,
+  "atoms_per_plane": 576,
+  "plane_classes": 12,
+  "model_records": [
+    {
+      "model": "baseline",
+      "radius": 12.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          2.312677152134524e-25,
+          1.2985042557840441e-40,
+          -4.9326446103216795e-40
+        ],
+        [
+          1.2985042557840441e-40,
+          4.306519640855079e-25,
+          -1.035748167035544e-40
+        ],
+        [
+          -4.93264461032168e-40,
+          -1.035748167035544e-40,
+          4.30651964085509e-25
+        ]
+      ],
+      "normalized_density": 0.9881772850305438,
+      "minimum_sampled_robust_margin": 0.0054632990245689055,
+      "radius_matrix_change": null,
+      "fixed_reference_density": 38.15744664586397,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    },
+    {
+      "model": "baseline",
+      "radius": 16.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          2.3127277262496765e-25,
+          -1.1772184668944087e-40,
+          -5.412550058948428e-40
+        ],
+        [
+          -1.1772184668944085e-40,
+          4.306650514680385e-25,
+          -1.1950347096971881e-40
+        ],
+        [
+          -5.412550058948428e-40,
+          -1.1950347096971881e-40,
+          4.306650514680371e-25
+        ]
+      ],
+      "normalized_density": 0.9881772850305438,
+      "minimum_sampled_robust_margin": 0.005667894912376579,
+      "radius_matrix_change": 0.00010597200180484379,
+      "fixed_reference_density": 38.15744664586397,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    },
+    {
+      "model": "saturated",
+      "radius": 12.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          1.3719399805815063e-25,
+          -1.0561833675808009e-41,
+          -6.75339917144881e-42
+        ],
+        [
+          -1.0561833675808014e-41,
+          8.053753105905429e-25,
+          -9.34108671998401e-41
+        ],
+        [
+          -6.753399171448812e-42,
+          -9.34108671998401e-41,
+          8.053753105905429e-25
+        ]
+      ],
+      "normalized_density": 0.9867567938632636,
+      "minimum_sampled_robust_margin": 0.006141930467990364,
+      "radius_matrix_change": null,
+      "fixed_reference_density": 21.396905011812002,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    },
+    {
+      "model": "saturated",
+      "radius": 16.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          1.371940945648953e-25,
+          -2.0023597213199124e-41,
+          -8.609397547415694e-42
+        ],
+        [
+          -2.0023597213199124e-41,
+          8.0537777031753345e-25,
+          -9.362809817629506e-41
+        ],
+        [
+          -8.609397547415687e-42,
+          -9.362809817629508e-41,
+          8.053777703175331e-25
+        ]
+      ],
+      "normalized_density": 0.9867567938632636,
+      "minimum_sampled_robust_margin": 0.0061558988973283955,
+      "radius_matrix_change": 1.2013535162225253e-05,
+      "fixed_reference_density": 21.396905011812002,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    },
+    {
+      "model": "positive_pair_refinement",
+      "radius": 12.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          1.3726379582870143e-25,
+          6.957108960333622e-41,
+          -1.203943976886391e-40
+        ],
+        [
+          6.957108960333622e-41,
+          7.440754693006697e-25,
+          -2.6756478262101513e-40
+        ],
+        [
+          -1.2039439768863909e-40,
+          -2.6756478262101513e-40,
+          7.440754693006694e-25
+        ]
+      ],
+      "normalized_density": 0.9866253170827346,
+      "minimum_sampled_robust_margin": 0.0061431802125425095,
+      "radius_matrix_change": null,
+      "fixed_reference_density": 20.82270461984486,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    },
+    {
+      "model": "positive_pair_refinement",
+      "radius": 16.0,
+      "stable_plane_modes": true,
+      "local_covariance_m2": [
+        [
+          1.3726389135248879e-25,
+          4.932351929182559e-41,
+          -1.1870625647979085e-40
+        ],
+        [
+          4.932351929182559e-41,
+          7.440777778740205e-25,
+          -2.69202291458265e-40
+        ],
+        [
+          -1.1870625647979085e-40,
+          -2.69202291458265e-40,
+          7.440777778740201e-25
+        ]
+      ],
+      "normalized_density": 0.9866253170827346,
+      "minimum_sampled_robust_margin": 0.006157146075716497,
+      "radius_matrix_change": 1.2013633639895717e-05,
+      "fixed_reference_density": 20.82270461984486,
+      "physical_length_scale_m": 2.863782463805517e-10,
+      "physical_energy_scale_J": 1.602176634e-19,
+      "density_gauge_reset": false,
+      "atom_count_fitted": false
+    }
+  ],
+  "parameter_refit": false,
+  "model_bindings": [
+    {
+      "model": "baseline",
+      "calibration_sha256": "9be73a0bffc7077fabd275af580a8cecdee89c253ee172cab1cf7ae0f15bf5d8"
+    },
+    {
+      "model": "saturated",
+      "calibration_sha256": "bcc8e2cbfe3c05faf89ade54e428d3f2fad18ae4b8864918729af844e15f9f8e"
+    },
+    {
+      "model": "positive_pair_refinement",
+      "calibration_sha256": "1ca347f9da60ac8301d2543d2417377392d460254bab38c07c1196977ec7f3f8"
+    }
+  ],
+  "additional_stretches": [
+    0.995,
+    1.007
+  ],
+  "wavepoint_grid_step": 0.08,
+  "anharmonic_thermal_renormalization": false,
+  "physical_time_calibrated": false,
+  "production_model_changed": false,
+  "whole_zone_stability_proof": false,
+  "elapsed_seconds": 32.80643079998845
+}
