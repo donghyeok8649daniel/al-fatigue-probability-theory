@@ -1,0 +1,5696 @@
+{
+  "family": "coordination_screened_rank1_v19",
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "parent_calibration_sha256": "4f68d9edd148a51f0b311f5d8d96a27641ec92e956a3e3c1592d353014135166",
+  "inherited_shape": [
+    2.317200161027302,
+    6.271955678357825,
+    11.999999999999995,
+    436.65760955292114,
+    6.280114065024814
+  ],
+  "fixed_shape_control": true,
+  "actual_radial_optimization": false,
+  "screening_definition": "1/(1-z+z*x_site)",
+  "screening_bounds": [
+    0.0,
+    1.0
+  ],
+  "screening_grid": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    0.9,
+    0.99,
+    1.0
+  ],
+  "optimizer_maxiter": 40,
+  "observations": [
+    {
+      "name": "normal_strain_force_ev",
+      "target": 0.0,
+      "scale": 0.1,
+      "units": "eV/strain",
+      "role": "exact",
+      "state": null,
+      "jet_weights": null,
+      "bulk_index": 0
+    },
+    {
+      "name": "cohesive_ev_atom",
+      "target": 3.36,
+      "scale": 0.0672,
+      "units": "eV/atom",
+      "role": "exact",
+      "state": null,
+      "jet_weights": null,
+      "bulk_index": 1
+    },
+    {
+      "name": "hydrostatic_strain_curvature_ev",
+      "target": 74.01042469890372,
+      "scale": 3.700521234945186,
+      "units": "eV/strain^2",
+      "role": "fit",
+      "state": null,
+      "jet_weights": null,
+      "bulk_index": 2
+    },
+    {
+      "name": "normal_strain_curvature_ev",
+      "target": 12.646038954154417,
+      "scale": 0.6323019477077209,
+      "units": "eV/strain^2",
+      "role": "fit",
+      "state": null,
+      "jet_weights": null,
+      "bulk_index": 3
+    },
+    {
+      "name": "simple_shear_strain_curvature_ev",
+      "target": 2.90236959603544,
+      "scale": 0.145118479801772,
+      "units": "eV/strain^2",
+      "role": "fit",
+      "state": null,
+      "jet_weights": null,
+      "bulk_index": 4
+    },
+    {
+      "name": "perfect_Haa",
+      "target": 19.66091286328976,
+      "scale": 1.9660912863289761,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "perfect_Hxx",
+      "target": 4.393593035123306,
+      "scale": 0.43935930351233066,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "saddle_energy_at_source_state",
+      "target": 0.07624909750742465,
+      "scale": 0.007624909750742465,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.8492922641076963,
+        0.3714061259442337,
+        0.2144314267925794
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "saddle_normal_force_at_source_state",
+      "target": 1.4903612010162394e-15,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.8492922641076963,
+        0.3714061259442337,
+        0.2144314267925794
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "fault_energy_at_source_state",
+      "target": 0.06670794504308616,
+      "scale": 0.006670794504308616,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.8356612484876702,
+        0.5,
+        0.28867513459481275
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "fault_normal_force_at_source_state",
+      "target": 5.29078226360765e-15,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.8356612484876702,
+        0.5,
+        0.28867513459481275
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "saddle_path_force_at_source_state",
+      "target": 2.296700476743968e-16,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.8492922641076963,
+        0.3714061259442337,
+        0.2144314267925794
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.8660254037844387,
+        0.5,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "opening_1.1h_energy",
+      "target": 0.05670265774764735,
+      "scale": 0.005670265774764736,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.8981462390204987,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "opening_1.5h_energy",
+      "target": 0.4710312483934004,
+      "scale": 0.04710312483934004,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        1.224744871391589,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "opening_2h_energy",
+      "target": 0.7060534019484034,
+      "scale": 0.07060534019484034,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        1.632993161855452,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "opening_40h_energy",
+      "target": 0.7719163228888833,
+      "scale": 0.07719163228888834,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        32.65986323710904,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "direct_quarter_energy",
+      "target": 0.117221996542065,
+      "scale": 0.0117221996542065,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.25,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "direct_half_energy",
+      "target": 0.26732847628894163,
+      "scale": 0.026732847628894163,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.5,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "oblique_energy",
+      "target": 0.13339289745734875,
+      "scale": 0.013339289745734876,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.8818163074019442,
+        0.21,
+        -0.12
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "opening_1.25h_energy",
+      "target": 0.24853683654490819,
+      "scale": 0.02485368365449082,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        1.0206207261596576,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "opening_3h_energy",
+      "target": 0.7719163228888833,
+      "scale": 0.07719163228888834,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        2.449489742783178,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "saddle_Haa",
+      "target": 12.717337762538286,
+      "scale": 1.2717337762538286,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8492922641076963,
+        0.3714061259442337,
+        0.2144314267925794
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "saddle_Hxx",
+      "target": -0.18642463121762062,
+      "scale": 0.018642463121762064,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8492922641076963,
+        0.3714061259442337,
+        0.2144314267925794
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "fault_Haa",
+      "target": 14.140554350039636,
+      "scale": 1.4140554350039638,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8356612484876702,
+        0.5,
+        0.28867513459481275
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "fault_Hxx",
+      "target": 2.4858929774856264,
+      "scale": 0.24858929774856264,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8356612484876702,
+        0.5,
+        0.28867513459481275
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "saddle_normal_path_coupling",
+      "target": 1.2055891043737141,
+      "scale": 0.12055891043737142,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8492922641076963,
+        0.3714061259442337,
+        0.2144314267925794
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.8660254037844387,
+        0.5,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "opening_1.1h_normal_force",
+      "target": 1.2761663221727821,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.8981462390204987,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "opening_1.3h_normal_force",
+      "target": 1.4139711872929317,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        1.0614455552060438,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "opening_1.5h_normal_force",
+      "target": 0.6379256757978651,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        1.224744871391589,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "opening_2h_normal_force",
+      "target": 0.5548811295393773,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        1.632993161855452,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "opening_2.5h_normal_force",
+      "target": 0.0005156382639574782,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        2.041241452319315,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "opening_3h_normal_force",
+      "target": 0.0,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        2.449489742783178,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "shockley_0.15_energy",
+      "target": 0.013715574532912111,
+      "scale": 0.004433026104653031,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.075,
+        0.043301270189221926
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "shockley_0.35_energy",
+      "target": 0.04820527408303389,
+      "scale": 0.004820527408303389,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.175,
+        0.1010362971081845
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "shockley_0.75_energy",
+      "target": 0.08334161260537679,
+      "scale": 0.00833416126053768,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.375,
+        0.21650635094610968
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_direct_017_energy",
+      "target": 0.05826439239193282,
+      "scale": 0.0058264392391932825,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.17,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_direct_017_normal_force",
+      "target": -0.44118804525591643,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.17,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_direct_017_Haa",
+      "target": 26.109437232644353,
+      "scale": 2.6109437232644357,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.17,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_direct_039_energy",
+      "target": 0.2262381941113307,
+      "scale": 0.022623819411133072,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.39,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_direct_039_normal_force",
+      "target": -1.9685101248020884,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.39,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_direct_039_Haa",
+      "target": 36.31678531793335,
+      "scale": 3.6316785317933356,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.39,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_raised_direct_energy",
+      "target": 0.11960599647825673,
+      "scale": 0.011960599647825674,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.8695688586880281,
+        0.29,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_raised_direct_normal_force",
+      "target": 0.08783049166112324,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.8695688586880281,
+        0.29,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_raised_direct_Haa",
+      "target": 20.00400949091716,
+      "scale": 2.000400949091716,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8695688586880281,
+        0.29,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_off_path_positive_energy",
+      "target": 0.05360470506556986,
+      "scale": 0.0053604705065569865,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.8532389270694737,
+        0.19,
+        0.085
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_off_path_positive_normal_force",
+      "target": 0.35206897342006,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.8532389270694737,
+        0.19,
+        0.085
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_off_path_positive_Haa",
+      "target": 13.446420569551602,
+      "scale": 1.3446420569551603,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8532389270694737,
+        0.19,
+        0.085
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_off_path_negative_energy",
+      "target": 0.21544733160917068,
+      "scale": 0.021544733160917068,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.9144761706390533,
+        0.37,
+        -0.095
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_off_path_negative_normal_force",
+      "target": -0.05312860042135701,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.9144761706390533,
+        0.37,
+        -0.095
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_off_path_negative_Haa",
+      "target": 13.5831841481301,
+      "scale": 1.35831841481301,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.9144761706390533,
+        0.37,
+        -0.095
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_shockley_058_energy",
+      "target": 0.07969505412787091,
+      "scale": 0.007969505412787091,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.29,
+        0.16743157806499145
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_shockley_058_normal_force",
+      "target": -0.6123357455328253,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.29,
+        0.16743157806499145
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_shockley_058_Haa",
+      "target": 23.107568998056017,
+      "scale": 2.3107568998056016,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.29,
+        0.16743157806499145
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_opening_1.17h_energy",
+      "target": 0.14263027381623705,
+      "scale": 0.014263027381623706,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.9553009996854394,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_opening_1.17h_normal_force",
+      "target": 1.6398229617729339,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.9553009996854394,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_opening_1.42h_energy",
+      "target": 0.4226003973463561,
+      "scale": 0.042260039734635615,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        1.159425144917371,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_opening_1.42h_normal_force",
+      "target": 0.8686291067124379,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        1.159425144917371,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_opening_1.78h_energy",
+      "target": 0.5953584311886578,
+      "scale": 0.05953584311886578,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        1.4533639140513523,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_opening_1.78h_normal_force",
+      "target": 0.5989965116849877,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        1.4533639140513523,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_opening_2.23h_energy",
+      "target": 0.7765619947928292,
+      "scale": 0.07765619947928293,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        1.820787375468829,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_opening_2.23h_normal_force",
+      "target": 0.15664558956102492,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        1.820787375468829,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_opening_3.4h_energy",
+      "target": 0.7719163228888833,
+      "scale": 0.07719163228888834,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        2.7760883751542687,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_opening_3.4h_normal_force",
+      "target": 0.0,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        2.7760883751542687,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_opening_5.5h_energy",
+      "target": 0.7719163228888833,
+      "scale": 0.07719163228888834,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        4.4907311951024935,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_opening_5.5h_normal_force",
+      "target": 0.0,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        4.4907311951024935,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_direct011_energy",
+      "target": 0.025339211626875774,
+      "scale": 0.004433026104653031,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.11,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_direct011_normal_force",
+      "target": -0.1684646879274777,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.11,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_direct011_Haa",
+      "target": 23.17866876533168,
+      "scale": 2.317866876533168,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.11,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_direct031_energy",
+      "target": 0.16617323878813156,
+      "scale": 0.016617323878813157,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.31,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_direct031_normal_force",
+      "target": -1.4977500080753077,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.31,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_direct031_Haa",
+      "target": 34.460781638400974,
+      "scale": 3.4460781638400975,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.31,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_raised043_energy",
+      "target": 0.1726273519698645,
+      "scale": 0.017262735196986453,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.8899812732112214,
+        0.43,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_raised043_normal_force",
+      "target": -0.17083895700384927,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.8899812732112214,
+        0.43,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_raised043_Haa",
+      "target": 18.238440853611248,
+      "scale": 1.8238440853611249,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8899812732112214,
+        0.43,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_off_plus_energy",
+      "target": 0.0652424878354941,
+      "scale": 0.006524248783549411,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.8369089954509191,
+        0.23,
+        0.065
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_off_plus_normal_force",
+      "target": -0.08042066717244803,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.8369089954509191,
+        0.23,
+        0.065
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_off_plus_Haa",
+      "target": 20.981095919956758,
+      "scale": 2.098109591995676,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8369089954509191,
+        0.23,
+        0.065
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_off_minus_energy",
+      "target": 0.21182429891635463,
+      "scale": 0.021182429891635463,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.9471360338761622,
+        0.32,
+        -0.12
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_off_minus_normal_force",
+      "target": 0.3481661631135443,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.9471360338761622,
+        0.32,
+        -0.12
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_off_minus_Haa",
+      "target": 5.497617912510364,
+      "scale": 0.5497617912510364,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.9471360338761622,
+        0.32,
+        -0.12
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_shockley043_energy",
+      "target": 0.061697611386283796,
+      "scale": 0.00616976113862838,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.215,
+        0.12413030787576952
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_shockley043_normal_force",
+      "target": -0.43484281773712713,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.215,
+        0.12413030787576952
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_shockley043_Haa",
+      "target": 25.03469226049791,
+      "scale": 2.5034692260497913,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.215,
+        0.12413030787576952
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening1.21_energy",
+      "target": 0.19627832926906572,
+      "scale": 0.019627832926906574,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        0.9879608629225485,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening1.21_normal_force",
+      "target": 1.631864707518524,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.9879608629225485,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening1.21_Haa",
+      "target": -1.3832350292334812,
+      "scale": 0.13832350292334814,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.9879608629225485,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening1.62_energy",
+      "target": 0.5246331923940108,
+      "scale": 0.05246331923940109,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        1.3227244611029163,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening1.62_normal_force",
+      "target": 0.5093642313524578,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        1.3227244611029163,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening1.62_Haa",
+      "target": -0.15582859326870177,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        1.3227244611029163,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening1.93_energy",
+      "target": 0.6719836252695317,
+      "scale": 0.06719836252695317,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        1.575838401190511,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening1.93_normal_force",
+      "target": 0.6270410192299789,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        1.575838401190511,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening1.93_Haa",
+      "target": -0.6638075680371565,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        1.575838401190511,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening2.71_energy",
+      "target": 0.7719163228888833,
+      "scale": 0.07719163228888834,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        2.2127057343141376,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening2.71_normal_force",
+      "target": 0.0,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        2.2127057343141376,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening2.71_Haa",
+      "target": 0.0,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        2.2127057343141376,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening4.3_energy",
+      "target": 0.7719163228888833,
+      "scale": 0.07719163228888834,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        3.5109352979892217,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening4.3_normal_force",
+      "target": 0.0,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        3.5109352979892217,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening4.3_Haa",
+      "target": 0.0,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        3.5109352979892217,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening6.2_energy",
+      "target": 0.7719163228888833,
+      "scale": 0.07719163228888834,
+      "units": "eV/cell",
+      "role": "fit",
+      "state": [
+        5.062278801751901,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening6.2_normal_force",
+      "target": 0.0,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        5.062278801751901,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening6.2_Haa",
+      "target": 0.0,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        5.062278801751901,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_near_0.985_normal_force",
+      "target": -0.24821900083247345,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.8042491322138101,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_near_0.985_Haa",
+      "target": 20.878110673451364,
+      "scale": 2.0878110673451364,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8042491322138101,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_near_1.015_normal_force",
+      "target": 0.2329580444899274,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.8287440296416418,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_near_1.015_Haa",
+      "target": 18.39295935022696,
+      "scale": 1.839295935022696,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8287440296416418,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_near_1.065_normal_force",
+      "target": 0.9078686582498847,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.8695688586880281,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_near_1.065_Haa",
+      "target": 14.605604041867348,
+      "scale": 1.4605604041867348,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8695688586880281,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_near_1.095_normal_force",
+      "target": 1.2303804278835464,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "fit",
+      "state": [
+        0.89406375611586,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_near_1.095_Haa",
+      "target": 11.545874277606002,
+      "scale": 1.1545874277606003,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.89406375611586,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_direct023_energy",
+      "target": 0.10138618519039871,
+      "scale": 0.010138618519039872,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        0.816496580927726,
+        0.23,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_direct023_normal_force",
+      "target": -0.8610948380753036,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        0.816496580927726,
+        0.23,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_direct023_Haa",
+      "target": 29.67272464413389,
+      "scale": 2.967272464413389,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.816496580927726,
+        0.23,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_direct023_Hxx",
+      "target": 1.5318476269016676,
+      "scale": 0.1531847626901668,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.816496580927726,
+        0.23,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_direct047_energy",
+      "target": 0.26395051027571553,
+      "scale": 0.026395051027571555,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        0.816496580927726,
+        0.47,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_direct047_normal_force",
+      "target": -2.2580600813748397,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        0.816496580927726,
+        0.47,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_direct047_Haa",
+      "target": 35.337517734960244,
+      "scale": 3.5337517734960247,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.816496580927726,
+        0.47,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_direct047_Hxx",
+      "target": -7.290154929569364,
+      "scale": 0.7290154929569365,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.816496580927726,
+        0.47,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_off_plus_energy",
+      "target": 0.08014986299727256,
+      "scale": 0.008014986299727257,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        0.8777338244973054,
+        0.27,
+        0.095
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_off_plus_normal_force",
+      "target": 0.496288954541943,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        0.8777338244973054,
+        0.27,
+        0.095
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_off_plus_Haa",
+      "target": 13.145916399036436,
+      "scale": 1.3145916399036437,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.8777338244973054,
+        0.27,
+        0.095
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_off_plus_Hxx",
+      "target": 0.5867789207029961,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.8777338244973054,
+        0.27,
+        0.095
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_off_minus_energy",
+      "target": 0.21284911087573022,
+      "scale": 0.021284911087573022,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        0.9267236193529691,
+        0.41,
+        -0.07
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_off_minus_normal_force",
+      "target": 0.06702268289699899,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        0.9267236193529691,
+        0.41,
+        -0.07
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_off_minus_Haa",
+      "target": 11.464221151869252,
+      "scale": 1.1464221151869252,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.9267236193529691,
+        0.41,
+        -0.07
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_off_minus_Hxx",
+      "target": -2.835312235036081,
+      "scale": 0.2835312235036081,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.9267236193529691,
+        0.41,
+        -0.07
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_shockley067_energy",
+      "target": 0.07506981596967024,
+      "scale": 0.007506981596967025,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        0.8450739612601964,
+        0.335,
+        0.19341234017852463
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_shockley067_normal_force",
+      "target": -0.08375074170661885,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        0.8450739612601964,
+        0.335,
+        0.19341234017852463
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_shockley067_Haa",
+      "target": 14.560238367523052,
+      "scale": 1.4560238367523053,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.8450739612601964,
+        0.335,
+        0.19341234017852463
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_shockley067_Hxx",
+      "target": 0.4530475235373633,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.8450739612601964,
+        0.335,
+        0.19341234017852463
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_compression_energy",
+      "target": 0.025317916775100896,
+      "scale": 0.004433026104653031,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        0.7944511732426774,
+        0.08,
+        -0.025
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_compression_normal_force",
+      "target": -0.6769543589544016,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        0.7944511732426774,
+        0.08,
+        -0.025
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_compression_Haa",
+      "target": 26.962376342241654,
+      "scale": 2.6962376342241656,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.7944511732426774,
+        0.08,
+        -0.025
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_compression_Hxx",
+      "target": 5.568444170552721,
+      "scale": 0.5568444170552721,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.7944511732426774,
+        0.08,
+        -0.025
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.045_energy",
+      "target": 0.012439540042104347,
+      "scale": 0.004433026104653031,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        0.8532389270694737,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.045_normal_force",
+      "target": 0.6560493060873362,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        0.8532389270694737,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.045_Haa",
+      "target": 16.173163667497242,
+      "scale": 1.6173163667497243,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.8532389270694737,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.045_Hxx",
+      "target": 3.5468340021412335,
+      "scale": 0.35468340021412337,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.8532389270694737,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.255_energy",
+      "target": 0.2548812728796389,
+      "scale": 0.02548812728796389,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        1.024703209064296,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.255_normal_force",
+      "target": 1.5479287243761108,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        1.024703209064296,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.255_Haa",
+      "target": -3.07660296796585,
+      "scale": 0.307660296796585,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        1.024703209064296,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.255_Hxx",
+      "target": -0.8591645505462155,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        1.024703209064296,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.555_energy",
+      "target": 0.4970497627048889,
+      "scale": 0.04970497627048889,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        1.269652183342614,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.555_normal_force",
+      "target": 0.5361595264738468,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        1.269652183342614,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.555_Haa",
+      "target": -0.9598397042596563,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        1.269652183342614,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.555_Hxx",
+      "target": -0.8905810007935903,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        1.269652183342614,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.855_energy",
+      "target": 0.6331364785570511,
+      "scale": 0.06331364785570512,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        1.5146011576209317,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.855_normal_force",
+      "target": 0.6294361584094642,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        1.5146011576209317,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.855_Haa",
+      "target": 0.33758173393615254,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        1.5146011576209317,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening1.855_Hxx",
+      "target": -0.0764657682265532,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        1.5146011576209317,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening2.455_energy",
+      "target": 0.7722611869157332,
+      "scale": 0.07722611869157332,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        2.0044991061775677,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening2.455_normal_force",
+      "target": -0.03892592855831557,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        2.0044991061775677,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening2.455_Haa",
+      "target": 1.5212189106347462,
+      "scale": 0.15212189106347462,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        2.0044991061775677,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening2.455_Hxx",
+      "target": 0.04446583977668427,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        2.0044991061775677,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening3.75_energy",
+      "target": 0.7719163228888833,
+      "scale": 0.07719163228888834,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        3.0618621784789726,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening3.75_normal_force",
+      "target": 0.0,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        3.0618621784789726,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening3.75_Haa",
+      "target": 0.0,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        3.0618621784789726,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_opening3.75_Hxx",
+      "target": 0.0,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        3.0618621784789726,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_0_energy",
+      "target": 0.00042417681882149505,
+      "scale": 0.004433026104653031,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        0.8099646082803043,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_0_force",
+      "target": -0.13054663793646185,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        0.8099646082803043,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_0_Haa",
+      "target": 20.302032153219432,
+      "scale": 2.030203215321943,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.8099646082803043,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_0_Hxx",
+      "target": 4.57090105595751,
+      "scale": 0.45709010559575103,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.8099646082803043,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_1_energy",
+      "target": 0.004931943136885955,
+      "scale": 0.004433026104653031,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        0.8393584851937024,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_1_force",
+      "target": 0.42285939529142164,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        0.8393584851937024,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_1_Haa",
+      "target": 17.415188636660293,
+      "scale": 1.7415188636660295,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.8393584851937024,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_1_Hxx",
+      "target": 3.8361643120715834,
+      "scale": 0.3836164312071584,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.8393584851937024,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_2_energy",
+      "target": 0.10968805888528045,
+      "scale": 0.010968805888528046,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        0.9348885851622464,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_2_force",
+      "target": 1.574309479391436,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        0.9348885851622464,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_2_Haa",
+      "target": 5.20946471789603,
+      "scale": 0.5209464717896031,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.9348885851622464,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_2_Hxx",
+      "target": 0.9642979846199059,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.9348885851622464,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_3_energy",
+      "target": 0.3373623063206088,
+      "scale": 0.03373623063206088,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        1.081857969729237,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_3_force",
+      "target": 1.321138459506241,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        1.081857969729237,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_3_Haa",
+      "target": -4.940080180276789,
+      "scale": 0.4940080180276789,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        1.081857969729237,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_3_Hxx",
+      "target": -1.007259835979608,
+      "scale": 0.10072598359796081,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        1.081857969729237,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_4_energy",
+      "target": 0.5605338261337047,
+      "scale": 0.05605338261337048,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        1.392126670481773,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_4_force",
+      "target": 0.5382315998098468,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        1.392126670481773,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_4_Haa",
+      "target": 0.9032785116339533,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        1.392126670481773,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_4_Hxx",
+      "target": 0.6453579543796875,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        1.392126670481773,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_5_energy",
+      "target": 0.7666938699728523,
+      "scale": 0.07666938699728523,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        1.775880063517804,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_5_force",
+      "target": 0.27979903523926664,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        1.775880063517804,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_5_Haa",
+      "target": -2.478203100860398,
+      "scale": 0.2478203100860398,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        1.775880063517804,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_5_Hxx",
+      "target": 0.0933444416558671,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        1.775880063517804,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_6_energy",
+      "target": 0.07503741336914271,
+      "scale": 0.007503741336914272,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        0.8638533826215342,
+        0.173,
+        -0.043
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_6_force",
+      "target": 0.3995055633266556,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        0.8638533826215342,
+        0.173,
+        -0.043
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_6_Haa",
+      "target": 16.75498366183509,
+      "scale": 1.6754983661835092,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.8638533826215342,
+        0.173,
+        -0.043
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_6_Hxx",
+      "target": 1.866294182504276,
+      "scale": 0.18662941825042761,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.8638533826215342,
+        0.173,
+        -0.043
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_7_energy",
+      "target": 0.1746163283222475,
+      "scale": 0.01746163283222475,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        0.9716309313039939,
+        0.367,
+        0.081
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_7_force",
+      "target": 1.0346608991752084,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        0.9716309313039939,
+        0.367,
+        0.081
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_7_Haa",
+      "target": 3.3869832062735408,
+      "scale": 0.3386983206273541,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.9716309313039939,
+        0.367,
+        0.081
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_7_Hxx",
+      "target": -0.5656137494473082,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.9716309313039939,
+        0.367,
+        0.081
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_8_energy",
+      "target": 0.17183161394321733,
+      "scale": 0.017183161394321734,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        0.816496580927726,
+        0.317,
+        0.0
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_8_force",
+      "target": -1.5479121827267546,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        0.816496580927726,
+        0.317,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_8_Haa",
+      "target": 34.71656366870985,
+      "scale": 3.4716563668709854,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.816496580927726,
+        0.317,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_8_Hxx",
+      "target": -0.974896485841256,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.816496580927726,
+        0.317,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_9_energy",
+      "target": 0.07736533900036079,
+      "scale": 0.007736533900036079,
+      "units": "eV/cell",
+      "role": "heldout",
+      "state": [
+        0.8287440296416418,
+        0.413,
+        0.219
+      ],
+      "jet_weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_9_force",
+      "target": -0.22650351113925563,
+      "scale": 0.03173805605024358,
+      "units": "eV/L0",
+      "role": "heldout",
+      "state": [
+        0.8287440296416418,
+        0.413,
+        0.219
+      ],
+      "jet_weights": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_9_Haa",
+      "target": 14.396252629283666,
+      "scale": 1.4396252629283666,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.8287440296416418,
+        0.413,
+        0.219
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_9_Hxx",
+      "target": -0.11946413441426519,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.8287440296416418,
+        0.413,
+        0.219
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    }
+  ],
+  "retrospective_validation_prefix": "v17_",
+  "new_validation_prefix": "v19_new_",
+  "fixed_pair_control": {
+    "coefficients": [
+      0.017190392488739735,
+      0.1006934312417533
+    ],
+    "calibration_sha256": "bcc8e2cbfe3c05faf89ade54e428d3f2fad18ae4b8864918729af844e15f9f8e",
+    "reference_run": "saturated",
+    "interpretation": "inherited LJ control, NOT two new observed Al data"
+  },
+  "source_temperature_K": 0.0,
+  "length_scale_m": 2.863782463805517e-10,
+  "energy_scale_J": 1.602176634e-19,
+  "stability_stretches": [
+    0.99,
+    1.0,
+    1.0037037037037038,
+    1.01
+  ],
+  "wavepoints_cubic": [
+    [
+      0.01,
+      0.0,
+      0.0
+    ],
+    [
+      0.01,
+      0.01,
+      0.0
+    ],
+    [
+      0.01,
+      0.01,
+      0.01
+    ],
+    [
+      0.08333333333333333,
+      0.08333333333333333,
+      0.08333333333333333
+    ],
+    [
+      0.1,
+      0.0,
+      0.0
+    ],
+    [
+      0.1,
+      0.1,
+      0.0
+    ],
+    [
+      0.1,
+      0.1,
+      0.1
+    ],
+    [
+      0.14463521202111632,
+      0.14463521202111632,
+      0.14463521202111632
+    ],
+    [
+      0.16666666666666666,
+      0.16666666666666666,
+      0.16666666666666666
+    ],
+    [
+      0.2,
+      0.0,
+      0.0
+    ],
+    [
+      0.2,
+      0.1,
+      0.0
+    ],
+    [
+      0.2,
+      0.1,
+      0.1
+    ],
+    [
+      0.2,
+      0.2,
+      0.0
+    ],
+    [
+      0.2,
+      0.2,
+      0.1
+    ],
+    [
+      0.2,
+      0.2,
+      0.2
+    ],
+    [
+      0.30000000000000004,
+      0.0,
+      0.0
+    ],
+    [
+      0.30000000000000004,
+      0.1,
+      0.0
+    ],
+    [
+      0.30000000000000004,
+      0.1,
+      0.1
+    ],
+    [
+      0.30000000000000004,
+      0.2,
+      0.0
+    ],
+    [
+      0.30000000000000004,
+      0.2,
+      0.1
+    ],
+    [
+      0.30000000000000004,
+      0.2,
+      0.2
+    ],
+    [
+      0.30000000000000004,
+      0.30000000000000004,
+      0.0
+    ],
+    [
+      0.30000000000000004,
+      0.30000000000000004,
+      0.1
+    ],
+    [
+      0.30000000000000004,
+      0.30000000000000004,
+      0.2
+    ],
+    [
+      0.30000000000000004,
+      0.30000000000000004,
+      0.30000000000000004
+    ],
+    [
+      0.375,
+      0.375,
+      0.0
+    ],
+    [
+      0.4,
+      0.0,
+      0.0
+    ],
+    [
+      0.4,
+      0.1,
+      0.0
+    ],
+    [
+      0.4,
+      0.1,
+      0.1
+    ],
+    [
+      0.4,
+      0.2,
+      0.0
+    ],
+    [
+      0.4,
+      0.2,
+      0.1
+    ],
+    [
+      0.4,
+      0.2,
+      0.2
+    ],
+    [
+      0.4,
+      0.30000000000000004,
+      0.0
+    ],
+    [
+      0.4,
+      0.30000000000000004,
+      0.1
+    ],
+    [
+      0.4,
+      0.30000000000000004,
+      0.2
+    ],
+    [
+      0.4,
+      0.30000000000000004,
+      0.30000000000000004
+    ],
+    [
+      0.4,
+      0.4,
+      0.0
+    ],
+    [
+      0.4,
+      0.4,
+      0.1
+    ],
+    [
+      0.4,
+      0.4,
+      0.2
+    ],
+    [
+      0.4,
+      0.4,
+      0.30000000000000004
+    ],
+    [
+      0.4,
+      0.4,
+      0.4
+    ],
+    [
+      0.5,
+      0.0,
+      0.0
+    ],
+    [
+      0.5,
+      0.1,
+      0.0
+    ],
+    [
+      0.5,
+      0.1,
+      0.1
+    ],
+    [
+      0.5,
+      0.2,
+      0.0
+    ],
+    [
+      0.5,
+      0.2,
+      0.1
+    ],
+    [
+      0.5,
+      0.2,
+      0.2
+    ],
+    [
+      0.5,
+      0.30000000000000004,
+      0.0
+    ],
+    [
+      0.5,
+      0.30000000000000004,
+      0.1
+    ],
+    [
+      0.5,
+      0.30000000000000004,
+      0.2
+    ],
+    [
+      0.5,
+      0.30000000000000004,
+      0.30000000000000004
+    ],
+    [
+      0.5,
+      0.4,
+      0.0
+    ],
+    [
+      0.5,
+      0.4,
+      0.1
+    ],
+    [
+      0.5,
+      0.4,
+      0.2
+    ],
+    [
+      0.5,
+      0.4,
+      0.30000000000000004
+    ],
+    [
+      0.5,
+      0.4,
+      0.4
+    ],
+    [
+      0.5,
+      0.5,
+      0.0
+    ],
+    [
+      0.5,
+      0.5,
+      0.1
+    ],
+    [
+      0.5,
+      0.5,
+      0.2
+    ],
+    [
+      0.5,
+      0.5,
+      0.30000000000000004
+    ],
+    [
+      0.5,
+      0.5,
+      0.4
+    ],
+    [
+      0.5,
+      0.5,
+      0.5
+    ],
+    [
+      0.6000000000000001,
+      0.0,
+      0.0
+    ],
+    [
+      0.6000000000000001,
+      0.1,
+      0.0
+    ],
+    [
+      0.6000000000000001,
+      0.1,
+      0.1
+    ],
+    [
+      0.6000000000000001,
+      0.2,
+      0.0
+    ],
+    [
+      0.6000000000000001,
+      0.2,
+      0.1
+    ],
+    [
+      0.6000000000000001,
+      0.2,
+      0.2
+    ],
+    [
+      0.6000000000000001,
+      0.30000000000000004,
+      0.0
+    ],
+    [
+      0.6000000000000001,
+      0.30000000000000004,
+      0.1
+    ],
+    [
+      0.6000000000000001,
+      0.30000000000000004,
+      0.2
+    ],
+    [
+      0.6000000000000001,
+      0.30000000000000004,
+      0.30000000000000004
+    ],
+    [
+      0.6000000000000001,
+      0.4,
+      0.0
+    ],
+    [
+      0.6000000000000001,
+      0.4,
+      0.1
+    ],
+    [
+      0.6000000000000001,
+      0.4,
+      0.2
+    ],
+    [
+      0.6000000000000001,
+      0.4,
+      0.30000000000000004
+    ],
+    [
+      0.6000000000000001,
+      0.4,
+      0.4
+    ],
+    [
+      0.6000000000000001,
+      0.5,
+      0.0
+    ],
+    [
+      0.6000000000000001,
+      0.5,
+      0.1
+    ],
+    [
+      0.6000000000000001,
+      0.5,
+      0.2
+    ],
+    [
+      0.6000000000000001,
+      0.5,
+      0.30000000000000004
+    ],
+    [
+      0.6000000000000001,
+      0.5,
+      0.4
+    ],
+    [
+      0.6000000000000001,
+      0.6000000000000001,
+      0.0
+    ],
+    [
+      0.6000000000000001,
+      0.6000000000000001,
+      0.1
+    ],
+    [
+      0.6000000000000001,
+      0.6000000000000001,
+      0.2
+    ],
+    [
+      0.6000000000000001,
+      0.6000000000000001,
+      0.30000000000000004
+    ],
+    [
+      0.7000000000000001,
+      0.0,
+      0.0
+    ],
+    [
+      0.7000000000000001,
+      0.1,
+      0.0
+    ],
+    [
+      0.7000000000000001,
+      0.1,
+      0.1
+    ],
+    [
+      0.7000000000000001,
+      0.2,
+      0.0
+    ],
+    [
+      0.7000000000000001,
+      0.2,
+      0.1
+    ],
+    [
+      0.7000000000000001,
+      0.2,
+      0.2
+    ],
+    [
+      0.7000000000000001,
+      0.30000000000000004,
+      0.0
+    ],
+    [
+      0.7000000000000001,
+      0.30000000000000004,
+      0.1
+    ],
+    [
+      0.7000000000000001,
+      0.30000000000000004,
+      0.2
+    ],
+    [
+      0.7000000000000001,
+      0.30000000000000004,
+      0.30000000000000004
+    ],
+    [
+      0.7000000000000001,
+      0.4,
+      0.0
+    ],
+    [
+      0.7000000000000001,
+      0.4,
+      0.1
+    ],
+    [
+      0.7000000000000001,
+      0.4,
+      0.2
+    ],
+    [
+      0.7000000000000001,
+      0.4,
+      0.30000000000000004
+    ],
+    [
+      0.7000000000000001,
+      0.4,
+      0.4
+    ],
+    [
+      0.7000000000000001,
+      0.5,
+      0.0
+    ],
+    [
+      0.7000000000000001,
+      0.5,
+      0.1
+    ],
+    [
+      0.7000000000000001,
+      0.5,
+      0.2
+    ],
+    [
+      0.7000000000000001,
+      0.5,
+      0.30000000000000004
+    ],
+    [
+      0.7000000000000001,
+      0.6000000000000001,
+      0.0
+    ],
+    [
+      0.7000000000000001,
+      0.6000000000000001,
+      0.1
+    ],
+    [
+      0.7000000000000001,
+      0.6000000000000001,
+      0.2
+    ],
+    [
+      0.7000000000000001,
+      0.7000000000000001,
+      0.0
+    ],
+    [
+      0.7000000000000001,
+      0.7000000000000001,
+      0.1
+    ],
+    [
+      0.8,
+      0.0,
+      0.0
+    ],
+    [
+      0.8,
+      0.1,
+      0.0
+    ],
+    [
+      0.8,
+      0.1,
+      0.1
+    ],
+    [
+      0.8,
+      0.2,
+      0.0
+    ],
+    [
+      0.8,
+      0.2,
+      0.1
+    ],
+    [
+      0.8,
+      0.2,
+      0.2
+    ],
+    [
+      0.8,
+      0.30000000000000004,
+      0.0
+    ],
+    [
+      0.8,
+      0.30000000000000004,
+      0.1
+    ],
+    [
+      0.8,
+      0.30000000000000004,
+      0.2
+    ],
+    [
+      0.8,
+      0.30000000000000004,
+      0.30000000000000004
+    ],
+    [
+      0.8,
+      0.4,
+      0.0
+    ],
+    [
+      0.8,
+      0.4,
+      0.1
+    ],
+    [
+      0.8,
+      0.4,
+      0.2
+    ],
+    [
+      0.8,
+      0.4,
+      0.30000000000000004
+    ],
+    [
+      0.8,
+      0.5,
+      0.0
+    ],
+    [
+      0.8,
+      0.5,
+      0.1
+    ],
+    [
+      0.8,
+      0.5,
+      0.2
+    ],
+    [
+      0.8,
+      0.6000000000000001,
+      0.0
+    ],
+    [
+      0.8,
+      0.6000000000000001,
+      0.1
+    ],
+    [
+      0.8,
+      0.7000000000000001,
+      0.0
+    ],
+    [
+      0.9,
+      0.0,
+      0.0
+    ],
+    [
+      0.9,
+      0.1,
+      0.0
+    ],
+    [
+      0.9,
+      0.1,
+      0.1
+    ],
+    [
+      0.9,
+      0.2,
+      0.0
+    ],
+    [
+      0.9,
+      0.2,
+      0.1
+    ],
+    [
+      0.9,
+      0.2,
+      0.2
+    ],
+    [
+      0.9,
+      0.30000000000000004,
+      0.0
+    ],
+    [
+      0.9,
+      0.30000000000000004,
+      0.1
+    ],
+    [
+      0.9,
+      0.30000000000000004,
+      0.2
+    ],
+    [
+      0.9,
+      0.30000000000000004,
+      0.30000000000000004
+    ],
+    [
+      0.9,
+      0.4,
+      0.0
+    ],
+    [
+      0.9,
+      0.4,
+      0.1
+    ],
+    [
+      0.9,
+      0.4,
+      0.2
+    ],
+    [
+      0.9,
+      0.5,
+      0.0
+    ],
+    [
+      0.9,
+      0.5,
+      0.1
+    ],
+    [
+      0.9,
+      0.6000000000000001,
+      0.0
+    ],
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.1,
+      0.0
+    ],
+    [
+      1.0,
+      0.1,
+      0.1
+    ],
+    [
+      1.0,
+      0.2,
+      0.0
+    ],
+    [
+      1.0,
+      0.2,
+      0.1
+    ],
+    [
+      1.0,
+      0.2,
+      0.2
+    ],
+    [
+      1.0,
+      0.30000000000000004,
+      0.0
+    ],
+    [
+      1.0,
+      0.30000000000000004,
+      0.1
+    ],
+    [
+      1.0,
+      0.30000000000000004,
+      0.2
+    ],
+    [
+      1.0,
+      0.4,
+      0.0
+    ],
+    [
+      1.0,
+      0.4,
+      0.1
+    ],
+    [
+      1.0,
+      0.5,
+      0.0
+    ]
+  ],
+  "radius_over_L0": 12.0,
+  "physical_kinetics_calibrated": false,
+  "production_changed": false
+}

@@ -14,6 +14,19 @@ confused with a fully calibrated spatial aluminum fatigue solver.
 
 ## Gates
 
+The completed v19 coordination-dependent rank1 study actually ran260 fixed/
+joint coefficient profiles while preserving LJ and infinite per-atom sums.
+The joint power candidate lowers the bounded-study loss by0.89% relative to
+the old-family joint control, but normal stiffness remains41.3% high and
+50 MPa opening displacement29.1% low. Independent normal-force and registry-
+curvature errors worsen.297 signed static tensor states, analytic/direct/
+derivative checks and independent sampled finite-q/dilation checks pass;
+that is numerical/static consistency, NOT Al material adoption. The old
+control stopped on its evaluation budget; the new power and even-range
+parameters hit bounds, and the equality-tangent condition number worsens.
+Read `COORDINATION_SCREENING_V19.md`. No production model, physical mobility,
+seconds/Hz, yield/fatigue or specimen UI gate is opened by this study.
+
 The v18 line-kinetics benchmark fits actual23 deg C line velocity data and
 checks held-out points, pinned-line spatial/time refinement, work balance and
 unload/hold. It is explicitly a line-coordinate/assumed-geometry reference,

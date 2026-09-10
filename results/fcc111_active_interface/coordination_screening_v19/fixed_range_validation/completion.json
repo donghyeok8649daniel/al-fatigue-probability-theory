@@ -1,0 +1,101 @@
+{
+  "completed": true,
+  "roots": {
+    "source_Al99": {
+      "perfect": {
+        "q": [
+          0.8164983416260692,
+          -2.2615382587845332e-18,
+          1.322951217031349e-16
+        ],
+        "valid": true,
+        "morse_index": 0
+      },
+      "fault": {
+        "q": [
+          0.8356612484876702,
+          0.5,
+          0.28867513459481275
+        ],
+        "valid": true,
+        "morse_index": 0
+      },
+      "saddle": {
+        "q": [
+          0.8492922641076963,
+          0.3714061259442337,
+          0.2144314267925794
+        ],
+        "valid": true,
+        "morse_index": 1
+      }
+    },
+    "coordination_screening_v19/fixed_pair_control": {
+      "perfect": {
+        "q": [
+          0.8164965809277429,
+          -2.9888587794314375e-18,
+          -2.9751644525581576e-18
+        ],
+        "valid": true,
+        "morse_index": 0
+      },
+      "fault": {
+        "q": [
+          0.8398746159754836,
+          0.500000000000001,
+          0.2886751345948121
+        ],
+        "valid": true,
+        "morse_index": 0
+      },
+      "saddle": {
+        "q": [
+          0.8450449551235357,
+          0.35909178471237013,
+          0.20732173856746997
+        ],
+        "valid": true,
+        "morse_index": 1
+      }
+    },
+    "power_followup/free_pair": {
+      "perfect": {
+        "q": [
+          0.8164965809277395,
+          -3.0060020850729427e-18,
+          -2.9859857610377747e-18
+        ],
+        "valid": true,
+        "morse_index": 0
+      },
+      "fault": {
+        "q": [
+          0.8396486962793368,
+          0.5000000000000009,
+          0.2886751345948125
+        ],
+        "valid": true,
+        "morse_index": 0
+      },
+      "saddle": {
+        "q": [
+          0.8448169761285469,
+          0.3574979221925936,
+          0.20640152161262584
+        ],
+        "valid": true,
+        "morse_index": 1
+      }
+    }
+  },
+  "analytic_jet_error": 3.1401125966112886e-07,
+  "per_site_direct_fine_error": 4.4825254619240695e-15,
+  "minimum_sampled_spectral_margin": 0.005621423923057013,
+  "whole_zone_proof": false,
+  "material_accepted": false,
+  "actual_yield_validated": false,
+  "physical_PDE_seconds": false,
+  "physical_PDE_Hz": false,
+  "elapsed_seconds": 179.22004490000836
+}

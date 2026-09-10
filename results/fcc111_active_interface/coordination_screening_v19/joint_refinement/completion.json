@@ -1,0 +1,27 @@
+{
+  "completed": true,
+  "summary": [
+    {
+      "family": "old_family",
+      "profiles": 90,
+      "failures": 0,
+      "best_positive_LJ_loss": 1238.6110089514643,
+      "unconstrained_pair_closure_loss": 1238.6110089514643,
+      "optimizer_success": false,
+      "termination": "The maximum number of function evaluations is exceeded."
+    },
+    {
+      "family": "power_family",
+      "profiles": 88,
+      "failures": 0,
+      "best_positive_LJ_loss": 1227.6348875902804,
+      "unconstrained_pair_closure_loss": 1227.6348875902804,
+      "optimizer_success": true,
+      "termination": "`ftol` termination condition is satisfied."
+    }
+  ],
+  "elapsed_seconds": 1313.2682834000007,
+  "material_accepted": false,
+  "kinetics_calibrated": false,
+  "whole_family_infeasibility_proved": false
+}

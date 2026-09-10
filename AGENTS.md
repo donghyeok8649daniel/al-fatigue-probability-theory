@@ -500,6 +500,24 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- COORDINATION_SCREENING_V19.md / coordination_screening_v19:
+  같은 무한 scalar 환경 x와 rank1 벡터 Q를 site마다 합한 뒤
+  D1||Q||² g(x)를 적용하는 별도 연구 가설이다. g=1/(1-z+zx)와 g=x^p는
+  서로 대체하는 한-parameter 비교이며 동시에 곱하지 않는다. z/p=0은
+  기존 v17을 복원한다. Affine inversion의 Q=0 때문에 bulk C는 불변이나
+  실제 cubic dilation의 finite-q는 g(x_bulk) H1이며 density tail을 전파한다.
+  같은 reference density/gauge를 strain 중 재보정하지 않는다. Site 합을
+  global density로 나누지 않는다. 독립 direct energy에도 같은 함수를 쓴다.
+  초기 fixed-range profile은 추가항 개선이 작았고 재료 채택 안 됐다.
+  Joint radial 재보정/독립 검증 완료:260실제 profiles,297정적 tensor상태.
+  새 후보 Haa는41.3%높고50MPa개구변위는29.1%작다. 추가 shape는 채택하지
+  않는다. Old control의 max-nfev종료, 새 p=-1/k_even=12 bound를 숨기지 않는다.
+  GPa C11/C12/C44 exporter와 sensitivity에 변환 전 mode단위를 쓰지 않는다.
+  수치 rank10/11과 condition229/888은 inequality cone/통계CI가 아닌
+  exact-bulk equality-tangent 진단이다. 세부 수치/한계는 최신 인계를 본다.
+  과거 검사한 heldout은 retrospective로 구분한다. 낮은 loss를 실제 항복,
+  physical a/s mobility나 Hz, production gate 통과로 읽지 않는다.
+
 - LINE_KINETICS_AND_FATIGUE_VALIDATION.md / strength_fatigue_kinetics_v18:
   실제23°C Gorman 전위속도–전단10개 isolated marker에서7fit/3heldout을
   분리했다. mu_tau=1.1627e-5 m/(Pa s), heldout RMSE3.50m/s(평균의23.6%).

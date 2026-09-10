@@ -1,5 +1,102 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 보정 재개 v19 — 2026-09-10 (과학 계산 완료; 채택하지 않음)
+
+최신 요청은 "그럼 보정 계속해". Fresh fetch 후 시작 actual HEAD와 origin은
+모두 `53ced52f86e687bd3679bb85f09cd647cfc55913`, clean, branch
+`probability-pde-solver-v1`이었다. 실제 worktree는 기존과 같은
+`aft-pde-bessel-38969ad`; OneDrive는 이동 안내 stub이다. 이후 fresh fetch에서도
+remote 변화가 없었다. Main/기존 PDE/UI/calibration/kinetic JSON/Ac 수정 없음.
+추가 agent, reset, force push 없음. 최종 commit/origin은 git log/fetch로 확인한다.
+
+### 이번 실제 작업과 이론
+
+v17의 normal force/Haa 물성 오차가 단순 scalar density–rank1 coupling으로
+줄어드는지 두 가지 **대체 가설**을 유도하고 실제 재보정했다:
+
+    per atom E1 = D1 ||Q1||² g(x), x=rho_scalar/rho_ref
+    rational g=1/(1-z+zx), z∈[0,1]
+    power g=x^p, p∈[-1,1]
+
+동일 LJ pair/Bessel 무한급수, per-site density 합산 후 비선형 함수 원칙을
+유지한다. 두 g를 동시에 곱하거나 생산 모델에 등록하지 않았다. 원래 계수에서
+pristine x=1,Q=0이므로 Hessian은 불변; 보정으로 Haa를 바꾸려면 다른 계수와
+tradeoff가 생긴다. 이 점이 추가 항만으로 normal tangent를 고치기 어려운 이유다.
+
+읽을 파일: `solver_v1/COORDINATION_SCREENING_V19.md`, 새 evaluator
+`coordination_screening.py`, 실제 fit runners `run_coordination_screening.py`,
+`run_coordination_shape_refinement.py`. 독립 validator/reporter는 저장계수 재생이며
+optimization 재실행과 구분한다. 결과 root:
+`results/fcc111_active_interface/coordination_screening_v19/`.
+
+### 실제 완료 수치
+
+- Rational fixed/free pair CONTROL55 profiles: best z=.093812/loss1255.7014,
+  free z=0/loss1254.6575. Power27 profiles: fixed p=-.083511/loss1255.6106,
+  free p=.252580/loss1253.7910. 모든 scalar optimizer 수렴, 개선 미미.
+- Power fixed-shape 전체를 독립 경로로 실제 재실행: 모든 profile/best dict,
+  summary/residual CSV bytes 동일. `reproducibility.json`에 hash와 범위 기록.
+- Joint old five-shape90 + power six-shape88 =178 profiles 추가 실행.
+  합계260 profiles. 동일104fit,5exactbulk,기존 spectral 제약 유지.
+  Old loss1238.611009, power1227.634888(0.886%차이). Old는20nfev budget종료라
+  **optimizer-converged 아님**. Power는16nfev ftol종료, gradient global증명 아님.
+  Both k_even=12, power p=-1 bound; 임의 문헌 보정값으로 해석하지 않는다.
+- Cohesion3.36eV/atom, C11/C12/C44=114/62/32GPa exact residual<8.5e-14.
+  이들은 fit 제약이지 heldout검증이 아니다. Power Haa27.78327 vs19.66091
+  (41.312%높음), Hxx4.44413 vs4.39359(1.150%높음).
+- Joint 독립40jet RMS: energy1.0128, normalforce5.1668, Haa5.9073,
+  Hxx8.4471. Force/Hxx는 old joint대조군보다 오히려 나쁨. **물성 채택 불가**.
+- Fixed validation178~179s, joint validation178.98s 실제 완료. 각각
+  source+두후보×11 tensor cases×9signedstates=297root 모두 검증.
+  Joint force residual<1.762e-14eV/L0. 50MPa수직 개구변위 source.000925366Å,
+  power.000656211Å(29.09%작음). 4MPa전단 slip source.000330998Å,
+  power.000327231Å(1.14%작음). Static unload는 dynamic hold/잔류소성이 아니다.
+- Power relaxed fault/saddle .173907/.197371J/m² vs source.150479/.172002.
+  첫 fixed-registry ideal traction10.19465GPa vs source12.96957GPa.
+  이것은 이상적인 coherent 계면 traction이지 실제 항복강도가 아니다.
+- Joint final FD Hessian error3.26e-7eV/L0², per-site direct fine error3.33e-16.
+  다섯 dilation×243q×radii12/16 sampled margin 최소.00560971eV/L0².
+  전체BZ/모든strain 안정성 증명 아님. 새 unit-channel direct와 전체 harmonic
+  displaced-site/analytic 검증을 구분해 rawCSV를 읽는다.
+- 저장계수 exact replay 오차0. 전체 shape 포함 exact-bulk tangent SVD:
+  old rank10/10 condition228.66, power rank11/11 condition887.53.
+  추가항은 conditioning악화. Active inequality cones/통계CI는 포함하지 않는다.
+- `final_report/normal_response_comparison.png`는 실제 저장curve에서 생성·확인.
+  에너지뿐 아니라 traction/Haa불일치를 그대로 보여준다.
+
+### 발견·수정한 보고 단위 오류
+
+새 joint runner의 CSV3elastic행이 GPa prediction에 변환 전 mode 이름/target/
+unit를 붙였다. **Optimizer는 처음부터 올바른 GPa target 사용**. Exporter와
+sensitivity metadata를 고치고 두CSV 각3행 metadata만 수정했다. Raw fit JSON,
+coefficients, losses 불변. 모든CSV에서 (prediction-target)/scale을 재계산하는
+시험 추가. `final_report/*_audited_residuals.csv`는 계수 재생으로 독립 출력한다.
+
+### 회귀와 인계
+
+Targeted 최종31PASS48.19s, app최종34PASS65.27s, smokeexit0/2.257s.
+기존 full solver553PASS614.20s 이후 exporter회귀2개를 추가하고 **전체 재실행:
+555PASS975.44s(16분15초)**. 최종 모든 tests의 실패/오류/skip=0. 실제 session
+종료와 JUnit XML 양쪽 확인. 긴 최종 실행은 sensitivity reporter와 일부 동시 실행.
+회귀로그 `.cache/coordination_screening_v19/`, 커밋용 요약은 결과 root의
+`verification.json`. Working/staged diffcheck PASS, scoped 파일/JSON finite수와
+원본 hash/index bytes 검사 완료. 검증 후 대상 branch로 정상 commit/push한다.
+현재 checkpoint의 completed=false는 과거 중간스냅샷이며
+완료 판단은 completion/calibration.json이 우선한다. RawJSON/CSV hash보존용
+local .gitattributes만 사용하고 전역git설정은 바꾸지 않는다.
+
+### 다음 단계와 아직 불가
+
+새 density-normalization/range변화만으로 물성 오차를 해결했다는 근거 없음.
+다음은 normal/registry force와 curvature를 동시에 제약하는 최소 환경항의
+독립성/표현력 감사이며, 반복적인 range bound 확대나 임의 mobility/yield튜닝을
+하지 않는다. 이 bounded search만으로 전체 analytic family 불가능을 증명하지
+않는다. 기존 v18의 선 kinetics/피로 source자료는 별개로 보존한다.
+
+생산 Ma_phys/Ms_phys/t0/실제 초·Hz unavailable/disabled 유지. 실제 항복·피로·
+잔류소성·spatial specimen model·A_c·active-interface PDE/UI gate는 열리지 않았다.
+LJ/Bessel, 확률식, 기존 static parameter, v18 UI스크롤은 그대로다.
+
 ## 연구/사용성 인계 v18 — 2026-09-10
 
 최신 연구 요청은 실제 항복·피로·물리 초/Hz의 검증/보정. 추가 요청은 UI를

@@ -1,0 +1,38 @@
+{
+  "completed": true,
+  "summary": [
+    {
+      "mode": "fixed_pair_control",
+      "screening": -0.08351071546738946,
+      "squared_loss": 1255.6105558366812,
+      "positive_LJ": true,
+      "scalar_optimizer_success": true,
+      "profiles": 14,
+      "D1": 4.704741410565184,
+      "retrospective_rms": 5.397578622307977,
+      "new_rms": 5.835201324050138,
+      "perfect_Haa": 27.569297258009858,
+      "perfect_Haa_source": 19.66091286328976,
+      "perfect_Hxx": 4.519888173703888,
+      "perfect_Hxx_source": 4.393593035123306
+    },
+    {
+      "mode": "free_pair",
+      "screening": 0.25257980014734976,
+      "squared_loss": 1253.7909742505267,
+      "positive_LJ": true,
+      "scalar_optimizer_success": true,
+      "profiles": 13,
+      "D1": 4.626682513439085,
+      "retrospective_rms": 5.4134120733139435,
+      "new_rms": 5.856363807449197,
+      "perfect_Haa": 27.570197214154668,
+      "perfect_Haa_source": 19.66091286328976,
+      "perfect_Hxx": 4.45669314488474,
+      "perfect_Hxx_source": 4.393593035123306
+    }
+  ],
+  "entire_family_impossibility_proved": false,
+  "material_accepted": false,
+  "elapsed_seconds": 24.49634569999762
+}

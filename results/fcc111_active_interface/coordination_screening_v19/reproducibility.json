@@ -1,0 +1,16 @@
+{
+  "completed": true,
+  "study": "fixed-shape power law, independent actual optimizer rerun",
+  "summary_and_residual_csv_bytes_identical": true,
+  "all_profile_dictionaries_identical": true,
+  "best_profile_dictionaries_identical": true,
+  "profile_counts": {"fixed_pair_control": 14, "free_pair": 13},
+  "sha256": {
+    "power_followup/summary.csv": "9c0ebcb918a051df1b5dc4567ed77c9069976b55c8df4ca343317a5ae60e12b2",
+    "power_followup/fixed_pair_control/residuals.csv": "3304c7f6df8590becb82b8efc040d24dc44f8babe365d9cc70be9d2f2b51655e",
+    "power_followup/free_pair/residuals.csv": "5e7899c47450bf0653600ce1a144d64cdce7664ac49495aff3f7076ce155535a"
+  },
+  "scope": "same Python/NumPy/SciPy environment, not a claim of cross-platform byte identity",
+  "joint_optimizer_rerun_claimed": false,
+  "material_accepted": false
+}
