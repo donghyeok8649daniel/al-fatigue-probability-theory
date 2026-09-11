@@ -1,0 +1,207 @@
+{
+  "completed": true,
+  "records": [
+    {
+      "nw": 2.0,
+      "lower_cycle_THz": 0.005,
+      "upper_cycle_THz": 0.01,
+      "undamped_fitted_modes_worst_phase_integral_proxy": [
+        9.040079617832824e-45,
+        1.716886048480856e-43,
+        1.5068129664399434e-43
+      ],
+      "measured_integral_proxy": [
+        3.953072472209843e-40,
+        2.488956040927646e-39,
+        2.8201200818276153e-39
+      ],
+      "leakage_to_measured_ratio": [
+        2.286848946328385e-05,
+        6.89801675983383e-05,
+        5.343080871447977e-05
+      ]
+    },
+    {
+      "nw": 2.0,
+      "lower_cycle_THz": 0.01,
+      "upper_cycle_THz": 0.02,
+      "undamped_fitted_modes_worst_phase_integral_proxy": [
+        9.040460946677231e-45,
+        1.7172847503760022e-43,
+        1.5070723658038661e-43
+      ],
+      "measured_integral_proxy": [
+        4.854034712596594e-40,
+        2.597396036602966e-39,
+        3.094906092280841e-39
+      ],
+      "leakage_to_measured_ratio": [
+        1.862463184125268e-05,
+        6.611562989146517e-05,
+        4.869525345414293e-05
+      ]
+    },
+    {
+      "nw": 2.0,
+      "lower_cycle_THz": 0.02,
+      "upper_cycle_THz": 0.04,
+      "undamped_fitted_modes_worst_phase_integral_proxy": [
+        9.042020823261819e-45,
+        1.718917222412143e-43,
+        1.5081343844749042e-43
+      ],
+      "measured_integral_proxy": [
+        4.339831171231418e-40,
+        3.805913843057547e-39,
+        3.664392300250267e-39
+      ],
+      "leakage_to_measured_ratio": [
+        2.0834959855583885e-05,
+        4.51643755821656e-05,
+        4.115646636338318e-05
+      ]
+    },
+    {
+      "nw": 2.0,
+      "lower_cycle_THz": 0.04,
+      "upper_cycle_THz": 0.08,
+      "undamped_fitted_modes_worst_phase_integral_proxy": [
+        9.048184650315376e-45,
+        1.7253922394258342e-43,
+        1.512345423217749e-43
+      ],
+      "measured_integral_proxy": [
+        4.29637881052513e-40,
+        3.621408766117372e-39,
+        3.5681455960547255e-39
+      ],
+      "leakage_to_measured_ratio": [
+        2.1060025312827225e-05,
+        4.7644227726208394e-05,
+        4.238463320807142e-05
+      ]
+    },
+    {
+      "nw": 2.0,
+      "lower_cycle_THz": 0.08,
+      "upper_cycle_THz": 0.16,
+      "undamped_fitted_modes_worst_phase_integral_proxy": [
+        9.072679909143824e-45,
+        1.7515157457742829e-43,
+        1.52931348370533e-43
+      ],
+      "measured_integral_proxy": [
+        4.1599536944770725e-40,
+        3.157142215739439e-39,
+        3.100401233294911e-39
+      ],
+      "leakage_to_measured_ratio": [
+        2.1809569469941676e-05,
+        5.5477885571399826e-05,
+        4.932630871392321e-05
+      ]
+    },
+    {
+      "nw": 3.0,
+      "lower_cycle_THz": 0.005,
+      "upper_cycle_THz": 0.01,
+      "undamped_fitted_modes_worst_phase_integral_proxy": [
+        5.508454026612923e-47,
+        1.0465824521096414e-45,
+        9.205584058231676e-46
+      ],
+      "measured_integral_proxy": [
+        3.999100775670683e-40,
+        2.3405111814717134e-39,
+        2.882575410277348e-39
+      ],
+      "leakage_to_measured_ratio": [
+        1.3774231597574855e-07,
+        4.471597744948821e-07,
+        3.1935275744775597e-07
+      ]
+    },
+    {
+      "nw": 3.0,
+      "lower_cycle_THz": 0.01,
+      "upper_cycle_THz": 0.02,
+      "undamped_fitted_modes_worst_phase_integral_proxy": [
+        5.508686715176212e-47,
+        1.0468257936259707e-45,
+        9.207182800990358e-46
+      ],
+      "measured_integral_proxy": [
+        5.013755458635749e-40,
+        2.682978910689002e-39,
+        3.0650787455490014e-39
+      ],
+      "leakage_to_measured_ratio": [
+        1.0987146781736209e-07,
+        3.9017294897675536e-07,
+        3.0038976370054775e-07
+      ]
+    },
+    {
+      "nw": 3.0,
+      "lower_cycle_THz": 0.02,
+      "upper_cycle_THz": 0.04,
+      "undamped_fitted_modes_worst_phase_integral_proxy": [
+        5.509638881152397e-47,
+        1.0478222148427772e-45,
+        9.213729203834917e-46
+      ],
+      "measured_integral_proxy": [
+        4.085941417052423e-40,
+        3.9187131260323824e-39,
+        3.538882010352446e-39
+      ],
+      "leakage_to_measured_ratio": [
+        1.3484380510592395e-07,
+        2.6738936511631715e-07,
+        2.603570612662867e-07
+      ]
+    },
+    {
+      "nw": 3.0,
+      "lower_cycle_THz": 0.04,
+      "upper_cycle_THz": 0.08,
+      "undamped_fitted_modes_worst_phase_integral_proxy": [
+        5.513401444703256e-47,
+        1.0517744678204936e-45,
+        9.239688031173062e-46
+      ],
+      "measured_integral_proxy": [
+        4.224495047197304e-40,
+        3.6206437458965616e-39,
+        3.518250770586621e-39
+      ],
+      "leakage_to_measured_ratio": [
+        1.3051030674923063e-07,
+        2.9049377448762166e-07,
+        2.626216444950133e-07
+      ]
+    },
+    {
+      "nw": 3.0,
+      "lower_cycle_THz": 0.08,
+      "upper_cycle_THz": 0.16,
+      "undamped_fitted_modes_worst_phase_integral_proxy": [
+        5.528354192445267e-47,
+        1.0677205495542109e-45,
+        9.344308322597547e-46
+      ],
+      "measured_integral_proxy": [
+        4.0456548442101755e-40,
+        3.112049794285051e-39,
+        3.0463017167004383e-39
+      ],
+      "leakage_to_measured_ratio": [
+        1.3664918054878099e-07,
+        3.4309237323739693e-07,
+        3.067427061269135e-07
+      ]
+    }
+  ],
+  "interpretation": "Taper leakage of undamped controls at fitted modal frequencies; not complete spectral uncertainty.",
+  "production_calibration_available": false
+}

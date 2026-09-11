@@ -1,0 +1,225 @@
+{
+  "completed": true,
+  "formula": "Gamma=kBT integral(C)/C0^2; M=1/Gamma; diagonal scalar PMF approximation",
+  "units": "M:m^2/(J s); Gamma:J s/m^2",
+  "records": [
+    {
+      "cutoff_ps": 3.1500000000000004,
+      "temporal_half": 0,
+      "source_temperature_K": 300,
+      "atoms_per_plane": 576,
+      "scalar_axis_approximation": true,
+      "production_calibrated": false,
+      "axes": {
+        "normal": {
+          "variance_m2": 1.631292669930645e-25,
+          "correlation_integral_m2_s": 1.1171710282054614e-40,
+          "integral_time_s": 6.848378888706453e-16,
+          "friction_J_s_per_m2": 1.7388432447346804e-11,
+          "mobility_m2_per_J_s": 57509496789.205055,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 33125470150582.113
+        },
+        "direct110": {
+          "variance_m2": 8.97875323959053e-25,
+          "correlation_integral_m2_s": 1.2392582077279227e-39,
+          "integral_time_s": 1.3802119009837477e-15,
+          "friction_J_s_per_m2": 6.366991485451092e-12,
+          "mobility_m2_per_J_s": 157060049834.3766,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 90466588704600.9
+        },
+        "transverse": {
+          "variance_m2": 9.48304394666224e-25,
+          "correlation_integral_m2_s": 1.1651755556101832e-39,
+          "integral_time_s": 1.2286936158513655e-15,
+          "friction_J_s_per_m2": 5.3666142060703646e-12,
+          "mobility_m2_per_J_s": 186337225222.72333,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 107330241728288.64
+        }
+      },
+      "slip_to_normal_mobility_ratio": 2.7310280667219797
+    },
+    {
+      "cutoff_ps": 3.1500000000000004,
+      "temporal_half": 1,
+      "source_temperature_K": 300,
+      "atoms_per_plane": 576,
+      "scalar_axis_approximation": true,
+      "production_calibrated": false,
+      "axes": {
+        "normal": {
+          "variance_m2": 1.8118874176817287e-25,
+          "correlation_integral_m2_s": 1.0680140244117716e-40,
+          "integral_time_s": 5.894483365739538e-16,
+          "friction_J_s_per_m2": 1.3474699065195114e-11,
+          "mobility_m2_per_J_s": 74213160172.38416,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 42746780259293.27
+        },
+        "direct110": {
+          "variance_m2": 7.740674959969101e-25,
+          "correlation_integral_m2_s": 1.234061679299017e-39,
+          "integral_time_s": 1.5942559087947327e-15,
+          "friction_J_s_per_m2": 8.530681772343759e-12,
+          "mobility_m2_per_J_s": 117223924967.16653,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 67520980781087.92
+        },
+        "transverse": {
+          "variance_m2": 7.90593343932706e-25,
+          "correlation_integral_m2_s": 1.2683534260580074e-39,
+          "integral_time_s": 1.6043057227736636e-15,
+          "friction_J_s_per_m2": 8.405015456455468e-12,
+          "mobility_m2_per_J_s": 118976580730.96707,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 68530510501037.03
+        }
+      },
+      "slip_to_normal_mobility_ratio": 1.579557112173581
+    },
+    {
+      "cutoff_ps": 6.3500000000000005,
+      "temporal_half": 0,
+      "source_temperature_K": 300,
+      "atoms_per_plane": 576,
+      "scalar_axis_approximation": true,
+      "production_calibrated": false,
+      "axes": {
+        "normal": {
+          "variance_m2": 1.631292669930645e-25,
+          "correlation_integral_m2_s": 1.1215941355490026e-40,
+          "integral_time_s": 6.875493013750179e-16,
+          "friction_J_s_per_m2": 1.745727678837315e-11,
+          "mobility_m2_per_J_s": 57282702916.52919,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 32994836879920.812
+        },
+        "direct110": {
+          "variance_m2": 8.97875323959053e-25,
+          "correlation_integral_m2_s": 1.1602285941870876e-39,
+          "integral_time_s": 1.2921934295635006e-15,
+          "friction_J_s_per_m2": 5.960957558562258e-12,
+          "mobility_m2_per_J_s": 167758282151.09674,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 96628770519031.72
+        },
+        "transverse": {
+          "variance_m2": 9.48304394666224e-25,
+          "correlation_integral_m2_s": 1.0911308959013056e-39,
+          "integral_time_s": 1.1506125058983328e-15,
+          "friction_J_s_per_m2": 5.0255762219107905e-12,
+          "mobility_m2_per_J_s": 198982157636.00275,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 114613722798337.58
+        }
+      },
+      "slip_to_normal_mobility_ratio": 2.9286027650536948
+    },
+    {
+      "cutoff_ps": 6.3500000000000005,
+      "temporal_half": 1,
+      "source_temperature_K": 300,
+      "atoms_per_plane": 576,
+      "scalar_axis_approximation": true,
+      "production_calibrated": false,
+      "axes": {
+        "normal": {
+          "variance_m2": 1.8118874176817287e-25,
+          "correlation_integral_m2_s": 1.037111729666035e-40,
+          "integral_time_s": 5.723930303533965e-16,
+          "friction_J_s_per_m2": 1.3084817366448602e-11,
+          "mobility_m2_per_J_s": 76424452248.30934,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 44020484495026.18
+        },
+        "direct110": {
+          "variance_m2": 7.740674959969101e-25,
+          "correlation_integral_m2_s": 1.2147880589445073e-39,
+          "integral_time_s": 1.5693567618157118e-15,
+          "friction_J_s_per_m2": 8.397449273025992e-12,
+          "mobility_m2_per_J_s": 119083779786.81775,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 68592257157207.02
+        },
+        "transverse": {
+          "variance_m2": 7.90593343932706e-25,
+          "correlation_integral_m2_s": 1.2164381164643832e-39,
+          "integral_time_s": 1.5386394608552692e-15,
+          "friction_J_s_per_m2": 8.060987545467568e-12,
+          "mobility_m2_per_J_s": 124054279250.4707,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 71455264848271.12
+        }
+      },
+      "slip_to_normal_mobility_ratio": 1.5581895098168939
+    },
+    {
+      "cutoff_ps": 12.75,
+      "temporal_half": 0,
+      "source_temperature_K": 300,
+      "atoms_per_plane": 576,
+      "scalar_axis_approximation": true,
+      "production_calibrated": false,
+      "axes": {
+        "normal": {
+          "variance_m2": 1.631292669930645e-25,
+          "correlation_integral_m2_s": 1.1204958352663963e-40,
+          "integral_time_s": 6.868760314567187e-16,
+          "friction_J_s_per_m2": 1.744018207342903e-11,
+          "mobility_m2_per_J_s": 57338850924.24286,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 33027178132363.887
+        },
+        "direct110": {
+          "variance_m2": 8.97875323959053e-25,
+          "correlation_integral_m2_s": 1.2098339072392382e-39,
+          "integral_time_s": 1.3474408695236756e-15,
+          "friction_J_s_per_m2": 6.215816960635728e-12,
+          "mobility_m2_per_J_s": 160879898223.02042,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 92666821376459.77
+        },
+        "transverse": {
+          "variance_m2": 9.48304394666224e-25,
+          "correlation_integral_m2_s": 1.0142189923096919e-39,
+          "integral_time_s": 1.0695078479169843e-15,
+          "friction_J_s_per_m2": 4.6713321662032235e-12,
+          "mobility_m2_per_J_s": 214071696128.76886,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 123305296970170.86
+        }
+      },
+      "slip_to_normal_mobility_ratio": 2.805774716964208
+    },
+    {
+      "cutoff_ps": 12.75,
+      "temporal_half": 1,
+      "source_temperature_K": 300,
+      "atoms_per_plane": 576,
+      "scalar_axis_approximation": true,
+      "production_calibrated": false,
+      "axes": {
+        "normal": {
+          "variance_m2": 1.8118874176817287e-25,
+          "correlation_integral_m2_s": 9.742253599205353e-41,
+          "integral_time_s": 5.376853718466878e-16,
+          "friction_J_s_per_m2": 1.2291405586963865e-11,
+          "mobility_m2_per_J_s": 81357660271.2215,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 46862012316223.58
+        },
+        "direct110": {
+          "variance_m2": 7.740674959969101e-25,
+          "correlation_integral_m2_s": 1.170987791760295e-39,
+          "integral_time_s": 1.5127722037368293e-15,
+          "friction_J_s_per_m2": 8.094671748077329e-12,
+          "mobility_m2_per_J_s": 123538054552.67819,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 71157919422342.64
+        },
+        "transverse": {
+          "variance_m2": 7.90593343932706e-25,
+          "correlation_integral_m2_s": 1.216930918552606e-39,
+          "integral_time_s": 1.5392627928020972e-15,
+          "friction_J_s_per_m2": 8.064253203984657e-12,
+          "mobility_m2_per_J_s": 124004042867.34033,
+          "intensive_cell_mobility_hypothesis_m2_per_J_s": 71426328691588.03
+        }
+      },
+      "slip_to_normal_mobility_ratio": 1.5184563339314354
+    }
+  ],
+  "normalization": "q_l is a difference of 576-atom periodic plane averages",
+  "conditional_on_fitted_DHO_zero_frequency_extrapolation": true,
+  "local_cell_transfer_unvalidated": true,
+  "energy_normalization_identity": "F_bar=F_plane/Np and thermal_energy_bar=kBT/Np imply M_bar=Np*M_plane for the same stochastic q; local-cell transfer at unchanged kBT is unvalidated",
+  "source": "10.5281/zenodo.10014454, actual 8192 frames",
+  "production_M_a_phys": null,
+  "production_M_s_phys": null,
+  "production_t0_seconds": null
+}

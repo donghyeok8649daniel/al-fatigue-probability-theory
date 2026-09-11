@@ -1,0 +1,117 @@
+{
+  "title": "Phonon Lifetimes throughout the Brillouin Zone at Elevated Temperatures from Experiment and Ab Initio",
+  "authors": "Glensk, Grabowski, Hickel, Neugebauer, Neuhaus, Hradil, Petry, Leitner",
+  "year": 2019,
+  "doi": "10.1103/PhysRevLett.123.235501",
+  "source_url": "https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevLett.123.235501/fulltext",
+  "pdf_sha256": "07014983720a37e0ee4b908f36510fd988ab049ebdbb41c55de5a5e5021531cf",
+  "page": 3,
+  "figure": "2(b), bottom-right",
+  "method": "inelastic neutron scattering; digitized publisher vector-marker centers",
+  "wavevector_cubic_reciprocal_units": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "polarization": "transverse",
+  "linewidth_convention": "Eq2 cycle-frequency Gamma; g=pi Gamma; envelope tau=1/g",
+  "axis_calibration_pdf_points": {
+    "x0": 486.95599365234375,
+    "x300": 508.0570068359375,
+    "x900": 550.2630004882812,
+    "y0": 623.9819946289062,
+    "y1": 567.675048828125
+  },
+  "records": [
+    {
+      "temperature_K_from_figure": 295.06704960065247,
+      "linewidth_THz_from_figure": 0.2716190098348785,
+      "damping_g_per_ps": 0.8533162858725881,
+      "envelope_time_ps": 1.1718984115923856,
+      "source_marker_rect_pdf_points": [
+        505.5260009765625,
+        606.5039672851562,
+        509.8940124511719,
+        610.8719482421875
+      ],
+      "plotting_resolution_linewidth_THz": 0.008879899147239178,
+      "plotting_resolution_temperature_K": 7.1079951930794225,
+      "experimental_uncertainty_not_reported_by_this_extraction": true
+    },
+    {
+      "temperature_K_from_figure": 700.2373091656868,
+      "linewidth_THz_from_figure": 0.5899452919299364,
+      "damping_g_per_ps": 1.853367795146974,
+      "envelope_time_ps": 0.5395583125046688,
+      "source_marker_rect_pdf_points": [
+        534.0270385742188,
+        588.5789794921875,
+        538.39501953125,
+        592.948974609375
+      ],
+      "plotting_resolution_linewidth_THz": 0.008879899147239178,
+      "plotting_resolution_temperature_K": 7.1079951930794225,
+      "experimental_uncertainty_not_reported_by_this_extraction": true
+    },
+    {
+      "temperature_K_from_figure": 799.7778751502162,
+      "linewidth_THz_from_figure": 0.7539665247747235,
+      "damping_g_per_ps": 2.368655695284898,
+      "envelope_time_ps": 0.4221803962435839,
+      "source_marker_rect_pdf_points": [
+        541.029052734375,
+        579.3439331054688,
+        545.3970336914062,
+        583.7129516601562
+      ],
+      "plotting_resolution_linewidth_THz": 0.008879899147239178,
+      "plotting_resolution_temperature_K": 7.1079951930794225,
+      "experimental_uncertainty_not_reported_by_this_extraction": true
+    },
+    {
+      "temperature_K_from_figure": 900.0147504783059,
+      "linewidth_THz_from_figure": 0.9656099023015979,
+      "damping_g_per_ps": 3.033552975304258,
+      "envelope_time_ps": 0.32964646015443405,
+      "source_marker_rect_pdf_points": [
+        548.0790405273438,
+        567.4269409179688,
+        552.4490356445312,
+        571.7959594726562
+      ],
+      "plotting_resolution_linewidth_THz": 0.008879899147239178,
+      "plotting_resolution_temperature_K": 7.1079951930794225,
+      "experimental_uncertainty_not_reported_by_this_extraction": true
+    }
+  ],
+  "dft_comparison_records": [
+    {
+      "temperature_K_from_figure": 299.9997830812014,
+      "linewidth_THz_from_figure": 0.18606922462394299,
+      "source_marker_rect_pdf_points": [
+        505.22698974609375,
+        610.6749877929688,
+        510.8869934082031,
+        616.3350219726562
+      ],
+      "method": "DFT MD GGA, not experiment",
+      "individual_supercell_assignment_not_resolved": true
+    },
+    {
+      "temperature_K_from_figure": 899.9718005561798,
+      "linewidth_THz_from_figure": 0.8165778351560323,
+      "source_marker_rect_pdf_points": [
+        547.4310302734375,
+        575.1729736328125,
+        553.0910034179688,
+        580.8330078125
+      ],
+      "method": "DFT MD GGA, not experiment",
+      "individual_supercell_assignment_not_resolved": true
+    }
+  ],
+  "fit_target": false,
+  "external_validation_only": true,
+  "source_material_is_experimental_Al_not_Al99": true,
+  "production_coordinate_mobility": null
+}

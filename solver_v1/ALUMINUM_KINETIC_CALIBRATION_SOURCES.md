@@ -114,3 +114,53 @@ absorbed probability. No lifetime is in the calibration loss.
 The source1024-frame NVT record was not extended: a new1MiB ranged request
 timed out before headers after20seconds. No extra trajectory data were
 obtained or substituted. The kinetic JSON remains unchanged and uncalibrated.
+
+## v25: actual modal damping and experimental linewidth
+
+The v18 record-length statement above is historical: v24 obtained8192frames
+(204.775ps), with projection hash and prefix limitations documented there.
+v25 performs temporal-holdout damped-position-correlation fits, dimensional
+modal/plane-gap mobility estimates, and independently generated Al99 reference
+MD controls. See `MODAL_KINETIC_CALIBRATION_V25.md`; do not copy a resonance
+lifetime or an unvalidated per-cell extensivity factor into production.
+
+Additional source audit: X.Tang, C.W.Li and B.Fultz (2010), *Anharmonicity-induced
+phonon broadening in aluminum at high temperatures*, Physical Review B82,184301,
+[Caltech author repository](https://authors.library.caltech.edu/records/jw4dk-s0a88),
+DOI10.1103/PhysRevB.82.184301. The complete5-page PDF was read and Fig2 inspected;
+MD5abfe242aaeed0b72b086462c7dbef962 matches the repository. Fig2's mode-resolved
+experimental markers are REPRODUCED Stedman/Nilsson1966 measurements, not new
+independent Tang measurements. Its discussion flags instrumental resolution
+when linewidths become small. Do not fit the apparent nonzero q→0 experimental
+width as a finite intrinsic damping intercept. No additional numerical target
+was extracted from this plot in v25. The newer Glensk2019 source separately
+treats experimental resolution and multiphonon background; its plotted reading
+sensitivity still does not supply missing experimental confidence intervals.
+
+Primary experimental source: A.Glensk, B.Grabowski, T.Hickel, J.Neugebauer,
+J.Neuhaus, K.Hradil, W.Petry and M.Leitner (2019), *Phonon Lifetimes throughout
+the Brillouin Zone at Elevated Temperatures from Experiment and Ab Initio*,
+Physical Review Letters123,235501,
+[DOI10.1103/PhysRevLett.123.235501](https://doi.org/10.1103/PhysRevLett.123.235501).
+Publisher open-access PDF obtained from its official harvest endpoint;
+SHA25607014983720a37e0ee4b908f36510fd988ab049ebdbb41c55de5a5e5021531cf.
+Fig2b transverse L-point marker near295K gives cycle-frequency linewidth
+Gamma≈.271619THz. Plot reading sensitivity .008880THz is not experimental
+uncertainty. All four temperature markers, PDF coordinates and conversion
+g=pi Gamma are in `results/modal_kinetic_calibration_v25/experimental_linewidth`.
+This is finite-wavevector resonant damping, not zero-frequency a/s friction.
+
+Reference simulation/method: E.Fransson, M.Slabanja, P.Erhart and G.Wahnström
+(2021), *dynasor—A Tool for Extracting Dynamical Structure Factors and Current
+Correlation Functions from Molecular Dynamics Simulations*, Advanced Theory
+and Simulations4,2000240,
+[DOI10.1002/adts.202000240](https://doi.org/10.1002/adts.202000240).
+Its Al99 example uses fixed4.05Å and NVE sampling; the public2023 trajectory
+uses4.065Å and NVT. These conditions are explicitly distinguished, not pooled
+as equivalent experimental Al data. Dynasor angular linewidth2g, PRL cycle
+linewidthg/pi and energy linewidth2 hbar g must not be confused.
+
+Independent MD in v25 is generated from the same hash-bound Al99 potential,
+not downloaded experimental data or an alteration of the analytic LJ/Bessel
+model. Its NVE/NVT, dt, finite-size and lattice controls must be reported as
+actual completed reference calculations before making a validation claim.

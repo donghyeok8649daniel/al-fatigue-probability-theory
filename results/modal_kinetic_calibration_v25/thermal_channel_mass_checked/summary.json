@@ -1,0 +1,771 @@
+{
+  "completed": true,
+  "records": [
+    {
+      "axis": "normal",
+      "training_half": 0,
+      "lower_cycle_THz": 0.02,
+      "upper_cycle_THz": 0.04,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          0.10197921396848973,
+          0.07641340726071985
+        ],
+        "weight_imag": [
+          -0.012880780184686963,
+          -0.04010985396405204
+        ],
+        "training_fraction_explained": 0.4482885434947895,
+        "heldout_fraction_explained": 0.3886004522818878,
+        "heldout_residual_spectrum": 2.257775771694061e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "normal",
+      "training_half": 1,
+      "lower_cycle_THz": 0.02,
+      "upper_cycle_THz": 0.04,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          0.08536405977679089,
+          0.07559653771782361
+        ],
+        "weight_imag": [
+          -0.04065530257197189,
+          -0.014177299513948742
+        ],
+        "training_fraction_explained": 0.44619863613432276,
+        "heldout_fraction_explained": 0.40596011554052314,
+        "heldout_residual_spectrum": 2.8924099329177886e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "direct110",
+      "training_half": 0,
+      "lower_cycle_THz": 0.02,
+      "upper_cycle_THz": 0.04,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          0.007347281753325034,
+          -0.009165008303533308
+        ],
+        "weight_imag": [
+          0.04579577027011465,
+          -0.007199373169703501
+        ],
+        "training_fraction_explained": 0.04805338034004236,
+        "heldout_fraction_explained": 0.03923530993367086,
+        "heldout_residual_spectrum": 1.116554825661514e-14,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "direct110",
+      "training_half": 1,
+      "lower_cycle_THz": 0.02,
+      "upper_cycle_THz": 0.04,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          -0.061880706572659795,
+          0.013563359442592099
+        ],
+        "weight_imag": [
+          0.07541726067172812,
+          -0.02093118994244082
+        ],
+        "training_fraction_explained": 0.10816734910721149,
+        "heldout_fraction_explained": -0.08011054674287665,
+        "heldout_residual_spectrum": 7.372048911043525e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "transverse",
+      "training_half": 0,
+      "lower_cycle_THz": 0.02,
+      "upper_cycle_THz": 0.04,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          0.026051069526995443,
+          0.008201589379202637
+        ],
+        "weight_imag": [
+          0.017097992184824523,
+          0.04217259571509931
+        ],
+        "training_fraction_explained": 0.06148947925404258,
+        "heldout_fraction_explained": -0.12198392966762839,
+        "heldout_residual_spectrum": 7.690263859574838e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "transverse",
+      "training_half": 1,
+      "lower_cycle_THz": 0.02,
+      "upper_cycle_THz": 0.04,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          -0.02909547388950918,
+          -0.006679242048222949
+        ],
+        "weight_imag": [
+          -0.036578019418469956,
+          -0.01942012516391228
+        ],
+        "training_fraction_explained": 0.043131009053312575,
+        "heldout_fraction_explained": -0.1483351559001007,
+        "heldout_residual_spectrum": 7.975335036110318e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "normal",
+      "training_half": 0,
+      "lower_cycle_THz": 0.04,
+      "upper_cycle_THz": 0.08,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          0.06688069712337937,
+          0.061963678234987045
+        ],
+        "weight_imag": [
+          0.002262792878645861,
+          -0.006685350617097011
+        ],
+        "training_fraction_explained": 0.2261313017499217,
+        "heldout_fraction_explained": 0.3045954683147296,
+        "heldout_residual_spectrum": 2.8353328018420748e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "normal",
+      "training_half": 1,
+      "lower_cycle_THz": 0.04,
+      "upper_cycle_THz": 0.08,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          0.07634250454269159,
+          0.06803293124514208
+        ],
+        "weight_imag": [
+          -0.011504839867033144,
+          0.022791188598075416
+        ],
+        "training_fraction_explained": 0.3411489079753499,
+        "heldout_fraction_explained": 0.19460765701471683,
+        "heldout_residual_spectrum": 3.19562831148715e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "direct110",
+      "training_half": 0,
+      "lower_cycle_THz": 0.04,
+      "upper_cycle_THz": 0.08,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          0.007035093916432757,
+          -0.0028282429387508257
+        ],
+        "weight_imag": [
+          -0.007584489406658497,
+          -0.03009738615038028
+        ],
+        "training_fraction_explained": 0.025033316318162302,
+        "heldout_fraction_explained": -0.029457382250589914,
+        "heldout_residual_spectrum": 7.419733311693481e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "direct110",
+      "training_half": 1,
+      "lower_cycle_THz": 0.04,
+      "upper_cycle_THz": 0.08,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          -0.01122815130797128,
+          0.0004417874255373519
+        ],
+        "weight_imag": [
+          0.026215467705664273,
+          0.003652838970108062
+        ],
+        "training_fraction_explained": 0.013944468650580077,
+        "heldout_fraction_explained": -0.038621279856118296,
+        "heldout_residual_spectrum": 4.96045302985755e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "transverse",
+      "training_half": 0,
+      "lower_cycle_THz": 0.04,
+      "upper_cycle_THz": 0.08,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          -0.013910594568742001,
+          0.013102442324495466
+        ],
+        "weight_imag": [
+          -0.005779624052343322,
+          0.014233494930151113
+        ],
+        "training_fraction_explained": 0.01256194652092002,
+        "heldout_fraction_explained": 0.02426583596834253,
+        "heldout_residual_spectrum": 7.838631679811798e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "transverse",
+      "training_half": 1,
+      "lower_cycle_THz": 0.04,
+      "upper_cycle_THz": 0.08,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          -0.028121222653594305,
+          0.02444291335925555
+        ],
+        "weight_imag": [
+          -0.05116477714009502,
+          0.004935726589649046
+        ],
+        "training_fraction_explained": 0.06294454110294201,
+        "heldout_fraction_explained": -0.029158125273531343,
+        "heldout_residual_spectrum": 6.189362647277564e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "normal",
+      "training_half": 0,
+      "lower_cycle_THz": 0.08,
+      "upper_cycle_THz": 0.16,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          0.07148205729944974,
+          0.07227457967055928
+        ],
+        "weight_imag": [
+          -0.01548859475130113,
+          -0.01215034826627466
+        ],
+        "training_fraction_explained": 0.320205009514265,
+        "heldout_fraction_explained": 0.3377703275977392,
+        "heldout_residual_spectrum": 2.6819802065167525e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "normal",
+      "training_half": 1,
+      "lower_cycle_THz": 0.08,
+      "upper_cycle_THz": 0.16,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          0.07735258473723285,
+          0.08320590465048855
+        ],
+        "weight_imag": [
+          0.008971237739038664,
+          -0.01849457292881174
+        ],
+        "training_fraction_explained": 0.35797366898815874,
+        "heldout_fraction_explained": 0.2961794605453998,
+        "heldout_residual_spectrum": 2.4256143083195973e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "direct110",
+      "training_half": 0,
+      "lower_cycle_THz": 0.08,
+      "upper_cycle_THz": 0.16,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          0.02453047899363422,
+          -0.019248028406131386
+        ],
+        "weight_imag": [
+          -0.007190085771453251,
+          0.010339043272617053
+        ],
+        "training_fraction_explained": 0.02138159595329625,
+        "heldout_fraction_explained": -0.02602364974810567,
+        "heldout_residual_spectrum": 6.544349781433443e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "direct110",
+      "training_half": 1,
+      "lower_cycle_THz": 0.08,
+      "upper_cycle_THz": 0.16,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          -0.006638357511798464,
+          0.0029541718560993956
+        ],
+        "weight_imag": [
+          -0.015050047242156365,
+          0.0006295045465440184
+        ],
+        "training_fraction_explained": 0.005183869891946302,
+        "heldout_fraction_explained": -0.009620488659187965,
+        "heldout_residual_spectrum": 6.137966281970755e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "transverse",
+      "training_half": 0,
+      "lower_cycle_THz": 0.08,
+      "upper_cycle_THz": 0.16,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          0.008240149520333513,
+          -0.00090708452252856
+        ],
+        "weight_imag": [
+          -0.006684322954493132,
+          0.03949459469523858
+        ],
+        "training_fraction_explained": 0.031553369424940025,
+        "heldout_fraction_explained": 0.007254586076188785,
+        "heldout_residual_spectrum": 6.5647654351127326e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "transverse",
+      "training_half": 1,
+      "lower_cycle_THz": 0.08,
+      "upper_cycle_THz": 0.16,
+      "time_shift_negative_control": false,
+      "prediction": {
+        "weight_real": [
+          0.0051591097609904645,
+          -0.0015264721890593173
+        ],
+        "weight_imag": [
+          0.022793105769541883,
+          0.028972490069305423
+        ],
+        "training_fraction_explained": 0.02459009560772052,
+        "heldout_fraction_explained": 0.012918837108889858,
+        "heldout_residual_spectrum": 5.889752474705922e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "normal",
+      "training_half": 0,
+      "lower_cycle_THz": 0.02,
+      "upper_cycle_THz": 0.04,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          0.014807672513981684,
+          -0.0061174977519664175
+        ],
+        "weight_imag": [
+          -0.013588711726069356,
+          -0.0066783716200135455
+        ],
+        "training_fraction_explained": 0.010297577624717391,
+        "heldout_fraction_explained": -0.00964257746753927,
+        "heldout_residual_spectrum": 3.72840732052348e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "normal",
+      "training_half": 1,
+      "lower_cycle_THz": 0.02,
+      "upper_cycle_THz": 0.04,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          -0.0048717325565162395,
+          0.0029881067536278233
+        ],
+        "weight_imag": [
+          -0.005195215948210636,
+          -0.017332041321100312
+        ],
+        "training_fraction_explained": 0.008808059364252774,
+        "heldout_fraction_explained": -0.01170296629882328,
+        "heldout_residual_spectrum": 4.926032385094381e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "direct110",
+      "training_half": 0,
+      "lower_cycle_THz": 0.02,
+      "upper_cycle_THz": 0.04,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          -0.027455949336254604,
+          0.054270210642367166
+        ],
+        "weight_imag": [
+          0.015614375728895794,
+          -0.014667403839273587
+        ],
+        "training_fraction_explained": 0.07538807527772395,
+        "heldout_fraction_explained": 0.015510060366120015,
+        "heldout_residual_spectrum": 1.144127177319071e-14,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "direct110",
+      "training_half": 1,
+      "lower_cycle_THz": 0.02,
+      "upper_cycle_THz": 0.04,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          -0.0518581759600099,
+          0.045758956964582084
+        ],
+        "weight_imag": [
+          -0.05371016129637938,
+          -0.005273918369540923
+        ],
+        "training_fraction_explained": 0.06527716745912426,
+        "heldout_fraction_explained": -0.030316127494678602,
+        "heldout_residual_spectrum": 7.032188426112895e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "transverse",
+      "training_half": 0,
+      "lower_cycle_THz": 0.02,
+      "upper_cycle_THz": 0.04,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          -0.02797158595887294,
+          0.08117786581274672
+        ],
+        "weight_imag": [
+          0.03917638011390514,
+          -0.009820891077752901
+        ],
+        "training_fraction_explained": 0.1296087552296884,
+        "heldout_fraction_explained": -0.18242576801381993,
+        "heldout_residual_spectrum": 8.10454223981659e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "transverse",
+      "training_half": 1,
+      "lower_cycle_THz": 0.02,
+      "upper_cycle_THz": 0.04,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          0.014850545454763688,
+          -0.0014867630673924628
+        ],
+        "weight_imag": [
+          -0.007965954897837756,
+          0.018002074822863905
+        ],
+        "training_fraction_explained": 0.008671680828913009,
+        "heldout_fraction_explained": -0.051089823061212236,
+        "heldout_residual_spectrum": 7.299953718989285e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "normal",
+      "training_half": 0,
+      "lower_cycle_THz": 0.04,
+      "upper_cycle_THz": 0.08,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          -0.021172618984887745,
+          -0.006302606571112131
+        ],
+        "weight_imag": [
+          -0.03488120372204266,
+          0.024481055293582767
+        ],
+        "training_fraction_explained": 0.05232832268689591,
+        "heldout_fraction_explained": -0.04635577592472884,
+        "heldout_residual_spectrum": 4.266246075052921e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "normal",
+      "training_half": 1,
+      "lower_cycle_THz": 0.04,
+      "upper_cycle_THz": 0.08,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          -0.005373149437740724,
+          -0.0014685601613313953
+        ],
+        "weight_imag": [
+          -0.023503366711165215,
+          -0.021157909264451817
+        ],
+        "training_fraction_explained": 0.032080315556611616,
+        "heldout_fraction_explained": -0.003373159419077787,
+        "heldout_residual_spectrum": 3.981174769232323e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "direct110",
+      "training_half": 0,
+      "lower_cycle_THz": 0.04,
+      "upper_cycle_THz": 0.08,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          -0.0052666754365718205,
+          0.025495974569899656
+        ],
+        "weight_imag": [
+          -0.005531268401277925,
+          0.031406577733855454
+        ],
+        "training_fraction_explained": 0.030162319687923822,
+        "heldout_fraction_explained": -0.03732090226131546,
+        "heldout_residual_spectrum": 7.476409015201668e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "direct110",
+      "training_half": 1,
+      "lower_cycle_THz": 0.04,
+      "upper_cycle_THz": 0.08,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          -0.017005259486777266,
+          0.027696620407016693
+        ],
+        "weight_imag": [
+          0.0019955596352095044,
+          -0.030063881392372316
+        ],
+        "training_fraction_explained": 0.03790518146725941,
+        "heldout_fraction_explained": -0.03812157115367487,
+        "heldout_residual_spectrum": 4.958066422154475e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "transverse",
+      "training_half": 0,
+      "lower_cycle_THz": 0.04,
+      "upper_cycle_THz": 0.08,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          0.02056038668799203,
+          -0.004332924470945124
+        ],
+        "weight_imag": [
+          -0.0021850986262486947,
+          -0.04202099353607857
+        ],
+        "training_fraction_explained": 0.03258033733310539,
+        "heldout_fraction_explained": 0.013084420968996868,
+        "heldout_residual_spectrum": 7.928458393961935e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "transverse",
+      "training_half": 1,
+      "lower_cycle_THz": 0.04,
+      "upper_cycle_THz": 0.08,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          0.004707811638530152,
+          -0.0004027775786801856
+        ],
+        "weight_imag": [
+          0.007241915576478135,
+          -0.03352134545235038
+        ],
+        "training_fraction_explained": 0.01970887273728006,
+        "heldout_fraction_explained": 0.026295359480401514,
+        "heldout_residual_spectrum": 5.855865083814082e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "normal",
+      "training_half": 0,
+      "lower_cycle_THz": 0.08,
+      "upper_cycle_THz": 0.16,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          0.002515527709587169,
+          -0.024897082966139197
+        ],
+        "weight_imag": [
+          -0.0050339326291068435,
+          -0.016692987198138585
+        ],
+        "training_fraction_explained": 0.025451518658573535,
+        "heldout_fraction_explained": -0.06583615461210646,
+        "heldout_residual_spectrum": 4.316556006453328e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "normal",
+      "training_half": 1,
+      "lower_cycle_THz": 0.08,
+      "upper_cycle_THz": 0.16,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          -0.002830315468405909,
+          0.018601275350443713
+        ],
+        "weight_imag": [
+          0.00684365910102319,
+          0.008853847733773712
+        ],
+        "training_fraction_explained": 0.014142623233941776,
+        "heldout_fraction_explained": -0.04887216784556525,
+        "heldout_residual_spectrum": 3.614784160598524e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "direct110",
+      "training_half": 0,
+      "lower_cycle_THz": 0.08,
+      "upper_cycle_THz": 0.16,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          -0.00876462218146104,
+          0.012301463917808047
+        ],
+        "weight_imag": [
+          0.007512509886607603,
+          0.012888389864194461
+        ],
+        "training_fraction_explained": 0.007089812253506578,
+        "heldout_fraction_explained": -0.016366359268630948,
+        "heldout_residual_spectrum": 6.482752091307971e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "direct110",
+      "training_half": 1,
+      "lower_cycle_THz": 0.08,
+      "upper_cycle_THz": 0.16,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          0.004732186080590503,
+          0.008100409331362935
+        ],
+        "weight_imag": [
+          -0.020178156904790936,
+          -0.010796885239849582
+        ],
+        "training_fraction_explained": 0.010831706693210097,
+        "heldout_fraction_explained": -0.015100447990963772,
+        "heldout_residual_spectrum": 6.1712815781467276e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "transverse",
+      "training_half": 0,
+      "lower_cycle_THz": 0.08,
+      "upper_cycle_THz": 0.16,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          -0.005704672164775445,
+          0.01307916884050271
+        ],
+        "weight_imag": [
+          0.0013116688172839835,
+          -0.0018033302187989728
+        ],
+        "training_fraction_explained": 0.0035160911334274347,
+        "heldout_fraction_explained": -0.006600469522206609,
+        "heldout_residual_spectrum": 6.6563852893253166e-15,
+        "causal_identification": false
+      }
+    },
+    {
+      "axis": "transverse",
+      "training_half": 1,
+      "lower_cycle_THz": 0.08,
+      "upper_cycle_THz": 0.16,
+      "time_shift_negative_control": true,
+      "prediction": {
+        "weight_real": [
+          -0.00569054028785742,
+          -0.005458061543530392
+        ],
+        "weight_imag": [
+          0.0009317343563280449,
+          0.020373052022300168
+        ],
+        "training_fraction_explained": 0.00853752600285429,
+        "heldout_fraction_explained": -0.009720021764726638,
+        "heldout_residual_spectrum": 6.024834857075435e-15,
+        "causal_identification": false
+      }
+    }
+  ],
+  "source_projection_sha256": "23032b69d6925c6fb388c953cf4f323d94e4928c161a3b688fedbe25c49cf33f",
+  "max_kinetic_energy_relative_normalization_error": 6.297410259925584e-08,
+  "original_kinetic_energy_relative_error": 7.406052030622945e-05,
+  "recorded_postprocess_mass_amu": 26.98,
+  "engine_mass_amu": 26.982,
+  "kinetic_energy_postprocess_correction_factor": 1.0000741289844328,
+  "energy_channels": "internal kinetic energy per atom in the two adjacent planes",
+  "scaled_spectrum_units": "seconds, dimensionless coordinates scaled by first-half standard deviation",
+  "thermal_causality_established": false,
+  "production_calibration_available": false
+}

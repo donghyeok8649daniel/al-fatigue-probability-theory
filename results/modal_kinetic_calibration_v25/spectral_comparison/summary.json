@@ -1,0 +1,172 @@
+{
+  "completed": true,
+  "comparisons": [
+    {
+      "study": "nve_1000ps_dt5",
+      "axis": "normal",
+      "spectral_full_min": 17148611317.724882,
+      "spectral_full_max": 18297232996.732147,
+      "dho_min": 70588378428.47237,
+      "dho_max": 72651821729.30263,
+      "spectral_to_dho_min": 0.23603828382473085,
+      "spectral_to_dho_max": 0.25921027517685286,
+      "ranges_overlap": false
+    },
+    {
+      "study": "nve_1000ps_dt5",
+      "axis": "direct110",
+      "spectral_full_min": 44193974691.62197,
+      "spectral_full_max": 55313098317.83531,
+      "dho_min": 130490194251.45154,
+      "dho_max": 152262321852.52634,
+      "spectral_to_dho_min": 0.29024892142670755,
+      "spectral_to_dho_max": 0.4238870103239196,
+      "ranges_overlap": false
+    },
+    {
+      "study": "nve_1000ps_dt5",
+      "axis": "transverse",
+      "spectral_full_min": 46386494641.75186,
+      "spectral_full_max": 54896168914.893,
+      "dho_min": 131616525984.38245,
+      "dho_max": 142314188500.30984,
+      "spectral_to_dho_min": 0.3259442725322561,
+      "spectral_to_dho_max": 0.4170917633960871,
+      "ranges_overlap": false
+    },
+    {
+      "study": "nvt_1000ps_dt5",
+      "axis": "normal",
+      "spectral_full_min": 14444299393.426231,
+      "spectral_full_max": 16927078449.231508,
+      "dho_min": 70213865662.20554,
+      "dho_max": 72442113043.91554,
+      "spectral_to_dho_min": 0.1993909176098973,
+      "spectral_to_dho_max": 0.2410788565703904,
+      "ranges_overlap": false
+    },
+    {
+      "study": "nvt_1000ps_dt5",
+      "axis": "direct110",
+      "spectral_full_min": 47928171095.09877,
+      "spectral_full_max": 53187022227.20401,
+      "dho_min": 131585446150.45186,
+      "dho_max": 159378708442.7861,
+      "spectral_to_dho_min": 0.3007187820969453,
+      "spectral_to_dho_max": 0.40420140511885455,
+      "ranges_overlap": false
+    },
+    {
+      "study": "nvt_1000ps_dt5",
+      "axis": "transverse",
+      "spectral_full_min": 51263930474.1508,
+      "spectral_full_max": 63542324450.98006,
+      "dho_min": 132689806061.48933,
+      "dho_max": 144011457621.13757,
+      "spectral_to_dho_min": 0.35597119368803914,
+      "spectral_to_dho_max": 0.4788787197528507,
+      "ranges_overlap": false
+    },
+    {
+      "study": "nve_1000ps_dt2p5",
+      "axis": "normal",
+      "spectral_full_min": 13731419786.907463,
+      "spectral_full_max": 16174471956.042679,
+      "dho_min": 58147127924.41607,
+      "dho_max": 69824299581.2727,
+      "spectral_to_dho_min": 0.19665674943039904,
+      "spectral_to_dho_max": 0.2781645892651388,
+      "ranges_overlap": false
+    },
+    {
+      "study": "nve_1000ps_dt2p5",
+      "axis": "direct110",
+      "spectral_full_min": 48103560323.952065,
+      "spectral_full_max": 61524129706.03899,
+      "dho_min": 138394870154.26242,
+      "dho_max": 155680428930.38678,
+      "spectral_to_dho_min": 0.3089891301973596,
+      "spectral_to_dho_max": 0.44455498702705426,
+      "ranges_overlap": false
+    },
+    {
+      "study": "nve_1000ps_dt2p5",
+      "axis": "transverse",
+      "spectral_full_min": 49541129383.02138,
+      "spectral_full_max": 60215839988.35747,
+      "dho_min": 140108180708.8354,
+      "dho_max": 147082813899.32355,
+      "spectral_to_dho_min": 0.33682473206510516,
+      "spectral_to_dho_max": 0.4297810426465711,
+      "ranges_overlap": false
+    },
+    {
+      "study": "nve_N6_serial_1000ps_dt2p5",
+      "axis": "normal",
+      "spectral_full_min": 68513580817.21562,
+      "spectral_full_max": 79581647798.66005,
+      "dho_min": 235757849801.51498,
+      "dho_max": 259766767778.15863,
+      "spectral_to_dho_min": 0.26375036885290254,
+      "spectral_to_dho_max": 0.3375567255370712,
+      "ranges_overlap": false
+    },
+    {
+      "study": "nve_N6_serial_1000ps_dt2p5",
+      "axis": "direct110",
+      "spectral_full_min": 171227307274.1494,
+      "spectral_full_max": 222391544075.7627,
+      "dho_min": 518905688978.0178,
+      "dho_max": 684456488959.1399,
+      "spectral_to_dho_min": 0.25016536483500446,
+      "spectral_to_dho_max": 0.4285779647429993,
+      "ranges_overlap": false
+    },
+    {
+      "study": "nve_N6_serial_1000ps_dt2p5",
+      "axis": "transverse",
+      "spectral_full_min": 207757731776.5973,
+      "spectral_full_max": 260090322744.27542,
+      "dho_min": 629688057101.1364,
+      "dho_max": 748181505469.5059,
+      "spectral_to_dho_min": 0.27768359717235086,
+      "spectral_to_dho_max": 0.4130463009599393,
+      "ranges_overlap": false
+    },
+    {
+      "study": "nve_N6_lattice4p05_1000ps_dt2p5",
+      "axis": "normal",
+      "spectral_full_min": 72301635288.42274,
+      "spectral_full_max": 83446639105.97038,
+      "dho_min": 209816162755.8401,
+      "dho_max": 243305938284.38574,
+      "spectral_to_dho_min": 0.2971634634084175,
+      "spectral_to_dho_max": 0.39771311232622236,
+      "ranges_overlap": false
+    },
+    {
+      "study": "nve_N6_lattice4p05_1000ps_dt2p5",
+      "axis": "direct110",
+      "spectral_full_min": 167042678212.05045,
+      "spectral_full_max": 224072740620.50266,
+      "dho_min": 543915775432.0477,
+      "dho_max": 610992937544.3834,
+      "spectral_to_dho_min": 0.2733954321688313,
+      "spectral_to_dho_max": 0.4119622021304959,
+      "ranges_overlap": false
+    },
+    {
+      "study": "nve_N6_lattice4p05_1000ps_dt2p5",
+      "axis": "transverse",
+      "spectral_full_min": 196489537777.7998,
+      "spectral_full_max": 274129917285.35568,
+      "dho_min": 573602947072.726,
+      "dho_max": 601470456554.3794,
+      "spectral_to_dho_min": 0.32668194362100816,
+      "spectral_to_dho_max": 0.47790883691293046,
+      "ranges_overlap": false
+    }
+  ],
+  "production_clock_calibrated": false,
+  "ranges_are_sensitivity_not_confidence_intervals": true
+}

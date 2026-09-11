@@ -1,0 +1,1523 @@
+{
+  "completed": true,
+  "records": [
+    {
+      "mode": 1,
+      "coordinate": "normal",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.10390575921467897,
+      "envelope_time_ps": 9.624105608370629,
+      "damped_angular_frequency_rad_ps": 15.220533733209814,
+      "formal_integral_time_ps": 0.0008969941538147161,
+      "conditional_modal_mobility_m2_per_J_s": 50050154909.31706,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.07838416391011607,
+      "second_half_frequency_rad_ps": 15.22674548294875,
+      "training_rmse": 0.007752435246953888,
+      "heldout_rmse": 0.028714305040566337,
+      "heldout_overdamped_rmse": 0.6157439549513176,
+      "block_shape_rms_sensitivity": 0.09410796022368897,
+      "validation_to_training_variance": 1.204903461033075,
+      "singular_values": [
+        171.40052842180404,
+        1.1985557682791426
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 1,
+      "coordinate": "normal",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.09998524779890319,
+      "envelope_time_ps": 10.001475437769228,
+      "damped_angular_frequency_rad_ps": 15.223398283242126,
+      "formal_integral_time_ps": 0.0008628274825161816,
+      "conditional_modal_mobility_m2_per_J_s": 52032065807.93671,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.0681548858083388,
+      "second_half_frequency_rad_ps": 15.23238669113452,
+      "training_rmse": 0.007861261836212864,
+      "heldout_rmse": 0.059540373547051,
+      "heldout_overdamped_rmse": 0.5661715788038513,
+      "block_shape_rms_sensitivity": 0.17100494963573504,
+      "validation_to_training_variance": 1.204903461033075,
+      "singular_values": [
+        399.88176055341665,
+        2.600201962438668
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 1,
+      "coordinate": "normal",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.09655160835813202,
+      "envelope_time_ps": 10.357155276904047,
+      "damped_angular_frequency_rad_ps": 15.227322392754154,
+      "formal_integral_time_ps": 0.0008327697912939699,
+      "conditional_modal_mobility_m2_per_J_s": 53910092345.47315,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.061260019453892,
+      "second_half_frequency_rad_ps": 15.238249777297357,
+      "training_rmse": 0.014552332949198322,
+      "heldout_rmse": 0.09573609731102513,
+      "heldout_overdamped_rmse": 0.49227557807962563,
+      "block_shape_rms_sensitivity": 0.23983054605210943,
+      "validation_to_training_variance": 1.204903461033075,
+      "singular_values": [
+        760.0023222967989,
+        4.804330967809452
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 1,
+      "coordinate": "direct110",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.07239765515971498,
+      "envelope_time_ps": 13.812602048974107,
+      "damped_angular_frequency_rad_ps": 7.023645616339668,
+      "formal_integral_time_ps": 0.0029348315127554784,
+      "conditional_modal_mobility_m2_per_J_s": 54944581044.396736,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.08696358674906608,
+      "second_half_frequency_rad_ps": 7.0243871367562525,
+      "training_rmse": 0.006934370969687553,
+      "heldout_rmse": 0.0197946981846986,
+      "heldout_overdamped_rmse": 0.5946086602051861,
+      "block_shape_rms_sensitivity": 0.05187762756829805,
+      "validation_to_training_variance": 0.7721303576967453,
+      "singular_values": [
+        84.98779541160745,
+        0.8965774886138864
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 1,
+      "coordinate": "direct110",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.0693124349575943,
+      "envelope_time_ps": 14.42742562156134,
+      "damped_angular_frequency_rad_ps": 7.028076683388092,
+      "formal_integral_time_ps": 0.0028062472311956048,
+      "conditional_modal_mobility_m2_per_J_s": 57462181561.08106,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.08100007889360025,
+      "second_half_frequency_rad_ps": 7.024779098508589,
+      "training_rmse": 0.00704295439376346,
+      "heldout_rmse": 0.02484463222232283,
+      "heldout_overdamped_rmse": 0.543480774481714,
+      "block_shape_rms_sensitivity": 0.09299035794563931,
+      "validation_to_training_variance": 0.7721303576967453,
+      "singular_values": [
+        208.09588230136518,
+        2.106355599063973
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 1,
+      "coordinate": "direct110",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.07436968507416339,
+      "envelope_time_ps": 13.446339042618964,
+      "damped_angular_frequency_rad_ps": 7.040571969702603,
+      "formal_integral_time_ps": 0.003000278700253022,
+      "conditional_modal_mobility_m2_per_J_s": 53746036290.109955,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.07745972156389906,
+      "second_half_frequency_rad_ps": 7.024250425783927,
+      "training_rmse": 0.027257517114208388,
+      "heldout_rmse": 0.04519918991563986,
+      "heldout_overdamped_rmse": 0.45444055838260716,
+      "block_shape_rms_sensitivity": 0.23521476845249237,
+      "validation_to_training_variance": 0.7721303576967453,
+      "singular_values": [
+        423.49197305578133,
+        4.447064827557674
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 1,
+      "coordinate": "transverse",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.03235950796377383,
+      "envelope_time_ps": 30.902818458163544,
+      "damped_angular_frequency_rad_ps": 7.0061897468706364,
+      "formal_integral_time_ps": 0.0013184353855648855,
+      "conditional_modal_mobility_m2_per_J_s": 210598833979.71402,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.08258805503989597,
+      "second_half_frequency_rad_ps": 6.989578605196278,
+      "training_rmse": 0.005477066817811603,
+      "heldout_rmse": 0.06285912526942562,
+      "heldout_overdamped_rmse": 0.5998417106488001,
+      "block_shape_rms_sensitivity": 0.08802704149478606,
+      "validation_to_training_variance": 0.516673536214723,
+      "singular_values": [
+        93.20231474702541,
+        0.43909936514545156
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 1,
+      "coordinate": "transverse",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.0280639138274861,
+      "envelope_time_ps": 35.63294863814003,
+      "damped_angular_frequency_rad_ps": 7.008876808986439,
+      "formal_integral_time_ps": 0.0011425479032703655,
+      "conditional_modal_mobility_m2_per_J_s": 243019092751.20837,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.0838045249337479,
+      "second_half_frequency_rad_ps": 6.985656830625861,
+      "training_rmse": 0.006800205909651956,
+      "heldout_rmse": 0.12447886541217422,
+      "heldout_overdamped_rmse": 0.5429139365494803,
+      "block_shape_rms_sensitivity": 0.1955126983148945,
+      "validation_to_training_variance": 0.516673536214723,
+      "singular_values": [
+        250.64724633988456,
+        1.0330186496850229
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 1,
+      "coordinate": "transverse",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.02091913512497824,
+      "envelope_time_ps": 47.80312350513775,
+      "damped_angular_frequency_rad_ps": 7.005405470654777,
+      "formal_integral_time_ps": 0.0008525174827447791,
+      "conditional_modal_mobility_m2_per_J_s": 325695320620.9894,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.09235973795288945,
+      "second_half_frequency_rad_ps": 6.986885893822535,
+      "training_rmse": 0.018505598083162433,
+      "heldout_rmse": 0.23514471861282704,
+      "heldout_overdamped_rmse": 0.4361483954309801,
+      "block_shape_rms_sensitivity": 0.3753278926447822,
+      "validation_to_training_variance": 0.516673536214723,
+      "singular_values": [
+        675.682660317025,
+        2.025077167171467
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 2,
+      "coordinate": "normal",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.4167233357128181,
+      "envelope_time_ps": 2.399673630682259,
+      "damped_angular_frequency_rad_ps": 29.64443393879163,
+      "formal_integral_time_ps": 0.0009482125086159195,
+      "conditional_modal_mobility_m2_per_J_s": 49731871339.337364,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.40651499268604335,
+      "second_half_frequency_rad_ps": 29.651873001119466,
+      "training_rmse": 0.029123500343494816,
+      "heldout_rmse": 0.023949089801699075,
+      "heldout_overdamped_rmse": 0.4227183526576456,
+      "block_shape_rms_sensitivity": 0.12041404928780916,
+      "validation_to_training_variance": 1.0040035124893245,
+      "singular_values": [
+        173.22225319395167,
+        2.4176000899950325
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 2,
+      "coordinate": "normal",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.4531901088362828,
+      "envelope_time_ps": 2.2065794917012522,
+      "damped_angular_frequency_rad_ps": 29.689389297040663,
+      "formal_integral_time_ps": 0.0010280321816705884,
+      "conditional_modal_mobility_m2_per_J_s": 45870531410.99771,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.39956499614302876,
+      "second_half_frequency_rad_ps": 29.627665659914165,
+      "training_rmse": 0.04060784827345801,
+      "heldout_rmse": 0.05350339911175117,
+      "heldout_overdamped_rmse": 0.3116529311582489,
+      "block_shape_rms_sensitivity": 0.1627108525720966,
+      "validation_to_training_variance": 1.0040035124893245,
+      "singular_values": [
+        209.4933680877068,
+        3.198662055243532
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 2,
+      "coordinate": "normal",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.4464465049056806,
+      "envelope_time_ps": 2.2399100205998184,
+      "damped_angular_frequency_rad_ps": 29.673594452959176,
+      "formal_integral_time_ps": 0.0010138199047753105,
+      "conditional_modal_mobility_m2_per_J_s": 46513569381.22884,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.33569897162488166,
+      "second_half_frequency_rad_ps": 29.633148241904177,
+      "training_rmse": 0.04521540043294457,
+      "heldout_rmse": 0.08082655331450242,
+      "heldout_overdamped_rmse": 0.23534165547616556,
+      "block_shape_rms_sensitivity": 0.196906545606354,
+      "validation_to_training_variance": 1.0040035124893245,
+      "singular_values": [
+        222.41310942406085,
+        3.345111206081358
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 2,
+      "coordinate": "direct110",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.10455134896090486,
+      "envelope_time_ps": 9.564678121694369,
+      "damped_angular_frequency_rad_ps": 13.44430385665141,
+      "formal_integral_time_ps": 0.0011567958816069753,
+      "conditional_modal_mobility_m2_per_J_s": 247670526506.6476,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.1505590979786629,
+      "second_half_frequency_rad_ps": 13.448193019941945,
+      "training_rmse": 0.006054557464254873,
+      "heldout_rmse": 0.04465097245793795,
+      "heldout_overdamped_rmse": 0.5511871605135917,
+      "block_shape_rms_sensitivity": 0.09348060690189747,
+      "validation_to_training_variance": 0.7436081390097985,
+      "singular_values": [
+        153.53227827423447,
+        1.1860214540820277
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 2,
+      "coordinate": "direct110",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.09969850047774549,
+      "envelope_time_ps": 10.030241129085168,
+      "damped_angular_frequency_rad_ps": 13.450903638853609,
+      "formal_integral_time_ps": 0.001102025998679371,
+      "conditional_modal_mobility_m2_per_J_s": 259979569812.01688,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.15027072200812489,
+      "second_half_frequency_rad_ps": 13.464238691080716,
+      "training_rmse": 0.008333822949406705,
+      "heldout_rmse": 0.07881608814361589,
+      "heldout_overdamped_rmse": 0.46325508044749447,
+      "block_shape_rms_sensitivity": 0.14250899715576723,
+      "validation_to_training_variance": 0.7436081390097985,
+      "singular_values": [
+        349.84485460506414,
+        2.625317974171349
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 2,
+      "coordinate": "direct110",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.10083077337202405,
+      "envelope_time_ps": 9.91760716056805,
+      "damped_angular_frequency_rad_ps": 13.45309521293427,
+      "formal_integral_time_ps": 0.0011141771984436387,
+      "conditional_modal_mobility_m2_per_J_s": 257144236534.84424,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.14935311806462753,
+      "second_half_frequency_rad_ps": 13.500347089256524,
+      "training_rmse": 0.009913768640712252,
+      "heldout_rmse": 0.13536475476060714,
+      "heldout_overdamped_rmse": 0.35448052585038514,
+      "block_shape_rms_sensitivity": 0.2933104609502345,
+      "validation_to_training_variance": 0.7436081390097985,
+      "singular_values": [
+        648.6373122211949,
+        4.845036365392633
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 2,
+      "coordinate": "transverse",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.13078758535913879,
+      "envelope_time_ps": 7.645985643469371,
+      "damped_angular_frequency_rad_ps": 13.468221681494521,
+      "formal_integral_time_ps": 0.001441899705555267,
+      "conditional_modal_mobility_m2_per_J_s": 186392900412.32242,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.14249996461817926,
+      "second_half_frequency_rad_ps": 13.477776137917902,
+      "training_rmse": 0.006553320160719969,
+      "heldout_rmse": 0.015842498021739183,
+      "heldout_overdamped_rmse": 0.5572968487396394,
+      "block_shape_rms_sensitivity": 0.12486372644675914,
+      "validation_to_training_variance": 0.879543478623338,
+      "singular_values": [
+        145.16324636427768,
+        1.3949675242749546
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 2,
+      "coordinate": "transverse",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.122215599191115,
+      "envelope_time_ps": 8.182261565778088,
+      "damped_angular_frequency_rad_ps": 13.46706423270199,
+      "formal_integral_time_ps": 0.0013476434587129497,
+      "conditional_modal_mobility_m2_per_J_s": 199429505248.2173,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.1420586749332883,
+      "second_half_frequency_rad_ps": 13.473264874865606,
+      "training_rmse": 0.00927663820358716,
+      "heldout_rmse": 0.03053167975075275,
+      "heldout_overdamped_rmse": 0.47228068426842623,
+      "block_shape_rms_sensitivity": 0.16626466658883213,
+      "validation_to_training_variance": 0.879543478623338,
+      "singular_values": [
+        317.46046930149805,
+        2.913328042859893
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 2,
+      "coordinate": "transverse",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.12238723662592546,
+      "envelope_time_ps": 8.170786656916547,
+      "damped_angular_frequency_rad_ps": 13.464280935298849,
+      "formal_integral_time_ps": 0.0013500937089354135,
+      "conditional_modal_mobility_m2_per_J_s": 199067565787.00342,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.1533823861870758,
+      "second_half_frequency_rad_ps": 13.465179531677242,
+      "training_rmse": 0.011713567032015423,
+      "heldout_rmse": 0.05460232573794203,
+      "heldout_overdamped_rmse": 0.3532462749995418,
+      "block_shape_rms_sensitivity": 0.3286761238645581,
+      "validation_to_training_variance": 0.879543478623338,
+      "singular_values": [
+        547.4164807346833,
+        4.959722791057971
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 3,
+      "coordinate": "normal",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.32401603888077646,
+      "envelope_time_ps": 3.086266974481333,
+      "damped_angular_frequency_rad_ps": 42.150924283303716,
+      "formal_integral_time_ps": 0.0003647175296643251,
+      "conditional_modal_mobility_m2_per_J_s": 117242746459.96916,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.2545678812718314,
+      "second_half_frequency_rad_ps": 42.1082500684946,
+      "training_rmse": 0.010573411998549581,
+      "heldout_rmse": 0.056531215571716996,
+      "heldout_overdamped_rmse": 0.4870595554226293,
+      "block_shape_rms_sensitivity": 0.1591984461143894,
+      "validation_to_training_variance": 1.166432820110876,
+      "singular_values": [
+        296.08435987913253,
+        2.2830684020645724
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 3,
+      "coordinate": "normal",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.3487170660633031,
+      "envelope_time_ps": 2.867654317263809,
+      "damped_angular_frequency_rad_ps": 42.17529851825943,
+      "formal_integral_time_ps": 0.00039206419099879265,
+      "conditional_modal_mobility_m2_per_J_s": 109065009867.40825,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.24508601089026963,
+      "second_half_frequency_rad_ps": 42.12221330728314,
+      "training_rmse": 0.0338271087789578,
+      "heldout_rmse": 0.0880090364008561,
+      "heldout_overdamped_rmse": 0.38227014189515535,
+      "block_shape_rms_sensitivity": 0.23999314926435367,
+      "validation_to_training_variance": 1.166432820110876,
+      "singular_values": [
+        414.4110181931422,
+        3.428637124258041
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 3,
+      "coordinate": "normal",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.38783180570661335,
+      "envelope_time_ps": 2.5784373155730274,
+      "damped_angular_frequency_rad_ps": 42.17132160531758,
+      "formal_integral_time_ps": 0.00043611624590711114,
+      "conditional_modal_mobility_m2_per_J_s": 98048364997.27267,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.26406672472717074,
+      "second_half_frequency_rad_ps": 42.148542471541056,
+      "training_rmse": 0.06147530552080998,
+      "heldout_rmse": 0.08707901574350432,
+      "heldout_overdamped_rmse": 0.2760401698565243,
+      "block_shape_rms_sensitivity": 0.26695470495863316,
+      "validation_to_training_variance": 1.166432820110876,
+      "singular_values": [
+        389.88167439929106,
+        3.5852113084961537
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 3,
+      "coordinate": "direct110",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.2308670691643884,
+      "envelope_time_ps": 4.331496924266632,
+      "damped_angular_frequency_rad_ps": 18.85023321246704,
+      "formal_integral_time_ps": 0.0012992519907283357,
+      "conditional_modal_mobility_m2_per_J_s": 178579442442.526,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.260865863951219,
+      "second_half_frequency_rad_ps": 18.992330177119346,
+      "training_rmse": 0.01733206902335273,
+      "heldout_rmse": 0.10592861763118994,
+      "heldout_overdamped_rmse": 0.4821311190237102,
+      "block_shape_rms_sensitivity": 0.23489124956023325,
+      "validation_to_training_variance": 0.969641979357759,
+      "singular_values": [
+        162.07632476195093,
+        1.9774079619759295
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 3,
+      "coordinate": "direct110",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.20627230654987655,
+      "envelope_time_ps": 4.847960527159764,
+      "damped_angular_frequency_rad_ps": 18.834120652100808,
+      "formal_integral_time_ps": 0.0011628618819156042,
+      "conditional_modal_mobility_m2_per_J_s": 199524724049.2549,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.28851993082883914,
+      "second_half_frequency_rad_ps": 18.97480841535131,
+      "training_rmse": 0.02317045001322374,
+      "heldout_rmse": 0.14149775821603702,
+      "heldout_overdamped_rmse": 0.3634058077265879,
+      "block_shape_rms_sensitivity": 0.23641253868882797,
+      "validation_to_training_variance": 0.969641979357759,
+      "singular_values": [
+        313.33744442310433,
+        3.446025395619596
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 3,
+      "coordinate": "direct110",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.21647451554082103,
+      "envelope_time_ps": 4.6194814087084906,
+      "damped_angular_frequency_rad_ps": 18.83782036400809,
+      "formal_integral_time_ps": 0.001219882842513559,
+      "conditional_modal_mobility_m2_per_J_s": 190198343652.84903,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.29948665492929444,
+      "second_half_frequency_rad_ps": 18.92637331145767,
+      "training_rmse": 0.030957990372731493,
+      "heldout_rmse": 0.11368306254255789,
+      "heldout_overdamped_rmse": 0.2688937048443551,
+      "block_shape_rms_sensitivity": 0.2797283541690825,
+      "validation_to_training_variance": 0.969641979357759,
+      "singular_values": [
+        399.7604751926744,
+        4.592374707588993
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 3,
+      "coordinate": "transverse",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.26544756615759385,
+      "envelope_time_ps": 3.7672223349989538,
+      "damped_angular_frequency_rad_ps": 18.79386551310246,
+      "formal_integral_time_ps": 0.0015027608914891342,
+      "conditional_modal_mobility_m2_per_J_s": 127472736283.29544,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.21101531834443796,
+      "second_half_frequency_rad_ps": 18.858831036950214,
+      "training_rmse": 0.018355475312136386,
+      "heldout_rmse": 0.0672749390010877,
+      "heldout_overdamped_rmse": 0.5065965240351723,
+      "block_shape_rms_sensitivity": 0.13487686010044883,
+      "validation_to_training_variance": 1.2117533763987263,
+      "singular_values": [
+        150.36156640064658,
+        2.104352805586171
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 3,
+      "coordinate": "transverse",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.23048945210198882,
+      "envelope_time_ps": 4.338593332060644,
+      "damped_angular_frequency_rad_ps": 18.787357511628972,
+      "formal_integral_time_ps": 0.0013058229287762797,
+      "conditional_modal_mobility_m2_per_J_s": 146697564115.49698,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.1910488698953101,
+      "second_half_frequency_rad_ps": 18.871659523101446,
+      "training_rmse": 0.025842882111863308,
+      "heldout_rmse": 0.09833316551539208,
+      "heldout_overdamped_rmse": 0.41737509662095845,
+      "block_shape_rms_sensitivity": 0.16233883393465645,
+      "validation_to_training_variance": 1.2117533763987263,
+      "singular_values": [
+        284.3883193866989,
+        3.492660569575358
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 3,
+      "coordinate": "transverse",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.21926936115780019,
+      "envelope_time_ps": 4.560600690948045,
+      "damped_angular_frequency_rad_ps": 18.77021378588899,
+      "formal_integral_time_ps": 0.0012445439768109894,
+      "conditional_modal_mobility_m2_per_J_s": 153920670050.1649,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.17737856320708492,
+      "second_half_frequency_rad_ps": 18.901230121484684,
+      "training_rmse": 0.031742087969255095,
+      "heldout_rmse": 0.14327808931567718,
+      "heldout_overdamped_rmse": 0.316965254407778,
+      "block_shape_rms_sensitivity": 0.28179714975085346,
+      "validation_to_training_variance": 1.2117533763987263,
+      "singular_values": [
+        391.47091108608345,
+        4.575580904344185
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 4,
+      "coordinate": "normal",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.6748949977509975,
+      "envelope_time_ps": 1.481711974947768,
+      "damped_angular_frequency_rad_ps": 51.964797946603966,
+      "formal_integral_time_ps": 0.0004997749333869693,
+      "conditional_modal_mobility_m2_per_J_s": 78924041573.84837,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.6452230596734304,
+      "second_half_frequency_rad_ps": 52.130152996972136,
+      "training_rmse": 0.024386072760352276,
+      "heldout_rmse": 0.058339547414549595,
+      "heldout_overdamped_rmse": 0.34433290189621374,
+      "block_shape_rms_sensitivity": 0.1597032309736327,
+      "validation_to_training_variance": 1.2844116618148522,
+      "singular_values": [
+        187.10276709140174,
+        2.4356885775940036
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 4,
+      "coordinate": "normal",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.6188375585842872,
+      "envelope_time_ps": 1.6159329473920376,
+      "damped_angular_frequency_rad_ps": 51.93855044816631,
+      "formal_integral_time_ps": 0.0004587386805464176,
+      "conditional_modal_mobility_m2_per_J_s": 85984154580.59305,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.6678005531361262,
+      "second_half_frequency_rad_ps": 52.063813483282345,
+      "training_rmse": 0.034797266112568344,
+      "heldout_rmse": 0.056063237902197104,
+      "heldout_overdamped_rmse": 0.24648964382855645,
+      "block_shape_rms_sensitivity": 0.1401248730457101,
+      "validation_to_training_variance": 1.2844116618148522,
+      "singular_values": [
+        236.7810243592266,
+        2.821083840430719
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 4,
+      "coordinate": "normal",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.6187588237181162,
+      "envelope_time_ps": 1.616138569129421,
+      "damped_angular_frequency_rad_ps": 51.929506296748535,
+      "formal_integral_time_ps": 0.0004588400923510739,
+      "conditional_modal_mobility_m2_per_J_s": 85965150556.2429,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.665536148562862,
+      "second_half_frequency_rad_ps": 52.05605544850221,
+      "training_rmse": 0.04044782239499987,
+      "heldout_rmse": 0.05773876646947421,
+      "heldout_overdamped_rmse": 0.1791566043804345,
+      "block_shape_rms_sensitivity": 0.14714926623982824,
+      "validation_to_training_variance": 1.2844116618148522,
+      "singular_values": [
+        238.61919888173776,
+        2.842627664182555
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 4,
+      "coordinate": "direct110",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.36937549560266697,
+      "envelope_time_ps": 2.707272171285798,
+      "damped_angular_frequency_rad_ps": 22.911410565337746,
+      "formal_integral_time_ps": 0.0014069593686078874,
+      "conditional_modal_mobility_m2_per_J_s": 162369939749.77783,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.28078607061759536,
+      "second_half_frequency_rad_ps": 22.907873538779697,
+      "training_rmse": 0.008233681470530099,
+      "heldout_rmse": 0.05779900199687713,
+      "heldout_overdamped_rmse": 0.46583466390994605,
+      "block_shape_rms_sensitivity": 0.1310788566826248,
+      "validation_to_training_variance": 1.0523884705108595,
+      "singular_values": [
+        146.5545176814871,
+        2.3700425243954277
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 4,
+      "coordinate": "direct110",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.3500790514177126,
+      "envelope_time_ps": 2.8564976851665564,
+      "damped_angular_frequency_rad_ps": 22.887713010754464,
+      "formal_integral_time_ps": 0.0013362561851620522,
+      "conditional_modal_mobility_m2_per_J_s": 170961160328.35687,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.2436071465492148,
+      "second_half_frequency_rad_ps": 22.917259872861013,
+      "training_rmse": 0.022025473498333236,
+      "heldout_rmse": 0.08668580430816537,
+      "heldout_overdamped_rmse": 0.37294024078511256,
+      "block_shape_rms_sensitivity": 0.1559119495982756,
+      "validation_to_training_variance": 1.0523884705108595,
+      "singular_values": [
+        223.79161068813485,
+        3.4280304117759246
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 4,
+      "coordinate": "direct110",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.38981764071358316,
+      "envelope_time_ps": 2.5653020683451975,
+      "damped_angular_frequency_rad_ps": 22.877092612884898,
+      "formal_integral_time_ps": 0.0014892367498026782,
+      "conditional_modal_mobility_m2_per_J_s": 153399322130.29068,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.21039464688366508,
+      "second_half_frequency_rad_ps": 22.91181693779683,
+      "training_rmse": 0.07098140869307785,
+      "heldout_rmse": 0.11436906475967545,
+      "heldout_overdamped_rmse": 0.282138316051365,
+      "block_shape_rms_sensitivity": 0.3100771164246827,
+      "validation_to_training_variance": 1.0523884705108595,
+      "singular_values": [
+        209.97122127780992,
+        3.576202873278326
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 4,
+      "coordinate": "transverse",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.325011404218788,
+      "envelope_time_ps": 3.0768151117762925,
+      "damped_angular_frequency_rad_ps": 22.957448002645698,
+      "formal_integral_time_ps": 0.001233088770358975,
+      "conditional_modal_mobility_m2_per_J_s": 182494882407.37207,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.4721127790796568,
+      "second_half_frequency_rad_ps": 22.931501749910876,
+      "training_rmse": 0.013186628298611931,
+      "heldout_rmse": 0.08149445715686567,
+      "heldout_overdamped_rmse": 0.38245085888581054,
+      "block_shape_rms_sensitivity": 0.15733097473075314,
+      "validation_to_training_variance": 0.8222872331104691,
+      "singular_values": [
+        160.64498619397068,
+        2.289524419646456
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 4,
+      "coordinate": "transverse",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.31378897172619996,
+      "envelope_time_ps": 3.186855148219043,
+      "damped_angular_frequency_rad_ps": 22.955237458600614,
+      "formal_integral_time_ps": 0.0011907564661966061,
+      "conditional_modal_mobility_m2_per_J_s": 188982715217.40112,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.4120155893682457,
+      "second_half_frequency_rad_ps": 22.923234014326585,
+      "training_rmse": 0.012412861582568761,
+      "heldout_rmse": 0.0710485329159284,
+      "heldout_overdamped_rmse": 0.28869213441160546,
+      "block_shape_rms_sensitivity": 0.15795089470988477,
+      "validation_to_training_variance": 0.8222872331104691,
+      "singular_values": [
+        254.76708150073233,
+        3.4823974521382715
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 4,
+      "coordinate": "transverse",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.29966942356214277,
+      "envelope_time_ps": 3.3370104567663006,
+      "damped_angular_frequency_rad_ps": 22.942563278007253,
+      "formal_integral_time_ps": 0.0011384513164555204,
+      "conditional_modal_mobility_m2_per_J_s": 197665360733.3276,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.34924677964771933,
+      "second_half_frequency_rad_ps": 22.914966213252143,
+      "training_rmse": 0.033364143352996194,
+      "heldout_rmse": 0.07601302794905788,
+      "heldout_overdamped_rmse": 0.21917009784555877,
+      "block_shape_rms_sensitivity": 0.2553477755914114,
+      "validation_to_training_variance": 0.8222872331104691,
+      "singular_values": [
+        309.94005234421985,
+        4.048044140188736
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 5,
+      "coordinate": "normal",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 1.18015386232308,
+      "envelope_time_ps": 0.8473471400004952,
+      "damped_angular_frequency_rad_ps": 58.84295308811253,
+      "formal_integral_time_ps": 0.0006814045839661746,
+      "conditional_modal_mobility_m2_per_J_s": 62147779749.77306,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 1.030167287978476,
+      "second_half_frequency_rad_ps": 58.485108441840424,
+      "training_rmse": 0.02862723616154644,
+      "heldout_rmse": 0.06854654723043091,
+      "heldout_overdamped_rmse": 0.27371561937201416,
+      "block_shape_rms_sensitivity": 0.12989013892182139,
+      "validation_to_training_variance": 0.9369690803393534,
+      "singular_values": [
+        101.59331713444078,
+        2.0372713416799946
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 5,
+      "coordinate": "normal",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 1.1605628444244755,
+      "envelope_time_ps": 0.8616508832797427,
+      "damped_angular_frequency_rad_ps": 58.83820606318796,
+      "formal_integral_time_ps": 0.0006702099603051818,
+      "conditional_modal_mobility_m2_per_J_s": 63185844008.54382,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 1.0586872648193184,
+      "second_half_frequency_rad_ps": 58.5163255478852,
+      "training_rmse": 0.06119096634349183,
+      "heldout_rmse": 0.0629579089307459,
+      "heldout_overdamped_rmse": 0.19766822699401604,
+      "block_shape_rms_sensitivity": 0.13097777167527766,
+      "validation_to_training_variance": 0.9369690803393534,
+      "singular_values": [
+        105.28935034505064,
+        2.0755820096899296
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 5,
+      "coordinate": "normal",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 1.1587651310936335,
+      "envelope_time_ps": 0.8629876522571988,
+      "damped_angular_frequency_rad_ps": 58.839375766283005,
+      "formal_integral_time_ps": 0.0006691460146594667,
+      "conditional_modal_mobility_m2_per_J_s": 63286309829.35266,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 1.0590868454301012,
+      "second_half_frequency_rad_ps": 58.51435245400629,
+      "training_rmse": 0.06184377414007287,
+      "heldout_rmse": 0.0546438465532891,
+      "heldout_overdamped_rmse": 0.14318366476574965,
+      "block_shape_rms_sensitivity": 0.13405044043914974,
+      "validation_to_training_variance": 0.9369690803393534,
+      "singular_values": [
+        105.53896162247328,
+        2.0772404504095268
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 5,
+      "coordinate": "direct110",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.3684578815633419,
+      "envelope_time_ps": 2.7140144098887706,
+      "damped_angular_frequency_rad_ps": 25.487287922353186,
+      "formal_integral_time_ps": 0.0011341744041910443,
+      "conditional_modal_mobility_m2_per_J_s": 203054911898.11197,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.5177327182298969,
+      "second_half_frequency_rad_ps": 25.527249663414757,
+      "training_rmse": 0.012646369617997425,
+      "heldout_rmse": 0.07836171409609882,
+      "heldout_overdamped_rmse": 0.367847320385195,
+      "block_shape_rms_sensitivity": 0.1625080060895481,
+      "validation_to_training_variance": 0.806689763154972,
+      "singular_values": [
+        164.30043627613313,
+        2.3549617224300197
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 5,
+      "coordinate": "direct110",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.34518446591659857,
+      "envelope_time_ps": 2.8970017446892125,
+      "damped_angular_frequency_rad_ps": 25.45360300500336,
+      "formal_integral_time_ps": 0.0010653758377992594,
+      "conditional_modal_mobility_m2_per_J_s": 216167549093.13025,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.5209655245564959,
+      "second_half_frequency_rad_ps": 25.581136053422473,
+      "training_rmse": 0.028616793403244214,
+      "heldout_rmse": 0.11230376516107046,
+      "heldout_overdamped_rmse": 0.26625321199681035,
+      "block_shape_rms_sensitivity": 0.2204080352591752,
+      "validation_to_training_variance": 0.806689763154972,
+      "singular_values": [
+        253.34863136908632,
+        3.432684591040013
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 5,
+      "coordinate": "direct110",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.34386652946960405,
+      "envelope_time_ps": 2.9081050765320113,
+      "damped_angular_frequency_rad_ps": 25.448245877576433,
+      "formal_integral_time_ps": 0.0010617564512816996,
+      "conditional_modal_mobility_m2_per_J_s": 216904435515.41394,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.5130067753422036,
+      "second_half_frequency_rad_ps": 25.589663982053498,
+      "training_rmse": 0.032575014389165366,
+      "heldout_rmse": 0.08931596966276882,
+      "heldout_overdamped_rmse": 0.18986828564486394,
+      "block_shape_rms_sensitivity": 0.20002421856269778,
+      "validation_to_training_variance": 0.806689763154972,
+      "singular_values": [
+        281.2165868121807,
+        3.799091459979438
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 5,
+      "coordinate": "transverse",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.28802625097390394,
+      "envelope_time_ps": 3.4719057607377706,
+      "damped_angular_frequency_rad_ps": 25.463119621862624,
+      "formal_integral_time_ps": 0.0008883483133593606,
+      "conditional_modal_mobility_m2_per_J_s": 319125999445.5163,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.36382895465743215,
+      "second_half_frequency_rad_ps": 25.538392660043325,
+      "training_rmse": 0.009218253491023598,
+      "heldout_rmse": 0.07052921092770878,
+      "heldout_overdamped_rmse": 0.42729013487525463,
+      "block_shape_rms_sensitivity": 0.16471084986326884,
+      "validation_to_training_variance": 0.8618585670965703,
+      "singular_values": [
+        194.1214475827697,
+        2.1763825274856634
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 5,
+      "coordinate": "transverse",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.30366513858446864,
+      "envelope_time_ps": 3.2931010937293883,
+      "damped_angular_frequency_rad_ps": 25.454841658682795,
+      "formal_integral_time_ps": 0.0009371785301619775,
+      "conditional_modal_mobility_m2_per_J_s": 302498439979.78345,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.34655489811680185,
+      "second_half_frequency_rad_ps": 25.58195638973462,
+      "training_rmse": 0.013918411353610207,
+      "heldout_rmse": 0.09750450162991345,
+      "heldout_overdamped_rmse": 0.32353567358450647,
+      "block_shape_rms_sensitivity": 0.2290040268799979,
+      "validation_to_training_variance": 0.8618585670965703,
+      "singular_values": [
+        293.0494614380912,
+        3.492314153766444
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 5,
+      "coordinate": "transverse",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.2922430863296652,
+      "envelope_time_ps": 3.4218089213304728,
+      "damped_angular_frequency_rad_ps": 25.47139750279549,
+      "formal_integral_time_ps": 0.0009007650528359705,
+      "conditional_modal_mobility_m2_per_J_s": 314726956229.0281,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.3175117571592499,
+      "second_half_frequency_rad_ps": 25.62453294100274,
+      "training_rmse": 0.04001163345906576,
+      "heldout_rmse": 0.11143361273183752,
+      "heldout_overdamped_rmse": 0.23938727707391957,
+      "block_shape_rms_sensitivity": 0.3008919292068751,
+      "validation_to_training_variance": 0.8618585670965703,
+      "singular_values": [
+        356.7916054062009,
+        4.092938379063628
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 6,
+      "coordinate": "normal",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 1.1823738588650785,
+      "envelope_time_ps": 0.8457561815176351,
+      "damped_angular_frequency_rad_ps": 60.60011680515858,
+      "formal_integral_time_ps": 0.0006436838246056221,
+      "conditional_modal_mobility_m2_per_J_s": 61224129476.59344,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 1.0763712138541386,
+      "second_half_frequency_rad_ps": 60.84681976179215,
+      "training_rmse": 0.03695473580120093,
+      "heldout_rmse": 0.04794606123866628,
+      "heldout_overdamped_rmse": 0.26107540196350076,
+      "block_shape_rms_sensitivity": 0.15226890205382226,
+      "validation_to_training_variance": 1.0561822958386666,
+      "singular_values": [
+        104.36645342537533,
+        2.035082048406117
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 6,
+      "coordinate": "normal",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 1.1190281952753405,
+      "envelope_time_ps": 0.8936325324260009,
+      "damped_angular_frequency_rad_ps": 60.56727016560973,
+      "formal_integral_time_ps": 0.0006098833845439855,
+      "conditional_modal_mobility_m2_per_J_s": 64617241292.95614,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 1.0765351911881693,
+      "second_half_frequency_rad_ps": 60.85031353675185,
+      "training_rmse": 0.05684555114831829,
+      "heldout_rmse": 0.04425898283343916,
+      "heldout_overdamped_rmse": 0.1859446055151221,
+      "block_shape_rms_sensitivity": 0.15358760802721785,
+      "validation_to_training_variance": 1.0561822958386666,
+      "singular_values": [
+        114.46370435256564,
+        2.113718675760772
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 6,
+      "coordinate": "normal",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 1.1207736093742615,
+      "envelope_time_ps": 0.8922408518865014,
+      "damped_angular_frequency_rad_ps": 60.569363680947355,
+      "formal_integral_time_ps": 0.0006107917943267649,
+      "conditional_modal_mobility_m2_per_J_s": 64521138276.06568,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 1.0804122103662324,
+      "second_half_frequency_rad_ps": 60.848130886649926,
+      "training_rmse": 0.06410786976404521,
+      "heldout_rmse": 0.05739092551590171,
+      "heldout_overdamped_rmse": 0.13994642858040166,
+      "block_shape_rms_sensitivity": 0.19987916176744894,
+      "validation_to_training_variance": 1.0561822958386666,
+      "singular_values": [
+        114.20481391701856,
+        2.1121543541346
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 6,
+      "coordinate": "direct110",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.22592393235385516,
+      "envelope_time_ps": 4.426268565623858,
+      "damped_angular_frequency_rad_ps": 26.23441310576773,
+      "formal_integral_time_ps": 0.0006564736841620721,
+      "conditional_modal_mobility_m2_per_J_s": 493949058200.14105,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.3039777187544119,
+      "second_half_frequency_rad_ps": 26.302447573657027,
+      "training_rmse": 0.01580815950400793,
+      "heldout_rmse": 0.07454191905941839,
+      "heldout_overdamped_rmse": 0.4566329073566905,
+      "block_shape_rms_sensitivity": 0.18448846893948545,
+      "validation_to_training_variance": 0.8177393112469813,
+      "singular_values": [
+        226.79834910240507,
+        1.9668604022506835
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 6,
+      "coordinate": "direct110",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.19539666015754362,
+      "envelope_time_ps": 5.117794742211684,
+      "damped_angular_frequency_rad_ps": 26.23924295769761,
+      "formal_integral_time_ps": 0.0005675713273602049,
+      "conditional_modal_mobility_m2_per_J_s": 571319484254.4261,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.3104023381220706,
+      "second_half_frequency_rad_ps": 26.32740975085831,
+      "training_rmse": 0.027042697398159905,
+      "heldout_rmse": 0.12961043646964407,
+      "heldout_overdamped_rmse": 0.3444962352883893,
+      "block_shape_rms_sensitivity": 0.2637172474369079,
+      "validation_to_training_variance": 0.8177393112469813,
+      "singular_values": [
+        456.3093185349219,
+        3.409332097627199
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 6,
+      "coordinate": "direct110",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.17363046845537253,
+      "envelope_time_ps": 5.759357841374629,
+      "damped_angular_frequency_rad_ps": 26.240257921626515,
+      "formal_integral_time_ps": 0.0005043136450497723,
+      "conditional_modal_mobility_m2_per_J_s": 642981924458.9934,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.25343517103237556,
+      "second_half_frequency_rad_ps": 26.3862155125983,
+      "training_rmse": 0.03467872586204089,
+      "heldout_rmse": 0.2042704032789636,
+      "heldout_overdamped_rmse": 0.2732352389860761,
+      "block_shape_rms_sensitivity": 0.3936376436825861,
+      "validation_to_training_variance": 0.8177393112469813,
+      "singular_values": [
+        734.0267326689742,
+        4.853854865452046
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 6,
+      "coordinate": "transverse",
+      "cutoff_ps": 3.1500000000000004,
+      "damping_per_ps": 0.31720883631627755,
+      "envelope_time_ps": 3.15249729992684,
+      "damped_angular_frequency_rad_ps": 26.253201205165766,
+      "formal_integral_time_ps": 0.0009203379700014782,
+      "conditional_modal_mobility_m2_per_J_s": 276417704989.66644,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.340315717043426,
+      "second_half_frequency_rad_ps": 26.400466210116527,
+      "training_rmse": 0.01387122201501769,
+      "heldout_rmse": 0.09446730853366385,
+      "heldout_overdamped_rmse": 0.4353213027322798,
+      "block_shape_rms_sensitivity": 0.22568551213098173,
+      "validation_to_training_variance": 0.8168640017456197,
+      "singular_values": [
+        186.93256407731022,
+        2.2691217981365326
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 6,
+      "coordinate": "transverse",
+      "cutoff_ps": 6.3500000000000005,
+      "damping_per_ps": 0.3178607921413169,
+      "envelope_time_ps": 3.1460312964784047,
+      "damped_angular_frequency_rad_ps": 26.24460485743282,
+      "formal_integral_time_ps": 0.0009228331339851029,
+      "conditional_modal_mobility_m2_per_J_s": 275670324475.76135,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.34108759040808345,
+      "second_half_frequency_rad_ps": 26.397587616004767,
+      "training_rmse": 0.013923309894307321,
+      "heldout_rmse": 0.10200312630517072,
+      "heldout_overdamped_rmse": 0.3263599775481735,
+      "block_shape_rms_sensitivity": 0.33427008256665763,
+      "validation_to_training_variance": 0.8168640017456197,
+      "singular_values": [
+        286.8437299354014,
+        3.4798750987704667
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    },
+    {
+      "mode": 6,
+      "coordinate": "transverse",
+      "cutoff_ps": 12.75,
+      "damping_per_ps": 0.3231610356842691,
+      "envelope_time_ps": 3.0944324642436407,
+      "damped_angular_frequency_rad_ps": 26.20808509490082,
+      "formal_integral_time_ps": 0.0009408326490967962,
+      "conditional_modal_mobility_m2_per_J_s": 270396344904.56943,
+      "mobility_is_phase_pooled_mode_not_cell": true,
+      "second_half_damping_per_ps": 0.36019100047149694,
+      "second_half_frequency_rad_ps": 26.40172155610207,
+      "training_rmse": 0.060786822095625796,
+      "heldout_rmse": 0.09545975155739077,
+      "heldout_overdamped_rmse": 0.23212891168984714,
+      "block_shape_rms_sensitivity": 0.32892997698089826,
+      "validation_to_training_variance": 0.8168640017456197,
+      "singular_values": [
+        317.25875342823485,
+        3.911194590364268
+      ],
+      "optimizer_success": true,
+      "active_mask": [
+        0,
+        0
+      ],
+      "production_clock_calibrated": false
+    }
+  ],
+  "elapsed_seconds": 11.627006099995924,
+  "production_M_a_phys": null,
+  "production_M_s_phys": null,
+  "production_t0_seconds": null,
+  "fit_supplies_source_modal_parameters_not_a_production_calibration": true,
+  "source_thermostat_independence_tested": false
+}

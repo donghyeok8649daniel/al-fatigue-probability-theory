@@ -2,6 +2,23 @@
 
 ## 0. 가장 먼저 읽을 것
 
+### 최신 kinetic 연구 분기: v25
+
+`solver_v1/MODAL_KINETIC_CALIBRATION_V25.md`와
+`results/modal_kinetic_calibration_v25`는 실제 source/독립 MD의 모드 감쇠,
+차원 있는 이동도 및 저주파 스펙트럼 검증이다. 완료 상태/수치는 handoff와
+각 summary에서 확인한다. DHO envelope1/g와 integral2g/w0²를 구별한다.
+직접 유한 저주파 대역의 S/2는 zero-frequency limit 인증이 아니다.
+평면 PMF 이동도, 원자수 extensivity 가설, 모드별 이동도, production a/s를
+섞지 않는다. 크기 간 환산값 일치만으로 공간적으로 일정한 M을 승인하지 않는다.
+Fbar=Fplane/Np, Mbar=Np*Mplane로같은확률generator를쓸때는열항도
+kBT/Np여야한다. 물리T를바꾼다는뜻이아니다. M만환산하고원자셀의kBT를
+유지하는것은동일plane확률법칙이아니며,별도local-cell전이검증이필요하다.
+실험 phonon linewidth는 reference EAM 검증용이지 그 자체로 a/s 물리 clock이
+아니다. Al99 MD는 target/reference 전용이며 LJ/Bessel production은 보존한다.
+실제 보정 후보 숫자가 있어도 production Ma/Ms/t0와 physical-Hz gate는
+좌표/PMF/low-frequency/material 검증을 통과해야 변경할 수 있다.
+
 이 저장소는 알루미늄 피로의 **결정론적 확률밀도 진화**와 원자적 에너지
 지형을 연구한다. 보기 좋은 소성 변형이나 균열 확률을 만드는 것이 목표가 아니다.
 수학적 일관성, 수치 검증, 물리적 정직성이 성공 기준이다.

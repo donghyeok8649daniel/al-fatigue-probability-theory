@@ -1,0 +1,64 @@
+{
+  "source_metadata": {
+    "doi": "10.5281/zenodo.10014454",
+    "source_url": "https://zenodo.org/records/10014454/files/dumpT300.NVT.atom.velocity.gz?download=1",
+    "creators": [
+      "Erik Fransson",
+      "Paul Erhart"
+    ],
+    "temperature_K": 300,
+    "thermostat": "Nose-Hoover NVT; damping1ps",
+    "lattice_angstrom": 4.065,
+    "repeats": 12,
+    "atoms": 6912,
+    "atoms_per_plane": 576,
+    "plane_classes": 12,
+    "timestep_seconds": 5e-15,
+    "frame_seconds": 2.5e-14,
+    "frames": 8192,
+    "duration_seconds": 2.04775e-10,
+    "first_source_timestep": 0,
+    "main_sha256": "ece3e5881f6a3a68d3bcbec22dc4a1bd1c3e85284ebee2f9df83e9689dc0b3d4",
+    "main_md5_verified": true,
+    "trajectory_published_full_md5": "edf03c7acfd58b8e72ce81db2e6122c0",
+    "trajectory_full_checksum_verified": false,
+    "compressed_prefix_bytes": 1439039525,
+    "compressed_prefix_sha256": "058ce883218408b4ac728ff37cef831b48daaa91605dfd42cdef59e97038edb1",
+    "http_range_transfer": true,
+    "coordinates": "adjacent (111) plane-mean displacement differences: normal,direct110,transverse",
+    "boundary_conditions": "periodic cubic crystal; all atoms mobile; not rigid half-crystal",
+    "coordinate_equivalent_to_production": false,
+    "production_physical_clock": null
+  },
+  "projection_sha256": "0d4eead55eff67a4ec075152501db6c7cf39032cca04e34b32ce6c13ab7f3cb3",
+  "training_frames": [
+    0,
+    4096
+  ],
+  "validation_frames": [
+    4096,
+    8192
+  ],
+  "lag_counts": [
+    126,
+    254,
+    510
+  ],
+  "mode_indices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "coordinates": [
+    "normal",
+    "direct110",
+    "transverse"
+  ],
+  "modes_are_independent_samples": false,
+  "fit_family": "equilibrium underdamped position correlation",
+  "noise_model": "equal normalized-correlation residuals; correlated lags",
+  "atomic_mass_used_to_set_solver_time": false
+}

@@ -1,5 +1,165 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## v25 계산 완료 — 실제 모드 감쇠 / 이동도와 적용 한계
+
+### 최종 과학 체크포인트 (아래 진행 로그보다 우선)
+
+- 7 main records(5개1ns + 2개5ns), 별도thermal1ns/sampling250ps 모두완료.
+  장기run50958와분석64535도exit0. 실행중MD없음.
+- `all_control_comparison`: 7case,360 modal fit 모두성공/heldoutOU보다우수,
+  activebound0. `control_comparison`은5개1ns비교로보존.
+- `long_record_comparison`: 1/2/5ns, dt2.5/5fs, NW2/3, full/half/quarter
+  전체표+시각검사된그림. 5ns초기3band M: normal6.70–8.05e10,
+  direct1101.80–2.39e11 m²/(J s), **144atom plane-gap PMF**.
+  최저band는상수plateau불충분: slip dt차이최대51.75%,최저band30.45%.
+  이범위는CI아니며생산Ma/Ms아님. 기존576atomplane와좌표정규화다름.
+- dt2.5/5fs5ns 에너지범위2.49533e-5/1.98929e-4eV/atom;
+  T299.068/298.126K. 좁은phonon폭은~.120THz로잘일치하지만
+  저주파M는그만큼일치하지않는다. 실험~.272/DFT~.186THz와별도비교.
+- 1ns와5ns prefix,열관측추가trajectory 정확일치. 5fs/25fs sampling
+  차이최대0.0241%. 같은기록이므로독립replica라고세지않음.
+- 최종source-hash-boundleakage재실행이기존10records와정확히일치.
+  입력은spectrum_lowlimit(5bands),초기3band폴더아님.
+- source8192 DHO추정,직접spectralM,thermal19–41%결과/질량수정/
+  에너지와열항동시정규화는MODAL_KINETIC_CALIBRATION_V25.md에유도.
+- 최신테스트 targeted12 PASS1.42s,solver673 PASS906.20s,
+  app34 PASS97.53s(skip0),desktop smoke PASS. 생산LJ/Bessel/static/PDE,
+  A_c및kineticJSON불변. 물리Hz활성화는하지않음.
+- 다음과학문제: 같은collective coordinate/PMF의독립소신호강제응답 또는
+  올바르게projected constrained-force memory검증. 단순mass/phononlifetime,
+  Np배율,실험linewidth배율을생산M로대입금지. 아직이실험안했음.
+- Git v25시작4520d0a…;최종commit/push는git log/원격으로확인.
+  아래는실행중상태의보존로그이며최종상태가아님.
+
+### 2026-09-12 04:45 KST 확인된 최종 코드 테스트 / 남은 계산
+
+- mass-aware 최종코드 full solver: **673 passed in 906.20s**,
+  `.cache/modal_kinetic_v25/solver_regression_mass_checked.log`.
+- app **34 passed in 97.53s**, skip0; desktop smoke PASS
+  (`app_regression_mass_checked.log`, `smoke_mass_checked.log`).
+- 최신 targeted12 PASS1.42s. 생산/static/physical kinetic JSON 불변.
+- dt5 5ns 및 prefix1/2/5ns/mode 분석 완료(session24403 exit0).
+- dt2.5 5ns session50958은 약4.4ns 진행. 분석pipeline64535 대기.
+  완료 후 `run_long_record_comparison`과 7case control summary를 실행할 것.
+- 250ps 5fs sampling control 완료: 기존25fs기록 prefix와 정확히 같음.
+  동등225ps의5fs/25fs PSD 추정 M 대각성분 최대차이0.0241065%.
+  `sampling_interval_check/summary.json`. sampling alias가DHO차이를설명하지않음.
+- 새 `run_long_record_comparison.py`는 두dt별1/2/5ns prefix와전체band,
+  half/quarter sensitivity를저장한다. freshoutput필수.
+- full regression 끝났으므로 소스수정없이 결과/문서정리후diffcheck/최종fetch,
+  normalcommit/push가능. **아직v25 commit/push안함**. main불변.
+
+### 추가 실행/수학 감사 — 이 절이 아래 진행상태보다 최신
+
+- 다섯1ns MD/분석 모두 완료. `control_comparison`과 `spectral_comparison`
+  (그림시각검사완료)이최종1ns비교. N12 NVE dt5→2.5fs 에너지범위
+  3.3871e-5→7.6155e-6eV/atom(약4.45배감소). MD온도는각각303.14/304.31K:
+  동일300K라고속이지않는다. NVT~299.96K, N6~299.07K,
+  lattice4.05Å N6~305.57K/압력9232bar(고정격자비교,무응력Al아님).
+- source DHO보다직접저주파M는모든5cases에서작다. modal/half/cutoff
+  fit288개모두성공·heldoutOU보다작음·activebound0. 이것은M보정성공아님.
+- N6 5ns dt2.5 session50958/분석대기64535는계속진행.
+  추가N6 5ns dt5 session60124: `nve_N6_serial_5000ps_dt5` 진행.
+  dt5용후속analysis/prefix pipeline은아직설정안함. 두5ns를1/2/5ns
+  prefix 및최저.001–.002cycles/ps까지비교해야함. 1ns동일restart부터
+  다시시작한nested record라independent replica로세지않는다.
+- thermal1ns N6 dt2.5 session83076 완료, analysis69792완료.
+  `thermal_channel_mass_checked`가최종열적정규화;기존thermal_channel_audit보존.
+  수직저주파power의19.46–40.60%를이웃2평면kinetic energy로temporal
+  heldout예측. time-shift대조군은모두음수, slip은일관된효과없음.
+  열확산인과증명/전체기억원인확정아님:PE/energy current/전자열수송미측정.
+- 실제엔진으로확인한질량override:restart26.982, mass1 26.98후26.98,
+  Al99 pair_coeff후26.982. 초기kinetic postprocess만26.98이었음.
+  run_reference_thermostat_md가이제실제엔진mass조회/기록, helper에명시전달.
+  기존원본thermal배열은보존하고analysis에26.982/26.98 보정명시.
+  KE오차7.406e-5→약6.3e-8, M(C0,kBT,tau)와MD forces/timestamps영향없음.
+- 정규화수식중요: Fbar=Fplane/Np, Mbar=Np Mplane은동일q에서
+  **kBTbar=kBT/Np까지같이해야**같은확률generator. 물리T변경아님.
+  M만Np배하고열항유지하면diffusion Np배오류. productionlocalcelltransfer
+  가정과순수대수정규화를구별. 이관계회귀테스트추가; sourceJSONmetadata도명확화.
+- Glensk동일그림DFT MDsquare도분리추출:300K .186069THz,
+  900K .816578THz;experimentalgray와별도. `phonon_reference_with_dft`.
+  물리초/Hz default는여전히disabled. LJ/Bessel/static/PDE/A_c불변.
+- 첫full671 PASS1204.43s. 후속열적테스트추가후22focused PASS2.16s,
+  massfix후newtests12 PASS1.58s. 두번째full session87774/로그
+  solver_regression_final.log 진행;이실행도massfix전import일수있으므로
+  최신source/helper에대해마지막full재실행권장. App34 PASS117.21s,
+  smokePASS1.939s. 모든최종변경후targeted/full/app/smoke/diff확인후만commit.
+- freshfetch재확인local/origin모두4520d0a…;main80cacb…/originmainc43d8e…불변.
+  아직commit/push없음. 불필요한sourceMD새실행보다현재긴두기록완료/정리우선.
+
+### 2026-09-12 약04:00 KST 추가 인계(계산 진행 중)
+
+최신 사용자 추가 요청은 이동도 계산. 실제 SI 이동도까지 계산했다.
+아래 초기3개 MD 안내보다 이 절/실제summary 상태를 우선한다.
+- 완료1ns: N12 NVE dt5fs, N12 NVT dt5fs, N6 NVE dt2.5fs,
+  N6 lattice4.05Å NVE dt2.5fs. 모두 `.cache/modal_kinetic_v25`에
+  complete summary/plane_coordinates 보존. N12 NVE dt2.5fs는 약0.8ns 진행.
+- 추가 N6 plain serial5ns dt2.5fs 실행 중:
+  `nve_N6_serial_5000ps_dt2p5`, session50958. 같은 N6 equilibrium.restart를
+  사용하므로 새독립replica가 아니라 nested reproducibility/record-length 연구다.
+  완료 후1/2/5ns prefix 비교 및최저.001–.002cycles/ps band를 검증한다.
+- 독립1ns 분석 pipeline session98363은 마지막 N12 dt2.5 완료 대기;
+  lower-limit/mode-spectrum pipeline session22820도 같은 마지막case대기.
+- full solver regression session94204 진행(64%까지출력), 로그
+  `.cache/modal_kinetic_v25/solver_regression.log`. App34 PASS117.21s,
+  smokePASS1.939s; focused20 PASS4.27s. 아직full통과라고말하지말것.
+- 추가 low_frequency_mobility.py는 DPSS two-sided PSD, K_band=S_band/2,
+  3x3 friction/mobility를 계산. Parseval/phase-leakage tests2개통과.
+  기본3bands, 명시followuplower2bands, longrecord추가2bands를구별.
+  band<taper bandwidth 또는3bin미만은invalid기록, 인증아님.
+- run_mode_spectral_mobility.py는 공간mode별상수M가설 검사;
+  run_spectral_leakage_control.py는순수진동선 leakage의worstphase2x2eig.
+  첫1ns NVE leakage/실측power 최대6.898e-5: 이 leakage만으로 설명불가.
+- source8192 DHO plane PMF M_a5.73–8.14e10,M_s1.17–1.68e11 SI.
+  독립N12 NVE1ns 직접저주파는 M_a1.71–1.83e10,M_s4.42–5.53e10.
+  DHO외삽 M_a7.06–7.27e10,M_s1.30–1.52e11와불일치. window선택금지.
+  더낮은band포함normal1.47–1.87e10,slip4.42–7.47e10.
+  Np144/576 extensivity환산normal약1e13,slip약3e13이나가설단계.
+  공간mode별 M도수배차이: local평균값만으로constantM승인금지.
+- Glensk2019 원논문Fig2b TL295K Gamma~.271619THz(g=pi Gamma),
+  출처/벡터표식/hashes results experimental_linewidth에저장. N12 NVE
+  ~303K TL Gamma .116–.120THz. 실험오차없는정밀보정이라고말하지않는다.
+  Tang2010 PRB82,184301 PDF MD5abfe242aaeed0b72b086462c7dbef962 확인,
+  5pages읽음/Fig2시각검사: 옛실험small-q선폭instrument floor경고.
+  신규수치target로추출하지않았음. 설명은kinetic sources문서에추가.
+- 마지막 완료되면 control_comparison (run_kinetic_control_summary,
+  --sources-root .cache/modal_kinetic_v25로pressure도hashbound계산),
+  spectral comparison/그림 생성,시각검사,문서최종수치/Git검증.
+  `interim_control_comparison`은먼저끝난3cases중간결과이며최종아님.
+  first_half_fit 및모든현재유용결과보존. 아직v25 commit/push없음.
+
+사용자 요청: 보정값을 실제로 찾아낼 것, 아침까지 약6시간 작업.
+시작/fresh remote4520d0a065815966461eefc7d117c217a13c5840,
+probability-pde-solver-v1. v24는 완료/push됐으며 새 v25는 아직 미완료.
+기존 source8192frame을 4096 training/4096 temporal heldout으로 나누고,
+6개 독립k·3축·3lag cutoff의54개 DHO position-correlation fit을 실제 실행했다.
+54개 모두 heldout RMSE가 단순 overdamped exponential보다 작다.
+median .0752775 vs .3589432. Mode damping은 .020919..1.182374 /ps;
+이것은 source modal parameter이지 production a/s mobility가 아니다.
+Envelope time 1/g와 formal integral time 2g/(g²+wd²)를 혼동하지 않는다.
+출력 results/modal_kinetic_calibration_v25/first_half_fit 및 mode_kinetic_calibration.py.
+초기 targeted14 PASS1.21s; 이후 MD protocol test 추가, 전체회귀 아직 안함.
+
+현재 독립 MD를 실제 실행 중(완료여부는 cache summary/checkpoint로 확인):
+`.cache/modal_kinetic_v25/nve_1000ps_dt5`, `nvt_1000ps_dt5`,
+`nve_1000ps_dt2p5`. 동일 nve_benchmark/equilibrated.restart 출발,
+6912atoms,4.065Å,sourceAl99,nominal300K,1ns sampling,25fs frame.
+원본 published trajectory 재현이 아니라 independently generated reference다.
+Benchmark25ps equil +2ps NVE 실제완료17.45s,meanT303.1566K.
+NVE/NVT/dt 차이와 실제온도를 비교해야 한다. 결과를 미리 PASS라 하지 않는다.
+실행기 run_reference_thermostat_md.py. LAMMPS는 target-only, LJ/Bessel/PDE 불변.
+
+도구는 시스템설치 없이 ignoredcache에 추출했다. PyPI wheel은 MS-MPI DLL없어
+실행실패(남겨둠). 공식 serial22Jul2025update4 installer SHA256
+47f1aeb0fcbeadcc211c9b1c258152c3545464e3381975a681bf558891a06986
+배포 SHA256SUMS와 일치, 7zip MSI administrative extraction 후 NSIS파일만 추출.
+Installer 실행/전역PATH/registry변경 없음. Python module은 캐시
+lammps_serial/Python, LAMMPSDLLPATH는 lammps_serial/bin을 실행별로 지정.
+실제 engine20250722/eam-alloy-omp 동작 확인. 개인절대경로는 commit하지 않는다.
+아직 productionMa/Ms/t0없으며, 먼저 thermostat/time/coordinate projection 검증.
+최신코드/결과 보존 후 targeted/full/app/smoke/diffcheck를 실제 실행하고만 commit.
+
 ## v24 kinetic validation — 2026-09-12, 실제 긴 궤적 검증 완료
 
 최신 요청은 실제 항복/피로/production 초·Hz 검증을 계속하라는 것.
