@@ -1,0 +1,11 @@
+{
+  "completed": false,
+  "classification": "research_runner_record_construction_error",
+  "error_type": "TypeError",
+  "message": "dict() got multiple values for keyword argument 'completed'",
+  "occurred_at": "first minimax profile record before any outer search history was saved",
+  "physical_infeasibility_claimed": false,
+  "fix": "construct the record from the returned LP dictionary and append shape without duplicating completed",
+  "retry_output": "results/core_interface_compatibility_v23/radial_minimax_corrected",
+  "material_accepted": false
+}

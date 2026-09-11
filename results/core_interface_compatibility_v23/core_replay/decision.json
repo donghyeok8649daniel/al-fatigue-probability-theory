@@ -1,0 +1,31 @@
+{
+  "completed": true,
+  "completed_cases": 4,
+  "incomplete_cases": [
+    "box_core_R8r5",
+    "box_core_R8r5_descent",
+    "radial_joint_escape_plus_R8r5"
+  ],
+  "other_material_cases_not_replayed": [],
+  "actual_relaxation_reexecuted": false,
+  "energies_replayed": true,
+  "all_energy_terms_retained": true,
+  "parameter_sha256": "fa4dbe23eb691b56ba51c6c2c288eba2c1b0f87eddfb61afa2914d6255aafebe",
+  "actual_yield_calibrated": false,
+  "material_accepted": false,
+  "infinite_transverse_domain_certified": false,
+  "finite_loop_activation_validated": false,
+  "physical_a_s_mobility_available": false,
+  "physical_seconds": false,
+  "physical_Hz": false,
+  "production_changed": false,
+  "elapsed_seconds": 39.42090460000327,
+  "files_sha256": {
+    "core_summary.csv": "2d99a6ece414a8c2216886ed40db47aec0610992b586bfacb00e971077e74fd6",
+    "curvature_checks.csv": "25b1ed8b18243d846be4c4234be1d04fae75f68462e6e4ec94ae0f265384c1da",
+    "finite_part_samples.csv": "ab6036fcf73affc0facaef61e7e8eb09f77d40392b2c0b26a34b841de1218f51",
+    "inner_field_changes.csv": "fa2adec2556aecb80bccdcffb41b5d31120f67f26b249894405388184cc44c3a",
+    "projected_circulation.csv": "c22cac21dba5e59086badb374a2bead8bd1439827a26ae4775fc894326abb900",
+    "registry_profiles.csv": "28d318cd68559fd54643a0c905eeaa8d6f9bde85d973aab674accac2886ba1bb"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "completed": false,
+  "stage": "source operator construction, before any matrix evaluation",
+  "error": "AttributeError: SimpleNamespace has no attribute reference",
+  "cause": "The existing source-core loader returns its target under source, not reference.",
+  "correction": "Use the actual source context and preserve Angstrom-to-L0 Hessian conversion.",
+  "retry_directory": "bulk_dispersion_corrected",
+  "scientific_instability": false,
+  "numerical_result_claimed": false
+}

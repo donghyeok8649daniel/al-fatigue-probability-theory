@@ -1,0 +1,9 @@
+{
+  "completed": false,
+  "error_type": "KeyError",
+  "error": "Failure inventory expected error, while preserved earlier preflight records use message.",
+  "stage": "post-test and post-smoke failure inventory; before writing final ledger",
+  "correction": "Read either explicit error or message; reject records with neither. Rerun the complete ledger, including actual smoke.",
+  "test_results_changed": false,
+  "scientific_results_changed": false
+}

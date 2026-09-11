@@ -1,0 +1,77 @@
+{
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "paths_fractional_cubic": {
+    "Gamma_L": [
+      [
+        0.005,
+        0.005,
+        0.005
+      ],
+      [
+        0.05,
+        0.05,
+        0.05
+      ],
+      [
+        0.15,
+        0.15,
+        0.15
+      ],
+      [
+        0.3,
+        0.3,
+        0.3
+      ],
+      [
+        0.5,
+        0.5,
+        0.5
+      ]
+    ],
+    "Gamma_K": [
+      [
+        0.005,
+        0.005,
+        0.0
+      ],
+      [
+        0.05,
+        0.05,
+        0.0
+      ],
+      [
+        0.15,
+        0.15,
+        0.0
+      ],
+      [
+        0.3,
+        0.3,
+        0.0
+      ],
+      [
+        0.5,
+        0.5,
+        0.0
+      ],
+      [
+        0.75,
+        0.75,
+        0.0
+      ]
+    ]
+  },
+  "cubic_basis": "corrected +ABC stacked cubic axes",
+  "candidate_validation_radii_L0": [
+    12.0,
+    16.0
+  ],
+  "matrix_units": "eV/L0^2",
+  "source_matrix_conversion": "H_eV/angstrom^2 * (L0/angstrom)^2",
+  "fitting_performed": false,
+  "atomic_mass_used": false,
+  "physical_Hz": false,
+  "short_wave_error_alone_proves_core_cause": false,
+  "material_accepted": false,
+  "fit_partition": "audit only; overlap with earlier selected bulk projections may exist; not held-out certification"
+}

@@ -1,0 +1,48 @@
+{
+  "targeted": {
+    "tests": 48,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 99.988,
+    "passed": 48,
+    "sha256": "56d963f52df0e649bee822ff6e21c7dd8baba226bec73e7b4be6c4e6e97e63ac",
+    "report": ".cache/core_interface_compatibility_v23/targeted_final.xml"
+  },
+  "topology_targeted": {
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 1.399,
+    "passed": 2,
+    "sha256": "8171470743d25bfb93473431508fadb3e7c74be9ddd2b4edcd9cc34c789f2266",
+    "report": ".cache/core_interface_compatibility_v23/topology_targeted_final.xml"
+  },
+  "solver_v1": {
+    "tests": 655,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 1945.841,
+    "passed": 655,
+    "sha256": "dc017639e775df51a37bdd0fa4d18c6867cfd7f88f24863501f72305542139c7",
+    "report": ".cache/core_interface_compatibility_v23/solver_release_final.xml"
+  },
+  "app": {
+    "tests": 34,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 167.617,
+    "passed": 34,
+    "sha256": "fd7a96ce28a1658e6d10c08ce968ea4223cc4d0759e395f34122d8e8f1a25a2d",
+    "report": ".cache/core_interface_compatibility_v23/app_release_final.xml"
+  },
+  "desktop_smoke": {
+    "exit_code": 0,
+    "elapsed_seconds": 1.5225436000037007,
+    "stdout": "desktop-ui smoke OK: a0=0.7713438268704838, kappa=86.29296488740997",
+    "stderr": ""
+  }
+}

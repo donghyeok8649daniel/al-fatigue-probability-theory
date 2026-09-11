@@ -1,5 +1,235 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## v23 최종 인계 — 2026-09-11, 실제 계산과 전체 회귀 완료
+
+**이 절이 아래 모든 v23 진행/재시도중 기록을 대체한다.** 아래 기록은
+실패 원인과 계산 경과를 보존한 이력이며 현재 실행 상태가 아니다.
+사용자 최신 요청은 "계속해". 원래 LJ/Bessel 이론을 보존하며 v22의
+source-core/계면 보정 충돌을 진단하고, 같은 함수족 후보를 실제로 풀었다.
+Production/PDE/UI/default/응력 bridge/mobility/A_c는 바꾸지 않았다.
+
+### Git / 재개 위치
+
+- 시작 local과 fresh origin: `d1ac6695518d3738b8303687d8c6a7b58877203e`, clean.
+- 실제 worktree: `aft-pde-bessel-38969ad`, branch `probability-pde-solver-v1`.
+  OneDrive 원래 경로는 migration stub이다. 다시 preflight 후 재개한다.
+- 이 절은 검증을 마친 커밋 직전에 작성한다. 이 인계를 포함하는 SHA는
+  `git log -1 -- CURRENT_WORK_HANDOFF.md`로 확인한다. Push는 fresh fetch 후
+  정상 fast-forward만 한다. 최종 도구 결과/사용자 보고가 실제 push 근거다.
+- 기존 original8736cb9d…, v22wider2fd94b89…, targetAl9960c8a085…의
+  보호 SHA256 세 개를 실제 재검증했다. Full binding은 validation_ledger에 있다.
+
+### 이번 단계의 가장 중요한 결과
+
+1. **Hxx>0은 slip saddle 부재의 증거가 아니다.** 실제 full3x3 Morse와
+   연결성을 검사했다. v22wider 자기 saddle은 Hxx=+.068616인데도
+   lambda_min=-1.387798eV/L0²이며 서로 다른 minimum으로 연결된다.
+   Source/wider/newradial 9개 stationary state,3개 saddle connectivity,
+   15개 signed static mixed-traction state를 실제로 확인했다.
+2. 고정shape LP48개/독립primal-dual 검증: 두 offendingjet만은 동시에
+   맞출 수 있다. 전체115jet minimax는 wider18.46445, sign-free18.33840.
+   즉 가중치만 손보면 전체를 맞춘다는 근거는 없고, whole-family 불가능
+   증명도 아니다. 같은 objective 두box QP는 otherloss41943.92로 악화된다.
+3. 기존shape160 deterministic profiles(maxfev, optimum아님) 이후 새joint
+   frozen-source force RMS는 .0995689eV/L0(R8), .0969927(R16excluded).
+   Original .288834보다65.53%, wider .152417보다34.67% 작다. 그러나
+   other-interface squared loss4520.30(wider2276.47)로 악화했다.
+4. 새 radial 후보는 실제 stable vector core를 가진다:
+
+   | R/ring |최대 force eV/L0|최소 Hessian eV/L0²|실제 시간 s|
+   |---|---:|---:|---:|
+   |8/5|4.343e-10|.172653874|487.823|
+   |8/7|3.297e-8|.172236076|259.084|
+   |10/7|2.771e-12|.130868746|461.814|
+
+   모두 winding1과 FD곡률/replay 검사. R2 내부 변위차는 환경ring5→7에서
+   2.1912e-5L0, 자유영역8→10에서1.9930e-3L0. Infinite-domain 인증 아님.
+   Sampled quarter-span은 .885664/.885690/.880949L0, sourceR8은2.760327.
+   이는 격자 profile 진단이며 물리 partial separation이나fit타깃이 아니다.
+5. **새 단파장 원인 검사:** small-q matrix오차~.63%인데 q=(.5,.5,0)의
+   한 vector curvature는 source60.0863에 비해375.8720eV/L0². 실제
+   4개FCC phase-class 원자를 변위시키고 per-atom energy를 재계산했다.
+   변위 .002→7.8125e-6L0 refinement에서 해석값으로 접근한다(최종오차
+   4.86e-6relative). 단순 축/단위/행렬 prefactor 버그로 설명되지 않는다.
+   Harmonic 양의고유값/장파장탄성 일치가 단파장 정확성을 보장하지 않는다.
+   이것 하나로 nonlinearcore 오차의 유일한 원인이라고 단정하지 않는다.
+   전체matrix470.8%오차와 screw projection -13.13%오차는 다른 지표다.
+6. 기존 rational-quartic를 명시적5beta ablation으로 재검사했으나115jet
+   bound개선없음, D3/K3상관.999929까지 악화. 채택하지 않는다.
+   현재22채널 core가 미지원 nonzero quartic saturation을 조용히
+   빠뜨리지 않도록 ValueError guard를 추가했다. 기본0은 완전 불변이다.
+
+### 아직 채택하지 않는 정량적 이유
+
+| J/m² |Al99 target-only|v22 wider|v23 radialjoint|
+|---|---:|---:|---:|
+|relaxed fault|.150479|.079457|.075309|
+|adjacent saddle|.172002|.119750|.114757|
+|finite W(40h)|1.741285|1.840583|2.524404|
+
+안장점은 존재하지만 registry/개구/단파장/코어 형태를 함께 맞추지 못했다.
+새minimum이나force개선을 Al 보정성공으로 승격하지 않는다. Al99는 같은
+0K조건의 atomistic model target이지 모든 점의 실험적 정답은 아니다.
+첫 fixed-registry normal peak12.970/8.924/6.537GPa는 idealcoherent
+traction이지 실제항복이 아니다. Static ±50MPa normal, ±4MPa shear return은
+동적hold나시편잔류소성검증이 아니다. Physicala/s M_a,M_s,t0/초/Hz,
+유한loop activation, 실제yield/fatigue 및 A_c 보정은 여전히 미검증이다.
+
+### 실패 / 수치 해상도 / 검증 기록
+
+- 두box 후보 core는 root600s/descent900s 예산 종료; checkpoint 별도실제
+  재평가force .242865/1.863155. 수렴minimum/unbounded energy증명 아님.
+- 새radial 초기root는 force작지만 lambda_min=-.380259인 불안정정지점.
+  L-BFGS 시도는 reciprocal series 실패로 중단했지만 같은energy Newton-CG는
+  위minimum을 찾았다. 급수실패를 물리spinodal로 오해하지 않는다.
+- Frozen-source ring7→9 force차 RMS5.864e-6, 잔여오차.099568eV/L0.
+  Reciprocaltol2e-12→2e-14 변화0(표시정밀도). 모든비선형tail인증은 아님.
+- `validation_ledger`: 7개core기록,9개 실패기록(launcher/preflight/report
+  오류 포함), 미확인livecore0. Test/입력/result hashes 실제검사.
+- Targeted48 PASS99.99s + topology2 PASS1.40s. 새 tests 총17개.
+- **Full solver655 PASS1945.86s(32분25초), app34 PASS167.68s, skip0.**
+- 실제 desktop smoke PASS1.523s: historicala0=.7713438268704838,
+  kappa=86.29296488740997. 첫중단full은PASS가아니며별도기록했다.
+- 최종 diffcheck/staging/freshfetch/commit/push는 이 기록 이후 도구로
+  확인한다. 테스트를 다시했다고 문서만으로 주장하지 않는다.
+
+### 다음 단계 (다시 동일 실패 fit을 반복하지 말 것)
+
+1. `CORE_INTERFACE_COMPATIBILITY_V23.md`, 원시CSV, LP dual과 실제
+   `bulk_dispersion_audited_partition`, `shortwave_direct_energy_refined`를 읽는다.
+2. 같은LJ/Bessel per-atom law에서 단파장 vector 성분을 실제 source타깃으로
+   명시하고, 일부분 fit / 나머지 excluded로 사전구분한다. 기존bulk타깃과
+   겹칠 수 있는 이번 post-fit검사를 blindheldout이라 하지 않는다.
+3. Exact7 뒤 nullspace에서 partial-coordination/finite-q derivatives의
+   rank와 충돌을 먼저 분석한다. 단파장오차를 hiddenstiffness/큰saturation으로
+   옮긴 채 core force만 줄이는 fit은 채택하지 않는다. 추가term은 수식/단위/
+   per-atom합/독립미분/gauge/identifiability를 먼저 유도하고 최소한만 검토한다.
+4. 검증후 actualcore/domain/loadreturn을 다시 수행한다. Straightrepeat당
+   에너지를 임의line길이로 곱해 finiteactivation/초/항복을 만들지 않는다.
+5. 아직 production/UI gate 미통과. 기존 UI 재설계와 physicalHz 활성화는 하지 않는다.
+
+## v23 후속 백업 — 2026-09-11, 최종 회귀 실행 중
+
+아래16:43 기록보다 이 절이 최신이다. 시작 fresh local/origin 모두
+`d1ac6695518d3738b8303687d8c6a7b58877203e`, clean probability-pde-solver-v1.
+실제 worktree는 `aft-pde-bessel-38969ad`; OneDrive 원래 폴더는 migration stub.
+현재 변경은 이 turn의 v23 연구/테스트/인계뿐이며 아직 commit/push 전이다.
+
+### 새로 확인한 핵심 해석
+
+**Hxx 하나의 부호로 slip saddle 부재를 주장하면 안 된다.** Source saddle의
+좌표와 후보의 실제 정지점은 다르며, full3x3 Hessian을 써야 한다.
+실제 재계산에서 v22 wider의 자기 saddle은 Hxx=+.068616인데도
+lambda_min=-1.387798eV/L0²이고 양쪽의 서로 다른 최소점까지 하강했다.
+Source/wider/new-radial 후보 총9개 stationary state와3개 saddle connectivity
+검사,15개 signed local-traction static 상태가 모두 검증됐다.
+이것은 production PDE, 시간 hold, 잔류소성 또는 실제 항복 검증이 아니다.
+
+그러나 에너지 값은 여전히 맞지 않는다(J/m²):
+
+| Model |fault|saddle|W(40h)|
+|---|---:|---:|---:|
+| Al99 source |.150479|.172002|1.741285|
+| v22 wider |.079457|.119750|1.840583|
+| v23 radial joint |.075309|.114757|2.524404|
+
+즉 saddle가 없어서가 아니라 **정량적 계면/코어 적합성이 부족해서** 채택 불가다.
+Source의 모든 국소 curvature가 실험적 정확값이라는 뜻도 아니다.
+Static source곡률 FD는1e-5에서2.475e-7/3.549e-9eV/L0²로 확인했다.
+
+### 완료된 계산
+
+- `fixed_shape_audit`:48 LP; exact7/signs 아래 두 offendingjet 동시맞춤 가능.
+  그러나 wider115jet 고정shape minimax18.46445; 모든sign해제18.33840.
+  Primal/dual/KKT 저장. 고정shape 필요조건일 뿐 전체함수족 불가능 증명 아님.
+- `box_profiles`:4 동일v22 joint QP. 두원래scale box를 맞추면 otherloss
+  2276.47→41943.92, source-force RMS.152417→.175221. Rejected후보별snapshot.
+- `radial_minimax_corrected`:160 actualprofiles/908.01s, maxfev stop.
+  best선택29jet eta9.98358, full115jet에그벡터를대면40.23339. 같은newshape에서
+  full115jet다시minimax하면13.92314. 목표unitbox미달이며 globaloptimum아님.
+- `radial_full_validation`:full285 관측량/분광tail/R8,R16 sourcecore force검사.
+  full/subset replay0, 실제energyjet재현<8.9e-16. New joint RMS.0995689eV/L0
+  (원래 .288834보다65.53% 작음), excludedR16 .0969927. 하지만 otherloss4520.30,
+  source-coordinatecurvature부호불일치와 위fault/cleavage오차로채택하지않는다.
+- `rational_quartic_ablation`:이전v14/v15 rational shape를 별도로명시해5beta검사.
+  `K3 I3²/(1+alpha3 I3)`; default에는안넣음.115jetbound모두18.46445,K3=0.
+  D3/K3상관 .9044→.999929, 식별성악화. 새로운core전달은미지원이므로
+  CurrentMaterialSiteLaw가nonzero saturation을명시적으로거부하도록guard추가.
+- `static_topology_corrected`:실제root/연결/개구33,65bracket/15static상태.
+  첫 fixed-registry normal peak12.9696/8.92447/6.53654GPa는 idealcoherent
+  traction이며 실제Al항복이아님. Source뒤쪽작은extrema는grid차이남음.
+
+### 원자 코어 계산 상태 — 종료 확인 필요
+
+- `box_core_R8r5`:600s root budget stop, 독립inspectionforce .242865eV/L0.
+- `box_core_R8r5_descent`:900s descent budget stop, force1.863155,energy-48.332675.
+  수렴minimum이나unbounded에너지의증명아님. Checkpoint검사hash저장.
+- `radial_joint_core_R8r5`:7Newtoniteration후force1.7161e-8지만
+  lambda_min=-.380258829, FD음의곡률확인. 완료한불안정정지점이지minimum아님.
+- `radial_joint_escape_plus_R8r5`:L-BFGS trial에서reciprocal series소진,
+  force보정없이중단. 물리spinodal로해석금지.
+- `radial_joint_escape_plus_newton_R8r5`:같은energy/음의mode로Newton-CG 재시도중.
+  종료summary/failure와실제tool출력을확인할것. max900s/120iteration.
+- 최초dict버그/seed-domain/source-geometry helper실패도 별도failure.json보존.
+  static_topology 최초helper는source Å→L0 geometry접근을고쳐새폴더재실행함.
+
+### 테스트 / 남은 마무리
+
+- targeted48 PASS99.99s, topology추가2 PASS1.40s 실제실행.
+- app34 PASS167.68s, skip0. GUI테스트를headless skip으로숨기지않음.
+- 첫full은collection후topology테스트가추가되어중단(exit1, PASS아님).
+  `test_run_history.json` 보존. 최종full은
+  `.cache/core_interface_compatibility_v23/solver_release_final.xml`로 실행중.
+- 최종full/code확인→smoke실행→ledger생성→문서확정→diffcheck→freshfetch→
+  정상commit/push. `report_v23_validation_ledger.py`는XML실제집계+smoke실제실행.
+  report output은새폴더만허용. 연구artifact 변경후manifest재생성필수.
+- 보호hash: original8736cb9d…, wider2fd94b89…, source60c8a085… 불변.
+  canonicalenergy/PDE/temperature/mobilities/A_c/physicalHz/UIdefault 변경없음.
+
+다음과학질문은source의partial-coordination response를exact7제약뒤남는
+scalar/angular 자유도로어떻게표현할지다. 이전cubic/mixed/rational실패를무시하고
+항을다붙이지말것. Actualcoreminimum/finite-loop/sourcepopulations/kinetics가
+미완료이며, physicala/s M_a,M_s,t0/초Hz 및 실제yield/fatigue는여전히미검증.
+
+## v23 진행 백업 — 2026-09-11 16:43KST (아직 최종 검증/commit 전)
+
+사용자 "계속해"에 따라 재개. Fresh fetch/local/origin 모두
+`d1ac6695518d3738b8303687d8c6a7b58877203e`, clean branch에서 시작했다.
+실제작업은 동일 `aft-pde-bessel-38969ad` worktree. No main/default/PDE 변경.
+
+`core_interface_compatibility.py`: 기존 exact coefficient matrix의 minimax LP,
+독립 primal/dual certificate, source interval을 상수1좌표로 기존 spectral QP에
+전달하는 helper. 새 material항 아님. 새 targeted10PASS1.58s까지 실제 실행.
+아래 v22 전체638/app34 결과는 이전 turn; 이번 전체회귀는 아직 미실행이다.
+
+완료: `fixed_shape_audit`48 LP/93.12s. 두 잘못된 곡률만은 exact7+부호조건에서
+동시일치 가능. 하지만 wider shape의115 inspected curvatures에 대한 최소
+worst normalized error=18.46445, sign-free18.33840, bulk5-only13.94048.
+이는 해당shape 필요조건이며 전체radial family 불가능성 증명 아님.
+Dual support는 saddle_Hxx,v19_new_4_Haa,v19_power_new_2_Haa와K3 bound.
+`box_profiles`4actual profiles 완료: 두 source box(원래1scale)를 강제하면
+Hxx=-.205067/Haa=.803279로 맞지만 다른interface loss2276.47→41943.92,
+coreforce RMS.152417→.175221. PositiveLJ/sampled spectrum/KKT는 통과해도
+material은 실패. Saddle-only는 zero-LJ closure라 snapshot채택 금지.
+
+실행 중(완료로그확인 필수):
+
+- `radial_minimax_corrected`: 기존5shape bounded Powell,27fit curvatures+
+  위2opening witness, exact7/signs, max160fev/1200s. Full/subset matrix replay
+  후 실제실행; 현재 eta18.464→약15.76, 미완료. Spectral/전체자료/force는 후속검증.
+- `box_core_R8r5`: both-box 후보의 실제atomic stationary root/Morse,
+  v22 wider R8 좌표만 seed, own material/exterior 유지, max600s.
+- `radial_minimax/failure.json`: 최초runner duplicate completed dict 오류,
+  물리실패 아님, 코드수정후 새dir retry. 덮어쓰기/삭제 안 함.
+- `box_core_R4r5`, `box_core_seeded_R4r5`: 각각 과거metadata의 b누락,
+  R8→R4 seed-domain guard의 preflight실패. 실제원자이완 전 중단, guard안바꿈.
+
+상세수학/통계해석은 `CORE_INTERFACE_COMPATIBILITY_V23.md`.
+남은일: radial/core 끝난실제결과 확인→필요한 전체자료/spectral/core검증→
+수치후보와 물리채택 구별→targeted/fullsolver/app/smoke/diffcheck→상세인계/
+freshfetch/정상commit/push. SourceAl99는target-only, LJ/Bessel은불변.
+Physical a/s mobility/초/Hz 및 실제yield/피로는 이번static연구로 인증하지 않는다.
+
 ## v22 최종 연구 인계 — 2026-09-11 08:35KST
 
 이번 약4시간 연구의 계산과 최종 검증은 끝났다. 아래08:10/07:31/06:10 기록은

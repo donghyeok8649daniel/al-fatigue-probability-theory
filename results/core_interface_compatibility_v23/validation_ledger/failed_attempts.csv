@@ -1,0 +1,10 @@
+attempt,error_type,error,elapsed_seconds,completed,failure_alone_proves_physical_instability
+box_core_R4r5,KeyError,b_reduced,,False,False
+box_core_R8r5,CalculationBudgetReached,declared wall budget reached; checkpoint is not a converged result,613.1872152000142,False,False
+box_core_R8r5_descent,CalculationBudgetReached,declared wall budget reached; checkpoint is not a converged result,901.3243015999906,False,False
+box_core_seeded_R4r5,ValueError,configuration seed requires the same logical free domain,,False,False
+bulk_dispersion,,AttributeError: SimpleNamespace has no attribute reference,,False,False
+ledger_initial_attempt,KeyError,"Failure inventory expected error, while preserved earlier preflight records use message.",,False,False
+radial_joint_escape_plus_R8r5,ArithmeticError,vector row reciprocal series exhausted; no repaired force returned,68.82515330001479,False,False
+radial_minimax,TypeError,dict() got multiple values for keyword argument 'completed',,False,False
+static_topology,AttributeError,MishinVectorInterfaceReference has no geometry attribute; use reference geometry divided by its explicit length scale,,False,False

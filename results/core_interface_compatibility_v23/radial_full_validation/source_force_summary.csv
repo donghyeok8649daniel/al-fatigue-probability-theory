@@ -1,0 +1,9 @@
+profile,configuration,force_RMS_eV_L0,force_maximum_eV_L0,used_for_coefficient_objective,shape_objective_used_core_forces,actual_atomic_relaxation
+selected_minimax_trial,R8_development,0.6234874773656962,1.6304071278431462,False,False,False
+selected_minimax_trial,R16_excluded_core_configuration,0.5929204759133289,1.4499015415198084,False,False,False
+static_LS,R8_development,0.18731352707097582,0.4749062238994357,False,False,False
+static_LS,R16_excluded_core_configuration,0.17969269570537102,0.42794227483201985,False,False,False
+joint_LS,R8_development,0.09956887482687259,0.2469996005232123,True,False,False
+joint_LS,R16_excluded_core_configuration,0.09699271580209487,0.2320280298491934,False,False,False
+joint_critical_boxes,R8_development,0.5043783975878097,1.280559441003539,True,False,False
+joint_critical_boxes,R16_excluded_core_configuration,0.4821136441957835,1.1340571813393712,False,False,False

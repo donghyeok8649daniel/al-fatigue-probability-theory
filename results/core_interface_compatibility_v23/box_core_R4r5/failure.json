@@ -1,0 +1,12 @@
+{
+  "completed": false,
+  "classification": "historical_seed_metadata_missing_geometry",
+  "error_type": "KeyError",
+  "message": "b_reduced",
+  "source": "results/current_material_core_v22/stable_plus_R4r5",
+  "occurred_before": "atomic relaxation",
+  "source_files_modified": false,
+  "physical_instability_claimed": false,
+  "retry": "use a separately verified v22 source state with explicit b_reduced and h_reduced metadata",
+  "material_accepted": false
+}

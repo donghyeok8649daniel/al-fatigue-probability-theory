@@ -14,6 +14,35 @@ confused with a fully calibrated spatial aluminum fatigue solver.
 
 ## Gates
 
+The v23 compatibility study separates coefficient feasibility from material
+adequacy. Both troublesome source jets can be matched with the seven exact
+anchors, yet the full115 inspected curvatures have a fixed-shape minimax
+lower bound18.464 at the wider shape. A bounded existing-shape search reduces
+that full-set bound to13.923, not to the unit target box, and stops at maxfev.
+Its joint coefficient profile improves frozen-source core force RMS but
+worsens other-interface squared loss. An explicitly separate prior rational-
+quartic ablation does not remove the incompatibility and approaches D3
+column degeneracy. No production law is added; the core bridge rejects that
+unsupported ablation instead of silently omitting it.
+
+IMPORTANT topology correction: a positive Hxx evaluated at the source's
+saddle is NOT proof that a candidate has no saddle. The full coupled Hessian
+and actual stationary coordinates/downhill connectivity are required. The
+v22 wider candidate has a verified index-one interface saddle even with
+positive own Hxx; its fault/saddle energies remain substantially wrong.
+This corrects an overly strong interpretation, not a change in the energy.
+Read `CORE_INTERFACE_COMPATIBILITY_V23.md` and its saved actual topology/core
+checks. Neither a fixed-shape LP nor an unconverged shape search establishes
+global family impossibility, and none opens an Al-yield/fatigue or UI gate.
+
+Actual radial-joint minima now pass force/Morse checks at R8/ring5, R8/ring7
+and R10/ring7. The small inner-field changes are recorded, not called an
+infinite-domain certificate. The core stays much narrower than the matched
+Al99 source. An independent finite-q audit also exposes a large short-wave
+vector stiffness error, verified by actual per-atom sinusoidal energy and
+amplitude refinement. This is a quantitative material limitation, not fixed
+by a positive Hessian or mobility adjustment. It adds no canonical energy term.
+
 The v22 bridge retains ALL current22 nonlinear site channels on infinite Bessel
 atomic rows, with independent atom-sum/derivative/Morse checks. The unchanged
 candidate now has actually relaxed vector cores, not only an outer elastic

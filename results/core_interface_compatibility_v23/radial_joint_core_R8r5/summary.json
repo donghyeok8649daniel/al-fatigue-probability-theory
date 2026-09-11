@@ -1,0 +1,112 @@
+{
+  "energy": 0.8982101251553974,
+  "maximum_free_force": 1.716126213358038e-08,
+  "force_converged": true,
+  "optimizer_success": true,
+  "optimizer_message": "stationary Newton root; final Morse gate separately decides minimum",
+  "iterations": 7,
+  "evaluations": null,
+  "polish_steps": 0,
+  "minimizer": "stationary_root",
+  "energy_descent_path": false,
+  "physical_dynamics": false,
+  "stationary_history": [
+    {
+      "iteration": 0,
+      "energy": 0.9589272823190478,
+      "maximum_force": 0.2471357346820665
+    },
+    {
+      "iteration": 1,
+      "energy": 0.9090319833035078,
+      "maximum_force": 0.15490555590327904
+    },
+    {
+      "iteration": 2,
+      "energy": 0.8967716807408757,
+      "maximum_force": 0.07052547483232816
+    },
+    {
+      "iteration": 3,
+      "energy": 0.8981899168083145,
+      "maximum_force": 0.04672365073071588
+    },
+    {
+      "iteration": 4,
+      "energy": 0.898194481957846,
+      "maximum_force": 0.024000621653354638
+    },
+    {
+      "iteration": 5,
+      "energy": 0.898209474204722,
+      "maximum_force": 0.003095735138961775
+    },
+    {
+      "iteration": 6,
+      "energy": 0.8982101250117711,
+      "maximum_force": 6.192126097697565e-05
+    },
+    {
+      "iteration": 7,
+      "energy": 0.8982101251553974,
+      "maximum_force": 1.716126213358038e-08
+    }
+  ],
+  "boundary_winding": 0.9999999999999999,
+  "minimum_density": 37.01873684728687,
+  "minimum_transverse_radius": 0.8510907540468526,
+  "final_stability_probe": {
+    "minimum_eigenvalue": -0.3802588292900794,
+    "hessian_method": "assembled",
+    "eigenpair_residual": 1.3212287624426772e-13,
+    "energy_curvature_checks": [
+      {
+        "step_over_L0": 0.002,
+        "curvature": -0.38017890513497576,
+        "eigenvalue_error": 7.992415510366113e-05,
+        "plus_energy_change": -7.603464772243385e-07,
+        "minus_energy_change": -7.603691433155646e-07
+      },
+      {
+        "step_over_L0": 0.001,
+        "curvature": -0.3802388424123393,
+        "eigenvalue_error": 1.9986877740130193e-05,
+        "plus_energy_change": -1.9011376017896708e-07,
+        "minus_energy_change": -1.9012508234439451e-07
+      }
+    ],
+    "maximum_free_force": 1.716126213358038e-08,
+    "force_tolerance": 5e-07,
+    "positive_hessian_on_tested_fixed_boundary": false,
+    "stable_on_tested_fixed_boundary": false
+  },
+  "completed": true,
+  "initial_energy": 0.9589272823190478,
+  "initial_maximum_free_force": 0.2471357346820665,
+  "reciprocal_modes": 9,
+  "last_mode_envelope": 1.3431494581587953e-14,
+  "analytic_affine_hessian": [
+    [
+      4.397754048983271,
+      0.41462422798308946
+    ],
+    [
+      0.41462422798308807,
+      4.104570445732184
+    ]
+  ],
+  "continuum_antiplane_hessian": [
+    [
+      4.3977540489992535,
+      0.41462422800506477
+    ],
+    [
+      0.41462422800506477,
+      4.104570445732634
+    ]
+  ],
+  "actual_yield_calibrated": false,
+  "domain_converged": false,
+  "material_accepted": false,
+  "elapsed_seconds": 364.32517309999093
+}

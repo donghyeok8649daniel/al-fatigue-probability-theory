@@ -1,0 +1,150 @@
+{
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "bindings": [
+    {
+      "model": "v22_wider",
+      "parameter_source": "results/current_material_core_v22/wider_probe_validation/research_candidate_snapshot.json",
+      "parameter_sha256": "2fd94b89168b173378f4c67d9d6faf52c0363292fc66d8d7e705f214a55de23a",
+      "material_shape": [
+        2.703305047819125,
+        7.633706329130604,
+        11.044328645438164,
+        172.74231833476296,
+        6.911784604905995,
+        0.0
+      ],
+      "coefficients": [
+        0.014208235724468011,
+        0.03800279268021126,
+        2.095246728098389,
+        1.2139518504113378,
+        2.290246746698926,
+        14.697901569610833,
+        2.5621632452682843,
+        2.1542273322160246,
+        1.5545373800178843,
+        1006.4071116002428
+      ],
+      "screening_law": "power",
+      "material_accepted": false,
+      "energy_terms_omitted": false,
+      "length_scale_m": 2.863782463805517e-10,
+      "energy_unit": "eV per infinite straight-row repeat b*L0",
+      "tensor_unit": "eV/L0^3",
+      "elastic_tensor_same_candidate": true,
+      "C11_C12_C44_GPa": [
+        114.0,
+        62.00000000000015,
+        32.000000000000014
+      ],
+      "physical_time": false,
+      "physical_Hz": false,
+      "actual_yield_calibrated": false,
+      "production_changed": false
+    },
+    {
+      "model": "v23_radial_joint",
+      "parameter_source": "results/core_interface_compatibility_v23/radial_full_validation/joint_LS/research_candidate_snapshot.json",
+      "parameter_sha256": "fa4dbe23eb691b56ba51c6c2c288eba2c1b0f87eddfb61afa2914d6255aafebe",
+      "material_shape": [
+        1.656352585215093,
+        6.129414519002254,
+        11.998762713657916,
+        616.9404664601376,
+        7.727293086239065,
+        0.0
+      ],
+      "coefficients": [
+        0.04952938583156828,
+        0.0744773413176886,
+        1.4245051602861154,
+        0.5955594730983662,
+        2.293251794893818,
+        24.492269016194214,
+        0.13185683046506813,
+        0.731145692409035,
+        1.2354213692647953,
+        2926.818045262827
+      ],
+      "screening_law": "power",
+      "material_accepted": false,
+      "energy_terms_omitted": false,
+      "length_scale_m": 2.863782463805517e-10,
+      "energy_unit": "eV per infinite straight-row repeat b*L0",
+      "tensor_unit": "eV/L0^3",
+      "elastic_tensor_same_candidate": true,
+      "C11_C12_C44_GPa": [
+        113.99999999999986,
+        61.999999999999936,
+        31.999999999999993
+      ],
+      "physical_time": false,
+      "physical_Hz": false,
+      "actual_yield_calibrated": false,
+      "production_changed": false
+    }
+  ],
+  "source_stationary_seeds": {
+    "perfect": [
+      0.816496580927726,
+      0.0,
+      0.0
+    ],
+    "fault": [
+      0.8356612484876702,
+      0.5,
+      0.28867513459481275
+    ],
+    "saddle": [
+      0.8492922641076963,
+      0.3714061259442337,
+      0.2144314267925794
+    ]
+  },
+  "static_traction_MPa": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      50.0,
+      4.0,
+      -4.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      -50.0,
+      -4.0,
+      4.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "actual_candidates_held_fixed": true,
+  "source_not_a_production_potential": true,
+  "source_coordinate_H_sign_is_not_candidate_stationary_topology": true,
+  "normal_extrema_bracket_samples": [
+    33,
+    65
+  ],
+  "derivative_steps": [
+    4e-05,
+    2e-05,
+    1e-05
+  ],
+  "all_results_diagnostic": true,
+  "new_blind_target_data": false,
+  "no_new_fitting": true,
+  "physical_time": false,
+  "dynamic_hold": false,
+  "material_accepted": false,
+  "actual_yield_validated": false
+}

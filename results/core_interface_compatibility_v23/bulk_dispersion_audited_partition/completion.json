@@ -1,0 +1,135 @@
+{
+  "completed": true,
+  "actual_matrices": 66,
+  "bindings": [
+    {
+      "model": "original",
+      "parameter_source": "results/fcc111_active_interface/tangent_calibration_v20/shape_refinement/old_family/calibration.json",
+      "parameter_sha256": "8736cb9d28f1430e3991b1046ef42544cefaa3c9a4f5d743e0d02931329f5c2e",
+      "material_shape": [
+        2.85886119378847,
+        6.746880127140937,
+        10.63009069883441,
+        94.80299451626864,
+        5.694618712357865,
+        0.0
+      ],
+      "coefficients": [
+        0.004691290237097735,
+        0.010748901179499448,
+        2.164270267643741,
+        1.1151150845574143,
+        2.2616200179977715,
+        25.907737627659625,
+        2.3233021601990624,
+        2.6384659593382307,
+        1.6254251376231954,
+        9456.761143180593
+      ],
+      "screening_law": "power",
+      "material_accepted": false,
+      "energy_terms_omitted": false,
+      "length_scale_m": 2.863782463805517e-10,
+      "energy_unit": "eV per infinite straight-row repeat b*L0",
+      "tensor_unit": "eV/L0^3",
+      "elastic_tensor_same_candidate": true,
+      "C11_C12_C44_GPa": [
+        114.00000000000003,
+        61.99999999999996,
+        31.99999999999993
+      ],
+      "physical_time": false,
+      "physical_Hz": false,
+      "actual_yield_calibrated": false,
+      "production_changed": false
+    },
+    {
+      "model": "v22_wider",
+      "parameter_source": "results/current_material_core_v22/wider_probe_validation/research_candidate_snapshot.json",
+      "parameter_sha256": "2fd94b89168b173378f4c67d9d6faf52c0363292fc66d8d7e705f214a55de23a",
+      "material_shape": [
+        2.703305047819125,
+        7.633706329130604,
+        11.044328645438164,
+        172.74231833476296,
+        6.911784604905995,
+        0.0
+      ],
+      "coefficients": [
+        0.014208235724468011,
+        0.03800279268021126,
+        2.095246728098389,
+        1.2139518504113378,
+        2.290246746698926,
+        14.697901569610833,
+        2.5621632452682843,
+        2.1542273322160246,
+        1.5545373800178843,
+        1006.4071116002428
+      ],
+      "screening_law": "power",
+      "material_accepted": false,
+      "energy_terms_omitted": false,
+      "length_scale_m": 2.863782463805517e-10,
+      "energy_unit": "eV per infinite straight-row repeat b*L0",
+      "tensor_unit": "eV/L0^3",
+      "elastic_tensor_same_candidate": true,
+      "C11_C12_C44_GPa": [
+        114.0,
+        62.00000000000015,
+        32.000000000000014
+      ],
+      "physical_time": false,
+      "physical_Hz": false,
+      "actual_yield_calibrated": false,
+      "production_changed": false
+    },
+    {
+      "model": "v23_radial_joint",
+      "parameter_source": "results/core_interface_compatibility_v23/radial_full_validation/joint_LS/research_candidate_snapshot.json",
+      "parameter_sha256": "fa4dbe23eb691b56ba51c6c2c288eba2c1b0f87eddfb61afa2914d6255aafebe",
+      "material_shape": [
+        1.656352585215093,
+        6.129414519002254,
+        11.998762713657916,
+        616.9404664601376,
+        7.727293086239065,
+        0.0
+      ],
+      "coefficients": [
+        0.04952938583156828,
+        0.0744773413176886,
+        1.4245051602861154,
+        0.5955594730983662,
+        2.293251794893818,
+        24.492269016194214,
+        0.13185683046506813,
+        0.731145692409035,
+        1.2354213692647953,
+        2926.818045262827
+      ],
+      "screening_law": "power",
+      "material_accepted": false,
+      "energy_terms_omitted": false,
+      "length_scale_m": 2.863782463805517e-10,
+      "energy_unit": "eV per infinite straight-row repeat b*L0",
+      "tensor_unit": "eV/L0^3",
+      "elastic_tensor_same_candidate": true,
+      "C11_C12_C44_GPa": [
+        113.99999999999986,
+        61.999999999999936,
+        31.999999999999993
+      ],
+      "physical_time": false,
+      "physical_Hz": false,
+      "actual_yield_calibrated": false,
+      "production_changed": false
+    }
+  ],
+  "elapsed_seconds": 4.476535199995851,
+  "candidate_energy_is_infinite_LJ_Bessel": true,
+  "finite_neighbor_operator_has_analytic_tail": true,
+  "physical_time": false,
+  "material_accepted": false,
+  "nonlinear_core_cause_proved": false
+}

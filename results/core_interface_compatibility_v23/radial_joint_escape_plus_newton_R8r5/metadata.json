@@ -1,0 +1,98 @@
+{
+  "parameter_source": "results/core_interface_compatibility_v23/radial_full_validation/joint_LS/research_candidate_snapshot.json",
+  "parameter_sha256": "fa4dbe23eb691b56ba51c6c2c288eba2c1b0f87eddfb61afa2914d6255aafebe",
+  "material_shape": [
+    1.656352585215093,
+    6.129414519002254,
+    11.998762713657916,
+    616.9404664601376,
+    7.727293086239065,
+    0.0
+  ],
+  "coefficients": [
+    0.04952938583156828,
+    0.0744773413176886,
+    1.4245051602861154,
+    0.5955594730983662,
+    2.293251794893818,
+    24.492269016194214,
+    0.13185683046506813,
+    0.731145692409035,
+    1.2354213692647953,
+    2926.818045262827
+  ],
+  "screening_law": "power",
+  "material_accepted": false,
+  "energy_terms_omitted": false,
+  "length_scale_m": 2.863782463805517e-10,
+  "energy_unit": "eV per infinite straight-row repeat b*L0",
+  "tensor_unit": "eV/L0^3",
+  "elastic_tensor_same_candidate": true,
+  "C11_C12_C44_GPa": [
+    113.99999999999986,
+    61.999999999999936,
+    31.999999999999993
+  ],
+  "physical_time": false,
+  "physical_Hz": false,
+  "actual_yield_calibrated": false,
+  "production_changed": false,
+  "radius_over_L0": 8.0,
+  "ring": 5,
+  "center_over_L0": [
+    0.14433756729740643,
+    0.408248290463863
+  ],
+  "b_reduced": 1.0,
+  "h_reduced": 0.816496580927726,
+  "shear_traction_MPa": 0.0,
+  "burgers_sign": 1,
+  "force_tolerance_eV_L0": 5e-07,
+  "reciprocal_tolerance": 2e-12,
+  "free_sites": 286,
+  "energy_sites": 776,
+  "explicit_environment_rows": 120,
+  "channels": 22,
+  "farfield_log_coefficient_eV_per_repeat": 0.3364817248013292,
+  "boundary": "fixed same-material Volterra plus prescribed affine shear",
+  "boundary_is_not_measured_pinning": true,
+  "domain_converged": false,
+  "max_iterations": 120,
+  "wall_budget_seconds": 900.0,
+  "stability_method": "assembled",
+  "continued_from": "results/core_interface_compatibility_v23/radial_joint_core_R8r5",
+  "continuation": {
+    "source_radius_over_L0": 8.0,
+    "target_radius_over_L0": 8.0,
+    "inherited_free_rows": 286,
+    "new_free_rows": 0,
+    "domain_expansion": false,
+    "source_stability_required": false,
+    "initialization_only": true,
+    "interpolation_used": false,
+    "exterior_boundary_recomputed": true,
+    "domain_convergence_certified": false
+  },
+  "source_state_sha256": "48a268595eb3f79a891c99840aa7a11fc99f97a478fad3b3839014a3af74b6ae",
+  "mode_descent": {
+    "sign": 1,
+    "amplitude": 0.02,
+    "minimum_eigenvalue": -0.3802588292900794,
+    "energy_checks": [
+      {
+        "step_over_L0": 0.002,
+        "curvature": -0.38017890513497576,
+        "eigenvalue_error": 7.992415510366113e-05,
+        "plus_energy_change": -7.603464772243385e-07,
+        "minus_energy_change": -7.603691433155646e-07
+      },
+      {
+        "step_over_L0": 0.001,
+        "curvature": -0.3802388424123393,
+        "eigenvalue_error": 1.9986877740130193e-05,
+        "plus_energy_change": -1.9011376017896708e-07,
+        "minus_energy_change": -1.9012508234439451e-07
+      }
+    ]
+  }
+}

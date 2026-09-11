@@ -500,6 +500,35 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- CORE_INTERFACE_COMPATIBILITY_V23.md / core_interface_compatibility_v23:
+  Saddle 판단은 source 좌표의 Hxx 부호 하나로 하지 않는다. v22 wider는
+  자기 saddle에서 Hxx>0이지만 전체 Hessian의 최소 고유값<0이며 양쪽 minimum
+  연결도 확인됐다. 실제 정지점/Morse/연결성과 source jet 오차는 별도 기준이다.
+  v23의 bounded radial 개선도 전체115jet/unit box를 통과하지 못했고, scalar/
+  angular/radial family 전체 불가능 증명은 아니다. 기존 rational-quartic의
+  명시적 별도 ablation은 개선 없이 D3와 거의 퇴화한다. 이를 default에 넣지
+  않는다. 현재22채널 core는 nonzero quartic saturation을 지원하지 않으므로
+  조용히 누락하지 않고 거부한다. Source geometry는 Angstrom, candidate는L0;
+  registry 동등성 비교에서도 source.length로 환산한다.
+  새 radial 후보의 R8/ring5, R8/ring7, R10/ring7 stable core는 존재하지만
+  실제 Al 코어 적합이나 infinite-domain 인증은 아니다. 단파장 q=(.5,.5,0)의
+  full vector 복원력 오차를 source/후보의 실제 phase-class 에너지로 독립 검사했다.
+  Small-q 탄성 일치/양의 Hessian이 finite-q 정확성을 보장하지 않는다.
+  해당 단파장 검사는 static이며 mass/Hz를 쓰지 않는다. 전체 matrix 오차와
+  screw projection 오차를 혼동하지 않는다. 이전 bulk fit과 일부 겹칠 수 있는
+  post-fit 검사를 blind held-out이라 하지 않는다. 큰 even saturation에서
+  harmonic window가 좁으므로 실제 변위 amplitude를 줄여 FD 수렴을 확인한다.
+  고정 radial shape에서 exact bulk/tangent와 계수부호 하의 source-jet minimax
+  LP를 primal/dual/KKT로 검증한다. eta>1은 해당 source discrepancy box의
+  고정-shape 불가능성이지 전체 radial family 실패 증명이 아니다. Sign-free나
+  bulk5-only는 별도 control이다. Spectral 제약 없는 LP를 안정 재료라 하지 않는다.
+  Affine target box는 상수1 bookkeeping 좌표로 기존 QP에 전달하며 새 energy항이
+  아니다. Objective block scaling과 box의 원래 discrepancy scale을 구별한다.
+  이전 heldout을 새 box/dual 진단에 쓰면 development로 명시한다. 두 곡률을
+  맞춘 대신 다른 계면오차가 커진 후보를 Al 보정 성공으로 승격하지 않는다.
+  Radial subset matrix는 기존 full Bessel matrix와 먼저 같은 값을 확인한다.
+  실제 optimizer/budget/failure/core 상태는 최신 인계와 원시결과를 확인한다.
+
 - CURRENT_MATERIAL_CORE_BRIDGE_V22.md / current_material_core_v22:
   최신 per-atom law의22채널(pair,rho,Q1,Q2even,Q3,Q2odd)을 무한 Bessel row에
   모두 유지한다. Eg/rank3 quartic/even saturation/density-screening 항이 있는

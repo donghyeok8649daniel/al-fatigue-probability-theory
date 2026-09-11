@@ -79,6 +79,8 @@ class CurrentMaterialSiteLaw:
     def __init__(self, model):
         if not isinstance(model, CoordinationScreenedInterface):
             raise TypeError('explicit current CoordinationScreenedInterface required')
+        if model.quartic.saturation != 0:
+            raise ValueError('nonzero rational-quartic ablation is not implemented in this core bridge')
         self.model = model
         self.coefficients = model.coefficients.copy()
         self.embedding = model.face.bulk.embedding

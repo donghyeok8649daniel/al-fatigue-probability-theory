@@ -1,0 +1,35 @@
+{
+  "candidate_sha256": "2fd94b89168b173378f4c67d9d6faf52c0363292fc66d8d7e705f214a55de23a",
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "frozen_shape": [
+    2.703305047819125,
+    7.633706329130604,
+    11.044328645438164,
+    172.74231833476296,
+    6.911784604905995,
+    0.0
+  ],
+  "beta_values": [
+    0.0,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "reference_saddle": [
+    0.8492922641076963,
+    0.3714061259442337,
+    0.2144314267925794
+  ],
+  "reference_maximum_site_Q3_norm_squared": 0.001090396280746736,
+  "energy_law": "K3 * I3^2 / (1 + alpha3*I3)",
+  "alpha3": "beta/reference_invariant",
+  "explicit_new_combination_of_previously_separate_ablation": true,
+  "previous_v14_ablation_was_not_adopted": true,
+  "shapes_refitted": false,
+  "core_force_fit": false,
+  "new_production_energy": false,
+  "physical_yield_used": false,
+  "core_bridge_supported": false,
+  "material_accepted": false
+}

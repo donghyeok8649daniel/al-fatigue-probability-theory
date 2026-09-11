@@ -1,0 +1,14 @@
+{
+  "prior_full_attempt": {
+    "command": "python -X utf8 -m pytest solver_v1 -q --junitxml=.cache/core_interface_compatibility_v23/solver_final.xml",
+    "completed": false,
+    "exit_code": 1,
+    "reason": "Intentionally stopped after two new topology regressions were added after collection; no PASS claimed",
+    "replacement_report": ".cache/core_interface_compatibility_v23/solver_release_final.xml"
+  },
+  "earlier_targeted_reports": {
+    "compatibility_and_quartic": "13 passed in 3.62s before two physical-design regression additions",
+    "topology_unit_retry": "1 passed in 1.68s before coupled-Hessian regression addition"
+  },
+  "final_results": "See validation_ledger after all final commands actually complete"
+}

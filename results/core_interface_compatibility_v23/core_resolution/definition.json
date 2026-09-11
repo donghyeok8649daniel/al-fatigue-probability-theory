@@ -1,0 +1,22 @@
+{
+  "parameter_sha256": "fa4dbe23eb691b56ba51c6c2c288eba2c1b0f87eddfb61afa2914d6255aafebe",
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "source_state_sha256": "faf248d517597881b6fbb66d6e090a03406d703bc3911b3471b85a506b99762b",
+  "candidate_state_sha256": "6632d40183d395d2be400ccf66356636fb728d5a1cff42ee670e5813d6505e70",
+  "frozen_source_rings": [
+    5,
+    7,
+    9
+  ],
+  "frozen_source_tolerances": [
+    2e-12,
+    2e-14
+  ],
+  "candidate_fixed_field_rings": [
+    5,
+    7
+  ],
+  "material_fit_performed": false,
+  "static_research_only": true,
+  "infinite_domain_certified": false
+}

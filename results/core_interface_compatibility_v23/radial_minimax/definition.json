@@ -1,0 +1,961 @@
+{
+  "starting_HEAD": "d1ac6695518d3738b8303687d8c6a7b58877203e",
+  "candidate_sha256": "2fd94b89168b173378f4c67d9d6faf52c0363292fc66d8d7e705f214a55de23a",
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "original_shape": [
+    2.703305047819125,
+    7.633706329130604,
+    11.044328645438164,
+    172.74231833476296,
+    6.911784604905995,
+    0.0
+  ],
+  "subset_rows": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    21,
+    22,
+    23,
+    24,
+    25,
+    37,
+    40,
+    43,
+    46,
+    49,
+    52,
+    67,
+    70,
+    73,
+    76,
+    79,
+    82,
+    85,
+    88,
+    91,
+    94,
+    97,
+    100,
+    102,
+    104,
+    106,
+    108,
+    175,
+    207
+  ],
+  "observations": [
+    {
+      "name": "normal_strain_force_ev",
+      "target": 0.0,
+      "scale": 0.1,
+      "units": "eV/strain",
+      "role": "exact",
+      "state": null,
+      "jet_weights": null,
+      "bulk_index": 0
+    },
+    {
+      "name": "cohesive_ev_atom",
+      "target": 3.36,
+      "scale": 0.0672,
+      "units": "eV/atom",
+      "role": "exact",
+      "state": null,
+      "jet_weights": null,
+      "bulk_index": 1
+    },
+    {
+      "name": "C11_GPa",
+      "target": 113.99999999999996,
+      "scale": 5.699999999999998,
+      "units": "GPa",
+      "role": "exact",
+      "state": null,
+      "jet_weights": null,
+      "bulk_index": null
+    },
+    {
+      "name": "C12_GPa",
+      "target": 62.000000000000014,
+      "scale": 3.100000000000001,
+      "units": "GPa",
+      "role": "exact",
+      "state": null,
+      "jet_weights": null,
+      "bulk_index": null
+    },
+    {
+      "name": "C44_GPa",
+      "target": 32.0,
+      "scale": 1.6,
+      "units": "GPa",
+      "role": "exact",
+      "state": null,
+      "jet_weights": null,
+      "bulk_index": null
+    },
+    {
+      "name": "perfect_Haa",
+      "target": 19.66091286328976,
+      "scale": 1.9660912863289761,
+      "units": "eV/L0^2",
+      "role": "exact",
+      "state": [
+        0.816496580927726,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "perfect_Hxx",
+      "target": 4.393593035123306,
+      "scale": 0.43935930351233066,
+      "units": "eV/L0^2",
+      "role": "exact",
+      "state": [
+        0.816496580927726,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "saddle_Haa",
+      "target": 12.717337762538286,
+      "scale": 1.2717337762538286,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8492922641076963,
+        0.3714061259442337,
+        0.2144314267925794
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "saddle_Hxx",
+      "target": -0.18642463121762062,
+      "scale": 0.018642463121762064,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8492922641076963,
+        0.3714061259442337,
+        0.2144314267925794
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "fault_Haa",
+      "target": 14.140554350039636,
+      "scale": 1.4140554350039638,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8356612484876702,
+        0.5,
+        0.28867513459481275
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "fault_Hxx",
+      "target": 2.4858929774856264,
+      "scale": 0.24858929774856264,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8356612484876702,
+        0.5,
+        0.28867513459481275
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "saddle_normal_path_coupling",
+      "target": 1.2055891043737141,
+      "scale": 0.12055891043737142,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8492922641076963,
+        0.3714061259442337,
+        0.2144314267925794
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.8660254037844387,
+        0.5,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_direct_017_Haa",
+      "target": 26.109437232644353,
+      "scale": 2.6109437232644357,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.17,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_direct_039_Haa",
+      "target": 36.31678531793335,
+      "scale": 3.6316785317933356,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.39,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_raised_direct_Haa",
+      "target": 20.00400949091716,
+      "scale": 2.000400949091716,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8695688586880281,
+        0.29,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_off_path_positive_Haa",
+      "target": 13.446420569551602,
+      "scale": 1.3446420569551603,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8532389270694737,
+        0.19,
+        0.085
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_off_path_negative_Haa",
+      "target": 13.5831841481301,
+      "scale": 1.35831841481301,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.9144761706390533,
+        0.37,
+        -0.095
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "new_shockley_058_Haa",
+      "target": 23.107568998056017,
+      "scale": 2.3107568998056016,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.29,
+        0.16743157806499145
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_direct011_Haa",
+      "target": 23.17866876533168,
+      "scale": 2.317866876533168,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.11,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_direct031_Haa",
+      "target": 34.460781638400974,
+      "scale": 3.4460781638400975,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.31,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_raised043_Haa",
+      "target": 18.238440853611248,
+      "scale": 1.8238440853611249,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8899812732112214,
+        0.43,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_off_plus_Haa",
+      "target": 20.981095919956758,
+      "scale": 2.098109591995676,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8369089954509191,
+        0.23,
+        0.065
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_off_minus_Haa",
+      "target": 5.497617912510364,
+      "scale": 0.5497617912510364,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.9471360338761622,
+        0.32,
+        -0.12
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_shockley043_Haa",
+      "target": 25.03469226049791,
+      "scale": 2.5034692260497913,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.816496580927726,
+        0.215,
+        0.12413030787576952
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening1.21_Haa",
+      "target": -1.3832350292334812,
+      "scale": 0.13832350292334814,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.9879608629225485,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening1.62_Haa",
+      "target": -0.15582859326870177,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        1.3227244611029163,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening1.93_Haa",
+      "target": -0.6638075680371565,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        1.575838401190511,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening2.71_Haa",
+      "target": 0.0,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        2.2127057343141376,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening4.3_Haa",
+      "target": 0.0,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        3.5109352979892217,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v16_opening6.2_Haa",
+      "target": 0.0,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        5.062278801751901,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_near_0.985_Haa",
+      "target": 20.878110673451364,
+      "scale": 2.0878110673451364,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8042491322138101,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_near_1.015_Haa",
+      "target": 18.39295935022696,
+      "scale": 1.839295935022696,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8287440296416418,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_near_1.065_Haa",
+      "target": 14.605604041867348,
+      "scale": 1.4605604041867348,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.8695688586880281,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v17_near_1.095_Haa",
+      "target": 11.545874277606002,
+      "scale": 1.1545874277606003,
+      "units": "eV/L0^2",
+      "role": "fit",
+      "state": [
+        0.89406375611586,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_new_4_Haa",
+      "target": 0.9032785116339533,
+      "scale": 0.1,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        1.392126670481773,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    },
+    {
+      "name": "v19_power_new_2_Haa",
+      "target": 1.5124016664736504,
+      "scale": 0.15124016664736506,
+      "units": "eV/L0^2",
+      "role": "heldout",
+      "state": [
+        0.953668006523584,
+        0.0,
+        0.0
+      ],
+      "jet_weights": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bulk_index": null
+    }
+  ],
+  "selected_rows": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35
+  ],
+  "promoted_previously_inspected_constraints": [
+    "v19_new_4_Haa",
+    "v19_power_new_2_Haa"
+  ],
+  "nonnegative": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    8,
+    9
+  ],
+  "coefficient_names": [
+    "u",
+    "v",
+    "A",
+    "B",
+    "C",
+    "D3",
+    "D1",
+    "D2",
+    "D_Eg",
+    "K3"
+  ],
+  "log_bounds": [
+    [
+      -0.35667494393873245,
+      0.6931471805599453,
+      0.6931471805599453,
+      -11.512925464970229,
+      0.6931471805599453
+    ],
+    [
+      2.0794415416798357,
+      2.4849066497880004,
+      2.4849066497880004,
+      13.815510557964274,
+      2.4849066497880004
+    ]
+  ],
+  "screening_exponent_fixed": 0.0,
+  "bounds_are_inherited_search_windows_not_material_measurements": true,
+  "objective": "minimum possible worst normalized selected source-jet error at each shape",
+  "core_forces_in_objective": false,
+  "spectral_constraints_included": false,
+  "optimizer": "deterministic bounded Powell",
+  "max_fev": 160,
+  "max_seconds": 1200.0,
+  "no_new_energy_term": true,
+  "physical_yield_used": false,
+  "material_accepted": false
+}

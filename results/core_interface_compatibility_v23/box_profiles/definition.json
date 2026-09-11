@@ -1,0 +1,68 @@
+{
+  "candidate_sha256": "2fd94b89168b173378f4c67d9d6faf52c0363292fc66d8d7e705f214a55de23a",
+  "original_sha256": "8736cb9d28f1430e3991b1046ef42544cefaa3c9a4f5d743e0d02931329f5c2e",
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "shape": [
+    2.703305047819125,
+    7.633706329130604,
+    11.044328645438164,
+    172.74231833476296,
+    6.911784604905995,
+    0.0
+  ],
+  "coefficient_signs": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    8,
+    9
+  ],
+  "exact_anchors": [
+    "normal_strain_force_ev",
+    "cohesive_ev_atom",
+    "C11_GPa",
+    "C12_GPa",
+    "C44_GPa",
+    "perfect_Haa",
+    "perfect_Hxx"
+  ],
+  "source_state": "results/current_material_core_v22/source_reference/escaped_plus_R8r5",
+  "original_static_squared_loss": 2215.2031590428205,
+  "original_core_squared_loss": 4.5049418578414295,
+  "objective": "same v22 sum of fractional static/core squared losses",
+  "protocols": [
+    {
+      "name": "baseline_replay",
+      "constrained": []
+    },
+    {
+      "name": "saddle_only",
+      "constrained": [
+        "saddle_Hxx"
+      ]
+    },
+    {
+      "name": "opening_only",
+      "constrained": [
+        "v19_new_4_Haa"
+      ]
+    },
+    {
+      "name": "critical_pair",
+      "constrained": [
+        "saddle_Hxx",
+        "v19_new_4_Haa"
+      ]
+    }
+  ],
+  "original_discrepancy_scales_kept": true,
+  "inspected_heldout_becomes_development_constraint": true,
+  "topology_constraint_is_source_target_not_arbitrary_sign_flip": true,
+  "no_new_energy_term": true,
+  "no_nonlinear_optimization": true,
+  "material_accepted": false,
+  "production_changed": false,
+  "physical_yield_used": false
+}

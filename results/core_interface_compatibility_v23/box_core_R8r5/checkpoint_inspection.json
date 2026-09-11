@@ -1,0 +1,12 @@
+{
+  "command": "python -m solver_v1.inspect_core_checkpoint results/core_interface_compatibility_v23/box_core_R8r5",
+  "checkpoint_sha256": "6996e1197084de4842e38ee8da36c9cc16a026b148e5e684cdbd22f5b022c43e",
+  "actual_inspection_exit_code": 0,
+  "energy_eV_per_straight_repeat": 0.42962580479882295,
+  "maximum_gradient_eV_L0": 0.24286477036614282,
+  "declared_force_tolerance_eV_L0": 5e-7,
+  "Morse_check_performed": false,
+  "completed_run_certified": false,
+  "inspection_seconds": 6.184256900014589,
+  "actual_yield_validated": false
+}

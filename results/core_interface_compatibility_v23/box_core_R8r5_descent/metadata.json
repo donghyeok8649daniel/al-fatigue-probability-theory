@@ -1,0 +1,76 @@
+{
+  "parameter_source": "results/core_interface_compatibility_v23/box_profiles/critical_pair/research_candidate_snapshot.json",
+  "parameter_sha256": "8c1af97266cd72a2adebf6fc893dcf25974bdf71abd9a023b1d8a95edc3b4443",
+  "material_shape": [
+    2.703305047819125,
+    7.633706329130604,
+    11.044328645438164,
+    172.74231833476296,
+    6.911784604905995,
+    0.0
+  ],
+  "coefficients": [
+    0.1111290591229635,
+    0.8287564718630959,
+    5.000702648062091,
+    10.048467150232979,
+    3.0924764135874336,
+    21.24691587818007,
+    6.49508983736954,
+    4.618857499987355,
+    1.58418664199918,
+    0.0
+  ],
+  "screening_law": "power",
+  "material_accepted": false,
+  "energy_terms_omitted": false,
+  "length_scale_m": 2.863782463805517e-10,
+  "energy_unit": "eV per infinite straight-row repeat b*L0",
+  "tensor_unit": "eV/L0^3",
+  "elastic_tensor_same_candidate": true,
+  "C11_C12_C44_GPa": [
+    114.00000000000013,
+    62.000000000000064,
+    32.000000000000085
+  ],
+  "physical_time": false,
+  "physical_Hz": false,
+  "actual_yield_calibrated": false,
+  "production_changed": false,
+  "radius_over_L0": 8.0,
+  "ring": 5,
+  "center_over_L0": [
+    0.14433756729740643,
+    0.408248290463863
+  ],
+  "b_reduced": 1.0,
+  "h_reduced": 0.816496580927726,
+  "shear_traction_MPa": 0.0,
+  "burgers_sign": 1,
+  "force_tolerance_eV_L0": 5e-07,
+  "reciprocal_tolerance": 2e-12,
+  "free_sites": 286,
+  "energy_sites": 776,
+  "explicit_environment_rows": 120,
+  "channels": 22,
+  "farfield_log_coefficient_eV_per_repeat": 0.33648172480133015,
+  "boundary": "fixed same-material Volterra plus prescribed affine shear",
+  "boundary_is_not_measured_pinning": true,
+  "domain_converged": false,
+  "max_iterations": 250,
+  "wall_budget_seconds": 900.0,
+  "stability_method": "assembled",
+  "checkpoint_recovery": {
+    "source": "results/core_interface_compatibility_v23/box_core_R8r5",
+    "checkpoint_sha256": "6996e1197084de4842e38ee8da36c9cc16a026b148e5e684cdbd22f5b022c43e",
+    "source_was_unconverged": true,
+    "source_failure": {
+      "completed": false,
+      "error_type": "CalculationBudgetReached",
+      "error": "declared wall budget reached; checkpoint is not a converged result",
+      "elapsed_seconds": 613.1872152000142,
+      "actual_yield_calibrated": false
+    },
+    "independent_final_force_and_Morse_checks_required": true
+  }
+}
