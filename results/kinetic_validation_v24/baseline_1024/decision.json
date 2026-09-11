@@ -1,0 +1,55 @@
+{
+  "completed": true,
+  "source_doi": "10.5281/zenodo.10014454",
+  "projection_sha256": "2037b0104c33573abc27532517610ff84f308e6ba55ded08a0b0b2bf834a7eb6",
+  "summaries": [
+    {
+      "study": "first_half",
+      "frames": 512,
+      "maximum_lag_seconds": 1.55e-12,
+      "final_integral_eigenvalues_seconds": [
+        -1.4632078428422963e-14,
+        4.071242353160904e-17,
+        8.15623868424911e-15
+      ],
+      "final_floor_seconds": 1.9390852020522577e-14,
+      "final_half_cutoff_change_seconds": 2.8808951035500904e-14,
+      "late_positive_fraction": 0.0
+    },
+    {
+      "study": "full_4_blocks",
+      "frames": 1024,
+      "maximum_lag_seconds": 3.15e-12,
+      "final_integral_eigenvalues_seconds": [
+        -1.0776690553058534e-14,
+        -6.7566243678001546e-15,
+        -4.1906544854418405e-15
+      ],
+      "final_floor_seconds": 3.825221663301909e-14,
+      "final_half_cutoff_change_seconds": 1.5579156078607536e-14,
+      "late_positive_fraction": 0.0
+    },
+    {
+      "study": "full_8_blocks",
+      "frames": 1024,
+      "maximum_lag_seconds": 1.55e-12,
+      "final_integral_eigenvalues_seconds": [
+        -1.4855651670611384e-14,
+        -1.262558726899823e-14,
+        -2.2011145917940775e-15
+      ],
+      "final_floor_seconds": 5.872562463907186e-14,
+      "final_half_cutoff_change_seconds": 1.3365409594363059e-14,
+      "late_positive_fraction": 0.0
+    }
+  ],
+  "coordinate": "adjacent periodic (111) plane means; NOT production a/s",
+  "thermostat": "Nose-Hoover NVT; damping1ps",
+  "source_MD_time_is_seconds": true,
+  "no_cutoff_selected_to_manufacture_positive_friction": true,
+  "M_a_phys": null,
+  "M_s_phys": null,
+  "t0_seconds": null,
+  "production_clock_calibrated": false,
+  "next_requirement": "longer matched-coordinate, thermostat-audited data; converged integral and appropriate low-frequency PMF"
+}

@@ -1,0 +1,30 @@
+{
+  "projection_sha256": "0d4eead55eff67a4ec075152501db6c7cf39032cca04e34b32ce6c13ab7f3cb3",
+  "complete_frames": 8192,
+  "duration_seconds": 2.04775e-10,
+  "old_prefix_coordinates_exact": true,
+  "old_prefix_times_exact": true,
+  "shortlag_seconds": 1.5000000000000002e-13,
+  "shortlag_eigenvalues": [
+    -0.5699631858555603,
+    -0.50041263550372,
+    -0.17405548611173505
+  ],
+  "empirical_sensitivity": 0.1823092281715874,
+  "negative_to_sensitivity_ratio": 3.1263540061675723,
+  "ratio_is_not_statistical_significance": true,
+  "tests": {
+    "targeted_passed": 42,
+    "targeted_seconds": 2.27,
+    "solver_passed": 661,
+    "solver_seconds": 1509.98,
+    "app_passed": 34,
+    "app_skipped": 0,
+    "app_seconds": 128.91,
+    "desktop_smoke_passed": true,
+    "desktop_smoke_wall_seconds": 1.4829424
+  },
+  "production_physical_clock_calibrated": false,
+  "actual_yield_validation_completed": false,
+  "actual_fatigue_validation_completed": false
+}

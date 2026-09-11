@@ -1,0 +1,47 @@
+{
+  "studies": [
+    [
+      "prefix_1024_lag_126",
+      0,
+      1024,
+      126,
+      4
+    ]
+  ],
+  "source_metadata": {
+    "doi": "10.5281/zenodo.10014454",
+    "source_url": "https://zenodo.org/records/10014454/files/dumpT300.NVT.atom.velocity.gz?download=1",
+    "creators": [
+      "Erik Fransson",
+      "Paul Erhart"
+    ],
+    "temperature_K": 300,
+    "thermostat": "Nose-Hoover NVT; damping1ps",
+    "lattice_angstrom": 4.065,
+    "repeats": 12,
+    "atoms": 6912,
+    "atoms_per_plane": 576,
+    "plane_classes": 12,
+    "timestep_seconds": 5e-15,
+    "frame_seconds": 2.5e-14,
+    "frames": 1024,
+    "duration_seconds": 2.5575e-11,
+    "first_source_timestep": 0,
+    "main_sha256": "ece3e5881f6a3a68d3bcbec22dc4a1bd1c3e85284ebee2f9df83e9689dc0b3d4",
+    "main_md5_verified": true,
+    "trajectory_published_full_md5": "edf03c7acfd58b8e72ce81db2e6122c0",
+    "trajectory_full_checksum_verified": false,
+    "compressed_prefix_bytes": 179961893,
+    "compressed_prefix_sha256": "9351591c75774d6eca8c2377651acf64fab056018eea657c852ca5ddcc80e5bd",
+    "http_range_transfer": true,
+    "coordinates": "adjacent (111) plane-mean displacement differences: normal,direct110,transverse",
+    "boundary_conditions": "periodic cubic crystal; all atoms mobile; not rigid half-crystal",
+    "coordinate_equivalent_to_production": false,
+    "production_physical_clock": null
+  },
+  "projection_sha256": "2037b0104c33573abc27532517610ff84f308e6ba55ded08a0b0b2bf834a7eb6",
+  "protocol": "fixed powers-of-two records; independent cutoff and quarter checks",
+  "blocks_are_confidence_intervals": false,
+  "positivity_alone_certifies_mobility": false,
+  "matched_production_coordinate": false
+}

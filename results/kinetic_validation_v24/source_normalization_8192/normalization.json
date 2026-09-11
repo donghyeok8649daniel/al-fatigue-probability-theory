@@ -1,0 +1,68 @@
+{
+  "completed": true,
+  "source_doi": "10.5281/zenodo.10014454",
+  "source_potential_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "coordinate_sha256": "0d4eead55eff67a4ec075152501db6c7cf39032cca04e34b32ce6c13ab7f3cb3",
+  "repeats": 12,
+  "atoms_per_plane": 576,
+  "actual_lattice_angstrom": 4.065,
+  "temperature_K": 300,
+  "local_MD_covariance_m2": [
+    [
+      1.721623272279557e-25,
+      -2.034574474277325e-28,
+      -7.603089890129332e-28
+    ],
+    [
+      -2.034574474277325e-28,
+      8.359916002475711e-25,
+      1.8689563839633608e-26
+    ],
+    [
+      -7.603089890129332e-28,
+      1.8689563839633608e-26,
+      8.694803194711152e-25
+    ]
+  ],
+  "harmonic_source_covariance_m2": [
+    [
+      1.7534604462963294e-25,
+      2.639175121250327e-41,
+      -2.0432015888179151e-41
+    ],
+    [
+      2.639175121250327e-41,
+      7.935556772508231e-25,
+      -1.938322122177555e-40
+    ],
+    [
+      -2.0432015888179151e-41,
+      -1.938322122177555e-40,
+      7.935556772508233e-25
+    ]
+  ],
+  "empirical_block_variance_range_m2": [
+    [
+      1.1491536440445836e-26,
+      9.919244591113331e-28,
+      1.972529479344054e-28
+    ],
+    [
+      9.919244591113331e-28,
+      1.4333787710809836e-25,
+      6.771113417080785e-26
+    ],
+    [
+      1.972529479344054e-28,
+      6.771113417080785e-26,
+      1.3674944928865364e-25
+    ]
+  ],
+  "finite_time_window_uncertainty": "four blocks, not a statistical confidence interval or box-size study",
+  "independent_regions_assumed": false,
+  "empirical_scale_factor_fitted": false,
+  "static_test_only": true,
+  "anharmonic_thermal_renormalization_included": false,
+  "time_calibration_available": false,
+  "production_changed": false
+}

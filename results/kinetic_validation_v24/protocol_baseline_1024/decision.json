@@ -1,0 +1,47 @@
+{
+  "completed": true,
+  "summaries": [
+    {
+      "study": "prefix_1024_lag_126",
+      "first_frame": 0,
+      "frames": 1024,
+      "record_seconds": 2.5575e-11,
+      "cutoff_seconds": 3.15e-12,
+      "eigenvalues_seconds": [
+        -1.0776690553058534e-14,
+        -6.7566243678001546e-15,
+        -4.1906544854418405e-15
+      ],
+      "empirical_floor_seconds": 3.825221663301909e-14,
+      "half_cutoff_change_seconds": 1.5579156078607536e-14,
+      "late_positive_fraction": 0.0,
+      "covariance_m2": [
+        [
+          1.6018080405006275e-25,
+          -2.6757641125112487e-27,
+          -1.7583679869088415e-27
+        ],
+        [
+          -2.6757641125112487e-27,
+          1.0181141672574546e-24,
+          8.759977455004581e-26
+        ],
+        [
+          -1.7583679869088415e-27,
+          8.759977455004581e-26,
+          9.29391179843586e-25
+        ]
+      ]
+    }
+  ],
+  "resolved_short_lag_negative_modes": true,
+  "source_time_is_physical": true,
+  "source_is_300K_Al99_NVT_reference": true,
+  "matched_production_coordinate": false,
+  "thermostat_independence_tested": false,
+  "M_a_phys": null,
+  "M_s_phys": null,
+  "t0_seconds": null,
+  "production_clock_calibrated": false,
+  "scope": "Actual source-plane memory audit; neither a yield nor fatigue prediction"
+}

@@ -500,6 +500,15 @@ Mesh colormap은 실제 spatial mechanics/local probability 연결로 계산한 
 
 추가 연구는 기존 canonical model과 구분한다:
 
+- KINETIC_RECORD_VALIDATION_V24.md / kinetic_validation_v24: 실제 Al99 NVT
+  8192frame/204.775ps를 확보했다. 기존1024frame prefix exact equality 확인.
+  Record length와 lag cutoff는 독립 축으로 비교한다. 일부 양의 finite integral을
+  선택하여 friction을 만들지 않는다. Shortlag oscillation은 직접 overdamped
+  fit 실패이며 모든 coarse-time reduction 실패 증명은 아니다. 같은 source의
+  local static covariance 일치도 kinetic calibration이나 전 mode 일치가 아니다.
+  576atoms/plane, periodic means와 rigid/production a/s의 차이를 유지한다.
+  Line velocity 실험보정은 별도 scope; 실제yield/fatigue/productionHz는 미완료.
+
 - CORE_INTERFACE_COMPATIBILITY_V23.md / core_interface_compatibility_v23:
   Saddle 판단은 source 좌표의 Hxx 부호 하나로 하지 않는다. v22 wider는
   자기 saddle에서 Hxx>0이지만 전체 Hessian의 최소 고유값<0이며 양쪽 minimum

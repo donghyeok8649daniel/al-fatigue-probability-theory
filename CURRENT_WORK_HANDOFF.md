@@ -1,5 +1,47 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## v24 kinetic validation — 2026-09-12, 실제 긴 궤적 검증 완료
+
+최신 요청은 실제 항복/피로/production 초·Hz 검증을 계속하라는 것.
+이번에는 kinetic 분기를 실제 실행했다. 아래 v23 재료/core 기록은 보존한다.
+시작 local/fresh remote는 d222296c3fad369b74b6f4794761c427b16ee8d5,
+probability-pde-solver-v1, clean. 실제 작업 위치는 기존 aft-pde-bessel-38969ad.
+권한 변경으로 중간에 중단됐으나 완료 여부를 파일/도구로 확인해 이어갔다.
+새 code는 검증 실행기와 protocol tests뿐; energy/PDE/UI/default/M/A_c 불변.
+
+- 공개 Zenodo10014454 실제 Al99 300K NVT 자료8192frame/204.775ps 확보 완료.
+  약1372.4MiB compressed prefix를 스트리밍했으며 전체3.5GB checksum 검증 아님.
+  좌표만 ignored cache `.cache/kinetic_validation_v24/zenodo_8192`에 저장.
+  Projection SHA256 0d4eead55eff67a4ec075152501db6c7cf39032cca04e34b32ce6c13ab7f3cb3.
+  기존1024frame의 좌표와 시간은 새prefix와 exact equality 확인.
+- 14개 predeclared prefix/cutoff/quarter 검사를 실제 실행. 동일3.15ps cutoff의
+  floor는 .0382522ps→.00796563ps로 감소하지만 minimum integral eigenvalue는
+  -.00719449ps. 8192frame에서 cutoff6.35ps는 모두양수지만 floor보다작고,
+  25.55ps에는 다시음수. 일부양수cutoff를 골라 M을 만드는 것은 금지.
+- 0.15ps lag correlation minimum -.569963, sensitivity .182309, 비3.126.
+  짧은시간 direct harmonic overdamped fit은 이 좌표에서 맞지 않는다.
+  이 비는 confidence/sigma가 아님. 충분히 느린 Markov limit의 부정도 아님.
+- 같은 source/box/atomcount의 static harmonic covariance와 MD variance차이는
+  normal -1.816%, slip +5.348%, transverse +9.568%; local four-block sensitivity
+  이내. 개별mode 모두일치/비조화성없음/kinetics인증이라는 뜻은 아니다.
+- 실제 Gorman1969 원본표식 재검사:7fit/3heldout, line velocity/shear
+  1.1627233044e-5m/(Pa s), heldoutRMS3.501185m/s. a/s 이동도로 복사하지 않는다.
+- 상세 수식/범위/수치는 solver_v1/KINETIC_RECORD_VALIDATION_V24.md 및
+  results/kinetic_validation_v24. 이 단계에서 실제 항복/피로예측은 새로
+  실행하지 않았다. 기존 finite-source strain budget와 피로관측량 mismatch를
+  해결했다고 보고하지 않는다. Ma_phys/Ms_phys/t0/productionHz 불가 상태 유지.
+- targeted42 PASS2.27s; full solver661 PASS1509.98s; app34 PASS128.91s,
+  skip0; smoke PASS1.483s. 테스트6개 추가는 protocol 검증이고 실험인증이 아님.
+  전체회귀는 코드변경 완료 후 실제 실행했다. 중단직전 record analysis는 완료,
+  source-normalization 명령은 권한전환으로 실행 전 거부되어 새로 실행해 완료.
+- Windows apply_patch.bat 인수처리 첫실패는 파일변경 없었고 native apply_patch로
+  재시도했다. Git commit/push는 이 인계 뒤 fresh fetch/diffcheck 후 실시한다.
+
+다음: 같은 적분을 편리한창으로 재피팅하지 말고 mode별 memory/thermostat와
+production coordinate/PMF projection을 검증한다. 항복은 finite source 방출/
+상호작용/실측 source population을 포함한 동일 proof-strain 관측량이 필요하다.
+단순 GPa traction rescaling, 임의 line length/Ac/t0로 성공을 만들지 않는다.
+
 ## v23 최종 인계 — 2026-09-11, 실제 계산과 전체 회귀 완료
 
 **이 절이 아래 모든 v23 진행/재시도중 기록을 대체한다.** 아래 기록은
