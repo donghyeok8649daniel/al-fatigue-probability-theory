@@ -1,0 +1,100 @@
+{
+  "completed": true,
+  "elapsed_seconds": 135.2608369999798,
+  "models": [
+    {
+      "model": "original",
+      "exact_rank": 7,
+      "null_dimension": 3,
+      "singular_values": [
+        0.041321571086276356,
+        0.0004263166272392218,
+        8.064006160901633e-47
+      ],
+      "profiles": [
+        {
+          "label": "finite_q",
+          "completed": true,
+          "eta": 0.8762847514007642,
+          "positive_LJ": true
+        },
+        {
+          "label": "interface",
+          "completed": true,
+          "eta": 26.30950071973773,
+          "positive_LJ": false
+        },
+        {
+          "label": "joint",
+          "completed": true,
+          "eta": 34.254821407462366,
+          "positive_LJ": true
+        }
+      ]
+    },
+    {
+      "model": "wider",
+      "exact_rank": 7,
+      "null_dimension": 3,
+      "singular_values": [
+        0.02251652861332365,
+        0.0007950424825101684,
+        1.9531450757450004e-50
+      ],
+      "profiles": [
+        {
+          "label": "finite_q",
+          "completed": true,
+          "eta": 1.7109893199256425,
+          "positive_LJ": true
+        },
+        {
+          "label": "interface",
+          "completed": true,
+          "eta": 18.46444670707517,
+          "positive_LJ": true
+        },
+        {
+          "label": "joint",
+          "completed": true,
+          "eta": 22.612662713857592,
+          "positive_LJ": true
+        }
+      ]
+    },
+    {
+      "model": "radial",
+      "exact_rank": 7,
+      "null_dimension": 3,
+      "singular_values": [
+        0.04029274753884199,
+        0.0032243216514976987,
+        8.85161820590147e-45
+      ],
+      "profiles": [
+        {
+          "label": "finite_q",
+          "completed": true,
+          "eta": 6.474690916874162,
+          "positive_LJ": true
+        },
+        {
+          "label": "interface",
+          "completed": true,
+          "eta": 13.923142659781675,
+          "positive_LJ": true
+        },
+        {
+          "label": "joint",
+          "completed": true,
+          "eta": 33.33588259815745,
+          "positive_LJ": true
+        }
+      ]
+    }
+  ],
+  "family_impossibility_proved": false,
+  "material_accepted": false,
+  "actual_yield_validated": false,
+  "production_changed": false
+}

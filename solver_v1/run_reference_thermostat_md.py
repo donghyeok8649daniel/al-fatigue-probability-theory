@@ -66,12 +66,17 @@ def sample_protocol(dt_ps, frame_ps, duration_ps):
 def run(potential, output, *, ensemble, dt_ps=.005, duration_ps=25.,
         frame_ps=.025, repeats=12, restart=None, damping_ps=1., threads=2,
         lattice_angstrom=4.065, thermal_observables=False, drive=None,
-        timestep_work=False):
+        timestep_work=False,equilibration_seed=28459,equilibration_ps=25.):
     from lammps import lammps
 
     stride, intervals = sample_protocol(dt_ps, frame_ps, duration_ps)
     if timestep_work and drive is None:
         raise ValueError('internal-step work requires a conjugate drive')
+    if (not isinstance(equilibration_seed,int) or not 0<equilibration_seed<900000000
+            or not np.isfinite(equilibration_ps) or equilibration_ps<=0):
+        raise ValueError('positive equilibration duration and LAMMPS seed required')
+    if restart is None:
+        sample_protocol(dt_ps,dt_ps,equilibration_ps)
     potential, output = Path(potential).resolve(), Path(output)
     if hashlib.md5(potential.read_bytes()).hexdigest() != SOURCE_MD5:
         raise ValueError('source Al99 potential checksum mismatch')
@@ -128,9 +133,9 @@ def run(potential, output, *, ensemble, dt_ps=.005, duration_ps=25.,
         projection = FCCPlaneProjection(ids, (gather_positions()-lo)/lengths,
             bounds, repeats=repeats, lattice_angstrom=lattice_angstrom)
         if restart is None:
-            command('velocity all create 600 28459 rot yes dist gaussian mom yes')
+            command(f'velocity all create 600 {equilibration_seed} rot yes dist gaussian mom yes')
             command('fix equil all nvt temp 300 300 1.0')
-            command(f'run {int(round(25./dt_ps))}')
+            command(f'run {int(round(equilibration_ps/dt_ps))}')
             command('unfix equil')
             command(f'write_restart "{(output/"equilibrated.restart").resolve().as_posix()}"')
         command('reset_timestep 0')
@@ -228,6 +233,8 @@ def run(potential, output, *, ensemble, dt_ps=.005, duration_ps=25.,
             thermal_observables=thermal_observables,
             conjugate_drive=drive,
             internal_step_work=timestep_work,
+            fresh_equilibration_seed=equilibration_seed if restart is None else None,
+            fresh_equilibration_ps=equilibration_ps if restart is None else None,
             internal_step_work_rule='all internal end-step powers; trapezoid endpoint correction' if timestep_work else None,
             drive_energy_convention='thermo energy excludes external potential; compare internal energy change with integral F*qdot' if drive else None,
             atomic_mass_amu=atomic_mass_amu,
@@ -252,6 +259,8 @@ if __name__ == '__main__':
     p.add_argument('--thermal-observables', action='store_true')
     p.add_argument('--timestep-work', action='store_true')
     p.add_argument('--frame-ps',type=float,default=.025)
+    p.add_argument('--equilibration-seed',type=int,default=28459)
+    p.add_argument('--equilibration-ps',type=float,default=25.)
     p.add_argument('--drive-axis',type=int,choices=(0,1,2))
     p.add_argument('--drive-force-eV-A',type=float)
     p.add_argument('--drive-frequency-per-ps',type=float)
@@ -265,4 +274,5 @@ if __name__ == '__main__':
         duration_ps=a.duration_ps,repeats=a.repeats,restart=a.restart,
         damping_ps=a.damping_ps,threads=a.threads,lattice_angstrom=a.lattice_angstrom,
         thermal_observables=a.thermal_observables,drive=drive,
-        frame_ps=a.frame_ps,timestep_work=a.timestep_work)
+        frame_ps=a.frame_ps,timestep_work=a.timestep_work,
+        equilibration_seed=a.equilibration_seed,equilibration_ps=a.equilibration_ps)

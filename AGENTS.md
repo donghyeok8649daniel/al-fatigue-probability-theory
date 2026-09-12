@@ -2,6 +2,20 @@
 
 ## 0. 가장 먼저 읽을 것
 
+v31 `WEAK_KINETICS_AND_MATERIAL_V31.md`는 약한 외력의 새 초기화 MD,
+전체 zero-sum 평면 generator와 scalar 축약의 차이, finite-q/계면 공동
+재료 적합 감사다. 완료/진행 상태는 handoff 및 각 summary를 확인한다.
+finite-band inverse와 local-cell mobility를 등치하지 않는다. 열항까지
+변환해야 per-plane-atom 정규화가 같은 generator다. inverse rank/condition
+실패를 regularization으로 보정값으로 만들지 않는다. 공동 적합의 eta>1,
+maxfev 종료 및 excluded-q 큰 오차를 성공으로 부르지 않는다.
+실제새20ns완료:약한forced/unforced응답은관측오차범위내양립하지만두축
+aggregate의zero-drag포함/M상한null이다. Final600profile eta12.50738,
+excluded-q210.08%로재료미채택. Finalquartic bounddual은nonzero이므로
+이전320profile의sign-free witness를마지막shape에적용하지않는다.
+자동 분석 완료는 kinetic/material calibration 승인이나 production Hz
+활성화가 아니다. 기존 LJ/Bessel/PDE/보정 파일은 보존한다.
+
 v30 `INTERNAL_STEP_WORK_V30.md`는 reference MD의 내부step power계측이다.
 native블록평균의right sum에서dt(Pend-P0)/2를빼야trapezoid다. 힘/생산
 PDE는불변이고옵션기본OFF다. 실제3dt/dense/legacy대조에서work오차의

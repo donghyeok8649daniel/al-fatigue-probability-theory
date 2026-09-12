@@ -1,5 +1,224 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## v31 최종 완료 — 2026-09-13 야간 작업 (이 단락 우선)
+
+### 실제 완료 및 파일
+
+- 실제 새 reference MD 10개/총20ns + 별도200ps평형화 모두완료(37281 exit0).
+  .cache/weak_replica_v31/main의원시trajectory/restart/사전protocol/hash보존.
+  results/weak_replica_v31:CSV6개와summaryJSON,24개generator closure비교/그림완료.
+  마지막후처리는.cache/weak_replica_v31/completion_final completed=true,
+  stage=analysis_complete_not_calibration_approval. 성공재생7개파일byte동일.
+  처음CSV schema,다음print np.bool 오류는계산이아닌export결함. 둘다수정,
+  실패원본은.cache에보존,전체export합성회귀추가. MD재실행/변조없음.
+- kinetic결과:fullrecord normal loss/null .777/−.108,slip1.882/1.082.
+  sliphalf대부분null이하,normal두seed간작은loss부호차. aggregate두축모두
+  zero drag포함/M상한null. 점Mnormal1.36214e11,slip2.06114e11m²/(Js)는
+  finitefrequency plane-coordinate진단값이지localproduction보정아님.
+  C/K unforced예측오차normal .36–.41%,slip1.00–1.01%,loss차이는null내.
+  Nativework RMS .000538–.001008eV,max .003127eV. 관측범위는CI아님.
+- finalstatic600profile/4639.96s완료(7181 exit0). 기존계열5단계총1360profiles,
+  eta34.2548에서마지막12.5073849788까지개선했지만eta<=1기준실패.
+  optimizer_success=false/maxfev. screening_continuation_validation(88800exit0)
+  excluded-q최대2.100801577(210.08%),exactanchor잔차3.69e−13,
+  최소시험eig1.43571172,conditionalSVD[1.0123707446,.2485696941,.0245991957].
+  alpha999871,z1.0수치bound근처;물리보정값으로채택하지않음.
+- 최종screening_continuation_conflicts(15630exit0)7LP완료. interface/joint
+  eta12.50738,K1.94660,L.024309,finiteq2.83990. 3활성target:saddle_Hxx,
+  v19_new_2_Hxx,v20_new_11_Haa;source대비곡률성분부호오류남음.
+  finalquartic lower-bounddual .00314028 nonzero. 과거320shape의sign-free
+  witness를이최종shape에그대로적용금지. 전체nonlinearfamily불가증명아님.
+- WEAK_KINETICS_AND_MATERIAL_V31.md에최종수치/수식/단위/실패원인/한계기록.
+  각resultsREADME가최신권장report와superseded중간파일을구분한다.
+
+### 회귀, 발표자료, Git
+
+- 최종target14PASS2.24s,fullsolver720PASS799.55s(39473exit0).
+  app34PASS92.53s,desktop smokePASS(85833exit0). 최종skip없음.
+  이전719/718실행은이전코드기록이며최종720을우선한다.
+- 발표40장편집가능PPT/노트/PDF완료:presentations/theory_core_v31.
+  native전40장시각검사,PDF40page별도render/텍스트/수식/notes/overflow검사.
+  Downloads/al_fatigue_LJ_Bessel_theory_kr_v31_20260913.pptx 및pdf복사완료.
+  PPTXsha25635f7f50a50754b1badf877acdb66ffd063ea14b3247dd1f987f49c49162af189,
+  PDFsha2565997610a814b99e81fb9ad4ac33d9a0e8d5f804f78360d77ab41b0c0201830f3.
+  기존사용자다운로드PPT/개인파일불변. 생성물개인Office metadata제거.
+- 이단계의장기MD/보정/분석/검증프로세스는모두종료했다. 진행중계산없음.
+  시작/사전원격263f31bd7e91caf819264dd3cae836080bd164e2. 실제최종commit/push는
+  gitlog/branch/ref로확인할것(자기참조SHA를문서에만들지않는다).
+  probability-pde-solver-v1에서만작업,main/전체8worktree/원본cache보존.
+- 생산LJ/Bessel/보정JSON/PDE/UI/A_c변경없음. physicala/s초Hz는disabled.
+  실제Al항복/피로,localcoordinate/PMF kineticmapping과채택가능한계면재료가
+  여전히미완료다. 후보불합격을불완전한계산과혼동하지말것.
+
+### 다음에 이어갈 정확한 쟁점
+
+1. 위상/이동도:새20ns는예측양립성개선이지만zero-drag배제못함. 충분한
+   통계/저주파한계와localPMF의열정규화/좌표대응이필요. Np만곱하지말것.
+2. 재료:shortwaveK방향및특정계면곡률충돌을같은에너지에서해결해야한다.
+   더좋은모양이라는이유로candidate채택/새core수행금지. 추가analytic자유도는
+   기존LJ/무한Bessel/site합유지,gauge/rank/newvalidation을먼저설계한다.
+3. 발표자료는수학적이론자료로완성. 실제보정성공/productionHz인증슬라이드가
+   아니다. UI재설계승인gate미통과;기존버튼/스크롤등을몰래새모델로대체금지.
+
+## v31 04:35 이후 최신 상태 — 아래 중간 로그보다 우선
+
+- MD37281 실제10/10완료 exit0,20ns + 별도200ps초기평형화. 새MD실행중없음.
+- 첫completion36811 CSV서로다른열(null/drive)오류. 기존두partialCSV는
+  .cache/weak_replica_v31/failed_csv_export_20260913에안전하게보존했다.
+  uniformworkdiagnostics(null은None)수정후둘째재분석은모든파일저장뒤
+  print의np.bool JSON오류. 이것도수정했다. 최종completion_final 실제exit0:
+  .cache/weak_replica_v31/final_analysis7개파일이published와byte동일확인.
+  원시MD/힘/생산physics변경없음. 합성end-to-end export회귀추가.
+- run_weak_closure_v31 session76141 실제exit0,24개unforced예측/forced비교.
+  그림시각검사완료. complexerror normal .36–.41%,slip1.00–1.01%;loss오차는
+  관측null내. 하지만normal seed간loss부호변화,sliphalves주로null이하.
+  aggregate두좌표모두zero-drag포함,M상한null. 생산Hz여전히disabled.
+  결과results/weak_replica_v31와WEAK_KINETICS_AND_MATERIAL_V31.md최종단락.
+- target14PASS2.24s(export회귀포함). app34PASS92.53s+smokePASS(85833).
+  full719예상91590은수정도중실행,완료뒤39473가최종full720예상재실행한다.
+  실제최종출력을확인할것. 이전full718PASS1267.19s는수정전기록이다.
+- static600profile7181 아직진행,약405profiles/besteta12.5090에서확인.
+  완료뒤88800가screening_continuation_validation실행. 아직최종값가정금지.
+- 발표40장PPT/PDF완료/Downloads복사/hash검증그대로. 아직commit/push없음.
+  fetch재확인HEAD=remote263f31bd,main/worktrees불변.
+
+## v31 야간 작업 최신 체크포인트 (아래 과거 진행 로그보다 우선)
+
+### 03:13 KST 추가 상태
+
+03:45 업데이트: MD8/10완료,마지막seed49277slip±진행중(약200/0ps).
+full718PASS1267.19s(36096),app34PASS147.04s+smokePASS(79236)최종확인.
+코드추가수정없이동일계열추가600profile screening_continuation 실행7181,
+기존screening_followup best에서연속탐색. 완료후88800 watcher가
+screening_continuation_validation fullreplay/excluded-q실행. 둘다진행확인필수.
+screening_followup240및screening_validation은완료:eta12.790231512,
+excludedFrobenius2.175426155,시험최소eig1.436270618,optimizermaxfevfalse.
+아직material불채택. 현재키네틱후처리36811/closure76141는기존MD대기.
+
+- 완료presentation40장PPTX/PDF/theory_notes를presentations/theory_core_v31에
+  복사했다. 모든native슬라이드시각검사,PDF독립render40pages/텍스트노트
+  정합/overflow0확인. 최신release2,자료40장중10번F(x)표기까지수정.
+  Downloads/al_fatigue_LJ_Bessel_theory_kr_v31_20260913.pptx 및pdf복사검증.
+  PPTXsha25635f7f50a50754b1badf877acdb66ffd063ea14b3247dd1f987f49c49162af189.
+  기존사용자PPT보존. 개인Office author metadata제거. Git은아직미실행.
+- full717PASS1368.91s확인(40573). 이후newno-resonance/SI단위검사1추가:
+  target12PASS4.00s. 최종full718예상session36096실행중,
+  app+smoke session79236실행중. 실제종료상태확인해야한다.
+- run_weak_closure_v31.py 추가:unforced C/K에서full/scalar응답을예측,
+  실제forced±와24개고정band대조. dynamicrefit/bestband선택없음.
+  session76141이results/weak_replica_v31/summary.json완료후자동실행한다.
+  out=results/weak_replica_v31/generator_closure;png시각검사필요.
+- 새null seed49277 bridge완료36/36inverse가능,ratio1.08990–4.36235.
+  completion36811은두seedbridgehash재검증후재사용. 마찬가지로localM인증아님.
+- target_conflicts의joint lower-bound duals전부0 확인. 따라서이shape의
+  선형matrix에서는계수부호를풀어도eta13.12809하한이유지된다.
+  WEAK_KINETICS_AND_MATERIAL_V31.md에dualwitness유도및4개상태표추가.
+- screening_followup240profile session63098아직진행,현재~140profiles,
+  besteta~13.0189,z가−.08근방. 완료후session30578이자동fullreplay:
+  results/finite_q_compatibility_v31/screening_validation.
+- MD37281총6/10완료,seed49277normal−925/+850ps근방에서진행확인.
+  새말미작업을중복실행하거나최종완료로추정하지말것.
+
+- 사용자 6–7시간 계산 지속 및 이론 발표자료/GitHub/Downloads 복사 요청.
+  LJ/Bessel 현재 모델 유지, 질문/추가 agent 없이 진행한다.
+- MD parent37281와 completion36811 유지. 현재6/10완료:seed35461의5개,
+  seed49277 null완료;두번째seed normal±진행중. 최신진도는cache로그확인.
+  총20ns 계획,4개미완료. 완료전 전체 캠페인/이동도 승인 금지.
+- 320-profile shape_continuation33029 및 자동validation56860 완료exit0.
+  eta13.128092913,excluded-q최대상대Frobenius2.228143653,최소시험고유값
+  1.434584639eV/L0². maxfev종료이며수렴성공아님. material불채택.
+- target_conflicts47626 실제완료:같은shape7개독립LP.
+  K-only1.61264,L-only.01263(LJ0경계라부적격),finite-q2.52949,
+  interface13.12809,joint13.12809. jointdual의4활성계면target:
+  saddle_Hxx,v19_new_2_Hxx,v19_power_new_4_Haa,v20_new_11_Haa.
+  마지막3개는source양의곡률을음수로예측. 고정shape incompatibility이며
+  전체family불가능증명아님. 결과target_conflicts의dual/residual확인.
+- 기존density power 지수z를고정0에서기존허용[-1,1]내탐색하도록
+  run_joint_shape_v31 --vary-screening 옵션추가(기본OFF,새에너지항없음).
+  screening_followup session63098,maxfev240진행중. isolated-neighbor
+  decay조건유지. 완료후report_joint_shape_v31/실패원인검사필수.
+- full716PASS1947.30s(session5399)확인. 이후위옵션추가target23PASS8.24s.
+  최종full재실행session40573(717예상,실제완료확인필수).
+  app34PASS148.23s,desktopsmokePASS는이번작업이전실행완료결과.
+- 발표자료presentations/theory_core_v31/slides.json40장작성.
+  최신Downloads pure_al_fatigue_theory_core_kr.pptx는내용참고만하고보존.
+  과거σVε/누적소산임계값/unnormalizedstrain을현재정의로정리했다.
+  artifact-tool runtime부재확인/사용자고지후nativePowerPoint document API
+  fallback. 스크린클릭/보안정책변경없음. 모든text/formula편집가능.
+  build_native.py,verify_native.py;private .cache/theory_presentation_v31.
+  40장nativePNG시각확인했으나최종release/PDF검증/Downloads복사/Git미완료.
+  현재release build session87912. pdf_tools는privatePyMuPDF설치위치.
+  개인Office author metadata는출력에서제거한다. 원본PPT덮어쓰기금지.
+- 아직commit/push없음. HEAD=origin263f31bd7e91caf819264dd3cae836080bd164e2.
+  기존생산PDE/static/kineticJSON/UI/A_c변경없음. physicalHz미보정유지.
+
+## v31 진행 중 — 사용자1~3 요청
+
+### 현재 실행 및 자동 후처리 (이 단락이 아래 시점별 기록보다 우선)
+
+- 사용자 `계산 계속 해`로재개,fetch성공 HEAD=remote263f31bd 확인;
+  기존v31변경그대로보존. MD/후처리중단없음.
+- 첫normal±2ns쌍완료(3/10). partial검사:pairedchi=.002364413573
+  -7.349132242e-6i A²/eV,phase=-.17808767deg,matchingnullimag9.456661927e-6,
+  loss/null=.7771381. 아직미분해,두seed전체평가전보정결론금지.
+  +/-평균T293.36K,internalwork RMS.000858/.001008eV. 기존source비교와
+  혼합하지말고v31자체온도/half/고조파/후처리에서최종검사할것.
+- 추가동일목적함수/동일shape bounded320profile continuation 실행:
+  results/finite_q_compatibility_v31/shape_continuation. 직전best에서이어가며
+  session33029. 완료/optimizer상태와excluded-q를다시검사해야한다. 새물리항없음.
+  별도watcher session56860가summary완료후report_joint_shape_v31를자동실행:
+  results/finite_q_compatibility_v31/continuation_validation. 12h대기한도이며
+  검사실패를성공으로처리하지않는다. 시작후31profile까지진행확인.
+  현재MD3/10완료,첫seed slip-minus~1800ps/plus~125ps. full716 회귀는
+  session5399에서70%이상진행중(최종결과미확인). 자동후처리36811계속실행.
+
+- MD parent session37281 유지: 현재2/10 완료,첫seed normal-plus/slip-minus
+  진행중. .cache/weak_replica_v31/main의각log/summary로최신진도를확인한다.
+- completion watcher session36811 실제실행중. 기존MD를중복실행하지않고
+  10개summary완료후 analyze를자동실행: results/weak_replica_v31.
+  이어두새seed의generator bridge를확인/실행한다. 진행/실패/완료는
+  .cache/weak_replica_v31/completion/status.json. 시간제한24h;실패시원본보존.
+  이완료상태는분석완료이지physicalclock/material인증이아니다.
+- 최종target28PASS12.14s(자동후처리안전성2검사포함).
+  full714PASS1103.75s 이후workflow2tests추가되어full session5399 실행중
+  (716 예상,실제출력확인필수). app34PASS148.23s,smokePASS.
+- 정적full replay/excluded검사 report_joint_shape_v31 완료exit0.
+  추가임의parameter/energyterm/생산physics변경없음. 아직commit/push하지않음.
+- 다음:실제MD/후처리완료여부확인,모든부호/seed/half/고조파/null/FDT/
+  발열/nativework 결과판독,문서최종수치갱신. Git diff검사후에만commit/push.
+  MD나회귀를완료로가정하지말고이세션/결과파일을먼저확인할것.
+
+- 시작/remote263f31bd7e91caf819264dd3cae836080bd164e2 clean/fetch/branch/worktrees확인.
+- 실제새약한MD session37281 실행중. .cache/weak_replica_v31/main.
+  seed35461/49277 각각100ps평형화완료;1RMS .2cycles/ps dt1.25fs,
+  각seed무하중2ns+normal/slip±각2ns,총20ns. nativework ON.
+  첫seednull/normal-minus완료;normal-plus/slip-minus진행중(2/10).
+  아직보정완료아님. full/half/null/온도/진폭검증필수.
+- collective_generator_bridge/run_collective_bridge_v31:실제기존N6/N12 full
+  zero-sum공간covariance/spectral행렬검사. N6 15dim finiteband projected/scalar
+  ratio1.018–1.759. N12짧은record에서큰역산값발견,rank/condition감사로8/36
+  inverse미분해. 최종N12_condition_checked와N6_rank_checked사용.
+  초기N12_1ns/N12_rank_checked는superseded진단보존;큰rawM채택금지.
+  thermal재정규화없는Np배M은diffusion Np배오류(144/576). 생산변경아님.
+- 실제finite-q jointLP corrected완료(session98812 exit0),초기main은role문자열
+  ValueError로중단한definition만보존. original/wider/radial jointeta
+  34.2548/22.6127/33.3359. finite-q만original.8763지만excluded19.6%오차.
+  nullspace3dim중finite-q rank2,quartic방향blind. 전체family불가능증명아님.
+- 같은shape bounded40profile Powell 완료: best eta18.517884,859.60s.
+  별도160profile followup 완료2450.42s:best eta13.151558. 둘다maxfev종료,
+  optimizer success 아님. shape_validation full replay PASS;excluded-q최대
+  Frobenius상대오차2.227958,시험8점최소eigenvalue1.43449 eV/L0².
+  joint coefficient nullspace SVD[1.01157,.24631,.028686],rank3이지만
+  nonlinear shape식별성/전체BZ안정성/실제항복통과아님. 후보채택안함.
+- 새2ns null seed35461의full-generator검사완료:36rows모두수치inverse가능,
+  full/scalar ratio1.139–3.189. 유한band 및global-plane기준,local-M/clock아님.
+- targeted25PASS9.82s(rank/condition 포함). full solver713PASS1816.42s.
+  이후harmonic projected-response low/high-limit 연구helper/test 추가8PASS1.30s;
+  최종full714PASS1103.75s(session9829),현재실행중회귀없음.
+  app34PASS148.23s,desktop smoke PASS. 코드/문서미커밋. 생산PDE/static/Hz gate불변.
+- WEAK_KINETICS_AND_MATERIAL_V31.md,3개run_*v31.py/collectivebridge참조.
+  원본cache/유저파일덮어쓰기금지. 추가agent는요청없으므로생성하지않음.
+
 ## v30 완료 — 내부 timestep work 검증
 
 - 실제main12개162ps+legacy6개12ps완료. session10268/90005 exit0.

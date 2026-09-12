@@ -1,0 +1,91 @@
+{
+  "completed": true,
+  "search_sha256": "20d35b8307ae8bc3b0b4f475a0e9cfce00cd8a8e6c2233a0df1a7755f5aa7909",
+  "source": {
+    "parameter_source": "published NIST Al99.eam.alloy target-only",
+    "parameter_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+    "source_url": "https://www.ctcms.nist.gov/potentials/Download/1999--Mishin-Y-Farkas-D-Mehl-M-J-Papaconstantopoulos-D-A--Al/2/Al99.eam.alloy",
+    "material_accepted": false,
+    "energy_terms_omitted": false,
+    "length_scale_m": 2.863782463805517e-10,
+    "energy_unit": "eV per infinite straight-row repeat b*L0",
+    "tensor_unit": "eV/L0^3",
+    "elastic_tensor_same_candidate": true,
+    "C11_C12_C44_GPa": [
+      113.79497019355121,
+      61.553321651391286,
+      31.594806015107224
+    ],
+    "source_nominal_lattice_angstrom": 4.05,
+    "source_reference_only": true,
+    "reciprocal_tolerance_applicable": false,
+    "kernel": "published finite-support source EAM, target only; not the LJ/Bessel model",
+    "physical_time": false,
+    "physical_Hz": false,
+    "actual_yield_calibrated": false,
+    "production_changed": false
+  },
+  "shape": [
+    4.789672152106319,
+    10.244343919735009,
+    11.175053353535107,
+    999999.9986527022,
+    8.562921798857149,
+    0.0
+  ],
+  "profiles": [
+    {
+      "profile": "K_only",
+      "eta": 1.6126432084239741,
+      "dual_lower_bound": 1.6126432084240072,
+      "duality_gap": -3.552713678800501e-15,
+      "positive_LJ": true
+    },
+    {
+      "profile": "L_only",
+      "eta": 0.012632922561406607,
+      "dual_lower_bound": 0.012632922561449433,
+      "duality_gap": -5.500808142322455e-14,
+      "positive_LJ": false
+    },
+    {
+      "profile": "finite_q_only",
+      "eta": 2.5294923848447888,
+      "dual_lower_bound": 2.5294923848446778,
+      "duality_gap": -7.327471962526033e-14,
+      "positive_LJ": true
+    },
+    {
+      "profile": "interface_only",
+      "eta": 13.128092912988317,
+      "dual_lower_bound": 13.128092912988354,
+      "duality_gap": -4.796163466380676e-14,
+      "positive_LJ": true
+    },
+    {
+      "profile": "interface_plus_K",
+      "eta": 13.128092912988466,
+      "dual_lower_bound": 13.128092912988276,
+      "duality_gap": 1.1723955140041653e-13,
+      "positive_LJ": true
+    },
+    {
+      "profile": "interface_plus_L",
+      "eta": 13.128092912988413,
+      "dual_lower_bound": 13.128092912988365,
+      "duality_gap": 1.4210854715202004e-14,
+      "positive_LJ": true
+    },
+    {
+      "profile": "joint",
+      "eta": 13.128092912988262,
+      "dual_lower_bound": 13.128092912988288,
+      "duality_gap": -3.019806626980426e-14,
+      "positive_LJ": true
+    }
+  ],
+  "interpretation": "fixed-shape diagnostic ablations, not fits eligible for adoption",
+  "full_radial_family_impossibility_proved": false,
+  "material_accepted": false,
+  "production_changed": false
+}
