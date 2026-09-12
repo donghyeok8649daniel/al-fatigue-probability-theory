@@ -1,5 +1,50 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## v26 완료 체크포인트 — 같은 좌표의 직접 강제응답 검증
+
+### 최종 상태 (아래 실행중 로그보다 우선)
+
+- 8개400ps 모두완료(session68476 exit0). 분석과시각검사완료:
+  `results/collective_forcing_v26`. 전체원본 `.cache/collective_forcing_v26/main`.
+- 수직 Rechi FDT오차.04–.25%, slip.13–1.19%; amplitude두배정규화응답
+  변화.21%/1.06%. 동일좌표conjugate정규화/근선형응답은지지됨.
+- 모든paired Imchi blockrange가0을가로지름. 음의마찰/상수M보정아님.
+  최대work잔차.012083eV(power)/.005743eV(parts),864atoms전체.
+  예상작은소산~.001–.002eV보다커서소산보정통과금지.
+- 별도syntheticengineoscillator phase오차1.12e-10rad(dt.0025);
+  3dt검증완료. Almass/drag보정값아님. grossclock/sign오류설명은지지되지않음.
+- 계획SNR3기록길이normal156ns/slip97ns(.05cycles/ps,1RMSforce):
+  stationarity/weakdrive/spectralnoise가정의계획추정이지CI/생산t0아님.
+- 무외력새runner가이전5frames q/thermo정확재현. 생산LJ/Bessel/static/
+  PDE/Ma/Ms/kineticJSON/UI/A_c불변. 초Hz여전히disabled.
+- 실제테스트18targeted PASS.74s,full676 PASS968.59s(session79068),
+  app34 PASS101.49s(no skip),smokePASS. 과학적Imchi분해능은미통과.
+- 수정핵심은누락된강제응답검증경로추가. 전체mobility보정완료라고말하지않음.
+- 시작fbaf4a2. 최종git상태는log/remote확인;아래는중간보존로그.
+
+사용자 "고쳐보자 그럼"에 따라 v25의 누락된 independent response 검증을
+추가했다. 임의 M비율수정/생산초Hz활성화가목표아님. 시작HEAD fbaf4a2,
+origin동일/clean확인. `CONJUGATE_RESPONSE_VALIDATION_V26.md` 먼저읽기.
+
+- `collective_forcing.py`: q=(u1mean-u0mean)·e, ±F/Np로정확히conjugate
+  force/zero-net-force. complexlockin와canonicalFDT endpoint항유도.
+- reference MD runner에optionaldrive만추가;기존none경로와생산PDE불변.
+  실제LAMMPS .1ps smoke완료. 강제응답/정규화테스트3개포함focused18 PASS.74s.
+- `run_collective_forcing_study.py`: 같은N6restart,±.5/1thermalRMSforce,
+  normal/direct110총8개400ps,.05cycles/ps,dt2.5fs. 실제sourceMD단위;
+  물리피로Hz아님. session68476에서최대2개동시실행중.
+  ignoredcache `.cache/collective_forcing_v26/main`에protocol/원본보존.
+- 완료후 analyze subcommand --study 위폴더 --source
+  `.cache/modal_kinetic_v25/nve_N6_serial_5000ps_dt2p5` --out
+  `results/collective_forcing_v26` 실행. 모든부호/amp/block/FDTCutoff,
+  cross응답/COM/work-energy표검토. 아직결과완료/일치라고말하지말것.
+- fullsolver session79068실행중(676예상;actual출력확인).
+  app session86348완료34 PASS101.49s,smokePASS. no skip.
+- M(omega)판정은smallImchi의실제오차중요. 실수응답일치만으로M통과금지.
+  기존v25matrixM와single-coordinateinverseimpedance같지않음.
+- 아직v26commit/push없음. 위세션끝난뒤실제결과/테스트/인계갱신,
+  diffcheck/fetch후normalcommit/push. main/kineticJSON/production불변.
+
 ## v25 계산 완료 — 실제 모드 감쇠 / 이동도와 적용 한계
 
 ### 최종 과학 체크포인트 (아래 진행 로그보다 우선)

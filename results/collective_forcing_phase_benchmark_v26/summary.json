@@ -1,0 +1,30 @@
+{
+  "completed": true,
+  "synthetic_dimensionless_oscillator": true,
+  "exact_real": 1.10950307870798,
+  "exact_imag": -0.0007734586535524708,
+  "rows": [
+    {
+      "dt": 0.005,
+      "measured_real": 1.1095024412212022,
+      "measured_imag": -0.0007734577983959431,
+      "complex_error": 6.374873513848111e-07,
+      "phase_error_rad": 3.7021141858042326e-10
+    },
+    {
+      "dt": 0.0025,
+      "measured_real": 1.1095027662603598,
+      "measured_imag": -0.0007734583113581418,
+      "complex_error": 3.124478076074659e-07,
+      "phase_error_rad": 1.1210450433042264e-10
+    },
+    {
+      "dt": 0.00125,
+      "measured_real": 1.109502924058019,
+      "measured_imag": -0.0007734585037692029,
+      "complex_error": 1.54650033594251e-07,
+      "phase_error_rad": 3.783082089065083e-11
+    }
+  ],
+  "numerical_parameters_are_not_Al_calibration": true
+}

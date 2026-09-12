@@ -2,6 +2,12 @@
 
 ## 0. 가장 먼저 읽을 것
 
+v26 `CONJUGATE_RESPONSE_VALIDATION_V26.md`는 v25와 같은 periodic plane-gap에
+정확히 conjugate한 ±F/Np 외력을 가하는 reference-MD 검증이다. 기존
+무하중/생산LJ-PDE를바꾸지않는다. 실수응답일치와작은허수응답분해능을
+구별한다. 일-에너지잔차를소산이라고부르지않으며,유한주파수역임피던스를
+생산상수M로대입하지않는다. 실제완료/테스트상태는handoff확인.
+
 ### 최신 kinetic 연구 분기: v25
 
 `solver_v1/MODAL_KINETIC_CALIBRATION_V25.md`와
