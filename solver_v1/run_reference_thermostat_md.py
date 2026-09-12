@@ -22,6 +22,13 @@ from .run_vector_registry_audit import save_json
 SOURCE_MD5 = 'eb0f0b204ea40787274efcf8e44d6de2'
 
 
+def work_trapezoid_from_right_sum(right_work_eV,dt_ps,initial_power,final_power):
+    """Convert dt*sum(P_1,...,P_N) to the trapezoidal work, including endpoints."""
+    if not np.all(np.isfinite([right_work_eV,dt_ps,initial_power,final_power])) or dt_ps<=0:
+        raise ValueError('finite power/work and positive timestep required')
+    return right_work_eV-.5*dt_ps*(final_power-initial_power)
+
+
 def plane_velocity_statistics(velocity_angstrom_ps, plane_labels, planes, *, mass_amu):
     """Al99 reference velocities: per-atom KE, streaming KE removed separately.
 
@@ -58,10 +65,13 @@ def sample_protocol(dt_ps, frame_ps, duration_ps):
 
 def run(potential, output, *, ensemble, dt_ps=.005, duration_ps=25.,
         frame_ps=.025, repeats=12, restart=None, damping_ps=1., threads=2,
-        lattice_angstrom=4.065, thermal_observables=False, drive=None):
+        lattice_angstrom=4.065, thermal_observables=False, drive=None,
+        timestep_work=False):
     from lammps import lammps
 
     stride, intervals = sample_protocol(dt_ps, frame_ps, duration_ps)
+    if timestep_work and drive is None:
+        raise ValueError('internal-step work requires a conjugate drive')
     potential, output = Path(potential).resolve(), Path(output)
     if hashlib.md5(potential.read_bytes()).hexdigest() != SOURCE_MD5:
         raise ValueError('source Al99 potential checksum mismatch')
@@ -145,6 +155,13 @@ def run(potential, output, *, ensemble, dt_ps=.005, duration_ps=25.,
             command('fix dynamics all nve')
         else:
             command(f'fix dynamics all nvt temp 300 300 {damping_ps:.17g}')
+        if timestep_work:
+            # Equal masses: group COM velocity equals arithmetic plane mean.
+            terms=[f'{projection.basis[axis,j]:.17g}*(vcm(drive1,{c})-vcm(drive0,{c}))'
+                   for j,c in enumerate(('x','y','z'))]
+            command('variable workPower equal '+f'{amplitude:.17g}*cos(2*PI*{frequency:.17g}*time)*('+ '+'.join(terms)+')')
+            # At sample k*stride, includes steps (k-1)*stride+1,...,k*stride.
+            command(f'fix stepWork all ave/time 1 {stride} {stride} v_workPower ave one start 1')
         command('run 0')
         q = np.empty((intervals+1, repeats, 3))
         thermo = np.empty((intervals+1, 5))
@@ -157,6 +174,10 @@ def run(potential, output, *, ensemble, dt_ps=.005, duration_ps=25.,
             extra.update(plane_velocity_angstrom_ps=np.empty_like(q),
                 plane_kinetic_eV_per_atom=np.empty((intervals+1,repeats)),
                 plane_internal_kinetic_eV_per_atom=np.empty((intervals+1,repeats)))
+        if timestep_work:
+            extra.update(internal_step_mean_power_eV_ps=np.zeros(intervals+1),
+                         internal_step_work_eV=np.zeros(intervals+1))
+            right_work=0.
         for index in range(intervals+1):
             if index:
                 lmp.command(f'run {stride} pre no post no')
@@ -169,6 +190,13 @@ def run(potential, output, *, ensemble, dt_ps=.005, duration_ps=25.,
                 extra['conjugate_force_eV_A'][index]=force
                 extra['external_power_eV_ps'][index]=force*(weights@velocity@projection.basis[axis])
                 extra['center_velocity_angstrom_ps'][index]=velocity.mean(axis=0)
+                if timestep_work and index:
+                    mean_power=float(lmp.extract_fix('stepWork',0,0))
+                    extra['internal_step_mean_power_eV_ps'][index]=mean_power
+                    right_work+=frame_ps*mean_power
+                    extra['internal_step_work_eV'][index]=work_trapezoid_from_right_sum(
+                        right_work,dt_ps,extra['external_power_eV_ps'][0],
+                        extra['external_power_eV_ps'][index])
             if thermal_observables:
                 mean,raw,internal=plane_velocity_statistics(velocity,projection.plane,repeats,mass_amu=atomic_mass_amu)
                 extra['plane_velocity_angstrom_ps'][index]=mean@projection.basis.T
@@ -199,6 +227,8 @@ def run(potential, output, *, ensemble, dt_ps=.005, duration_ps=25.,
             initialization_commands=commands,
             thermal_observables=thermal_observables,
             conjugate_drive=drive,
+            internal_step_work=timestep_work,
+            internal_step_work_rule='all internal end-step powers; trapezoid endpoint correction' if timestep_work else None,
             drive_energy_convention='thermo energy excludes external potential; compare internal energy change with integral F*qdot' if drive else None,
             atomic_mass_amu=atomic_mass_amu,
             plane_kinetic_postprocess_mass_amu=atomic_mass_amu if thermal_observables else None,
@@ -220,6 +250,8 @@ if __name__ == '__main__':
     p.add_argument('--threads', type=int, default=2)
     p.add_argument('--lattice-angstrom', type=float, default=4.065)
     p.add_argument('--thermal-observables', action='store_true')
+    p.add_argument('--timestep-work', action='store_true')
+    p.add_argument('--frame-ps',type=float,default=.025)
     p.add_argument('--drive-axis',type=int,choices=(0,1,2))
     p.add_argument('--drive-force-eV-A',type=float)
     p.add_argument('--drive-frequency-per-ps',type=float)
@@ -232,4 +264,5 @@ if __name__ == '__main__':
     run(a.potential,a.out,ensemble=a.ensemble,dt_ps=a.dt_ps,
         duration_ps=a.duration_ps,repeats=a.repeats,restart=a.restart,
         damping_ps=a.damping_ps,threads=a.threads,lattice_angstrom=a.lattice_angstrom,
-        thermal_observables=a.thermal_observables,drive=drive)
+        thermal_observables=a.thermal_observables,drive=drive,
+        frame_ps=a.frame_ps,timestep_work=a.timestep_work)

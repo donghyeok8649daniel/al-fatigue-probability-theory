@@ -1,5 +1,31 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## v30 완료 — 내부 timestep work 검증
+
+- 실제main12개162ps+legacy6개12ps완료. session10268/90005 exit0.
+  results/work_resolution_v30는final_analysis재생본;초기endpoint-only분석은
+  이번작업생성파일만갱신했다. raw cache및v29기록은보존.
+- Native계측은모든내부step의power합산. dt2.5/1.25/.625fs에서RMS잔차:
+  normal .002454/.0005808/.0001521eV,slip .002029/.0005094/.0001229eV.
+  약2차수렴. coarse25fs power오차는이추세없음. 최종endpoint만고르지않음.
+- Native/densework차max6.59e-14eV. 새observer ON/OFF6개legacy대조는
+  savedcoordinate/thermo exact동일. 힘/동역학은변경하지않았다.
+- target16PASS2.69s,fullsolver706PASS1824.40s,app34PASS250.16s,smokePASS.
+  실행중MD/tests없음. 생산physics/kineticJSON불변,physicalsecondsHzdisabled.
+- 해결한것:reference외력work의저장간격quadrature오차. 미완료:약한외력
+  장기/독립restart,선형loss/lowfrequency/localPMF/materialmobility검증.
+  이174ps검사를장기보정으로부르지않는다. git최종SHA는실제log/ref확인.
+
+### 아래는 진행 당시 기록
+
+- 사용자 ㄱㄱ,시작/remote795a6de6b77707b67b5068d5f9c34d2617420f41 clean/fetch확인.
+- 약한외력장기화전에v29 power잔차원인검증. Native ave/time으로모든내부step
+  conjugate power합산후trapezoid endpoint보정;힘/생산PDE변경없음.
+- run_work_resolution_v30,INTERNAL_STEP_WORK_V30 참조. .cache/work_audit_v30/main
+  실제12records162ps 실행중session10268. 3dt/normal-slip25ps+dense2ps대조.
+  장기weak-probe/독립restart아직미실행. 이단계는mobility보정아님.
+- targeted16PASS2.73s. fullsolver26020,app/smoke32474실행중. 완료후업데이트.
+
 ## v29 완료 체크포인트 — 아래 중간 로그보다 우선
 
 - 실제12개10ns MD 모두완료(session2533 exit0). 실행중 MD없음.

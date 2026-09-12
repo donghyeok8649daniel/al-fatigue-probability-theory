@@ -2,6 +2,13 @@
 
 ## 0. 가장 먼저 읽을 것
 
+v30 `INTERNAL_STEP_WORK_V30.md`는 reference MD의 내부step power계측이다.
+native블록평균의right sum에서dt(Pend-P0)/2를빼야trapezoid다. 힘/생산
+PDE는불변이고옵션기본OFF다. 실제3dt/dense/legacy대조에서work오차의
+약2차수렴을확인했다. coarse25fs power오차와물리소산을혼동하지않는다.
+174ps새검사는mobility장기측정이아니며v29누락샘플을소급복원하지않는다.
+최종회귀/Git상태는handoff참조. physicalclock은미보정유지.
+
 v29 `LOW_FREQUENCY_FORCING_V29.md`는 실제 새 MD12개/합계10ns의 저주파
 conjugate-force 검증이다. .2cycles/ps는 reference MD 주파수이지 생산 Hz가
 아니다. 강한 probe에서 normal even2/slip odd3가 관측 null을 넘었으므로

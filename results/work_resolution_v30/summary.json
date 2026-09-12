@@ -1,0 +1,269 @@
+{
+  "completed": true,
+  "protocol": {
+    "cases": [
+      {
+        "name": "axis0_dt0.0025_coarse",
+        "axis": 0,
+        "dt_ps": 0.0025,
+        "frame_ps": 0.025,
+        "duration_ps": 25.0,
+        "force_eV_A": 13.224348434110214,
+        "mode": "coarse"
+      },
+      {
+        "name": "axis0_dt0.0025_dense",
+        "axis": 0,
+        "dt_ps": 0.0025,
+        "frame_ps": 0.0025,
+        "duration_ps": 2.0,
+        "force_eV_A": 13.224348434110214,
+        "mode": "dense"
+      },
+      {
+        "name": "axis1_dt0.0025_coarse",
+        "axis": 1,
+        "dt_ps": 0.0025,
+        "frame_ps": 0.025,
+        "duration_ps": 25.0,
+        "force_eV_A": 5.88138420412251,
+        "mode": "coarse"
+      },
+      {
+        "name": "axis1_dt0.0025_dense",
+        "axis": 1,
+        "dt_ps": 0.0025,
+        "frame_ps": 0.0025,
+        "duration_ps": 2.0,
+        "force_eV_A": 5.88138420412251,
+        "mode": "dense"
+      },
+      {
+        "name": "axis0_dt0.00125_coarse",
+        "axis": 0,
+        "dt_ps": 0.00125,
+        "frame_ps": 0.025,
+        "duration_ps": 25.0,
+        "force_eV_A": 13.224348434110214,
+        "mode": "coarse"
+      },
+      {
+        "name": "axis0_dt0.00125_dense",
+        "axis": 0,
+        "dt_ps": 0.00125,
+        "frame_ps": 0.00125,
+        "duration_ps": 2.0,
+        "force_eV_A": 13.224348434110214,
+        "mode": "dense"
+      },
+      {
+        "name": "axis1_dt0.00125_coarse",
+        "axis": 1,
+        "dt_ps": 0.00125,
+        "frame_ps": 0.025,
+        "duration_ps": 25.0,
+        "force_eV_A": 5.88138420412251,
+        "mode": "coarse"
+      },
+      {
+        "name": "axis1_dt0.00125_dense",
+        "axis": 1,
+        "dt_ps": 0.00125,
+        "frame_ps": 0.00125,
+        "duration_ps": 2.0,
+        "force_eV_A": 5.88138420412251,
+        "mode": "dense"
+      },
+      {
+        "name": "axis0_dt0.000625_coarse",
+        "axis": 0,
+        "dt_ps": 0.000625,
+        "frame_ps": 0.025,
+        "duration_ps": 25.0,
+        "force_eV_A": 13.224348434110214,
+        "mode": "coarse"
+      },
+      {
+        "name": "axis0_dt0.000625_dense",
+        "axis": 0,
+        "dt_ps": 0.000625,
+        "frame_ps": 0.000625,
+        "duration_ps": 2.0,
+        "force_eV_A": 13.224348434110214,
+        "mode": "dense"
+      },
+      {
+        "name": "axis1_dt0.000625_coarse",
+        "axis": 1,
+        "dt_ps": 0.000625,
+        "frame_ps": 0.025,
+        "duration_ps": 25.0,
+        "force_eV_A": 5.88138420412251,
+        "mode": "coarse"
+      },
+      {
+        "name": "axis1_dt0.000625_dense",
+        "axis": 1,
+        "dt_ps": 0.000625,
+        "frame_ps": 0.000625,
+        "duration_ps": 2.0,
+        "force_eV_A": 5.88138420412251,
+        "mode": "dense"
+      }
+    ],
+    "restart_sha256": "739f8f359e15ceb5448bb4fa65d0fd432ddb2df2f723c7aa9aa4ff4fdcc386b1",
+    "potential_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+    "frequency_per_ps": 0.2,
+    "production_clock_calibrated": false
+  },
+  "bindings": [
+    {
+      "case": "axis0_dt0.0025_coarse",
+      "trajectory_sha256": "ce5020098a074baf6457fab13e1efa95aa7929a24dd47571961c86471d2369a5"
+    },
+    {
+      "case": "axis0_dt0.0025_dense",
+      "trajectory_sha256": "bdd312c3b577d10b5acd9e363b797884ac56a1fcf2b282a604ae4bd59ea008b4"
+    },
+    {
+      "case": "axis1_dt0.0025_coarse",
+      "trajectory_sha256": "e095fb214c00f3de49aad5f843684a69e9c01c18e3bfa430ea4c6fb3af4c2e33"
+    },
+    {
+      "case": "axis1_dt0.0025_dense",
+      "trajectory_sha256": "00f02abfec4710774ea505273297d31a9fbc0e84ddbb50beaf26a46f9f1780d3"
+    },
+    {
+      "case": "axis0_dt0.00125_coarse",
+      "trajectory_sha256": "767fb4206248fef78e49d13b8e287a0ccd0d9ccd57d80eed5ba38497b307331a"
+    },
+    {
+      "case": "axis0_dt0.00125_dense",
+      "trajectory_sha256": "c674aaa9cef4b03dddf1f546a2eb29484dc0c7e3709bedec1c8081992aff0c0d"
+    },
+    {
+      "case": "axis1_dt0.00125_coarse",
+      "trajectory_sha256": "bd0a06b0609ef9e56102d2ba6d9655049e786ff51a18c70addae39244996b714"
+    },
+    {
+      "case": "axis1_dt0.00125_dense",
+      "trajectory_sha256": "a13b61fdb4b0ee0999b7089a6b6ea52ca0beaaa2e44b62246e5c401633fed304"
+    },
+    {
+      "case": "axis0_dt0.000625_coarse",
+      "trajectory_sha256": "afbeb22575dd9b21bb184dd1ed5a114948e888b0266d637b113a969b215ace11"
+    },
+    {
+      "case": "axis0_dt0.000625_dense",
+      "trajectory_sha256": "5c5d1fe18c8abc51b7d94ead47f0102bfa06263c02d4587daef4d49c8bacbb31"
+    },
+    {
+      "case": "axis1_dt0.000625_coarse",
+      "trajectory_sha256": "0908de403a8e76f2ec4dd7be457f417eac9a0d70eb077acf3882f3b3133be315"
+    },
+    {
+      "case": "axis1_dt0.000625_dense",
+      "trajectory_sha256": "ce5cbda5f3190c913d564990a465840a57f10947ada8e8b88ac2c230a6ee9740"
+    }
+  ],
+  "rows": [
+    {
+      "axis": 0,
+      "dt_ps": 0.0025,
+      "duration_ps": 25.0,
+      "internal_energy_change_eV": 0.46234534758150403,
+      "internal_step_work_eV": 0.4659243909608633,
+      "coarse_power_work_eV": 0.4330504331937383,
+      "parts_work_eV": 0.467050959398041,
+      "work_energy_residual_eV": -0.00357904337935927,
+      "max_work_energy_residual_eV": 0.008247666980589874,
+      "rms_work_energy_residual_eV": 0.0024540067815694818,
+      "max_coarse_power_energy_residual_eV": 0.0893484271091578,
+      "dense_power_identity_error_eV": -9.325873406851315e-15,
+      "sparse_vs_dense_work_error_eV": -1.709743457922741e-14,
+      "sparse_vs_dense_q_max_m": 6.679443056687351e-25
+    },
+    {
+      "axis": 1,
+      "dt_ps": 0.0025,
+      "duration_ps": 25.0,
+      "internal_energy_change_eV": 0.15312824150623783,
+      "internal_step_work_eV": 0.15334881210731052,
+      "coarse_power_work_eV": 0.15052703455672606,
+      "parts_work_eV": 0.15346787116536093,
+      "work_energy_residual_eV": -0.00022057060107269488,
+      "max_work_energy_residual_eV": 0.006830470151332646,
+      "rms_work_energy_residual_eV": 0.002029129985643094,
+      "max_coarse_power_energy_residual_eV": 0.015441083155754265,
+      "dense_power_identity_error_eV": -1.426636586643326e-14,
+      "sparse_vs_dense_work_error_eV": -6.583622536027178e-14,
+      "sparse_vs_dense_q_max_m": 1.1567603878671246e-24
+    },
+    {
+      "axis": 0,
+      "dt_ps": 0.00125,
+      "duration_ps": 25.0,
+      "internal_energy_change_eV": 0.4984566812581761,
+      "internal_step_work_eV": 0.49828401933714,
+      "coarse_power_work_eV": 0.4443690385737073,
+      "parts_work_eV": 0.49877096449253344,
+      "work_energy_residual_eV": 0.00017266192103609912,
+      "max_work_energy_residual_eV": 0.0019353275451130525,
+      "rms_work_energy_residual_eV": 0.0005807524368019028,
+      "max_coarse_power_energy_residual_eV": 0.07354142342321657,
+      "dense_power_identity_error_eV": -1.3627987627273797e-14,
+      "sparse_vs_dense_work_error_eV": 3.9718228705964975e-14,
+      "sparse_vs_dense_q_max_m": 1.5845880557610673e-24
+    },
+    {
+      "axis": 1,
+      "dt_ps": 0.00125,
+      "duration_ps": 25.0,
+      "internal_energy_change_eV": 0.3203376502883657,
+      "internal_step_work_eV": 0.31996710272438783,
+      "coarse_power_work_eV": 0.31347251979260465,
+      "parts_work_eV": 0.32003994696672117,
+      "work_energy_residual_eV": 0.00037054756397786326,
+      "max_work_energy_residual_eV": 0.0019396508691666425,
+      "rms_work_energy_residual_eV": 0.0005094382044909429,
+      "max_coarse_power_energy_residual_eV": 0.01311592923202376,
+      "dense_power_identity_error_eV": -1.8984813721090177e-14,
+      "sparse_vs_dense_work_error_eV": -7.66053886991358e-15,
+      "sparse_vs_dense_q_max_m": 1.4550381624620519e-24
+    },
+    {
+      "axis": 0,
+      "dt_ps": 0.000625,
+      "duration_ps": 25.0,
+      "internal_energy_change_eV": 0.4261899516795893,
+      "internal_step_work_eV": 0.4259424985082055,
+      "coarse_power_work_eV": 0.38954698865339954,
+      "parts_work_eV": 0.4260710510197986,
+      "work_energy_residual_eV": 0.0002474531713838046,
+      "max_work_energy_residual_eV": 0.0005460903307257792,
+      "rms_work_energy_residual_eV": 0.00015205697270925185,
+      "max_coarse_power_energy_residual_eV": 0.07983502653823116,
+      "dense_power_identity_error_eV": 1.4627188349436437e-14,
+      "sparse_vs_dense_work_error_eV": -2.1760371282653068e-14,
+      "sparse_vs_dense_q_max_m": 1.9357763089909782e-24
+    },
+    {
+      "axis": 1,
+      "dt_ps": 0.000625,
+      "duration_ps": 25.0,
+      "internal_energy_change_eV": 0.33518063300607537,
+      "internal_step_work_eV": 0.3353975184171142,
+      "coarse_power_work_eV": 0.3314776607275182,
+      "parts_work_eV": 0.3354303455226379,
+      "work_energy_residual_eV": -0.0002168854110388141,
+      "max_work_energy_residual_eV": 0.0003919630468270374,
+      "rms_work_energy_residual_eV": 0.00012288378742346552,
+      "max_coarse_power_energy_residual_eV": 0.013462527681486036,
+      "dense_power_identity_error_eV": 3.6193270602780103e-14,
+      "sparse_vs_dense_work_error_eV": 1.9872992140790302e-14,
+      "sparse_vs_dense_q_max_m": 1.796532892888607e-24
+    }
+  ],
+  "production_clock_calibrated": false,
+  "work_is_not_loss_calibration": true
+}
