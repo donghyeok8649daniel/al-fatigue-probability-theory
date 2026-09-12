@@ -2,6 +2,14 @@
 
 ## 0. 가장 먼저 읽을 것
 
+v29 `LOW_FREQUENCY_FORCING_V29.md`는 실제 새 MD12개/합계10ns의 저주파
+conjugate-force 검증이다. .2cycles/ps는 reference MD 주파수이지 생산 Hz가
+아니다. 강한 probe에서 normal even2/slip odd3가 관측 null을 넘었으므로
+위상을 선형 이동도라고 곧바로 채택하지 않는다. 관측 error disk는 CI가
+아니며 두 좌표 모두 zero drag를 포함해 M상한은null이다. 25fs 저장 power의
+일-에너지잔차와 integration-by-parts work를 구별한다. 실제 완료/수치는
+handoff/results 확인; production LJ/Bessel/clock은 불변이다.
+
 v28 `IMPEDANCE_MOBILITY_CALIBRATION_V28.md`는 완료v25/v26/v27 자료의
 finite-band scalar drag 적합과 복소 역응답 오차전파다. 1/chi_qq를 전체
 matrix inverse의 qq성분으로 혼동하지 않는다. 관측오차disk가 zero drag를

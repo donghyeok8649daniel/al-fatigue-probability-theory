@@ -1,5 +1,52 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## v29 완료 체크포인트 — 아래 중간 로그보다 우선
+
+- 실제12개10ns MD 모두완료(session2533 exit0). 실행중 MD없음.
+  analysis/report 모두exit0, 결과results/low_frequency_forcing_v29와v29문서참조.
+- normal lag dt2.5/1.25fs .090405/.164361deg,slip .237363/.180647deg.
+  loss/null normal .975/1.771,slip1.870/1.422. FDT sensitivity와양립하지만
+  정밀선형mobility인증아님. normal2차고조파6.414/6.260null,
+  slip3차2.022/1.454null:강한probe의비선형오염증거. half-force loss미분해.
+- 실제control disk에zero drag포함:normal/slip M상한null. 점추정만생산에
+  넣지않는다. 25fs power잔차max.061785eV,parts잔차.009527eV;
+  이를소산으로해석금지. 발열first/last100ps차 .068–5.024K.
+- target27PASS3.79s,fullsolver700PASS1993.89s,app34PASS154.50s,smokePASS.
+  모든결과/plot검사완료;git최종commit/push는실제log/ref확인.
+  생산LJ/Bessel/static/PDE/MaMs/kineticJSON/UI/Ac불변. physicalHzdisabled.
+- 다음:작은probe/긴record/독립restart와내부step work누적검증,
+  lowfrequency/localPMF/material검증. 제안이지실행완료아님.
+
+## v29 저주파 추가 MD — 과거 진행 로그
+
+- 사용자 `해봐 임마`에따라실제새MD실행. 시작/원격5c519206ec6c32dd58014cf625cd96317b449102,
+  fetch성공/clean/대상branch/worktrees확인. 기존이론/생산clock불변.
+- `LOW_FREQUENCY_FORCING_V29.md`,run_low_frequency_forcing_v29.py.
+  .cache/low_frequency_forcing_v29/main/protocol.json 먼저저장.
+- .2cycles/ps,normal/slip±4RMS1000ps,±2RMS500ps,±4RMSdt/2 1000ps:
+  총12개10ns. 첫100ps제외,25fs저장,기존restart/Al99reference/NVE유지.
+  productionHz/이동도변경아님. half-force는같은loss정밀도가아닌진폭대조군.
+- 실제MD session2533 실행중,첫normal±4RMS 로그에서25ps진행확인.
+  완료전보정성공선언금지. 원본/partial덮어쓰기금지;summary검증완료case만재사용.
+- 완료후 analyze --study .cache/low_frequency_forcing_v29/main --source
+  .cache/modal_kinetic_v25/nve_N6_serial_5000ps_dt2p5 --out results/low_frequency_forcing_v29.
+- 코드/문서미커밋. tests/전체회귀/actual분석은진행후갱신할것.
+- 중간확인:normal4RMS±1000ps완료. pairedchi=.002367889772856313
+  -3.7362257420419344e-6i A²/eV,phase-.0904053deg. 아직진폭/dt미완료이며
+  최종보정인증아님. slip4RMS±1000ps가약500ps진행중.
+  targeted27PASS1.92s,app34PASS154.50s,smokePASS. fullsolver53856실행중.
+- 후속중간확인:fullsolver700PASS1993.89s(session53856 exit0).
+  normalbase900ps관측null loss3.831129e-6 >pairedloss3.736226e-6:ratio.9752,
+  현재normal은아직unresolved. slip4RMS±1000ps도완료,pairedchi
+  .012192567670863129-5.051132031263749e-5i,phase-.237363deg.
+  현재4/12완료,2RMS500ps진폭대조군실행중. dt/2미완료.
+- 이후6/12완료(normal2RMS±500ps포함). slip2RMS진행후dt/2네개가남음.
+  실행부/분석부는분리되어있고session2533유지. 현재report_low_frequency_forcing_v29.py
+  추가됨:전체분석완료후 --results로진폭/dt/FDT/이동도오차범위와그림생성.
+- 현재8/12완료,normaldt1.25fs±4RMS1000ps진행중;이후slipdt1.25fs두개.
+  생산code/calibrationJSON은불변. 분석은whole/steady work와phasework의
+  endpoint항등식을분리하며q사인적분일치를독립물리검증이라고하지않는다.
+
 ## v28 이동도 보정 — 연구 후보/검증 완료, 생산 보정 gate 미통과
 
 - 사용자 `보정ㄱ`; 시작/원격8d222ea073c09461e72961e10be00813e1be33b9,
