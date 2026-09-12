@@ -1,5 +1,36 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## v28 이동도 보정 — 연구 후보/검증 완료, 생산 보정 gate 미통과
+
+- 사용자 `보정ㄱ`; 시작/원격8d222ea073c09461e72961e10be00813e1be33b9,
+  fetch성공/clean/branch/worktree확인. main과모든다른worktree보존.
+- `IMPEDANCE_MOBILITY_CALIBRATION_V28.md`,results/impedance_calibration_v28.
+  기존5ns dt2.5/5fs spectra와완료v26/v27직접응답으로새WLS실행.
+  새MDtrajectory는실행하지않음. 기존원본/결과불변.
+- scalar저주파dragfit:normalM7.246372352e10,slip2.180655810e11 m²/(Js),
+  ratio3.00930687. fitrange .02–.16cycles/ps;더낮은4band는loss제외.
+  784관측/168controlfit;독립표본아님. controlfitrange normal6.523–8.846e10,
+  slip1.859–2.682e11. 낮은band의일부오차큼:zero-frequency미인증.
+- 복소disk를정확히1/chi로사상하여Gamma=Im(1/chi)/omega범위추정.
+  null+dt/amp/block/sign범위에는fullforce4개모두zero drag포함:
+  M상한null. 이는CI/엄밀확률bound아님. pointM만보고완료금지.
+- 같은PMF상수overdamped저주파fit의고주파complex오차~8–10observednull.
+  storage가static보다커서순수overdamped응답불가. 관성/메모리reference의
+  상수drag까지기각하는것은아님. 생산관성도입/에너지변경금지.
+- actual5ns두rawNPZ로별도scalarPSD재구성PASS,maxrelative2.22e-16/4.44e-16.
+  arithmetic일치이지물리정확도아님. plot렌더/시각검사완료.
+- 최종targeted20PASS .87s(새10tests포함),fullsolver693PASS769.26s
+  (session72196 exit0),app34PASS143.03s,smokePASS. 실행중MD/tests없음.
+  196개분해불가sourceband도원래사유와함께별도보존(172bandwidth/24bin).
+  최종재생은.cache/impedance_v28_final_reproduction;runner의5개결과를
+  이번turn생성results로반영. 원본/source결과는덮어쓰지않음.
+- 저주파.2cycles/ps의SNR3 사전계획은1RMSforce에서normal13.235ns/
+  slip7.310ns. force4배로시간1/16은선형가정의계획일뿐미실행/선형성미검증.
+  필요한평균외력일은2kBT*SNR²라서단순force확대가발열문제를없애지않음.
+- 생산LJ/Bessel/static/PDE/MaMs/kineticJSON/UI/A_c변경없음.초Hzdisabled.
+- 최종diff/정상commit/push와remote SHA는실제git log/ref로확인.
+  main참조80cacb4/originmain c43d8e0 보존. 아래v27는이전완료상태.
+
 ## v27 완료 체크포인트 — 아래 진행 로그보다 우선
 
 - 시작/원격9afdc390239ae86b25ca5165d279ab5e723d569f, clean 확인.

@@ -1,0 +1,136 @@
+{
+  "completed": true,
+  "dt_ps": 0.0025,
+  "source_sha256": "c62f6464289945ea94fb84c868917d357b327573e0cf08c120482bce27d2f36e",
+  "checks": [
+    {
+      "axis": 0,
+      "lower_per_ps": 0.001,
+      "upper_per_ps": 0.002,
+      "covariance_relative_difference": 0.0,
+      "spectrum_relative_difference": 2.220446049250313e-16,
+      "temperature_relative_difference": 0.0,
+      "scalar_mobility_m2_J_s": 48999289479.23235
+    },
+    {
+      "axis": 1,
+      "lower_per_ps": 0.001,
+      "upper_per_ps": 0.002,
+      "covariance_relative_difference": 0.0,
+      "spectrum_relative_difference": 0.0,
+      "temperature_relative_difference": 0.0,
+      "scalar_mobility_m2_J_s": 184296999889.90585
+    },
+    {
+      "axis": 0,
+      "lower_per_ps": 0.002,
+      "upper_per_ps": 0.005,
+      "covariance_relative_difference": 0.0,
+      "spectrum_relative_difference": 2.220446049250313e-16,
+      "temperature_relative_difference": 0.0,
+      "scalar_mobility_m2_J_s": 69383304075.62221
+    },
+    {
+      "axis": 1,
+      "lower_per_ps": 0.002,
+      "upper_per_ps": 0.005,
+      "covariance_relative_difference": 0.0,
+      "spectrum_relative_difference": 0.0,
+      "temperature_relative_difference": 0.0,
+      "scalar_mobility_m2_J_s": 214366003333.79367
+    },
+    {
+      "axis": 0,
+      "lower_per_ps": 0.005,
+      "upper_per_ps": 0.01,
+      "covariance_relative_difference": 0.0,
+      "spectrum_relative_difference": 1.1102230246251565e-16,
+      "temperature_relative_difference": 0.0,
+      "scalar_mobility_m2_J_s": 68376990589.2286
+    },
+    {
+      "axis": 1,
+      "lower_per_ps": 0.005,
+      "upper_per_ps": 0.01,
+      "covariance_relative_difference": 0.0,
+      "spectrum_relative_difference": 0.0,
+      "temperature_relative_difference": 0.0,
+      "scalar_mobility_m2_J_s": 142612422381.18475
+    },
+    {
+      "axis": 0,
+      "lower_per_ps": 0.01,
+      "upper_per_ps": 0.02,
+      "covariance_relative_difference": 0.0,
+      "spectrum_relative_difference": 0.0,
+      "temperature_relative_difference": 0.0,
+      "scalar_mobility_m2_J_s": 74739186631.23201
+    },
+    {
+      "axis": 1,
+      "lower_per_ps": 0.01,
+      "upper_per_ps": 0.02,
+      "covariance_relative_difference": 0.0,
+      "spectrum_relative_difference": 0.0,
+      "temperature_relative_difference": 0.0,
+      "scalar_mobility_m2_J_s": 189357810244.80453
+    },
+    {
+      "axis": 0,
+      "lower_per_ps": 0.02,
+      "upper_per_ps": 0.04,
+      "covariance_relative_difference": 0.0,
+      "spectrum_relative_difference": 0.0,
+      "temperature_relative_difference": 0.0,
+      "scalar_mobility_m2_J_s": 71841196075.77687
+    },
+    {
+      "axis": 1,
+      "lower_per_ps": 0.02,
+      "upper_per_ps": 0.04,
+      "covariance_relative_difference": 0.0,
+      "spectrum_relative_difference": 0.0,
+      "temperature_relative_difference": 0.0,
+      "scalar_mobility_m2_J_s": 202409492852.7763
+    },
+    {
+      "axis": 0,
+      "lower_per_ps": 0.04,
+      "upper_per_ps": 0.08,
+      "covariance_relative_difference": 0.0,
+      "spectrum_relative_difference": 2.220446049250313e-16,
+      "temperature_relative_difference": 0.0,
+      "scalar_mobility_m2_J_s": 66799076972.79484
+    },
+    {
+      "axis": 1,
+      "lower_per_ps": 0.04,
+      "upper_per_ps": 0.08,
+      "covariance_relative_difference": 0.0,
+      "spectrum_relative_difference": 0.0,
+      "temperature_relative_difference": 0.0,
+      "scalar_mobility_m2_J_s": 201518768462.27435
+    },
+    {
+      "axis": 0,
+      "lower_per_ps": 0.08,
+      "upper_per_ps": 0.16,
+      "covariance_relative_difference": 0.0,
+      "spectrum_relative_difference": 0.0,
+      "temperature_relative_difference": 0.0,
+      "scalar_mobility_m2_J_s": 78357495359.23308
+    },
+    {
+      "axis": 1,
+      "lower_per_ps": 0.08,
+      "upper_per_ps": 0.16,
+      "covariance_relative_difference": 0.0,
+      "spectrum_relative_difference": 0.0,
+      "temperature_relative_difference": 0.0,
+      "scalar_mobility_m2_J_s": 226454243314.6463
+    }
+  ],
+  "maximum_reconstruction_relative_difference": 2.220446049250313e-16,
+  "physical_convergence_certified": false,
+  "production_clock_calibrated": false
+}

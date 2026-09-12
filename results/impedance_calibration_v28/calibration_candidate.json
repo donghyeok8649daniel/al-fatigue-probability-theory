@@ -1,0 +1,108 @@
+{
+  "completed": true,
+  "status": "research_only_finite_band_candidate",
+  "fits": [
+    {
+      "axis": 0,
+      "drag": 1.3800008493744352e-11,
+      "admissible": true,
+      "normalized_residuals": [
+        -0.00898681874837866,
+        -0.24347188481245127,
+        0.2308235658085764
+      ],
+      "objective": 0.11263884013792996,
+      "scaled_jacobian_singular_value": 4.695598849132076,
+      "parameter_rank": 1,
+      "confidence_interval": false,
+      "production_clock_calibrated": false,
+      "mobility_m2_per_J_s": 72463723515.33751,
+      "interpretation": "finite-band scalar low-frequency hypothesis, not certified M(0)"
+    },
+    {
+      "axis": 1,
+      "drag": 4.585776422383243e-12,
+      "admissible": true,
+      "normalized_residuals": [
+        -0.061092301525725416,
+        -0.14028457774644762,
+        0.10327543766758189
+      ],
+      "objective": 0.03407784808463985,
+      "scaled_jacobian_singular_value": 3.6400453401084247,
+      "parameter_rank": 1,
+      "confidence_interval": false,
+      "production_clock_calibrated": false,
+      "mobility_m2_per_J_s": 218065581025.49118,
+      "interpretation": "finite-band scalar low-frequency hypothesis, not certified M(0)"
+    }
+  ],
+  "fitted_band_edges_per_ps": [
+    [
+      0.02,
+      0.04
+    ],
+    [
+      0.04,
+      0.08
+    ],
+    [
+      0.08,
+      0.16
+    ]
+  ],
+  "residual_scale": "full observed control span per band; not statistical uncertainty",
+  "source_inputs": [
+    {
+      "path": "results/phase_resolution_v27/summary.json",
+      "sha256": "59c47893c935210c2de4064999c1c188ba05a2a1513bc8a4ab9c3d89e4ab6606"
+    },
+    {
+      "path": "results/phase_resolution_v27/phase_comparison.csv",
+      "sha256": "e97d95957c5d350808af3c23408057c9ae8b9e161d67b14e10deb2a1a363fec6"
+    },
+    {
+      "path": "results/phase_resolution_v27/paired_responses.csv",
+      "sha256": "91d146c43cbc6b53b5fe499d0608c8e524ed3e264e472c94bb673a8944a44925"
+    },
+    {
+      "path": "results/phase_resolution_v27/null_windows.csv",
+      "sha256": "8fb78dd0c868d92b42ce725f3f36570d6066277d94e6c1e4483c3aa067522253"
+    },
+    {
+      "path": "results/collective_forcing_v26/summary.json",
+      "sha256": "a8cc5be94f062915fdfc8028433483d2191ff5c87a7a81263da47acb3a94c843"
+    },
+    {
+      "path": "results/modal_kinetic_calibration_v25/long_record_prefix_1000/summary.json",
+      "sha256": "49aa35ae4cfd71bd1771a7f0ec3a30275feca8ef0873ef7079e0d15787523e1c"
+    },
+    {
+      "path": "results/modal_kinetic_calibration_v25/long_record_prefix_2000/summary.json",
+      "sha256": "2b99d86c6748b027420e64aada15f4c7ada6099ff5c3c6b88e696be39fab4302"
+    },
+    {
+      "path": "results/modal_kinetic_calibration_v25/long_record_prefix_5000/summary.json",
+      "sha256": "fa62a81755248d99f103dbf6991a019cb9e11b2ad4ffb41a5d8017f07adf4f23"
+    },
+    {
+      "path": "results/modal_kinetic_calibration_v25/long_record_dt5_prefix_1000/summary.json",
+      "sha256": "7a56a5090aebf974a4e80de199a85c85c5fcb3f0d25a3930cdbcd31ee7918f29"
+    },
+    {
+      "path": "results/modal_kinetic_calibration_v25/long_record_dt5_prefix_2000/summary.json",
+      "sha256": "af39ac12cb1b9424789df4d9b0032a709f3cfbcfc42394d477c53515d441d358"
+    },
+    {
+      "path": "results/modal_kinetic_calibration_v25/long_record_dt5_prefix_5000/summary.json",
+      "sha256": "564251403aaf915cdf5ba3deb0aa005484765a363a614a2452a7d9ca8854effb"
+    }
+  ],
+  "conjugate_coordinate": "periodic gap of 144-atom plane means",
+  "finite_frequency_scalar_inverse_is_not_matrix_mobility": true,
+  "zero_frequency_limit_certified": false,
+  "material_kinetics_calibrated": false,
+  "local_coordinate_transfer_validated": false,
+  "production_clock_calibrated": false,
+  "t0_seconds": null
+}

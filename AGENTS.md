@@ -2,6 +2,13 @@
 
 ## 0. 가장 먼저 읽을 것
 
+v28 `IMPEDANCE_MOBILITY_CALIBRATION_V28.md`는 완료v25/v26/v27 자료의
+finite-band scalar drag 적합과 복소 역응답 오차전파다. 1/chi_qq를 전체
+matrix inverse의 qq성분으로 혼동하지 않는다. 관측오차disk가 zero drag를
+포함하면 mobility상한은null이며abs/clip으로유한보정값을만들지않는다.
+상수drag후보/168control fit은zero-frequency/localPMF/material 인증이아니다.
+기존MD를재분석한단계이며새MD실행으로보고하지않는다. 생산clock은미보정유지.
+
 v27 `PHASE_RESOLUTION_VALIDATION_V27.md`는 v26의 미분해 소산 위상을
 무하중 lock-in envelope, 사전 주파수 선택, ±외력/진폭/dt 대조군으로 검사한다.
 Observed null envelope는 신뢰구간이 아니며 공통 restart/평면을 독립 표본으로
