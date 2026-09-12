@@ -2,6 +2,13 @@
 
 ## 0. 가장 먼저 읽을 것
 
+v27 `PHASE_RESOLUTION_VALIDATION_V27.md`는 v26의 미분해 소산 위상을
+무하중 lock-in envelope, 사전 주파수 선택, ±외력/진폭/dt 대조군으로 검사한다.
+Observed null envelope는 신뢰구간이 아니며 공통 restart/평면을 독립 표본으로
+세지 않는다. 고주파 위상 검출은 저주파 상수 이동도/생산 clock 보정과 다르다.
+정적보다 큰 storage 응답은 같은 좌표의 reversible overdamped 한계와 별도
+비교한다. 실행 완료 및 정량 판정은 handoff/결과를 확인한다.
+
 v26 `CONJUGATE_RESPONSE_VALIDATION_V26.md`는 v25와 같은 periodic plane-gap에
 정확히 conjugate한 ±F/Np 외력을 가하는 reference-MD 검증이다. 기존
 무하중/생산LJ-PDE를바꾸지않는다. 실수응답일치와작은허수응답분해능을

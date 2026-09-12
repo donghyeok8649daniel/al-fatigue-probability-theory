@@ -6,12 +6,16 @@ from .collective_forcing import harmonic_response
 from .run_vector_registry_audit import save_json
 
 
-def run(output):
+def run(output, *, frequency=.05, stiffness=1., drag=.002, duration=400.):
     from lammps import lammps
     output=Path(output)
     if output.exists():raise FileExistsError('fresh result directory required')
-    omega=2*np.pi*.05;force=.01;drag=.002
-    exact=1/(1-omega**2+1j*omega*drag)
+    if not all(np.isfinite(x) and x>0 for x in (frequency,stiffness,drag,duration)):
+        raise ValueError('positive finite synthetic oscillator parameters required')
+    if not np.isclose(round(duration/.025)*.025,duration):
+        raise ValueError('duration must contain whole sampling intervals')
+    omega=2*np.pi*frequency;force=.01
+    exact=1/(stiffness-omega**2+1j*omega*drag)
     rows=[]
     for dt in (.005,.0025,.00125):
         engine=lammps(cmdargs=['-log','none','-screen','none'])
@@ -21,22 +25,23 @@ def run(output):
                 'create_box 1 box',f'create_atoms 1 single {force*exact.real:.17g} 0 0',
                 'mass 1 1','pair_style zero 1.0','pair_coeff * *',
                 f'velocity all set {-omega*force*exact.imag:.17g} 0 0',
-                f'variable drive atom -x+{force}*cos({omega:.17g}*time)',
+                f'variable drive atom -{stiffness:.17g}*x+{force}*cos({omega:.17g}*time)',
                 'fix forcing all addforce v_drive 0 0',f'fix damping all viscous {drag}',
                 'fix dynamics all nve',f'timestep {dt}','thermo 1000000','run 0'):
                 engine.command(command)
             positions=[];times=[]
-            for i in range(16001):
+            for i in range(int(round(duration/.025))+1):
                 if i:engine.command(f'run {int(round(.025/dt))} pre no post no')
                 positions.append(engine.gather_atoms('x',1,3)[0]);times.append(i*.025)
-            t=np.asarray(times);mask=(t>=40)&(t<400)
-            fit=harmonic_response(t[mask],np.asarray(positions)[mask],.05,force)
+            t=np.asarray(times);mask=(t>=duration/10)&(t<duration)
+            fit=harmonic_response(t[mask],np.asarray(positions)[mask],frequency,force)
             measured=fit['real_A2_eV']+1j*fit['imag_A2_eV']
             rows.append(dict(dt=dt,measured_real=float(measured.real),measured_imag=float(measured.imag),
                 complex_error=float(abs(measured-exact)),phase_error_rad=float(np.angle(measured/exact))))
         finally:engine.close()
     output.mkdir(parents=True)
     save_json(output/'summary.json',dict(completed=True,synthetic_dimensionless_oscillator=True,
+        frequency=frequency,stiffness=stiffness,drag=drag,duration=duration,
         exact_real=float(exact.real),exact_imag=float(exact.imag),rows=rows,
         numerical_parameters_are_not_Al_calibration=True))
 

@@ -1,5 +1,62 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## v27 완료 체크포인트 — 아래 진행 로그보다 우선
+
+- 시작/원격9afdc390239ae86b25ca5165d279ab5e723d569f, clean 확인.
+  `PHASE_RESOLUTION_VALIDATION_V27.md`와 `results/phase_resolution_v27` 확인.
+- 실제12×400ps reference MD 완료(session41642 exit0). 분석21355 exit0,
+  그림시각검사 및 별도harmonic_controls 완료. 실행중MD없음.
+- fullforce paired lag:normal2cycles/ps .63616→.88445deg(dt2.5→1.25fs),
+  slip1cycles/ps1.36669→1.46510deg. 관측null envelope대비loss normal
+  1.283/1.783배,slip1.748/1.872배. 유한주파수위상검출근거확보.
+- **고정밀위상수렴/M보정완료아님**:normalIm dt변화39%,slip7.1%; thermal과
+  순수dt오차분리못함. 다수180ps/half-force slip은null이하. v26저주파.05
+  미분해유지. Observed null은CI아님. shared restart/planes독립으로세지않음.
+- FDT spectral sensitivity와thermal envelope안에서양립. Storage/static
+  ratio1.12079/1.15858:이band를같은PMF의상수과감쇠M로바로이전불가.
+- covariance25/50fs trap/Simpson감사별도저장. coarse50fsnormalSimpson의
+  허수부부호실패보존;정답으로선택하지않음. 소산예측은직접PSD로비교.
+- raw2ndharmonic최대2.41%normal/9.98%slip. 무하중2f/3f와forceparity
+  대조에서모든예상even2/odd3성분은관측null이하(maxratio.887).
+  정확선형성증명/비선형성단정금지. 모든개별고조파도보존.
+- clock최대5.68e-14ps,COM1.554e-14A/ps. 전체work잔차최대
+  .009072eV(parts)/.008294eV(power). 평균T299.331–302.262K;
+  first/last40ps T상승.469–4.542K. 위상적분/endpoint/내부에너지분리.
+- 최종Target25 PASS1.65s,solver683 PASS1790.49s,app34 PASS70.04s(no skip),
+  smokePASS. 신규syntheticengine2freq×3dt,legacyexact재현,protocol재현,
+  incomplete결과생성거부 모두실행PASS. 최종git/diff는아래/실제log확인.
+- 결과별pair재구성,work+endpoint항등식,독립고조파fit일치,production clock
+  false재검사PASS. 최종diff검사PASS;commit/remote SHA는실제gitlog확인.
+- 생산LJ/Bessel/static/PDE/Ma/Ms/kineticJSON/UI/A_c불변. 실제생산초Hz
+  disabled. 원본캐시보존. 다음은저주파정밀도/동일local좌표PMF/Markov극한,
+  materialkinetics 검증이며 이번유한주파수검출을전체mobility보정으로승격금지.
+
+## v27 위상지연 검증 — 진행 중
+
+- 사용자 요청: 위상지연 검증. 시작/원격 HEAD9afdc390, clean 확인.
+- `PHASE_RESOLUTION_VALIDATION_V27.md`와 새 phase_resolution/study 모듈 참조.
+- 무하중5ns PSD로 사전 선택: normal2/direct1101 cycles/ps. ±.5/1RMSforce,
+  dt2.5fs 및fullforce± dt1.25fs, 각400ps 총12개. 생산주파수보정아님.
+- 원본 `.cache/phase_resolution_v27/main`, protocol.json 먼저저장.
+  MD session41642 실행중. 아직위상검증통과선언금지.
+- fullsolver60933 완료:683 PASS1790.49s. 새엔진benchmark f1/f2 각3dt 완료,
+  legacy기본benchmark exact재현PASS. 분석스크립트는실제MD완료후검사할것.
+- 수직6개 완료. fullforce paired phase기본약-.636deg,dt/2약-.884deg.
+  각각관측nullenvelope대비loss약1.28/1.78배. 이는고정밀M보정아님.
+  slip절반진폭±완료,fullforce및dt/2진행중. 중간값으로전체PASS금지.
+  전체진폭normal work약.75–1.14eV,parts에너지잔차.00014–.0029eV,
+  first/last40ps평균T상승3–4.5K. 조건부해석필수.
+- 시간간격변경후실제로그Time=0초기화확인;analyze는모든thermo행의
+  engine time=step*dt 및끝400ps를검증. workendpoint와위상에서유도한
+  periodicwork는분리한다. 동일q사인적분의일치는독립물리검증이아님.
+- targeted25 PASS .75s. app34 PASS70.04s, smokePASS(session81942).
+- source null360ps old.05 signal floor normal2.967e-5/slip1.660e-4 A²/eV;
+  v26예상소산보다큼. observed envelope이지CI/독립replica아님.
+- 완료후 analyze --study .cache/phase_resolution_v27/main --source
+  .cache/modal_kinetic_v25/nve_N6_serial_5000ps_dt2p5 --out results/phase_resolution_v27.
+  dt/amp/FDT/temperature/work잔차까지실제확인하고완료내용갱신.
+- 코드/문서만현재미커밋. 생산LJ/Bessel/PDE/Ma/Ms/kineticJSON/UI불변.
+
 ## v26 완료 체크포인트 — 같은 좌표의 직접 강제응답 검증
 
 ### 최종 상태 (아래 실행중 로그보다 우선)
