@@ -1,0 +1,117 @@
+{
+  "parent_sha256": "6bbd8cc437691a3c9e67ce450d93add6e688a72ced29904a2fe6781da28bb0ad",
+  "source": {
+    "parameter_source": "published NIST Al99.eam.alloy target-only",
+    "parameter_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+    "source_url": "https://www.ctcms.nist.gov/potentials/Download/1999--Mishin-Y-Farkas-D-Mehl-M-J-Papaconstantopoulos-D-A--Al/2/Al99.eam.alloy",
+    "material_accepted": false,
+    "energy_terms_omitted": false,
+    "length_scale_m": 2.863782463805517e-10,
+    "energy_unit": "eV per infinite straight-row repeat b*L0",
+    "tensor_unit": "eV/L0^3",
+    "elastic_tensor_same_candidate": true,
+    "C11_C12_C44_GPa": [
+      113.79497019355121,
+      61.553321651391286,
+      31.594806015107224
+    ],
+    "source_nominal_lattice_angstrom": 4.05,
+    "source_reference_only": true,
+    "reciprocal_tolerance_applicable": false,
+    "kernel": "published finite-support source EAM, target only; not the LJ/Bessel model",
+    "physical_time": false,
+    "physical_Hz": false,
+    "actual_yield_calibrated": false,
+    "production_changed": false
+  },
+  "angular_shape_fixed": null,
+  "initial_angular_shape": [
+    4.946062208908296,
+    10.134651584582558,
+    11.59937838759889,
+    999871.1983895219,
+    8.477827479786518,
+    1.0
+  ],
+  "all_existing_angular_ranges_varied": true,
+  "initial_kernel": {
+    "C": 5393.8696807797305,
+    "k": 8.939248163519297,
+    "center": 0.6843263820287654,
+    "width": 0.08942317287962655
+  },
+  "coordinate_bounds": [
+    [
+      1.052143290838475,
+      0.0,
+      -4.0478755643924655,
+      0.6931471805599453,
+      0.6931471805599453,
+      -11.512925464970229,
+      0.6931471805599453,
+      -1.0
+    ],
+    [
+      2.84390276006653,
+      1.0475656017578483,
+      -0.3589961102785296,
+      2.4849066497880004,
+      2.4849066497880004,
+      13.815510557964274,
+      2.4849066497880004,
+      1.0
+    ]
+  ],
+  "bound_units": "log(k*), center/L0, log(width/L0); optional log(k3),log(k2),log(alpha2),log(k1),z",
+  "physical_bounds": "k in [1,6]/Angstrom, center in [0,3] Angstrom, width in [.05,2] Angstrom",
+  "bound_reason": "finite exploratory domain around source auxiliary shape; not material priors",
+  "maxfev": 320,
+  "optimizer": "bounded deterministic Powell",
+  "objective": "same 115 inspected interface curvatures and four finite-q matrices; seven exact anchors",
+  "auxiliary_density_in_loss": false,
+  "withheld_q": [
+    [
+      0.25,
+      0.25,
+      0.0
+    ],
+    [
+      0.625,
+      0.625,
+      0.0
+    ],
+    [
+      0.25,
+      0.25,
+      0.25
+    ],
+    [
+      0.45,
+      0.45,
+      0.45
+    ]
+  ],
+  "fresh_states": [
+    [
+      0.827,
+      0.071,
+      -0.033
+    ],
+    [
+      0.879,
+      0.267,
+      0.113
+    ],
+    [
+      0.941,
+      0.361,
+      0.207
+    ],
+    [
+      1.127,
+      0.419,
+      0.139
+    ]
+  ],
+  "production_changed": false
+}

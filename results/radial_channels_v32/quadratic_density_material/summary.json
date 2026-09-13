@@ -1,0 +1,42 @@
+{
+  "completed": true,
+  "elapsed_seconds": 38.40652830002364,
+  "source": {
+    "parameter_source": "published NIST Al99.eam.alloy target-only",
+    "parameter_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+    "source_url": "https://www.ctcms.nist.gov/potentials/Download/1999--Mishin-Y-Farkas-D-Mehl-M-J-Papaconstantopoulos-D-A--Al/2/Al99.eam.alloy",
+    "material_accepted": false,
+    "energy_terms_omitted": false,
+    "length_scale_m": 2.863782463805517e-10,
+    "energy_unit": "eV per infinite straight-row repeat b*L0",
+    "tensor_unit": "eV/L0^3",
+    "elastic_tensor_same_candidate": true,
+    "C11_C12_C44_GPa": [
+      113.79497019355121,
+      61.553321651391286,
+      31.594806015107224
+    ],
+    "source_nominal_lattice_angstrom": 4.05,
+    "source_reference_only": true,
+    "reciprocal_tolerance_applicable": false,
+    "kernel": "published finite-support source EAM, target only; not the LJ/Bessel model",
+    "physical_time": false,
+    "physical_Hz": false,
+    "actual_yield_calibrated": false,
+    "production_changed": false
+  },
+  "eta": 19.34978418639022,
+  "positive_LJ": true,
+  "maximum_excluded_q_error": 2.308100618620177,
+  "minimum_tested_eigenvalue": 1.4239949319687641,
+  "normalized_kernel": {
+    "C": 5393.8696807797305,
+    "k": 8.939248163519297,
+    "center": 0.6843263820287654,
+    "width": 0.08942317287962655
+  },
+  "reference_density": 1.0,
+  "material_accepted": false,
+  "whole_shape_family_impossibility_proved": false,
+  "production_changed": false
+}

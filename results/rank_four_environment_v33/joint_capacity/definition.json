@@ -1,0 +1,30 @@
+{
+  "parent_profile_hashes": {
+    "fixed_shape": "d3a53fc80293c5858e406296787656c5232ac426fec116d3a590fdf8dfac3bcc",
+    "decay_3.0": "02b2e82a432c1f12de548de686ceea9ade5314153bc71b2640f0e68590243001",
+    "decay_5.0": "7381fe17f38ae09b299400eb548c8531abeff1afc9b990954b45451f3dde4cf3",
+    "decay_8.0": "679ed696905839a40750f160442dfca99b506cf518b8f4514e41f3c21fe921bd",
+    "decay_11.0": "8689d930e9664a0963cdebefb336dc454ba42a65d10fe33fb708c29c74dfc685"
+  },
+  "shape": [
+    4.946062208908296,
+    10.134651584582558,
+    11.59937838759889,
+    999871.1983895219,
+    8.477827479786518,
+    1.0
+  ],
+  "decays": [
+    4.946062208908296,
+    3.0,
+    5.0,
+    8.0,
+    11.0
+  ],
+  "purpose": "joint capacity only, not minimal model selection",
+  "nonnegative_control": true,
+  "signed_control": true,
+  "excluded_q_used_in_loss": false,
+  "new_blind_validation": false,
+  "production_changed": false
+}

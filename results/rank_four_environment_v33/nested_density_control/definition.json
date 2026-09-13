@@ -1,0 +1,32 @@
+{
+  "parent_sha256": "d3a53fc80293c5858e406296787656c5232ac426fec116d3a590fdf8dfac3bcc",
+  "shape": [
+    4.946062208908296,
+    10.134651584582558,
+    11.59937838759889,
+    999871.1983895219,
+    8.477827479786518,
+    1.0
+  ],
+  "centers": [
+    0.0,
+    0.6843263820287654
+  ],
+  "width": 0.08942317287962655,
+  "etas": [
+    0.0001,
+    0.001,
+    0.01,
+    0.1,
+    0.3,
+    1.0
+  ],
+  "eta_zero": "exact existing exponential model",
+  "definition": "f_eta=(1-eta) f_exp + eta f_quad, each normalized to bulk density one, SAME k",
+  "equivalent_width_squared": "w^2+(1-eta) C_exp/(eta C_quad)",
+  "purpose": "finite-width search omitted exact exponential closure; bounded continuation control",
+  "auxiliary_density_in_loss": false,
+  "excluded_q_in_loss": false,
+  "new_blind_validation": false,
+  "production_changed": false
+}

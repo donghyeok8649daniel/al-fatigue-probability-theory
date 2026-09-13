@@ -1,0 +1,68 @@
+{
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "source_url": "https://www.ctcms.nist.gov/potentials/Download/1999--Mishin-Y-Farkas-D-Mehl-M-J-Papaconstantopoulos-D-A--Al/2/Al99.eam.alloy",
+  "source_role": "auxiliary density of target-only Al99, not observable electron density",
+  "radius_unit": "Angstrom",
+  "density_unit": "original setfl auxiliary density gauge",
+  "fit_radii": [
+    2.0,
+    2.25,
+    2.5,
+    2.75,
+    3.0,
+    3.25,
+    3.5,
+    3.75,
+    4.0,
+    4.25,
+    4.5,
+    4.75,
+    5.0,
+    5.25,
+    5.5,
+    5.75,
+    6.0
+  ],
+  "excluded_radii": [
+    2.125,
+    2.375,
+    2.625,
+    2.875,
+    3.125,
+    3.375,
+    3.625,
+    3.875,
+    4.125,
+    4.375,
+    4.625,
+    4.875,
+    5.125,
+    5.375,
+    5.625,
+    5.875
+  ],
+  "quadratic_starts": [
+    [
+      1.0,
+      2.0,
+      1.8,
+      0.3
+    ],
+    [
+      0.1,
+      1.0,
+      1.0,
+      1.0
+    ],
+    [
+      10.0,
+      3.0,
+      2.0,
+      0.7
+    ]
+  ],
+  "discrepancy": "max(.1*target_density,.01*maximum_training_density)",
+  "fitting": "values only; derivatives and midpoint values are validation",
+  "material_accepted": false,
+  "production_changed": false
+}

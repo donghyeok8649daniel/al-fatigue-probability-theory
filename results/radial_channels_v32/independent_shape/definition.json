@@ -1,0 +1,124 @@
+{
+  "source": {
+    "parameter_source": "published NIST Al99.eam.alloy target-only",
+    "parameter_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+    "source_url": "https://www.ctcms.nist.gov/potentials/Download/1999--Mishin-Y-Farkas-D-Mehl-M-J-Papaconstantopoulos-D-A--Al/2/Al99.eam.alloy",
+    "material_accepted": false,
+    "energy_terms_omitted": false,
+    "length_scale_m": 2.863782463805517e-10,
+    "energy_unit": "eV per infinite straight-row repeat b*L0",
+    "tensor_unit": "eV/L0^3",
+    "elastic_tensor_same_candidate": true,
+    "C11_C12_C44_GPa": [
+      113.79497019355121,
+      61.553321651391286,
+      31.594806015107224
+    ],
+    "source_nominal_lattice_angstrom": 4.05,
+    "source_reference_only": true,
+    "reciprocal_tolerance_applicable": false,
+    "kernel": "published finite-support source EAM, target only; not the LJ/Bessel model",
+    "physical_time": false,
+    "physical_Hz": false,
+    "actual_yield_calibrated": false,
+    "production_changed": false
+  },
+  "start_binding": {
+    "parameter_source": "results/current_material_core_v22/wider_probe_validation/research_candidate_snapshot.json",
+    "parameter_sha256": "2fd94b89168b173378f4c67d9d6faf52c0363292fc66d8d7e705f214a55de23a",
+    "material_shape": [
+      2.703305047819125,
+      7.633706329130604,
+      11.044328645438164,
+      172.74231833476296,
+      6.911784604905995,
+      0.0
+    ],
+    "coefficients": [
+      0.014208235724468011,
+      0.03800279268021126,
+      2.095246728098389,
+      1.2139518504113378,
+      2.290246746698926,
+      14.697901569610833,
+      2.5621632452682843,
+      2.1542273322160246,
+      1.5545373800178843,
+      1006.4071116002428
+    ],
+    "screening_law": "power",
+    "material_accepted": false,
+    "energy_terms_omitted": false,
+    "length_scale_m": 2.863782463805517e-10,
+    "energy_unit": "eV per infinite straight-row repeat b*L0",
+    "tensor_unit": "eV/L0^3",
+    "elastic_tensor_same_candidate": true,
+    "C11_C12_C44_GPa": [
+      114.0,
+      62.00000000000015,
+      32.000000000000014
+    ],
+    "physical_time": false,
+    "physical_Hz": false,
+    "actual_yield_calibrated": false,
+    "production_changed": false
+  },
+  "start_shape": [
+    2.4,
+    6.1,
+    8.0,
+    30.0,
+    6.3,
+    0.0
+  ],
+  "log_bounds": [
+    [
+      -0.35667494393873245,
+      0.6931471805599453,
+      0.6931471805599453,
+      -11.512925464970229,
+      0.6931471805599453,
+      -1.0
+    ],
+    [
+      2.0794415416798357,
+      2.4849066497880004,
+      2.4849066497880004,
+      13.815510557964274,
+      2.4849066497880004,
+      1.0
+    ]
+  ],
+  "maxfev": 180,
+  "optimizer": "deterministic bounded Powell",
+  "followup_start_sha256": null,
+  "independent_start_declared": true,
+  "objective": "joint old115 inspected curvatures plus predeclared finite-q fit matrices",
+  "vary_existing_power_screening": true,
+  "shape_coordinate_convention": "first five logarithmic, optional sixth linear exponent in inherited [-1,1]",
+  "withheld_points": [
+    [
+      0.25,
+      0.25,
+      0.0
+    ],
+    [
+      0.625,
+      0.625,
+      0.0
+    ],
+    [
+      0.25,
+      0.25,
+      0.25
+    ],
+    [
+      0.45,
+      0.45,
+      0.45
+    ]
+  ],
+  "no_spectral_admissibility_certificate": true,
+  "new_energy_terms": false,
+  "actual_yield_in_loss": false
+}

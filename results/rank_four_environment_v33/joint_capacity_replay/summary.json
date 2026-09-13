@@ -1,0 +1,28 @@
+{
+  "completed": true,
+  "elapsed_seconds": 284.6631494999747,
+  "maximum_single_column_replay_error": 0.0,
+  "profiles": [
+    {
+      "label": "nonnegative_capacity_DIAGNOSTIC",
+      "eta": 12.507295496276916,
+      "excluded_q_error": 2.100811251835199,
+      "positive_LJ": true,
+      "duality_gap": 5.329070518200751e-15,
+      "conditional_rank": 8
+    },
+    {
+      "label": "signed_capacity_DIAGNOSTIC",
+      "eta": 11.556128326839325,
+      "excluded_q_error": 0.31730927854834784,
+      "positive_LJ": false,
+      "duality_gap": -8.881784197001252e-15,
+      "conditional_rank": 8
+    }
+  ],
+  "interpretation": "joint fixed-shape capacity; no all-q stability or material acceptance",
+  "material_accepted": false,
+  "physical_time_calibrated": false,
+  "actual_yield_validated": false,
+  "production_changed": false
+}

@@ -1,0 +1,189 @@
+{
+  "completed": true,
+  "source": {
+    "parameter_source": "published NIST Al99.eam.alloy target-only",
+    "parameter_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+    "source_url": "https://www.ctcms.nist.gov/potentials/Download/1999--Mishin-Y-Farkas-D-Mehl-M-J-Papaconstantopoulos-D-A--Al/2/Al99.eam.alloy",
+    "material_accepted": false,
+    "energy_terms_omitted": false,
+    "length_scale_m": 2.863782463805517e-10,
+    "energy_unit": "eV per infinite straight-row repeat b*L0",
+    "tensor_unit": "eV/L0^3",
+    "elastic_tensor_same_candidate": true,
+    "C11_C12_C44_GPa": [
+      113.79497019355121,
+      61.553321651391286,
+      31.594806015107224
+    ],
+    "source_nominal_lattice_angstrom": 4.05,
+    "source_reference_only": true,
+    "reciprocal_tolerance_applicable": false,
+    "kernel": "published finite-support source EAM, target only; not the LJ/Bessel model",
+    "physical_time": false,
+    "physical_Hz": false,
+    "actual_yield_calibrated": false,
+    "production_changed": false
+  },
+  "elapsed_seconds": 226.1942041000002,
+  "profiles": [
+    {
+      "label": "baseline",
+      "eta": 12.507384978807881,
+      "max_excluded_q_error": 2.100801577303527,
+      "positive_LJ": true,
+      "exact_residual": 3.801403636316536e-13,
+      "duality_gap": -5.329070518200751e-15,
+      "conditional_rank": 3,
+      "coefficient_count": 10,
+      "material_accepted": false
+    },
+    {
+      "label": "screened_rank1_k3",
+      "eta": 12.499497097653009,
+      "max_excluded_q_error": 2.075747701101552,
+      "positive_LJ": true,
+      "exact_residual": 7.105427357601002e-14,
+      "duality_gap": -2.842170943040401e-14,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "screened_rank1_k5",
+      "eta": 12.507103262775146,
+      "max_excluded_q_error": 2.1008090537052033,
+      "positive_LJ": true,
+      "exact_residual": 5.684341886080802e-14,
+      "duality_gap": 5.329070518200751e-15,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "screened_rank1_k8",
+      "eta": 12.494227724728159,
+      "max_excluded_q_error": 2.08957625160787,
+      "positive_LJ": true,
+      "exact_residual": 1.4210854715202004e-14,
+      "duality_gap": 3.552713678800501e-15,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "screened_rank1_k11",
+      "eta": 12.507384978807881,
+      "max_excluded_q_error": 2.100801577303527,
+      "positive_LJ": true,
+      "exact_residual": 3.801403636316536e-13,
+      "duality_gap": -5.329070518200751e-15,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "rank3_k3",
+      "eta": 12.50446899730603,
+      "max_excluded_q_error": 2.0964186301034458,
+      "positive_LJ": true,
+      "exact_residual": 1.7763568394002505e-14,
+      "duality_gap": -1.7763568394002505e-14,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "rank3_k5",
+      "eta": 12.27181879518722,
+      "max_excluded_q_error": 1.8972116287495717,
+      "positive_LJ": true,
+      "exact_residual": 2.1316282072803006e-14,
+      "duality_gap": 5.329070518200751e-15,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "rank3_k8",
+      "eta": 12.45422660279909,
+      "max_excluded_q_error": 2.0726015749171847,
+      "positive_LJ": true,
+      "exact_residual": 4.618527782440651e-14,
+      "duality_gap": -3.552713678800501e-15,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "rank3_k11",
+      "eta": 12.507384978807881,
+      "max_excluded_q_error": 2.100801577303527,
+      "positive_LJ": true,
+      "exact_residual": 3.801403636316536e-13,
+      "duality_gap": -5.329070518200751e-15,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "quadratic_rank2_k3",
+      "eta": 12.507275300403068,
+      "max_excluded_q_error": 2.100805241788687,
+      "positive_LJ": true,
+      "exact_residual": 2.3092638912203256e-14,
+      "duality_gap": -1.7763568394002505e-15,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "quadratic_rank2_k5",
+      "eta": 12.507233274632735,
+      "max_excluded_q_error": 2.100846264776185,
+      "positive_LJ": true,
+      "exact_residual": 4.263256414560601e-14,
+      "duality_gap": 2.3092638912203256e-14,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "quadratic_rank2_k8",
+      "eta": 12.507384978807885,
+      "max_excluded_q_error": 2.100801577303529,
+      "positive_LJ": true,
+      "exact_residual": 3.765876499528531e-13,
+      "duality_gap": 7.105427357601002e-15,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "quadratic_rank2_k11",
+      "eta": 12.507384978807881,
+      "max_excluded_q_error": 2.100801577303527,
+      "positive_LJ": true,
+      "exact_residual": 3.801403636316536e-13,
+      "duality_gap": -5.329070518200751e-15,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "dictionary_capacity_NOT_model_selection",
+      "eta": 11.248054825305115,
+      "max_excluded_q_error": 2.0060771216703452,
+      "positive_LJ": true,
+      "exact_residual": 2.1316282072803006e-14,
+      "duality_gap": 3.552713678800501e-15,
+      "conditional_rank": 15,
+      "coefficient_count": 22,
+      "material_accepted": false
+    }
+  ],
+  "material_accepted": false,
+  "physical_time_calibrated": false,
+  "actual_yield_validated": false,
+  "production_changed": false,
+  "interpretation": "necessary fixed-shape compatibility only; no full spectral or fresh validation approval"
+}

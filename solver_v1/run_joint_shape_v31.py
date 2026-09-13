@@ -36,7 +36,7 @@ def decode_shape(x, fixed_screening, vary_screening=False):
     return shape
 
 
-def run(out,maxfev,start_from=None,vary_screening=False):
+def run(out,maxfev,start_from=None,vary_screening=False,initial_shape=None):
     out=Path(out)
     if out.exists():raise FileExistsError('fresh radial search required')
     source,_,binding=load_source_material();operator=SourceEAMBlochHessian(source.source)
@@ -54,6 +54,13 @@ def run(out,maxfev,start_from=None,vary_screening=False):
     model,_,mb=load_current_material(ROOT/'results/current_material_core_v22/wider_probe_validation/research_candidate_snapshot.json')
     start=model.screened_shape.copy();lower=np.log([.7,2.,2.,1e-5,2.]);upper=np.log([8.,12.,12.,1e6,12.])
     start_hash=None
+    if initial_shape is not None:
+        if start_from is not None:
+            raise ValueError('choose a saved continuation OR a declared independent start')
+        start=np.asarray(initial_shape,float)
+        shape_coordinates(start,vary_screening)
+        if np.any(np.log(start[:5])<lower) or np.any(np.log(start[:5])>upper):
+            raise ValueError('independent start outside inherited radial bounds')
     if start_from is not None:
         prior=json.loads(Path(start_from).read_bytes())
         if not prior['completed'] or not prior['best']['positive_LJ']:raise ValueError('completed positive-LJ starting study required')
@@ -65,6 +72,7 @@ def run(out,maxfev,start_from=None,vary_screening=False):
     out.mkdir(parents=True);began=time.perf_counter();history=[]
     save_json(out/'definition.json',dict(source=binding,start_binding=mb,start_shape=start,
         log_bounds=[lower,upper],maxfev=maxfev,optimizer='deterministic bounded Powell',followup_start_sha256=start_hash,
+        independent_start_declared=initial_shape is not None,
         objective='joint old115 inspected curvatures plus predeclared finite-q fit matrices',
         vary_existing_power_screening=vary_screening,
         shape_coordinate_convention='first five logarithmic, optional sixth linear exponent in inherited [-1,1]',
@@ -105,4 +113,5 @@ if __name__=='__main__':
     p=argparse.ArgumentParser(__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--maxfev',type=int,default=40)
     p.add_argument('--start-from',type=Path)
     p.add_argument('--vary-screening',action='store_true')
-    a=p.parse_args();run(a.out,a.maxfev,a.start_from,a.vary_screening)
+    p.add_argument('--initial-shape',nargs=6,type=float)
+    a=p.parse_args();run(a.out,a.maxfev,a.start_from,a.vary_screening,a.initial_shape)

@@ -1,0 +1,145 @@
+{
+  "completed": true,
+  "source": {
+    "parameter_source": "published NIST Al99.eam.alloy target-only",
+    "parameter_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+    "source_url": "https://www.ctcms.nist.gov/potentials/Download/1999--Mishin-Y-Farkas-D-Mehl-M-J-Papaconstantopoulos-D-A--Al/2/Al99.eam.alloy",
+    "material_accepted": false,
+    "energy_terms_omitted": false,
+    "length_scale_m": 2.863782463805517e-10,
+    "energy_unit": "eV per infinite straight-row repeat b*L0",
+    "tensor_unit": "eV/L0^3",
+    "elastic_tensor_same_candidate": true,
+    "C11_C12_C44_GPa": [
+      113.79497019355121,
+      61.553321651391286,
+      31.594806015107224
+    ],
+    "source_nominal_lattice_angstrom": 4.05,
+    "source_reference_only": true,
+    "reciprocal_tolerance_applicable": false,
+    "kernel": "published finite-support source EAM, target only; not the LJ/Bessel model",
+    "physical_time": false,
+    "physical_Hz": false,
+    "actual_yield_calibrated": false,
+    "production_changed": false
+  },
+  "elapsed_seconds": 78.33757049997803,
+  "profiles": [
+    {
+      "label": "baseline",
+      "eta": 12.507384978807881,
+      "max_excluded_q_error": 2.100801577303527,
+      "positive_LJ": true,
+      "exact_residual": 3.801403636316536e-13,
+      "duality_gap": -5.329070518200751e-15,
+      "conditional_rank": 3,
+      "coefficient_count": 10,
+      "material_accepted": false
+    },
+    {
+      "label": "density_linear_k3",
+      "eta": 12.507115149693036,
+      "max_excluded_q_error": 2.1008267196885226,
+      "positive_LJ": true,
+      "exact_residual": 7.176481631177012e-13,
+      "duality_gap": 1.2434497875801753e-14,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "density_linear_k5",
+      "eta": 12.507117322839381,
+      "max_excluded_q_error": 2.10082808804397,
+      "positive_LJ": true,
+      "exact_residual": 8.242295734817162e-13,
+      "duality_gap": 1.5987211554602254e-14,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "density_linear_k8",
+      "eta": 12.50711550452346,
+      "max_excluded_q_error": 2.100826868514954,
+      "positive_LJ": true,
+      "exact_residual": 6.181721801112872e-13,
+      "duality_gap": 3.197442310920451e-14,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "density_linear_k11",
+      "eta": 12.507098982921356,
+      "max_excluded_q_error": 2.100821926303259,
+      "positive_LJ": true,
+      "exact_residual": 7.744915819785092e-13,
+      "duality_gap": 2.4868995751603507e-14,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "density_quadratic_k3",
+      "eta": 12.47586915580406,
+      "max_excluded_q_error": 2.1085761200354685,
+      "positive_LJ": true,
+      "exact_residual": 3.197442310920451e-14,
+      "duality_gap": 1.0658141036401503e-14,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "density_quadratic_k5",
+      "eta": 12.507384978807881,
+      "max_excluded_q_error": 2.100801577303527,
+      "positive_LJ": true,
+      "exact_residual": 3.801403636316536e-13,
+      "duality_gap": -5.329070518200751e-15,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "density_quadratic_k8",
+      "eta": 12.507384978807881,
+      "max_excluded_q_error": 2.100801577303527,
+      "positive_LJ": true,
+      "exact_residual": 3.801403636316536e-13,
+      "duality_gap": -5.329070518200751e-15,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "density_quadratic_k11",
+      "eta": 12.507384978807881,
+      "max_excluded_q_error": 2.100801577303527,
+      "positive_LJ": true,
+      "exact_residual": 3.801403636316536e-13,
+      "duality_gap": -5.329070518200751e-15,
+      "conditional_rank": 4,
+      "coefficient_count": 11,
+      "material_accepted": false
+    },
+    {
+      "label": "dictionary_capacity_NOT_model_selection",
+      "eta": 11.255224835198398,
+      "max_excluded_q_error": 2.1815682408745993,
+      "positive_LJ": false,
+      "exact_residual": 6.934897101018578e-12,
+      "duality_gap": -6.927791673660977e-14,
+      "conditional_rank": 11,
+      "coefficient_count": 18,
+      "material_accepted": false
+    }
+  ],
+  "material_accepted": false,
+  "physical_time_calibrated": false,
+  "actual_yield_validated": false,
+  "production_changed": false,
+  "interpretation": "necessary fixed-shape compatibility only; no full spectral or fresh validation approval"
+}

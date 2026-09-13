@@ -1,0 +1,74 @@
+{
+  "completed": true,
+  "profiles": [
+    {
+      "name": "LJ_only",
+      "success": true,
+      "coefficients": [
+        0.050422493861575886,
+        0.07547766478898107
+      ],
+      "squared_loss": 788.9559688768321,
+      "singular_values": [
+        1.3488819238833438,
+        0.4248735758090502
+      ],
+      "strictly_positive_float_LJ": true,
+      "optimizer_active_mask": [
+        0.0,
+        0.0
+      ],
+      "LJ_away_from_optimizer_bound": true,
+      "coefficient_units": "c12,c6 in eV at length L0; optional B in eV/source auxiliary density"
+    },
+    {
+      "name": "source_density_gauge",
+      "success": true,
+      "coefficients": [
+        0.03983288351869737,
+        4.9283653660244274e-21,
+        -0.559403805064978
+      ],
+      "squared_loss": 608.6892143315393,
+      "singular_values": [
+        1.60020194344021,
+        0.6532475398306834,
+        0.1123449683578878
+      ],
+      "strictly_positive_float_LJ": true,
+      "optimizer_active_mask": [
+        0,
+        -1,
+        0
+      ],
+      "LJ_away_from_optimizer_bound": false,
+      "coefficient_units": "c12,c6 in eV at length L0; optional B in eV/source auxiliary density"
+    },
+    {
+      "name": "quadratic_density_gauge",
+      "success": true,
+      "coefficients": [
+        0.03996261742335819,
+        8.863033157416987e-21,
+        -0.5547057043527946
+      ],
+      "squared_loss": 645.9871599310903,
+      "singular_values": [
+        1.6057669897861508,
+        0.6432475041516843,
+        0.08800581182940513
+      ],
+      "strictly_positive_float_LJ": true,
+      "optimizer_active_mask": [
+        0,
+        -1,
+        0
+      ],
+      "LJ_away_from_optimizer_bound": false,
+      "coefficient_units": "c12,c6 in eV at length L0; optional B in eV/source auxiliary density"
+    }
+  ],
+  "whole_energy_family_impossibility_proved": false,
+  "material_accepted": false,
+  "production_changed": false
+}

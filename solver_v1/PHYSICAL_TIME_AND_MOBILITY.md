@@ -2,10 +2,32 @@
 
 ## 1. Scope and current conclusion
 
-The length/energy dimensionalization is complete, but physical seconds and
-hertz are not currently available. No repository datum measures the mobility,
-friction, diffusion, or relaxation of the same collective coordinates
-$(a,s)$. The committed kinetic-calibration file is therefore explicitly
+### Current evidence update (v31/v32)
+
+The original absence-of-data wording below must not be read as an absence of
+all kinetic research. The repository now contains published reference records
+and independently executed Al99 MD, including the v31 weak signed-forcing
+20 ns study. Finite-band plane-coordinate mobility estimates and their
+observed-error bounds have actually been calculated. Both aggregate drag
+error sets still include zero drag; the inferred mobility upper bound is
+therefore unbounded, not a finite calibrated value. In addition, matching a
+plane-average PMF to a local production coordinate has not been validated.
+These are two distinct barriers, not a missing arithmetic unit conversion.
+See `WEAK_KINETICS_AND_MATERIAL_V31.md` and its saved raw summaries.
+
+For the same plane coordinate, rewriting F_plane as F_plane/Np requires BOTH
+M_bar=Np M_plane and a thermal energy kBT/Np to preserve the generator.
+Multiplying mobility by Np but leaving the thermal term unchanged is not
+equivalent. No v32 static material fit, finite-q Hessian or density-gradient
+correction supplies this missing local kinetic validation. Production
+`aluminum_kinetic_calibration.json` remains unchanged and uncalibrated.
+
+The length/energy dimensionalization is complete, but production physical
+seconds and hertz are not currently available. No accepted repository
+calibration establishes a resolved mobility for the same **local** collective
+coordinates $(a,s)$, PMF and thermal normalization as the production generator.
+The plane-coordinate measurements above do not satisfy that additional gate.
+The committed kinetic-calibration file is therefore explicitly
 `uncalibrated`; it contains no fabricated mobility or time scale.
 
 ## 2. Implemented probability equation

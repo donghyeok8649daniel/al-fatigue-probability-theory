@@ -1,0 +1,35 @@
+{
+  "completed": true,
+  "elapsed_seconds": 0.04276189999654889,
+  "source_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+  "nearest_neighbor_A": 2.863782463805517,
+  "nearest_log_curvature_per_A2": -2.358450363316104,
+  "profiles": [
+    {
+      "name": "single_exponential",
+      "squared_loss": 116.8604608010479,
+      "optimizer_success": true
+    },
+    {
+      "name": "quadratic_start_0",
+      "squared_loss": 10.786467187329286,
+      "optimizer_success": true
+    },
+    {
+      "name": "quadratic_start_1",
+      "squared_loss": 10.786467187329292,
+      "optimizer_success": true
+    },
+    {
+      "name": "quadratic_start_2",
+      "squared_loss": 10.786467187329324,
+      "optimizer_success": true
+    }
+  ],
+  "minimum_density_only_fit_loss": 10.786467187329286,
+  "positive_exponential_mixture_cannot_match_negative_log_curvature": true,
+  "whole_energy_family_impossibility_proved": false,
+  "material_accepted": false,
+  "production_changed": false,
+  "physical_time_calibrated": false
+}

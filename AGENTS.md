@@ -2,6 +2,32 @@
 
 ## 0. 가장 먼저 읽을 것
 
+v33 `RANK_FOUR_ENVIRONMENT_V33.md`는 첫 nonzero cubic STF 배경인 rank4의
+별도 최소 연구후보다. Rank3 invariant의 제곱과 다르다. Q4_bulk를 빼먹으면
+bulk/interface/finite-q 힘이 틀린다. H4=2 L L^T+4 Q_bulk:K의 둘째항과
+per-site bulk subtraction을 유지한다. 기존 LJ/Bessel 및 생산모델은 불변.
+5개 감쇠 대조 완료: 가장 낮은 training eta12.450127도 실패했고 새 계면
+H오차99.2024%, 제외q208.5574%다. 최종 테스트/Git상태는 handoff와
+completed summary에서 확인. 구현·회귀 통과를 재료/kinetic
+보정 성공으로 읽지 않는다. `TASKS_1_TO_3_STATUS_V32.md`가 세 물리 gate를 구분한다.
+
+v32 `RADIAL_CHANNEL_COMPATIBILITY_V32.md`는 v31 fixed-shape 잔차의 거리채널,
+양의 밀도지수, PSD 교차항, coherent vector 환경의 별도 호환성 검사다.
+생산 에너지로 추가한 것이 아니다. 61개 fixed-shape LP는 eta<=1 미통과.
+큰 dictionary는 표현력 진단이며 채택할 다수 매개변수 모델이 아니다.
+선형 density는 pair-redistribution gauge를 갖고, 같은 norm 방향의 중복
+계수는 SVD에서 식별성으로 세지 않는다. D1=0 생성자 StopIteration은
+재현된 구현 결함으로 고쳤으나 과거 nonzero-D1 불합격을 해결한 것은 아니다.
+별도 독립 초기 shape180profile은maxfev완료/eta12.899739,채택아님.
+QUADRATIC_EXPONENTIAL_ENVIRONMENT_V32.md는 source보조density의음의log곡률을
+표현하는양의2차포락선×지수kernel을미분된Poisson변환으로유도한연구확장이다.
+source보조density는관측electron density가아니며단독적합으로재료승인금지.
+새scalar환경은embedding와rank1screening양쪽에일관사용,고정bulk gauge유지.
+고정shape material eta19.349784는실패. 직접재료shape검색/회귀/커밋상태는
+최신handoff/summary확인. Positive exponential mixture의log곡률>=0은
+primitive형상제약일뿐전체에너지family불가증명이아니다.
+physical time/실제 항복/피로 검증을 이 정적 진단 완료와 혼동하지 않는다.
+
 v31 `WEAK_KINETICS_AND_MATERIAL_V31.md`는 약한 외력의 새 초기화 MD,
 전체 zero-sum 평면 generator와 scalar 축약의 차이, finite-q/계면 공동
 재료 적합 감사다. 완료/진행 상태는 handoff 및 각 summary를 확인한다.

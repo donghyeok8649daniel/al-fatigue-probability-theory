@@ -1,0 +1,46 @@
+{
+  "parent_sha256": "5d4308c992979970bbb529a969cfc49abc52fafc4b909a500048f41e20d22528",
+  "auxiliary_fit_sha256": "6fd92f76d885deb546b105d6e41eb30a12a7ef898ad8dc5685d7f9a4d31c2c42",
+  "parent_angular_shape": [
+    4.946062208908296,
+    10.134651584582558,
+    11.59937838759889,
+    999871.1983895219,
+    8.477827479786518,
+    1.0
+  ],
+  "raw_reduced_kernel": {
+    "C": 1.0,
+    "k": 8.939248163519297,
+    "center": 0.6843263820287654,
+    "width": 0.08942317287962655
+  },
+  "amplitude_gauge": "normalize full FCC density once, never during strain",
+  "old_scalar_decay": "held implementation placeholder; no longer an independent energy parameter",
+  "units": "eV/interface cell, eV/L0, eV/L0^2",
+  "source_density_fit_is_NOT_material_calibration": true,
+  "fresh_states": [
+    [
+      0.827,
+      0.071,
+      -0.033
+    ],
+    [
+      0.879,
+      0.267,
+      0.113
+    ],
+    [
+      0.941,
+      0.361,
+      0.207
+    ],
+    [
+      1.127,
+      0.419,
+      0.139
+    ]
+  ],
+  "physical_time_calibrated": false,
+  "production_changed": false
+}

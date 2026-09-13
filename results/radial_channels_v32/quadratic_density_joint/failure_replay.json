@@ -1,0 +1,14 @@
+{
+  "completed": true,
+  "parent_summary_sha256": "4419ca7bb00c0750bb1af54d3960c3cbe5c2ecb48ab4fd20f414f4b14853e822",
+  "method": "independently reconstruct all seven exact anchors, 115 interface curvature rows and four fit-q matrices at each failed coordinate, then rerun minimax_compatibility with the unchanged NONNEGATIVE indices",
+  "records": [
+    {"evaluation": 12, "completed": false, "status": 2, "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"},
+    {"evaluation": 47, "completed": false, "status": 2, "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"},
+    {"evaluation": 95, "completed": false, "status": 2, "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"},
+    {"evaluation": 115, "completed": false, "status": 2, "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"}
+  ],
+  "interpretation": "LP solver reports infeasible coefficient constraints at these four fixed shapes; not a global nonlinear-family no-go theorem",
+  "independent_farkas_certificate_saved": false,
+  "production_changed": false
+}

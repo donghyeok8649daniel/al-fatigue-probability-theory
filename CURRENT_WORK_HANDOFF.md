@@ -1,5 +1,204 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## v32/v33 연구 계산·독립 검증·전체 회귀 완료 — 이 항목 우선
+
+- 1–3의 물리 목표는 미완료다. 아래는 실제 실행한 연구 확장과 실패 원인
+  검증의 완료이며, Al 재료/국소 이동도/실제 항복·피로 승인과 다르다.
+- 추가 nested-density4335 실제완료/exit0,81.584s: 순수지수 endpoint가 이전유한width범위에
+  없었던점을검사한다. `run_nested_density_control_v33`는동일k에서각각
+  bulkρ=1인 f_exp/f_quad를 density수준에서(1-eta)/eta혼합. eta>0는
+  w_eff²=w²+(1-eta)Cexp/(eta Cquad)인동일quadratic family이며새energy항아님.
+  eta0는기존matrix정확재생. centers0/.684...,etas1e-4,1e-3,.01,.1,.3,1
+  사전선언,총13LP완료. 결과results/rank_four_environment_v33/nested_density_control.
+  baseline재생오차0,혼합identity오차2.00e-15. 모든새방향이기존eta12.50738보다
+  악화. 일부LJ0탈락. 새함수족아닌동일quadratic범위closure검사이며미채택.
+  새상태blindvalidation이아닌기존정적development 대조,production불변.
+- 추가 capacity6856 실제완료/exit0,284.663s: `run_rank_four_capacity_v33`가 같은5개 rank4
+  거리의 계수를 동시에 허용한다. 각 analytic column을 재계산해 이전15개
+  단독profile의 모든 prediction과 재생 비교 후 joint2LP를 수행한다.
+  results/rank_four_environment_v33/joint_capacity_replay에 실제 결과 저장.
+  15개 재생오차 정확히0. Joint양수eta12.50729550, signedeta11.55612833.
+  signed의제외q31.7309%는개선이나 LJ반발계수0이므로명시적탈락.
+  두경우eta<=1실패,conditionalrank8. 후보미채택/전체family불가증명아님.
+  첫 joint_capacity는 JSON-list를cached matrix에 넘긴 TypeError로 계산 전
+  중단한 definition만 보존; tuple변환 후 fresh재실행. 기존수학/테스트불변.
+  추가된 것은 연구 orchestration뿐이며 full760의 test collection은 불변.
+- v32 all-ranges61979 완료: 320 evaluations,4714.573s,maxfev 종료(수렴 아님).
+  318 LP성공/166 positive-LJ/2 infeasible, best eligible eta15.27014270.
+  69192 독립검증 완료: 새4점 H오차100.56319%, 제외q249.66680%.
+  gradient/H FD오차3.44e-10/3.66e-10, tighter-series H변화2.14e-14.
+  results/radial_channels_v32/quadratic_density_all_ranges[_validation] 참조.
+- v33 fixed-shape 및 k4=3,5,8,11의 15 LP(5 baseline 포함) 모두 완료.
+  가장 낮은 training eta는 k4=8 signed-control12.45012700, D4=-.22544675.
+  양의 D4 대조는 개선 거의 없음. 부호를 푼 진단도 eta<=1 실패이며 미채택.
+  34311 독립검증 완료: 사전선언 새3점 H오차99.20240%, 제외q208.55741%.
+  gradient/H FD오차4.18e-10/4.75e-10, series H변화2.78e-17.
+  pristine gradient최대3.37e-15, Hdiag19.66091286/4.39359304/4.39359304.
+  새3점은 저장된 development280행의 상태와 겹침0을 실제 확인했다.
+- 실제 targeted25PASS89.05s(rank4 six+radial16+gradient3), 개별 rank4six
+  PASS21.89s. 이전 full754는51134 실제754PASS2100.22s/exit0로 끝났다.
+  신규6개 포함 최종760 suite20391 실제760PASS2075.21s(34:35)/exit0.
+  모든760개 test collection 불변. 두후속CLI는 같은검증된구성요소로실제실행,
+  원래15profile exact재생과13nested정규화/기준재생을별도로검증했다.
+  최신app44896 실제34PASS174.76s,smokePASS3.56s도 재실행 완료.
+  이전app34PASS164.59s,smokePASS2.94s 역시 실제 기록. 미실행 PASS 없음.
+- 결과 JSON94개 strict parse 통과, 두 결과 폴더 합계4,808,405bytes(verification 추가 전);
+  개인 경로/인증키 검색 없음. diffcheck exit0(CRLF안내만 있음).
+- 생산 에너지 registry/PDE/app/solver_v1/data 변경 없음. Q4_bulk 및
+  H4=2LL^T+4Qbulk:K 유지. 새로운 보정 실패로 M/T/chi/Ac를 조정하지 않았다.
+- Git의 이 단락은 커밋 직전 기록이다. 시작/local/remote639248b67319a01d9b80009a7a657e00c1fb52e3.
+  branch probability-pde-solver-v1, main/8worktree 보존. 모든 staged+unstaged+
+  새 파일을 함께 검사/stage했고 최종회귀 완료. 이 체크포인트의 최종 SHA와
+  push 여부는 읽는 시점에 git log/status 및 실제 fetch로 확인한다.
+- 다음 물리 단계는 동일 per-atom LJ/Bessel 법칙의 계면곡률/finite-q 동시
+  호환성이다. 유한 후보 실패를 전체 analytic family 불가능 증명으로 읽지
+  않는다. 이동도는 matching local PMF/열정규화/분해된 소산 확인, 실제 항복은
+  독립 source geometry/population과 유한 activation/kinetics까지 필요하다.
+
+## v33 시작 / v32 종료검사 진행 — 아래는 보존된 중간 상태
+
+- 사용자1–3 물리목표는 아직 미완료. 이를 성공으로 위장하지 않고 제한된
+  최소 확장을 계속 실제 검사 중. `TASKS_1_TO_3_STATUS_V32.md` 새요약 참조.
+- `rank_four_environment.py` 새 연구 모듈: STF4의9성분/81Cartesian norm,
+  미분된2D Poisson, same-plane6fold 및 Gamma tail, NONZERO Q4_bulk,
+  full interface10jet, bulk3mode, analytic neighbor jets/Bloch H 구현.
+  H4=2LL^T+4Qbulk:K이고 bulk항을빼면틀림. LJ/생산PDE/보정JSON불변.
+- `test_rank_four_environment.py` 6PASS21.89s 실제. 처음4도21.19sPASS.
+  `RANK_FOUR_ENVIRONMENT_V33.md`에 수식/단위/검증/진행상태 저장.
+- 첫 actual fixed-shape LP56171 exit0, eta12.5073337386 (baseline12.50738498),
+  excluded-q210.08546%. D4>=0/signed동일. 식별성nullrank4이나 미채택.
+- scalar감쇠와동일한k4만으로전체family실패라하지않기위해 predefined
+  k4=3,5,8,11을 sequential 72465로시작. 각각fresh디렉토리
+  results/rank_four_environment_v33/decay_3.0,... 기존fixed_shape보존.
+  새독립상태3개는definition에fit전선언, source값아직안봄.
+- full754 test51134 아직실행중(66%이상). 이컬렉션에는새rank4 6개없다.
+  따라서최종760suite를새rank4대조/검증/코드freeze후실제돌려야한다.
+  app34PASS164.59s,smokePASS2.94s실제. 751fullPASS1630.43s는이전상태.
+- v32allranges61979 아직진행중(313/320). 종료summary확보후
+  validate_quadratic_density_v32 --parent .../quadratic_density_all_ranges
+  --out .../quadratic_density_all_ranges_validation 실행필요.
+  validator는새4점과과거본4점역할을구분, summaryfresh최대는새4점만집계하도록수정.
+- lastfetch HEAD/remote639248b 동일,0:0,branchprobability-pde-solver-v1.
+  아직commit/push안함. staged+unstaged+new연구파일모두보존. main안건드림.
+
+## v32 추가 체크포인트 — 2026-09-13 14:20 KST 무렵
+
+- 공간 density-gradient는 기존 Q1=sum R f와 다르다. 새 별도 연구 모듈
+  `spatial_density_gradient.py`는 g=-sum f'(r) R/r, 2D Poisson의 3차 미분,
+  per-site D|g|^2/x 및 bulk H(q)=2D Rh^T Rh를 유도/구현했다. LJ 불변.
+  `SPATIAL_DENSITY_GRADIENT_V32.md`에 유도/문헌/단위/결과를 저장했다.
+- 새3tests 실제 PASS1.96s. 이어서 실제 fixed-shape LP50.292s 완료:
+  eta12.507385 ->12.507100, excluded-q210.08196%; 채택 실패.
+  새D1.20898e-5, conditional rank4이나 물리 적합은 아님. active dual의
+  .681은 단파장H22, 나머지는 계면곡률에 있어 두쪽 충돌이 계속된다.
+- 직전751full은62569 실제751PASS1630.43s/exit0로 완료했다.
+  공간gradient3추가 후 최종754suite session51134 현재 실행중. 결과 직접 확인.
+  최신app52885 실제34PASS164.59s/exit0. 아직commit/push안함.
+- 8shape공동검색61979 아직 진행중, 231profile eta15.5828 부근.
+  완료summary 확보 후 additional manifest4점 포함 validator를 실제 실행할 것.
+  종료예산은 convergence가 아니다. 생산재료/이동도/Hz/실제항복 승인없음.
+- 새driver --spatial-gradient는 단독선택 옵션이며 7exact tangent에도 실제
+  새interface곡률을 넣는다. bulk균일탄성0을 interfaceH도0이라 착각하지 않는다.
+- git HEAD639248b/branch그대로, 기존staged/unstaged모두보존. main미변경.
+
+## v32 최신 체크포인트 — 2026-09-13 (아래 중간/v31 기록보다 우선)
+
+### 13:30 이후 추가 공동검사 진행 — 이 단락이 아래 종료예정보다 최신
+
+- 최종751fulltest session62569실행중(57%이상). allranges61979는80회이상,
+  eta15.84근처도positiveLJ를별도로확인할것. 아직최종승인/commit없음.
+- `run_pair_gauge_shape_v32` 실제실행: LJ/source-density-gauge/quadratic-gauge
+  loss788.95597/608.68921/645.98716. 선형EAMgauge만으로sourcepair-LJ차이
+  흡수못함. 뒤2개는attractiveLJ optimizerbound활성. 첫출력floatingpositive
+  flag오해방지를위해active_mask보강한fresh bound_audit재생완료,값동일.
+  canonicalpair대체아님,source함수gauge형상진단일뿐Al전체불가증명아님.
+- allranges의기존4validation은이미본점. additional_validation_definition.json
+  추가4states는검색시작후/최종후보및source값보기전에선언. 기존학습과겹침0.
+  validator가그manifest를읽고new vs previously_inspected역할을CSV에분리.
+
+- 3scalar만보정한한계를남기지않기위해 `quadratic_density_all_ranges`를
+  --all-ranges --maxfev320으로실제시작(session61979). 첫20회eta16.67근처,
+  아직summary없음. 3scalar+기존4logangularshape+z=8변수,source density
+  단독loss아님. 7exact/115interface/4q타깃으로coeff조건부LP. 물리목표미완료.
+- 새kernel의 isolated-neighbor조건 2*k1+min(z,0)*k_new>0 추가. 이전placeholder
+  k_old가아니라실제kernel decay로확인. 기반생성자/행렬의oldplaceholder
+  조건도추가로남아있어검색domain은양쪽조건의교집합이다. 이보수적제한을
+  전체새함수족불가증명으로해석금지. 현재생산/기존양의z결과변경없음.
+- 신규조건/8좌표회귀추가:quadratic_density_interface6PASS70.32s(74158exit0).
+  full42468실제750PASS1694.26s/exit0(새1test추가전collection).
+  최종751전체회귀를새로시작,추가공동계산과동시진행. 아래30target는추가1test전.
+- 3scalar검사실패4개독립재구성9742실제exit0:eval12/47/95/115전부LPstatus2,
+  HiGHS Infeasible. failure_replay.json보존. globalFarkas증명아님.
+- 아직commit/push안함. 대다수파일staged,추가수정/새study는unstaged일수있음.
+  staged를전체현재변경으로착각하지말것. 원격639248b동일최신fetch확인완료.
+  추가계산끝나면validator는best.angular_shape지원하므로실제새shape로평가.
+  결과/잔차/타깃실패/테스트를기록하고정상commit/push. 1–3완료라고거짓보고금지.
+
+- 사용자의 1–3는 Al정적재료,local a/s이동도/초Hz,실제항복/피로다.
+  이 세 물리 gate는 아직 미통과. 진단/테스트 완료를 세 목표 완료라 하지 않는다.
+- 시작fetch/local/remote639248b67319a01d9b80009a7a657e00c1fb52e3,clean.
+  branch probability-pde-solver-v1,main/8worktree 보존. 이번생산코어/UI/보정JSON
+  변경없음. D1=0 생성자연구경로오류만재현고침(기하moment,에너지항추가없음).
+- 6개 channel study 총61profiles완료. bestdictionaryeta11.248055이나채택아님.
+  vector_density_shape8profileseta12.462730,excluded209.0168%. 표/수식은
+  RADIAL_CHANNEL_COMPATIBILITY_V32.md 및results/radial_channels_v32/README.md.
+- independent_shape180profiles/1526.05s완료,maxfev,eta12.899739.
+  independent_validation실제exit0,excluded217.2508%,min eig1.448810.
+- 실제 source density log곡률 NN에서−2.358450/Angstrom². 양의지수혼합은
+  log곡률=decay분산>=0라해당보조density형상표현불가. 전체energy불가증명아님.
+- 양의2차포락선×지수연구kernel새유도. Tquad=C(∂k²+2c∂k+c²+w²)Texp,
+  analyticfull10jet,Poisson/ABC/site합유지. scalar는embedding와screening양쪽
+  사용. C는고정bulkρ=1gauge;oldscalar decay는새모델의독립변수가아님.
+- reference_density_shape4fits완료:값loss116.86046→10.78647,midpointmax1.52958.
+  source보조density는관측물리density아님. 이것을material보정이라고하지않음.
+- quadratic_density_material고정shape profileeta19.349784,excluded230.8101%.
+- quadratic_density_joint120eval/317.05s완료,maxfev. LP실패4기록,positiveLJ5.
+  eta16.04근처는LJ계수0이라제외. besteligible초기19.349784,개선없음.
+  source density값은jointloss에넣지않음. 물리재료타깃으로만shape보정했다.
+- quadratic_density_validation실제exit0:새4states H상대오차max95.05495%,
+  excluded-q230.81006%. gradientFD2.2621e−10,HessianFD8.0874e−10,
+  tolerancechange5.1514e−14,finiteqtail1.9558e−4/radiuschange8.1112e−5.
+  초기validatorbulkcontext.evaluate호출오류는출력전중단,명시sourcevector
+  constructor로수정후위성공검사실행. QUADRATIC_EXPONENTIAL_ENVIRONMENT_V32.md.
+- embedding_convexity_audit4LP실제완료: C부호해제eta12.507385불변,
+  K3해제12.404692,둘다해제동일. 부호제약만풀어도해결안됨. 생산조건불변.
+- actualnewtarget11PASS68.82s. 이전full739PASS661.52s는신규11추가전결과.
+  신규전체target30PASS94.61s. smoke실제PASS1.71s(기존a0/kappa불변).
+  새JSON42개strictparse성공,results합계2,496,416bytes. 새4validationstate는
+  기존developmentstate와교집합없음. 사전push fetch639248b동일/좌우0:0.
+  최종full750예상session42468진행중(실제종료출력을확인할것).
+  app34PASS62.35s actual. commit/push아직안함. 과거734PASS1161.09s도보존.
+- MD신규실행없음. v31의실제20ns자료결과는유효하나zero-drag배제못함,
+  localPMF/열정규화가미검증. Ma_phys/Ms_phys/t0없음,생산seconds/Hzdisabled.
+- 다음: 최종full출력/새target30/app/smoke확인,changedfile검사/diffcheck,
+  정상fetch/commit/push. 실제채택가능한재료가없으므로새core/피로실행으로
+  성공을연출하지말것. 다음가설은동일energy의shortwave/계면곡률을동시에
+  맞춰야하며무작정MD길이/M값/Ac를바꾸는것으로해결하지않는다.
+
+## v32 이전 진행 체크포인트 — 역사적 중간 상태
+
+- 이번 시작 실제 fetch/local/remote 모두639248b67319a01d9b80009a7a657e00c1fb52e3,
+  clean, probability-pde-solver-v1. main 및8worktree 보존.
+- 사용자 요청: 1–3(정적 Al 계면 재료, local 이동도/초Hz, 실제 항복/피로)을
+  마무리. 아직 과학적 세 gate 완료 아님. 완료처럼 보이도록 숫자 대입 금지.
+- results/radial_channels_v32의 completed_trial/positive_power/density_channels/
+  cross_square/coherent_vector 실제53개 fixed-shape LP 모두완료. best angular
+  dictionary eta11.248055, excluded-q200.6077%; single best rank3k5 eta12.271819.
+  양의 지수확장/PSDcross/coherentvector도불합격. LJ/Bessel/environment per-site
+  합 유지. 다수채널dictionary를생산모델로채택하지않음. README/새이론문서참조.
+- root definition.json은첫role명오류(excluded→heldout수정)전미완료기록보존.
+- D1=0 연구생성자 StopIteration 재현/수정. 에너지항을추가하지않고진단용
+  unitmoment만생성. tied/untiedzero한계에서energy/gradient/Hessian exact회귀.
+- targeted51PASS91.42s, 추가coherent3PASS2.12s. app34PASS178.72s.
+  smokePASS(a0 .7713438268704838,kappa86.29296488740997).
+- fullsolver42522 실행중: coherent신규3추가전 collection, 최종코드전체회귀
+  다시확인필요. independent_shape27520실행중180profile예산:
+  start(2.4,6.1,8,30,6.3,0), 약44profiles eta37.7. 실제summary로완료확인.
+  budget stop은convergence아님. 현재장기MD신규실행없음.
+- 현재uncommitted연구코드/results/docs 보존. commit/push아직안함.
+  다음: independent_shape실제종료/검증,최종fullregression,변경검사후정상push.
+  사용자물리목표의진짜잔여원인을완료진단과분리하여보고할것.
+
 ## v31 최종 완료 — 2026-09-13 야간 작업 (이 단락 우선)
 
 ### 실제 완료 및 파일

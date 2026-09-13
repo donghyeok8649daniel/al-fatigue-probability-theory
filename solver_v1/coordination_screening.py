@@ -69,7 +69,15 @@ class CoordinationScreenedInterface(RankOneRangeInterface):
         self.law = law
         self.screening = float(shape[5])
         self.screened_shape = shape.copy()
-        moment = next(m for _, m in self.base.moments if m.invariant.rank == 1)
+        moment = next((m for _, m in self.base.moments if m.invariant.rank == 1), None)
+        if moment is None:
+            # D1=0 is an admissible coefficient limit. The base omits that
+            # energy component, but coefficient/site diagnostics still need
+            # its unit-amplitude geometry. Do not add it to the energy list.
+            from .angular_environment_reference import AngularInterfaceInvariant
+            from .vector_interface_reference import VectorMomentPlane
+            moment = VectorMomentPlane(AngularInterfaceInvariant(self.face, rank=1,
+                angular_decay=float(shape[4]), tolerance=tolerance))
         self.vector_sites = CubicInterfaceMomentSites(self.base, moment)
 
     @lru_cache(maxsize=192)

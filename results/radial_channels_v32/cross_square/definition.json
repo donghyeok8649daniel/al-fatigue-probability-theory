@@ -1,0 +1,55 @@
+{
+  "parent_sha256": "5d4308c992979970bbb529a969cfc49abc52fafc4b909a500048f41e20d22528",
+  "shape": [
+    4.946062208908296,
+    10.134651584582558,
+    11.59937838759889,
+    999871.1983895219,
+    8.477827479786518,
+    1.0
+  ],
+  "channels": [],
+  "extra_amplitude_nonnegative": true,
+  "alternative_positive_exponents": [],
+  "positive_square_cross_shapes": [
+    -100.0,
+    -10.0,
+    -1.0,
+    -0.1,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "signed_extra_channels": [
+    "density_linear"
+  ],
+  "density_linear_gauge": "per-site linear density is equivalent to an exponential pair redistribution; not independently identifiable EAM physics",
+  "selection": "same 115 inspected interface curvature rows plus four fit-q matrices",
+  "excluded_q_used_for_selection": false,
+  "production_changed": false,
+  "fresh_validation_states": [
+    [
+      0.827,
+      0.071,
+      -0.033
+    ],
+    [
+      0.879,
+      0.267,
+      0.113
+    ],
+    [
+      0.941,
+      0.361,
+      0.207
+    ],
+    [
+      1.127,
+      0.419,
+      0.139
+    ]
+  ],
+  "fresh_states_used_for_selection": false,
+  "interpretation": "single-column trials first; dictionary is capacity diagnostic only"
+}

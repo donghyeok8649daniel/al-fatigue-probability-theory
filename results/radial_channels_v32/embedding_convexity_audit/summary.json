@@ -1,0 +1,36 @@
+{
+  "completed": true,
+  "profiles": [
+    {
+      "name": "inherited",
+      "completed": true,
+      "eta": 12.507384978807881,
+      "positive_LJ": true,
+      "dual_gap": -5.329070518200751e-15
+    },
+    {
+      "name": "C_embedding_signed",
+      "completed": true,
+      "eta": 12.507384978807881,
+      "positive_LJ": true,
+      "dual_gap": -5.329070518200751e-15
+    },
+    {
+      "name": "K3_signed",
+      "completed": true,
+      "eta": 12.404691898619625,
+      "positive_LJ": true,
+      "dual_gap": 1.4210854715202004e-14
+    },
+    {
+      "name": "C_embedding_and_K3_signed",
+      "completed": true,
+      "eta": 12.404691898619625,
+      "positive_LJ": true,
+      "dual_gap": 1.4210854715202004e-14
+    }
+  ],
+  "material_accepted": false,
+  "full_shape_impossibility_proved": false,
+  "production_changed": false
+}
