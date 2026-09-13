@@ -1,0 +1,49 @@
+{
+  "completed": true,
+  "derivative_verified": false,
+  "elapsed_seconds": 607.0869580999715,
+  "profiles": 24,
+  "best": {
+    "x": [
+      1.5985917466400816,
+      2.315960401866825,
+      2.450951509400512,
+      13.815381748058156,
+      2.1372542235592698,
+      1.0
+    ],
+    "shape": [
+      4.946062208908296,
+      10.134651584582558,
+      11.59937838759889,
+      999871.1983895219,
+      8.476132083835807,
+      1.0
+    ],
+    "value": 12.506982218500816,
+    "positive_LJ": true,
+    "coefficients": [
+      0.04477607252752721,
+      0.6149320766006973,
+      5.379183801100277,
+      7.102794881037708,
+      0.9111302124991526,
+      7.383989779723059,
+      2.182954180784854,
+      3.0018544474411963,
+      1.8008792270985725,
+      0.0
+    ],
+    "seconds": 0.006097000034060329,
+    "duality_gap": 1.2434497875801753e-14
+  },
+  "optimizer_executed": false,
+  "optimizer_success": null,
+  "message": "audit only or derivative gate not passed",
+  "optimizer_iterations": 0,
+  "material_accepted": false,
+  "whole_family_impossibility_proved": false,
+  "production_changed": false,
+  "physical_time_calibrated": false,
+  "actual_yield_validated": false
+}

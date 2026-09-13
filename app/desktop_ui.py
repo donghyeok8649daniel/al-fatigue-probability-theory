@@ -525,6 +525,8 @@ class DesktopApp:
             entry.grid(row=row, column=1, sticky="ew", padx=4, pady=2)
             entry.bind("<FocusOut>", self._update_specimen_probability)
             entry.bind("<Return>", self._update_specimen_probability)
+            entry.bind("<KeyRelease>", self._update_specimen_probability)
+            entry.bind("<<Paste>>", lambda _event: self.root.after_idle(self._update_specimen_probability))
             self.entries[key] = entry
             unit = self._bind_text(ttk.Label(specimen), "unit.mm2")
             unit.grid(row=row, column=2, sticky="w", pady=2)
@@ -866,11 +868,18 @@ class DesktopApp:
         try:
             correlation = float(self.entries["correlation_area_mm2"].get())
             stressed = float(self.entries["stressed_area_mm2"].get())
+            if (not np.isfinite(correlation) or correlation <= 0.0
+                    or not np.isfinite(stressed) or stressed < 0.0):
+                raise ValueError("invalid specimen areas")
+            with np.errstate(over="ignore"):
+                if not np.isfinite(stressed / correlation):
+                    raise ValueError("area ratio overflow")
         except ValueError:
             self._specimen_status_key = "status.area_required"
-            self.result.pop("specimen_initiation_probability", None)
-            self.result.pop("specimen_survival_probability", None)
-            self.result.pop("specimen_probability_extrapolation", None)
+            for key in ("specimen_initiation_probability", "specimen_survival_probability",
+                        "specimen_probability_extrapolation", "specimen_probability_resolved_mask",
+                        "N_eff", "specimen_probability_status"):
+                self.result.pop(key, None)
             self._refresh_specimen_labels()
             self._plot()
             return
@@ -1519,8 +1528,12 @@ class DesktopApp:
         if field.startswith("specimen_") and (
             field not in data or not np.any(np.isfinite(data[field]))
         ):
+            unavailable_key = (
+                "status.area_required" if "specimen_probability_extrapolation" not in data
+                else "plot.specimen_unavailable"
+            )
             self.ax.text(
-                0.5, 0.5, self._tr("plot.specimen_unavailable"),
+                0.5, 0.5, self._tr(unavailable_key),
                 ha="center", va="center", transform=self.ax.transAxes, color=MUTED,
             )
             self.ax.set_axis_off()
@@ -1684,12 +1697,16 @@ class DesktopApp:
         self.canvas.draw_idle()
 
     def _on_press(self, event) -> None:
+        # Matplotlib owns gestures while a toolbar navigation mode is active.
+        if getattr(getattr(self.canvas, "toolbar", None), "mode", ""):
+            return
         if event.dblclick and event.inaxes is self.ax:
             self._reset_view()
             return
         if event.button == 1 and event.inaxes is self.ax and event.xdata is not None:
             self._pan_origin = (
-                event.xdata, event.ydata, self.ax.get_xlim(), self.ax.get_ylim()
+                event.x, event.y, self.ax.get_xlim(), self.ax.get_ylim(),
+                self.ax.transData.frozen().inverted(),
             )
 
     def _on_motion(self, event) -> None:
@@ -1697,8 +1714,9 @@ class DesktopApp:
             return
         if event.xdata is None or event.ydata is None:
             return
-        x0, y0, xlim, ylim = self._pan_origin
-        dx, dy = event.xdata - x0, event.ydata - y0
+        x0, y0, xlim, ylim, inverse = self._pan_origin
+        # Use the press-time transform, not data coordinates from moving axes.
+        dx, dy = inverse.transform((event.x, event.y)) - inverse.transform((x0, y0))
         self.ax.set_xlim(xlim[0] - dx, xlim[1] - dx)
         self.ax.set_ylim(ylim[0] - dy, ylim[1] - dy)
         self._remember_view()

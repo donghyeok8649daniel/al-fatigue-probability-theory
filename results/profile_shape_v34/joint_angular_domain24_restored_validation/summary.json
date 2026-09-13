@@ -1,0 +1,139 @@
+{
+  "completed": true,
+  "source": {
+    "parameter_source": "published NIST Al99.eam.alloy target-only",
+    "parameter_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+    "source_url": "https://www.ctcms.nist.gov/potentials/Download/1999--Mishin-Y-Farkas-D-Mehl-M-J-Papaconstantopoulos-D-A--Al/2/Al99.eam.alloy",
+    "material_accepted": false,
+    "energy_terms_omitted": false,
+    "length_scale_m": 2.863782463805517e-10,
+    "energy_unit": "eV per infinite straight-row repeat b*L0",
+    "tensor_unit": "eV/L0^3",
+    "elastic_tensor_same_candidate": true,
+    "C11_C12_C44_GPa": [
+      113.79497019355121,
+      61.553321651391286,
+      31.594806015107224
+    ],
+    "source_nominal_lattice_angstrom": 4.05,
+    "source_reference_only": true,
+    "reciprocal_tolerance_applicable": false,
+    "kernel": "published finite-support source EAM, target only; not the LJ/Bessel model",
+    "physical_time": false,
+    "physical_Hz": false,
+    "actual_yield_calibrated": false,
+    "production_changed": false
+  },
+  "shape": [
+    4.193706805786002,
+    7.031334662378116,
+    19.513075212541168,
+    655178.3856574119,
+    6.443731906770801,
+    -0.9999999999998527
+  ],
+  "training_eta": 11.17775779075355,
+  "finite_q": [
+    {
+      "role": "fit",
+      "q": [
+        0.125,
+        0.125,
+        0.0
+      ],
+      "relative_error": 0.056840404077115485,
+      "minimum_eigenvalue": 1.5074665650069996,
+      "tail_bound": 0.000582065900738892,
+      "radius_change": 0.00024140054755938145
+    },
+    {
+      "role": "fit",
+      "q": [
+        0.375,
+        0.375,
+        0.0
+      ],
+      "relative_error": 0.7582519129648028,
+      "minimum_eigenvalue": 7.897089179490445,
+      "tail_bound": 0.000582065900738892,
+      "radius_change": 0.0002306335402699129
+    },
+    {
+      "role": "fit",
+      "q": [
+        0.125,
+        0.125,
+        0.125
+      ],
+      "relative_error": 0.009951028805349146,
+      "minimum_eigenvalue": 2.561062886929439,
+      "tail_bound": 0.000582065900738892,
+      "radius_change": 0.00022610770784847474
+    },
+    {
+      "role": "fit",
+      "q": [
+        0.375,
+        0.375,
+        0.375
+      ],
+      "relative_error": 0.005638106496323608,
+      "minimum_eigenvalue": 15.07463312837124,
+      "tail_bound": 0.000582065900738892,
+      "radius_change": 0.0002295134016491394
+    },
+    {
+      "role": "excluded",
+      "q": [
+        0.25,
+        0.25,
+        0.0
+      ],
+      "relative_error": 0.2691716431935057,
+      "minimum_eigenvalue": 4.656402505663584,
+      "tail_bound": 0.000582065900738892,
+      "radius_change": 0.00022200983851080358
+    },
+    {
+      "role": "excluded",
+      "q": [
+        0.625,
+        0.625,
+        0.0
+      ],
+      "relative_error": 1.767758115467109,
+      "minimum_eigenvalue": 20.941297064067214,
+      "tail_bound": 0.000582065900738892,
+      "radius_change": 0.00022826017840864456
+    },
+    {
+      "role": "excluded",
+      "q": [
+        0.25,
+        0.25,
+        0.25
+      ],
+      "relative_error": 0.008222749228302687,
+      "minimum_eigenvalue": 8.806207359659988,
+      "tail_bound": 0.000582065900738892,
+      "radius_change": 0.00022828097102158974
+    },
+    {
+      "role": "excluded",
+      "q": [
+        0.45,
+        0.45,
+        0.45
+      ],
+      "relative_error": 0.024944916316252994,
+      "minimum_eigenvalue": 17.227796949236346,
+      "tail_bound": 0.000582065900738892,
+      "radius_change": 0.00022480758137620547
+    }
+  ],
+  "maximum_excluded_q_error": 1.767758115467109,
+  "validation_status": "previously inspected excluded q, not newly blind data",
+  "material_accepted": false,
+  "physical_time_calibrated": false,
+  "production_changed": false
+}

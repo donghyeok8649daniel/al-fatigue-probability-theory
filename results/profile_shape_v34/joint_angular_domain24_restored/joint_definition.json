@@ -1,0 +1,31 @@
+{
+  "resume": "results/profile_shape_v34/joint_angular_domain24/joint_summary.json",
+  "actual_start": [
+    1.5043018732236448,
+    2.0855640027616045,
+    2.7811813493027535,
+    13.76641869190662,
+    1.8282710104367135,
+    0.9352641643376867
+  ],
+  "lower": [
+    -0.35667494393873245,
+    0.6931471805599453,
+    0.6931471805599453,
+    -11.512925464970229,
+    0.6931471805599453,
+    -1.0
+  ],
+  "upper": [
+    2.0794415416798357,
+    3.1780538303479458,
+    3.1780538303479458,
+    13.815510557964274,
+    3.1780538303479458,
+    1.0
+  ],
+  "angular_upper": 24.0,
+  "interpretation": "deterministic search-domain sensitivity, not material calibration",
+  "target_scales_changed": false,
+  "new_energy_terms": false
+}

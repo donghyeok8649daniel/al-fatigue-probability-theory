@@ -1,5 +1,111 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## v34 최종 계산 완료 / 물리 보정은 미완료
+
+- 모든 아래 연구프로세스 종료. 복원재시작24001 실제1691.183s/12iter limit,
+  final LP eta11.17775779075355, exact residual1.865e-13, positiveLJ.
+  제외q 검증 완료 max176.7758%. 초기12.50738/210.08%에서 개선이나
+  eta<=1 미통과. 최종 exponent=-1 경계; 전체family불가증명/수렴아님.
+- 3개 joint 계산 합계2595.765s, 실제 optimizer status는 각각 success/limit/limit.
+  원래bounds내 첫SLSQP는실제수렴, 확장bounds 결과는유한budget 결과.
+  합격인것은수치구현/회귀, 재료·kinetic·항복/피로 보정 승인아님.
+- 최종 solver779PASS702.93s, app50PASS62.27s, targeted19PASS1.14s,
+  smoke/diffcheckPASS. UI 닫았다는사용자말이후제어/재실행하지않음.
+- 다음 보정은 최종 경계/shape 최적성 및 curvature-sign conflict 분석.
+  기존scalar/각도환경으로 source 계면H와 finite-q를 동시에 맞추는 문제이며
+  M/time/A_c를 조정해 정적불일치를 보상하면안됨. UI/FVM research 변경 보존.
+
+## v34 joint epigraph 실제 실행 재개
+
+- 초기 joint82284완료252.005s/SLSQP4iter success. final LP eta12.2042548163,
+  positiveLJ. 제외q 재검증완료 max203.7672%; 미채택.
+- angular bound24대조50233완료652.576s/8iter limit(수렴아님).
+  final feasible LP eta11.5036122926; 제외q178.5307%, 미채택.
+- feasible LP로복원한같은shape에서추가12iter session24001 실행중:
+  joint_angular_domain24_restored. 초기경계변경은 angular3개12->24뿐,
+  에너지/물성/단위/허용오차 불변. 실제종료summary 확인할것.
+- full solver52631 실제779PASS702.93s; app92709 실제50PASS62.27s.
+  targeted19PASS1.14s, smoke/diffcheckPASS. 아직commit/push없음.
+
+- 사용자 UI종료/보정계속 요청. 화면제어 안함. fetch local/remote9dca229동일.
+- joint_shape_epigraph.py 및 run_joint_epigraph_v34.py: 기존6shape/10coeff와
+  eta를동시최적화. exact anchors와 +/- minimax 제약의 smooth Jacobian,
+  shape만 analytic matrix의 bounded FD. LP value dual gradient 사용안함.
+  coefficient fixed numerical scales 사용; 물성/오차/에너지형태 불변.
+- 새2test+기존sensitivity7 실제9PASS1.68s. 실제 SLSQP6iteration budget
+  session82284 실행중 results/profile_shape_v34/joint_epigraph.
+  initial eta12.50738498 exact residual3.69e-13 재생. maxiter는수렴아님.
+  최종shape LP재검증 포함, material/time/yield는 별도 gate로미승인.
+- app전체 session92709 진행; solver전체도 실행시작(세션은도구기록확인).
+  새결과나test완료를 추정하지말고 summary/exit를확인할것. commit/push없음.
+
+## 시편 외삽 UI 수정 (컴퓨터 조작 금지 유지)
+
+- 사용자 보고: 외삽도 안뜸. 코드 재현: 유효 면적에는 미인증 외삽 생성,
+  A_c=0은 unhandled ValueError 및 stale N_eff 보존. 기본 면적은 blank.
+- UI 입력 float이후 finite/sign/ratio 검증; invalid시 6개 derived field
+  제거하고 정확한 ko/en 면적 안내. KeyRelease/Paste 후 갱신 추가.
+  인증확률 불가 문구는 미인증 외삽 탭으로 안내. PDE/로컬배열 불변.
+- test_specimen_ui_update 11개 추가. targeted28PASS1.24s, smoke/diffcheckPASS.
+  최초 테스트6실패는 Np 근사값을 exact로 기대한 테스트오류; canonical
+  -expm1(N log1p(-p)) 기대값으로 수정. 물리식을 완화한것아님.
+- 이번 수정 이후 full app/solver 미실행, commit/push 없음. 실행중인
+  사용자UI는 재시작/조작 안했으므로 수정은 다음 실행부터 적용.
+
+## 2026-09-14 공간 FVM 연결 첫 gate
+
+- fetch/local/remote9dca229 동일, probability-pde-solver-v1/8worktree 확인.
+  이전 v34/UI 미커밋 작업 모두 보존. reset/merge/production 변경 없음.
+- spatial_probability_bridge.py는 연구 전용: 기존 tensor traction helper
+  재사용(normal/shear1/shear2 MPa), 비균일 표면 면적가중 log-survival.
+  공간 FVM 역학/PDE 연동은 아직 구현 아님. SPATIAL_FVM_BRIDGE.md 참조.
+- 공간 패치 수와 독립영역 수를 분리; A_c는 postprocess에만 쓰임.
+  모든 positive-area patch의 supplied certification/floor gate가 필요.
+  numerical certification도 실제 물리/재료/independence 인증은 아님.
+- 신규10 tests + UI navigation5 실제15PASS1.76s, diffcheck PASS.
+  이번 새 모듈 이후 full solver/app/smoke는 아직 실행 안함. commit/push 없음.
+  다음: 공간역학 patch test/단위·에너지 연결/이중탄성 방지 후 국소PDE 연동.
+  v34 calibration joint epigraph는 여전히 미완료이며 중단한 계산 없음.
+
+## v34 재개 — UI 실행 / 보정 최적화 감사 진행
+
+- 시작/fetch/local/remote 9dca229ca0cc12e58f319bd36e65a55e17db6369, clean.
+  probability-pde-solver-v1 및8worktree/main 보존. 아래v32/v33커밋은실제push완료.
+- 사용자요청: 현재UI를켜고보정작업계속. 최신연구폴더에서pythonw -m app.desktop_ui
+  실행PID204348,응답True/정상창을Computer Use screenshot으로확인. 사용자의
+  선택/입력/결과를변경하지않음. UI창은닫지말것. 연구중생산모델변경금지.
+- 새 profile_shape_sensitivity.py: LP dual envelope도함수, 경계내2차차분.
+  초기7tests 실제PASS0.97s. 에너지식/물성/단위변경없음.
+- run_profile_shape_v34 실제audit session75896 완료/exit0/607.087s/24profiles.
+  derivative_verified=false: envelope-vs-profileFD 최대차9.9928/9.2599,
+  matrix derivative 자체 step변화8.99e-7. 동일 LP active-set 부근에서 단일
+  dual을 매끄러운 profile gradient로 사용할 수 없어 optimizer는 실행하지 않음.
+  최소 eta12.506982도 material 미통과. 다음은 x,c,eta joint smooth epigraph.
+  기존shape6개와10coeff,
+  같은7exact/115interface/4fit-q. 스케일불변. initial_audit에checkpoint저장.
+  대조2h/h에서matrix미분envelope와실제LP재최적화미분을비교. 초반±미소변화가
+  둘다eta를키워nonsmooth active-set가능성있음; 실제완료값으로판단할것.
+  이 경우 LP값을매끄럽다고가정하지않고 x,c,eta 공동epigraph SQP를검토.
+- 연구프로세스만OPENBLAS_NUM_THREADS=1/OMP_NUM_THREADS=1로UI자원보호;
+  사용자UI나기본솔버설정/정확도는변경없음. 새commit/push아직안함.
+- PROFILE_SHAPE_CALIBRATION_V34.md에수식/가정/진행상태. Material/kinetic/yield
+  세gate는여전히미통과이며optimizer개선을물리보정성공으로부르지않는다.
+- 사용자 추가제보: 국소균열개시확률이 이상함. 현재창을 읽기전용 screenshot:
+  후처리 local initiation plot이 음수측 좁은 ylim/확대된 x범위이며 곡선이
+  안 보임. 실제 데이터 음수라고 단정불가. 그래프 view reset(더블클릭/Home)
+  안내, 입력/결과/뷰를 직접 변경하지 않음. adapter는 absorbed를 그대로 plot,
+  raw 1-mass와 분리돼있음. 실제사용자배열은 아직 export받지 못했으므로
+  값/단조성/수렴 판정 미완료. calibration edits 보존, production 수정 없음.
+- 후속 UI navigation 결함 수정: 움직이는 transData로 pan을 재계산하던
+  feedback 제거(press-time frozen inverse/pixel delta); toolbar pan/zoom 활성시
+  custom pan 중복처리 금지. 확률/에너지/PDE 계산은 불변. 사용중 UI는
+  재시작하지 않았으므로 변경 미적용. 새 app/test_plot_navigation.py 실제5PASS
+  1.67s: 반복pan, toolbar2모드, reset, 실제_plot의1e-20확률값/객체보존과
+  음수뷰reset. app 전체 session33326 실제38PASS264.40s/exit0
+  (마지막1test추가 전38개 collection; 최종navigation5개는별도모두PASS).
+  기존 probability bookkeeping/flux targeted3PASS20.98s, smoke PASS,
+  diffcheck PASS. solver 전체는 이번navigation수정후 아직재실행안함.
+
 ## v32/v33 연구 계산·독립 검증·전체 회귀 완료 — 이 항목 우선
 
 - 1–3의 물리 목표는 미완료다. 아래는 실제 실행한 연구 확장과 실패 원인
