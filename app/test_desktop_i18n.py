@@ -37,6 +37,34 @@ def desktop_for_test(tk_root):
     return desktop_ui.DesktopApp(root=root)
 
 
+def test_geometry_mesh_workflow_preserves_pde_and_language(monkeypatch, tk_root):
+    def forbidden(*args, **kwargs):
+        raise AssertionError('Geometry must not run probability analysis')
+    monkeypatch.setattr(desktop_ui, 'run_ui_analysis', forbidden)
+    app = desktop_for_test(tk_root)
+    try:
+        assert len(app.notebook.tabs()) == 5
+        assert app.notebook.select() == str(app.model_tab)
+        inputs = {k: v.get() for k, v in app.entries.items()}
+        result = {'model_time': np.array([0., 1.]), 'strain': np.array([0., .001])}
+        app.result = result; app.field.set('strain')
+        flow = app.geometry_workflow
+        flow.generate()
+        mesh = flow.mesh
+        assert mesh.closed
+        assert len(flow.ax.collections) == 1
+        app.language_display.set('English'); app._on_language_selected()
+        assert app.notebook.tab(app.mesh_tab, 'text') == '2  MESH'
+        assert 'Triangles' in flow.mesh_description.get()
+        assert flow.mesh is mesh and app.result is result
+        flow.radius.set('6'); flow.use_cylinder()
+        assert flow.mesh is None
+        assert app.result is result
+        assert inputs == {k: v.get() for k, v in app.entries.items()}
+    finally:
+        app.root.destroy()
+
+
 def test_desktop_language_switch_preserves_state_and_does_not_run_solver(
     monkeypatch: pytest.MonkeyPatch, tk_root,
 ) -> None:

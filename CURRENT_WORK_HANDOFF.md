@@ -1,5 +1,27 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-14 모델/메시/Pre/Solve/Post UI
+
+- 사용자 명시 요청으로 5단계 UI 진행. 시작/fetch/local/remote 67d6fa1 동일,
+  clean probability-pde-solver-v1. 기존 물리 gate를 통과했다고 주장하지 않는다.
+- app/specimen_mesh.py: mm 단위 기본 원통, ASCII/binary STL 및 삼각형 OBJ
+  가져오기, conforming midpoint 표면 세분화. 원통은 요청 크기로 다시
+  tessellation, 가져온 faceted CAD의 곡면 복원/repair는 하지 않는다.
+  20,000 triangles/10 MB 한도를 노출. edge incidence는 self-intersection이나
+  solid-volume 인증이 아니다. STEP/IGES는 CAD에서 STL 변환 필요.
+- app/geometry_workflow.py: 별도 3D 표면 preview; 모델/메시 탭, tree 이동,
+  중앙 ko/en. 실패한 import/mesh는 이전 유효 상태 보존. 기하 변경은 mesh를
+  해제하지만 독립 local PDE 입력/결과/보정/Ac는 변경하지 않는다.
+- 체적 FVM/FEM/공간확률장은 미연결. 기존 backend placeholder는 disabled,
+  Solve에 경고 표시. 현재 PDE를 공간 colormap처럼 복제하지 않는다.
+- 첫 targeted16 PASS .58s, 첫 full app65 PASS187.87s. 최종 보완후
+  targeted16 PASS .48s 및 smoke PASS. 최종 app47194 실제65 PASS200.39s,
+  마지막 GUI workflow 단독1 PASS1.47s. solver70445 실제779 PASS2052.27s
+  (34:12), exit0. smoke/diffcheck PASS. 이 검증은 UI/수치 회귀이며
+  공간 FVM 또는 재료/물리시간 승인 아님. 정상 commit/push 대상이고
+  최종 Git hash는 실제 log/remote를 확인한다. 사용자 창 자동 조작/종료 없음.
+
+
 ## 실시간 외삽 끝단 검증 재개
 
 - 최종 solver55128 실제779PASS743.11s; app46039 실제55PASS78.63s

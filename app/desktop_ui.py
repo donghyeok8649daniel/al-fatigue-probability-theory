@@ -1,4 +1,4 @@
-"""Lightweight Pre/Solve/Post desktop UI for the probability-PDE solver."""
+"""Model/Mesh/Pre/Solve/Post UI with a separate local probability-PDE solver."""
 from __future__ import annotations
 
 import os
@@ -37,6 +37,7 @@ from .solver_adapter import (
 )
 from .convergence_check import run_convergence_check
 from .scrollable_panel import ScrollablePanel
+from .geometry_workflow import GeometryWorkflow
 from .specimen_probability import (
     BELOW_RESOLUTION,
     aggregate_specimen_probability,
@@ -92,7 +93,7 @@ def acquire_single_instance() -> bool:
 
 
 class DesktopApp:
-    """Responsive engineering workspace with explicit Pre/Solve/Post stages."""
+    """Five-stage workspace; surface geometry is not yet spatial mechanics."""
 
     PARAMS = (
         ("young_gpa", "field.young_gpa", "69", "unit.gpa"),
@@ -295,6 +296,8 @@ class DesktopApp:
             return item
 
         project = tree_item("", "tree.study", open=True)
+        model_item = tree_item(project, "tab.model")
+        mesh_item = tree_item(project, "tab.mesh")
         pre = tree_item(project, "tree.pre", open=True)
         tree_item(pre, "tree.material_load")
         tree_item(pre, "tree.axial_direction")
@@ -310,15 +313,31 @@ class DesktopApp:
         main.pack(side="left", fill="both", expand=True)
         self.notebook = ttk.Notebook(main)
         self.notebook.pack(fill="both", expand=True, padx=8, pady=8)
+        self.model_tab = ttk.Frame(self.notebook, style="Panel.TFrame")
+        self.mesh_tab = ttk.Frame(self.notebook, style="Panel.TFrame")
         self.pre_tab = ttk.Frame(self.notebook, style="Panel.TFrame")
         self.solve_tab = ttk.Frame(self.notebook, style="Panel.TFrame")
         self.post_tab = ttk.Frame(self.notebook, style="Panel.TFrame")
+        self.notebook.add(self.model_tab, text=self._tr("tab.model"))
+        self.notebook.add(self.mesh_tab, text=self._tr("tab.mesh"))
         self.notebook.add(self.pre_tab, text=self._tr("tab.pre"))
         self.notebook.add(self.solve_tab, text=self._tr("tab.solve"))
         self.notebook.add(self.post_tab, text=self._tr("tab.post"))
         self._pre_tab()
         self._solve_tab()
         self._post_tab()
+        self.geometry_workflow = GeometryWorkflow(self, self.model_tab, self.mesh_tab)
+        stage_tabs = {model_item: self.model_tab, mesh_item: self.mesh_tab,
+                      pre: self.pre_tab, solve: self.solve_tab, post: self.post_tab}
+        def select_stage(_event=None):
+            selected = self.tree.selection()
+            if selected:
+                item = selected[0]
+                while item and item not in stage_tabs:
+                    item = self.tree.parent(item)
+                if item:
+                    self.notebook.select(stage_tabs[item])
+        self.tree.bind('<<TreeviewSelect>>', select_stage)
 
     def _pre_tab(self) -> None:
         self.pre_scroll = ScrollablePanel(
@@ -473,8 +492,10 @@ class DesktopApp:
         ).pack(anchor="w")
         ttk.Combobox(
             left, textvariable=self.spatial_backend, values=("FVM", "FEM"),
-            state="readonly", width=22
+            state="disabled", width=22
         ).pack(anchor="w", pady=(6, 15))
+        self._bind_text(ttk.Label(left, wraplength=340, style="Unit.TLabel"),
+                        "geometry.solve_scope").pack(anchor="w", pady=(0, 10))
         self._bind_text(
             ttk.Label(left, style="Section.TLabel"), "section.grid_quality"
         ).pack(
@@ -1096,11 +1117,14 @@ class DesktopApp:
         for item, key in self._tree_text:
             self.tree.item(item, text=f"  {self._tr(key)}")
         for tab, key in (
+            (self.model_tab, "tab.model"),
+            (self.mesh_tab, "tab.mesh"),
             (self.pre_tab, "tab.pre"),
             (self.solve_tab, "tab.solve"),
             (self.post_tab, "tab.post"),
         ):
             self.notebook.tab(tab, text=self._tr(key))
+        self.geometry_workflow.refresh()
         self.quality_selector.configure(values=self._quality_values())
         self.analysis_quality.set(
             self._tr(f"quality.{self.analysis_quality_code}_option")

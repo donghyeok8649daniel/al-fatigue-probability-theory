@@ -152,3 +152,28 @@ This is a dimensionless mechanism solver, not a quantitatively calibrated
 pure-aluminum fatigue-life predictor. Solver time is not laboratory seconds.
 The N=3 tensor-train code remains an initial Gibbs compression prototype and
 does not perform time-dependent 6D Smoluchowski evolution.
+
+## Geometry-to-post workflow
+
+The desktop now opens MODEL → MESH → PRE → SOLVE → POST. With no imported
+file, an editable cylinder (radius 5 mm, length 30 mm, illustrative geometry,
+not a calibrated specimen) is available. Import supports binary/ASCII STL and
+triangulated OBJ, with explicit mm-per-file-unit conversion. STEP/IGES must be
+tessellated in CAD first; this application does not contain a CAD solid kernel.
+
+MESH performs conforming midpoint subdivision of the supplied surface without
+smoothing, with a maximum edge target and a hard, visible 20,000-face budget.
+It preserves imported faceted geometry; subdivision does not recover lost CAD
+curvature. Edge incidence is reported, not claimed as a self-intersection,
+orientation or solid-volume certificate. Files above 10 MB are rejected before
+loading. Invalid imports/refinement preserve the previous valid geometry/mesh.
+For the built-in parametric cylinder, meshing first regenerates the circular
+sampling from its applied dimensions and the requested target size.
+
+The 3D view is a geometry/surface-mesh view, not an analysis colormap. PRE and
+SOLVE retain the existing local probability PDE and energy selector. No volume
+FVM, spatial stress solution or patch-resolved crack field is implied. Geometry
+changes do not mutate local PDE results, inputs, mobility, area aggregation or
+calibration. Surface area is not automatically copied into A_stressed or A_c.
+Language switching preserves geometry, mesh and numerical results. Research
+FCC/kinetic gates and production default remain unchanged.
