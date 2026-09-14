@@ -177,3 +177,14 @@ changes do not mutate local PDE results, inputs, mobility, area aggregation or
 calibration. Surface area is not automatically copied into A_stressed or A_c.
 Language switching preserves geometry, mesh and numerical results. Research
 FCC/kinetic gates and production default remain unchanged.
+
+## Face loads and tensor preparation
+
+The FACE LOAD stage selects top, bottom, lateral, or all surface triangles and
+stores normal/shear mean and amplitude in MPa. A symmetric 3x3 time-dependent
+stress matrix can also be entered as three comma-separated rows separated by
+semicolons. Only `t`, `f`, `pi`, the four mean/amplitude variables, and `sin`
+or `cos` are accepted. The default is normal sine plus symmetric `xy` shear
+cosine. These are validated boundary-condition inputs; until a volume FVM/FEM
+mechanics backend is validated, they are not silently sent to the local
+probability PDE.

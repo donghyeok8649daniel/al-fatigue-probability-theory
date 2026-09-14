@@ -38,6 +38,7 @@ from .solver_adapter import (
 from .convergence_check import run_convergence_check
 from .scrollable_panel import ScrollablePanel
 from .geometry_workflow import GeometryWorkflow
+from .load_workflow import LoadWorkflow
 from .specimen_probability import (
     BELOW_RESOLUTION,
     aggregate_specimen_probability,
@@ -298,6 +299,7 @@ class DesktopApp:
         project = tree_item("", "tree.study", open=True)
         model_item = tree_item(project, "tab.model")
         mesh_item = tree_item(project, "tab.mesh")
+        load_item = tree_item(project, "tab.load")
         pre = tree_item(project, "tree.pre", open=True)
         tree_item(pre, "tree.material_load")
         tree_item(pre, "tree.axial_direction")
@@ -315,11 +317,13 @@ class DesktopApp:
         self.notebook.pack(fill="both", expand=True, padx=8, pady=8)
         self.model_tab = ttk.Frame(self.notebook, style="Panel.TFrame")
         self.mesh_tab = ttk.Frame(self.notebook, style="Panel.TFrame")
+        self.load_tab = ttk.Frame(self.notebook, style="Panel.TFrame")
         self.pre_tab = ttk.Frame(self.notebook, style="Panel.TFrame")
         self.solve_tab = ttk.Frame(self.notebook, style="Panel.TFrame")
         self.post_tab = ttk.Frame(self.notebook, style="Panel.TFrame")
         self.notebook.add(self.model_tab, text=self._tr("tab.model"))
         self.notebook.add(self.mesh_tab, text=self._tr("tab.mesh"))
+        self.notebook.add(self.load_tab, text=self._tr("tab.load"))
         self.notebook.add(self.pre_tab, text=self._tr("tab.pre"))
         self.notebook.add(self.solve_tab, text=self._tr("tab.solve"))
         self.notebook.add(self.post_tab, text=self._tr("tab.post"))
@@ -327,7 +331,9 @@ class DesktopApp:
         self._solve_tab()
         self._post_tab()
         self.geometry_workflow = GeometryWorkflow(self, self.model_tab, self.mesh_tab)
+        self.load_workflow = LoadWorkflow(self, self.load_tab)
         stage_tabs = {model_item: self.model_tab, mesh_item: self.mesh_tab,
+                      load_item: self.load_tab,
                       pre: self.pre_tab, solve: self.solve_tab, post: self.post_tab}
         def select_stage(_event=None):
             selected = self.tree.selection()
@@ -1119,12 +1125,14 @@ class DesktopApp:
         for tab, key in (
             (self.model_tab, "tab.model"),
             (self.mesh_tab, "tab.mesh"),
+            (self.load_tab, "tab.load"),
             (self.pre_tab, "tab.pre"),
             (self.solve_tab, "tab.solve"),
             (self.post_tab, "tab.post"),
         ):
             self.notebook.tab(tab, text=self._tr(key))
         self.geometry_workflow.refresh()
+        self.load_workflow.refresh()
         self.quality_selector.configure(values=self._quality_values())
         self.analysis_quality.set(
             self._tr(f"quality.{self.analysis_quality_code}_option")

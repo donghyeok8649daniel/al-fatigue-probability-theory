@@ -43,7 +43,7 @@ def test_geometry_mesh_workflow_preserves_pde_and_language(monkeypatch, tk_root)
     monkeypatch.setattr(desktop_ui, 'run_ui_analysis', forbidden)
     app = desktop_for_test(tk_root)
     try:
-        assert len(app.notebook.tabs()) == 5
+        assert len(app.notebook.tabs()) == 6
         assert app.notebook.select() == str(app.model_tab)
         inputs = {k: v.get() for k, v in app.entries.items()}
         result = {'model_time': np.array([0., 1.]), 'strain': np.array([0., .001])}
@@ -53,6 +53,19 @@ def test_geometry_mesh_workflow_preserves_pde_and_language(monkeypatch, tk_root)
         mesh = flow.mesh
         assert mesh.closed
         assert len(flow.ax.collections) == 1
+        load = app.load_workflow
+        load.region_code = "top"
+        load.refresh()
+        load.normal_mean.set("120")
+        load.shear_amplitude.set("30")
+        load.apply()
+        assert load.applied.face_indices
+        assert load.applied.normal_mean_mpa == 120
+        assert load.applied.shear_amplitude_mpa == 30
+        load.preview_tensor()
+        assert 'MPa' in load.tensor_preview.get()
+        assert 'sin' in load.applied.tensor_expression
+        assert app.result is result
         app.language_display.set('English'); app._on_language_selected()
         assert app.notebook.tab(app.mesh_tab, 'text') == '2  MESH'
         assert 'Triangles' in flow.mesh_description.get()

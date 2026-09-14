@@ -73,6 +73,7 @@ class GeometryWorkflow:
         self.geometry = geometry; self.mesh = None
         self.cylinder_dimensions = dimensions
         self.refresh(); self.draw()
+        if hasattr(self.app, 'load_workflow'): self.app.load_workflow.refresh()
 
     def import_model(self):
         path = filedialog.askopenfilename(parent=self.app.root,
@@ -86,6 +87,7 @@ class GeometryWorkflow:
         self.geometry = geometry; self.mesh = None
         self.cylinder_dimensions = None
         self.refresh(); self.draw()
+        if hasattr(self.app, 'load_workflow'): self.app.load_workflow.refresh()
 
     def generate(self):
         try:
@@ -97,6 +99,7 @@ class GeometryWorkflow:
             self.error(exc); return
         self.mesh = mesh
         self.refresh(); self.draw()
+        if hasattr(self.app, 'load_workflow'): self.app.load_workflow.refresh()
 
     def draw(self):
         mesh = self.mesh if self.mesh is not None else self.geometry

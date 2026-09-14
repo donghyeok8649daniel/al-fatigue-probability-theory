@@ -14,6 +14,11 @@
   해제하지만 독립 local PDE 입력/결과/보정/Ac는 변경하지 않는다.
 - 체적 FVM/FEM/공간확률장은 미연결. 기존 backend placeholder는 disabled,
   Solve에 경고 표시. 현재 PDE를 공간 colormap처럼 복제하지 않는다.
+- 후속 면 하중 단계: `app/load_workflow.py`가 메시 상단/하단/측면/전체 면을
+  고르고 법선·전단 평균/진폭을 MPa로 저장한다. `app/tensor_load.py`는 안전한
+  AST 제한(숫자, t/f/pi, normal/shear mean/amp, sin/cos)으로 3×3 시간 응력
+  행렬을 검증하며 기본은 대칭 xy 전단 cos + xx 정상 sin이다. 이 값은 현재
+  체적 FVM이 없어 준비 metadata이며 production P(a,s,t)에 전달하지 않는다.
 - 첫 targeted16 PASS .58s, 첫 full app65 PASS187.87s. 최종 보완후
   targeted16 PASS .48s 및 smoke PASS. 최종 app47194 실제65 PASS200.39s,
   마지막 GUI workflow 단독1 PASS1.47s. solver70445 실제779 PASS2052.27s
