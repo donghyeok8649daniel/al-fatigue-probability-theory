@@ -8,6 +8,7 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.backend_bases import MouseEvent
 
 from app.desktop_ui import DesktopApp
+from app.i18n import tr
 
 
 def app_stub():
@@ -78,3 +79,34 @@ def test_actual_probability_plot_preserves_absorbed_array_and_resets_bad_view():
     assert low <= probability.min() <= probability.max() <= high
     np.testing.assert_array_equal(app.ax.lines[0].get_ydata(), probability)
     assert app.result["local_initiation_probability"] is probability
+
+
+@pytest.mark.parametrize('language', ['ko', 'en'])
+def test_live_specimen_plot_and_labels_are_updated_together(language):
+    app=app_stub(); app.result=None
+    app.localizer=SimpleNamespace(language=language)
+    app._tr=lambda key:tr(key,language)
+    app.time_basis_code='model'; app._last_field=None
+    app.field=SimpleNamespace(get=lambda:'specimen_probability_extrapolation')
+    app.entries={
+        'correlation_area_mm2':SimpleNamespace(get=lambda:'1'),
+        'stressed_area_mm2':SimpleNamespace(get=lambda:'100'),
+    }
+    app.live_records=[dict(model_time=0.,local_initiation_probability=0.),
+                      dict(model_time=1.,local_initiation_probability=1e-16)]
+    labels={}
+    for name in ('specimen_N_eff','local_floor_display','plastic_floor_display',
+                 'configurational_barrier_display','opening_barrier_display',
+                 'plasticity_detail_display','local_probability_display',
+                 'specimen_extrapolation_display','specimen_certified_display',
+                 'probability_status_display'):
+        setattr(app,name,SimpleNamespace(set=lambda value,name=name:labels.__setitem__(name,value)))
+    app._update_specimen_probability()
+    expected=-np.expm1(100*np.log1p(-np.array([0.,1e-16])))
+    np.testing.assert_array_equal(app.ax.lines[0].get_ydata(),expected)
+    assert '1e-14' in labels['specimen_extrapolation_display']
+    assert any('1e-14' in text.get_text() for text in app.ax.texts)
+    assert '100' in labels['specimen_N_eff']
+    assert '—' in labels['specimen_certified_display']
+    assert tr('status.specimen_live',language) in labels['probability_status_display']
+    assert app.result is None

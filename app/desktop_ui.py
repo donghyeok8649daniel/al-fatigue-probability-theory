@@ -862,8 +862,11 @@ class DesktopApp:
         """Recompute cheap specimen post-processing; never invoke the PDE."""
 
         if self.result is None:
-            self._specimen_status_key = "status.local_result_required"
+            self._specimen_status_key = (
+                "status.specimen_live" if self.live_records else "status.local_result_required"
+            )
             self._refresh_specimen_labels()
+            self._plot()
             return
         try:
             correlation = float(self.entries["correlation_area_mm2"].get())
@@ -944,6 +947,17 @@ class DesktopApp:
         local_probability = None
         extrapolation = None
         certified = None
+        if self.result is None and self.live_records:
+            live = self._plot_data()
+            local_values = live.get("local_initiation_probability", [])
+            if len(local_values):
+                local_probability = float(local_values[-1])
+            if "specimen_probability_extrapolation" in live:
+                extrapolation = float(live["specimen_probability_extrapolation"][-1])
+                N_eff = float(live["N_eff"])
+                self._specimen_status_key = "status.specimen_live"
+            else:
+                self._specimen_status_key = "status.area_required"
         if self.result is not None:
             local_values = np.asarray(
                 self.result.get("local_initiation_probability", []), dtype=float
@@ -1392,6 +1406,7 @@ class DesktopApp:
                 now = time.monotonic()
                 if now - self._last_draw > 0.20:
                     self._last_draw = now
+                    self._refresh_specimen_labels()
                     self._plot()
                 self._set_status(
                     (
@@ -1482,7 +1497,23 @@ class DesktopApp:
         if not self.live_records:
             return None
         keys = self.live_records[0].keys()
-        return {key: np.asarray([row[key] for row in self.live_records], dtype=float) for key in keys}
+        data = {key: np.asarray([row[key] for row in self.live_records], dtype=float) for key in keys}
+        # Live local records already contain genuine accumulated opening mass.
+        # Extrapolate it without waiting for the final result or certifying it.
+        try:
+            aggregated = aggregate_specimen_probability(
+                data["local_initiation_probability"],
+                correlation_area_mm2=float(self.entries["correlation_area_mm2"].get()),
+                stressed_area_mm2=float(self.entries["stressed_area_mm2"].get()),
+                local_numerical_floor=0.0, resolution_certified=False,
+            )
+        except ValueError:
+            return data
+        if not np.isfinite(aggregated.N_eff):
+            return data
+        data["specimen_probability_extrapolation"] = aggregated.mathematical_extrapolation
+        data["N_eff"] = np.asarray(aggregated.N_eff)
+        return data
 
     def _plot(self, force_auto: bool = False) -> None:
         field = self.field.get()
@@ -1638,6 +1669,13 @@ class DesktopApp:
             key = "applied_stress_mpa" if field == "stress" else field
             self.ax.plot(x, y_values(key), color=ACCENT, linewidth=1.8)
         if field == "specimen_probability_extrapolation":
+            self.ax.text(
+                0.99, 0.98,
+                f"{self._tr('diagnostic.specimen_extrapolation')}\n"
+                f"{float(data[field][-1]):.8g}",
+                ha="right", va="top", transform=self.ax.transAxes,
+                fontsize=9, color=ACCENT,
+            )
             self.ax.text(
                 0.01,
                 0.02,

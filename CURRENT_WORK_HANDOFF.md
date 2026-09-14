@@ -1,5 +1,31 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 실시간 외삽 끝단 검증 재개
+
+- 최종 solver55128 실제779PASS743.11s; app46039 실제55PASS78.63s
+  (첫app57595도55PASS77.57s). 실제plot ko/en 숫자표시까지검증.
+  smoke/diffcheckPASS. 기존사용자창을닫지않고별도[ LIVE FIX ]수정본을
+  CLI로실행하는handoff; 해석자동실행/기존결과변경없음.
+
+- fetch/local/remote84a5c756 동일, 이전UI미커밋수정보존.
+- actual _plot/_refresh_specimen_labels를 ko/en 각각검증: 최종result없이
+  live_records->미인증외삽곡선/수치/N_eff 일치,인증확률은dash유지.
+- 실제run_ui_analysis .1cycle callback->live extrapolation->final extrapolation
+  배열정확일치 테스트 실제PASS10.99s. 모의PDE가아님,보정검증아님.
+- solver전체55128/app전체57595 재실행중. UI컴퓨터조작/창종료/재시작없음.
+
+## 실시간 외삽 누락 후속 수정
+
+- 면적입력후에도외삽안뜸 추가제보. 확인된별도코드누락: live_records는
+  국소확률만포함, self.result=None인동안 집계함수가 조기return하므로
+  실제해석완료전외삽없음. 이때면적누락으로오안내. 사용자실제화면은조작안함.
+- _plot_data live 경로에미인증외삽추가, _refresh_specimen_labels도live값표시.
+  record draw cadence에서 labels갱신. localfloor=0은미인증계산의API입력일뿐
+  측정floor아님; cert=False강제, 인증확률필드생성안함. 생산PDE불변.
+- 신규live2tests 포함 targeted25PASS1.31s, smoke/diffcheckPASS.
+  app전체20878 실제52PASS144.53s/exit0. 이번UI후속수정의solverfull은
+  미재실행(직전779PASS와구분). 사용자창재시작/결과소실/컴퓨터조작하지않음.
+
 ## v34 최종 계산 완료 / 물리 보정은 미완료
 
 - 모든 아래 연구프로세스 종료. 복원재시작24001 실제1691.183s/12iter limit,

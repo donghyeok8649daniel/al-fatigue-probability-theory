@@ -138,6 +138,7 @@ _ROWS = (
     ("status.requires_convergence", "수렴 검증 필요", "Convergence validation required"),
     ("status.area_required", "전처리의 시편 확률 항목에 유효한 면적을 입력하세요: A_c > 0, A_stressed ≥ 0 [mm²].", "Enter valid areas in Pre / specimen probability: A_c > 0, A_stressed ≥ 0 [mm²]."),
     ("status.local_result_required", "먼저 국소 PDE 해석을 실행하십시오.", "Run the local PDE analysis first."),
+    ("status.specimen_live", "해석 중: 현재까지의 국소 흡수량으로 계산한 미인증 외삽입니다.", "Analysis running: uncertified extrapolation of opening mass accumulated so far."),
     ("status.independence_assumption", "독립·동등 국소 영역 가정이며 A_c는 외부 보정값입니다.", "Assumes independent equivalent local regions; A_c is externally calibrated."),
     ("plot.local_survival", "국소 생존 확률", "Local survival probability"),
     ("plot.local_initiation", "국소 균열 개시 확률", "Local initiation probability"),
