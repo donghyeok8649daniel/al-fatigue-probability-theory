@@ -1,5 +1,33 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-15 단일 응력 입력 / 직접 면 선택 / 메시 외삽
+
+- 시작 HEAD와 fetch 원격07299a643c5e0cb02ee41d4f0bc37f8bea7741ba 일치/clean.
+- Face Load의 mean/amplitude를 Pre와 분리 저장하던 문제 수정: 입력은 Face
+  Load에 한 벌만 존재하고 _config가 같은 StringVar를 읽는다. 전단/custom
+  tensor는 생산 scalar PDE에 미연결이므로 입력 시 명시적으로 해석 거부.
+- FacePicker: 가려진 면을 피하는 ray/triangle 최근접 선택, 연결 평면 patch,
+  Ctrl 토글, 오른쪽 회전/가운데 이동/휠 확대. 선택면 conforming 국소 세분화.
+- 폐곡면 체적은 mm³ 기하 추정. V_eff/V_c bulk 법칙은 아직 미정의이며
+  계면 opening p를 bulk-region p로 바꾸지 않는다. A_c 원래 의미 유지.
+- 별도 surface map은 동일local p의 면별 S_i=(1-p)^(A_i/A_c) **미인증 외삽**.
+  색 차이는 mesh면적 차이이며 응력집중 예측이 아님. 전표면 동일통계 가정.
+- 실제3하중x3격자 결과 results/ui_load_audit/runs.json, 유도/한계는
+  app/MESH_LOAD_AND_EXTRAPOLATION.md. 실제시간/Al재료 보정 성공 아님.
+- CLI 안내 수정: 로컬 session_index와 rollout에서 이 대화 ID
+  01a063a3-54b0-79d0-9457-523a6a981f0f 확인. source=cli/codex-tui,
+  저장 cwd는 이전 OneDrive라 새 폴더 기본 resume picker에서 제외됨.
+  `codex resume <ID> -C <actual-worktree>` 또는 `resume --all` 사용.
+  이전 '앱 채팅이라 CLI불가' 설명은 잘못됨. 세션파일 수정/이동 안 함.
+- 최종 테스트/커밋 결과는 아래 추가 기록과 git log 확인.
+- 최종 실제 검증: targeted24 PASS6.48s, app82 PASS88.90s,
+  solver779 PASS10367.78s(도구가 보고한 elapsed2:52:47), smoke PASS,
+  staged diff-check PASS. 긴 solver elapsed를 순수CPU시간으로 해석하지 않는다.
+  중간app81은9562.78s였으며 최종app82와 구분한다.
+- 수정본UI를 별도 PID84352, 제목 Al Fatigue - UPDATED Face Load로 실행,
+  기본원통 메시/FaceLoad탭 표시, PDE자동실행 없음. 기존PID77588 직접종료 안함.
+- 최종재료/kinetic/실제항복·피로 calibration 승인 아님.9개실행 합계~190.5s.
+
 ## 2026-09-14 모델/메시/Pre/Solve/Post UI
 
 - 사용자 명시 요청으로 5단계 UI 진행. 시작/fetch/local/remote 67d6fa1 동일,

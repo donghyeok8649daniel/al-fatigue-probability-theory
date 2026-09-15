@@ -327,6 +327,9 @@ class DesktopApp:
         self.notebook.add(self.pre_tab, text=self._tr("tab.pre"))
         self.notebook.add(self.solve_tab, text=self._tr("tab.solve"))
         self.notebook.add(self.post_tab, text=self._tr("tab.post"))
+        self.load_scroll = ScrollablePanel(self.load_tab, width=420)
+        self.load_scroll.pack(side="left", fill="y", padx=10, pady=8)
+        self.load_inputs = self.load_scroll.content
         self._pre_tab()
         self._solve_tab()
         self._post_tab()
@@ -403,17 +406,18 @@ class DesktopApp:
         )
         self.time_warning_label.grid(row=2, column=2, rowspan=2, sticky="w", padx=(6, 20), pady=7)
         for row, (key, label_key, default, unit_key) in enumerate(self.PARAMS, start=4):
+            parent = self.load_inputs if key in {"stress_mean_mpa", "stress_amplitude_mpa"} else form
             label = self._bind_text(
-                ttk.Label(form, style="Property.TLabel"), label_key
+                ttk.Label(parent, style="Property.TLabel"), label_key
             )
             label.grid(
                 row=row, column=0, sticky="w", padx=(20, 8), pady=7
             )
-            entry = ttk.Entry(form, width=20)
+            entry = ttk.Entry(parent, width=20)
             entry.insert(0, default)
             entry.grid(row=row, column=1, sticky="ew", padx=4, pady=7)
             unit = self._bind_text(
-                ttk.Label(form, style="Unit.TLabel"), unit_key
+                ttk.Label(parent, style="Unit.TLabel"), unit_key
             )
             unit.grid(
                 row=row, column=2, sticky="w", padx=(6, 20), pady=7
@@ -426,7 +430,7 @@ class DesktopApp:
                 self.frequency_unit = unit
         form.columnconfigure(1, weight=1)
         preset_frame = self._bind_text(
-            ttk.LabelFrame(form, padding=10), "section.load_presets"
+            ttk.LabelFrame(self.load_inputs, padding=10), "section.load_presets"
         )
         preset_frame.grid(
             row=len(self.PARAMS) + 4,
@@ -445,7 +449,7 @@ class DesktopApp:
             textvariable=self.load_preset,
             values=self._preset_values(),
             state="readonly",
-            width=31,
+            width=20,
         )
         self.preset_selector.grid(row=0, column=1, sticky="ew")
         self.preset_selector.bind("<<ComboboxSelected>>", self._on_preset_selected)
@@ -453,16 +457,17 @@ class DesktopApp:
             ttk.Button(preset_frame, command=self._apply_load_preset),
             "button.apply_preset",
         )
-        self.apply_preset_button.grid(row=0, column=2, padx=(8, 0))
+        self.apply_preset_button.grid(row=1, column=0, columnspan=2, sticky='w', pady=5)
         preset_frame.columnconfigure(1, weight=1)
         self.stress_context_label = ttk.Label(
             preset_frame,
             textvariable=self.stress_context,
             style="Unit.TLabel",
             justify="left",
+            wraplength=330,
         )
         self.stress_context_label.grid(
-            row=1, column=0, columnspan=3, sticky="ew", pady=(8, 0)
+            row=2, column=0, columnspan=3, sticky="ew", pady=(8, 0)
         )
         for key in ("young_gpa", "stress_mean_mpa", "stress_amplitude_mpa"):
             self.entries[key].bind("<FocusOut>", self._update_stress_context)
@@ -1309,6 +1314,8 @@ class DesktopApp:
         )
 
     def _config(self) -> UIAnalysisConfig:
+        if hasattr(self, 'load_workflow'):
+            self.load_workflow.validate_solver_load()
         self._on_quality_selected()
         resolved = self.analysis_quality_code == "resolved"
         entered_frequency = float(self.entries["model_frequency"].get())

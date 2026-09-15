@@ -73,7 +73,74 @@ def test_geometry_mesh_workflow_preserves_pde_and_language(monkeypatch, tk_root)
         flow.radius.set('6'); flow.use_cylinder()
         assert flow.mesh is None
         assert app.result is result
+        inputs['stress_mean_mpa'] = '120'
         assert inputs == {k: v.get() for k, v in app.entries.items()}
+    finally:
+        app.root.destroy()
+
+
+def test_mesh_map_is_uncertified_and_preserves_result(tk_root, monkeypatch):
+    app = desktop_for_test(tk_root)
+    try:
+        monkeypatch.setattr(desktop_ui, 'run_ui_analysis', lambda *_: pytest.fail('map reran PDE'))
+        app.geometry_workflow.generate()
+        app.entries['correlation_area_mm2'].insert(0,'.1')
+        result = {'model_time':np.array([0.,1.]), 'local_initiation_probability':np.array([0.,1e-16])}
+        app.result = result
+        app.field.set('local_initiation_probability')
+        app.load_workflow.show_map()
+        view = app.load_workflow.maps[-1]
+        view.index.set(1); view.update()
+        assert '1.00000000e-16' in view.info.get()
+        assert len(view.picker.ax.collections) == 1
+        assert len(view.picker.figure.axes) == 2
+        view.picker.ax.view_init(30,50)
+        app.language_display.set('English'); app._on_language_selected()
+        assert 'Uncertified' in view.info.get()
+        assert view.picker.ax.azim == 50
+        for _ in range(3): view.update()
+        assert len(view.picker.figure.axes) == 2
+        assert app.result is result
+        assert 'probability_resolution_certified' not in result
+        app.entries['correlation_area_mm2'].delete(0,'end')
+        view.update()
+        assert view.colorbar is None
+        assert len(view.picker.figure.axes) == 1
+        view.window.destroy()
+    finally: app.root.destroy()
+
+
+def test_single_load_input_and_projected_click(tk_root):
+    from types import SimpleNamespace
+    from mpl_toolkits.mplot3d import proj3d
+    app = desktop_for_test(tk_root)
+    try:
+        load = app.load_workflow
+        load.normal_mean.set('125')
+        load.normal_amplitude.set('25')
+        assert app._config().stress_mean_mpa == 125
+        assert app._config().stress_amplitude_mpa == 25
+        assert app.entries['stress_mean_mpa'].master is app.load_inputs
+        load.shear_mean.set('1')
+        with pytest.raises(ValueError): app._config()
+        load.shear_mean.set('0')
+        app.geometry_workflow.generate()
+        picker = load.picker
+        picker.ax.view_init(elev=75, azim=15)
+        picker.canvas.draw()
+        x, y, _ = proj3d.proj_transform(1., 0., 30., picker.ax.get_proj())
+        picker._click(SimpleNamespace(button=1, inaxes=picker.ax, xdata=x, ydata=y, key=None))
+        assert load.region_code == 'custom'
+        mesh = app.geometry_workflow.mesh
+        assert len(load._indices())
+        assert np.all(mesh.vertices[mesh.faces[load._indices()], 2] == 30)
+        view = (picker.ax.elev, picker.ax.azim, picker.ax.get_xlim())
+        app.language_display.set('English'); app._on_language_selected()
+        assert view == (picker.ax.elev, picker.ax.azim, picker.ax.get_xlim())
+        load.apply()
+        assert load.applied is not None
+        app.geometry_workflow.generate()
+        assert load.applied is None
     finally:
         app.root.destroy()
 
@@ -288,14 +355,14 @@ def test_small_window_scroll_and_fixed_solve_actions(monkeypatch, tk_root, heigh
         assert app.solve_scroll._tag not in app.canvas.get_tk_widget().bindtags()
         assert app.summary.cget("yscrollcommand")
 
-        app.notebook.select(app.pre_tab)
+        app.notebook.select(app.load_tab)
         app.root.update()
-        assert app.pre_scroll.canvas.yview()[1] < 1
-        app.pre_scroll.canvas.focus_force()
+        assert app.load_scroll.canvas.yview()[1] < 1
+        app.load_scroll.canvas.focus_force()
         app.root.update()
-        app.pre_scroll.canvas.event_generate("<Next>")
+        app.load_scroll.canvas.event_generate("<Next>")
         app.root.update()
-        assert app.pre_scroll.canvas.yview()[0] > 0
+        assert app.load_scroll.canvas.yview()[0] > 0
     finally:
         app.root.destroy()
 

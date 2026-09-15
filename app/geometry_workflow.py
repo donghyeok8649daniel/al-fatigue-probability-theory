@@ -38,8 +38,8 @@ class GeometryWorkflow:
         app._bind_text(ttk.Label(row), 'geometry.target').pack(side='left')
         ttk.Entry(row, textvariable=self.target, width=9).pack(side='left', padx=8)
         app._bind_text(ttk.Button(row, command=self.generate), 'geometry.generate').pack(side='left')
-        app._bind_text(ttk.Button(row, command=lambda: app.notebook.select(app.pre_tab)),
-                       'geometry.next_pre').pack(side='right')
+        app._bind_text(ttk.Button(row, command=lambda: app.notebook.select(app.load_tab)),
+                       'load.next').pack(side='right')
         ttk.Label(mesh_tab, textvariable=self.mesh_description, wraplength=680).pack(fill='x', padx=12)
         app._bind_text(ttk.Label(mesh_tab, wraplength=680), 'geometry.scope').pack(fill='x', padx=12, pady=5)
         self.figure = Figure(figsize=(6, 4), dpi=90)
@@ -57,6 +57,11 @@ class GeometryWorkflow:
         self.mesh_description.set(tr('geometry.unmeshed') if self.mesh is None else tr(
             'geometry.mesh_summary', faces=len(self.mesh.faces), area=f'{sum(self.mesh.areas):.6g}',
             closed=tr('geometry.closed' if self.mesh.closed else 'geometry.open')))
+        if self.mesh is not None:
+            try: volume = f'{self.mesh.enclosed_volume_mm3:.8g}'
+            except ValueError: volume = tr('map.volume_unknown')
+            self.mesh_description.set(self.mesh_description.get()+'\n'+tr('map.geometry',
+                area=f'{self.mesh.areas.sum():.8g}', volume=volume))
 
     def error(self, exc):
         key = str(exc)

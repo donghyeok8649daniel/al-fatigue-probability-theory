@@ -40,6 +40,57 @@ class SurfaceMesh:
         _, counts = np.unique(edges, axis=0, return_counts=True)
         return bool(np.all(counts == 2))  # edge incidence, not self-intersection certification
 
+    @property
+    def enclosed_volume_mm3(self):
+        """Oriented closed-surface volume; no self-intersection certification."""
+        if not self.closed: raise ValueError('volume_requires_closed')
+        edges = np.concatenate([self.faces[:, [0,1]], self.faces[:, [1,2]], self.faces[:, [2,0]]])
+        _, inverse = np.unique(np.sort(edges, axis=1), axis=0, return_inverse=True)
+        signed = np.bincount(inverse, weights=np.where(edges[:, 0] < edges[:, 1], 1., -1.))
+        if np.any(signed != 0): raise ValueError('volume_requires_oriented')
+        # Translate near the origin to avoid cancellation for translated CAD.
+        tri = (self.vertices-self.vertices.mean(axis=0))[self.faces]
+        volume = abs(float(np.einsum('ij,ij->i', tri[:, 0], np.cross(tri[:, 1], tri[:, 2])).sum()/6))
+        if volume <= 0 or not np.isfinite(volume): raise ValueError('volume_requires_closed')
+        return volume
+
+
+def refine_selected(mesh, selected):
+    """Split selected edges and triangulate adjacent polygons conformingly.
+
+    Surface facets retain their geometry; this is not curved CAD reconstruction.
+    Return child triangles of selected parents for continued interactive editing.
+    """
+    selected = set(map(int, selected))
+    if not selected or min(selected) < 0 or max(selected) >= len(mesh.faces):
+        raise ValueError('invalid_selection')
+    marked = set()
+    for i in selected:
+        a,b,c = map(int, mesh.faces[i])
+        marked.update(tuple(sorted(edge)) for edge in ((a,b),(b,c),(c,a)))
+    vertices = mesh.vertices.tolist()
+    midpoints = {}
+    for edge in sorted(marked):
+        midpoints[edge] = len(vertices)
+        vertices.append(mesh.vertices[list(edge)].mean(axis=0).tolist())
+    faces, children = [], []
+    for i, (a,b,c) in enumerate(mesh.faces):
+        polygon = []
+        split = False
+        for v,w in ((a,b),(b,c),(c,a)):
+            polygon.append(int(v))
+            mid = midpoints.get(tuple(sorted((int(v),int(w)))))
+            if mid is not None: polygon.append(mid); split = True
+        start = len(faces)
+        if split:
+            center = len(vertices)
+            vertices.append(mesh.vertices[[a,b,c]].mean(axis=0).tolist())
+            faces.extend([[center, v, polygon[(k+1)%len(polygon)]] for k,v in enumerate(polygon)])
+        else: faces.append([a,b,c])
+        if i in selected: children.extend(range(start,len(faces)))
+        if len(faces) > MAX_FACES: raise ValueError('mesh_limit')
+    return SurfaceMesh(vertices, faces, mesh.source), np.asarray(children,dtype=int)
+
 
 def cylinder(radius_mm=5., length_mm=30., target_mm=3.):
     if not all(np.isfinite(x) and x > 0 for x in (radius_mm, length_mm, target_mm)):
