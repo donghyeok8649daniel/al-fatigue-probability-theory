@@ -133,6 +133,12 @@ than being populated from a finite-frequency diagnostic point estimate.
 
 ## Reproduction / tests
 
+The follow-up [duration and heating audit](KINETIC_DURATION_AND_HEATING_AUDIT.md)
+checks the inverse-square-root noise assumption over existing 25–1900 ps windows
+and quantifies the conditional NVE energy cost of the estimates above. It keeps
+the maximum-null criterion separate from standard-deviation SNR; no new MD or
+production calibration is implied.
+
     python -m pytest solver_v1/test_work_phase_audit.py -q
     python -m solver_v1.run_work_phase_audit --study <v31 raw campaign> \
       --previous results/weak_replica_v31 --out <fresh report directory>

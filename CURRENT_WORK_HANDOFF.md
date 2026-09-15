@@ -1,5 +1,37 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-15–16 Hz 후속 완료: 측정시간·잡음·NVE 가열 감사
+
+- 시작/fetch local/origin 40f609e8a0af110f430a4995b2e8441d4ff24d16 일치,
+  clean probability-pde-solver-v1, 현재 aft-pde-bessel-38969ad worktree.
+  사용자가 맥스/전체접근 설정 후 계속 요청. 최신 kinetic 작업을 이어갔으며
+  에이전트 추가/추론 강도 임의 변경/새 장기 MD 실행 없음.
+- 기존 v31 10개/20ns 원자료와 실제 초기 restart SHA256을 검증하고 재분석.
+  kinetic_duration_audit.py / run_kinetic_duration_audit.py / 별도 plot runner.
+  [100,2000]ps를 25–1900ps의 9가지 길이로 모두 분할, signed null4200개 보존.
+  RMS*sqrt(T)의 최대/최소1.294–1.726. T^-1/2 통계적 승인/기각이나 80ns
+  stationarity 검증 아님. 같은 평면/재분할/공통restart를 독립 표본으로 세지 않음.
+- 두-sided FDT로 Var(loss)=4kBT L/(omega F² T), W=2kBT*SNR_std² 유도.
+  exact OU finite-window 항, dense covariance, 간격 refinement로 정규화 검증.
+  같은 정밀도에서 힘을 절반으로 낮추면 시간4배/예상 누적일 동일(조건부 이론).
+  표준편차 SNR와 종전 max-null ratio를 구별하고 기존 80.406/31.161ns 재현.
+- 종전 길이의 예상 입력일 normal2.40818eV/slip1.67698eV. 조화 Cv=(3N-3)kB
+  가정의 상승10.794/7.517K이며 새 MD에서 측정한 온도나 실제 Al Cv가 아님.
+  기존 실제100ps 평균 비교에서 normal 음수 cooling도 보존. 같은10record 구조
+  장기화는 조건부 합계607.084ns/record wall-time 합300.619h; 달력시간/예약 아님.
+- 결과 results/kinetic_duration_audit, 설명 solver_v1/KINETIC_DURATION_AND_HEATING_AUDIT.md.
+  새 최종코드 replay CSV6개 byte-identical, PNG 시각 검토 완료. 첫 report는
+  task cache에 보존. 생산 LJ/Bessel/PDE/kinetic JSON/Ac/physical clock 불변.
+  phase 분해능, local PMF/열항 mapping, 재료 적합은 계속 별도 미통과.
+- targeted32 PASS(1.62s, 새16 포함), app112 +3subtests PASS(109.69s),
+  전체 solver805 PASS(676.88s/exit0), desktop smoke PASS(a0/kappa불변).
+  SVG export의 trailing-space를 생성기에서 정리한 뒤 staged diff-check PASS;
+  시각 확인한 PNG와 최종 PNG도 byte-identical. 전체 회귀 완료일은 9월16일.
+  최종 commit/push SHA는 git log와 실제 fetch 원격으로 확인한다.
+- 다음 물리 측정은 온도·초기화·transient·between-record variation을 포함한
+  새 signed/null 설계가 필요. 전체접근이나 재분석 완료를 장기MD 예약/Hz 승인으로
+  해석하지 않는다. 이번 완료는 측정 설계 감사이며 물리 보정은 계속 미완료다.
+
 ## 2026-09-15 Hz 재검증: native work / phase 독립 대조
 
 - 시작 local/origin 6a2ef5713c76253f6153388f32dda045d30d2cdc, clean,
