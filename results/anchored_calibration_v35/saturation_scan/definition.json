@@ -1,0 +1,38 @@
+{
+  "parent_sha256": "d3a53fc80293c5858e406296787656c5232ac426fec116d3a590fdf8dfac3bcc",
+  "shape": [
+    4.946062208908296,
+    10.134651584582558,
+    11.59937838759889,
+    999871.1983895219,
+    8.477827479786518,
+    1.0
+  ],
+  "lower": [
+    -0.35667494393873245,
+    0.6931471805599453,
+    0.6931471805599453,
+    -11.512925464970229,
+    0.6931471805599453,
+    -1.0
+  ],
+  "upper": [
+    2.0794415416798357,
+    2.4849066497880004,
+    2.4849066497880004,
+    13.815510557964274,
+    2.4849066497880004,
+    1.0
+  ],
+  "coordinates": "five log-positive existing shapes and existing signed exponent",
+  "target_scales_changed": false,
+  "new_energy_terms": false,
+  "derivative": "LP envelope from equality/upper/lower duals; FD of analytic observable matrix",
+  "gradient_steps": [
+    0.0002,
+    0.0001
+  ],
+  "excluded_points_in_loss": false,
+  "finite_difference_energy_generator": false,
+  "production_changed": false
+}

@@ -1,0 +1,110 @@
+{
+  "completed": true,
+  "source": {
+    "parameter_source": "published NIST Al99.eam.alloy target-only",
+    "parameter_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+    "source_url": "https://www.ctcms.nist.gov/potentials/Download/1999--Mishin-Y-Farkas-D-Mehl-M-J-Papaconstantopoulos-D-A--Al/2/Al99.eam.alloy",
+    "source_nominal_lattice_angstrom": 4.05,
+    "source_reference_only": true,
+    "kernel": "published finite-support source EAM, target only; not the LJ/Bessel model"
+  },
+  "units": {
+    "length_scale_m": 2.863782463805517e-10,
+    "interface_coordinates": "physical distances / L0",
+    "interface_energy": "eV per primitive interface cell",
+    "interface_gradient": "derivative in reduced coordinates; eV per interface cell",
+    "interface_hessian": "second derivative in reduced coordinates; eV per interface cell",
+    "bulk_hessian": "harmonic stiffness in reduced displacements; eV per atom",
+    "wavevector": "cubic reciprocal coordinates in units 2*pi/a_lat",
+    "reference_state": "static ideal FCC; no finite-temperature or surface relaxation fit"
+  },
+  "validation_plan_sha256": "56f2628b151f9e03aad2e99081bb0fb2620a0f9dc038fb1772958de3f2c3a899",
+  "observations_sha256": "075c43f833670562196b409da477bfecd9d2d6f9cd4e5f343212fbb25817fd35",
+  "norms": {
+    "relative_H_error": "Frobenius",
+    "tail_bound": "operator 2-norm",
+    "radius_change": "Frobenius",
+    "analytic_tolerance_H_change": "maximum absolute entry",
+    "gradient_fd_error": "maximum absolute component",
+    "hessian_fd_error": "maximum absolute entry"
+  },
+  "selection": "candidate selected using training eta before computing excluded validation",
+  "comparisons": [
+    {
+      "model": "baseline",
+      "source_report_sha256": "fc7329cc526acb304864891b89c5dfa3aab3a5f0076cdfc93b4f563ce23b02c3",
+      "shape": [
+        4.193706805786002,
+        7.031334662378116,
+        19.513075212541168,
+        655178.3856574119,
+        6.443731906770801,
+        -0.9999999999998527
+      ],
+      "coefficients": [
+        0.1338368699038814,
+        1.1889632761002153,
+        5.974470828039443,
+        11.891684841955533,
+        1.4964697913611582,
+        30.08996650875053,
+        4.822542342304699,
+        0.8890833551094821,
+        1.3934482785734732,
+        9.087336490130983
+      ],
+      "training_eta": 11.17775779075355,
+      "maximum_new_interface_H_error": 1.1821140831525847,
+      "maximum_analytic_tolerance_H_change": 1.1191048088221578e-13,
+      "maximum_gradient_fd_error": 7.258808554233553e-10,
+      "maximum_hessian_fd_error": 2.7745556963054696e-09,
+      "maximum_previous_excluded_q_error": 1.767758115467109,
+      "maximum_new_excluded_q_error": 1.7016852111277136,
+      "minimum_tested_q_eigenvalue": 1.5074665650069996,
+      "maximum_q_tail_bound": 0.000582065900738892,
+      "maximum_q_radius_change": 0.00024140054755938145,
+      "maximum_q_radius_change_operator_norm": 0.00016579219806474053
+    },
+    {
+      "model": "candidate",
+      "source_report_sha256": "209842fb31f2bf84bb0810d7a24df17c9bf96d8404c9e9137fcf3f53518c7dcf",
+      "shape": [
+        4.226722192265226,
+        7.093087740908698,
+        23.999999999999982,
+        1661.4732915435306,
+        6.846466220399417,
+        -0.9999999999999998
+      ],
+      "coefficients": [
+        0.07396263192131454,
+        1.0513774611046738,
+        5.36317755826279,
+        11.197337664413052,
+        2.0445495959057762,
+        37.42314722353684,
+        5.207805330020853,
+        0.7094041993041694,
+        1.6158660458889615,
+        4000.5982444787055
+      ],
+      "training_eta": 10.99216570097229,
+      "maximum_new_interface_H_error": 1.18005550992749,
+      "maximum_analytic_tolerance_H_change": 1.7852386235972517e-13,
+      "maximum_gradient_fd_error": 4.991400695542048e-10,
+      "maximum_hessian_fd_error": 1.3303385060225992e-09,
+      "maximum_previous_excluded_q_error": 1.6666612023440674,
+      "maximum_new_excluded_q_error": 1.651134540378419,
+      "minimum_tested_q_eigenvalue": 1.4920364540381623,
+      "maximum_q_tail_bound": 0.0005147097279207815,
+      "maximum_q_radius_change": 0.00021346588976154293,
+      "maximum_q_radius_change_operator_norm": 0.0001466068714075863
+    }
+  ],
+  "elapsed_seconds": 8.149637900000016,
+  "full_history_blindness_certified": false,
+  "all_q_stability_proved": false,
+  "material_accepted": false,
+  "physical_time_calibrated": false,
+  "production_changed": false
+}

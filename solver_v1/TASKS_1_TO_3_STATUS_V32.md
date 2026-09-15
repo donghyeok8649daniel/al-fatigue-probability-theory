@@ -12,6 +12,16 @@ But those same candidates do not reproduce the independent interface and
 finite-wavelength restoring response. A correct modulus at q=0 is not a correct
 core or interface. A production-ready common material law is still missing.
 
+The completed v35 exact-anchor optimization retains the existing six shapes,
+ten energy coefficients and seven exact anchors. Four controls reduce training
+eta from11.177758 to10.992166 (1.66037%), still above the required1. The selected
+candidate has118.0056% maximum new-interface Hessian error,166.6661% on the
+previously inspected excluded wavevectors and165.1135% on six new wavevectors.
+Some interface states worsen. Final continuation converges numerically, but
+its additional5.112e-7 eta change is below the LP certificate tolerance.
+Neither numerical convergence nor small derivative-check errors pass this
+material gate. See `EXACT_ANCHOR_CALIBRATION_V35.md` and the v35 completed summary.
+
 This v32 investigation actually tested:
 
 - 61 coefficient profiles across six radial/environment-channel studies;

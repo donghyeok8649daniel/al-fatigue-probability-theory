@@ -2,6 +2,13 @@
 
 ## 0. 가장 먼저 읽을 것
 
+v35 `EXACT_ANCHOR_CALIBRATION_V35.md`는 기존 6shape/10coeff의 정확 anchor를
+유지하도록 종속계수를 제거한 최적화다. 네 실행 완료, eta11.177758→10.992166(1.66037%).
+새 계면 H오차118.0056%, 기존/새 excludedq166.6661%/165.1135%로 재료 미채택.
+마지막 미세 개선은 LP tolerance 아래이며 global 최적성을 인증하지 않는다.
+생산 에너지/clock 불변. STL 면하중 표시는 별도 UI 수정이다. 실제 완료·검증·
+Git 상태는 handoff와 results/anchored_calibration_v35/COMPLETED_SUMMARY.md 참조.
+
 v33 `RANK_FOUR_ENVIRONMENT_V33.md`는 첫 nonzero cubic STF 배경인 rank4의
 별도 최소 연구후보다. Rank3 invariant의 제곱과 다르다. Q4_bulk를 빼먹으면
 bulk/interface/finite-q 힘이 틀린다. H4=2 L L^T+4 Q_bulk:K의 둘째항과

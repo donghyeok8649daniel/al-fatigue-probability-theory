@@ -1,0 +1,143 @@
+{
+  "completed": true,
+  "study_sha256": "209842fb31f2bf84bb0810d7a24df17c9bf96d8404c9e9137fcf3f53518c7dcf",
+  "matrix_sha256": "d0cca81244195e24d5b7e54dbfe2b5f74fb2108ffd6cd776693402ae8b5ee0bd",
+  "audits": [
+    {
+      "bounds": "executed_box",
+      "direction": [
+        -0.06632032307946777,
+        -0.09947260186577421,
+        0.0,
+        -1.0,
+        -0.22611993023482763,
+        0.0,
+        1.0,
+        0.624869293094469,
+        -0.12714202376064307,
+        -1.566096382860151e-07
+      ],
+      "minimum_linearized_deta": -1.566096382860151e-07,
+      "active_constraints": [
+        68,
+        140,
+        186,
+        195,
+        214,
+        218
+      ],
+      "active_tolerance": 2e-06,
+      "first_order_violation": 3.226585665316861e-16,
+      "global_shape_optimum_certified": false,
+      "material_accepted": false
+    },
+    {
+      "bounds": "executed_box",
+      "direction": [
+        -0.06632032307946777,
+        -0.09947260186577421,
+        0.0,
+        -1.0,
+        -0.22611993023482763,
+        0.0,
+        1.0,
+        0.624869293094469,
+        -0.12714202376064307,
+        -1.566096382860151e-07
+      ],
+      "minimum_linearized_deta": -1.566096382860151e-07,
+      "active_constraints": [
+        68,
+        140,
+        186,
+        195,
+        214,
+        218
+      ],
+      "active_tolerance": 1e-05,
+      "first_order_violation": 3.226585665316861e-16,
+      "global_shape_optimum_certified": false,
+      "material_accepted": false
+    },
+    {
+      "bounds": "original_domain_tangent",
+      "direction": [
+        -0.06632032307946777,
+        -0.09947260186577421,
+        0.0,
+        -1.0,
+        -0.22611993023482763,
+        0.0,
+        1.0,
+        0.624869293094469,
+        -0.12714202376064307,
+        -1.566096382860151e-07
+      ],
+      "minimum_linearized_deta": -1.566096382860151e-07,
+      "active_constraints": [
+        68,
+        140,
+        186,
+        195,
+        214,
+        218
+      ],
+      "active_tolerance": 2e-06,
+      "first_order_violation": 3.226585665316861e-16,
+      "global_shape_optimum_certified": false,
+      "material_accepted": false
+    },
+    {
+      "bounds": "original_domain_tangent",
+      "direction": [
+        -0.06632032307946777,
+        -0.09947260186577421,
+        0.0,
+        -1.0,
+        -0.22611993023482763,
+        0.0,
+        1.0,
+        0.624869293094469,
+        -0.12714202376064307,
+        -1.566096382860151e-07
+      ],
+      "minimum_linearized_deta": -1.566096382860151e-07,
+      "active_constraints": [
+        68,
+        140,
+        186,
+        195,
+        214,
+        218
+      ],
+      "active_tolerance": 1e-05,
+      "first_order_violation": 3.226585665316861e-16,
+      "global_shape_optimum_certified": false,
+      "material_accepted": false
+    }
+  ],
+  "exact_residual": 1.7763568394002505e-14,
+  "pivot_condition": 119.06923312520465,
+  "numerical_coordinate_scales": [
+    0.07397137012244984,
+    1.05136843692866,
+    5.363262595010737,
+    11.197158322018582,
+    2.0444034395318065,
+    37.41952307479995,
+    5.207494025128009,
+    0.7093558935219363,
+    1.6158028300059684,
+    4001.1015443238407
+  ],
+  "free_coefficients": [
+    0,
+    6,
+    9
+  ],
+  "isolated_neighbour_decay_exponent": 9.46621024853361,
+  "criterion": "active feasible-cone LP; finite matrix derivatives and declared search bounds",
+  "global_shape_optimum_certified": false,
+  "material_accepted": false,
+  "physical_time_calibrated": false
+}

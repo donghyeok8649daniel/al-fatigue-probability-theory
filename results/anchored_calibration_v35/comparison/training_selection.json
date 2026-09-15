@@ -1,0 +1,203 @@
+{
+  "completed": true,
+  "selection_rule": "minimum certified positive-LJ training eta; baseline retained",
+  "observations_sha256": "075c43f833670562196b409da477bfecd9d2d6f9cd4e5f343212fbb25817fd35",
+  "comparisons": [
+    {
+      "model": "baseline",
+      "report": "results/profile_shape_v34/joint_angular_domain24_restored/joint_summary.json",
+      "report_sha256": "fc7329cc526acb304864891b89c5dfa3aab3a5f0076cdfc93b4f563ce23b02c3",
+      "training_eta": 11.17775779075355,
+      "positive_LJ": true,
+      "optimizer_success": false,
+      "message": "Iteration limit reached",
+      "iterations": 12,
+      "shape": [
+        4.193706805786002,
+        7.031334662378116,
+        19.513075212541168,
+        655178.3856574119,
+        6.443731906770801,
+        -0.9999999999998527
+      ],
+      "coefficients": [
+        0.1338368699038814,
+        1.1889632761002153,
+        5.974470828039443,
+        11.891684841955533,
+        1.4964697913611582,
+        30.08996650875053,
+        4.822542342304699,
+        0.8890833551094821,
+        1.3934482785734732,
+        9.087336490130983
+      ],
+      "exact_residual": 1.865174681370263e-13,
+      "lp_duality_gap": 3.552713678800501e-14,
+      "diagonal_curvature_opposite_beyond_discrepancy_scale": 10,
+      "active_lower_coordinates": [],
+      "active_upper_coordinates": []
+    },
+    {
+      "model": "local",
+      "report": "results/anchored_calibration_v35/local/joint_summary.json",
+      "report_sha256": "5083386a6e0908c635988a1bc478a14353bd4438a086d5f8bea0b223b768ce68",
+      "training_eta": 11.077728587023318,
+      "positive_LJ": true,
+      "optimizer_success": true,
+      "message": "Optimization terminated successfully",
+      "iterations": 23,
+      "shape": [
+        4.2383524922307485,
+        7.27212577156006,
+        19.20699302603623,
+        929742.3856256588,
+        6.853907200895419,
+        -0.9999999999999966
+      ],
+      "coefficients": [
+        0.10650347462331293,
+        1.0750025028145564,
+        5.6826880429763085,
+        11.056661007426587,
+        1.61101601301851,
+        28.028649431053516,
+        4.471518533646735,
+        0.9875100198161711,
+        1.5155248174727962,
+        5097.093098822795
+      ],
+      "exact_residual": 5.684341886080802e-14,
+      "lp_duality_gap": -3.907985046680551e-14,
+      "diagonal_curvature_opposite_beyond_discrepancy_scale": 7,
+      "active_lower_coordinates": [
+        5
+      ],
+      "active_upper_coordinates": [
+        3
+      ]
+    },
+    {
+      "model": "full_saturation",
+      "report": "results/anchored_calibration_v35/full_saturation/joint_summary.json",
+      "report_sha256": "7c7f35bf6a208a936d2b844432f383a8e33f4b8bd883f6f7f0b52ce10851b1ad",
+      "training_eta": 10.99216621215597,
+      "positive_LJ": true,
+      "optimizer_success": false,
+      "message": "Iteration limit reached",
+      "iterations": 40,
+      "shape": [
+        4.226725236773306,
+        7.093153626279768,
+        23.99999923217077,
+        1662.173272643026,
+        6.846512019258301,
+        -0.9999999999709656
+      ],
+      "coefficients": [
+        0.07397137012244984,
+        1.05136843692866,
+        5.363262595010737,
+        11.197158322018582,
+        2.0444034395318065,
+        37.41952307479995,
+        5.207494025128009,
+        0.7093558935219363,
+        1.6158028300059684,
+        4001.1015443238407
+      ],
+      "exact_residual": 2.842170943040401e-14,
+      "lp_duality_gap": -1.7763568394002505e-15,
+      "diagonal_curvature_opposite_beyond_discrepancy_scale": 4,
+      "active_lower_coordinates": [
+        5
+      ],
+      "active_upper_coordinates": [
+        2
+      ]
+    },
+    {
+      "model": "saturation_scan",
+      "report": "results/anchored_calibration_v35/saturation_scan/joint_summary.json",
+      "report_sha256": "5fef7011f2274cd0885e7e08b50e1fe62d0674307733c52e514c1f23e36ebe53",
+      "training_eta": 11.17775779075355,
+      "positive_LJ": true,
+      "optimizer_success": null,
+      "message": "deterministic saturation scan; no nonlinear optimizer",
+      "iterations": 0,
+      "shape": [
+        4.193706805786002,
+        7.031334662378116,
+        19.513075212541168,
+        655178.3856574119,
+        6.443731906770801,
+        -0.9999999999998527
+      ],
+      "coefficients": [
+        0.1338368699038814,
+        1.1889632761002153,
+        5.974470828039443,
+        11.891684841955533,
+        1.4964697913611582,
+        30.08996650875053,
+        4.822542342304699,
+        0.8890833551094821,
+        1.3934482785734732,
+        9.087336490130983
+      ],
+      "exact_residual": 1.865174681370263e-13,
+      "lp_duality_gap": 3.552713678800501e-14,
+      "diagonal_curvature_opposite_beyond_discrepancy_scale": 10,
+      "active_lower_coordinates": [
+        5
+      ],
+      "active_upper_coordinates": []
+    },
+    {
+      "model": "refined_continuation",
+      "report": "results/anchored_calibration_v35/refined_continuation/joint_summary.json",
+      "report_sha256": "209842fb31f2bf84bb0810d7a24df17c9bf96d8404c9e9137fcf3f53518c7dcf",
+      "training_eta": 10.99216570097229,
+      "positive_LJ": true,
+      "optimizer_success": true,
+      "message": "Optimization terminated successfully",
+      "iterations": 6,
+      "shape": [
+        4.226722192265226,
+        7.093087740908698,
+        23.999999999999982,
+        1661.4732915435306,
+        6.846466220399417,
+        -0.9999999999999998
+      ],
+      "coefficients": [
+        0.07396263192131454,
+        1.0513774611046738,
+        5.36317755826279,
+        11.197337664413052,
+        2.0445495959057762,
+        37.42314722353684,
+        5.207805330020853,
+        0.7094041993041694,
+        1.6158660458889615,
+        4000.5982444787055
+      ],
+      "exact_residual": 7.105427357601002e-14,
+      "lp_duality_gap": 6.039613253960852e-14,
+      "diagonal_curvature_opposite_beyond_discrepancy_scale": 4,
+      "active_lower_coordinates": [
+        5
+      ],
+      "active_upper_coordinates": [
+        2
+      ]
+    }
+  ],
+  "selected_model": "refined_continuation",
+  "selected_report": "results/anchored_calibration_v35/refined_continuation/joint_summary.json",
+  "relative_training_improvement": 0.016603695772937965,
+  "excluded_validation_used_for_selection": false,
+  "material_accepted": false,
+  "physical_time_calibrated": false,
+  "production_changed": false
+}

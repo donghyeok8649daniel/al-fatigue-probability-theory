@@ -1,0 +1,64 @@
+{
+  "resume_sha256": "fc7329cc526acb304864891b89c5dfa3aab3a5f0076cdfc93b4f563ce23b02c3",
+  "start": [
+    1.4335850220212665,
+    1.9503765402037572,
+    2.9710847645891705,
+    13.392662822053486,
+    1.8631078609065703,
+    -0.9999999999998527
+  ],
+  "lower": [
+    1.0835850220212664,
+    1.600376540203757,
+    2.6210847645891704,
+    -11.512925464970229,
+    1.5131078609065702,
+    -1.0
+  ],
+  "upper": [
+    1.7835850220212666,
+    2.3003765402037573,
+    3.1780538303479458,
+    13.815510557964274,
+    2.2131078609065704,
+    1.0
+  ],
+  "local_log_radius": 0.35,
+  "dependent_coefficients": [
+    1,
+    3,
+    2,
+    7,
+    4,
+    8,
+    5
+  ],
+  "free_coefficients": [
+    0,
+    6,
+    9
+  ],
+  "coefficient_scales": [
+    0.1338368699038814,
+    1.1889632761002153,
+    5.974470828039443,
+    11.891684841955533,
+    1.4964697913611582,
+    30.08996650875053,
+    4.822542342304699,
+    0.8890833551094821,
+    1.3934482785734732,
+    324.3925857033918
+  ],
+  "exact_anchors": 7,
+  "independent_coefficients": 3,
+  "saturation_uses_original_full_bounds": true,
+  "maxiter": 40,
+  "matrix_shape_difference_step": 0.0001,
+  "derivative": "implicit differentiation of the exact anchor solve",
+  "exact_anchor_arithmetic_budget": 1e-06,
+  "target_scales_changed": false,
+  "new_energy_terms": false,
+  "production_changed": false
+}

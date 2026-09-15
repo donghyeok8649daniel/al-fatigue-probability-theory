@@ -1,5 +1,52 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-16 exact-anchor v35 계산 완료 / STL 면하중 표시 수정
+
+- 사용자 요청: calibration 개선, 이어서 가져온 STL이 면하중에 안 보이는 문제 수정.
+  시작 fetch local/origin470aa28e09ec44478e499c78d187f3e40e5d7397 일치/clean,
+  probability-pde-solver-v1, 현재 worktree. 추가 에이전트 없음.
+- v35는 기존 6shape/10coeff/7exact-anchor 가족의 최적화 개선이다.
+  QR로 정한 7개 dependent coefficient를 선형 solve로 제거하고 implicit
+  Jacobian을 사용했다. 원래 에너지/sign/target/scale 유지. Rank 실패는
+  regularization하지 않는다. 별도 rank4 항이나 생산 에너지를 추가하지 않았다.
+  코드/유도: solver_v1/EXACT_ANCHOR_CALIBRATION_V35.md.
+- 실제 네 실행 모두 완료/exit0. local: 23iter 정상종료/3376.664s,
+  eta11.0777285870. full_saturation: 40iter 한도종료/5072.299s,
+  optimizer_success=False, best eta10.9921662122는 endpoint 아님.
+  saturation_scan: 8개 alpha에서 다른 shape 고정, 시작 eta11.1777577908보다
+  좋은 후보 없음. refined_continuation: 6iter 정상종료/1008.120s,
+  eta10.9921657010, endpoint 선택. k2=24/p=-1 원래 경계, alpha1661.4733.
+  전체 training 개선1.66037%; 마지막 continuation 추가개선5.112e-7은
+  LP certificate tolerance2.198e-6보다 작아 분해된 재료 개선으로 읽지 않는다.
+- callback normalized exact 잔차 최대: local4.263e-14/full5.684e-14/
+  refined3.197e-14. 최종 refined chart1.776e-14, 별도 LP unscaled7.105e-14.
+  full의 active-cone는 tolerance에 따라-0.12347/-0.0001400으로 민감했고,
+  refined는 두 domain/두 tolerance 모두-1.566e-7. global 최적성 인증 아님.
+  실제 implicit Jacobian 대조 통과. 더 작은 독립 차분 간격에서 오차가 더
+  작다는 단조수렴은 관측되지 않았다. 모든 trial/위반/LP 인증 기록 보존.
+- training_selection을 저장한 뒤 사전 선언 새 계면10개/q6개를 독립 검증했다.
+  최대 새 계면 H오차118.2114→118.0056%, 기존 excludedq176.7758→166.6661%,
+  새 excludedq170.1685→165.1135%. 계면 일부는 악화. eta<=1 gate 계속 실패.
+  후보 analytic tolerance H차이1.785e-13, 독립 gradient/H차분오차
+  4.991e-10/1.330e-9. bulk radius12/16 F-norm차이2.135e-4, tail2-norm5.147e-4.
+  14개 testedq 최소eigen1.4920은 전체 Brillouin-zone 안정성 인증이 아니다.
+  shared source loader의 옛 straight-row unit 표기는 제외하고 실제 계면cell/
+  bulkatom/reduced-coordinate 단위를 명시했다. 최종 코드 재생에서 원시
+  CSV2/JSON2 byte-identical, summary는 elapsed 제외 동일. PNG 시각검사 완료.
+- STL 원인: import_model이 geometry만 보존하고 mesh=None을 면하중으로 전달.
+  가져온 STL/삼각형 OBJ를 최초 표면 mesh로 바로 공유하게 수정했다.
+  ASCII STL/binary STL/OBJ 3개에서 수정 전 실패 재현, 수정 후 모두 통과.
+  단위 .5/이동 형상/작은 창 표시/클릭면/면적/언어/재메시/입력·결과 보존 검사.
+  현재 Al Fatigue UI 바로가기의 launcher.paths가 이 worktree를 가리킴을 확인.
+  열려 있는 이전 UI는 재실행해야 수정 적용; 사용자 창은 강제 종료하지 않았다.
+- 검증 실제 완료: solver810 PASS2510.83s(41:50)/exit0,
+  targeted14 PASS1.04s, STL 수정 후 전체 app115 PASS +3subtests84.31s/exit0.
+  desktop smoke(a0=.7713438268704838, kappa86.29296488740997)/compileall PASS.
+  전체 solver run 뒤에는 새 report/validation 보조 코드와 UI만 정리했다.
+  결과/재현/테스트: results/anchored_calibration_v35/COMPLETED_SUMMARY.md.
+  최종 Git commit/push 상태는 git log와 fresh 원격 ref로 확인한다.
+  생산 LJ/Bessel/PDE/kinetic JSON/물리clock 불변. 새 MD/물리Hz/항복/피로 승인 아님.
+
 ## 2026-09-15–16 Hz 후속 완료: 측정시간·잡음·NVE 가열 감사
 
 - 시작/fetch local/origin 40f609e8a0af110f430a4995b2e8441d4ff24d16 일치,
