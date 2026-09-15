@@ -1,0 +1,101 @@
+{
+  "completed": true,
+  "new_MD_run": false,
+  "records_reanalyzed": 10,
+  "raw_hashes": {
+    "seed35461_null": "00850b28641055bca75ed7789376d8682fccd5f7956a2e69473841862336591d",
+    "seed35461_axis0_sign-1": "6716405347dcffa18db949be6ea818682c3cb26fac7c4176c4c4b6a011ce6b3c",
+    "seed35461_axis0_sign+1": "6bad7d9e06ab7060e601d4642ebde01cf8f6efd2d835665c1f8eebcebc68b34f",
+    "seed35461_axis1_sign-1": "34d2846821e3ac19d377dd0ca1e4fcb8faf20af0feaa64be0ee0b13318df196d",
+    "seed35461_axis1_sign+1": "af5bdf9430abbe91c35475bedb024637bc3ec8b4b7a0d4b47826d84c6d05f46f",
+    "seed49277_null": "40a914722e046bedf60ad2144a4a8b11d0dec734a299130f697423b12d332ab2",
+    "seed49277_axis0_sign-1": "21e126da27b3086b4eef8d52b72b4e6562aa4b519205d98bca4629b7b0b322f1",
+    "seed49277_axis0_sign+1": "69168a51247ace7d3ad76070a3388914a077aac10bb59c76e509423dab4b7b13",
+    "seed49277_axis1_sign-1": "b2ea24688dbce0d919debac7b750188c0a6ab7da711643eed9ae57330e41b406",
+    "seed49277_axis1_sign+1": "91e8d30bb4eb38e057bac5e72c484d8c1a4300cde24782f3300339be58888ac1"
+  },
+  "frequency_cycles_per_ps": 0.2,
+  "max_abs_native_coordinate_loss_difference_A2_eV": 4.0493173857335816e-08,
+  "max_pair_discrepancy_to_null": 0.0006235251809806121,
+  "full_record_pairs": [
+    {
+      "seed": 35461,
+      "axis": 0,
+      "parts": 1,
+      "block": 0,
+      "loss_native_A2_eV": 7.348480783087136e-06,
+      "loss_coordinate_A2_eV": 7.349132241518267e-06,
+      "observed_imaginary_null_A2_eV": 9.456661926782951e-06,
+      "native_loss_to_null": 0.7770692068704422,
+      "discrepancy_to_null": 6.888883584660879e-05,
+      "confidence_interval": false,
+      "production_clock_calibrated": false
+    },
+    {
+      "seed": 35461,
+      "axis": 1,
+      "parts": 1,
+      "block": 0,
+      "loss_native_A2_eV": 5.2067094195562355e-05,
+      "loss_coordinate_A2_eV": 5.206736600089295e-05,
+      "observed_imaginary_null_A2_eV": 2.766501560165479e-05,
+      "native_loss_to_null": 1.882055479211367,
+      "discrepancy_to_null": 9.82487537725346e-06,
+      "confidence_interval": false,
+      "production_clock_calibrated": false
+    },
+    {
+      "seed": 49277,
+      "axis": 0,
+      "parts": 1,
+      "block": 0,
+      "loss_native_A2_eV": -9.222137063974435e-07,
+      "loss_coordinate_A2_eV": -9.229092685389307e-07,
+      "observed_imaginary_null_A2_eV": 8.57308756857941e-06,
+      "native_loss_to_null": -0.10757077879122347,
+      "discrepancy_to_null": 8.11332132003893e-05,
+      "confidence_interval": false,
+      "production_clock_calibrated": false
+    },
+    {
+      "seed": 49277,
+      "axis": 1,
+      "parts": 1,
+      "block": 0,
+      "loss_native_A2_eV": 5.784497895900499e-05,
+      "loss_coordinate_A2_eV": 5.785200879015502e-05,
+      "observed_imaginary_null_A2_eV": 5.348130916754677e-05,
+      "native_loss_to_null": 1.0815924265763142,
+      "discrepancy_to_null": 0.0001314446347602891,
+      "confidence_interval": false,
+      "production_clock_calibrated": false
+    }
+  ],
+  "planning": [
+    {
+      "axis": 0,
+      "independent_fdt_loss_A2_eV": 4.361046734841403e-06,
+      "observed_imaginary_null_A2_eV": 9.456661926782951e-06,
+      "desired_ratio": 3.0,
+      "conditional_record_duration_ps": 80406.35140823587,
+      "estimated_single_record_wall_hours": 39.816036904175384,
+      "scaling_assumption": "stationary noise proportional to inverse sqrt duration",
+      "guaranteed_precision": false,
+      "production_clock_calibrated": false
+    },
+    {
+      "axis": 1,
+      "independent_fdt_loss_A2_eV": 3.961788883076346e-05,
+      "observed_imaginary_null_A2_eV": 5.348130916754677e-05,
+      "desired_ratio": 3.0,
+      "conditional_record_duration_ps": 31161.439522532393,
+      "estimated_single_record_wall_hours": 15.430684321404167,
+      "scaling_assumption": "stationary noise proportional to inverse sqrt duration",
+      "guaranteed_precision": false,
+      "production_clock_calibrated": false
+    }
+  ],
+  "elapsed_seconds": 2.0346130000034464,
+  "production_clock_calibrated": false,
+  "conclusion": "Native work is an estimator cross-check, not extra independent kinetic data."
+}

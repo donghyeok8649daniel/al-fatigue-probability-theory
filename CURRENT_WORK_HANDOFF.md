@@ -1,5 +1,30 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-15 Hz 재검증: native work / phase 독립 대조
+
+- 시작 local/origin 6a2ef5713c76253f6153388f32dda045d30d2cdc, clean,
+  probability-pde-solver-v1. 새 MD가 아니라 기존 v31 20 ns/10개 자료 재분석.
+- solver_v1/work_phase_audit.py: W-[Fq]_ends=omega F0 integral q sin 유도.
+  native internal-step work와 25/50/100 fs 저장변위, whole/half/quarter 대조.
+  원자료 hash/restart 확인, 결과 덮어쓰기 거부. 생산 보정값은 수정하지 않음.
+- 결과 results/work_phase_audit. Pair discrepancy/null 최대0.000623525:
+  저장 위상 계산/프레임 간격이 미분해 소산의 주원인이 아니다. 두번째 normal
+  loss는 여전히 음수; abs/clip으로 양의 drag를 만들지 않았다.
+- 같은 방법 장기화의 조건부 추정: normal80.406ns(~39.82h/record),
+  slip31.161ns(~15.43h/record). T^-1/2 가정 및 observed-null 기준의 sensitivity,
+  CI/보장/실행예약 아님. 기존 v28 spectral SNR 정의와 구별. 새 장기MD 미실행.
+- 좌표/PMF/thermal mapping과 재료 적합은 별도 미통과. Hz 미해결을 숨기지 않음.
+  자세한 식/한계 solver_v1/WORK_PHASE_KINETIC_AUDIT.md.
+- 저장간격 coarsening 진단: loss 차이최대25fs4.05e-8,50fs9.27e-7,
+  100fs1.52e-4 A^2/eV. 100fs에서는 thermal 고주파 오염이 소산신호보다 클 수
+  있어 drive주파수 Nyquist만으로 충분하지 않음. 원본25fs 문제와 구별한다.
+- 최종 관련 targeted39 PASS (1.68s, 새 테스트10 포함). 전체 solver787 PASS
+  (690.03s)는 새 테스트8개 당시 collection으로 실행; 이후 추가한 source-binding/
+  alias 반례2개는 최종 targeted에 포함해 통과. 합쳐서 현재 테스트를 검증했으며
+  789개 단일 full-run으로 보고하지 않는다. App112 +3subtests PASS (83.38s).
+  desktop smoke PASS(a0/kappa불변), staged diff-check PASS. 최종코드 원자료
+  replay의 CSV4개 byte-identical. Git 완료 SHA/원격은 git log로 확인한다.
+
 ## 2026-09-15 UI 국소 실행 / 컬러맵 / 프로젝트 결과 저장
 
 - 시작 a660215 local/origin 일치. 기존 생산 솔버는 수정하지 않았다.
