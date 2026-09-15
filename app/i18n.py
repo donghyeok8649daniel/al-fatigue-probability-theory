@@ -113,7 +113,7 @@ _ROWS = (
     ("geometry.cylinder", "기본 원통 적용", "Apply cylinder"),
     ("geometry.default", "기본 원통", "Default cylinder"),
     ("geometry.import", "모델 가져오기 (STL / OBJ)", "Import model (STL / OBJ)"),
-    ("geometry.formats", "파일이 없으면 기본 원통을 사용합니다. STL/삼각형 OBJ만 지원합니다. STEP/IGES는 CAD에서 STL로 내보내세요. 가져오기 단위를 반드시 확인하세요.", "Without a file, use the default cylinder. Supports STL / triangulated OBJ. Export STEP/IGES to STL in CAD. Verify import units."),
+    ("geometry.formats", "파일이 없으면 기본 원통을 사용합니다. STL/삼각형 OBJ만 지원합니다. 가져온 삼각형은 면하중에서 바로 선택할 수 있습니다. STEP/IGES는 CAD에서 STL로 내보내세요. 가져오기 단위를 반드시 확인하세요.", "Without a file, use the default cylinder. Supports STL / triangulated OBJ. Imported triangles can be selected directly in surface loads. Export STEP/IGES to STL in CAD. Verify import units."),
     ("geometry.summary", "형상: {source} · 정점 {vertices} · 삼각형 {faces}", "Geometry: {source} · vertices {vertices} · triangles {faces}"),
     ("geometry.target", "표면 메시 최대 변 길이 [mm]", "Surface mesh maximum edge [mm]"),
     ("geometry.solve_scope", "현재 Solve는 국소 P(a,s,t) 해석입니다. 가져온 형상의 체적 FVM/FEM 응력 해석과 공간 확률장은 아직 연결되지 않았습니다.", "Solve currently evolves local P(a,s,t). Volume FVM/FEM stress analysis and spatial probability fields on the imported geometry are not connected yet."),

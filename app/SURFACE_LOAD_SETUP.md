@@ -7,6 +7,12 @@ are refused at Solve. No structural displacement/stress field is calculated.
 
 ## User workflow
 
+STL and triangulated OBJ imports immediately supply the surface mesh shown in
+Load. No separate Generate click is needed to display or select their triangles.
+Import scaling applies once, before display and area calculations. Generate can
+subsequently refine the imported surface. Importing a different mesh clears old
+triangle assignments; language changes preserve the mesh, selection and loads.
+
 Generate/import the surface mesh, rotate using the right mouse button (middle
 button pans, wheel zooms), and left-click a visible connected planar patch.
 Ctrl-click toggles patches. This uses triangles, not native CAD curved-face IDs.

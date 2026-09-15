@@ -178,6 +178,84 @@ def test_matrix_multiple_loads_and_one_balance_confirmation(tk_root, monkeypatch
         app.root.destroy()
 
 
+@pytest.mark.parametrize('format_name', ['ascii_stl', 'binary_stl', 'obj'])
+def test_imported_surface_is_visible_and_pickable_without_generate(
+    tk_root, tmp_path, monkeypatch, format_name,
+):
+    import struct
+    from types import SimpleNamespace
+    from mpl_toolkits.mplot3d import proj3d
+
+    vertices = np.array([[10, 20, 30], [14, 20, 30], [14, 24, 30], [10, 24, 30],
+                         [10, 20, 32], [14, 20, 32], [14, 24, 32], [10, 24, 32]], dtype=float)
+    faces = np.array([[0, 2, 1], [0, 3, 2], [4, 5, 6], [4, 6, 7],
+                      [0, 1, 5], [0, 5, 4], [1, 2, 6], [1, 6, 5],
+                      [2, 3, 7], [2, 7, 6], [3, 0, 4], [3, 4, 7]])
+    path = tmp_path / ('translated.obj' if format_name == 'obj' else 'translated.stl')
+    if format_name == 'binary_stl':
+        path.write_bytes(b' '*80 + struct.pack('<I', len(faces)) + b''.join(
+            struct.pack('<12fH', 0, 0, 0, *triangle.ravel(), 0) for triangle in vertices[faces]))
+    elif format_name == 'ascii_stl':
+        path.write_text('solid test\n' + ''.join(
+            'facet normal 0 0 0\nouter loop\n' + ''.join(
+                'vertex ' + ' '.join(map(str, vertex)) + '\n' for vertex in triangle)
+            + 'endloop\nendfacet\n' for triangle in vertices[faces]) + 'endsolid test\n')
+    else:
+        path.write_text(''.join('v ' + ' '.join(map(str, v)) + '\n' for v in vertices)
+                        + ''.join('f ' + ' '.join(map(str, f+1)) + '\n' for f in faces))
+    monkeypatch.setattr('app.geometry_workflow.filedialog.askopenfilename', lambda **_: str(path))
+    monkeypatch.setattr(desktop_ui, 'run_ui_analysis', lambda *_a, **_k: pytest.fail('import ran PDE'))
+    app = desktop_for_test(tk_root)
+    try:
+        flow, load = app.geometry_workflow, app.load_workflow
+        flow.generate()
+        load.apply()
+        assert load.loads
+        old_mesh = flow.mesh
+        values = {k: entry.get() for k, entry in app.entries.items()}
+        result = {'model_time': np.array([0., 1.]), 'strain': np.array([0., .001])}
+        app.result = result; app.field.set('strain')
+        flow.unit_scale.set('0.5')
+        flow.import_model()
+        mesh = flow.mesh
+        assert mesh is not None  # Imported triangles are usable before Generate.
+        assert mesh is flow.geometry and mesh is not old_mesh
+        assert mesh.source == path.name and flow.cylinder_dimensions is None
+        np.testing.assert_array_equal(mesh.vertices[mesh.faces], .5*vertices[faces])
+        assert load.picker.mesh is mesh and len(load.picker.ax.collections) == 1
+        assert not load.loads and load.correction is None
+        assert len(load._indices()) == 2
+
+        app.root.geometry('940x480+0+0')
+        app.root.deiconify()
+        app.notebook.select(app.load_tab)
+        app.root.update()
+        picker = load.picker
+        canvas = picker.canvas.get_tk_widget()
+        assert canvas.winfo_ismapped() and canvas.winfo_width() > 100
+        picker.ax.view_init(elev=75, azim=15)
+        picker.canvas.draw()
+        center = mesh.vertices[mesh.faces[load._indices()[0]]].mean(axis=0)
+        x, y, _ = proj3d.proj_transform(*center, picker.ax.get_proj())
+        picker._click(SimpleNamespace(button=1, inaxes=picker.ax, xdata=x, ydata=y, key=None))
+        assert load.region_code == 'custom' and len(load._indices()) == 2
+        assert np.all(mesh.vertices[mesh.faces[load._indices()], 2] == 16.)
+        load.apply()
+        assert load.applied.area_mm2 == pytest.approx(4.)
+        stored_load = load.applied
+        view = (picker.ax.elev, picker.ax.azim, picker.ax.get_xlim())
+        app.language_display.set('English'); app._on_language_selected()
+        assert load.applied is stored_load and flow.mesh is mesh
+        assert view == (picker.ax.elev, picker.ax.azim, picker.ax.get_xlim())
+        assert app.result is result and values == {k: entry.get() for k, entry in app.entries.items()}
+        # Explicit refinement still works and invalidates old triangle assignments.
+        flow.target.set('1.5'); flow.generate()
+        assert len(flow.mesh.faces) > len(mesh.faces)
+        assert load.picker.mesh is flow.mesh and not load.loads
+    finally:
+        app.root.destroy()
+
+
 def test_geometry_mesh_workflow_preserves_pde_and_language(monkeypatch, tk_root):
     def forbidden(*args, **kwargs):
         raise AssertionError('Geometry must not run probability analysis')

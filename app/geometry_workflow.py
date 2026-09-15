@@ -89,7 +89,9 @@ class GeometryWorkflow:
             geometry = load_surface(path, float(self.unit_scale.get()))
         except (ValueError, OSError, UnicodeError) as exc:
             self.error(exc); return
-        self.geometry = geometry; self.mesh = None
+        # STL/triangulated OBJ already supply a usable surface mesh. Keep it
+        # available to face loads immediately; Generate can refine it later.
+        self.geometry = geometry; self.mesh = geometry
         self.cylinder_dimensions = None
         self.refresh(); self.draw()
         if hasattr(self.app, 'load_workflow'): self.app.load_workflow.refresh()
