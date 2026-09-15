@@ -1,5 +1,29 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-15 다중 면하중 / 평형 보정 / 1000 MPa 유지 진단
+
+- 시작42fee33 local/origin 일치, clean; main/기존 과학 모델 보존.
+- Load에 3×3 XYZ 응력식, 주파수 이동, snapshot 다중하중 목록/삭제.
+  기존 마우스 면선택/회전 유지. MPa mm²=N, 토크N mm를 실제 법선/면적으로 계산.
+- 선택 보정면에 weighted minimum-norm traction operator, 6조건 rank검사.
+  사용자1회승인 후 모든시각 resultant상쇄; 기존stress행렬 불변.
+  지지반력/FVM해석 아님. 하중/메시 변경 시 보정승인 해제.
+- aft.surface-loads/1 JSON 저장/불러오기, mesh SHA256/단위 검사,
+  import시 보정 재승인. setup only; 외부AI연결/전체해석언어는 미완료.
+- arbitrary tensor/multiple loads/balance를 scalarPDE로 몰래 계산하지 않음.
+  생산 spatial solver 미연결로 Solve거부. 기존단일축로컬 해석만 유지.
+- 실제6 유지하중실행 results/constant_hold_audit: TwoRowLJ,1000MPa,amp0,
+  modelduration.4, separate a/s/dt refinement + same duration + zero control.
+  p~6e-21 vs massfloor6.3e-14: 미분해. eps_total 변화~1.94e-12,
+  eps_p~3.28e-11/s변경22%: 실재크리프/잔류소성 검증아님.
+  f25×10cycle와 f50×20cycle의 모든12historyarray가 exact동일.
+  사용자기존실행의 모델/설정은 확인하지 못했으므로 동일결과로 단정금지.
+- 상세식/한계 app/SURFACE_LOAD_SETUP.md, 결과 INTERPRETATION.md 참조.
+- 테스트/최종Git상태는 아래 완료기록 또는 실제git log확인.
+- 실제 완료: targeted15 PASS5.28s, app88 PASS82.95s, solver779
+  PASS817.14s, desktop smoke PASS(a0/kappa불변), diff-check PASS.
+  유지하중6개 runtime합계442.0747s. 사용자의 실행중UI는 강제종료/교체하지 않음.
+
 ## 2026-09-15 단일 응력 입력 / 직접 면 선택 / 메시 외삽
 
 - 시작 HEAD와 fetch 원격07299a643c5e0cb02ee41d4f0bc37f8bea7741ba 일치/clean.

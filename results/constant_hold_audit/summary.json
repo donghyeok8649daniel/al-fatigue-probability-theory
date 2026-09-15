@@ -1,0 +1,254 @@
+[
+  {
+    "name": "reference",
+    "mass_error": 1.8207657603852567e-14,
+    "identical_duration_arrays_equal": null,
+    "probability_difference_from_reference": 0.0,
+    "plastic_difference_from_reference": 0.0,
+    "intervals": [
+      {
+        "start": 0.0,
+        "end": 0.10000000000000007,
+        "absorbed_increment": 2.145148731804833e-21,
+        "strain_increment": 4.801922748320919e-13,
+        "plastic_increment": 9.172252804296105e-12
+      },
+      {
+        "start": 0.10000000000000007,
+        "end": 0.20000000000000015,
+        "absorbed_increment": 1.3761285983528776e-21,
+        "strain_increment": 4.839080525176342e-13,
+        "plastic_increment": 8.476998018996967e-12
+      },
+      {
+        "start": 0.20000000000000015,
+        "end": 0.3000000000000002,
+        "absorbed_increment": 1.2702298911135944e-21,
+        "strain_increment": 4.874364800677711e-13,
+        "plastic_increment": 7.863725495933536e-12
+      },
+      {
+        "start": 0.3000000000000002,
+        "end": 0.4,
+        "absorbed_increment": 1.242969478345939e-21,
+        "strain_increment": 4.908261297398298e-13,
+        "plastic_increment": 7.321767466521596e-12
+      }
+    ],
+    "first_strain": 0.02287888840088428,
+    "final_strain": 0.022878888402826644,
+    "final_probability": 6.034476699617244e-21,
+    "final_plastic": 3.2834743785748204e-11,
+    "interpretation": "No material/kinetic/creep certification; compare only matching loads."
+  },
+  {
+    "name": "s_refined",
+    "mass_error": 4.6407322429331543e-14,
+    "identical_duration_arrays_equal": null,
+    "probability_difference_from_reference": 1.4425396866116168e-22,
+    "plastic_difference_from_reference": 7.228009587702492e-12,
+    "intervals": [
+      {
+        "start": 0.0,
+        "end": 0.10000000000000007,
+        "absorbed_increment": 2.093764577129032e-21,
+        "strain_increment": 4.553232790804884e-13,
+        "plastic_increment": 1.2448623037566346e-11
+      },
+      {
+        "start": 0.10000000000000007,
+        "end": 0.20000000000000015,
+        "absorbed_increment": 1.343248347806295e-21,
+        "strain_increment": 4.590043622965112e-13,
+        "plastic_increment": 1.055127198997298e-11
+      },
+      {
+        "start": 0.20000000000000015,
+        "end": 0.3000000000000002,
+        "absorbed_increment": 1.2399079077917243e-21,
+        "strain_increment": 4.624876870362726e-13,
+        "plastic_increment": 9.095445496998476e-12
+      },
+      {
+        "start": 0.3000000000000002,
+        "end": 0.4,
+        "absorbed_increment": 1.2133018982290311e-21,
+        "strain_increment": 4.658808061552833e-13,
+        "plastic_increment": 7.967412848912894e-12
+      }
+    ],
+    "first_strain": 0.02184710024968125,
+    "final_strain": 0.021847100251523945,
+    "final_probability": 5.890222730956082e-21,
+    "final_plastic": 4.0062753373450696e-11,
+    "interpretation": "No material/kinetic/creep certification; compare only matching loads."
+  },
+  {
+    "name": "a_refined",
+    "mass_error": 6.306066779870889e-14,
+    "identical_duration_arrays_equal": null,
+    "probability_difference_from_reference": 4.48510959068668e-22,
+    "plastic_difference_from_reference": 6.459307939386102e-14,
+    "intervals": [
+      {
+        "start": 0.0,
+        "end": 0.10000000000000007,
+        "absorbed_increment": 2.3486720249352697e-21,
+        "strain_increment": 4.811463727438792e-13,
+        "plastic_increment": 9.190263886558604e-12
+      },
+      {
+        "start": 0.10000000000000007,
+        "end": 0.20000000000000015,
+        "absorbed_increment": 1.4539159403057523e-21,
+        "strain_increment": 4.848725587702774e-13,
+        "plastic_increment": 8.493656969710892e-12
+      },
+      {
+        "start": 0.20000000000000015,
+        "end": 0.3000000000000002,
+        "absorbed_increment": 1.3524796548641185e-21,
+        "strain_increment": 4.883697612978466e-13,
+        "plastic_increment": 7.87920356584005e-12
+      },
+      {
+        "start": 0.3000000000000002,
+        "end": 0.4,
+        "absorbed_increment": 1.3279200385807715e-21,
+        "strain_increment": 4.918010443333287e-13,
+        "plastic_increment": 7.336212443032519e-12
+      }
+    ],
+    "first_strain": 0.022991557868121612,
+    "final_strain": 0.022991557870067802,
+    "final_probability": 6.482987658685912e-21,
+    "final_plastic": 3.2899336865142065e-11,
+    "interpretation": "No material/kinetic/creep certification; compare only matching loads."
+  },
+  {
+    "name": "dt_refined",
+    "mass_error": 5.1181281435219717e-14,
+    "identical_duration_arrays_equal": null,
+    "probability_difference_from_reference": 2.1243429166871177e-23,
+    "plastic_difference_from_reference": 2.0597357179657326e-14,
+    "intervals": [
+      {
+        "start": 0.0,
+        "end": 0.10000000000000007,
+        "absorbed_increment": 2.1545400117620535e-21,
+        "strain_increment": 4.803588082857857e-13,
+        "plastic_increment": 9.173120579317991e-12
+      },
+      {
+        "start": 0.10000000000000007,
+        "end": 0.20000000000000015,
+        "absorbed_increment": 1.37898765683401e-21,
+        "strain_increment": 4.841023415469436e-13,
+        "plastic_increment": 8.477661176188966e-12
+      },
+      {
+        "start": 0.20000000000000015,
+        "end": 0.29999999999999466,
+        "absorbed_increment": 1.2731516212451943e-21,
+        "strain_increment": 4.87519746794618e-13,
+        "plastic_increment": 7.864223971363448e-12
+      },
+      {
+        "start": 0.29999999999999466,
+        "end": 0.4,
+        "absorbed_increment": 1.246000356198936e-21,
+        "strain_increment": 4.908226602928778e-13,
+        "plastic_increment": 7.322133931820841e-12
+      }
+    ],
+    "first_strain": 0.02287888840088428,
+    "final_strain": 0.022878888402827084,
+    "final_probability": 6.052679646040194e-21,
+    "final_plastic": 3.2837139658691246e-11,
+    "interpretation": "No material/kinetic/creep certification; compare only matching loads."
+  },
+  {
+    "name": "same_duration",
+    "mass_error": 1.8207657603852567e-14,
+    "identical_duration_arrays_equal": true,
+    "probability_difference_from_reference": 0.0,
+    "plastic_difference_from_reference": 0.0,
+    "intervals": [
+      {
+        "start": 0.0,
+        "end": 0.10000000000000007,
+        "absorbed_increment": 2.145148731804833e-21,
+        "strain_increment": 4.801922748320919e-13,
+        "plastic_increment": 9.172252804296105e-12
+      },
+      {
+        "start": 0.10000000000000007,
+        "end": 0.20000000000000015,
+        "absorbed_increment": 1.3761285983528776e-21,
+        "strain_increment": 4.839080525176342e-13,
+        "plastic_increment": 8.476998018996967e-12
+      },
+      {
+        "start": 0.20000000000000015,
+        "end": 0.3000000000000002,
+        "absorbed_increment": 1.2702298911135944e-21,
+        "strain_increment": 4.874364800677711e-13,
+        "plastic_increment": 7.863725495933536e-12
+      },
+      {
+        "start": 0.3000000000000002,
+        "end": 0.4,
+        "absorbed_increment": 1.242969478345939e-21,
+        "strain_increment": 4.908261297398298e-13,
+        "plastic_increment": 7.321767466521596e-12
+      }
+    ],
+    "first_strain": 0.02287888840088428,
+    "final_strain": 0.022878888402826644,
+    "final_probability": 6.034476699617244e-21,
+    "final_plastic": 3.2834743785748204e-11,
+    "interpretation": "No material/kinetic/creep certification; compare only matching loads."
+  },
+  {
+    "name": "zero_stress",
+    "mass_error": 9.103828801926284e-15,
+    "identical_duration_arrays_equal": null,
+    "probability_difference_from_reference": 6.034476699617244e-21,
+    "plastic_difference_from_reference": 3.2834743785748204e-11,
+    "intervals": [
+      {
+        "start": 0.0,
+        "end": 0.10000000000000007,
+        "absorbed_increment": 0.0,
+        "strain_increment": 6.418476861114186e-17,
+        "plastic_increment": 3.974991764857101e-32
+      },
+      {
+        "start": 0.10000000000000007,
+        "end": 0.20000000000000015,
+        "absorbed_increment": 0.0,
+        "strain_increment": 0.0,
+        "plastic_increment": 6.293767860561835e-33
+      },
+      {
+        "start": 0.20000000000000015,
+        "end": 0.3000000000000002,
+        "absorbed_increment": 0.0,
+        "strain_increment": 0.0,
+        "plastic_increment": 9.21910905149835e-32
+      },
+      {
+        "start": 0.3000000000000002,
+        "end": 0.4,
+        "absorbed_increment": 0.0,
+        "strain_increment": 0.0,
+        "plastic_increment": 2.4803501888421996e-31
+      }
+    ],
+    "first_strain": 0.005558679130740304,
+    "final_strain": 0.005558679130740369,
+    "final_probability": 0.0,
+    "final_plastic": 3.862697949083363e-31,
+    "interpretation": "No material/kinetic/creep certification; compare only matching loads."
+  }
+]

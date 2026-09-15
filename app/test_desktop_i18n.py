@@ -37,6 +37,41 @@ def desktop_for_test(tk_root):
     return desktop_ui.DesktopApp(root=root)
 
 
+def test_matrix_multiple_loads_and_one_balance_confirmation(tk_root, monkeypatch):
+    from app.load_balance import resultant
+    app = desktop_for_test(tk_root)
+    try:
+        monkeypatch.setattr(desktop_ui, 'run_ui_analysis', lambda *_: pytest.fail('setup ran PDE'))
+        app.geometry_workflow.generate()
+        load = app.load_workflow
+        assert app.entries['model_frequency'].master is app.load_inputs
+        load.tensor_text.set('0,0,0;0,0,0;0,0,100+20*sin(2*pi*f*t)')
+        assert load.matrix_vars[2][2].get() == '100+20*sin(2*pi*f*t)'
+        load.matrix_vars[2][2].set('100+10*sin(2*pi*f*t)')
+        assert '100+10*sin' in load.tensor_text.get()
+        load.region_code = 'top'; load.apply()
+        load.apply()
+        assert len(load.loads) == 2
+        load.region_code = 'bottom'
+        calls = []
+        monkeypatch.setattr('app.load_workflow.messagebox.askyesno', lambda *a, **k: False)
+        load.balance()
+        assert load.correction is None
+        monkeypatch.setattr('app.load_workflow.messagebox.askyesno', lambda *a, **k: calls.append(1) or True)
+        load.balance(); load.balance()
+        assert len(calls) == 1
+        for t in (0., .0123, .08):
+            np.testing.assert_allclose(resultant(app.geometry_workflow.mesh, load.traction_at(t)), 0, atol=1e-8)
+        correction = load.correction
+        app.language_display.set('English'); app._on_language_selected()
+        assert load.correction is correction and len(load.loads) == 2
+        with pytest.raises(ValueError): app._config()
+        load.load_list.selection_set(0); load.remove_load()
+        assert load.correction is None and len(load.loads) == 1
+    finally:
+        app.root.destroy()
+
+
 def test_geometry_mesh_workflow_preserves_pde_and_language(monkeypatch, tk_root):
     def forbidden(*args, **kwargs):
         raise AssertionError('Geometry must not run probability analysis')

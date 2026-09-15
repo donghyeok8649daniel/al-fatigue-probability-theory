@@ -406,7 +406,7 @@ class DesktopApp:
         )
         self.time_warning_label.grid(row=2, column=2, rowspan=2, sticky="w", padx=(6, 20), pady=7)
         for row, (key, label_key, default, unit_key) in enumerate(self.PARAMS, start=4):
-            parent = self.load_inputs if key in {"stress_mean_mpa", "stress_amplitude_mpa"} else form
+            parent = self.load_inputs if key in {"stress_mean_mpa", "stress_amplitude_mpa", "model_frequency"} else form
             label = self._bind_text(
                 ttk.Label(parent, style="Property.TLabel"), label_key
             )
