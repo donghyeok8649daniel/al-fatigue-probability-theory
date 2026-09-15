@@ -99,6 +99,7 @@ class LoadWorkflow:
         app._bind_text(ttk.Label(tab, wraplength=330), 'load.balance_scope').pack(anchor='w', padx=20)
         app._bind_text(ttk.Button(tab, command=self.save_setup), 'load.save_setup').pack(anchor='w', padx=20)
         app._bind_text(ttk.Button(tab, command=self.open_setup), 'load.open_setup').pack(anchor='w', padx=20)
+        app._bind_text(ttk.Button(tab, command=self.open_language), 'setup.title').pack(anchor='w', padx=20)
         app._bind_text(ttk.Button(tab, command=lambda: app.notebook.select(app.pre_tab)), "geometry.next_pre").pack(anchor="e", padx=20, pady=12)
         for child in tab.winfo_children():
             if isinstance(child, ttk.Label): child.configure(wraplength=330)
@@ -186,6 +187,10 @@ class LoadWorkflow:
         path = filedialog.asksaveasfilename(parent=self.app.root, defaultextension='.json', filetypes=[('JSON', '*.json')])
         if path:
             Path(path).write_text(encode(self._mesh, self.loads, self.correction), encoding='utf-8')
+
+    def open_language(self):
+        from .setup_language_view import SetupLanguageView
+        SetupLanguageView(self.app)
 
     def open_setup(self):
         from .surface_setup import decode

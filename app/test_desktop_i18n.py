@@ -37,6 +37,62 @@ def desktop_for_test(tk_root):
     return desktop_ui.DesktopApp(root=root)
 
 
+def test_setup_editor_and_ai_threads_are_inert_until_review(tk_root, monkeypatch):
+    import time
+    from app.setup_language_view import SetupLanguageView
+    from app.ai_chat_view import AIChatView
+    from app.test_aft_ai_controller import MockTransport
+    app = desktop_for_test(tk_root)
+    editor = chat = None
+    try:
+        monkeypatch.setattr(desktop_ui, 'run_ui_analysis', lambda *_: pytest.fail('setup/chat ran PDE'))
+        app.geometry_workflow.generate()
+        app.load_workflow.apply()
+        original = list(app.load_workflow.loads)
+        editor = SetupLanguageView(app)
+        assert editor.validate() is not None
+        assert app.load_workflow.loads == original
+        transport = MockTransport('AFT 1 unvalidated text only')
+        chat = AIChatView(app, lambda: editor.text.get('1.0','end'), transport=transport)
+        chat.model.set('mock'); chat.new_session()
+        chat.message.insert('1.0','Explain single crystal limitations')
+        chat.reviewed.set(True); chat.attach.set(True); chat.prepare()
+        assert not transport.calls
+        chat.attach.set(False); chat.send()
+        assert not transport.calls
+        app.field.set('strain')
+        app.result = {'model_time':np.array([0.,1.]), 'strain':np.array([0.,.001]), 'cumulative_absorbed_mass':np.array([0.,1e-16]),
+                      'local_rare_event_floor':1e-14, 'unselected_private_note':'do not transmit'}
+        chat.attach_result.set(True)
+        assert 'do not transmit' not in chat.result_summary()
+        chat.prepare(); chat.send()
+        deadline = time.monotonic()+2
+        controller, sid = chat.controllers[chat.current]
+        while len(controller.history(sid)) < 2 and time.monotonic() < deadline:
+            app.root.update(); time.sleep(.01)
+        assert len(controller.history(sid)) == 2
+        chat.new_session()
+        other, sid2 = chat.controllers[chat.current]
+        assert other.history(sid2) == ()
+        assert app.load_workflow.loads == original
+        assert len(transport.calls) == 1
+        import json
+        payload = json.loads(transport.calls[0][1]['input'][-1]['content'])
+        assert 'result_summary' in payload['selected_non_secret_summaries']
+        assert 'setup_summary' not in payload['selected_non_secret_summaries']
+        app.language_display.set('English'); app._on_language_selected()
+        assert len(transport.calls) == 1
+        assert chat.window.title() == app._tr('ai.title')
+        assert editor.window.title() == app._tr('setup.title')
+        chat.close(); chat = None
+        editor.window.destroy(); editor = None
+        app.language_display.set('한국어'); app._on_language_selected()
+    finally:
+        if chat is not None: chat.close()
+        if editor is not None: editor.window.destroy()
+        app.root.destroy()
+
+
 def test_matrix_multiple_loads_and_one_balance_confirmation(tk_root, monkeypatch):
     from app.load_balance import resultant
     app = desktop_for_test(tk_root)

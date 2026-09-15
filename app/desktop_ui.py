@@ -1123,6 +1123,11 @@ class DesktopApp:
         if hasattr(self, "ax") and self.ax.has_data():
             self._remember_view()
         self.root.title(self._tr("app.title"))
+        for child in self.root.winfo_children():
+            if hasattr(child, '_aft_title_key'):
+                child.title(self._tr(child._aft_title_key))
+        self._text_bindings = [(widget, option, key) for widget, option, key in self._text_bindings
+                               if widget.winfo_exists()]
         for widget, option, key in self._text_bindings:
             widget.configure(**{option: self._tr(key)})
         for item, key in self._tree_text:

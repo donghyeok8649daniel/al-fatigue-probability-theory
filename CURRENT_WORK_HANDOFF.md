@@ -1,5 +1,28 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-15 단결정 범위 / AFT 언어 / AI 연결
+
+- 시작c8b88d9 fetch local/remote일치 clean. 최신 사용자가 단결정 scope를
+  재확인. 다결정/입계모델 자동추가 금지. 무결함 단결정과 실제 전위있는
+  단결정 구별; 생산TwoRowLJ는 축약reference, fullFCC/전위연구 자동production아님.
+- solver_v1/CONSTANT_LOAD_PHYSICAL_VALIDATION.md에 직접단결정검증과
+  다결정배경문헌 분리. Kennedy/McGill1965 단결정 creep-fatigue 방향성
+  논문 abstract확인; 유료본문 수치 미확인으로 fitting target발명 안함.
+- AFT1 mesh-bound 선언형언어: 하중snapshot→text→공통JSON validator,
+  unit/hash/대칭/문법검사→사용자승인. exec/solve 명령 없음.
+- FaceLoad→AFT editor→AIChatView 연결. 대화별history/controller/worker,
+  Tk메인thread poll; 키는환경설정, 모델명명시, 내용검토→전송만API요청.
+  선택setup/result/history 외 연구파일/비밀 자동전송 없음. 응답은불활성text.
+- 요청대로 챗봇 독립Codex작업01a0a3b4-777c-7742-be35-459057f6de13로
+  분리, 별도산출물에서18mock검증 후 main이 읽고 apply_patch로 통합.
+  그 작업은Git쓰기금지; main만통합. UI결과요약의수치floor/한계보존.
+- 실제API호출0회, live key/model/auth미검증. 공간FVM/PDE연결·물리calibration
+  완료아님. 기존LJ/Bessel/PDE/Ac/physical clock불변. 최종test/Git는추가기록참조.
+- 최종 검증: solver_v1 779 passed (1107.00 s), app 109 passed 및
+  3 subtests passed (165.74 s). desktop smoke 및 git diff --check PASS.
+  실제 API 호출은 하지 않았으므로 온라인 인증/응답 검증은 별도 미완료.
+  완료 커밋 SHA와 원격 일치는 git log 및 origin 브랜치로 확인한다.
+
 ## 2026-09-15 다중 면하중 / 평형 보정 / 1000 MPa 유지 진단
 
 - 시작42fee33 local/origin 일치, clean; main/기존 과학 모델 보존.

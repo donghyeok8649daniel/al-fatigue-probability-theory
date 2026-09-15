@@ -16,7 +16,10 @@ def default_tensor_expressions():
 def _validate(node):
     if isinstance(node, ast.Expression): return _validate(node.body)
     if isinstance(node, ast.Constant):
-        if isinstance(node.value, (int, float)): return
+        try:
+            if type(node.value) in (int, float) and math.isfinite(float(node.value)): return
+        except OverflowError:
+            pass
         raise ValueError("tensor_expression")
     if isinstance(node, ast.Name):
         if node.id not in ALLOWED_NAMES and node.id not in ALLOWED_FUNCS: raise ValueError("tensor_expression")
@@ -32,6 +35,7 @@ def _validate(node):
 
 
 def compile_tensor_matrix(text: str):
+    if len(text) > 12000: raise ValueError('tensor_expression_too_large')
     rows = [row.strip() for row in str(text).split(";")]
     if len(rows) != 3: raise ValueError("tensor_shape")
     expressions = [[item.strip() for item in row.split(",")] for row in rows]
@@ -40,7 +44,13 @@ def compile_tensor_matrix(text: str):
     for row in expressions:
         out = []
         for item in row:
-            tree = ast.parse(item, mode="eval"); _validate(tree)
+            tree = ast.parse(item, mode="eval")
+            if sum(1 for _ in ast.walk(tree)) > 256: raise ValueError('tensor_expression_too_large')
+            _validate(tree)
+            # Stress arithmetic is real floating point, not unbounded integer
+            # exponentiation supplied by an untrusted setup/AI draft.
+            for node in ast.walk(tree):
+                if isinstance(node, ast.Constant): node.value = float(node.value)
             out.append(compile(tree, "<tensor-load>", "eval"))
         compiled.append(out)
     return tuple(tuple(row) for row in compiled)
@@ -51,7 +61,10 @@ def evaluate_tensor(compiled, *, t, frequency, normal_mean, normal_amplitude, sh
               "normal_mean": float(normal_mean), "normal_amp": float(normal_amplitude),
               "shear_mean": float(shear_mean), "shear_amp": float(shear_amplitude)}
     scope = {"__builtins__": {}, **ALLOWED_FUNCS}
-    result = np.array([[eval(expr, scope, values) for expr in row] for row in compiled], dtype=float)
+    try:
+        result = np.array([[eval(expr, scope, values) for expr in row] for row in compiled], dtype=float)
+    except (ArithmeticError, TypeError) as exc:
+        raise ValueError('tensor_finite_real') from exc
     if not np.isfinite(result).all(): raise ValueError("tensor_finite")
     return result
 
