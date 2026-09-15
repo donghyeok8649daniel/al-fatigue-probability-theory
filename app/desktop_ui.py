@@ -131,6 +131,7 @@ class DesktopApp:
         self.entries: dict[str, ttk.Entry] = {}
         self.language_display = tk.StringVar(value=LANGUAGE_NAMES[DEFAULT_LANGUAGE])
         self.spatial_backend = tk.StringVar(value="FVM")
+        self.local_only = tk.BooleanVar(value=False)
         self.analysis_quality = tk.StringVar(value=self._tr("quality.preview_option"))
         self.analysis_quality_code = "preview"
         self.probability_scale = tk.StringVar(value=self._tr("option.local"))
@@ -181,6 +182,10 @@ class DesktopApp:
         self._styles()
         self._header()
         self._workspace()
+        from .project_file import ProjectFiles
+        self.project_files = ProjectFiles(self)
+        self.root.bind('<Control-s>', lambda _event: self.project_files.save())
+        self.root.bind('<Control-o>', lambda _event: self.project_files.open())
         self._statusbar()
         self._connect_plot_events()
         self.root.protocol("WM_DELETE_WINDOW", self._close)
@@ -273,6 +278,14 @@ class DesktopApp:
         )
         self.language_selector.pack(side="left")
         self.language_selector.bind("<<ComboboxSelected>>", self._on_language_selected)
+        project_bar = ttk.Frame(self.root)
+        project_bar.pack(fill='x', padx=10, pady=3)
+        for key, command in (
+            ('project.open', lambda: self.project_files.open()),
+            ('project.save', lambda: self.project_files.save()),
+            ('project.save_as', lambda: self.project_files.save(as_new=True)),
+        ):
+            self._bind_text(ttk.Button(project_bar, command=command), key).pack(side='left', padx=3)
 
     def _workspace(self) -> None:
         body = ttk.Frame(self.root, style="App.TFrame")
@@ -486,6 +499,8 @@ class DesktopApp:
         controls.pack(side="left", fill="y", padx=(12, 10), pady=12)
         self.solve_actions = ttk.Frame(controls, style="Panel.TFrame")
         self.solve_actions.pack(side="bottom", fill="x", pady=(8, 0))
+        self._bind_text(ttk.Checkbutton(self.solve_actions, variable=self.local_only),
+                        "load.local_only").pack(anchor="w")
         self.solve_scroll = ScrollablePanel(
             controls, width=365, background=PANEL_BG, style="Panel.TFrame"
         )
@@ -1319,7 +1334,7 @@ class DesktopApp:
         )
 
     def _config(self) -> UIAnalysisConfig:
-        if hasattr(self, 'load_workflow'):
+        if hasattr(self, 'load_workflow') and not self.local_only.get():
             self.load_workflow.validate_solver_load()
         self._on_quality_selected()
         resolved = self.analysis_quality_code == "resolved"
@@ -1842,9 +1857,13 @@ def main() -> None:
             f"kappa={values['relaxed_axial_kappa']:.16g}"
         )
         return
-    if not acquire_single_instance():
+    project = next((Path(arg) for arg in sys.argv[1:] if arg.lower().endswith('.ftgsim')), None)
+    if project is None and not acquire_single_instance():
         return
-    DesktopApp().run()
+    app = DesktopApp()
+    if project is not None:
+        app.root.after(0, lambda: app.project_files.open(project))
+    app.run()
 
 
 if __name__ == "__main__":

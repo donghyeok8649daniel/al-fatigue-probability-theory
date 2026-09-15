@@ -49,6 +49,8 @@ class MeshProbabilityView:
                                variable=self.index, command=lambda _: self.update(), showvalue=True)
         self.slider.pack(fill='x', padx=12)
         self.picker = FacePicker(self.window, lambda *_: None)
+        # Reserve a fixed colorbar lane; never steal space on each update.
+        self.picker.ax.set_position([.08, .10, .70, .80])
         self.picker.draw(mesh, [])
         self.colorbar = None
         self._result_id = None
@@ -93,8 +95,11 @@ class MeshProbabilityView:
         cmap = colormaps['viridis']
         self.picker.draw(mesh, [])
         self.picker.ax.collections[0].set_facecolor(cmap(norm(values)))
-        if self.colorbar is not None: self.colorbar.remove()
-        self.colorbar = self.picker.figure.colorbar(ScalarMappable(norm=norm,cmap=cmap), ax=self.picker.ax, shrink=.65)
+        if self.colorbar is None:
+            color_axes = self.picker.figure.add_axes([.84, .20, .025, .60])
+            self.colorbar = self.picker.figure.colorbar(ScalarMappable(norm=norm, cmap=cmap), cax=color_axes)
+        else:
+            self.colorbar.mappable.set_norm(norm)
         self.colorbar.set_label(app._tr('map.'+self.field.get()))
         total = -np.expm1(log_s.sum())
         self.info.set(geometry+'\n'+app._tr('map.values', p=f'{probabilities[index]:.8e}',

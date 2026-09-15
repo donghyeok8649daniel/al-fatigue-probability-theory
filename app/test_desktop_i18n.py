@@ -5,6 +5,49 @@ import numpy as np
 import pytest
 
 import app.desktop_ui as desktop_ui
+
+def test_real_result_and_setup_restore_without_pde(tk_root,tmp_path,monkeypatch):
+    from app.project_file import save_bundle, load_bundle, capture, restore
+    from app.test_project_file import exact
+    from app.solver_adapter import UIAnalysisConfig, run_ui_analysis
+    app=desktop_for_test(tk_root)
+    try:
+        config=UIAnalysisConfig(model_frequency=1000.,cycles=.2,steps_per_cycle=10)
+        result=run_ui_analysis(config)
+        app.last_config=config
+        app.geometry_workflow.generate()
+        app.load_workflow.normal_mean.set('125')
+        app.load_workflow.apply()
+        app.local_only.set(True)
+        app.entries['correlation_area_mm2'].insert(0,'.1')
+        app.result=result; app.field.set('strain_components')
+        app._view_limits={'strain_components':((0.,.001),(-.01,.02))}
+        before=capture(app)
+        expected=before['result']
+        path=tmp_path/'run.ftgsim'; save_bundle(path,before)
+        exact(before,load_bundle(path))
+        monkeypatch.setattr('app.desktop_ui.run_ui_analysis',lambda *_a,**_k:pytest.fail('restore reran solver'))
+        app.result=None; app.load_workflow.loads.clear(); app.load_workflow.normal_mean.set('999')
+        restore(app,load_bundle(path))
+        exact(expected,app.result)
+        assert app.entries['stress_mean_mpa'].get()=='125'
+        assert app.last_config==config
+        assert len(app.load_workflow.loads)==1 and app.local_only.get()
+        np.testing.assert_array_equal(app.geometry_workflow.mesh.vertices,before['mesh']['vertices'])
+        assert app._view_limits==before['views']
+        app.load_workflow.show_map()
+        assert app.load_workflow.maps[-1].colorbar is not None
+        exact(expected,app.result)
+        app.load_workflow.maps[-1].window.destroy()
+        # Save/open dialog path also operates without a new solve.
+        monkeypatch.setattr('tkinter.filedialog.asksaveasfilename',lambda **k:str(path))
+        monkeypatch.setattr('tkinter.messagebox.askyesno',lambda *a,**k:True)
+        monkeypatch.setattr('tkinter.messagebox.showerror',lambda *a,**k:pytest.fail(str(a)))
+        app.project_files.save(as_new=True)
+        app.project_files.open(path)
+        exact(expected,app.result)
+    finally: app.root.destroy()
+
 from solver_v1.energy_model_registry import (
     AL_TARGET_BEST_FEASIBLE,
     TWO_ROW_LJ_REFERENCE,
@@ -122,6 +165,13 @@ def test_matrix_multiple_loads_and_one_balance_confirmation(tk_root, monkeypatch
         app.language_display.set('English'); app._on_language_selected()
         assert load.correction is correction and len(load.loads) == 2
         with pytest.raises(ValueError): app._config()
+        app.local_only.set(True)
+        config = app._config()
+        assert config.stress_mean_mpa == float(load.normal_mean.get())
+        assert config.stress_amplitude_mpa == float(load.normal_amplitude.get())
+        assert load.correction is correction and len(load.loads) == 2
+        app.local_only.set(False)
+        with pytest.raises(ValueError): app._config()
         load.load_list.selection_set(0); load.remove_load()
         assert load.correction is None and len(load.loads) == 1
     finally:
@@ -189,7 +239,17 @@ def test_mesh_map_is_uncertified_and_preserves_result(tk_root, monkeypatch):
         app.language_display.set('English'); app._on_language_selected()
         assert 'Uncertified' in view.info.get()
         assert view.picker.ax.azim == 50
-        for _ in range(3): view.update()
+        bounds = view.picker.ax.get_position(original=True).bounds
+        from types import SimpleNamespace
+        limits = np.array([view.picker.ax.get_xlim3d(), view.picker.ax.get_ylim3d(), view.picker.ax.get_zlim3d()])
+        for _ in range(20):
+            view.index.set(0); view.update()
+            view.index.set(1); view.update()
+            view.picker._zoom(SimpleNamespace(inaxes=view.picker.ax, button='up'))
+            assert np.ptp(view.picker.ax.get_xlim3d()) < np.ptp(limits[0])
+            view.picker._zoom(SimpleNamespace(inaxes=view.picker.ax, button='down'))
+            np.testing.assert_allclose(view.picker.ax.get_position(original=True).bounds, bounds)
+            np.testing.assert_allclose([view.picker.ax.get_xlim3d(), view.picker.ax.get_ylim3d(), view.picker.ax.get_zlim3d()], limits)
         assert len(view.picker.figure.axes) == 2
         assert app.result is result
         assert 'probability_resolution_certified' not in result

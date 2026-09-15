@@ -1,5 +1,31 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-15 UI 국소 실행 / 컬러맵 / 프로젝트 결과 저장
+
+- 시작 a660215 local/origin 일치. 기존 생산 솔버는 수정하지 않았다.
+- Solve 고정 action row의 local-only 선택으로 면하중/전단/텐서 셋업을
+  보존하면서 기본 평균/진폭으로 국소 PDE를 실행한다. 기본 OFF이며 선택을
+  명시해야 한다. 공간 FVM이 연결됐다는 의미가 아니다.
+- 외삽 지도 재갱신 때 colorbar가 3D axes 너비를 매번 0.8배 줄이던 버그를
+  재현했다(.775,.620,.496,.3968,...). 고정 cax/동일 mappable 재사용으로 수정.
+  20회 양방향 줌·시간 변경에서 axes 위치와 역줌 복원을 검사했다.
+- 현재 .ftgsim v2는 설정/내장 geometry/mesh/하중/editor/마지막 실행 config/
+  수치 결과/단위/model metadata/수렴 상태를 압축 저장한다. npy allow_pickle=False,
+  checksum/size 검사 및 atomic replace. runtime model은 parameter record로 저장.
+  실제 PDE 결과의 배열 bitwise round-trip 및 무재계산 plot/map 복원 통과.
+  과거 v1은 다른 finite-chain/FEM 모델이므로 현재 PDE로 변환하지 않고
+  원래 AlFatigue exe로 열도록 안내한다. app/PROJECT_FILES.md 참조.
+- app/windows_launcher.cs + install_windows.ps1은 설치된 Python/현재 worktree를
+  호출하는 소형 EXE를 LocalAppData에 만들고 Windows 실제 Desktop에
+  Al Fatigue UI 바로가기를 설치했다. 독립 배포형 solver bundle은 아니다.
+  기존 EXE/바로가기/default UserChoice는 보존하고 .ftgsim Open With 등록.
+- 검증: targeted UI 11 PASS, project 초기 3 PASS; 최종 app 112 PASS +
+  3 subtests (93.41 s). 저장 테스트의 두번째 Tk interpreter 오류는 기존
+  UI fixture로 옮겨 해결했다. 솔버 전체 779 PASS (692.17 s)는 이 연속
+  작업 중 실행했으며 그 이후 solver_v1 코드변경 없음. Desktop 및 설치 EXE
+  smoke PASS, diff-check PASS. 구형 실행중 UI는 강제종료하지 않았다.
+- 물리 calibration/kinetics/공간 mechanics/Ac 의미는 불변. 최종 Git SHA는 log 참조.
+
 ## 2026-09-15 단결정 범위 / AFT 언어 / AI 연결
 
 - 시작c8b88d9 fetch local/remote일치 clean. 최신 사용자가 단결정 scope를
