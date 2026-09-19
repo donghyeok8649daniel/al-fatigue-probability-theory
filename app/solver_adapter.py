@@ -23,6 +23,7 @@ from solver_v1.model import ModelParams, TwoRowLJ
 from solver_v1.probability_pde_2d import (
     Grid2D,
     Grid2DParams,
+    InitialGibbsBasinError,
     PDETimeParams,
     cyclic_load_from_sigma_over_E,
     run_probability_pde_2d,
@@ -34,6 +35,7 @@ from solver_v1.physical_time import (
     model_time_to_seconds,
 )
 from .specimen_probability import assess_local_rare_event
+from .materials import ALUMINUM, MaterialSelection
 from solver_v1.kinetic_calibration_workflow import (
     build_time_basis_model, validate_for_energy_model,
 )
@@ -101,6 +103,19 @@ class UIAnalysisConfig:
     physical_frequency_hz: float | None = None
     time_calibration: PhysicalTimeCalibration | None = None
     energy_model: str = TWO_ROW_LJ_REFERENCE
+    initialization: str = 'loaded_gibbs'
+    material_id: str = ALUMINUM
+    doping_enabled: bool = False
+    dopant_species: str | None = None
+    dopant_concentration_cm3: float | None = None
+
+    @property
+    def material(self) -> MaterialSelection:
+        return MaterialSelection(self.material_id, self.doping_enabled,
+                                 self.dopant_species, self.dopant_concentration_cm3)
+
+    def require_material_backend(self) -> None:
+        self.material.require_backend()
 
     @property
     def young_mpa(self) -> float:
@@ -156,6 +171,7 @@ class UIAnalysisConfig:
         if self.time_basis not in {"model", "physical"}:
             raise ValueError("time_basis must be 'model' or 'physical'")
         if self.time_basis == "physical":
+            self.require_material_backend()
             if self.time_calibration is None:
                 raise ValueError("physical time requires a kinetic calibration")
             self.time_calibration.require_calibrated()
@@ -168,6 +184,7 @@ class UIAnalysisConfig:
                 raise ValueError("physical_frequency_hz must be finite and positive")
 
     def validate(self) -> None:
+        self.material.validate()
         self.validate_time_basis()
         positive = {
             "young_gpa": self.young_gpa,
@@ -194,6 +211,8 @@ class UIAnalysisConfig:
             raise ValueError("analysis_quality must be 'preview' or 'resolved'")
         if self.energy_model not in ENERGY_MODEL_IDS:
             raise ValueError(f"unknown energy model: {self.energy_model}")
+        if self.initialization not in ('loaded_gibbs', 'zero_load_gibbs'):
+            raise ValueError('invalid initial ensemble')
 
 
 def load_interpretation(
@@ -249,6 +268,7 @@ def canonical_model_params() -> ModelParams:
 def physical_load_conversion(config: UIAnalysisConfig) -> dict[str, object]:
     """Map physical stress inputs through sigma/E and relaxed axial kappa."""
 
+    config.require_material_backend()
     config.validate()
     model = build_time_basis_model(config.energy_model, time_basis=config.time_basis,
                                   calibration=config.time_calibration)
@@ -259,6 +279,7 @@ def physical_load_conversion(config: UIAnalysisConfig) -> dict[str, object]:
     dynamics = model_frequency_diagnostics(model, config.effective_model_frequency)
     return {
         "a0": float(model.a0),
+        **config.material.metadata(),
         "relaxed_axial_kappa": float(kappa),
         "frozen_normal_kappa": float(
             model.frozen_normal_sigma_over_E_force_scale()
@@ -268,7 +289,9 @@ def physical_load_conversion(config: UIAnalysisConfig) -> dict[str, object]:
         "reduced_stress_initial": float(reduced_initial),
         "force_min": float(model.force_from_sigma_over_E(reduced_min)),
         "force_max": float(model.force_from_sigma_over_E(reduced_max)),
-        "preload_force": float(model.force_from_sigma_over_E(reduced_initial)),
+        "preload_force": (float(model.force_from_sigma_over_E(reduced_initial))
+                          if config.initialization == 'loaded_gibbs' else 0.),
+        "initialization": config.initialization,
         **energy_model_result_metadata(config.energy_model, model),
         **production_capabilities(),
         "time_basis": config.time_basis,
@@ -550,49 +573,70 @@ def run_ui_analysis(
         Callable[[float, float, np.ndarray, TwoRowLJ, Grid2D], None] | None
     ) = None,
     stop_requested: Callable[[], bool] | None = None,
+    axial_stress_function: Callable[[float], float] | None = None,
+    _prepared_model: TwoRowLJ | None = None,
 ) -> dict[str, object]:
     """Run the canonical PDE path used by the desktop application."""
 
+    config.require_material_backend()
     config.validate()
-    calibration_model = build_time_basis_model(config.energy_model, time_basis=config.time_basis,
-                                              calibration=config.time_calibration)
+    # Spatial representatives use one unchanged model/table for the same frozen
+    # config. Density and PDE histories are still newly initialized on every run.
+    calibration_model = _prepared_model if _prepared_model is not None else build_time_basis_model(
+        config.energy_model, time_basis=config.time_basis, calibration=config.time_calibration)
     load = cyclic_load_from_sigma_over_E(
         calibration_model,
         sigma_over_E_min=config.stress_min_mpa / config.young_mpa,
         sigma_over_E_max=config.stress_max_mpa / config.young_mpa,
         period=config.model_period,
         cycles=config.cycles,
+        value_function=(None if axial_stress_function is None else
+                        lambda time: axial_stress_function(time)/config.young_mpa),
     )
+    initial_stress = (config.stress_mean_mpa if axial_stress_function is None
+                      else float(axial_stress_function(0.)))
+    preload_stress = initial_stress if config.initialization == 'loaded_gibbs' else 0.
     preload_force = float(
         calibration_model.force_from_sigma_over_E(
-            config.stress_mean_mpa / config.young_mpa
+            preload_stress / config.young_mpa
         )
     )
 
     def forward(record: dict[str, float]) -> None:
         if record_callback is not None:
-            record_callback(_decorate_record(config, record))
+            decorated = _decorate_record(config, record)
+            if axial_stress_function is not None:
+                decorated['applied_stress_mpa'] = float(axial_stress_function(decorated['model_time']))
+            record_callback(decorated)
 
-    raw = run_probability_pde_2d(
-        prepared_model=calibration_model,
-        grid_params=Grid2DParams(
-            n_a=config.grid_n_a,
-            n_s=config.grid_n_s,
-            s_wells=config.s_wells,
-            a_upper=config.a_upper,
-        ),
-        time_params=PDETimeParams(
-            max_dt=min(config.max_dt, config.model_period / config.steps_per_cycle),
-            cfl=0.40,
-            record_interval=config.model_period / config.steps_per_cycle,
-            integrator=config.integration_method,
-        ),
-        load=load,
-        preload_force=preload_force,
-        record_callback=forward,
-        density_record_callback=density_record_callback,
-        stop_requested=stop_requested,
-    )
+    try:
+        raw = run_probability_pde_2d(
+            prepared_model=calibration_model,
+            grid_params=Grid2DParams(
+                n_a=config.grid_n_a,
+                n_s=config.grid_n_s,
+                s_wells=config.s_wells,
+                a_upper=config.a_upper,
+            ),
+            time_params=PDETimeParams(
+                max_dt=min(config.max_dt, config.model_period / config.steps_per_cycle),
+                cfl=0.40,
+                record_interval=config.model_period / config.steps_per_cycle,
+                integrator=config.integration_method,
+            ),
+            load=load,
+            preload_force=preload_force,
+            record_callback=forward,
+            density_record_callback=density_record_callback,
+            stop_requested=stop_requested,
+        )
+    except InitialGibbsBasinError as exc:
+        error = ValueError('initial.'+exc.reason)
+        error.ui_error_data = dict(key='initial.'+exc.reason, values=dict(
+            stress=f'{preload_stress:.8g}', force=f'{preload_force:.8g}',
+            limit=f'{exc.maximum_critical_force/calibration_model.sigma_over_E_force_scale()*config.young_mpa:.8g}',
+            model=config.energy_model, grid=f'{config.grid_n_a}×{config.grid_n_s}'))
+        raise error from exc
     model_time = np.asarray(raw["time"], dtype=float)
     load_cycle = model_time / config.model_period
     dynamics = model_frequency_diagnostics(
@@ -611,7 +655,8 @@ def run_ui_analysis(
     probability = physical_probability_bookkeeping(
         raw["intact_probability_mass"], raw["cumulative_absorbed_mass"]
     )
-    peak_force = float(max(load.force_min, load.force_max))
+    peak_force = float(max(load.force_min, load.force_max) if axial_stress_function is None
+                       else np.max(raw['force']))
     barrier = bound_configurational_barrier(
         calibration_model,
         peak_force,
@@ -645,6 +690,7 @@ def run_ui_analysis(
     result: dict[str, object] = {
         **raw,
         **probability,
+        **config.material.metadata(),
         "model_time": model_time,
         "physical_time_seconds": physical_time,
         "plot_time": physical_time if physical_time is not None else model_time,
@@ -679,10 +725,17 @@ def run_ui_analysis(
             else None
         ),
         "load_cycle": load_cycle,
-        "applied_stress_mpa": np.asarray(config.stress_mpa(model_time), dtype=float),
-        "initial_stress_mpa": float(config.stress_mean_mpa),
-        "initial_force": preload_force,
-        "initial_condition": "conditional Gibbs at sigma(t=0)",
+        "applied_stress_mpa": (np.asarray(config.stress_mpa(model_time), dtype=float)
+            if axial_stress_function is None else np.array([axial_stress_function(t) for t in model_time])),
+        "initial_stress_mpa": initial_stress,
+        "load_history_kind": 'sinusoidal' if axial_stress_function is None else 'prescribed_axial_stress_function',
+        "barrier_force_scope": 'cycle_peak' if axial_stress_function is None else 'maximum_saved_force',
+        "initial_force": float(load.value(0.)),
+        "preload_force": preload_force,
+        "preload_stress_mpa": preload_stress,
+        "initialization": config.initialization,
+        "initial_condition": ('conditional Gibbs at sigma(t=0)' if config.initialization == 'loaded_gibbs'
+                              else 'zero-load conditional Gibbs, followed by the prescribed load at t=0'),
         "relaxed_axial_kappa": float(calibration_model.sigma_over_E_force_scale()),
         "frozen_normal_kappa": float(
             calibration_model.frozen_normal_sigma_over_E_force_scale()

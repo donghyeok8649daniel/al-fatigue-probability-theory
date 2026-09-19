@@ -8,11 +8,14 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.backend_bases import MouseEvent
 
 from app.desktop_ui import DesktopApp
-from app.i18n import tr
+from app.i18n import Localizer, tr
+from app.solver_adapter import UIAnalysisConfig
 
 
 def app_stub():
     app = DesktopApp.__new__(DesktopApp)
+    app.localizer = Localizer()
+    app.last_config = UIAnalysisConfig()
     app.figure = Figure()
     app.canvas = FigureCanvasAgg(app.figure)
     app.ax = app.figure.add_subplot()
@@ -68,7 +71,7 @@ def test_actual_probability_plot_preserves_absorbed_array_and_resets_bad_view():
         "local_initiation_probability": probability,
         "time_basis": "model",
     }
-    app.localizer = SimpleNamespace(language="en")
+    app.localizer = Localizer('en')
     app._last_field = None
     app._view_limits = {"local_initiation_probability": ((1.,2.),(-1.e-8,-.5e-8))}
     app._plot()
@@ -79,13 +82,13 @@ def test_actual_probability_plot_preserves_absorbed_array_and_resets_bad_view():
     assert low <= probability.min() <= probability.max() <= high
     np.testing.assert_array_equal(app.ax.lines[0].get_ydata(), probability)
     assert app.result["local_initiation_probability"] is probability
+    assert app.figure._suptitle.get_text() == 'Result material: Aluminum (Al)'
 
 
 @pytest.mark.parametrize('language', ['ko', 'en'])
 def test_live_specimen_plot_and_labels_are_updated_together(language):
     app=app_stub(); app.result=None
-    app.localizer=SimpleNamespace(language=language)
-    app._tr=lambda key:tr(key,language)
+    app.localizer=Localizer(language)
     app.time_basis_code='model'; app._last_field=None
     app.field=SimpleNamespace(get=lambda:'specimen_probability_extrapolation')
     app.entries={
@@ -110,3 +113,4 @@ def test_live_specimen_plot_and_labels_are_updated_together(language):
     assert '—' in labels['specimen_certified_display']
     assert tr('status.specimen_live',language) in labels['probability_status_display']
     assert app.result is None
+    assert app.figure._suptitle.get_text() == app._result_material_text(app.last_config.material_id)

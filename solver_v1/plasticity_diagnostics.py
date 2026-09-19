@@ -25,7 +25,12 @@ def _array(result: Mapping[str, object], key: str) -> np.ndarray:
 
 def _max_abs(result: Mapping[str, object], key: str) -> float:
     values = _array(result, key)
-    return float(np.nanmax(np.abs(values))) if values.size else 0.0
+    if not values.size:
+        return 0.0
+    # Survivor moments remain undefined after complete absorption.  Preserve
+    # NaN without asking nanmax to reduce an entirely undefined history.
+    defined = values[~np.isnan(values)]
+    return float(np.max(np.abs(defined))) if defined.size else float('nan')
 
 
 def _outside_well_mass(result: Mapping[str, object]) -> np.ndarray:

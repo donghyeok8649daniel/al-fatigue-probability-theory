@@ -1,7 +1,7 @@
 """AFT 1: declarative, mesh-bound surface-load language. No code execution."""
 import json
 import re
-from .surface_setup import encode, decode, mesh_id
+from .surface_setup import encode, decode, mesh_id, MAX_SETUP_CHARS
 
 
 def emit(mesh, loads, correction=None):
@@ -18,7 +18,7 @@ def emit(mesh, loads, correction=None):
 
 
 def compile_setup(text, mesh):
-    if len(text) > 4_000_000: raise ValueError('AFT file too large')
+    if len(text) > MAX_SETUP_CHARS: raise ValueError('AFT file too large')
     lines = [(i, s.strip()) for i, s in enumerate(text.splitlines(), 1)
              if s.strip() and not s.lstrip().startswith('#')]
     if len(lines) < 3 or [s for _, s in lines[:3]] != [

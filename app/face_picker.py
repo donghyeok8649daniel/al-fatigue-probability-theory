@@ -5,6 +5,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 from mpl_toolkits.mplot3d import proj3d
 
+EDGE_DISPLAY_FACE_LIMIT = 50_000
 
 def ray_triangle_pick(vertices, faces, origin, direction):
     """Closest forward ray intersection, independent of triangle winding."""
@@ -65,12 +66,20 @@ class FacePicker:
     def draw(self, mesh, selected):
         changed = mesh is not self.mesh
         self.mesh = mesh
-        for artist in list(self.ax.collections): artist.remove()
+        if changed or mesh is None:
+            for artist in list(self.ax.collections): artist.remove()
         if mesh is not None:
             colors = np.tile([.65, .78, .89, 1.], (len(mesh.faces), 1))
             colors[np.asarray(selected, dtype=int)] = [1., .48, .08, 1.]
-            self.ax.add_collection3d(Poly3DCollection(mesh.vertices[mesh.faces],
-                facecolors=colors, edgecolors='#38566b', linewidth=.3))
+            if changed or not self.ax.collections:
+                # Retain every facet for selection/field display. Dense meshes
+                # omit individual edge strokes, not geometry or stress values.
+                edges = len(mesh.faces) <= EDGE_DISPLAY_FACE_LIMIT
+                self.ax.add_collection3d(Poly3DCollection(mesh.vertices[mesh.faces],
+                    facecolors=colors, edgecolors='#38566b' if edges else 'none',
+                    linewidth=.3 if edges else 0.))
+            else:
+                self.ax.collections[0].set_facecolor(colors)
             if changed:
                 lo, hi = mesh.vertices.min(axis=0), mesh.vertices.max(axis=0)
                 c, r = (lo+hi)/2, max(float((hi-lo).max())*.55, 1e-6)

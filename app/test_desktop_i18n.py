@@ -36,7 +36,8 @@ def test_real_result_and_setup_restore_without_pde(tk_root,tmp_path,monkeypatch)
         np.testing.assert_array_equal(app.geometry_workflow.mesh.vertices,before['mesh']['vertices'])
         assert app._view_limits==before['views']
         app.load_workflow.show_map()
-        assert app.load_workflow.maps[-1].colorbar is not None
+        # A saved nominal local history is not a spatial field.
+        assert app.load_workflow.maps[-1].colorbar is None
         exact(expected,app.result)
         app.load_workflow.maps[-1].window.destroy()
         # Save/open dialog path also operates without a new solve.
@@ -78,6 +79,172 @@ def desktop_for_test(tk_root):
     root = tk.Toplevel(tk_root)
     root.withdraw()
     return desktop_ui.DesktopApp(root=root)
+
+
+def test_material_controls_language_and_small_window_preserve_al_result(tk_root, monkeypatch):
+    from app.materials import ALUMINUM, SILICON_WAFER, DOPANT_SPECIES
+    from app.solver_adapter import UIAnalysisConfig
+
+    def forbidden(*_a, **_k):
+        pytest.fail('Material or language selection reran the solver')
+
+    monkeypatch.setattr(desktop_ui, 'run_ui_analysis', forbidden)
+    app = desktop_for_test(tk_root)
+    try:
+        app.root.geometry('940x480+0+0')
+        app.root.deiconify()
+        app.notebook.select(app.pre_tab)
+        app.root.update()
+        before = {k: v.get() for k, v in app.entries.items()}
+        assert app.material_id == ALUMINUM
+        assert app.aluminum_form.winfo_ismapped() and not app.wafer_panel.winfo_ismapped()
+        app.last_config = UIAnalysisConfig()
+        result = dict(model_time=np.array([0., 1.]), strain=np.array([0., .001]), material_id=ALUMINUM)
+        app.result = result
+        app.field.set('strain')
+        app._plot()
+        app.ax.set_xlim(.1, .7)
+        app._remember_view()
+        app.material_selector.current(1)
+        app.material_selector.event_generate('<<ComboboxSelected>>')
+        app.root.update()
+        assert app.material_id == SILICON_WAFER
+        assert app.wafer_panel.winfo_ismapped() and not app.aluminum_form.winfo_ismapped()
+        assert app.dopant_concentration_entry.instate(['disabled'])
+        app.doping_toggle.invoke()
+        app.dopant_concentration.set('2.50E16')
+        for index, species in enumerate(DOPANT_SPECIES):
+            app.dopant_selector.current(index)
+            app.dopant_selector.event_generate('<<ComboboxSelected>>')
+            app.root.update()
+            config = app._config(allow_face_loads=True)
+            assert config.dopant_species == species
+            assert config.dopant_concentration_cm3 == 2.5e16
+        for language in ('English', '한국어'):
+            app.language_display.set(language)
+            app._on_language_selected()
+            app.root.update()
+            assert app.material_selector.get() == app._tr('material.silicon_wafer')
+            assert app.dopant_selector.get() == app._tr('dopant.Sb')
+            assert app.dopant_concentration.get() == '2.50E16'
+            assert app.dopant_concentration_entry.winfo_rootx() + app.dopant_concentration_entry.winfo_width() <= (
+                app.pre_scroll.canvas.winfo_rootx() + app.pre_scroll.canvas.winfo_width())
+            for button in (app.run_button, app.axial_run_button, app.solid_run_button, app.convergence_button):
+                assert button.instate(['disabled'])
+            assert app.result is result
+            assert app.figure._suptitle.get_text() == app._result_material_text(ALUMINUM)
+            np.testing.assert_allclose(app.ax.get_xlim(), [.1, .7])
+        app.dopant_concentration.set('NaN')
+        assert app.dopant_feedback.get() == app._tr('error.dopant_concentration')
+        app.doping_toggle.invoke()
+        assert app._config(allow_face_loads=True).dopant_concentration_cm3 is None
+        app.material_selector.current(0)
+        app.material_selector.event_generate('<<ComboboxSelected>>')
+        app.root.update()
+        assert app.run_button.instate(['!disabled'])
+        assert app.aluminum_form.winfo_ismapped()
+        assert {k: v.get() for k, v in app.entries.items()} == before
+        assert app._config(allow_face_loads=True).material_id == ALUMINUM
+    finally:
+        app.root.destroy()
+
+
+def test_wafer_project_roundtrip_retains_historical_al_and_legacy_defaults(tk_root, tmp_path, monkeypatch):
+    from copy import deepcopy
+    from app.materials import ALUMINUM, SILICON_WAFER, MaterialInputError
+    from app.project_file import capture, restore, save_bundle, load_bundle
+    from app.test_project_file import exact
+    from app.solver_adapter import UIAnalysisConfig, run_ui_analysis
+
+    app = desktop_for_test(tk_root)
+    try:
+        app.geometry_workflow.generate()
+        config = UIAnalysisConfig(model_frequency=1000., cycles=.2, steps_per_cycle=10)
+        app.last_config = config
+        app.result = run_ui_analysis(config)
+        assert app.result['material_id'] == ALUMINUM and app.result['dopant_species'] is None
+        app.material_selector.current(1)
+        app._on_material_selected()
+        app.doping_toggle.invoke()
+        app.dopant_species_code = 'As'
+        app.dopant_concentration.set(' 3.125E18 ')
+        app._refresh_material_ui()
+        app._view_limits = {'strain_components': ((0., .001), (-.01, .02))}
+        state = capture(app)
+        path = tmp_path / 'wafer.ftgsim'
+        save_bundle(path, state)
+        exact(state, load_bundle(path))
+        monkeypatch.setattr(desktop_ui, 'run_ui_analysis', lambda *_a, **_k: pytest.fail('restore ran PDE'))
+        app.material_id = ALUMINUM
+        app.dopant_concentration.set('')
+        restore(app, load_bundle(path))
+        assert app.material_id == SILICON_WAFER and app.doping_enabled.get()
+        assert app.dopant_species_code == 'As' and app.dopant_concentration.get() == ' 3.125E18 '
+        exact(state['result'], app.result)
+        assert app.last_config == config and app.last_config.material_id == ALUMINUM
+        assert app._view_limits == state['views']
+        assert app._result_material_text(ALUMINUM) in app.summary.get('1.0', 'end')
+        assert app.figure._suptitle.get_text() == app._result_material_text(ALUMINUM)
+        app.load_workflow.show_map()
+        view = app.load_workflow.maps[-1]
+        assert app._result_material_text(ALUMINUM) in view.info.get()
+        assert view.colorbar is None  # A local history still cannot color a mesh.
+        view.window.destroy()
+        # Unfinished input is a saveable draft, not a valid numerical configuration.
+        state['material']['dopant_concentration_cm3'] = '1e'
+        restore(app, state)
+        assert capture(app)['material']['dopant_concentration_cm3'] == '1e'
+        state['material']['doping_enabled'] = False
+        restore(app, state)
+        assert not app.doping_enabled.get() and app.dopant_concentration_entry.instate(['disabled'])
+        assert app.dopant_species_code == 'As' and app.dopant_concentration.get() == '1e'
+        # Corrupt material data must fail before changing any input or result.
+        original_result = app.result
+        invalid = deepcopy(state)
+        invalid['material']['dopant_species'] = 'unknown'
+        with pytest.raises(MaterialInputError):
+            restore(app, invalid)
+        assert app.result is original_result and app.material_id == SILICON_WAFER
+        invalid = deepcopy(state)
+        invalid['result']['material_id'] = SILICON_WAFER
+        with pytest.raises(ValueError, match='Unsupported result material'):
+            restore(app, invalid)
+        assert app.result is original_result
+        # Existing version-2 projects have no material fields anywhere.
+        legacy = deepcopy(state)
+        del legacy['material']
+        for key in ('material_id', 'doping_enabled', 'dopant_species', 'dopant_concentration_cm3'):
+            legacy['last_config'].pop(key)
+            legacy['result'].pop(key)
+        legacy['result'].pop('material_display_key')
+        legacy['result'].pop('dopant_concentration_basis')
+        restore(app, legacy)
+        assert app.material_id == ALUMINUM and app.last_config.material_id == ALUMINUM
+        assert not app.doping_enabled.get()
+        assert app.run_button.instate(['!disabled'])
+    finally:
+        app.root.destroy()
+
+
+def test_silicon_actions_stop_before_load_preflight_and_keep_result(tk_root, monkeypatch):
+    app = desktop_for_test(tk_root)
+    try:
+        app.material_selector.current(1)
+        app._on_material_selected()
+        original = {'saved': True}
+        app.result = original
+        messages = []
+        monkeypatch.setattr(desktop_ui.messagebox, 'showerror', lambda *a, **_k: messages.append(a))
+        monkeypatch.setattr(app, '_config', lambda **_k: pytest.fail('Si reached Al preflight'))
+        for kwargs in ({}, {'spatial': True}, {'solid': True}):
+            app._start_solve(**kwargs)
+        assert len(messages) == 3
+        assert all(app._tr('error.silicon_backend_unavailable') in text[1] for text in messages)
+        app._start_convergence_check()
+        assert not app.busy and app.result is original
+        assert app._poll_job is None
+    finally:
+        app.root.destroy()
 
 
 def test_setup_editor_and_ai_threads_are_inert_until_review(tk_root, monkeypatch):
@@ -298,7 +465,7 @@ def test_geometry_mesh_workflow_preserves_pde_and_language(monkeypatch, tk_root)
         app.root.destroy()
 
 
-def test_mesh_map_is_uncertified_and_preserves_result(tk_root, monkeypatch):
+def test_local_only_result_never_colors_mesh_by_triangle_area(tk_root, monkeypatch):
     app = desktop_for_test(tk_root)
     try:
         monkeypatch.setattr(desktop_ui, 'run_ui_analysis', lambda *_: pytest.fail('map reran PDE'))
@@ -310,12 +477,12 @@ def test_mesh_map_is_uncertified_and_preserves_result(tk_root, monkeypatch):
         app.load_workflow.show_map()
         view = app.load_workflow.maps[-1]
         view.index.set(1); view.update()
-        assert '1.00000000e-16' in view.info.get()
+        assert app._tr('map.need_result') in view.info.get()
         assert len(view.picker.ax.collections) == 1
-        assert len(view.picker.figure.axes) == 2
+        assert len(view.picker.figure.axes) == 1
         view.picker.ax.view_init(30,50)
         app.language_display.set('English'); app._on_language_selected()
-        assert 'Uncertified' in view.info.get()
+        assert 'No saved spatial specimen result' in view.info.get()
         assert view.picker.ax.azim == 50
         bounds = view.picker.ax.get_position(original=True).bounds
         from types import SimpleNamespace
@@ -328,7 +495,7 @@ def test_mesh_map_is_uncertified_and_preserves_result(tk_root, monkeypatch):
             view.picker._zoom(SimpleNamespace(inaxes=view.picker.ax, button='down'))
             np.testing.assert_allclose(view.picker.ax.get_position(original=True).bounds, bounds)
             np.testing.assert_allclose([view.picker.ax.get_xlim3d(), view.picker.ax.get_ylim3d(), view.picker.ax.get_zlim3d()], limits)
-        assert len(view.picker.figure.axes) == 2
+        assert len(view.picker.figure.axes) == 1
         assert app.result is result
         assert 'probability_resolution_certified' not in result
         app.entries['correlation_area_mm2'].delete(0,'end')
@@ -337,6 +504,211 @@ def test_mesh_map_is_uncertified_and_preserves_result(tk_root, monkeypatch):
         assert len(view.picker.figure.axes) == 1
         view.window.destroy()
     finally: app.root.destroy()
+
+
+def test_actual_spatial_map_round_trip_language_view_and_area_independence(tk_root, tmp_path, monkeypatch):
+    from app.axial_specimen import prepare_axial_sections, run_axial_probability
+    from app.solver_adapter import UIAnalysisConfig, run_ui_analysis
+    from app.test_axial_specimen import necked_specimen, bottom
+    from app.project_file import capture, restore, save_bundle, load_bundle
+    from app.test_project_file import exact
+    from app.specimen_mesh import refine_selected
+    from types import SimpleNamespace
+    mesh = necked_specimen()
+    config = UIAnalysisConfig(model_frequency=1000, cycles=.2, steps_per_cycle=10,
+                               stress_mean_mpa=500, stress_amplitude_mpa=100)
+    nominal = run_ui_analysis(config)
+    nominal['axial_specimen'] = run_axial_probability(config,
+        prepare_axial_sections(mesh, bottom(mesh), 6), nominal_result=nominal)
+    app = desktop_for_test(tk_root)
+    try:
+        app.geometry_workflow.geometry = app.geometry_workflow.mesh = mesh
+        app.load_workflow.refresh()
+        app.result = nominal; app.last_config = config; app.axial_count.set('6')
+        app.load_workflow.show_map(); view = app.load_workflow.maps[-1]
+        view.window.withdraw()
+        monkeypatch.setattr(desktop_ui, 'run_ui_analysis', lambda *_a, **_k: pytest.fail('view ran PDE'))
+        monkeypatch.setattr('app.axial_specimen.run_ui_analysis', lambda *_a, **_k: pytest.fail('view ran PDE'))
+        assert view.colorbar is not None
+        assert '6' in view.info.get()
+        assert len(view.picker.figure.axes) == 2
+        before = capture(app)
+        view.picker.ax.view_init(30, 50)
+        bounds = view.picker.ax.get_position(original=True).bounds
+        original_colors = view.picker.ax.collections[0].get_facecolor().copy()
+        # A_c and field/language/time/zoom are post-processing only.
+        app.entries['correlation_area_mm2'].insert(0, '1e-20'); view.update()
+        np.testing.assert_array_equal(view.picker.ax.collections[0].get_facecolor(), original_colors)
+        for _ in range(3):
+            for field in ('stress', 'survival', 'initiation'):
+                view.field.set(field); view.update()
+                view.index.set(0); view.update()
+                view.index.set(len(nominal['axial_specimen']['model_time'])-1); view.update()
+            view.picker._zoom(SimpleNamespace(inaxes=view.picker.ax, button='up'))
+            view.picker._zoom(SimpleNamespace(inaxes=view.picker.ax, button='down'))
+            np.testing.assert_allclose(view.picker.ax.get_position(original=True).bounds, bounds)
+        app.language_display.set('English'); app._on_language_selected()
+        assert 'uncertified' in view.info.get()
+        assert view.picker.ax.azim == 50
+        exact(before['result']['axial_specimen'], app.result['axial_specimen'])
+        save_bundle(tmp_path/'spatial.ftgsim', capture(app))
+        restore(app, load_bundle(tmp_path/'spatial.ftgsim'))
+        assert app.axial_count.get() == '6'
+        exact(before['result']['axial_specimen'], app.result['axial_specimen'])
+        assert view.colorbar is not None
+        # A changed mesh never borrows the old face indices or colors.
+        app.geometry_workflow.mesh, _ = refine_selected(mesh, [0, 1])
+        app.load_workflow.refresh()
+        assert view.colorbar is None
+        assert app._tr('axial.stale') in view.info.get()
+        view.window.destroy()
+    finally:
+        app.root.destroy()
+
+
+def test_balanced_multiple_face_loads_run_from_main_button_and_restore(tk_root, tmp_path, monkeypatch):
+    import time
+    from app.specimen_mesh import cylinder
+    from app.solid_mechanics import solid_field
+    from app.project_file import capture, restore, save_bundle, load_bundle
+    from app.test_project_file import exact
+    app = desktop_for_test(tk_root)
+    errors = []
+    monkeypatch.setattr('tkinter.messagebox.showerror', lambda *a, **k: errors.append(a))
+    try:
+        mesh = cylinder(radius_mm=2, length_mm=8, target_mm=3)
+        app.geometry_workflow.geometry = app.geometry_workflow.mesh = mesh
+        app.load_workflow.refresh()
+        for key, value in dict(model_frequency='1000', cycles='.2', steps_per_cycle='10',
+                               stress_mean_mpa='100', stress_amplitude_mpa='30',
+                               tensile_direction='0 0 1').items():
+            app.entries[key].delete(0, 'end'); app.entries[key].insert(0, value)
+        app.axial_count.set('2')
+        app.solid_target.set('2')
+        app.load_workflow.tensor_text.set('0,0,0;0,0,0;0,0,normal_mean+normal_amp*sin(2*pi*f*t)')
+        for region in ('top', 'bottom'):
+            app.load_workflow.region_code = region
+            app.load_workflow.apply()
+        assert len(app.load_workflow.loads) == 2
+        app._start_solve()  # stored balanced loads select 3D, no local-only bypass
+        deadline = time.monotonic()+150
+        while app.busy and time.monotonic() < deadline:
+            tk_root.update(); time.sleep(.01)
+        assert not app.busy and not errors
+        assert app.result is not None and 'solid_specimen' in app.result
+        solid = app.result['solid_specimen']
+        assert solid['target_mm'] == 2.
+        assert app.geometry_workflow.target.get() == '3'
+        assert len(app.load_workflow.loads) == 2
+        np.testing.assert_allclose(solid_field(solid, 'zz', 0), 100., atol=1e-8)
+        assert len(solid['sample_cells']) == 1
+        view = app.load_workflow.maps[-1]; view.window.withdraw()
+        assert view.colorbar is not None
+        before = capture(app)
+        monkeypatch.setattr('app.solid_mechanics.run_solid_probability', lambda *_a, **_k: pytest.fail('display reran solver'))
+        for field in ('mises', 'xx', 'yy', 'zz', 'xy', 'xz', 'yz', 'stress', 'initiation'):
+            view.field.set(field); view.update()
+            assert view.colorbar is not None
+        view.field.set('hazard_density'); view.update()
+        assert view.colorbar is None
+        assert app._tr('risk.need_volume') in view.info.get()
+        app.correlation_volume.set('1')
+        assert view.colorbar is not None
+        for field in ('hazard_density', 'cell_risk', 'unit_risk'):
+            view.field.set(field); view.update()
+            assert view.colorbar is not None
+        bounds = view.picker.ax.get_position(original=True).bounds
+        limits = view.picker.ax.get_xlim3d(), view.picker.ax.get_ylim3d(), view.picker.ax.get_zlim3d()
+        view.slice_fraction.set(.5); view.update()
+        assert len(np.unique(view._surface_cells)) < len(solid['tetrahedra'])
+        np.testing.assert_allclose(view.picker.ax.get_position(original=True).bounds, bounds)
+        np.testing.assert_allclose([view.picker.ax.get_xlim3d(), view.picker.ax.get_ylim3d(),
+                                    view.picker.ax.get_zlim3d()], limits)
+        view.slice_fraction.set(1); view.update()
+        app.language_display.set('English'); app._on_language_selected()
+        assert '3D' in view.window.title()
+        save_bundle(tmp_path/'actual-solid.ftgsim', capture(app))
+        restore(app, load_bundle(tmp_path/'actual-solid.ftgsim'))
+        exact(before['result']['solid_specimen'], app.result['solid_specimen'])
+        assert app.correlation_volume.get() == '1'
+        assert app.solid_target.get() == '2'
+        assert view.colorbar is not None
+        assert str(app.convergence_button['state']) == 'disabled'
+        view.window.destroy()
+    finally:
+        app.stop_event.set()
+        app.root.destroy()
+
+
+def test_volume_size_error_keeps_counts_through_worker_and_localizes(tk_root, monkeypatch):
+    from app.solid_mechanics import SolidMeshLimitError, MAX_SOLID_NODES
+    from app.solver_adapter import UIAnalysisConfig
+    from app.project_file import capture, restore
+    app = desktop_for_test(tk_root)
+    messages = []
+    try:
+        def too_large(*_a, **_k):
+            raise SolidMeshLimitError(MAX_SOLID_NODES, 1245123, .3)
+        monkeypatch.setattr('app.solid_mechanics.run_solid_probability', too_large)
+        monkeypatch.setattr('tkinter.messagebox.showerror', lambda *a, **_k: messages.append(a))
+        app._solve_worker(UIAnalysisConfig(), solid_request={})
+        kind, payload = app._queue.get_nowait()
+        assert kind == 'error' and payload['key'] == 'solid.size_detail'
+        app._queue.put((kind, payload)); app._drain_queue()
+        assert messages and f'{MAX_SOLID_NODES:,}' in messages[-1][1] and '1,245,123' in messages[-1][1]
+        assert '체적 메시 목표 길이' in messages[-1][1]
+        state = capture(app)
+        state.pop('solid_target_mm')  # old projects used the surface target for both
+        state['geometry_inputs']['target'] = '7'
+        restore(app, state)
+        assert app.solid_target.get() == '7'
+    finally:
+        app.root.destroy()
+
+
+def test_unassigned_stress_stays_draft_and_basic_run_requests_unloaded_3d(tk_root, monkeypatch):
+    from types import SimpleNamespace
+    from .specimen_mesh import cylinder
+    app = desktop_for_test(tk_root)
+    calls = []
+    try:
+        app.geometry_workflow.mesh = cylinder(radius_mm=2.,length_mm=8.,target_mm=3.)
+        app.load_workflow.refresh()
+        app.load_workflow.normal_mean.set('1200')
+        app.load_workflow.normal_amplitude.set('1500')
+        app.load_workflow.refresh_balance()
+        assert '무하중' in app.load_workflow.balance_summary.get()
+        monkeypatch.setattr('tkinter.messagebox.showerror', lambda *a,**k: pytest.fail(str(a)))
+        monkeypatch.setattr(desktop_ui.threading,'Thread',lambda **k:SimpleNamespace(start=lambda:calls.append(k['args'])))
+        app._start_solve()
+        config, sections, request = calls[0]
+        assert config.stress_mean_mpa == config.stress_amplitude_mpa == 0.
+        assert sections is None and request['loads'] == ()
+        assert app.entries['stress_mean_mpa'].get() == '1200'
+        assert app.entries['stress_amplitude_mpa'].get() == '1500'
+    finally:
+        app.root.destroy()
+
+
+def test_initial_ensemble_choice_survives_language_and_project_restore(tk_root, monkeypatch):
+    from app.project_file import capture, restore
+    app = desktop_for_test(tk_root)
+    try:
+        assert app._config().initialization == 'loaded_gibbs'
+        app.initialization.set('zero_load_gibbs')
+        assert app._config().initialization == 'zero_load_gibbs'
+        state = capture(app)
+        monkeypatch.setattr('app.desktop_ui.run_ui_analysis', lambda *_a, **_k: pytest.fail('display ran PDE'))
+        app.language_display.set('English'); app._on_language_selected()
+        assert app.initialization.get() == 'zero_load_gibbs'
+        app.initialization.set('loaded_gibbs')
+        restore(app, state)
+        assert app.initialization.get() == 'zero_load_gibbs'
+        del state['initialization']
+        restore(app, state)
+        assert app.initialization.get() == 'loaded_gibbs'
+    finally:
+        app.root.destroy()
 
 
 def test_single_load_input_and_projected_click(tk_root):
@@ -494,7 +866,11 @@ def test_load_bound_kinetics_switch_units_and_preserve_results(tmp_path, monkeyp
     app = desktop_for_test(tk_root)
     try:
         assert app._time_basis_values() == (app._tr("option.model_time"),)
-        assert app.entries["tensile_direction"].instate(["disabled"])
+        # The 3D axial projection is now editable; it does not unlock the
+        # independent physical-time/kinetic calibration gate.
+        assert not app.entries["tensile_direction"].instate(["disabled"])
+        app.entries['tensile_direction'].delete(0, 'end')
+        app.entries['tensile_direction'].insert(0, '0 0 1')
         result = {"model_time": np.array([0., 1.]), "strain": np.array([0., .001])}
         app.result = result
         app.field.set("strain")
@@ -512,6 +888,7 @@ def test_load_bound_kinetics_switch_units_and_preserve_results(tmp_path, monkeyp
         app.language_display.set("English")
         app._on_language_selected()
         assert app.time_basis_code == "physical"
+        assert app.entries['tensile_direction'].get() == '0 0 1'
         # The old result is STILL model time, not silently relabeled by setup.
         assert app.ax.get_xlabel() == "Dimensionless solver time"
         np.testing.assert_allclose(app.ax.get_xlim(), [.2, .7])
@@ -562,6 +939,8 @@ def test_small_window_scroll_and_fixed_solve_actions(monkeypatch, tk_root, heigh
             app._on_language_selected()
             app.root.update()
             visible(app.run_button)
+            visible(app.axial_run_button)
+            visible(app.solid_run_button)
             visible(app.convergence_button)
             assert app.solve_scroll.canvas.yview()[1] < 1
             quality = app.analysis_quality.get()

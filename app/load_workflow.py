@@ -7,7 +7,8 @@ import numpy as np
 from .tensor_load import default_tensor_expressions, compile_tensor_matrix, evaluate_tensor
 from .face_picker import FacePicker
 from .specimen_mesh import refine_selected
-from .load_balance import stress_traction, resultant, correction_operator, balanced_traction
+from .load_balance import (stress_traction, resultant, correction_operator, balanced_traction,
+                           applied_traction, balance_report)
 
 
 @dataclass(frozen=True)
@@ -43,6 +44,8 @@ class LoadWorkflow:
         self.shear_amplitude = tk.StringVar(master=app.root, value="0")
         self.summary = tk.StringVar(master=app.root)
         self.status = tk.StringVar(master=app.root)
+        self.balance_time = tk.StringVar(master=app.root, value='0')
+        self.balance_summary = tk.StringVar(master=app.root)
         self.tensor_text = tk.StringVar(master=app.root, value=default_tensor_expressions())
         self.tensor_preview = tk.StringVar(master=app.root)
         view = ttk.Frame(tab)
@@ -95,7 +98,13 @@ class LoadWorkflow:
         self.load_list = tk.Listbox(tab, height=5, exportselection=False)
         self.load_list.pack(fill='x', padx=20, pady=4)
         app._bind_text(ttk.Button(tab, command=self.remove_load), 'load.remove').pack(anchor='w', padx=20)
+        row = ttk.Frame(tab); row.pack(fill='x', padx=20, pady=5)
+        app._bind_text(ttk.Label(row), 'load.balance_time').pack(side='left')
+        ttk.Entry(row, textvariable=self.balance_time, width=10).pack(side='right')
+        app._bind_text(ttk.Button(tab, command=self.refresh_balance), 'load.check_balance').pack(anchor='w', padx=20)
+        ttk.Label(tab, textvariable=self.balance_summary, wraplength=330).pack(anchor='w', padx=20, pady=5)
         app._bind_text(ttk.Button(tab, command=self.balance), 'load.balance').pack(anchor='w', padx=20, pady=5)
+        app._bind_text(ttk.Button(tab, command=self.remove_correction), 'load.remove_correction').pack(anchor='w', padx=20)
         app._bind_text(ttk.Label(tab, wraplength=330), 'load.balance_scope').pack(anchor='w', padx=20)
         app._bind_text(ttk.Button(tab, command=self.save_setup), 'load.save_setup').pack(anchor='w', padx=20)
         app._bind_text(ttk.Button(tab, command=self.open_setup), 'load.open_setup').pack(anchor='w', padx=20)
@@ -156,20 +165,39 @@ class LoadWorkflow:
 
     def traction_at(self, t, corrected=True):
         mesh = self.app.geometry_workflow.mesh
-        traction = np.zeros((len(mesh.faces), 3))
-        for load in self.loads:
-            stress = evaluate_tensor(compile_tensor_matrix(load.tensor_expression), t=t,
-                frequency=load.frequency, normal_mean=load.normal_mean_mpa,
-                normal_amplitude=load.normal_amplitude_mpa, shear_mean=load.shear_mean_mpa,
-                shear_amplitude=load.shear_amplitude_mpa)
-            traction += stress_traction(mesh, list(load.face_indices), stress)
-        return balanced_traction(mesh, traction, self.correction) if corrected and self.correction is not None else traction
+        return applied_traction(mesh, self.loads, t, self.correction if corrected else None)
+
+    def refresh_balance(self):
+        mesh = self.app.geometry_workflow.mesh
+        if mesh is None:
+            self.balance_summary.set(self.app._tr('solid.loads')); return
+        try:
+            t = float(self.balance_time.get())
+            report = balance_report(mesh, self.traction_at(t))
+        except (ValueError, ArithmeticError, SyntaxError):
+            self.balance_summary.set(self.app._tr('load.invalid_time')); return
+        assigned = {i for load in self.loads for i in load.face_indices}
+        if self.correction is not None: assigned.update(map(int, self.correction[0]))
+        state = 'unloaded' if report['unloaded'] else 'balanced' if report['balanced'] else 'unbalanced'
+        net = report['net']
+        vector = lambda v: ', '.join(f'{x:.6g}' for x in v)
+        text = self.app._tr('load.balance_summary', state=self.app._tr('load.state_'+state),
+            time=f'{t:.8g}', assigned=len(assigned), unassigned=len(mesh.faces)-len(assigned),
+            force=vector(net[:3]), torque=vector(net[3:]))
+        if not report['balanced']:
+            text += '\n'+self.app._tr('load.balance_needed', force=vector(-net[:3]), torque=vector(-net[3:]))
+        self.balance_summary.set(text)
+
+    def remove_correction(self):
+        self.correction = None
+        self.refresh()
 
     def _refresh_loads(self):
         self.load_list.delete(0, 'end')
         for i, load in enumerate(self.loads):
             self.load_list.insert('end', self.app._tr('load.list_item', index=i+1,
                 faces=len(load.face_indices), frequency=f'{load.frequency:g}'))
+        self.refresh_balance()
 
     def remove_load(self):
         selected = self.load_list.curselection()
@@ -215,19 +243,24 @@ class LoadWorkflow:
             self.status.set(self.app._tr('load.balance_done'))
             return
         try:
-            if not self.loads: raise ValueError('No stored loads')
+            if not self.loads:
+                self.refresh_balance(); return
             mesh = self.app.geometry_workflow.mesh
             correction = correction_operator(mesh, self._indices())
-            traction = self.traction_at(0, corrected=False)
+            preview_time = float(self.balance_time.get())
+            if not np.isfinite(preview_time): raise ValueError('load.invalid_time')
+            traction = self.traction_at(preview_time, corrected=False)
             before = resultant(mesh, traction)
             after = resultant(mesh, balanced_traction(mesh, traction, correction))
         except (ValueError, ArithmeticError) as exc:
-            messagebox.showerror(self.app._tr('tab.load'), str(exc), parent=self.app.root)
+            detail = self.app._tr(str(exc)) if str(exc).startswith('load.') else self.app._tr('load.invalid_time')
+            messagebox.showerror(self.app._tr('tab.load'), detail, parent=self.app.root)
             return
         if messagebox.askyesno(self.app._tr('load.balance'), self.app._tr('load.balance_confirm',
+                time=f'{preview_time:.8g}',
                 before=np.array2string(before, precision=5), after=np.array2string(after, precision=5)), parent=self.app.root):
             self.correction = correction
-            self.status.set(self.app._tr('load.balance_done'))
+            self.refresh()
 
     def preview_tensor(self):
         try:

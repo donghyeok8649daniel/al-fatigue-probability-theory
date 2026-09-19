@@ -5,24 +5,31 @@ import json
 import numpy as np
 from .tensor_load import compile_tensor_matrix
 
+MAX_SETUP_CHARS = 256 * 1024 * 1024
 
 def mesh_id(mesh):
+    if hasattr(mesh, 'fingerprint'):
+        return mesh.fingerprint
     return hashlib.sha256(mesh.vertices.astype('<f8').tobytes()+mesh.faces.astype('<i8').tobytes()).hexdigest()
 
 
 def encode(mesh, loads, correction):
+    def scalar(value):
+        if isinstance(value, np.generic):
+            return value.item()
+        raise TypeError(f'Unsupported setup value: {type(value).__name__}')
     return json.dumps(dict(schema='aft.surface-loads/1', mesh_sha256=mesh_id(mesh),
         units=dict(coordinates='mm', stress='MPa', frequency='cycles/model_time'),
         loads=[asdict(load) for load in loads],
         correction_faces=None if correction is None else correction[0].tolist(),
-        scope='surface_setup_only_not_spatial_solution'), indent=2, allow_nan=False)
+        scope='surface_setup_only_not_spatial_solution'), indent=2, allow_nan=False, default=scalar)
 
 
 def decode(text, mesh):
     from .load_workflow import FaceLoad
     from .load_balance import correction_operator
     import ast
-    if len(text) > 4_000_000: raise ValueError('setup too large')
+    if len(text) > MAX_SETUP_CHARS: raise ValueError('setup too large')
     value = json.loads(text)
     if not isinstance(value, dict): raise ValueError('setup must be an object')
     if value.get('schema') != 'aft.surface-loads/1' or value.get('mesh_sha256') != mesh_id(mesh):

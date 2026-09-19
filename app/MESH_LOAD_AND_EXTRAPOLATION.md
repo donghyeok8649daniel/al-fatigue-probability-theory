@@ -1,9 +1,16 @@
 # Single load input and interactive surface diagnostics
 
+Historical surface-map audit. The current spatial mechanics and volume-risk
+maps are documented in [SOLID_MECHANICS.md](SOLID_MECHANICS.md). The old uniform
+global-P/triangle-area coloring below is retained as a mathematical regression
+helper and is no longer used as a spatial prediction in the UI.
+
 The axial stress mean/amplitude widgets live only in Face Load. Their StringVars
 are also the values read by DesktopApp._config; Pre has material/time/settings.
 Presets modify these same entries. Saving a face selection is not required to
-run the independent local axial PDE. The setup surface is not a solved spatial
+run the explicitly selected independent local axial PDE. In the default 3D path,
+only stored face loads apply forces: draft inputs and unassigned faces contribute
+zero traction. The setup surface is not a solved spatial
 stress field. Nonzero shear or custom tensor expressions explicitly block this
 scalar solver instead of being silently ignored. They remain preparatory inputs.
 
@@ -16,7 +23,7 @@ remains available for cylinder top/bottom/lateral faces.
 Local refinement marks selected triangle edges. Adjacent polygons include the
 same shared edge midpoints and are triangulated with an interior centroid.
 Consequently no T-junctions are introduced. Geometry, area and enclosed volume
-are preserved; imported curved geometry is not reconstructed. The 20,000-face
+are preserved; imported curved geometry is not reconstructed. The 2,000,000-face
 limit applies. Remeshing invalidates saved face assignments.
 
 ## Surface extrapolation

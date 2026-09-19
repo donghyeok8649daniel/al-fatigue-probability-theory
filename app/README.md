@@ -13,6 +13,18 @@ For an import and canonical-calibration smoke test that does not open a window:
 py -3 -m app.desktop_ui --smoke
 ```
 
+## Material selection
+
+The Pre tab offers Aluminum (Al) and Silicon wafer (Si). Silicon enables
+intentional-doping selection, B/P/As/Sb, and dopant atom density in cm⁻³,
+including scientific notation. Project files preserve these settings and
+unfinished input text; older files default to Al.
+
+Silicon currently supports setup and saving. Its analysis buttons remain disabled
+until a corresponding energy/dynamics model is available. Backend guards prevent
+an Al calculation from being labelled as silicon. Existing results retain their
+original material independently of edited settings. See [Material selection](MATERIAL_SELECTION.md).
+
 ## Canonical data path
 
 `app.solver_adapter` is the only solver-facing path used by the desktop UI:
@@ -37,9 +49,14 @@ $$
 The frozen-normal value $a_0W_{aa}$ is diagnostic only. The UI does not use raw
 $\sigma/E$ or the frozen-normal scale as its generalized force.
 
-The initial condition is the conditional principal-well Gibbs density at
+The default initial condition is the conditional principal-well Gibbs density at
 $\sigma(t=0)$. For the current sinusoidal input this is the entered mean stress,
 so a nonzero mean load does not create an artificial zero-preload jump.
+The Solve panel also offers an explicit zero-load Gibbs preparation followed
+by the prescribed load at t=0. This choice changes the preparation protocol;
+it is saved with the project and is never selected automatically. If the
+loaded initial basin is absent, the error reports the actual local stress and
+distinguishes a lost model basin from a grid that fails to resolve it.
 
 ## Result fields
 
@@ -161,18 +178,26 @@ not a calibrated specimen) is available. Import supports binary/ASCII STL and
 triangulated OBJ, with explicit mm-per-file-unit conversion. STEP/IGES must be
 tessellated in CAD first; this application does not contain a CAD solid kernel.
 
-MESH performs conforming midpoint subdivision of the supplied surface without
-smoothing, with a maximum edge target and a hard, visible 20,000-face budget.
+MESH splits overlong edges conformingly without smoothing, with a maximum edge
+target and a visible 2,000,000-face budget. Small facets are retained unless a
+shared edge needs refinement.
 It preserves imported faceted geometry; subdivision does not recover lost CAD
 curvature. Edge incidence is reported, not claimed as a self-intersection,
-orientation or solid-volume certificate. Files above 10 MB are rejected before
+orientation or solid-volume certificate. Files above 512 MiB are rejected before
 loading. Invalid imports/refinement preserve the previous valid geometry/mesh.
 For the built-in parametric cylinder, meshing first regenerates the circular
 sampling from its applied dimensions and the requested target size.
 
-The 3D view is a geometry/surface-mesh view, not an analysis colormap. PRE and
-SOLVE retain the existing local probability PDE and energy selector. No volume
-FVM, spatial stress solution or patch-resolved crack field is implied. Geometry
+The mesh tab shows geometry. The separate post map displays actual 3D linear
+tetrahedral stresses and explicitly projected local probability histories;
+see [SOLID_MECHANICS.md](SOLID_MECHANICS.md) for assumptions and verification.
+Volume meshing supports 1,200,000 nodes / 6,000,000 tetrahedra, with a separate
+target length in Solve. Large systems use rigid-mode multigrid and projected CG.
+Invalid TetGen output is retried once while preserving the input surface facets;
+element volumes, total volume, boundary ownership and each assigned face area
+must pass the same checks before assembly. These are resource limits, not a
+guarantee that every size fits the available RAM or is spatially converged.
+PRE and SOLVE retain the existing local probability PDE and energy selector. Geometry
 changes do not mutate local PDE results, inputs, mobility, area aggregation or
 calibration. Surface area is not automatically copied into A_stressed or A_c.
 Language switching preserves geometry, mesh and numerical results. Research
@@ -185,6 +210,14 @@ stores normal/shear mean and amplitude in MPa. A symmetric 3x3 time-dependent
 stress matrix can also be entered as three comma-separated rows separated by
 semicolons. Only `t`, `f`, `pi`, the four mean/amplitude variables, and `sin`
 or `cos` are accepted. The default is normal sine plus symmetric `xy` shear
-cosine. These are validated boundary-condition inputs; until a volume FVM/FEM
-mechanics backend is validated, they are not silently sent to the local
-probability PDE.
+cosine. The 3D mechanics path uses all six tensor components and checks both
+force and torque equilibrium. Its local PDE input is explicitly the signed
+axial projection e^T sigma e, not a calibrated multiaxial fatigue model.
+
+Stress entries are drafts until a face load is stored. The default 3D path treats
+unassigned faces as zero traction; an entirely unassigned specimen has zero
+applied force. The explicitly selected local-only PDE still uses the input stress.
+The Face Load tab reports net force/torque at a chosen preview time and the
+opposing resultants needed for balance. Preflight checks run before meshing and
+balance is checked again at each evaluated simulation time. Corrections require
+explicit face selection and confirmation and can be removed separately.

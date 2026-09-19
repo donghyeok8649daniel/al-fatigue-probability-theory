@@ -24,6 +24,40 @@ def test_refinement_preserves_geometry_area_and_closure():
     assert not r.vertices.flags.writeable
 
 
+def test_adaptive_refinement_preserves_small_facets_and_accepts_large_mesh():
+    from app.specimen_mesh import SurfaceMesh
+    base = cylinder(radius_mm=5, length_mm=30, target_mm=3)
+    # A small disconnected marker triangle has no shared overlong edge.
+    marker = np.array([[100., 0., 0.], [100.1, 0., 0.], [100., .1, 0.]])
+    mesh = SurfaceMesh(np.vstack([base.vertices, marker]),
+        np.vstack([base.faces, np.arange(len(base.vertices), len(base.vertices)+3)]), 'test')
+    refined = refine_surface(mesh, .4)
+    assert len(refined.faces) > 20_000
+    assert np.count_nonzero(np.all(refined.faces == mesh.faces[-1], axis=1)) == 1
+    assert refined.areas.sum() == pytest.approx(mesh.areas.sum(), rel=1e-12)
+    closed = refine_surface(base, .4)
+    assert closed.enclosed_volume_mm3 == pytest.approx(base.enclosed_volume_mm3, rel=1e-12)
+
+
+def test_geometry_cache_is_isolated_from_returned_arrays_and_new_meshes():
+    from app.load_balance import face_geometry
+    from app.surface_setup import mesh_id
+    from app.specimen_mesh import SurfaceMesh
+    import hashlib
+    mesh = cylinder()
+    expected_area = mesh.areas.copy()
+    centers, normals = face_geometry(mesh)
+    expected_normals = normals.copy()
+    centers[:] = 0.; normals[:] = 0.
+    mesh.areas[:] = 0.
+    np.testing.assert_array_equal(mesh.areas, expected_area)
+    np.testing.assert_array_equal(face_geometry(mesh)[1], expected_normals)
+    assert mesh_id(mesh) == hashlib.sha256(mesh.vertices.astype('<f8').tobytes()+mesh.faces.astype('<i8').tobytes()).hexdigest()
+    shifted = SurfaceMesh(mesh.vertices+10., mesh.faces, 'shift')
+    assert mesh_id(shifted) != mesh_id(mesh)
+    assert shifted.enclosed_volume_mm3 == pytest.approx(mesh.enclosed_volume_mm3)
+
+
 def test_obj_units_negative_indices_and_triangle_validation(tmp_path):
     p = tmp_path/'test.obj'
     p.write_text('v 0 0 0\nv 1 0 0\nv 0 1 0\nf -3 -2 -1\n')

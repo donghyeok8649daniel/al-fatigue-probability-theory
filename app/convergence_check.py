@@ -35,6 +35,7 @@ def run_convergence_check(
     result is the finer spatial run, not the original reference.
     """
 
+    config.require_material_backend()
     config.validate()
     if config.analysis_quality != "resolved":
         raise ValueError("Preview results are not convergence-certified")

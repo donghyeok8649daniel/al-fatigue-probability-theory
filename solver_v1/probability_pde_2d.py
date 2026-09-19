@@ -42,6 +42,16 @@ from .model import ModelParams, TwoRowLJ
 from .configurational_plasticity import registry_rate_terms
 
 
+class InitialGibbsBasinError(ValueError):
+    """No discretized intact initial ensemble; never substitute a fake density."""
+    def __init__(self, *, force, maximum_critical_force, grid_shape):
+        super().__init__('initial Gibbs basin contains no grid cells')
+        self.force = float(force)
+        self.maximum_critical_force = float(maximum_critical_force)
+        self.grid_shape = tuple(grid_shape)
+        self.reason = ('unbound' if force >= maximum_critical_force else 'unresolved')
+
+
 @dataclass(frozen=True)
 class Grid2DParams:
     """Cell-centred truncated domain for q=(a,s)."""
@@ -127,7 +137,7 @@ def cyclic_load_from_sigma_over_E(
     mapped_function = None
     if value_function is not None:
         mapped_function = lambda time: float(
-            model.force_from_sigma_over_E(value_function(time))
+            scale * value_function(time)
         )
     return CyclicLoad2D(
         force_min=float(scale * sigma_over_E_min),
@@ -359,7 +369,8 @@ def initial_gibbs_density(
     if principal_well_only:
         mask &= np.abs(grid.s[None, :]) < 0.5 * model.p.b
     if not np.any(mask):
-        raise ValueError("initial Gibbs basin contains no grid cells")
+        raise InitialGibbsBasinError(force=preload_force,
+            maximum_critical_force=np.max(model._fc_grid), grid_shape=g.shape)
 
     g0 = float(np.min(g[mask]))
     exponent = -(g - g0) / model.p.kT

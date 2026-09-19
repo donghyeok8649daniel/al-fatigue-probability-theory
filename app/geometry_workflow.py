@@ -8,6 +8,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
 from .specimen_mesh import cylinder, load_surface, refine_surface
+from .face_picker import EDGE_DISPLAY_FACE_LIMIT
 
 
 class GeometryWorkflow:
@@ -112,8 +113,9 @@ class GeometryWorkflow:
         mesh = self.mesh if self.mesh is not None else self.geometry
         self.ax.clear()
         triangles = mesh.vertices[mesh.faces]
+        edges = len(mesh.faces) <= EDGE_DISPLAY_FACE_LIMIT
         self.ax.add_collection3d(Poly3DCollection(triangles, facecolor='#b5d3e8',
-            edgecolor='#38566b', linewidth=.25, alpha=.85))
+            edgecolor='#38566b' if edges else 'none', linewidth=.25 if edges else 0., alpha=.85))
         lo, hi = mesh.vertices.min(axis=0), mesh.vertices.max(axis=0)
         center = (lo+hi)/2; radius = max(float(np.max(hi-lo))/2, 1e-6)
         self.ax.set_xlim(center[0]-radius, center[0]+radius)

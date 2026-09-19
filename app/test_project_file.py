@@ -38,3 +38,31 @@ def test_legacy_project_is_not_reinterpreted(tmp_path):
     p=tmp_path/'legacy.ftgsim'
     with zipfile.ZipFile(p,'w') as z: z.writestr('ftgsim-manifest.json',json.dumps({'schema_version':'1.0.0'}))
     with pytest.raises(ValueError,match='Legacy'): load_bundle(p)
+
+
+def test_streamed_arrays_preserve_layout_endianness_and_atomic_size_failure(tmp_path, monkeypatch):
+    from app import project_file
+    p = tmp_path/'streamed.ftgsim'
+    base = np.arange(2000, dtype='>f8').reshape(40,50)
+    state = {'strided': base[::3, ::2], 'fortran': np.asfortranarray(base),
+             'scalar': np.array(-0.), 'empty': np.empty((0,3)),
+             'dates': np.array(['2026-09-16', 'NaT'], dtype='datetime64[D]'),
+             'text': np.array(['형상', 'mesh']),
+             'structured': np.array([(1, 2.5)], dtype=[('index', '>i4'), ('stress', '<f8')])}
+    save_bundle(p, state)
+    original_read = zipfile.ZipFile.read
+    def metadata_only(self, name, *args, **kwargs):
+        assert not str(name).endswith('.npy'), 'Array payload must be streamed'
+        return original_read(self, name, *args, **kwargs)
+    monkeypatch.setattr(zipfile.ZipFile, 'read', metadata_only)
+    exact(state, load_bundle(p))
+    original = p.read_bytes()
+    # Includes streaming headers/manifest, beyond the array-only preflight.
+    monkeypatch.setattr(project_file, 'LIMIT', 1000)
+    with pytest.raises(ValueError, match='size limit'):
+        save_bundle(p, {'a': np.arange(100, dtype=np.float64)})
+    assert p.read_bytes() == original
+    monkeypatch.setattr(project_file, 'METADATA_LIMIT', 100)
+    with pytest.raises(ValueError, match='metadata exceeds size limit'):
+        save_bundle(p, {'label': 'x'*100})
+    assert p.read_bytes() == original

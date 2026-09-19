@@ -7,6 +7,7 @@ import sys
 import threading
 import time
 import tkinter as tk
+from dataclasses import asdict, replace
 from pathlib import Path
 from tkinter import filedialog, messagebox, ttk
 
@@ -39,6 +40,10 @@ from .convergence_check import run_convergence_check
 from .scrollable_panel import ScrollablePanel
 from .geometry_workflow import GeometryWorkflow
 from .load_workflow import LoadWorkflow
+from .materials import (
+    ALUMINUM, SILICON_WAFER, MATERIAL_IDS, DOPANT_SPECIES,
+    MaterialInputError, material_from_draft,
+)
 from .specimen_probability import (
     BELOW_RESOLUTION,
     aggregate_specimen_probability,
@@ -94,7 +99,7 @@ def acquire_single_instance() -> bool:
 
 
 class DesktopApp:
-    """Five-stage workspace; surface geometry is not yet spatial mechanics."""
+    """Geometry, balanced 3D elasticity, and axial-projected local probability."""
 
     PARAMS = (
         ("young_gpa", "field.young_gpa", "69", "unit.gpa"),
@@ -132,6 +137,19 @@ class DesktopApp:
         self.language_display = tk.StringVar(value=LANGUAGE_NAMES[DEFAULT_LANGUAGE])
         self.spatial_backend = tk.StringVar(value="FVM")
         self.local_only = tk.BooleanVar(value=False)
+        self.axial_count = tk.StringVar(value="16")
+        self.solid_poisson = tk.StringVar(value="0.33")
+        self.solid_target = tk.StringVar(value="3")
+        self.initialization = tk.StringVar(value='loaded_gibbs')
+        self.material_id = ALUMINUM
+        self.material_display = tk.StringVar(value=self._tr('material.aluminum'))
+        self.doping_enabled = tk.BooleanVar(value=False)
+        self.dopant_species_code = 'B'
+        self.dopant_display = tk.StringVar(value=self._tr('dopant.B'))
+        self.dopant_concentration = tk.StringVar(value='')
+        self.dopant_feedback = tk.StringVar(value='')
+        self.material_status = tk.StringVar(value='')
+        self.correlation_volume = tk.StringVar(value="")
         self.analysis_quality = tk.StringVar(value=self._tr("quality.preview_option"))
         self.analysis_quality_code = "preview"
         self.probability_scale = tk.StringVar(value=self._tr("option.local"))
@@ -189,6 +207,8 @@ class DesktopApp:
         self._statusbar()
         self._connect_plot_events()
         self.root.protocol("WM_DELETE_WINDOW", self._close)
+        self._refresh_material_ui()
+        self.dopant_concentration.trace_add('write', self._update_dopant_feedback)
         self._update_stress_context()
         self._refresh_time_basis_ui()
         self._refresh_specimen_labels()
@@ -366,7 +386,12 @@ class DesktopApp:
             self.pre_tab, background=PANEL_BG, style="Panel.TFrame"
         )
         self.pre_scroll.pack(fill="both", expand=True)
-        form = self.pre_scroll.content
+        container = self.pre_scroll.content
+        container.columnconfigure(0, weight=1)
+        self._material_panel(container)
+        self.aluminum_form = ttk.Frame(container, style='Panel.TFrame')
+        self.aluminum_form.grid(row=1, column=0, sticky='nsew')
+        form = self.aluminum_form
         section = self._bind_text(
             ttk.Label(form, style="Section.TLabel"), "section.axial_inputs"
         )
@@ -436,8 +461,6 @@ class DesktopApp:
                 row=row, column=2, sticky="w", padx=(6, 20), pady=7
             )
             self.entries[key] = entry
-            if key == "tensile_direction":
-                entry.configure(state="disabled")
             if key == "model_frequency":
                 self.frequency_label = label
                 self.frequency_unit = unit
@@ -492,6 +515,107 @@ class DesktopApp:
         scope = self._bind_text(ttk.Label(note, justify="left"), "scope.text")
         scope.pack(anchor="w")
 
+    def _material_panel(self, parent) -> None:
+        panel = self._bind_text(ttk.LabelFrame(parent, padding=12), 'material.section')
+        panel.grid(row=0, column=0, sticky='ew', padx=20, pady=(18, 4))
+        panel.columnconfigure(1, weight=1)
+        self._bind_text(ttk.Label(panel), 'material.select').grid(row=0, column=0, sticky='w', padx=(0, 12))
+        self.material_selector = ttk.Combobox(panel, textvariable=self.material_display,
+            values=self._material_values(), state='readonly', width=25)
+        self.material_selector.grid(row=0, column=1, sticky='ew')
+        self.material_selector.bind('<<ComboboxSelected>>', self._on_material_selected)
+        self.wafer_panel = ttk.Frame(panel)
+        self.wafer_panel.grid(row=1, column=0, columnspan=2, sticky='ew', pady=(10, 0))
+        self.wafer_panel.columnconfigure(1, weight=1)
+        self.doping_toggle = self._bind_text(ttk.Checkbutton(self.wafer_panel,
+            variable=self.doping_enabled, command=self._refresh_material_ui), 'material.doping_enabled')
+        self.doping_toggle.grid(row=0, column=0, columnspan=3, sticky='w', pady=(0, 8))
+        self._bind_text(ttk.Label(self.wafer_panel), 'material.dopant').grid(row=1, column=0, sticky='w', padx=(0, 12))
+        self.dopant_selector = ttk.Combobox(self.wafer_panel, textvariable=self.dopant_display,
+            values=self._dopant_values(), state='readonly', width=25)
+        self.dopant_selector.grid(row=1, column=1, sticky='ew', pady=4)
+        self.dopant_selector.bind('<<ComboboxSelected>>', self._on_dopant_selected)
+        self._bind_text(ttk.Label(self.wafer_panel), 'material.concentration').grid(row=2, column=0, sticky='w', padx=(0, 12))
+        self.dopant_concentration_entry = ttk.Entry(self.wafer_panel,
+            textvariable=self.dopant_concentration, width=25)
+        self.dopant_concentration_entry.grid(row=2, column=1, sticky='ew', pady=4)
+        self._bind_text(ttk.Label(self.wafer_panel), 'unit.per_cm3').grid(row=2, column=2, sticky='w', padx=(8, 0))
+        ttk.Label(self.wafer_panel, textvariable=self.dopant_feedback, wraplength=550).grid(
+            row=3, column=0, columnspan=3, sticky='w', pady=(4, 0))
+        self._bind_text(ttk.Label(self.wafer_panel, wraplength=550), 'material.concentration_help').grid(
+            row=4, column=0, columnspan=3, sticky='w', pady=(8, 0))
+        self._bind_text(ttk.Label(self.wafer_panel, wraplength=550), 'material.silicon_scope').grid(
+            row=5, column=0, columnspan=3, sticky='w', pady=(8, 0))
+
+    def _material_values(self) -> tuple[str, ...]:
+        return tuple(self._tr(f'material.{code}') for code in MATERIAL_IDS)
+
+    def _dopant_values(self) -> tuple[str, ...]:
+        return tuple(self._tr(f'dopant.{code}') for code in DOPANT_SPECIES)
+
+    def _material_draft(self) -> dict[str, object]:
+        return dict(material_id=self.material_id, doping_enabled=self.doping_enabled.get(),
+                    dopant_species=self.dopant_species_code,
+                    dopant_concentration_cm3=self.dopant_concentration.get())
+
+    def _on_material_selected(self, _event=None) -> None:
+        if not self.busy:
+            self.material_id = MATERIAL_IDS[self._material_values().index(self.material_display.get())]
+        self._refresh_material_ui()
+        self._update_stress_context()
+
+    def _on_dopant_selected(self, _event=None) -> None:
+        if not self.busy:
+            self.dopant_species_code = DOPANT_SPECIES[self._dopant_values().index(self.dopant_display.get())]
+        self._refresh_material_ui()
+
+    def _update_dopant_feedback(self, *_args) -> None:
+        if self.material_id != SILICON_WAFER or not self.doping_enabled.get():
+            self.dopant_feedback.set(self._tr('material.undoped_help'))
+            return
+        if not self.dopant_concentration.get().strip():
+            self.dopant_feedback.set(self._tr('material.concentration_prompt'))
+            return
+        try:
+            material = material_from_draft(self._material_draft())
+        except MaterialInputError as exc:
+            self.dopant_feedback.set(self._tr(str(exc)))
+        else:
+            self.dopant_feedback.set(self._tr('material.concentration_value',
+                concentration=material.dopant_concentration_cm3))
+
+    def _refresh_material_ui(self) -> None:
+        silicon = self.material_id == SILICON_WAFER
+        self.material_selector.configure(values=self._material_values(),
+                                         state='disabled' if self.busy else 'readonly')
+        self.material_display.set(self._tr(f'material.{self.material_id}'))
+        self.dopant_selector.configure(values=self._dopant_values(), state=(
+            'readonly' if silicon and self.doping_enabled.get() and not self.busy else 'disabled'))
+        self.dopant_display.set(self._tr(f'dopant.{self.dopant_species_code}'))
+        self.doping_toggle.configure(state='disabled' if self.busy else 'normal')
+        self.dopant_concentration_entry.configure(state=(
+            'normal' if silicon and self.doping_enabled.get() and not self.busy else 'disabled'))
+        if silicon:
+            self.wafer_panel.grid()
+            self.aluminum_form.grid_remove()
+        else:
+            self.wafer_panel.grid_remove()
+            self.aluminum_form.grid()
+        self.energy_model_selector.configure(values=self._energy_model_values(),
+            state='disabled' if silicon else 'readonly')
+        self.energy_model_display.set(self._tr(energy_model_metadata(self.energy_model_code).display_key))
+        self.material_status.set(self._tr('material.silicon_status' if silicon else 'material.aluminum_status'))
+        self._update_dopant_feedback()
+        if not self.busy:
+            self.run_button.configure(state='disabled' if silicon else 'normal')
+        for button in (self.axial_run_button, self.solid_run_button):
+            button.configure(state='disabled' if silicon or self.busy else 'normal')
+        can_check = (not silicon and not self.busy and self.result is not None
+            and self.last_config is not None and self.last_config.material_id == self.material_id
+            and self.result.get('analysis_quality') == 'resolved'
+            and 'axial_specimen' not in self.result and 'solid_specimen' not in self.result)
+        self.convergence_button.configure(state='normal' if can_check else 'disabled')
+
     def _solve_tab(self) -> None:
         # Reserve the action row BEFORE the expanding settings viewport. The
         # solve button remains reachable even when diagnostics grow after a run.
@@ -499,6 +623,8 @@ class DesktopApp:
         controls.pack(side="left", fill="y", padx=(12, 10), pady=12)
         self.solve_actions = ttk.Frame(controls, style="Panel.TFrame")
         self.solve_actions.pack(side="bottom", fill="x", pady=(8, 0))
+        ttk.Label(self.solve_actions, textvariable=self.material_status, wraplength=340).pack(
+            anchor='w', pady=(0, 5))
         self._bind_text(ttk.Checkbutton(self.solve_actions, variable=self.local_only),
                         "load.local_only").pack(anchor="w")
         self.solve_scroll = ScrollablePanel(
@@ -516,12 +642,28 @@ class DesktopApp:
         self._bind_text(
             ttk.Label(left, style="Section.TLabel"), "section.spatial_backend"
         ).pack(anchor="w")
-        ttk.Combobox(
-            left, textvariable=self.spatial_backend, values=("FVM", "FEM"),
-            state="disabled", width=22
-        ).pack(anchor="w", pady=(6, 15))
+        self._bind_text(ttk.Label(left, wraplength=340), 'solid.backend').pack(anchor="w", pady=(6, 15))
         self._bind_text(ttk.Label(left, wraplength=340, style="Unit.TLabel"),
                         "geometry.solve_scope").pack(anchor="w", pady=(0, 10))
+        section_row = ttk.Frame(left)
+        section_row.pack(fill="x", pady=(0, 10))
+        self._bind_text(ttk.Label(section_row, wraplength=250), "axial.count").pack(side="left")
+        ttk.Spinbox(section_row, from_=2, to=64, textvariable=self.axial_count, width=6).pack(side="right")
+        volume_row = ttk.Frame(left)
+        volume_row.pack(fill='x', pady=(0, 5))
+        self._bind_text(ttk.Label(volume_row, wraplength=250), 'solid.target_label').pack(side='left')
+        self.solid_target_entry = ttk.Entry(volume_row, textvariable=self.solid_target, width=7)
+        self.solid_target_entry.pack(side='right')
+        self._bind_text(ttk.Label(left, wraplength=340), 'solid.target_help').pack(anchor='w', pady=(0, 10))
+        poisson_row = ttk.Frame(left)
+        poisson_row.pack(fill='x', pady=(0, 10))
+        self._bind_text(ttk.Label(poisson_row, wraplength=250), 'solid.poisson').pack(side='left')
+        ttk.Entry(poisson_row, textvariable=self.solid_poisson, width=7).pack(side='right')
+        self._bind_text(ttk.Label(left, style='Section.TLabel'), 'initial.label').pack(anchor='w')
+        for mode in ('loaded_gibbs', 'zero_load_gibbs'):
+            self._bind_text(ttk.Radiobutton(left, variable=self.initialization, value=mode),
+                            'initial.'+mode).pack(anchor='w', pady=2)
+        self._bind_text(ttk.Label(left, wraplength=340), 'initial.help').pack(anchor='w', pady=(3, 10))
         self._bind_text(
             ttk.Label(left, style="Section.TLabel"), "section.grid_quality"
         ).pack(
@@ -536,6 +678,8 @@ class DesktopApp:
         )
         self.quality_selector.pack(anchor="w", pady=(6, 15))
         self.quality_selector.bind("<<ComboboxSelected>>", self._on_quality_selected)
+        self._bind_text(ttk.Label(left, wraplength=340), 'solid.scope').pack(anchor='w', pady=5)
+        self._bind_text(ttk.Label(left, wraplength=340), 'axial.scope').pack(anchor='w', pady=5)
         explanation = self._bind_text(
             ttk.Label(left, style="Property.TLabel", justify="left", wraplength=350),
             "solve.explanation",
@@ -624,6 +768,12 @@ class DesktopApp:
             command=self._start_solve
         )
         self.run_button.pack(fill="x")
+        self.axial_run_button = self._bind_text(ttk.Button(
+            self.solve_actions, command=lambda: self._start_solve(spatial=True)), "axial.run")
+        self.axial_run_button.pack(fill="x", pady=(6, 0))
+        self.solid_run_button = self._bind_text(ttk.Button(
+            self.solve_actions, command=lambda: self._start_solve(solid=True)), 'solid.run')
+        self.solid_run_button.pack(fill='x', pady=(6, 0))
         self.convergence_button = ttk.Button(
             self.solve_actions,
             text=self._tr("button.run_convergence"),
@@ -696,6 +846,8 @@ class DesktopApp:
         return tuple(values)
 
     def _kinetics_available(self) -> bool:
+        if self.material_id != ALUMINUM:
+            return False
         try:
             validate_for_energy_model(self.time_calibration, self.energy_model_code)
             return True
@@ -863,6 +1015,9 @@ class DesktopApp:
     def _update_stress_context(self, _event=None) -> None:
         """Update a non-blocking load interpretation without changing inputs."""
 
+        if self.material_id == SILICON_WAFER:
+            self.stress_context.set(self._tr('material.silicon_status'))
+            return
         try:
             values = load_interpretation(
                 young_gpa=float(self.entries["young_gpa"].get()),
@@ -1170,10 +1325,7 @@ class DesktopApp:
             values=self._probability_scale_values()
         )
         self.probability_scale.set(self._tr(f"option.{self.probability_scale_code}"))
-        self.energy_model_selector.configure(values=self._energy_model_values())
-        self.energy_model_display.set(
-            self._tr(energy_model_metadata(self.energy_model_code).display_key)
-        )
+        self._refresh_material_ui()
         self._refresh_time_basis_ui()
         self._set_status(self._status_key, **self._status_values)
         self.run_button.configure(text=self._tr(self._button_key))
@@ -1190,6 +1342,7 @@ class DesktopApp:
     def _set_button(self, key: str, *, state: str = "normal") -> None:
         self._button_key = key
         self.run_button.configure(text=self._tr(key), state=state)
+        self._refresh_material_ui()
 
     def _show_summary(self, kind: str, payload: dict[str, object] | None = None) -> None:
         self._summary_kind = kind
@@ -1230,7 +1383,7 @@ class DesktopApp:
                 quality=self._quality_text(str(result["analysis_quality"])),
                 grid=result["grid_shape"],
                 integrator=self._tr(f"integrator.{result['integration_method']}"),
-                initial_condition=self._tr("model.initial_condition"),
+                initial_condition=self._tr('initial.'+str(result.get('initialization', 'loaded_gibbs'))),
                 initial_stress=result["initial_stress_mpa"],
                 frequency=result["model_frequency"],
                 period=result["model_period"],
@@ -1255,9 +1408,24 @@ class DesktopApp:
         if self._summary_kind == "solving":
             config = self._summary_payload["config"]
             conversion = self._summary_payload["conversion"]
+            text = self._result_material_text(config.material_id) + '\n\n' + text
             text += "\n" + self._energy_model_summary(conversion)
             text += "\n" + self._time_summary_text(config.time_basis, conversion)
         elif self._summary_kind == "complete":
+            text = self._result_material_text(self._summary_payload.get('material_id', ALUMINUM)) + '\n\n' + text
+            spatial = self._summary_payload.get('axial_specimen')
+            if spatial is not None:
+                text = self._tr('axial.summary', count=len(spatial['areas_mm2']),
+                    runs=spatial['distinct_pde_runs'],
+                    area=f"{spatial['loaded_area_mm2']:.6g}",
+                    factor=f"{np.max(spatial['stress_factors']):.6g}") + '\n\n' + text
+            solid = self._summary_payload.get('solid_specimen')
+            if solid is not None:
+                text = self._tr('solid.summary', cells=len(solid['tetrahedra']),
+                    count=len(solid['sample_cells']), cell=int(solid['sample_cells'][0]),
+                    balance=f"{np.max(solid['relative_balance']):.3e}",
+                    residual=f"{np.max(solid['relative_linear_residual']):.3e}",
+                    mismatch=f"{np.max(solid['sampling_stress_mismatch_mpa']):.6g}")+'\n\n'+text
             text += "\n" + self._energy_model_summary(self._summary_payload)
             text += "\n" + self._time_summary_text(
                 str(self._summary_payload.get("time_basis", "model")),
@@ -1286,6 +1454,9 @@ class DesktopApp:
                         f"{row['survival_at_cycle_end']:.10g}\n"
                     )
         self._set_summary(text)
+
+    def _result_material_text(self, material_id: str) -> str:
+        return self._tr('material.result', name=self._tr(f'material.{material_id}'))
 
     def _energy_model_summary(self, values: dict[str, object]) -> str:
         return self._tr(
@@ -1333,13 +1504,14 @@ class DesktopApp:
             ),
         )
 
-    def _config(self) -> UIAnalysisConfig:
-        if hasattr(self, 'load_workflow') and not self.local_only.get():
+    def _config(self, allow_face_loads=False) -> UIAnalysisConfig:
+        if hasattr(self, 'load_workflow') and not self.local_only.get() and not allow_face_loads:
             self.load_workflow.validate_solver_load()
         self._on_quality_selected()
         resolved = self.analysis_quality_code == "resolved"
         entered_frequency = float(self.entries["model_frequency"].get())
         return UIAnalysisConfig(
+            **asdict(material_from_draft(self._material_draft())),
             young_gpa=float(self.entries["young_gpa"].get()),
             stress_mean_mpa=float(self.entries["stress_mean_mpa"].get()),
             stress_amplitude_mpa=float(self.entries["stress_amplitude_mpa"].get()),
@@ -1354,6 +1526,7 @@ class DesktopApp:
                 self.time_calibration if self.time_basis_code == "physical" else None
             ),
             energy_model=self.energy_model_code,
+            initialization=self.initialization.get(),
             cycles=float(self.entries["cycles"].get()),
             steps_per_cycle=int(self.entries["steps_per_cycle"].get()),
             grid_n_a=81 if resolved else 21,
@@ -1362,20 +1535,67 @@ class DesktopApp:
             analysis_quality="resolved" if resolved else "preview",
         )
 
-    def _start_solve(self) -> None:
+    def _start_solve(self, spatial=False, solid=False) -> None:
         if self.busy:
+            if spatial or solid:
+                return
             self.stop_event.set()
             self._set_status("status.stopping")
             self._set_button("button.stopping", state="disabled")
             return
         try:
-            config = self._config()
+            if self.material_id == SILICON_WAFER:
+                raise MaterialInputError('error.silicon_backend_unavailable')
+            solid = solid or (not spatial and not self.local_only.get())
+            config = self._config(allow_face_loads=solid)
+            config.require_material_backend()
+            if solid and not self.load_workflow.loads:
+                config = replace(config, stress_mean_mpa=0., stress_amplitude_mpa=0.)
             config.validate()
             conversion = physical_load_conversion(config)
+            sections = None
+            solid_request = None
+            if spatial:
+                from .axial_specimen import prepare_axial_sections
+                # This explicit action uses scalar end traction. Reject unsupported
+                # tensor/multiple-load setups even when local-only is checked.
+                self.load_workflow.validate_solver_load()
+                loads = self.load_workflow.loads
+                if not loads: raise ValueError('axial.assigned_load')
+                faces = loads[0].face_indices
+                sections = prepare_axial_sections(self.geometry_workflow.mesh, faces,
+                                                   int(self.axial_count.get()))
+            if solid:
+                from .solid_mechanics import elastic_matrix
+                if self.geometry_workflow.mesh is None:
+                    raise ValueError('solid.loads')
+                poisson = float(self.solid_poisson.get())
+                elastic_matrix(config.young_mpa, poisson)
+                target = float(self.solid_target.get())
+                if not np.isfinite(target) or target <= 0:
+                    raise ValueError('solid.target')
+                direction = np.array([float(value) for value in self.entries['tensile_direction'].get().split()])
+                if direction.shape != (3,) or not np.isfinite(direction).all() or not np.linalg.norm(direction):
+                    raise ValueError('error.direction')
+                correction = self.load_workflow.correction
+                correction = None if correction is None else tuple(value.copy() for value in correction)
+                from .load_balance import applied_traction, balance_report, LoadBalanceError
+                report = balance_report(self.geometry_workflow.mesh, applied_traction(
+                    self.geometry_workflow.mesh, self.load_workflow.loads, 0., correction))
+                if not report['balanced']:
+                    self.notebook.select(self.load_tab)
+                    self.load_workflow.refresh_balance()
+                    raise LoadBalanceError(report['net'], 0.)
+                solid_request = dict(mesh=self.geometry_workflow.mesh, loads=tuple(self.load_workflow.loads),
+                    correction=correction, poisson=poisson, direction=direction,
+                    target_mm=target, sample_count=int(self.axial_count.get()))
         except Exception as exc:
+            payload = getattr(exc, 'ui_error_data', None)
+            detail = (self._tr(payload['key'], **payload['values']) if payload else
+                      self._tr(str(exc)) if str(exc).startswith(('axial.', 'solid.', 'error.')) else str(exc))
             messagebox.showerror(
                 self._tr("dialog.invalid_title"),
-                self._tr("dialog.invalid_detail", detail=str(exc)),
+                self._tr("dialog.invalid_detail", detail=detail),
                 parent=self.root,
             )
             return
@@ -1394,16 +1614,16 @@ class DesktopApp:
         self._show_summary(
             "solving",
             {
-                "backend": self.spatial_backend.get(),
+                "backend": self._tr('solid.backend' if solid else 'axial.backend' if spatial else 'axial.local_backend'),
                 "config": config,
                 "conversion": conversion,
             },
         )
-        threading.Thread(target=self._solve_worker, args=(config,), daemon=True).start()
+        threading.Thread(target=self._solve_worker, args=(config, sections, solid_request), daemon=True).start()
         if self._poll_job is None:
             self._poll_job = self.root.after(30, self._drain_queue)
 
-    def _solve_worker(self, config: UIAnalysisConfig) -> None:
+    def _solve_worker(self, config: UIAnalysisConfig, sections=None, solid_request=None) -> None:
         try:
             def emit(record: dict[str, float]) -> None:
                 while not self.stop_event.is_set():
@@ -1413,16 +1633,42 @@ class DesktopApp:
                     except queue.Full:
                         continue
 
-            result = run_ui_analysis(
-                config, record_callback=emit, stop_requested=self.stop_event.is_set
-            )
+            if solid_request is not None:
+                from .solid_mechanics import run_solid_probability
+                try:
+                    result, field = run_solid_probability(config, **solid_request,
+                        stop_requested=self.stop_event.is_set,
+                        progress=lambda key, values: self._queue.put(('solid_progress', (key, values))))
+                    result['solid_specimen'] = field
+                except InterruptedError:
+                    self._queue.put(('solid_cancelled', None))
+                    return
+            else:
+                result = run_ui_analysis(
+                    config, record_callback=emit, stop_requested=self.stop_event.is_set
+                )
+            if sections is not None:
+                from .axial_specimen import run_axial_probability
+                try:
+                    result['axial_specimen'] = run_axial_probability(config, sections,
+                        nominal_result=result, stop_requested=self.stop_event.is_set,
+                        progress=lambda index, total: self._queue.put(
+                            ('axial_progress', dict(index=index, total=total))))
+                except InterruptedError:
+                    self._queue.put(('axial_cancelled', result))
+                    return
             self._queue.put(("done", result))
         except Exception as exc:
-            self._queue.put(("error", str(exc)))
+            self._queue.put(("error", getattr(exc, 'ui_error_data', str(exc))))
 
     def _start_convergence_check(self) -> None:
         if self.busy:
             return
+        if self.material_id == SILICON_WAFER:
+            self._set_status('material.silicon_status')
+            return
+        if self.result is not None and ('axial_specimen' in self.result or 'solid_specimen' in self.result):
+            return  # The nominal-only certificate must not certify a spatial map.
         if (
             self.result is None
             or self.last_config is None
@@ -1431,6 +1677,7 @@ class DesktopApp:
             self._set_status("status.preview_uncertified")
             return
         self.busy = True
+        self._refresh_material_ui()
         self.stop_event.clear()
         self.run_button.configure(state="disabled")
         self.convergence_button.configure(
@@ -1484,11 +1731,26 @@ class DesktopApp:
             elif kind == "done":
                 self._solve_done(payload)
                 return
+            elif kind == 'axial_progress':
+                self._set_status('axial.progress', **payload)
+            elif kind == 'solid_progress':
+                key, values = payload
+                self._set_status(key, **values)
+            elif kind == 'solid_cancelled':
+                self.busy = False
+                self.progress.stop()
+                self._set_button('button.run')
+                self._set_status('solid.cancelled')
+                return
+            elif kind == 'axial_cancelled':
+                self._solve_done(payload)
+                self._set_status('axial.cancelled')
+                return
             elif kind == "convergence_done":
                 self._convergence_done(payload)
                 return
             elif kind == "error":
-                self._solve_failed(str(payload))
+                self._solve_failed(payload)
                 return
         if self.busy or not self._queue.empty():
             self._poll_job = self.root.after(30, self._drain_queue)
@@ -1498,9 +1760,6 @@ class DesktopApp:
         self.busy = False
         self.progress.stop()
         self._set_button("button.run")
-        self.convergence_button.configure(
-            state=("normal" if result["analysis_quality"] == "resolved" else "disabled")
-        )
         self.notebook.select(self.post_tab)
         self._set_status(
             "status.complete",
@@ -1510,6 +1769,12 @@ class DesktopApp:
         self._show_summary("complete", result)
         self._update_specimen_probability()
         self._plot(force_auto=True)
+        for view in self.load_workflow.maps:
+            if view.window.winfo_exists():
+                view.update()
+        if ('axial_specimen' in result or 'solid_specimen' in result) and not any(
+                view.window.winfo_exists() for view in self.load_workflow.maps):
+            self.load_workflow.show_map()
 
     def _convergence_done(self, result: dict[str, object]) -> None:
         self.result = result
@@ -1517,25 +1782,21 @@ class DesktopApp:
         self.progress.stop()
         self._set_button("button.run")
         self.convergence_button.configure(
-            text=self._tr("button.run_convergence"), state="normal"
+            text=self._tr("button.run_convergence")
         )
         self._set_status("status.convergence_complete")
         self._show_summary("complete", result)
         self._update_specimen_probability()
         self._plot(force_auto=True)
 
-    def _solve_failed(self, detail: str) -> None:
+    def _solve_failed(self, detail) -> None:
+        if isinstance(detail, dict):
+            detail = self._tr(detail['key'], **detail['values'])
+        elif detail.startswith(('axial.', 'solid.', 'error.')):
+            detail = self._tr(detail)
         self.busy = False
         self.progress.stop()
         self._set_button("button.run")
-        self.convergence_button.configure(
-            state=(
-                "normal"
-                if self.result is not None
-                and self.result.get("analysis_quality") == "resolved"
-                else "disabled"
-            )
-        )
         self.convergence_button.configure(text=self._tr("button.run_convergence"))
         self._set_status("status.failed")
         messagebox.showerror(
@@ -1589,6 +1850,9 @@ class DesktopApp:
         self._last_field = field
         data = self._plot_data()
         self.ax.clear()
+        material = (self.result.get('material_id', ALUMINUM) if self.result is not None else
+                    self.last_config.material_id if self.live_records and self.last_config else None)
+        self.figure.suptitle(self._result_material_text(material) if material else '', fontsize=9, color=MUTED)
         if data is None or "model_time" not in data:
             self.ax.text(
                 0.5, 0.5, self._tr("plot.empty"), ha="center", va="center",

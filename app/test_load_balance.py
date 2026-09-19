@@ -41,3 +41,37 @@ def test_rank_deficient_correction_and_asymmetric_stress_refused():
     mesh = cylinder()
     with pytest.raises(ValueError): correction_operator(mesh, [0])
     with pytest.raises(ValueError): stress_traction(mesh, [0], [[1,2,0],[0,1,0],[0,0,1]])
+
+
+def test_unassigned_faces_and_empty_loads_have_exactly_zero_external_force():
+    from .load_balance import applied_traction, balance_report
+    from .load_workflow import FaceLoad
+    mesh = cylinder()
+    ids = np.flatnonzero(face_geometry(mesh)[1][:,2] > .99)
+    load = FaceLoad('top',1200.,1500.,0.,0.,tuple(ids),mesh.areas[ids].sum(),
+                    '0,0,0;0,0,0;0,0,normal_mean+normal_amp*sin(2*pi*f*t)',25.)
+    for t in (0.,.01,.03):
+        empty = applied_traction(mesh, [], t)
+        np.testing.assert_array_equal(empty, 0.)
+        assert balance_report(mesh, empty)['unloaded']
+        value = applied_traction(mesh, [load], t)
+        unassigned = np.ones(len(mesh.faces), bool); unassigned[ids] = False
+        np.testing.assert_array_equal(value[unassigned], 0.)
+        assert not balance_report(mesh, value)['balanced']
+
+
+def test_preflight_finds_sinusoidal_imbalance_even_when_initial_force_is_zero():
+    from .load_balance import preflight_balance, LoadBalanceError
+    from .load_workflow import FaceLoad
+    mesh = cylinder()
+    ids = np.flatnonzero(face_geometry(mesh)[1][:,2] > .99)
+    load = FaceLoad('top',0.,10.,0.,0.,tuple(ids),mesh.areas[ids].sum(),
+                    '0,0,0;0,0,0;0,0,normal_amp*sin(2*pi*f*t)',25.)
+    with pytest.raises(LoadBalanceError) as caught:
+        preflight_balance(mesh, [load], None, .04)
+    data = caught.value.ui_error_data
+    assert data['key'] == 'solid.unbalanced_detail'
+    assert float(data['values']['time']) > 0
+    assert '-' in data['values']['opposite_force']
+    bottom = np.flatnonzero(face_geometry(mesh)[1][:,2] < -.99)
+    preflight_balance(mesh,[load],correction_operator(mesh,bottom),.04)

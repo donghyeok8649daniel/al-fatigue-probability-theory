@@ -1,11 +1,14 @@
 """Bounded, mm-based surface geometry; not a volume mechanics solver."""
 from dataclasses import dataclass
+from functools import cached_property
+import hashlib
 from pathlib import Path
 import struct
 
 import numpy as np
 
-MAX_FACES = 20000
+MAX_FACES = 2_000_000
+MAX_IMPORT_BYTES = 512 * 1024 * 1024
 
 
 @dataclass(frozen=True)
@@ -30,29 +33,55 @@ class SurfaceMesh:
 
     @property
     def areas(self):
+        # Preserve the public fresh-array contract; cache only immutable geometry.
+        return self._areas.copy()
+
+    @cached_property
+    def _areas(self):
         t = self.vertices[self.faces]
-        return .5 * np.linalg.norm(np.cross(t[:, 1]-t[:, 0], t[:, 2]-t[:, 0]), axis=1)
+        value = .5 * np.linalg.norm(np.cross(t[:, 1]-t[:, 0], t[:, 2]-t[:, 0]), axis=1)
+        value.setflags(write=False)
+        return value
+
+    @cached_property
+    def _topology(self):
+        edges = np.concatenate([self.faces[:, [0, 1]], self.faces[:, [1, 2]], self.faces[:, [2, 0]]])
+        _, inverse, counts = np.unique(np.sort(edges, axis=1), axis=0, return_inverse=True, return_counts=True)
+        signed = np.bincount(inverse, weights=np.where(edges[:, 0] < edges[:, 1], 1., -1.))
+        return bool(np.all(counts == 2)), bool(np.all(signed == 0))
 
     @property
     def closed(self):
-        edges = np.sort(np.concatenate([self.faces[:, [0, 1]], self.faces[:, [1, 2]],
-                                        self.faces[:, [2, 0]]]), axis=1)
-        _, counts = np.unique(edges, axis=0, return_counts=True)
-        return bool(np.all(counts == 2))  # edge incidence, not self-intersection certification
+        return self._topology[0]  # edge incidence, not self-intersection certification
 
-    @property
+    @cached_property
     def enclosed_volume_mm3(self):
         """Oriented closed-surface volume; no self-intersection certification."""
         if not self.closed: raise ValueError('volume_requires_closed')
-        edges = np.concatenate([self.faces[:, [0,1]], self.faces[:, [1,2]], self.faces[:, [2,0]]])
-        _, inverse = np.unique(np.sort(edges, axis=1), axis=0, return_inverse=True)
-        signed = np.bincount(inverse, weights=np.where(edges[:, 0] < edges[:, 1], 1., -1.))
-        if np.any(signed != 0): raise ValueError('volume_requires_oriented')
+        if not self._topology[1]: raise ValueError('volume_requires_oriented')
         # Translate near the origin to avoid cancellation for translated CAD.
         tri = (self.vertices-self.vertices.mean(axis=0))[self.faces]
         volume = abs(float(np.einsum('ij,ij->i', tri[:, 0], np.cross(tri[:, 1], tri[:, 2])).sum()/6))
         if volume <= 0 or not np.isfinite(volume): raise ValueError('volume_requires_closed')
         return volume
+
+    @cached_property
+    def _face_geometry(self):
+        self.enclosed_volume_mm3
+        tri = self.vertices[self.faces]
+        cross = np.cross(tri[:, 1]-tri[:, 0], tri[:, 2]-tri[:, 0])
+        sign = np.sign(np.einsum('ij,ij->', tri[:, 0]-self.vertices.mean(axis=0), cross))
+        centers = tri.mean(axis=1)
+        normals = sign*cross/np.linalg.norm(cross, axis=1)[:, None]
+        centers.setflags(write=False); normals.setflags(write=False)
+        return centers, normals
+
+    @cached_property
+    def fingerprint(self):
+        digest = hashlib.sha256()
+        digest.update(self.vertices.astype('<f8', copy=False).tobytes())
+        digest.update(self.faces.astype('<i8', copy=False).tobytes())
+        return digest.hexdigest()
 
 
 def refine_selected(mesh, selected):
@@ -121,7 +150,7 @@ def load_surface(path, millimeters_per_unit=1.):
     path = Path(path)
     if not np.isfinite(millimeters_per_unit) or millimeters_per_unit <= 0:
         raise ValueError('positive_dimensions')
-    if path.stat().st_size > 10_000_000:
+    if path.stat().st_size > MAX_IMPORT_BYTES:
         raise ValueError('mesh_limit')
     data = path.read_bytes()
     if path.suffix.lower() == '.stl':
@@ -129,11 +158,14 @@ def load_surface(path, millimeters_per_unit=1.):
         if len(data) == 84+50*count:
             if count > MAX_FACES:
                 raise ValueError('mesh_limit')
-            vertices = [struct.unpack_from('<9f', data, 84+50*i+12) for i in range(count)]
-            triangles = np.asarray(vertices).reshape(-1, 3)
+            record = np.dtype([('normal', '<f4', (3,)), ('vertices', '<f4', (3, 3)),
+                               ('attribute', '<u2')])
+            triangles = np.frombuffer(data, dtype=record, count=count, offset=84)['vertices'].reshape(-1, 3)
         else:
             rows = [fields[1:] for line in data.decode('ascii').splitlines()
                     if (fields := line.split()) and fields[0] == 'vertex']
+            if len(rows) > 3*MAX_FACES:
+                raise ValueError('mesh_limit')
             if any(len(row) != 3 for row in rows):
                 raise ValueError('invalid_mesh')
             triangles = np.asarray(rows, dtype=float).reshape(-1, 3)
@@ -156,31 +188,61 @@ def load_surface(path, millimeters_per_unit=1.):
                 if 0 in ids:
                     raise ValueError('invalid_mesh')
                 faces.append([x-1 if x > 0 else len(vertices)+x for x in ids])
+                if len(faces) > MAX_FACES:
+                    raise ValueError('mesh_limit')
     else:
         raise ValueError('supported_formats')
     return SurfaceMesh(np.asarray(vertices)*millimeters_per_unit, faces, path.name)
 
 
 def refine_surface(mesh, target_mm):
-    """Conforming midpoint subdivision; no smoothing or geometric repair."""
+    """Split only overlong edges, with shared midpoints and conforming facets.
+
+    One, two or three split edges produce two, three or four child triangles.
+    Small existing facets are retained unless a shared edge needs refinement.
+    No smoothing, surface repair, or change of the piecewise-planar geometry.
+    """
     if not np.isfinite(target_mm) or target_mm <= 0:
         raise ValueError('positive_dimensions')
+    # Any triangle with all edges <= h has area <= sqrt(3)*h^2/4.
+    # This necessary lower bound avoids many doomed refinement passes.
+    if mesh.areas.sum()/MAX_FACES > np.sqrt(3)*target_mm**2/4:
+        raise ValueError('mesh_limit')
     result = mesh
     while True:
-        t = result.vertices[result.faces]
-        longest = max(np.linalg.norm(t[:, i]-t[:, (i+1)%3], axis=1).max() for i in range(3))
-        if longest <= target_mm:
+        f = result.faces
+        edges = np.stack([f[:, [0, 1]], f[:, [1, 2]], f[:, [2, 0]]], axis=1)
+        edges, inverse = np.unique(np.sort(edges.reshape(-1, 2), axis=1), axis=0, return_inverse=True)
+        long = np.linalg.norm(result.vertices[edges[:, 0]]-result.vertices[edges[:, 1]], axis=1) > target_mm*(1+1e-12)
+        if not np.any(long):
             return result
-        if len(result.faces)*4 > MAX_FACES:
+        split = long[inverse].reshape(-1, 3)
+        if len(f)+np.count_nonzero(split) > MAX_FACES:
             raise ValueError('mesh_limit')
-        vertices, faces, cache = result.vertices.tolist(), [], {}
-        def midpoint(a, b):
-            key = tuple(sorted((a, b)))
-            if key not in cache:
-                cache[key] = len(vertices)
-                vertices.append(((result.vertices[a]+result.vertices[b])/2).tolist())
-            return cache[key]
-        for a, b, c in result.faces:
-            ab, bc, ca = midpoint(a, b), midpoint(b, c), midpoint(c, a)
-            faces.extend([[a, ab, ca], [ab, b, bc], [ca, bc, c], [ab, bc, ca]])
-        result = SurfaceMesh(vertices, faces, mesh.source)
+        vertices = np.concatenate([result.vertices, result.vertices[edges[long]].mean(axis=1)])
+        midpoint = np.full(len(edges), -1, dtype=int)
+        midpoint[long] = np.arange(len(result.vertices), len(vertices))
+        mids = midpoint[inverse].reshape(-1, 3)
+        count = split.sum(axis=1)
+        faces = [f[count == 0]]
+        def add(a, b, c): faces.append(np.column_stack([a, b, c]))
+        all_split = count == 3
+        a, b, c = f[all_split].T
+        ab, bc, ca = mids[all_split].T
+        add(a, ab, ca); add(ab, b, bc); add(ca, bc, c); add(ab, bc, ca)
+        for j in range(3):
+            # Rotate the triangle so the sole split edge is (a,b).
+            mask = (count == 1) & split[:, j]
+            a, b, c = f[mask][:, [j, (j+1)%3, (j+2)%3]].T
+            ab = mids[mask, j]
+            add(a, ab, c); add(ab, b, c)
+            # Rotate two split edges to (a,b),(b,c); triangulate the remaining
+            # quadrilateral on its shorter diagonal to limit slender children.
+            mask = (count == 2) & ~split[:, (j+2)%3]
+            a, b, c = f[mask][:, [j, (j+1)%3, (j+2)%3]].T
+            ab, bc = mids[mask][:, [j, (j+1)%3]].T
+            add(ab, b, bc)
+            diagonal = np.sum((vertices[a]-vertices[bc])**2, axis=1) <= np.sum((vertices[ab]-vertices[c])**2, axis=1)
+            add(a[diagonal], ab[diagonal], bc[diagonal]); add(a[diagonal], bc[diagonal], c[diagonal])
+            add(a[~diagonal], ab[~diagonal], c[~diagonal]); add(ab[~diagonal], bc[~diagonal], c[~diagonal])
+        result = SurfaceMesh(vertices, np.concatenate(faces), mesh.source)
