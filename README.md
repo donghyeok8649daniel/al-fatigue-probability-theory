@@ -1,4 +1,19 @@
-# theory-core-v1-solver
+# Silicon wafer research — common probability theory
+
+This is the **`silicon-wafer-research`** branch. It collects the Al/Si material
+setup UI, the silicon energy and coordinate audits, and the spatial crack-front
+implementation with reproducible results.
+
+- **[웨이퍼 브랜치 안내 / research map](WAFER_BRANCH.md)**
+- **[최신 작업 인계](CURRENT_WORK_HANDOFF.md)**
+- **[국소 균열 구현·검증 결과](results/silicon_local_crack_v2/COMPLETED_SUMMARY.md)**
+- **[Al / Si 및 도핑 UI](app/MATERIAL_SELECTION.md)**
+
+Silicon setup and saving are available. The silicon calculations are static
+research references; wafer-strength, fatigue-life, doping physics and physical
+time are not calibrated. The production Si analysis gate remains closed.
+
+## Inherited theory core
 
 Integration branch for the finalized Theory Core v1 manuscript and its executable proof-of-principle solver.
 

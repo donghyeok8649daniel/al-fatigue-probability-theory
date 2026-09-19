@@ -1,0 +1,156 @@
+{
+  "schema": "wafer-branch-validation/1",
+  "recorded_utc": "2026-09-19T17:24:16.774077+00:00",
+  "branch": "silicon-wafer-research",
+  "base_head": "5f878370c1c74be99e1e9b727a8ab9a11872b174",
+  "implementation_commits": {
+    "shared_ui": "cc2e11d6f5a3023e8495c3e087c4787a82d508a5",
+    "silicon_research": "ff890ceb67e4a1d4716e09185615a09ae6204412"
+  },
+  "scope": "Branch packaging and fresh regression checks; no new physics calculation, refit, material adoption or production-time calibration.",
+  "transfer_manifest": "transferred_files.json",
+  "test_inventory": "test_inventory.json",
+  "regression": {
+    "targeted": {
+      "command": "python -m pytest solver_v1/test_silicon_environment_research.py solver_v1/test_silicon_crack_research.py app/test_materials.py app/test_project_file.py -q",
+      "passed": 44,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "junit_elapsed_seconds": 12.198
+    },
+    "solver": {
+      "command": "python -m pytest solver_v1 -q",
+      "execution": "827 collected nodes in 116 files, dispatched as four disjoint file groups; rerun only the 54 initially nonpassing nodes after restoring the hash-verified Al99 reference.",
+      "initial_outcome": {
+        "passed": 773,
+        "failures": 18,
+        "errors": 28,
+        "skipped": 8
+      },
+      "initial_outcome_cause": "Missing ignored .cache/al-reference/Al99.eam.alloy in the new worktree; all failure/error/skip messages were individually checked.",
+      "reference_preparation": "Copied the pre-existing source file into the new ignored cache and verified its SHA-256. WAFER_BRANCH.md documents the existing --download command for a fresh checkout.",
+      "reference_sha256": "60c8a085be79d273324ab421f5b1447578fef55c1acfc6492c0999f15ee8a284",
+      "retry_nodes": 54,
+      "retry_processes": [
+        {
+          "label": "solver3_retry",
+          "exit_code": 0,
+          "elapsed_seconds": 397.26059449999593,
+          "nodes": 12
+        },
+        {
+          "label": "solver2_retry",
+          "exit_code": 0,
+          "elapsed_seconds": 407.71728630003054,
+          "nodes": 12
+        },
+        {
+          "label": "solver1_retry",
+          "exit_code": 0,
+          "elapsed_seconds": 415.8059011999867,
+          "nodes": 26
+        },
+        {
+          "label": "solver0_retry",
+          "exit_code": 0,
+          "elapsed_seconds": 39.786248599993996,
+          "nodes": 4
+        }
+      ],
+      "final_outcome": {
+        "passed": 827,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "coverage_verified": true,
+      "code_or_test_modified_for_retry": false
+    },
+    "app": {
+      "command": "python -m pytest app -q",
+      "label": "app",
+      "exit_code": 0,
+      "elapsed_seconds": 374.1739506999729,
+      "tests": 189,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 189,
+      "subtests_passed": 3,
+      "pytest_elapsed_seconds": 372.52
+    },
+    "desktop_smoke": {
+      "command": "python -m app.desktop_ui --smoke",
+      "exit_code": 0,
+      "output": "desktop-ui smoke OK: a0=0.7713438268704838, kappa=86.29296488740997"
+    },
+    "initial_orchestrator_exit_code": 1,
+    "initial_orchestrator_seconds": 1436.0877761000302,
+    "initial_orchestrator_note": "The original aggregate process correctly retained its missing-reference failures. Separate retries and the exact-node merge audit establish the final 827-pass result."
+  },
+  "git_source_integrity": {
+    "hash_bound_source_count": 15,
+    "staged_blob_sha256": "PASS",
+    "checkout_filter_sha256": "PASS",
+    "paths": [
+      "results/silicon_wafer_feasibility/check_existing_sg.py",
+      "results/silicon_wafer_feasibility/check_spatial_sw_lammps.py",
+      "results/silicon_wafer_feasibility/plot_local_crack_audit.py",
+      "results/silicon_wafer_feasibility/plot_static_probe.py",
+      "results/silicon_wafer_feasibility/run_local_crack_audit.py",
+      "results/silicon_wafer_feasibility/run_local_crack_sequence.py",
+      "results/silicon_wafer_feasibility/run_registry_stationary_audit.py",
+      "results/silicon_wafer_feasibility/run_static_probe.py",
+      "results/silicon_wafer_feasibility/run_unified_coordinate_audit.py",
+      "results/silicon_wafer_feasibility/source_Si.sw",
+      "results/silicon_wafer_feasibility/validate_local_crack_reduction.py",
+      "solver_v1/silicon_crack_research.py",
+      "solver_v1/silicon_environment_research.py",
+      "solver_v1/test_silicon_crack_research.py",
+      "solver_v1/test_silicon_environment_research.py"
+    ]
+  },
+  "original_worktree_preservation": {
+    "snapshot_files_verified": 221,
+    "changes_before_routing_handoff": 0,
+    "original_branch_advanced": false
+  },
+  "packaging_checks": {
+    "selected_files": 193,
+    "read_counts": {
+      ".md": 17,
+      ".py": 45,
+      ".csv": 23,
+      ".json": 63,
+      ".npz": 36,
+      ".png": 3,
+      ".svg": 3,
+      ".sw": 1,
+      ".txt": 1,
+      "": 1
+    },
+    "python_ast": "PASS",
+    "json_utf8": "PASS",
+    "local_markdown_links": "PASS",
+    "private_path_and_credential_literal_scan": "PASS",
+    "transferred_file_hashes": "PASS",
+    "staged_diff_check": "PASS",
+    "full_branch_diff_check": "PASS",
+    "preserved_artifact_whitespace_exceptions": [
+      "results/silicon_local_crack_v2/local_crack_audit.svg",
+      "results/silicon_unified_v1/coordinate_audit.svg",
+      "results/silicon_wafer_feasibility/source_Si.sw",
+      "results/silicon_wafer_feasibility/static_probe.svg"
+    ]
+  },
+  "scientific_status": {
+    "silicon_model": "original-SW, pure Si, finite 0 K fixed-grip static research reference",
+    "new_research_runs_in_this_task": false,
+    "calibrated_wafer_strength": false,
+    "doping_physics_calibrated": false,
+    "finite_temperature_pmf_calibrated": false,
+    "physical_time_enabled": false,
+    "production_silicon_backend_enabled": false
+  }
+}

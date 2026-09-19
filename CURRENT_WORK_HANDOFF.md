@@ -1,5 +1,41 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-20 최신: 웨이퍼 브랜치 분리
+
+- 최신 사용자 요청: “깃헙에 웨이퍼브랜치 따로 만들어서 거기 정리하자”.
+  `silicon-wafer-research`를 공통 HEAD `5f878370c1c74be99e1e9b727a8ab9a11872b174`에서
+  분기했다. 작업 폴더 이름은 `aft-silicon-wafer`다. 원래 Al 작업 폴더는 보존했다.
+- 브랜치 진입점은 `WAFER_BRANCH.md`. 소재·도핑 UI와 필요한 공통 3D 메시/하중/저장
+  기반 39파일, Si 코드·테스트·이론·원시결과 145파일을 원본과 byte 비교하여 옮겼다.
+  Si와 독립적인 Al v36 후보 실험은 기존 작업 위치에 남아 있다. 공통 메시 검증
+  문서의 v36 링크만 이 브랜치의 검증 기록으로 연결했다. 옮긴 구현·수치는 불변이다.
+- 연구 결과는 `results/silicon_local_crack_v2/COMPLETED_SUMMARY.md`, 이론은
+  `solver_v1/SILICON_LOCAL_CRACK_V2.md`. 이전 결과의 HEAD/작업 폴더는 당시 이력으로
+  보존한다. 브랜치 분리 후 검증은 `results/wafer_branch_setup/validation.json`에 기록한다.
+- 구현은 순수 Si/original SW/0 K/유한 fixed-grip 기준이다. 균열 끝의 독립 원자 운동,
+  국소 opening/slip 제약, 이웃 재구성, 고정 외곽 site의 힘/Hessian을 유지한다.
+  bond를 강제로 삭제하지 않고 재결합을 허용한다.
+- 전면4/8/12 반복의 국소 첫 장벽0.702966539/0.702981536/0.702862272 eV,
+  전체 Hessian index1. 동시 전이는2.205662083/4.411324166/6.616986248 eV이고
+  전체 음의 방향4/8/12개. 네 결합 순차 경로의 최대1.075453066 eV,
+  같은 최종 상태의 위치차1.29e-14 Å. 전역 최소 경로 증명/실측 강도는 아니다.
+- 같은 하중에서 최종 상태도 초기보다+0.058087839 eV이며 역전이 장벽이 존재한다.
+  불가역적 파손/피로 수명을 선언하지 않는다. 폭6/8/10cell의 국소 장벽 변화도
+  0.702966539/0.709658794/0.712010386 eV로 남는다. 무한 시편 수렴 주장은 하지 않는다.
+- 이전 작업 위치에서 solver836/app189+3subtests/smoke를 통과한 이력이 있다.
+  이 브랜치는 Al v36 전용 실험을 포함하지 않으므로 새 수집 수/검증 결과를 별도로 본다.
+  데이터/매개변수의 줄바꿈이 hash를 바꾸지 않도록 `.gitattributes`를 추가했다.
+- 새 위치의 최종 검증: solver827 PASS/116파일, app189 PASS+3subtests/372.52s,
+  집중44 PASS, desktop smoke exit0. 처음 Al99 참조 누락의18FAIL/28ERROR/8SKIP은
+  해시가 확인된 파일 준비 후 해당54개를 모두 재검증했다. 원래 aggregate exit1은
+  보존했고, 고유827개 결과의 최종 합집합을 검사했다. 구현/기준 변경 없이 해결했다.
+- 커밋 구성: 공통 UI `cc2e11d`, Si 연구 `ff890ce`, 이 인계를 포함한 브랜치 정리 문서.
+  게시 위치: https://github.com/donghyeok8649daniel/al-fatigue-probability-theory/tree/silicon-wafer-research
+  전체 목록·해시·검증은 `results/wafer_branch_setup/README.md`를 따른다.
+- Si UI는 소재/도핑 초안 저장까지 가능하다. 실제 Si 해석·물리 Hz gate는 닫혀 있다.
+  실측 Si 에너지/표면/도핑, finite-T PMF, 이동도/Markov 축약, 실제 시편 경계와
+  파손 사건의 연결은 미완료다. 다음은 이 국소 좌표의 조건부 분포·느린 이웃·동역학 검증이다.
+
 ## 2026-09-16 exact-anchor v35 계산 완료 / STL 면하중 표시 수정
 
 - 사용자 요청: calibration 개선, 이어서 가져온 STL이 면하중에 안 보이는 문제 수정.

@@ -1,5 +1,15 @@
 # AGENTS.md — 이론, 구현, 검증 및 작업 원칙
 
+## 웨이퍼 브랜치의 현재 범위
+
+사용자 요청으로 `silicon-wafer-research`를 별도 생성했다. 첫 진입점은
+`WAFER_BRANCH.md`, 재개 지점은 `CURRENT_WORK_HANDOFF.md`다. 기존 Al 연구 지침은
+공통 기준/역사로 보존하되, 오래된 Al calibration을 자동 재개하지 않는다.
+Si 연구의 실제 모델은 original SW 공간 원자 기준이며 Al LJ/Bessel 적합과 구별한다.
+`SILICON_LOCAL_CRACK_V2.md`의 국소 분리/재결합/정규화 조건을 유지한다.
+정적 결과를 실측 웨이퍼 강도, finite-T PMF, 이동도/Hz 또는 피로 수명으로 부르지 않는다.
+UI의 Si 실행 차단은 필요한 물리 검증 전까지 유지한다. 추가 agent는 사용자 요청 없이 생성하지 않는다.
+
 ## 0. 가장 먼저 읽을 것
 
 v35 `EXACT_ANCHOR_CALIBRATION_V35.md`는 기존 6shape/10coeff의 정확 anchor를
@@ -117,13 +127,14 @@ kBT/Np여야한다. 물리T를바꾼다는뜻이아니다. M만환산하고원�
 ## 1. Git과 사용자 작업 보호
 
 대상 저장소: donghyeok8649daniel/al-fatigue-probability-theory
-대상 작업 브랜치: probability-pde-solver-v1
+대상 작업 브랜치: silicon-wafer-research
+공통 기준 브랜치: probability-pde-solver-v1
 
 작업 시작 전 실제 경로, HEAD, 원격 HEAD, 작업 트리를 확인한다:
 
     git fetch origin
     git rev-parse HEAD
-    git rev-parse origin/probability-pde-solver-v1
+    git rev-parse origin/silicon-wafer-research
     git branch --show-current
     git status --short
     git worktree list
