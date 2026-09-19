@@ -1,0 +1,104 @@
+{
+  "targeted_tests": {
+    "count": 17,
+    "elapsed_seconds": 1.13,
+    "exit_code": 0
+  },
+  "full_checks": {
+    "solver_collection_count": 836,
+    "results": [
+      {
+        "label": "solver3",
+        "exit_code": 0,
+        "elapsed_seconds": 39957.5812243,
+        "tests": 200,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "label": "solver2",
+        "exit_code": 0,
+        "elapsed_seconds": 159659.49209460002,
+        "tests": 205,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "label": "solver1",
+        "exit_code": 0,
+        "elapsed_seconds": 159681.59568830003,
+        "tests": 210,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "label": "solver0",
+        "exit_code": 0,
+        "elapsed_seconds": 159707.2253072,
+        "tests": 221,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "label": "app",
+        "exit_code": 0,
+        "elapsed_seconds": 467.5421488000429,
+        "tests": 189,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "smoke_exit_code": 0,
+    "elapsed_seconds": 160176.55527779998
+  },
+  "app_subtests_passed": 3,
+  "manifest_count_verified": true,
+  "timing_note": "Recorded wall-clock session spans 2026-09-18 to 2026-09-20; not CPU time or a benchmark.",
+  "profile_refinement_absolute_differences_eV": {
+    "localized": {
+      "forward_barrier_eV": 3.108624468950438e-14,
+      "reverse_barrier_eV": 4.973799150320701e-14
+    },
+    "coherent": {
+      "forward_barrier_eV": 2.6645352591003757e-15,
+      "reverse_barrier_eV": 6.483702463810914e-14
+    }
+  },
+  "code_sha256": {
+    "solver_v1/silicon_crack_research.py": "423b261dccbc380c130b54cea70e0ecb1761ee0f383b06907c02b065f82527a5",
+    "solver_v1/test_silicon_crack_research.py": "0340acec590b45ffa013ed275e693462801b95e2865fa543c2240ffdef624e57",
+    "results/silicon_wafer_feasibility/run_local_crack_audit.py": "25efc94846bacfc85ae087090d0090fbcc42b840464a432f27603b9b3b95649c",
+    "results/silicon_wafer_feasibility/check_spatial_sw_lammps.py": "9d9aeec34d555df77b58064de3af6d938a01cf228d73f040d01e82efcf775ed6",
+    "results/silicon_wafer_feasibility/validate_local_crack_reduction.py": "cb74f6edd658cdce579c86b4f8a96785573c33f6e968bdde865515a3d1136a92",
+    "results/silicon_wafer_feasibility/run_local_crack_sequence.py": "82558411e8604137ae5a9a41395e0245e647af5d30da3648233879f80073d739",
+    "results/silicon_wafer_feasibility/plot_local_crack_audit.py": "1a6f8003c4f12e2b2dc30b7eb5c5485ceab8f884da4de7c92d2e82775d695f39"
+  },
+  "scientific_calculations": {
+    "main_exit_code": 0,
+    "profile64_exit_code": 0,
+    "width8_exit_code": 0,
+    "width10_exit_code": 0,
+    "lammps_validation_passed": true,
+    "reduction_validation_passed": true,
+    "sequence_completed": true
+  },
+  "final_file_checks": {
+    "source_doc_files": 11,
+    "json_files": 55,
+    "local_links": 13,
+    "syntax_UTF8_whitespace_passed": true,
+    "code_hashes_match": true,
+    "git_diff_check_exit_code": 0,
+    "heads": {
+      "HEAD": "5f878370c1c74be99e1e9b727a8ab9a11872b174",
+      "origin/probability-pde-solver-v1": "5f878370c1c74be99e1e9b727a8ab9a11872b174"
+    },
+    "committed": false,
+    "pushed": false
+  }
+}

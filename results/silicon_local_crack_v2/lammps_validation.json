@@ -1,0 +1,78 @@
+{
+  "scope": "independent run-0 energy and forces, no MD or kinetic inference",
+  "source_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+  "library": {
+    "lammps_version": 20250722,
+    "library_filename": "liblammps.dll",
+    "library_sha256": "60bc6c51988d6c50d114e72cba208947d72cc5fd8cc6b732c8cb3885cf840349",
+    "commands": [
+      "units metal",
+      "atom_style atomic",
+      "atom_modify map array",
+      "boundary f f p",
+      "region box block -31.954583693006704 30.845995710061885 -33.84852950004759 30.603315160862241 0 15.361045688965778 units box",
+      "create_box 1 box",
+      "mass 1 28.0855",
+      "pair_style sw",
+      "pair_coeff * * \"source_Si.sw\" Si",
+      "neighbor 0.6 bin",
+      "neigh_modify every 1 delay 0 check yes",
+      "thermo_modify norm no",
+      "run 0 post no"
+    ]
+  },
+  "cases": [
+    {
+      "state": "perfect_strip",
+      "atoms": 1152,
+      "moment_energy_eV": -4553.429999913125,
+      "lammps_energy_eV": -4553.429999912919,
+      "energy_abs_difference_eV": 2.064552973024547e-10,
+      "force_max_abs_difference_eV_A": 7.621582199694473e-15,
+      "direct_moment_energy_difference_eV": 1.8189894035458565e-12,
+      "direct_moment_force_max_difference_eV_A": 6.161501500873282e-15
+    },
+    {
+      "state": "opened_seed",
+      "atoms": 1152,
+      "moment_energy_eV": -4418.83170661726,
+      "lammps_energy_eV": -4418.831706617271,
+      "energy_abs_difference_eV": 1.0913936421275139e-11,
+      "force_max_abs_difference_eV_A": 7.993605777301127e-15,
+      "direct_moment_energy_difference_eV": 9.094947017729282e-13,
+      "direct_moment_force_max_difference_eV_A": 7.771561172376096e-15
+    },
+    {
+      "state": "nonuniform_perturbation",
+      "atoms": 1152,
+      "moment_energy_eV": -4338.653490566854,
+      "lammps_energy_eV": -4338.65349056688,
+      "energy_abs_difference_eV": 2.546585164964199e-11,
+      "force_max_abs_difference_eV_A": 1.8318679906315083e-14,
+      "direct_moment_energy_difference_eV": 0.0,
+      "direct_moment_force_max_difference_eV_A": 8.215650382226158e-15
+    },
+    {
+      "state": "localized_saddle",
+      "atoms": 1152,
+      "moment_energy_eV": -4435.249830774504,
+      "lammps_energy_eV": -4435.2498307745045,
+      "energy_abs_difference_eV": 9.094947017729282e-13,
+      "force_max_abs_difference_eV_A": 1.205632815803881e-14,
+      "direct_moment_energy_difference_eV": 9.094947017729282e-13,
+      "direct_moment_force_max_difference_eV_A": 5.883531509209838e-15
+    },
+    {
+      "state": "localized_opened_minimum",
+      "atoms": 1152,
+      "moment_energy_eV": -4435.388577353786,
+      "lammps_energy_eV": -4435.388577353787,
+      "energy_abs_difference_eV": 9.094947017729282e-13,
+      "force_max_abs_difference_eV_A": 9.043644201193894e-15,
+      "direct_moment_energy_difference_eV": 9.094947017729282e-13,
+      "direct_moment_force_max_difference_eV_A": 6.689093723366568e-15
+    }
+  ],
+  "elapsed_seconds": 0.6399434999912046,
+  "passed": true
+}

@@ -1,0 +1,695 @@
+[
+  {
+    "q_A": 2.642745460976716,
+    "relative_energy_eV": 0.0,
+    "reaction_eV_A": 5.273559366969494e-16,
+    "free_gradient_max_eV_A": 6.239456075987097e-14,
+    "relaxation": {
+      "energy_eV": -13307.85839194071,
+      "free_gradient_max_eV_A": 6.239456075987097e-14,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        5.273559366969494e-16
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 0,
+      "evaluations": 1,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 2.7054721653211935,
+    "relative_energy_eV": 0.012795324432030686,
+    "reaction_eV_A": 0.3980944422122529,
+    "free_gradient_max_eV_A": 3.6693725400348265e-07,
+    "relaxation": {
+      "energy_eV": -13307.845596616276,
+      "free_gradient_max_eV_A": 3.6693725400348265e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.3980944422122529
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 65,
+      "evaluations": 70,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 2.7681988696656714,
+    "relative_energy_eV": 0.048700755569644816,
+    "reaction_eV_A": 0.7367328749245476,
+    "free_gradient_max_eV_A": 4.4687949533883664e-07,
+    "relaxation": {
+      "energy_eV": -13307.809691185139,
+      "free_gradient_max_eV_A": 4.4687949533883664e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.7367328749245476
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 62,
+      "evaluations": 67,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 2.830925574010149,
+    "relative_energy_eV": 0.10394087980965017,
+    "reaction_eV_A": 1.0140765911608525,
+    "free_gradient_max_eV_A": 4.3661771311626074e-07,
+    "relaxation": {
+      "energy_eV": -13307.7544510609,
+      "free_gradient_max_eV_A": 4.3661771311626074e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        1.0140765911608525
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 60,
+      "evaluations": 66,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 2.893652278354627,
+    "relative_energy_eV": 0.17455612436648815,
+    "reaction_eV_A": 1.2261198912169196,
+    "free_gradient_max_eV_A": 3.9726656023836293e-07,
+    "relaxation": {
+      "energy_eV": -13307.683835816344,
+      "free_gradient_max_eV_A": 3.9726656023836293e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        1.2261198912169196
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 62,
+      "evaluations": 68,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 2.9563789826991043,
+    "relative_energy_eV": 0.25627319843810126,
+    "reaction_eV_A": 1.366918079166937,
+    "free_gradient_max_eV_A": 4.4262276829160063e-07,
+    "relaxation": {
+      "energy_eV": -13307.602118742274,
+      "free_gradient_max_eV_A": 4.4262276829160063e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        1.366918079166937
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 61,
+      "evaluations": 66,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.0191056870435817,
+    "relative_energy_eV": 0.34439644442593487,
+    "reaction_eV_A": 1.4290579429565724,
+    "free_gradient_max_eV_A": 4.406055522654384e-07,
+    "relaxation": {
+      "energy_eV": -13307.513995496283,
+      "free_gradient_max_eV_A": 4.406055522654384e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        1.4290579429565724
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 61,
+      "evaluations": 67,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.0818323913880596,
+    "relative_energy_eV": 0.43374208143783566,
+    "reaction_eV_A": 1.404606322288746,
+    "free_gradient_max_eV_A": 4.2249451635126625e-07,
+    "relaxation": {
+      "energy_eV": -13307.424649859273,
+      "free_gradient_max_eV_A": 4.2249451635126625e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        1.404606322288746
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 61,
+      "evaluations": 66,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.144559095732537,
+    "relative_energy_eV": 0.5186568451964009,
+    "reaction_eV_A": 1.2869286140368423,
+    "free_gradient_max_eV_A": 4.900977736372263e-07,
+    "relaxation": {
+      "energy_eV": -13307.339735095513,
+      "free_gradient_max_eV_A": 4.900977736372263e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        1.2869286140368423
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 64,
+      "evaluations": 68,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.207285800077015,
+    "relative_energy_eV": 0.5931920509995261,
+    "reaction_eV_A": 1.073933959161518,
+    "free_gradient_max_eV_A": 4.6851999310759673e-07,
+    "relaxation": {
+      "energy_eV": -13307.26519988971,
+      "free_gradient_max_eV_A": 4.6851999310759673e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        1.073933959161518
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 61,
+      "evaluations": 66,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.2700125044214925,
+    "relative_energy_eV": 0.651542447572083,
+    "reaction_eV_A": 0.7733667043290959,
+    "free_gradient_max_eV_A": 4.441423166710867e-07,
+    "relaxation": {
+      "energy_eV": -13307.206849493137,
+      "free_gradient_max_eV_A": 4.441423166710867e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.7733667043290959
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 61,
+      "evaluations": 65,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.33273920876597,
+    "relative_energy_eV": 0.6888898270409762,
+    "reaction_eV_A": 0.41035644623450396,
+    "free_gradient_max_eV_A": 4.76471879284901e-07,
+    "relaxation": {
+      "energy_eV": -13307.16950211367,
+      "free_gradient_max_eV_A": 4.76471879284901e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.41035644623450396
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 60,
+      "evaluations": 64,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.3954659131104474,
+    "relative_energy_eV": 0.7027519437382339,
+    "reaction_eV_A": 0.035336984809303265,
+    "free_gradient_max_eV_A": 3.6068562974858703e-07,
+    "relaxation": {
+      "energy_eV": -13307.15563999697,
+      "free_gradient_max_eV_A": 3.6068562974858703e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.035336984809303265
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 61,
+      "evaluations": 66,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.4581926174549253,
+    "relative_energy_eV": 0.6946630556491558,
+    "reaction_eV_A": -0.2753437542389166,
+    "free_gradient_max_eV_A": 3.784735441852982e-07,
+    "relaxation": {
+      "energy_eV": -13307.16372888506,
+      "free_gradient_max_eV_A": 3.784735441852982e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        -0.2753437542389166
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 60,
+      "evaluations": 65,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.520919321799403,
+    "relative_energy_eV": 0.6712288467278684,
+    "reaction_eV_A": -0.44358818317209286,
+    "free_gradient_max_eV_A": 3.318164557217229e-07,
+    "relaxation": {
+      "energy_eV": -13307.187163093982,
+      "free_gradient_max_eV_A": 3.318164557217229e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        -0.44358818317209286
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 63,
+      "evaluations": 67,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.5836460261438807,
+    "relative_energy_eV": 0.642457639991846,
+    "reaction_eV_A": -0.4511235278355573,
+    "free_gradient_max_eV_A": 3.538023697798043e-07,
+    "relaxation": {
+      "energy_eV": -13307.215934300719,
+      "free_gradient_max_eV_A": 3.538023697798043e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        -0.4511235278355573
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 63,
+      "evaluations": 68,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.646372730488358,
+    "relative_energy_eV": 0.6163676020948259,
+    "reaction_eV_A": -0.37537627204070445,
+    "free_gradient_max_eV_A": 3.7241442599402963e-07,
+    "relaxation": {
+      "energy_eV": -13307.242024338615,
+      "free_gradient_max_eV_A": 3.7241442599402963e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        -0.37537627204070445
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 62,
+      "evaluations": 68,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.7090994348328357,
+    "relative_energy_eV": 0.5955207739305379,
+    "reaction_eV_A": -0.2894931664876731,
+    "free_gradient_max_eV_A": 4.122006890677765e-07,
+    "relaxation": {
+      "energy_eV": -13307.262871166778,
+      "free_gradient_max_eV_A": 4.122006890677765e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        -0.2894931664876731
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 60,
+      "evaluations": 66,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.7718261391773136,
+    "relative_energy_eV": 0.5800169855441335,
+    "reaction_eV_A": -0.2051111416991347,
+    "free_gradient_max_eV_A": 3.1719111537320543e-07,
+    "relaxation": {
+      "energy_eV": -13307.278374955165,
+      "free_gradient_max_eV_A": 3.1719111537320543e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        -0.2051111416991347
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 64,
+      "evaluations": 69,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.834552843521791,
+    "relative_energy_eV": 0.569752974731145,
+    "reaction_eV_A": -0.12244592943172902,
+    "free_gradient_max_eV_A": 3.572586936284594e-07,
+    "relaxation": {
+      "energy_eV": -13307.28863896598,
+      "free_gradient_max_eV_A": 3.572586936284594e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        -0.12244592943172902
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 61,
+      "evaluations": 64,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.897279547866269,
+    "relative_energy_eV": 0.5646173846293805,
+    "reaction_eV_A": -0.041614239256678974,
+    "free_gradient_max_eV_A": 3.9382150636424473e-07,
+    "relaxation": {
+      "energy_eV": -13307.293774556081,
+      "free_gradient_max_eV_A": 3.9382150636424473e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        -0.041614239256678974
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 61,
+      "evaluations": 65,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 3.9600062522107464,
+    "relative_energy_eV": 0.5644916167507907,
+    "reaction_eV_A": 0.037270127471825655,
+    "free_gradient_max_eV_A": 3.807817163838101e-07,
+    "relaxation": {
+      "energy_eV": -13307.293900323959,
+      "free_gradient_max_eV_A": 3.807817163838101e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.037270127471825655
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 61,
+      "evaluations": 63,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 4.022732956555224,
+    "relative_energy_eV": 0.5692499932832229,
+    "reaction_eV_A": 0.11409549219418433,
+    "free_gradient_max_eV_A": 4.004187056372288e-07,
+    "relaxation": {
+      "energy_eV": -13307.289141947427,
+      "free_gradient_max_eV_A": 4.004187056372288e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.11409549219418433
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 61,
+      "evaluations": 67,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 4.085459660899701,
+    "relative_energy_eV": 0.5787599583987433,
+    "reaction_eV_A": 0.18875371482924438,
+    "free_gradient_max_eV_A": 2.8646853347422216e-07,
+    "relaxation": {
+      "energy_eV": -13307.27963198231,
+      "free_gradient_max_eV_A": 2.8646853347422216e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.18875371482924438
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 63,
+      "evaluations": 66,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 4.148186365244179,
+    "relative_energy_eV": 0.5928823222750363,
+    "reaction_eV_A": 0.2611417372700705,
+    "free_gradient_max_eV_A": 4.988181998843988e-07,
+    "relaxation": {
+      "energy_eV": -13307.265509618433,
+      "free_gradient_max_eV_A": 4.988181998843988e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.2611417372700705
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 59,
+      "evaluations": 63,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 4.210913069588657,
+    "relative_energy_eV": 0.611471513255823,
+    "reaction_eV_A": 0.33115847295430184,
+    "free_gradient_max_eV_A": 4.7273860424856817e-07,
+    "relaxation": {
+      "energy_eV": -13307.246920427453,
+      "free_gradient_max_eV_A": 4.7273860424856817e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.33115847295430184
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 59,
+      "evaluations": 63,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 4.273639773933135,
+    "relative_energy_eV": 0.634374879881936,
+    "reaction_eV_A": 0.39866202057471545,
+    "free_gradient_max_eV_A": 2.7353935082991e-07,
+    "relaxation": {
+      "energy_eV": -13307.224017060827,
+      "free_gradient_max_eV_A": 2.7353935082991e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.39866202057471545
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 62,
+      "evaluations": 65,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 4.336366478277612,
+    "relative_energy_eV": 0.6614245358249886,
+    "reaction_eV_A": 0.4632482255653301,
+    "free_gradient_max_eV_A": 3.356685964218953e-07,
+    "relaxation": {
+      "energy_eV": -13307.196967404885,
+      "free_gradient_max_eV_A": 3.356685964218953e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.4632482255653301
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 61,
+      "evaluations": 65,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 4.39909318262209,
+    "relative_energy_eV": 0.6924070359016157,
+    "reaction_eV_A": 0.5237787743295028,
+    "free_gradient_max_eV_A": 2.8885959969804365e-07,
+    "relaxation": {
+      "energy_eV": -13307.165984904808,
+      "free_gradient_max_eV_A": 2.8885959969804365e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.5237787743295028
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 61,
+      "evaluations": 65,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 4.461819886966568,
+    "relative_energy_eV": 0.7270002701834368,
+    "reaction_eV_A": 0.577827662590117,
+    "free_gradient_max_eV_A": 2.830688665064751e-07,
+    "relaxation": {
+      "energy_eV": -13307.131391670526,
+      "free_gradient_max_eV_A": 2.830688665064751e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.577827662590117
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 61,
+      "evaluations": 66,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 4.524546591311045,
+    "relative_energy_eV": 0.7646657235660599,
+    "reaction_eV_A": 0.6205696292880527,
+    "free_gradient_max_eV_A": 4.0854334993831176e-07,
+    "relaxation": {
+      "energy_eV": -13307.093726217143,
+      "free_gradient_max_eV_A": 4.0854334993831176e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.6205696292880527
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 58,
+      "evaluations": 63,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 4.587273295655523,
+    "relative_energy_eV": 0.7968077763656378,
+    "reaction_eV_A": 0.2509710450690861,
+    "free_gradient_max_eV_A": 3.293353738054172e-07,
+    "relaxation": {
+      "energy_eV": -13307.061584164343,
+      "free_gradient_max_eV_A": 3.293353738054172e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.2509710450690861
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 91,
+      "evaluations": 102,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  },
+  {
+    "q_A": 4.65,
+    "relative_energy_eV": 0.8119028197966847,
+    "reaction_eV_A": 0.23890767680280853,
+    "free_gradient_max_eV_A": 4.829602192890636e-07,
+    "relaxation": {
+      "energy_eV": -13307.046489120912,
+      "free_gradient_max_eV_A": 4.829602192890636e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [
+        0.23890767680280853
+      ],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 56,
+      "evaluations": 61,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    }
+  }
+]

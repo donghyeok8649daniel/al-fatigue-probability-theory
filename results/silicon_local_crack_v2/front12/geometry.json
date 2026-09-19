@@ -1,0 +1,100 @@
+{
+  "nx": 6,
+  "ny": 4,
+  "nz": 12,
+  "atoms": 3456,
+  "free_atoms": 2016,
+  "front_period_A": 46.083137066897336,
+  "width_A": 39.90916738601341,
+  "height_A": 37.626723853545435,
+  "grip_width_A": 4.0,
+  "imposed_opening_A": 3.5,
+  "seed_tip_A": -3.0,
+  "seed_transition_A": 5.0,
+  "cut": "111 shuffle",
+  "propagation_cubic": [
+    1,
+    1,
+    -2
+  ],
+  "front_cubic": [
+    1,
+    -1,
+    0
+  ],
+  "initial_relaxation": {
+    "energy_eV": -13307.85839194071,
+    "free_gradient_max_eV_A": 4.405624294823163e-07,
+    "force_tolerance_eV_A": 2e-06,
+    "force_converged": true,
+    "constraint_reaction_eV_A": [],
+    "optimizer_success": true,
+    "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+    "iterations": 105,
+    "evaluations": 149,
+    "stability_certified": false,
+    "physical_time_seconds": null
+  },
+  "initial_correction": {
+    "residual_history_eV_A": [
+      4.4056243040518916e-07,
+      3.388608837973095e-13
+    ],
+    "tolerance_eV_A": 1e-09,
+    "converged": true,
+    "newton_steps": 1
+  },
+  "initial_full_spectrum": {
+    "lowest_eigenvalues_eV_A2": [
+      0.11082957848416464,
+      0.1896084308400623,
+      0.21527203179172832,
+      0.243487702253662,
+      0.2620292622001332
+    ],
+    "eigenpair_residuals_eV_A2": [
+      1.7919090993679593e-14,
+      1.684788456367823e-14,
+      1.8906949915830976e-14,
+      3.142841318213154e-14,
+      7.0765265983484705e-12
+    ],
+    "negative_index": 0,
+    "near_zero_eigenvalues": 0
+  },
+  "tip_bond_index": 108,
+  "initial_frontier": {
+    "bond_index": 108,
+    "front_x_A": 0.0,
+    "front_z_A": [
+      -1.655829715918669e-16,
+      3.8402614222414444,
+      7.680522844482889,
+      11.520784266724332,
+      15.361045688965778,
+      19.20130711120722,
+      23.041568533448665,
+      26.88182995569011,
+      30.722091377931555,
+      34.562352800173,
+      38.40261422241444,
+      42.24287564465589
+    ],
+    "front_normal_gaps_A": [
+      2.642745460976716,
+      2.642745460976716,
+      2.642745460976716,
+      2.642745460976716,
+      2.642745460976716,
+      2.642745460976716,
+      2.642745460976716,
+      2.642745460976716,
+      2.642745460976716,
+      2.642745460976716,
+      2.642745460976716,
+      2.642745460976716
+    ],
+    "original_bonds_with_normal_gap_beyond_SW_cutoff": 72,
+    "interpretation": "reversible geometric gap observable; not an irreversible damage flag"
+  }
+}

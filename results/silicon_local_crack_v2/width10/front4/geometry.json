@@ -1,0 +1,84 @@
+{
+  "nx": 10,
+  "ny": 4,
+  "nz": 4,
+  "atoms": 1920,
+  "free_atoms": 1248,
+  "front_period_A": 15.361045688965778,
+  "width_A": 66.515278976689,
+  "height_A": 37.626723853545435,
+  "grip_width_A": 4.0,
+  "imposed_opening_A": 3.5,
+  "seed_tip_A": -3.0,
+  "seed_transition_A": 5.0,
+  "cut": "111 shuffle",
+  "propagation_cubic": [
+    1,
+    1,
+    -2
+  ],
+  "front_cubic": [
+    1,
+    -1,
+    0
+  ],
+  "initial_relaxation": {
+    "energy_eV": -7487.899454677781,
+    "free_gradient_max_eV_A": 4.914542676265864e-07,
+    "force_tolerance_eV_A": 2e-06,
+    "force_converged": true,
+    "constraint_reaction_eV_A": [],
+    "optimizer_success": true,
+    "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+    "iterations": 132,
+    "evaluations": 136,
+    "stability_certified": false,
+    "physical_time_seconds": null
+  },
+  "initial_correction": {
+    "residual_history_eV_A": [
+      4.914542725566705e-07,
+      1.879312677699474e-13
+    ],
+    "tolerance_eV_A": 1e-09,
+    "converged": true,
+    "newton_steps": 1
+  },
+  "initial_full_spectrum": {
+    "lowest_eigenvalues_eV_A2": [
+      0.07073288752695041,
+      0.10605203928954111,
+      0.10752220488875606,
+      0.12736687069479957,
+      0.16915335314466484
+    ],
+    "eigenpair_residuals_eV_A2": [
+      1.6225799501370822e-14,
+      1.9687554260087845e-14,
+      1.958870081954751e-14,
+      2.0957114246181973e-14,
+      2.8680127575313852e-11
+    ],
+    "negative_index": 0,
+    "near_zero_eigenvalues": 0
+  },
+  "tip_bond_index": 50,
+  "initial_frontier": {
+    "bond_index": 50,
+    "front_x_A": 0.0,
+    "front_z_A": [
+      -2.1126103272065777e-16,
+      3.8402614222414444,
+      7.680522844482889,
+      11.520784266724332
+    ],
+    "front_normal_gaps_A": [
+      2.640940936923146,
+      2.640940936923146,
+      2.640940936923146,
+      2.640940936923146
+    ],
+    "original_bonds_with_normal_gap_beyond_SW_cutoff": 40,
+    "interpretation": "reversible geometric gap observable; not an irreversible damage flag"
+  }
+}

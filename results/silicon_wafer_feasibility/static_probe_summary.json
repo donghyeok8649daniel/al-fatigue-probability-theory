@@ -1,0 +1,151 @@
+{
+  "scope": "0 K rigid original-SW control; not relaxed Si fracture or a calibration",
+  "source_url": "https://raw.githubusercontent.com/lammps/lammps/develop/potentials/Si.sw",
+  "source_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+  "parameters": {
+    "epsilon": 2.1683,
+    "sigma": 2.0951,
+    "a": 1.8,
+    "lambda": 21.0,
+    "gamma": 1.2,
+    "costheta0": -0.333333333333,
+    "A": 7.049556277,
+    "B": 0.6022245584,
+    "p": 4.0,
+    "q": 0.0,
+    "tol": 0.0
+  },
+  "lattice_angstrom": 5.430949786392042,
+  "bond_angstrom": 2.3516702408465893,
+  "bulk_energy_eV_atom": -4.336599999917262,
+  "elasticity_separate_RT_reference": {
+    "reference_C_GPa": {
+      "C11": 165.7,
+      "C12": 63.9,
+      "C44": 79.6
+    },
+    "young_modulus_GPa": {
+      "100": 130.13196864111498,
+      "110": 169.1011889208489,
+      "111": 187.85258643795234
+    },
+    "resolved_traction_per_unit_axial_stress": {
+      "normal_111": {
+        "normal": 1.0000000000000007,
+        "shear1": 0.0,
+        "shear2": 0.0
+      },
+      "axis_001": {
+        "normal": 0.3333333333333334,
+        "shear1": 0.0,
+        "shear2": -0.4714045207910318
+      }
+    }
+  },
+  "shuffle": {
+    "initial_gap_angstrom": 2.3516702409000008,
+    "surface_cell_area_angstrom2": 12.77180299219031,
+    "slip_period_angstrom": 3.840261422241445,
+    "separation_eV_cell": 2.1682999999586485,
+    "separation_J_m2_two_created_surfaces": 2.720054167418825,
+    "hessian_eV_angstrom2": [
+      [
+        10.313894676983182,
+        0.0
+      ],
+      [
+        0.0,
+        1.2711902854789514
+      ]
+    ],
+    "hessian_step_difference": 4.220623850414995e-06,
+    "periodicity_max_error_eV_cell": 1.4210854715202004e-14,
+    "finite_slab_and_image_checks": [
+      {
+        "in_plane_repeats": 1,
+        "normal_periods": 2,
+        "image_shell": 2,
+        "max_energy_error_eV_cell": 2.1316282072803006e-14
+      },
+      {
+        "in_plane_repeats": 2,
+        "normal_periods": 4,
+        "image_shell": 2,
+        "max_energy_error_eV_cell": 2.842170943040401e-14
+      },
+      {
+        "in_plane_repeats": 3,
+        "normal_periods": 3,
+        "image_shell": 2,
+        "max_energy_error_eV_cell": 6.306066779870889e-14
+      },
+      {
+        "in_plane_repeats": 2,
+        "normal_periods": 3,
+        "image_shell": 3,
+        "max_energy_error_eV_cell": 0.0
+      }
+    ],
+    "analytic_shuffle_curve_max_error_eV_cell": 2.353672812205332e-14,
+    "analytic_hessian_eV_angstrom2": [
+      [
+        10.3138932036255,
+        0.0
+      ],
+      [
+        0.0,
+        1.2711902853701469
+      ]
+    ],
+    "analytic_hessian_max_error_eV_angstrom2": 1.4733576811920557e-06,
+    "rigid_ideal_peak_traction_GPa": 36.239000231284585,
+    "opening_at_peak_angstrom": 0.5906765678235133
+  },
+  "glide": {
+    "initial_gap_angstrom": 0.7838900802999991,
+    "surface_cell_area_angstrom2": 12.77180299219031,
+    "slip_period_angstrom": 3.840261422241445,
+    "separation_eV_cell": 6.504899999875917,
+    "separation_J_m2_two_created_surfaces": 8.16016250225644,
+    "hessian_eV_angstrom2": [
+      [
+        7.957751108733646,
+        1.4210854715202004e-08
+      ],
+      [
+        1.4210854715202004e-08,
+        16.15299493096245
+      ]
+    ],
+    "hessian_step_difference": 3.169020601490047e-06,
+    "periodicity_max_error_eV_cell": 1.4210854715202004e-14,
+    "finite_slab_and_image_checks": [
+      {
+        "in_plane_repeats": 1,
+        "normal_periods": 2,
+        "image_shell": 2,
+        "max_energy_error_eV_cell": 2.842170943040401e-14
+      },
+      {
+        "in_plane_repeats": 2,
+        "normal_periods": 4,
+        "image_shell": 2,
+        "max_energy_error_eV_cell": 1.4210854715202004e-14
+      },
+      {
+        "in_plane_repeats": 3,
+        "normal_periods": 3,
+        "image_shell": 2,
+        "max_energy_error_eV_cell": 1.056932319443149e-13
+      },
+      {
+        "in_plane_repeats": 2,
+        "normal_periods": 3,
+        "image_shell": 3,
+        "max_energy_error_eV_cell": 0.0
+      }
+    ]
+  },
+  "elapsed_seconds": 1.9115955000015674,
+  "verification": "PASS: analytical shuffle curve and Hessian, broken-bond limit, periodicity, positive local Hessian, h refinement, slab/area/image controls, traction orientation"
+}

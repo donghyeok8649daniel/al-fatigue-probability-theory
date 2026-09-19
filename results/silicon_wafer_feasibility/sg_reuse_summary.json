@@ -1,0 +1,22 @@
+{
+  "scope": "numerical SG reuse on imposed reflecting Si-energy box; no physical kinetics or crack probability",
+  "table_sha256": "28b517a51c6af1c8cc3fe50adec94b7c4cb5ad67d72af07f67a9783fbb5b67e0",
+  "existing_kernel_sha256": "34504363059cbf1c0f6073c7a3b7624fb3e5a07b2355330bfcbf145182bb9cba",
+  "grid": [
+    11,
+    17
+  ],
+  "arbitrary_mobility_a": 1.0,
+  "arbitrary_mobility_s": 0.05,
+  "numerical_kT_eV": 0.02,
+  "dt_arbitrary_time": 0.005,
+  "steps": 20,
+  "max_generator_column_sum": 1.559584989239471e-15,
+  "minimum_offdiagonal_rate": 5.22434377645284e-15,
+  "gibbs_stationarity_max_absolute_residual": 1.1736488517155585e-17,
+  "gibbs_stationarity_scaled_residual": 4.121264834430038e-20,
+  "max_mass_error": 1.1102230246251565e-15,
+  "minimum_density": 1.1977555525906192e-50,
+  "negative_mass_correction": 0.0,
+  "verification": "PASS"
+}

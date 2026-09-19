@@ -1,0 +1,446 @@
+{
+  "scope": "fixed-opening rigid glide registry states; not localized crack activation",
+  "source_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+  "script_sha256": "a320d7c9a94f96ec2a9ec5d80f7cce0f69468fe6663c9ec72dd227f833fcf985",
+  "module_sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+  "temperature_K": 0,
+  "lattice_A": 5.430949778405214,
+  "partial_translation_A": 2.2171759626290246,
+  "full_registry_period_A": 6.651527887887074,
+  "direction_cubic": [
+    0.40824829046386296,
+    -0.816496580927726,
+    0.408248290463863
+  ],
+  "endpoint_lattice_coordinates": [
+    0.6666666666666666,
+    -0.3333333333333333
+  ],
+  "kinetic_closure_certified": false,
+  "physical_activation_barrier_eV": null,
+  "records": [
+    {
+      "opening_A": 0.0,
+      "stationary": [
+        {
+          "s_A": 0.0,
+          "s_over_partial": 0.0,
+          "registry_u_A": [
+            0.0,
+            -0.0
+          ],
+          "energy_eV_cell": 3.552713678800501e-15,
+          "energy_above_start_eV_cell": 0.0,
+          "registry_gradient_max_eV_A_cell": 6.818306147697395e-15,
+          "registry_hessian_eigenvalues_eV_A2_cell": [
+            16.152994926531314,
+            16.152994926531335
+          ],
+          "registry_morse_index": 0,
+          "normal_derivative_eV_A_cell": 6.046156630912236e-15
+        },
+        {
+          "s_A": 1.1085879813145123,
+          "s_over_partial": 0.5,
+          "registry_u_A": [
+            0.9600653541484762,
+            -0.5542939906572562
+          ],
+          "energy_eV_cell": 3.821737059398572,
+          "energy_above_start_eV_cell": 3.8217370593985684,
+          "registry_gradient_max_eV_A_cell": 1.433615678618277e-14,
+          "registry_hessian_eigenvalues_eV_A2_cell": [
+            -18.050313294783308,
+            34.84130109756298
+          ],
+          "registry_morse_index": 1,
+          "normal_derivative_eV_A_cell": -5.35451457122152,
+          "downhill_stationary_destinations": [
+            {
+              "registry_u_A": [
+                1.9201307082960555,
+                -1.1085879813163217
+              ],
+              "energy_eV_cell": 1.7763568394002505e-15,
+              "gradient_max_eV_A_cell": 2.9230319604947673e-11,
+              "hessian_eigenvalues_eV_A2_cell": [
+                16.15299492649293,
+                16.152994926569747
+              ],
+              "optimizer_success_flag": true
+            },
+            {
+              "registry_u_A": [
+                -8.568930662116403e-13,
+                -1.2286891067588423e-12
+              ],
+              "energy_eV_cell": 5.329070518200751e-15,
+              "gradient_max_eV_A_cell": 1.985067109295254e-11,
+              "hessian_eigenvalues_eV_A2_cell": [
+                16.15299492650283,
+                16.15299492655983
+              ],
+              "optimizer_success_flag": true
+            }
+          ]
+        },
+        {
+          "s_A": 2.2171759626290246,
+          "s_over_partial": 1.0,
+          "registry_u_A": [
+            1.9201307082969523,
+            -1.1085879813145123
+          ],
+          "energy_eV_cell": 4.440892098500626e-15,
+          "energy_above_start_eV_cell": 8.881784197001252e-16,
+          "registry_gradient_max_eV_A_cell": 8.15902882300049e-15,
+          "registry_hessian_eigenvalues_eV_A2_cell": [
+            16.152994926531314,
+            16.15299492653133
+          ],
+          "registry_morse_index": 0,
+          "normal_derivative_eV_A_cell": 5.4697524287661274e-15
+        }
+      ],
+      "max_transverse_gradient_eV_A_cell": 2.9976021664879227e-14,
+      "min_transverse_curvature_eV_A2_cell": 16.15299492653132,
+      "stationary_scan_intervals": [
+        80,
+        160
+      ],
+      "endpoint_energy_difference_eV_cell": 8.881784197001252e-16,
+      "periodicity_checks": [
+        {
+          "fraction": 0.0,
+          "partial_shift_energy_difference_eV_cell": 8.881784197001252e-16,
+          "full_shift_energy_error_eV_cell": 0.0,
+          "full_shift_gradient_error_eV_A_cell": 8.356760179404427e-15,
+          "full_shift_hessian_error_eV_A2_cell": 1.7763568394002505e-14
+        },
+        {
+          "fraction": 0.15,
+          "partial_shift_energy_difference_eV_cell": 0.25374188362616046,
+          "full_shift_energy_error_eV_cell": 4.440892098500626e-16,
+          "full_shift_gradient_error_eV_A_cell": 3.1086244689504383e-15,
+          "full_shift_hessian_error_eV_A2_cell": 8.881784197001252e-15
+        },
+        {
+          "fraction": 0.55,
+          "partial_shift_energy_difference_eV_cell": 25.271561492518003,
+          "full_shift_energy_error_eV_cell": 2.220446049250313e-15,
+          "full_shift_gradient_error_eV_A_cell": 1.6653345369377348e-14,
+          "full_shift_hessian_error_eV_A2_cell": 1.7985612998927536e-14
+        }
+      ],
+      "energy_at_0_L_2L_3L_eV_cell": [
+        3.552713678800501e-15,
+        4.440892098500626e-15,
+        235.83605798669993,
+        3.552713678800501e-15
+      ]
+    },
+    {
+      "opening_A": 0.3,
+      "stationary": [
+        {
+          "s_A": 0.0,
+          "s_over_partial": 0.0,
+          "registry_u_A": [
+            0.0,
+            -0.0
+          ],
+          "energy_eV_cell": 0.353043913937082,
+          "energy_above_start_eV_cell": 0.0,
+          "registry_gradient_max_eV_A_cell": 4.208716227803499e-15,
+          "registry_hessian_eigenvalues_eV_A2_cell": [
+            11.040429679990138,
+            11.040429679990156
+          ],
+          "registry_morse_index": 0,
+          "normal_derivative_eV_A_cell": 2.2901405542829134
+        },
+        {
+          "s_A": 1.1085879813145123,
+          "s_over_partial": 0.5,
+          "registry_u_A": [
+            0.9600653541484762,
+            -0.5542939906572562
+          ],
+          "energy_eV_cell": 2.6880171654200633,
+          "energy_above_start_eV_cell": 2.3349732514829813,
+          "registry_gradient_max_eV_A_cell": 1.148510743674288e-14,
+          "registry_hessian_eigenvalues_eV_A2_cell": [
+            -8.532168962321109,
+            23.027568355851788
+          ],
+          "registry_morse_index": 1,
+          "normal_derivative_eV_A_cell": -2.1374640551950046,
+          "downhill_stationary_destinations": [
+            {
+              "registry_u_A": [
+                1.9201307082951655,
+                -1.1085879813122685
+              ],
+              "energy_eV_cell": 0.3530439139370829,
+              "gradient_max_eV_A_cell": 2.4767873096015787e-11,
+              "hessian_eigenvalues_eV_A2_cell": [
+                11.040429679947728,
+                11.04042968003256
+              ],
+              "optimizer_success_flag": true
+            },
+            {
+              "registry_u_A": [
+                2.90526796921221e-12,
+                -3.0761811426159055e-13
+              ],
+              "energy_eV_cell": 0.3530439139370829,
+              "gradient_max_eV_A_cell": 3.207095588978214e-11,
+              "hessian_eigenvalues_eV_A2_cell": [
+                11.040429679946952,
+                11.040429680033352
+              ],
+              "optimizer_success_flag": true
+            }
+          ]
+        },
+        {
+          "s_A": 2.2171759626290246,
+          "s_over_partial": 1.0,
+          "registry_u_A": [
+            1.9201307082969523,
+            -1.1085879813145123
+          ],
+          "energy_eV_cell": 0.35304391393708023,
+          "energy_above_start_eV_cell": -1.7763568394002505e-15,
+          "registry_gradient_max_eV_A_cell": 6.141353418045855e-15,
+          "registry_hessian_eigenvalues_eV_A2_cell": [
+            11.04042967999014,
+            11.04042967999016
+          ],
+          "registry_morse_index": 0,
+          "normal_derivative_eV_A_cell": 2.290140554282913
+        }
+      ],
+      "max_transverse_gradient_eV_A_cell": 2.3037127760971998e-14,
+      "min_transverse_curvature_eV_A2_cell": 11.040429679990146,
+      "stationary_scan_intervals": [
+        80,
+        160
+      ],
+      "endpoint_energy_difference_eV_cell": -1.7763568394002505e-15,
+      "periodicity_checks": [
+        {
+          "fraction": 0.0,
+          "partial_shift_energy_difference_eV_cell": -1.7763568394002505e-15,
+          "full_shift_energy_error_eV_cell": 1.7763568394002505e-15,
+          "full_shift_gradient_error_eV_A_cell": 7.745409379566907e-15,
+          "full_shift_hessian_error_eV_A2_cell": 1.7763568394002505e-14
+        },
+        {
+          "fraction": 0.15,
+          "partial_shift_energy_difference_eV_cell": 0.1903011042485132,
+          "full_shift_energy_error_eV_cell": 2.6645352591003757e-15,
+          "full_shift_gradient_error_eV_A_cell": 1.1102230246251565e-14,
+          "full_shift_hessian_error_eV_A2_cell": 1.9539925233402755e-14
+        },
+        {
+          "fraction": 0.55,
+          "partial_shift_energy_difference_eV_cell": 13.041874014836564,
+          "full_shift_energy_error_eV_cell": 2.6645352591003757e-15,
+          "full_shift_gradient_error_eV_A_cell": 1.7985612998927536e-14,
+          "full_shift_hessian_error_eV_A2_cell": 2.7755575615628914e-14
+        }
+      ],
+      "energy_at_0_L_2L_3L_eV_cell": [
+        0.353043913937082,
+        0.35304391393708023,
+        61.12629932209581,
+        0.3530439139370838
+      ]
+    },
+    {
+      "opening_A": 0.75,
+      "stationary": [
+        {
+          "s_A": 0.0,
+          "s_over_partial": 0.0,
+          "registry_u_A": [
+            0.0,
+            -0.0
+          ],
+          "energy_eV_cell": 1.9143872725710835,
+          "energy_above_start_eV_cell": 0.0,
+          "registry_gradient_max_eV_A_cell": 1.153227644976516e-15,
+          "registry_hessian_eigenvalues_eV_A2_cell": [
+            5.629422101654418,
+            5.62942210165442
+          ],
+          "registry_morse_index": 0,
+          "normal_derivative_eV_A_cell": 4.322619127239282
+        },
+        {
+          "s_A": 0.9622014335264795,
+          "s_over_partial": 0.43397612537055724,
+          "registry_u_A": [
+            0.833290884991735,
+            -0.48110071676323973
+          ],
+          "energy_eV_cell": 2.688889784848997,
+          "energy_above_start_eV_cell": 0.7745025122779134,
+          "registry_gradient_max_eV_A_cell": 6.3525573690270676e-15,
+          "registry_hessian_eigenvalues_eV_A2_cell": [
+            -1.1052245652236325,
+            11.631276852215086
+          ],
+          "registry_morse_index": 1,
+          "normal_derivative_eV_A_cell": 1.8129321358128334,
+          "downhill_stationary_destinations": [
+            {
+              "registry_u_A": [
+                0.9600653541393879,
+                -0.5542939906796236
+              ],
+              "energy_eV_cell": 2.6862411647841253,
+              "gradient_max_eV_A_cell": 2.4427486291669696e-10,
+              "hessian_eigenvalues_eV_A2_cell": [
+                0.4268685590266337,
+                11.760155280981104
+              ],
+              "optimizer_success_flag": true
+            },
+            {
+              "registry_u_A": [
+                3.410962456139522e-11,
+                -1.9334418181240368e-11
+              ],
+              "energy_eV_cell": 1.9143872725710858,
+              "gradient_max_eV_A_cell": 1.9201455432727954e-10,
+              "hessian_eigenvalues_eV_A2_cell": [
+                5.629422101264761,
+                5.629422102044083
+              ],
+              "optimizer_success_flag": true
+            }
+          ]
+        },
+        {
+          "s_A": 1.1085879813145123,
+          "s_over_partial": 0.5,
+          "registry_u_A": [
+            0.9600653541484762,
+            -0.5542939906572562
+          ],
+          "energy_eV_cell": 2.6862411647841253,
+          "energy_above_start_eV_cell": 0.7718538922130418,
+          "registry_gradient_max_eV_A_cell": 6.074218570324467e-15,
+          "registry_hessian_eigenvalues_eV_A2_cell": [
+            0.4268685590266319,
+            11.760155280981111
+          ],
+          "registry_morse_index": 0,
+          "normal_derivative_eV_A_cell": 1.7408257651722714
+        },
+        {
+          "s_A": 1.2549745291025458,
+          "s_over_partial": 0.566023874629443,
+          "registry_u_A": [
+            1.086839823305218,
+            -0.6274872645512729
+          ],
+          "energy_eV_cell": 2.688889784848996,
+          "energy_above_start_eV_cell": 0.7745025122779126,
+          "registry_gradient_max_eV_A_cell": 4.359360095129716e-15,
+          "registry_hessian_eigenvalues_eV_A2_cell": [
+            -1.105224565223651,
+            11.631276852215091
+          ],
+          "registry_morse_index": 1,
+          "normal_derivative_eV_A_cell": 1.812932135812833,
+          "downhill_stationary_destinations": [
+            {
+              "registry_u_A": [
+                1.9201307082630727,
+                -1.1085879812947799
+              ],
+              "energy_eV_cell": 1.914387272571084,
+              "gradient_max_eV_A_cell": 1.9072566343760637e-10,
+              "hessian_eigenvalues_eV_A2_cell": [
+                5.629422101264767,
+                5.6294221020440744
+              ],
+              "optimizer_success_flag": true
+            },
+            {
+              "registry_u_A": [
+                0.9600653541369937,
+                -0.5542939906705191
+              ],
+              "energy_eV_cell": 2.686241164784126,
+              "gradient_max_eV_A_cell": 1.747533994301818e-10,
+              "hessian_eigenvalues_eV_A2_cell": [
+                0.4268685590266301,
+                11.760155280981115
+              ],
+              "optimizer_success_flag": true
+            }
+          ]
+        },
+        {
+          "s_A": 2.2171759626290246,
+          "s_over_partial": 1.0,
+          "registry_u_A": [
+            1.9201307082969523,
+            -1.1085879813145123
+          ],
+          "energy_eV_cell": 1.9143872725710853,
+          "energy_above_start_eV_cell": 1.7763568394002505e-15,
+          "registry_gradient_max_eV_A_cell": 1.5919798557846124e-15,
+          "registry_hessian_eigenvalues_eV_A2_cell": [
+            5.629422101654411,
+            5.629422101654421
+          ],
+          "registry_morse_index": 0,
+          "normal_derivative_eV_A_cell": 4.3226191272392835
+        }
+      ],
+      "max_transverse_gradient_eV_A_cell": 1.1342923128543347e-14,
+      "min_transverse_curvature_eV_A2_cell": 5.629422101654417,
+      "stationary_scan_intervals": [
+        80,
+        160
+      ],
+      "endpoint_energy_difference_eV_cell": 1.7763568394002505e-15,
+      "periodicity_checks": [
+        {
+          "fraction": 0.0,
+          "partial_shift_energy_difference_eV_cell": 1.7763568394002505e-15,
+          "full_shift_energy_error_eV_cell": 1.7763568394002505e-15,
+          "full_shift_gradient_error_eV_A_cell": 1.7763568394002505e-15,
+          "full_shift_hessian_error_eV_A2_cell": 1.0658141036401503e-14
+        },
+        {
+          "fraction": 0.15,
+          "partial_shift_energy_difference_eV_cell": 0.12234010538931495,
+          "full_shift_energy_error_eV_cell": 3.552713678800501e-15,
+          "full_shift_gradient_error_eV_A_cell": 4.884981308350689e-15,
+          "full_shift_hessian_error_eV_A2_cell": 1.1102230246251565e-14
+        },
+        {
+          "fraction": 0.55,
+          "partial_shift_energy_difference_eV_cell": 4.9670639437235575,
+          "full_shift_energy_error_eV_cell": 1.7763568394002505e-15,
+          "full_shift_gradient_error_eV_A_cell": 1.0455178389712216e-14,
+          "full_shift_hessian_error_eV_A2_cell": 2.2926105458509483e-14
+        }
+      ],
+      "energy_at_0_L_2L_3L_eV_cell": [
+        1.9143872725710835,
+        1.9143872725710853,
+        15.311198693653893,
+        1.9143872725710853
+      ]
+    }
+  ],
+  "elapsed_seconds": 19.377459100011038
+}

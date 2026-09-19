@@ -1,0 +1,182 @@
+{
+  "states": {
+    "initial": {
+      "conditional_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.11082957848416017,
+          0.18960843084005832,
+          0.21545011327559208,
+          0.24360523609446347
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.7465186522108918e-14,
+          1.6806710304024307e-14,
+          6.945021165829065e-14,
+          6.665871804851245e-12
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "schur_curvature_eV_A2": 6.8203903649692945,
+      "force_derivative_checks": [
+        {
+          "step_A": 0.004,
+          "max_error_eV_A2": 6.740552338513339e-08
+        },
+        {
+          "step_A": 0.002,
+          "max_error_eV_A2": 1.6844095118706548e-08
+        },
+        {
+          "step_A": 0.001,
+          "max_error_eV_A2": 4.2069567829372545e-09
+        }
+      ],
+      "reaction_derivative_checks": [
+        {
+          "step_A": 0.004,
+          "difference_eV_A2": 6.8204082339874805,
+          "absolute_error_eV_A2": 1.7869018186011942e-05
+        },
+        {
+          "step_A": 0.002,
+          "difference_eV_A2": 6.820394832158741,
+          "absolute_error_eV_A2": 4.46718944679958e-06
+        },
+        {
+          "step_A": 0.001,
+          "difference_eV_A2": 6.820391481761827,
+          "absolute_error_eV_A2": 1.1167925322297378e-06
+        }
+      ]
+    },
+    "saddle": {
+      "conditional_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.1107358380629753,
+          0.1858632263879794,
+          0.2158135909033374,
+          0.24430533544909275
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.843703655617182e-14,
+          1.615688773043381e-14,
+          4.312149378289551e-14,
+          3.692306686416854e-12
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "schur_curvature_eV_A2": -5.584427915583814,
+      "force_derivative_checks": [
+        {
+          "step_A": 0.004,
+          "max_error_eV_A2": 6.749688297169598e-08
+        },
+        {
+          "step_A": 0.002,
+          "max_error_eV_A2": 1.686493078523199e-08
+        },
+        {
+          "step_A": 0.001,
+          "max_error_eV_A2": 4.207213466500548e-09
+        }
+      ],
+      "reaction_derivative_checks": [
+        {
+          "step_A": 0.004,
+          "difference_eV_A2": -5.583469471508697,
+          "absolute_error_eV_A2": 0.0009584440751169154
+        },
+        {
+          "step_A": 0.002,
+          "difference_eV_A2": -5.584188285412004,
+          "absolute_error_eV_A2": 0.00023963017180950175
+        },
+        {
+          "step_A": 0.001,
+          "difference_eV_A2": -5.5843680068455335,
+          "absolute_error_eV_A2": 5.990873828043419e-05
+        }
+      ]
+    },
+    "opened_minimum": {
+      "conditional_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.11068521181874516,
+          0.1842925480848321,
+          0.2159678912847346,
+          0.24467750682604245
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.639089237449755e-14,
+          1.6677684762227682e-14,
+          2.727583011295924e-13,
+          2.5114669667915647e-11
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "schur_curvature_eV_A2": 1.2575118757104273,
+      "force_derivative_checks": [
+        {
+          "step_A": 0.004,
+          "max_error_eV_A2": 6.756685166919851e-08
+        },
+        {
+          "step_A": 0.002,
+          "max_error_eV_A2": 1.688434836388808e-08
+        },
+        {
+          "step_A": 0.001,
+          "max_error_eV_A2": 4.219058991061786e-09
+        }
+      ],
+      "reaction_derivative_checks": [
+        {
+          "step_A": 0.004,
+          "difference_eV_A2": 1.2575106713131172,
+          "absolute_error_eV_A2": 1.2043973101061312e-06
+        },
+        {
+          "step_A": 0.002,
+          "difference_eV_A2": 1.2575115746125538,
+          "absolute_error_eV_A2": 3.010978735229486e-07
+        },
+        {
+          "step_A": 0.001,
+          "difference_eV_A2": 1.2575118004332755,
+          "absolute_error_eV_A2": 7.527715184529882e-08
+        }
+      ]
+    }
+  },
+  "boundary_reaction_eV_A": 35.48797585757692,
+  "boundary_work_refinement": [
+    {
+      "step_A": 0.004,
+      "energy_derivative_eV_A": 35.48797340401932,
+      "absolute_error_eV_A": 2.453557598869338e-06
+    },
+    {
+      "step_A": 0.002,
+      "energy_derivative_eV_A": 35.487975244175686,
+      "absolute_error_eV_A": 6.134012338065986e-07
+    },
+    {
+      "step_A": 0.001,
+      "energy_derivative_eV_A": 35.48797570416284,
+      "absolute_error_eV_A": 1.5341407788582728e-07
+    }
+  ],
+  "boundary_work_interpretation": "conjugate to prescribed nonuniform fixed-grip displacements, not uniform nominal stress",
+  "total_force_balance_eV_A": [
+    -1.922446305879094e-14,
+    1.2878587085651816e-14,
+    2.0712514215026477e-16
+  ],
+  "finite_temperature_PMF_calibrated": false,
+  "mobility_calibrated": false,
+  "elapsed_seconds": 92.17012769996654,
+  "passed": true
+}

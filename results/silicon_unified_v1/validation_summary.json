@@ -1,0 +1,73 @@
+{
+  "solver_collection_count": 828,
+  "results": [
+    {
+      "label": "solver3",
+      "exit_code": 0,
+      "elapsed_seconds": 365.5690535999893,
+      "tests": 218,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "label": "solver1",
+      "exit_code": 0,
+      "elapsed_seconds": 4769.239842499985,
+      "tests": 196,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "label": "solver2",
+      "exit_code": 0,
+      "elapsed_seconds": 4805.325293499976,
+      "tests": 217,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "label": "solver0",
+      "exit_code": 0,
+      "elapsed_seconds": 4845.527284899988,
+      "tests": 197,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "label": "app",
+      "exit_code": 0,
+      "elapsed_seconds": 541.7765696000133,
+      "tests": 189,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "smoke_exit_code": 0,
+  "elapsed_seconds": 5388.561154199997,
+  "scope": "full solver/app regression plus new static reference checks; not physical calibration",
+  "targeted_tests": {
+    "passed": 9,
+    "elapsed_seconds": 3.11
+  },
+  "solver_file_groups": 4,
+  "solver_files": 116,
+  "blas_threads_per_process": 1,
+  "all_groups_cover_collection": true,
+  "artifacts_sha256": {
+    "solver0.xml": "03d1116f07d75280a98e4f6e0770f8d2b34a4a63031af229216997074438e3f5",
+    "solver1.xml": "0bf26f0a875e29efed61841cfcdd760ab89f3d34a4eabc36e9b7ab1d048472b8",
+    "solver2.xml": "2a4700fa7795abf76d1e0baee520139f2719c33d4b34882097ad842ca966b0f3",
+    "solver3.xml": "3bb503cbe466303566984fc0a3262e07c245851a08714e6d482e87e479523ab7",
+    "app.xml": "252084aa66821aee5d000bf4eeadd17348a8c0a9d420f2929db60be5ede7e36f"
+  },
+  "source_sha256": {
+    "solver_v1/silicon_environment_research.py": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+    "solver_v1/test_silicon_environment_research.py": "1b4160fd8f0c6e39908ce516943424977c95c6b49e9446005184bec9537e2519"
+  },
+  "smoke_output": "desktop-ui smoke OK: a0=0.7713438268704838, kappa=86.29296488740997\n"
+}

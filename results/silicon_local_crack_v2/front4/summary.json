@@ -1,0 +1,623 @@
+{
+  "geometry": {
+    "nx": 6,
+    "ny": 4,
+    "nz": 4,
+    "atoms": 1152,
+    "free_atoms": 672,
+    "front_period_A": 15.361045688965778,
+    "width_A": 39.90916738601341,
+    "height_A": 37.626723853545435,
+    "grip_width_A": 4.0,
+    "imposed_opening_A": 3.5,
+    "seed_tip_A": -3.0,
+    "seed_transition_A": 5.0,
+    "cut": "111 shuffle",
+    "propagation_cubic": [
+      1,
+      1,
+      -2
+    ],
+    "front_cubic": [
+      1,
+      -1,
+      0
+    ],
+    "initial_relaxation": {
+      "energy_eV": -4435.952797313569,
+      "free_gradient_max_eV_A": 4.331162506976405e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 98,
+      "evaluations": 106,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    },
+    "initial_correction": {
+      "residual_history_eV_A": [
+        4.3311625413933186e-07,
+        1.3946482857463138e-13
+      ],
+      "tolerance_eV_A": 1e-09,
+      "converged": true,
+      "newton_steps": 1
+    },
+    "initial_full_spectrum": {
+      "lowest_eigenvalues_eV_A2": [
+        0.11082957848416164,
+        0.18960843084006004,
+        0.21527203179172735,
+        0.2434877022536662,
+        0.27759413499395347
+      ],
+      "eigenpair_residuals_eV_A2": [
+        1.5161259043210802e-14,
+        1.620484028508414e-14,
+        1.923466065179619e-14,
+        1.4756928245340038e-13,
+        2.268835879812167e-11
+      ],
+      "negative_index": 0,
+      "near_zero_eigenvalues": 0
+    },
+    "tip_bond_index": 31,
+    "initial_frontier": {
+      "bond_index": 31,
+      "front_x_A": 0.0,
+      "front_z_A": [
+        -1.655829715918669e-16,
+        3.8402614222414444,
+        7.680522844482889,
+        11.520784266724332
+      ],
+      "front_normal_gaps_A": [
+        2.6427454609767165,
+        2.6427454609767165,
+        2.6427454609767165,
+        2.6427454609767165
+      ],
+      "original_bonds_with_normal_gap_beyond_SW_cutoff": 24,
+      "interpretation": "reversible geometric gap observable; not an irreversible damage flag"
+    }
+  },
+  "paths": {
+    "localized": {
+      "coherent_front_control": false,
+      "intervals": 32,
+      "normalization": "total eV of the explicit supercell; no Ac, area or fitted multiplicity",
+      "states": {
+        "saddle": {
+          "q_A": 3.4017707367182197,
+          "relative_energy_eV": 0.7029665390665691,
+          "stationary_correction": {
+            "residual_history_eV_A": [
+              2.0343701291614114e-07,
+              4.3270942384765476e-14
+            ],
+            "tolerance_eV_A": 1e-09,
+            "converged": true,
+            "newton_steps": 1
+          },
+          "restricted_spectrum": {
+            "lowest_eigenvalues_eV_A2": [
+              -9.40265447286195,
+              0.11073583806297495,
+              0.18586322638797914,
+              0.21596136075337646,
+              0.2444042070159498,
+              0.2776341982467172
+            ],
+            "eigenpair_residuals_eV_A2": [
+              1.3158802816162818e-14,
+              1.502685066935553e-14,
+              1.591979651664593e-14,
+              2.658544244509857e-13,
+              2.5492964151466193e-13,
+              1.0229834726767976e-11
+            ],
+            "negative_index": 1,
+            "near_zero_eigenvalues": 0
+          },
+          "full_atom_spectrum": {
+            "lowest_eigenvalues_eV_A2": [
+              -9.40265447286195,
+              0.11073583806297495,
+              0.18586322638797914,
+              0.21596136075337646,
+              0.2444042070159498,
+              0.2776341982467172
+            ],
+            "eigenpair_residuals_eV_A2": [
+              1.3158802816162818e-14,
+              1.502685066935553e-14,
+              1.591979651664593e-14,
+              2.658544244509857e-13,
+              2.5492964151466193e-13,
+              1.0229834726767976e-11
+            ],
+            "negative_index": 1,
+            "near_zero_eigenvalues": 0
+          },
+          "frontier": {
+            "bond_index": 31,
+            "front_x_A": 0.0,
+            "front_z_A": [
+              -1.655829715918669e-16,
+              3.8402614222414444,
+              7.680522844482889,
+              11.520784266724332
+            ],
+            "front_normal_gaps_A": [
+              2.6490777947838566,
+              2.6787167293281424,
+              3.4017707367182197,
+              2.6787167293281424
+            ],
+            "original_bonds_with_normal_gap_beyond_SW_cutoff": 24,
+            "interpretation": "reversible geometric gap observable; not an irreversible damage flag"
+          }
+        },
+        "opened_minimum": {
+          "q_A": 3.9298045733758267,
+          "relative_energy_eV": 0.5642199597836601,
+          "stationary_correction": {
+            "residual_history_eV_A": [
+              3.716322729621635e-07,
+              9.914985499293039e-14
+            ],
+            "tolerance_eV_A": 1e-09,
+            "converged": true,
+            "newton_steps": 1
+          },
+          "restricted_spectrum": {
+            "lowest_eigenvalues_eV_A2": [
+              0.11068521181874164,
+              0.18429254808482814,
+              0.21522390760395435,
+              0.24420303264852739,
+              0.2773883163328876,
+              0.2783776328925823
+            ],
+            "eigenpair_residuals_eV_A2": [
+              1.7140721969435303e-14,
+              1.618158849906149e-14,
+              1.4380800623149728e-14,
+              7.813010544006889e-14,
+              9.111954280425485e-12,
+              4.049068545671257e-11
+            ],
+            "negative_index": 0,
+            "near_zero_eigenvalues": 0
+          },
+          "full_atom_spectrum": {
+            "lowest_eigenvalues_eV_A2": [
+              0.11068521181874164,
+              0.18429254808482814,
+              0.21522390760395435,
+              0.24420303264852739,
+              0.2773883163328876,
+              0.2783776328925823
+            ],
+            "eigenpair_residuals_eV_A2": [
+              1.7140721969435303e-14,
+              1.618158849906149e-14,
+              1.4380800623149728e-14,
+              7.813010544006889e-14,
+              9.111954280425485e-12,
+              4.049068545671257e-11
+            ],
+            "negative_index": 0,
+            "near_zero_eigenvalues": 0
+          },
+          "frontier": {
+            "bond_index": 31,
+            "front_x_A": 0.0,
+            "front_z_A": [
+              -1.655829715918669e-16,
+              3.8402614222414444,
+              7.680522844482889,
+              11.520784266724332
+            ],
+            "front_normal_gaps_A": [
+              2.6529433773831927,
+              2.6999510167487237,
+              3.9298045733758267,
+              2.6999510167487246
+            ],
+            "original_bonds_with_normal_gap_beyond_SW_cutoff": 25,
+            "interpretation": "reversible geometric gap observable; not an irreversible damage flag"
+          }
+        }
+      },
+      "connections": [
+        {
+          "sign": -1,
+          "target": "initial",
+          "max_position_errors_A": {
+            "initial": 1.0658141036401503e-14,
+            "opened_minimum": 0.6514676741669514
+          },
+          "relaxation": {
+            "energy_eV": -4435.952797313564,
+            "free_gradient_max_eV_A": 3.8515076654366265e-07,
+            "force_tolerance_eV_A": 2e-06,
+            "force_converged": true,
+            "constraint_reaction_eV_A": [],
+            "optimizer_success": true,
+            "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+            "iterations": 82,
+            "evaluations": 91,
+            "stability_certified": false,
+            "physical_time_seconds": null
+          },
+          "stationary_correction": {
+            "residual_history_eV_A": [
+              3.8515076654366265e-07,
+              9.683139706728738e-14
+            ],
+            "tolerance_eV_A": 1e-09,
+            "converged": true,
+            "newton_steps": 1
+          },
+          "spectrum": {
+            "lowest_eigenvalues_eV_A2": [
+              0.11082957848416053,
+              0.18960843084006138,
+              0.21527203179172535,
+              0.2434877022536598
+            ],
+            "eigenpair_residuals_eV_A2": [
+              1.7154036188852026e-14,
+              1.7089012825147204e-14,
+              1.4223398347057564e-13,
+              3.522282753772044e-11
+            ],
+            "negative_index": 0,
+            "near_zero_eigenvalues": 0
+          }
+        },
+        {
+          "sign": 1,
+          "target": "opened_minimum",
+          "max_position_errors_A": {
+            "initial": 0.6514676741669552,
+            "opened_minimum": 9.769962616701378e-15
+          },
+          "relaxation": {
+            "energy_eV": -4435.388577353783,
+            "free_gradient_max_eV_A": 3.100775968090802e-07,
+            "force_tolerance_eV_A": 2e-06,
+            "force_converged": true,
+            "constraint_reaction_eV_A": [],
+            "optimizer_success": true,
+            "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+            "iterations": 79,
+            "evaluations": 83,
+            "stability_certified": false,
+            "physical_time_seconds": null
+          },
+          "stationary_correction": {
+            "residual_history_eV_A": [
+              3.100775968090802e-07,
+              9.040684867400728e-14
+            ],
+            "tolerance_eV_A": 1e-09,
+            "converged": true,
+            "newton_steps": 1
+          },
+          "spectrum": {
+            "lowest_eigenvalues_eV_A2": [
+              0.11068521181874565,
+              0.18429254808483178,
+              0.2152239076039571,
+              0.2442030326485271
+            ],
+            "eigenpair_residuals_eV_A2": [
+              1.7329356463775062e-14,
+              1.610473169365284e-14,
+              2.7662034260512717e-14,
+              1.7456841156295217e-11
+            ],
+            "negative_index": 0,
+            "near_zero_eigenvalues": 0
+          }
+        }
+      ],
+      "derivative_checks": [
+        {
+          "step_A": 0.004,
+          "difference_eV_A": 1.3495787743332266,
+          "reaction_eV_A": 1.349631229020194,
+          "absolute_error_eV_A": 5.245468696735145e-05
+        },
+        {
+          "step_A": 0.002,
+          "difference_eV_A": 1.3496180880082642,
+          "reaction_eV_A": 1.349631229020194,
+          "absolute_error_eV_A": 1.3141011929729274e-05
+        },
+        {
+          "step_A": 0.001,
+          "difference_eV_A": 1.3496279160067903,
+          "reaction_eV_A": 1.349631229020194,
+          "absolute_error_eV_A": 3.3130134036163383e-06
+        }
+      ],
+      "forward_barrier_eV": 0.7029665390665691,
+      "reverse_barrier_eV": 0.138746579282909,
+      "physical_activation_free_energy_eV": null,
+      "kinetic_closure_certified": false
+    },
+    "coherent": {
+      "coherent_front_control": true,
+      "intervals": 32,
+      "normalization": "total eV of the explicit supercell; no Ac, area or fitted multiplicity",
+      "states": {
+        "saddle": {
+          "q_A": 3.341173809946186,
+          "relative_energy_eV": 2.2056620827559654,
+          "stationary_correction": {
+            "residual_history_eV_A": [
+              6.80657240431648e-07,
+              1.252591780298573e-13
+            ],
+            "tolerance_eV_A": 1e-09,
+            "converged": true,
+            "newton_steps": 1
+          },
+          "restricted_spectrum": {
+            "lowest_eigenvalues_eV_A2": [
+              -40.1259014572869,
+              0.4418605400298038,
+              0.7053590553770335,
+              0.8707462780047212,
+              0.9871259496858268,
+              1.1105938306492305
+            ],
+            "eigenpair_residuals_eV_A2": [
+              7.546606332781113e-14,
+              6.878913171917556e-14,
+              5.804337173075407e-14,
+              7.08805790181682e-14,
+              7.252188870176001e-14,
+              7.09108712263743e-11
+            ],
+            "negative_index": 1,
+            "near_zero_eigenvalues": 0
+          },
+          "full_atom_spectrum": {
+            "lowest_eigenvalues_eV_A2": [
+              -10.031475364321727,
+              -9.968521346884549,
+              -9.968521346884506,
+              -9.849276569553803,
+              0.11046513500745243,
+              0.17633976384426095
+            ],
+            "eigenpair_residuals_eV_A2": [
+              3.650164822477247e-14,
+              3.722862121590348e-14,
+              1.579009114668766e-14,
+              4.880353922792293e-14,
+              1.655923682188282e-14,
+              1.673818515214949e-11
+            ],
+            "negative_index": 4,
+            "near_zero_eigenvalues": 0
+          },
+          "frontier": {
+            "bond_index": 31,
+            "front_x_A": 0.0,
+            "front_z_A": [
+              -1.655829715918669e-16,
+              3.8402614222414444,
+              7.680522844482889,
+              11.520784266724332
+            ],
+            "front_normal_gaps_A": [
+              3.341173809946186,
+              3.341173809946186,
+              3.341173809946186,
+              3.341173809946186
+            ],
+            "original_bonds_with_normal_gap_beyond_SW_cutoff": 24,
+            "interpretation": "reversible geometric gap observable; not an irreversible damage flag"
+          }
+        },
+        "opened_minimum": {
+          "q_A": 4.456438175004907,
+          "relative_energy_eV": 0.05808783907401782,
+          "stationary_correction": {
+            "residual_history_eV_A": [
+              4.651655899495788e-07,
+              1.0225154056797692e-13
+            ],
+            "tolerance_eV_A": 1e-09,
+            "converged": true,
+            "newton_steps": 1
+          },
+          "restricted_spectrum": {
+            "lowest_eigenvalues_eV_A2": [
+              0.43919193888924574,
+              0.6477713132339449,
+              0.8547113875221686,
+              0.9836493978630488,
+              1.0925630145670515,
+              1.1075184785100645
+            ],
+            "eigenpair_residuals_eV_A2": [
+              6.733843117168329e-14,
+              7.532083834555745e-14,
+              8.932038860368652e-14,
+              7.546284074270082e-14,
+              1.7566002748948223e-10,
+              1.0869067879729963e-12
+            ],
+            "negative_index": 0,
+            "near_zero_eigenvalues": 0
+          },
+          "full_atom_spectrum": {
+            "lowest_eigenvalues_eV_A2": [
+              0.1097979847223117,
+              0.16194282830848736,
+              0.21367784688054078,
+              0.2459123494657625,
+              0.2731407536417664,
+              0.27687961962751856
+            ],
+            "eigenpair_residuals_eV_A2": [
+              1.7220272782095063e-14,
+              1.6131640724135134e-14,
+              1.5208820345764614e-14,
+              2.0472450605898967e-14,
+              1.0729890173583177e-11,
+              2.0232227199164346e-12
+            ],
+            "negative_index": 0,
+            "near_zero_eigenvalues": 0
+          },
+          "frontier": {
+            "bond_index": 31,
+            "front_x_A": 0.0,
+            "front_z_A": [
+              -1.655829715918669e-16,
+              3.8402614222414444,
+              7.680522844482889,
+              11.520784266724332
+            ],
+            "front_normal_gaps_A": [
+              4.456438175004907,
+              4.456438175004907,
+              4.456438175004907,
+              4.456438175004907
+            ],
+            "original_bonds_with_normal_gap_beyond_SW_cutoff": 28,
+            "interpretation": "reversible geometric gap observable; not an irreversible damage flag"
+          }
+        }
+      },
+      "connections": [
+        {
+          "sign": -1,
+          "target": "opened_minimum",
+          "max_position_errors_A": {
+            "initial": 0.9192454482415551,
+            "opened_minimum": 1.7763568394002505e-15
+          },
+          "relaxation": {
+            "energy_eV": -4435.894709474495,
+            "free_gradient_max_eV_A": 3.451315289115797e-07,
+            "force_tolerance_eV_A": 2e-06,
+            "force_converged": true,
+            "constraint_reaction_eV_A": [],
+            "optimizer_success": true,
+            "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+            "iterations": 98,
+            "evaluations": 106,
+            "stability_certified": false,
+            "physical_time_seconds": null
+          },
+          "stationary_correction": {
+            "residual_history_eV_A": [
+              3.451315312985592e-07,
+              1.2835045526404798e-13
+            ],
+            "tolerance_eV_A": 1e-09,
+            "converged": true,
+            "newton_steps": 1
+          },
+          "spectrum": {
+            "lowest_eigenvalues_eV_A2": [
+              0.4391919388892439,
+              0.6477713132339441,
+              0.8547113875221689,
+              0.9836493978630452
+            ],
+            "eigenpair_residuals_eV_A2": [
+              7.072448983687732e-14,
+              7.320450697426711e-14,
+              7.976938555956152e-14,
+              1.1043537478073801e-10
+            ],
+            "negative_index": 0,
+            "near_zero_eigenvalues": 0
+          }
+        },
+        {
+          "sign": 1,
+          "target": "initial",
+          "max_position_errors_A": {
+            "initial": 1.7763568394002505e-15,
+            "opened_minimum": 0.9192454482415557
+          },
+          "relaxation": {
+            "energy_eV": -4435.952797313569,
+            "free_gradient_max_eV_A": 4.5186889318293497e-07,
+            "force_tolerance_eV_A": 2e-06,
+            "force_converged": true,
+            "constraint_reaction_eV_A": [],
+            "optimizer_success": true,
+            "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+            "iterations": 97,
+            "evaluations": 108,
+            "stability_certified": false,
+            "physical_time_seconds": null
+          },
+          "stationary_correction": {
+            "residual_history_eV_A": [
+              4.5186889245782055e-07,
+              1.3527373665667142e-13
+            ],
+            "tolerance_eV_A": 1e-09,
+            "converged": true,
+            "newton_steps": 1
+          },
+          "spectrum": {
+            "lowest_eigenvalues_eV_A2": [
+              0.44331831393665205,
+              0.758433723360238,
+              0.8610881271669152,
+              0.9739508090146677
+            ],
+            "eigenpair_residuals_eV_A2": [
+              6.100028826010369e-14,
+              8.630314946568421e-14,
+              6.561231486501053e-14,
+              2.1867682085184614e-11
+            ],
+            "negative_index": 0,
+            "near_zero_eigenvalues": 0
+          }
+        }
+      ],
+      "derivative_checks": [
+        {
+          "step_A": 0.004,
+          "difference_eV_A": 4.49440599117995,
+          "reaction_eV_A": 4.494601328134525,
+          "absolute_error_eV_A": 0.00019533695457507605
+        },
+        {
+          "step_A": 0.002,
+          "difference_eV_A": 4.494552531574936,
+          "reaction_eV_A": 4.494601328134525,
+          "absolute_error_eV_A": 4.879655958944795e-05
+        },
+        {
+          "step_A": 0.001,
+          "difference_eV_A": 4.494589166393448,
+          "reaction_eV_A": 4.494601328134525,
+          "absolute_error_eV_A": 1.2161741077321153e-05
+        }
+      ],
+      "forward_barrier_eV": 2.2056620827559654,
+      "reverse_barrier_eV": 2.1475742436819476,
+      "physical_activation_free_energy_eV": null,
+      "kinetic_closure_certified": false
+    }
+  },
+  "elapsed_seconds": 98.76490639999975
+}
