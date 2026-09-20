@@ -213,8 +213,13 @@ def test_real_3d_field_drives_actual_pde_and_persists(tmp_path):
                     mesh.areas.sum(), expression, 1000.)
     config = UIAnalysisConfig(model_frequency=1000., cycles=.2, steps_per_cycle=10,
                                stress_mean_mpa=500., stress_amplitude_mpa=100.)
+    records = []
     reference, result = run_solid_probability(config, mesh, [load], None,
-        poisson=.33, target_mm=2., direction=[1, 0, 0], sample_count=4)
+        poisson=.33, target_mm=2., direction=[1, 0, 0], sample_count=4,
+        record_callback=records.append)
+    assert len(records) > 1
+    for key in ('model_time', 'local_initiation_probability', 'applied_stress_mpa'):
+        np.testing.assert_array_equal([row[key] for row in records], reference[key])
     validate_solid_result(result, mesh)
     assert len(result['sample_cells']) == 1  # homogeneous stress, not element volumes
     scalar = run_ui_analysis(config)

@@ -585,6 +585,10 @@ def test_balanced_multiple_face_loads_run_from_main_button_and_restore(tk_root, 
             app.entries[key].delete(0, 'end'); app.entries[key].insert(0, value)
         app.axial_count.set('2')
         app.solid_target.set('2')
+        app.entries['correlation_area_mm2'].insert(0, '1')
+        app.entries['stressed_area_mm2'].insert(0, '100')
+        app.field.set('specimen_probability_extrapolation')
+        live_extrapolation = []
         app.load_workflow.tensor_text.set('0,0,0;0,0,0;0,0,normal_mean+normal_amp*sin(2*pi*f*t)')
         for region in ('top', 'bottom'):
             app.load_workflow.region_code = region
@@ -594,8 +598,17 @@ def test_balanced_multiple_face_loads_run_from_main_button_and_restore(tk_root, 
         deadline = time.monotonic()+150
         while app.busy and time.monotonic() < deadline:
             tk_root.update(); time.sleep(.01)
+            if app.result is None and app.live_records:
+                data = app._plot_data()
+                live_extrapolation.append(float(data['specimen_probability_extrapolation'][-1]))
         assert not app.busy and not errors
+        assert live_extrapolation, '3D solve must publish the reference PDE before completion'
         assert app.result is not None and 'solid_specimen' in app.result
+        expected = -np.expm1(100*np.log1p(-app.result['local_initiation_probability']))
+        np.testing.assert_array_equal(app.result['specimen_probability_extrapolation'], expected)
+        np.testing.assert_array_equal(app.ax.lines[0].get_ydata(), expected)
+        assert '—' not in app.specimen_extrapolation_display.get()
+        assert np.isnan(app.result['specimen_initiation_probability']).all()
         solid = app.result['solid_specimen']
         assert solid['target_mm'] == 2.
         assert app.geometry_workflow.target.get() == '3'
@@ -627,8 +640,25 @@ def test_balanced_multiple_face_loads_run_from_main_button_and_restore(tk_root, 
         view.slice_fraction.set(1); view.update()
         app.language_display.set('English'); app._on_language_selected()
         assert '3D' in view.window.title()
-        save_bundle(tmp_path/'actual-solid.ftgsim', capture(app))
-        restore(app, load_bundle(tmp_path/'actual-solid.ftgsim'))
+        state = capture(app)
+        state['result'] = dict(state['result'])
+        # Extrapolation is cheap post-processing of saved raw data and areas.
+        # A missing or stale display cache must not hide area extrapolation.
+        for key in ('specimen_initiation_probability', 'specimen_survival_probability',
+                    'specimen_probability_extrapolation', 'specimen_probability_resolved_mask',
+                    'N_eff', 'specimen_probability_status'):
+            state['result'].pop(key, None)
+        for cached in (False, True):
+            if cached:
+                state['result']['specimen_probability_extrapolation'] = np.full_like(expected, .5)
+                state['result']['N_eff'] = -1.
+            save_bundle(tmp_path/'actual-solid.ftgsim', state)
+            restore(app, load_bundle(tmp_path/'actual-solid.ftgsim'))
+            np.testing.assert_array_equal(app.result['specimen_probability_extrapolation'], expected)
+            np.testing.assert_array_equal(app.ax.lines[0].get_ydata(), expected)
+            assert app.result['N_eff'] == 100.
+            assert '—' not in app.specimen_extrapolation_display.get()
+            assert app._specimen_status_key == 'status.below_numerical_resolution'
         exact(before['result']['solid_specimen'], app.result['solid_specimen'])
         assert app.correlation_volume.get() == '1'
         assert app.solid_target.get() == '2'

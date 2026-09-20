@@ -1638,6 +1638,7 @@ class DesktopApp:
                 try:
                     result, field = run_solid_probability(config, **solid_request,
                         stop_requested=self.stop_event.is_set,
+                        record_callback=emit,
                         progress=lambda key, values: self._queue.put(('solid_progress', (key, values))))
                     result['solid_specimen'] = field
                 except InterruptedError:

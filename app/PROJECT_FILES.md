@@ -44,6 +44,11 @@ metadata. Python model objects are stored as descriptive parameter records,
 never executable serialized objects. Loading restores plots without rerunning
 PDE or turning a saved uncertified result into a certified result.
 
+On application restore, derived specimen extrapolation is recalculated from the
+saved local absorption and area entries. Missing or stale display caches therefore
+do not hide the extrapolation number/curve. Raw numerical histories and spatial
+fields stay unchanged; no solver runs and no calibration is inferred.
+
 AI credentials and chat history are not project data. Arbitrary Python classes
 and object arrays are rejected. Project opening is replay, not automatic solve.
 A saved physical calibration still passes the existing validation gate.

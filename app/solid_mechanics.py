@@ -391,7 +391,8 @@ def select_stress_histories(histories, count):
 
 
 def run_solid_probability(config, mesh, loads, correction, *, poisson, target_mm,
-                          direction, sample_count=16, stop_requested=None, progress=None):
+                          direction, sample_count=16, stop_requested=None, progress=None,
+                          record_callback=None):
     """3D tensor mechanics plus explicitly axial-projected local reference PDEs.
 
     The full tensor is retained and available in the map. The canonical local
@@ -454,8 +455,12 @@ def run_solid_probability(config, mesh, loads, correction, *, poisson, target_mm
             progress('solid.progress', dict(index=i+1, total=len(samples)))
         def stress(time, cell=cell):
             return float(history.coefficients(float(time))[0] @ projected_basis[:, cell])
+        # Main-window histories use the first representative PDE, exactly as the
+        # returned reference_result does. Do not concatenate other cells' clocks
+        # or present a partly computed spatial field as a finished specimen.
         local = run_ui_analysis(config, axial_stress_function=stress, stop_requested=stopped,
-                                _prepared_model=probability_model)
+                                _prepared_model=probability_model,
+                                record_callback=record_callback if i == 0 else None)
         if i == 0:
             reference_result = local
         if stopped():

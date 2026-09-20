@@ -266,7 +266,9 @@ def restore(app, state):
         app._show_summary('complete',result)
         app.notebook.select(app.post_tab)
     app._refresh_material_ui()
-    app._refresh_specimen_labels(); app._plot()
+    # Derived specimen values may be absent/stale in a saved result. Rebuild
+    # them from its original local history and restored areas without a solve.
+    app._update_specimen_probability()
     for view in l.maps: view.update()
 
 
