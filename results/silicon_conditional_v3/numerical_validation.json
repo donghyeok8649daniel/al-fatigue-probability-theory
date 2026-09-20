@@ -1,0 +1,78 @@
+{
+  "numerical_consistency_passed": true,
+  "actual_MD_runs_checked": 13,
+  "total_new_trajectory_ps": 13.0,
+  "final_energy_recomputation": [
+    {
+      "label": "gap_+0.0000_dt_0.00025",
+      "final_energy_recompute_error_eV": 0.0
+    },
+    {
+      "label": "gap_+0.0040_dt_0.00100",
+      "final_energy_recompute_error_eV": 0.0
+    },
+    {
+      "label": "gap_+0.0040_dt_0.00050",
+      "final_energy_recompute_error_eV": 0.0
+    },
+    {
+      "label": "gap_+0.0040_dt_0.00025",
+      "final_energy_recompute_error_eV": 0.0
+    },
+    {
+      "label": "gap_-0.0040_dt_0.00100",
+      "final_energy_recompute_error_eV": 0.0
+    },
+    {
+      "label": "gap_-0.0040_dt_0.00050",
+      "final_energy_recompute_error_eV": 0.0
+    },
+    {
+      "label": "gap_-0.0040_dt_0.00025",
+      "final_energy_recompute_error_eV": 0.0
+    },
+    {
+      "label": "gap_+0.0020_dt_0.00100",
+      "final_energy_recompute_error_eV": 0.0
+    },
+    {
+      "label": "gap_+0.0020_dt_0.00050",
+      "final_energy_recompute_error_eV": 0.0
+    },
+    {
+      "label": "gap_+0.0020_dt_0.00025",
+      "final_energy_recompute_error_eV": 0.0
+    },
+    {
+      "label": "gap_-0.0020_dt_0.00100",
+      "final_energy_recompute_error_eV": 0.0
+    },
+    {
+      "label": "gap_-0.0020_dt_0.00050",
+      "final_energy_recompute_error_eV": 0.0
+    },
+    {
+      "label": "gap_-0.0020_dt_0.00025",
+      "final_energy_recompute_error_eV": 0.0
+    }
+  ],
+  "direct_triple_force_checks": [
+    {
+      "state": "initial",
+      "force_error_eV_A": 6.991802969924521e-15,
+      "total_energy_error_eV": 3.597122599785507e-13
+    },
+    {
+      "state": "fine_release_endpoint",
+      "force_error_eV_A": 6.2814337065120185e-15,
+      "total_energy_error_eV": 3.8813396940895473e-13
+    }
+  ],
+  "geometry_metadata_sha256": "875a14a2a00bd0e020051f34a03d23eb93fe333a2f03d87bc1adda231c677810",
+  "validator_sha256": "272e9f351d871c68f4115053a8e1e1300961b3577147a9477f740c65627443f9",
+  "numpy_version": "2.5.0",
+  "scipy_version": "1.18.1",
+  "material_calibrated": false,
+  "finite_T_PMF_certified": false,
+  "kinetic_calibration_approved": false
+}

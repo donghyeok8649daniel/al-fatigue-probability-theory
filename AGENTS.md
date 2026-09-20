@@ -2,6 +2,13 @@
 
 ## 웨이퍼 브랜치의 현재 범위
 
+v3 `SILICON_CONDITIONAL_DYNAMICS_V3.md`는 단일 가지의 classical Gaussian 후보와
+새 보존적 MD13개/합계13 ps, harmonic bath memory의 별도 연구다. 0 K 정지점의
+300 K Gaussian 차이0.734498 eV를 finite-T 활성화 장벽이라고 부르지 않는다.
+원자 질량의 Newtonian ps는 생산 overdamped t0가 아니다. Oscillatory kernel을
+abs/clip하여 상수 마찰을 만들지 않는다. gap/slip 추가의 정적 force-variance
+설명률과 동적 closure를 구별한다. finite-T joint PMF·Markov·Si/Hz gate는 미완료다.
+
 사용자 요청으로 `silicon-wafer-research`를 별도 생성했다. 첫 진입점은
 `WAFER_BRANCH.md`, 재개 지점은 `CURRENT_WORK_HANDOFF.md`다. 기존 Al 연구 지침은
 공통 기준/역사로 보존하되, 오래된 Al calibration을 자동 재개하지 않는다.

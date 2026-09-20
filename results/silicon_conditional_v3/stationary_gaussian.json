@@ -1,0 +1,101 @@
+{
+  "initial": {
+    "gap_A": 2.6427454609767165,
+    "energy_difference_eV": 0.0,
+    "full_force_residual_eV_A": 3.605449272470196e-14,
+    "bath_dimension": 2015,
+    "bath_min_eigenvalue_eV_A2": 0.11082957848416354,
+    "logdet_a": 4804.384456600275,
+    "logdet_as": 4802.457033889359,
+    "logdet_marginalization_error": 3.355093980417223e-13,
+    "relaxed_curvature_a_eV_A2": 6.820390364969294,
+    "relaxed_curvature_as_eV_A2": [
+      [
+        6.8239157617185935,
+        -0.11005848387883779
+      ],
+      [
+        -0.11005848387883721,
+        3.435888421951712
+      ]
+    ],
+    "q_mass_eV_ps2_A2": 0.001455428478685224,
+    "relaxed_path_mass_eV_ps2_A2": 0.0031879629019911605,
+    "memory_zero_eV_A2": 1.7925126777508034,
+    "memory_below_abs_curvature_rate_fraction": 0.6908233296808695,
+    "abs_curvature_angular_rate_ps": 68.4556316013893,
+    "slowest_bath_angular_frequency_ps": 6.170458114152173,
+    "max_hbar_omega_over_kBT_300K": 2.787521851333666,
+    "gaussian_differences_at_static_geometries_eV": {
+      "100": 0.0,
+      "300": 0.0,
+      "600": 0.0
+    }
+  },
+  "saddle": {
+    "gap_A": 3.4017707367182197,
+    "energy_difference_eV": 0.70296653906657,
+    "full_force_residual_eV_A": 4.3270942384765476e-14,
+    "bath_dimension": 2015,
+    "bath_min_eigenvalue_eV_A2": 0.11073583806297457,
+    "logdet_a": 4806.82384611514,
+    "logdet_as": 4805.2124157374155,
+    "logdet_marginalization_error": -1.5631940186722204e-13,
+    "relaxed_curvature_a_eV_A2": -5.584427915583813,
+    "relaxed_curvature_as_eV_A2": [
+      [
+        -5.583012990727054,
+        -0.05953458775911591
+      ],
+      [
+        -0.059534587759115604,
+        2.504986128922255
+      ]
+    ],
+    "q_mass_eV_ps2_A2": 0.001455428478685224,
+    "relaxed_path_mass_eV_ps2_A2": 0.00277833591703877,
+    "memory_zero_eV_A2": 1.671581707624409,
+    "memory_below_abs_curvature_rate_fraction": 0.5230902551071818,
+    "abs_curvature_angular_rate_ps": 61.9432389434917,
+    "slowest_bath_angular_frequency_ps": 6.167848054137492,
+    "max_hbar_omega_over_kBT_300K": 2.7888923072570715,
+    "gaussian_differences_at_static_geometries_eV": {
+      "100": 0.7134770552694575,
+      "300": 0.7344980876752325,
+      "600": 0.7660296362838949
+    }
+  },
+  "opened_minimum": {
+    "gap_A": 3.9298045733758267,
+    "energy_difference_eV": 0.5642199597836539,
+    "full_force_residual_eV_A": 9.924006061368118e-14,
+    "bath_dimension": 2015,
+    "bath_min_eigenvalue_eV_A2": 0.11068521181875123,
+    "logdet_a": 4808.013458532535,
+    "logdet_as": 4806.463143324953,
+    "logdet_marginalization_error": 2.6334490144108713e-13,
+    "relaxed_curvature_a_eV_A2": 1.2575118757104269,
+    "relaxed_curvature_as_eV_A2": [
+      [
+        1.2575928009634851,
+        0.01380936488620707
+      ],
+      [
+        0.013809364886206793,
+        2.356477753896205
+      ]
+    ],
+    "q_mass_eV_ps2_A2": 0.001455428478685224,
+    "relaxed_path_mass_eV_ps2_A2": 0.0025223893842001065,
+    "memory_zero_eV_A2": 1.401120182487781,
+    "memory_below_abs_curvature_rate_fraction": 0.1390539456237086,
+    "abs_curvature_angular_rate_ps": 29.39413018228282,
+    "slowest_bath_angular_frequency_ps": 6.166437983627568,
+    "max_hbar_omega_over_kBT_300K": 2.7898147111868004,
+    "gaussian_differences_at_static_geometries_eV": {
+      "100": 0.5798561193132787,
+      "300": 0.6111284383725285,
+      "600": 0.6580369169614032
+    }
+  }
+}

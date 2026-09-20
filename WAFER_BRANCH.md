@@ -14,6 +14,7 @@ Al과 Si를 같은 원자 에너지 → 자유에너지 → 확률 흐름의 구
 | 공통 3D 메시·면하중·힘/토크 평형·프로젝트 저장 | 기존 검증 기반 포함 | [공간 역학](app/SOLID_MECHANICS.md), [메시·평형 검사](app/MESH_BALANCE_VERIFICATION.md) |
 | Si 원자 에너지의 환경 표현·내부 원자 이완 | 정적 연구 검증 완료 | [환경 모델](solver_v1/silicon_environment_research.py), [검증 결과](results/silicon_unified_v1/COMPLETED_SUMMARY.md) |
 | 균열 끝의 국소 분리·재결합·순차 전이 | 정적 연구 구현·검증 완료 | [공간 모델](solver_v1/silicon_crack_research.py), [국소 균열 결과](results/silicon_local_crack_v2/COMPLETED_SUMMARY.md) |
+| 조건부 Gaussian 후보·주변 원자 기억·새 단시간 원자 운동 | 연구 구현·수치 대조 완료 | [v3 이론](solver_v1/SILICON_CONDITIONAL_DYNAMICS_V3.md), [새13 ps 결과](results/silicon_conditional_v3/COMPLETED_SUMMARY.md) |
 | 실측 Si 물성·표면·도핑 에너지 적합 | 미완료 | [탐색 근거](results/silicon_wafer_feasibility/RESEARCH_MEMO.md) |
 | finite-T PMF·이동도·실제 수명·Hz | 미보정 | [공통 이론](results/silicon_wafer_feasibility/UNIFIED_FATIGUE_THEORY.md), [국소 축약 조건](solver_v1/SILICON_LOCAL_CRACK_V2.md) |
 | 생산 UI의 실제 Si 해석 | 비활성 | [실행 차단 계약](app/MATERIAL_SELECTION.md#실행-상태) |
@@ -27,6 +28,7 @@ Al과 Si를 같은 원자 에너지 → 자유에너지 → 확률 흐름의 구
 2. [환경 에너지·좌표 축약 감사](results/silicon_unified_v1/COMPLETED_SUMMARY.md)
 3. [국소 균열 좌표의 유도](solver_v1/SILICON_LOCAL_CRACK_V2.md)
 4. [국소 균열 실제 계산과 검증](results/silicon_local_crack_v2/COMPLETED_SUMMARY.md)
+5. [조건부 자유에너지 후보와 원자 동역학](results/silicon_conditional_v3/COMPLETED_SUMMARY.md)
 
 기존 원자면 전체 동시 분리 계산은 대조군으로 남겨 둔다. 같은 최종 상태까지
 전면의 네 결합을 순차 전이시키는 검증 경로의 최대 에너지는 1.075 eV,
@@ -85,8 +87,8 @@ python -m app.desktop_ui --smoke
 
 ## 다음 연구
 
-1. 국소 opening/slip 및 이웃 결합 상태의 finite-T 조건부 분포와 PMF를 구한다.
-2. 빠르게 제거할 좌표와 함께 남길 느린 좌표를 실제 동역학으로 구분한다.
+1. v3의 단일 가지 Gaussian 후보에서 조건부 finite-T joint 분포와 PMF로 검증을 넓힌다.
+2. gap/slip만으로 설명되지 않은 집단 변형·기억 효과를 온도·크기·시간에 따라 검사한다.
 3. 실제 Si 결함·표면·도핑 에너지와 외곽 시편의 하중을 검증한다.
 4. 검증된 좌표·PMF·이동도·파손 사건이 갖춰진 뒤 공통 확률 솔버에 연결한다.
 

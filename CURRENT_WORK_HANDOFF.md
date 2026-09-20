@@ -1,5 +1,27 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-21 최신: Si 조건부 측도·기억 효과·새 원자 운동 v3 완료
+
+- 최신 사용자 지시 “연구 계속ㄱㄱ”에 따라 웨이퍼 연구를 이어갔다.
+  시작 fresh fetch 성공, local/origin598c615e07f69ae70e2396dc66cf41e3e63a5d92 일치/clean.
+  `silicon-wafer-research`/`aft-silicon-wafer`, 추가 agent·생산 변경 없음.
+- `silicon_conditional_research.py`에 선형 coarea/metric, conditional Gaussian,
+  Schur 곡률과 exact harmonic memory, 보존적 velocity-Verlet 연구 구현을 추가했다.
+  원자 질량의 ps를 생산 clock으로 사용하지 않는다. 실제 PDE/Al/Si gate는 불변이다.
+- 같은 v2 원자 좌표에서 새 Hessian과 경로17점 계산,216개 단일 mode 방향 검사를 수행했다.
+  0 K 안장점에 대입한300 K Gaussian 차이는0.7344980877 eV(기존 U차0.7029665391).
+  finite-T 안장점·전체 PMF·활성화 장벽 인증이 아니다. quantum/여러 가지/결합항 미검증.
+- 실제 새 MD13개×1 ps=13 ps 완료, 주 실행116.56s/exit0. +/-0.004,+/-0.002 Angstrom,
+  dt1/.5/.25fs와 무변위 대조. 에너지오차 차수약2, fine 응답의 harmonic 차이1.6724e-4.
+  초기 memory0/K=0.262817, 열린 최소1.114200. 국소 slip의 정적 force variance 설명0.1967%,
+  같은 전면 gap3개1.9575%. 정적 제거/상수 마찰/작은 상태공간을 곧바로 승인하지 않는다.
+- 관련49 PASS/1.62s/skip0, actual13개 final state 검증 및 independent triple force 대조,
+  desktop smoke exit0, 그림 확인. 전체827 회귀 재실행과 구별한다. 모든 계산 프로세스 완료.
+  결과/재현: `results/silicon_conditional_v3/COMPLETED_SUMMARY.md`와 같은 폴더 raw NPZ/JSON/CSV.
+  유도: `solver_v1/SILICON_CONDITIONAL_DYNAMICS_V3.md`. 코드/source hash를 기록했다.
+- 다음은 조건부 finite-T joint 분포와 집단 변형 좌표, 평형 준비 후 dynamics의
+  온도·크기·시간 검사다. 새13 ps는 zero-T perturbation이며 열적 전이율/kinetic calibration 아님.
+
 ## 2026-09-20 최신: Al 외삽 표시 경로 수정
 
 - 최신 요청: Al에서 외삽 숫자·곡선·메시 위험도가 모두 안 보임.

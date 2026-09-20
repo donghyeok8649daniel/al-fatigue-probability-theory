@@ -1,0 +1,95 @@
+{
+  "input_summary_sha256": "b6060dad64384e4c2a569b68eb5e3ddb34ee77bb8bd83a74d9f0e10493d9ecf6",
+  "analysis_code_sha256": "5741165d771431a164f654a421616cf060285255b038805a53449949a4139060",
+  "coordinate_variance_diagnostics": {
+    "local_slip": {
+      "observable_count": 1,
+      "explained_force_variance_fraction": 0.001966734625120881,
+      "remaining_force_variance_fraction": 0.998033265374879
+    },
+    "other_openings_on_same_front": {
+      "observable_count": 3,
+      "explained_force_variance_fraction": 0.019575183231612826,
+      "remaining_force_variance_fraction": 0.9804248167683871
+    },
+    "next_front_openings": {
+      "observable_count": 4,
+      "explained_force_variance_fraction": 0.00939777774568828,
+      "remaining_force_variance_fraction": 0.9906022222543116
+    },
+    "all_other_mobile_shuffle_openings": {
+      "observable_count": 35,
+      "explained_force_variance_fraction": 0.062002755659259,
+      "remaining_force_variance_fraction": 0.937997244340741
+    },
+    "local_slip_and_same_front": {
+      "observable_count": 4,
+      "explained_force_variance_fraction": 0.021643335223701005,
+      "remaining_force_variance_fraction": 0.978356664776299
+    }
+  },
+  "mode_slice_max_abs_error_kBT": {
+    "100": 0.0005670719409187342,
+    "300": 0.0009915277210699079,
+    "600": 0.0014151189163739437
+  },
+  "dt_energy_orders": [
+    {
+      "amplitude_A": 0.004,
+      "energy_error_ratios": [
+        3.999846112935902,
+        3.999981126969383
+      ],
+      "orders_base2": [
+        1.999944495906265,
+        1.9999931929770218
+      ]
+    },
+    {
+      "amplitude_A": -0.004,
+      "energy_error_ratios": [
+        3.999827307650538,
+        3.9995519633362413
+      ],
+      "orders_base2": [
+        1.9999377130563885,
+        1.9998383958810244
+      ]
+    },
+    {
+      "amplitude_A": 0.002,
+      "energy_error_ratios": [
+        3.9998366850338076,
+        4.000080377814343
+      ],
+      "orders_base2": [
+        1.9999410953745338,
+        2.0000289898772707
+      ]
+    },
+    {
+      "amplitude_A": -0.002,
+      "energy_error_ratios": [
+        3.9997707307025725,
+        3.9997828743536554
+      ],
+      "orders_base2": [
+        1.9999173062104774,
+        1.9999216863511853
+      ]
+    }
+  ],
+  "richardson_estimated_odd_errors": {
+    "0.004": 1.4678889513897175e-05,
+    "0.002": 3.671031795951518e-06
+  },
+  "amplitude_error_ratio_after_time_extrapolation": 3.9985732431098326,
+  "direct_fine_normalized_gap_min": -0.6642668562170106,
+  "first_sampled_negative_response_ps": 0.024,
+  "max_static_bath_bare_mass_response_error": 1.1946150872711583,
+  "max_static_bath_path_mass_response_error": 1.1846656765981378,
+  "thermal_joint_distribution_sampled": false,
+  "full_PMF_certified": false,
+  "constant_drag_identified": false,
+  "production_t0_seconds": null
+}

@@ -4,8 +4,13 @@ solver_v1/test_silicon_*.py text eol=lf
 results/silicon_wafer_feasibility/*.py text eol=lf
 results/silicon_wafer_feasibility/source_Si.sw text eol=lf -whitespace
 
+# Generated v3 reports contain checksums of other reports. Preserve exact bytes.
+results/silicon_conditional_v3/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/silicon_conditional_v3/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
 # Preserve original generated SVG path formatting and the source file's checksum.
 # These artifact-only exceptions do not relax source-code whitespace checks.
 results/silicon_local_crack_v2/local_crack_audit.svg -whitespace
+results/silicon_conditional_v3/conditional_dynamics.svg -whitespace
 results/silicon_unified_v1/coordinate_audit.svg -whitespace
 results/silicon_wafer_feasibility/static_probe.svg -whitespace
