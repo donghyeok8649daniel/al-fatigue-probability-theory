@@ -1,0 +1,141 @@
+{
+  "passed": true,
+  "checked_reference_frames": 2475,
+  "checked_model_frame_pairs": 4950,
+  "checked_groups": 70,
+  "max_rmse_recomputation_error": 0.0,
+  "independent_evaluations": [
+    {
+      "frame": 1,
+      "config_type": "sh",
+      "model": "original_sw_1985",
+      "original_cell_determinant_A3": 16.300501868170457,
+      "energy_error_eV": 4.440892098500626e-16,
+      "force_max_error_eV_A": 1.3322676295501878e-15
+    },
+    {
+      "frame": 1,
+      "config_type": "sh",
+      "model": "tersoff_1989",
+      "original_cell_determinant_A3": 16.300501868170457,
+      "energy_error_eV": 4.440892098500626e-16,
+      "force_max_error_eV_A": 1.0658141036401503e-14
+    },
+    {
+      "frame": 548,
+      "config_type": "dia",
+      "model": "original_sw_1985",
+      "original_cell_determinant_A3": 1100.125049230911,
+      "energy_error_eV": 8.526512829121202e-14,
+      "force_max_error_eV_A": 9.764411501578252e-14
+    },
+    {
+      "frame": 548,
+      "config_type": "dia",
+      "model": "tersoff_1989",
+      "original_cell_determinant_A3": 1100.125049230911,
+      "energy_error_eV": 1.9895196601282805e-13,
+      "force_max_error_eV_A": 1.1167455848948293e-13
+    },
+    {
+      "frame": 1448,
+      "config_type": "surface_111",
+      "model": "original_sw_1985",
+      "original_cell_determinant_A3": 4100.609558165113,
+      "energy_error_eV": 2.2737367544323206e-13,
+      "force_max_error_eV_A": 1.0658141036401503e-13
+    },
+    {
+      "frame": 1448,
+      "config_type": "surface_111",
+      "model": "tersoff_1989",
+      "original_cell_determinant_A3": 4100.609558165113,
+      "energy_error_eV": 2.2737367544323206e-13,
+      "force_max_error_eV_A": 3.006483950684924e-13
+    },
+    {
+      "frame": 1495,
+      "config_type": "surface_111_pandey",
+      "model": "original_sw_1985",
+      "original_cell_determinant_A3": 3075.457168623838,
+      "energy_error_eV": 2.8421709430404007e-13,
+      "force_max_error_eV_A": 1.1334162774989665e-13
+    },
+    {
+      "frame": 1495,
+      "config_type": "surface_111_pandey",
+      "model": "tersoff_1989",
+      "original_cell_determinant_A3": 3075.457168623838,
+      "energy_error_eV": 2.8421709430404007e-13,
+      "force_max_error_eV_A": 1.2292944440162046e-13
+    },
+    {
+      "frame": 1545,
+      "config_type": "crack_110_1-10",
+      "model": "original_sw_1985",
+      "original_cell_determinant_A3": 10043.253547215558,
+      "energy_error_eV": 1.3642420526593924e-12,
+      "force_max_error_eV_A": 3.1041835768519377e-13
+    },
+    {
+      "frame": 1545,
+      "config_type": "crack_110_1-10",
+      "model": "tersoff_1989",
+      "original_cell_determinant_A3": 10043.253547215558,
+      "energy_error_eV": 1.1368683772161603e-13,
+      "force_max_error_eV_A": 3.5638159090467525e-13
+    },
+    {
+      "frame": 1552,
+      "config_type": "crack_111_1-10",
+      "model": "original_sw_1985",
+      "original_cell_determinant_A3": 9763.787468103765,
+      "energy_error_eV": 1.8189894035458565e-12,
+      "force_max_error_eV_A": 2.862640680056927e-13
+    },
+    {
+      "frame": 1552,
+      "config_type": "crack_111_1-10",
+      "model": "tersoff_1989",
+      "original_cell_determinant_A3": 9763.787468103765,
+      "energy_error_eV": 1.0231815394945443e-12,
+      "force_max_error_eV_A": 1.298294804996658e-12
+    },
+    {
+      "frame": 1778,
+      "config_type": "screw_disloc",
+      "model": "original_sw_1985",
+      "original_cell_determinant_A3": 2889.974033768585,
+      "energy_error_eV": 2.2737367544323206e-13,
+      "force_max_error_eV_A": 3.5505741413383723e-13
+    },
+    {
+      "frame": 1778,
+      "config_type": "screw_disloc",
+      "model": "tersoff_1989",
+      "original_cell_determinant_A3": 2889.974033768585,
+      "energy_error_eV": 1.1368683772161603e-12,
+      "force_max_error_eV_A": 3.18328696735648e-13
+    },
+    {
+      "frame": 2159,
+      "config_type": "decohesion",
+      "model": "original_sw_1985",
+      "original_cell_determinant_A3": -328.14806848881676,
+      "energy_error_eV": 0.0,
+      "force_max_error_eV_A": 4.6851411639181606e-14
+    },
+    {
+      "frame": 2159,
+      "config_type": "decohesion",
+      "model": "tersoff_1989",
+      "original_cell_determinant_A3": -328.14806848881676,
+      "energy_error_eV": 2.842170943040401e-14,
+      "force_max_error_eV_A": 5.2791104820926193e-14
+    }
+  ],
+  "corrected_conditional_minima": 4,
+  "code_sha256": "4637cbb215b9137235fe517fae79f643ca92201d71a7b867fa706baf693cf574",
+  "elapsed_seconds": 5.2824979000142775,
+  "scope": "numerical/source/metric validation only; not material approval"
+}

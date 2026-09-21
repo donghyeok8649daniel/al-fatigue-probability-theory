@@ -2,6 +2,17 @@
 
 ## 웨이퍼 브랜치의 현재 범위
 
+v5 `SILICON_ATOMISTIC_FOUNDATION_V5.md`는 원자 에너지 자체의 별도 재료 감사다.
+공개 DFT2475구조/171815원자에 SW·ordinary Tersoff1989를 실제4950건 평가했다.
+새 DFT/GAP/MD/fit은 아니다. PW91 1183/PBE50/미표기1242를 나누고 PW91만
+동일 diamond-frame offset으로 에너지를 비교한다. (111)균열 force component
+RMSE1.028627/.794703 eV/Å로 두 모델 모두 재료 미채택. 수치 구현 일치와 구별한다.
+같은 grip/gap의 Tersoff 재배열4개는 force 보정·양의 conditional Hessian 확인,
+state04 상대에너지 부호는 SW와 다르다. Full-q/장벽/실제 Pandey 인증이 아니다.
+실제 검증/원시 결과는 results/silicon_atomistic_v5/COMPLETED_SUMMARY.md 참조.
+원본 archive는 GAP 학습 자료이며 held-out GAP 검증으로 부르지 않는다.
+생산/Si·Hz gate와 v4 미완료/경계 문제는 그대로다. 최신 지시가 작업 순서를 정한다.
+
 v4 `SILICON_FINITE_T_ENSEMBLES_V4.md`는 실제 비선형 conditional sampling,
 새 MD48회/1.74 ns, 고정-gap 재배열 saddle3개와 memory 압축의 연구다.
 profile80/136·multibasin6/8에서 시간 예산 초과로 중단했다. 완료로 재해석하지 않는다.

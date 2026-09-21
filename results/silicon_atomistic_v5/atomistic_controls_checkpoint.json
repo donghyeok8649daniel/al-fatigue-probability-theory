@@ -1,0 +1,793 @@
+{
+  "scope": "static atomistic reference audit; not material/kinetic approval",
+  "models": {
+    "original_sw_1985": {
+      "metadata": {
+        "style": "sw",
+        "potential_filename": "source_Si.sw",
+        "potential_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+        "lammps_version": 20250722,
+        "library_filename": "liblammps.dll",
+        "library_sha256": "60bc6c51988d6c50d114e72cba208947d72cc5fd8cc6b732c8cb3885cf840349",
+        "units": "metal: eV, Angstrom; no dynamics",
+        "pure_silicon": true
+      },
+      "controls": {
+        "force_finite_differences": [
+          {
+            "step_A": 0.0001,
+            "abs_error_eV_A": 1.9254493555109775e-09
+          },
+          {
+            "step_A": 5e-05,
+            "abs_error_eV_A": 3.622553368387571e-10
+          },
+          {
+            "step_A": 2.5e-05,
+            "abs_error_eV_A": 6.407030461730301e-11
+          }
+        ],
+        "rotation_energy_error_eV": 0.0,
+        "rotation_force_error_eV_A": 5.3512749786932545e-14,
+        "rotation_stress_error_eV_A3": 5.342948306008566e-16,
+        "translation_energy_error_eV": 0.0,
+        "translation_force_error_eV_A": 6.850076061937216e-14,
+        "supercell_energy_per_copy_error_eV": 2.842170943040401e-14,
+        "supercell_force_error_eV_A": 1.0483280910023041e-13,
+        "affine_stress_derivative_error_eV": 1.1241549380258675e-07,
+        "net_force_eV_A": [
+          -5.551115123125783e-16,
+          4.440892098500626e-16,
+          -8.881784197001252e-16
+        ],
+        "independent_sw_triples_energy_error_eV": 3.183231456205249e-11,
+        "independent_sw_triples_force_error_eV_A": 4.395789288125229e-13,
+        "passed": true
+      },
+      "bulk": {
+        "lattice_A": 5.430949777204806,
+        "energy_per_atom_eV": -4.336599999917265,
+        "volume_per_atom_A3": 20.023379244175608,
+        "stress_eV_A3": [
+          [
+            -4.197587601212175e-10,
+            6.083099215540422e-17,
+            -6.083099202404403e-17
+          ],
+          [
+            6.083099215851183e-17,
+            -4.197586870346606e-10,
+            -6.570342916885519e-17
+          ],
+          [
+            -6.083099201726811e-17,
+            -6.570342910727286e-17,
+            -4.1975868703466066e-10
+          ]
+        ],
+        "rows": [
+          {
+            "step": 0.001,
+            "relaxed": false,
+            "mode": "axial",
+            "plus_eV": -8.673181089405722,
+            "minus_eV": -8.67318106138272,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 151.42447088231884
+          },
+          {
+            "step": 0.001,
+            "relaxed": false,
+            "mode": "hydro",
+            "plus_eV": -8.67308614033056,
+            "minus_eV": -8.673085700764279,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 912.8088021770068
+          },
+          {
+            "step": 0.001,
+            "relaxed": false,
+            "mode": "shear",
+            "plus_eV": -8.673186282899568,
+            "minus_eV": -8.673186282899568,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 109.75646227533971
+          },
+          {
+            "step": 0.001,
+            "relaxed": false,
+            "C11_GPa": 151.42447088231884,
+            "C12_GPa": 76.42256492167503,
+            "C44_GPa": 109.75646227533971
+          },
+          {
+            "step": 0.001,
+            "relaxed": true,
+            "mode": "axial",
+            "plus_eV": -8.673181089405722,
+            "minus_eV": -8.67318106138272,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 151.42447088231884
+          },
+          {
+            "step": 0.001,
+            "relaxed": true,
+            "mode": "hydro",
+            "plus_eV": -8.67308614033056,
+            "minus_eV": -8.673085700764279,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 912.8088021770068
+          },
+          {
+            "step": 0.001,
+            "relaxed": true,
+            "mode": "shear",
+            "plus_eV": -8.673192945020068,
+            "minus_eV": -8.673192945020068,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 56.44930733726562
+          },
+          {
+            "step": 0.001,
+            "relaxed": true,
+            "C11_GPa": 151.42447088231884,
+            "C12_GPa": 76.42256492167503,
+            "C44_GPa": 56.44930733726562
+          },
+          {
+            "step": 0.0005,
+            "relaxed": false,
+            "mode": "axial",
+            "plus_eV": -8.673195270481699,
+            "minus_eV": -8.67319526696621,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 151.4244868299466
+          },
+          {
+            "step": 0.0005,
+            "relaxed": false,
+            "mode": "hydro",
+            "plus_eV": -8.673171507569654,
+            "minus_eV": -8.673171452586178,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 912.8067165627359
+          },
+          {
+            "step": 0.0005,
+            "relaxed": false,
+            "mode": "shear",
+            "plus_eV": -8.673196570600108,
+            "minus_eV": -8.673196570600108,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 109.75648407895913
+          },
+          {
+            "step": 0.0005,
+            "relaxed": false,
+            "C11_GPa": 151.4244868299466,
+            "C12_GPa": 76.42220934548268,
+            "C44_GPa": 109.75648407895913
+          },
+          {
+            "step": 0.0005,
+            "relaxed": true,
+            "mode": "axial",
+            "plus_eV": -8.673195270481699,
+            "minus_eV": -8.67319526696621,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 151.4244868299466
+          },
+          {
+            "step": 0.0005,
+            "relaxed": true,
+            "mode": "hydro",
+            "plus_eV": -8.673171507569654,
+            "minus_eV": -8.673171452586178,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 912.8067165627359
+          },
+          {
+            "step": 0.0005,
+            "relaxed": true,
+            "mode": "shear",
+            "plus_eV": -8.673198236130112,
+            "minus_eV": -8.673198236130114,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 56.44933302119019
+          },
+          {
+            "step": 0.0005,
+            "relaxed": true,
+            "C11_GPa": 151.4244868299466,
+            "C12_GPa": 76.42220934548268,
+            "C44_GPa": 56.44933302119019
+          },
+          {
+            "step": 0.00025,
+            "relaxed": false,
+            "mode": "axial",
+            "plus_eV": -8.673198817279722,
+            "minus_eV": -8.673198816833985,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 151.4244910371639
+          },
+          {
+            "step": 0.00025,
+            "relaxed": false,
+            "mode": "hydro",
+            "plus_eV": -8.67319287334537,
+            "minus_eV": -8.673192866453526,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 912.8061952089157
+          },
+          {
+            "step": 0.00025,
+            "relaxed": false,
+            "mode": "shear",
+            "plus_eV": -8.673199142525883,
+            "minus_eV": -8.673199142525883,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 109.75648942326221
+          },
+          {
+            "step": 0.00025,
+            "relaxed": false,
+            "C11_GPa": 151.4244910371639,
+            "C12_GPa": 76.42212034957068,
+            "C44_GPa": 109.75648942326221
+          },
+          {
+            "step": 0.00025,
+            "relaxed": true,
+            "mode": "axial",
+            "plus_eV": -8.673198817279722,
+            "minus_eV": -8.673198816833985,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 151.4244910371639
+          },
+          {
+            "step": 0.00025,
+            "relaxed": true,
+            "mode": "hydro",
+            "plus_eV": -8.67319287334537,
+            "minus_eV": -8.673192866453526,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 912.8061952089157
+          },
+          {
+            "step": 0.00025,
+            "relaxed": true,
+            "mode": "shear",
+            "plus_eV": -8.673199558908374,
+            "minus_eV": -8.673199558908372,
+            "zero_eV": -8.67319999983453,
+            "energy_curvature_GPa": 56.44933984370474
+          },
+          {
+            "step": 0.00025,
+            "relaxed": true,
+            "C11_GPa": 151.4244910371639,
+            "C12_GPa": 76.42212034957068,
+            "C44_GPa": 56.44933984370474
+          }
+        ],
+        "state": "0 K perfect pure-Si diamond; clamped and internally relaxed basis"
+      },
+      "reconstruction": {
+        "gap_A": 2.6427454609767165,
+        "rows": [
+          {
+            "name": "state00",
+            "same_geometry_delta_eV": -2.8954616482224083e-13,
+            "same_geometry_bath_force_max_eV_A": 3.0286537167079075e-13,
+            "same_geometry_reaction_eV_A": [
+              -1.495678580987203e-14
+            ],
+            "relaxation": {
+              "energy_eV": -4435.9527973135655,
+              "free_gradient_max_eV_A": 3.0286537167079075e-13,
+              "force_tolerance_eV_A": 2e-06,
+              "force_converged": true,
+              "constraint_reaction_eV_A": [
+                -1.495678580987203e-14
+              ],
+              "optimizer_success": true,
+              "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+              "iterations": 0,
+              "evaluations": 1,
+              "stability_certified": false,
+              "physical_time_seconds": null
+            },
+            "relaxed_vs_initial_state00_eV": -2.8954616482224083e-13,
+            "rms_displacement_A": 0.0,
+            "fixed_atom_max_change_A": 0.0,
+            "gap_error_A": 0.0,
+            "relaxed_delta_vs_relaxed_state00_eV": 0.0
+          },
+          {
+            "name": "state04",
+            "same_geometry_delta_eV": 0.11637498949175473,
+            "same_geometry_bath_force_max_eV_A": 6.445330380522307e-13,
+            "same_geometry_reaction_eV_A": [
+              0.4794076114937713
+            ],
+            "relaxation": {
+              "energy_eV": -4435.836422324038,
+              "free_gradient_max_eV_A": 6.445330380522307e-13,
+              "force_tolerance_eV_A": 2e-06,
+              "force_converged": true,
+              "constraint_reaction_eV_A": [
+                0.4794076114937713
+              ],
+              "optimizer_success": true,
+              "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+              "iterations": 0,
+              "evaluations": 1,
+              "stability_certified": false,
+              "physical_time_seconds": null
+            },
+            "relaxed_vs_initial_state00_eV": 0.11637498949175473,
+            "rms_displacement_A": 0.0,
+            "fixed_atom_max_change_A": 0.0,
+            "gap_error_A": 0.0,
+            "relaxed_delta_vs_relaxed_state00_eV": 0.11637498949204428
+          },
+          {
+            "name": "state01",
+            "same_geometry_delta_eV": -0.3167982195316461,
+            "same_geometry_bath_force_max_eV_A": 8.310574450831609e-13,
+            "same_geometry_reaction_eV_A": [
+              1.1835727602406094
+            ],
+            "relaxation": {
+              "energy_eV": -4436.26959553307,
+              "free_gradient_max_eV_A": 8.310574450831609e-13,
+              "force_tolerance_eV_A": 2e-06,
+              "force_converged": true,
+              "constraint_reaction_eV_A": [
+                1.1835727602406094
+              ],
+              "optimizer_success": true,
+              "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+              "iterations": 0,
+              "evaluations": 1,
+              "stability_certified": false,
+              "physical_time_seconds": null
+            },
+            "relaxed_vs_initial_state00_eV": -0.3167982195316461,
+            "rms_displacement_A": 0.0,
+            "fixed_atom_max_change_A": 0.0,
+            "gap_error_A": 0.0,
+            "relaxed_delta_vs_relaxed_state00_eV": -0.31679821953135656
+          },
+          {
+            "name": "state02",
+            "same_geometry_delta_eV": -2.2134225543131962,
+            "same_geometry_bath_force_max_eV_A": 3.635286516256997e-13,
+            "same_geometry_reaction_eV_A": [
+              1.1163126544754993
+            ],
+            "relaxation": {
+              "energy_eV": -4438.166219867853,
+              "free_gradient_max_eV_A": 3.635286516256997e-13,
+              "force_tolerance_eV_A": 2e-06,
+              "force_converged": true,
+              "constraint_reaction_eV_A": [
+                1.1163126544754993
+              ],
+              "optimizer_success": true,
+              "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+              "iterations": 0,
+              "evaluations": 1,
+              "stability_certified": false,
+              "physical_time_seconds": null
+            },
+            "relaxed_vs_initial_state00_eV": -2.2134225543131962,
+            "rms_displacement_A": 0.0,
+            "fixed_atom_max_change_A": 0.0,
+            "gap_error_A": 0.0,
+            "relaxed_delta_vs_relaxed_state00_eV": -2.2134225543129067
+          }
+        ],
+        "input_sha256": "df98761f107755d2059a3745eb7747df009a6931702e632c147088e275ff7b39",
+        "scope": "same fixed grips and gap as SW; not each potential equilibrium loading",
+        "hessian_stability_certified": false,
+        "transition_barriers_certified": false
+      }
+    },
+    "tersoff_1989": {
+      "metadata": {
+        "style": "tersoff",
+        "potential_filename": "SiC.tersoff",
+        "potential_sha256": "157a155a3fc263d43b30dbdf4ccc28f0d633ce7112c68de42fc09b5ad070ce64",
+        "lammps_version": 20250722,
+        "library_filename": "liblammps.dll",
+        "library_sha256": "60bc6c51988d6c50d114e72cba208947d72cc5fd8cc6b732c8cb3885cf840349",
+        "units": "metal: eV, Angstrom; no dynamics",
+        "pure_silicon": true
+      },
+      "controls": {
+        "force_finite_differences": [
+          {
+            "step_A": 0.0001,
+            "abs_error_eV_A": 2.1817403439428062e-09
+          },
+          {
+            "step_A": 5e-05,
+            "abs_error_eV_A": 1.1578105141296646e-09
+          },
+          {
+            "step_A": 2.5e-05,
+            "abs_error_eV_A": 1.542251881758716e-09
+          }
+        ],
+        "rotation_energy_error_eV": 8.526512829121202e-14,
+        "rotation_force_error_eV_A": 6.461498003318411e-14,
+        "rotation_stress_error_eV_A3": 4.718447854656915e-16,
+        "translation_energy_error_eV": 1.1368683772161603e-13,
+        "translation_force_error_eV_A": 7.027711745877241e-14,
+        "supercell_energy_per_copy_error_eV": 1.4210854715202004e-14,
+        "supercell_force_error_eV_A": 1.219024881038422e-13,
+        "affine_stress_derivative_error_eV": 1.8051127570473113e-07,
+        "net_force_eV_A": [
+          -1.2490009027033011e-14,
+          2.6645352591003757e-15,
+          -4.440892098500626e-16
+        ],
+        "independent_ase_energy_error_eV": 0.0,
+        "independent_ase_force_error_eV_A": 5.156985949383852e-14,
+        "passed": true
+      },
+      "bulk": {
+        "lattice_A": 5.43211475306823,
+        "energy_per_atom_eV": -4.628872713879835,
+        "volume_per_atom_A3": 20.03626746368787,
+        "stress_eV_A3": [
+          [
+            -3.0742195997063087e-08,
+            4.726487219206918e-17,
+            6.578514639864854e-17
+          ],
+          [
+            4.726487395142515e-17,
+            -3.074219606362711e-08,
+            -1.1666944008662978e-16
+          ],
+          [
+            6.57851452487816e-17,
+            -1.1666944113150198e-16,
+            -3.074219616774167e-08
+          ]
+        ],
+        "rows": [
+          {
+            "step": 0.001,
+            "relaxed": false,
+            "mode": "axial",
+            "plus_eV": -9.257727621675325,
+            "minus_eV": -9.257727589637678,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 142.51235822947302
+          },
+          {
+            "step": 0.001,
+            "relaxed": false,
+            "mode": "hydro",
+            "plus_eV": -9.257635779162428,
+            "minus_eV": -9.257635045110007,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 879.7270329387053
+          },
+          {
+            "step": 0.001,
+            "relaxed": false,
+            "mode": "shear",
+            "plus_eV": -9.257730571742528,
+            "minus_eV": -9.257730571742513,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 118.7943991734447
+          },
+          {
+            "step": 0.001,
+            "relaxed": false,
+            "C11_GPa": 142.51235822947302,
+            "C12_GPa": 75.36499304171437,
+            "C44_GPa": 118.7943991734447
+          },
+          {
+            "step": 0.001,
+            "relaxed": true,
+            "mode": "axial",
+            "plus_eV": -9.257727621675325,
+            "minus_eV": -9.257727589637678,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 142.51235822947302
+          },
+          {
+            "step": 0.001,
+            "relaxed": true,
+            "mode": "hydro",
+            "plus_eV": -9.257635779162428,
+            "minus_eV": -9.257635045110007,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 879.7270329387053
+          },
+          {
+            "step": 0.001,
+            "relaxed": true,
+            "mode": "shear",
+            "plus_eV": -9.25773679725643,
+            "minus_eV": -9.257736797256433,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 69.01280716638338
+          },
+          {
+            "step": 0.001,
+            "relaxed": true,
+            "C11_GPa": 142.51235822947302,
+            "C12_GPa": 75.36499304171437,
+            "C44_GPa": 69.01280716638338
+          },
+          {
+            "step": 0.0005,
+            "relaxed": false,
+            "mode": "axial",
+            "plus_eV": -9.2577409746963,
+            "minus_eV": -9.25774096976813,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 142.51241135403814
+          },
+          {
+            "step": 0.0005,
+            "relaxed": false,
+            "mode": "hydro",
+            "plus_eV": -9.257717971245773,
+            "minus_eV": -9.257717876717589,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 879.7229428301413
+          },
+          {
+            "step": 0.0005,
+            "relaxed": false,
+            "mode": "shear",
+            "plus_eV": -9.257741713754132,
+            "minus_eV": -9.257741713754141,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 118.79443903107297
+          },
+          {
+            "step": 0.0005,
+            "relaxed": false,
+            "C11_GPa": 142.51241135403814,
+            "C12_GPa": 75.36428479467114,
+            "C44_GPa": 118.79443903107297
+          },
+          {
+            "step": 0.0005,
+            "relaxed": true,
+            "mode": "axial",
+            "plus_eV": -9.2577409746963,
+            "minus_eV": -9.257740969768124,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 142.51241146767356
+          },
+          {
+            "step": 0.0005,
+            "relaxed": true,
+            "mode": "hydro",
+            "plus_eV": -9.257717971245773,
+            "minus_eV": -9.257717876717589,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 879.7229428301413
+          },
+          {
+            "step": 0.0005,
+            "relaxed": true,
+            "mode": "shear",
+            "plus_eV": -9.257743270131872,
+            "minus_eV": -9.257743270131863,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 69.01287085904382
+          },
+          {
+            "step": 0.0005,
+            "relaxed": true,
+            "C11_GPa": 142.51241146767356,
+            "C12_GPa": 75.36428473785342,
+            "C44_GPa": 69.01287085904382
+          },
+          {
+            "step": 0.00025,
+            "relaxed": false,
+            "mode": "axial",
+            "plus_eV": -9.257744314416788,
+            "minus_eV": -9.257744313338597,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 142.51242589937362
+          },
+          {
+            "step": 0.00025,
+            "relaxed": false,
+            "mode": "hydro",
+            "plus_eV": -9.257738558424112,
+            "minus_eV": -9.257738545222178,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 879.7219227248555
+          },
+          {
+            "step": 0.00025,
+            "relaxed": false,
+            "mode": "shear",
+            "plus_eV": -9.257744499258482,
+            "minus_eV": -9.257744499258465,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 118.79441505399652
+          },
+          {
+            "step": 0.00025,
+            "relaxed": false,
+            "C11_GPa": 142.51242589937362,
+            "C12_GPa": 75.36410750445577,
+            "C44_GPa": 118.79441505399652
+          },
+          {
+            "step": 0.00025,
+            "relaxed": true,
+            "mode": "axial",
+            "plus_eV": -9.257744314416792,
+            "minus_eV": -9.257744313338597,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 142.51242567210275
+          },
+          {
+            "step": 0.00025,
+            "relaxed": true,
+            "mode": "hydro",
+            "plus_eV": -9.257738558424112,
+            "minus_eV": -9.257738545222173,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 879.7219231793972
+          },
+          {
+            "step": 0.00025,
+            "relaxed": true,
+            "mode": "shear",
+            "plus_eV": -9.257744888352146,
+            "minus_eV": -9.257744888352148,
+            "zero_eV": -9.25774542775967,
+            "energy_curvature_GPa": 69.01294415389837
+          },
+          {
+            "step": 0.00025,
+            "relaxed": true,
+            "C11_GPa": 142.51242567210275,
+            "C12_GPa": 75.36410769384817,
+            "C44_GPa": 69.01294415389837
+          }
+        ],
+        "state": "0 K perfect pure-Si diamond; clamped and internally relaxed basis"
+      },
+      "reconstruction": {
+        "gap_A": 2.6427454609767165,
+        "rows": [
+          {
+            "name": "state00",
+            "same_geometry_delta_eV": 4.8405723873656825e-14,
+            "same_geometry_bath_force_max_eV_A": 0.8870691942475328,
+            "same_geometry_reaction_eV_A": [
+              -0.25952191921092316
+            ],
+            "relaxation": {
+              "energy_eV": -4775.212082636407,
+              "free_gradient_max_eV_A": 8.586433181634323e-06,
+              "force_tolerance_eV_A": 2e-06,
+              "force_converged": false,
+              "constraint_reaction_eV_A": [
+                -0.19610974566267458
+              ],
+              "optimizer_success": true,
+              "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "iterations": 126,
+              "evaluations": 267,
+              "stability_certified": false,
+              "physical_time_seconds": null
+            },
+            "relaxed_vs_initial_state00_eV": -2.6534312810359864,
+            "rms_displacement_A": 0.018997654523651677,
+            "fixed_atom_max_change_A": 0.0,
+            "gap_error_A": 0.0,
+            "relaxed_delta_vs_relaxed_state00_eV": 0.0
+          },
+          {
+            "name": "state04",
+            "same_geometry_delta_eV": -0.1822431190313667,
+            "same_geometry_bath_force_max_eV_A": 0.8873381939157691,
+            "same_geometry_reaction_eV_A": [
+              0.11991176123473646
+            ],
+            "relaxation": {
+              "energy_eV": -4775.356391936292,
+              "free_gradient_max_eV_A": 2.031381613587513e-06,
+              "force_tolerance_eV_A": 2e-06,
+              "force_converged": false,
+              "constraint_reaction_eV_A": [
+                0.2016157415269021
+              ],
+              "optimizer_success": true,
+              "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "iterations": 116,
+              "evaluations": 165,
+              "stability_certified": false,
+              "physical_time_seconds": null
+            },
+            "relaxed_vs_initial_state00_eV": -2.797740580920734,
+            "rms_displacement_A": 0.01885837748185692,
+            "fixed_atom_max_change_A": 0.0,
+            "gap_error_A": 0.0,
+            "relaxed_delta_vs_relaxed_state00_eV": -0.1443092998847475
+          },
+          {
+            "name": "state01",
+            "same_geometry_delta_eV": -0.8913549426485403,
+            "same_geometry_bath_force_max_eV_A": 0.8872628025410546,
+            "same_geometry_reaction_eV_A": [
+              0.6604150891887166
+            ],
+            "relaxation": {
+              "energy_eV": -4776.020041717466,
+              "free_gradient_max_eV_A": 4.5989658287171054e-07,
+              "force_tolerance_eV_A": 2e-06,
+              "force_converged": true,
+              "constraint_reaction_eV_A": [
+                0.712395007414774
+              ],
+              "optimizer_success": true,
+              "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+              "iterations": 85,
+              "evaluations": 92,
+              "stability_certified": false,
+              "physical_time_seconds": null
+            },
+            "relaxed_vs_initial_state00_eV": -3.461390362101123,
+            "rms_displacement_A": 0.01857207134637235,
+            "fixed_atom_max_change_A": 0.0,
+            "gap_error_A": 0.0,
+            "relaxed_delta_vs_relaxed_state00_eV": -0.8079590810651367
+          },
+          {
+            "name": "state02",
+            "same_geometry_delta_eV": -3.239193812165286,
+            "same_geometry_bath_force_max_eV_A": 0.8873400552823085,
+            "same_geometry_reaction_eV_A": [
+              0.5947173197439204
+            ],
+            "relaxation": {
+              "energy_eV": -4778.330674141118,
+              "free_gradient_max_eV_A": 9.646241823368928e-07,
+              "force_tolerance_eV_A": 2e-06,
+              "force_converged": true,
+              "constraint_reaction_eV_A": [
+                0.6704552469104297
+              ],
+              "optimizer_success": true,
+              "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "iterations": 84,
+              "evaluations": 126,
+              "stability_certified": false,
+              "physical_time_seconds": null
+            },
+            "relaxed_vs_initial_state00_eV": -5.77202278573578,
+            "rms_displacement_A": 0.01827259276736604,
+            "fixed_atom_max_change_A": 0.0,
+            "gap_error_A": 0.0,
+            "relaxed_delta_vs_relaxed_state00_eV": -3.1185915046997943
+          }
+        ],
+        "input_sha256": "df98761f107755d2059a3745eb7747df009a6931702e632c147088e275ff7b39",
+        "scope": "same fixed grips and gap as SW; not each potential equilibrium loading",
+        "hessian_stability_certified": false,
+        "transition_barriers_certified": false
+      }
+    }
+  }
+}

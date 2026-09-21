@@ -1,5 +1,31 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-21 최신: Si 원자모델 기반 v5 감사 완료
+
+- 최신 지시 “원자모델링부터”에 따라 v4 sampler를 재개하지 않고 원자 에너지부터
+  검증했다. aft-silicon-wafer / silicon-wafer-research, 시작 local/fresh origin
+  59e6cdf39f62100767aa13f3a174fcbbda7a82c7 일치·clean. 추가 agent 없음.
+- Source-bound serial LAMMPS SW/ordinary Tersoff1989 adapter, 주기 셀·힘·응력·
+  내부 이완 탄성 대조 완료. Pure Si, optional dependency, 생산 registry에서 미사용.
+  C44 SW affine109.75649→내부이완56.44934 GPa, Tersoff118.79442→69.01294.
+- 공개 Cambridge 원자료2475구조/171815원자, 새 classical4950회 완료.
+  PW91 1183/PBE50/미표기1242를 구분. 새 DFT/GAP/MD/fit 아님.
+  (111)균열 force component RMSE SW1.028627/Tersoff.794703 eV/Å. 재료 미채택.
+  Source 11개 왼손 셀은 Cartesian 위치 불변의 정수 periodic basis 변경을 기록했다.
+- 기존재배열4개를 같은grip/gap에서 Tersoff 재이완. 처음2개 force tolerance 실패
+  보존 후 Newton 보정, 최종max5.60e-12 eV/Å 및 양의 conditional Hessian 확인.
+  state04 상대U는 SW+.116375, Tersoff재이완-.144309 eV. Full-q/장벽 미검증.
+- 관련73 PASS/4.36s, 변경module8 PASS/.19s = 고유74개. 전체Al/UI회귀 아님.
+  원본2475/예측4950/집계70 재검산, independent16회 maxF차1.30e-12 eV/Å.
+  최초 검증의 반복NPZ압축해제 비효율은 해당검증만 중단·수정후전체재검증PASS.
+- 보고서 results/silicon_atomistic_v5/COMPLETED_SUMMARY.md, 이론
+  solver_v1/SILICON_ATOMISTIC_FOUNDATION_V5.md. 원시NPZ/CSV·source/hash·그림 보존.
+  최초control 시점adapter는hash일치source snapshot보존. 원본90.8MB는ignoredcache.
+- 다음원자단계는 GAP/screened 실제실행과현재재배열경로의독립에너지검증이다.
+  현재GAP 실행기는없다. 두경험모델의차이를실제Si보정으로승격하지않는다.
+  v4의56profile/2multibasin 및전면8경계·dt는미해결. 생산Al/SG/PDE/UI/clock불변.
+  최종Git 게시상태는 git log/fresh remote 및최종응답에서확인한다.
+
 ## 2026-09-21 최신: Si v4 마감, 일부 계산 중단
 
 - 사용자 지시: 남은 연구를4시간 진행. 시작19:11:55 UTC/기한23:11:55 UTC.

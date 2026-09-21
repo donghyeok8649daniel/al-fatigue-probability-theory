@@ -1,0 +1,479 @@
+{
+  "recorded_utc": "2026-09-21T06:33:41.739763+00:00",
+  "base_head": "59e6cdf39f62100767aa13f3a174fcbbda7a82c7",
+  "branch": "silicon-wafer-research",
+  "static_audit_complete": true,
+  "tests": [
+    {
+      "label": "related_suite",
+      "tests": 73,
+      "seconds": 4.356,
+      "cases": [
+        {
+          "node": "solver_v1.test_silicon_atomistic_reference::test_restricted_cell_preserves_energy_gradient_and_volume",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_atomistic_reference::test_restricted_cell_rejects_invalid_geometry[cell0]",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_atomistic_reference::test_restricted_cell_rejects_invalid_geometry[cell1]",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_atomistic_reference::test_restricted_cell_rejects_invalid_geometry[cell2]",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_atomistic_reference::test_restricted_cell_rejects_invalid_geometry[cell3]",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_atomistic_reference::test_force_metric_component_weighting",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_atomistic_reference::test_force_metric_rejects_nonfinite_data",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_collective_research::test_collective_coordinate_is_orthonormal_keeps_gap_and_has_exact_dual_forces",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_conditional_research::test_gaussian_measure_matches_actual_conditional_integral",
+          "seconds": 0.004,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_conditional_research::test_two_coordinate_marginal_recovers_one_coordinate_including_metric",
+          "seconds": 0.002,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_conditional_research::test_unstable_conditional_partition_is_not_regularized[0.0]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_conditional_research::test_unstable_conditional_partition_is_not_regularized[-1.0]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_conditional_research::test_memory_and_full_response_match_independent_coupled_ode",
+          "seconds": 0.006,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_conditional_research::test_verlet_energy_order_fixed_grips_reversal_and_raw_observations",
+          "seconds": 0.011,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_conditional_research::test_nonorthonormal_basis_and_invalid_dynamics_are_rejected",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_conditional_research::test_retained_coordinate_variance_is_gaussian_conditioning_not_parameter_fit",
+          "seconds": 0.002,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_crack_research::test_spatial_force_matches_independent_site_jets",
+          "seconds": 0.004,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_crack_research::test_periodic_images_skin_rebuild_and_new_neighbors",
+          "seconds": 0.004,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_crack_research::test_sparse_hessian_keeps_fixed_center_contributions",
+          "seconds": 0.005,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_crack_research::test_strip_and_rigid_separation_normalization",
+          "seconds": 0.009,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_crack_research::test_local_coordinates_exact_constraint_and_virtual_work[False]",
+          "seconds": 0.002,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_crack_research::test_local_coordinates_exact_constraint_and_virtual_work[True]",
+          "seconds": 0.002,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_crack_research::test_force_checked_relaxation_does_not_hide_iteration_failure",
+          "seconds": 0.003,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_crack_research::test_invalid_inputs_are_rejected",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_environment_research::test_jet_mixed_chain_rule_against_closed_form",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_environment_research::test_full_cartesian_force_hessian_identity_rotation_and_torque[0.88]",
+          "seconds": 0.005,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_environment_research::test_full_cartesian_force_hessian_identity_rotation_and_torque[1.0]",
+          "seconds": 0.005,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_environment_research::test_full_cartesian_force_hessian_identity_rotation_and_torque[1.13]",
+          "seconds": 0.004,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_environment_research::test_cutoff_and_zero_neighbor_derivatives",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_environment_research::test_diamond_internal_relaxation_and_direct_finite_strain",
+          "seconds": 0.164,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_environment_research::test_interface_derivatives_against_independent_slab_and_mesh_extent[shuffle]",
+          "seconds": 0.161,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_environment_research::test_interface_derivatives_against_independent_slab_and_mesh_extent[glide]",
+          "seconds": 0.15,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_environment_research::test_insufficient_images_and_unstable_elimination_are_rejected",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_memory_reduction::test_positive_quadrature_preserves_moments_and_full_rank_kernel",
+          "seconds": 0.011,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_memory_reduction::test_oscillator_embedding_has_exact_static_curvature_and_cartesian_response",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_path_research::test_climbing_band_finds_known_curved_saddle_and_keeps_endpoints",
+          "seconds": 0.029,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_quantum_diagnostic::test_oscillator_free_energy_matches_explicit_energy_level_partition",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_quantum_diagnostic::test_high_temperature_limit_is_same_measure_classical_logdet",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_thermal_dynamics::test_box_drift_multiple_reflections_and_time_reversal",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_thermal_dynamics::test_constrained_verlet_preserves_gap_grips_energy_order_and_reversal",
+          "seconds": 0.021,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_thermal_dynamics::test_fft_correlation_equals_direct_time_origins_with_external_mean",
+          "seconds": 0.002,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_thermal_profiles::test_known_static_energy_control_and_grid_refinement",
+          "seconds": 0.004,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_thermal_research::test_gaussian_whitening_covariance_and_unstable_reference_rejection",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_thermal_research::test_bounded_nonlinear_partition_matches_independent_quadrature",
+          "seconds": 0.032,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_thermal_research::test_pcn_proposal_preserves_reference_and_metropolis_satisfies_balance",
+          "seconds": 0.117,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_thermal_research::test_pcn_rejections_remain_in_history_and_bounded_target_is_correct",
+          "seconds": 0.125,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_thermal_research::test_split_rhat_detects_offset_chains_without_calling_them_independent_draws",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_thermal_research::test_force_control_integrates_to_zero_even_with_nonzero_boundary_density",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_thermal_research::test_harmonic_split_is_reversible_and_hmc_matches_actual_nonlinear_integral",
+          "seconds": 1.686,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_dopant_density_and_inactive_drafts[B]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_dopant_density_and_inactive_drafts[P]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_dopant_density_and_inactive_drafts[As]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_dopant_density_and_inactive_drafts[Sb]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_invalid_active_concentration_is_not_coerced[]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_invalid_active_concentration_is_not_coerced[NaN]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_invalid_active_concentration_is_not_coerced[Inf]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_invalid_active_concentration_is_not_coerced[-inf]",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_invalid_active_concentration_is_not_coerced[0]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_invalid_active_concentration_is_not_coerced[-1]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_invalid_active_concentration_is_not_coerced[1e999]",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_invalid_active_concentration_is_not_coerced[1e-999]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_invalid_active_concentration_is_not_coerced[1e16 cm-3]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_silicon_cannot_enter_al_mechanics_pde_or_clock[False-two_row_lj_reference]",
+          "seconds": 0.027,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_silicon_cannot_enter_al_mechanics_pde_or_clock[False-analytic_lj_eam_hypothetical]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_silicon_cannot_enter_al_mechanics_pde_or_clock[False-al_target_best_feasible_hybrid]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_silicon_cannot_enter_al_mechanics_pde_or_clock[True-two_row_lj_reference]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_silicon_cannot_enter_al_mechanics_pde_or_clock[True-analytic_lj_eam_hypothetical]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_silicon_cannot_enter_al_mechanics_pde_or_clock[True-al_target_best_feasible_hybrid]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_invalid_material_combinations_are_rejected[selection0]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_invalid_material_combinations_are_rejected[selection1]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_invalid_material_combinations_are_rejected[selection2]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_invalid_material_combinations_are_rejected[selection3]",
+          "seconds": 0.001,
+          "passed": true
+        },
+        {
+          "node": "app.test_materials::test_invalid_material_combinations_are_rejected[selection4]",
+          "seconds": 0.001,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "label": "updated_reference",
+      "tests": 8,
+      "seconds": 0.195,
+      "cases": [
+        {
+          "node": "solver_v1.test_silicon_atomistic_reference::test_restricted_cell_preserves_energy_gradient_and_volume",
+          "seconds": 0.078,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_atomistic_reference::test_restricted_cell_rejects_invalid_geometry[cell0]",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_atomistic_reference::test_restricted_cell_rejects_invalid_geometry[cell1]",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_atomistic_reference::test_restricted_cell_rejects_invalid_geometry[cell2]",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_atomistic_reference::test_restricted_cell_rejects_invalid_geometry[cell3]",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_atomistic_reference::test_force_metric_component_weighting",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_atomistic_reference::test_force_metric_rejects_nonfinite_data",
+          "seconds": 0.0,
+          "passed": true
+        },
+        {
+          "node": "solver_v1.test_silicon_atomistic_reference::test_left_handed_periodic_reindex_preserves_lattice_vectors",
+          "seconds": 0.001,
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "unique_related_passed": 74,
+  "raw_validation_passed": true,
+  "checked_npz_archives": 4,
+  "source_verification": [
+    {
+      "report": "atomistic_controls.json",
+      "runtime_source": "results/silicon_wafer_feasibility/run_atomistic_controls.py",
+      "matching_source": "results/silicon_wafer_feasibility/run_atomistic_controls.py",
+      "sha256": "cbed50cf0f273b9aeb51a03404dd7dc3ceba853d3b3654f6b6bd4d2cec8d577d"
+    },
+    {
+      "report": "atomistic_controls.json",
+      "runtime_source": "solver_v1/silicon_atomistic_reference.py",
+      "matching_source": "results/silicon_atomistic_v5/source_snapshots/silicon_atomistic_reference_controls.py",
+      "sha256": "bafe1c1c5a2cbd0aa361cf747a2abc0d23f8c701b138cdc60d403c5a17c8329d"
+    },
+    {
+      "report": "dft_material_audit.json",
+      "runtime_source": "results/silicon_wafer_feasibility/run_dft_material_audit.py",
+      "matching_source": "results/silicon_wafer_feasibility/run_dft_material_audit.py",
+      "sha256": "129dfb02cf026e485f24a681f71b8dd3a679ac86ae2cd05d294a178e65a047f3"
+    },
+    {
+      "report": "dft_material_audit.json",
+      "runtime_source": "solver_v1/silicon_atomistic_reference.py",
+      "matching_source": "solver_v1/silicon_atomistic_reference.py",
+      "sha256": "cf43e68eaf5f3cb84532af7423350eb0246f1e4f5cd798e66229484566e8d860"
+    },
+    {
+      "report": "reconstruction_polish.json",
+      "matching_source": "results/silicon_wafer_feasibility/polish_atomistic_reconstruction.py",
+      "sha256": "34f63e50e67b70d1602f79650b20a39f9414a0688b4fa00da92458eafb280ca6"
+    },
+    {
+      "report": "raw_validation.json",
+      "matching_source": "results/silicon_wafer_feasibility/validate_atomistic_audit.py",
+      "sha256": "4637cbb215b9137235fe517fae79f643ca92201d71a7b867fa706baf693cf574"
+    }
+  ],
+  "independent_force_checks": 16,
+  "full_Al_UI_regression_rerun": false,
+  "compileall_exit": 0,
+  "material_calibrated": false,
+  "kinetic_calibrated": false,
+  "production_changed": false,
+  "new_DFT_calculations": 0,
+  "new_GAP_calculations": 0,
+  "new_MD_trajectories": 0,
+  "classical_DFT_structure_evaluations": 4950,
+  "v4_remaining_sampling_or_boundary_issues_resolved": false,
+  "figure_visual_inspection": "PNG inspected; PDF from same figure",
+  "repository_status": "verify final git status and fresh remote; no commit hash inferred here"
+}

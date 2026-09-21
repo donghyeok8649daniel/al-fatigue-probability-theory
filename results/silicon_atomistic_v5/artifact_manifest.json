@@ -1,0 +1,132 @@
+{
+  "scope": "completed v5 result and source bytes; excludes this manifest",
+  "files": [
+    {
+      "path": "results/silicon_atomistic_v5/atomistic_audit.pdf",
+      "bytes": 28862,
+      "sha256": "6d4535d9131eebaf89860f8925246f39c1dd02afd8b0288f11d9c0f4faa0d31b"
+    },
+    {
+      "path": "results/silicon_atomistic_v5/atomistic_audit.png",
+      "bytes": 130295,
+      "sha256": "b59d957d78f92991e32b746843b63c1896d2147f3a1a798eab864490a2c891cc"
+    },
+    {
+      "path": "results/silicon_atomistic_v5/atomistic_controls.json",
+      "bytes": 29056,
+      "sha256": "9ee4177a095a9ac7ae9fdc790910b4f411373c973758cd9ef0d24d386c16fd27"
+    },
+    {
+      "path": "results/silicon_atomistic_v5/atomistic_controls_checkpoint.json",
+      "bytes": 28716,
+      "sha256": "eaa2b28356dc5ea578de1e37a8b48bb83dc82f297a08ea51c8cd6b92d71813d5"
+    },
+    {
+      "path": "results/silicon_atomistic_v5/COMPLETED_SUMMARY.md",
+      "bytes": 11415,
+      "sha256": "328b7197149a70a6f4491c461c1b7898c72420527178031469fd761d84c331cc"
+    },
+    {
+      "path": "results/silicon_atomistic_v5/dft_frame_metrics.csv",
+      "bytes": 930569,
+      "sha256": "c3d80e165142f656044c8fa17833bb141ba7ba7eeaa8e2a15a75055accf451cd"
+    },
+    {
+      "path": "results/silicon_atomistic_v5/dft_material_audit.json",
+      "bytes": 41452,
+      "sha256": "a2b7abf4d370f461233e912ced46971579c85f9e8448235b524a66a488cc1d97"
+    },
+    {
+      "path": "results/silicon_atomistic_v5/dft_predictions.npz",
+      "bytes": 10333177,
+      "sha256": "13b5c5eea3ca6d9149ca2945803e6893a06186534f60cc160d4868bc2cc9be3e"
+    },
+    {
+      "path": "results/silicon_atomistic_v5/original_sw_1985_reconstruction.npz",
+      "bytes": 113696,
+      "sha256": "56a4d6a1d581116ad404b222ee56f27bd71369396d8d1e8f5980bf4ba7819c4e"
+    },
+    {
+      "path": "results/silicon_atomistic_v5/raw_validation.json",
+      "bytes": 4728,
+      "sha256": "f7c83130b801860e214c3b83e2aa1bb33773ee81054da23c3eef5ff7d572c67b"
+    },
+    {
+      "path": "results/silicon_atomistic_v5/reconstruction_polish.json",
+      "bytes": 5363,
+      "sha256": "54d3bd7b00a0281920a10777b01dc926a2ee393fd80ecc575cb73f4c13af9835"
+    },
+    {
+      "path": "results/silicon_atomistic_v5/reconstruction_polished.npz",
+      "bytes": 90658,
+      "sha256": "b2ecb61b1c3053160849605b68f0c1da2a6bae2b7b4ae34b88ab1a2aba3496d6"
+    },
+    {
+      "path": "results/silicon_atomistic_v5/source_snapshots/silicon_atomistic_reference_controls.py",
+      "bytes": 7895,
+      "sha256": "bafe1c1c5a2cbd0aa361cf747a2abc0d23f8c701b138cdc60d403c5a17c8329d"
+    },
+    {
+      "path": "results/silicon_atomistic_v5/sources/SiC.tersoff",
+      "bytes": 1701,
+      "sha256": "157a155a3fc263d43b30dbdf4ccc28f0d633ce7112c68de42fc09b5ad070ce64"
+    },
+    {
+      "path": "results/silicon_atomistic_v5/tersoff_1989_reconstruction.npz",
+      "bytes": 123834,
+      "sha256": "5840accb3fa99642621ef9651de638539d19b5d09dde5fd6fc59bd28129119b3"
+    },
+    {
+      "path": "results/silicon_atomistic_v5/validation.json",
+      "bytes": 18742,
+      "sha256": "42a50a57cc8e1a71ecb6816b23d3b931293f6374ba2ace91c99f27863fa7c84c"
+    },
+    {
+      "path": "solver_v1/silicon_atomistic_reference.py",
+      "bytes": 8916,
+      "sha256": "cf43e68eaf5f3cb84532af7423350eb0246f1e4f5cd798e66229484566e8d860"
+    },
+    {
+      "path": "solver_v1/test_silicon_atomistic_reference.py",
+      "bytes": 2304,
+      "sha256": "42dc425a57c604b52a12ddfee421b79066ec964b24a5e2d8d1a438158d4424c3"
+    },
+    {
+      "path": "solver_v1/SILICON_ATOMISTIC_FOUNDATION_V5.md",
+      "bytes": 7011,
+      "sha256": "c7bed65b2a7657dd674580f7f559f94f05ea85d6d10a7ecfacb2cd9775dbd9e3"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/run_atomistic_controls.py",
+      "bytes": 13213,
+      "sha256": "cbed50cf0f273b9aeb51a03404dd7dc3ceba853d3b3654f6b6bd4d2cec8d577d"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/polish_atomistic_reconstruction.py",
+      "bytes": 4858,
+      "sha256": "34f63e50e67b70d1602f79650b20a39f9414a0688b4fa00da92458eafb280ca6"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/run_dft_material_audit.py",
+      "bytes": 10189,
+      "sha256": "129dfb02cf026e485f24a681f71b8dd3a679ac86ae2cd05d294a178e65a047f3"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/validate_atomistic_audit.py",
+      "bytes": 5982,
+      "sha256": "4637cbb215b9137235fe517fae79f643ca92201d71a7b867fa706baf693cf574"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/plot_atomistic_audit.py",
+      "bytes": 4067,
+      "sha256": "1a3e6b248e4e3c8b4f62f84a332075911ab84b9ce60d0934375f828550451574"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/package_atomistic_audit.py",
+      "bytes": 5156,
+      "sha256": "08a36f59d87c0f160897482452f9ed0d34feb5c0da1f43d6f20eb67b0fa214f8"
+    }
+  ],
+  "count": 25,
+  "total_bytes": 11961855
+}

@@ -16,6 +16,7 @@ Al과 Si를 같은 원자 에너지 → 자유에너지 → 확률 흐름의 구
 | 균열 끝의 국소 분리·재결합·순차 전이 | 정적 연구 구현·검증 완료 | [공간 모델](solver_v1/silicon_crack_research.py), [국소 균열 결과](results/silicon_local_crack_v2/COMPLETED_SUMMARY.md) |
 | 조건부 Gaussian 후보·주변 원자 기억·새 단시간 원자 운동 | 연구 구현·수치 대조 완료 | [v3 이론](solver_v1/SILICON_CONDITIONAL_DYNAMICS_V3.md), [새13 ps 결과](results/silicon_conditional_v3/COMPLETED_SUMMARY.md) |
 | 비선형 열분포·재배열·새1.74 ns 원자 운동 | 부분 완료; 전체 PMF·크기 수렴 실패/미완료 보존 | [v4 이론](solver_v1/SILICON_FINITE_T_ENSEMBLES_V4.md), [완료/미완료 결과](results/silicon_thermal_v4/COMPLETED_SUMMARY.md) |
+| 원자 에너지·내부 이완 탄성·공개 DFT 대조 | 2,475구조×2모델 평가 완료; SW/Tersoff 재료 미채택 | [v5 이론](solver_v1/SILICON_ATOMISTIC_FOUNDATION_V5.md), [실제 계산](results/silicon_atomistic_v5/COMPLETED_SUMMARY.md) |
 | 실측 Si 물성·표면·도핑 에너지 적합 | 미완료 | [탐색 근거](results/silicon_wafer_feasibility/RESEARCH_MEMO.md) |
 | finite-T PMF·이동도·실제 수명·Hz | 미보정 | [공통 이론](results/silicon_wafer_feasibility/UNIFIED_FATIGUE_THEORY.md), [국소 축약 조건](solver_v1/SILICON_LOCAL_CRACK_V2.md) |
 | 생산 UI의 실제 Si 해석 | 비활성 | [실행 차단 계약](app/MATERIAL_SELECTION.md#실행-상태) |
@@ -31,6 +32,7 @@ Al과 Si를 같은 원자 에너지 → 자유에너지 → 확률 흐름의 구
 4. [국소 균열 실제 계산과 검증](results/silicon_local_crack_v2/COMPLETED_SUMMARY.md)
 5. [조건부 자유에너지 후보와 원자 동역학](results/silicon_conditional_v3/COMPLETED_SUMMARY.md)
 6. [비선형 분포·구조 재배열·기억 검증과 중단 상태](results/silicon_thermal_v4/COMPLETED_SUMMARY.md)
+7. [원자 에너지부터 다시 확인한 재료 기반](results/silicon_atomistic_v5/COMPLETED_SUMMARY.md)
 
 기존 원자면 전체 동시 분리 계산은 대조군으로 남겨 둔다. 같은 최종 상태까지
 전면의 네 결합을 순차 전이시키는 검증 경로의 최대 에너지는 1.075 eV,
@@ -89,9 +91,10 @@ python -m app.desktop_ui --smoke
 
 ## 다음 연구
 
-1. v4에서 중단된 profile56개/multibasin2개 체인과 전면8의 경계·dt 대조를 마친다.
-2. 같은 q의 여러 구조를 포함한 전체 조건부 분포와 집단 변형·기억을 검증한다.
-3. 실제 Si 결함·표면·도핑 에너지와 외곽 시편의 하중을 검증한다.
+1. 최신 “원자모델링부터” 범위: GAP/screened 에너지를 실제 실행하고,
+   v5의 표면·균열 DFT 기준과 현재 재배열 최소·saddle을 독립 검증한다.
+2. Glide/shuffle·표면·도핑의 필요한 물성을 검증한 뒤 조건부 분포·기억으로 이어간다.
+3. v4의 profile56개/multibasin2개 체인, 전면8의 경계·dt 이슈는 미완료로 유지한다.
 4. 검증된 좌표·PMF·이동도·파손 사건이 갖춰진 뒤 공통 확률 솔버에 연결한다.
 
 이 브랜치에서는 정적 구현, 재료 적합, kinetic calibration, 생산 활성화 상태를

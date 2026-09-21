@@ -13,6 +13,16 @@ results/silicon_thermal_v4/**/*.json -text whitespace=blank-at-eol,blank-at-eof,
 results/silicon_thermal_v4/**/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/silicon_thermal_v4/source_snapshots/*.py text eol=lf
 
+# v5 reference sources and checksum-bearing artifacts must retain exact bytes.
+results/silicon_atomistic_v5/**/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/silicon_atomistic_v5/**/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/silicon_atomistic_v5/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/silicon_atomistic_v5/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/silicon_atomistic_v5/sources/* -text
+results/silicon_atomistic_v5/source_snapshots/*.py text eol=lf
+results/silicon_atomistic_v5/*.md text eol=lf
+solver_v1/SILICON_ATOMISTIC_FOUNDATION_V5.md text eol=lf
+
 # Preserve original generated SVG path formatting and the source file's checksum.
 # These artifact-only exceptions do not relax source-code whitespace checks.
 results/silicon_local_crack_v2/local_crack_audit.svg -whitespace
