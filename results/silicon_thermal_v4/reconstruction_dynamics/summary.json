@@ -1,0 +1,331 @@
+{
+  "temperatures_K": [
+    300.0,
+    600.0
+  ],
+  "seeds": [
+    211,
+    307
+  ],
+  "duration_ps": 100.0,
+  "interpretation": "metastable original-basin starts, larger conservative domain; structural reference dynamics only",
+  "production_t0_seconds": null,
+  "physical_failure_probability": null,
+  "code_sha256": {
+    "solver_v1/silicon_thermal_dynamics.py": "a4d5c03c17b98e29beb0c0cc3ecc3d5978cc406998e9849da90733759552b9f9",
+    "results/silicon_wafer_feasibility/run_reconstruction_dynamics.py": "fb9f32166d8fdafd0a30431f12e3f99741c251d0a3994d8fdb46e117edab3178"
+  },
+  "records": [
+    {
+      "max_energy_residual_eV": 0.005379256307509905,
+      "initial_kinetic_energy_eV": 25.3959082722284,
+      "reflection_count": 0,
+      "dt_ps": 0.001,
+      "steps": 100000,
+      "stride": 2,
+      "mass_amu": 28.0855,
+      "bath_box_halfwidth_A": 2.0,
+      "production_t0_seconds": null,
+      "label": "initial_T300_seed307",
+      "temperature_K": 300.0,
+      "seed": 307,
+      "duration_ps": 100.0,
+      "original_preparation_halfwidth_A": 1.0,
+      "dynamics_halfwidth_A": 2.0,
+      "initial_basin_distance_A": 9.32899357114281e-14,
+      "initial_quench": {
+        "energy_eV": -4435.95279731356,
+        "free_gradient_max_eV_A": 4.4213760796996127e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          -1.261687704312564e-08
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 106,
+        "evaluations": 111,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "initial_correction": {
+        "residual_history_eV_A": [
+          4.4213760796996127e-07,
+          2.4630644746004293e-13
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 1
+      },
+      "final_quench": {
+        "energy_eV": -4435.952797313553,
+        "free_gradient_max_eV_A": 4.1443534800515886e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          2.1945192157923898e-07
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 105,
+        "evaluations": 109,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "final_correction": {
+        "residual_history_eV_A": [
+          4.1443534800515886e-07,
+          2.4052981828504016e-13
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 1
+      },
+      "final_quenched_energy_from_original_eV": 2.7533531010703882e-14,
+      "final_quenched_distance_from_original_A": 1.4728877375816509e-13,
+      "final_quenched_distance_from_reconstructed_A": 4.916234625703562,
+      "reconstruction_fraction_min": -0.10243795845729482,
+      "reconstruction_fraction_max": 0.10914166004141436,
+      "reconstruction_fraction_final": 0.07679317632437287,
+      "elapsed_seconds": 700.8678314000135,
+      "sample_source_sha256": "9a25d8f690e15121fcbf6f300b1a031bb09f35add4f67f8279e22af6747898b7",
+      "canonical_stationarity_claimed": false,
+      "physical_failure_probability": null,
+      "transition_rate_from_counts": null
+    },
+    {
+      "max_energy_residual_eV": 0.005087697044690032,
+      "initial_kinetic_energy_eV": 27.303920156916195,
+      "reflection_count": 0,
+      "dt_ps": 0.001,
+      "steps": 100000,
+      "stride": 2,
+      "mass_amu": 28.0855,
+      "bath_box_halfwidth_A": 2.0,
+      "production_t0_seconds": null,
+      "label": "initial_T300_seed211",
+      "temperature_K": 300.0,
+      "seed": 211,
+      "duration_ps": 100.0,
+      "original_preparation_halfwidth_A": 1.0,
+      "dynamics_halfwidth_A": 2.0,
+      "initial_basin_distance_A": 1.8538889053329824e-13,
+      "initial_quench": {
+        "energy_eV": -4435.952797313555,
+        "free_gradient_max_eV_A": 4.974587769698835e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          3.299439702425522e-07
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 105,
+        "evaluations": 111,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "initial_correction": {
+        "residual_history_eV_A": [
+          4.974587769698835e-07,
+          2.886124499112963e-13
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 1
+      },
+      "final_quench": {
+        "energy_eV": -4435.952797313557,
+        "free_gradient_max_eV_A": 4.4721874894321223e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          3.2688974396788417e-07
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 111,
+        "evaluations": 117,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "final_correction": {
+        "residual_history_eV_A": [
+          4.4721874894321223e-07,
+          2.1027624086400465e-13
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 1
+      },
+      "final_quenched_energy_from_original_eV": 5.1958437552457326e-14,
+      "final_quenched_distance_from_original_A": 1.4400191518646216e-13,
+      "final_quenched_distance_from_reconstructed_A": 4.9162346257035985,
+      "reconstruction_fraction_min": -0.13244180741013425,
+      "reconstruction_fraction_max": 0.13318220277596915,
+      "reconstruction_fraction_final": 0.01246101448109139,
+      "elapsed_seconds": 710.0366481000092,
+      "sample_source_sha256": "836404604f7b2205f505fa400f6dea6dada594d7612bbb25eb176a3316ab3a80",
+      "canonical_stationarity_claimed": false,
+      "physical_failure_probability": null,
+      "transition_rate_from_counts": null
+    },
+    {
+      "max_energy_residual_eV": 0.008522477628730485,
+      "initial_kinetic_energy_eV": 54.607840313832384,
+      "reflection_count": 0,
+      "dt_ps": 0.001,
+      "steps": 100000,
+      "stride": 2,
+      "mass_amu": 28.0855,
+      "bath_box_halfwidth_A": 2.0,
+      "production_t0_seconds": null,
+      "label": "initial_T600_seed211",
+      "temperature_K": 600.0,
+      "seed": 211,
+      "duration_ps": 100.0,
+      "original_preparation_halfwidth_A": 1.0,
+      "dynamics_halfwidth_A": 2.0,
+      "initial_basin_distance_A": 7.487855766918424e-14,
+      "initial_quench": {
+        "energy_eV": -4435.952797313563,
+        "free_gradient_max_eV_A": 2.887458106035773e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          1.3268693810353227e-08
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 117,
+        "evaluations": 120,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "initial_correction": {
+        "residual_history_eV_A": [
+          2.887458106035773e-07,
+          1.0215222764897725e-13
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 1
+      },
+      "final_quench": {
+        "energy_eV": -4438.166219867875,
+        "free_gradient_max_eV_A": 3.4674563648834367e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          1.116312781868725
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 109,
+        "evaluations": 111,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "final_correction": {
+        "residual_history_eV_A": [
+          3.4674563648834367e-07,
+          9.90665882660835e-14
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 1
+      },
+      "final_quenched_energy_from_original_eV": -2.2134225543128743,
+      "final_quenched_distance_from_original_A": 4.916234625703541,
+      "final_quenched_distance_from_reconstructed_A": 1.0153524116370369e-13,
+      "reconstruction_fraction_min": -0.13057472858178545,
+      "reconstruction_fraction_max": 1.127557611113264,
+      "reconstruction_fraction_final": 1.0377757994378092,
+      "elapsed_seconds": 975.061266899982,
+      "sample_source_sha256": "9683dac1a6dbdc43bdbf53f793c589a1343464ee4bd67af3e27fadcd0edbd0e4",
+      "canonical_stationarity_claimed": false,
+      "physical_failure_probability": null,
+      "transition_rate_from_counts": null
+    },
+    {
+      "max_energy_residual_eV": 0.012284606232562112,
+      "initial_kinetic_energy_eV": 50.7918165444568,
+      "reflection_count": 0,
+      "dt_ps": 0.001,
+      "steps": 100000,
+      "stride": 2,
+      "mass_amu": 28.0855,
+      "bath_box_halfwidth_A": 2.0,
+      "production_t0_seconds": null,
+      "label": "initial_T600_seed307",
+      "temperature_K": 600.0,
+      "seed": 307,
+      "duration_ps": 100.0,
+      "original_preparation_halfwidth_A": 1.0,
+      "dynamics_halfwidth_A": 2.0,
+      "initial_basin_distance_A": 2.4409470896662967e-13,
+      "initial_quench": {
+        "energy_eV": -4435.952797313545,
+        "free_gradient_max_eV_A": 4.631895152568122e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          -2.486794689338101e-07
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 112,
+        "evaluations": 117,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "initial_correction": {
+        "residual_history_eV_A": [
+          4.631895152568122e-07,
+          6.509653927011527e-13
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 1
+      },
+      "final_quench": {
+        "energy_eV": -4438.166219867874,
+        "free_gradient_max_eV_A": 3.6466220290631846e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          1.1163125190743706
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 111,
+        "evaluations": 116,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "final_correction": {
+        "residual_history_eV_A": [
+          3.64662202871624e-07,
+          1.4199752484955752e-13
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 1
+      },
+      "final_quenched_energy_from_original_eV": -2.2134225543129045,
+      "final_quenched_distance_from_original_A": 4.916234625703555,
+      "final_quenched_distance_from_reconstructed_A": 1.1064744278105664e-13,
+      "reconstruction_fraction_min": -0.1348336079739254,
+      "reconstruction_fraction_max": 1.1362170782043428,
+      "reconstruction_fraction_final": 0.9755089851937023,
+      "elapsed_seconds": 977.2540181999793,
+      "sample_source_sha256": "b64a6ad805a8ed58199051d64a8c5f6007b068955d5c4b34bc4c6fd9bfe89b1c",
+      "canonical_stationarity_claimed": false,
+      "physical_failure_probability": null,
+      "transition_rate_from_counts": null
+    }
+  ],
+  "total_new_trajectory_ps": 400.0,
+  "elapsed_seconds": 1694.9371714000008,
+  "computation_completed": true
+}

@@ -1,0 +1,108 @@
+{
+  "recorded_utc": "2026-09-21T01:14:31.175294+00:00",
+  "base_head": "db4bbbd663b2d11dba5dc89c3170e2b35b4938f1",
+  "branch": "silicon-wafer-research",
+  "fresh_remote_head": "db4bbbd663b2d11dba5dc89c3170e2b35b4938f1",
+  "all_planned_calculations_complete": false,
+  "completion_status": "completed and interrupted calculations explicitly separated",
+  "budget_start_utc": "2026-09-20T19:11:55Z",
+  "budget_deadline_utc": "2026-09-20T23:11:55Z",
+  "clock_gap_cause_verified": false,
+  "sampling": [
+    {
+      "name": "ensemble_pilot",
+      "chains": 36,
+      "saved_draws": 36864,
+      "complete": true
+    },
+    {
+      "name": "hmc_pilot",
+      "chains": 36,
+      "saved_draws": 36864,
+      "complete": true
+    },
+    {
+      "name": "mean_force_profile",
+      "chains": 80,
+      "saved_draws": 163840,
+      "complete": false
+    },
+    {
+      "name": "front8_ensembles",
+      "chains": 8,
+      "saved_draws": 16384,
+      "complete": true
+    },
+    {
+      "name": "multibasin_box15",
+      "chains": 6,
+      "saved_draws": 12288,
+      "complete": false
+    }
+  ],
+  "new_MD": [
+    {
+      "name": "thermal_dynamics",
+      "trajectories": 24,
+      "total_ps": 960.0,
+      "complete": true
+    },
+    {
+      "name": "front8_dynamics",
+      "trajectories": 8,
+      "total_ps": 320.0,
+      "complete": true
+    },
+    {
+      "name": "timestep_half",
+      "trajectories": 12,
+      "total_ps": 60.0,
+      "complete": true
+    },
+    {
+      "name": "reconstruction_dynamics",
+      "trajectories": 4,
+      "total_ps": 400.0,
+      "complete": true
+    }
+  ],
+  "total_new_MD_ps": 1740.0,
+  "total_saved_MCMC_draws": 266240,
+  "tests": {
+    "silicon": {
+      "passed": 42,
+      "seconds": 31.85
+    },
+    "material_gate": {
+      "passed": 24,
+      "seconds": 11.01
+    },
+    "profile_recheck": {
+      "passed": 1,
+      "seconds": 0.73
+    },
+    "unique_related_passed": 66,
+    "full_solver_regression_rerun": false,
+    "desktop_smoke_exit": 0,
+    "compileall_exit": 0
+  },
+  "raw_validation": {
+    "ensemble_states": 130,
+    "MD_states": 48,
+    "independent_triple_states": 39,
+    "source_hash_mismatches": [],
+    "max_ensemble_observation_error": 7.105427357601002e-14,
+    "max_MD_force_energy_error": 4.263256414560601e-14,
+    "max_triple_force_error_eV_A": 7.771561172376096e-15,
+    "max_triple_energy_error_eV": 7.522871214860061e-13
+  },
+  "checked_npz_archives": 354,
+  "plots_visually_inspected": [
+    "thermal_research.png",
+    "boundary_diagnostic.png"
+  ],
+  "production_enabled": false,
+  "real_wafer_calibrated": false,
+  "physical_clock_calibrated": false,
+  "git_publication": "this file records pre-commit verification; final commit and remote equality are reported after push"
+}

@@ -1,0 +1,175 @@
+{
+  "schema": "silicon-conditional-ensemble/4",
+  "head": "db4bbbd663b2d11dba5dc89c3170e2b35b4938f1",
+  "source_references": ".cache/si-thermal-v4/front8",
+  "reference_summary": {
+    "source": "results/silicon_local_crack_v2/front8",
+    "geometry": {
+      "nx": 6,
+      "ny": 4,
+      "nz": 8,
+      "atoms": 2304,
+      "free_atoms": 1344,
+      "front_period_A": 30.722091377931555,
+      "width_A": 39.90916738601341,
+      "height_A": 37.626723853545435,
+      "grip_width_A": 4.0,
+      "imposed_opening_A": 3.5,
+      "seed_tip_A": -3.0,
+      "seed_transition_A": 5.0,
+      "cut": "111 shuffle",
+      "propagation_cubic": [
+        1,
+        1,
+        -2
+      ],
+      "front_cubic": [
+        1,
+        -1,
+        0
+      ],
+      "initial_relaxation": {
+        "energy_eV": -8871.90559462714,
+        "free_gradient_max_eV_A": 4.2527326775572416e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 101,
+        "evaluations": 109,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "initial_correction": {
+        "residual_history_eV_A": [
+          4.252732598228337e-07,
+          2.9579810822966124e-13
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 1
+      },
+      "initial_full_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.11082957848415997,
+          0.1896084308400619,
+          0.21527203179173474,
+          0.24348770225366753,
+          0.2775941349939565
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.9100597874146414e-14,
+          1.748027557002228e-14,
+          1.968570145160575e-14,
+          2.1001680152324238e-14,
+          1.803298335567482e-11
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "tip_bond_index": 72,
+      "initial_frontier": {
+        "bond_index": 72,
+        "front_x_A": 0.0,
+        "front_z_A": [
+          -1.655829715918669e-16,
+          3.8402614222414444,
+          7.680522844482889,
+          11.520784266724332,
+          15.361045688965778,
+          19.20130711120722,
+          23.041568533448665,
+          26.88182995569011
+        ],
+        "front_normal_gaps_A": [
+          2.642745460976716,
+          2.642745460976716,
+          2.642745460976716,
+          2.642745460976716,
+          2.642745460976716,
+          2.642745460976716,
+          2.642745460976716,
+          2.642745460976716
+        ],
+        "original_bonds_with_normal_gap_beyond_SW_cutoff": 48,
+        "interpretation": "reversible geometric gap observable; not an irreversible damage flag"
+      }
+    },
+    "source_parameter_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+    "rows": [
+      {
+        "name": "initial",
+        "gap_A": 2.642745460976716,
+        "bath_dimension": 4031,
+        "energy_difference_eV": 0.0,
+        "logdet_bath": 9616.971683799107,
+        "static_reaction_eV_A": 2.914335439641036e-16,
+        "force_residual_eV_A": 4.0994985184283905e-14,
+        "relaxed_curvature_eV_A2": 6.820183633173667,
+        "bath_mean_max_coordinate_A": 0.0
+      },
+      {
+        "name": "saddle",
+        "gap_A": 3.401783021717415,
+        "bath_dimension": 4031,
+        "energy_difference_eV": 0.7029815361713654,
+        "logdet_bath": 9619.416266532098,
+        "static_reaction_eV_A": -6.557254739192331e-15,
+        "force_residual_eV_A": 6.500355809180292e-14,
+        "relaxed_curvature_eV_A2": -5.584230735646248,
+        "bath_mean_max_coordinate_A": 0.18107650929721508
+      },
+      {
+        "name": "opened_minimum",
+        "gap_A": 3.929806624968756,
+        "bath_dimension": 4031,
+        "energy_difference_eV": 0.5642557404745787,
+        "logdet_bath": 9620.602143153294,
+        "static_reaction_eV_A": 2.3071822230491534e-16,
+        "force_residual_eV_A": 1.2046787178920937e-13,
+        "relaxed_curvature_eV_A2": 1.2572984849583588,
+        "bath_mean_max_coordinate_A": 0.2832389593253315
+      }
+    ],
+    "relaxations": {},
+    "input_sha256": {
+      "results/silicon_local_crack_v2/front8/geometry.npz": "48732b2af5f87a94fed9c0013362f98363431f3aec6d425af989a06d8214474f",
+      "results/silicon_local_crack_v2/front8/geometry.json": "b2bfbf827535a0d3af7f8c1b743c521fa037797443e66652a39d5f6b9efd1d32",
+      "results/silicon_local_crack_v2/front8/localized/stationary_positions.npz": "93266355d384b8bd8592415e49311336fb2dd6c9d71e9d68588d84725b4540ac",
+      "results/silicon_local_crack_v2/front8/localized/profile_positions.npz": "567dd691fc9ddb7b6faf7778430ecf63447041402d1e8c4d93e4ef5cb54079f2"
+    },
+    "code_sha256": "ff5b64293c48418035e6fb2f5530e0818c3ad85e2e4f0765f4c68ee22e385172",
+    "elapsed_seconds": 12.611045599973295
+  },
+  "configuration": {
+    "temperatures": [
+      100.0,
+      300.0
+    ],
+    "names": [
+      "initial"
+    ],
+    "seeds": [
+      103,
+      211,
+      307,
+      401
+    ],
+    "draws": 2048,
+    "warmup": 512,
+    "proposal_scale": 0.6,
+    "halfwidth": 1.0,
+    "workers": 2,
+    "sampler": "hmc",
+    "hmc_step": 0.2
+  },
+  "code_sha256": {
+    "solver_v1/silicon_thermal_research.py": "6f6ebe9e71f468830b9038964c39677c5cb69cd779ca6633bf65a79df48e8149",
+    "solver_v1/silicon_crack_research.py": "423b261dccbc380c130b54cea70e0ecb1761ee0f383b06907c02b065f82527a5",
+    "results/silicon_wafer_feasibility/run_conditional_ensemble.py": "531ed7b7025724628ff0784a21615b0b1dbd2d40efc3ed91eeb0b4f7d3f4da8b"
+  },
+  "sample_clock_ps": null,
+  "production_enabled": false,
+  "production_t0_seconds": null
+}

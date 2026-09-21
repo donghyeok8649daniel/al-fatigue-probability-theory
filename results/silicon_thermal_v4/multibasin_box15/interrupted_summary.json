@@ -1,0 +1,383 @@
+{
+  "schema": "silicon-conditional-ensemble/4",
+  "head": "db4bbbd663b2d11dba5dc89c3170e2b35b4938f1",
+  "source_references": ".cache/si-thermal-v4/multibasin",
+  "reference_summary": {
+    "rows": [
+      {
+        "name": "state00",
+        "gap_A": 2.6427454609767165,
+        "bath_dimension": 2015,
+        "energy_difference_eV": 5.329070518200751e-15,
+        "static_reaction_eV_A": 3.6637359812630166e-15,
+        "logdet_bath": 4804.384456600275,
+        "force_residual_eV_A": 3.605449272470196e-14,
+        "bath_mean_max_coordinate_A": 0.0
+      },
+      {
+        "name": "state04",
+        "gap_A": 2.6427454609767165,
+        "bath_dimension": 2015,
+        "energy_difference_eV": 0.11637498949198566,
+        "static_reaction_eV_A": 0.47940761149385586,
+        "logdet_bath": 4804.229967128158,
+        "force_residual_eV_A": 6.103624550224396e-13,
+        "bath_mean_max_coordinate_A": 1.0526329966444732
+      },
+      {
+        "name": "state01",
+        "gap_A": 2.6427454609767165,
+        "bath_dimension": 2015,
+        "energy_difference_eV": -0.3167982195313912,
+        "static_reaction_eV_A": 1.1835727602406756,
+        "logdet_bath": 4805.447273248102,
+        "force_residual_eV_A": 7.746824015608667e-13,
+        "bath_mean_max_coordinate_A": 1.0794117723975487
+      },
+      {
+        "name": "state02",
+        "gap_A": 2.6427454609767165,
+        "bath_dimension": 2015,
+        "energy_difference_eV": -2.213422554312857,
+        "static_reaction_eV_A": 1.1163126544755477,
+        "logdet_bath": 4812.9315274561095,
+        "force_residual_eV_A": 1.902575319512323e-13,
+        "bath_mean_max_coordinate_A": 1.1544071638469158
+      }
+    ],
+    "geometry": {
+      "nx": 6,
+      "ny": 4,
+      "nz": 4,
+      "atoms": 1152,
+      "free_atoms": 672,
+      "front_period_A": 15.361045688965778,
+      "width_A": 39.90916738601341,
+      "height_A": 37.626723853545435,
+      "grip_width_A": 4.0,
+      "imposed_opening_A": 3.5,
+      "seed_tip_A": -3.0,
+      "seed_transition_A": 5.0,
+      "cut": "111 shuffle",
+      "propagation_cubic": [
+        1,
+        1,
+        -2
+      ],
+      "front_cubic": [
+        1,
+        -1,
+        0
+      ],
+      "initial_relaxation": {
+        "energy_eV": -4435.952797313569,
+        "free_gradient_max_eV_A": 4.331162506976405e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 98,
+        "evaluations": 106,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "initial_correction": {
+        "residual_history_eV_A": [
+          4.3311625413933186e-07,
+          1.3946482857463138e-13
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 1
+      },
+      "initial_full_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.11082957848416164,
+          0.18960843084006004,
+          0.21527203179172735,
+          0.2434877022536662,
+          0.27759413499395347
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.5161259043210802e-14,
+          1.620484028508414e-14,
+          1.923466065179619e-14,
+          1.4756928245340038e-13,
+          2.268835879812167e-11
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "tip_bond_index": 31,
+      "initial_frontier": {
+        "bond_index": 31,
+        "front_x_A": 0.0,
+        "front_z_A": [
+          -1.655829715918669e-16,
+          3.8402614222414444,
+          7.680522844482889,
+          11.520784266724332
+        ],
+        "front_normal_gaps_A": [
+          2.6427454609767165,
+          2.6427454609767165,
+          2.6427454609767165,
+          2.6427454609767165
+        ],
+        "original_bonds_with_normal_gap_beyond_SW_cutoff": 24,
+        "interpretation": "reversible geometric gap observable; not an irreversible damage flag"
+      }
+    },
+    "source_parameter_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+    "source_minima_sha256": "b148df0cdae63e317cb0520e005f464a2afbb58777f4d09bd460e6d4639d90fa",
+    "source_reference_summary_sha256": "fcc1bb7f18dacd00058883082d1f13e20a462b241957f69dc87006d6f11a7dcb",
+    "code_sha256": "3877ff6807a4d7543bb76511b35993f541d632cbc608f318020877e79f82672f",
+    "purpose": "independent preparations for the same finite-box target; no claim of global mixing"
+  },
+  "configuration": {
+    "temperatures": [
+      300.0
+    ],
+    "names": null,
+    "seeds": [
+      103,
+      211
+    ],
+    "draws": 2048,
+    "warmup": 512,
+    "proposal_scale": 0.6,
+    "halfwidth": 1.5,
+    "workers": 2,
+    "sampler": "hmc",
+    "hmc_step": 0.2
+  },
+  "code_sha256": {
+    "solver_v1/silicon_thermal_research.py": "6f6ebe9e71f468830b9038964c39677c5cb69cd779ca6633bf65a79df48e8149",
+    "solver_v1/silicon_crack_research.py": "423b261dccbc380c130b54cea70e0ecb1761ee0f383b06907c02b065f82527a5",
+    "results/silicon_wafer_feasibility/run_conditional_ensemble.py": "531ed7b7025724628ff0784a21615b0b1dbd2d40efc3ed91eeb0b4f7d3f4da8b"
+  },
+  "sample_clock_ps": null,
+  "production_enabled": false,
+  "production_t0_seconds": null,
+  "records": [
+    {
+      "label": "state00_T300_seed211",
+      "reference": "state00",
+      "temperature_K": 300.0,
+      "seed": 211,
+      "gap_A": 2.6427454609767165,
+      "draws": 2048,
+      "warmup": 512,
+      "proposal_scale": 0.6,
+      "sampler": "hmc",
+      "hmc_step": 0.2,
+      "bath_box_halfwidth_A": 1.5,
+      "box_center": "initial-state orthonormal bath coordinates; independent of q",
+      "acceptance_fraction": 0.9853515625,
+      "warmup_acceptance_fraction": 0.986328125,
+      "domain_rejected_proposals": 0,
+      "force_evaluations": 20491,
+      "observations": [
+        "raw_dU_dq_eV_A",
+        "controlled_dU_dq_eV_A",
+        "excess_U_eV",
+        "anharmonic_residual_over_kBT",
+        "max_abs_bath_coordinate_A",
+        "bath_mean_square_displacement_A2"
+      ],
+      "raw_to_controlled_variance_ratio": 98.58618223310484,
+      "fixed_displacement_A": 0.0,
+      "source_parameter_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+      "reference_sha256": "85ccd6f4c9d723eee2ff2046e264f26c70fef2c82b9388dda087ee27871a309f",
+      "elapsed_seconds": 334.3622417000006,
+      "sample_clock_ps": null,
+      "finite_T_global_PMF_certified": false,
+      "physical_mobility": null
+    },
+    {
+      "label": "state00_T300_seed103",
+      "reference": "state00",
+      "temperature_K": 300.0,
+      "seed": 103,
+      "gap_A": 2.6427454609767165,
+      "draws": 2048,
+      "warmup": 512,
+      "proposal_scale": 0.6,
+      "sampler": "hmc",
+      "hmc_step": 0.2,
+      "bath_box_halfwidth_A": 1.5,
+      "box_center": "initial-state orthonormal bath coordinates; independent of q",
+      "acceptance_fraction": 0.9814453125,
+      "warmup_acceptance_fraction": 0.98828125,
+      "domain_rejected_proposals": 0,
+      "force_evaluations": 20562,
+      "observations": [
+        "raw_dU_dq_eV_A",
+        "controlled_dU_dq_eV_A",
+        "excess_U_eV",
+        "anharmonic_residual_over_kBT",
+        "max_abs_bath_coordinate_A",
+        "bath_mean_square_displacement_A2"
+      ],
+      "raw_to_controlled_variance_ratio": 93.24268099109061,
+      "fixed_displacement_A": 0.0,
+      "source_parameter_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+      "reference_sha256": "85ccd6f4c9d723eee2ff2046e264f26c70fef2c82b9388dda087ee27871a309f",
+      "elapsed_seconds": 339.98295110004256,
+      "sample_clock_ps": null,
+      "finite_T_global_PMF_certified": false,
+      "physical_mobility": null
+    },
+    {
+      "label": "state04_T300_seed103",
+      "reference": "state04",
+      "temperature_K": 300.0,
+      "seed": 103,
+      "gap_A": 2.6427454609767165,
+      "draws": 2048,
+      "warmup": 512,
+      "proposal_scale": 0.6,
+      "sampler": "hmc",
+      "hmc_step": 0.2,
+      "bath_box_halfwidth_A": 1.5,
+      "box_center": "initial-state orthonormal bath coordinates; independent of q",
+      "acceptance_fraction": 0.85693359375,
+      "warmup_acceptance_fraction": 0.890625,
+      "domain_rejected_proposals": 8,
+      "force_evaluations": 20427,
+      "observations": [
+        "raw_dU_dq_eV_A",
+        "controlled_dU_dq_eV_A",
+        "excess_U_eV",
+        "anharmonic_residual_over_kBT",
+        "max_abs_bath_coordinate_A",
+        "bath_mean_square_displacement_A2"
+      ],
+      "raw_to_controlled_variance_ratio": 4.488414758281635,
+      "fixed_displacement_A": 0.0,
+      "source_parameter_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+      "reference_sha256": "d63526ff1b7d02d0e927e7f16a2a8ae6880737d19dacfe915776641d312a67f9",
+      "elapsed_seconds": 16066.447495400032,
+      "sample_clock_ps": null,
+      "finite_T_global_PMF_certified": false,
+      "physical_mobility": null
+    },
+    {
+      "label": "state04_T300_seed211",
+      "reference": "state04",
+      "temperature_K": 300.0,
+      "seed": 211,
+      "gap_A": 2.6427454609767165,
+      "draws": 2048,
+      "warmup": 512,
+      "proposal_scale": 0.6,
+      "sampler": "hmc",
+      "hmc_step": 0.2,
+      "bath_box_halfwidth_A": 1.5,
+      "box_center": "initial-state orthonormal bath coordinates; independent of q",
+      "acceptance_fraction": 0.85595703125,
+      "warmup_acceptance_fraction": 0.90234375,
+      "domain_rejected_proposals": 4,
+      "force_evaluations": 20448,
+      "observations": [
+        "raw_dU_dq_eV_A",
+        "controlled_dU_dq_eV_A",
+        "excess_U_eV",
+        "anharmonic_residual_over_kBT",
+        "max_abs_bath_coordinate_A",
+        "bath_mean_square_displacement_A2"
+      ],
+      "raw_to_controlled_variance_ratio": 4.385749979243751,
+      "fixed_displacement_A": 0.0,
+      "source_parameter_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+      "reference_sha256": "d63526ff1b7d02d0e927e7f16a2a8ae6880737d19dacfe915776641d312a67f9",
+      "elapsed_seconds": 16063.707942100009,
+      "sample_clock_ps": null,
+      "finite_T_global_PMF_certified": false,
+      "physical_mobility": null
+    },
+    {
+      "label": "state01_T300_seed103",
+      "reference": "state01",
+      "temperature_K": 300.0,
+      "seed": 103,
+      "gap_A": 2.6427454609767165,
+      "draws": 2048,
+      "warmup": 512,
+      "proposal_scale": 0.6,
+      "sampler": "hmc",
+      "hmc_step": 0.2,
+      "bath_box_halfwidth_A": 1.5,
+      "box_center": "initial-state orthonormal bath coordinates; independent of q",
+      "acceptance_fraction": 0.8955078125,
+      "warmup_acceptance_fraction": 0.90234375,
+      "domain_rejected_proposals": 8,
+      "force_evaluations": 20418,
+      "observations": [
+        "raw_dU_dq_eV_A",
+        "controlled_dU_dq_eV_A",
+        "excess_U_eV",
+        "anharmonic_residual_over_kBT",
+        "max_abs_bath_coordinate_A",
+        "bath_mean_square_displacement_A2"
+      ],
+      "raw_to_controlled_variance_ratio": 16.305718631897054,
+      "fixed_displacement_A": 0.0,
+      "source_parameter_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+      "reference_sha256": "aa2951594b6c57ab5c21a152a852729a6b7c140bb4b90034984679f3cf043ff9",
+      "elapsed_seconds": 206.6035296000191,
+      "sample_clock_ps": null,
+      "finite_T_global_PMF_certified": false,
+      "physical_mobility": null
+    },
+    {
+      "label": "state01_T300_seed211",
+      "reference": "state01",
+      "temperature_K": 300.0,
+      "seed": 211,
+      "gap_A": 2.6427454609767165,
+      "draws": 2048,
+      "warmup": 512,
+      "proposal_scale": 0.6,
+      "sampler": "hmc",
+      "hmc_step": 0.2,
+      "bath_box_halfwidth_A": 1.5,
+      "box_center": "initial-state orthonormal bath coordinates; independent of q",
+      "acceptance_fraction": 0.87939453125,
+      "warmup_acceptance_fraction": 0.90234375,
+      "domain_rejected_proposals": 2,
+      "force_evaluations": 20605,
+      "observations": [
+        "raw_dU_dq_eV_A",
+        "controlled_dU_dq_eV_A",
+        "excess_U_eV",
+        "anharmonic_residual_over_kBT",
+        "max_abs_bath_coordinate_A",
+        "bath_mean_square_displacement_A2"
+      ],
+      "raw_to_controlled_variance_ratio": 17.301745295602654,
+      "fixed_displacement_A": 0.0,
+      "source_parameter_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+      "reference_sha256": "aa2951594b6c57ab5c21a152a852729a6b7c140bb4b90034984679f3cf043ff9",
+      "elapsed_seconds": 208.7294460000121,
+      "sample_clock_ps": null,
+      "finite_T_global_PMF_certified": false,
+      "physical_mobility": null
+    }
+  ],
+  "recorded_at_utc": "2026-09-21T01:03:03.102734+00:00",
+  "computation_completed": false,
+  "execution_status": "stopped_after_budget_expiry",
+  "reason": "clock check found budget expired after a long unverified wall-clock gap; task-owned remaining workers stopped",
+  "budget_start_utc": "2026-09-20T19:11:55Z",
+  "budget_deadline_utc": "2026-09-20T23:11:55Z",
+  "completed_chain_count": 6,
+  "planned_chain_count": 8,
+  "uncompleted_labels": [
+    "state02_T300_seed103",
+    "state02_T300_seed211"
+  ],
+  "total_completed_draws": 12288,
+  "finalizer_sha256": "6a5494522675ba128719be4d3fd13ac5f41a69e6dba018806f0ee8563093f448"
+}

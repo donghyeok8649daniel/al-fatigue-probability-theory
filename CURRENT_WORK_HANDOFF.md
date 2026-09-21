@@ -1,5 +1,29 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-21 최신: Si v4 마감, 일부 계산 중단
+
+- 사용자 지시: 남은 연구를4시간 진행. 시작19:11:55 UTC/기한23:11:55 UTC.
+  20:33:41→다음 시각 확인01:00:26 UTC의 긴 공백 원인은 미확인이다.
+  초과 확인 후 남은 두 sampler와 그 자식만 중단했고 새 물리 계산 없이 검증/마감했다.
+  profile80/136, multibasin6/8: interrupted_summary 보존, 전체 완료 아님.
+- 작업 위치 aft-silicon-wafer / silicon-wafer-research, 시작 local/origin db4bbbd663b2
+  fresh fetch 일치/clean. 원래 Al worktree 변경은 보호했다. 추가 agent 없음.
+- 실제 새 MD48회/1.74 ns. 600 K의100 ps release2개가 고정-q 재배열 minimum으로
+  연결되고300 K2개는 원래 minimum 유지. MCMC counts와 실제 MD 시간을 구분한다.
+  q가 같아도 별도 구조/반력이 존재하며 단일 Gaussian/단일 가지의 global PMF 미인증.
+- 고정-gap 국소 saddle3개 index1/양쪽 최소 이완 확인. 순차 국소 장벽은
+  .299644895/.049806492/.006078191 eV. 실제 wafer/opening 장벽·전이율 아님.
+  첫15-image NEB 수렴;29-image/작은step 재검사는 동일 saddle, 전체 band는 미수렴.
+- 전면8/300 K/seed401에8448반사·kinetic 기준 energy residual1.1111% 발생.
+  다른 세 record만 골라 크기 수렴/마찰을 선언하지 않는다. 넓은 box/dt 대조가 남았다.
+- 관련 Si42 PASS+소재24 PASS=66개, 후처리 수정 해당1개 재검사PASS, desktop smoke exit0.
+  raw130 HMC/48 MD 최종 상태 및 독립 triple39개 대조. 전체827 회귀 재실행 아님.
+  그림2개 직접 확인. reference archive30개, source/hash와 실패 이력 보존.
+- 결과/재현/남은 작업: results/silicon_thermal_v4/COMPLETED_SUMMARY.md.
+  이론: solver_v1/SILICON_FINITE_T_ENSEMBLES_V4.md. 생산Al/SG/PDE/UI/clock 불변.
+  다음은 중단56 profile/2 multibasin, 전면8 경계·dt, 전체분포·구조좌표 검증이다.
+  실제 Git 게시 상태는 최종 git log/fresh remote 및 validation.json을 확인한다.
+
 ## 2026-09-21 최신: Si 조건부 측도·기억 효과·새 원자 운동 v3 완료
 
 - 최신 사용자 지시 “연구 계속ㄱㄱ”에 따라 웨이퍼 연구를 이어갔다.

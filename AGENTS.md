@@ -2,6 +2,17 @@
 
 ## 웨이퍼 브랜치의 현재 범위
 
+v4 `SILICON_FINITE_T_ENSEMBLES_V4.md`는 실제 비선형 conditional sampling,
+새 MD48회/1.74 ns, 고정-gap 재배열 saddle3개와 memory 압축의 연구다.
+profile80/136·multibasin6/8에서 시간 예산 초과로 중단했다. 완료로 재해석하지 않는다.
+동일 q/box에서도 준비 구조에 따라 평균 힘이 달라 global PMF는 미인증이다.
+600 K 실제 release2개에서 재배열,300 K2개에서는100 ps 유지 관측은 전이율이 아니다.
+전면8/300 K/seed401의8448반사·에너지 잔차1.1111%는 유한 크기 동역학 실패로 남긴다.
+첫15-image NEB만 band 수렴,29-image들은 saddle 에너지 일치와 전체 band 미수렴을 구분한다.
+원시 검증/실제 테스트/남은 계산은 results/silicon_thermal_v4/COMPLETED_SUMMARY.md 참조.
+긴 wall-clock 공백의 원인은 미확인이고 elapsed를 연속 CPU 시간으로 보고하지 않는다.
+생산 Al/SG/PDE/UI/Si·Hz gate는 불변이다. 오래된 작업을 임의로 재개하지 않는다.
+
 v3 `SILICON_CONDITIONAL_DYNAMICS_V3.md`는 단일 가지의 classical Gaussian 후보와
 새 보존적 MD13개/합계13 ps, harmonic bath memory의 별도 연구다. 0 K 정지점의
 300 K Gaussian 차이0.734498 eV를 finite-T 활성화 장벽이라고 부르지 않는다.

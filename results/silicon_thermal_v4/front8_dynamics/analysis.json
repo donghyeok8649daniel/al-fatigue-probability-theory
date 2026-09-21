@@ -1,0 +1,341 @@
+{
+  "rows": [
+    {
+      "label": "initial_T100_dt0.00100",
+      "reference": "initial",
+      "temperature_K": 100.0,
+      "dt_ps": 0.001,
+      "independent_preparation_replicas": 4,
+      "duration_per_replica_ps": 40.0,
+      "mean_from_independent_preparation_eV_A": 0.023751776815838278,
+      "observed_force_means": [
+        0.02354727005238293,
+        0.023568475979198648,
+        0.02378135174602157,
+        0.024231322677015745
+      ],
+      "variance_over_kBT_replicas": [
+        1.7619659762335893,
+        1.6884349644000405,
+        1.7149358976173998,
+        1.8197287459706757
+      ],
+      "kinetic_temperatures_K": [
+        101.13917394968266,
+        100.40162165981894,
+        100.40044149895292,
+        101.03997347773546
+      ],
+      "finite_window_integrals": [
+        {
+          "lag_ps": 0.02,
+          "finite_integral_mean_eV_ps_A2": 0.028187068713673186,
+          "replica_sem": 0.0005030612294930527,
+          "replica_values": [
+            0.02858719585774103,
+            0.02725273162485266,
+            0.027489531382413893,
+            0.029418815989685154
+          ],
+          "own_center_mean": 0.028186917643143107
+        },
+        {
+          "lag_ps": 0.05,
+          "finite_integral_mean_eV_ps_A2": 0.023309250561203254,
+          "replica_sem": 0.0006849889169099955,
+          "replica_values": [
+            0.025028350610832577,
+            0.022890001363015503,
+            0.02174975468558289,
+            0.02356889558538204
+          ],
+          "own_center_mean": 0.02330890374077811
+        },
+        {
+          "lag_ps": 0.1,
+          "finite_integral_mean_eV_ps_A2": 0.015032776319636187,
+          "replica_sem": 0.0008781375479157938,
+          "replica_values": [
+            0.017375596297439407,
+            0.013423287362006006,
+            0.015338925528106482,
+            0.013993296090992851
+          ],
+          "own_center_mean": 0.015032124417899619
+        },
+        {
+          "lag_ps": 0.2,
+          "finite_integral_mean_eV_ps_A2": 0.0018978418987021532,
+          "replica_sem": 0.0008601901164514355,
+          "replica_values": [
+            0.0019958167505015664,
+            0.00039093550799167273,
+            0.004276555925536271,
+            0.000928059410779103
+          ],
+          "own_center_mean": 0.00189653872514491
+        },
+        {
+          "lag_ps": 0.5,
+          "finite_integral_mean_eV_ps_A2": 0.0010899557428440604,
+          "replica_sem": 0.0011409747109121526,
+          "replica_values": [
+            0.00371031191789574,
+            0.0022926356194189535,
+            -0.0007953726321035747,
+            -0.0008477519338348772
+          ],
+          "own_center_mean": 0.001086345206099055
+        },
+        {
+          "lag_ps": 1.0,
+          "finite_integral_mean_eV_ps_A2": 0.002797208892775041,
+          "replica_sem": 0.0013899848212345284,
+          "replica_values": [
+            0.0022404310165374626,
+            0.004432752130586752,
+            -0.0008740919702338465,
+            0.005389744394209797
+          ],
+          "own_center_mean": 0.002790417499015767
+        },
+        {
+          "lag_ps": 2.0,
+          "finite_integral_mean_eV_ps_A2": -0.0030305673013158634,
+          "replica_sem": 0.0012548661078893761,
+          "replica_values": [
+            -0.005167299547562017,
+            -0.0032229612782781764,
+            0.0005403636924309772,
+            -0.004272372071854239
+          ],
+          "own_center_mean": -0.0030443616840016953
+        },
+        {
+          "lag_ps": 5.0,
+          "finite_integral_mean_eV_ps_A2": 0.00012943000513375888,
+          "replica_sem": 0.0011766665548414745,
+          "replica_values": [
+            0.001784030119240605,
+            0.001340117959826092,
+            -0.0033411204863375353,
+            0.0007346924278058738
+          ],
+          "own_center_mean": 9.142273129452092e-05
+        },
+        {
+          "lag_ps": 10.0,
+          "finite_integral_mean_eV_ps_A2": -0.0006456761224522962,
+          "replica_sem": 0.0015210631869718239,
+          "replica_values": [
+            0.00348819709657296,
+            -0.0032090912734338726,
+            -0.002628908563425199,
+            -0.0002329017495230733
+          ],
+          "own_center_mean": -0.0007272671892967561
+        }
+      ],
+      "early_late_kernel_max_difference": 0.266365151401458,
+      "reflections": 0,
+      "contains_boundary_impacted_trajectory": false,
+      "trajectory_diagnostics": [
+        {
+          "label": "initial_T100_seed103_dt0.00100",
+          "reflections": 0,
+          "energy_residual_over_initial_kinetic": 0.0001476560429930802
+        },
+        {
+          "label": "initial_T100_seed211_dt0.00100",
+          "reflections": 0,
+          "energy_residual_over_initial_kinetic": 0.00011098007976221927
+        },
+        {
+          "label": "initial_T100_seed307_dt0.00100",
+          "reflections": 0,
+          "energy_residual_over_initial_kinetic": 0.00010379084971248394
+        },
+        {
+          "label": "initial_T100_seed401_dt0.00100",
+          "reflections": 0,
+          "energy_residual_over_initial_kinetic": 0.00015861890198008125
+        }
+      ],
+      "max_energy_residual_over_initial_kinetic": 0.00015861890198008125,
+      "exact_nonlinear_Mori_kernel_certified": false,
+      "constant_drag_identified": false,
+      "physical_mobility": null
+    },
+    {
+      "label": "initial_T300_dt0.00100",
+      "reference": "initial",
+      "temperature_K": 300.0,
+      "dt_ps": 0.001,
+      "independent_preparation_replicas": 4,
+      "duration_per_replica_ps": 40.0,
+      "mean_from_independent_preparation_eV_A": 0.07497543812663775,
+      "observed_force_means": [
+        0.07636976808339381,
+        0.07491804918311766,
+        0.07458144078286971,
+        0.4755243604663748
+      ],
+      "variance_over_kBT_replicas": [
+        1.7496570691348334,
+        1.6370522173405349,
+        1.7757554711318,
+        16.94701661343738
+      ],
+      "kinetic_temperatures_K": [
+        303.43172721572614,
+        301.40266228344336,
+        301.21556793646846,
+        307.3764604992666
+      ],
+      "finite_window_integrals": [
+        {
+          "lag_ps": 0.02,
+          "finite_integral_mean_eV_ps_A2": 0.10378984969053295,
+          "replica_sem": 0.07610567688923417,
+          "replica_values": [
+            0.02812520568852846,
+            0.02661863703505237,
+            0.028311506336193986,
+            0.33210404970235696
+          ],
+          "own_center_mean": 0.07276541265746776
+        },
+        {
+          "lag_ps": 0.05,
+          "finite_integral_mean_eV_ps_A2": 0.21336160574328605,
+          "replica_sem": 0.1903128181441219,
+          "replica_values": [
+            0.02349839332708958,
+            0.02455280980744958,
+            0.021099274497702367,
+            0.7842959453409027
+          ],
+          "own_center_mean": 0.13581257112419312
+        },
+        {
+          "lag_ps": 0.1,
+          "finite_integral_mean_eV_ps_A2": 0.39406596067105515,
+          "replica_sem": 0.3798168718529699,
+          "replica_values": [
+            0.01625728646841461,
+            0.014629422583316013,
+            0.01186380472480634,
+            1.5335133289076837
+          ],
+          "own_center_mean": 0.23904743242471543
+        },
+        {
+          "lag_ps": 0.2,
+          "finite_integral_mean_eV_ps_A2": 0.761905140804897,
+          "replica_sem": 0.7605714920206501,
+          "replica_values": [
+            0.0030225473069373726,
+            0.0015415887924862715,
+            -0.000562123185249845,
+            3.043618550305414
+          ],
+          "own_center_mean": 0.4522450331279009
+        },
+        {
+          "lag_ps": 0.5,
+          "finite_integral_mean_eV_ps_A2": 1.8956494906960188,
+          "replica_sem": 1.8943105059482925,
+          "replica_values": [
+            0.0047289930789873695,
+            0.0017895094613628963,
+            -0.0024998041643929337,
+            7.578579264408118
+          ],
+          "own_center_mean": 1.1235784308271333
+        },
+        {
+          "lag_ps": 1.0,
+          "finite_integral_mean_eV_ps_A2": 3.7617885450234687,
+          "replica_sem": 3.760398217653357,
+          "replica_values": [
+            0.0026659392216764346,
+            0.0006704374072792462,
+            0.0008346870606140143,
+            15.042983116404304
+          ],
+          "own_center_mean": 2.224065342031528
+        },
+        {
+          "lag_ps": 2.0,
+          "finite_integral_mean_eV_ps_A2": 7.402243072051401,
+          "replica_sem": 7.402326927743312,
+          "replica_values": [
+            0.00025491633349751893,
+            -0.001827414088184703,
+            0.0013210172806149547,
+            29.609223768679676
+          ],
+          "own_center_mean": 4.353906600190317
+        },
+        {
+          "lag_ps": 5.0,
+          "finite_integral_mean_eV_ps_A2": 17.529444223407165,
+          "replica_sem": 17.525583845926473,
+          "replica_values": [
+            0.00929742229953295,
+            0.002015395063074019,
+            0.0002686422153419871,
+            70.1061954340507
+          ],
+          "own_center_mean": 10.109107983733654
+        },
+        {
+          "lag_ps": 10.0,
+          "finite_integral_mean_eV_ps_A2": 30.07812446616568,
+          "replica_sem": 30.06905489302353,
+          "replica_values": [
+            0.0037968812104394256,
+            0.013532727357755826,
+            0.009879311964933118,
+            120.28528894412959
+          ],
+          "own_center_mean": 16.022356272264876
+        }
+      ],
+      "early_late_kernel_max_difference": 7.748191162842786,
+      "reflections": 8448,
+      "contains_boundary_impacted_trajectory": true,
+      "trajectory_diagnostics": [
+        {
+          "label": "initial_T300_seed103_dt0.00100",
+          "reflections": 0,
+          "energy_residual_over_initial_kinetic": 0.00015287861601591879
+        },
+        {
+          "label": "initial_T300_seed211_dt0.00100",
+          "reflections": 0,
+          "energy_residual_over_initial_kinetic": 0.00010222267327501077
+        },
+        {
+          "label": "initial_T300_seed307_dt0.00100",
+          "reflections": 0,
+          "energy_residual_over_initial_kinetic": 0.00012141987929037763
+        },
+        {
+          "label": "initial_T300_seed401_dt0.00100",
+          "reflections": 8448,
+          "energy_residual_over_initial_kinetic": 0.011110925880049092
+        }
+      ],
+      "max_energy_residual_over_initial_kinetic": 0.011110925880049092,
+      "exact_nonlinear_Mori_kernel_certified": false,
+      "constant_drag_identified": false,
+      "physical_mobility": null
+    }
+  ],
+  "interpretation": "nonlinear fixed-gap force correlations of actual mass-based atom trajectories; all records retained, including boundary-impacted records; not fitted overdamped mobility",
+  "overlapping_time_origins_are_independent": false,
+  "production_t0_seconds": null,
+  "input_summary_sha256": "f7cb971f06a6efaa68ff43a615ff099c99ccb1ce098e25c535595dfa15ddb482",
+  "code_sha256": "ed239f786186baa9b6ea98eee45a4ba318722817708f34277c4636fd76b53eca"
+}

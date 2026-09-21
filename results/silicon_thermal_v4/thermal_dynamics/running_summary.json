@@ -1,0 +1,28 @@
+{
+  "ensemble_source": "results/silicon_thermal_v4/hmc_pilot",
+  "reference_source": ".cache/si-thermal-v4/front4",
+  "configuration": {
+    "names": [
+      "initial",
+      "saddle",
+      "opened_minimum"
+    ],
+    "temperatures": [
+      100.0,
+      300.0
+    ],
+    "duration_ps": 40.0,
+    "dt_ps": 0.001,
+    "workers": 2
+  },
+  "code_sha256": {
+    "solver_v1/silicon_thermal_dynamics.py": "a4d5c03c17b98e29beb0c0cc3ecc3d5978cc406998e9849da90733759552b9f9",
+    "solver_v1/silicon_crack_research.py": "423b261dccbc380c130b54cea70e0ecb1761ee0f383b06907c02b065f82527a5",
+    "results/silicon_wafer_feasibility/run_thermal_dynamics.py": "b9eeec34b1557899b3cbdfa8e9cd53b9063134fb313ea4df5b6dd0c7178a94be"
+  },
+  "source_summary_sha256": "23fbc1b1a832f497093f1f9425f5e71182c5da332df468b8c950d22bc18d7a65",
+  "initialization": "last actual Metropolis sample plus independent Maxwell bath velocities",
+  "thermostat": null,
+  "production_t0_seconds": null,
+  "constant_drag_identified": false
+}

@@ -1,0 +1,354 @@
+{
+  "images": 15,
+  "spring": 1.0,
+  "iteration_budget": 2000,
+  "history": [
+    {
+      "iteration": 0,
+      "highest_image": 7,
+      "highest_energy": 1.4546382516451204,
+      "neb_force_max": 4.235933072497785,
+      "climbing": false,
+      "fire_step": 0.005
+    },
+    {
+      "iteration": 25,
+      "highest_image": 8,
+      "highest_energy": 0.6305117162081082,
+      "neb_force_max": 1.1781103717305907,
+      "climbing": false,
+      "fire_step": 0.03363749974662805
+    },
+    {
+      "iteration": 50,
+      "highest_image": 9,
+      "highest_energy": 0.33612693988919506,
+      "neb_force_max": 0.3394474790198043,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 75,
+      "highest_image": 9,
+      "highest_energy": 0.3027590280573409,
+      "neb_force_max": 0.08448870807458458,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 100,
+      "highest_image": 9,
+      "highest_energy": 0.3002619344766133,
+      "neb_force_max": 0.03074562161482615,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 125,
+      "highest_image": 9,
+      "highest_energy": 0.2996568936605142,
+      "neb_force_max": 0.018376476809900857,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 150,
+      "highest_image": 9,
+      "highest_energy": 0.29957963177378755,
+      "neb_force_max": 0.010573967065914217,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 175,
+      "highest_image": 9,
+      "highest_energy": 0.2995554902957287,
+      "neb_force_max": 0.009762208325031715,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 200,
+      "highest_image": 9,
+      "highest_energy": 0.2995387759556256,
+      "neb_force_max": 0.0075267250120386545,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 225,
+      "highest_image": 9,
+      "highest_energy": 0.29948281314387737,
+      "neb_force_max": 0.005490023539331816,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 250,
+      "highest_image": 9,
+      "highest_energy": 0.29937221472939024,
+      "neb_force_max": 0.004923251711033642,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 275,
+      "highest_image": 9,
+      "highest_energy": 0.2992453453600099,
+      "neb_force_max": 0.004953167770203421,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 300,
+      "highest_image": 9,
+      "highest_energy": 0.2991376319661727,
+      "neb_force_max": 0.015412006364579768,
+      "climbing": true,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 325,
+      "highest_image": 9,
+      "highest_energy": 0.2991650093372318,
+      "neb_force_max": 0.014886230305664782,
+      "climbing": true,
+      "fire_step": 0.03363749974662805
+    },
+    {
+      "iteration": 350,
+      "highest_image": 9,
+      "highest_energy": 0.29948335007561866,
+      "neb_force_max": 0.008662035197375947,
+      "climbing": true,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 375,
+      "highest_image": 9,
+      "highest_energy": 0.2996450628330338,
+      "neb_force_max": 0.005494256497076403,
+      "climbing": true,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 400,
+      "highest_image": 9,
+      "highest_energy": 0.2996343113200579,
+      "neb_force_max": 0.00311631134811722,
+      "climbing": true,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 425,
+      "highest_image": 9,
+      "highest_energy": 0.29964466943593404,
+      "neb_force_max": 0.0023413515525715785,
+      "climbing": true,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 450,
+      "highest_image": 9,
+      "highest_energy": 0.29964255437424603,
+      "neb_force_max": 0.003194208025125884,
+      "climbing": true,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 475,
+      "highest_image": 9,
+      "highest_energy": 0.2996425644384857,
+      "neb_force_max": 0.00184377750883837,
+      "climbing": true,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 500,
+      "highest_image": 9,
+      "highest_energy": 0.2996446144582494,
+      "neb_force_max": 0.000910304047735774,
+      "climbing": true,
+      "fire_step": 0.02
+    },
+    {
+      "iteration": 525,
+      "highest_image": 9,
+      "highest_energy": 0.299644740734784,
+      "neb_force_max": 0.000693640730321886,
+      "climbing": true,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 550,
+      "highest_image": 9,
+      "highest_energy": 0.2996448947935981,
+      "neb_force_max": 0.0004112373048011562,
+      "climbing": true,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 563,
+      "highest_image": 9,
+      "highest_energy": 0.29964489354731905,
+      "neb_force_max": 0.00018382036705160324,
+      "climbing": true,
+      "fire_step": 0.04
+    }
+  ],
+  "fire_step": 0.005,
+  "fire_max_step": 0.04,
+  "climb_after": 300,
+  "max_image_move": 0.03,
+  "climb_force_threshold": 0.03,
+  "band_converged": true,
+  "iterations": 563,
+  "neb_force_max": 0.00018382036705160324,
+  "maximum_sampled_band_energy_eV": 0.29964489354731905,
+  "highest_image": 9,
+  "saddle_audit": {
+    "stationary_correction": {
+      "residual_history_eV_A": [
+        3.354228917046287e-05,
+        3.4236018478517316e-08,
+        4.689304500260505e-14
+      ],
+      "tolerance_eV_A": 1e-09,
+      "converged": true,
+      "newton_steps": 2
+    },
+    "conditional_spectrum": {
+      "lowest_eigenvalues_eV_A2": [
+        -0.558942393879317,
+        0.11057823956608878,
+        0.18921199700227714,
+        0.21604544490965938,
+        0.2448870185428804,
+        0.27763417592855744,
+        0.27926433436387577,
+        0.34690139112447915
+      ],
+      "eigenpair_residuals_eV_A2": [
+        1.83545674321901e-14,
+        1.6791366045216154e-14,
+        1.8718490221622518e-14,
+        1.5535162234279474e-14,
+        1.769080212418428e-14,
+        4.1646384768913346e-13,
+        4.783338108395495e-13,
+        6.863158492380232e-11
+      ],
+      "negative_index": 1,
+      "near_zero_eigenvalues": 0
+    },
+    "energy_from_initial_eV": 0.29964489502454406,
+    "conditional_saddle_index_one": true,
+    "descents": [
+      {
+        "sign": -1.0,
+        "energy_from_initial_eV": -4.618527782440651e-14,
+        "distance_from_original_A": 1.5662249350135005e-13,
+        "distance_from_reconstructed_A": 1.9159878823131462,
+        "spectrum": {
+          "lowest_eigenvalues_eV_A2": [
+            0.11082957848416308,
+            0.1896084308400584,
+            0.2154501132756057,
+            0.24360523609445786,
+            0.2775941349939532
+          ],
+          "eigenpair_residuals_eV_A2": [
+            1.3788823230385563e-14,
+            1.596601880361671e-14,
+            1.600145553982484e-14,
+            1.802367528041031e-14,
+            2.8284314284427657e-11
+          ],
+          "negative_index": 0,
+          "near_zero_eigenvalues": 0
+        },
+        "relaxation": {
+          "energy_eV": -4435.952797313559,
+          "free_gradient_max_eV_A": 4.914450632831358e-07,
+          "force_tolerance_eV_A": 2e-06,
+          "force_converged": true,
+          "constraint_reaction_eV_A": [
+            -3.5167052711559954e-07
+          ],
+          "optimizer_success": true,
+          "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 83,
+          "evaluations": 96,
+          "stability_certified": false,
+          "physical_time_seconds": null
+        },
+        "correction": {
+          "residual_history_eV_A": [
+            4.914450632831358e-07,
+            1.403382618447857e-13
+          ],
+          "tolerance_eV_A": 1e-09,
+          "converged": true,
+          "newton_steps": 1
+        }
+      },
+      {
+        "sign": 1.0,
+        "energy_from_initial_eV": 0.11637498949200609,
+        "distance_from_original_A": 1.9159878823132184,
+        "distance_from_reconstructed_A": 3.347174347057143e-13,
+        "spectrum": {
+          "lowest_eigenvalues_eV_A2": [
+            0.11055789926959535,
+            0.18914433432503397,
+            0.21525008505460994,
+            0.24356355752890302,
+            0.277996404065875
+          ],
+          "eigenpair_residuals_eV_A2": [
+            1.6879269910675123e-14,
+            1.984456364455331e-14,
+            1.9188752088875688e-14,
+            2.1343446782698206e-14,
+            3.697115326915158e-11
+          ],
+          "negative_index": 0,
+          "near_zero_eigenvalues": 0
+        },
+        "relaxation": {
+          "energy_eV": -4435.836422324073,
+          "free_gradient_max_eV_A": 3.3210568900488013e-07,
+          "force_tolerance_eV_A": 2e-06,
+          "force_converged": true,
+          "constraint_reaction_eV_A": [
+            0.47940732050355694
+          ],
+          "optimizer_success": true,
+          "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+          "iterations": 89,
+          "evaluations": 98,
+          "stability_certified": false,
+          "physical_time_seconds": null
+        },
+        "correction": {
+          "residual_history_eV_A": [
+            3.3210568900488013e-07,
+            8.54316617449058e-14
+          ],
+          "tolerance_eV_A": 1e-09,
+          "converged": true,
+          "newton_steps": 1
+        }
+      }
+    ]
+  },
+  "elapsed_seconds": 80.35823569999775,
+  "code_sha256": {
+    "solver_v1/silicon_path_research.py": "8fa825f7220ab7e95e8dcbf7ddc448efbc3c885880c8b7c548d99e5cccd44677",
+    "results/silicon_wafer_feasibility/run_reconstruction_neb.py": "bfeefdd875efc41d5d44e535a7136b1e2a42b857f8a8318006b3a87d48bef66b"
+  },
+  "source_path_sha256": "d9bb6bd36929181199f0ad99eaac17e4d86323f3d30ca464a60da869be6fbc7a",
+  "global_minimum_path_certified": false,
+  "physical_transition_rate": null,
+  "real_wafer_calibrated": false
+}

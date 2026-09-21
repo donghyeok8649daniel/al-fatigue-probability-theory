@@ -1,0 +1,805 @@
+{
+  "images": 21,
+  "spring": 1.0,
+  "iteration_budget": 2400,
+  "history": [
+    {
+      "iteration": 0,
+      "highest_image": 9,
+      "highest_energy": 1.3004314476065186,
+      "neb_force_max": 4.347475050141522,
+      "climbing": false,
+      "fire_step": 0.005
+    },
+    {
+      "iteration": 25,
+      "highest_image": 9,
+      "highest_energy": 0.4753029342765913,
+      "neb_force_max": 1.1632639412968004,
+      "climbing": false,
+      "fire_step": 0.03363749974662805
+    },
+    {
+      "iteration": 50,
+      "highest_image": 7,
+      "highest_energy": 0.18616978166646003,
+      "neb_force_max": 0.3376263834418501,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 75,
+      "highest_image": 6,
+      "highest_energy": 0.1679218529228197,
+      "neb_force_max": 0.08659717591638919,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 100,
+      "highest_image": 6,
+      "highest_energy": 0.16650712439084936,
+      "neb_force_max": 0.049236062543267234,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 125,
+      "highest_image": 6,
+      "highest_energy": 0.16618125303745135,
+      "neb_force_max": 0.026207485222482306,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 150,
+      "highest_image": 6,
+      "highest_energy": 0.16604374621504325,
+      "neb_force_max": 0.024692343439179174,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 175,
+      "highest_image": 6,
+      "highest_energy": 0.16600743459718315,
+      "neb_force_max": 0.01640719490135065,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 200,
+      "highest_image": 6,
+      "highest_energy": 0.16600225189151097,
+      "neb_force_max": 0.017022755313498478,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 225,
+      "highest_image": 6,
+      "highest_energy": 0.16601442564806757,
+      "neb_force_max": 0.029425435418234943,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 250,
+      "highest_image": 6,
+      "highest_energy": 0.1660215410281154,
+      "neb_force_max": 0.06450927964628858,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 275,
+      "highest_image": 6,
+      "highest_energy": 0.16601666603924592,
+      "neb_force_max": 0.04046826268877281,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 300,
+      "highest_image": 6,
+      "highest_energy": 0.16599531292773317,
+      "neb_force_max": 0.04784809120687143,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 325,
+      "highest_image": 6,
+      "highest_energy": 0.16594757532595494,
+      "neb_force_max": 0.08464683221021432,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 350,
+      "highest_image": 6,
+      "highest_energy": 0.16584963400295383,
+      "neb_force_max": 0.07713756100794071,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 375,
+      "highest_image": 6,
+      "highest_energy": 0.1656595930530691,
+      "neb_force_max": 0.0907762854165313,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 400,
+      "highest_image": 6,
+      "highest_energy": 0.16530766730385427,
+      "neb_force_max": 0.18145896232554354,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 425,
+      "highest_image": 6,
+      "highest_energy": 0.1646691442502095,
+      "neb_force_max": 0.09312887652858615,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 450,
+      "highest_image": 5,
+      "highest_energy": 0.16510506755132104,
+      "neb_force_max": 0.09341088322561897,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 475,
+      "highest_image": 5,
+      "highest_energy": 0.16576321090940604,
+      "neb_force_max": 0.14650603241150564,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 500,
+      "highest_image": 5,
+      "highest_energy": 0.16618358367685016,
+      "neb_force_max": 0.08581372643205185,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 525,
+      "highest_image": 5,
+      "highest_energy": 0.1647247520474333,
+      "neb_force_max": 0.12248436827432184,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 550,
+      "highest_image": 4,
+      "highest_energy": 0.1651446475283609,
+      "neb_force_max": 0.1554063375860006,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 575,
+      "highest_image": 4,
+      "highest_energy": 0.16554211656726014,
+      "neb_force_max": 0.09810560238275357,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 600,
+      "highest_image": 3,
+      "highest_energy": 0.16359015411791322,
+      "neb_force_max": 0.13937004231227476,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 625,
+      "highest_image": 3,
+      "highest_energy": 0.16475657120456733,
+      "neb_force_max": 0.11268162946377995,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 650,
+      "highest_image": 2,
+      "highest_energy": 0.1639334070967129,
+      "neb_force_max": 0.226886888829501,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 675,
+      "highest_image": 2,
+      "highest_energy": 0.16058173374768003,
+      "neb_force_max": 0.26568794094780834,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 700,
+      "highest_image": 1,
+      "highest_energy": 0.16006878746696174,
+      "neb_force_max": 0.2247238154186876,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 725,
+      "highest_image": 1,
+      "highest_energy": 0.16680268431401224,
+      "neb_force_max": 0.17971889692932488,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 750,
+      "highest_image": 14,
+      "highest_energy": 0.2469469651299785,
+      "neb_force_max": 0.371571996126806,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 775,
+      "highest_image": 1,
+      "highest_energy": 0.14646992514858503,
+      "neb_force_max": 0.332061585656132,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 800,
+      "highest_image": 1,
+      "highest_energy": 0.16443219169960166,
+      "neb_force_max": 0.12657254769210327,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 825,
+      "highest_image": 1,
+      "highest_energy": 0.1595340790826829,
+      "neb_force_max": 0.09228449609393433,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 850,
+      "highest_image": 2,
+      "highest_energy": 0.15863558958540436,
+      "neb_force_max": 0.08534428737718353,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 875,
+      "highest_image": 2,
+      "highest_energy": 0.1651354372911089,
+      "neb_force_max": 0.07903766928955316,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 900,
+      "highest_image": 2,
+      "highest_energy": 0.16623482236620468,
+      "neb_force_max": 0.11513711331471467,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 925,
+      "highest_image": 2,
+      "highest_energy": 0.16602480691505184,
+      "neb_force_max": 0.053764574952285225,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 950,
+      "highest_image": 2,
+      "highest_energy": 0.16562612068929683,
+      "neb_force_max": 0.06427222972272087,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 975,
+      "highest_image": 2,
+      "highest_energy": 0.1656347092769601,
+      "neb_force_max": 0.06684214966767096,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1000,
+      "highest_image": 2,
+      "highest_energy": 0.16594814247508838,
+      "neb_force_max": 0.06987386729997071,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1025,
+      "highest_image": 2,
+      "highest_energy": 0.16620723275761184,
+      "neb_force_max": 0.10019153253919416,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1050,
+      "highest_image": 2,
+      "highest_energy": 0.1655241665105951,
+      "neb_force_max": 0.09115455296249592,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1075,
+      "highest_image": 2,
+      "highest_energy": 0.1631722831981519,
+      "neb_force_max": 0.1379530861410402,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1100,
+      "highest_image": 2,
+      "highest_energy": 0.15888107878899627,
+      "neb_force_max": 0.14016101800783584,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1125,
+      "highest_image": 2,
+      "highest_energy": 0.15534891531159545,
+      "neb_force_max": 0.12706105707805404,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1150,
+      "highest_image": 1,
+      "highest_energy": 0.15236258670804714,
+      "neb_force_max": 0.14837232140862125,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1175,
+      "highest_image": 1,
+      "highest_energy": 0.15446347209812084,
+      "neb_force_max": 0.12862226355071982,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1200,
+      "highest_image": 1,
+      "highest_energy": 0.1608129731113488,
+      "neb_force_max": 0.15482393669102976,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1225,
+      "highest_image": 1,
+      "highest_energy": 0.16657773492639416,
+      "neb_force_max": 0.12481193761698094,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1250,
+      "highest_image": 1,
+      "highest_energy": 0.16147303524573697,
+      "neb_force_max": 0.11185395602492063,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1275,
+      "highest_image": 1,
+      "highest_energy": 0.15398144462787267,
+      "neb_force_max": 0.16244509348802152,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1300,
+      "highest_image": 19,
+      "highest_energy": 0.21774852236982856,
+      "neb_force_max": 0.16683460843519993,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1325,
+      "highest_image": 19,
+      "highest_energy": 0.37647975537250833,
+      "neb_force_max": 0.12104044077315794,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1350,
+      "highest_image": 19,
+      "highest_energy": 0.6022353365271189,
+      "neb_force_max": 0.08978381852373915,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1375,
+      "highest_image": 19,
+      "highest_energy": 0.8894834040688475,
+      "neb_force_max": 0.11693524841943767,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1400,
+      "highest_image": 19,
+      "highest_energy": 1.2143925690419932,
+      "neb_force_max": 0.12617060465465485,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1425,
+      "highest_image": 19,
+      "highest_energy": 1.529961630758903,
+      "neb_force_max": 0.1462019784604062,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1450,
+      "highest_image": 19,
+      "highest_energy": 1.7846535553732092,
+      "neb_force_max": 0.15338932271573905,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1475,
+      "highest_image": 19,
+      "highest_energy": 1.959667733176043,
+      "neb_force_max": 0.14332594215638855,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1500,
+      "highest_image": 19,
+      "highest_energy": 2.0731639421712185,
+      "neb_force_max": 0.11888435096798582,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1525,
+      "highest_image": 19,
+      "highest_energy": 2.1518959024840396,
+      "neb_force_max": 0.12124387895215995,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1550,
+      "highest_image": 19,
+      "highest_energy": 2.213680743840086,
+      "neb_force_max": 0.1215809076114793,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1575,
+      "highest_image": 19,
+      "highest_energy": 2.266232945307091,
+      "neb_force_max": 0.1485664003921773,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1600,
+      "highest_image": 19,
+      "highest_energy": 2.3111573969557115,
+      "neb_force_max": 0.19218512147349628,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1625,
+      "highest_image": 19,
+      "highest_energy": 2.348222407399561,
+      "neb_force_max": 0.22379128933962264,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1650,
+      "highest_image": 19,
+      "highest_energy": 2.379126329292086,
+      "neb_force_max": 0.22750142476231916,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1675,
+      "highest_image": 19,
+      "highest_energy": 2.407119930914673,
+      "neb_force_max": 0.19394268547719104,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1700,
+      "highest_image": 19,
+      "highest_energy": 2.431732960674954,
+      "neb_force_max": 0.14786643800720556,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1725,
+      "highest_image": 19,
+      "highest_energy": 2.459418795356694,
+      "neb_force_max": 0.15724133654097386,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1750,
+      "highest_image": 19,
+      "highest_energy": 2.5012223114112344,
+      "neb_force_max": 0.15206221787472218,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1775,
+      "highest_image": 19,
+      "highest_energy": 2.574798126610853,
+      "neb_force_max": 0.17833150118680924,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1800,
+      "highest_image": 19,
+      "highest_energy": 2.7043987207668767,
+      "neb_force_max": 0.20890273564513395,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1825,
+      "highest_image": 19,
+      "highest_energy": 2.8935146315194302,
+      "neb_force_max": 0.24085310541538066,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1850,
+      "highest_image": 19,
+      "highest_energy": 3.1450806693476454,
+      "neb_force_max": 0.2563099340736036,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1875,
+      "highest_image": 19,
+      "highest_energy": 3.4626963063847747,
+      "neb_force_max": 0.2536303323324344,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1900,
+      "highest_image": 19,
+      "highest_energy": 3.8497710902556226,
+      "neb_force_max": 0.23480750043440604,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1925,
+      "highest_image": 19,
+      "highest_energy": 4.30946580150918,
+      "neb_force_max": 0.2480497282010536,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1950,
+      "highest_image": 19,
+      "highest_energy": 4.84449602709192,
+      "neb_force_max": 0.2619094292789167,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 1975,
+      "highest_image": 19,
+      "highest_energy": 5.4568484397541575,
+      "neb_force_max": 0.2578402591883204,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2000,
+      "highest_image": 19,
+      "highest_energy": 6.147438180650159,
+      "neb_force_max": 0.24872913663947405,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2025,
+      "highest_image": 19,
+      "highest_energy": 6.915714608028319,
+      "neb_force_max": 0.2957328900776926,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2050,
+      "highest_image": 19,
+      "highest_energy": 7.759207244988762,
+      "neb_force_max": 0.3338515979311668,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2075,
+      "highest_image": 19,
+      "highest_energy": 8.672998115369479,
+      "neb_force_max": 0.3599000050730222,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2100,
+      "highest_image": 19,
+      "highest_energy": 9.649114968672306,
+      "neb_force_max": 0.371171194517039,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2125,
+      "highest_image": 19,
+      "highest_energy": 10.675871123772541,
+      "neb_force_max": 0.36569542076451506,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2150,
+      "highest_image": 19,
+      "highest_energy": 11.737248230082226,
+      "neb_force_max": 0.3425958383402694,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2175,
+      "highest_image": 19,
+      "highest_energy": 12.812544005379806,
+      "neb_force_max": 0.3632562260618785,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2200,
+      "highest_image": 19,
+      "highest_energy": 13.866347168492833,
+      "neb_force_max": 0.3904591843768906,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2225,
+      "highest_image": 19,
+      "highest_energy": 14.847272351657175,
+      "neb_force_max": 0.4143843996317953,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2250,
+      "highest_image": 19,
+      "highest_energy": 15.750721223787455,
+      "neb_force_max": 0.43479971475900003,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2275,
+      "highest_image": 19,
+      "highest_energy": 16.577433397600387,
+      "neb_force_max": 0.4510845810170811,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2300,
+      "highest_image": 19,
+      "highest_energy": 17.32208294214433,
+      "neb_force_max": 0.4620329013809818,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2325,
+      "highest_image": 19,
+      "highest_energy": 17.956174710675473,
+      "neb_force_max": 0.46608752332939,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2350,
+      "highest_image": 19,
+      "highest_energy": 18.479610711897063,
+      "neb_force_max": 0.4625391542275192,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2375,
+      "highest_image": 19,
+      "highest_energy": 18.902314920531033,
+      "neb_force_max": 0.4512295216395856,
+      "climbing": false,
+      "fire_step": 0.04
+    },
+    {
+      "iteration": 2400,
+      "highest_image": 19,
+      "highest_energy": 19.238703002219165,
+      "neb_force_max": 0.43252941465704725,
+      "climbing": false,
+      "fire_step": 0.04
+    }
+  ],
+  "fire_step": 0.005,
+  "fire_max_step": 0.04,
+  "climb_after": 350,
+  "max_image_move": 0.03,
+  "climb_force_threshold": 0.03,
+  "band_converged": false,
+  "iterations": 2400,
+  "neb_force_max": 0.43252941465704725,
+  "maximum_sampled_band_energy_eV": 19.238703002219165,
+  "highest_image": 19,
+  "saddle_audit": {
+    "stationary_audit_failure": "Newton correction left the local stationary branch"
+  },
+  "elapsed_seconds": 333.82441910001216,
+  "code_sha256": {
+    "solver_v1/silicon_path_research.py": "8fa825f7220ab7e95e8dcbf7ddc448efbc3c885880c8b7c548d99e5cccd44677",
+    "results/silicon_wafer_feasibility/run_reconstruction_neb.py": "bfeefdd875efc41d5d44e535a7136b1e2a42b857f8a8318006b3a87d48bef66b"
+  },
+  "source_path_sha256": "0c2bb508138b75fb183e572b305e495b1c9b3fbd3678b5151ec7b39ac2d9da28",
+  "global_minimum_path_certified": false,
+  "physical_transition_rate": null,
+  "real_wafer_calibrated": false
+}

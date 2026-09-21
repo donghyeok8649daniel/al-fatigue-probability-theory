@@ -1,0 +1,133 @@
+{
+  "rows": [
+    {
+      "name": "state00",
+      "gap_A": 2.6427454609767165,
+      "bath_dimension": 2015,
+      "energy_difference_eV": 5.329070518200751e-15,
+      "static_reaction_eV_A": 3.6637359812630166e-15,
+      "logdet_bath": 4804.384456600275,
+      "force_residual_eV_A": 3.605449272470196e-14,
+      "bath_mean_max_coordinate_A": 0.0
+    },
+    {
+      "name": "state04",
+      "gap_A": 2.6427454609767165,
+      "bath_dimension": 2015,
+      "energy_difference_eV": 0.11637498949198566,
+      "static_reaction_eV_A": 0.47940761149385586,
+      "logdet_bath": 4804.229967128158,
+      "force_residual_eV_A": 6.103624550224396e-13,
+      "bath_mean_max_coordinate_A": 1.0526329966444732
+    },
+    {
+      "name": "state01",
+      "gap_A": 2.6427454609767165,
+      "bath_dimension": 2015,
+      "energy_difference_eV": -0.3167982195313912,
+      "static_reaction_eV_A": 1.1835727602406756,
+      "logdet_bath": 4805.447273248102,
+      "force_residual_eV_A": 7.746824015608667e-13,
+      "bath_mean_max_coordinate_A": 1.0794117723975487
+    },
+    {
+      "name": "state02",
+      "gap_A": 2.6427454609767165,
+      "bath_dimension": 2015,
+      "energy_difference_eV": -2.213422554312857,
+      "static_reaction_eV_A": 1.1163126544755477,
+      "logdet_bath": 4812.9315274561095,
+      "force_residual_eV_A": 1.902575319512323e-13,
+      "bath_mean_max_coordinate_A": 1.1544071638469158
+    }
+  ],
+  "geometry": {
+    "nx": 6,
+    "ny": 4,
+    "nz": 4,
+    "atoms": 1152,
+    "free_atoms": 672,
+    "front_period_A": 15.361045688965778,
+    "width_A": 39.90916738601341,
+    "height_A": 37.626723853545435,
+    "grip_width_A": 4.0,
+    "imposed_opening_A": 3.5,
+    "seed_tip_A": -3.0,
+    "seed_transition_A": 5.0,
+    "cut": "111 shuffle",
+    "propagation_cubic": [
+      1,
+      1,
+      -2
+    ],
+    "front_cubic": [
+      1,
+      -1,
+      0
+    ],
+    "initial_relaxation": {
+      "energy_eV": -4435.952797313569,
+      "free_gradient_max_eV_A": 4.331162506976405e-07,
+      "force_tolerance_eV_A": 2e-06,
+      "force_converged": true,
+      "constraint_reaction_eV_A": [],
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "iterations": 98,
+      "evaluations": 106,
+      "stability_certified": false,
+      "physical_time_seconds": null
+    },
+    "initial_correction": {
+      "residual_history_eV_A": [
+        4.3311625413933186e-07,
+        1.3946482857463138e-13
+      ],
+      "tolerance_eV_A": 1e-09,
+      "converged": true,
+      "newton_steps": 1
+    },
+    "initial_full_spectrum": {
+      "lowest_eigenvalues_eV_A2": [
+        0.11082957848416164,
+        0.18960843084006004,
+        0.21527203179172735,
+        0.2434877022536662,
+        0.27759413499395347
+      ],
+      "eigenpair_residuals_eV_A2": [
+        1.5161259043210802e-14,
+        1.620484028508414e-14,
+        1.923466065179619e-14,
+        1.4756928245340038e-13,
+        2.268835879812167e-11
+      ],
+      "negative_index": 0,
+      "near_zero_eigenvalues": 0
+    },
+    "tip_bond_index": 31,
+    "initial_frontier": {
+      "bond_index": 31,
+      "front_x_A": 0.0,
+      "front_z_A": [
+        -1.655829715918669e-16,
+        3.8402614222414444,
+        7.680522844482889,
+        11.520784266724332
+      ],
+      "front_normal_gaps_A": [
+        2.6427454609767165,
+        2.6427454609767165,
+        2.6427454609767165,
+        2.6427454609767165
+      ],
+      "original_bonds_with_normal_gap_beyond_SW_cutoff": 24,
+      "interpretation": "reversible geometric gap observable; not an irreversible damage flag"
+    }
+  },
+  "source_parameter_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+  "source_minima_sha256": "b148df0cdae63e317cb0520e005f464a2afbb58777f4d09bd460e6d4639d90fa",
+  "source_reference_summary_sha256": "fcc1bb7f18dacd00058883082d1f13e20a462b241957f69dc87006d6f11a7dcb",
+  "code_sha256": "3877ff6807a4d7543bb76511b35993f541d632cbc608f318020877e79f82672f",
+  "purpose": "independent preparations for the same finite-box target; no claim of global mixing"
+}

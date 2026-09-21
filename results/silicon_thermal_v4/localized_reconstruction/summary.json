@@ -1,0 +1,746 @@
+{
+  "rows": [
+    {
+      "label": "sign-1_amp0.05_offset+0.00",
+      "sign": -1.0,
+      "amplitude_A": 0.05,
+      "progress_offset_A": 0.0,
+      "constrained_relaxation": {
+        "energy_eV": -4435.836214998291,
+        "free_gradient_max_eV_A": 4.852995465276779e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          0.4786780057546727,
+          0.02635286994543091
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 109,
+        "evaluations": 125,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "constrained_energy_eV": 0.11658231527823348,
+      "energy_from_original_eV": 0.11637498949198344,
+      "conditional_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.11055789926959549,
+          0.18914433432503416,
+          0.21525008505460683,
+          0.24356355752890643,
+          0.2779964040658793,
+          0.2793181001388332,
+          0.34596217879788566,
+          0.36687423825374543
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.5990410408908608e-14,
+          1.7144511784281235e-14,
+          1.7279418034113704e-14,
+          1.731181678120907e-14,
+          2.171116788341806e-13,
+          2.237210365946205e-13,
+          1.466104050485827e-11,
+          3.6146907628738566e-11
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "stationary_correction": {
+        "residual_history_eV_A": [
+          0.010696333395932012,
+          0.0004690258484064888,
+          5.171928467787024e-07,
+          6.044401090754548e-13
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 3
+      },
+      "index": 0
+    },
+    {
+      "label": "sign-1_amp0.05_offset-0.10",
+      "sign": -1.0,
+      "amplitude_A": 0.05,
+      "progress_offset_A": -0.1,
+      "constrained_relaxation": {
+        "energy_eV": -4435.830264996048,
+        "free_gradient_max_eV_A": 4.3749811594177325e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          0.4848003408482787,
+          -0.1472159790317955
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 102,
+        "evaluations": 114,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "constrained_energy_eV": 0.12253231752179694,
+      "energy_from_original_eV": 0.11637498949197589,
+      "conditional_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.11055789926959479,
+          0.1891443343250307,
+          0.2152500850546026,
+          0.2435635575289061,
+          0.27799640406587894,
+          0.27931810013883335,
+          0.3459621787978805,
+          0.3668742382537398
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.683199831281462e-14,
+          1.6956465261692236e-14,
+          1.8000236230755157e-14,
+          1.547738475497149e-14,
+          2.1227994200252782e-13,
+          2.208169384032421e-13,
+          1.465170257538869e-11,
+          3.6136067354924016e-11
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "stationary_correction": {
+        "residual_history_eV_A": [
+          0.0597528582763166,
+          0.005486855153579981,
+          6.107288824537191e-05,
+          8.189191439550436e-09,
+          4.9335535656780394e-14
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 4
+      },
+      "index": 0
+    },
+    {
+      "label": "sign-1_amp0.05_offset+0.10",
+      "sign": -1.0,
+      "amplitude_A": 0.05,
+      "progress_offset_A": 0.1,
+      "constrained_relaxation": {
+        "energy_eV": -4435.825885675564,
+        "free_gradient_max_eV_A": 4.1778931025859833e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          0.47984062357460266,
+          0.16957005933638059
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 123,
+        "evaluations": 141,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "constrained_energy_eV": 0.1269116380059354,
+      "energy_from_original_eV": 0.11637498949198832,
+      "conditional_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.11055789926959798,
+          0.18914433432504,
+          0.21525008505468604,
+          0.24356355752890743,
+          0.2779964040658952,
+          0.2793181001388476,
+          0.3459621787980818,
+          0.3668742382537535
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.6314977770106863e-14,
+          1.62140088607564e-14,
+          1.5386718670057912e-14,
+          1.644469951516122e-14,
+          2.1637333237892846e-13,
+          2.218748392173741e-13,
+          1.465621278270403e-11,
+          3.6139306735610475e-11
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "stationary_correction": {
+        "residual_history_eV_A": [
+          0.06882647079195503,
+          0.065735601528709,
+          0.0015872840386374903,
+          4.558684595007412e-06,
+          4.6865063912937543e-11
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 4
+      },
+      "index": 0
+    },
+    {
+      "label": "sign-1_amp0.20_offset+0.00",
+      "sign": -1.0,
+      "amplitude_A": 0.2,
+      "progress_offset_A": 0.0,
+      "constrained_relaxation": {
+        "energy_eV": -4435.83621499829,
+        "free_gradient_max_eV_A": 3.976808060072621e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          0.47867796862068585,
+          0.026352812202008476
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 104,
+        "evaluations": 116,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "constrained_energy_eV": 0.11658231528009111,
+      "energy_from_original_eV": 0.11637498949201452,
+      "conditional_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.11055789926959804,
+          0.18914433432503408,
+          0.2152500850546032,
+          0.2435635575289055,
+          0.2779964040658783,
+          0.2793181001388327,
+          0.3459621787978825,
+          0.3668742382537425
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.5859140777506437e-14,
+          1.6081146301704973e-14,
+          1.7262134637273187e-14,
+          1.5982931584340415e-14,
+          2.1810565501837296e-13,
+          2.194341640395899e-13,
+          1.4660736333170378e-11,
+          3.614010254216474e-11
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "stationary_correction": {
+        "residual_history_eV_A": [
+          0.01069634872429659,
+          0.00046902432696082144,
+          5.171902806126727e-07,
+          6.071636249327383e-13
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 3
+      },
+      "index": 0
+    },
+    {
+      "label": "sign-1_amp0.20_offset-0.10",
+      "sign": -1.0,
+      "amplitude_A": 0.2,
+      "progress_offset_A": -0.1,
+      "constrained_relaxation": {
+        "energy_eV": -4435.830264996058,
+        "free_gradient_max_eV_A": 3.9944211080314776e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          0.48480015941346055,
+          -0.14721658413114128
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 101,
+        "evaluations": 110,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "constrained_energy_eV": 0.12253231751174809,
+      "energy_from_original_eV": 0.11637498949199632,
+      "conditional_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.1105578992695989,
+          0.18914433432503505,
+          0.21525008505460855,
+          0.24356355752890743,
+          0.27799640406587733,
+          0.2793181001388327,
+          0.34596217879787944,
+          0.36687423825374305
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.6170337991647775e-14,
+          1.9150819140687363e-14,
+          1.8906769811660115e-14,
+          1.575948240427649e-14,
+          2.1533304877642577e-13,
+          2.2076233370183e-13,
+          1.465914127423194e-11,
+          3.6139063507867156e-11
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "stationary_correction": {
+        "residual_history_eV_A": [
+          0.05975335873239847,
+          0.005486899395281963,
+          6.107373410584732e-05,
+          8.189414160697517e-09,
+          4.8308579359002124e-14
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 4
+      },
+      "index": 0
+    },
+    {
+      "label": "sign-1_amp0.20_offset+0.10",
+      "sign": -1.0,
+      "amplitude_A": 0.2,
+      "progress_offset_A": 0.1,
+      "constrained_relaxation": {
+        "energy_eV": -4435.8258856755665,
+        "free_gradient_max_eV_A": 3.835343349800841e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          0.47984072118504806,
+          0.1695698175240402
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 108,
+        "evaluations": 124,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "constrained_energy_eV": 0.1269116380031834,
+      "energy_from_original_eV": 0.11637498949199543,
+      "conditional_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.11055789926959364,
+          0.1891443343250379,
+          0.21525008505468346,
+          0.24356355752891015,
+          0.2779964040658996,
+          0.27931810013885205,
+          0.3459621787980724,
+          0.3668742382537516
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.6640762202008848e-14,
+          1.712179393780853e-14,
+          1.5598998853896446e-14,
+          1.8133309029029672e-14,
+          2.118972361186679e-13,
+          2.2393351825580966e-13,
+          1.4664700895869157e-11,
+          3.6140559564129956e-11
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "stationary_correction": {
+        "residual_history_eV_A": [
+          0.06882634778801139,
+          0.0657367968352717,
+          0.0015874216130335878,
+          4.559513710873653e-06,
+          4.6886824284220197e-11
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 4
+      },
+      "index": 0
+    },
+    {
+      "label": "sign+1_amp0.05_offset+0.00",
+      "sign": 1.0,
+      "amplitude_A": 0.05,
+      "progress_offset_A": 0.0,
+      "constrained_relaxation": {
+        "energy_eV": -4435.836214998291,
+        "free_gradient_max_eV_A": 4.058688216826214e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          0.4786780047727285,
+          0.026352643808893683
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 109,
+        "evaluations": 128,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "constrained_energy_eV": 0.1165823152782326,
+      "energy_from_original_eV": 0.11637498949198655,
+      "conditional_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.11055789926959894,
+          0.1891443343250355,
+          0.21525008505461016,
+          0.24356355752891007,
+          0.2779964040658809,
+          0.2793181001388353,
+          0.3459621787978802,
+          0.36687423825374327
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.5561998671667548e-14,
+          1.5481103725579526e-14,
+          1.447360752012936e-14,
+          1.434503217060197e-14,
+          1.755181785619421e-13,
+          1.7773510919787512e-13,
+          7.9653246478362e-12,
+          2.951731885620072e-11
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "stationary_correction": {
+        "residual_history_eV_A": [
+          0.01069625010056563,
+          0.00046903363045025515,
+          5.17210901801457e-07,
+          6.103624550224396e-13
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 3
+      },
+      "index": 0
+    },
+    {
+      "label": "sign+1_amp0.05_offset-0.10",
+      "sign": 1.0,
+      "amplitude_A": 0.05,
+      "progress_offset_A": -0.1,
+      "constrained_relaxation": {
+        "energy_eV": -4435.830264996061,
+        "free_gradient_max_eV_A": 4.4061944824377343e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          0.48480017886046,
+          -0.14721633685013377
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 104,
+        "evaluations": 116,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "constrained_energy_eV": 0.12253231750876958,
+      "energy_from_original_eV": 0.11637498949200209,
+      "conditional_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.11055789926959625,
+          0.1891443343250348,
+          0.21525008505460916,
+          0.24356355752890907,
+          0.2779964040658787,
+          0.27931810013883374,
+          0.34596217879787455,
+          0.3668742382537417
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.6457383069941848e-14,
+          1.698190173595189e-14,
+          1.6992695328375683e-14,
+          1.596295264230161e-14,
+          1.774527389350694e-13,
+          1.7712057659849176e-13,
+          7.96142678563613e-12,
+          2.9515493149514034e-11
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "stationary_correction": {
+        "residual_history_eV_A": [
+          0.059753412902495875,
+          0.0054869042295489535,
+          6.107388184396767e-05,
+          8.189453684637193e-09,
+          4.954370247389761e-14
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 4
+      },
+      "index": 0
+    },
+    {
+      "label": "sign+1_amp0.05_offset+0.10",
+      "sign": 1.0,
+      "amplitude_A": 0.05,
+      "progress_offset_A": 0.1,
+      "constrained_relaxation": {
+        "energy_eV": -4435.8258856755565,
+        "free_gradient_max_eV_A": 3.9943583411000683e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          0.479840671028063,
+          0.16957022162535987
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 122,
+        "evaluations": 141,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "constrained_energy_eV": 0.12691163801300664,
+      "energy_from_original_eV": 0.116374989491983,
+      "conditional_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.110557899269596,
+          0.18914433432503747,
+          0.2152500850546799,
+          0.24356355752890904,
+          0.2779964040658942,
+          0.2793181001388479,
+          0.3459621787980734,
+          0.3668742382537503
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.6024960860839465e-14,
+          1.696688447926032e-14,
+          2.1316194839559476e-14,
+          1.6162206412642627e-14,
+          1.772964074497994e-13,
+          1.7533176866938743e-13,
+          7.967589341210403e-12,
+          2.951879230155606e-11
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "stationary_correction": {
+        "residual_history_eV_A": [
+          0.06882668139490211,
+          0.06573588632101558,
+          0.0015873077018981538,
+          4.5588274675337215e-06,
+          4.687598226249534e-11
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 4
+      },
+      "index": 0
+    },
+    {
+      "label": "sign+1_amp0.20_offset+0.00",
+      "sign": 1.0,
+      "amplitude_A": 0.2,
+      "progress_offset_A": 0.0,
+      "constrained_relaxation": {
+        "energy_eV": -4435.836214998289,
+        "free_gradient_max_eV_A": 3.950545328476238e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          0.4786779688679944,
+          0.026352813108965117
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 104,
+        "evaluations": 116,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "constrained_energy_eV": 0.11658231528137808,
+      "energy_from_original_eV": 0.11637498949201097,
+      "conditional_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.11055789926959553,
+          0.18914433432503497,
+          0.2152500850546097,
+          0.24356355752890563,
+          0.27799640406587717,
+          0.27931810013883207,
+          0.34596217879787866,
+          0.36687423825373977
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.598799430169041e-14,
+          1.7337567798181424e-14,
+          1.6254492847334395e-14,
+          1.5078662174582083e-14,
+          1.776134151785665e-13,
+          1.7746164253596881e-13,
+          7.96662611107214e-12,
+          2.951541649175455e-11
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "stationary_correction": {
+        "residual_history_eV_A": [
+          0.010696348823663993,
+          0.0004690243868493149,
+          5.171904139227024e-07,
+          6.043429645608001e-13
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 3
+      },
+      "index": 0
+    },
+    {
+      "label": "sign+1_amp0.20_offset-0.10",
+      "sign": 1.0,
+      "amplitude_A": 0.2,
+      "progress_offset_A": -0.1,
+      "constrained_relaxation": {
+        "energy_eV": -4435.830264996064,
+        "free_gradient_max_eV_A": 4.275308624495408e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          0.48480016360040507,
+          -0.14721655764208197
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 101,
+        "evaluations": 110,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "constrained_energy_eV": 0.12253231750509475,
+      "energy_from_original_eV": 0.11637498949201497,
+      "conditional_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.11055789926959636,
+          0.18914433432503255,
+          0.2152500850546076,
+          0.24356355752890532,
+          0.2779964040658799,
+          0.27931810013883385,
+          0.34596217879787616,
+          0.36687423825373966
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.625915904840251e-14,
+          1.774580549947473e-14,
+          1.7325597417769538e-14,
+          1.451145977284869e-14,
+          1.74039653790049e-13,
+          1.7217558993277227e-13,
+          7.96234011845019e-12,
+          2.9511905911292355e-11
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "stationary_correction": {
+        "residual_history_eV_A": [
+          0.059753346996803416,
+          0.005486899434082745,
+          6.107373312337627e-05,
+          8.18941380334448e-09,
+          4.2319934449169816e-14
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 4
+      },
+      "index": 0
+    },
+    {
+      "label": "sign+1_amp0.20_offset+0.10",
+      "sign": 1.0,
+      "amplitude_A": 0.2,
+      "progress_offset_A": 0.1,
+      "constrained_relaxation": {
+        "energy_eV": -4435.825885675558,
+        "free_gradient_max_eV_A": 4.258080115929338e-07,
+        "force_tolerance_eV_A": 2e-06,
+        "force_converged": true,
+        "constraint_reaction_eV_A": [
+          0.4798407656454152,
+          0.16956979944792255
+        ],
+        "optimizer_success": true,
+        "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 108,
+        "evaluations": 125,
+        "stability_certified": false,
+        "physical_time_seconds": null
+      },
+      "constrained_energy_eV": 0.126911638011713,
+      "energy_from_original_eV": 0.11637498949198477,
+      "conditional_spectrum": {
+        "lowest_eigenvalues_eV_A2": [
+          0.1105578992695955,
+          0.18914433432503855,
+          0.21525008505467977,
+          0.24356355752890757,
+          0.27799640406589693,
+          0.27931810013884945,
+          0.34596217879807445,
+          0.36687423825375015
+        ],
+        "eigenpair_residuals_eV_A2": [
+          1.927466754521864e-14,
+          1.473524971902965e-14,
+          1.5459649233396844e-14,
+          1.5914480046018216e-14,
+          1.7686811004994795e-13,
+          1.7635517572844073e-13,
+          7.963095633021933e-12,
+          2.951676871254454e-11
+        ],
+        "negative_index": 0,
+        "near_zero_eigenvalues": 0
+      },
+      "stationary_correction": {
+        "residual_history_eV_A": [
+          0.06882638346881145,
+          0.06573699135392681,
+          0.0015874427297187209,
+          4.559640690040417e-06,
+          4.689780161437618e-11
+        ],
+        "tolerance_eV_A": 1e-09,
+        "converged": true,
+        "newton_steps": 4
+      },
+      "index": 0
+    }
+  ],
+  "source_negative_eigenvalues": [
+    -0.4335487553011509,
+    -0.05356310853518954
+  ],
+  "independent_hessian_vector_errors": [
+    2.9858964910371667e-09,
+    2.805982819928839e-09
+  ],
+  "elapsed_seconds": 190.73104980000062,
+  "code_sha256": "3fd76e61ef81e5a2c2defc934ea81bf6bf9d0d41844acd173ff12f95ca314332",
+  "source_stationary_sha256": "d1fc47d6dc0a1c8e9be3e0512ea1d62814bafd04924a078cb0a26f7d349b3e30",
+  "scope": "stationary branches at fixed selected gap; index/connection certification does not fit a physical transition rate",
+  "physical_transition_rate": null,
+  "global_path_certified": false
+}

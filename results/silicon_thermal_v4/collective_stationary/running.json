@@ -1,0 +1,92 @@
+[
+  {
+    "source_label": "forward_007",
+    "energy_from_original_eV": 0.4050928389967332,
+    "correction": {
+      "residual_history_eV_A": [
+        0.02190379352165156,
+        0.036044717110889024,
+        0.0008657414068107272,
+        1.3107123283617739e-05,
+        1.5555207122375236e-10
+      ],
+      "tolerance_eV_A": 1e-09,
+      "converged": true,
+      "newton_steps": 4
+    },
+    "conditional_spectrum": {
+      "lowest_eigenvalues_eV_A2": [
+        -0.4335487553011472,
+        -0.05356310853519136,
+        0.11053825418902966,
+        0.1887196850853032,
+        0.21856166445765374,
+        0.244874191088939,
+        0.27523600251426705,
+        0.27928007649348796
+      ],
+      "eigenpair_residuals_eV_A2": [
+        1.3811315700947846e-14,
+        1.3711404185386057e-14,
+        1.6429926745080952e-14,
+        1.642664784583234e-14,
+        1.724343401835953e-14,
+        9.075077795669586e-14,
+        1.371099070591631e-11,
+        2.7906516553308203e-11
+      ],
+      "negative_index": 2,
+      "near_zero_eigenvalues": 0
+    },
+    "stationary_index": 2
+  },
+  {
+    "source_label": "forward_017",
+    "energy_from_original_eV": -0.30933152463645497,
+    "correction": {
+      "residual_history_eV_A": [
+        0.007967139390126277,
+        0.01250373768196851,
+        0.0007786943290112314,
+        4.413845945766548e-06,
+        1.6134538149970012e-11
+      ],
+      "tolerance_eV_A": 1e-09,
+      "converged": true,
+      "newton_steps": 4
+    },
+    "conditional_spectrum": {
+      "lowest_eigenvalues_eV_A2": [
+        -0.38758397682312706,
+        -0.21616613661283005,
+        0.11034482441813284,
+        0.1888096930025044,
+        0.2182064439334661,
+        0.24365039640403827,
+        0.2782213552955235,
+        0.2792561957464779
+      ],
+      "eigenpair_residuals_eV_A2": [
+        1.2142905525579678e-14,
+        1.462798733287615e-14,
+        1.5915228219671046e-14,
+        1.6497528172293715e-14,
+        1.7608663683173812e-14,
+        6.34853738085951e-14,
+        3.353645419184527e-11,
+        2.3320451237070366e-11
+      ],
+      "negative_index": 2,
+      "near_zero_eigenvalues": 0
+    },
+    "stationary_index": 2
+  },
+  {
+    "source_label": "reverse_005",
+    "failure": "Newton correction left the local stationary branch"
+  },
+  {
+    "source_label": "reverse_016",
+    "failure": "Newton correction left the local stationary branch"
+  }
+]

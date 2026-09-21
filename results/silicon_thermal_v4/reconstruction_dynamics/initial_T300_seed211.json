@@ -1,0 +1,77 @@
+{
+  "max_energy_residual_eV": 0.005087697044690032,
+  "initial_kinetic_energy_eV": 27.303920156916195,
+  "reflection_count": 0,
+  "dt_ps": 0.001,
+  "steps": 100000,
+  "stride": 2,
+  "mass_amu": 28.0855,
+  "bath_box_halfwidth_A": 2.0,
+  "production_t0_seconds": null,
+  "label": "initial_T300_seed211",
+  "temperature_K": 300.0,
+  "seed": 211,
+  "duration_ps": 100.0,
+  "original_preparation_halfwidth_A": 1.0,
+  "dynamics_halfwidth_A": 2.0,
+  "initial_basin_distance_A": 1.8538889053329824e-13,
+  "initial_quench": {
+    "energy_eV": -4435.952797313555,
+    "free_gradient_max_eV_A": 4.974587769698835e-07,
+    "force_tolerance_eV_A": 2e-06,
+    "force_converged": true,
+    "constraint_reaction_eV_A": [
+      3.299439702425522e-07
+    ],
+    "optimizer_success": true,
+    "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+    "iterations": 105,
+    "evaluations": 111,
+    "stability_certified": false,
+    "physical_time_seconds": null
+  },
+  "initial_correction": {
+    "residual_history_eV_A": [
+      4.974587769698835e-07,
+      2.886124499112963e-13
+    ],
+    "tolerance_eV_A": 1e-09,
+    "converged": true,
+    "newton_steps": 1
+  },
+  "final_quench": {
+    "energy_eV": -4435.952797313557,
+    "free_gradient_max_eV_A": 4.4721874894321223e-07,
+    "force_tolerance_eV_A": 2e-06,
+    "force_converged": true,
+    "constraint_reaction_eV_A": [
+      3.2688974396788417e-07
+    ],
+    "optimizer_success": true,
+    "optimizer_message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+    "iterations": 111,
+    "evaluations": 117,
+    "stability_certified": false,
+    "physical_time_seconds": null
+  },
+  "final_correction": {
+    "residual_history_eV_A": [
+      4.4721874894321223e-07,
+      2.1027624086400465e-13
+    ],
+    "tolerance_eV_A": 1e-09,
+    "converged": true,
+    "newton_steps": 1
+  },
+  "final_quenched_energy_from_original_eV": 5.1958437552457326e-14,
+  "final_quenched_distance_from_original_A": 1.4400191518646216e-13,
+  "final_quenched_distance_from_reconstructed_A": 4.9162346257035985,
+  "reconstruction_fraction_min": -0.13244180741013425,
+  "reconstruction_fraction_max": 0.13318220277596915,
+  "reconstruction_fraction_final": 0.01246101448109139,
+  "elapsed_seconds": 710.0366481000092,
+  "sample_source_sha256": "836404604f7b2205f505fa400f6dea6dada594d7612bbb25eb176a3316ab3a80",
+  "canonical_stationarity_claimed": false,
+  "physical_failure_probability": null,
+  "transition_rate_from_counts": null
+}
