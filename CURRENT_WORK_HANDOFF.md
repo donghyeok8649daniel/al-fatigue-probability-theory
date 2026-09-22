@@ -1,5 +1,29 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-22 최신: Si 도핑 상태·실측 탄성·전하 축약 v7
+
+- 최신 사용자 지시: 도핑 정도의 영향을 연구·구현. CAD는 기존 별도 작업 유지.
+  시작 fresh local/origin 7da9864b7893807b9fc41c5154c51c111b495ec9 일치/clean.
+- 화학 농도/이온화율/전자·정공을 분리. Jaakkola 실측7시편×3온도의 이방성
+  균열장21개, J contour42개(최대상대차1.78e-15), c0 corner56개를 계산했다.
+  이는 continuum reference이며 순수SW와 혼합한 doped atomistic 재실행은 아니다.
+- 같은 Wsep 가정에서 실온 K비 .989609~1(B0.6 기준; 이 기준도 도핑됨).
+  이를 도핑된 실제 강도·전체효과로 부르지 않는다. v6의110MPa에 곱하지 않는다.
+- 7600sites에 도펀트1개면6.57108e18/cm3. 화학농도58조건을 정확 binomial로
+  계산했다. 도펀트 존재 확률과 균열 확률/Ac를 혼동하지 않는다.
+- 고정 화학 배치의 fast-charge grand potential gradient/Hessian을 구현.
+  covariance/kBT 곡률항·정수sector·quenched 배치 평균 구분을 수학검증했다.
+  최종집중57PASS+6subtests. 실제Si charge-branch/free-energy/mobility는 미보정.
+- 공개2023 charge-only DFT표와2025 wafer통계표는 출처와 별도 보존.
+  새 DFT/MD/원자energy평가0회. 큰 carrier주입과 화학dopant를 동일시하지 않는다.
+- 전체solver893PASS+6subtests(1335.06s), app189PASS+3subtests(246.36s),
+  desktop smoke exit0. 마지막sector guard/추가2case는 최종57집중검사에 포함.
+  새폴더재실행의JSON/CSV byte일치 확인. 회귀·smoke·재실행·해시 및 정량 결과:
+  results/silicon_doping_v7/COMPLETED_SUMMARY.md, artifact_manifest.json.
+  이론 solver_v1/SILICON_DOPING_V7.md. 최종Git은 git log/원격을 확인한다.
+- AGENTS/Al/UI/기존Si energy·Hz gate와v4/v5 미완료는 보존했다. 추가agent 없음.
+  다음은 B/P 치환과 전하대조의 일관된 원자energy/force·계면/균열장벽 검증이다.
+
 ## 2026-09-22 최신: Si 시편 MPa 하중 연결 v6 완료
 
 - 최신 지시: Si 연구를 시편 중심으로 계속하고 CAD/UI/AI는 별도 작업으로 분리.

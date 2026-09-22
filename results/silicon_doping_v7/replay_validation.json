@@ -1,0 +1,13 @@
+{
+  "independent_rerun_byte_identical": {
+    "audit.json": true,
+    "elastic_crack_fields.csv": true,
+    "chemical_site_counts.csv": true
+  },
+  "plot_visually_reviewed": true,
+  "source_tables_visually_reviewed": [
+    "Jaakkola Table I",
+    "Jaakkola Table III"
+  ],
+  "doped_atomistic_backend_available": false
+}

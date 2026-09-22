@@ -1,0 +1,89 @@
+{
+  "status": "research reference; doping-sensitive elasticity connected; doped fracture/kinetics unavailable",
+  "calculations": {
+    "elastic_fields": 21,
+    "independent_J_integrals": 42,
+    "chemical_occupancy_scenarios": 58,
+    "c0_sensitivity_corners": 56,
+    "new_DFT": 0,
+    "new_MD": 0,
+    "new_atomistic_energy_evaluations": 0
+  },
+  "geometry": {
+    "plane": "111",
+    "propagation": "11-2",
+    "front": "1-10",
+    "kinematics": "plane strain",
+    "specimen": "infinite plate central through crack",
+    "half_crack_m": 1e-05,
+    "remote_stress_MPa": 100,
+    "Y": 1,
+    "K_MPa_sqrt_m": 0.5604991216397929
+  },
+  "validation": {
+    "max_relative_contour_J_error": 1.7763568394002505e-15,
+    "doped_fracture_calibrated": false,
+    "physical_clock_calibrated": false
+  },
+  "room_temperature": {
+    "H_min_GPa_inv": 0.005688632219649437,
+    "H_max_GPa_inv": 0.005808722777671163,
+    "same_Wsep_ratio_min": 0.9896089246925402,
+    "same_Wsep_ratio_max": 1.0,
+    "reference": "B0.6, doped; not intrinsic silicon",
+    "assumption": "Wsep held equal only for sensitivity; no doped strength assigned"
+  },
+  "atom_count_scale": {
+    "lattice_A": 5.431,
+    "silicon_sites_cm3": 4.994023465124319e+22,
+    "v6_site_counts": [
+      1904,
+      7600
+    ],
+    "at_1e15_7600": {
+      "site_fraction": 2.0023934748875e-08,
+      "expected_count": 0.00015218190409145,
+      "variance_count": 0.00015218190104416946,
+      "probability_no_dopant": 0.9998478296734638,
+      "probability_at_least_one": 0.00015217032653627483,
+      "one_dopant_concentration_cm3": 6.571083506742526e+18,
+      "material_volume_A3": 152181.90409145,
+      "assumption": "independent uniform substitution; not crack probability"
+    },
+    "at_1e19_7600": {
+      "site_fraction": 0.00020023934748875002,
+      "expected_count": 1.5218190409145,
+      "variance_count": 1.5215143128627515,
+      "probability_no_dopant": 0.21828113754324385,
+      "probability_at_least_one": 0.7817188624567561,
+      "one_dopant_concentration_cm3": 6.571083506742526e+18,
+      "material_volume_A3": 152181.90409145,
+      "assumption": "independent uniform substitution; not crack probability"
+    },
+    "eight_atom_cell_excess_electrons_at_1e19": 0.00160191477991
+  },
+  "published_ideal_strength_change_at_5e21_percent": {
+    "electron": -46.66348903717827,
+    "hole": 29.790276453765486
+  },
+  "wafer_characteristic_strength_range_GPa": [
+    2.07,
+    2.12
+  ],
+  "limitations": [
+    "No chemical concentration to carrier conversion",
+    "No fitted activation fraction",
+    "No DFT ideal-strength extrapolation or use as crack cutoff",
+    "No doped SW/Tersoff atomistic material",
+    "Published wafer fit is not a PDE input",
+    "Electronic fast-equilibrium closure and mobility require physical validation"
+  ],
+  "source_sha256": {
+    "results/silicon_doping_v7/sources/chen_2025_wafer.csv": "68c0f9a8bda40fba81aa9819d9b2450d02357d48020ad0d62f259543bf26ff5c",
+    "results/silicon_doping_v7/sources/jaakkola_2014_elastic.csv": "7962efea3cb4a16f2b1b018c17ca5aa2a20d72d0f504326c2e9e17d713bbd9a2",
+    "results/silicon_doping_v7/sources/noda_2023_ideal_strength.csv": "bf7fc7621c07bc9709b09f9dd411d7f82dc692e59c241e79fffee98bbd64a63e",
+    "results/silicon_doping_v7/sources/provenance.json": "b5da796880352a7db7daac0330adf87398c966935e31b998b7cb6fe277d8d3eb",
+    "results/silicon_specimen_v6/verified_affine_boundary/original_sw_1985_R28_K1.json": "c2dea289567ba3a4da5b8b0fd1759ebd4852ce1192ec1c54bda75b3d6145d7c0",
+    "results/silicon_specimen_v6/verified_affine_boundary/original_sw_1985_R56_K1.json": "b83442777b5064c65aef721c744a446599e37c2c26f3c739668b2f259be2a5d7"
+  }
+}

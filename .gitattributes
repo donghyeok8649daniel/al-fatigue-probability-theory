@@ -30,6 +30,14 @@ results/silicon_specimen_v6/source_snapshots/*.py text eol=lf
 results/silicon_specimen_v6/*.md text eol=lf
 solver_v1/SILICON_SPECIMEN_LOADING_V6.md text eol=lf
 
+# v7 source tables and audit checksums must retain exact bytes.
+results/silicon_doping_v7/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/silicon_doping_v7/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/silicon_doping_v7/sources/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/silicon_doping_v7/sources/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/silicon_doping_v7/*.md text eol=lf
+solver_v1/SILICON_DOPING_V7.md text eol=lf
+
 # Preserve original generated SVG path formatting and the source file's checksum.
 # These artifact-only exceptions do not relax source-code whitespace checks.
 results/silicon_local_crack_v2/local_crack_audit.svg -whitespace

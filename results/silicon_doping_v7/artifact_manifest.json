@@ -1,0 +1,140 @@
+{
+  "scope": "v7 code, derivation, sources, results, and cited v6 atom-count records",
+  "tests": {
+    "solver": {
+      "passed_calls": 893,
+      "passed_subtests": 6,
+      "elapsed_wall_seconds": 1335.2688965999987,
+      "skipped_reports": 0
+    },
+    "app": {
+      "passed_calls": 189,
+      "passed_subtests": 3,
+      "elapsed_wall_seconds": 246.65846529998817,
+      "skipped_reports": 0
+    }
+  },
+  "final_targeted_tests": {
+    "scope": "final targeted tests after distinct integer charge-sector guard",
+    "arguments": [
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "solver_v1/test_silicon_doping_research.py",
+      "solver_v1/test_silicon_specimen_research.py",
+      "app/test_materials.py"
+    ],
+    "passed": 57,
+    "passed_subtests": 6,
+    "exit_code": 0,
+    "pytest_reported_seconds": 1.22,
+    "source_sha256": {
+      "solver_v1/silicon_doping_research.py": "81c95efc6b72c0ddd6b74c847b3c218f374cd7ed3f23de105fd3fc18ac0d6d14",
+      "solver_v1/test_silicon_doping_research.py": "f195e48e3d88df9176ca810d43762db50f1f1a4997271c0e1804686a50841f2c",
+      "solver_v1/test_silicon_specimen_research.py": "2ed991aaea56c5e6c76debddc9dabd82c1ffd27df1781ff117a5d222813c682b",
+      "app/test_materials.py": "69eadce846867a1dc25867dd31958117ee41e935e51282ad73b5740f0155b115"
+    },
+    "full_solver_note": "Full solver collection preceded this final guard and its two new regression cases; these final focused tests validate the final source."
+  },
+  "desktop_smoke": {
+    "scope": "desktop smoke",
+    "command": "python -m app.desktop_ui --smoke",
+    "exit_code": 0,
+    "elapsed_wall_seconds": 1.8787051
+  },
+  "files": {
+    "results/silicon_doping_v7/app_tests.json": {
+      "sha256": "26d442bc4334afe32163d7b9f62da9202921f77b038c2ae8c8739c9ff20b56c9",
+      "bytes": 137648
+    },
+    "results/silicon_doping_v7/audit.json": {
+      "sha256": "73c31ade76fb210d0777743bb9044bec01ec58252a1d8301a7c1476cb7aad808",
+      "bytes": 3773
+    },
+    "results/silicon_doping_v7/chemical_site_counts.csv": {
+      "sha256": "b7c101670fc06ed871d459a0e2c4e6955cac7fc409f392293e3fe8b5beb638e8",
+      "bytes": 12924
+    },
+    "results/silicon_doping_v7/COMPLETED_SUMMARY.md": {
+      "sha256": "d78a601c1a56b1223ce735b1acfe3aa1d84d356551192f18af4451832a4a0139",
+      "bytes": 7878
+    },
+    "results/silicon_doping_v7/desktop_smoke.json": {
+      "sha256": "cba5e951d0f5415cbe12f24b7361b6c191c894d7a94a73668bfa4ab8046c6e5d",
+      "bytes": 141
+    },
+    "results/silicon_doping_v7/doping_audit.png": {
+      "sha256": "520173addb344e766b70ccacd1be38fb6737dbfc1825d547bcc46e14a638a78e",
+      "bytes": 309559
+    },
+    "results/silicon_doping_v7/elastic_crack_fields.csv": {
+      "sha256": "56fba2482dd73b29388092db965901991cc222b5b28e75b6307be0b05d089c79",
+      "bytes": 4923
+    },
+    "results/silicon_doping_v7/final_targeted_tests.json": {
+      "sha256": "8ba253ca64029f3552978188d317100742317bbc2d6427b2eddf6d8d90ea7454",
+      "bytes": 1036
+    },
+    "results/silicon_doping_v7/MODEL_CANDIDATE_SCREENING.md": {
+      "sha256": "10baeaa7869f8b6dd8a6d3e5be34b67e79d7cc3b70b9957a4c4bc110fae9e39d",
+      "bytes": 2324
+    },
+    "results/silicon_doping_v7/replay_validation.json": {
+      "sha256": "c85b27c9af3507642a0a14c76fc5f403cfe44e2aed27d912f15a8223cf6a03a6",
+      "bytes": 333
+    },
+    "results/silicon_doping_v7/solver_tests.json": {
+      "sha256": "9c72d89253f2a92927a8e5c81aa0e82236512fb561ec1bc51a1477f7db5122e2",
+      "bytes": 679141
+    },
+    "results/silicon_doping_v7/sources/chen_2025_wafer.csv": {
+      "sha256": "68c0f9a8bda40fba81aa9819d9b2450d02357d48020ad0d62f259543bf26ff5c",
+      "bytes": 527
+    },
+    "results/silicon_doping_v7/sources/jaakkola_2014_elastic.csv": {
+      "sha256": "7962efea3cb4a16f2b1b018c17ca5aa2a20d72d0f504326c2e9e17d713bbd9a2",
+      "bytes": 833
+    },
+    "results/silicon_doping_v7/sources/noda_2023_ideal_strength.csv": {
+      "sha256": "bf7fc7621c07bc9709b09f9dd411d7f82dc692e59c241e79fffee98bbd64a63e",
+      "bytes": 675
+    },
+    "results/silicon_doping_v7/sources/provenance.json": {
+      "sha256": "b5da796880352a7db7daac0330adf87398c966935e31b998b7cb6fe277d8d3eb",
+      "bytes": 4590
+    },
+    "results/silicon_specimen_v6/verified_affine_boundary/original_sw_1985_R28_K1.json": {
+      "sha256": "c2dea289567ba3a4da5b8b0fd1759ebd4852ce1192ec1c54bda75b3d6145d7c0",
+      "bytes": 6299
+    },
+    "results/silicon_specimen_v6/verified_affine_boundary/original_sw_1985_R56_K1.json": {
+      "sha256": "b83442777b5064c65aef721c744a446599e37c2c26f3c739668b2f259be2a5d7",
+      "bytes": 12713
+    },
+    "results/silicon_wafer_feasibility/package_doping_audit.py": {
+      "sha256": "68e7977cabab85d6c1b8665d32aefd95e61b67a8359d17bbff9b51044b6bcca7",
+      "bytes": 2518
+    },
+    "results/silicon_wafer_feasibility/run_doping_audit.py": {
+      "sha256": "0db943660d3aea89db9d0f8125b8537e8b111208a1742c803e46a48efa1ace06",
+      "bytes": 10710
+    },
+    "results/silicon_wafer_feasibility/validate_doping_regression.py": {
+      "sha256": "e50b329934d32169e7f35c4fd71f2b2b87198cc342c4356260e8ce8b3d96b2b6",
+      "bytes": 1776
+    },
+    "solver_v1/silicon_doping_research.py": {
+      "sha256": "81c95efc6b72c0ddd6b74c847b3c218f374cd7ed3f23de105fd3fc18ac0d6d14",
+      "bytes": 11315
+    },
+    "solver_v1/SILICON_DOPING_V7.md": {
+      "sha256": "1d141bc0e61a1f5d1286f1cbd22546b75b445380091fee1a7b71ac32eec20602",
+      "bytes": 9990
+    },
+    "solver_v1/test_silicon_doping_research.py": {
+      "sha256": "f195e48e3d88df9176ca810d43762db50f1f1a4997271c0e1804686a50841f2c",
+      "bytes": 8433
+    }
+  }
+}

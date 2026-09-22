@@ -1,0 +1,55 @@
+{
+  "retrieved_utc_date": "2026-09-22",
+  "datasets": {
+    "jaakkola_2014_elastic.csv": {
+      "title": "Determination of Doping and Temperature Dependent Elastic Constants of Degenerately Doped Silicon from MEMS Resonators",
+      "authors": ["Antti Jaakkola", "Mika Prunnila", "Tuomas Pensala", "James Dekker", "Panu Pekko"],
+      "year": 2014,
+      "stable_id": "arXiv:1401.1363",
+      "url": "https://arxiv.org/pdf/1401.1363",
+      "original_pdf_sha256": "1e3189e25705fa43ddd0f8ce11ce2fef980458ac7dfbef7a74db2d57574ac24c",
+      "location": "Table I (PDF page 4), Table III (PDF page 8), Eq.8",
+      "verification": "Both complete table pages rendered with Poppler and visually checked; Table III text extraction has corrupt digits and was not used for transcription.",
+      "method": "MEMS resonance plus finite-element inverse extraction; cubic axes C11/C12/C44; 100-oriented Cz device wafers",
+      "temperature_C": [-40, 85],
+      "expansion_center_C": 25,
+      "carrier_basis": "estimated from resistivity; nominal labels and Table I averages both preserved; not chemical atom concentration",
+      "uncertainties": {"c0_GPa": [0.3, 0.1, 0.2], "a_ppm_K": [0.7, 1.5, 0.4], "b_ppb_K2": [12, 33, 10]},
+      "uncertainty_note": "Published rms error budget; full covariance/confidence coverage unavailable. Independent corner variations are sensitivity scenarios, not a joint confidence interval.",
+      "scope": "Elasticity reference only. Not fracture strength, PMF, atomistic potential, or mobility. No Sb data."
+    },
+    "noda_2023_ideal_strength.csv": {
+      "title": "Electronic strengthening mechanism of covalent Si via excess electron/hole doping",
+      "authors": ["Hiroki Noda", "Shumpei Sakaguchi", "Ryoga Fujita", "Susumu Minami", "Hiroyuki Hirakata", "Takahiro Shimada"],
+      "year": 2023,
+      "doi": "10.1038/s41598-023-42676-z",
+      "url": "https://www.nature.com/articles/s41598-023-42676-z",
+      "supplement_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-023-42676-z/MediaObjects/41598_2023_42676_MOESM1_ESM.pdf",
+      "location": "Supplement Tables S3/S4 (PDF page 8), S5 (PDF page 9)",
+      "verification": "Numerical tables read through web PDF text. Direct local supplementary download returned an HTML challenge, rejected as PDF and excluded from provenance hashes.",
+      "method": "Published static VASP/PAW DFT. HSE06 lattice; LDA elasticity and homogeneous [111] tensile strength; relaxed lateral stress. Excess electrons/holes with uniform compensating background, no impurity atoms.",
+      "temperature": "static electronic-structure calculation; electronic smearing is not a physical finite-temperature PMF",
+      "scope": "Existing published data, not new DFT. Ideal strength is not crack toughness or wafer strength. Do not extrapolate the 1e21-spaced table to ordinary dopant concentrations."
+    },
+    "chen_2025_wafer.csv": {
+      "title": "Fracture strength of Czochralski silicon wafers: Statistically rigorous measurement and dopant effects",
+      "authors": ["Hao Chen", "Tong Zhao", "Defan Wu", "Qunlin Nie", "Bin Ye", "Tiebo Zheng", "Xingbo Liang", "Daxi Tian", "Xiangyang Ma", "Deren Yang"],
+      "year": 2025,
+      "doi": "10.1063/5.0270955",
+      "url": "https://pubs.aip.org/aip/jap/article/138/5/055703/3357407/Fracture-strength-of-Czochralski-silicon-wafers",
+      "location": "Tables I and III; Table II with n=30 is NOT the final data used here",
+      "method": "Ball-on-ring testing of 17x17 mm slices from 300 mm, 775 um thick, 100-oriented double-side polished Cz wafers; speed 0.2 mm/min; n=50 per condition",
+      "temperature": "not assigned numerically in this transcription",
+      "carrier_basis": "resistivity-derived carrier concentration; authors approximate as dopant concentration; not an independent atom assay",
+      "scope": "Published characteristic strength and SE, not 50 raw observations. Non-significance is not an equivalence proof. Weibull coefficients are evidence only and are not a probability generator."
+    }
+  },
+  "additional_primary_source": {
+    "title": "Engineering cleavage fracture of silicon via excess charge doping",
+    "authors": ["Tao Xu", "Shodai Nakai", "Yasuaki Maruyama", "Hiroki Noda", "Susumu Minami", "Hiroyuki Hirakata", "Takahiro Shimada"],
+    "year": 2026,
+    "doi": "10.1016/j.engfracmech.2025.111721",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0013794425009221",
+    "access": "Abstract and section snippets only; no numerical cleavage dataset extracted or fitted."
+  }
+}
