@@ -1,0 +1,60 @@
+{
+  "raw_frames_checked": 2475,
+  "source_arrays_exactly_equal_to_v5": true,
+  "max_frame_metric_recompute_error": 0.0,
+  "group_count": 35,
+  "force_only_vs_standard_ASE": [
+    {
+      "frame": 0,
+      "atoms": 1,
+      "energy_difference_eV": 0.0,
+      "force_difference_eV_A": 0.0
+    },
+    {
+      "frame": 548,
+      "atoms": 54,
+      "energy_difference_eV": 0.0,
+      "force_difference_eV_A": 0.0
+    },
+    {
+      "frame": 1495,
+      "atoms": 96,
+      "energy_difference_eV": 0.0,
+      "force_difference_eV_A": 0.0
+    },
+    {
+      "frame": 1552,
+      "atoms": 192,
+      "energy_difference_eV": 0.0,
+      "force_difference_eV_A": 0.0
+    },
+    {
+      "frame": 1561,
+      "atoms": 192,
+      "energy_difference_eV": 0.0,
+      "force_difference_eV_A": 0.0
+    },
+    {
+      "frame": 2159,
+      "atoms": 16,
+      "energy_difference_eV": 0.0,
+      "force_difference_eV_A": 0.0
+    },
+    {
+      "frame": 2169,
+      "atoms": 16,
+      "energy_difference_eV": 0.0,
+      "force_difference_eV_A": 0.0
+    }
+  ],
+  "symmetry_and_replication": {
+    "rotation_energy_error_eV": 1.4210854715202004e-14,
+    "rotation_force_error_eV_A": 1.3711254354120683e-14,
+    "replication_energy_error_eV": 0.0,
+    "replication_force_error_eV_A": 1.1574075031717257e-14
+  },
+  "model_SHA256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "material_calibrated": false,
+  "kinetic_calibrated": false,
+  "scope": "independent aggregation and same-model execution/derivative controls; not independent DFT"
+}

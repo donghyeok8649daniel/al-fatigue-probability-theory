@@ -1,0 +1,493 @@
+{
+  "status": "completed new pretrained ML energy/force evaluations; material and clock uncalibrated",
+  "model": "MACE-MP-0b3-medium",
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "model_URL": "https://github.com/ACEsuit/mace-foundations/releases/download/mace_mp_0b3/mace-mp-0b3-medium.model",
+  "license": "MIT",
+  "model_training": "MPTrj PBE+U; target PW91/PBE/unspecified groups kept separate",
+  "archive_sha256": "1d3efe976c53bcd2889c0556f2d600c26bf4603522b5c92fd8633dff7b7ab5c2",
+  "member_sha256": "74ac5f387aa0149ec9ea8f3e275d1087d7287db68c15ba8bc4c28a450de67e2a",
+  "source_DOI": "10.17863/CAM.65004",
+  "source_role": "GAP training data; MACE training overlap not independently audited",
+  "frames": 2475,
+  "atoms": 171815,
+  "calculator_evaluations": 2476,
+  "dtype": "float64",
+  "device": "CPU",
+  "threads": 2,
+  "versions": {
+    "mace-torch": "0.3.16",
+    "torch": "2.12.1",
+    "e3nn": "0.4.4",
+    "ase": "3.29.0",
+    "numpy": "2.5.0",
+    "scipy": "1.18.1",
+    "matscipy": "1.2.0"
+  },
+  "anchor": {
+    "frame": 548,
+    "rule": "lowest E/N among explicitly PW91 diamond source frames",
+    "relaxed_bulk": false,
+    "predicted_eV_atom": -5.3806804027400235,
+    "dft_eV_atom": -163.174773
+  },
+  "basis_changes": [
+    {
+      "frame": 2159,
+      "signs": [
+        1,
+        1,
+        -1
+      ],
+      "positions_changed": false
+    },
+    {
+      "frame": 2160,
+      "signs": [
+        1,
+        1,
+        -1
+      ],
+      "positions_changed": false
+    },
+    {
+      "frame": 2161,
+      "signs": [
+        1,
+        1,
+        -1
+      ],
+      "positions_changed": false
+    },
+    {
+      "frame": 2162,
+      "signs": [
+        1,
+        1,
+        -1
+      ],
+      "positions_changed": false
+    },
+    {
+      "frame": 2163,
+      "signs": [
+        1,
+        1,
+        -1
+      ],
+      "positions_changed": false
+    },
+    {
+      "frame": 2164,
+      "signs": [
+        1,
+        1,
+        -1
+      ],
+      "positions_changed": false
+    },
+    {
+      "frame": 2165,
+      "signs": [
+        1,
+        1,
+        -1
+      ],
+      "positions_changed": false
+    },
+    {
+      "frame": 2166,
+      "signs": [
+        1,
+        1,
+        -1
+      ],
+      "positions_changed": false
+    },
+    {
+      "frame": 2167,
+      "signs": [
+        1,
+        1,
+        -1
+      ],
+      "positions_changed": false
+    },
+    {
+      "frame": 2168,
+      "signs": [
+        1,
+        1,
+        -1
+      ],
+      "positions_changed": false
+    },
+    {
+      "frame": 2169,
+      "signs": [
+        1,
+        1,
+        -1
+      ],
+      "positions_changed": false
+    }
+  ],
+  "group_results": [
+    {
+      "config_type": "111adatom",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 11,
+      "atoms": 1606,
+      "component_rmse_eV_A": 0.18088500355531542,
+      "frame_equal_weight_component_rmse_eV_A": 0.18088500355531542,
+      "reference_component_rms_eV_A": 0.725112173883144,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "amorph",
+      "declared_xc": "PW91",
+      "frames": 64,
+      "atoms": 13824,
+      "component_rmse_eV_A": 0.08814357225504783,
+      "frame_equal_weight_component_rmse_eV_A": 0.08814357225504783,
+      "reference_component_rms_eV_A": 0.025087197967230804,
+      "diamond_referenced_energy_rmse_meV_atom": 8.12327147971663
+    },
+    {
+      "config_type": "amorph",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 95,
+      "atoms": 15808,
+      "component_rmse_eV_A": 0.15622535004320798,
+      "frame_equal_weight_component_rmse_eV_A": 0.18949608230784273,
+      "reference_component_rms_eV_A": 0.39646615526821083,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "bc8",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 49,
+      "atoms": 392,
+      "component_rmse_eV_A": 0.6974230984751176,
+      "frame_equal_weight_component_rmse_eV_A": 0.6974230984751175,
+      "reference_component_rms_eV_A": 2.0250953953251627,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "bcc",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 49,
+      "atoms": 98,
+      "component_rmse_eV_A": 0.08726140706867193,
+      "frame_equal_weight_component_rmse_eV_A": 0.08726140706867193,
+      "reference_component_rms_eV_A": 0.2782848180463714,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "bt",
+      "declared_xc": "PW91",
+      "frames": 323,
+      "atoms": 15508,
+      "component_rmse_eV_A": 0.11075294006613196,
+      "frame_equal_weight_component_rmse_eV_A": 0.10629950864369704,
+      "reference_component_rms_eV_A": 0.2526191629637912,
+      "diamond_referenced_energy_rmse_meV_atom": 76.428728012705
+    },
+    {
+      "config_type": "bt",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 122,
+      "atoms": 1112,
+      "component_rmse_eV_A": 0.12544087984957195,
+      "frame_equal_weight_component_rmse_eV_A": 0.16974222870613512,
+      "reference_component_rms_eV_A": 0.4196812789623226,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "crack_110_1-10",
+      "declared_xc": "PW91",
+      "frames": 7,
+      "atoms": 1400,
+      "component_rmse_eV_A": 0.21429401887234037,
+      "frame_equal_weight_component_rmse_eV_A": 0.21429401887234034,
+      "reference_component_rms_eV_A": 0.5425970443104428,
+      "diamond_referenced_energy_rmse_meV_atom": 72.08785928083283
+    },
+    {
+      "config_type": "crack_111_1-10",
+      "declared_xc": "PW91",
+      "frames": 10,
+      "atoms": 1920,
+      "component_rmse_eV_A": 0.2525804729700054,
+      "frame_equal_weight_component_rmse_eV_A": 0.2525804729700054,
+      "reference_component_rms_eV_A": 0.6084724278727603,
+      "diamond_referenced_energy_rmse_meV_atom": 84.67622305610084
+    },
+    {
+      "config_type": "decohesion",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 33,
+      "atoms": 792,
+      "component_rmse_eV_A": 0.1880144474322495,
+      "frame_equal_weight_component_rmse_eV_A": 0.19064889107878877,
+      "reference_component_rms_eV_A": 1.670728688307189,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "dia",
+      "declared_xc": "PW91",
+      "frames": 489,
+      "atoms": 16708,
+      "component_rmse_eV_A": 0.08047054675572504,
+      "frame_equal_weight_component_rmse_eV_A": 0.08625298954383151,
+      "reference_component_rms_eV_A": 0.3571176331347006,
+      "diamond_referenced_energy_rmse_meV_atom": 18.649526153130374
+    },
+    {
+      "config_type": "divacancy",
+      "declared_xc": "PW91",
+      "frames": 78,
+      "atoms": 16692,
+      "component_rmse_eV_A": 0.19244904472849078,
+      "frame_equal_weight_component_rmse_eV_A": 0.19244904472849078,
+      "reference_component_rms_eV_A": 0.9963341539122861,
+      "diamond_referenced_energy_rmse_meV_atom": 18.871707198774946
+    },
+    {
+      "config_type": "fcc",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 49,
+      "atoms": 196,
+      "component_rmse_eV_A": 0.061226213901628475,
+      "frame_equal_weight_component_rmse_eV_A": 0.061226213901628475,
+      "reference_component_rms_eV_A": 0.29833802225603,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "hcp",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 49,
+      "atoms": 98,
+      "component_rmse_eV_A": 0.034513878843118566,
+      "frame_equal_weight_component_rmse_eV_A": 0.034513878843118566,
+      "reference_component_rms_eV_A": 0.15114086866096751,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "hex_diamond",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 49,
+      "atoms": 196,
+      "component_rmse_eV_A": 0.1848137320388181,
+      "frame_equal_weight_component_rmse_eV_A": 0.1848137320388181,
+      "reference_component_rms_eV_A": 1.0774367493524954,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "interstitial",
+      "declared_xc": "PW91",
+      "frames": 65,
+      "atoms": 14105,
+      "component_rmse_eV_A": 0.1475930909602734,
+      "frame_equal_weight_component_rmse_eV_A": 0.14759309096027337,
+      "reference_component_rms_eV_A": 0.72374961156287,
+      "diamond_referenced_energy_rmse_meV_atom": 7.747582890466986
+    },
+    {
+      "config_type": "interstitial",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 50,
+      "atoms": 10850,
+      "component_rmse_eV_A": 0.19408821581187388,
+      "frame_equal_weight_component_rmse_eV_A": 0.19408821581187388,
+      "reference_component_rms_eV_A": 1.0793089387671948,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "isolated_atom",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 1,
+      "atoms": 1,
+      "component_rmse_eV_A": 0.0,
+      "frame_equal_weight_component_rmse_eV_A": 0.0,
+      "reference_component_rms_eV_A": 0.0,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "liq",
+      "declared_xc": "PW91",
+      "frames": 4,
+      "atoms": 256,
+      "component_rmse_eV_A": 0.20397585588650546,
+      "frame_equal_weight_component_rmse_eV_A": 0.20397585588650546,
+      "reference_component_rms_eV_A": 0.853113348952569,
+      "diamond_referenced_energy_rmse_meV_atom": 177.75321128489725
+    },
+    {
+      "config_type": "liq",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 72,
+      "atoms": 5056,
+      "component_rmse_eV_A": 0.2471592074492046,
+      "frame_equal_weight_component_rmse_eV_A": 0.2511923665662557,
+      "reference_component_rms_eV_A": 1.0874206007795433,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "screw_disloc",
+      "declared_xc": "PW91",
+      "frames": 19,
+      "atoms": 2736,
+      "component_rmse_eV_A": 0.23911066971314648,
+      "frame_equal_weight_component_rmse_eV_A": 0.23911066971314646,
+      "reference_component_rms_eV_A": 0.9208065068528573,
+      "diamond_referenced_energy_rmse_meV_atom": 28.13612431118317
+    },
+    {
+      "config_type": "sh",
+      "declared_xc": "PW91",
+      "frames": 53,
+      "atoms": 3392,
+      "component_rmse_eV_A": 0.1042387655758469,
+      "frame_equal_weight_component_rmse_eV_A": 0.1042387655758469,
+      "reference_component_rms_eV_A": 0.23323961847563712,
+      "diamond_referenced_energy_rmse_meV_atom": 71.13876625968804
+    },
+    {
+      "config_type": "sh",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 170,
+      "atoms": 1160,
+      "component_rmse_eV_A": 0.20900882692185188,
+      "frame_equal_weight_component_rmse_eV_A": 0.12364248671139602,
+      "reference_component_rms_eV_A": 0.4789625874187212,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "sp",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 100,
+      "atoms": 400,
+      "component_rmse_eV_A": 1.8053904446480553,
+      "frame_equal_weight_component_rmse_eV_A": 1.8053904446480555,
+      "reference_component_rms_eV_A": 7.434643033222006,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "sp2",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 51,
+      "atoms": 408,
+      "component_rmse_eV_A": 0.22698336424846563,
+      "frame_equal_weight_component_rmse_eV_A": 0.22698336424846563,
+      "reference_component_rms_eV_A": 0.5380682895671748,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "st12",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 49,
+      "atoms": 588,
+      "component_rmse_eV_A": 0.81281915825122,
+      "frame_equal_weight_component_rmse_eV_A": 0.81281915825122,
+      "reference_component_rms_eV_A": 1.732670738901973,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "surface_001",
+      "declared_xc": "PW91",
+      "frames": 10,
+      "atoms": 1440,
+      "component_rmse_eV_A": 0.27292649219840304,
+      "frame_equal_weight_component_rmse_eV_A": 0.27292649219840304,
+      "reference_component_rms_eV_A": 0.9189008633043635,
+      "diamond_referenced_energy_rmse_meV_atom": 64.52124776100776
+    },
+    {
+      "config_type": "surface_001",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 19,
+      "atoms": 2736,
+      "component_rmse_eV_A": 0.23391324917014744,
+      "frame_equal_weight_component_rmse_eV_A": 0.23391324917014747,
+      "reference_component_rms_eV_A": 0.6654163352127892,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "surface_110",
+      "declared_xc": "PW91",
+      "frames": 12,
+      "atoms": 1296,
+      "component_rmse_eV_A": 0.26700797370350976,
+      "frame_equal_weight_component_rmse_eV_A": 0.26700797370350976,
+      "reference_component_rms_eV_A": 0.918407905418466,
+      "diamond_referenced_energy_rmse_meV_atom": 75.93711775561424
+    },
+    {
+      "config_type": "surface_110",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 14,
+      "atoms": 1512,
+      "component_rmse_eV_A": 0.2487319453291055,
+      "frame_equal_weight_component_rmse_eV_A": 0.2487319453291055,
+      "reference_component_rms_eV_A": 0.6326472261632083,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "surface_111",
+      "declared_xc": "PW91",
+      "frames": 47,
+      "atoms": 4512,
+      "component_rmse_eV_A": 0.2244223726475941,
+      "frame_equal_weight_component_rmse_eV_A": 0.22442237264759404,
+      "reference_component_rms_eV_A": 0.7094639538321071,
+      "diamond_referenced_energy_rmse_meV_atom": 70.1335604952617
+    },
+    {
+      "config_type": "surface_111_3x3_das",
+      "declared_xc": "PW91",
+      "frames": 1,
+      "atoms": 52,
+      "component_rmse_eV_A": 0.16513763015190008,
+      "frame_equal_weight_component_rmse_eV_A": 0.16513763015190008,
+      "reference_component_rms_eV_A": 0.2187004052409691,
+      "diamond_referenced_energy_rmse_meV_atom": 87.852719418402
+    },
+    {
+      "config_type": "surface_111_pandey",
+      "declared_xc": "PBE",
+      "frames": 50,
+      "atoms": 4800,
+      "component_rmse_eV_A": 0.254860652954025,
+      "frame_equal_weight_component_rmse_eV_A": 0.254860652954025,
+      "reference_component_rms_eV_A": 0.8734745617682022,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    },
+    {
+      "config_type": "vacancy",
+      "declared_xc": "PW91",
+      "frames": 1,
+      "atoms": 63,
+      "component_rmse_eV_A": 0.07654552704590391,
+      "frame_equal_weight_component_rmse_eV_A": 0.07654552704590391,
+      "reference_component_rms_eV_A": 0.08231087126925346,
+      "diamond_referenced_energy_rmse_meV_atom": 19.422016968437816
+    },
+    {
+      "config_type": "vacancy",
+      "declared_xc": "UNSPECIFIED",
+      "frames": 210,
+      "atoms": 30102,
+      "component_rmse_eV_A": 0.1464581646096319,
+      "frame_equal_weight_component_rmse_eV_A": 0.15809077143003997,
+      "reference_component_rms_eV_A": 0.7806831855444825,
+      "diamond_referenced_energy_rmse_meV_atom": null
+    }
+  ],
+  "elapsed_reported_s": 3927.886006099987,
+  "new_DFT_runs": 0,
+  "new_MD_runs": 0,
+  "fitting": false,
+  "material_calibrated": false,
+  "kinetic_calibrated": false
+}

@@ -1,0 +1,62 @@
+{
+  "retrieved_date": "2026-09-22",
+  "scope": "Primary source screening; unavailable quantitative data remain unavailable",
+  "records": [
+    {
+      "authors": "B. Liu, Y.A. Zhang, Y.J. Li, X.F. Wang, Y.J. Yue",
+      "title": "Cleavage anisotropy of boron doped cracks in crystalline silicon",
+      "year": 2022,
+      "doi": "10.1016/j.microrel.2022.114653",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0026271422001779",
+      "access": "publisher abstract, highlights and introduction; full quantitative tables not acquired",
+      "method": "DFT, B substitution at crack front, Mode I lattice trapping",
+      "crack_system_labels_as_published": ["(111)[1-10]", "(110)[001]", "(110)[1-10]"],
+      "reported_trend": "B increases trapping in the first system, eases advance in the second, and changes the propagation inclination in the third.",
+      "interpretation": "The sign of a local B effect depends on reconstruction and crack geometry; no universal concentration-to-strength multiplier follows.",
+      "numeric_trapping_limits": null,
+      "axis_convention_reconstructed_from_full_methods": false
+    },
+    {
+      "authors": "J.R. Kermode, L. Ben-Bashat, F. Atrash, J.J. Cilliers, D. Sherman, A. De Vita",
+      "title": "Macroscopic scattering of cracks initiated at single impurity atoms",
+      "year": 2013,
+      "doi": "10.1038/ncomms3441",
+      "url": "https://www.nature.com/articles/ncomms3441",
+      "access": "publisher full article",
+      "method": "Learn-on-the-fly QM/MM with CASTEP/VASP PW91 near crack tip and SW elastic surroundings; experimental surface morphology",
+      "reported_comparison": "At 1400 m/s the studied B site promotes a reconstruction and atomic-layer step; at about 1700 m/s the crack passes before reconstruction develops. Only one of four inequivalent B sites produces stepping in the studied geometry.",
+      "energy_release_rates_J_m2": [14, 18],
+      "interpretation": "Chemical site and the competition between reconstruction and crack transit times both matter.",
+      "production_overdamped_mobility_calibration": false,
+      "ridge_statistics_used_as_probability_PDE_replacement": false
+    },
+    {
+      "authors": "Jun-Yong Tao, Xiao-Jing Wang, Bin Liu, Yan-Lei Wang, Zhi-Qian Ren, Xun Chen",
+      "title": "Improved bending fatigue life of single crystal silicon micro-beam by phosphorus doping",
+      "year": 2013,
+      "doi": "10.1016/j.microrel.2013.07.074",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0026271413002497",
+      "access": "publisher abstract and introduction; full concentration and life tables not acquired",
+      "method": "room-temperature bending fatigue experiments, six P concentration groups",
+      "reported_trend": "Life increased with P concentration in these specimens; roughness and fracture surfaces were examined.",
+      "concentration_values_cm3": null,
+      "raw_life_values": null,
+      "endurance_limit_established_from_available_text": false,
+      "empirical_SN_inserted_in_solver": false
+    },
+    {
+      "authors": "Bin Liu, Hao Zhang, Junyong Tao, Ziran Liu, Xun Chen, Yun'an Zhang",
+      "title": "Development of a second-nearest-neighbor modified embedded atom method potential for silicon-phosphorus binary system",
+      "year": 2016,
+      "doi": "10.1016/j.commatsci.2016.04.002",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0927025616301483",
+      "access": "publisher indexed abstract/sections; parameter files not acquired",
+      "method": "2NN-MEAM fitting to elemental P, Si-P structures, defects and P-vacancy pairs",
+      "candidate_only": true,
+      "source_bound_parameter_file": null,
+      "executed": false,
+      "independent_electron_charge_control": false,
+      "search_scope": "publisher, NIST indexed Si-P search, author publications; not a proof that no public parameter file exists"
+    }
+  ]
+}

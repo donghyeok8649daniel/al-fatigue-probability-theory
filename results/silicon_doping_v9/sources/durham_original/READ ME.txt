@@ -1,0 +1,20 @@
+The folders contain the following raw data:
+
+(1) DFT supercells: 64 atom boron defect supercells for phonon and Compton J(pz) simulations.
+The .cell files can be opened in VESTA. The defects include:
+
+2boron_int_cluster.cell - two boron interstitial clusters
+3boron_int_cluster_confi_X.cell - three boron interstitial cluster configuration X (=1,2,3)
+64_acceptor_cluster.cell - two boron acceptor cluster
+b_silicon_64_acceptor.cell - single boron acceptor 
+b_silicon_64_interstitial.cell - single boron interstitial
+
+(2) Vibrational EELS: contains summed low loss EELS spectra (on-axis and off-axis) for B-doped Si
+and elemental Si samples. Files to be opened in Gatan Digital Micrograph software.
+
+(3) Compton EELS: contains bright field (BF) and dark field (DF) EELS spectra for B-doped Si
+and elemental Si samples. DF spectra were acquired along 110 and 001 scattering vectors and contain the Compton profile.
+BF spectra were acquired close to zero scattering angle. Files to be opened in Gatan Digital Micrograph software.
+
+(4) Hall and SIMS data: contains data for Hall and SIMS measurements as Excel spreadsheets.
+

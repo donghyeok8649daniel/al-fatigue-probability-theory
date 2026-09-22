@@ -1,0 +1,95 @@
+{
+  "status": "completed saved-artifact consistency audit; not a rerun of the heavy calculations",
+  "DFT_reference_geometries": 2475,
+  "DFT_reference_atoms": 171815,
+  "source_groups": 35,
+  "MACE_lower_RMSE_than_both_baselines_groups": 34,
+  "source_groups_tied_at_zero": [
+    "isolated_atom"
+  ],
+  "checked_full_Hessians": [
+    {
+      "file": "mace_boron_hessian/2boron_int_cluster_hessian.json",
+      "structure": "2boron_int_cluster",
+      "min_curvature_eV_A2": 0.42409753169119596,
+      "force_max_eV_A": 7.053120126856248e-05,
+      "raw_matrix_spectrum_recompute_error_eV_A2": 0.0,
+      "force_evaluations": 403
+    },
+    {
+      "file": "mace_boron_hessian/3boron_int_cluster_confi_1_hessian.json",
+      "structure": "3boron_int_cluster_confi_1",
+      "min_curvature_eV_A2": 0.4122082650341753,
+      "force_max_eV_A": 9.432900784520556e-05,
+      "raw_matrix_spectrum_recompute_error_eV_A2": 0.0,
+      "force_evaluations": 410
+    },
+    {
+      "file": "mace_boron_hessian/3boron_int_cluster_confi_2_hessian.json",
+      "structure": "3boron_int_cluster_confi_2",
+      "min_curvature_eV_A2": -0.12172127452108279,
+      "force_max_eV_A": 6.797063083965851e-05,
+      "raw_matrix_spectrum_recompute_error_eV_A2": 0.0,
+      "force_evaluations": 410
+    },
+    {
+      "file": "mace_boron_hessian/3boron_int_cluster_confi_3_hessian.json",
+      "structure": "3boron_int_cluster_confi_3",
+      "min_curvature_eV_A2": 0.32493901869604025,
+      "force_max_eV_A": 8.670451914074583e-05,
+      "raw_matrix_spectrum_recompute_error_eV_A2": 0.0,
+      "force_evaluations": 410
+    },
+    {
+      "file": "mace_boron_hessian/b_silicon_64_interstitial_hessian.json",
+      "structure": "b_silicon_64_interstitial",
+      "min_curvature_eV_A2": 0.3975154452402595,
+      "force_max_eV_A": 4.4506089504883686e-05,
+      "raw_matrix_spectrum_recompute_error_eV_A2": 0.0,
+      "force_evaluations": 398
+    },
+    {
+      "file": "mace_boron_follow_hessian/3Bi_conf2_mode_minus_hessian.json",
+      "structure": "3Bi_conf2_mode_minus",
+      "min_curvature_eV_A2": 0.4119321976035931,
+      "force_max_eV_A": 8.673788077943659e-06,
+      "raw_matrix_spectrum_recompute_error_eV_A2": 0.0,
+      "force_evaluations": 410
+    },
+    {
+      "file": "mace_boron_follow_hessian/3Bi_conf2_mode_plus_hessian.json",
+      "structure": "3Bi_conf2_mode_plus",
+      "min_curvature_eV_A2": 0.41193219719906565,
+      "force_max_eV_A": 8.673713567417593e-06,
+      "raw_matrix_spectrum_recompute_error_eV_A2": 0.0,
+      "force_evaluations": 410
+    },
+    {
+      "file": "mace_boron_neutral_substitutional_hessian/64_acceptor_cluster_hessian.json",
+      "structure": "64_acceptor_cluster",
+      "min_curvature_eV_A2": 1.943718208724342,
+      "force_max_eV_A": 8.891910103697656e-05,
+      "raw_matrix_spectrum_recompute_error_eV_A2": 0.0,
+      "force_evaluations": 392
+    },
+    {
+      "file": "mace_boron_neutral_substitutional_hessian/b_silicon_64_acceptor_hessian.json",
+      "structure": "b_silicon_64_acceptor",
+      "min_curvature_eV_A2": 2.0066407263144224,
+      "force_max_eV_A": 5.751783767995064e-05,
+      "raw_matrix_spectrum_recompute_error_eV_A2": 0.0,
+      "force_evaluations": 392
+    }
+  ],
+  "unstable_original_states_preserved": [
+    "3boron_int_cluster_confi_2"
+  ],
+  "matrix_free_highest_mode_cases": 3,
+  "deterministic_replay_files": 19,
+  "full_solver_exit_code": 0,
+  "heavy_calculations_byte_replayed": false,
+  "new_DFT_runs": 0,
+  "new_MD_runs": 0,
+  "material_calibrated": false,
+  "physical_clock_calibrated": false
+}

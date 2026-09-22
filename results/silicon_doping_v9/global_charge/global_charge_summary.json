@@ -1,0 +1,12 @@
+{
+  "status": "synthetic finite global-charge ensemble validation",
+  "cases": 12,
+  "site_definition": "single-occupation spin-resolved electronic orbital; not an atomic site",
+  "derivative_checks": 108,
+  "maximum_finest_Hessian_error": 1.9446142154322388e-06,
+  "maximum_finest_gradient_error": 4.940244147100259e-08,
+  "globally_fixed_total_charge_is_not_fixed_local_mean_charge": true,
+  "electrostatics_included": false,
+  "Si_calibration": false,
+  "physical_time_calibrated": false
+}

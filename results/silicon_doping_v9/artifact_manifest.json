@@ -1,0 +1,1005 @@
+{
+  "scope": "v9 results and source code; excludes this manifest and mutable project handoff",
+  "files": [
+    {
+      "file": "results/silicon_doping_v9/.gitattributes",
+      "size_bytes": 288,
+      "sha256": "efbdd848e83a3ad340e26ee20a02cd141c6b86731c6dc324fbde8b7341c5067a"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_cell_size_association.csv",
+      "size_bytes": 973,
+      "sha256": "c3ab1935807552db8a230db0cbcf97c4ad86dd117bec4e6cab2f56f6efeba8ac"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_controls.png",
+      "size_bytes": 138777,
+      "sha256": "3db8052d42a3f697bfb2ef0156b34d69d93fdb27cd6c96fd53a0be3a8cdce864"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_endpoint_validation.json",
+      "size_bytes": 25102,
+      "sha256": "1f51d79d2425420cb703b6bc82267560581b9e8c1bf69761adc5fac448b93b96"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_frequency_comparison.csv",
+      "size_bytes": 5316,
+      "sha256": "91a4381c8c6fd71294b8976429439e8bcd8a3436630067f90c6b8c9305a017ca"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_relative_energy_comparison.csv",
+      "size_bytes": 884,
+      "sha256": "c57cb787fe157271918e6b70af6eb7076fe51fb88d7426177879bfc3ba11c4a6"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_source_audit/hall_raw_audit.csv",
+      "size_bytes": 1552,
+      "sha256": "64d7622baa5b1bc1afd03cef3a0580fa9f15986bcf6f20f3c754d483dd76e579"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_source_audit/hall_recomputed_summaries.csv",
+      "size_bytes": 423,
+      "sha256": "da16765b5e3326be5735cef4c25f1986276061d31e4b5b341b3fc48e0cf61b4c"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_source_audit/hall_temperature_audit.csv",
+      "size_bytes": 6945,
+      "sha256": "5cf6c73a07190cdfa1e2033b733bf813d0c5ba1870cd074ba3ce2516ff09f713"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_source_audit/sims_counts_summary.csv",
+      "size_bytes": 461,
+      "sha256": "3f3841ec3bebcd721538576e265ecb5e9bf13bbea27a069fada4908eaa68280a"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_source_audit/sims_raw_counts.csv",
+      "size_bytes": 68994,
+      "sha256": "8890a40568a51b792c6cccae5a28f3de92463813fc95365bb91ee079e866c6fc"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_source_audit/source_audit.json",
+      "size_bytes": 6634,
+      "sha256": "7d325123e3cbca4ead790d3b517108accb87ae844b808dd761690b2e1a9ea52b"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_source_audit/source_structures.json",
+      "size_bytes": 37681,
+      "sha256": "d65c786bf19390708cf806816149bbabe5bb3e83840f2f3336b8901a353f91ff"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_source_audit/structure_audit.csv",
+      "size_bytes": 1279,
+      "sha256": "f2c22d09408de97f3b683d3893328a65e4d78609c1be010be4ac7fb1a48d648c"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_state_comparison.csv",
+      "size_bytes": 1260,
+      "sha256": "fa8e1222ee72502f05f50da2522b762a3e18d3fe3db1f36e9a8f64ef818da395"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_validation.png",
+      "size_bytes": 129614,
+      "sha256": "888515afb0d5b3ef42be16a759fbd3f527252ab036c18ebb35171d152f99703d"
+    },
+    {
+      "file": "results/silicon_doping_v9/boron_validation_summary.json",
+      "size_bytes": 5377,
+      "sha256": "1761ec60010283bd0aade54c2df66f54846be503f0b5de474442665b0b3b31ea"
+    },
+    {
+      "file": "results/silicon_doping_v9/COMPLETED_SUMMARY.md",
+      "size_bytes": 16659,
+      "sha256": "9bf64360067ff774b4fa3db8a6a5d2c8de1ee1d11b93bc366e9f2326b26b5141"
+    },
+    {
+      "file": "results/silicon_doping_v9/dynamics/absorption_convergence.csv",
+      "size_bytes": 2673,
+      "sha256": "5e7d23db2ec6264659ae8c4bdd24f44905f51cf44d1bc1632a1fa9f5a47254a1"
+    },
+    {
+      "file": "results/silicon_doping_v9/dynamics/charge_rate_convergence.csv",
+      "size_bytes": 20208,
+      "sha256": "d3a0a11d39a5b2c6abca759bdf55e160de335c15e833cff71bcca0e2ae8f693a"
+    },
+    {
+      "file": "results/silicon_doping_v9/dynamics/charge_reduction.png",
+      "size_bytes": 183463,
+      "sha256": "17bfa5b571b54656296b6bdc59d89d91747587bbeaa27b73499335cf6821c547"
+    },
+    {
+      "file": "results/silicon_doping_v9/dynamics/dynamics_summary.json",
+      "size_bytes": 5744,
+      "sha256": "80e826e7d6e8833e3e616f09500dc59c0a5051cd6322fe1de7b3de0c5689c553"
+    },
+    {
+      "file": "results/silicon_doping_v9/dynamics/quenched_mixture_counterexample.csv",
+      "size_bytes": 337,
+      "sha256": "ff0172a7ed38ea274e3797c596dcddb374a4cc995d9929fc7154a41c768540bd"
+    },
+    {
+      "file": "results/silicon_doping_v9/dynamics/spatial_grid_convergence.csv",
+      "size_bytes": 1480,
+      "sha256": "b91a8d38ab39c3549f9038d47119645234d76dcb0d68e7fbc6d25bb48fe3214e"
+    },
+    {
+      "file": "results/silicon_doping_v9/failed_attempts/aborted_autodiff_script.py",
+      "size_bytes": 5364,
+      "sha256": "f6c1ae9ab50120203037bf3d7513afd95469859eec670af27f6be497bac4ffc8"
+    },
+    {
+      "file": "results/silicon_doping_v9/failed_attempts/aborted_hessian_attempt.json",
+      "size_bytes": 652,
+      "sha256": "809e6b37d8be3b907b300a0c35253ff00a3ae928a033284f17eefb5013a21bcc"
+    },
+    {
+      "file": "results/silicon_doping_v9/failed_attempts/mode_follow_without_line_search/3Bi_conf2_mode_plus_initial.extxyz",
+      "size_bytes": 7271,
+      "sha256": "6a3c6a2b20e78eb583ac9b6b826bfda012c992e8ae8fe1cab49cd7c5207c8170"
+    },
+    {
+      "file": "results/silicon_doping_v9/failed_attempts/mode_follow_without_line_search/3Bi_conf2_mode_plus_lbfgs.log",
+      "size_bytes": 5182,
+      "sha256": "330bc1f4c010eb20267896858a3a910bf7af438f2fbdad5b9a1ad77a927c2238"
+    },
+    {
+      "file": "results/silicon_doping_v9/failed_attempts/mode_follow_without_line_search/aborted_lbfgs_script.py",
+      "size_bytes": 5210,
+      "sha256": "7d00a3ecb926659aa84c2fc8941cdffe8508835f7d4f82d692c5bf4fd5be9dce"
+    },
+    {
+      "file": "results/silicon_doping_v9/failed_attempts/mode_follow_without_line_search/attempt_status.json",
+      "size_bytes": 794,
+      "sha256": "94645a49a094022e9d23f5a0f3bccaeb6810a9844b41ff6404c96aa99ae4c41c"
+    },
+    {
+      "file": "results/silicon_doping_v9/failed_attempts/mode_follow_without_line_search/negative_mode_verification.json",
+      "size_bytes": 905,
+      "sha256": "d572e3b1665b965edc291fd6a404ab2229b71eb548cfbae3a2696083f24a8514"
+    },
+    {
+      "file": "results/silicon_doping_v9/global_charge/ensemble_comparisons.json",
+      "size_bytes": 92343,
+      "sha256": "dcb62c3ab14b29e997fe5d856d5ebb360979ccabeb120b7f909606ef502f4f4e"
+    },
+    {
+      "file": "results/silicon_doping_v9/global_charge/finite_difference_checks.csv",
+      "size_bytes": 8344,
+      "sha256": "fe747a8a344d69bcacd3cf030336e396bd99ea929084cc4d7a7b99df7e19c321"
+    },
+    {
+      "file": "results/silicon_doping_v9/global_charge/global_charge_summary.json",
+      "size_bytes": 505,
+      "sha256": "241e575b4652c84c39baa33a96581ba72c63cc5e5576187e2d8cf41649c019ab"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/2boron_int_cluster_final.extxyz",
+      "size_bytes": 8505,
+      "sha256": "d17eb66879b89a2ef7cc7c925d905b16b904db02c23f8754ec817c5fd62475c6"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/2boron_int_cluster_initial.extxyz",
+      "size_bytes": 8516,
+      "sha256": "2e9806ffdec126dc22fd16588ca84528a641ac6499d1900f0f3b86fd90dfe43b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/2boron_int_cluster_lbfgs.extxyz",
+      "size_bytes": 8505,
+      "sha256": "d17eb66879b89a2ef7cc7c925d905b16b904db02c23f8754ec817c5fd62475c6"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/2boron_int_cluster_lbfgs.log",
+      "size_bytes": 4966,
+      "sha256": "7859aa681ee2ed9fd2c7181222e65389c0175aaf5e62b07dbba498eb01093bad"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/2boron_int_cluster_result.json",
+      "size_bytes": 2044,
+      "sha256": "3320d6d6e4c1897fa1da17641826c07b4d266dc48bfee150f6f11f5898a69d47"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_1_final.extxyz",
+      "size_bytes": 8631,
+      "sha256": "b61dfe09bb71c7cb496334883b9dbe27749e98f4681b3fa69e12d01a0257ada9"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_1_fire.extxyz",
+      "size_bytes": 8631,
+      "sha256": "b61dfe09bb71c7cb496334883b9dbe27749e98f4681b3fa69e12d01a0257ada9"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_1_fire.log",
+      "size_bytes": 6411,
+      "sha256": "3b6f5fa58ed392be3b87181d85cef4587736b4c32fe1bde56ca28aabe41dc290"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_1_initial.extxyz",
+      "size_bytes": 8639,
+      "sha256": "7db6df9ff35346081440a776706744b6efeac8ea6998688a77662d22b4d6082b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_1_lbfgs.extxyz",
+      "size_bytes": 8627,
+      "sha256": "bb37af46a33ddbac7676bafb017c6534476eb25cdf75a959ed48852d418a045b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_1_lbfgs.log",
+      "size_bytes": 32506,
+      "sha256": "2709ada7589648610af8f8f7931731f4cb1d1dc26d46e5d0b7683e6d472774cc"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_1_result.json",
+      "size_bytes": 2735,
+      "sha256": "3494b3e7e83be8fa6a25932b80639f33b5a425f65bb2048d9ea7ccd6d9f13cf6"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_2_final.extxyz",
+      "size_bytes": 8635,
+      "sha256": "e0442ee0ee1681cdd1825b3f79d24dabb72d3a7a7ee8094cbc601187af433401"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_2_initial.extxyz",
+      "size_bytes": 8637,
+      "sha256": "eb6884ddeb6c25bf66242a5b12a5ab2a667e856569d55c70f023017a95ba21b8"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_2_lbfgs.extxyz",
+      "size_bytes": 8635,
+      "sha256": "e0442ee0ee1681cdd1825b3f79d24dabb72d3a7a7ee8094cbc601187af433401"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_2_lbfgs.log",
+      "size_bytes": 4318,
+      "sha256": "9303af1bccb9821d8c15ec46586432a8e7353187c9d716c27809ca29f0b60db4"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_2_result.json",
+      "size_bytes": 2068,
+      "sha256": "4217a003f09d25bdd79231f6b2adceb7696faa11e61a438fbfdd91f4468fc54b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_3_final.extxyz",
+      "size_bytes": 8639,
+      "sha256": "6201ae1b8d201e1a10f04caa5f61340f40dec71a92ac9e7e3ae41a458d7ec1a5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_3_initial.extxyz",
+      "size_bytes": 8631,
+      "sha256": "5201525b32eb3abf8fd74a34a749d7255ecc62115f30c21d88b19c0d1e216d8a"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_3_lbfgs.extxyz",
+      "size_bytes": 8639,
+      "sha256": "6201ae1b8d201e1a10f04caa5f61340f40dec71a92ac9e7e3ae41a458d7ec1a5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_3_lbfgs.log",
+      "size_bytes": 4804,
+      "sha256": "bc57f0b3a137a87ba425560e4961f3485ed2491586e1c1fe5639b79024314aca"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/3boron_int_cluster_confi_3_result.json",
+      "size_bytes": 2073,
+      "sha256": "a2d9892e2c322ab5f597831aff7b6f9e2cf8d40a5b032aa292e0ac81df253dc2"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/64_acceptor_cluster_final.extxyz",
+      "size_bytes": 8271,
+      "sha256": "d5cab45881fa13f118a6f3f1f3385cefe3c88d72f215ffefa31e2bf8ae519cb5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/64_acceptor_cluster_initial.extxyz",
+      "size_bytes": 8270,
+      "sha256": "3769dcd9328a5e6ba2fa07488a52fbd379d5363e5464e0b681b65babd7949a06"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/64_acceptor_cluster_lbfgs.extxyz",
+      "size_bytes": 8271,
+      "sha256": "d5cab45881fa13f118a6f3f1f3385cefe3c88d72f215ffefa31e2bf8ae519cb5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/64_acceptor_cluster_lbfgs.log",
+      "size_bytes": 2050,
+      "sha256": "d0e6b7b75f48cfcdd2262638ffedc8833115fde9e0baee3943efb89882022c76"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/64_acceptor_cluster_result.json",
+      "size_bytes": 2062,
+      "sha256": "d515e9668a4ba29c6b6a5f5ee4431d94b73a7da310d8d21374bdbefa6debd35c"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/b_silicon_64_acceptor_final.extxyz",
+      "size_bytes": 8271,
+      "sha256": "e50e948823997400472017408b04ecaf209101f28a9d8d9a868ab00ca701be6b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/b_silicon_64_acceptor_initial.extxyz",
+      "size_bytes": 8267,
+      "sha256": "7e45ae52011f32d949c3974b98b71b38ba77cb0487d1a700256c5daff1db5ac7"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/b_silicon_64_acceptor_lbfgs.extxyz",
+      "size_bytes": 8271,
+      "sha256": "e50e948823997400472017408b04ecaf209101f28a9d8d9a868ab00ca701be6b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/b_silicon_64_acceptor_lbfgs.log",
+      "size_bytes": 1294,
+      "sha256": "d713e3c693451fd674fb26958e8734c8e4c0c70b10305193e01b5b4014533758"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/b_silicon_64_acceptor_result.json",
+      "size_bytes": 2072,
+      "sha256": "0b62b15ccb1def3d54a8bc51b51341573a7aeb0807d9b7351c2fa04dae68e23d"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/b_silicon_64_interstitial_final.extxyz",
+      "size_bytes": 8390,
+      "sha256": "d1800c0b764e00dbd5cc014f2a0c6b0daae29264fb2609b42d2ff0f74c215f41"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/b_silicon_64_interstitial_initial.extxyz",
+      "size_bytes": 8388,
+      "sha256": "24eabb41d8f402834e4f0d8b7678adc8fb4f6c6ae0c1dc6623f30f313f5b149a"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/b_silicon_64_interstitial_lbfgs.extxyz",
+      "size_bytes": 8390,
+      "sha256": "d1800c0b764e00dbd5cc014f2a0c6b0daae29264fb2609b42d2ff0f74c215f41"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/b_silicon_64_interstitial_lbfgs.log",
+      "size_bytes": 2590,
+      "sha256": "48ddf8f63ecee080fe5fa03d32953b8ee1783abe5d0fc029813f73c5632f2efe"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/b_silicon_64_interstitial_result.json",
+      "size_bytes": 2068,
+      "sha256": "6dc0210f2ae405037a62bd8982043a7ad93029e75a29e3867bf4b62bad6b0984"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/bulk_reference.json",
+      "size_bytes": 1472,
+      "sha256": "461b1f097a7fbb97bd0dfcff5d92180ad79ca1b9001aa506707b7e093dcdbe97"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/derivative_checks.json",
+      "size_bytes": 4611,
+      "sha256": "4fb32c7b84f9ec804c8ee1d601baf04ea9be7728a9b820544fa5fa51fc9a278f"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron/run_summary.json",
+      "size_bytes": 19350,
+      "sha256": "31a99767dc579887fd7413b8874c8b506305d6f8e89c6217fb133ed35eac3203"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_216host/2boron_int_cluster_216host_final.extxyz",
+      "size_bytes": 23282,
+      "sha256": "8ba9c93eec4ea9db518c714b4dbc4b890f24aee72567d9aed2bec0bc61c9c5a2"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_216host/2boron_int_cluster_216host_initial.extxyz",
+      "size_bytes": 23282,
+      "sha256": "5abc0b652f94714596f3410587b932a37ca9fd24ae16ad7293364237d40e49ab"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_216host/2boron_int_cluster_216host_lbfgs.extxyz",
+      "size_bytes": 23282,
+      "sha256": "8ba9c93eec4ea9db518c714b4dbc4b890f24aee72567d9aed2bec0bc61c9c5a2"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_216host/2boron_int_cluster_216host_lbfgs.log",
+      "size_bytes": 5452,
+      "sha256": "fb12c58b4ecee1aaed4d27b29f1ef2e101238018473d40fe99e82a23159d3f1e"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_216host/2boron_int_cluster_216host_result.json",
+      "size_bytes": 1188,
+      "sha256": "b54659eea914045274dde0e4f0ece540559cba41beca91d1546731578397c669"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_216host/2boron_int_cluster_216host_state.npz",
+      "size_bytes": 8639,
+      "sha256": "2ccc92c71f4164ea9f319c40d9fe8256bd943a1d79d353a660e9a87a63b21fbf"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_216host/b_silicon_64_interstitial_216host_final.extxyz",
+      "size_bytes": 23176,
+      "sha256": "6d54a78d6d63f114acbabf500b6158ad2937bc20c806a27e79dd74264f7b4807"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_216host/b_silicon_64_interstitial_216host_initial.extxyz",
+      "size_bytes": 23176,
+      "sha256": "0401b49a0c66782a0adb95995ad8b6cf352032e2bc56b341b36f495542ec6f77"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_216host/b_silicon_64_interstitial_216host_lbfgs.extxyz",
+      "size_bytes": 23176,
+      "sha256": "6d54a78d6d63f114acbabf500b6158ad2937bc20c806a27e79dd74264f7b4807"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_216host/b_silicon_64_interstitial_216host_lbfgs.log",
+      "size_bytes": 3346,
+      "sha256": "2b51e2886b64494ec823081054213c670b9706a9247d808747099481ebb08c34"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_216host/b_silicon_64_interstitial_216host_result.json",
+      "size_bytes": 1193,
+      "sha256": "5a73a49e64813c386a8e02b261d6cc4d829144a73280e99c0f4ceaba0539f94c"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_216host/b_silicon_64_interstitial_216host_state.npz",
+      "size_bytes": 8057,
+      "sha256": "d263b747ee23175c1867d533403acedc68112c46bc4c395d7afe8aa0a55e15cd"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_216host/summary.json",
+      "size_bytes": 3040,
+      "sha256": "e13187fd5363b479f05640560458d958072fb68805c747ff4f543317cdcf0f51"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_512host/2boron_int_cluster_512host_final.extxyz",
+      "size_bytes": 54656,
+      "sha256": "26db4f36d387d6965e8889bf0ebae6ea0aed5f8b0ff9d913de343c1e3650f99e"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_512host/2boron_int_cluster_512host_initial.extxyz",
+      "size_bytes": 54658,
+      "sha256": "f1a3bf14391ca1b7d61f0dbfefa877279c7d130e09160e644f1ffc59bf6e523d"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_512host/2boron_int_cluster_512host_lbfgs.extxyz",
+      "size_bytes": 54656,
+      "sha256": "26db4f36d387d6965e8889bf0ebae6ea0aed5f8b0ff9d913de343c1e3650f99e"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_512host/2boron_int_cluster_512host_lbfgs.log",
+      "size_bytes": 5938,
+      "sha256": "a3af37dfc1c70fbdff4f1dea8b61c7a1e963041ff7df2f9ca4fa3fc187748d86"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_512host/2boron_int_cluster_512host_result.json",
+      "size_bytes": 1189,
+      "sha256": "441ec7d3526766fcdcf1b1da698e2a3249a66dc1754498f8607abe3308273994"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_512host/2boron_int_cluster_512host_state.npz",
+      "size_bytes": 19024,
+      "sha256": "9ad7b43ad56f179dc42f77ccf1940d5dc8f9cb08fca80b5a3c62227b44ca54cd"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_512host/b_silicon_64_interstitial_512host_final.extxyz",
+      "size_bytes": 54552,
+      "sha256": "1979d0bbc311c46dc3fb9675ab60b55e957f726e9d883dbbb22e624a4da07c98"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_512host/b_silicon_64_interstitial_512host_initial.extxyz",
+      "size_bytes": 54550,
+      "sha256": "44d7059914dc049a7d3f6ef8fb9dcab603e7f432b35aef8b47f32b93c0c435fe"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_512host/b_silicon_64_interstitial_512host_lbfgs.extxyz",
+      "size_bytes": 54552,
+      "sha256": "1979d0bbc311c46dc3fb9675ab60b55e957f726e9d883dbbb22e624a4da07c98"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_512host/b_silicon_64_interstitial_512host_lbfgs.log",
+      "size_bytes": 3562,
+      "sha256": "cd6217c716d0d2996ef9c7afd215b68e27184d99507e3346387b7c00a3a87202"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_512host/b_silicon_64_interstitial_512host_result.json",
+      "size_bytes": 1194,
+      "sha256": "e59e1ceb033fb2afa8ef4b349d59380e487230751ace7a0d07687eac91203820"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_512host/b_silicon_64_interstitial_512host_state.npz",
+      "size_bytes": 17799,
+      "sha256": "7274734d229bfe4edfcaf2e0137feb8d329c4b441002d6f112ddec241ade14a3"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_512host/summary.json",
+      "size_bytes": 3042,
+      "sha256": "545a2352c9ddf8640ae4ecd27226e95ae7fe1fe1a2dccfe2ea278eb956ea7b69"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow/3Bi_conf2_mode_minus_bfgs_line.extxyz",
+      "size_bytes": 7273,
+      "sha256": "89a03ec865e12a37bc2c7a5ea0173432102cd4c37ecf8c474fe39b0dbeaad8d8"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow/3Bi_conf2_mode_minus_bfgs_line.log",
+      "size_bytes": 3706,
+      "sha256": "a6fe8a56414840121629a21c1211a49429b3c67c0e57d5c8611b8fa9a89d2d3f"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow/3Bi_conf2_mode_minus_final.extxyz",
+      "size_bytes": 7273,
+      "sha256": "89a03ec865e12a37bc2c7a5ea0173432102cd4c37ecf8c474fe39b0dbeaad8d8"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow/3Bi_conf2_mode_minus_initial.extxyz",
+      "size_bytes": 7271,
+      "sha256": "9960e44be28bc0445ecd0f867bff88d763f640ddb3bf03a543fd87f616dc1c87"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow/3Bi_conf2_mode_minus_result.json",
+      "size_bytes": 910,
+      "sha256": "bdceb4ccd46a249d98fb1b88f573622e1d7ef604f85c765a653e2c42ad33a7eb"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow/3Bi_conf2_mode_minus_state.npz",
+      "size_bytes": 3976,
+      "sha256": "ed026decb999605abe0b14081c16088024d10af5a16966e1ea1a8d6be3a38316"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow/3Bi_conf2_mode_plus_bfgs_line.extxyz",
+      "size_bytes": 7275,
+      "sha256": "f80e6ba6af73758e8a555768e73c917360e9389d5aa6091a502a3292b1fb9d60"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow/3Bi_conf2_mode_plus_bfgs_line.log",
+      "size_bytes": 3706,
+      "sha256": "45dc76aa46cde0a66d2125b164b8b68a12efeafc9063da52688997887fcead86"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow/3Bi_conf2_mode_plus_final.extxyz",
+      "size_bytes": 7275,
+      "sha256": "f80e6ba6af73758e8a555768e73c917360e9389d5aa6091a502a3292b1fb9d60"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow/3Bi_conf2_mode_plus_initial.extxyz",
+      "size_bytes": 7271,
+      "sha256": "6a3c6a2b20e78eb583ac9b6b826bfda012c992e8ae8fe1cab49cd7c5207c8170"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow/3Bi_conf2_mode_plus_result.json",
+      "size_bytes": 908,
+      "sha256": "aa43ac7c523e199c521b9f7937810c394c20bf8117c56c65ad711359da26a53e"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow/3Bi_conf2_mode_plus_state.npz",
+      "size_bytes": 3981,
+      "sha256": "d622fffb52a4033d61f1a317b93fb17eaf5318410b82c5c1691c8d1a7413f264"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow/negative_mode_verification.json",
+      "size_bytes": 905,
+      "sha256": "d572e3b1665b965edc291fd6a404ab2229b71eb548cfbae3a2696083f24a8514"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow/summary.json",
+      "size_bytes": 1929,
+      "sha256": "43fdadefe04c6898775ddb4140bbac2d56827a8132ce13a295e9e7af5a91ac16"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow_hessian/3Bi_conf2_mode_minus_hessian.json",
+      "size_bytes": 2237,
+      "sha256": "03c6e192f11710f9e2d47a1b8ac78696ff8796d88bd90cefd6b4d2d7c3f0473e"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow_hessian/3Bi_conf2_mode_minus_hessian.npz",
+      "size_bytes": 309051,
+      "sha256": "c15eb0b654f26ec7f53f58094e7fe03dfd12df5d1192f45c03d0dc3ded81aadb"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow_hessian/3Bi_conf2_mode_plus_hessian.json",
+      "size_bytes": 2255,
+      "sha256": "6ec97443dea368197db2233d4f0c2a49bb05e072637c928f7da6494849e4df8b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow_hessian/3Bi_conf2_mode_plus_hessian.npz",
+      "size_bytes": 309074,
+      "sha256": "0887b46de88e36aecd86a211e5b18ffabcc1b4df036e24609376f1d97003ce74"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow_hessian/hessian_summary.json",
+      "size_bytes": 4779,
+      "sha256": "3cb4bb474c5b76e621251c5e21ff333104d8d853ceeb9b70bd2f26f4494928d2"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow_hessian_refinement/mode_refinement.json",
+      "size_bytes": 4947,
+      "sha256": "eb4a4e7070e4638badc476d45cdc4c85c5954176c53d492223595b870b755a65"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_follow_hessian_refinement/mode_refinement_summary.json",
+      "size_bytes": 261,
+      "sha256": "24dc251b0b4336964705fe9ce3209da03d914328eaf64d2574da2b351311e00b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_hessian/2boron_int_cluster_hessian.json",
+      "size_bytes": 1976,
+      "sha256": "c95baa1ba33f97f337d444424e97cc4b45aab5e2683cf8e8c692a6cbf53de86e"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_hessian/2boron_int_cluster_hessian.npz",
+      "size_bytes": 277516,
+      "sha256": "7915a86c896a1644fcfb1e90618613aa666cf0f1fcb7d79800197a7c73bb1158"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_hessian/3boron_int_cluster_confi_1_hessian.json",
+      "size_bytes": 2260,
+      "sha256": "7ad9a5c426295594216ec5e8421b14f054abf0694993fd41c8c8189af5a7a8c9"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_hessian/3boron_int_cluster_confi_1_hessian.npz",
+      "size_bytes": 308957,
+      "sha256": "d7399e43bfd3ce8eabd4b12672dee749fb0918f94e66ee6ce3a793500650e96c"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_hessian/3boron_int_cluster_confi_2_hessian.json",
+      "size_bytes": 2227,
+      "sha256": "e2732540dabff4a90cc998f8bbf108a32517619adb7032679d6fd19ca48da0b6"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_hessian/3boron_int_cluster_confi_2_hessian.npz",
+      "size_bytes": 290689,
+      "sha256": "13cc17b26495cc15891804c3adeaffde46eb4cfd244763c451c358feca4e9a9c"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_hessian/3boron_int_cluster_confi_3_hessian.json",
+      "size_bytes": 2246,
+      "sha256": "2057a60acf3bf7904ae3cbafbfd84129c2b39121e51a638363d09555b183edfc"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_hessian/3boron_int_cluster_confi_3_hessian.npz",
+      "size_bytes": 290666,
+      "sha256": "4e08ab2caf9001be05f035f8d9f7df63bf699b70a0435809f0c0038cda770b29"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_hessian/b_silicon_64_interstitial_hessian.json",
+      "size_bytes": 2024,
+      "sha256": "0974823d13d6366acbe048af0d7e58cf52c4adcb0f62113aa287f8b49ebacd42"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_hessian/b_silicon_64_interstitial_hessian.npz",
+      "size_bytes": 248950,
+      "sha256": "75f7c4e0424a5bb0d1cf60e3731ff7b400a80ef00a4765db48c1aa8fb89a7281"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_hessian_refinement/mode_refinement.json",
+      "size_bytes": 12563,
+      "sha256": "105a73827f24004da78c9f12f3cfdca8a61a4018c92f9b7b7f845c797a7c6952"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_hessian_refinement/mode_refinement_summary.json",
+      "size_bytes": 264,
+      "sha256": "da5aeef43404737185869f31d113caac0a1aa5914cfd55f5f21e5af34bd714f5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_largest_mode/B1_216host_largest_mode.json",
+      "size_bytes": 1664,
+      "sha256": "bd53e9157a2c876d0fad7f9ddee4c14e42c353ff35c6b2c9fcf0f2c91e4c3a3e"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_largest_mode/B1_216host_largest_mode.npz",
+      "size_bytes": 8609,
+      "sha256": "6530bba60acbf648e32918163f46623b2cc1fd09a5678b2c8b38f4932c8311a6"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_largest_mode/B1_512host_largest_mode.json",
+      "size_bytes": 1667,
+      "sha256": "2a0635a10d446f0166002abdc3a766d6ca4a0d0f50a5204b5497abdf77859d1a"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_largest_mode/B1_512host_largest_mode.npz",
+      "size_bytes": 18783,
+      "sha256": "c16433439caa83d17d6230878522e480e0e39601705870495bd72537a5c6dc94"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_largest_mode/B1_64host_largest_mode.json",
+      "size_bytes": 2013,
+      "sha256": "b4de2dbf31de90dbb2d9271cc34d86f530e8e97618bd0482d9f8ae2bcc7d5843"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_largest_mode/B1_64host_largest_mode.npz",
+      "size_bytes": 3782,
+      "sha256": "7025204875f5713150435bf1f5d00ef9f39db9bf7f45f1a461678178746fc433"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_largest_mode/summary.json",
+      "size_bytes": 6150,
+      "sha256": "595ca10c406439bbf1af3fccaa42f9364b3de17eaf25980510859205c65713b4"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_neutral_substitutional_hessian/64_acceptor_cluster_hessian.json",
+      "size_bytes": 2116,
+      "sha256": "f7a69b7972a76c3a6de68c5ec40d44354b9538df33c11c2cd85d710c790884cf"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_neutral_substitutional_hessian/64_acceptor_cluster_hessian.npz",
+      "size_bytes": 222438,
+      "sha256": "582fd2702d054b6ee72c6d47bf5823f46eb5af346fff767c52970ce89fffd003"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_neutral_substitutional_hessian/b_silicon_64_acceptor_hessian.json",
+      "size_bytes": 2029,
+      "sha256": "213259b6c3f32031668bb01db8ef7170767a8f97a69fbc31a039c18b97e6a32f"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_neutral_substitutional_hessian/b_silicon_64_acceptor_hessian.npz",
+      "size_bytes": 208590,
+      "sha256": "74450dbda3bf187408d8845528cac64cefa20f1095fed8d55b0368d1a4eafe70"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_neutral_substitutional_hessian/hessian_summary.json",
+      "size_bytes": 4402,
+      "sha256": "5a660bce21864fa8cb1e3a0155620949ad022bf7b48e7ee1aa2994f974bd0e92"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_neutral_substitutional_hessian_refinement/mode_refinement.json",
+      "size_bytes": 4943,
+      "sha256": "746b6c2f3c8aefdb295d6fa028691ad27b95fb17a2b5fa0ddb9b09cac89f6b21"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_boron_neutral_substitutional_hessian_refinement/mode_refinement_summary.json",
+      "size_bytes": 261,
+      "sha256": "1b6b4867186adcfdc834cb58179729611604bf8fdf918411b0df42ac1976da2a"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_si_dft/frame_metrics.csv",
+      "size_bytes": 474144,
+      "sha256": "6ae7db99588c745ce7f9d29890ab36f75c8e0e311c58347e09ae219f15a2bf5b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_si_dft/frame_progress.jsonl",
+      "size_bytes": 1258696,
+      "sha256": "93898099a89174c128d3ff2feb0f006a24cea7fde33b34ebe803330a5fec93f0"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_si_dft/predictions.npz",
+      "size_bytes": 6379808,
+      "sha256": "b6c9af7c22d4ca427d961eb42dc0ec262488219892f45647c453e6040fe120ea"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_si_dft/summary.json",
+      "size_bytes": 15740,
+      "sha256": "9272489c3c0233a1794e980e5af5a25fb7b5606ce15f00a49d5f24c6ec363737"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_si_dft_validation/raw_validation.json",
+      "size_bytes": 1600,
+      "sha256": "4e66365f8f2e5082fe5adc6b1c8420ecc3d615a043ba9c77819883eb5e759a19"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_si_dft_validation/same_geometry_comparison.csv",
+      "size_bytes": 3681,
+      "sha256": "fd4084c4ca9b32a6471c30feb7df98f401e3c0f7a03ae42ad163669f99d4ece8"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_si_dft_validation/same_geometry_forces.png",
+      "size_bytes": 53778,
+      "sha256": "eb35f5eed6b0c891f875fd8ac908f89a4f0809e7b6306f5e8402b2569b08d747"
+    },
+    {
+      "file": "results/silicon_doping_v9/memory/memory_kernel.csv",
+      "size_bytes": 1631,
+      "sha256": "7066b347cc5576f129e3bc78bff3d9490fa8e58cb297e5ffa9efd5d056b316fd"
+    },
+    {
+      "file": "results/silicon_doping_v9/memory/memory_summary.json",
+      "size_bytes": 298,
+      "sha256": "bf0e35283cf6591befb1a367b3fc473eec318b02a0bf7806ee3253651ad35133"
+    },
+    {
+      "file": "results/silicon_doping_v9/memory/resolvent_comparisons.csv",
+      "size_bytes": 4121,
+      "sha256": "b146f3d02ed4ad3b77cf0195415053d7fa8dfd9977841af342fdd3e9051e0a5e"
+    },
+    {
+      "file": "results/silicon_doping_v9/REPRODUCE.md",
+      "size_bytes": 6311,
+      "sha256": "591f8d599535f698fdb2c001ca85515bc48b67129537ccb268ac1b2a6a361675"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/boron_formation_energies_2025.csv",
+      "size_bytes": 925,
+      "sha256": "7b6b82ad5797ff24d1021b4e20d84f9ffaec9eca656400dc4a5d3222078c26f2"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/boron_local_modes_2025.csv",
+      "size_bytes": 790,
+      "sha256": "0753a8aa653906306b14b1bb93e69d9f79eb4964e22e684f2e9e9a18d844a6fc"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/charge_model_screening.json",
+      "size_bytes": 2165,
+      "sha256": "7f45fcf38d3322aaa23b3842d7b3e1d1f11b25df8ae95700c4dd311a77c7fe64"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/dopant_fracture_source_screening.json",
+      "size_bytes": 3928,
+      "sha256": "830773c7c5321e12283de1535382a17f21c10f21e28e182e7463e5ecf34f1068"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/durham_boron_2025.zip",
+      "size_bytes": 244708,
+      "sha256": "5ed01b79a17bda9f59cd680bc965d8679bf25151a01d1e8c0ea81da4767fa9dd"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/durham_original/2boron_int_cluster.cell",
+      "size_bytes": 1423,
+      "sha256": "9f26c1154ecdc659aa8f57458f5c453d175a02f85975b058631dfe2ec8cc2732"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/durham_original/3boron_int_cluster_confi_1.cell",
+      "size_bytes": 1443,
+      "sha256": "c95309c6e3092fd04853afc0701c0631c2dc1bd35249677eda863cb766c49a1b"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/durham_original/3boron_int_cluster_confi_2.cell",
+      "size_bytes": 1445,
+      "sha256": "10b7ddad5c1d47a925b30b22554aa20a5ebe967f286fceb12e74583198860ed1"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/durham_original/3boron_int_cluster_confi_3.cell",
+      "size_bytes": 1447,
+      "sha256": "e8ea1daa47f171a9c7a40ba665fcefb7bb67988bbab3448065e1300986d2dec5"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/durham_original/64_acceptor_cluster.cell",
+      "size_bytes": 1379,
+      "sha256": "ea9a9dd23e895ff8069b682041a25c4759aac1017da4f51f686fc486ecf11790"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/durham_original/b_silicon_64_acceptor.cell",
+      "size_bytes": 1398,
+      "sha256": "a2c6f3da59ab96e84af66f0fa0b7102e97f52883be894eaeeacaf502c80a5da6"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/durham_original/b_silicon_64_interstitial.cell",
+      "size_bytes": 1421,
+      "sha256": "d62eebeff725db306310afdb6269c718a5d151454c514bfc311329f0c34623a0"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/durham_original/Boron in Si wafers for DU.xlsx",
+      "size_bytes": 88799,
+      "sha256": "89de31bcadf7779d02b2a1a430f1323abf1ef47ad45a0344657f46ff5f0ee18d"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/durham_original/Hall_data_Liverpool.xlsx",
+      "size_bytes": 22607,
+      "sha256": "efa72fc720a7b2cecf81029df56e81929afbc15e4795782eaa2947a0175e12c4"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/durham_original/READ ME.txt",
+      "size_bytes": 1141,
+      "sha256": "7887f97960f230240c12d8d9385ca85e1b8226107419a3b25cb8ed1063334dd9"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/mace_runtime_provenance.json",
+      "size_bytes": 7948,
+      "sha256": "9ec5b3dc7cb2f10bf96dbcf8db590db693aef5cebcd4f0aa4869415f70a84fce"
+    },
+    {
+      "file": "results/silicon_doping_v9/sources/README.md",
+      "size_bytes": 4082,
+      "sha256": "0fe10d887b49eb9d8c19b7b4be8e4139d120bd0358e1ac741da1bfdfbd877c6f"
+    },
+    {
+      "file": "results/silicon_doping_v9/verification/deterministic_replay.json",
+      "size_bytes": 3280,
+      "sha256": "d65ec9ed7f1ff86f9ef4dd608ca456a2056dd67100ca4f5ead8906ccbfb9e101"
+    },
+    {
+      "file": "results/silicon_doping_v9/verification/full_solver.json",
+      "size_bytes": 367,
+      "sha256": "d4342ba1a1115c7e0bea141d383b934f6aa5015bfc2b512cf78d6bf83e7b43c0"
+    },
+    {
+      "file": "results/silicon_doping_v9/verification/full_solver.log",
+      "size_bytes": 1196,
+      "sha256": "9d42f0d0f5d896a31419c9e0658b6e639bac8005e54515e9d512444f3e5c9dd7"
+    },
+    {
+      "file": "results/silicon_doping_v9/verification/saved_artifact_audit.json",
+      "size_bytes": 3658,
+      "sha256": "aeced1bff36770761e99fcc3b86d28f8ed890039094c5e0264d81c60d5dea51e"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/audit_boron_sources_v9.py",
+      "size_bytes": 10138,
+      "sha256": "6a0626e8986d754106e3b37f8ab64c68021f02ff9195fed8322dc667bede5295"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/audit_charge_dynamics_v9.py",
+      "size_bytes": 8983,
+      "sha256": "80f68b894d2dbcd133dfb130c2dc8db63b00d582a678814e15b818c727fd4734"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/audit_charge_memory_v9.py",
+      "size_bytes": 2781,
+      "sha256": "f2d09e13af5e12436501d4bbed73c51e50b1eef2a422abc85a8577f1bd2eade5"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/audit_global_charge_v9.py",
+      "size_bytes": 5997,
+      "sha256": "5935170d2517ce59c7e32d005b1084cb3d56b272e5b3a21b4295546ebc840efc"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/follow_boron_instability_v9.py",
+      "size_bytes": 5454,
+      "sha256": "bcd786fc8ffdc480cd4c5798fd7fad1e16156c67e82110ef58ba5c28c78e248b"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/mace_force_only_v9.py",
+      "size_bytes": 1673,
+      "sha256": "dfe13c4db4c54bbf0138b9854474002b15692a8ec1e5ceb9bf5b58243de05b3c"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/plot_boron_controls_v9.py",
+      "size_bytes": 2747,
+      "sha256": "d8e76f490ce68c4918094a7e62dc3ea32ba9efc299e0d094098901b3104733bb"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/run_logged_check_v9.py",
+      "size_bytes": 1347,
+      "sha256": "527415269cf9d6f5720ca6d0998f97dff58d52414fb5facc52aa43bef283741f"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/run_mace_boron_v9.py",
+      "size_bytes": 8626,
+      "sha256": "8c700c44601ddeffafc76a17295b35a0e10c2897017ace8649ad33bfd5da42d2"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/run_mace_dft_audit_v9.py",
+      "size_bytes": 6185,
+      "sha256": "2f296f6ce30b2f3204139b509d824f7bec79f943614847f6607b13fddcc4a1fd"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/run_mace_dilute_cells_v9.py",
+      "size_bytes": 6969,
+      "sha256": "d11ac5a8771f3304939f188cac50ea47348aed9f3f31f84bdc4f360a0f80a523"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/summarize_boron_v9.py",
+      "size_bytes": 6076,
+      "sha256": "2a180ef8420671e42a539181f0c097c476b7ad0788ba2bf41bddbdeb9fc53de2"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/validate_boron_endpoints_v9.py",
+      "size_bytes": 7561,
+      "sha256": "00489b759258fb0da8d9e4759cf019016e3bdad1924a76c30595c26acbf5fa6d"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/validate_largest_mode_v9.py",
+      "size_bytes": 6248,
+      "sha256": "0ddbd5c302adb154806958cdc6520f1c6be5344b5de6a91455aef58e8f03af40"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/validate_mace_boron_v9.py",
+      "size_bytes": 7000,
+      "sha256": "fc8da0d962c7158ec4c6f283fea5c4f118d7382970d6dc41136b7281a3fc6f22"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/validate_mace_curvature_modes_v9.py",
+      "size_bytes": 3043,
+      "sha256": "a411c2ecb1caec78db468ba41d217b080c2f855e694dae054ab7613fd4f2217a"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/validate_mace_dft_v9.py",
+      "size_bytes": 7127,
+      "sha256": "ee2dd7d93bcaa975d57c8063e62a0a2f7c40d3f90f80e3f1a287f8e96eb70944"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/verify_artifacts_v9.py",
+      "size_bytes": 8570,
+      "sha256": "3c8368c0aaeb774862c1578053ab0303fbd1bcf945b44252c21bee22a30b2c29"
+    },
+    {
+      "file": "solver_v1/silicon_charge_dynamics.py",
+      "size_bytes": 7224,
+      "sha256": "d4c1f0effd96857a4a73b9301e9158e57550c1cd1b88e273869531f00505c653"
+    },
+    {
+      "file": "solver_v1/SILICON_CHARGE_DYNAMICS_V9.md",
+      "size_bytes": 12237,
+      "sha256": "78055bf01f84b164cace3059c2af20e39225982c2cdc5c06ec7ebf1028a60a7c"
+    },
+    {
+      "file": "solver_v1/test_silicon_charge_dynamics.py",
+      "size_bytes": 6436,
+      "sha256": "5565af23fc3252a030fe6265400e4b00439431256192d6e61fe9a2cddb11589e"
+    }
+  ]
+}

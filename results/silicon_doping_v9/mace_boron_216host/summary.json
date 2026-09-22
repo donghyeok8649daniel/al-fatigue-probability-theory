@@ -1,0 +1,86 @@
+{
+  "cases": [
+    {
+      "structure": "b_silicon_64_interstitial",
+      "host_atoms": 216,
+      "B_atoms": 1,
+      "total_atoms": 217,
+      "lattice_A": 5.431,
+      "volume_A3": 4325.169905756997,
+      "chemical_B_cm3": 2.31204790052052e+20,
+      "energy_eV": -1166.9683115125404,
+      "pure_host_energy_per_atom_eV": -5.381031585840588,
+      "host_subtracted_energy_eV": -4.665488970973456,
+      "host_subtracted_change_from_64host_eV": -0.006677876072501476,
+      "B_chemical_potential_specified": false,
+      "absolute_formation_energy_eV": null,
+      "force_max_eV_A": 8.459242996317062e-05,
+      "converged": true,
+      "attempts": [
+        {
+          "method": "LBFGS",
+          "steps": 60,
+          "converged": true,
+          "max_force_eV_A": 8.459242996317062e-05,
+          "energy_eV": -1166.9683115125404
+        }
+      ],
+      "source_host_match_A": 2.5121479338940403e-15,
+      "source_B_shift_by_lattice_translation_A": [
+        5.431,
+        0.0,
+        5.431
+      ],
+      "backend_force_error_eV_A": 0.0,
+      "force_only_calculator_evaluations": 61,
+      "standard_ASE_control_evaluations": 1,
+      "local_minimum_Hessian_checked": false,
+      "elapsed_reported_s": 298.4451925000176,
+      "status": "neutral ML finite-periodic-cell control; no Si calibration"
+    },
+    {
+      "structure": "2boron_int_cluster",
+      "host_atoms": 216,
+      "B_atoms": 2,
+      "total_atoms": 218,
+      "lattice_A": 5.431,
+      "volume_A3": 4325.169905756997,
+      "chemical_B_cm3": 4.62409580104104e+20,
+      "energy_eV": -1172.1916359350378,
+      "pure_host_energy_per_atom_eV": -5.381031585840588,
+      "host_subtracted_energy_eV": -9.888813393470855,
+      "host_subtracted_change_from_64host_eV": -0.010077676921639522,
+      "B_chemical_potential_specified": false,
+      "absolute_formation_energy_eV": null,
+      "force_max_eV_A": 9.164498109695717e-05,
+      "converged": true,
+      "attempts": [
+        {
+          "method": "LBFGS",
+          "steps": 99,
+          "converged": true,
+          "max_force_eV_A": 9.164498109695717e-05,
+          "energy_eV": -1172.1916359350378
+        }
+      ],
+      "source_host_match_A": 2.5121479338940403e-15,
+      "source_B_shift_by_lattice_translation_A": [
+        5.431,
+        -0.0,
+        5.431
+      ],
+      "backend_force_error_eV_A": 0.0,
+      "force_only_calculator_evaluations": 100,
+      "standard_ASE_control_evaluations": 1,
+      "local_minimum_Hessian_checked": false,
+      "elapsed_reported_s": 540.2936739999568,
+      "status": "neutral ML finite-periodic-cell control; no Si calibration"
+    }
+  ],
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "scope": "fixed-volume neutral interstitial cell-size diagnostic; not Hall concentration or actual doping strength",
+  "pure_bulk_reference_eV_per_atom": -5.381031585840588,
+  "complete": true,
+  "new_DFT_runs": 0,
+  "new_MD_runs": 0
+}

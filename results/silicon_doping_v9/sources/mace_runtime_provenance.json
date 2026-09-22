@@ -1,0 +1,182 @@
+{
+  "scope": "isolated optional venv with existing system scientific packages; no production requirements edit",
+  "python": "3.13.5",
+  "torch_build": "2.12.1+cpu",
+  "cuda_available": false,
+  "versions": {
+    "mace-torch": "0.3.16",
+    "e3nn": "0.4.4",
+    "torch": "2.12.1",
+    "numpy": "2.5.0",
+    "scipy": "1.18.1",
+    "ase": "3.29.0",
+    "matscipy": "1.2.0"
+  },
+  "newly_installed_distributions": [
+    {
+      "name": "mace-torch",
+      "version": "0.3.16",
+      "download_url": "https://files.pythonhosted.org/packages/6d/4d/07293363e4abe6484c9ee4d705e5953421a6b6e2a74e4d7fb58abea729cf/mace_torch-0.3.16-py3-none-any.whl",
+      "archive_hashes": {
+        "sha256": "b80407edf6b2a1ec8523668c2a36852d20927ce1c3c56b70983a9f2dc53233ad"
+      }
+    },
+    {
+      "name": "e3nn",
+      "version": "0.4.4",
+      "download_url": "https://files.pythonhosted.org/packages/9a/b6/c8327065d1dd8bca28521fe65ff72b649ed17ca8a1f0c1f498006d7567b7/e3nn-0.4.4-py3-none-any.whl",
+      "archive_hashes": {
+        "sha256": "87d99876abb362a6e07d555d10752ff2e20c2b7731d8928ebe5d9121fb019f84"
+      }
+    },
+    {
+      "name": "opt-einsum-fx",
+      "version": "0.1.4",
+      "download_url": "https://files.pythonhosted.org/packages/8d/4c/e0370709aaf9d7ceb68f975cac559751e75954429a77e83202e680606560/opt_einsum_fx-0.1.4-py3-none-any.whl",
+      "archive_hashes": {
+        "sha256": "85f489f4c7c31fd88d5faf9669c09e61ec37a30098809fdcfe2a08a9e42f23c9"
+      }
+    },
+    {
+      "name": "ase",
+      "version": "3.29.0",
+      "download_url": "https://files.pythonhosted.org/packages/66/a6/a3d29378618d3d9ba0962473f8bbf09a5ad15eb8b210c5153fb88d0b8aad/ase-3.29.0-py3-none-any.whl",
+      "archive_hashes": {
+        "sha256": "7b9dd103f007810339c24acfee2f6b677c0c48443b21d3c98e52959246cf4ebf"
+      }
+    },
+    {
+      "name": "ConfigArgParse",
+      "version": "1.7.7",
+      "download_url": "https://files.pythonhosted.org/packages/b6/e6/cf29a5b21528779fa335c860c66a915d2254bbf77c1fb2c67160c56c3b58/configargparse-1.7.7-py3-none-any.whl",
+      "archive_hashes": {
+        "sha256": "61107bb1de0b53c4eb7a475a12de6783b0dc6c51bc9859f5accbe97d66f8a4b7"
+      }
+    },
+    {
+      "name": "GitPython",
+      "version": "3.1.62",
+      "download_url": "https://files.pythonhosted.org/packages/d6/0b/29d7965215f8ef830a7ca1f42997fe13e5693d85e9edb18f938d063ef5f2/gitpython-3.1.62-py3-none-any.whl",
+      "archive_hashes": {
+        "sha256": "7002251225e10e29d2e1f49e6532613fe5d5d9f0b6f1f02997a52b38fe56899e"
+      }
+    },
+    {
+      "name": "gitdb",
+      "version": "4.0.12",
+      "download_url": "https://files.pythonhosted.org/packages/a0/61/5c78b91c3143ed5c14207f463aecfc8f9dbb5092fb2869baf37c273b2705/gitdb-4.0.12-py3-none-any.whl",
+      "archive_hashes": {
+        "sha256": "67073e15955400952c6565cc3e707c554a4eea2e428946f7a4c162fab9bd9bcf"
+      }
+    },
+    {
+      "name": "smmap",
+      "version": "5.0.3",
+      "download_url": "https://files.pythonhosted.org/packages/c1/d4/59e74daffcb57a07668852eeeb6035af9f32cbfd7a1d2511f17d2fe6a738/smmap-5.0.3-py3-none-any.whl",
+      "archive_hashes": {
+        "sha256": "c106e05d5a61449cf6ba9a1e650227ecfb141590d2a98412103ff35d89fc7b2f"
+      }
+    },
+    {
+      "name": "h5py",
+      "version": "3.16.0",
+      "download_url": "https://files.pythonhosted.org/packages/c3/d9/a27997f84341fc0dfcdd1fe4179b6ba6c32a7aa880fdb8c514d4dad6fba3/h5py-3.16.0-cp313-cp313-win_amd64.whl",
+      "archive_hashes": {
+        "sha256": "18f2bbcd545e6991412253b98727374c356d67caa920e68dc79eab36bf5fedad"
+      }
+    },
+    {
+      "name": "lmdb",
+      "version": "2.3.0",
+      "download_url": "https://files.pythonhosted.org/packages/f3/d4/1bd0b10a0d7408f2d6a4c49be9176287bdccc8c3951a96abfd8f61eb5ec1/lmdb-2.3.0-cp313-cp313-win_amd64.whl",
+      "archive_hashes": {
+        "sha256": "f45e10949d0fc7a0cc4bc9b3bfe34d824b5a71330312289e43dc2638c26a9f13"
+      }
+    },
+    {
+      "name": "matscipy",
+      "version": "1.2.0",
+      "download_url": "https://files.pythonhosted.org/packages/98/4d/779281eea03f8cdc9e0ced7472685319099e11fa578a2130a29331241cf6/matscipy-1.2.0-cp313-cp313-win_amd64.whl",
+      "archive_hashes": {
+        "sha256": "ee21b7511565e22c0df510a9f7c513dc3dffd69a1e64cdf3498cd4db63d68de5"
+      }
+    },
+    {
+      "name": "opt_einsum",
+      "version": "3.4.0",
+      "download_url": "https://files.pythonhosted.org/packages/23/cd/066e86230ae37ed0be70aae89aabf03ca8d9f39c8aea0dec8029455b5540/opt_einsum-3.4.0-py3-none-any.whl",
+      "archive_hashes": {
+        "sha256": "69bb92469f86a1565195ece4ac0323943e83477171b91d24c35afe028a90d7cd"
+      }
+    },
+    {
+      "name": "orjson",
+      "version": "3.12.0",
+      "download_url": "https://files.pythonhosted.org/packages/52/87/69f98f8d40faff103a965a5fbb83f08241b01beaf92badb5413fbc9358cc/orjson-3.12.0-cp313-cp313-win_amd64.whl",
+      "archive_hashes": {
+        "sha256": "b85931be5b6763c31283805c9bdaae1ca03ad9f6f12a15f1cbf6745b907932c2"
+      }
+    },
+    {
+      "name": "pandas",
+      "version": "3.0.6",
+      "download_url": "https://files.pythonhosted.org/packages/c0/bd/63cb67e6903ef6d9c2871916dbcbc09d254da0fe8b870cf62e16b21945f2/pandas-3.0.6-cp313-cp313-win_amd64.whl",
+      "archive_hashes": {
+        "sha256": "f3ce8a6968045481e91a3990e797e348ce13db45ee164a7095bbc824e26c09dd"
+      }
+    },
+    {
+      "name": "prettytable",
+      "version": "3.18.0",
+      "download_url": "https://files.pythonhosted.org/packages/fe/be/2e6798ace5cc036f5d05d36b7b2fd85346f1a708c87060890b070d0ec607/prettytable-3.18.0-py3-none-any.whl",
+      "archive_hashes": {
+        "sha256": "b3346e0e6f79180833aebaac088ae926340586cf6d7d991b9eb125b65f72313a"
+      }
+    },
+    {
+      "name": "python_hostlist",
+      "version": "2.3.0",
+      "download_url": "https://files.pythonhosted.org/packages/90/cc/bb6395c3f2b6bb739b1d3fc0e71f94e6a1c2e256df496237cbfd13cd74a6/python_hostlist-2.3.0.tar.gz",
+      "archive_hashes": {
+        "sha256": "e1a0b18e525a5fca573cb9862799f11b3f2bd3ba7aec70c4ecd8b95341bb71ea"
+      }
+    },
+    {
+      "name": "torch-ema",
+      "version": "0.3",
+      "download_url": "https://files.pythonhosted.org/packages/c0/f1/a47c831436595cffbfd69a19ea129a23627120b13f4886499e58775329d1/torch_ema-0.3-py3-none-any.whl",
+      "archive_hashes": {
+        "sha256": "823ad8da5c10bc1eebcec739cc3f521aa9573229fe04e5673c304d29f1433279"
+      }
+    },
+    {
+      "name": "torchmetrics",
+      "version": "1.9.0",
+      "download_url": "https://files.pythonhosted.org/packages/c3/a2/c7f6ebf546f8f644edf0f999aa98ece106986a77a7b922316bf6414ff825/torchmetrics-1.9.0-py3-none-any.whl",
+      "archive_hashes": {
+        "sha256": "bfdcbff3dd1d96b3374bb2496eb39f23c4b28b8a845b6a18c313688e0d2d9ca1"
+      }
+    },
+    {
+      "name": "lightning-utilities",
+      "version": "0.15.3",
+      "download_url": "https://files.pythonhosted.org/packages/25/f4/ead6e0e37209b07c9baa3e984ccdb0348ca370b77cea3aaea8ddbb097e00/lightning_utilities-0.15.3-py3-none-any.whl",
+      "archive_hashes": {
+        "sha256": "6c55f1bee70084a1cbeaa41ada96e4b3a0fea5909e844dd335bd80f5a73c5f91"
+      }
+    },
+    {
+      "name": "tzdata",
+      "version": "2026.4",
+      "download_url": "https://files.pythonhosted.org/packages/f9/bc/8737e8d54cf51106118039b83f485a4783112fab49ea9d044b234978a46e/tzdata-2026.4-py2.py3-none-any.whl",
+      "archive_hashes": {
+        "sha256": "c2169a8b0a7a5e9674da5a135ccdfb2b3e671b333ed9fed17b41f73c34476e81"
+      }
+    }
+  ],
+  "model_filename": "mace-mp-0b3-medium.model",
+  "model_size_bytes": 79472952,
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "model_url": "https://github.com/ACEsuit/mace-foundations/releases/download/mace_mp_0b3/mace-mp-0b3-medium.model",
+  "model_license": "MIT"
+}

@@ -1,0 +1,167 @@
+{
+  "status": "synthetic deterministic generator validation; actual Si electronic rate unavailable",
+  "units": "arbitrary model coordinates, energies and time; not physical seconds or Hz",
+  "energy_definition": [
+    "F0=0.5(q+0.35)^2",
+    "F1=0.8(q-0.25)^2+0.03"
+  ],
+  "kT": 0.12,
+  "mu": 0.02,
+  "sector_counts": [
+    0,
+    1
+  ],
+  "mobilities": [
+    1.0,
+    0.3
+  ],
+  "maximum_mass_error": 2.0834445280115688e-12,
+  "minimum_probability": 0.0,
+  "max_stationary_residual": 2.2737367544323206e-13,
+  "max_column_sum_residual": 7.275957614183426e-12,
+  "independent_exponential_comparisons": [
+    {
+      "cells": 24,
+      "rate": 0.0,
+      "spectral_vs_pade_max_abs": 7.805986285418405e-15
+    },
+    {
+      "cells": 24,
+      "rate": 30.0,
+      "spectral_vs_pade_max_abs": 4.185816428019621e-15
+    },
+    {
+      "cells": 24,
+      "rate": 30000.0,
+      "spectral_vs_pade_max_abs": 3.3650859876388495e-13
+    }
+  ],
+  "main_rate_slice": [
+    {
+      "cells": 48,
+      "charge_rate_model": 0.0,
+      "initial": "local_charge_equilibrium",
+      "time_model": 0.3,
+      "L1_marginal_error": 0.047250813955747546,
+      "L1_charge_disequilibrium": 0.13869207752372167,
+      "probability_mass_error": 6.661338147750939e-16,
+      "minimum_probability": 6.02944524892845e-09,
+      "generator_column_sum_max_abs": 1.4210854715202004e-14,
+      "stationary_residual": 1.7763568394002505e-15,
+      "detailed_balance_residual": 8.881784197001252e-16
+    },
+    {
+      "cells": 48,
+      "charge_rate_model": 3.0,
+      "initial": "local_charge_equilibrium",
+      "time_model": 0.3,
+      "L1_marginal_error": 0.0355048433272487,
+      "L1_charge_disequilibrium": 0.08985302340674013,
+      "probability_mass_error": 1.3322676295501878e-15,
+      "minimum_probability": 5.803612639769793e-08,
+      "generator_column_sum_max_abs": 2.7977620220553945e-14,
+      "stationary_residual": 2.0166160408230382e-15,
+      "detailed_balance_residual": 8.881784197001252e-16
+    },
+    {
+      "cells": 48,
+      "charge_rate_model": 30.0,
+      "initial": "local_charge_equilibrium",
+      "time_model": 0.3,
+      "L1_marginal_error": 0.009010280622500944,
+      "L1_charge_disequilibrium": 0.014265535466768288,
+      "probability_mass_error": 3.552713678800501e-15,
+      "minimum_probability": 8.031649277760152e-09,
+      "generator_column_sum_max_abs": 2.9178048865929895e-14,
+      "stationary_residual": 1.910797908788453e-15,
+      "detailed_balance_residual": 8.881784197001252e-16
+    },
+    {
+      "cells": 48,
+      "charge_rate_model": 300.0,
+      "initial": "local_charge_equilibrium",
+      "time_model": 0.3,
+      "L1_marginal_error": 0.000999474937231342,
+      "L1_charge_disequilibrium": 0.001390363286645465,
+      "probability_mass_error": 1.176836406102666e-14,
+      "minimum_probability": 5.228087561825867e-10,
+      "generator_column_sum_max_abs": 1.1368683772161603e-13,
+      "stationary_residual": 2.6645352591003757e-15,
+      "detailed_balance_residual": 1.3322676295501878e-15
+    },
+    {
+      "cells": 48,
+      "charge_rate_model": 3000.0,
+      "initial": "local_charge_equilibrium",
+      "time_model": 0.3,
+      "L1_marginal_error": 0.0001009639944734381,
+      "L1_charge_disequilibrium": 0.0001385823054930728,
+      "probability_mass_error": 3.952393967665557e-14,
+      "minimum_probability": 3.9610690973112135e-10,
+      "generator_column_sum_max_abs": 9.094947017729282e-13,
+      "stationary_residual": 1.9539925233402755e-14,
+      "detailed_balance_residual": 1.7763568394002505e-14
+    },
+    {
+      "cells": 48,
+      "charge_rate_model": 30000.0,
+      "initial": "local_charge_equilibrium",
+      "time_model": 0.3,
+      "L1_marginal_error": 1.0106560090008643e-05,
+      "L1_charge_disequilibrium": 1.3853583509878966e-05,
+      "probability_mass_error": 6.266098750984384e-13,
+      "minimum_probability": 3.8575251318463026e-10,
+      "generator_column_sum_max_abs": 4.977351863999502e-12,
+      "stationary_residual": 1.794120407794253e-13,
+      "detailed_balance_residual": 1.4210854715202004e-13
+    }
+  ],
+  "main_grid_slice": [
+    {
+      "cells": 12,
+      "spacing": 0.16666666666666666,
+      "time_model": 0.3,
+      "L1_finite_grid_vs_continuum_SG": 0.0074222014039028615,
+      "coarse_mass_error": 4.440892098500626e-16,
+      "continuum_mass_error": 0.0
+    },
+    {
+      "cells": 24,
+      "spacing": 0.08333333333333333,
+      "time_model": 0.3,
+      "L1_finite_grid_vs_continuum_SG": 0.001974819036770395,
+      "coarse_mass_error": 1.887379141862766e-15,
+      "continuum_mass_error": 8.881784197001252e-16
+    },
+    {
+      "cells": 48,
+      "spacing": 0.041666666666666664,
+      "time_model": 0.3,
+      "L1_finite_grid_vs_continuum_SG": 0.00048792195659761345,
+      "coarse_mass_error": 9.992007221626409e-16,
+      "continuum_mass_error": 2.220446049250313e-15
+    },
+    {
+      "cells": 96,
+      "spacing": 0.020833333333333332,
+      "time_model": 0.3,
+      "L1_finite_grid_vs_continuum_SG": 0.00012176270012995133,
+      "coarse_mass_error": 9.769962616701378e-15,
+      "continuum_mass_error": 6.8833827526759706e-15
+    },
+    {
+      "cells": 192,
+      "spacing": 0.010416666666666666,
+      "time_model": 0.3,
+      "L1_finite_grid_vs_continuum_SG": 3.0420035628845347e-05,
+      "coarse_mass_error": 2.3425705819590803e-14,
+      "continuum_mass_error": 6.217248937900877e-15
+    }
+  ],
+  "charge_rate_cases": 108,
+  "spatial_cases": 15,
+  "absorption_cases": 18,
+  "absorption_mass_balance_max": 1.5498713423767185e-12,
+  "new_DFT_runs": 0,
+  "new_MD_runs": 0
+}

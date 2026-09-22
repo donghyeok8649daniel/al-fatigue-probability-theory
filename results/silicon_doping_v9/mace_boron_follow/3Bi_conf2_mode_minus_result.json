@@ -1,0 +1,26 @@
+{
+  "structure": "3Bi_conf2_mode_minus",
+  "source_saddle": "3boron_int_cluster_confi_2_final.extxyz",
+  "seed_mode_sign": -1,
+  "seed_displacement_norm_A": 0.05,
+  "saddle_energy_eV": -359.1469967720248,
+  "seed_energy_eV": -359.147143118399,
+  "final_energy_eV": -360.0169019895524,
+  "energy_change_from_saddle_eV": -0.8699052175276165,
+  "force_max_eV_A": 8.670257932033052e-06,
+  "force_converged": true,
+  "attempts": [
+    {
+      "method": "BFGSLineSearch",
+      "steps": 55,
+      "converged": true,
+      "maximum_logged_energy_increase_eV": -1.9383605831535533e-10,
+      "force_max_eV_A": 8.670257932033052e-06,
+      "energy_eV": -360.0169019895524
+    }
+  ],
+  "calculator_evaluations": 83,
+  "local_minimum_Hessian_checked": false,
+  "elapsed_reported_s": 145.43700599996373,
+  "status": "negative-mode-following candidate; verify full Hessian before minimum claim"
+}

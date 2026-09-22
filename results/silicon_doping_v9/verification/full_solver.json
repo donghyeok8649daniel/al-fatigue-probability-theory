@@ -1,0 +1,19 @@
+{
+  "command": [
+    "python",
+    "-m",
+    "pytest",
+    "solver_v1",
+    "-q",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "exit_code": 0,
+  "elapsed_reported_s": 1804.742775300052,
+  "python": "3.13.5",
+  "path_redactions": [
+    "repository root",
+    "user profile"
+  ],
+  "timing_note": "reported perf_counter duration; not inferred CPU time"
+}

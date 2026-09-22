@@ -1,0 +1,142 @@
+[
+  {
+    "structure": "3Bi_conf2_mode_plus",
+    "energy_eV": -360.01690198955214,
+    "atoms": 67,
+    "B_atoms": 3,
+    "Hessian_method": "central Cartesian force differences; one pair at a time",
+    "Hessian_step_A": 0.0001,
+    "force_evaluations": 410,
+    "force_backend": "direct",
+    "force_backend_comparison": {
+      "energy_difference_eV": 0.0,
+      "max_force_difference_eV_A": 1.1102230246251565e-16
+    },
+    "max_force_eV_A": 8.673713567417593e-06,
+    "Hessian_max_asymmetry_eV_A2": 7.38536037880877e-07,
+    "translation_residual_eV_A2": 1.1237819452780684e-08,
+    "Cartesian_projected_min_eigenvalue_eV_A2": 0.41193219719906565,
+    "Cartesian_projected_first_10_eigenvalues_eV_A2": [
+      0.41193219719906565,
+      0.8884802436714629,
+      1.143047155389523,
+      1.2341967903394504,
+      1.347595873074969,
+      1.4783550933045877,
+      1.5521556387159663,
+      1.6223615032339218,
+      1.6603835323998786,
+      1.7094193443101324
+    ],
+    "mass_weighted_min_eigenvalue": 0.023622750540389176,
+    "highest_3NB_Gamma_frequencies_cm_minus1": [
+      482.4702079761998,
+      485.3606986097468,
+      488.13717815653797,
+      493.484003910033,
+      532.0715057483778,
+      580.6482865110545,
+      690.1909173775177,
+      719.0150410854602,
+      805.9899842513282
+    ],
+    "frequency_conversion_cm_minus1": 521.4708980082235,
+    "independent_Hessian_vector_checks": [
+      {
+        "step_A": 0.001,
+        "max_abs_error_eV_A2": 5.446450457302632e-07,
+        "L2_error_eV_A2": 2.1364312522384134e-06
+      },
+      {
+        "step_A": 0.0003,
+        "max_abs_error_eV_A2": 7.255344347534276e-08,
+        "L2_error_eV_A2": 2.0172977357700042e-07
+      },
+      {
+        "step_A": 0.0001,
+        "max_abs_error_eV_A2": 7.107349886403824e-08,
+        "L2_error_eV_A2": 1.688604512225553e-07
+      }
+    ],
+    "max_initial_to_final_minimum_image_displacement_A": 1.4259056574815092,
+    "B_pair_distances_A": [
+      1.691887276920956,
+      3.0865118847282447,
+      1.6921827468626152
+    ],
+    "imposed_charge": "none; neutral ML model",
+    "Hessian_status": "positive fixed-cell curvature and force tolerance passed",
+    "scope": "Gamma supercell only; all cell strains excluded; finite-T and full-q stability unverified",
+    "elapsed_reported_s": 667.8684099999955
+  },
+  {
+    "structure": "3Bi_conf2_mode_minus",
+    "energy_eV": -360.01690198955214,
+    "atoms": 67,
+    "B_atoms": 3,
+    "Hessian_method": "central Cartesian force differences; one pair at a time",
+    "Hessian_step_A": 0.0001,
+    "force_evaluations": 410,
+    "force_backend": "direct",
+    "force_backend_comparison": {
+      "energy_difference_eV": 0.0,
+      "max_force_difference_eV_A": 0.0
+    },
+    "max_force_eV_A": 8.673788077943659e-06,
+    "Hessian_max_asymmetry_eV_A2": 7.385349276578523e-07,
+    "translation_residual_eV_A2": 1.1238531327784074e-08,
+    "Cartesian_projected_min_eigenvalue_eV_A2": 0.4119321976035931,
+    "Cartesian_projected_first_10_eigenvalues_eV_A2": [
+      0.4119321976035931,
+      0.8884802438933539,
+      1.1430471553457011,
+      1.2341967892530858,
+      1.3475958735475013,
+      1.4783550938746188,
+      1.5521556395354075,
+      1.6223615045065074,
+      1.660383531962096,
+      1.709419345112594
+    ],
+    "mass_weighted_min_eigenvalue": 0.02362275055950916,
+    "highest_3NB_Gamma_frequencies_cm_minus1": [
+      482.4702080567381,
+      485.3606986423331,
+      488.13717808107896,
+      493.48400403803424,
+      532.0715058404008,
+      580.6482864719411,
+      690.1909173858477,
+      719.0150410894217,
+      805.9899842945964
+    ],
+    "frequency_conversion_cm_minus1": 521.4708980082235,
+    "independent_Hessian_vector_checks": [
+      {
+        "step_A": 0.001,
+        "max_abs_error_eV_A2": 4.1400460393248295e-07,
+        "L2_error_eV_A2": 2.101222007923137e-06
+      },
+      {
+        "step_A": 0.0003,
+        "max_abs_error_eV_A2": 1.1061930793587749e-07,
+        "L2_error_eV_A2": 2.57416395822178e-07
+      },
+      {
+        "step_A": 0.0001,
+        "max_abs_error_eV_A2": 1.0995960408877181e-07,
+        "L2_error_eV_A2": 2.207994754505796e-07
+      }
+    ],
+    "max_initial_to_final_minimum_image_displacement_A": 1.4259056574815099,
+    "B_pair_distances_A": [
+      1.6918872769209563,
+      3.086511884728245,
+      1.6921827468626158
+    ],
+    "imposed_charge": "none; neutral ML model",
+    "Hessian_status": "positive fixed-cell curvature and force tolerance passed",
+    "scope": "Gamma supercell only; all cell strains excluded; finite-T and full-q stability unverified",
+    "elapsed_reported_s": 627.7242482999573
+  }
+]

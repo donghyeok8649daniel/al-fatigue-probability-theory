@@ -1,5 +1,33 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-22 최신: Si/B 원자 대조·전하 동역학 v9
+
+- 최신 사용자 지시: Si 도핑 검증을 계속하고 약3시간 자율 연구. CAD/UI/Al 옛 작업은
+  재개하지 않았다. 실제 위치 aft-silicon-wafer / silicon-wafer-research, 추가agent0.
+  v8 게시 HEAD19352f2에서 시작했다. 최종Git은 실제 log/fresh remote로 확인한다.
+- MACE-MP-0b3-medium을 별도 venv에서 실제 실행. Cambridge Si2,475구조/171,815원자,
+  기준점 포함2,476평가. v5 source 배열exact일치. 35group 중34개에서 SW/Tersoff보다
+  낮은 force RMSE, 고립원자1group은0동률. (111)균열1.029/.795→.253eV/A.
+  학습중복/XC차이·남은에너지오차를 숨기지 않으며 production으로 채택하지 않았다.
+- Durham B2025 입력7개 neutral고정셀 이완. interstitial5개 fullH에서3B config2만
+  lambda_min−.121721eV/A²인 안장점. ±negative mode를 BFGSLineSearch로 재이완하여
+  양쪽−.86990522eV 하강, 최저곡률+.411932로 확인. source config1과 cubic symmetry
+  및 원자배열 대조 RMS4.632e−5A. 원래안장점은별도보존했다. 장벽/DFT승인아님.
+  −끝점은반사가필요한거울상파트너(proper-only RMS.281518A)다. 대칭등가에너지를
+  같은하중방향의동일상태나하나의통계적배치로합치지않는다.
+- 화학배치·정수전하branch 공통SG 생성자, 빠른전하/격자극한·흡수보존·정확memory
+  Schur축약·전체전하제약을수학검증했다. 실제Si charge-rate/PMF/mobility/Hz는없다.
+- 최종solver946PASS+6subtests, 새12개포함. JSON/CSV19파일별도replay. v8 app189+3,
+  smoke0는이전결과로유지하고이번새실행으로세지않는다. Source/method/실패/남은물리:
+  results/silicon_doping_v9/COMPLETED_SUMMARY.md, REPRODUCE.md, artifact_manifest.json.
+- Vectorized full autodiff Hessian의메모리증가·첫LBFGS의안장점재접근은해당작업만
+  중단하고원기록보존. 순차force-difference와line search로대체했다. potential불변.
+- Si64/216/512host에서B1/B2에너지대조, B1최고Gamma772.553/775.634/776.009cm−1.
+  source840cm−1차이는셀크기로해소되지않았다. 중성치환형2개도양의전체H확인.
+  총9전체H,72독립mode차분. 셀크기·최고진동수·치환형neutral상세는완료요약을읽는다.
+  Large-cell force convergence/일부mode 검증을 full-q/finite-T 안정성으로 부르지 않는다.
+  새DFT/MD0, 재료미채택, 기존v4PMF/v6장벽·생산Si/Hz gate와Al코드불변.
+
 ## 2026-09-22 최신: Si 도핑 독립 검증 v8
 
 - 시작 fresh origin/local 4d1e3b984e3833f9800c4b09ba1af4b913ea3fc4 일치/clean.

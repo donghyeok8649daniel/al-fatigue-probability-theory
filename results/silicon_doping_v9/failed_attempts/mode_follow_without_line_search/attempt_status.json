@@ -1,0 +1,14 @@
+{
+  "status": "operator-stopped incomplete optimization",
+  "case": "3B interstitial configuration 2, positive negative-curvature seed",
+  "optimizer": "ASE LBFGS without line search",
+  "reason": "nonmonotone steps repeatedly returned close to the known saddle; switch to BFGSLineSearch from the same verified seed",
+  "source_saddle_energy_eV": -359.1469967720248,
+  "logged_iteration_64_energy_eV": -359.146404,
+  "logged_iteration_64_fmax_eV_A": 0.060257,
+  "negative_curvature_independently_confirmed": true,
+  "original_log_and_seed_preserved": true,
+  "potential_changed": false,
+  "completed_minimization": false,
+  "termination": "both launcher/child command lines verified to match this exact script and output directory; first termination returned 0, other process already absent"
+}

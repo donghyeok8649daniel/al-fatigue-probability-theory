@@ -1,0 +1,4 @@
+host_atoms_per_cell,one_interstitial_chemical_B_cm3,two_interstitial_chemical_B_cm3,one_interstitial_excess_eV,two_interstitial_excess_eV,association_energy_eV,convention,full_Hessian_checked,scope
+64,7.803161664256749e+20,1.5606323328513498e+21,-4.658811094900955,-9.878735716549215,0.561113526747306,2 E(Si_N+B) - E(Si_N+2B) - E(Si_N); positive favors the paired endpoint,True,neutral MACE fixed-volume periodic endpoint energy; not association barrier
+216,2.31204790052052e+20,4.62409580104104e+20,-4.665488970973456,-9.888813393470855,0.5578354515239425,2 E(Si_N+B) - E(Si_N+2B) - E(Si_N); positive favors the paired endpoint,False,neutral MACE fixed-volume periodic endpoint energy; not association barrier
+512,9.75395208032094e+19,1.950790416064188e+20,-4.667388558105358,-9.89461769214995,0.5598405759392335,2 E(Si_N+B) - E(Si_N+2B) - E(Si_N); positive favors the paired endpoint,False,neutral MACE fixed-volume periodic endpoint energy; not association barrier

@@ -1,0 +1,39 @@
+{
+  "access_date_UTC": "2026-09-22",
+  "scope": "primary-source screening of electronic-charge model options; no additional model execution",
+  "selected_executed_reference": {
+    "name": "MACE-MP-0b3 medium",
+    "official_source": "https://github.com/ACEsuit/mace-foundations",
+    "release": "https://github.com/ACEsuit/mace-foundations/releases/tag/mace_mp_0b3",
+    "declared_training": "MPTrj, DFT PBE+U; second-generation release also describes repulsion regularization and extra high-pressure examples",
+    "license": "MIT",
+    "release_note": "b3 reports phonon fixes relative to b2; this is not a Si/B defect accuracy certificate",
+    "independent_excess_charge_control_used_in_v9": false,
+    "model_SHA256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012"
+  },
+  "unexecuted_candidates": [
+    {
+      "name": "MACE-OMOL-0",
+      "official_source": "https://github.com/ACEsuit/mace-foundations",
+      "declared_training": "OMol25 molecular data, wB97M-V/def2-TZVPD",
+      "documented_feature": "charge and spin embeddings",
+      "executed": false,
+      "periodic_charged_Si_B_P_validation_acquired": false,
+      "interpretation": "Molecular charge inputs alone do not establish a calibrated charged periodic silicon free-energy branch. This is a scope assessment, not a claim that the implementation cannot run with periodic boundaries."
+    },
+    {
+      "name": "MACE-Polar-1",
+      "official_source": "https://github.com/ACEsuit/mace-foundations/tree/main/mace_polar_1",
+      "declared_training": "OMol, wB97M-V",
+      "documented_feature": "PolarMACE field/electrostatics, graph_longrange requirement; single Default head",
+      "executed": false,
+      "periodic_charged_Si_B_P_validation_acquired": false,
+      "interpretation": "A long-range electrostatic model is a candidate for further examination, not a demonstrated Si doping calibration. No statement about unavailable numerical charge branches is inferred from the model name."
+    }
+  ],
+  "new_ML_evaluations_in_this_screening": 0,
+  "new_DFT_runs": 0,
+  "new_MD_runs": 0,
+  "production_registry_changed": false,
+  "physical_clock_calibrated": false
+}

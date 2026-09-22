@@ -1,0 +1,5 @@
+# Source archives, generated records and their SHA-256 hashes bind exact bytes.
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Preserve published source formatting and raw numeric optimizer/test logs.
+sources/durham_original/** -whitespace
+**/*.log -whitespace

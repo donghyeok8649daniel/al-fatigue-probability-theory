@@ -1,0 +1,110 @@
+{
+  "neutral_MACE_input_structures": 7,
+  "all_force_converged": true,
+  "source_charged_acceptor_targets_compared_with_neutral_model": false,
+  "neutral_interstitial_Hessians": 5,
+  "minimum_fixed_cell_curvature": -0.12172127452108279,
+  "initial_relaxation_calculator_evaluations": 1140,
+  "initial_force_FD_max_abs_error_at_1e_minus4_A": 2.7097755150862213e-08,
+  "initial_stress_FD_max_abs_error_at_1e_minus4_strain": 1.721538085697194e-09,
+  "relative_energy_comparisons": [
+    {
+      "structure": "3boron_int_cluster_confi_1",
+      "MACE_relative_energy_eV": 0.0,
+      "published_LDA_relative_formation_energy_eV": 0.0,
+      "difference_eV": 0.0,
+      "all_three_force_converged": true,
+      "status": "cross-functional transfer check; not common-level DFT validation",
+      "MACE_Hessian_status": "positive fixed-cell curvature and force tolerance passed",
+      "comparison_scope": "source-seeded stationary states; not all are local minima"
+    },
+    {
+      "structure": "3boron_int_cluster_confi_2",
+      "MACE_relative_energy_eV": 0.8699051862586771,
+      "published_LDA_relative_formation_energy_eV": 1.42,
+      "difference_eV": -0.5500948137413229,
+      "all_three_force_converged": true,
+      "status": "cross-functional transfer check; not common-level DFT validation",
+      "MACE_Hessian_status": "negative curvature; not a local minimum",
+      "comparison_scope": "source-seeded stationary states; not all are local minima"
+    },
+    {
+      "structure": "3boron_int_cluster_confi_3",
+      "MACE_relative_energy_eV": 1.5864068100783584,
+      "published_LDA_relative_formation_energy_eV": 4.51,
+      "difference_eV": -2.9235931899216414,
+      "all_three_force_converged": true,
+      "status": "cross-functional transfer check; not common-level DFT validation",
+      "MACE_Hessian_status": "positive fixed-cell curvature and force tolerance passed",
+      "comparison_scope": "source-seeded stationary states; not all are local minima"
+    }
+  ],
+  "state_comparisons": [
+    {
+      "structure": "b_silicon_64_interstitial",
+      "force_max_eV_A": 4.4506089504883686e-05,
+      "fixed_cell_min_curvature_eV_A2": 0.3975154452402595,
+      "Hessian_status": "positive fixed-cell curvature and force tolerance passed",
+      "max_initial_to_final_displacement_A": 0.36192385999999993,
+      "sorted_top_frequency_RMSE_cm_minus1": 48.817693281439034,
+      "sorted_top_frequency_max_error_cm_minus1": 67.4467250783947,
+      "published_max_frequency_cm_minus1": 840.0,
+      "MACE_max_frequency_cm_minus1": 772.5532749216053
+    },
+    {
+      "structure": "2boron_int_cluster",
+      "force_max_eV_A": 7.053120126856248e-05,
+      "fixed_cell_min_curvature_eV_A2": 0.42409753169119596,
+      "Hessian_status": "positive fixed-cell curvature and force tolerance passed",
+      "max_initial_to_final_displacement_A": 0.9030988111260275,
+      "sorted_top_frequency_RMSE_cm_minus1": 90.85641149528045,
+      "sorted_top_frequency_max_error_cm_minus1": 178.53365939596006,
+      "published_max_frequency_cm_minus1": 937.0,
+      "MACE_max_frequency_cm_minus1": 831.078202091103
+    },
+    {
+      "structure": "3boron_int_cluster_confi_1",
+      "force_max_eV_A": 9.432900784520556e-05,
+      "fixed_cell_min_curvature_eV_A2": 0.4122082650341753,
+      "Hessian_status": "positive fixed-cell curvature and force tolerance passed",
+      "max_initial_to_final_displacement_A": 1.237575859684278,
+      "sorted_top_frequency_RMSE_cm_minus1": 119.39132130267647,
+      "sorted_top_frequency_max_error_cm_minus1": 230.00448079531543,
+      "published_max_frequency_cm_minus1": 1015.0,
+      "MACE_max_frequency_cm_minus1": 805.9791847586224
+    },
+    {
+      "structure": "3boron_int_cluster_confi_2",
+      "force_max_eV_A": 6.797063083965851e-05,
+      "fixed_cell_min_curvature_eV_A2": -0.12172127452108279,
+      "Hessian_status": "negative curvature; not a local minimum",
+      "max_initial_to_final_displacement_A": 0.49189868892851557,
+      "sorted_top_frequency_RMSE_cm_minus1": 110.20758488052905,
+      "sorted_top_frequency_max_error_cm_minus1": 305.0438420225014,
+      "published_max_frequency_cm_minus1": 1212.0,
+      "MACE_max_frequency_cm_minus1": 906.9561579774986
+    },
+    {
+      "structure": "3boron_int_cluster_confi_3",
+      "force_max_eV_A": 8.670451914074583e-05,
+      "fixed_cell_min_curvature_eV_A2": 0.32493901869604025,
+      "Hessian_status": "positive fixed-cell curvature and force tolerance passed",
+      "max_initial_to_final_displacement_A": 0.40764953281329697,
+      "sorted_top_frequency_RMSE_cm_minus1": 90.29522228011736,
+      "sorted_top_frequency_max_error_cm_minus1": 202.82663491750566,
+      "published_max_frequency_cm_minus1": 825.0,
+      "MACE_max_frequency_cm_minus1": 801.2150604617354
+    }
+  ],
+  "unstable_original_states": [
+    "3boron_int_cluster_confi_2"
+  ],
+  "negative_mode_following_results": "mace_boron_follow; separate final Hessians and endpoint validation",
+  "material_status": "not adopted: quantitative B energy/spectrum discrepancies and different source theory/final geometry",
+  "fixed_cell_Gamma_only": true,
+  "complete_phonon_dispersion": false,
+  "finite_T_free_energy": false,
+  "new_DFT_runs": 0,
+  "new_MD_runs": 0,
+  "kinetic_calibrated": false
+}

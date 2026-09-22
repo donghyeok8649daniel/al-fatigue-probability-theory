@@ -1,0 +1,28 @@
+{
+  "source": "3boron_int_cluster_confi_2_final.extxyz",
+  "source_state_sha256": "e0442ee0ee1681cdd1825b3f79d24dabb72d3a7a7ee8094cbc601187af433401",
+  "source_hessian_sha256": "13cc17b26495cc15891804c3adeaffde46eb4cfd244763c451c358feca4e9a9c",
+  "eigenvalue_eV_A2": -0.1217212745210878,
+  "checks": [
+    {
+      "step_A": 0.001,
+      "force_curvature_eV_A2": -0.12171738276690454,
+      "energy_curvature_eV_A2": -0.12171932439741795
+    },
+    {
+      "step_A": 0.0003,
+      "force_curvature_eV_A2": -0.12172076909072108,
+      "energy_curvature_eV_A2": -0.12171881280664822
+    },
+    {
+      "step_A": 0.0001,
+      "force_curvature_eV_A2": -0.12172106677251233,
+      "energy_curvature_eV_A2": -0.12171312846476212
+    },
+    {
+      "step_A": 3e-05,
+      "force_curvature_eV_A2": -0.12172110059563983,
+      "energy_curvature_eV_A2": -0.12177123507070872
+    }
+  ]
+}

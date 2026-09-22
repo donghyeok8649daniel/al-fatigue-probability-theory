@@ -1,0 +1,618 @@
+{
+  "model_name": "MACE-MP-0b3-medium",
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "model_URL": "https://github.com/ACEsuit/mace-foundations/releases/download/mace_mp_0b3/mace-mp-0b3-medium.model",
+  "license": "MIT",
+  "training": "MPTrj PBE+U; transfer to B defect LDA targets is not guaranteed",
+  "dtype": "float64",
+  "device": "CPU",
+  "torch_threads": 2,
+  "versions": {
+    "mace-torch": "0.3.16",
+    "torch": "2.12.1",
+    "e3nn": "0.4.4",
+    "ase": "3.29.0",
+    "numpy": "2.5.0",
+    "scipy": "1.18.1",
+    "matscipy": "1.2.0"
+  },
+  "force_tolerance_eV_A": 0.0001,
+  "max_steps_per_optimizer": 600,
+  "cases": [
+    {
+      "structure": "2boron_int_cluster",
+      "model": "MACE-MP-0b3-medium",
+      "imposed_charge": "none; neutral ML model",
+      "source_geometry": "Durham B-2025 input",
+      "cell_constraint": "fixed source cube",
+      "initial": {
+        "energy_eV": -342.2735942250199,
+        "max_force_eV_A": 30.34984877060563,
+        "total_force_eV_A": [
+          1.4210854715202004e-14,
+          -3.3306690738754696e-16,
+          -4.440892098500626e-16
+        ],
+        "stress_eV_A3": [
+          -0.08000971304257595,
+          -0.016894701243471925,
+          -0.016894701243471935,
+          -0.0007567430626252924,
+          -0.00016300364024176553,
+          -0.0001630036402418264
+        ],
+        "atoms": 66,
+        "volume_A3": 1281.5318239279993,
+        "evaluations": 56
+      },
+      "attempts": [
+        {
+          "optimizer": "LBFGS",
+          "steps": 90,
+          "converged": true,
+          "state": {
+            "energy_eV": -354.26475721034683,
+            "max_force_eV_A": 7.058653697106092e-05,
+            "total_force_eV_A": [
+              1.317305639569888e-16,
+              4.15798309411769e-16,
+              -2.358139725155972e-16
+            ],
+            "stress_eV_A3": [
+              -0.01856393115652368,
+              -0.01599457176260359,
+              -0.015994571762603695,
+              -0.002474112810413696,
+              0.001534250746857999,
+              0.001534250746857978
+            ],
+            "atoms": 66,
+            "volume_A3": 1281.5318239279993,
+            "evaluations": 146
+          }
+        }
+      ],
+      "final": {
+        "energy_eV": -354.26475721034683,
+        "max_force_eV_A": 7.058653697106092e-05,
+        "total_force_eV_A": [
+          1.317305639569888e-16,
+          4.15798309411769e-16,
+          -2.358139725155972e-16
+        ],
+        "stress_eV_A3": [
+          -0.01856393115652368,
+          -0.01599457176260359,
+          -0.015994571762603695,
+          -0.002474112810413696,
+          0.001534250746857999,
+          0.001534250746857978
+        ],
+        "atoms": 66,
+        "volume_A3": 1281.5318239279993,
+        "evaluations": 146
+      },
+      "converged": true,
+      "evaluations": 91,
+      "elapsed_reported_s": 107.68301020003855
+    },
+    {
+      "structure": "3boron_int_cluster_confi_1",
+      "model": "MACE-MP-0b3-medium",
+      "imposed_charge": "none; neutral ML model",
+      "source_geometry": "Durham B-2025 input",
+      "cell_constraint": "fixed source cube",
+      "initial": {
+        "energy_eV": -340.8920279655555,
+        "max_force_eV_A": 30.31787245304049,
+        "total_force_eV_A": [
+          -2.842170943040401e-14,
+          0.0,
+          -5.551115123125783e-16
+        ],
+        "stress_eV_A3": [
+          -0.11490021285744519,
+          -0.019761146404779342,
+          -0.019775005485077587,
+          -0.0005041420179315346,
+          -0.0003160032336659588,
+          -4.3453425460106794e-05
+        ],
+        "atoms": 67,
+        "volume_A3": 1281.5318239279993,
+        "evaluations": 147
+      },
+      "attempts": [
+        {
+          "optimizer": "LBFGS",
+          "steps": 600,
+          "converged": false,
+          "state": {
+            "energy_eV": -359.98193434185964,
+            "max_force_eV_A": 0.022805300466707926,
+            "total_force_eV_A": [
+              3.2612801348363973e-16,
+              -1.3010426069826053e-16,
+              -1.5265566588595902e-16
+            ],
+            "stress_eV_A3": [
+              -0.02069537107398456,
+              -0.014868087640518961,
+              -0.0177761099812471,
+              0.001239106746449686,
+              0.0035797536165521754,
+              9.97154542239213e-06
+            ],
+            "atoms": 67,
+            "volume_A3": 1281.5318239279993,
+            "evaluations": 747
+          }
+        },
+        {
+          "optimizer": "FIRE",
+          "steps": 119,
+          "converged": true,
+          "state": {
+            "energy_eV": -360.0169019582841,
+            "max_force_eV_A": 9.431059787838167e-05,
+            "total_force_eV_A": [
+              3.0013426639829976e-16,
+              -3.6857452853644723e-16,
+              2.5131806358213993e-16
+            ],
+            "stress_eV_A3": [
+              -0.02040431834943004,
+              -0.016970792685711174,
+              -0.018565929572282598,
+              0.002667332162867975,
+              0.0029635429864998245,
+              -0.0002856445875299894
+            ],
+            "atoms": 67,
+            "volume_A3": 1281.5318239279993,
+            "evaluations": 866
+          }
+        }
+      ],
+      "final": {
+        "energy_eV": -360.0169019582841,
+        "max_force_eV_A": 9.431059787838167e-05,
+        "total_force_eV_A": [
+          3.0013426639829976e-16,
+          -3.6857452853644723e-16,
+          2.5131806358213993e-16
+        ],
+        "stress_eV_A3": [
+          -0.02040431834943004,
+          -0.016970792685711174,
+          -0.018565929572282598,
+          0.002667332162867975,
+          0.0029635429864998245,
+          -0.0002856445875299894
+        ],
+        "atoms": 67,
+        "volume_A3": 1281.5318239279993,
+        "evaluations": 866
+      },
+      "converged": true,
+      "evaluations": 720,
+      "elapsed_reported_s": 1146.5323945999844
+    },
+    {
+      "structure": "3boron_int_cluster_confi_2",
+      "model": "MACE-MP-0b3-medium",
+      "imposed_charge": "none; neutral ML model",
+      "source_geometry": "Durham B-2025 input",
+      "cell_constraint": "fixed source cube",
+      "initial": {
+        "energy_eV": -341.2987572407801,
+        "max_force_eV_A": 30.736561260345816,
+        "total_force_eV_A": [
+          1.4210854715202004e-14,
+          -9.71445146547012e-17,
+          3.0531133177191805e-16
+        ],
+        "stress_eV_A3": [
+          -0.11451667418660522,
+          -0.019446869116777267,
+          -0.019446869116777253,
+          -0.00011439012529090849,
+          -0.00024763814342360817,
+          0.000247638143423977
+        ],
+        "atoms": 67,
+        "volume_A3": 1281.5318239279993,
+        "evaluations": 867
+      },
+      "attempts": [
+        {
+          "optimizer": "LBFGS",
+          "steps": 78,
+          "converged": true,
+          "state": {
+            "energy_eV": -359.14699677202543,
+            "max_force_eV_A": 6.790281125155847e-05,
+            "total_force_eV_A": [
+              -1.1319070680748666e-16,
+              -2.5522119140308774e-16,
+              2.8579569266717897e-16
+            ],
+            "stress_eV_A3": [
+              -0.023723761350689012,
+              -0.01791012647768243,
+              -0.017910126477682496,
+              0.0016570673063777072,
+              0.0009768537362814145,
+              -0.0009768537362814893
+            ],
+            "atoms": 67,
+            "volume_A3": 1281.5318239279993,
+            "evaluations": 945
+          }
+        }
+      ],
+      "final": {
+        "energy_eV": -359.14699677202543,
+        "max_force_eV_A": 6.790281125155847e-05,
+        "total_force_eV_A": [
+          -1.1319070680748666e-16,
+          -2.5522119140308774e-16,
+          2.8579569266717897e-16
+        ],
+        "stress_eV_A3": [
+          -0.023723761350689012,
+          -0.01791012647768243,
+          -0.017910126477682496,
+          0.0016570673063777072,
+          0.0009768537362814145,
+          -0.0009768537362814893
+        ],
+        "atoms": 67,
+        "volume_A3": 1281.5318239279993,
+        "evaluations": 945
+      },
+      "converged": true,
+      "evaluations": 79,
+      "elapsed_reported_s": 152.1193600000115
+    },
+    {
+      "structure": "3boron_int_cluster_confi_3",
+      "model": "MACE-MP-0b3-medium",
+      "imposed_charge": "none; neutral ML model",
+      "source_geometry": "Durham B-2025 input",
+      "cell_constraint": "fixed source cube",
+      "initial": {
+        "energy_eV": -342.038700611969,
+        "max_force_eV_A": 30.23619838519876,
+        "total_force_eV_A": [
+          -1.0658141036401503e-14,
+          2.706168622523819e-16,
+          -2.914335439641036e-16
+        ],
+        "stress_eV_A3": [
+          -0.11288806759976015,
+          -0.01895608478554778,
+          -0.01895608478554782,
+          0.0005965216579494726,
+          0.0001420202469098614,
+          -0.00014202024690947724
+        ],
+        "atoms": 67,
+        "volume_A3": 1281.5318239279993,
+        "evaluations": 946
+      },
+      "attempts": [
+        {
+          "optimizer": "LBFGS",
+          "steps": 87,
+          "converged": true,
+          "state": {
+            "energy_eV": -358.43049514820575,
+            "max_force_eV_A": 8.677315345832454e-05,
+            "total_force_eV_A": [
+              -1.7314708694593506e-16,
+              -1.0107474752996115e-16,
+              -2.2293907171733185e-16
+            ],
+            "stress_eV_A3": [
+              -0.025879620424843167,
+              -0.018292304840450378,
+              -0.01829230484045041,
+              -0.0009729479549413514,
+              0.00012643600411343174,
+              -0.0001264360041135026
+            ],
+            "atoms": 67,
+            "volume_A3": 1281.5318239279993,
+            "evaluations": 1033
+          }
+        }
+      ],
+      "final": {
+        "energy_eV": -358.43049514820575,
+        "max_force_eV_A": 8.677315345832454e-05,
+        "total_force_eV_A": [
+          -1.7314708694593506e-16,
+          -1.0107474752996115e-16,
+          -2.2293907171733185e-16
+        ],
+        "stress_eV_A3": [
+          -0.025879620424843167,
+          -0.018292304840450378,
+          -0.01829230484045041,
+          -0.0009729479549413514,
+          0.00012643600411343174,
+          -0.0001264360041135026
+        ],
+        "atoms": 67,
+        "volume_A3": 1281.5318239279993,
+        "evaluations": 1033
+      },
+      "converged": true,
+      "evaluations": 88,
+      "elapsed_reported_s": 164.85675829998218
+    },
+    {
+      "structure": "64_acceptor_cluster",
+      "model": "MACE-MP-0b3-medium",
+      "imposed_charge": "none; neutral ML model",
+      "source_geometry": "Durham B-2025 input",
+      "cell_constraint": "fixed source cube",
+      "initial": {
+        "energy_eV": -344.04349715203637,
+        "max_force_eV_A": 1.944652067631256,
+        "total_force_eV_A": [
+          -4.423544863740858e-16,
+          -2.2638141361497333e-16,
+          2.009677146919131e-15
+        ],
+        "stress_eV_A3": [
+          -8.802216912296595e-05,
+          -8.802216912295625e-05,
+          -8.802216912299644e-05,
+          0.0008500047570979659,
+          0.0008500047570979725,
+          -0.0008500047570976329
+        ],
+        "atoms": 64,
+        "volume_A3": 1281.5318239279993,
+        "evaluations": 1034
+      },
+      "attempts": [
+        {
+          "optimizer": "LBFGS",
+          "steps": 36,
+          "converged": true,
+          "state": {
+            "energy_eV": -345.7661893396656,
+            "max_force_eV_A": 8.901978830164668e-05,
+            "total_force_eV_A": [
+              5.789639601072594e-16,
+              2.29471389806557e-16,
+              -3.3897580922759296e-16
+            ],
+            "stress_eV_A3": [
+              0.001730505731486864,
+              0.001730505731486842,
+              0.0017305057314868828,
+              -1.1119210873099967e-05,
+              -1.1119210872967405e-05,
+              1.1119210873023876e-05
+            ],
+            "atoms": 64,
+            "volume_A3": 1281.5318239279993,
+            "evaluations": 1070
+          }
+        }
+      ],
+      "final": {
+        "energy_eV": -345.7661893396656,
+        "max_force_eV_A": 8.901978830164668e-05,
+        "total_force_eV_A": [
+          5.789639601072594e-16,
+          2.29471389806557e-16,
+          -3.3897580922759296e-16
+        ],
+        "stress_eV_A3": [
+          0.001730505731486864,
+          0.001730505731486842,
+          0.0017305057314868828,
+          -1.1119210873099967e-05,
+          -1.1119210872967405e-05,
+          1.1119210873023876e-05
+        ],
+        "atoms": 64,
+        "volume_A3": 1281.5318239279993,
+        "evaluations": 1070
+      },
+      "converged": true,
+      "evaluations": 37,
+      "elapsed_reported_s": 66.3530776000116
+    },
+    {
+      "structure": "b_silicon_64_acceptor",
+      "model": "MACE-MP-0b3-medium",
+      "imposed_charge": "none; neutral ML model",
+      "source_geometry": "Durham B-2025 input",
+      "cell_constraint": "fixed source cube",
+      "initial": {
+        "energy_eV": -344.4645160188728,
+        "max_force_eV_A": 1.6151854448476377,
+        "total_force_eV_A": [
+          -1.5634195327240974e-16,
+          6.459676543668635e-16,
+          3.235259282696745e-16
+        ],
+        "stress_eV_A3": [
+          -0.005846601400022244,
+          -0.005846601400022249,
+          -0.005846601400022259,
+          1.7098349683107561e-16,
+          1.6417216485762532e-16,
+          1.696088724925194e-16
+        ],
+        "atoms": 64,
+        "volume_A3": 1281.5318239279993,
+        "evaluations": 1071
+      },
+      "attempts": [
+        {
+          "optimizer": "LBFGS",
+          "steps": 22,
+          "converged": true,
+          "state": {
+            "energy_eV": -345.2384485354247,
+            "max_force_eV_A": 5.7493713318563105e-05,
+            "total_force_eV_A": [
+              -1.7981408327377366e-16,
+              7.660565974967892e-18,
+              -2.1815164149945054e-16
+            ],
+            "stress_eV_A3": [
+              -0.004645012999304777,
+              -0.004645012999304759,
+              -0.004645012999304769,
+              -1.1355716815737444e-16,
+              -1.8134871776805524e-17,
+              7.982436467079543e-17
+            ],
+            "atoms": 64,
+            "volume_A3": 1281.5318239279993,
+            "evaluations": 1093
+          }
+        }
+      ],
+      "final": {
+        "energy_eV": -345.2384485354247,
+        "max_force_eV_A": 5.7493713318563105e-05,
+        "total_force_eV_A": [
+          -1.7981408327377366e-16,
+          7.660565974967892e-18,
+          -2.1815164149945054e-16
+        ],
+        "stress_eV_A3": [
+          -0.004645012999304777,
+          -0.004645012999304759,
+          -0.004645012999304769,
+          -1.1355716815737444e-16,
+          -1.8134871776805524e-17,
+          7.982436467079543e-17
+        ],
+        "atoms": 64,
+        "volume_A3": 1281.5318239279993,
+        "evaluations": 1093
+      },
+      "converged": true,
+      "evaluations": 23,
+      "elapsed_reported_s": 42.37786479992792
+    },
+    {
+      "structure": "b_silicon_64_interstitial",
+      "model": "MACE-MP-0b3-medium",
+      "imposed_charge": "none; neutral ML model",
+      "source_geometry": "Durham B-2025 input",
+      "cell_constraint": "fixed source cube",
+      "initial": {
+        "energy_eV": -343.5978611392491,
+        "max_force_eV_A": 30.144584645802833,
+        "total_force_eV_A": [
+          -3.552713678800501e-15,
+          -1.3899471851264167e-16,
+          2.949029909160572e-17
+        ],
+        "stress_eV_A3": [
+          -0.045250726948245404,
+          -0.013989291287092837,
+          -0.013989291287092821,
+          -0.0003846775674414625,
+          2.094404640726032e-16,
+          2.023487650354815e-16
+        ],
+        "atoms": 65,
+        "volume_A3": 1281.5318239279993,
+        "evaluations": 1094
+      },
+      "attempts": [
+        {
+          "optimizer": "LBFGS",
+          "steps": 46,
+          "converged": true,
+          "state": {
+            "energy_eV": -349.04483258869857,
+            "max_force_eV_A": 4.457862793010156e-05,
+            "total_force_eV_A": [
+              -5.369511259234461e-16,
+              -2.853823405889189e-17,
+              -3.707564854085743e-16
+            ],
+            "stress_eV_A3": [
+              -0.016227836520345564,
+              -0.013693510907817064,
+              -0.013693510907817036,
+              0.0012805556310867279,
+              7.902549751114102e-17,
+              -1.739542813169757e-17
+            ],
+            "atoms": 65,
+            "volume_A3": 1281.5318239279993,
+            "evaluations": 1140
+          }
+        }
+      ],
+      "final": {
+        "energy_eV": -349.04483258869857,
+        "max_force_eV_A": 4.457862793010156e-05,
+        "total_force_eV_A": [
+          -5.369511259234461e-16,
+          -2.853823405889189e-17,
+          -3.707564854085743e-16
+        ],
+        "stress_eV_A3": [
+          -0.016227836520345564,
+          -0.013693510907817064,
+          -0.013693510907817036,
+          0.0012805556310867279,
+          7.902549751114102e-17,
+          -1.739542813169757e-17
+        ],
+        "atoms": 65,
+        "volume_A3": 1281.5318239279993,
+        "evaluations": 1140
+      },
+      "converged": true,
+      "evaluations": 47,
+      "elapsed_reported_s": 94.89030740002636
+    }
+  ],
+  "comparisons": [
+    {
+      "structure": "3boron_int_cluster_confi_1",
+      "MACE_relative_energy_eV": 0.0,
+      "published_LDA_relative_formation_energy_eV": 0.0,
+      "difference_eV": 0.0,
+      "all_three_force_converged": true,
+      "status": "cross-functional transfer check; not common-level DFT validation"
+    },
+    {
+      "structure": "3boron_int_cluster_confi_2",
+      "MACE_relative_energy_eV": 0.8699051862586771,
+      "published_LDA_relative_formation_energy_eV": 1.42,
+      "difference_eV": -0.5500948137413229,
+      "all_three_force_converged": true,
+      "status": "cross-functional transfer check; not common-level DFT validation"
+    },
+    {
+      "structure": "3boron_int_cluster_confi_3",
+      "MACE_relative_energy_eV": 1.5864068100783584,
+      "published_LDA_relative_formation_energy_eV": 4.51,
+      "difference_eV": -2.9235931899216414,
+      "all_three_force_converged": true,
+      "status": "cross-functional transfer check; not common-level DFT validation"
+    }
+  ],
+  "total_calculator_evaluations": 1140,
+  "elapsed_reported_s": 1827.6840697000735,
+  "status": "research reference only; no charge control, doping fracture or clock calibration",
+  "new_DFT_runs": 0,
+  "new_MD_runs": 0
+}

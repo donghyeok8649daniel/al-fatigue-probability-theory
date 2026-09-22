@@ -20,6 +20,7 @@ Al과 Si를 같은 원자 에너지 → 자유에너지 → 확률 흐름의 구
 | 시편 MPa 하중·이방성 원자 경계·경계 일 | 40개 기준 상태·8개 안정성 검사 완료; 에너지 등식과 실제 강도 구분 | [v6 이론](solver_v1/SILICON_SPECIMEN_LOADING_V6.md), [실제 계산](results/silicon_specimen_v6/COMPLETED_SUMMARY.md) |
 | 도핑 상태·실측 탄성·전하 자유에너지 축약 | 7시편×3온도 탄성 균열장·농도 해상도·수학 검증; 도핑 장벽/kinetics 미보정 | [v7 이론](solver_v1/SILICON_DOPING_V7.md), [실제 계산](results/silicon_doping_v7/COMPLETED_SUMMARY.md) |
 | 도핑 수학·출처의 독립 검증 | As1.7 상한80C 수정; Fourier 탄성77조건·Fermi 전자27조건·전하 제약 검증 | [v8 이론](solver_v1/SILICON_DOPING_VALIDATION_V8.md), [검증 결과](results/silicon_doping_v8/COMPLETED_SUMMARY.md) |
+| 도핑 전하 속도·기억항·실제 Si/B 원자 대조 | MACE2,475구조 대조; B 안장점 확인·재이완; 실제 도핑 장벽·Hz 미보정 | [v9 이론](solver_v1/SILICON_CHARGE_DYNAMICS_V9.md), [검증 결과](results/silicon_doping_v9/COMPLETED_SUMMARY.md), [재현](results/silicon_doping_v9/REPRODUCE.md) |
 | 실측 Si 물성·표면·도핑 에너지 적합 | 미완료 | [탐색 근거](results/silicon_wafer_feasibility/RESEARCH_MEMO.md) |
 | finite-T PMF·이동도·실제 수명·Hz | 미보정 | [공통 이론](results/silicon_wafer_feasibility/UNIFIED_FATIGUE_THEORY.md), [국소 축약 조건](solver_v1/SILICON_LOCAL_CRACK_V2.md) |
 | 생산 UI의 실제 Si 해석 | 비활성 | [실행 차단 계약](app/MATERIAL_SELECTION.md#실행-상태) |
@@ -38,6 +39,8 @@ Al과 Si를 같은 원자 에너지 → 자유에너지 → 확률 흐름의 구
 7. [원자 에너지부터 다시 확인한 재료 기반](results/silicon_atomistic_v5/COMPLETED_SUMMARY.md)
 8. [시편의 MPa 하중과 원자 균열 경계 연결](results/silicon_specimen_v6/COMPLETED_SUMMARY.md)
 9. [도핑 원자·활성 전하·실측 탄성과 공통 확률이론](results/silicon_doping_v7/COMPLETED_SUMMARY.md)
+10. [독립 탄성·전하 제약과 실측 온도 범위 수정](results/silicon_doping_v8/COMPLETED_SUMMARY.md)
+11. [전하 속도·기억항·공개 DFT와 B 군집의 실제 검증](results/silicon_doping_v9/COMPLETED_SUMMARY.md)
 
 기존 원자면 전체 동시 분리 계산은 대조군으로 남겨 둔다. 같은 최종 상태까지
 전면의 네 결합을 순차 전이시키는 검증 경로의 최대 에너지는 1.075 eV,

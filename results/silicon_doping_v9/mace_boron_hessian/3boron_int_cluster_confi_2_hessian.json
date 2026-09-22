@@ -1,0 +1,70 @@
+{
+  "structure": "3boron_int_cluster_confi_2",
+  "energy_eV": -359.1469967720248,
+  "atoms": 67,
+  "B_atoms": 3,
+  "Hessian_method": "central Cartesian force differences; one pair at a time",
+  "Hessian_step_A": 0.0001,
+  "force_evaluations": 410,
+  "force_backend": "direct",
+  "force_backend_comparison": {
+    "energy_difference_eV": 0.0,
+    "max_force_difference_eV_A": 0.0
+  },
+  "max_force_eV_A": 6.797063083965851e-05,
+  "Hessian_max_asymmetry_eV_A2": 1.7643886351947913e-07,
+  "translation_residual_eV_A2": 5.457999385782841e-09,
+  "Cartesian_projected_min_eigenvalue_eV_A2": -0.12172127452108279,
+  "Cartesian_projected_first_10_eigenvalues_eV_A2": [
+    -0.12172127452108279,
+    0.617440013375053,
+    0.708140381002236,
+    1.059706148899635,
+    1.1523540749995003,
+    1.2477585467575163,
+    1.2720988698132962,
+    1.438107454648998,
+    1.479495379576151,
+    1.6286664704660438
+  ],
+  "mass_weighted_min_eigenvalue": -0.009698363857802473,
+  "highest_3NB_Gamma_frequencies_cm_minus1": [
+    490.8671743456954,
+    501.25620825372624,
+    508.73619650377685,
+    575.1921141390849,
+    627.7175190248778,
+    675.0020729741713,
+    730.0609947884243,
+    779.6457414652789,
+    906.9561579774986
+  ],
+  "frequency_conversion_cm_minus1": 521.4708980082235,
+  "independent_Hessian_vector_checks": [
+    {
+      "step_A": 0.001,
+      "max_abs_error_eV_A2": 6.164934232000263e-07,
+      "L2_error_eV_A2": 2.284303083321148e-06
+    },
+    {
+      "step_A": 0.0003,
+      "max_abs_error_eV_A2": 6.101591987217603e-08,
+      "L2_error_eV_A2": 1.9449151646985027e-07
+    },
+    {
+      "step_A": 0.0001,
+      "max_abs_error_eV_A2": 7.583166139468744e-08,
+      "L2_error_eV_A2": 1.4379749408686785e-07
+    }
+  ],
+  "max_initial_to_final_minimum_image_displacement_A": 0.49189868892851557,
+  "B_pair_distances_A": [
+    2.862806521395668,
+    4.512089140530988,
+    1.655228867147431
+  ],
+  "imposed_charge": "none; neutral ML model",
+  "Hessian_status": "negative curvature; not a local minimum",
+  "scope": "Gamma supercell only; all cell strains excluded; finite-T and full-q stability unverified",
+  "elapsed_reported_s": 602.9109749000054
+}

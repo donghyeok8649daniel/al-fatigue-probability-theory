@@ -1,0 +1,97 @@
+[
+  {
+    "file": "dynamics/absorption_convergence.csv",
+    "byte_equal": true,
+    "sha256": "5e7d23db2ec6264659ae8c4bdd24f44905f51cf44d1bc1632a1fa9f5a47254a1"
+  },
+  {
+    "file": "dynamics/charge_rate_convergence.csv",
+    "byte_equal": true,
+    "sha256": "d3a0a11d39a5b2c6abca759bdf55e160de335c15e833cff71bcca0e2ae8f693a"
+  },
+  {
+    "file": "dynamics/dynamics_summary.json",
+    "byte_equal": true,
+    "sha256": "80e826e7d6e8833e3e616f09500dc59c0a5051cd6322fe1de7b3de0c5689c553"
+  },
+  {
+    "file": "dynamics/quenched_mixture_counterexample.csv",
+    "byte_equal": true,
+    "sha256": "ff0172a7ed38ea274e3797c596dcddb374a4cc995d9929fc7154a41c768540bd"
+  },
+  {
+    "file": "dynamics/spatial_grid_convergence.csv",
+    "byte_equal": true,
+    "sha256": "b91a8d38ab39c3549f9038d47119645234d76dcb0d68e7fbc6d25bb48fe3214e"
+  },
+  {
+    "file": "memory/memory_kernel.csv",
+    "byte_equal": true,
+    "sha256": "7066b347cc5576f129e3bc78bff3d9490fa8e58cb297e5ffa9efd5d056b316fd"
+  },
+  {
+    "file": "memory/memory_summary.json",
+    "byte_equal": true,
+    "sha256": "bf0e35283cf6591befb1a367b3fc473eec318b02a0bf7806ee3253651ad35133"
+  },
+  {
+    "file": "memory/resolvent_comparisons.csv",
+    "byte_equal": true,
+    "sha256": "b146f3d02ed4ad3b77cf0195415053d7fa8dfd9977841af342fdd3e9051e0a5e"
+  },
+  {
+    "file": "global_charge/ensemble_comparisons.json",
+    "byte_equal": true,
+    "sha256": "dcb62c3ab14b29e997fe5d856d5ebb360979ccabeb120b7f909606ef502f4f4e"
+  },
+  {
+    "file": "global_charge/finite_difference_checks.csv",
+    "byte_equal": true,
+    "sha256": "fe747a8a344d69bcacd3cf030336e396bd99ea929084cc4d7a7b99df7e19c321"
+  },
+  {
+    "file": "global_charge/global_charge_summary.json",
+    "byte_equal": true,
+    "sha256": "241e575b4652c84c39baa33a96581ba72c63cc5e5576187e2d8cf41649c019ab"
+  },
+  {
+    "file": "boron_source_audit/hall_raw_audit.csv",
+    "byte_equal": true,
+    "sha256": "64d7622baa5b1bc1afd03cef3a0580fa9f15986bcf6f20f3c754d483dd76e579"
+  },
+  {
+    "file": "boron_source_audit/hall_recomputed_summaries.csv",
+    "byte_equal": true,
+    "sha256": "da16765b5e3326be5735cef4c25f1986276061d31e4b5b341b3fc48e0cf61b4c"
+  },
+  {
+    "file": "boron_source_audit/hall_temperature_audit.csv",
+    "byte_equal": true,
+    "sha256": "5cf6c73a07190cdfa1e2033b733bf813d0c5ba1870cd074ba3ce2516ff09f713"
+  },
+  {
+    "file": "boron_source_audit/sims_counts_summary.csv",
+    "byte_equal": true,
+    "sha256": "3f3841ec3bebcd721538576e265ecb5e9bf13bbea27a069fada4908eaa68280a"
+  },
+  {
+    "file": "boron_source_audit/sims_raw_counts.csv",
+    "byte_equal": true,
+    "sha256": "8890a40568a51b792c6cccae5a28f3de92463813fc95365bb91ee079e866c6fc"
+  },
+  {
+    "file": "boron_source_audit/source_audit.json",
+    "byte_equal": true,
+    "sha256": "7d325123e3cbca4ead790d3b517108accb87ae844b808dd761690b2e1a9ea52b"
+  },
+  {
+    "file": "boron_source_audit/source_structures.json",
+    "byte_equal": true,
+    "sha256": "d65c786bf19390708cf806816149bbabe5bb3e83840f2f3336b8901a353f91ff"
+  },
+  {
+    "file": "boron_source_audit/structure_audit.csv",
+    "byte_equal": true,
+    "sha256": "f2c22d09408de97f3b683d3893328a65e4d78609c1be010be4ac7fb1a48d648c"
+  }
+]

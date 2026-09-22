@@ -1,0 +1,38 @@
+{
+  "structure": "b_silicon_64_interstitial",
+  "host_atoms": 512,
+  "B_atoms": 1,
+  "total_atoms": 513,
+  "lattice_A": 5.431,
+  "volume_A3": 10252.254591423996,
+  "chemical_B_cm3": 9.75395208032094e+19,
+  "energy_eV": -2759.7555605084863,
+  "pure_host_energy_per_atom_eV": -5.381031585840588,
+  "host_subtracted_energy_eV": -4.667388558105358,
+  "host_subtracted_change_from_64host_eV": -0.008577463204403557,
+  "B_chemical_potential_specified": false,
+  "absolute_formation_energy_eV": null,
+  "force_max_eV_A": 6.6713444418808e-05,
+  "converged": true,
+  "attempts": [
+    {
+      "method": "LBFGS",
+      "steps": 64,
+      "converged": true,
+      "max_force_eV_A": 6.6713444418808e-05,
+      "energy_eV": -2759.7555605084863
+    }
+  ],
+  "source_host_match_A": 2.5121479338940403e-15,
+  "source_B_shift_by_lattice_translation_A": [
+    10.862,
+    5.431,
+    10.862
+  ],
+  "backend_force_error_eV_A": 0.0,
+  "force_only_calculator_evaluations": 65,
+  "standard_ASE_control_evaluations": 1,
+  "local_minimum_Hessian_checked": false,
+  "elapsed_reported_s": 660.7107230999973,
+  "status": "neutral ML finite-periodic-cell control; no Si calibration"
+}

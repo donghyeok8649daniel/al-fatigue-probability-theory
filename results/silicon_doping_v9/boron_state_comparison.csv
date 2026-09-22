@@ -1,0 +1,6 @@
+structure,force_max_eV_A,fixed_cell_min_curvature_eV_A2,Hessian_status,max_initial_to_final_displacement_A,sorted_top_frequency_RMSE_cm_minus1,sorted_top_frequency_max_error_cm_minus1,published_max_frequency_cm_minus1,MACE_max_frequency_cm_minus1
+b_silicon_64_interstitial,4.4506089504883686e-05,0.3975154452402595,positive fixed-cell curvature and force tolerance passed,0.36192385999999993,48.817693281439034,67.4467250783947,840.0,772.5532749216053
+2boron_int_cluster,7.053120126856248e-05,0.42409753169119596,positive fixed-cell curvature and force tolerance passed,0.9030988111260275,90.85641149528045,178.53365939596006,937.0,831.078202091103
+3boron_int_cluster_confi_1,9.432900784520556e-05,0.4122082650341753,positive fixed-cell curvature and force tolerance passed,1.237575859684278,119.39132130267647,230.00448079531543,1015.0,805.9791847586224
+3boron_int_cluster_confi_2,6.797063083965851e-05,-0.12172127452108279,negative curvature; not a local minimum,0.49189868892851557,110.20758488052905,305.0438420225014,1212.0,906.9561579774986
+3boron_int_cluster_confi_3,8.670451914074583e-05,0.32493901869604025,positive fixed-cell curvature and force tolerance passed,0.40764953281329697,90.29522228011736,202.82663491750566,825.0,801.2150604617354

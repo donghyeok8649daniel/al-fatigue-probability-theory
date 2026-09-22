@@ -1,0 +1,47 @@
+{
+  "label": "B1_512host",
+  "state_file": "b_silicon_64_interstitial_512host_final.extxyz",
+  "state_sha256": "1979d0bbc311c46dc3fb9675ab60b55e957f726e9d883dbbb22e624a4da07c98",
+  "atoms": 513,
+  "B_atoms": 1,
+  "volume_A3": 10252.254591423996,
+  "chemical_B_cm3": 9.75395208032094e+19,
+  "masses_u": {
+    "14": 28.085,
+    "5": 10.81
+  },
+  "force_max_eV_A": 6.671197376611384e-05,
+  "highest_eigenvalue_eV_A2_u": 2.2144908835157673,
+  "highest_Gamma_frequency_cm_minus1": 776.0094766711028,
+  "B_mass_weighted_mode_fraction": 0.6800450833830165,
+  "independent_step_checks": [
+    {
+      "step_A_sqrt_u": 0.0003,
+      "Rayleigh_eV_A2_u": 2.2144909975353726,
+      "eigen_residual_L2_eV_A2_u": 1.1431791416177539e-07,
+      "Rayleigh_frequency_cm_minus1": 776.0094966486727
+    },
+    {
+      "step_A_sqrt_u": 0.0001,
+      "Rayleigh_eV_A2_u": 2.214490892040091,
+      "eigen_residual_L2_eV_A2_u": 8.835913179038463e-09,
+      "Rayleigh_frequency_cm_minus1": 776.0094781646641
+    },
+    {
+      "step_A_sqrt_u": 3e-05,
+      "Rayleigh_eV_A2_u": 2.214490879899502,
+      "eigen_residual_L2_eV_A2_u": 4.715079096266635e-09,
+      "Rayleigh_frequency_cm_minus1": 776.0094760374908
+    }
+  ],
+  "full_Hessian_control": null,
+  "force_only_evaluations": 49,
+  "standard_ASE_evaluations": 1,
+  "Hessian_vector_products": 24,
+  "force_backend_max_difference_eV_A": 0.0,
+  "elapsed_reported_s": 516.5383841999574,
+  "full_mechanical_stability_checked": false,
+  "material_calibrated": false,
+  "kinetic_calibrated": false,
+  "scope": "highest Gamma eigenpair only; no full-q, lowest-curvature or finite-T certification"
+}

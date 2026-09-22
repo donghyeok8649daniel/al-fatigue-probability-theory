@@ -1,0 +1,13 @@
+{
+  "status": "aborted by operator before any Hessian result",
+  "method": "MACECalculator.get_hessian vectorized automatic differentiation",
+  "case": "2boron_int_cluster",
+  "atoms": 66,
+  "observed_working_set_bytes": 17043681280,
+  "earlier_observed_private_bytes": 18470383616,
+  "reason": "unexpected memory growth; replace with sequential force-difference columns",
+  "termination": "verified command line matched this task; Win32_Process.Terminate returned 0; process no longer present",
+  "attempt_script_sha256": "f6c1ae9ab50120203037bf3d7513afd95469859eec670af27f6be497bac4ffc8",
+  "completed_Hessian": false,
+  "potential_changed": false
+}

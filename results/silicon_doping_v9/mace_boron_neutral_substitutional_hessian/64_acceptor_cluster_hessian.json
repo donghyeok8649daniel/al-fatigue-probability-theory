@@ -1,0 +1,65 @@
+{
+  "structure": "64_acceptor_cluster",
+  "energy_eV": -345.76618933967035,
+  "atoms": 64,
+  "B_atoms": 2,
+  "Hessian_method": "central Cartesian force differences; one pair at a time",
+  "Hessian_step_A": 0.0001,
+  "force_evaluations": 392,
+  "force_backend": "direct",
+  "force_backend_comparison": {
+    "energy_difference_eV": 0.0,
+    "max_force_difference_eV_A": 0.0
+  },
+  "max_force_eV_A": 8.891910103697656e-05,
+  "Hessian_max_asymmetry_eV_A2": 1.8633219966979198e-08,
+  "translation_residual_eV_A2": 4.478978243849241e-09,
+  "Cartesian_projected_min_eigenvalue_eV_A2": 1.943718208724342,
+  "Cartesian_projected_first_10_eigenvalues_eV_A2": [
+    1.943718208724342,
+    1.9437182087261289,
+    1.9492271928792733,
+    1.9545568048366795,
+    1.9545568048409598,
+    1.970228931430736,
+    1.9742189447826057,
+    1.9742189447846654,
+    1.9761754721739024,
+    2.0254037003902186
+  ],
+  "mass_weighted_min_eigenvalue": 0.06941208631152594,
+  "highest_3NB_Gamma_frequencies_cm_minus1": [
+    469.37008112113796,
+    475.14280638415477,
+    475.14280638418364,
+    481.789805832612,
+    537.8714907237594,
+    537.8714907240222
+  ],
+  "frequency_conversion_cm_minus1": 521.4708980082235,
+  "independent_Hessian_vector_checks": [
+    {
+      "step_A": 0.001,
+      "max_abs_error_eV_A2": 3.4217538491532196e-07,
+      "L2_error_eV_A2": 1.8391067265345247e-06
+    },
+    {
+      "step_A": 0.0003,
+      "max_abs_error_eV_A2": 2.494681927700526e-08,
+      "L2_error_eV_A2": 1.4699446269925662e-07
+    },
+    {
+      "step_A": 0.0001,
+      "max_abs_error_eV_A2": 1.1506731345534149e-08,
+      "L2_error_eV_A2": 6.395390219844872e-08
+    }
+  ],
+  "max_initial_to_final_minimum_image_displacement_A": 0.2774434476985282,
+  "B_pair_distances_A": [
+    1.9784426559691024
+  ],
+  "imposed_charge": "none; neutral ML model",
+  "Hessian_status": "positive fixed-cell curvature and force tolerance passed",
+  "scope": "Gamma supercell only; all cell strains excluded; finite-T and full-q stability unverified",
+  "elapsed_reported_s": 375.3237072000047
+}

@@ -1,0 +1,4 @@
+structure,MACE_relative_energy_eV,published_LDA_relative_formation_energy_eV,difference_eV,all_three_force_converged,status,MACE_Hessian_status,comparison_scope
+3boron_int_cluster_confi_1,0.0,0.0,0.0,True,cross-functional transfer check; not common-level DFT validation,positive fixed-cell curvature and force tolerance passed,source-seeded stationary states; not all are local minima
+3boron_int_cluster_confi_2,0.8699051862586771,1.42,-0.5500948137413229,True,cross-functional transfer check; not common-level DFT validation,negative curvature; not a local minimum,source-seeded stationary states; not all are local minima
+3boron_int_cluster_confi_3,1.5864068100783584,4.51,-2.9235931899216414,True,cross-functional transfer check; not common-level DFT validation,positive fixed-cell curvature and force tolerance passed,source-seeded stationary states; not all are local minima
