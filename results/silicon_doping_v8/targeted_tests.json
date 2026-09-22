@@ -1,0 +1,1568 @@
+{
+  "exit_code": 0,
+  "elapsed_wall_seconds": 1.360480299917981,
+  "passed_calls": 72,
+  "reports": [
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_site_count_density_and_volume_are_consistent",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0003738999366760254,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_site_count_density_and_volume_are_consistent",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0006183000514283776,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_site_count_density_and_volume_are_consistent",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00011450005695223808,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_exact_binomial_does_not_round_dopant_atoms",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00010699999984353781,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_exact_binomial_does_not_round_dopant_atoms",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0003358999965712428,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_exact_binomial_does_not_round_dopant_atoms",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.0002207000507041812,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_dilute_and_full_occupancy_limits",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00011969998013228178,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_dilute_and_full_occupancy_limits",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.00022980000358074903,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_dilute_and_full_occupancy_limits",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00012079998850822449,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[-1-4]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00025370006915181875,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[-1-4]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.00019510008860379457,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[-1-4]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00016270007472485304,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[inf-4]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0003295999485999346,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[inf-4]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0001501999795436859,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[inf-4]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00015279999934136868,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[1e+24-4]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0007677000248804688,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[1e+24-4]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.00022130005527287722,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[1e+24-4]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00011870008893311024,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[1e+19-0]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00028710009064525366,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[1e+19-0]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.00012139999307692051,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[1e+19-0]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00030529999639838934,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[1e+19-4.5]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00020400003995746374,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[1e+19-4.5]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.00011259992606937885,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[1e+19-4.5]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.0001235000090673566,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[1e+19-True]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00018280011136084795,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[1e+19-True]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.00010470009874552488,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_chemical_occupancy_is_rejected[1e+19-True]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.0001050999853760004,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_unknown_ionization_does_not_become_full_ionization",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 9.009998757392168e-05,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_unknown_ionization_does_not_become_full_ionization",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.00023819995112717152,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_unknown_ionization_does_not_become_full_ionization",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00011319993063807487,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_compensation_preserves_chemical_atoms",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 9.290000889450312e-05,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_compensation_preserves_chemical_atoms",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.00012850004713982344,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_compensation_preserves_chemical_atoms",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00015940004959702492,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_charge_number_uses_material_volume_and_sign",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00012550002429634333,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_charge_number_uses_material_volume_and_sign",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.00038049998693168163,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_charge_number_uses_material_volume_and_sign",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00010649999603629112,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_measured_sample_source_values_and_temperature_units",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0001542000100016594,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_measured_sample_source_values_and_temperature_units",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0024266999680548906,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_measured_sample_source_values_and_temperature_units",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00012829992920160294,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_interpolation_is_explicit_same_species_and_bounded",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00010619999375194311,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_interpolation_is_explicit_same_species_and_bounded",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.009351600077934563,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_interpolation_is_explicit_same_species_and_bounded",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00011960009578615427,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_young_modulus_matches_independent_tensor_compliance",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00011080002877861261,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_young_modulus_matches_independent_tensor_compliance",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.001129399985074997,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_young_modulus_matches_independent_tensor_compliance",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00013109995052218437,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_measured_elasticity_J_and_traction_at_temperature_endpoints",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00011090002954006195,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_measured_elasticity_J_and_traction_at_temperature_endpoints",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.019984800019301474,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_measured_elasticity_J_and_traction_at_temperature_endpoints",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00015949993394315243,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_electronic_grand_potential_force_and_full_hessian",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0001151000615209341,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_electronic_grand_potential_force_and_full_hessian",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0020357000175863504,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_electronic_grand_potential_force_and_full_hessian",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00011270004324615002,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_charge_fluctuations_change_curvature_and_energy_shift_is_harmless",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00010609999299049377,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_charge_fluctuations_change_curvature_and_energy_shift_is_harmless",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0011078999377787113,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_charge_fluctuations_change_curvature_and_energy_shift_is_harmless",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00012199999764561653,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_electronic_data_rejected",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00010629999451339245,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_electronic_data_rejected",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.00032049999572336674,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_invalid_electronic_data_rejected",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00011939997784793377,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_fractional_DFT_sampling_and_duplicate_sectors_are_not_partition_states[counts0]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00018810003530234098,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_fractional_DFT_sampling_and_duplicate_sectors_are_not_partition_states[counts0]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0002867999719455838,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_fractional_DFT_sampling_and_duplicate_sectors_are_not_partition_states[counts0]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00011869997251778841,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_fractional_DFT_sampling_and_duplicate_sectors_are_not_partition_states[counts1]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0001680999994277954,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_fractional_DFT_sampling_and_duplicate_sectors_are_not_partition_states[counts1]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.00021650001872330904,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_research.py::test_fractional_DFT_sampling_and_duplicate_sectors_are_not_partition_states[counts1]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00011030002497136593,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_v8_retains_every_original_elastic_table_value",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00010369997471570969,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_v8_retains_every_original_elastic_table_value",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0007427999516949058,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_v8_retains_every_original_elastic_table_value",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00010790000669658184,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_arsenic_source_temperature_exception_and_exact_endpoint",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 9.77999297901988e-05,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_arsenic_source_temperature_exception_and_exact_endpoint",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.004916400066576898,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_arsenic_source_temperature_exception_and_exact_endpoint",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.0001276000402867794,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[B3]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00018970004748553038,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[B3]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.004235500004142523,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[B3]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00013699999544769526,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[B0.6]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00019669998437166214,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[B0.6]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0038574000354856253,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[B0.6]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00013079994823783636,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[As1.7]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00018309999722987413,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[As1.7]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.003476100042462349,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[As1.7]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.0001417000312358141,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[As2.5]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00022590009029954672,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[As2.5]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.003477299935184419,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[As2.5]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.0001346999779343605,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[P4.1]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00025019992608577013,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[P4.1]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0035019000060856342,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[P4.1]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.0002264000941067934,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[P4.7]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00024389999452978373,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[P4.7]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0034978999756276608,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[P4.7]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00012250000145286322,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[P7.5]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00024019996635615826,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[P7.5]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0035866000689566135,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_crack_coefficient_from_independent_displacement_halfspace[P7.5]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00015630002599209547,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_halfspace_isotropic_repeated_root_is_resolved_as_subspace",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00011909997556358576,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_halfspace_isotropic_repeated_root_is_resolved_as_subspace",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.000602399930357933,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_halfspace_isotropic_repeated_root_is_resolved_as_subspace",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00011350004933774471,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01--0.1-q0]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00024289998691529036,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01--0.1-q0]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0009245999390259385,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01--0.1-q0]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.0002546999603509903,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01--0.1-q1]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0002487000310793519,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01--0.1-q1]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0008084001019597054,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01--0.1-q1]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.0002223999472334981,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01--0.1-q2]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00027600000612437725,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01--0.1-q2]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0012594000436365604,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01--0.1-q2]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00014730007387697697,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.0-q0]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.000345399952493608,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.0-q0]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0008131000213325024,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.0-q0]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.0001686000032350421,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.0-q1]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0002902999985963106,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.0-q1]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0008563000010326505,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.0-q1]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00020000000949949026,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.0-q2]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00022710009943693876,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.0-q2]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0007823000196367502,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.0-q2]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00017069990281015635,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.1-q0]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00023549993056803942,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.1-q0]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0007649000035598874,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.1-q0]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00012139999307692051,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.1-q1]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0002465000143274665,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.1-q1]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0007806000066921115,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.1-q1]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00012390001211315393,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.1-q2]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0002490000333636999,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.1-q2]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.001060499926097691,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.01-0.1-q2]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.0001455000601708889,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025--0.1-q0]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00029310001991689205,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025--0.1-q0]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0008351999567821622,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025--0.1-q0]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.000201700022444129,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025--0.1-q1]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0002493000356480479,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025--0.1-q1]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0007536000339314342,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025--0.1-q1]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00012370001059025526,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025--0.1-q2]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0002623000182211399,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025--0.1-q2]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0007307000923901796,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025--0.1-q2]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00018239999189972878,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.0-q0]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0002540999557822943,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.0-q0]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0007706000469624996,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.0-q0]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.000206399941816926,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.0-q1]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00027550000231713057,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.0-q1]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.001003999961540103,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.0-q1]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00017950008623301983,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.0-q2]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00036830001045018435,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.0-q2]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0008503000717610121,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.0-q2]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.0002305000089108944,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.1-q0]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00027570000384002924,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.1-q0]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0008165000472217798,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.1-q0]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.0001666999887675047,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.1-q1]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00023609993513673544,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.1-q1]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0007560000522062182,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.1-q1]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00028110004495829344,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.1-q2]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0002712000859901309,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.1-q2]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0008280000183731318,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.025-0.1-q2]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00017749995458871126,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08--0.1-q0]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00030610000248998404,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08--0.1-q0]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0007752999663352966,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08--0.1-q0]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00012569990940392017,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08--0.1-q1]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00028659997042268515,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08--0.1-q1]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0008475999347865582,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08--0.1-q1]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00018199998885393143,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08--0.1-q2]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00029530003666877747,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08--0.1-q2]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0008071999764069915,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08--0.1-q2]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00019459996838122606,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.0-q0]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0003073000116273761,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.0-q0]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0007960000075399876,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.0-q0]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00020890007726848125,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.0-q1]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00024179997853934765,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.0-q1]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0008061000844463706,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.0-q1]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00021490000654011965,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.0-q2]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0002527999458834529,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.0-q2]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0007630001055076718,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.0-q2]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00014889996964484453,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.1-q0]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00024289998691529036,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.1-q0]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0007669999031350017,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.1-q0]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00012420001439750195,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.1-q1]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0002541999565437436,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.1-q1]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0007639999967068434,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.1-q1]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00015569990500807762,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.1-q2]",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00021939992439001799,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.1-q2]",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0008581000147387385,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_charge_sector_sum_matches_independent_fermi_product[0.08-0.1-q2]",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00012510002125054598,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_fixed_mean_charge_legendre_curvature_has_schur_correction",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 9.870005305856466e-05,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_fixed_mean_charge_legendre_curvature_has_schur_correction",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0016065998934209347,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_fixed_mean_charge_legendre_curvature_has_schur_correction",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00010689999908208847,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_normalized_truncated_sector_sum_can_still_be_wrong",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 9.780004620552063e-05,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_normalized_truncated_sector_sum_can_still_be_wrong",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0008426000131294131,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_doping_validation.py::test_normalized_truncated_sector_sum_can_still_be_wrong",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00011100003030151129,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_ahead_stress_normalization_and_face_tractions",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0002869999734684825,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_ahead_stress_normalization_and_face_tractions",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0,
+      "subtest": true
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_ahead_stress_normalization_and_face_tractions",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0,
+      "subtest": true
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_ahead_stress_normalization_and_face_tractions",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0,
+      "subtest": true
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_ahead_stress_normalization_and_face_tractions",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.002065100008621812,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_ahead_stress_normalization_and_face_tractions",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.0001799999736249447,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_bad_stiffness_and_coupled_orientation_are_rejected",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0001789000816643238,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_bad_stiffness_and_coupled_orientation_are_rejected",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0004027000395581126,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_bad_stiffness_and_coupled_orientation_are_rejected",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00016799999866634607,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_boundary_is_actual_lattice_with_independent_free_atoms",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00025130005087703466,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_boundary_is_actual_lattice_with_independent_free_atoms",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.004616499994881451,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_boundary_is_actual_lattice_with_independent_free_atoms",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00012510002125054598,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_displacement_derivative_and_equilibrium",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00020929996389895678,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_displacement_derivative_and_equilibrium",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0008613999234512448,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_displacement_derivative_and_equilibrium",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00019020005129277706,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_elastic_energy_is_rotation_invariant",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00022839999292045832,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_elastic_energy_is_rotation_invariant",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0003765999572351575,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_elastic_energy_is_rotation_invariant",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00012069998774677515,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_invalid_geometry_is_not_silently_defaulted",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00016910000704228878,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_invalid_geometry_is_not_silently_defaulted",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0002758000046014786,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_invalid_geometry_is_not_silently_defaulted",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00010379997547715902,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_isotropic_griffith_limit",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00019539997447282076,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_isotropic_griffith_limit",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.00036700000055134296,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_isotropic_griffith_limit",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00015109998639672995,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_j_integral_and_crack_opening",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00018129998352378607,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_j_integral_and_crack_opening",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0,
+      "subtest": true
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_j_integral_and_crack_opening",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0,
+      "subtest": true
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_j_integral_and_crack_opening",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0,
+      "subtest": true
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_j_integral_and_crack_opening",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.004463899997062981,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_j_integral_and_crack_opening",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00019470008555799723,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_load_and_length_scaling",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.0002280999906361103,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_load_and_length_scaling",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.0007824000203981996,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_load_and_length_scaling",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00013499998021870852,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_optical_boundary_preserves_zero_and_linearity",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00021410000044852495,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_optical_boundary_preserves_zero_and_linearity",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.010547099984250963,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_optical_boundary_preserves_zero_and_linearity",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00018129998352378607,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_optical_response_uses_cubic_not_crack_axes",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00017250003293156624,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_optical_response_uses_cubic_not_crack_axes",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.004828399978578091,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_optical_response_uses_cubic_not_crack_axes",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00018039997667074203,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_specimen_units_and_inverse",
+      "phase": "setup",
+      "outcome": "passed",
+      "seconds": 0.00023120001424103975,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_specimen_units_and_inverse",
+      "phase": "call",
+      "outcome": "passed",
+      "seconds": 0.00036890001501888037,
+      "subtest": false
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_specimen_units_and_inverse",
+      "phase": "teardown",
+      "outcome": "passed",
+      "seconds": 0.00013130006846040487,
+      "subtest": false
+    }
+  ],
+  "source_sha256": {
+    "solver_v1/test_silicon_doping_research.py": "e374b90032a6f55c004e5df8df17c2757f9ac3bad07c830cfcaff91019bced1a",
+    "solver_v1/test_silicon_doping_validation.py": "0be9a65ce65dfbbb3cb37ed5ebe30b5499e447f5b0c9f0d455caac3508779eba",
+    "solver_v1/test_silicon_specimen_research.py": "2ed991aaea56c5e6c76debddc9dabd82c1ffd27df1781ff117a5d222813c682b",
+    "solver_v1/silicon_doping_research.py": "047f16d9ca76b24ccc5b24577e267f76929c9d3146e24269c96464fe00ffe208",
+    "solver_v1/silicon_doping_validation.py": "c2d4f4573f042d1de3bd22673758db9b9ca7f104a616743749bd5d9cf0fd5bdd"
+  }
+}

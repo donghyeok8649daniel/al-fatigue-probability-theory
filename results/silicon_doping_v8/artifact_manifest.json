@@ -1,0 +1,157 @@
+{
+  "base_commit": "4d1e3b984e3833f9800c4b09ba1af4b913ea3fc4",
+  "scope": "v8 mathematical validation; actual doped fracture and clock uncalibrated",
+  "tests": {
+    "targeted": {
+      "passed_calls": 72,
+      "elapsed_wall_seconds": 1.360480299917981,
+      "passed_subtests": 6
+    },
+    "solver": {
+      "passed_calls": 934,
+      "elapsed_wall_seconds": 3607.961758099962,
+      "passed_subtests": 6
+    },
+    "app": {
+      "passed_calls": 189,
+      "elapsed_wall_seconds": 3033.172480600071,
+      "passed_subtests": 3
+    }
+  },
+  "desktop_smoke": {
+    "exit_code": 0,
+    "elapsed_wall_seconds": 2.5211460000136867,
+    "stdout": "desktop-ui smoke OK: a0=0.7713438268704838, kappa=86.29296488740997\n",
+    "stderr": ""
+  },
+  "files": {
+    "results/silicon_doping_v7/sources/chen_2025_wafer.csv": {
+      "sha256": "68c0f9a8bda40fba81aa9819d9b2450d02357d48020ad0d62f259543bf26ff5c",
+      "bytes": 527
+    },
+    "results/silicon_doping_v7/sources/jaakkola_2014_elastic.csv": {
+      "sha256": "7962efea3cb4a16f2b1b018c17ca5aa2a20d72d0f504326c2e9e17d713bbd9a2",
+      "bytes": 833
+    },
+    "results/silicon_doping_v7/sources/noda_2023_ideal_strength.csv": {
+      "sha256": "bf7fc7621c07bc9709b09f9dd411d7f82dc692e59c241e79fffee98bbd64a63e",
+      "bytes": 675
+    },
+    "results/silicon_doping_v7/sources/provenance.json": {
+      "sha256": "b5da796880352a7db7daac0330adf87398c966935e31b998b7cb6fe277d8d3eb",
+      "bytes": 4590
+    },
+    "results/silicon_doping_v8/app_tests.json": {
+      "sha256": "6784206e7c592ce00eae64822ce374c80c74b97378d1e910ebef4814c6287080",
+      "bytes": 137605
+    },
+    "results/silicon_doping_v8/COMPLETED_SUMMARY.md": {
+      "sha256": "a3a6c57bcea2103bf2e922448bfbe1a5d714c9f6e4bb8329acc7f7ac54d9ce6d",
+      "bytes": 2052
+    },
+    "results/silicon_doping_v8/desktop_smoke.json": {
+      "sha256": "da1e117c3c9f44834e7685b2bf91b26f4c3c117e918bccdb88c76295694c9908",
+      "bytes": 174
+    },
+    "results/silicon_doping_v8/independent_elasticity.csv": {
+      "sha256": "f1a151a480dacb290def25b14208c3f9d2c4187db82fdbac8b5ebb2ad98a7b35",
+      "bytes": 10156
+    },
+    "results/silicon_doping_v8/independent_electronic.csv": {
+      "sha256": "bb019847d069934e5502037c6c3e9f58769fdc12d76141af4ddc7e8e57cbb0ff",
+      "bytes": 2667
+    },
+    "results/silicon_doping_v8/independent_validation.json": {
+      "sha256": "3dff18a7dc2229593464f0e7151b050c5347c7ad931bab5b6366583815eb34f2",
+      "bytes": 6966
+    },
+    "results/silicon_doping_v8/replay_validation.json": {
+      "sha256": "3fca458cfd68cb29a6f8a69d167c8a840de85a680774064ee08889c541d220c6",
+      "bytes": 315
+    },
+    "results/silicon_doping_v8/revised_continuum/audit.json": {
+      "sha256": "9418c94e3a80a1dec443bb376be8524be4514828ec218f2eff766cf7a2e735cc",
+      "bytes": 3909
+    },
+    "results/silicon_doping_v8/revised_continuum/chemical_site_counts.csv": {
+      "sha256": "b7c101670fc06ed871d459a0e2c4e6955cac7fc409f392293e3fe8b5beb638e8",
+      "bytes": 12924
+    },
+    "results/silicon_doping_v8/revised_continuum/doping_audit.png": {
+      "sha256": "520173addb344e766b70ccacd1be38fb6737dbfc1825d547bcc46e14a638a78e",
+      "bytes": 309559
+    },
+    "results/silicon_doping_v8/revised_continuum/elastic_crack_fields.csv": {
+      "sha256": "f8bea86dbedd5c28823a3ca2ba4fd5a84bac8254c6cb87083212f22784481667",
+      "bytes": 4933
+    },
+    "results/silicon_doping_v8/solver_tests.json": {
+      "sha256": "b661bcd156a97f955e9fe3d97d79bb4c01fd5497fe56328ad9a2d1caa3dcb87f",
+      "bytes": 712732
+    },
+    "results/silicon_doping_v8/sources/jaakkola_2014_elastic.csv": {
+      "sha256": "c91526d82afc4e0d20e86dfabfc3b61bc71b8c956385aa07546dc6d540c7f371",
+      "bytes": 918
+    },
+    "results/silicon_doping_v8/sources/provenance.json": {
+      "sha256": "0b299698817eae64c382af3552a0847cb0b7ea8e3e9f369b1aa22a68a671e161",
+      "bytes": 1314
+    },
+    "results/silicon_doping_v8/targeted_tests.json": {
+      "sha256": "eeb2b59088c1b604b797d1da6a776f3d2dbcdabfb9da82dfaded8bb8a081d710",
+      "bytes": 58948
+    },
+    "results/silicon_doping_v8/young_nonidentifiability.csv": {
+      "sha256": "e610c8960da7e5f4eba517bd05ddb5107f573811419cd2ced3fb109e96ef62d5",
+      "bytes": 439
+    },
+    "results/silicon_specimen_v6/verified_affine_boundary/original_sw_1985_R28_K1.json": {
+      "sha256": "c2dea289567ba3a4da5b8b0fd1759ebd4852ce1192ec1c54bda75b3d6145d7c0",
+      "bytes": 6299
+    },
+    "results/silicon_specimen_v6/verified_affine_boundary/original_sw_1985_R56_K1.json": {
+      "sha256": "b83442777b5064c65aef721c744a446599e37c2c26f3c739668b2f259be2a5d7",
+      "bytes": 12713
+    },
+    "results/silicon_wafer_feasibility/audit_doping_v8.py": {
+      "sha256": "5dfe66e9b31726d2eecb310569d8733fe5ce8721b0026d52c227aa2b330bebda",
+      "bytes": 8104
+    },
+    "results/silicon_wafer_feasibility/package_doping_v8.py": {
+      "sha256": "17837d22ef962e440c348b779f04a446c46501b64ca9869e59d7c624e8b7d7b4",
+      "bytes": 2448
+    },
+    "results/silicon_wafer_feasibility/run_doping_audit.py": {
+      "sha256": "6031aea6e00840163c21e49c99e9cdc4d954f7c4ea55a478454b49f8fdd30931",
+      "bytes": 10894
+    },
+    "results/silicon_wafer_feasibility/validate_doping_regression.py": {
+      "sha256": "e50b329934d32169e7f35c4fd71f2b2b87198cc342c4356260e8ce8b3d96b2b6",
+      "bytes": 1776
+    },
+    "solver_v1/silicon_doping_research.py": {
+      "sha256": "047f16d9ca76b24ccc5b24577e267f76929c9d3146e24269c96464fe00ffe208",
+      "bytes": 12241
+    },
+    "solver_v1/silicon_doping_validation.py": {
+      "sha256": "c2d4f4573f042d1de3bd22673758db9b9ca7f104a616743749bd5d9cf0fd5bdd",
+      "bytes": 3988
+    },
+    "solver_v1/SILICON_DOPING_VALIDATION_V8.md": {
+      "sha256": "2879c8428a5e0125c841d9d4ae5c9f6790c9bfb9b119968bc49599990393631a",
+      "bytes": 5875
+    },
+    "solver_v1/silicon_specimen_research.py": {
+      "sha256": "3ae89d35d518761fb918988e57cd50c1e8943e20b95d5f4b4de845c71dfad65d",
+      "bytes": 11177
+    },
+    "solver_v1/test_silicon_doping_research.py": {
+      "sha256": "e374b90032a6f55c004e5df8df17c2757f9ac3bad07c830cfcaff91019bced1a",
+      "bytes": 8474
+    },
+    "solver_v1/test_silicon_doping_validation.py": {
+      "sha256": "0be9a65ce65dfbbb3cb37ed5ebe30b5499e447f5b0c9f0d455caac3508779eba",
+      "bytes": 5094
+    }
+  }
+}

@@ -1,4 +1,7 @@
-"""Reproduce v7 doping/elasticity diagnostics, with no external atomistic run."""
+"""Doping/elasticity diagnostics with v8 corrected sample temperature support.
+
+Original v7 artifacts remain unchanged; replay their original code at 4d1e3b9.
+"""
 from __future__ import annotations
 
 import argparse
@@ -14,6 +17,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from solver_v1.silicon_doping_research import (
+    ELASTIC_SOURCE,
     directional_young_GPa, dopant_site_statistics, excess_electrons_for_material_volume,
     load_elastic_samples, silicon_site_density_cm3,
 )
@@ -48,7 +52,7 @@ def run(output):
     reference = samples['B0.6']
     uncertainty = np.array([.3, .1, .2])
     for sample in samples.values():
-        for temperature in (-40., 25., 85.):
+        for temperature in (sample.temperature_min_C, 25., sample.temperature_max_C):
             c = sample.constants_GPa(temperature)
             field = sample.crack_field(temperature)
             ref = reference.crack_field(temperature)
@@ -114,7 +118,8 @@ def run(output):
                      'Electronic fast-equilibrium closure and mobility require physical validation'],
         source_sha256={p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                        for p in sorted(SOURCE.glob('*')) if p.is_file()} |
-                      {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in v6_paths})
+                      {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+                       for p in [*v6_paths, ELASTIC_SOURCE]})
     if max(j_errors) > 1e-9:
         raise RuntimeError('independent J-integral check failed')
     dump_csv(output/'elastic_crack_fields.csv', elastic)

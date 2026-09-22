@@ -1,5 +1,25 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-22 최신: Si 도핑 독립 검증 v8
+
+- 시작 fresh origin/local 4d1e3b984e3833f9800c4b09ba1af4b913ea3fc4 일치/clean.
+  aft-silicon-wafer / silicon-wafer-research. AGENTS/기존 Al·UI 변경 보존.
+- 문헌 Sec.III에서 As1.7 최고온도80C 예외를 확인. v7의85C 허용 오류를
+  시편별 source bounds로 수정. 양의 보간 weight만 온도 범위를 제약한다.
+  과거v7 파일/실온결과는 보존, As1.7/85C를 실측범위 결과로 해석하지 않는다.
+- Airy와 독립 Fourier displacement/Schur 풀이77조건 H상대차최대2.89e-15.
+  합성 Fermi-product27조건에서 전하 축약 Hessian 절대차최대2.56e-15.
+  고정평균전하 Legendre 곡률·절단sector 반례·영률의 비식별성을 검증했다.
+- 집중72PASS+6subtests, 전체solver934PASS+6subtests, app189PASS+3subtests,
+  smoke exit0. 별도폴더 JSON/CSV7파일 byte일치. 실제 pytest 기록시간은
+  solver3607.74s/app3032.91s; 툴clock 경과와 차이가 있어 CPU시간으로 부르지 않는다.
+- 결과 results/silicon_doping_v8, 이론 SILICON_DOPING_VALIDATION_V8.md.
+  새DFT/MD/원자energy0회. 실제dopant energy/균열장벽/이동도·Hz는 미보정.
+- 사용자가3시간 자율연구를 추가지시. 기준clock 시작11:59:08 UTC,
+  마감14:59:08 UTC. v8 뒤에는 B 원자료·P후보·빠른 전하 축약 검증을 계속한다.
+  Durham 2025 B 공개구조7개/Hall/SIMS 확보: SIMS는counts, 화학농도아님.
+  CAD/캡처/Al옛작업을 재개하지 않는다. 추가agent 없음. 최종Git은 직접 확인.
+
 ## 2026-09-22 최신: Si 도핑 상태·실측 탄성·전하 축약 v7
 
 - 최신 사용자 지시: 도핑 정도의 영향을 연구·구현. CAD는 기존 별도 작업 유지.

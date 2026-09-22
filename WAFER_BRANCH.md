@@ -19,6 +19,7 @@ Al과 Si를 같은 원자 에너지 → 자유에너지 → 확률 흐름의 구
 | 원자 에너지·내부 이완 탄성·공개 DFT 대조 | 2,475구조×2모델 평가 완료; SW/Tersoff 재료 미채택 | [v5 이론](solver_v1/SILICON_ATOMISTIC_FOUNDATION_V5.md), [실제 계산](results/silicon_atomistic_v5/COMPLETED_SUMMARY.md) |
 | 시편 MPa 하중·이방성 원자 경계·경계 일 | 40개 기준 상태·8개 안정성 검사 완료; 에너지 등식과 실제 강도 구분 | [v6 이론](solver_v1/SILICON_SPECIMEN_LOADING_V6.md), [실제 계산](results/silicon_specimen_v6/COMPLETED_SUMMARY.md) |
 | 도핑 상태·실측 탄성·전하 자유에너지 축약 | 7시편×3온도 탄성 균열장·농도 해상도·수학 검증; 도핑 장벽/kinetics 미보정 | [v7 이론](solver_v1/SILICON_DOPING_V7.md), [실제 계산](results/silicon_doping_v7/COMPLETED_SUMMARY.md) |
+| 도핑 수학·출처의 독립 검증 | As1.7 상한80C 수정; Fourier 탄성77조건·Fermi 전자27조건·전하 제약 검증 | [v8 이론](solver_v1/SILICON_DOPING_VALIDATION_V8.md), [검증 결과](results/silicon_doping_v8/COMPLETED_SUMMARY.md) |
 | 실측 Si 물성·표면·도핑 에너지 적합 | 미완료 | [탐색 근거](results/silicon_wafer_feasibility/RESEARCH_MEMO.md) |
 | finite-T PMF·이동도·실제 수명·Hz | 미보정 | [공통 이론](results/silicon_wafer_feasibility/UNIFIED_FATIGUE_THEORY.md), [국소 축약 조건](solver_v1/SILICON_LOCAL_CRACK_V2.md) |
 | 생산 UI의 실제 Si 해석 | 비활성 | [실행 차단 계약](app/MATERIAL_SELECTION.md#실행-상태) |

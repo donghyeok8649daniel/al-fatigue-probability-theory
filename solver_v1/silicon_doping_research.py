@@ -18,7 +18,7 @@ from .silicon_specimen_research import AnisotropicModeI, cubic_tensor
 
 SPECIES_CHARGE = {'B': -1, 'P': 1, 'As': 1, 'Sb': 1}
 ELASTIC_SOURCE = (Path(__file__).resolve().parents[1] / 'results' /
-                  'silicon_doping_v7' / 'sources' / 'jaakkola_2014_elastic.csv')
+                  'silicon_doping_v8' / 'sources' / 'jaakkola_2014_elastic.csv')
 
 
 def _scalar(value, name, *, positive=False):
@@ -122,11 +122,19 @@ class ElasticSample:
     c0_GPa: tuple[float, float, float]
     a_ppm_K: tuple[float, float, float]
     b_ppb_K2: tuple[float, float, float]
+    temperature_min_C: float
+    temperature_max_C: float
+
+    def __post_init__(self):
+        if (not np.all(np.isfinite([self.temperature_min_C, self.temperature_max_C]))
+                or not self.temperature_min_C < 25 < self.temperature_max_C):
+            raise ValueError('finite source temperature bounds spanning 25 Celsius required')
 
     def constants_GPa(self, temperature_C):
         t = float(temperature_C)
-        if not np.isfinite(t) or not -40 <= t <= 85:
-            raise ValueError('published temperature range is -40 to 85 Celsius')
+        if not np.isfinite(t) or not self.temperature_min_C <= t <= self.temperature_max_C:
+            raise ValueError(f'{self.sample_id}: published temperature range is '
+                             f'{self.temperature_min_C:g} to {self.temperature_max_C:g} Celsius')
         dt = t-25.
         c = np.asarray(self.c0_GPa)*(1+np.asarray(self.a_ppm_K)*1e-6*dt
                                      + np.asarray(self.b_ppb_K2)*1e-9*dt**2)
@@ -138,10 +146,11 @@ class ElasticSample:
 
 
 def load_elastic_samples(path=ELASTIC_SOURCE):
-    """Jaakkola et al., arXiv:1401.1363, Tables I/III, Eq.8.
+    """Jaakkola et al., arXiv:1401.1363, Tables I/III, Eq.8 and Sec.III.
 
     Concentrations are resistivity-derived CARRIER estimates, not chemical
     dopant atom assays. Table III nominal labels and Table I means retained.
+    Sec.III limits As1.7 measurements to 80 C; the other samples reach 85 C.
     """
     samples = {}
     with Path(path).open(encoding='utf-8', newline='') as stream:
@@ -151,14 +160,15 @@ def load_elastic_samples(path=ELASTIC_SOURCE):
                 *(float(row['carrier_'+key+'_cm3']) for key in ('nominal', 'min', 'max', 'average')),
                 tuple(float(row[f'c{ij}_GPa']) for ij in ('11', '12', '44')),
                 tuple(float(row[f'a{ij}_ppm_K']) for ij in ('11', '12', '44')),
-                tuple(float(row[f'b{ij}_ppb_K2']) for ij in ('11', '12', '44')))
+                tuple(float(row[f'b{ij}_ppb_K2']) for ij in ('11', '12', '44')),
+                float(row['temperature_min_C']), float(row['temperature_max_C']))
             if sample.sample_id in samples:
                 raise ValueError('duplicate sample id')
             if (sample.species not in SPECIES_CHARGE
                     or sample.carrier_type != ('hole' if sample.species == 'B' else 'electron')
                     or not 0 < sample.carrier_min_cm3 <= sample.carrier_average_cm3 <= sample.carrier_max_cm3):
                 raise ValueError('invalid source carrier metadata')
-            for t in (-40., 25., 85.):
+            for t in (sample.temperature_min_C, 25., sample.temperature_max_C):
                 sample.constants_GPa(t)
             samples[sample.sample_id] = sample
     return samples
@@ -183,8 +193,11 @@ def interpolate_elastic_constants(species, *, carrier_density_cm3, temperature_C
     hi = selected[upper]
     lo = selected[max(0, upper-1)]
     w = 0. if hi is lo else (n-lo.carrier_average_cm3)/(hi.carrier_average_cm3-lo.carrier_average_cm3)
-    c = (1-w)*lo.constants_GPa(temperature_C)+w*hi.constants_GPa(temperature_C)
-    return dict(constants_GPa=c, source_samples=[lo.sample_id, hi.sample_id],
+    # A zero-weight neighbour must not narrow an exact measured sample's
+    # temperature support (e.g. As2.5 at 85 C, next to As1.7 limited to 80 C).
+    active = [(s, weight) for s, weight in ((lo, 1-w), (hi, w)) if weight > 0]
+    c = sum(weight*s.constants_GPa(temperature_C) for s, weight in active)
+    return dict(constants_GPa=c, source_samples=[s.sample_id for s, _ in active],
                 upper_weight=w, status='research interpolation; elasticity only')
 
 

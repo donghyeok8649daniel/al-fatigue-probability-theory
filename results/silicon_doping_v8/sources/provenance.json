@@ -1,0 +1,17 @@
+{
+  "retrieved_utc_date": "2026-09-22",
+  "dataset": "jaakkola_2014_elastic.csv",
+  "title": "Determination of Doping and Temperature Dependent Elastic Constants of Degenerately Doped Silicon from MEMS Resonators",
+  "authors": ["Antti Jaakkola", "Mika Prunnila", "Tuomas Pensala", "James Dekker", "Panu Pekko"],
+  "year": 2014,
+  "stable_id": "arXiv:1401.1363",
+  "url": "https://arxiv.org/html/1401.1363",
+  "table_origin": "All original table columns byte-value identical to v7 CSV; regression checks every field.",
+  "new_columns": ["temperature_min_C", "temperature_max_C"],
+  "temperature_source": "Section III: -40 to +85 Celsius in seven steps; As1.7 maximum 80 Celsius.",
+  "original_table_provenance": "results/silicon_doping_v7/sources/provenance.json",
+  "original_table_sha256": "7962efea3cb4a16f2b1b018c17ca5aa2a20d72d0f504326c2e9e17d713bbd9a2",
+  "correction": "v7's global 85 Celsius support incorrectly included an As1.7 point outside that sample's measured range.",
+  "historical_results": "v7 results preserved; its As1.7/85 Celsius row is superseded by v8 As1.7/80 Celsius. Original v7 code is reproducible at commit 4d1e3b984e3833f9800c4b09ba1af4b913ea3fc4.",
+  "calibration_scope": "Continuum elasticity reference only. No Si dopant energy, fracture toughness, or mechanical mobility fit."
+}

@@ -118,7 +118,7 @@ def test_young_modulus_matches_independent_tensor_compliance():
 
 def test_measured_elasticity_J_and_traction_at_temperature_endpoints():
     for sample in load_elastic_samples().values():
-        for t in (-40., 25., 85.):
+        for t in (sample.temperature_min_C, 25., sample.temperature_max_C):
             field = sample.crack_field(t)
             assert_allclose(field.contour_J(.6, radius_A=40, points=2048), field.energy_release_J_m2(.6), rtol=2e-10)
             stress = field.field([[10., 0]], .6)[2]

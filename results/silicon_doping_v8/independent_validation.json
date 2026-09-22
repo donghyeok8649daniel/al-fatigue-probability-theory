@@ -1,0 +1,232 @@
+{
+  "status": "independent mathematical checks passed; actual doped fracture uncalibrated",
+  "corrected_source_support": [
+    {
+      "sample_id": "B3",
+      "min_C": -40.0,
+      "max_C": 85.0
+    },
+    {
+      "sample_id": "B0.6",
+      "min_C": -40.0,
+      "max_C": 85.0
+    },
+    {
+      "sample_id": "As1.7",
+      "min_C": -40.0,
+      "max_C": 80.0
+    },
+    {
+      "sample_id": "As2.5",
+      "min_C": -40.0,
+      "max_C": 85.0
+    },
+    {
+      "sample_id": "P4.1",
+      "min_C": -40.0,
+      "max_C": 85.0
+    },
+    {
+      "sample_id": "P4.7",
+      "min_C": -40.0,
+      "max_C": 85.0
+    },
+    {
+      "sample_id": "P7.5",
+      "min_C": -40.0,
+      "max_C": 85.0
+    }
+  ],
+  "elastic_cases": 77,
+  "max_relative_H_error": 2.886579864025407e-15,
+  "electronic_cases": 27,
+  "electronic_max_absolute_errors": {
+    "grand_potential_eV": 2.7755575615628914e-17,
+    "gradient": 1.1102230246251565e-16,
+    "hessian": 2.55351295663786e-15,
+    "mean_excess_electrons": 2.220446049250313e-16
+  },
+  "fixed_mean_charge": {
+    "gradient_constraint": "mean N, not exact canonical N",
+    "fixed_mu_hessian": [
+      [
+        -1.2393878877703126,
+        1.171324664058542
+      ],
+      [
+        1.1713246640585422,
+        -0.3822481855540616
+      ]
+    ],
+    "fixed_mean_hessian": [
+      [
+        -1.1540392505373016,
+        1.2645214520059644
+      ],
+      [
+        1.2645214520059644,
+        -0.28048157784591427
+      ]
+    ],
+    "refinement": [
+      {
+        "step": 0.001,
+        "max_hessian_error": 8.9549857524851e-06
+      },
+      {
+        "step": 0.0005,
+        "max_hessian_error": 2.238732948578459e-06
+      },
+      {
+        "step": 0.00025,
+        "max_hessian_error": 5.596823693387876e-07
+      },
+      {
+        "step": 0.0001,
+        "max_hessian_error": 8.954908992109267e-08
+      },
+      {
+        "step": 5e-05,
+        "max_hessian_error": 2.2387049991579033e-08
+      },
+      {
+        "step": 1e-05,
+        "max_hessian_error": 8.957690145194874e-10
+      }
+    ]
+  },
+  "source_young_identity_checks": [
+    {
+      "carrier_type": "electron",
+      "carrier_cm3": "0",
+      "residual_GPa_inv": 4.385037783345008e-06,
+      "rounding_lower": -1.1154975995273514e-05,
+      "rounding_upper": 1.99246081283265e-05
+    },
+    {
+      "carrier_type": "electron",
+      "carrier_cm3": "1e21",
+      "residual_GPa_inv": 1.027310405049206e-05,
+      "rounding_lower": -1.3690525707470841e-05,
+      "rounding_upper": 3.423563690841541e-05
+    },
+    {
+      "carrier_type": "electron",
+      "carrier_cm3": "2e21",
+      "residual_GPa_inv": 8.49097472310767e-06,
+      "rounding_lower": -2.000386075030197e-05,
+      "rounding_upper": 3.6984628283762144e-05
+    },
+    {
+      "carrier_type": "electron",
+      "carrier_cm3": "3e21",
+      "residual_GPa_inv": 1.3443376119071787e-05,
+      "rounding_lower": -1.99921778633802e-05,
+      "rounding_upper": 4.6877467654610205e-05
+    },
+    {
+      "carrier_type": "electron",
+      "carrier_cm3": "4e21",
+      "residual_GPa_inv": -1.1119250561797411e-05,
+      "rounding_lower": -4.76844137371063e-05,
+      "rounding_upper": 2.5444446532688764e-05
+    },
+    {
+      "carrier_type": "electron",
+      "carrier_cm3": "5e21",
+      "residual_GPa_inv": 1.707242574426962e-05,
+      "rounding_lower": -2.4177538735414145e-05,
+      "rounding_upper": 5.832123021385846e-05
+    },
+    {
+      "carrier_type": "hole",
+      "carrier_cm3": "0",
+      "residual_GPa_inv": 4.385037783345008e-06,
+      "rounding_lower": -1.1154975995273514e-05,
+      "rounding_upper": 1.99246081283265e-05
+    },
+    {
+      "carrier_type": "hole",
+      "carrier_cm3": "1e21",
+      "residual_GPa_inv": -1.6313282322766298e-06,
+      "rounding_lower": -2.0876638331873004e-05,
+      "rounding_upper": 1.7613383674636857e-05
+    },
+    {
+      "carrier_type": "hole",
+      "carrier_cm3": "2e21",
+      "residual_GPa_inv": -1.3808438370586928e-05,
+      "rounding_lower": -3.555654912501538e-05,
+      "rounding_upper": 7.938882403621395e-06
+    },
+    {
+      "carrier_type": "hole",
+      "carrier_cm3": "3e21",
+      "residual_GPa_inv": -4.470107830178288e-06,
+      "rounding_lower": -2.9913961670315764e-05,
+      "rounding_upper": 2.09727171781339e-05
+    },
+    {
+      "carrier_type": "hole",
+      "carrier_cm3": "4e21",
+      "residual_GPa_inv": -1.2703851295519514e-05,
+      "rounding_lower": -4.270621533473962e-05,
+      "rounding_upper": 1.72970656751939e-05
+    },
+    {
+      "carrier_type": "hole",
+      "carrier_cm3": "5e21",
+      "residual_GPa_inv": 5.692313384621922e-06,
+      "rounding_lower": -3.385786811955366e-05,
+      "rounding_upper": 4.5240439626496876e-05
+    }
+  ],
+  "nonidentifiability_witness": [
+    {
+      "c11_GPa": 192.72319239152404,
+      "c12_GPa": 94.90629639644371,
+      "c44_GPa": 74.83453670276774,
+      "E100_GPa": 130.09258289703317,
+      "E110_GPa": 169.03468840459203,
+      "E111_GPa": 187.77052348993294,
+      "H_GPa_inv": 0.005513605778338675
+    },
+    {
+      "c11_GPa": 165.5,
+      "c12_GPa": 63.700000000000024,
+      "c44_GPa": 79.6,
+      "E100_GPa": 130.09258289703314,
+      "E110_GPa": 169.03468840459203,
+      "E111_GPa": 187.77052348993294,
+      "H_GPa_inv": 0.00568863221964944
+    },
+    {
+      "c11_GPa": 149.84638812896702,
+      "c12_GPa": 43.725130519092914,
+      "c44_GPa": 85.01367053998632,
+      "E100_GPa": 130.0925828970332,
+      "E110_GPa": 169.03468840459203,
+      "E111_GPa": 187.77052348993294,
+      "H_GPa_inv": 0.0058082208589394875
+    }
+  ],
+  "truncated_sector_counterexample": {
+    "complete_mean_N": 1.0,
+    "truncated_mean_N": 0.6666666666666666,
+    "grand_potential_bias_eV": 0.007192051811294522,
+    "normalization_is_not_completeness": true
+  },
+  "new_DFT": 0,
+  "new_MD": 0,
+  "new_atomistic_energy": 0,
+  "physical_clock_available": false,
+  "source_sha256": {
+    "solver_v1/silicon_doping_research.py": "047f16d9ca76b24ccc5b24577e267f76929c9d3146e24269c96464fe00ffe208",
+    "solver_v1/silicon_doping_validation.py": "c2d4f4573f042d1de3bd22673758db9b9ca7f104a616743749bd5d9cf0fd5bdd",
+    "solver_v1/silicon_specimen_research.py": "3ae89d35d518761fb918988e57cd50c1e8943e20b95d5f4b4de845c71dfad65d",
+    "solver_v1/test_silicon_doping_validation.py": "0be9a65ce65dfbbb3cb37ed5ebe30b5499e447f5b0c9f0d455caac3508779eba",
+    "results/silicon_wafer_feasibility/audit_doping_v8.py": "5dfe66e9b31726d2eecb310569d8733fe5ce8721b0026d52c227aa2b330bebda",
+    "results/silicon_doping_v8/sources/jaakkola_2014_elastic.csv": "c91526d82afc4e0d20e86dfabfc3b61bc71b8c956385aa07546dc6d540c7f371",
+    "results/silicon_doping_v7/sources/noda_2023_ideal_strength.csv": "bf7fc7621c07bc9709b09f9dd411d7f82dc692e59c241e79fffee98bbd64a63e"
+  }
+}
