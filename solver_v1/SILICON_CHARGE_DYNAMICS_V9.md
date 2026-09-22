@@ -172,6 +172,17 @@ Gamma supercell 모드는 full phonon spectrum이나 finite-T PMF/물리 clock�
 방향으로 재이완한다. 최종 최소점 검증과 원래 stationary state 비교를 구별한다.
 이 결과만으로 공개되지 않은 LDA 전체 Hessian의 부호를 추측하지 않는다.
 
+### 내부 원자 이완과 탄성의 연결
+
+균일 변형 ε에 따라 내부 원자 x가 안정한 평형 x*(ε)로 이완하면, 병진 gauge를
+제거한 공간에서 `E_eff'' = E_εε − E_εx H_xx⁻¹ E_xε`다. 이 식은 0 K에서
+기계적 minimum을 따라가는 tangent이며 finite-T PMF가 아니다. v9의 MACE 보충
+계산에서 C44는 affine80.459→내부이완60.230GPa로 낮아졌다. 에너지/응력 미분과
+서로 다른 변형 모드를 대조했다. 이 bulk 결과를 기존 a/s 좌표의 강성·이동도나
+실측 Si 보정으로 전이하지 않는다. 전하의 grand-potential 축약과 내부 원자 이완은
+같은 조건부 에너지 구조로 정리할 수 있지만, 각 자유도의 실제 시간척도와 열적
+축약을 각각 확인해야 한다.
+
 ## 9. 실제 Si 모델로 넘어가는 조건
 
 추가 [1차 문헌 감사](../results/silicon_doping_v9/sources/dopant_fracture_source_screening.json)는

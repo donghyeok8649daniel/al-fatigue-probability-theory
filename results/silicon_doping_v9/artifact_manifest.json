@@ -88,8 +88,8 @@
     },
     {
       "file": "results/silicon_doping_v9/COMPLETED_SUMMARY.md",
-      "size_bytes": 16659,
-      "sha256": "9bf64360067ff774b4fa3db8a6a5d2c8de1ee1d11b93bc366e9f2326b26b5141"
+      "size_bytes": 18476,
+      "sha256": "9cd298eaa456b71972acdfe66cba4114c1d944833b81e390e521b3bc4b26390b"
     },
     {
       "file": "results/silicon_doping_v9/dynamics/absorption_convergence.csv",
@@ -737,6 +737,671 @@
       "sha256": "1b6b4867186adcfdc834cb58179729611604bf8fdf918411b0df42ac1976da2a"
     },
     {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/elastic_constants.csv",
+      "size_bytes": 1526,
+      "sha256": "6142eb82704414075ac3bf8f34ecaf7bc18f35d59ce380c3d139d86f0f63a0c0"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_1e-03_+1_affine.extxyz",
+      "size_bytes": 1431,
+      "sha256": "10f31d9f33e86e2226bca07b034db558e068dc64ab513e852d4b647409d9a163"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_1e-03_+1_relaxed.extxyz",
+      "size_bytes": 1438,
+      "sha256": "4e4e9c908e3f26dc76549cf5c3db6bc9f5d51812db5cfdd82509d475856d4fa8"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_1e-03_+1_relaxed.log",
+      "size_bytes": 196,
+      "sha256": "41b3364f5e9dbf01174ca54d6db00f0875822d44e76fd04e1c2dca2cc898b035"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_1e-03_-1_affine.extxyz",
+      "size_bytes": 1439,
+      "sha256": "bfc717c1d47a50a53b60fcf1963d2d0da3c5ac0d438ceddfd895d7a3b6cae420"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_1e-03_-1_relaxed.extxyz",
+      "size_bytes": 1435,
+      "sha256": "50ccf96049b978ea7f8ccaaaf520e42bd639ad3cae0a72ece31e677f83391f8d"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_1e-03_-1_relaxed.log",
+      "size_bytes": 196,
+      "sha256": "a47c1046c81beeb005d89ae7ad3f7d773e6087afee4933bd69c6889db0599f0f"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_3e-03_+1_affine.extxyz",
+      "size_bytes": 1432,
+      "sha256": "98029e86a764b02ab3b636f4580652fee840c60f419da03c9cfa22619acdc7ad"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_3e-03_+1_relaxed.extxyz",
+      "size_bytes": 1429,
+      "sha256": "6c0b6db4b29e6bfd14f2ebc732c2fe1495210683f38685d2f3119de731c4ca9a"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_3e-03_+1_relaxed.log",
+      "size_bytes": 261,
+      "sha256": "a04d647c4f32e7c8725758e448bfedc100c051fb19a300d9fc42305fb65cfcdd"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_3e-03_-1_affine.extxyz",
+      "size_bytes": 1434,
+      "sha256": "529a1a8a8a30afa5f231b799e9606e56c2fcbd6e8a73ee4a1d4fb3827de883e5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_3e-03_-1_relaxed.extxyz",
+      "size_bytes": 1431,
+      "sha256": "7b15c0ac603665801602d0c0cb6c8ee3c5e6b110d8d1ba6c27c0befeed751730"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_3e-03_-1_relaxed.log",
+      "size_bytes": 261,
+      "sha256": "679a2ec585dd90322dcd87ca153d0edb69b00f5446b49297df20dff1a4d68cc6"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_3e-04_+1_affine.extxyz",
+      "size_bytes": 1433,
+      "sha256": "b594d5b1a52fe52a16c9bdc75449b34958327d1ba6c8d341468e0441211cb267"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_3e-04_+1_relaxed.extxyz",
+      "size_bytes": 1434,
+      "sha256": "6b07267a8ee7776771734eaf739058d32917a6a2c0626cd16569dd438af762f5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_3e-04_+1_relaxed.log",
+      "size_bytes": 196,
+      "sha256": "122fa7b725ed4492328a806f6bfb388a3fdc50c5fd69f0812b5d93c82e2d9ad0"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_3e-04_-1_affine.extxyz",
+      "size_bytes": 1439,
+      "sha256": "e909cb362034771d85b6c962beb48281cc2a0adfaaa17a57b6f8d61f5a3e7676"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_3e-04_-1_relaxed.extxyz",
+      "size_bytes": 1435,
+      "sha256": "3b7e65315252f1ef1bd90260fa35b3e08355d6c4307bd76710a29bcfba23b46f"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/engineering_xy_shear_3e-04_-1_relaxed.log",
+      "size_bytes": 196,
+      "sha256": "cc87812672fd3255db682551f6bcbe1307f1a05edeb5c15dde7d3df9bbe3ec5b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_1e-03_+1_affine.extxyz",
+      "size_bytes": 1416,
+      "sha256": "65d5818b523e2d06270e2ad86e190198065c4d3b8efbb23e5da87e33e1ab46e3"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_1e-03_+1_relaxed.extxyz",
+      "size_bytes": 1416,
+      "sha256": "65d5818b523e2d06270e2ad86e190198065c4d3b8efbb23e5da87e33e1ab46e3"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_1e-03_+1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "870b0281f0e517149834e5aae22376ab62c8fe71502a756ecebc54b632b0511d"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_1e-03_-1_affine.extxyz",
+      "size_bytes": 1406,
+      "sha256": "195497223ad052aec3b8211c24c274ff343e7ff67c66f656609c5e313b94e595"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_1e-03_-1_relaxed.extxyz",
+      "size_bytes": 1406,
+      "sha256": "195497223ad052aec3b8211c24c274ff343e7ff67c66f656609c5e313b94e595"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_1e-03_-1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "f7b908184a991b2bb7dff24ffcc7229a71e211aae08419aeb1034659110b95b8"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_3e-03_+1_affine.extxyz",
+      "size_bytes": 1414,
+      "sha256": "26690802dc70ac15cd7ac8652b82f76b99360c2c15e2da47d9f747a374299da3"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_3e-03_+1_relaxed.extxyz",
+      "size_bytes": 1414,
+      "sha256": "26690802dc70ac15cd7ac8652b82f76b99360c2c15e2da47d9f747a374299da3"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_3e-03_+1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "3d20dcb6375d64d69228925fe00e44bc34092599363d6b023329cf5f4e4dc1cf"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_3e-03_-1_affine.extxyz",
+      "size_bytes": 1420,
+      "sha256": "00556d983c4db09828f12680535c0ab3a49fc2c15fa1fb8fa6ec762a63dbc892"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_3e-03_-1_relaxed.extxyz",
+      "size_bytes": 1420,
+      "sha256": "00556d983c4db09828f12680535c0ab3a49fc2c15fa1fb8fa6ec762a63dbc892"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_3e-03_-1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "63df703fc51727e7f036e28a9371723b828ea8bb48dc9570af77bb288d862c81"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_3e-04_+1_affine.extxyz",
+      "size_bytes": 1420,
+      "sha256": "c3339f6aa1a137031133f7e25b042db12cea08a5d9244aaafb08a63554f6b4e4"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_3e-04_+1_relaxed.extxyz",
+      "size_bytes": 1420,
+      "sha256": "c3339f6aa1a137031133f7e25b042db12cea08a5d9244aaafb08a63554f6b4e4"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_3e-04_+1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "f2ce2b2bdf25eb74b23e91e77389772823cd4466e7a2fac7da7c93712a13802d"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_3e-04_-1_affine.extxyz",
+      "size_bytes": 1412,
+      "sha256": "9544cb5fe6ce8382b0a6dba903f447aeac86ebd6edc67e1c056203adc29611d5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_3e-04_-1_relaxed.extxyz",
+      "size_bytes": 1412,
+      "sha256": "9544cb5fe6ce8382b0a6dba903f447aeac86ebd6edc67e1c056203adc29611d5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/hydro_3e-04_-1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "00e087d60896241118239eff34843925b69274ead8444a35f84659b4db22e981"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/states.csv",
+      "size_bytes": 5630,
+      "sha256": "adab39f510887ae0288436e20281fd3d0c02dfb8eaa25f325ce24ea836f70902"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/summary.json",
+      "size_bytes": 2458,
+      "sha256": "4b41b86fdf2c1e8b318af542abbaae6b919845ed0153dfb0abd6a4c9ae14bb76"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tangents.csv",
+      "size_bytes": 1632,
+      "sha256": "b72342f9ba0aa9c85f62e9f1b0ea45de8a3840f0bf88c750a968f9d02d46e255"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_1e-03_+1_affine.extxyz",
+      "size_bytes": 1423,
+      "sha256": "d47d307f49f890f4883eab716cdae9f12d71ec03a782d22855f186e69de0ba46"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_1e-03_+1_relaxed.extxyz",
+      "size_bytes": 1423,
+      "sha256": "d47d307f49f890f4883eab716cdae9f12d71ec03a782d22855f186e69de0ba46"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_1e-03_+1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "c68bc923bfdcc8765a50dbf7dcd7c6c2372d8460110e0440f833e269cf4f41d0"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_1e-03_-1_affine.extxyz",
+      "size_bytes": 1418,
+      "sha256": "c9f06bb6bfa54edd4de5b4f6293195b8129b556595d39c37c16f70936a2d00ca"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_1e-03_-1_relaxed.extxyz",
+      "size_bytes": 1418,
+      "sha256": "c9f06bb6bfa54edd4de5b4f6293195b8129b556595d39c37c16f70936a2d00ca"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_1e-03_-1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "c68bc923bfdcc8765a50dbf7dcd7c6c2372d8460110e0440f833e269cf4f41d0"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_3e-03_+1_affine.extxyz",
+      "size_bytes": 1407,
+      "sha256": "c0fd761d321c043340ec660b2b689d966692d7ea535ea074c4cfe582ca7e4e8f"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_3e-03_+1_relaxed.extxyz",
+      "size_bytes": 1407,
+      "sha256": "c0fd761d321c043340ec660b2b689d966692d7ea535ea074c4cfe582ca7e4e8f"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_3e-03_+1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "207ce09982b9c6ffc0bc5342a7b4223d5cc0abe79d0bca6b5d8e4ce329c129ac"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_3e-03_-1_affine.extxyz",
+      "size_bytes": 1415,
+      "sha256": "ddaf4f9378cdb76cdf0d125f784bde2555825b76cc0b4928e78f4c4427baf9dd"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_3e-03_-1_relaxed.extxyz",
+      "size_bytes": 1415,
+      "sha256": "ddaf4f9378cdb76cdf0d125f784bde2555825b76cc0b4928e78f4c4427baf9dd"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_3e-03_-1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "207ce09982b9c6ffc0bc5342a7b4223d5cc0abe79d0bca6b5d8e4ce329c129ac"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_3e-04_+1_affine.extxyz",
+      "size_bytes": 1421,
+      "sha256": "8bb77441bf0b1c472a534e42dc37662640b6b7cfa9e94d90c46a5d2a59148d39"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_3e-04_+1_relaxed.extxyz",
+      "size_bytes": 1421,
+      "sha256": "8bb77441bf0b1c472a534e42dc37662640b6b7cfa9e94d90c46a5d2a59148d39"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_3e-04_+1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "b732abb507e49a52bc50e4f590768902a5ae71a7be703aba55e2923ee5107ffb"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_3e-04_-1_affine.extxyz",
+      "size_bytes": 1422,
+      "sha256": "4490482ce1481b621d07b166ca53ce9cc893eee1b2667f4ecd9d69e7f7d1276b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_3e-04_-1_relaxed.extxyz",
+      "size_bytes": 1422,
+      "sha256": "4490482ce1481b621d07b166ca53ce9cc893eee1b2667f4ecd9d69e7f7d1276b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic/tetragonal_3e-04_-1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "b732abb507e49a52bc50e4f590768902a5ae71a7be703aba55e2923ee5107ffb"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/elastic_constants.csv",
+      "size_bytes": 1526,
+      "sha256": "6142eb82704414075ac3bf8f34ecaf7bc18f35d59ce380c3d139d86f0f63a0c0"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_1e-03_+1_affine.extxyz",
+      "size_bytes": 1431,
+      "sha256": "10f31d9f33e86e2226bca07b034db558e068dc64ab513e852d4b647409d9a163"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_1e-03_+1_relaxed.extxyz",
+      "size_bytes": 1438,
+      "sha256": "4e4e9c908e3f26dc76549cf5c3db6bc9f5d51812db5cfdd82509d475856d4fa8"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_1e-03_+1_relaxed.log",
+      "size_bytes": 196,
+      "sha256": "d14e800b8dccfff7aeec5ee0ce6f2c633b3459f6bba3d3142d39a58b5b5b85c5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_1e-03_-1_affine.extxyz",
+      "size_bytes": 1439,
+      "sha256": "bfc717c1d47a50a53b60fcf1963d2d0da3c5ac0d438ceddfd895d7a3b6cae420"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_1e-03_-1_relaxed.extxyz",
+      "size_bytes": 1435,
+      "sha256": "50ccf96049b978ea7f8ccaaaf520e42bd639ad3cae0a72ece31e677f83391f8d"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_1e-03_-1_relaxed.log",
+      "size_bytes": 196,
+      "sha256": "534226526a4b2161f5fd7f2e365d505a1c404f6456241932c2bad8d3333a07d5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_3e-03_+1_affine.extxyz",
+      "size_bytes": 1432,
+      "sha256": "98029e86a764b02ab3b636f4580652fee840c60f419da03c9cfa22619acdc7ad"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_3e-03_+1_relaxed.extxyz",
+      "size_bytes": 1429,
+      "sha256": "6c0b6db4b29e6bfd14f2ebc732c2fe1495210683f38685d2f3119de731c4ca9a"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_3e-03_+1_relaxed.log",
+      "size_bytes": 261,
+      "sha256": "654d66cc54b0627eadf21d39caa8adda9f940371112765c91262f17bebf16bd5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_3e-03_-1_affine.extxyz",
+      "size_bytes": 1434,
+      "sha256": "529a1a8a8a30afa5f231b799e9606e56c2fcbd6e8a73ee4a1d4fb3827de883e5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_3e-03_-1_relaxed.extxyz",
+      "size_bytes": 1431,
+      "sha256": "7b15c0ac603665801602d0c0cb6c8ee3c5e6b110d8d1ba6c27c0befeed751730"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_3e-03_-1_relaxed.log",
+      "size_bytes": 261,
+      "sha256": "944cb12d5a92649735d58cbe1511152070f08e3d440dd9517003fa01a12ce220"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_3e-04_+1_affine.extxyz",
+      "size_bytes": 1433,
+      "sha256": "b594d5b1a52fe52a16c9bdc75449b34958327d1ba6c8d341468e0441211cb267"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_3e-04_+1_relaxed.extxyz",
+      "size_bytes": 1434,
+      "sha256": "6b07267a8ee7776771734eaf739058d32917a6a2c0626cd16569dd438af762f5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_3e-04_+1_relaxed.log",
+      "size_bytes": 196,
+      "sha256": "b162eb9b468e9e0ea0fe5497e0ee2790801899eb16d709e46c9b39fa8c530132"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_3e-04_-1_affine.extxyz",
+      "size_bytes": 1439,
+      "sha256": "e909cb362034771d85b6c962beb48281cc2a0adfaaa17a57b6f8d61f5a3e7676"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_3e-04_-1_relaxed.extxyz",
+      "size_bytes": 1435,
+      "sha256": "3b7e65315252f1ef1bd90260fa35b3e08355d6c4307bd76710a29bcfba23b46f"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/engineering_xy_shear_3e-04_-1_relaxed.log",
+      "size_bytes": 196,
+      "sha256": "fe4b8191366106d46e7eb306ca2f6ee07b13cc75232f5e65692f598f79ff932b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_1e-03_+1_affine.extxyz",
+      "size_bytes": 1416,
+      "sha256": "65d5818b523e2d06270e2ad86e190198065c4d3b8efbb23e5da87e33e1ab46e3"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_1e-03_+1_relaxed.extxyz",
+      "size_bytes": 1416,
+      "sha256": "65d5818b523e2d06270e2ad86e190198065c4d3b8efbb23e5da87e33e1ab46e3"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_1e-03_+1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "2e62df4e2d19741f089a40475af49909a159126a5828578eb91f04839b7aad86"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_1e-03_-1_affine.extxyz",
+      "size_bytes": 1406,
+      "sha256": "195497223ad052aec3b8211c24c274ff343e7ff67c66f656609c5e313b94e595"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_1e-03_-1_relaxed.extxyz",
+      "size_bytes": 1406,
+      "sha256": "195497223ad052aec3b8211c24c274ff343e7ff67c66f656609c5e313b94e595"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_1e-03_-1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "210fc61e6f71d0ad73fc96c6b08a0eb55bf3332348c3aba62cca8145c39d14c4"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_3e-03_+1_affine.extxyz",
+      "size_bytes": 1414,
+      "sha256": "26690802dc70ac15cd7ac8652b82f76b99360c2c15e2da47d9f747a374299da3"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_3e-03_+1_relaxed.extxyz",
+      "size_bytes": 1414,
+      "sha256": "26690802dc70ac15cd7ac8652b82f76b99360c2c15e2da47d9f747a374299da3"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_3e-03_+1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "91fb9611ff00a7c974aa9b2db8bb233de459daf3db03a5c48ad17390cbed650e"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_3e-03_-1_affine.extxyz",
+      "size_bytes": 1420,
+      "sha256": "00556d983c4db09828f12680535c0ab3a49fc2c15fa1fb8fa6ec762a63dbc892"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_3e-03_-1_relaxed.extxyz",
+      "size_bytes": 1420,
+      "sha256": "00556d983c4db09828f12680535c0ab3a49fc2c15fa1fb8fa6ec762a63dbc892"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_3e-03_-1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "32fc3497200bcb719d1175c57970d44c5be41f5ab635c153f679013f56c2202b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_3e-04_+1_affine.extxyz",
+      "size_bytes": 1420,
+      "sha256": "c3339f6aa1a137031133f7e25b042db12cea08a5d9244aaafb08a63554f6b4e4"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_3e-04_+1_relaxed.extxyz",
+      "size_bytes": 1420,
+      "sha256": "c3339f6aa1a137031133f7e25b042db12cea08a5d9244aaafb08a63554f6b4e4"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_3e-04_+1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "17e595892366b6afae3cab1d213d23da5ade0d425e2c0aa06ea4888a9a40dab1"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_3e-04_-1_affine.extxyz",
+      "size_bytes": 1412,
+      "sha256": "9544cb5fe6ce8382b0a6dba903f447aeac86ebd6edc67e1c056203adc29611d5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_3e-04_-1_relaxed.extxyz",
+      "size_bytes": 1412,
+      "sha256": "9544cb5fe6ce8382b0a6dba903f447aeac86ebd6edc67e1c056203adc29611d5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/hydro_3e-04_-1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "b29f6ee598c216a3e13e94761ecc6c1bb08b9dfeab3ffa2e4d3fa3508d4ed6f7"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/states.csv",
+      "size_bytes": 5630,
+      "sha256": "adab39f510887ae0288436e20281fd3d0c02dfb8eaa25f325ce24ea836f70902"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/summary.json",
+      "size_bytes": 2504,
+      "sha256": "0092123c09fa28edd659aea10189a21f8d19bd1ca5c586c9330bc00c51ddf10e"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tangents.csv",
+      "size_bytes": 1632,
+      "sha256": "b72342f9ba0aa9c85f62e9f1b0ea45de8a3840f0bf88c750a968f9d02d46e255"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_1e-03_+1_affine.extxyz",
+      "size_bytes": 1423,
+      "sha256": "d47d307f49f890f4883eab716cdae9f12d71ec03a782d22855f186e69de0ba46"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_1e-03_+1_relaxed.extxyz",
+      "size_bytes": 1423,
+      "sha256": "d47d307f49f890f4883eab716cdae9f12d71ec03a782d22855f186e69de0ba46"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_1e-03_+1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "10d1a9ad80402279408b484e00a2e47ab79eac8eca0f2cf1352135eefe195c10"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_1e-03_-1_affine.extxyz",
+      "size_bytes": 1418,
+      "sha256": "c9f06bb6bfa54edd4de5b4f6293195b8129b556595d39c37c16f70936a2d00ca"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_1e-03_-1_relaxed.extxyz",
+      "size_bytes": 1418,
+      "sha256": "c9f06bb6bfa54edd4de5b4f6293195b8129b556595d39c37c16f70936a2d00ca"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_1e-03_-1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "10d1a9ad80402279408b484e00a2e47ab79eac8eca0f2cf1352135eefe195c10"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_3e-03_+1_affine.extxyz",
+      "size_bytes": 1407,
+      "sha256": "c0fd761d321c043340ec660b2b689d966692d7ea535ea074c4cfe582ca7e4e8f"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_3e-03_+1_relaxed.extxyz",
+      "size_bytes": 1407,
+      "sha256": "c0fd761d321c043340ec660b2b689d966692d7ea535ea074c4cfe582ca7e4e8f"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_3e-03_+1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "71d6262ffba8a5f35957b5867c609b6da9afd3f2909416fca793e4015cf0a9eb"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_3e-03_-1_affine.extxyz",
+      "size_bytes": 1415,
+      "sha256": "ddaf4f9378cdb76cdf0d125f784bde2555825b76cc0b4928e78f4c4427baf9dd"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_3e-03_-1_relaxed.extxyz",
+      "size_bytes": 1415,
+      "sha256": "ddaf4f9378cdb76cdf0d125f784bde2555825b76cc0b4928e78f4c4427baf9dd"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_3e-03_-1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "71d6262ffba8a5f35957b5867c609b6da9afd3f2909416fca793e4015cf0a9eb"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_3e-04_+1_affine.extxyz",
+      "size_bytes": 1421,
+      "sha256": "8bb77441bf0b1c472a534e42dc37662640b6b7cfa9e94d90c46a5d2a59148d39"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_3e-04_+1_relaxed.extxyz",
+      "size_bytes": 1421,
+      "sha256": "8bb77441bf0b1c472a534e42dc37662640b6b7cfa9e94d90c46a5d2a59148d39"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_3e-04_+1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "02383695c5a97a09efdcb5f1682c991f8569a7270cfbacf3cd5fea4a1f2bfd6a"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_3e-04_-1_affine.extxyz",
+      "size_bytes": 1422,
+      "sha256": "4490482ce1481b621d07b166ca53ce9cc893eee1b2667f4ecd9d69e7f7d1276b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_3e-04_-1_relaxed.extxyz",
+      "size_bytes": 1422,
+      "sha256": "4490482ce1481b621d07b166ca53ce9cc893eee1b2667f4ecd9d69e7f7d1276b"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_counted/tetragonal_3e-04_-1_relaxed.log",
+      "size_bytes": 131,
+      "sha256": "da9e4a3a56210392bffd0af9ea9d85612be78e554eac69e8471fc0a965ae0030"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/validation.json",
+      "size_bytes": 4004,
+      "sha256": "dcdba9d9d055d9df2f770e2b1287817d5d16aff9310f41685735a282f0c67c13"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/x_+1.extxyz",
+      "size_bytes": 1051,
+      "sha256": "2250309e3f2e63f300ccc0c51b415aaa3781eaa6c2fec493249e844ad950a26e"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/x_+1.log",
+      "size_bytes": 131,
+      "sha256": "331288282d385357dce9b37aed826f730d732ecc4986d42836ffad94d0c609ac"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/x_-1.extxyz",
+      "size_bytes": 1049,
+      "sha256": "0a0fe703f8b9db7359a15e3da00d0528e3ed972679d802a6b22c6470fef0056a"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/x_-1.log",
+      "size_bytes": 131,
+      "sha256": "331288282d385357dce9b37aed826f730d732ecc4986d42836ffad94d0c609ac"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/xy_+1_+1.extxyz",
+      "size_bytes": 1053,
+      "sha256": "dc1b5c040e664cfab53a276e8dc380958076acb48534933e0c57033bacff465f"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/xy_+1_+1.log",
+      "size_bytes": 131,
+      "sha256": "ed3323beb52bbab3c59b309623d2c117e23914fa1866f44df4ecce39d65f7704"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/xy_+1_-1.extxyz",
+      "size_bytes": 1053,
+      "sha256": "db2126d377526b04c37d8258cabcd08ba9df1fc286174fcf374126773d96c146"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/xy_+1_-1.log",
+      "size_bytes": 131,
+      "sha256": "46c0350e1d6077e0c63cd484138565969b3be38c7cf5c97f33d4478ba591c2e2"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/xy_-1_+1.extxyz",
+      "size_bytes": 1053,
+      "sha256": "cd66b00bf9c493327141102cce38a7e49baa288de3cc4c9928c49ee1e8966c8a"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/xy_-1_+1.log",
+      "size_bytes": 131,
+      "sha256": "331288282d385357dce9b37aed826f730d732ecc4986d42836ffad94d0c609ac"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/xy_-1_-1.extxyz",
+      "size_bytes": 1051,
+      "sha256": "71e61c127bad8893b7e311522ec7789049ddaa2834320e38177a9ebb3242c4e5"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/xy_-1_-1.log",
+      "size_bytes": 131,
+      "sha256": "75572631066b91684c27ec76a24d1e24688a865863ec05e80eda5f02496d3bed"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/yz_shear_+1.extxyz",
+      "size_bytes": 1069,
+      "sha256": "968ecf3c05487c2927287bbdd71774f9501974d52660cbedd4767f39a58f82d8"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/yz_shear_+1.log",
+      "size_bytes": 196,
+      "sha256": "309cfec8d8bbbc829c64d22ab4f9c1d35dd620aae87de50357393b3f2d7c54ba"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/yz_shear_-1.extxyz",
+      "size_bytes": 1070,
+      "sha256": "144af9d83efe48871e297e81c8dc183caa72f0a0bf4b00cb78601c8095d2b1e7"
+    },
+    {
+      "file": "results/silicon_doping_v9/mace_bulk_elastic_independent/yz_shear_-1.log",
+      "size_bytes": 196,
+      "sha256": "76f78001c6ad1218979c97294f3efece5237b320a9529a4c01afe4abefdf296b"
+    },
+    {
       "file": "results/silicon_doping_v9/mace_si_dft/frame_metrics.csv",
       "size_bytes": 474144,
       "sha256": "6ae7db99588c745ce7f9d29890ab36f75c8e0e311c58347e09ae219f15a2bf5b"
@@ -788,8 +1453,8 @@
     },
     {
       "file": "results/silicon_doping_v9/REPRODUCE.md",
-      "size_bytes": 6311,
-      "sha256": "591f8d599535f698fdb2c001ca85515bc48b67129537ccb268ac1b2a6a361675"
+      "size_bytes": 6964,
+      "sha256": "f5bd517ac2939e2576c20ede7a94245dc0e02d6a676fd00dd9aa1a0724ca2bf8"
     },
     {
       "file": "results/silicon_doping_v9/sources/boron_formation_energies_2025.csv",
@@ -893,8 +1558,8 @@
     },
     {
       "file": "results/silicon_doping_v9/verification/saved_artifact_audit.json",
-      "size_bytes": 3658,
-      "sha256": "aeced1bff36770761e99fcc3b86d28f8ed890039094c5e0264d81c60d5dea51e"
+      "size_bytes": 3986,
+      "sha256": "70b4889a06c1906e8bb12b42261ea6b763e01058f4832b9431fd46fb78ed64f9"
     },
     {
       "file": "results/silicon_wafer_feasibility/audit_boron_sources_v9.py",
@@ -915,6 +1580,11 @@
       "file": "results/silicon_wafer_feasibility/audit_global_charge_v9.py",
       "size_bytes": 5997,
       "sha256": "5935170d2517ce59c7e32d005b1084cb3d56b272e5b3a21b4295546ebc840efc"
+    },
+    {
+      "file": "results/silicon_wafer_feasibility/audit_mace_elastic_v9.py",
+      "size_bytes": 7139,
+      "sha256": "f4e06139116e7111d5a4fd9ae6fb76f80ea3edc213e17333980294f19fc3381d"
     },
     {
       "file": "results/silicon_wafer_feasibility/follow_boron_instability_v9.py",
@@ -982,9 +1652,14 @@
       "sha256": "ee2dd7d93bcaa975d57c8063e62a0a2f7c40d3f90f80e3f1a287f8e96eb70944"
     },
     {
+      "file": "results/silicon_wafer_feasibility/validate_mace_elastic_v9.py",
+      "size_bytes": 3679,
+      "sha256": "8dc09f920c52e5bae3354ffa37fc24665f62dd4dd4dfa1e0b3f541fe847ef9f2"
+    },
+    {
       "file": "results/silicon_wafer_feasibility/verify_artifacts_v9.py",
-      "size_bytes": 8570,
-      "sha256": "3c8368c0aaeb774862c1578053ab0303fbd1bcf945b44252c21bee22a30b2c29"
+      "size_bytes": 9781,
+      "sha256": "2c212635104056589e7e02b814365bdd2104644c965ec15ec076046dcc5a55a9"
     },
     {
       "file": "solver_v1/silicon_charge_dynamics.py",
@@ -993,8 +1668,8 @@
     },
     {
       "file": "solver_v1/SILICON_CHARGE_DYNAMICS_V9.md",
-      "size_bytes": 12237,
-      "sha256": "78055bf01f84b164cace3059c2af20e39225982c2cdc5c06ec7ebf1028a60a7c"
+      "size_bytes": 13034,
+      "sha256": "b901ae0f3d34726e90dc96da2a3bd50c5be23098aa103b899240f227347102a5"
     },
     {
       "file": "solver_v1/test_silicon_charge_dynamics.py",

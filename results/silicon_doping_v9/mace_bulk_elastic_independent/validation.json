@@ -1,0 +1,209 @@
+{
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "reference_file": "summary.json",
+  "reference_sha256": "4b41b86fdf2c1e8b318af542abbaae6b919845ed0153dfb0abd6a4c9ae14bb76",
+  "a_A": 5.470992313871248,
+  "strain_step": 0.0003,
+  "method": "uniaxial E second difference, mixed normal E cross difference, rotated engineering yz shear",
+  "independent_constants": {
+    "C11_GPa": 127.32787953606129,
+    "C12_GPa": 57.90049046185668,
+    "C44_GPa": 60.22975957932967
+  },
+  "differences_from_hydro_tetragonal_xy_GPa": {
+    "C11_GPa": -2.691493398288003e-05,
+    "C12_GPa": -3.440751604699699e-05,
+    "C44_GPa": 0.0
+  },
+  "states": [
+    {
+      "label": "x_-1",
+      "strain": [
+        [
+          -0.0003,
+          -0.0,
+          -0.0
+        ],
+        [
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        [
+          -0.0,
+          -0.0,
+          -0.0
+        ]
+      ],
+      "energy_eV": -43.0684721952004,
+      "max_force_eV_A": 2.5575660533337857e-14,
+      "steps": 0
+    },
+    {
+      "label": "x_+1",
+      "strain": [
+        [
+          0.0003,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "energy_eV": -43.06847219684474,
+      "max_force_eV_A": 2.210222890281705e-14,
+      "steps": 0
+    },
+    {
+      "label": "xy_-1_-1",
+      "strain": [
+        [
+          -0.0003,
+          -0.0,
+          -0.0
+        ],
+        [
+          -0.0,
+          -0.0003,
+          -0.0
+        ],
+        [
+          -0.0,
+          -0.0,
+          -0.0
+        ]
+      ],
+      "energy_eV": -43.06846100698647,
+      "max_force_eV_A": 2.6739048987178845e-14,
+      "steps": 0
+    },
+    {
+      "label": "xy_-1_+1",
+      "strain": [
+        [
+          -0.0003,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0003,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "energy_eV": -43.068471665855995,
+      "max_force_eV_A": 1.444983235248304e-14,
+      "steps": 0
+    },
+    {
+      "label": "xy_+1_-1",
+      "strain": [
+        [
+          0.0003,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.0003,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "energy_eV": -43.068471665855995,
+      "max_force_eV_A": 1.4375931397917992e-14,
+      "steps": 0
+    },
+    {
+      "label": "xy_+1_+1",
+      "strain": [
+        [
+          0.0003,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0003,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "energy_eV": -43.068461020160896,
+      "max_force_eV_A": 3.037318518314372e-14,
+      "steps": 0
+    },
+    {
+      "label": "yz_shear_-1",
+      "strain": [
+        [
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        [
+          -0.0,
+          -0.0,
+          -0.0003
+        ],
+        [
+          -0.0,
+          -0.0,
+          -0.0
+        ]
+      ],
+      "energy_eV": -43.06847528212819,
+      "max_force_eV_A": 3.907587545268406e-11,
+      "steps": 1
+    },
+    {
+      "label": "yz_shear_+1",
+      "strain": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0003
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "energy_eV": -43.06847528212819,
+      "max_force_eV_A": 4.579006904132764e-11,
+      "steps": 1
+    }
+  ],
+  "calculator_evaluations": 13,
+  "new_DFT_runs": 0,
+  "new_MD_runs": 0,
+  "material_calibrated": false,
+  "kinetic_calibrated": false
+}

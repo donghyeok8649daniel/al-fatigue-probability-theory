@@ -73,6 +73,15 @@ python -m results.silicon_wafer_feasibility.validate_mace_curvature_modes_v9 --m
 독립 차분 간격의 eigen-residual을 저장한다. 가장 낮은 mode나 전체 안정성을
 검사하는 계산은 아니다. 큰 행렬의 전체 메모리 적재는 필요하지 않다.
 
+## 벌크 탄성 보충
+
+추가 벌크 탄성은 `audit_mace_elastic_v9 --model MODEL --bulk BULK_JSON --output NEW_FOLDER`로
+실제 다시 계산한다. BULK_JSON은 `mace_boron/bulk_reference.json`이다.
+`validate_mace_elastic_v9 --model MODEL --reference ELASTIC_SUMMARY --output NEW_FOLDER`는
+서로 다른 변형 모드를 이용한 독립8상태 대조다. 최초 `mace_bulk_elastic`의37표준평가
+기록은 캐시를 포함한 상태 조회 수였으며 `mace_bulk_elastic_counted`의 실제 호출 계측으로
+구분했다. 두 실행의 CSV3개는 byte 일치한다. 두 폴더의 합을 하나의 실행 횟수로 부르지 않는다.
+
 ## 저장 결과만 감사하기
 
 ```text

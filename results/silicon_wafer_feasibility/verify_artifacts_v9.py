@@ -70,6 +70,17 @@ def main(args):
         raw=np.load(root/'mace_boron_largest_mode'/(record['label']+'_largest_mode.npz'))
         assert abs(np.linalg.norm(raw['mass_weighted_eigenvector'])-1)<1e-10
     assert mode_summary['cases'][0]['full_Hessian_control']['absolute_eigenvalue_difference']<1e-6
+    bulk_first=read_json(root/'mace_bulk_elastic/summary.json')
+    bulk_counted=read_json(root/'mace_bulk_elastic_counted/summary.json')
+    bulk_independent=read_json(root/'mace_bulk_elastic_independent/validation.json')
+    assert bulk_first['finest_constants']==bulk_counted['finest_constants']
+    assert bulk_counted['states']==36 and bulk_counted['tangents']==18
+    assert bulk_counted['standard_ASE_calculator_calls']==25
+    assert bulk_counted['standard_ASE_state_assessments']==37
+    assert bulk_independent['reference_sha256']==digest(root/'mace_bulk_elastic/summary.json')
+    assert max(abs(v) for v in bulk_independent['differences_from_hydro_tetragonal_xy_GPa'].values())<.001
+    for name in ['states.csv','tangents.csv','elastic_constants.csv']:
+        assert (root/'mace_bulk_elastic'/name).read_bytes()==(root/'mace_bulk_elastic_counted'/name).read_bytes()
     suite=read_json(root/'verification/full_solver.json')
     assert suite['exit_code']==0
     suite_log=(root/'verification/full_solver.log').read_text(encoding='utf-8')
@@ -93,6 +104,10 @@ def main(args):
             source_groups_tied_at_zero=[r['config_type'] for r in comparisons if all(float(r[n+'_component_rmse_eV_A'])==0 for n in ['MACE','SW','Tersoff'])],
             checked_full_Hessians=hessians,unstable_original_states_preserved=unstable,
             matrix_free_highest_mode_cases=len(mode_summary['cases']),
+            bulk_elastic_replay_CSV_files=3,bulk_elastic_independent_modes_checked=True,
+            bulk_counter_correction=dict(initial_standard_ASE_evaluations_label_meant_state_assessments=37,
+                counted_replay_actual_standard_calculator_calls=25,force_only_calls=34,
+                numerical_CSV_changed=False),
             deterministic_replay_files=len(replay),full_solver_exit_code=suite['exit_code'],
             heavy_calculations_byte_replayed=False,new_DFT_runs=0,new_MD_runs=0,
             material_calibrated=False,physical_clock_calibrated=False)

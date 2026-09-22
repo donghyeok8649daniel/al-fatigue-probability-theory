@@ -1,0 +1,69 @@
+{
+  "status": "static neutral ML elasticity consistency checked; no material calibration",
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "bulk_reference_file": "bulk_reference.json",
+  "bulk_reference_sha256": "461b1f097a7fbb97bd0dfcff5d92180ad79ca1b9001aa506707b7e093dcdbe97",
+  "a_A": 5.470992313871248,
+  "reference_volume_A3": 163.75641193201844,
+  "reference_energy_eV": -43.06847805233099,
+  "reference_stress_max_abs_GPa": 7.450439943904204e-08,
+  "conversion_eV_A3_to_GPa": 160.2176634,
+  "states": 36,
+  "tangents": 18,
+  "force_only_calculator_evaluations": 34,
+  "standard_ASE_evaluations": 37,
+  "finest_strain_energy_stress_tangent_max_difference_GPa": 0.0003145169682738924,
+  "finest_constants": [
+    {
+      "strain_step": 0.0003,
+      "treatment": "affine",
+      "method": "energy",
+      "C11_GPa": 127.32790645099527,
+      "C12_GPa": 57.900524869372724,
+      "C44_GPa": 80.45898498761059,
+      "bulk_modulus_GPa": 81.04298539658024,
+      "E100_GPa": 91.12967536679986,
+      "cubic_elastic_positive": true
+    },
+    {
+      "strain_step": 0.0003,
+      "treatment": "affine",
+      "method": "stress",
+      "C11_GPa": 127.32791086169534,
+      "C12_GPa": 57.90057508351739,
+      "C44_GPa": 80.45896570523713,
+      "bulk_modulus_GPa": 81.04302034291004,
+      "E100_GPa": 91.12962766681315,
+      "cubic_elastic_positive": true
+    },
+    {
+      "strain_step": 0.0003,
+      "treatment": "relaxed",
+      "method": "energy",
+      "C11_GPa": 127.32790645099527,
+      "C12_GPa": 57.900524869372724,
+      "C44_GPa": 60.22975957932967,
+      "bulk_modulus_GPa": 81.04298539658024,
+      "E100_GPa": 91.12967536679986,
+      "cubic_elastic_positive": true
+    },
+    {
+      "strain_step": 0.0003,
+      "treatment": "relaxed",
+      "method": "stress",
+      "C11_GPa": 127.32791086169534,
+      "C12_GPa": 57.90057508351739,
+      "C44_GPa": 60.229730083654665,
+      "bulk_modulus_GPa": 81.04302034291004,
+      "E100_GPa": 91.12962766681315,
+      "cubic_elastic_positive": true
+    }
+  ],
+  "elapsed_reported_s": 9.563728399924003,
+  "new_DFT_runs": 0,
+  "new_MD_runs": 0,
+  "independent_exp_temperature_target_used": false,
+  "material_calibrated": false,
+  "kinetic_calibrated": false,
+  "scope": "homogeneous cubic static tangent with periodic internal relaxation; not local cleavage or finite-T free energy"
+}

@@ -51,6 +51,30 @@ v5의 DFT energy/force/offset 배열과 **exact equality**를 확인했다.
 
 ![같은 원자배열의 힘 대조](mace_si_dft_validation/same_geometry_forces.png)
 
+### 벌크 탄성 보충 검사
+
+같은 MACE의 자체 평형 a=5.470992Å에서 hydro/tetragonal/engineering shear,
+변형률 간격0.003/0.001/0.0003, ±변형, 내부 원자 고정/이완을 실제 계산했다.
+36개 상태의18개 tangent를 에너지 곡률과 work-conjugate Piola 응력 미분으로
+독립 비교했다. 작은 간격에서 최대차는0.000315GPa다.
+
+| MACE 자체 기준, 정적 | C11(GPa) | C12(GPa) | C44(GPa) |
+|---|---:|---:|---:|
+| 내부 원자 고정 | 127.32791 | 57.90052 | 80.45898 |
+| 내부 원자 이완 | 127.32791 | 57.90052 | 60.22976 |
+
+이 모델의 [100] 영률은91.12968GPa다. 별도의 단축/혼합 정상변형/yz 전단8개 상태로
+다시 구한 계수와 최대차3.45e−5GPa였다. 이는 같은 potential의 정의·미분·내부 이완
+검사이며 온도가 맞춰진 실측 Si 재료 보정은 아니다. 균열 force 오차가 더 작다는 사실만으로
+bulk·계면·dopant 에너지 모두를 통과했다고 해석하지 않는다.
+
+첫 보충 실행의 `standard_ASE_evaluations=37`은 캐시 hit를 포함한 상태 조회 수였다.
+원기록을 보존하고 실제 `calculate` 호출을 계측해 새 폴더에서 재실행했다.
+**37개 조회/25회 표준 계산/34회 force-only 계산**으로 확인했고, 두 실행의
+states/tangents/constants CSV3개는 byte 일치했다. 별도 변형 대조는13회 force-only 계산이다.
+호출 수 기준은 [최종 counted 실행](mace_bulk_elastic_counted/summary.json),
+물리량 대조는 [독립 검사](mace_bulk_elastic_independent/validation.json)를 따른다.
+
 ## 2. 실제 B 군집 이완과 발견한 안장점
 
 Dhamotharan2025 공개 입력7개를 같은 고정10.862Å cube에서 neutral MACE로
@@ -223,6 +247,8 @@ ZIP의 repository MD5와 SHA256, 모든 member hash를 확인했다.
   최적화의 두 번째 full replay는 하지 않았다. raw 재집계/선택 실행/미분·대칭 대조와 구분한다.
 - 전체 Cartesian Hessian9개, 독립 최저/최고 mode 차분72조건, 큰 셀 최고 mode3조건을
   검사했다. 새 끝점의 회전/반사 구분과 cell-size frequency 검사는 별도 원자료로 남겼다.
+- 보충 벌크 탄성36상태/18tangent와 독립8상태를 완료했다. 계측 재실행의 CSV3개도
+  byte 일치했으며 위19개 source/수학 replay와 구분한다. 전체 solver를 또 돌린 것은 아니다.
 - 첫 vectorized autodiff Hessian은 약17GB working set으로 증가해 해당 프로세스만
   중단했다. 실패 script/hash와 상태를 `failed_attempts/`에 보존했다. 순차 force
   difference로 전체 Hessian을 완료했다. 중단한 실행을 통과한 시험으로 세지 않았다.

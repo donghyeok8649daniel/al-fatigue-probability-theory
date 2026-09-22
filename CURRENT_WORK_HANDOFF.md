@@ -27,6 +27,11 @@
   총9전체H,72독립mode차분. 셀크기·최고진동수·치환형neutral상세는완료요약을읽는다.
   Large-cell force convergence/일부mode 검증을 full-q/finite-T 안정성으로 부르지 않는다.
   새DFT/MD0, 재료미채택, 기존v4PMF/v6장벽·생산Si/Hz gate와Al코드불변.
+- 보충 pure-Si bulk36상태/18tangent+독립8상태 완료. 자체 a5.470992에서
+  C11/C12=127.3279/57.9005GPa, C44 affine80.459→내부이완60.2298GPa.
+  energy/stress미분최세차.000315GPa, 독립변형계수차3.45e−5GPa. 실측보정아님.
+  첫표준평가37표기는cache포함조회수였고counted폴더실제25호출과분리했다.
+  재실행CSV3개byte일치. source/수학19개replay와별도이며전체946시험재실행아님.
 
 ## 2026-09-22 최신: Si 도핑 독립 검증 v8
 

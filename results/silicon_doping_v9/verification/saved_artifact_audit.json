@@ -85,6 +85,14 @@
     "3boron_int_cluster_confi_2"
   ],
   "matrix_free_highest_mode_cases": 3,
+  "bulk_elastic_replay_CSV_files": 3,
+  "bulk_elastic_independent_modes_checked": true,
+  "bulk_counter_correction": {
+    "initial_standard_ASE_evaluations_label_meant_state_assessments": 37,
+    "counted_replay_actual_standard_calculator_calls": 25,
+    "force_only_calls": 34,
+    "numerical_CSV_changed": false
+  },
   "deterministic_replay_files": 19,
   "full_solver_exit_code": 0,
   "heavy_calculations_byte_replayed": false,
