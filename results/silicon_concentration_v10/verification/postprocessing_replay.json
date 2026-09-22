@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "scope": "fresh postprocessing from saved raw states; not repeat MACE inference of the entire sweep",
+  "files": [
+    {
+      "file": "concentration_and_placement.png",
+      "bytes": 200994,
+      "byte_equal": true,
+      "sha256": "ab27e76966cd71e7e57c79a02b2099d1cfd0aa8401584fb55e2b3f2c672525c7"
+    },
+    {
+      "file": "concentration_effects.csv",
+      "bytes": 5883,
+      "byte_equal": true,
+      "sha256": "1014f349263d9c603fc2377aa818f1064e9fd91f4a6f2663a9ac05ae2563d798"
+    },
+    {
+      "file": "loaded_concentration_barriers.png",
+      "bytes": 102527,
+      "byte_equal": true,
+      "sha256": "f5b344b88c7b95861309c46bd60103f39b925af8aeca29e4cee094bed1f110e6"
+    },
+    {
+      "file": "loaded_path_barriers.csv",
+      "bytes": 4999,
+      "byte_equal": true,
+      "sha256": "9f60d21586eee4f2a525d8417996048be1c54afd916cd745210059254aa89cc8"
+    },
+    {
+      "file": "loaded_raw_recalculation.csv",
+      "bytes": 22608,
+      "byte_equal": true,
+      "sha256": "d41ce0838d94ca3de2d45e859b9068845b188aabb290260d0b35a47ec5d61a2a"
+    },
+    {
+      "file": "placement_spread.csv",
+      "bytes": 807,
+      "byte_equal": true,
+      "sha256": "477dfb9c2a4ec9fb46156f65ce73c314763456923966d89ecfc4983bc5d1fcbc"
+    },
+    {
+      "file": "raw_recalculation.csv",
+      "bytes": 14273,
+      "byte_equal": true,
+      "sha256": "72387b666a899d2fd0bf8f60ee4defda5bc32f17f26ca9478e84dcae65c6092f"
+    },
+    {
+      "file": "rigid_energy_paths.png",
+      "bytes": 117398,
+      "byte_equal": true,
+      "sha256": "af4cd755be11375209d53d72c1e35f2f0e9683407c820fa7936ec2358cc4ed3c"
+    },
+    {
+      "file": "summary.json",
+      "bytes": 528,
+      "byte_equal": true,
+      "sha256": "d7cfedaa1ea4ac4624b10e69a4171d7316133f006cde0ccd369f372a837e31fe"
+    }
+  ]
+}

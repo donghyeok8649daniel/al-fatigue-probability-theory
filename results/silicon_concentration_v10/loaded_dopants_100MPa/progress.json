@@ -1,0 +1,1398 @@
+{
+  "completed": 24,
+  "planned": 24,
+  "cases": [
+    {
+      "case": "B_01_interface_cluster",
+      "species": "B",
+      "dopant_count": 1,
+      "arrangement": "interface_cluster",
+      "chemical_concentration_cm3": 2.2617152269074216e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.002543632525429316,
+      "maximum_opening_A": 3.4734505365735333,
+      "constrained_path_barrier_eV": 21.282406739154567,
+      "barrier_per_area_J_m2": 2.1923861070893427,
+      "root_force_max_error_eV_A": 3.983264426687949e-06,
+      "root_energy_difference_max_error_eV_A": 5.513257601008625e-07,
+      "stationary_points": [
+        {
+          "case": "B_01_interface_cluster",
+          "opening_A": -0.002543632525429316,
+          "energy_eV": -1163.5305689527368,
+          "energy_derivative_eV_A": 0.09707815587633734,
+          "tilted_energy_eV": -1163.530322031714,
+          "tilted_derivative_eV_A": 3.983264426687949e-06,
+          "new_evaluation": true,
+          "curvature_eV_A2": 79.89259191246087,
+          "finite_difference_eV_A": 0.09707760455057723,
+          "force_difference_error_eV_A": -5.513257601008625e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "B_01_interface_cluster",
+          "opening_A": 3.4734505365735333,
+          "energy_eV": -1141.9107329556132,
+          "energy_derivative_eV_A": 0.09707417088321423,
+          "tilted_energy_eV": -1142.2479152925594,
+          "tilted_derivative_eV_A": -1.7286964221208123e-09,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.8726146503456461,
+          "finite_difference_eV_A": 0.0970741780292883,
+          "force_difference_error_eV_A": 7.146074079700249e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 18,
+      "elapsed_s": 104.56242300011218,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "B_02_interface_cluster",
+      "species": "B",
+      "dopant_count": 2,
+      "arrangement": "interface_cluster",
+      "chemical_concentration_cm3": 4.523430453814843e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.006007710324739097,
+      "maximum_opening_A": 3.4788508558139193,
+      "constrained_path_barrier_eV": 21.991779532426563,
+      "barrier_per_area_J_m2": 2.2654614446570367,
+      "root_force_max_error_eV_A": 1.0386296100950432e-08,
+      "root_energy_difference_max_error_eV_A": 5.699925019198027e-07,
+      "stationary_points": [
+        {
+          "case": "B_02_interface_cluster",
+          "opening_A": -0.006007710324739097,
+          "energy_eV": -1163.9272925843911,
+          "energy_derivative_eV_A": 0.09707418299820675,
+          "tilted_energy_eV": -1163.926709390882,
+          "tilted_derivative_eV_A": 1.0386296100950432e-08,
+          "new_evaluation": true,
+          "curvature_eV_A2": 82.38885385055711,
+          "finite_difference_eV_A": 0.09707361300570483,
+          "force_difference_error_eV_A": -5.699925019198027e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "B_02_interface_cluster",
+          "opening_A": 3.4788508558139193,
+          "energy_eV": -1141.5972232899871,
+          "energy_derivative_eV_A": 0.09707416447430856,
+          "tilted_energy_eV": -1141.9349298584555,
+          "tilted_derivative_eV_A": -8.137602092173069e-09,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.834751109415055,
+          "finite_difference_eV_A": 0.09707417120807804,
+          "force_difference_error_eV_A": 6.733769486455543e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 19,
+      "elapsed_s": 103.47216710005887,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "B_04_interface_cluster",
+      "species": "B",
+      "dopant_count": 4,
+      "arrangement": "interface_cluster",
+      "chemical_concentration_cm3": 9.046860907629686e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.013183154368153068,
+      "maximum_opening_A": 3.505251816757506,
+      "constrained_path_barrier_eV": 22.693481225637015,
+      "barrier_per_area_J_m2": 2.3377465514295417,
+      "root_force_max_error_eV_A": 3.607303533659234e-08,
+      "root_energy_difference_max_error_eV_A": 5.638469265933921e-07,
+      "stationary_points": [
+        {
+          "case": "B_04_interface_cluster",
+          "opening_A": -0.013183154368153068,
+          "energy_eV": -1164.3682661742819,
+          "energy_derivative_eV_A": 0.09707420868494598,
+          "tilted_energy_eV": -1164.366986430479,
+          "tilted_derivative_eV_A": 3.607303533659234e-08,
+          "new_evaluation": true,
+          "curvature_eV_A2": 83.25089524018225,
+          "finite_difference_eV_A": 0.09707364483801939,
+          "force_difference_error_eV_A": -5.638469265933921e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "B_04_interface_cluster",
+          "opening_A": 3.505251816757506,
+          "energy_eV": -1141.333235784934,
+          "energy_derivative_eV_A": 0.09707417264815577,
+          "tilted_energy_eV": -1141.673505204842,
+          "tilted_derivative_eV_A": 3.62451180180301e-11,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.8362839290271262,
+          "finite_difference_eV_A": 0.0970741780292883,
+          "force_difference_error_eV_A": 5.381132539561406e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 20,
+      "elapsed_s": 104.33616940001957,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "B_08_interface_cluster",
+      "species": "B",
+      "dopant_count": 8,
+      "arrangement": "interface_cluster",
+      "chemical_concentration_cm3": 1.8093721815259373e+21,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.021982563855644607,
+      "maximum_opening_A": 3.446780265570003,
+      "constrained_path_barrier_eV": 21.2688498533621,
+      "barrier_per_area_J_m2": 2.1909895578911676,
+      "root_force_max_error_eV_A": 6.1613949497996146e-09,
+      "root_energy_difference_max_error_eV_A": 5.341180484563779e-07,
+      "stationary_points": [
+        {
+          "case": "B_08_interface_cluster",
+          "opening_A": -0.021982563855644607,
+          "energy_eV": -1165.354865799811,
+          "energy_derivative_eV_A": 0.0970741664505157,
+          "tilted_energy_eV": -1165.352731860613,
+          "tilted_derivative_eV_A": -6.1613949497996146e-09,
+          "new_evaluation": true,
+          "curvature_eV_A2": 79.9540057770276,
+          "finite_difference_eV_A": 0.09707363233246724,
+          "force_difference_error_eV_A": -5.341180484563779e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "B_08_interface_cluster",
+          "opening_A": 3.446780265570003,
+          "energy_eV": -1143.7492886647956,
+          "energy_derivative_eV_A": 0.09707417549877584,
+          "tilted_energy_eV": -1144.0838820072508,
+          "tilted_derivative_eV_A": 2.8868651913427357e-09,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.9825389180617705,
+          "finite_difference_eV_A": 0.09707418143989344,
+          "force_difference_error_eV_A": 5.9411175978851816e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 18,
+      "elapsed_s": 131.71652069990523,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "B_01_interface_spread",
+      "species": "B",
+      "dopant_count": 1,
+      "arrangement": "interface_spread",
+      "chemical_concentration_cm3": 2.2617152269074216e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.002543632525429316,
+      "maximum_opening_A": 3.4734505365735333,
+      "constrained_path_barrier_eV": 21.282406739154567,
+      "barrier_per_area_J_m2": 2.1923861070893427,
+      "root_force_max_error_eV_A": 3.983264426687949e-06,
+      "root_energy_difference_max_error_eV_A": 5.513257601008625e-07,
+      "stationary_points": [
+        {
+          "case": "B_01_interface_spread",
+          "opening_A": -0.002543632525429316,
+          "energy_eV": -1163.5305689527368,
+          "energy_derivative_eV_A": 0.09707815587633734,
+          "tilted_energy_eV": -1163.530322031714,
+          "tilted_derivative_eV_A": 3.983264426687949e-06,
+          "new_evaluation": true,
+          "curvature_eV_A2": 79.89259191246087,
+          "finite_difference_eV_A": 0.09707760455057723,
+          "force_difference_error_eV_A": -5.513257601008625e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "B_01_interface_spread",
+          "opening_A": 3.4734505365735333,
+          "energy_eV": -1141.9107329556132,
+          "energy_derivative_eV_A": 0.09707417088321423,
+          "tilted_energy_eV": -1142.2479152925594,
+          "tilted_derivative_eV_A": -1.7286964221208123e-09,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.8726146503456461,
+          "finite_difference_eV_A": 0.0970741780292883,
+          "force_difference_error_eV_A": 7.146074079700249e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 18,
+      "elapsed_s": 2905.149172000005,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "B_02_interface_spread",
+      "species": "B",
+      "dopant_count": 2,
+      "arrangement": "interface_spread",
+      "chemical_concentration_cm3": 4.523430453814843e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.006255883509444376,
+      "maximum_opening_A": 3.5107659220933205,
+      "constrained_path_barrier_eV": 21.669195891420713,
+      "barrier_per_area_J_m2": 2.232230809532749,
+      "root_force_max_error_eV_A": 1.35020227776117e-08,
+      "root_energy_difference_max_error_eV_A": 5.776557021053286e-07,
+      "stationary_points": [
+        {
+          "case": "B_02_interface_spread",
+          "opening_A": -0.006255883509444376,
+          "energy_eV": -1164.2115998109423,
+          "energy_derivative_eV_A": 0.09707418611393343,
+          "tilted_energy_eV": -1164.2109925262266,
+          "tilted_derivative_eV_A": 1.35020227776117e-08,
+          "new_evaluation": true,
+          "curvature_eV_A2": 81.76979966338926,
+          "finite_difference_eV_A": 0.09707360845823132,
+          "force_difference_error_eV_A": -5.776557021053286e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "B_02_interface_spread",
+          "opening_A": 3.5107659220933205,
+          "energy_eV": -1142.2009919376846,
+          "energy_derivative_eV_A": 0.09707417262318874,
+          "tilted_energy_eV": -1142.541796634806,
+          "tilted_derivative_eV_A": 1.127808957335219e-11,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.839963315255321,
+          "finite_difference_eV_A": 0.09707417689241993,
+          "force_difference_error_eV_A": 4.269231190789924e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 20,
+      "elapsed_s": 69.2786123000551,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "B_04_interface_spread",
+      "species": "B",
+      "dopant_count": 4,
+      "arrangement": "interface_spread",
+      "chemical_concentration_cm3": 9.046860907629686e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.013227621606212464,
+      "maximum_opening_A": 3.5812357529115593,
+      "constrained_path_barrier_eV": 22.510112242010337,
+      "barrier_per_area_J_m2": 2.3188569767164235,
+      "root_force_max_error_eV_A": 5.779067868694199e-08,
+      "root_energy_difference_max_error_eV_A": 6.23081226391875e-07,
+      "stationary_points": [
+        {
+          "case": "B_04_interface_spread",
+          "opening_A": -0.013227621606212464,
+          "energy_eV": -1165.6117726225368,
+          "energy_derivative_eV_A": 0.09707423040258933,
+          "tilted_energy_eV": -1165.6104885621137,
+          "tilted_derivative_eV_A": 5.779067868694199e-08,
+          "new_evaluation": true,
+          "curvature_eV_A2": 85.95744622384771,
+          "finite_difference_eV_A": 0.09707360732136294,
+          "force_difference_error_eV_A": -6.23081226391875e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "B_04_interface_spread",
+          "opening_A": 3.5812357529115593,
+          "energy_eV": -1142.7527308224612,
+          "energy_derivative_eV_A": 0.09707418375231358,
+          "tilted_energy_eV": -1143.1003763201034,
+          "tilted_derivative_eV_A": 1.114040293348495e-08,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.7829870949516149,
+          "finite_difference_eV_A": 0.09707418939797208,
+          "force_difference_error_eV_A": 5.64565849625609e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 19,
+      "elapsed_s": 65.23280330002308,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "B_08_interface_spread",
+      "species": "B",
+      "dopant_count": 8,
+      "arrangement": "interface_spread",
+      "chemical_concentration_cm3": 1.8093721815259373e+21,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.024997980152261772,
+      "maximum_opening_A": 3.6768019410451673,
+      "constrained_path_barrier_eV": 24.3254556767547,
+      "barrier_per_area_J_m2": 2.5058627874176755,
+      "root_force_max_error_eV_A": 3.3759952167145e-08,
+      "root_energy_difference_max_error_eV_A": 7.102917694012945e-07,
+      "stationary_points": [
+        {
+          "case": "B_08_interface_spread",
+          "opening_A": -0.024997980152261772,
+          "energy_eV": -1168.4700190488818,
+          "energy_derivative_eV_A": 0.0970741698202433,
+          "tilted_energy_eV": -1168.4675923906416,
+          "tilted_derivative_eV_A": -2.7916673417394122e-09,
+          "new_evaluation": true,
+          "curvature_eV_A2": 95.15173930108922,
+          "finite_difference_eV_A": 0.0970734595284739,
+          "force_difference_error_eV_A": -7.102917694012945e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "B_08_interface_spread",
+          "opening_A": 3.6768019410451673,
+          "energy_eV": -1143.7852142076022,
+          "energy_derivative_eV_A": 0.09707413885195848,
+          "tilted_energy_eV": -1144.1421367138869,
+          "tilted_derivative_eV_A": -3.3759952167145e-08,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.7481506619932965,
+          "finite_difference_eV_A": 0.09707414506010537,
+          "force_difference_error_eV_A": 6.20814688545579e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 20,
+      "elapsed_s": 78.13581800006796,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "B_01_bulk_spread",
+      "species": "B",
+      "dopant_count": 1,
+      "arrangement": "bulk_spread",
+      "chemical_concentration_cm3": 2.2617152269074216e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.0025894740101629304,
+      "maximum_opening_A": 3.4300965613525247,
+      "constrained_path_barrier_eV": 20.849111811053262,
+      "barrier_per_area_J_m2": 2.1477506580875203,
+      "root_force_max_error_eV_A": 3.685939340886124e-06,
+      "root_energy_difference_max_error_eV_A": 5.309724344371158e-07,
+      "stationary_points": [
+        {
+          "case": "B_01_bulk_spread",
+          "opening_A": -0.0025894740101629304,
+          "energy_eV": -1163.5305771858475,
+          "energy_derivative_eV_A": 0.09707048667256976,
+          "tilted_energy_eV": -1163.5303258148006,
+          "tilted_derivative_eV_A": -3.685939340886124e-06,
+          "new_evaluation": true,
+          "curvature_eV_A2": 78.22666017878177,
+          "finite_difference_eV_A": 0.09706995570013532,
+          "force_difference_error_eV_A": -5.309724344371158e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "B_01_bulk_spread",
+          "opening_A": 3.4300965613525247,
+          "energy_eV": -1142.348240218075,
+          "energy_derivative_eV_A": 0.09707413898812847,
+          "tilted_energy_eV": -1142.6812140037473,
+          "tilted_derivative_eV_A": -3.3623782175196126e-08,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.9090900599210971,
+          "finite_difference_eV_A": 0.09707414619697374,
+          "force_difference_error_eV_A": 7.208845270723074e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 15,
+      "elapsed_s": 74.2463821999263,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "B_02_bulk_spread",
+      "species": "B",
+      "dopant_count": 2,
+      "arrangement": "bulk_spread",
+      "chemical_concentration_cm3": 4.523430453814843e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.006288329561511962,
+      "maximum_opening_A": 3.4701839077354526,
+      "constrained_path_barrier_eV": 21.2612668564218,
+      "barrier_per_area_J_m2": 2.190208402951983,
+      "root_force_max_error_eV_A": 1.1972462687914742e-08,
+      "root_energy_difference_max_error_eV_A": 5.556625112257407e-07,
+      "stationary_points": [
+        {
+          "case": "B_02_bulk_spread",
+          "opening_A": -0.006288329561511962,
+          "energy_eV": -1164.1986518181855,
+          "energy_derivative_eV_A": 0.09707418458437334,
+          "tilted_energy_eV": -1164.1980413837962,
+          "tilted_derivative_eV_A": 1.1972462687914742e-08,
+          "new_evaluation": true,
+          "curvature_eV_A2": 80.06042045853117,
+          "finite_difference_eV_A": 0.09707362892186211,
+          "force_difference_error_eV_A": -5.556625112257407e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "B_02_bulk_spread",
+          "opening_A": 3.4701839077354526,
+          "energy_eV": -1142.5999092957197,
+          "energy_derivative_eV_A": 0.09707417168523347,
+          "tilted_energy_eV": -1142.9367745273744,
+          "tilted_derivative_eV_A": -9.266771794358419e-10,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.8694843531975582,
+          "finite_difference_eV_A": 0.09707417575555155,
+          "force_difference_error_eV_A": 4.070318082582958e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 19,
+      "elapsed_s": 95.64570890006144,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "B_04_bulk_spread",
+      "species": "B",
+      "dopant_count": 4,
+      "arrangement": "bulk_spread",
+      "chemical_concentration_cm3": 9.046860907629686e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.01412244254596797,
+      "maximum_opening_A": 3.4660705571495503,
+      "constrained_path_barrier_eV": 20.889012035672067,
+      "barrier_per_area_J_m2": 2.1518609403124658,
+      "root_force_max_error_eV_A": 4.052230251350153e-08,
+      "root_energy_difference_max_error_eV_A": 5.52380036489275e-07,
+      "stationary_points": [
+        {
+          "case": "B_04_bulk_spread",
+          "opening_A": -0.01412244254596797,
+          "energy_eV": -1165.4871812770411,
+          "energy_derivative_eV_A": 0.09707421313421316,
+          "tilted_energy_eV": -1165.4858103526158,
+          "tilted_derivative_eV_A": 4.052230251350153e-08,
+          "new_evaluation": true,
+          "curvature_eV_A2": 79.24196708837816,
+          "finite_difference_eV_A": 0.09707366075417667,
+          "force_difference_error_eV_A": -5.52380036489275e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "B_04_bulk_spread",
+          "opening_A": 3.4660705571495503,
+          "energy_eV": -1144.260332385394,
+          "energy_derivative_eV_A": 0.0970741721801972,
+          "tilted_energy_eV": -1144.5967983169437,
+          "tilted_derivative_eV_A": -4.3171344277226353e-10,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.8788042355895032,
+          "finite_difference_eV_A": 0.0970741780292883,
+          "force_difference_error_eV_A": 5.8490911003517e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 19,
+      "elapsed_s": 98.5201610000804,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "B_08_bulk_spread",
+      "species": "B",
+      "dopant_count": 8,
+      "arrangement": "bulk_spread",
+      "chemical_concentration_cm3": 1.8093721815259373e+21,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.02932178676513341,
+      "maximum_opening_A": 3.4968744844182016,
+      "constrained_path_barrier_eV": 21.171514748370555,
+      "barrier_per_area_J_m2": 2.1809626781998332,
+      "root_force_max_error_eV_A": 2.9749167547166167e-06,
+      "root_energy_difference_max_error_eV_A": 5.917063088389796e-07,
+      "stationary_points": [
+        {
+          "case": "B_08_bulk_spread",
+          "opening_A": -0.02932178676513341,
+          "energy_eV": -1168.0098307663864,
+          "energy_derivative_eV_A": 0.09707119769515593,
+          "tilted_energy_eV": -1168.0069843781966,
+          "tilted_derivative_eV_A": -2.9749167547166167e-06,
+          "new_evaluation": true,
+          "curvature_eV_A2": 82.04186633644194,
+          "finite_difference_eV_A": 0.09707060598884709,
+          "force_difference_error_eV_A": -5.917063088389796e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "B_08_bulk_spread",
+          "opening_A": 3.4968744844182016,
+          "energy_eV": -1146.4960134325236,
+          "energy_derivative_eV_A": 0.09707417260449391,
+          "tilted_energy_eV": -1146.835469629826,
+          "tilted_derivative_eV_A": -7.416733893705896e-12,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.8294699140265482,
+          "finite_difference_eV_A": 0.09707417916615668,
+          "force_difference_error_eV_A": 6.5616627686893025e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 19,
+      "elapsed_s": 83.97361269989051,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "P_01_interface_cluster",
+      "species": "P",
+      "dopant_count": 1,
+      "arrangement": "interface_cluster",
+      "chemical_concentration_cm3": 2.2617152269074216e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": 0.00019641362437029087,
+      "maximum_opening_A": 3.437689019768126,
+      "constrained_path_barrier_eV": 20.187372185381264,
+      "barrier_per_area_J_m2": 2.0795822042272394,
+      "root_force_max_error_eV_A": 3.855509992101158e-07,
+      "root_energy_difference_max_error_eV_A": 5.33610852476718e-07,
+      "stationary_points": [
+        {
+          "case": "P_01_interface_cluster",
+          "opening_A": 0.00019641362437029087,
+          "energy_eV": -1163.3270084200788,
+          "energy_derivative_eV_A": 0.09707455816290986,
+          "tilted_energy_eV": -1163.3270274867689,
+          "tilted_derivative_eV_A": 3.855509992101158e-07,
+          "new_evaluation": true,
+          "curvature_eV_A2": 77.36815552337808,
+          "finite_difference_eV_A": 0.09707402455205738,
+          "force_difference_error_eV_A": -5.33610852476718e-07,
+          "bracket_A": [
+            0.0,
+            0.03
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "P_01_interface_cluster",
+          "opening_A": 3.437689019768126,
+          "energy_eV": -1142.8059444840965,
+          "energy_derivative_eV_A": 0.09707417267949925,
+          "tilted_energy_eV": -1143.1396553013876,
+          "tilted_derivative_eV_A": 6.758860138234013e-11,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.9103210535404971,
+          "finite_difference_eV_A": 0.09707417575555155,
+          "force_difference_error_eV_A": 3.0760523017647756e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 17,
+      "elapsed_s": 66.13108409999404,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "P_02_interface_cluster",
+      "species": "P",
+      "dopant_count": 2,
+      "arrangement": "interface_cluster",
+      "chemical_concentration_cm3": 4.523430453814843e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.00043927850033376403,
+      "maximum_opening_A": 3.428375140847841,
+      "constrained_path_barrier_eV": 19.34807051723942,
+      "barrier_per_area_J_m2": 1.9931223719609106,
+      "root_force_max_error_eV_A": 1.5463784115710144e-07,
+      "root_energy_difference_max_error_eV_A": 5.527612536998516e-07,
+      "stationary_points": [
+        {
+          "case": "P_02_interface_cluster",
+          "opening_A": -0.00043927850033376403,
+          "energy_eV": -1163.6674861705524,
+          "energy_derivative_eV_A": 0.09707401797406949,
+          "tilted_energy_eV": -1163.6674435279554,
+          "tilted_derivative_eV_A": -1.5463784115710144e-07,
+          "new_evaluation": true,
+          "curvature_eV_A2": 76.62530039684208,
+          "finite_difference_eV_A": 0.09707346521281579,
+          "force_difference_error_eV_A": -5.527612536998516e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "P_02_interface_cluster",
+          "opening_A": 3.428375140847841,
+          "energy_eV": -1143.986566330515,
+          "energy_derivative_eV_A": 0.09707417261747142,
+          "tilted_energy_eV": -1144.319373010716,
+          "tilted_derivative_eV_A": 5.5607740634400216e-12,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.8354681425837285,
+          "finite_difference_eV_A": 0.0970741780292883,
+          "force_difference_error_eV_A": 5.411816883515996e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 17,
+      "elapsed_s": 77.20989110006485,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "P_04_interface_cluster",
+      "species": "P",
+      "dopant_count": 4,
+      "arrangement": "interface_cluster",
+      "chemical_concentration_cm3": 9.046860907629686e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.0022789371836092536,
+      "maximum_opening_A": 3.4228374987951087,
+      "constrained_path_barrier_eV": 19.557005888365666,
+      "barrier_per_area_J_m2": 2.0146456428273583,
+      "root_force_max_error_eV_A": 3.730546948771396e-06,
+      "root_energy_difference_max_error_eV_A": 5.636718762025428e-07,
+      "stationary_points": [
+        {
+          "case": "P_04_interface_cluster",
+          "opening_A": -0.0022789371836092536,
+          "energy_eV": -1164.123498815541,
+          "energy_derivative_eV_A": 0.09707044206496188,
+          "tilted_energy_eV": -1164.1232775895996,
+          "tilted_derivative_eV_A": -3.730546948771396e-06,
+          "new_evaluation": true,
+          "curvature_eV_A2": 78.04671121857787,
+          "finite_difference_eV_A": 0.09706987839308567,
+          "force_difference_error_eV_A": -5.636718762025428e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "P_04_interface_cluster",
+          "opening_A": 3.4228374987951087,
+          "energy_eV": -1144.2340025830533,
+          "energy_derivative_eV_A": 0.09707417261198598,
+          "tilted_energy_eV": -1144.566271701234,
+          "tilted_derivative_eV_A": 7.532863222081687e-14,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.8087681314687678,
+          "finite_difference_eV_A": 0.09707417575555155,
+          "force_difference_error_eV_A": 3.143565574514895e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 16,
+      "elapsed_s": 62.320554599980824,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "P_08_interface_cluster",
+      "species": "P",
+      "dopant_count": 8,
+      "arrangement": "interface_cluster",
+      "chemical_concentration_cm3": 1.8093721815259373e+21,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.004665907298731414,
+      "maximum_opening_A": 3.411929574772881,
+      "constrained_path_barrier_eV": 19.94329846727669,
+      "barrier_per_area_J_m2": 2.054439191257111,
+      "root_force_max_error_eV_A": 5.270989797412362e-09,
+      "root_energy_difference_max_error_eV_A": 5.364277491093361e-07,
+      "stationary_points": [
+        {
+          "case": "P_08_interface_cluster",
+          "opening_A": -0.004665907298731414,
+          "energy_eV": -1164.7876661236994,
+          "energy_derivative_eV_A": 0.09707417785516337,
+          "tilted_energy_eV": -1164.7872131846088,
+          "tilted_derivative_eV_A": 5.243252720887881e-09,
+          "new_evaluation": true,
+          "curvature_eV_A2": 79.56013457303817,
+          "finite_difference_eV_A": 0.09707364142741426,
+          "force_difference_error_eV_A": -5.364277491093361e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "P_08_interface_cluster",
+          "opening_A": 3.411929574772881,
+          "energy_eV": -1144.512704476851,
+          "energy_derivative_eV_A": 0.09707417788290044,
+          "tilted_energy_eV": -1144.8439147173322,
+          "tilted_derivative_eV_A": 5.270989797412362e-09,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.7781203519643259,
+          "finite_difference_eV_A": 0.09707418257676181,
+          "force_difference_error_eV_A": 4.6938613690317155e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 16,
+      "elapsed_s": 72.24002110003494,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "P_01_interface_spread",
+      "species": "P",
+      "dopant_count": 1,
+      "arrangement": "interface_spread",
+      "chemical_concentration_cm3": 2.2617152269074216e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": 0.00019641362437029087,
+      "maximum_opening_A": 3.437689019768126,
+      "constrained_path_barrier_eV": 20.187372185381264,
+      "barrier_per_area_J_m2": 2.0795822042272394,
+      "root_force_max_error_eV_A": 3.855509992101158e-07,
+      "root_energy_difference_max_error_eV_A": 5.33610852476718e-07,
+      "stationary_points": [
+        {
+          "case": "P_01_interface_spread",
+          "opening_A": 0.00019641362437029087,
+          "energy_eV": -1163.3270084200788,
+          "energy_derivative_eV_A": 0.09707455816290986,
+          "tilted_energy_eV": -1163.3270274867689,
+          "tilted_derivative_eV_A": 3.855509992101158e-07,
+          "new_evaluation": true,
+          "curvature_eV_A2": 77.36815552337808,
+          "finite_difference_eV_A": 0.09707402455205738,
+          "force_difference_error_eV_A": -5.33610852476718e-07,
+          "bracket_A": [
+            0.0,
+            0.03
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "P_01_interface_spread",
+          "opening_A": 3.437689019768126,
+          "energy_eV": -1142.8059444840965,
+          "energy_derivative_eV_A": 0.09707417267949925,
+          "tilted_energy_eV": -1143.1396553013876,
+          "tilted_derivative_eV_A": 6.758860138234013e-11,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.9103210535404971,
+          "finite_difference_eV_A": 0.09707417575555155,
+          "force_difference_error_eV_A": 3.0760523017647756e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 17,
+      "elapsed_s": 78.6603049999103,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "P_02_interface_spread",
+      "species": "P",
+      "dopant_count": 2,
+      "arrangement": "interface_spread",
+      "chemical_concentration_cm3": 4.523430453814843e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.0008682156909487192,
+      "maximum_opening_A": 3.441151251698538,
+      "constrained_path_barrier_eV": 19.476132556533912,
+      "barrier_per_area_J_m2": 2.006314556436844,
+      "root_force_max_error_eV_A": 5.315116324566826e-07,
+      "root_energy_difference_max_error_eV_A": 5.442328166183064e-07,
+      "stationary_points": [
+        {
+          "case": "P_02_interface_spread",
+          "opening_A": -0.0008682156909487192,
+          "energy_eV": -1163.7827015642106,
+          "energy_derivative_eV_A": 0.09707364110027819,
+          "tilted_energy_eV": -1163.7826172828907,
+          "tilted_derivative_eV_A": -5.315116324566826e-07,
+          "new_evaluation": true,
+          "curvature_eV_A2": 76.69740914897486,
+          "finite_difference_eV_A": 0.09707309686746157,
+          "force_difference_error_eV_A": -5.442328166183064e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "P_02_interface_spread",
+          "opening_A": 3.441151251698538,
+          "energy_eV": -1143.9724378157657,
+          "energy_derivative_eV_A": 0.09707417350218572,
+          "tilted_energy_eV": -1144.3064847263568,
+          "tilted_derivative_eV_A": 8.902750758821298e-10,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.9069975669787067,
+          "finite_difference_eV_A": 0.09707417916615668,
+          "force_difference_error_eV_A": 5.663970958913467e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 17,
+      "elapsed_s": 78.37384599994402,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "P_04_interface_spread",
+      "species": "P",
+      "dopant_count": 4,
+      "arrangement": "interface_spread",
+      "chemical_concentration_cm3": 9.046860907629686e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.0030733656060457294,
+      "maximum_opening_A": 3.445412458911415,
+      "constrained_path_barrier_eV": 17.958334092740643,
+      "barrier_per_area_J_m2": 1.8499600469978377,
+      "root_force_max_error_eV_A": 1.1499877834997285e-06,
+      "root_energy_difference_max_error_eV_A": 5.533988496897457e-07,
+      "stationary_points": [
+        {
+          "case": "P_04_interface_spread",
+          "opening_A": -0.0030733656060457294,
+          "energy_eV": -1164.5280353365022,
+          "energy_derivative_eV_A": 0.09707532259969415,
+          "tilted_energy_eV": -1164.5277369920789,
+          "tilted_derivative_eV_A": 1.1499877834997285e-06,
+          "new_evaluation": true,
+          "curvature_eV_A2": 75.02954468168996,
+          "finite_difference_eV_A": 0.09707476920084446,
+          "force_difference_error_eV_A": -5.533988496897457e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "P_04_interface_spread",
+          "opening_A": 3.445412458911415,
+          "energy_eV": -1146.2349423355827,
+          "energy_derivative_eV_A": 0.09707418426197709,
+          "tilted_energy_eV": -1146.5694028993382,
+          "tilted_derivative_eV_A": 1.16500664393282e-08,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.8827728006131907,
+          "finite_difference_eV_A": 0.09707419167170883,
+          "force_difference_error_eV_A": 7.4097317448451605e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 17,
+      "elapsed_s": 79.22572039999068,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "P_08_interface_spread",
+      "species": "P",
+      "dopant_count": 8,
+      "arrangement": "interface_spread",
+      "chemical_concentration_cm3": 1.8093721815259373e+21,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.00806356529541419,
+      "maximum_opening_A": 3.445481346090364,
+      "constrained_path_barrier_eV": 15.065269779634718,
+      "barrier_per_area_J_m2": 1.5519338846042623,
+      "root_force_max_error_eV_A": 3.6226295851982115e-08,
+      "root_energy_difference_max_error_eV_A": 5.742320025037273e-07,
+      "stationary_points": [
+        {
+          "case": "P_08_interface_spread",
+          "opening_A": -0.00806356529541419,
+          "energy_eV": -1165.6561311887654,
+          "energy_derivative_eV_A": 0.0970742088382065,
+          "tilted_energy_eV": -1165.655348424836,
+          "tilted_derivative_eV_A": 3.6226295851982115e-08,
+          "new_evaluation": true,
+          "curvature_eV_A2": 71.16699418770189,
+          "finite_difference_eV_A": 0.097073634606204,
+          "force_difference_error_eV_A": -5.742320025037273e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "P_08_interface_spread",
+          "opening_A": 3.445481346090364,
+          "energy_eV": -1150.2556113942796,
+          "energy_derivative_eV_A": 0.09707414902920958,
+          "tilted_energy_eV": -1150.5900786452012,
+          "tilted_derivative_eV_A": -2.3582701069724266e-08,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.7883333334329778,
+          "finite_difference_eV_A": 0.097074153018184,
+          "force_difference_error_eV_A": 3.988974428548175e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 18,
+      "elapsed_s": 84.5935336999828,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "P_01_bulk_spread",
+      "species": "P",
+      "dopant_count": 1,
+      "arrangement": "bulk_spread",
+      "chemical_concentration_cm3": 2.2617152269074216e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": 0.00019504867112113536,
+      "maximum_opening_A": 3.432859522140667,
+      "constrained_path_barrier_eV": 20.870861729572198,
+      "barrier_per_area_J_m2": 2.149991204458787,
+      "root_force_max_error_eV_A": 3.663134138520707e-07,
+      "root_energy_difference_max_error_eV_A": 5.268788192680507e-07,
+      "stationary_points": [
+        {
+          "case": "P_01_bulk_spread",
+          "opening_A": 0.00019504867112113536,
+          "energy_eV": -1163.3270085463498,
+          "energy_derivative_eV_A": 0.0970745389253245,
+          "tilted_energy_eV": -1163.3270274805382,
+          "tilted_derivative_eV_A": 3.663134138520707e-07,
+          "new_evaluation": true,
+          "curvature_eV_A2": 78.12773200667165,
+          "finite_difference_eV_A": 0.09707401204650523,
+          "force_difference_error_eV_A": -5.268788192680507e-07,
+          "bracket_A": [
+            0.0,
+            0.03
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "P_01_bulk_spread",
+          "opening_A": 3.432859522140667,
+          "energy_eV": -1142.1229237531613,
+          "energy_derivative_eV_A": 0.09707417261194556,
+          "tilted_energy_eV": -1142.456165750966,
+          "tilted_derivative_eV_A": 3.4916514124461173e-14,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.9115655256114463,
+          "finite_difference_eV_A": 0.09707418030302506,
+          "force_difference_error_eV_A": 7.691079495497632e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 16,
+      "elapsed_s": 80.86577840009704,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "P_02_bulk_spread",
+      "species": "P",
+      "dopant_count": 2,
+      "arrangement": "bulk_spread",
+      "chemical_concentration_cm3": 4.523430453814843e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.000841802986654799,
+      "maximum_opening_A": 3.436637971812308,
+      "constrained_path_barrier_eV": 20.178789853361423,
+      "barrier_per_area_J_m2": 2.0786981037719974,
+      "root_force_max_error_eV_A": 4.680673669626989e-07,
+      "root_energy_difference_max_error_eV_A": 5.349175059704558e-07,
+      "stationary_points": [
+        {
+          "case": "P_02_bulk_spread",
+          "opening_A": -0.000841802986654799,
+          "energy_eV": -1163.8040215686374,
+          "energy_derivative_eV_A": 0.09707370454454368,
+          "tilted_energy_eV": -1163.803939851309,
+          "tilted_derivative_eV_A": -4.680673669626989e-07,
+          "new_evaluation": true,
+          "curvature_eV_A2": 77.40320870170868,
+          "finite_difference_eV_A": 0.09707316962703771,
+          "force_difference_error_eV_A": -5.349175059704558e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "P_02_bulk_spread",
+          "opening_A": 3.436637971812308,
+          "energy_eV": -1143.2915412102673,
+          "energy_derivative_eV_A": 0.09707417264431384,
+          "tilted_energy_eV": -1143.6251499979476,
+          "tilted_derivative_eV_A": 3.2403191241314744e-11,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.909336664948468,
+          "finite_difference_eV_A": 0.0970741780292883,
+          "force_difference_error_eV_A": 5.384974466338122e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 17,
+      "elapsed_s": 78.09579619998112,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "P_04_bulk_spread",
+      "species": "P",
+      "dopant_count": 4,
+      "arrangement": "bulk_spread",
+      "chemical_concentration_cm3": 9.046860907629686e+20,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.0029790400556186196,
+      "maximum_opening_A": 3.4340334909500676,
+      "constrained_path_barrier_eV": 19.95908094891047,
+      "barrier_per_area_J_m2": 2.056065008012395,
+      "root_force_max_error_eV_A": 2.881483868955037e-06,
+      "root_energy_difference_max_error_eV_A": 5.329807658549512e-07,
+      "stationary_points": [
+        {
+          "case": "P_04_bulk_spread",
+          "opening_A": -0.0029790400556186196,
+          "energy_eV": -1164.7196858485104,
+          "energy_derivative_eV_A": 0.0970770540957796,
+          "tilted_energy_eV": -1164.719396660662,
+          "tilted_derivative_eV_A": 2.881483868955037e-06,
+          "new_evaluation": true,
+          "curvature_eV_A2": 77.39754476831367,
+          "finite_difference_eV_A": 0.09707652111501375,
+          "force_difference_error_eV_A": -5.329807658549512e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "P_04_bulk_spread",
+          "opening_A": 3.4340334909500676,
+          "energy_eV": -1144.4269597518958,
+          "energy_derivative_eV_A": 0.09707417261476028,
+          "tilted_energy_eV": -1144.7603157117514,
+          "tilted_derivative_eV_A": 2.849637192881005e-12,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.9089110371499065,
+          "finite_difference_eV_A": 0.09707417575555155,
+          "force_difference_error_eV_A": 3.1407912659542347e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 17,
+      "elapsed_s": 78.72708890005015,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    },
+    {
+      "case": "P_08_bulk_spread",
+      "species": "P",
+      "dopant_count": 8,
+      "arrangement": "bulk_spread",
+      "chemical_concentration_cm3": 1.8093721815259373e+21,
+      "local_traction_MPa": 100.0,
+      "area_A2": 155.52997112368598,
+      "conjugate_external_force_eV_A": 0.09707417261191065,
+      "minimum_opening_A": -0.0072220069504814665,
+      "maximum_opening_A": 3.434454580640749,
+      "constrained_path_barrier_eV": 19.162708522661433,
+      "barrier_per_area_J_m2": 1.9740274891933756,
+      "root_force_max_error_eV_A": 1.6443191808157565e-08,
+      "root_energy_difference_max_error_eV_A": 5.476276881966058e-07,
+      "stationary_points": [
+        {
+          "case": "P_08_bulk_spread",
+          "opening_A": -0.0072220069504814665,
+          "energy_eV": -1166.2767408071609,
+          "energy_derivative_eV_A": 0.09707418905510246,
+          "tilted_energy_eV": -1166.2760397368115,
+          "tilted_derivative_eV_A": 1.6443191808157565e-08,
+          "new_evaluation": true,
+          "curvature_eV_A2": 76.77076336999654,
+          "finite_difference_eV_A": 0.09707364142741426,
+          "force_difference_error_eV_A": -5.476276881966058e-07,
+          "bracket_A": [
+            -0.03,
+            0.0
+          ],
+          "kind": "minimum"
+        },
+        {
+          "case": "P_08_bulk_spread",
+          "opening_A": 3.434454580640749,
+          "energy_eV": -1146.7799343773613,
+          "energy_derivative_eV_A": 0.09707417263258077,
+          "tilted_energy_eV": -1147.11333121415,
+          "tilted_derivative_eV_A": 2.0670118394683357e-11,
+          "new_evaluation": true,
+          "curvature_eV_A2": -0.9018793461640362,
+          "finite_difference_eV_A": 0.09707418030302506,
+          "force_difference_error_eV_A": 7.670444293617074e-09,
+          "bracket_A": [
+            3.0,
+            4.0
+          ],
+          "kind": "maximum"
+        }
+      ],
+      "new_standard_calculator_calls": 18,
+      "elapsed_s": 69.96312750002835,
+      "specimen_remote_stress_MPa": null,
+      "physical_probability": null,
+      "physical_rate": null,
+      "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+    }
+  ]
+}

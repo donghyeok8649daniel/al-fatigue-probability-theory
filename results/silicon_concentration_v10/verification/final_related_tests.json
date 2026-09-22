@@ -1,0 +1,22 @@
+{
+  "command": [
+    "python",
+    "-m",
+    "pytest",
+    "solver_v1/test_silicon_concentration_research.py",
+    "solver_v1/test_silicon_doping_research.py",
+    "solver_v1/test_silicon_doping_validation.py",
+    "solver_v1/test_silicon_charge_dynamics.py",
+    "-q",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "exit_code": 0,
+  "elapsed_reported_s": 3.071381099987775,
+  "python": "3.13.5",
+  "path_redactions": [
+    "repository root",
+    "user profile"
+  ],
+  "timing_note": "reported perf_counter duration; not inferred CPU time"
+}

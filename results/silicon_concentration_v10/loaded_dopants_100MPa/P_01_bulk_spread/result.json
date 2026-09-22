@@ -1,0 +1,58 @@
+{
+  "case": "P_01_bulk_spread",
+  "species": "P",
+  "dopant_count": 1,
+  "arrangement": "bulk_spread",
+  "chemical_concentration_cm3": 2.2617152269074216e+20,
+  "local_traction_MPa": 100.0,
+  "area_A2": 155.52997112368598,
+  "conjugate_external_force_eV_A": 0.09707417261191065,
+  "minimum_opening_A": 0.00019504867112113536,
+  "maximum_opening_A": 3.432859522140667,
+  "constrained_path_barrier_eV": 20.870861729572198,
+  "barrier_per_area_J_m2": 2.149991204458787,
+  "root_force_max_error_eV_A": 3.663134138520707e-07,
+  "root_energy_difference_max_error_eV_A": 5.268788192680507e-07,
+  "stationary_points": [
+    {
+      "case": "P_01_bulk_spread",
+      "opening_A": 0.00019504867112113536,
+      "energy_eV": -1163.3270085463498,
+      "energy_derivative_eV_A": 0.0970745389253245,
+      "tilted_energy_eV": -1163.3270274805382,
+      "tilted_derivative_eV_A": 3.663134138520707e-07,
+      "new_evaluation": true,
+      "curvature_eV_A2": 78.12773200667165,
+      "finite_difference_eV_A": 0.09707401204650523,
+      "force_difference_error_eV_A": -5.268788192680507e-07,
+      "bracket_A": [
+        0.0,
+        0.03
+      ],
+      "kind": "minimum"
+    },
+    {
+      "case": "P_01_bulk_spread",
+      "opening_A": 3.432859522140667,
+      "energy_eV": -1142.1229237531613,
+      "energy_derivative_eV_A": 0.09707417261194556,
+      "tilted_energy_eV": -1142.456165750966,
+      "tilted_derivative_eV_A": 3.4916514124461173e-14,
+      "new_evaluation": true,
+      "curvature_eV_A2": -0.9115655256114463,
+      "finite_difference_eV_A": 0.09707418030302506,
+      "force_difference_error_eV_A": 7.691079495497632e-09,
+      "bracket_A": [
+        3.0,
+        4.0
+      ],
+      "kind": "maximum"
+    }
+  ],
+  "new_standard_calculator_calls": 16,
+  "elapsed_s": 80.86577840009704,
+  "specimen_remote_stress_MPa": null,
+  "physical_probability": null,
+  "physical_rate": null,
+  "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+}

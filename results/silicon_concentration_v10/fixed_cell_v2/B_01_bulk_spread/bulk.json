@@ -1,0 +1,39 @@
+{
+  "species": "B",
+  "dopant_count": 1,
+  "arrangement": "bulk_spread",
+  "indices": [
+    166
+  ],
+  "chemical_concentration_cm3": 2.2617152269074216e+20,
+  "volume_A3": 4421.423122164499,
+  "energy_eV": -1163.5300644728977,
+  "stress_GPa": [
+    [
+      0.30339323122722717,
+      -2.8755628425089883e-15,
+      1.6439613722863987e-15
+    ],
+    [
+      -2.8755628425089883e-15,
+      0.3054248731376946,
+      1.1221158664215851e-05
+    ],
+    [
+      1.6439613722863987e-15,
+      1.1221158664215851e-05,
+      0.3082636158599886
+    ]
+  ],
+  "force_max_eV_A": 0.00018174892507920968,
+  "converged": true,
+  "attempts": [
+    {
+      "method": "LBFGS",
+      "steps": 45,
+      "converged": true,
+      "force_max_eV_A": 0.00018174892507953253
+    }
+  ],
+  "full_Hessian_checked": false
+}

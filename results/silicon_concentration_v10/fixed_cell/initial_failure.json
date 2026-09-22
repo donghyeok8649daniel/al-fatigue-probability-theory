@@ -1,0 +1,10 @@
+{
+  "status": "partial execution, not a completed concentration sweep",
+  "completed_cases": ["Si_00_pure"],
+  "bulk_relaxed_before_failure": "B_01_interface_cluster",
+  "failure": "rigid_opening_geometry rejected slightly negative coordinates retained by ASE default wrap eps",
+  "remedy": "explicit componentwise modulo for this orthorhombic periodic cell; new output directory fixed_cell_v2",
+  "original_outputs_preserved": true,
+  "energy_model_changed": false,
+  "full_sweep_passed": false
+}

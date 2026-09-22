@@ -1,0 +1,61 @@
+{
+  "status": "converged lowest Gamma Ritz pairs",
+  "solver_converged": true,
+  "eigenvalues_eV_A2": [
+    0.2354080116361008,
+    0.23571657011355854
+  ],
+  "checks": [
+    {
+      "mode": 0,
+      "step_A": 0.001,
+      "Rayleigh_eV_A2": 0.23540802575559353,
+      "eigen_residual_eV_A2": 3.1451198969110534e-07,
+      "translation_component_L2": 8.597831672033928e-13
+    },
+    {
+      "mode": 0,
+      "step_A": 0.0003,
+      "Rayleigh_eV_A2": 0.23540802599988436,
+      "eigen_residual_eV_A2": 3.145942527657844e-07,
+      "translation_component_L2": 8.597831672033928e-13
+    },
+    {
+      "mode": 0,
+      "step_A": 0.0001,
+      "Rayleigh_eV_A2": 0.23540802602721497,
+      "eigen_residual_eV_A2": 3.1455007309927154e-07,
+      "translation_component_L2": 8.597831672033928e-13
+    },
+    {
+      "mode": 1,
+      "step_A": 0.001,
+      "Rayleigh_eV_A2": 0.23571658110745394,
+      "eigen_residual_eV_A2": 2.4699463549631763e-07,
+      "translation_component_L2": 1.3805647720621941e-13
+    },
+    {
+      "mode": 1,
+      "step_A": 0.0003,
+      "Rayleigh_eV_A2": 0.23571658134938545,
+      "eigen_residual_eV_A2": 2.471552998850112e-07,
+      "translation_component_L2": 1.3805647720621941e-13
+    },
+    {
+      "mode": 1,
+      "step_A": 0.0001,
+      "Rayleigh_eV_A2": 0.2357165813668618,
+      "eigen_residual_eV_A2": 2.472915044946885e-07,
+      "translation_component_L2": 1.3805647720621941e-13
+    }
+  ],
+  "force_only_calculator_calls": 433,
+  "Hessian_vector_products": 216,
+  "force_max_eV_A": 0.0001798790058866,
+  "state_sha256": "274a08f6e4f9b0ff8484186837dfac6d54ab84d548f328b18ce8fffe74827b0a",
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "elapsed_s": 4372.131623100024,
+  "full_q_stability": false,
+  "material_calibrated": false,
+  "scope": "selected fixed-cell Gamma curvature search, independent finite-difference step checks"
+}

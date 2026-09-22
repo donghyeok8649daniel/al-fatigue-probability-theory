@@ -1,0 +1,58 @@
+{
+  "case": "P_08_interface_cluster",
+  "species": "P",
+  "dopant_count": 8,
+  "arrangement": "interface_cluster",
+  "chemical_concentration_cm3": 1.8093721815259373e+21,
+  "local_traction_MPa": 100.0,
+  "area_A2": 155.52997112368598,
+  "conjugate_external_force_eV_A": 0.09707417261191065,
+  "minimum_opening_A": -0.004665907298731414,
+  "maximum_opening_A": 3.411929574772881,
+  "constrained_path_barrier_eV": 19.94329846727669,
+  "barrier_per_area_J_m2": 2.054439191257111,
+  "root_force_max_error_eV_A": 5.270989797412362e-09,
+  "root_energy_difference_max_error_eV_A": 5.364277491093361e-07,
+  "stationary_points": [
+    {
+      "case": "P_08_interface_cluster",
+      "opening_A": -0.004665907298731414,
+      "energy_eV": -1164.7876661236994,
+      "energy_derivative_eV_A": 0.09707417785516337,
+      "tilted_energy_eV": -1164.7872131846088,
+      "tilted_derivative_eV_A": 5.243252720887881e-09,
+      "new_evaluation": true,
+      "curvature_eV_A2": 79.56013457303817,
+      "finite_difference_eV_A": 0.09707364142741426,
+      "force_difference_error_eV_A": -5.364277491093361e-07,
+      "bracket_A": [
+        -0.03,
+        0.0
+      ],
+      "kind": "minimum"
+    },
+    {
+      "case": "P_08_interface_cluster",
+      "opening_A": 3.411929574772881,
+      "energy_eV": -1144.512704476851,
+      "energy_derivative_eV_A": 0.09707417788290044,
+      "tilted_energy_eV": -1144.8439147173322,
+      "tilted_derivative_eV_A": 5.270989797412362e-09,
+      "new_evaluation": true,
+      "curvature_eV_A2": -0.7781203519643259,
+      "finite_difference_eV_A": 0.09707418257676181,
+      "force_difference_error_eV_A": 4.6938613690317155e-09,
+      "bracket_A": [
+        3.0,
+        4.0
+      ],
+      "kind": "maximum"
+    }
+  ],
+  "new_standard_calculator_calls": 16,
+  "elapsed_s": 72.24002110003494,
+  "specimen_remote_stress_MPa": null,
+  "physical_probability": null,
+  "physical_rate": null,
+  "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+}

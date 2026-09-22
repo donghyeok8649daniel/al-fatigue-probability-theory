@@ -1,0 +1,17 @@
+{
+  "python": "3.13.5",
+  "packages": {
+    "numpy": "2.5.0",
+    "scipy": "1.18.1",
+    "ase": "3.29.0",
+    "mace-torch": "0.3.16",
+    "torch": "2.12.1",
+    "e3nn": "0.4.4",
+    "matplotlib": "3.11.0"
+  },
+  "device": "CPU",
+  "model_dtype": "float64",
+  "threads_per_MACE_process": 2,
+  "model_weights_committed": false,
+  "physical_clock_calibrated": false
+}

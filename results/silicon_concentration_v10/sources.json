@@ -1,0 +1,68 @@
+{
+  "accessed_UTC_date": "2026-09-22",
+  "sources": [
+    {
+      "title": "Macroscopic scattering of cracks initiated at single impurity atoms",
+      "authors": "J. R. Kermode, L. Ben-Bashat, F. Atrash, J. J. Cilliers, D. Sherman, A. De Vita",
+      "year": 2013,
+      "doi": "10.1038/ncomms3441",
+      "url": "https://www.nature.com/articles/ncomms3441",
+      "access": "publisher full article indexed by search; direct open encountered publisher identity redirect",
+      "method": "QM/MM crack dynamics and three-point bending of B-doped Si on {111}",
+      "chemical_concentrations_cm3": [1.05e15, 1.10e19],
+      "supported_statement": "Individual B impurities can induce position- and velocity-dependent crack-tip reconstruction and deflection; concentration affects observed ridge patterns.",
+      "scope": "Different concentrations, relaxed moving crack and specimen geometry from v10. No trajectory replay, fitted rate or validation of the v10 rigid path."
+    },
+    {
+      "title": "Understanding Ultrahigh Doping: The Case of Boron in Silicon",
+      "authors": "Xuan Luo, S. B. Zhang, Su-Huai Wei",
+      "year": 2003,
+      "doi": "10.1103/PhysRevLett.90.026103",
+      "url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.90.026103",
+      "access": "publisher abstract only; numerical activation curve not acquired",
+      "method": "first-principles theory of ultrahigh B doping",
+      "supported_statement": "The authors attribute partial ionization in their high-concentration comparison primarily to electron chemical potential.",
+      "scope": "Chemical B concentration cannot be assigned to free hole density by a universal one-to-one rule; no activation fraction fitted here."
+    },
+    {
+      "title": "Electronic strengthening mechanism of covalent Si via excess electron/hole doping",
+      "authors": "Hiroki Noda, Shumpei Sakaguchi, Ryoga Fujita, Susumu Minami, Hiroyuki Hirakata, Takahiro Shimada",
+      "year": 2023,
+      "doi": "10.1038/s41598-023-42676-z",
+      "url": "https://www.nature.com/articles/s41598-023-42676-z",
+      "access": "primary full article; supplementary values previously transcribed in v7",
+      "existing_data": "results/silicon_doping_v7/sources/noda_2023_ideal_strength.csv",
+      "method": "published static DFT with excess electrons or holes and compensating background, no chemical dopant atoms",
+      "scope": "carrier-dependent homogeneous ideal strength; not this neutral chemical-substitution cleavage model and not wafer failure"
+    },
+    {
+      "title": "Engineering cleavage fracture of silicon via excess charge doping",
+      "authors": "Tao Xu, Shodai Nakai, Yasuaki Maruyama, Hiroki Noda, Susumu Minami, Hiroyuki Hirakata, Takahiro Shimada",
+      "year": 2026,
+      "doi": "10.1016/j.engfracmech.2025.111721",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0013794425009221",
+      "access": "publisher abstract and introduction indexed by search; direct open returned 403; full article and numerical source data not acquired",
+      "method": "first-principles excess-carrier calculations with localized Alias deformation",
+      "supported_statement": "The abstract reports electron-induced reduction and hole-induced increase of cleavage strength and toughness, with carrier-dependent reconstruction.",
+      "charge_densities_cm3": null,
+      "cleavage_energy_table": null,
+      "scope": "evidence that explicit charge-dependent localized cleavage is required; no numerical fit or new DFT in this task"
+    },
+    {
+      "title": "Improved bending fatigue life of single crystal silicon micro-beam by phosphorus doping",
+      "authors": "Jun-Yong Tao, Xiao-Jing Wang, Bin Liu, Yan-Lei Wang, Zhi-Qian Ren, Xun Chen",
+      "year": 2013,
+      "doi": "10.1016/j.microrel.2013.07.074",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0026271413002497",
+      "access": "publisher abstract/highlights; full numerical concentration/life dataset not acquired",
+      "method": "room-temperature bending fatigue of P-doped single-crystal Si micro-beams",
+      "supported_statement": "The study reports fatigue life increasing with P concentration in its tested groups.",
+      "concentrations_cm3": null,
+      "fatigue_lives": null,
+      "scope": "no universal strength multiplier, fitted lifetime or endurance-limit assertion"
+    }
+  ],
+  "new_DFT_runs": 0,
+  "new_MD_runs": 0,
+  "chemical_doping_equal_to_carrier_doping": false
+}

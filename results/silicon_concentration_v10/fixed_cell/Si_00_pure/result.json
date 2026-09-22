@@ -1,0 +1,46 @@
+{
+  "species": "Si",
+  "dopant_count": 0,
+  "arrangement": "pure",
+  "indices": [],
+  "chemical_concentration_cm3": 0.0,
+  "volume_A3": 4421.423122164499,
+  "energy_eV": -1162.8489074129375,
+  "stress_GPa": [
+    [
+      7.450438379580572e-08,
+      6.749016637692746e-16,
+      -1.3753678003089279e-15
+    ],
+    [
+      6.749016637692746e-16,
+      7.450434770746062e-08,
+      -1.728850320508529e-14
+    ],
+    [
+      -1.3753678003089279e-15,
+      -1.728850320508529e-14,
+      7.450443503372944e-08
+    ]
+  ],
+  "force_max_eV_A": 6.612030635615599e-14,
+  "converged": true,
+  "attempts": [
+    {
+      "method": "LBFGS",
+      "steps": 0,
+      "converged": true,
+      "force_max_eV_A": 6.71342028262591e-14
+    }
+  ],
+  "full_Hessian_checked": false,
+  "case": "Si_00_pure",
+  "sampled_peak_traction_GPa": 19.18195619454577,
+  "sampled_peak_opening_A": 0.5,
+  "rigid_separation_work_J_m2": 2.18581726975042,
+  "plateau_8_to_10_eV": 0.0,
+  "standard_calculator_calls": 17,
+  "force_only_calculator_calls": 1,
+  "elapsed_s": 60.042861900059506,
+  "status": "rigid constrained path; not relaxed cleavage or strength"
+}

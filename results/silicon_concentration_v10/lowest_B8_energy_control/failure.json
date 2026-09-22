@@ -1,0 +1,9 @@
+{
+  "status": "postprocessing failure after all 13 energy evaluations",
+  "error": "TypeError: Object of type bool is not JSON serializable",
+  "cause": "numpy.bool_ from a comparison was passed to json.dumps",
+  "preserved": ["mode_curvatures.csv", "failed_validator.py"],
+  "fix": "Convert the summary maximum to Python float and passed to Python bool",
+  "rerun_directory": "lowest_B8_energy_control_v2",
+  "scope": "Implementation serialization failure, not a failed physical curvature check"
+}

@@ -1,0 +1,37 @@
+{
+  "species": "Si",
+  "dopant_count": 0,
+  "arrangement": "pure",
+  "indices": [],
+  "chemical_concentration_cm3": 0.0,
+  "volume_A3": 4421.423122164499,
+  "energy_eV": -1162.8489074129375,
+  "stress_GPa": [
+    [
+      7.450438642245783e-08,
+      3.2685402724176907e-15,
+      -1.8220036242424282e-15
+    ],
+    [
+      3.2685402724176907e-15,
+      7.45043480598264e-08,
+      -2.2759134785932083e-14
+    ],
+    [
+      -1.8220036242424282e-15,
+      -2.2759134785932083e-14,
+      7.450442745659559e-08
+    ]
+  ],
+  "force_max_eV_A": 2.7668022134698763e-14,
+  "converged": true,
+  "attempts": [
+    {
+      "method": "LBFGS",
+      "steps": 0,
+      "converged": true,
+      "force_max_eV_A": 2.5494511575527227e-14
+    }
+  ],
+  "full_Hessian_checked": false
+}

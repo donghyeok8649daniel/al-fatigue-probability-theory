@@ -1,0 +1,58 @@
+{
+  "case": "P_04_interface_spread",
+  "species": "P",
+  "dopant_count": 4,
+  "arrangement": "interface_spread",
+  "chemical_concentration_cm3": 9.046860907629686e+20,
+  "local_traction_MPa": 100.0,
+  "area_A2": 155.52997112368598,
+  "conjugate_external_force_eV_A": 0.09707417261191065,
+  "minimum_opening_A": -0.0030733656060457294,
+  "maximum_opening_A": 3.445412458911415,
+  "constrained_path_barrier_eV": 17.958334092740643,
+  "barrier_per_area_J_m2": 1.8499600469978377,
+  "root_force_max_error_eV_A": 1.1499877834997285e-06,
+  "root_energy_difference_max_error_eV_A": 5.533988496897457e-07,
+  "stationary_points": [
+    {
+      "case": "P_04_interface_spread",
+      "opening_A": -0.0030733656060457294,
+      "energy_eV": -1164.5280353365022,
+      "energy_derivative_eV_A": 0.09707532259969415,
+      "tilted_energy_eV": -1164.5277369920789,
+      "tilted_derivative_eV_A": 1.1499877834997285e-06,
+      "new_evaluation": true,
+      "curvature_eV_A2": 75.02954468168996,
+      "finite_difference_eV_A": 0.09707476920084446,
+      "force_difference_error_eV_A": -5.533988496897457e-07,
+      "bracket_A": [
+        -0.03,
+        0.0
+      ],
+      "kind": "minimum"
+    },
+    {
+      "case": "P_04_interface_spread",
+      "opening_A": 3.445412458911415,
+      "energy_eV": -1146.2349423355827,
+      "energy_derivative_eV_A": 0.09707418426197709,
+      "tilted_energy_eV": -1146.5694028993382,
+      "tilted_derivative_eV_A": 1.16500664393282e-08,
+      "new_evaluation": true,
+      "curvature_eV_A2": -0.8827728006131907,
+      "finite_difference_eV_A": 0.09707419167170883,
+      "force_difference_error_eV_A": 7.4097317448451605e-09,
+      "bracket_A": [
+        3.0,
+        4.0
+      ],
+      "kind": "maximum"
+    }
+  ],
+  "new_standard_calculator_calls": 17,
+  "elapsed_s": 79.22572039999068,
+  "specimen_remote_stress_MPa": null,
+  "physical_probability": null,
+  "physical_rate": null,
+  "scope": "rigid many-atom 0 K path under local normal traction; not a thermal or specimen barrier"
+}

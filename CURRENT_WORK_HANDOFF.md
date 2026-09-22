@@ -1,5 +1,35 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-23 최신: Si 농도·배치 대조 v10
+
+- 최신 요청은 농도에 따른 차이를 실제로 검증하는 것이다. Si 브랜치의 fresh
+  local/origin HEAD `7a18c4f5cf038d22e6d8eafca19be87de35ea8d5` 일치/clean에서 시작.
+- `SILICON_CONCENTRATION_V10.md`: 216자리·같은 부피·(111) shuffle 분리면에서
+  B/P 1/2/4/8개와 세 선택 배치를 대조한다. Neutral MACE 원자 계산이며 독립
+  활성 전하/실제 웨이퍼 강도/확률/Hz를 보정하지 않는다. 추가agent0.
+- 원시 실행 `results/silicon_concentration_v10/fixed_cell_v2`는25/25완료.
+  표준평가425회·bulk force-only1184회, 같은 국소100MPa 하중25조건/새444회 완료.
+  하중 자료는 `loaded_pure_100MPa`, `loaded_dopants_100MPa`에 따로 저장했다.
+  이는 다수 원자의 구속된 정적 경로 장벽이며 실제 시편의 원방100MPa가 아니다.
+- 처음 `fixed_cell`은 ASE wrap epsilon의 미소 음수 좌표로 B1에서 중단했다.
+  실패코드/부분원시자료를 보존하고 modulo 좌표 처리로 v2에서 재시작했다.
+- 농도는 최초 재료 부피로 고정, 분리로 생긴 진공을 포함하지 않는다.
+  에너지 미분에 비affine 힘 항을 포함한다. 독립 q차분·회전·두께/면적 복제로 검증.
+  일부 배치를 임의 균등 평균하거나 미계산 화학 배치의 가중치를 정규화하지 않는다.
+- 관련87PASS, 독립 pure/B8/P8 힘·회전·크기 검사 통과. 원자료869개 재계산 일치,
+  별도 후처리 CSV5/JSON1/PNG3개 byte 일치. B8군집 낮은두Gamma곡률 양수.
+- P8군집 첫 Gamma 검사는 ncv28/240product 한도 미수렴. 실패코드와481회평가
+  기록 보존. ncv64/500product 재검사는251product/503force평가에서 완료,
+  낮은두곡률+.228429/+.230281eV/A². tolerance1e-5와 에너지 모델은 유지했다.
+  B/P의 선택된 Gamma 검사이며25배치 전체/full-q 안정성 인증은 아니다.
+  두 군집의 직접 에너지 곡률도 통과했다. P 가장미세h 오차1.416e-6eV/A².
+- 최고농도1.809e21cm^-3에서 인접층 분산의 분리 일은 순수Si 대비 B+16.227%,
+  P-27.399%. 같은농도군집은 B+1.754%/P-4.417%다. 인접층 점유수가2/8개로
+  다르므로 같은계면점유율의 순수군집효과로 부르지 않는다. 자유캐리어/실제강도 미보정.
+- 모든 작업은 형제 Si 폴더에서 진행하며 원래 Al/UI 작업본은 보존한다.
+  재개시 `results/silicon_concentration_v10/COMPLETED_SUMMARY.md`와 manifest,
+  실제 Git HEAD/원격을 확인한다. 새 DFT/MD0, 생산 Si/PDE/Hz gate는 유지했다.
+
 ## 2026-09-22 최신: Si/B 원자 대조·전하 동역학 v9
 
 - 최신 사용자 지시: Si 도핑 검증을 계속하고 약3시간 자율 연구. CAD/UI/Al 옛 작업은

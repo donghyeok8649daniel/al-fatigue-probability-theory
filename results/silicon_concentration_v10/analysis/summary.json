@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "cases": 25,
+  "raw_states": 425,
+  "raw_recalculation_max_abs_error": 0.0,
+  "one_atom_duplicate_placement_controls": [
+    {
+      "species": "B",
+      "same_indices": true,
+      "work_difference_J_m2": 0.0
+    },
+    {
+      "species": "P",
+      "same_indices": true,
+      "work_difference_J_m2": 0.0
+    }
+  ],
+  "loaded_cases": 25,
+  "loaded_raw_states": 444,
+  "scope": "selected neutral configurations; not a random-alloy average or actual concentration-to-failure law"
+}

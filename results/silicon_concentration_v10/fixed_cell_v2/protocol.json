@@ -1,0 +1,317 @@
+{
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "lattice_A": 5.470992313871248,
+  "atoms": 216,
+  "cell_A": [
+    [
+      11.605727294873521,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      13.401139555673227,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      28.428109966331448
+    ]
+  ],
+  "reference_material_volume_A3": 4421.423122164499,
+  "area_A2": 155.52997112368598,
+  "original_wide_gap_A": 2.3690091639000004,
+  "opening_grid_A": [
+    0.0,
+    0.03,
+    0.1,
+    0.2,
+    0.35,
+    0.5,
+    0.7,
+    0.9,
+    1.1,
+    1.4,
+    1.8,
+    2.3,
+    3.0,
+    4.0,
+    6.0,
+    8.0,
+    10.0
+  ],
+  "plans": [
+    {
+      "species": "Si",
+      "count": 0,
+      "arrangement": "pure",
+      "substitution_indices": []
+    },
+    {
+      "species": "B",
+      "count": 1,
+      "arrangement": "interface_cluster",
+      "substitution_indices": [
+        54
+      ]
+    },
+    {
+      "species": "B",
+      "count": 2,
+      "arrangement": "interface_cluster",
+      "substitution_indices": [
+        54,
+        55
+      ]
+    },
+    {
+      "species": "B",
+      "count": 4,
+      "arrangement": "interface_cluster",
+      "substitution_indices": [
+        54,
+        55,
+        23,
+        63
+      ]
+    },
+    {
+      "species": "B",
+      "count": 8,
+      "arrangement": "interface_cluster",
+      "substitution_indices": [
+        54,
+        55,
+        23,
+        63,
+        51,
+        132,
+        120,
+        128
+      ]
+    },
+    {
+      "species": "B",
+      "count": 1,
+      "arrangement": "interface_spread",
+      "substitution_indices": [
+        54
+      ]
+    },
+    {
+      "species": "B",
+      "count": 2,
+      "arrangement": "interface_spread",
+      "substitution_indices": [
+        54,
+        7
+      ]
+    },
+    {
+      "species": "B",
+      "count": 4,
+      "arrangement": "interface_spread",
+      "substitution_indices": [
+        54,
+        7,
+        30,
+        43
+      ]
+    },
+    {
+      "species": "B",
+      "count": 8,
+      "arrangement": "interface_spread",
+      "substitution_indices": [
+        54,
+        7,
+        30,
+        43,
+        29,
+        65,
+        52,
+        4
+      ]
+    },
+    {
+      "species": "B",
+      "count": 1,
+      "arrangement": "bulk_spread",
+      "substitution_indices": [
+        166
+      ]
+    },
+    {
+      "species": "B",
+      "count": 2,
+      "arrangement": "bulk_spread",
+      "substitution_indices": [
+        166,
+        41
+      ]
+    },
+    {
+      "species": "B",
+      "count": 4,
+      "arrangement": "bulk_spread",
+      "substitution_indices": [
+        166,
+        41,
+        22,
+        94
+      ]
+    },
+    {
+      "species": "B",
+      "count": 8,
+      "arrangement": "bulk_spread",
+      "substitution_indices": [
+        166,
+        41,
+        22,
+        94,
+        113,
+        185,
+        4,
+        76
+      ]
+    },
+    {
+      "species": "P",
+      "count": 1,
+      "arrangement": "interface_cluster",
+      "substitution_indices": [
+        54
+      ]
+    },
+    {
+      "species": "P",
+      "count": 2,
+      "arrangement": "interface_cluster",
+      "substitution_indices": [
+        54,
+        55
+      ]
+    },
+    {
+      "species": "P",
+      "count": 4,
+      "arrangement": "interface_cluster",
+      "substitution_indices": [
+        54,
+        55,
+        23,
+        63
+      ]
+    },
+    {
+      "species": "P",
+      "count": 8,
+      "arrangement": "interface_cluster",
+      "substitution_indices": [
+        54,
+        55,
+        23,
+        63,
+        51,
+        132,
+        120,
+        128
+      ]
+    },
+    {
+      "species": "P",
+      "count": 1,
+      "arrangement": "interface_spread",
+      "substitution_indices": [
+        54
+      ]
+    },
+    {
+      "species": "P",
+      "count": 2,
+      "arrangement": "interface_spread",
+      "substitution_indices": [
+        54,
+        7
+      ]
+    },
+    {
+      "species": "P",
+      "count": 4,
+      "arrangement": "interface_spread",
+      "substitution_indices": [
+        54,
+        7,
+        30,
+        43
+      ]
+    },
+    {
+      "species": "P",
+      "count": 8,
+      "arrangement": "interface_spread",
+      "substitution_indices": [
+        54,
+        7,
+        30,
+        43,
+        29,
+        65,
+        52,
+        4
+      ]
+    },
+    {
+      "species": "P",
+      "count": 1,
+      "arrangement": "bulk_spread",
+      "substitution_indices": [
+        166
+      ]
+    },
+    {
+      "species": "P",
+      "count": 2,
+      "arrangement": "bulk_spread",
+      "substitution_indices": [
+        166,
+        41
+      ]
+    },
+    {
+      "species": "P",
+      "count": 4,
+      "arrangement": "bulk_spread",
+      "substitution_indices": [
+        166,
+        41,
+        22,
+        94
+      ]
+    },
+    {
+      "species": "P",
+      "count": 8,
+      "arrangement": "bulk_spread",
+      "substitution_indices": [
+        166,
+        41,
+        22,
+        94,
+        113,
+        185,
+        4,
+        76
+      ]
+    }
+  ],
+  "scope": "neutral ML; fixed material volume; static internally relaxed bulk then rigid (111) separation",
+  "carrier_density_cm3": null,
+  "temperature_K": null,
+  "temperature_note": "0 K potential-energy calculation, no thermal sampling or PMF",
+  "physical_mobility": null,
+  "specimen_failure_probability": null,
+  "production_enabled": false
+}

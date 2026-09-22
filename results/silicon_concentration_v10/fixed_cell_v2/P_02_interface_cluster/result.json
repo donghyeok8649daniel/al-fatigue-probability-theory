@@ -1,0 +1,49 @@
+{
+  "species": "P",
+  "dopant_count": 2,
+  "arrangement": "interface_cluster",
+  "indices": [
+    54,
+    55
+  ],
+  "chemical_concentration_cm3": 4.523430453814843e+20,
+  "volume_A3": 4421.423122164499,
+  "energy_eV": -1163.6674361396997,
+  "stress_GPa": [
+    [
+      0.1711547392989442,
+      -5.930073442897987e-15,
+      2.918003158545965e-15
+    ],
+    [
+      -5.930073442897987e-15,
+      0.17197587776417644,
+      0.00010406571617811211
+    ],
+    [
+      2.918003158545965e-15,
+      0.00010406571617811211,
+      0.13418222979546593
+    ]
+  ],
+  "force_max_eV_A": 0.00019494106819569016,
+  "converged": true,
+  "attempts": [
+    {
+      "method": "LBFGS",
+      "steps": 37,
+      "converged": true,
+      "force_max_eV_A": 0.00019494106819571374
+    }
+  ],
+  "full_Hessian_checked": false,
+  "case": "P_02_interface_cluster",
+  "sampled_peak_traction_GPa": 17.750836432350287,
+  "sampled_peak_opening_A": 0.5,
+  "rigid_separation_work_J_m2": 2.028146253789741,
+  "plateau_8_to_10_eV": 0.0,
+  "standard_calculator_calls": 17,
+  "force_only_calculator_calls": 38,
+  "elapsed_s": 180.72554170002695,
+  "status": "rigid constrained path; not relaxed cleavage or strength"
+}
