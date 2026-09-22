@@ -1,5 +1,28 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-09-22 최신: Si 시편 MPa 하중 연결 v6 완료
+
+- 최신 지시: Si 연구를 시편 중심으로 계속하고 CAD/UI/AI는 별도 작업으로 분리.
+  실제 연구는 aft-silicon-wafer / silicon-wafer-research. 시작 fresh origin/local
+  6423f8e96b91463e51a58b8084d5ba886c1ef6a7 일치/clean, 추가 agent 없음.
+- 같은 SW/Tersoff와 각 모델의 이완 탄성을 사용해 이방성 K 경계·주기 cleavage·
+  결정 내부 sublattice 이완을 구현. 최종 verified_* 기준상태40개+±K8회 완료.
+  원자1,904–7,600개, radius28/40/56A, front4/8. 생산/Al/Si/Hz gate불변.
+- rigid Wsep SW2.720054/Tersoff2.572233 J/m2, KG .615257/.619265 MPa sqrt(m).
+  중앙 관통균열 반길이10um/Y1의109.77/110.48MPa는 에너지 등식이지 실제강도 아님.
+  8개 전체free Cartesian Hessian양수: 1.2KG에서도국소안정. K+/barrier/finiteT미완료.
+- boundary work 상대오차최대2.26e-8, 독립4개force차6.56e-13eV/A. 보정포함40개
+  원시상태재계산PASS. Si+material gate88PASS+6subtests/4.01s, 전체Al/UI회귀아님.
+- 최초소수점파일명충돌로6개상태덮어쓰기; 원기록보존·회귀추가·새폴더전체재실행.
+  최초internal은SW11개뒤파일오류중단. 최종baseline Tersoff힘실패3개와internal4개
+  실패보존후별도Newton-CG보정. ASE고립bond예외는지역subclass+3dimer검사로처리.
+- validation저장도구자동승인검토timeout뒤재시도완료. 기록elapsed9406.48s의큰응답
+  공백원인미확인; 연속CPU시간으로부르지않는다. 최종수치job은종료했다.
+- 결과 results/silicon_specimen_v6/COMPLETED_SUMMARY.md, 이론
+  solver_v1/SILICON_SPECIMEN_LOADING_V6.md. 다음은같은K경계의장벽/독립screened-GAP
+  에너지검증·유한시편연결이다. v5DFT오차/v4미완료를해결된것으로재해석하지않는다.
+  최종Git게시상태는실제git log/fresh remote 및최종응답확인.
+
 ## 2026-09-21 최신: Si 원자모델 기반 v5 감사 완료
 
 - 최신 지시 “원자모델링부터”에 따라 v4 sampler를 재개하지 않고 원자 에너지부터

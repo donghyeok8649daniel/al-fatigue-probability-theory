@@ -17,6 +17,7 @@ Al과 Si를 같은 원자 에너지 → 자유에너지 → 확률 흐름의 구
 | 조건부 Gaussian 후보·주변 원자 기억·새 단시간 원자 운동 | 연구 구현·수치 대조 완료 | [v3 이론](solver_v1/SILICON_CONDITIONAL_DYNAMICS_V3.md), [새13 ps 결과](results/silicon_conditional_v3/COMPLETED_SUMMARY.md) |
 | 비선형 열분포·재배열·새1.74 ns 원자 운동 | 부분 완료; 전체 PMF·크기 수렴 실패/미완료 보존 | [v4 이론](solver_v1/SILICON_FINITE_T_ENSEMBLES_V4.md), [완료/미완료 결과](results/silicon_thermal_v4/COMPLETED_SUMMARY.md) |
 | 원자 에너지·내부 이완 탄성·공개 DFT 대조 | 2,475구조×2모델 평가 완료; SW/Tersoff 재료 미채택 | [v5 이론](solver_v1/SILICON_ATOMISTIC_FOUNDATION_V5.md), [실제 계산](results/silicon_atomistic_v5/COMPLETED_SUMMARY.md) |
+| 시편 MPa 하중·이방성 원자 경계·경계 일 | 40개 기준 상태·8개 안정성 검사 완료; 에너지 등식과 실제 강도 구분 | [v6 이론](solver_v1/SILICON_SPECIMEN_LOADING_V6.md), [실제 계산](results/silicon_specimen_v6/COMPLETED_SUMMARY.md) |
 | 실측 Si 물성·표면·도핑 에너지 적합 | 미완료 | [탐색 근거](results/silicon_wafer_feasibility/RESEARCH_MEMO.md) |
 | finite-T PMF·이동도·실제 수명·Hz | 미보정 | [공통 이론](results/silicon_wafer_feasibility/UNIFIED_FATIGUE_THEORY.md), [국소 축약 조건](solver_v1/SILICON_LOCAL_CRACK_V2.md) |
 | 생산 UI의 실제 Si 해석 | 비활성 | [실행 차단 계약](app/MATERIAL_SELECTION.md#실행-상태) |
@@ -33,6 +34,7 @@ Al과 Si를 같은 원자 에너지 → 자유에너지 → 확률 흐름의 구
 5. [조건부 자유에너지 후보와 원자 동역학](results/silicon_conditional_v3/COMPLETED_SUMMARY.md)
 6. [비선형 분포·구조 재배열·기억 검증과 중단 상태](results/silicon_thermal_v4/COMPLETED_SUMMARY.md)
 7. [원자 에너지부터 다시 확인한 재료 기반](results/silicon_atomistic_v5/COMPLETED_SUMMARY.md)
+8. [시편의 MPa 하중과 원자 균열 경계 연결](results/silicon_specimen_v6/COMPLETED_SUMMARY.md)
 
 기존 원자면 전체 동시 분리 계산은 대조군으로 남겨 둔다. 같은 최종 상태까지
 전면의 네 결합을 순차 전이시키는 검증 경로의 최대 에너지는 1.075 eV,

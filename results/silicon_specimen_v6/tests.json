@@ -1,0 +1,401 @@
+{
+  "tests": 88,
+  "exit_code": 0,
+  "passed": true,
+  "elapsed_seconds": 4.1500396999763325,
+  "paths": [
+    "solver_v1/test_silicon_atomistic_reference.py",
+    "solver_v1/test_silicon_collective_research.py",
+    "solver_v1/test_silicon_conditional_research.py",
+    "solver_v1/test_silicon_crack_research.py",
+    "solver_v1/test_silicon_environment_research.py",
+    "solver_v1/test_silicon_memory_reduction.py",
+    "solver_v1/test_silicon_path_research.py",
+    "solver_v1/test_silicon_quantum_diagnostic.py",
+    "solver_v1/test_silicon_specimen_research.py",
+    "solver_v1/test_silicon_specimen_storage.py",
+    "solver_v1/test_silicon_thermal_dynamics.py",
+    "solver_v1/test_silicon_thermal_profiles.py",
+    "solver_v1/test_silicon_thermal_research.py",
+    "app/test_materials.py"
+  ],
+  "reports": [
+    {
+      "nodeid": "solver_v1/test_silicon_atomistic_reference.py::test_restricted_cell_preserves_energy_gradient_and_volume",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_atomistic_reference.py::test_restricted_cell_rejects_invalid_geometry[cell0]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_atomistic_reference.py::test_restricted_cell_rejects_invalid_geometry[cell1]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_atomistic_reference.py::test_restricted_cell_rejects_invalid_geometry[cell2]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_atomistic_reference.py::test_restricted_cell_rejects_invalid_geometry[cell3]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_atomistic_reference.py::test_force_metric_component_weighting",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_atomistic_reference.py::test_force_metric_rejects_nonfinite_data",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_atomistic_reference.py::test_left_handed_periodic_reindex_preserves_lattice_vectors",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_collective_research.py::test_collective_coordinate_is_orthonormal_keeps_gap_and_has_exact_dual_forces",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_conditional_research.py::test_gaussian_measure_matches_actual_conditional_integral",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_conditional_research.py::test_two_coordinate_marginal_recovers_one_coordinate_including_metric",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_conditional_research.py::test_unstable_conditional_partition_is_not_regularized[0.0]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_conditional_research.py::test_unstable_conditional_partition_is_not_regularized[-1.0]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_conditional_research.py::test_memory_and_full_response_match_independent_coupled_ode",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_conditional_research.py::test_verlet_energy_order_fixed_grips_reversal_and_raw_observations",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_conditional_research.py::test_nonorthonormal_basis_and_invalid_dynamics_are_rejected",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_conditional_research.py::test_retained_coordinate_variance_is_gaussian_conditioning_not_parameter_fit",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_crack_research.py::test_spatial_force_matches_independent_site_jets",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_crack_research.py::test_periodic_images_skin_rebuild_and_new_neighbors",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_crack_research.py::test_sparse_hessian_keeps_fixed_center_contributions",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_crack_research.py::test_strip_and_rigid_separation_normalization",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_crack_research.py::test_local_coordinates_exact_constraint_and_virtual_work[False]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_crack_research.py::test_local_coordinates_exact_constraint_and_virtual_work[True]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_crack_research.py::test_force_checked_relaxation_does_not_hide_iteration_failure",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_crack_research.py::test_invalid_inputs_are_rejected",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_environment_research.py::test_jet_mixed_chain_rule_against_closed_form",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_environment_research.py::test_full_cartesian_force_hessian_identity_rotation_and_torque[0.88]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_environment_research.py::test_full_cartesian_force_hessian_identity_rotation_and_torque[1.0]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_environment_research.py::test_full_cartesian_force_hessian_identity_rotation_and_torque[1.13]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_environment_research.py::test_cutoff_and_zero_neighbor_derivatives",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_environment_research.py::test_diamond_internal_relaxation_and_direct_finite_strain",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_environment_research.py::test_interface_derivatives_against_independent_slab_and_mesh_extent[shuffle]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_environment_research.py::test_interface_derivatives_against_independent_slab_and_mesh_extent[glide]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_environment_research.py::test_insufficient_images_and_unstable_elimination_are_rejected",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_memory_reduction.py::test_positive_quadrature_preserves_moments_and_full_rank_kernel",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_memory_reduction.py::test_oscillator_embedding_has_exact_static_curvature_and_cartesian_response",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_path_research.py::test_climbing_band_finds_known_curved_saddle_and_keeps_endpoints",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_quantum_diagnostic.py::test_oscillator_free_energy_matches_explicit_energy_level_partition",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_quantum_diagnostic.py::test_high_temperature_limit_is_same_measure_classical_logdet",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_ahead_stress_normalization_and_face_tractions",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_ahead_stress_normalization_and_face_tractions",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_ahead_stress_normalization_and_face_tractions",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_ahead_stress_normalization_and_face_tractions",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_bad_stiffness_and_coupled_orientation_are_rejected",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_boundary_is_actual_lattice_with_independent_free_atoms",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_displacement_derivative_and_equilibrium",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_elastic_energy_is_rotation_invariant",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_invalid_geometry_is_not_silently_defaulted",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_isotropic_griffith_limit",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_j_integral_and_crack_opening",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_j_integral_and_crack_opening",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_j_integral_and_crack_opening",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_j_integral_and_crack_opening",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_load_and_length_scaling",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_optical_boundary_preserves_zero_and_linearity",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_optical_response_uses_cubic_not_crack_axes",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_research.py::SpecimenBridgeTests::test_specimen_units_and_inverse",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_storage.py::StorageTests::test_actual_source_cutoffs",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_specimen_storage.py::StorageTests::test_decimal_cases_are_distinct_and_existing_state_is_protected",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_thermal_dynamics.py::test_box_drift_multiple_reflections_and_time_reversal",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_thermal_dynamics.py::test_constrained_verlet_preserves_gap_grips_energy_order_and_reversal",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_thermal_dynamics.py::test_fft_correlation_equals_direct_time_origins_with_external_mean",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_thermal_profiles.py::test_known_static_energy_control_and_grid_refinement",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_thermal_research.py::test_gaussian_whitening_covariance_and_unstable_reference_rejection",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_thermal_research.py::test_bounded_nonlinear_partition_matches_independent_quadrature",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_thermal_research.py::test_pcn_proposal_preserves_reference_and_metropolis_satisfies_balance",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_thermal_research.py::test_pcn_rejections_remain_in_history_and_bounded_target_is_correct",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_thermal_research.py::test_split_rhat_detects_offset_chains_without_calling_them_independent_draws",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_thermal_research.py::test_force_control_integrates_to_zero_even_with_nonzero_boundary_density",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "solver_v1/test_silicon_thermal_research.py::test_harmonic_split_is_reversible_and_hmc_matches_actual_nonlinear_integral",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_dopant_density_and_inactive_drafts[B]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_dopant_density_and_inactive_drafts[P]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_dopant_density_and_inactive_drafts[As]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_dopant_density_and_inactive_drafts[Sb]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_invalid_active_concentration_is_not_coerced[]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_invalid_active_concentration_is_not_coerced[NaN]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_invalid_active_concentration_is_not_coerced[Inf]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_invalid_active_concentration_is_not_coerced[-inf]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_invalid_active_concentration_is_not_coerced[0]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_invalid_active_concentration_is_not_coerced[-1]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_invalid_active_concentration_is_not_coerced[1e999]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_invalid_active_concentration_is_not_coerced[1e-999]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_invalid_active_concentration_is_not_coerced[1e16 cm-3]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_silicon_cannot_enter_al_mechanics_pde_or_clock[False-two_row_lj_reference]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_silicon_cannot_enter_al_mechanics_pde_or_clock[False-analytic_lj_eam_hypothetical]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_silicon_cannot_enter_al_mechanics_pde_or_clock[False-al_target_best_feasible_hybrid]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_silicon_cannot_enter_al_mechanics_pde_or_clock[True-two_row_lj_reference]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_silicon_cannot_enter_al_mechanics_pde_or_clock[True-analytic_lj_eam_hypothetical]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_silicon_cannot_enter_al_mechanics_pde_or_clock[True-al_target_best_feasible_hybrid]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_invalid_material_combinations_are_rejected[selection0]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_invalid_material_combinations_are_rejected[selection1]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_invalid_material_combinations_are_rejected[selection2]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_invalid_material_combinations_are_rejected[selection3]",
+      "outcome": "passed"
+    },
+    {
+      "nodeid": "app/test_materials.py::test_invalid_material_combinations_are_rejected[selection4]",
+      "outcome": "passed"
+    }
+  ],
+  "scope": "all test_silicon*.py plus app material gate; not full Al/UI regression"
+}

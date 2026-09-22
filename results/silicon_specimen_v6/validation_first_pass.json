@@ -1,0 +1,542 @@
+{
+  "passed": true,
+  "actual_recomputed_states": [
+    {
+      "file": "verified_affine_boundary/original_sw_1985_R28_K0.8.npz",
+      "atoms": 1904,
+      "energy_error_eV": 6.17284001691587e-14,
+      "force_error_eV_A": 1.2569112417537553e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.825687932863421e-07
+    },
+    {
+      "file": "verified_affine_boundary/original_sw_1985_R28_K1.npz",
+      "atoms": 1904,
+      "energy_error_eV": 2.2648549702353193e-14,
+      "force_error_eV_A": 1.2913628499866547e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.5701275233622773e-07
+    },
+    {
+      "file": "verified_affine_boundary/original_sw_1985_R28_K1.2.npz",
+      "atoms": 1904,
+      "energy_error_eV": 1.2434497875801753e-14,
+      "force_error_eV_A": 3.39797634474337e-14,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.5983057978676856e-07
+    },
+    {
+      "file": "verified_affine_boundary/original_sw_1985_R40_K0.8.npz",
+      "atoms": 3872,
+      "energy_error_eV": 8.881784197001252e-14,
+      "force_error_eV_A": 2.6513166662134324e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 3.912008587330512e-07
+    },
+    {
+      "file": "verified_affine_boundary/original_sw_1985_R40_K1.npz",
+      "atoms": 3872,
+      "energy_error_eV": 2.2648549702353193e-14,
+      "force_error_eV_A": 2.6434410216324977e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.943882607614039e-07
+    },
+    {
+      "file": "verified_affine_boundary/original_sw_1985_R40_K1.2.npz",
+      "atoms": 3872,
+      "energy_error_eV": 7.105427357601002e-15,
+      "force_error_eV_A": 2.5608681841760017e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.889723409550253e-07
+    },
+    {
+      "file": "verified_affine_boundary/original_sw_1985_R56_K0.8.npz",
+      "atoms": 7600,
+      "energy_error_eV": 1.1546319456101628e-14,
+      "force_error_eV_A": 4.1597151070882354e-14,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.2194130170022937e-07
+    },
+    {
+      "file": "verified_affine_boundary/original_sw_1985_R56_K1.npz",
+      "atoms": 7600,
+      "energy_error_eV": 8.837375276016246e-14,
+      "force_error_eV_A": 2.4513724383723456e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 3.990121137526465e-07
+    },
+    {
+      "file": "verified_affine_boundary/original_sw_1985_R56_K1.2.npz",
+      "atoms": 7600,
+      "energy_error_eV": 1.9984014443252818e-15,
+      "force_error_eV_A": 3.7806563435438534e-14,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.4294553284626725e-07
+    },
+    {
+      "file": "verified_internal_boundary/original_sw_1985_R28_front4_K0.8.npz",
+      "atoms": 1904,
+      "energy_error_eV": 2.042810365310288e-14,
+      "force_error_eV_A": 2.51687559682523e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 3.8226739379476626e-07
+    },
+    {
+      "file": "verified_internal_boundary/original_sw_1985_R28_front4_K1_polished.npz",
+      "atoms": 1904,
+      "energy_error_eV": 2.8199664825478976e-14,
+      "force_error_eV_A": 1.3550272015550036e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 9.166556402817605e-13
+    },
+    {
+      "file": "verified_internal_boundary/original_sw_1985_R28_front4_K1.2_polished.npz",
+      "atoms": 1904,
+      "energy_error_eV": 7.993605777301127e-15,
+      "force_error_eV_A": 3.5915714846623814e-14,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 6.079546588377838e-13
+    },
+    {
+      "file": "verified_internal_boundary/original_sw_1985_R40_front4_K0.8.npz",
+      "atoms": 3872,
+      "energy_error_eV": 1.5409895581797173e-13,
+      "force_error_eV_A": 2.5838359229979346e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 3.5897080874480736e-07
+    },
+    {
+      "file": "verified_internal_boundary/original_sw_1985_R40_front4_K1.npz",
+      "atoms": 3872,
+      "energy_error_eV": 1.0413891970983968e-13,
+      "force_error_eV_A": 2.8542446184331993e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 3.7236211528068885e-07
+    },
+    {
+      "file": "verified_internal_boundary/original_sw_1985_R40_front4_K1.2.npz",
+      "atoms": 3872,
+      "energy_error_eV": 7.482903185973555e-14,
+      "force_error_eV_A": 2.6710578193700485e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.774304703664134e-07
+    },
+    {
+      "file": "verified_internal_boundary/original_sw_1985_R56_front4_K0.8.npz",
+      "atoms": 7600,
+      "energy_error_eV": 1.687538997430238e-13,
+      "force_error_eV_A": 2.9099639364815744e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.087185659596912e-07
+    },
+    {
+      "file": "verified_internal_boundary/original_sw_1985_R56_front4_K1.npz",
+      "atoms": 7600,
+      "energy_error_eV": 1.1102230246251565e-14,
+      "force_error_eV_A": 3.780482871196256e-14,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.868188178061561e-07
+    },
+    {
+      "file": "verified_internal_boundary/original_sw_1985_R56_front4_K1.2.npz",
+      "atoms": 7600,
+      "energy_error_eV": 5.773159728050814e-14,
+      "force_error_eV_A": 3.879557265717981e-14,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.561866287500216e-07
+    },
+    {
+      "file": "verified_internal_boundary/original_sw_1985_R28_front8_K1_polished.npz",
+      "atoms": 3808,
+      "energy_error_eV": 7.416289804496046e-14,
+      "force_error_eV_A": 1.4171996909340123e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 1.0115797088872114e-12
+    },
+    {
+      "file": "verified_internal_boundary/original_sw_1985_R28_front8_K1.2_polished.npz",
+      "atoms": 3808,
+      "energy_error_eV": 2.398081733190338e-14,
+      "force_error_eV_A": 6.541989172603735e-14,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.1339154321917704e-13
+    },
+    {
+      "file": "verified_affine_boundary/tersoff_1989_R28_K0.8.npz",
+      "atoms": 1904,
+      "energy_error_eV": 6.639133687258436e-13,
+      "force_error_eV_A": 1.7791323969618134e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 9.552174607962982e-07
+    },
+    {
+      "file": "verified_affine_boundary/tersoff_1989_R28_K1.npz",
+      "atoms": 1904,
+      "energy_error_eV": 1.1102230246251565e-14,
+      "force_error_eV_A": 1.0111356196773613e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 3.711327583033608e-07
+    },
+    {
+      "file": "verified_affine_boundary/tersoff_1989_R28_K1.2.npz",
+      "atoms": 1904,
+      "energy_error_eV": 4.4853010194856324e-14,
+      "force_error_eV_A": 1.4566126083082054e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 3.2925886843671037e-06
+    },
+    {
+      "file": "verified_affine_boundary/tersoff_1989_R40_K0.8.npz",
+      "atoms": 3872,
+      "energy_error_eV": 2.895017559012558e-12,
+      "force_error_eV_A": 3.126388037344441e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.618341562512285e-07
+    },
+    {
+      "file": "verified_affine_boundary/tersoff_1989_R40_K1.npz",
+      "atoms": 3872,
+      "energy_error_eV": 5.653255641391297e-13,
+      "force_error_eV_A": 3.410605131648481e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.876573474130175e-07
+    },
+    {
+      "file": "verified_affine_boundary/tersoff_1989_R40_K1.2.npz",
+      "atoms": 3872,
+      "energy_error_eV": 2.6756374893466273e-12,
+      "force_error_eV_A": 2.6734452325538616e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 8.542629775433463e-06
+    },
+    {
+      "file": "verified_affine_boundary/tersoff_1989_R56_K0.8.npz",
+      "atoms": 7600,
+      "energy_error_eV": 3.526068326209497e-13,
+      "force_error_eV_A": 2.897265760637424e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.572551507014966e-07
+    },
+    {
+      "file": "verified_affine_boundary/tersoff_1989_R56_K1.npz",
+      "atoms": 7600,
+      "energy_error_eV": 2.7844393457598926e-13,
+      "force_error_eV_A": 1.1146639167236572e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 8.354748040062532e-07
+    },
+    {
+      "file": "verified_affine_boundary/tersoff_1989_R56_K1.2.npz",
+      "atoms": 7600,
+      "energy_error_eV": 2.504663143554353e-13,
+      "force_error_eV_A": 6.217248937900877e-14,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 1.092760116147356e-05
+    },
+    {
+      "file": "verified_internal_boundary/tersoff_1989_R28_front4_K0.8.npz",
+      "atoms": 1904,
+      "energy_error_eV": 1.1723955140041653e-13,
+      "force_error_eV_A": 5.3290705182007514e-14,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 2.8815523941006643e-07
+    },
+    {
+      "file": "verified_internal_boundary/tersoff_1989_R28_front4_K1_polished.npz",
+      "atoms": 1904,
+      "energy_error_eV": 1.2434497875801753e-13,
+      "force_error_eV_A": 9.14823772291129e-14,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 5.990694051938306e-13
+    },
+    {
+      "file": "verified_internal_boundary/tersoff_1989_R28_front4_K1.2_polished.npz",
+      "atoms": 1904,
+      "energy_error_eV": 1.9539925233402755e-14,
+      "force_error_eV_A": 4.152869197105639e-14,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 1.1568523916594131e-12
+    },
+    {
+      "file": "verified_internal_boundary/tersoff_1989_R40_front4_K0.8.npz",
+      "atoms": 3872,
+      "energy_error_eV": 3.3297808954557695e-12,
+      "force_error_eV_A": 3.6542470438494234e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.914485187690332e-07
+    },
+    {
+      "file": "verified_internal_boundary/tersoff_1989_R40_front4_K1.npz",
+      "atoms": 3872,
+      "energy_error_eV": 1.042721464727947e-12,
+      "force_error_eV_A": 3.1041835768519377e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 6.445835163404467e-07
+    },
+    {
+      "file": "verified_internal_boundary/tersoff_1989_R40_front4_K1.2_polished.npz",
+      "atoms": 3872,
+      "energy_error_eV": 2.185363001672158e-12,
+      "force_error_eV_A": 2.646771690706373e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 2.417177569213891e-12
+    },
+    {
+      "file": "verified_internal_boundary/tersoff_1989_R56_front4_K0.8.npz",
+      "atoms": 7600,
+      "energy_error_eV": 3.086420008457935e-13,
+      "force_error_eV_A": 2.4158453015843406e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 4.213176118678108e-07
+    },
+    {
+      "file": "verified_internal_boundary/tersoff_1989_R56_front4_K1.npz",
+      "atoms": 7600,
+      "energy_error_eV": 5.81756864903582e-14,
+      "force_error_eV_A": 6.756054049539273e-14,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 3.016018082224736e-07
+    },
+    {
+      "file": "verified_internal_boundary/tersoff_1989_R56_front4_K1.2_polished.npz",
+      "atoms": 7600,
+      "energy_error_eV": 1.6431300764452317e-14,
+      "force_error_eV_A": 1.127986593019159e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 2.5224054073756663e-12
+    },
+    {
+      "file": "verified_internal_boundary/tersoff_1989_R28_front8_K1_polished.npz",
+      "atoms": 3808,
+      "energy_error_eV": 2.1316282072803006e-13,
+      "force_error_eV_A": 1.021405182655144e-13,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 7.661093981425893e-13
+    },
+    {
+      "file": "verified_internal_boundary/tersoff_1989_R28_front8_K1.2_polished.npz",
+      "atoms": 3808,
+      "energy_error_eV": 1.0969003483296547e-13,
+      "force_error_eV_A": 8.548717289613705e-14,
+      "fixed_error_A": 0.0,
+      "actual_free_residual_eV_A": 2.7175900418896504e-12
+    }
+  ],
+  "independent_engine_comparisons": [
+    {
+      "model": "original_sw_1985",
+      "file": "original_sw_1985_R28_front4_K1_polished.npz",
+      "implementation": "independent explicit SW triple sum",
+      "energy_error_eV": 9.185896487906575e-11,
+      "force_error_eV_A": 6.5580874064608e-13
+    },
+    {
+      "model": "original_sw_1985",
+      "file": "original_sw_1985_R28_front4_K1.2_polished.npz",
+      "implementation": "independent explicit SW triple sum",
+      "energy_error_eV": 1.8189894035458565e-11,
+      "force_error_eV_A": 4.1050496335515163e-13
+    },
+    {
+      "model": "tersoff_1989",
+      "file": "tersoff_1989_R28_front4_K1_polished.npz",
+      "implementation": "ASE Tersoff with audited zero-environment chain derivative",
+      "energy_error_eV": 5.093170329928398e-11,
+      "force_error_eV_A": 2.7620158764285474e-13
+    },
+    {
+      "model": "tersoff_1989",
+      "file": "tersoff_1989_R28_front4_K1.2_polished.npz",
+      "implementation": "ASE Tersoff with audited zero-environment chain derivative",
+      "energy_error_eV": 6.548361852765083e-11,
+      "force_error_eV_A": 2.426878142891553e-13
+    }
+  ],
+  "isolated_bond_checks": [
+    {
+      "distance_A": 2.35,
+      "energy_error_eV": 8.881784197001252e-16,
+      "force_error_eV_A": 3.552713678800501e-15,
+      "derivative_error_eV_A": 8.595684164447448e-10
+    },
+    {
+      "distance_A": 2.8,
+      "energy_error_eV": 2.220446049250313e-16,
+      "force_error_eV_A": 1.7763568394002505e-15,
+      "derivative_error_eV_A": 1.9143298501944628e-08
+    },
+    {
+      "distance_A": 3.1,
+      "energy_error_eV": 0.0,
+      "force_error_eV_A": 0.0,
+      "derivative_error_eV_A": 0.0
+    }
+  ],
+  "checked_distinct_state_paths": 40,
+  "full_free_atom_spectra": 8,
+  "work_checks": [
+    {
+      "model": "original_sw_1985",
+      "relative_step": 0.001,
+      "analytic_eV_per_K": 108.73457758343386,
+      "numerical_eV_per_K": 108.73457946202323,
+      "absolute_error": 1.8785893729500458e-06,
+      "relative_error": 1.7276835158609715e-08,
+      "max_branch_displacement_A": 0.003676970794106893,
+      "force_checks": [
+        {
+          "input": "original_sw_1985_R28_front4_K1_work0.001_-1.npz",
+          "output": "original_sw_1985_R28_front4_K1_work0.001_-1_polished.npz",
+          "residuals_eV_A": [
+            3.8056137317832306e-08,
+            7.847472671684841e-13
+          ],
+          "cg_status": [
+            0
+          ],
+          "force_converged": true,
+          "max_position_change_A": 7.503629317895388e-08,
+          "full_q_stability_certified": false
+        },
+        {
+          "input": "original_sw_1985_R28_front4_K1_work0.001_1.npz",
+          "output": "original_sw_1985_R28_front4_K1_work0.001_1_polished.npz",
+          "residuals_eV_A": [
+            3.493797175874169e-08,
+            6.065824925682861e-13
+          ],
+          "cg_status": [
+            0
+          ],
+          "force_converged": true,
+          "max_position_change_A": 6.078137104736925e-08,
+          "full_q_stability_certified": false
+        }
+      ]
+    },
+    {
+      "model": "original_sw_1985",
+      "relative_step": 0.0005,
+      "analytic_eV_per_K": 108.73457758343386,
+      "numerical_eV_per_K": 108.73457805292892,
+      "absolute_error": 4.69495063271097e-07,
+      "relative_error": 4.317808315490494e-09,
+      "max_branch_displacement_A": 0.0018384853970534465,
+      "force_checks": [
+        {
+          "input": "original_sw_1985_R28_front4_K1_work0.0005_-1.npz",
+          "output": "original_sw_1985_R28_front4_K1_work0.0005_-1_polished.npz",
+          "residuals_eV_A": [
+            4.112068417716497e-08,
+            5.466876951132349e-13
+          ],
+          "cg_status": [
+            0
+          ],
+          "force_converged": true,
+          "max_position_change_A": 4.440990153398161e-08,
+          "full_q_stability_certified": false
+        },
+        {
+          "input": "original_sw_1985_R28_front4_K1_work0.0005_1.npz",
+          "output": "original_sw_1985_R28_front4_K1_work0.0005_1_polished.npz",
+          "residuals_eV_A": [
+            2.1876579225227344e-08,
+            5.013441918555461e-13
+          ],
+          "cg_status": [
+            0
+          ],
+          "force_converged": true,
+          "max_position_change_A": 3.893305589031115e-08,
+          "full_q_stability_certified": false
+        }
+      ]
+    },
+    {
+      "model": "tersoff_1989",
+      "relative_step": 0.001,
+      "analytic_eV_per_K": 105.34655933411807,
+      "numerical_eV_per_K": 105.34655695811907,
+      "absolute_error": 2.3759990028793254e-06,
+      "relative_error": 2.2554120589202977e-08,
+      "max_branch_displacement_A": 0.0034564655980862113,
+      "force_checks": [
+        {
+          "input": "tersoff_1989_R28_front4_K1_work0.001_-1.npz",
+          "output": "tersoff_1989_R28_front4_K1_work0.001_-1_polished.npz",
+          "residuals_eV_A": [
+            3.941898105708219e-07,
+            6.539699337615446e-13
+          ],
+          "cg_status": [
+            0
+          ],
+          "force_converged": true,
+          "max_position_change_A": 2.8776429372712187e-07,
+          "full_q_stability_certified": false
+        },
+        {
+          "input": "tersoff_1989_R28_front4_K1_work0.001_1.npz",
+          "output": "tersoff_1989_R28_front4_K1_work0.001_1_polished.npz",
+          "residuals_eV_A": [
+            1.3894498110955666e-06,
+            8.735234757750732e-13
+          ],
+          "cg_status": [
+            0
+          ],
+          "force_converged": true,
+          "max_position_change_A": 3.558524768187965e-07,
+          "full_q_stability_certified": false
+        }
+      ]
+    },
+    {
+      "model": "tersoff_1989",
+      "relative_step": 0.0005,
+      "analytic_eV_per_K": 105.34655933411807,
+      "numerical_eV_per_K": 105.34655870351415,
+      "absolute_error": 6.306039210812742e-07,
+      "relative_error": 5.985994465004265e-09,
+      "max_branch_displacement_A": 0.0017282327990431057,
+      "force_checks": [
+        {
+          "input": "tersoff_1989_R28_front4_K1_work0.0005_-1.npz",
+          "output": "tersoff_1989_R28_front4_K1_work0.0005_-1_polished.npz",
+          "residuals_eV_A": [
+            4.850071864126448e-07,
+            4.991562718714704e-13
+          ],
+          "cg_status": [
+            0
+          ],
+          "force_converged": true,
+          "max_position_change_A": 3.4082065614171597e-07,
+          "full_q_stability_certified": false
+        },
+        {
+          "input": "tersoff_1989_R28_front4_K1_work0.0005_1.npz",
+          "output": "tersoff_1989_R28_front4_K1_work0.0005_1_polished.npz",
+          "residuals_eV_A": [
+            5.734644304700165e-07,
+            6.008527009271347e-13
+          ],
+          "cg_status": [
+            0
+          ],
+          "force_converged": true,
+          "max_position_change_A": 3.824907022220714e-07,
+          "full_q_stability_certified": false
+        }
+      ]
+    }
+  ],
+  "final_pipeline_cases": 40,
+  "initial_failed_force_count": 3,
+  "source_hashes_verified": true,
+  "elapsed_seconds": 5.003744599991478,
+  "material_calibrated": false,
+  "kinetic_calibrated": false,
+  "physical_clock_available": false
+}
