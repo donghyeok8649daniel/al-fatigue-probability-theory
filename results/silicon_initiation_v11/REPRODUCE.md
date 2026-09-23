@@ -128,8 +128,10 @@ source manifest는 실행한 파일의 SHA를 보존하고, 줄바꿈만 LF로 �
 별도 bytes/SHA도 기록한다. 검증기는 실제 변환의 동일성을 검사한 뒤 Git blob과
 대조한다. 기존 공용 소스의 물리 내용은 바꾸지 않았다. 결과 파일은 줄바꿈 변환을
 금지하여 NPZ/CSV/JSON/문서를 포함한 실제 바이트가 그대로 일치해야 한다.
-다른 운영체제의 fresh checkout이 이미 LF를 쓰면, 이4개 소스에 한해서 명시된
-git_lf hash를 working tree에서도 허용하고 해당 파일 목록을 별도로 출력한다.
+기존 probability_pde_2d.py의 실제 실행 파일에는 LF/CRLF가 섞여 있었다. fresh
+checkout은 전체 LF 또는 CRLF일 수 있으므로 이4개 소스에 한해서 줄바꿈을 LF로
+정규화한 정확한 git_lf hash를 대조한다. 실행 당시와 바이트가 다른 working 파일은
+실제 bytes/SHA 및 canonical LF SHA를 별도로 출력한다. 다른 텍스트 차이는 허용하지 않는다.
 
 ## 보존한 실패
 

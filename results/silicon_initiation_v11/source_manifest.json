@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "created_UTC": "2026-09-23T22:56:01.722520+00:00",
+  "created_UTC": "2026-09-23T23:03:01.009589+00:00",
   "snapshot_label": "2026-09-24: scheduled calculations ended; failures and partial states preserved; material/initiation/Hz unvalidated",
   "external_source_inputs": {
     "mtpu_1159.cfg": {
@@ -261,8 +261,8 @@
     },
     {
       "path": "results/silicon_wafer_feasibility/verify_initiation_bundle_v11.py",
-      "bytes": 5634,
-      "sha256": "d17e600e9c2254e8f8ccc8f617e2094fcd1b92ba0838d9ac4a5238e6583ac0a3"
+      "bytes": 6009,
+      "sha256": "dafbae4789e17a887f60763f58fd887a9e0ef362b86634bc1709bfe06945efae"
     },
     {
       "path": "solver_v1/configurational_plasticity.py",

@@ -39,16 +39,20 @@ def main(args):
     for name in ('source_manifest.json', 'artifact_manifest.json'):
         payload = (root / name).read_bytes()
         records[relative + '/' + name] = dict(bytes=len(payload), sha256=hashlib.sha256(payload).hexdigest())
-    worktree_lf_transports = []
+    worktree_transports = []
     for path, entry in records.items():
         payload = (repo / path).read_bytes()
         actual = dict(bytes=len(payload),sha256=hashlib.sha256(payload).hexdigest())
         if actual != {key:entry[key] for key in ('bytes','sha256')}:
-            if 'git_lf' not in entry or actual != entry['git_lf']:
+            normalized = payload.replace(b'\r\n',b'\n')
+            normalized_digest = dict(bytes=len(normalized),sha256=hashlib.sha256(normalized).hexdigest())
+            if 'git_lf' not in entry or normalized_digest != entry['git_lf']:
                 raise ValueError('working file hash mismatch: ' + path)
-            # A fresh checkout may already use LF. This is only permitted for
-            # sources with an explicitly recorded CRLF-to-LF representation.
-            worktree_lf_transports.append(path)
+            # Existing execution sources include mixed CRLF/LF. A fresh Git
+            # checkout can use uniform CRLF or LF. Only the four explicitly
+            # bound canonical source representations permit this transport.
+            worktree_transports.append(dict(path=path,observed_bytes=actual['bytes'],
+                observed_sha256=actual['sha256'],canonical_LF_sha256=entry['git_lf']['sha256']))
         if 'git_lf' in entry:
             normalized = payload.replace(b'\r\n',b'\n')
             if (len(normalized) != entry['git_lf']['bytes']
@@ -95,7 +99,7 @@ def main(args):
         recorded_tests_passed=validation['tests_passed'], tests_rerun=False,
         working_tree_hashes_verified=True, git_blob_hashes_verified=revision is not None,
         CRLF_to_LF_source_paths=[path for path,entry in records.items() if 'git_lf' in entry],
-        current_worktree_uses_recorded_LF_paths=worktree_lf_transports,
+        current_worktree_line_ending_transports=worktree_transports,
         result_artifacts_require_exact_bytes=True,
         git_revision=revision, scope='stored byte integrity and test-source binding; no physical validation'), indent=2))
 

@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "created_UTC": "2026-09-23T22:56:02.128213+00:00",
+  "created_UTC": "2026-09-23T23:03:01.456912+00:00",
   "snapshot_label": "2026-09-24: scheduled calculations ended; failures and partial states preserved; material/initiation/Hz unvalidated",
   "include_mutable": true,
-  "source_manifest_sha256": "f071ee81d494117cbaa3d1093920e321e67b5e9813ccc2cba6b9511f60a09c45",
+  "source_manifest_sha256": "e0352a7f74b6242a51e1109b9cbf8c4109c0f8c9d2e304bccb9bc928a8a385d6",
   "files": [
     {
       "path": ".gitattributes",
@@ -11717,8 +11717,8 @@
     },
     {
       "path": "REPRODUCE.md",
-      "bytes": 11720,
-      "sha256": "82388c9bb6137f66120aba964cd102cbd08834f03fbfa43f763dd157ae72dbdc"
+      "bytes": 11940,
+      "sha256": "32cebb583d9a6f1d8fce0da328c2f266b4a3df2514e15650d4ac8b0cca337b28"
     },
     {
       "path": "RESULTS_AND_LIMITS.md",
@@ -11728,7 +11728,7 @@
     {
       "path": "source_manifest.json",
       "bytes": 14527,
-      "sha256": "f071ee81d494117cbaa3d1093920e321e67b5e9813ccc2cba6b9511f60a09c45"
+      "sha256": "e0352a7f74b6242a51e1109b9cbf8c4109c0f8c9d2e304bccb9bc928a8a385d6"
     },
     {
       "path": "surface_energy_differences/composition_groups.csv",
@@ -12009,7 +12009,7 @@
       "reason": "runtime/log metadata, retained locally"
     }
   ],
-  "total_bytes": 23086088,
+  "total_bytes": 23086308,
   "file_hashes_independently_rechecked": true,
   "scope": "artifact integrity, not material or kinetic validation"
 }
