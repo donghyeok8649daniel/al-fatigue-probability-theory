@@ -1,0 +1,147 @@
+{
+  "complete": true,
+  "selected_frames": 1013,
+  "excluded_frames": 453,
+  "atoms": 179857,
+  "force_only_calls": 1013,
+  "standard_controls": [
+    {
+      "source_frame": 0,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    },
+    {
+      "source_frame": 126,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    },
+    {
+      "source_frame": 253,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    },
+    {
+      "source_frame": 379,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    },
+    {
+      "source_frame": 506,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    },
+    {
+      "source_frame": 632,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    },
+    {
+      "source_frame": 759,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    },
+    {
+      "source_frame": 885,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    },
+    {
+      "source_frame": 1012,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    }
+  ],
+  "elapsed_s": 5363.401713700034,
+  "groups": [
+    {
+      "group": "small_O",
+      "frames": 58,
+      "atoms": 115,
+      "force_component_RMSE_eV_A": 4.1137389584200195,
+      "force_component_MAE_eV_A": 0.6805352696875197
+    },
+    {
+      "group": "small_Si",
+      "frames": 98,
+      "atoms": 195,
+      "force_component_RMSE_eV_A": 5.96669037599881,
+      "force_component_MAE_eV_A": 1.3738233562468534
+    },
+    {
+      "group": "small_H",
+      "frames": 1,
+      "atoms": 1,
+      "force_component_RMSE_eV_A": 0.0,
+      "force_component_MAE_eV_A": 0.0
+    },
+    {
+      "group": "small_Si_H",
+      "frames": 52,
+      "atoms": 104,
+      "force_component_RMSE_eV_A": 3.116465250924322,
+      "force_component_MAE_eV_A": 0.7963716434985232
+    },
+    {
+      "group": "small_Si_O",
+      "frames": 23,
+      "atoms": 46,
+      "force_component_RMSE_eV_A": 1.6623163634516418,
+      "force_component_MAE_eV_A": 0.4428166617930045
+    },
+    {
+      "group": "Si_vacuum0",
+      "frames": 201,
+      "atoms": 38592,
+      "force_component_RMSE_eV_A": 0.1966615592482744,
+      "force_component_MAE_eV_A": 0.15593879411274345
+    },
+    {
+      "group": "Si_O_vacuum0",
+      "frames": 64,
+      "atoms": 13824,
+      "force_component_RMSE_eV_A": 0.18580536385989016,
+      "force_component_MAE_eV_A": 0.13166314485527064
+    },
+    {
+      "group": "Si_H_vacuum1",
+      "frames": 93,
+      "atoms": 20832,
+      "force_component_RMSE_eV_A": 0.2744877269133234,
+      "force_component_MAE_eV_A": 0.20957321775150875
+    },
+    {
+      "group": "Si_O_H_vacuum1",
+      "frames": 423,
+      "atoms": 106148,
+      "force_component_RMSE_eV_A": 0.32809031168179426,
+      "force_component_MAE_eV_A": 0.23865781077901047
+    }
+  ],
+  "protocol": {
+    "source_sha256": "d99170bff4942dcd5a1c38d998fe0a60084a5e132bcb3cf2335f5db4cbe17689",
+    "source_commit": "b61806d3a097e21d7880db39dcc077573e2c3c92",
+    "source_url": "https://github.com/lukas-cvitkovich/MLFF-SiOx/tree/b61806d3a097e21d7880db39dcc077573e2c3c92",
+    "source_doi": "10.1063/5.0220091",
+    "source_method": "CP2K GPW PBE GTH, double-zeta Gaussian basis, 650 Ry cutoff; reported spin protocol in paper",
+    "total_source_frames": 1466,
+    "selected_frames": 1013,
+    "max_atoms": 320,
+    "selection": "all source frames with N <= max_atoms, before predictions; excluded frames remain in inventory",
+    "labels": "source config_type preserved; auxiliary labels describe composition and observed empty cell directions only",
+    "vacuum_label_threshold_A": 8.0,
+    "vacuum_label_is_crack_detector": false,
+    "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+    "model_elements_evaluated": [
+      "H",
+      "O",
+      "Si"
+    ],
+    "force_units": "eV/Angstrom",
+    "energy_units": "eV",
+    "actual_new_DFT": 0,
+    "actual_new_MD": 0,
+    "fit_performed": false,
+    "held_out_mace_status": "pretraining overlap not audited",
+    "production_enabled": false
+  }
+}

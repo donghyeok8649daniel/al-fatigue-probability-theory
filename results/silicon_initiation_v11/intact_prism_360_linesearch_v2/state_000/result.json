@@ -1,0 +1,65 @@
+{
+  "state": 0,
+  "strain": 0.0,
+  "extension_A": 0.0,
+  "energy_eV": -1753.0366692354637,
+  "converged": true,
+  "force_calls": 237,
+  "elapsed_s": 1807.2286462000338,
+  "conjugate_force_eV_A": 3.785665477016934,
+  "nominal_stress_GPa": 3.1841455202279043,
+  "lower_reaction_eV_A": [
+    -0.002402209489072188,
+    -0.005123518038623955,
+    -3.790787310209193
+  ],
+  "upper_reaction_eV_A": [
+    -0.001669001697838901,
+    -0.010163417012738651,
+    3.7805436438246733
+  ],
+  "reaction_force_residual_eV_A": 0.01884669320571563,
+  "reaction_torque_eV": 0.07185512130772041,
+  "total_internal_force_eV_A": 4.871083751574258e-16,
+  "total_internal_torque_eV": 8.62748304838638e-14,
+  "free_force_max_eV_A": 0.0009150511783649479,
+  "attempts": [
+    {
+      "method": "LBFGSLineSearch",
+      "steps": 127,
+      "converged": true
+    }
+  ],
+  "connectivity": [
+    {
+      "cutoff_A": 2.8,
+      "components": 1,
+      "grip_connected": true,
+      "largest_component_atoms": 360,
+      "pair_count": 620
+    },
+    {
+      "cutoff_A": 3.1,
+      "components": 1,
+      "grip_connected": true,
+      "largest_component_atoms": 360,
+      "pair_count": 626
+    },
+    {
+      "cutoff_A": 3.4,
+      "components": 1,
+      "grip_connected": true,
+      "largest_component_atoms": 360,
+      "pair_count": 646
+    },
+    {
+      "cutoff_A": 3.7,
+      "components": 1,
+      "grip_connected": true,
+      "largest_component_atoms": 360,
+      "pair_count": 783
+    }
+  ],
+  "interruption": null,
+  "crack_initiation_certified": false
+}

@@ -1,0 +1,16 @@
+{
+  "state_sha256": "b83cb6ebdf528979c75bf62cb6d0ecd1758ac3843b810f0f8c0718d6cdc11f19",
+  "geometry_sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d",
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "ensemble": "force",
+  "coordinates": 649,
+  "free_atoms": 216,
+  "step_A": 0.0002,
+  "requested_modes": 2,
+  "krylov_dimension": 64,
+  "krylov_max_iterations": 24,
+  "force_control": "free coordinates plus rigid grip extension; external dead load has zero second derivative",
+  "scope": "local potential-energy curvature diagnostic; no finite-T or kinetic calibration",
+  "first_crack_event_certified": false,
+  "physical_clock": null
+}

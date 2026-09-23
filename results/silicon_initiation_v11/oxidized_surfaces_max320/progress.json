@@ -1,0 +1,80 @@
+{
+  "completed": 1013,
+  "planned": 1013,
+  "latest": {
+    "source_frame": 1012,
+    "atoms": 284,
+    "composition": "H32O60Si192",
+    "observed_group": "Si_O_H_vacuum1",
+    "source_energy_eV": -47260.23489740358,
+    "mace_energy_eV": -1578.1937359933345,
+    "force_component_RMSE_eV_A": 0.3418583655160699,
+    "force_component_MAE_eV_A": 0.25022993289572226,
+    "force_component_max_error_eV_A": 2.056341287443315,
+    "source_force_component_RMS_eV_A": 1.7899573422525163,
+    "source_total_force_norm_eV_A": 0.822152534660265,
+    "mace_total_force_norm_eV_A": 2.5275075109864473e-14,
+    "same_composition_reference_frame": 937,
+    "relative_energy_error_eV_atom": -0.04542479357793578,
+    "Z1_force_RMSE_eV_A": 0.11457182184860754,
+    "Z8_force_RMSE_eV_A": 0.3271563602044949,
+    "Z14_force_RMSE_eV_A": 0.3704469206236504
+  },
+  "elapsed_s": 5363.386267399997,
+  "groups": {
+    "small_O": {
+      "frames": 58,
+      "atoms": 115,
+      "sum_sq": 5838.382635217808,
+      "sum_abs": 234.78466804219428
+    },
+    "small_Si": {
+      "frames": 98,
+      "atoms": 195,
+      "sum_sq": 20826.81551517654,
+      "sum_abs": 803.6866634044092
+    },
+    "small_H": {
+      "frames": 1,
+      "atoms": 1,
+      "sum_sq": 0.0,
+      "sum_abs": 0.0
+    },
+    "small_Si_H": {
+      "frames": 52,
+      "atoms": 104,
+      "sum_sq": 3030.2549659882648,
+      "sum_abs": 248.46795277153922
+    },
+    "small_Si_O": {
+      "frames": 23,
+      "atoms": 46,
+      "sum_sq": 381.33480552347453,
+      "sum_abs": 61.10869932743462
+    },
+    "Si_vacuum0": {
+      "frames": 201,
+      "atoms": 38592,
+      "sum_sq": 4477.725818541199,
+      "sum_abs": 18053.969827196986
+    },
+    "Si_O_vacuum0": {
+      "frames": 64,
+      "atoms": 13824,
+      "sum_sq": 1431.7641176922114,
+      "sum_abs": 5460.333943437784
+    },
+    "Si_H_vacuum1": {
+      "frames": 93,
+      "atoms": 20832,
+      "sum_sq": 4708.668140078797,
+      "sum_abs": 13097.48781659829
+    },
+    "Si_O_H_vacuum1": {
+      "frames": 423,
+      "atoms": 106148,
+      "sum_sq": 34278.347937150334,
+      "sum_abs": 75999.14789571121
+    }
+  }
+}

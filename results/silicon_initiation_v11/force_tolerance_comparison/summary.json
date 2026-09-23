@@ -1,0 +1,71 @@
+{
+  "records": [
+    {
+      "target_MPa": 0.0,
+      "old_fmax_eV_A": 0.00015239761830635007,
+      "new_fmax_eV_A": 2.546494533928361e-06,
+      "old_reduced_gradient_max_eV_A": 0.0001418130249108973,
+      "new_reduced_gradient_max_eV_A": 2.3751991828913077e-06,
+      "old_axial_error_MPa": -0.1132254029939765,
+      "new_axial_error_MPa": -0.001997794016340791,
+      "old_support_residual_MPa": 5.049414174965139,
+      "new_support_residual_MPa": 0.0706296129838803,
+      "old_support_torque_eV": 0.0010391899224857374,
+      "new_support_torque_eV": 0.00034511987052630253,
+      "extension_change_A": 2.615989523446771e-06,
+      "enthalpy_change_eV": -1.0846204077097354e-06,
+      "atom_displacement_RMS_A": 0.00020539339551749585,
+      "atom_displacement_max_A": 0.0005909685189831755
+    },
+    {
+      "target_MPa": 100.0,
+      "old_fmax_eV_A": 0.00013875070007967645,
+      "new_fmax_eV_A": 3.0009428530423854e-06,
+      "old_reduced_gradient_max_eV_A": 0.00013735731182229483,
+      "new_reduced_gradient_max_eV_A": 2.932061344685169e-06,
+      "old_axial_error_MPa": 0.015066109705726744,
+      "new_axial_error_MPa": -0.000269568860275916,
+      "old_support_residual_MPa": 0.822801988701898,
+      "new_support_residual_MPa": 0.06392671837375612,
+      "old_support_torque_eV": 0.022177165756982236,
+      "new_support_torque_eV": 6.374701594716683e-05,
+      "extension_change_A": 3.449061885152371e-05,
+      "enthalpy_change_eV": -1.7814113562053535e-06,
+      "atom_displacement_RMS_A": 0.0004965477621512516,
+      "atom_displacement_max_A": 0.0014008761800631078
+    }
+  ],
+  "old_force_tolerance_eV_A": 0.0005,
+  "new_force_tolerance_eV_A": 1e-05,
+  "old_secant_GPa": 112.43812927032604,
+  "new_secant_GPa": 112.16257281479476,
+  "scope": "numerical force-tolerance control of the same finite bare prism; not a bulk modulus or initiation validation",
+  "exact_support_equilibrium_certified": false,
+  "old_curvature_not_transferred_to_refined_states": true,
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "initiation_probability": null,
+  "inputs": [
+    {
+      "role": "baseline_protocol",
+      "file": "protocol.json",
+      "sha256": "45d536f79ebb9e0b27b3d3308a140a7585e55cb0310691a808fb9b9c0830c7e2"
+    },
+    {
+      "role": "refined_protocol",
+      "file": "protocol.json",
+      "sha256": "3da24f9b636d6848e8e6c7f46962968dfb44181d18c00871f6bb7be96ee9586f"
+    },
+    {
+      "role": "baseline_replay",
+      "file": "summary.json",
+      "sha256": "a9231f9ffb42f6b37ce969eafb98f4f92a159b417f80973f6ecbe6043376fdf1"
+    },
+    {
+      "role": "refined_replay",
+      "file": "summary.json",
+      "sha256": "d093314ea0cd7a9b3b59c46c30fb45a6fdbf9dbe2e76f2607a827a364a530ccf"
+    }
+  ]
+}

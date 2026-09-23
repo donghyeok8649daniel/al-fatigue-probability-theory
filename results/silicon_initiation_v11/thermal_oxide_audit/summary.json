@@ -1,0 +1,16 @@
+{
+  "source_sha256": "aab9e80d1d90050d2f29e9c3e82e92e99389f60f2e956b26280adc4d3e9bc8bd",
+  "arithmetic_rows": 5,
+  "geometry_rows": 9,
+  "stress_rows": 27,
+  "max_force_balance_residual_GPa_um2": 1.4210854715202004e-14,
+  "max_modulus_difference_listed_per_face_GPa": 0.10210825189255957,
+  "max_Si_point_stress_difference_percent": 0.6081187424454848,
+  "oxide_removed_width_vs_perface200_core_difference_um": 0.19999999999999973,
+  "oxide_removed_height_vs_perface200_core_difference_um": 0.20000000000000018,
+  "scope": "1D common-strain audit; source strength is input; no independent strength prediction",
+  "limitation": "FEM stresses are point samples, while this model supplies uniform phase stresses; no 3D field reproduction",
+  "actual_new_DFT": 0,
+  "actual_new_MD": 0,
+  "calibrated_initiation_probability": null
+}

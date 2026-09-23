@@ -1,0 +1,74 @@
+{
+  "states_verified": 5,
+  "converged_states": 5,
+  "maximum_observable_replay_difference": 0.0,
+  "maximum_grip_coordinate_error_A": 0.0,
+  "geometry_sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d",
+  "source_raw_files": [
+    {
+      "state": 0,
+      "file": "state_000/raw.npz",
+      "sha256": "1e823fe5f676408c9d71c6675a5db2da4e7f723f59e71adabe8d359600acf505"
+    },
+    {
+      "state": 1,
+      "file": "state_001/raw.npz",
+      "sha256": "4268972aac8c6b7615f4419ef1bc843caf52c84f6568c944500d1a2979c4f6b3"
+    },
+    {
+      "state": 2,
+      "file": "state_002/raw.npz",
+      "sha256": "135e44f48ca302b34dc8a39eaaaf9e708a3207a794d17cbc222cd1fc4101b7ef"
+    },
+    {
+      "state": 3,
+      "file": "state_003/raw.npz",
+      "sha256": "f77c072163c93b96b2e3f1f052a879b1e377d3a19c8fdb2ea8092f0e202d515d"
+    },
+    {
+      "state": 4,
+      "file": "state_004/raw.npz",
+      "sha256": "f8d77c17d143feca5746511e91e7ea410d43cbcd91a2c64f795a32cbc3945df3"
+    }
+  ],
+  "coarse_work_diagnostics": [
+    {
+      "state_from": 0,
+      "state_to": 1,
+      "energy_change_eV": 3.115762754986008,
+      "coarse_trapezoid_work_eV": 3.098791769769171,
+      "residual_eV": 0.016970985216837153,
+      "meaning": "not dissipation: includes finite load spacing, relaxation residual and any branch change"
+    },
+    {
+      "state_from": 1,
+      "state_to": 2,
+      "energy_change_eV": 4.505408401360455,
+      "coarse_trapezoid_work_eV": 4.478191775408548,
+      "residual_eV": 0.027216625951907325,
+      "meaning": "not dissipation: includes finite load spacing, relaxation residual and any branch change"
+    },
+    {
+      "state_from": 2,
+      "state_to": 3,
+      "energy_change_eV": 5.6076307752518915,
+      "coarse_trapezoid_work_eV": 5.58088748574217,
+      "residual_eV": 0.026743289509721713,
+      "meaning": "not dissipation: includes finite load spacing, relaxation residual and any branch change"
+    },
+    {
+      "state_from": 3,
+      "state_to": 4,
+      "energy_change_eV": 4.460142715778602,
+      "coarse_trapezoid_work_eV": 6.203108886229471,
+      "residual_eV": -1.7429661704508694,
+      "meaning": "not dissipation: includes finite load spacing, relaxation residual and any branch change"
+    }
+  ],
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "topology_is_first_crack_detector": false,
+  "initiation_probability": null,
+  "physical_clock": null
+}

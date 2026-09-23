@@ -1,0 +1,101 @@
+{
+  "converged": true,
+  "interruption": null,
+  "strain": 0.10000000000000006,
+  "previous_converged_strain": 0.08,
+  "fixed_grip_difference_A": 0.0,
+  "maximum_observable_replay_difference": 0.0,
+  "force_identity_error_eV_A": 1.853622820426394e-15,
+  "torque_identity_error_eV": 3.608044198471021e-14,
+  "energy_eV": -1740.7955005720594,
+  "conjugate_force_eV_A": 4.300318958176798,
+  "nominal_stress_GPa": 3.617023593172739,
+  "free_force_max_eV_A": 0.0009018258343006975,
+  "reaction_force_residual_eV_A": 0.013120428460933748,
+  "reaction_torque_eV": 0.018899160546389914,
+  "total_internal_force_eV_A": 2.5949607815062507e-15,
+  "total_internal_torque_eV": 8.929727456759412e-14,
+  "energy_change_at_fixed_displacement_eV": -3.577201711196267,
+  "fixed_grip_external_work_eV": 0.0,
+  "previous_to_current_nonaffine_RMS_A": 0.9546384609196651,
+  "previous_to_current_nonaffine_max_A": 2.3436559461041755,
+  "graphs": [
+    {
+      "cutoff_A": 2.8,
+      "components": 1,
+      "grip_connected": true,
+      "pairs": 659,
+      "lost_from_initial_lattice": 31,
+      "formed_from_initial_lattice": 98,
+      "lost_from_previous_converged": 37,
+      "formed_from_previous_converged": 66
+    },
+    {
+      "cutoff_A": 3.1,
+      "components": 1,
+      "grip_connected": true,
+      "pairs": 675,
+      "lost_from_initial_lattice": 27,
+      "formed_from_initial_lattice": 110,
+      "lost_from_previous_converged": 39,
+      "formed_from_previous_converged": 72
+    },
+    {
+      "cutoff_A": 3.4,
+      "components": 1,
+      "grip_connected": true,
+      "pairs": 765,
+      "lost_from_initial_lattice": 19,
+      "formed_from_initial_lattice": 192,
+      "lost_from_previous_converged": 31,
+      "formed_from_previous_converged": 132
+    },
+    {
+      "cutoff_A": 3.7,
+      "components": 1,
+      "grip_connected": true,
+      "pairs": 947,
+      "lost_from_initial_lattice": 16,
+      "formed_from_initial_lattice": 371,
+      "lost_from_previous_converged": 110,
+      "formed_from_previous_converged": 207
+    }
+  ],
+  "relaxation_not_physical_dissipation": true,
+  "geometric_diagnostic_not_crack_detector": true,
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "initiation_probability": null,
+  "physical_clock": null,
+  "sources": [
+    {
+      "role": "geometry",
+      "sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d"
+    },
+    {
+      "role": "parent_raw",
+      "sha256": "8d71baba0ca1e47eeae9353bba173098f641d946f6b0170f69039d49ff71916f"
+    },
+    {
+      "role": "continuation_raw",
+      "sha256": "ca2246f78de3b0779c0dc0902640eda8aa3f56edc7a8b2e7b8ef58a2671995f4"
+    },
+    {
+      "role": "continuation_protocol",
+      "sha256": "d133956f7080a4094fe9ab258150ff64b52afb32f42fa5558c0b36cc58b121af"
+    },
+    {
+      "role": "continuation_summary",
+      "sha256": "8a2a0b1f82b34b40f9e8604d2ee8e04261ae5cd53f2eb70498bee0888a65ca98"
+    },
+    {
+      "role": "previous_raw",
+      "sha256": "f8d77c17d143feca5746511e91e7ea410d43cbcd91a2c64f795a32cbc3945df3"
+    },
+    {
+      "role": "previous_result",
+      "sha256": "ac0667991eb6adead4e8e84ef89f6c47006826bc7d6afc11834d29ee24a4197f"
+    }
+  ]
+}

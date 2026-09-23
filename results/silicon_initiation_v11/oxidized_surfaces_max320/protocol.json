@@ -1,0 +1,27 @@
+{
+  "source_sha256": "d99170bff4942dcd5a1c38d998fe0a60084a5e132bcb3cf2335f5db4cbe17689",
+  "source_commit": "b61806d3a097e21d7880db39dcc077573e2c3c92",
+  "source_url": "https://github.com/lukas-cvitkovich/MLFF-SiOx/tree/b61806d3a097e21d7880db39dcc077573e2c3c92",
+  "source_doi": "10.1063/5.0220091",
+  "source_method": "CP2K GPW PBE GTH, double-zeta Gaussian basis, 650 Ry cutoff; reported spin protocol in paper",
+  "total_source_frames": 1466,
+  "selected_frames": 1013,
+  "max_atoms": 320,
+  "selection": "all source frames with N <= max_atoms, before predictions; excluded frames remain in inventory",
+  "labels": "source config_type preserved; auxiliary labels describe composition and observed empty cell directions only",
+  "vacuum_label_threshold_A": 8.0,
+  "vacuum_label_is_crack_detector": false,
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "model_elements_evaluated": [
+    "H",
+    "O",
+    "Si"
+  ],
+  "force_units": "eV/Angstrom",
+  "energy_units": "eV",
+  "actual_new_DFT": 0,
+  "actual_new_MD": 0,
+  "fit_performed": false,
+  "held_out_mace_status": "pretraining overlap not audited",
+  "production_enabled": false
+}

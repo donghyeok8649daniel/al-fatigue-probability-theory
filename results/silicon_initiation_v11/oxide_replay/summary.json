@@ -1,0 +1,84 @@
+{
+  "frames_verified": 1159,
+  "atoms_verified": 17413,
+  "source_max_absolute_difference": 0.0,
+  "metric_max_absolute_difference": 0.0,
+  "group_max_absolute_difference": 0.0,
+  "source_sha256": "949781e648dcf4d0b13fde73520461770232201e1761628e8da61150dcfe5d17",
+  "source_reader": "independent fixed-column reader; all original raw arrays compared exactly",
+  "worst_frames": [
+    {
+      "frame": 641,
+      "composition": "Si9O0",
+      "atoms": 9,
+      "source_force_RMS_eV_A": 30.199156882079567,
+      "force_RMSE_eV_A": 15.947225052561548
+    },
+    {
+      "frame": 634,
+      "composition": "Si9O0",
+      "atoms": 9,
+      "source_force_RMS_eV_A": 28.872570553575528,
+      "force_RMSE_eV_A": 13.858223783602874
+    },
+    {
+      "frame": 642,
+      "composition": "Si9O0",
+      "atoms": 9,
+      "source_force_RMS_eV_A": 28.870597313303673,
+      "force_RMSE_eV_A": 13.855132841871118
+    },
+    {
+      "frame": 643,
+      "composition": "Si9O0",
+      "atoms": 9,
+      "source_force_RMS_eV_A": 25.616781787070703,
+      "force_RMSE_eV_A": 8.615761446605804
+    },
+    {
+      "frame": 626,
+      "composition": "Si9O0",
+      "atoms": 9,
+      "source_force_RMS_eV_A": 25.23772455648075,
+      "force_RMSE_eV_A": 8.062577803227382
+    },
+    {
+      "frame": 381,
+      "composition": "Si3O6",
+      "atoms": 9,
+      "source_force_RMS_eV_A": 21.013877361309135,
+      "force_RMSE_eV_A": 2.81555861898888
+    },
+    {
+      "frame": 628,
+      "composition": "Si9O0",
+      "atoms": 9,
+      "source_force_RMS_eV_A": 19.935807826045504,
+      "force_RMSE_eV_A": 2.3568168282161257
+    },
+    {
+      "frame": 792,
+      "composition": "Si0O3",
+      "atoms": 3,
+      "source_force_RMS_eV_A": 3.297909804685807,
+      "force_RMSE_eV_A": 2.177960074324347
+    },
+    {
+      "frame": 798,
+      "composition": "Si0O3",
+      "atoms": 3,
+      "source_force_RMS_eV_A": 2.938485773679324,
+      "force_RMSE_eV_A": 1.6731534165128898
+    },
+    {
+      "frame": 382,
+      "composition": "Si8O0",
+      "atoms": 8,
+      "source_force_RMS_eV_A": 37.28879198672469,
+      "force_RMSE_eV_A": 1.5194544477952836
+    }
+  ],
+  "force_bins_status": "diagnostic stratification; all source configurations retained, no pass threshold inferred",
+  "material_approved": false,
+  "actual_new_potential_evaluations": 0
+}

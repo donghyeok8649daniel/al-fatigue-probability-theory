@@ -1,0 +1,55 @@
+{
+  "completed": 1159,
+  "planned": 1159,
+  "elapsed_s": 1023.678210800048,
+  "latest": {
+    "frame": 1158,
+    "atoms": 8,
+    "n_Si": 8,
+    "n_O": 0,
+    "composition": "Si8O0",
+    "group": "Si_only",
+    "dft_energy_eV": -5085.502749672681,
+    "mace_energy_eV": -42.539938111156175,
+    "force_component_RMSE_eV_A": 0.2172551553333557,
+    "force_component_MAE_eV_A": 0.18575425717626662,
+    "force_component_max_error_eV_A": 0.39875137513568043,
+    "source_force_component_RMS_eV_A": 0.7307269235397265,
+    "source_total_force_norm_eV_A": 1.414213562207687e-06,
+    "mace_total_force_norm_eV_A": 1.6711069443220838e-16,
+    "same_composition_reference_frame": 382,
+    "relative_energy_error_eV_atom": 0.2803506322997711,
+    "Z8_force_component_RMSE_eV_A": null,
+    "Z14_force_component_RMSE_eV_A": 0.2172551553333557
+  },
+  "groups": {
+    "mixed_other_stoichiometry": {
+      "frames": 173,
+      "atoms": 7039,
+      "squared_error": 2480.380089049854,
+      "absolute_error": 4485.330274329916,
+      "components": 21117
+    },
+    "SiO2_stoichiometry": {
+      "frames": 493,
+      "atoms": 5823,
+      "squared_error": 437.3528061108615,
+      "absolute_error": 1112.2284266972508,
+      "components": 17469
+    },
+    "O_only": {
+      "frames": 22,
+      "atoms": 54,
+      "squared_error": 153.292160152285,
+      "absolute_error": 92.2023793737118,
+      "components": 162
+    },
+    "Si_only": {
+      "frames": 471,
+      "atoms": 4497,
+      "squared_error": 21889.667038406784,
+      "absolute_error": 2671.032867181219,
+      "components": 13491
+    }
+  }
+}

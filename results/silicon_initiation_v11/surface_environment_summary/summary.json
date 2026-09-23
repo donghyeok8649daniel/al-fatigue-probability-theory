@@ -1,0 +1,228 @@
+{
+  "source_csv_sha256": "7a2e935daf212f5ecfbd183102ec88189faf60e7f0542e01c4d725e07cf91853",
+  "maximum_group_RMSE_replay_difference": 1.7763568394002505e-15,
+  "oxidized_surface_chemical_classes": [
+    {
+      "radius_set": 0,
+      "group": "Si_O_H_vacuum1",
+      "category": "H",
+      "atoms": 13536,
+      "atom_fraction": 0.12752006632249313,
+      "squared_error_fraction": 0.015063547864610826,
+      "force_component_RMSE_eV_A": 0.11276330002235144,
+      "force_component_MAE_eV_A": 0.08808562943944051
+    },
+    {
+      "radius_set": 0,
+      "group": "Si_O_H_vacuum1",
+      "category": "O",
+      "atoms": 11396,
+      "atom_fraction": 0.10735953574254814,
+      "squared_error_fraction": 0.1800212392849664,
+      "force_component_RMSE_eV_A": 0.4248493589242835,
+      "force_component_MAE_eV_A": 0.3131680920098093
+    },
+    {
+      "radius_set": 0,
+      "group": "Si_O_H_vacuum1",
+      "category": "Si: O=0",
+      "atoms": 72135,
+      "atom_fraction": 0.6795700342917436,
+      "squared_error_fraction": 0.5525534862557689,
+      "force_component_RMSE_eV_A": 0.29584447127336416,
+      "force_component_MAE_eV_A": 0.23019688918664366
+    },
+    {
+      "radius_set": 0,
+      "group": "Si_O_H_vacuum1",
+      "category": "Si: O=1-3",
+      "atoms": 7904,
+      "atom_fraction": 0.0744620718242454,
+      "squared_error_fraction": 0.22752689546386595,
+      "force_component_RMSE_eV_A": 0.5735116161656546,
+      "force_component_MAE_eV_A": 0.44632836523970915
+    },
+    {
+      "radius_set": 0,
+      "group": "Si_O_H_vacuum1",
+      "category": "Si: O>=4",
+      "atoms": 1177,
+      "atom_fraction": 0.011088291818969741,
+      "squared_error_fraction": 0.024834831130788017,
+      "force_component_RMSE_eV_A": 0.49101152751576294,
+      "force_component_MAE_eV_A": 0.37283486966963103
+    },
+    {
+      "radius_set": 1,
+      "group": "Si_O_H_vacuum1",
+      "category": "H",
+      "atoms": 13536,
+      "atom_fraction": 0.12752006632249313,
+      "squared_error_fraction": 0.015063547864610826,
+      "force_component_RMSE_eV_A": 0.11276330002235144,
+      "force_component_MAE_eV_A": 0.08808562943944051
+    },
+    {
+      "radius_set": 1,
+      "group": "Si_O_H_vacuum1",
+      "category": "O",
+      "atoms": 11396,
+      "atom_fraction": 0.10735953574254814,
+      "squared_error_fraction": 0.1800212392849664,
+      "force_component_RMSE_eV_A": 0.4248493589242835,
+      "force_component_MAE_eV_A": 0.3131680920098093
+    },
+    {
+      "radius_set": 1,
+      "group": "Si_O_H_vacuum1",
+      "category": "Si: O=0",
+      "atoms": 71333,
+      "atom_fraction": 0.6720145457286053,
+      "squared_error_fraction": 0.533992720410329,
+      "force_component_RMSE_eV_A": 0.2924635435468758,
+      "force_component_MAE_eV_A": 0.22831756728943986
+    },
+    {
+      "radius_set": 1,
+      "group": "Si_O_H_vacuum1",
+      "category": "Si: O=1-3",
+      "atoms": 7614,
+      "atom_fraction": 0.07173003730640239,
+      "squared_error_fraction": 0.21800971818570414,
+      "force_component_RMSE_eV_A": 0.5719799487749683,
+      "force_component_MAE_eV_A": 0.4461826286973579
+    },
+    {
+      "radius_set": 1,
+      "group": "Si_O_H_vacuum1",
+      "category": "Si: O>=4",
+      "atoms": 2269,
+      "atom_fraction": 0.021375814899951013,
+      "squared_error_fraction": 0.05291277425438966,
+      "force_component_RMSE_eV_A": 0.5161932632000297,
+      "force_component_MAE_eV_A": 0.3913825824482461
+    },
+    {
+      "radius_set": 2,
+      "group": "Si_O_H_vacuum1",
+      "category": "H",
+      "atoms": 13536,
+      "atom_fraction": 0.12752006632249313,
+      "squared_error_fraction": 0.015063547864610815,
+      "force_component_RMSE_eV_A": 0.11276330002235144,
+      "force_component_MAE_eV_A": 0.08808562943944051
+    },
+    {
+      "radius_set": 2,
+      "group": "Si_O_H_vacuum1",
+      "category": "O",
+      "atoms": 11396,
+      "atom_fraction": 0.10735953574254814,
+      "squared_error_fraction": 0.18002123928496627,
+      "force_component_RMSE_eV_A": 0.4248493589242835,
+      "force_component_MAE_eV_A": 0.3131680920098093
+    },
+    {
+      "radius_set": 2,
+      "group": "Si_O_H_vacuum1",
+      "category": "Si: O=0",
+      "atoms": 71206,
+      "atom_fraction": 0.6708181030259638,
+      "squared_error_fraction": 0.5314713988040304,
+      "force_component_RMSE_eV_A": 0.2920323531626163,
+      "force_component_MAE_eV_A": 0.22807034769908027
+    },
+    {
+      "radius_set": 2,
+      "group": "Si_O_H_vacuum1",
+      "category": "Si: O=1-3",
+      "atoms": 7495,
+      "atom_fraction": 0.07060896107321853,
+      "squared_error_fraction": 0.21311141142641837,
+      "force_component_RMSE_eV_A": 0.5699894903724685,
+      "force_component_MAE_eV_A": 0.44501398651245266
+    },
+    {
+      "radius_set": 2,
+      "group": "Si_O_H_vacuum1",
+      "category": "Si: O>=4",
+      "atoms": 2515,
+      "atom_fraction": 0.023693333835776462,
+      "squared_error_fraction": 0.060332402619973934,
+      "force_component_RMSE_eV_A": 0.5235469448212241,
+      "force_component_MAE_eV_A": 0.3962233140210045
+    }
+  ],
+  "group_uniform_error_projection": [
+    {
+      "group": "small_O",
+      "atoms": 115,
+      "raw_force_component_RMSE_eV_A": 4.1137389584200195,
+      "uniform_error_RMS_eV_A": 0.014830695601758566,
+      "uniform_squared_error_fraction": 1.2997193451027788e-05
+    },
+    {
+      "group": "small_Si",
+      "atoms": 195,
+      "raw_force_component_RMSE_eV_A": 5.96669037599881,
+      "uniform_error_RMS_eV_A": 2.2430282302570826e-06,
+      "uniform_squared_error_fraction": 1.4131962460931373e-13
+    },
+    {
+      "group": "small_H",
+      "atoms": 1,
+      "raw_force_component_RMSE_eV_A": 0.0,
+      "uniform_error_RMS_eV_A": 0.0,
+      "uniform_squared_error_fraction": 0.0
+    },
+    {
+      "group": "small_Si_H",
+      "atoms": 104,
+      "raw_force_component_RMSE_eV_A": 3.116465250924322,
+      "uniform_error_RMS_eV_A": 6.173726835984868e-06,
+      "uniform_squared_error_fraction": 3.924372662903603e-12
+    },
+    {
+      "group": "small_Si_O",
+      "atoms": 46,
+      "raw_force_component_RMSE_eV_A": 1.6623163634516418,
+      "uniform_error_RMS_eV_A": 0.013960599440697297,
+      "uniform_squared_error_fraction": 7.053111879912255e-05
+    },
+    {
+      "group": "Si_vacuum0",
+      "atoms": 38592,
+      "raw_force_component_RMSE_eV_A": 0.1966615592482744,
+      "uniform_error_RMS_eV_A": 4.435220887976783e-08,
+      "uniform_squared_error_fraction": 5.0861779589041995e-14
+    },
+    {
+      "group": "Si_O_vacuum0",
+      "atoms": 13824,
+      "raw_force_component_RMSE_eV_A": 0.18580536385989016,
+      "uniform_error_RMS_eV_A": 0.002082753610157276,
+      "uniform_squared_error_fraction": 0.00012564907553558162
+    },
+    {
+      "group": "Si_H_vacuum1",
+      "atoms": 20832,
+      "raw_force_component_RMSE_eV_A": 0.2744877269133234,
+      "uniform_error_RMS_eV_A": 7.807549811831024e-07,
+      "uniform_squared_error_fraction": 8.09065469118813e-12
+    },
+    {
+      "group": "Si_O_H_vacuum1",
+      "atoms": 106148,
+      "raw_force_component_RMSE_eV_A": 0.32809031168179426,
+      "uniform_error_RMS_eV_A": 0.0008398955201812298,
+      "uniform_squared_error_fraction": 6.553355344197307e-06
+    }
+  ],
+  "category_meaning": "geometric oxygen-neighbor counts; not oxidation state, electronic charge, or crack origin",
+  "original_force_errors_modified": false,
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "material_approved": false,
+  "initiation_probability": null
+}

@@ -1,0 +1,36 @@
+{
+  "scope": "synthetic generator and model time; no actual Si kinetics or calibrated initiation probability",
+  "committor": [
+    0.0,
+    0.11764705882352942,
+    0.1111111111111111,
+    1.0,
+    1.0
+  ],
+  "mean_first_passage_time_model_units": [
+    5.226415094339623,
+    4.905660377358491,
+    4.867924528301887
+  ],
+  "eventual_cause_probabilities": [
+    [
+      0.679245283018868,
+      0.7169811320754719,
+      0.6037735849056605
+    ],
+    [
+      0.32075471698113217,
+      0.2830188679245284,
+      0.3962264150943397
+    ]
+  ],
+  "maximum_mass_residual": 1.9984014443252818e-15,
+  "minimum_probability": 0.0,
+  "diffusion_error_ratios": [
+    4.1694996006884475,
+    4.042695836232348
+  ],
+  "Si_initiation_probability": null,
+  "Si_physical_clock": null,
+  "new_atomic_calculations": 0
+}

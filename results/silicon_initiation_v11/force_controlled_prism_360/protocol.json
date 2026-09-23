@@ -1,0 +1,55 @@
+{
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "input_state_sha256": "1e823fe5f676408c9d71c6675a5db2da4e7f723f59e71adabe8d359600acf505",
+  "geometry_sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d",
+  "area_A2": 190.48453448141632,
+  "bulk_reference_gauge_A": 30.94860611966272,
+  "initial_extension_A": 0.0,
+  "nominal_stresses_GPa": [
+    0.0,
+    0.1
+  ],
+  "fmax_eV_A": 0.0005,
+  "energy": "U - external_force * extension; grip centres move by -extension/2 and +extension/2",
+  "external_force_units": "eV/Angstrom; nominal stress GPa = force/area_A2 * 160.2176634",
+  "extension_search_bounds_A": [
+    -7.73715152991568,
+    15.47430305983136
+  ],
+  "bounds_status": "numerical geometry guard; active bound is failure, never a strength criterion",
+  "starting_graph_diagnostics": [
+    {
+      "cutoff_A": 2.8,
+      "components": 1,
+      "grip_connected": true,
+      "largest_component_atoms": 360,
+      "pair_count": 620
+    },
+    {
+      "cutoff_A": 3.1,
+      "components": 1,
+      "grip_connected": true,
+      "largest_component_atoms": 360,
+      "pair_count": 626
+    },
+    {
+      "cutoff_A": 3.4,
+      "components": 1,
+      "grip_connected": true,
+      "largest_component_atoms": 360,
+      "pair_count": 646
+    },
+    {
+      "cutoff_A": 3.7,
+      "components": 1,
+      "grip_connected": true,
+      "largest_component_atoms": 360,
+      "pair_count": 783
+    }
+  ],
+  "initial_crack_seed_added": false,
+  "scope": "0 K local force-controlled research states; bare nanospecimen",
+  "physical_clock": null,
+  "crack_initiation_certified": false,
+  "production_enabled": false
+}

@@ -1,0 +1,344 @@
+{
+  "schema_version": 2,
+  "created_UTC": "2026-09-23T22:56:01.722520+00:00",
+  "snapshot_label": "2026-09-24: scheduled calculations ended; failures and partial states preserved; material/initiation/Hz unvalidated",
+  "external_source_inputs": {
+    "mtpu_1159.cfg": {
+      "bytes": 2342244,
+      "sha256": "949781e648dcf4d0b13fde73520461770232201e1761628e8da61150dcfe5d17"
+    },
+    "gap_siox_training.zip": {
+      "bytes": 22363404,
+      "sha256": "a54534f022d2fa23ce078e781a080b1a965b3a6b61bb2fde6cce845fcf52e8c7"
+    },
+    "gap_siox_training.xyz": {
+      "bytes": 55461470,
+      "sha256": "d99170bff4942dcd5a1c38d998fe0a60084a5e132bcb3cf2335f5db4cbe17689"
+    },
+    "thermal_oxidation_2024.pdf": {
+      "bytes": 5357598,
+      "sha256": "4c46f7bf6a61f5f252ecb42afc53ade23548006aaec4cee9f982a431f27c56ee"
+    },
+    "mtpu_2024.pdf": {
+      "bytes": 4804235,
+      "sha256": "af51030c54e970f62a71de1e760ad08899a89500c907ec9adfb43e481e874b59"
+    }
+  },
+  "provided_thermal_oxide_manuscript": {
+    "title": "Fracture behavior of single crystal silicon with thermal oxide layer",
+    "authors": [
+      "Toshiyuki Tsuchiya",
+      "Kenji Miyamoto",
+      "Koji Sugano",
+      "Osamu Tabata"
+    ],
+    "journal": "Engineering Fracture Mechanics",
+    "volume": 163,
+    "pages": "523-532",
+    "year": 2016,
+    "doi": "10.1016/j.engfracmech.2015.08.029",
+    "provided_pdf_sha256": "3f1b9270ca5266cce1f71c4a08a94de801b56ff8dc990f019b3e13c6c37cdf06",
+    "provided_pdf_pages": 26,
+    "public_repository_url": "https://repository.kulib.kyoto-u.ac.jp/handle/2433/258961",
+    "public_pdf_url": "https://repository.kulib.kyoto-u.ac.jp/bitstream/2433/258961/1/j.engfracmech.2015.08.029.pdf",
+    "provenance_note": "Values transcribed from the user-provided manuscript; public PDF retrieval returned HTML. Publication metadata and supplied-file metadata are distinct."
+  },
+  "model": {
+    "name": "MACE-MP-0b3-medium",
+    "sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+    "url": "https://github.com/ACEsuit/mace-foundations/releases/download/mace_mp_0b3/mace-mp-0b3-medium.model",
+    "mode": "neutral, CPU float64",
+    "pretraining_overlap_audited": false
+  },
+  "public_datasets": [
+    {
+      "name": "MTPu",
+      "commit": "4ed842eea9c0b894310fee50e9bbca21404e356e",
+      "url": "https://gitlab.com/Kazongogit/MTPu",
+      "doi": "10.1038/s41524-024-01390-8"
+    },
+    {
+      "name": "MLFF-SiOx",
+      "commit": "b61806d3a097e21d7880db39dcc077573e2c3c92",
+      "url": "https://github.com/lukas-cvitkovich/MLFF-SiOx/tree/b61806d3a097e21d7880db39dcc077573e2c3c92",
+      "doi": "10.1063/5.0220091"
+    }
+  ],
+  "runtime": {
+    "python": "3.13.5",
+    "packages": {
+      "numpy": "2.5.0",
+      "scipy": "1.18.1",
+      "ase": "3.29.0",
+      "mace-torch": "0.3.16",
+      "torch": "2.12.1",
+      "e3nn": "0.4.4",
+      "matplotlib": "3.11.0",
+      "pytest": "9.1.1"
+    }
+  },
+  "source_roots": [
+    "results/silicon_wafer_feasibility/analyze_prism_rearrangement_v11.py",
+    "results/silicon_wafer_feasibility/analyze_surface_environments_v11.py",
+    "results/silicon_wafer_feasibility/audit_doping_occupancy_v11.py",
+    "results/silicon_wafer_feasibility/audit_force_controlled_prism_v11.py",
+    "results/silicon_wafer_feasibility/audit_force_ensemble_curvature_v11.py",
+    "results/silicon_wafer_feasibility/audit_prism_continuation_v11.py",
+    "results/silicon_wafer_feasibility/audit_prism_snapshots_v11.py",
+    "results/silicon_wafer_feasibility/audit_prism_unload_v11.py",
+    "results/silicon_wafer_feasibility/audit_surface_energy_differences_v11.py",
+    "results/silicon_wafer_feasibility/audit_thermal_oxide_v11.py",
+    "results/silicon_wafer_feasibility/build_initiation_report_v11.py",
+    "results/silicon_wafer_feasibility/check_prism_curvature_v11.py",
+    "results/silicon_wafer_feasibility/compare_force_tolerances_v11.py",
+    "results/silicon_wafer_feasibility/plot_initiation_audits_v11.py",
+    "results/silicon_wafer_feasibility/plot_prism_unload_v11.py",
+    "results/silicon_wafer_feasibility/record_initiation_manifest_v11.py",
+    "results/silicon_wafer_feasibility/record_validation_v11.py",
+    "results/silicon_wafer_feasibility/resume_prism_relaxation_v11.py",
+    "results/silicon_wafer_feasibility/run_force_controlled_prism_v11.py",
+    "results/silicon_wafer_feasibility/run_initiation_math_v11.py",
+    "results/silicon_wafer_feasibility/run_intact_tension_v11.py",
+    "results/silicon_wafer_feasibility/run_oxide_mace_audit_v11.py",
+    "results/silicon_wafer_feasibility/run_oxidized_surface_audit_v11.py",
+    "results/silicon_wafer_feasibility/run_prism_unload_v11.py",
+    "results/silicon_wafer_feasibility/summarize_surface_environments_v11.py",
+    "results/silicon_wafer_feasibility/validate_oxide_replay_v11.py",
+    "results/silicon_wafer_feasibility/validate_oxidized_surface_replay_v11.py",
+    "results/silicon_wafer_feasibility/verify_initiation_bundle_v11.py",
+    "solver_v1/silicon_initiation_probability.py",
+    "solver_v1/silicon_initiation_research.py",
+    "solver_v1/silicon_oxide_research.py",
+    "solver_v1/test_silicon_charge_dynamics.py",
+    "solver_v1/test_silicon_initiation_probability.py",
+    "solver_v1/test_silicon_initiation_research.py"
+  ],
+  "source_files": [
+    {
+      "path": "results/silicon_wafer_feasibility/analyze_prism_rearrangement_v11.py",
+      "bytes": 8581,
+      "sha256": "4366e01b617033f9d637cb4560e44e5cd91a5adf4179f433d2ad6e80ab94cb3b"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/analyze_surface_environments_v11.py",
+      "bytes": 6694,
+      "sha256": "c1130c5e647b695ef497f2fb4c4227483778405b84f57e59f0e5eb807b56193a"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/audit_doping_occupancy_v11.py",
+      "bytes": 2843,
+      "sha256": "8c43b8ea0e017cfc51e859dcd6a053cda48f843af6c86a4e743bd3ba9372e369"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/audit_force_controlled_prism_v11.py",
+      "bytes": 7677,
+      "sha256": "78741d9956c5c3f888033e48c048875c4bde67e2518236a1afe0c94f9faa548d"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/audit_force_ensemble_curvature_v11.py",
+      "bytes": 4995,
+      "sha256": "d1e4899b5f1887f95082656c84aecec1ac2ada629f8bc527f7b2a0d2a31514c6"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/audit_prism_continuation_v11.py",
+      "bytes": 7670,
+      "sha256": "69b2a4e09b7dab4f340b3a20c86161081e685ed168cfaafc6a069d00f06a926b"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/audit_prism_snapshots_v11.py",
+      "bytes": 8092,
+      "sha256": "01a6c589f302378042ac0f1f959e3687315915a0bdb0f133acefe9853df50e3b"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/audit_prism_unload_v11.py",
+      "bytes": 6225,
+      "sha256": "915c871ce17a845e3479ca80f78a2b53c60e1883f6a9af3f83bcfc3e3e80110e"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/audit_surface_energy_differences_v11.py",
+      "bytes": 6638,
+      "sha256": "e706dc333ff2485c9b339a66f09b521452849af029598831265a9e29c4a83e3d"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/audit_thermal_oxide_v11.py",
+      "bytes": 5921,
+      "sha256": "e094afdbb15be938c45f821522a8773509fd0ee4ce9483d3b3a77c550d0161b0"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/build_initiation_report_v11.py",
+      "bytes": 37206,
+      "sha256": "5b4319fb0cf64543bfbc7255cd294cd598ace9d97a3eeb3f1c6df250e6f0930d"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/check_prism_curvature_v11.py",
+      "bytes": 6628,
+      "sha256": "c4b40577dc836385a4ef6ca4273b9758286b51302345bc9d18d411b6b51965ef"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/compare_force_tolerances_v11.py",
+      "bytes": 4775,
+      "sha256": "ec38ec5c2141952f290fdc658ea945cdcd2e079c1eb47d2d88c343c34636ea6a"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/mace_force_only_v9.py",
+      "bytes": 1673,
+      "sha256": "dfe13c4db4c54bbf0138b9854474002b15692a8ec1e5ceb9bf5b58243de05b3c"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/plot_initiation_audits_v11.py",
+      "bytes": 6200,
+      "sha256": "e5bb0d862e3c772171c55b434bdfed19a6520cafd46e23ee4abd88300b48edd4"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/plot_prism_unload_v11.py",
+      "bytes": 5461,
+      "sha256": "f7aad48aeeee9f5bf58d9834db116245541d64e0d824f2b4066e94e65714fbfd"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/record_initiation_manifest_v11.py",
+      "bytes": 6844,
+      "sha256": "431248c5e5f5b14d24d7c2cf2e87cb2f7e7d64b45fd4fcc4db11a2760d08e0da"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/record_validation_v11.py",
+      "bytes": 2091,
+      "sha256": "a0acad6839edafdf179fcf7121580535dbf622bf665ca13e2032dcdfb56a7505"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/resume_prism_relaxation_v11.py",
+      "bytes": 6744,
+      "sha256": "8aaf6a1c188b682d78a0fde593047566d0aa210e3cb94a6dea5253839721e772"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/run_force_controlled_prism_v11.py",
+      "bytes": 8139,
+      "sha256": "0f748ac92322b67055cd357286f415762701b4b8078d655781ee5c9355f1fa5a"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/run_initiation_math_v11.py",
+      "bytes": 3349,
+      "sha256": "75dbbde47f6e16902768e152a6f2e995773584fdd1d36c4d9c076d7a8e7684e4"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/run_intact_tension_v11.py",
+      "bytes": 12369,
+      "sha256": "31e9079e520d82e2cfea8ee3791cdb4bd31d97ffc766138eb989c28fa85e4073"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/run_mace_boron_v9.py",
+      "bytes": 8626,
+      "sha256": "8c700c44601ddeffafc76a17295b35a0e10c2897017ace8649ad33bfd5da42d2"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/run_oxide_mace_audit_v11.py",
+      "bytes": 9932,
+      "sha256": "e14777e6f2f17f3d7e88e7efab937e3b2877853510c5db4ed9d0ef77ea625b7c"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/run_oxidized_surface_audit_v11.py",
+      "bytes": 9289,
+      "sha256": "adc8844885913dc04dd1c7f30c8d3179f07fa7fde2b784ee860ff69efbe87db8"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/run_prism_unload_v11.py",
+      "bytes": 8549,
+      "sha256": "221fe1461b0474fefb791984af097bfa7bc006f2cfcb45846f33663591f74df9"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/summarize_surface_environments_v11.py",
+      "bytes": 7828,
+      "sha256": "700bccafa5769bc9c3c77b6ca6d3aedce580f8f147e32950ca4541dae7e16d01"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/validate_oxide_replay_v11.py",
+      "bytes": 4886,
+      "sha256": "13e21f1b85035b9dd82150c1879665faca393da847078d7ba887d25dc3b1dc60"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/validate_oxidized_surface_replay_v11.py",
+      "bytes": 8057,
+      "sha256": "f708494a068ae66290577ad6aa0952fc2feffe7fe2172291615aba58f9e74ac3"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/verify_initiation_bundle_v11.py",
+      "bytes": 5634,
+      "sha256": "d17e600e9c2254e8f8ccc8f617e2094fcd1b92ba0838d9ac4a5238e6583ac0a3"
+    },
+    {
+      "path": "solver_v1/configurational_plasticity.py",
+      "bytes": 5686,
+      "sha256": "8d749bee33e7fadf34e5c636bb4475359af2ca22a86c981453ffbc851d02c135",
+      "git_lf": {
+        "bytes": 5534,
+        "sha256": "60fb4efd329bade16524a77f4865f58edd24b612d3831244e78fa6132cf33bdb"
+      },
+      "transport": "CRLF to LF only; original working-file digest retained"
+    },
+    {
+      "path": "solver_v1/lattice_bessel.py",
+      "bytes": 11151,
+      "sha256": "b7da946e32a87c1dcb7463141702348cfe189024a050a007b84e962c150d7421",
+      "git_lf": {
+        "bytes": 10773,
+        "sha256": "43dc86c31957404641d4b8e1173bcb0ef0aeca9b9c287944fa439cf3a9c7db33"
+      },
+      "transport": "CRLF to LF only; original working-file digest retained"
+    },
+    {
+      "path": "solver_v1/model.py",
+      "bytes": 16625,
+      "sha256": "e74ce6222a0a9b168c79664c367f9922c9180175d7f847e06af34fcf4cc42e8e",
+      "git_lf": {
+        "bytes": 16208,
+        "sha256": "77204c7ed2fe478860eda74132b4b44feb465070c2054662a47df4f645170ae8"
+      },
+      "transport": "CRLF to LF only; original working-file digest retained"
+    },
+    {
+      "path": "solver_v1/probability_pde_2d.py",
+      "bytes": 39506,
+      "sha256": "34504363059cbf1c0f6073c7a3b7624fb3e5a07b2355330bfcbf145182bb9cba",
+      "git_lf": {
+        "bytes": 39105,
+        "sha256": "21ae2a7e0f1bf5161664a325a13f4e63c8109f750bbb30fbdf47234aa97a5d93"
+      },
+      "transport": "CRLF to LF only; original working-file digest retained"
+    },
+    {
+      "path": "solver_v1/silicon_charge_dynamics.py",
+      "bytes": 7224,
+      "sha256": "d4c1f0effd96857a4a73b9301e9158e57550c1cd1b88e273869531f00505c653"
+    },
+    {
+      "path": "solver_v1/silicon_initiation_probability.py",
+      "bytes": 7144,
+      "sha256": "17181c340039f2062ca20b85470b47126a9629097ad5b5dffb018080db184cbf"
+    },
+    {
+      "path": "solver_v1/silicon_initiation_research.py",
+      "bytes": 5928,
+      "sha256": "94902a72b428930cd77ade29d3aa6717a9ff91bed4abec0267655ad01b07aad9"
+    },
+    {
+      "path": "solver_v1/silicon_oxide_research.py",
+      "bytes": 3003,
+      "sha256": "a307b1512deaf84e9defd53695663ae7962c80c49835d8d1c779bf9aed93ff30"
+    },
+    {
+      "path": "solver_v1/test_silicon_charge_dynamics.py",
+      "bytes": 6436,
+      "sha256": "5565af23fc3252a030fe6265400e4b00439431256192d6e61fe9a2cddb11589e"
+    },
+    {
+      "path": "solver_v1/test_silicon_initiation_probability.py",
+      "bytes": 7234,
+      "sha256": "8601987af6d82e71966d41c4e084f56695f46a5171a238b42d1313372b32d1ad"
+    },
+    {
+      "path": "solver_v1/test_silicon_initiation_research.py",
+      "bytes": 4904,
+      "sha256": "7a9e9f3a48017a0045906379c11a96f689595621dfb6f0496f3b090948218216"
+    }
+  ],
+  "dependency_scope": "v11 runners and named tests with recursively resolved static local imports; external package versions listed, not a complete environment lock"
+}

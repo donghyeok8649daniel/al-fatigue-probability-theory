@@ -1,0 +1,21 @@
+{
+  "states_verified": 1,
+  "converged_states": 1,
+  "maximum_observable_replay_difference": 0.0,
+  "maximum_grip_coordinate_error_A": 0.0,
+  "geometry_sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d",
+  "source_raw_files": [
+    {
+      "state": 0,
+      "file": "state_000/raw.npz",
+      "sha256": "1e823fe5f676408c9d71c6675a5db2da4e7f723f59e71adabe8d359600acf505"
+    }
+  ],
+  "coarse_work_diagnostics": [],
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "topology_is_first_crack_detector": false,
+  "initiation_probability": null,
+  "physical_clock": null
+}

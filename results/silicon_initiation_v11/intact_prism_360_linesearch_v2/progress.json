@@ -1,0 +1,92 @@
+{
+  "completed_states": 6,
+  "planned_states": 14,
+  "last_converged": false,
+  "elapsed_s": 10806.216289200005,
+  "force_calls": 1237,
+  "interruption": "explicit run wall-time budget reached",
+  "protocol": {
+    "repeats": [
+      3,
+      3,
+      10
+    ],
+    "atoms": 360,
+    "free_atoms": 216,
+    "seed": 1101,
+    "perturbation_A": 0.01,
+    "grip_width_A": 6.0,
+    "restart": {
+      "file_name": "checkpoint.extxyz",
+      "sha256": "16c962047c04d923d2e9591a057be22069884a05eda458932364f4465f39cb42",
+      "fixed_coordinate_roundtrip_error_A": 4.637345618618838e-09,
+      "fixed_coordinates_restored_exactly": true,
+      "meaning": "continuation of the preserved zero-load relaxation, not a new initial crack"
+    },
+    "initial_optimizer": "LBFGSLineSearch",
+    "gauge_length_A": 30.94860611966272,
+    "area_A2": 190.48453448141632,
+    "nominal_lengths_A": [
+      11.605727294873521,
+      16.412976941613742,
+      38.6857576495784
+    ],
+    "nominal_area_convention": "uncut periodic-cell rectangle before external surface creation",
+    "initial_graph": [
+      {
+        "cutoff_A": 2.8,
+        "components": 1,
+        "grip_connected": true,
+        "largest_component_atoms": 360,
+        "pair_count": 592
+      },
+      {
+        "cutoff_A": 3.1,
+        "components": 1,
+        "grip_connected": true,
+        "largest_component_atoms": 360,
+        "pair_count": 592
+      },
+      {
+        "cutoff_A": 3.4,
+        "components": 1,
+        "grip_connected": true,
+        "largest_component_atoms": 360,
+        "pair_count": 592
+      },
+      {
+        "cutoff_A": 3.7,
+        "components": 1,
+        "grip_connected": true,
+        "largest_component_atoms": 360,
+        "pair_count": 592
+      }
+    ],
+    "strains": [
+      0.0,
+      0.02,
+      0.04,
+      0.06,
+      0.08,
+      0.1,
+      0.12,
+      0.14,
+      0.16,
+      0.18,
+      0.2,
+      0.22,
+      0.24,
+      0.26
+    ],
+    "fmax_eV_A": 0.001,
+    "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+    "temperature_K": null,
+    "scope": "0 K bare finite prism; rigid grips; no initial internal cut, void or crack seed",
+    "initial_surface": "unpassivated ideal (001) and (1-10) facets, followed by local relaxation",
+    "oxide_included": false,
+    "measured_wafer_strength": false,
+    "initiation_probability": null,
+    "first_crack_event_certified": false,
+    "physical_clock": null
+  }
+}

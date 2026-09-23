@@ -1,0 +1,88 @@
+{
+  "states_verified": 2,
+  "records": [
+    {
+      "state": 0,
+      "target_nominal_GPa": 0.0,
+      "converged": true,
+      "target_force_eV_A": 0.0,
+      "conjugate_force_eV_A": -0.0001346149214954684,
+      "axial_force_residual_eV_A": -0.0001346149214954684,
+      "actual_nominal_GPa": -0.0001132254029939765,
+      "extension_A": -0.8633580456675783,
+      "grip_centre_distance_A": 30.085248073995142,
+      "energy_eV": -1754.6834646989773,
+      "enthalpy_eV": -1754.6834646989773,
+      "free_force_max_eV_A": 0.00015239761830635007,
+      "reaction_force_residual_eV_A": 0.006003303806277451,
+      "reaction_torque_eV": 0.0010391899224857374,
+      "total_internal_force_eV_A": 3.918159360299111e-15,
+      "total_internal_torque_eV": 6.022322903631271e-14,
+      "axial_target_residual_MPa": -0.1132254029939765,
+      "support_resultant_equivalent_MPa": 5.049414174965139,
+      "support_axial_sum_equivalent_MPa": -4.810522137271604,
+      "lower_axial_reaction_eV_A": -0.002725026301841016,
+      "upper_axial_reaction_eV_A": -0.0029942561448319527,
+      "grip_coordinate_error_A": 0.0,
+      "raw_gradient_error_eV_A": 0.0,
+      "maximum_observable_replay_difference": 0.0,
+      "reaction_free_force_identity_error_eV_A": 1.333984487010032e-15,
+      "reaction_free_torque_identity_error_eV": 6.806819224089615e-14
+    },
+    {
+      "state": 1,
+      "target_nominal_GPa": 0.1,
+      "converged": true,
+      "target_force_eV_A": 0.11889109505101941,
+      "conjugate_force_eV_A": 0.11890900731383014,
+      "axial_force_residual_eV_A": 1.7912262810726443e-05,
+      "actual_nominal_GPa": 0.10001506610970574,
+      "extension_A": -0.8365665603508631,
+      "grip_centre_distance_A": 30.112039559311857,
+      "energy_eV": -1754.6818738465402,
+      "enthalpy_eV": -1754.582413532097,
+      "free_force_max_eV_A": 0.00013875070007967645,
+      "reaction_force_residual_eV_A": 0.0009782382944692515,
+      "reaction_torque_eV": 0.022177165756982236,
+      "total_internal_force_eV_A": 1.427457138117182e-15,
+      "total_internal_torque_eV": 3.98023857690729e-14,
+      "axial_target_residual_MPa": 0.015066109705726744,
+      "support_resultant_equivalent_MPa": 0.822801988701898,
+      "support_axial_sum_equivalent_MPa": -0.41107335534182443,
+      "lower_axial_reaction_eV_A": -0.11915337212064436,
+      "upper_axial_reaction_eV_A": 0.11866464250701592,
+      "grip_coordinate_error_A": 0.0,
+      "raw_gradient_error_eV_A": 0.0,
+      "maximum_observable_replay_difference": 0.0,
+      "reaction_free_force_identity_error_eV_A": 1.5770795111277617e-15,
+      "reaction_free_torque_identity_error_eV": 3.965823285418223e-14
+    }
+  ],
+  "comparison": {
+    "extension_difference_A": 0.02679148531671527,
+    "strain_relative_to_zero_axial_load": 0.0008905190095431884,
+    "secant_stress_strain_ratio_GPa": 112.43812927032604,
+    "zero_load_contraction_relative_to_bulk_grip_length": -0.027896508241095134,
+    "energy_difference_eV": 0.001590852437175272,
+    "coarse_trapezoid_work_eV": 0.001591071194890506,
+    "scope": "two-state secant of a finite bare prism with rigid grips; not bulk Young modulus or a measured wafer response"
+  },
+  "source_raw_files": [
+    {
+      "file": "state_000/raw.npz",
+      "sha256": "d0b76770e4b56e1a98e790a4211d4f0be8a36652dc1ea4158b1ef82bea55cd8c"
+    },
+    {
+      "file": "state_001/raw.npz",
+      "sha256": "a014e9b2c4e7d8fa97ae1ae4fd5456d4083a529cd4bd5f9219d07afc5f4a600e"
+    }
+  ],
+  "geometry_sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d",
+  "full_support_equilibrium_exact": false,
+  "equilibrium_status": "axial generalized force target and all free-atom residuals reported; finite support resultants are not hidden",
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "initiation_probability": null,
+  "physical_clock": null
+}

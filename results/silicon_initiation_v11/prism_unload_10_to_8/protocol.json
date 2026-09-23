@@ -1,0 +1,20 @@
+{
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "source_raw_sha256": "ca2246f78de3b0779c0dc0902640eda8aa3f56edc7a8b2e7b8ef58a2671995f4",
+  "source_result_sha256": "8a2a0b1f82b34b40f9e8604d2ee8e04261ae5cd53f2eb70498bee0888a65ca98",
+  "geometry_sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d",
+  "source_extension_A": 3.094860611966274,
+  "source_strain": 0.10000000000000006,
+  "extension_A": 2.4758884895730175,
+  "strain": 0.08,
+  "fmax_eV_A": 0.001,
+  "max_steps": 600,
+  "max_seconds": 3000.0,
+  "displacement_changed": true,
+  "new_initial_perturbation": false,
+  "initial_crack_seed_added": false,
+  "predictor": "free atom z shift = clipped initial-reference axial fraction times change of grip extension",
+  "scope": "static lower-displacement branch from a converged higher-displacement state, optimizer memory restarted",
+  "first_crack_event_certified": false,
+  "physical_clock": null
+}

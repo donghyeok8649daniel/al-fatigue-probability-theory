@@ -1,0 +1,82 @@
+{
+  "completed": [
+    {
+      "state": 0,
+      "target_nominal_GPa": 0.0,
+      "actual_nominal_GPa": -0.0001132254029939765,
+      "target_force_eV_A": 0.0,
+      "axial_force_residual_eV_A": -0.0001346149214954684,
+      "extension_A": -0.8633580456675783,
+      "grip_centre_distance_A": 30.085248073995142,
+      "energy_eV": -1754.6834646989773,
+      "enthalpy_eV": -1754.6834646989773,
+      "converged": true,
+      "active_guard_bound": false,
+      "optimizer": {
+        "success": true,
+        "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 64,
+        "evaluations": 69
+      },
+      "force_calls": 70,
+      "elapsed_s": 594.4448611999396,
+      "conjugate_force_eV_A": -0.0001346149214954684,
+      "nominal_stress_GPa": -0.0001132254029939765,
+      "lower_reaction_eV_A": [
+        -3.464471766496252e-05,
+        0.000967779439128208,
+        -0.002725026301841238
+      ],
+      "upper_reaction_eV_A": [
+        -0.00022600058418797975,
+        0.0008381909128581388,
+        -0.0029942561448324523
+      ],
+      "reaction_force_residual_eV_A": 0.006003303806277451,
+      "reaction_torque_eV": 0.0010391899224857374,
+      "total_internal_force_eV_A": 3.918159360299111e-15,
+      "total_internal_torque_eV": 6.022322903631271e-14,
+      "free_force_max_eV_A": 0.00015239761830635007
+    },
+    {
+      "state": 1,
+      "target_nominal_GPa": 0.1,
+      "actual_nominal_GPa": 0.10001506610970574,
+      "target_force_eV_A": 0.11889109505101941,
+      "axial_force_residual_eV_A": 1.7912262810726443e-05,
+      "extension_A": -0.8365665603508631,
+      "grip_centre_distance_A": 30.112039559311857,
+      "energy_eV": -1754.6818738465402,
+      "enthalpy_eV": -1754.582413532097,
+      "converged": true,
+      "active_guard_bound": false,
+      "optimizer": {
+        "success": true,
+        "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+        "iterations": 28,
+        "evaluations": 31
+      },
+      "force_calls": 32,
+      "elapsed_s": 937.5264647000004,
+      "conjugate_force_eV_A": 0.11890900731383014,
+      "nominal_stress_GPa": 0.10001506610970574,
+      "lower_reaction_eV_A": [
+        -6.44406351334309e-05,
+        0.00043031162934148437,
+        -0.11915337212063992
+      ],
+      "upper_reaction_eV_A": [
+        -0.00012533215885401905,
+        0.0003955696043664303,
+        0.11866464250701639
+      ],
+      "reaction_force_residual_eV_A": 0.0009782382944692515,
+      "reaction_torque_eV": 0.022177165756982236,
+      "total_internal_force_eV_A": 1.427457138117182e-15,
+      "total_internal_torque_eV": 3.98023857690729e-14,
+      "free_force_max_eV_A": 0.00013875070007967645
+    }
+  ],
+  "planned": 2,
+  "calls": 102
+}

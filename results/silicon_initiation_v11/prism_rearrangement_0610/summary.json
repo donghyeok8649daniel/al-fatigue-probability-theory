@@ -1,0 +1,114 @@
+{
+  "converged_states": 5,
+  "intervals": [
+    {
+      "state_from": 0,
+      "state_to": 1,
+      "strain_from": 0.0,
+      "strain_to": 0.02,
+      "free_nonaffine_RMS_A": 0.0268323239958765,
+      "free_nonaffine_max_A": 0.08063974805622975,
+      "median_A": 0.018245632043850674,
+      "p90_A": 0.04110510126529575,
+      "grip_neighbor_atoms": 36,
+      "other_free_atoms": 180,
+      "grip_neighbor_RMS_A": 0.04021947737740256,
+      "other_free_RMS_A": 0.023247517310916208,
+      "fraction_squared_residual_at_grip_neighbors": 0.3744596412407393,
+      "affine_design_condition": 6.849471507650828,
+      "rigid_frame_invariance_error_A": 1.1171619185290638e-14,
+      "least_squares_orthogonality_relative_residual": 1.4855856043963475e-16
+    },
+    {
+      "state_from": 1,
+      "state_to": 2,
+      "strain_from": 0.02,
+      "strain_to": 0.04,
+      "free_nonaffine_RMS_A": 0.03836634782406035,
+      "free_nonaffine_max_A": 0.20861076813027704,
+      "median_A": 0.021874319730181023,
+      "p90_A": 0.05570910988472723,
+      "grip_neighbor_atoms": 36,
+      "other_free_atoms": 180,
+      "grip_neighbor_RMS_A": 0.041665621946880074,
+      "other_free_RMS_A": 0.037671835155512,
+      "fraction_squared_residual_at_grip_neighbors": 0.19656381298535633,
+      "affine_design_condition": 7.01791966021568,
+      "rigid_frame_invariance_error_A": 8.465450562766819e-15,
+      "least_squares_orthogonality_relative_residual": 2.0391586763604845e-16
+    },
+    {
+      "state_from": 2,
+      "state_to": 3,
+      "strain_from": 0.04,
+      "strain_to": 0.06,
+      "free_nonaffine_RMS_A": 0.034747064480453504,
+      "free_nonaffine_max_A": 0.09121340134750511,
+      "median_A": 0.024896012686685693,
+      "p90_A": 0.0593539208846605,
+      "grip_neighbor_atoms": 36,
+      "other_free_atoms": 180,
+      "grip_neighbor_RMS_A": 0.050894017487174745,
+      "other_free_RMS_A": 0.030508850925814675,
+      "fraction_squared_residual_at_grip_neighbors": 0.3575575712625865,
+      "affine_design_condition": 7.190401701088215,
+      "rigid_frame_invariance_error_A": 4.260480856999038e-15,
+      "least_squares_orthogonality_relative_residual": 9.636769429027248e-17
+    },
+    {
+      "state_from": 3,
+      "state_to": 4,
+      "strain_from": 0.06,
+      "strain_to": 0.08,
+      "free_nonaffine_RMS_A": 0.2241775091120916,
+      "free_nonaffine_max_A": 0.6717418855940759,
+      "median_A": 0.1139423773839893,
+      "p90_A": 0.3852126203288081,
+      "grip_neighbor_atoms": 36,
+      "other_free_atoms": 180,
+      "grip_neighbor_RMS_A": 0.1342844405271018,
+      "other_free_RMS_A": 0.23811804743972462,
+      "fraction_squared_residual_at_grip_neighbors": 0.059802048268981806,
+      "affine_design_condition": 7.3651706470344855,
+      "rigid_frame_invariance_error_A": 5.563605132152816e-14,
+      "least_squares_orthogonality_relative_residual": 2.035870351233063e-15
+    }
+  ],
+  "excluded_saved_states": [],
+  "maximum_rigid_frame_invariance_error_A": 5.563605132152816e-14,
+  "grip_neighbor_definition": "free atom connected to a fixed grip atom by an initial lattice pair shorter than 2.8 A",
+  "affine_fit": "unweighted least squares over all 216 free atoms, full 3D affine map plus translation",
+  "geometry_sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d",
+  "source_raw_files": [
+    {
+      "state": 0,
+      "file": "state_000/raw.npz",
+      "sha256": "1e823fe5f676408c9d71c6675a5db2da4e7f723f59e71adabe8d359600acf505"
+    },
+    {
+      "state": 1,
+      "file": "state_001/raw.npz",
+      "sha256": "4268972aac8c6b7615f4419ef1bc843caf52c84f6568c944500d1a2979c4f6b3"
+    },
+    {
+      "state": 2,
+      "file": "state_002/raw.npz",
+      "sha256": "135e44f48ca302b34dc8a39eaaaf9e708a3207a794d17cbc222cd1fc4101b7ef"
+    },
+    {
+      "state": 3,
+      "file": "state_003/raw.npz",
+      "sha256": "f77c072163c93b96b2e3f1f052a879b1e377d3a19c8fdb2ea8092f0e202d515d"
+    },
+    {
+      "state": 4,
+      "file": "state_004/raw.npz",
+      "sha256": "f8d77c17d143feca5746511e91e7ea410d43cbcd91a2c64f795a32cbc3945df3"
+    }
+  ],
+  "scope": "geometric rearrangement only; not energy localization, plastic strain, crack classification or a transition barrier",
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "initiation_probability": null
+}

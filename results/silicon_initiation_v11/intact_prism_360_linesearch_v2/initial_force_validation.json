@@ -1,0 +1,34 @@
+{
+  "energy_difference_eV": 0.0,
+  "force_max_difference_eV_A": 2.220446049250313e-16,
+  "differences": [
+    {
+      "direction": "free_random",
+      "step_A": 0.001,
+      "analytic": -0.006012677375547479,
+      "finite_difference": -0.006012707672198303,
+      "absolute_error_eV_A": 3.029665082438654e-08
+    },
+    {
+      "direction": "free_random",
+      "step_A": 0.0005,
+      "analytic": -0.006012677375547479,
+      "finite_difference": -0.006012684707457083,
+      "absolute_error_eV_A": 7.3319096046201016e-09
+    },
+    {
+      "direction": "grip_extension",
+      "step_A": 0.001,
+      "analytic": 3.787796809802259,
+      "finite_difference": 3.7877854083490092,
+      "absolute_error_eV_A": 1.1401453249959559e-05
+    },
+    {
+      "direction": "grip_extension",
+      "step_A": 0.0005,
+      "analytic": 3.787796809802259,
+      "finite_difference": 3.7877939585087006,
+      "absolute_error_eV_A": 2.8512935585922605e-06
+    }
+  ]
+}

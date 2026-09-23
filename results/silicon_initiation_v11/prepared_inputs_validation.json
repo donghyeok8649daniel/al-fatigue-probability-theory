@@ -1,0 +1,43 @@
+{
+  "independent_source_inventory_frames": 1466,
+  "included_frames": 1013,
+  "excluded_frames": 453,
+  "math_replay_exact_files": {
+    "diffusion_refinement.csv": true,
+    "summary.json": true,
+    "synthetic_first_passage.csv": true
+  },
+  "sources": {
+    "mtpu_1159.cfg": {
+      "bytes": 2342244,
+      "sha256": "949781e648dcf4d0b13fde73520461770232201e1761628e8da61150dcfe5d17"
+    },
+    "gap_siox_training.zip": {
+      "bytes": 22363404,
+      "sha256": "a54534f022d2fa23ce078e781a080b1a965b3a6b61bb2fde6cce845fcf52e8c7"
+    },
+    "gap_siox_training.xyz": {
+      "bytes": 55461470,
+      "sha256": "d99170bff4942dcd5a1c38d998fe0a60084a5e132bcb3cf2335f5db4cbe17689"
+    },
+    "thermal_oxidation_2024.pdf": {
+      "bytes": 5357598,
+      "sha256": "4c46f7bf6a61f5f252ecb42afc53ade23548006aaec4cee9f982a431f27c56ee"
+    },
+    "mtpu_2024.pdf": {
+      "bytes": 4804235,
+      "sha256": "af51030c54e970f62a71de1e760ad08899a89500c907ec9adfb43e481e874b59"
+    }
+  },
+  "python_version": "3.13.5",
+  "versions": {
+    "numpy": "2.5.0",
+    "scipy": "1.18.1",
+    "ase": "3.29.0",
+    "mace-torch": "0.3.16",
+    "torch": "2.12.1",
+    "e3nn": "0.4.4",
+    "matplotlib": "3.11.0",
+    "pytest": "9.1.1"
+  }
+}

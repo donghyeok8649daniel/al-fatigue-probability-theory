@@ -1,0 +1,251 @@
+{
+  "frames": 1013,
+  "composition_and_observed_groups": 14,
+  "maximum_stored_reference_replay_error_eV_atom": 0.0,
+  "maximum_pair_variance_identity_relative_error": 1.61259894326804e-13,
+  "groups": [
+    {
+      "group": "Si_H_vacuum1",
+      "frames": 93,
+      "compositions": 1,
+      "singleton_compositions": 0,
+      "pairs": 4278,
+      "pair_energy_error_RMSE_eV_atom": 0.008654262096249584,
+      "pair_energy_error_MAE_eV_atom": 0.005553365834660754,
+      "ordering": {
+        "0.0": {
+          "resolved_pairs": 4278,
+          "opposite_sign": 300,
+          "prediction_tied": 0
+        },
+        "1e-06": {
+          "resolved_pairs": 4278,
+          "opposite_sign": 300,
+          "prediction_tied": 0
+        },
+        "0.0001": {
+          "resolved_pairs": 4266,
+          "opposite_sign": 294,
+          "prediction_tied": 0
+        }
+      }
+    },
+    {
+      "group": "Si_O_H_vacuum1",
+      "frames": 423,
+      "compositions": 4,
+      "singleton_compositions": 0,
+      "pairs": 25955,
+      "pair_energy_error_RMSE_eV_atom": 0.020276836940972265,
+      "pair_energy_error_MAE_eV_atom": 0.014646052687900622,
+      "ordering": {
+        "0.0": {
+          "resolved_pairs": 25954,
+          "opposite_sign": 2107,
+          "prediction_tied": 0
+        },
+        "1e-06": {
+          "resolved_pairs": 25950,
+          "opposite_sign": 2106,
+          "prediction_tied": 0
+        },
+        "0.0001": {
+          "resolved_pairs": 25863,
+          "opposite_sign": 2056,
+          "prediction_tied": 0
+        }
+      }
+    },
+    {
+      "group": "Si_O_vacuum0",
+      "frames": 64,
+      "compositions": 1,
+      "singleton_compositions": 0,
+      "pairs": 2016,
+      "pair_energy_error_RMSE_eV_atom": 0.008477796128690034,
+      "pair_energy_error_MAE_eV_atom": 0.006004843764089636,
+      "ordering": {
+        "0.0": {
+          "resolved_pairs": 2016,
+          "opposite_sign": 4,
+          "prediction_tied": 0
+        },
+        "1e-06": {
+          "resolved_pairs": 2016,
+          "opposite_sign": 4,
+          "prediction_tied": 0
+        },
+        "0.0001": {
+          "resolved_pairs": 2016,
+          "opposite_sign": 4,
+          "prediction_tied": 0
+        }
+      }
+    },
+    {
+      "group": "Si_vacuum0",
+      "frames": 201,
+      "compositions": 1,
+      "singleton_compositions": 0,
+      "pairs": 20100,
+      "pair_energy_error_RMSE_eV_atom": 0.0030029654043966475,
+      "pair_energy_error_MAE_eV_atom": 0.0022305548216148253,
+      "ordering": {
+        "0.0": {
+          "resolved_pairs": 20100,
+          "opposite_sign": 1102,
+          "prediction_tied": 0
+        },
+        "1e-06": {
+          "resolved_pairs": 20099,
+          "opposite_sign": 1102,
+          "prediction_tied": 0
+        },
+        "0.0001": {
+          "resolved_pairs": 19955,
+          "opposite_sign": 1032,
+          "prediction_tied": 0
+        }
+      }
+    },
+    {
+      "group": "small_H",
+      "frames": 1,
+      "compositions": 1,
+      "singleton_compositions": 1,
+      "pairs": 0,
+      "pair_energy_error_RMSE_eV_atom": null,
+      "pair_energy_error_MAE_eV_atom": null,
+      "ordering": {
+        "0.0": {
+          "resolved_pairs": 0,
+          "opposite_sign": 0,
+          "prediction_tied": 0
+        },
+        "1e-06": {
+          "resolved_pairs": 0,
+          "opposite_sign": 0,
+          "prediction_tied": 0
+        },
+        "0.0001": {
+          "resolved_pairs": 0,
+          "opposite_sign": 0,
+          "prediction_tied": 0
+        }
+      }
+    },
+    {
+      "group": "small_O",
+      "frames": 58,
+      "compositions": 2,
+      "singleton_compositions": 1,
+      "pairs": 1596,
+      "pair_energy_error_RMSE_eV_atom": 0.6537870905900458,
+      "pair_energy_error_MAE_eV_atom": 0.38127910449928804,
+      "ordering": {
+        "0.0": {
+          "resolved_pairs": 1596,
+          "opposite_sign": 269,
+          "prediction_tied": 0
+        },
+        "1e-06": {
+          "resolved_pairs": 1596,
+          "opposite_sign": 269,
+          "prediction_tied": 0
+        },
+        "0.0001": {
+          "resolved_pairs": 1596,
+          "opposite_sign": 269,
+          "prediction_tied": 0
+        }
+      }
+    },
+    {
+      "group": "small_Si",
+      "frames": 98,
+      "compositions": 2,
+      "singleton_compositions": 1,
+      "pairs": 4656,
+      "pair_energy_error_RMSE_eV_atom": 1.9683613499601897,
+      "pair_energy_error_MAE_eV_atom": 0.9292635801727757,
+      "ordering": {
+        "0.0": {
+          "resolved_pairs": 4656,
+          "opposite_sign": 224,
+          "prediction_tied": 1
+        },
+        "1e-06": {
+          "resolved_pairs": 4651,
+          "opposite_sign": 221,
+          "prediction_tied": 0
+        },
+        "0.0001": {
+          "resolved_pairs": 4651,
+          "opposite_sign": 221,
+          "prediction_tied": 0
+        }
+      }
+    },
+    {
+      "group": "small_Si_H",
+      "frames": 52,
+      "compositions": 1,
+      "singleton_compositions": 0,
+      "pairs": 1326,
+      "pair_energy_error_RMSE_eV_atom": 0.6273423242970665,
+      "pair_energy_error_MAE_eV_atom": 0.4317341197587198,
+      "ordering": {
+        "0.0": {
+          "resolved_pairs": 1326,
+          "opposite_sign": 93,
+          "prediction_tied": 0
+        },
+        "1e-06": {
+          "resolved_pairs": 1326,
+          "opposite_sign": 93,
+          "prediction_tied": 0
+        },
+        "0.0001": {
+          "resolved_pairs": 1326,
+          "opposite_sign": 93,
+          "prediction_tied": 0
+        }
+      }
+    },
+    {
+      "group": "small_Si_O",
+      "frames": 23,
+      "compositions": 1,
+      "singleton_compositions": 0,
+      "pairs": 253,
+      "pair_energy_error_RMSE_eV_atom": 0.1366606052185147,
+      "pair_energy_error_MAE_eV_atom": 0.09564985713775315,
+      "ordering": {
+        "0.0": {
+          "resolved_pairs": 253,
+          "opposite_sign": 4,
+          "prediction_tied": 0
+        },
+        "1e-06": {
+          "resolved_pairs": 253,
+          "opposite_sign": 4,
+          "prediction_tied": 0
+        },
+        "0.0001": {
+          "resolved_pairs": 253,
+          "opposite_sign": 4,
+          "prediction_tied": 0
+        }
+      }
+    }
+  ],
+  "weighting": "equal pair weights within each observed group; each pair has identical H/O/Si atom counts; pair counts are not independent samples",
+  "grouping": "exact H/O/Si counts plus observed composition/vacuum group; cell and geometry may vary; not a continuous reaction path",
+  "energy_offsets_fitted": false,
+  "fit_performed": false,
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "initiation_barrier_eV": null,
+  "material_approved": false
+}

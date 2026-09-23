@@ -1,0 +1,90 @@
+{
+  "loading_converged": true,
+  "unloading_converged": true,
+  "interruption": null,
+  "target_strain": 0.08,
+  "same_grip_coordinates_error_A": 0.0,
+  "maximum_observable_replay_difference": 0.0,
+  "loading_energy_eV": -1735.3477245880867,
+  "unloading_energy_eV": -1745.066947525993,
+  "energy_difference_at_same_grips_eV": -9.719222937906352,
+  "loading_stress_GPa": 8.62405303145547,
+  "unloading_stress_GPa": 2.233824590235899,
+  "loading_free_force_max_eV_A": 0.0008250466629189932,
+  "unloading_free_force_max_eV_A": 0.0009359256911967647,
+  "labelled_free_atom_RMS_difference_A": 1.0540572595938855,
+  "labelled_free_atom_max_difference_A": 2.8847061468306463,
+  "minimum_matching_RMS_difference_A": 1.0540572595938855,
+  "minimum_matching_max_difference_A": 2.8847061468306463,
+  "minimum_matching_permuted_atoms": 0,
+  "permutation_invariant_matching": "minimum total squared distance, identical free Si atoms only; fixed grips excluded",
+  "force_identity_error_eV_A": 1.4631380905630596e-15,
+  "torque_identity_error_eV": 3.481179236697656e-14,
+  "pair_diagnostics": [
+    {
+      "cutoff_A": 2.8,
+      "loading_pairs": 630,
+      "unloading_pairs": 659,
+      "lost_relative_to_loading": 41,
+      "formed_relative_to_loading": 70,
+      "retained_fraction": 0.9349206349206349
+    },
+    {
+      "cutoff_A": 3.1,
+      "loading_pairs": 642,
+      "unloading_pairs": 675,
+      "lost_relative_to_loading": 45,
+      "formed_relative_to_loading": 78,
+      "retained_fraction": 0.9299065420560748
+    },
+    {
+      "cutoff_A": 3.4,
+      "loading_pairs": 664,
+      "unloading_pairs": 754,
+      "lost_relative_to_loading": 35,
+      "formed_relative_to_loading": 125,
+      "retained_fraction": 0.947289156626506
+    },
+    {
+      "cutoff_A": 3.7,
+      "loading_pairs": 850,
+      "unloading_pairs": 935,
+      "lost_relative_to_loading": 116,
+      "formed_relative_to_loading": 201,
+      "retained_fraction": 0.8635294117647059
+    }
+  ],
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "physical_dissipated_work": null,
+  "physical_clock": null,
+  "initiation_probability": null,
+  "scope": "static structural preparation dependence at identical boundary displacement; not a committor, crack label, or physical fatigue cycle",
+  "sources": [
+    {
+      "role": "geometry",
+      "sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d"
+    },
+    {
+      "role": "baseline_raw",
+      "sha256": "f8d77c17d143feca5746511e91e7ea410d43cbcd91a2c64f795a32cbc3945df3"
+    },
+    {
+      "role": "baseline_result",
+      "sha256": "ac0667991eb6adead4e8e84ef89f6c47006826bc7d6afc11834d29ee24a4197f"
+    },
+    {
+      "role": "unload_raw",
+      "sha256": "ebde47a89e483bbc9d0e9d78288097d255b964db41c61d20bc1b44930306b028"
+    },
+    {
+      "role": "unload_summary",
+      "sha256": "72368e3f597efda46119045eb8b5fe7e4bc22543e35a948b531e31f122db3374"
+    },
+    {
+      "role": "unload_protocol",
+      "sha256": "13ba7e26cf1647b41c13e653832f972055fa8cbd5caa8079f2821a8eb44e8ef6"
+    }
+  ]
+}

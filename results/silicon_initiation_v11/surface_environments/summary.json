@@ -1,0 +1,45 @@
+{
+  "frames": 1013,
+  "atoms": 179857,
+  "neighbor_radius_sets_A": [
+    [
+      1.8,
+      2.6,
+      1.7
+    ],
+    [
+      2.0,
+      2.8,
+      1.9
+    ],
+    [
+      2.2,
+      3.0,
+      2.1
+    ]
+  ],
+  "total_force_squared_error": 74973.29393536871,
+  "partition_squared_error": 74973.29393536833,
+  "relative_partition_residual": -5.0464608939777595e-15,
+  "maximum_relative_force_projection_identity_residual": 4.337704120889373e-16,
+  "largest_source_total_force_frame": {
+    "source_frame": 478,
+    "atoms": 216,
+    "observed_group": "Si_O_vacuum0",
+    "source_total_force_eV_A": 1.3659043780577351,
+    "predicted_total_force_eV_A": 2.185645401060975e-14,
+    "raw_force_component_RMSE_eV_A": 0.13345347164443624,
+    "centered_error_RMSE_eV_A": 0.13340352190256977,
+    "uniform_error_RMS_eV_A": 0.0036509502794394503,
+    "zero_total_force_model_error_lower_bound_eV_A": 0.003650950279439453,
+    "uniform_fraction_of_squared_error": 0.0007484315471317605
+  },
+  "source_net_force_status": "measured diagnostic; origin of nonzero source resultant not established; original forces/errors preserved",
+  "descriptor_status": "cutoff-dependent geometric coordination; not electronic oxidation state or unique interface label",
+  "force_error_selection_performed": false,
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "material_approved": false,
+  "crack_initiation_certified": false
+}

@@ -1,0 +1,4 @@
+# Private process identities and raw warning tracebacks; sanitized validation is retained separately.
+active_*_pid.txt
+*.log
+__pycache__/

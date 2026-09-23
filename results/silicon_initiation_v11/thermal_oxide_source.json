@@ -1,0 +1,70 @@
+{
+  "source": {
+    "title": "Fracture behavior of single crystal silicon with thermal oxide layer",
+    "authors": ["Toshiyuki Tsuchiya", "Kenji Miyamoto", "Koji Sugano", "Osamu Tabata"],
+    "journal": "Engineering Fracture Mechanics",
+    "volume": 163,
+    "pages": "523-532",
+    "year": 2016,
+    "doi": "10.1016/j.engfracmech.2015.08.029",
+    "provided_pdf_sha256": "3f1b9270ca5266cce1f71c4a08a94de801b56ff8dc990f019b3e13c6c37cdf06",
+    "provided_pdf_pages": 26,
+    "public_repository_url": "https://repository.kulib.kyoto-u.ac.jp/handle/2433/258961",
+    "public_pdf_url": "https://repository.kulib.kyoto-u.ac.jp/bitstream/2433/258961/1/j.engfracmech.2015.08.029.pdf",
+    "provenance_note": "Values transcribed from the user-provided manuscript; public PDF retrieval returned HTML. Publication metadata and supplied-file metadata are distinct."
+  },
+  "conditions": {
+    "test": "quasi-static monotonic tensile; postmortem FE-SEM origin inference",
+    "wafer_plane": "(100), cubic-equivalent to the (001) reference used in the intact prism",
+    "tensile_axis": "<110>",
+    "gauge_width_um": 4,
+    "gauge_thickness_um": 5,
+    "gauge_lengths_um": [120, 600],
+    "stage_speed_um_s": 0.5,
+    "temperature_C": 26,
+    "relative_humidity_percent": 50,
+    "oxidation_temperature_C": 1100,
+    "oxygen_flow_L_min": 0.7,
+    "oxide_thickness_status": "nominal expected process thickness; not directly measured on micro specimens",
+    "dopant_species": null,
+    "dopant_concentration_cm3": null,
+    "sample_count_per_group": null,
+    "scallop_pitch_nm": 120,
+    "scallop_depth_nm": 30,
+    "initial_crack_lengths_directly_measured": false,
+    "initiation_time_directly_measured": false,
+    "cyclic_fatigue_test": false
+  },
+  "elastic_inputs": {
+    "Si_C11_GPa": 165.7,
+    "Si_C12_GPa": 63.9,
+    "Si_C44_GPa": 79.6,
+    "Si_axial_E_GPa": 168.9,
+    "oxide_E_GPa": 70,
+    "oxide_poisson": 0.17,
+    "oxide_compressive_input_GPa": 0.46,
+    "oxide_compressive_input_status": "reference value introduced to FEM, not a specimen measurement",
+    "FEM_length_um": 10,
+    "FEM_scalloping_included": false,
+    "FEM_load": "measured mean nominal fracture strength",
+    "FEM_Si_stress_location": "500 nm from corner",
+    "FEM_oxide_stress_location": "surface; not phase average"
+  },
+  "rows": [
+    {"group":"as_fabricated","oxide_nominal_nm":0,"oxidation_time_min":null,"outer_width_um":4,"outer_height_um":5,"E_theory_GPa":168.9,"E_measured_GPa":164.7,"nominal_strength_GPa":4.09,"FEM_Si_axial_GPa":4.09,"FEM_oxide_axial_GPa":null,"weibull_shape":5.81,"weibull_scale_GPa":4.41,"reported_flaw_half_length_nm":19.0,"reported_precipitate_radius_nm":null},
+    {"group":"oxide_50","oxide_nominal_nm":50,"oxidation_time_min":5.5,"outer_width_um":4.028,"outer_height_um":5.028,"E_theory_GPa":164.5,"E_measured_GPa":168.6,"nominal_strength_GPa":3.50,"FEM_Si_axial_GPa":3.61,"FEM_oxide_axial_GPa":1.14,"weibull_shape":5.26,"weibull_scale_GPa":3.79,"reported_flaw_half_length_nm":24.4,"reported_precipitate_radius_nm":6.8},
+    {"group":"oxide_100","oxide_nominal_nm":100,"oxidation_time_min":22.5,"outer_width_um":4.055,"outer_height_um":5.055,"E_theory_GPa":160.2,"E_measured_GPa":163.8,"nominal_strength_GPa":3.77,"FEM_Si_axial_GPa":4.00,"FEM_oxide_axial_GPa":1.30,"weibull_shape":5.55,"weibull_scale_GPa":4.07,"reported_flaw_half_length_nm":19.8,"reported_precipitate_radius_nm":13.7},
+    {"group":"oxide_200","oxide_nominal_nm":200,"oxidation_time_min":90,"outer_width_um":4.11,"outer_height_um":5.11,"E_theory_GPa":152.3,"E_measured_GPa":147.5,"nominal_strength_GPa":3.27,"FEM_Si_axial_GPa":3.69,"FEM_oxide_axial_GPa":1.16,"weibull_shape":6.42,"weibull_scale_GPa":3.50,"reported_flaw_half_length_nm":23.3,"reported_precipitate_radius_nm":27.4},
+    {"group":"oxide_removed","oxide_nominal_nm":0,"previous_oxide_nominal_nm":200,"oxidation_time_min":90,"outer_width_um":3.91,"outer_height_um":4.91,"E_theory_GPa":168.9,"E_measured_GPa":174.6,"nominal_strength_GPa":2.55,"FEM_Si_axial_GPa":2.55,"FEM_oxide_axial_GPa":null,"weibull_shape":null,"weibull_scale_GPa":null,"reported_flaw_half_length_nm":49.0,"reported_precipitate_radius_nm":null}
+  ],
+  "page_map": {"table_I_II_III":13,"table_IV_V":14,"Eq_2":5,"Eq_3_4":8,"figure_12":26},
+  "audit_flags": [
+    "Fig12 y-axis says MPa but body and TableIV report matching values in GPa.",
+    "Listed outer dimensions plus nominal per-face thickness reproduce Eq2 modulus; oxide-removed dimensions imply a different consumed-core size. Thickness convention must be resolved, not silently corrected.",
+    "Fracture origins inferred postmortem; precipitate mechanism remains an interpretation.",
+    "Equivalent flaw sizes are inverse estimates from strength and assumed KIC=1 MPa sqrt(m), not independent measured inputs.",
+    "High-temperature precipitation law cannot be reused for room-temperature fatigue without new kinetics.",
+    "No per-group count or strength uncertainty supplied in extracted tables; do not fabricate confidence intervals.",
+    "Figure caption list on page12 mismatches body figure numbering for several SEM/Weibull figures."
+  ]
+}

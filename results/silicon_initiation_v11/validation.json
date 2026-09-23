@@ -1,0 +1,40 @@
+{
+  "tests_passed": 41,
+  "test_elapsed_seconds": 19.53,
+  "command": "python -m pytest solver_v1/test_silicon_initiation_research.py solver_v1/test_silicon_initiation_probability.py solver_v1/test_silicon_charge_dynamics.py -q",
+  "log_summary": "41 passed in 19.53s",
+  "source_files": [
+    {
+      "path": "solver_v1/silicon_initiation_probability.py",
+      "sha256": "17181c340039f2062ca20b85470b47126a9629097ad5b5dffb018080db184cbf"
+    },
+    {
+      "path": "solver_v1/silicon_initiation_research.py",
+      "sha256": "94902a72b428930cd77ade29d3aa6717a9ff91bed4abec0267655ad01b07aad9"
+    },
+    {
+      "path": "solver_v1/silicon_oxide_research.py",
+      "sha256": "a307b1512deaf84e9defd53695663ae7962c80c49835d8d1c779bf9aed93ff30"
+    },
+    {
+      "path": "solver_v1/silicon_charge_dynamics.py",
+      "sha256": "d4c1f0effd96857a4a73b9301e9158e57550c1cd1b88e273869531f00505c653"
+    },
+    {
+      "path": "solver_v1/test_silicon_initiation_probability.py",
+      "sha256": "8601987af6d82e71966d41c4e084f56695f46a5171a238b42d1313372b32d1ad"
+    },
+    {
+      "path": "solver_v1/test_silicon_initiation_research.py",
+      "sha256": "7a9e9f3a48017a0045906379c11a96f689595621dfb6f0496f3b090948218216"
+    },
+    {
+      "path": "solver_v1/test_silicon_charge_dynamics.py",
+      "sha256": "5565af23fc3252a030fe6265400e4b00439431256192d6e61fe9a2cddb11589e"
+    }
+  ],
+  "scope": "geometry, work/force consistency, composite stress, first passage, frozen-mixture, time-unit-invariant conservation and charge-dynamics regressions",
+  "new_atomic_calculations": 0,
+  "material_approved": false,
+  "kinetic_clock_calibrated": false
+}

@@ -1,0 +1,107 @@
+{
+  "complete": true,
+  "frames": 1159,
+  "atoms": 17413,
+  "elapsed_s": 1023.683114000014,
+  "force_only_calls": 1160,
+  "standard_controls": [
+    {
+      "frame": 0,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 4.440892098500626e-16
+    },
+    {
+      "frame": 26,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    },
+    {
+      "frame": 66,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    },
+    {
+      "frame": 163,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    },
+    {
+      "frame": 164,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    },
+    {
+      "frame": 500,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    },
+    {
+      "frame": 575,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    },
+    {
+      "frame": 800,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    },
+    {
+      "frame": 1158,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 0.0
+    }
+  ],
+  "groups": [
+    {
+      "group": "mixed_other_stoichiometry",
+      "frames": 173,
+      "atoms": 7039,
+      "force_component_RMSE_eV_A": 0.3427228086530711,
+      "force_component_MAE_eV_A": 0.21240376352369733
+    },
+    {
+      "group": "SiO2_stoichiometry",
+      "frames": 493,
+      "atoms": 5823,
+      "force_component_RMSE_eV_A": 0.1582274890688484,
+      "force_component_MAE_eV_A": 0.06366869464177977
+    },
+    {
+      "group": "O_only",
+      "frames": 22,
+      "atoms": 54,
+      "force_component_RMSE_eV_A": 0.972752744624552,
+      "force_component_MAE_eV_A": 0.569150489961184
+    },
+    {
+      "group": "Si_only",
+      "frames": 471,
+      "atoms": 4497,
+      "force_component_RMSE_eV_A": 1.2737890366931888,
+      "force_component_MAE_eV_A": 0.19798627730940768
+    }
+  ],
+  "protocol": {
+    "source_sha256": "949781e648dcf4d0b13fde73520461770232201e1761628e8da61150dcfe5d17",
+    "source_commit": "4ed842eea9c0b894310fee50e9bbca21404e356e",
+    "source_url": "https://gitlab.com/Kazongogit/MTPu/-/blob/4ed842eea9c0b894310fee50e9bbca21404e356e/datasets/Unified_training_set2_1159.cfg",
+    "source_doi": "10.1038/s41524-024-01390-8",
+    "source_frames": 1159,
+    "source_method": "Quantum ESPRESSO PBE PAW DFT; supplied energies eV and forces eV/Angstrom",
+    "element_mapping": {
+      "0": "Si",
+      "1": "O"
+    },
+    "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+    "actual_new_DFT": 0,
+    "actual_new_MD": 0,
+    "fit_performed": false,
+    "held_out_mace_status": "training overlap not audited",
+    "morphology_labels": "not supplied per configuration; group only by explicit composition",
+    "left_handed_source_frames": [
+      575
+    ],
+    "stress_comparison": false,
+    "production_enabled": false
+  }
+}

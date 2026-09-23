@@ -1,0 +1,57 @@
+{
+  "source_files": [
+    {
+      "path": "prism_unload_replay/summary.json",
+      "sha256": "6c2dcafca6e634c2af61cf96af70ffce14ea5015edda6c0c89c74c6f83b0b75c"
+    },
+    {
+      "path": "intact_prism_360_linesearch_v2/state_004/raw.npz",
+      "sha256": "f8d77c17d143feca5746511e91e7ea410d43cbcd91a2c64f795a32cbc3945df3"
+    },
+    {
+      "path": "prism_unload_10_to_8/raw.npz",
+      "sha256": "ebde47a89e483bbc9d0e9d78288097d255b964db41c61d20bc1b44930306b028"
+    },
+    {
+      "path": "intact_prism_360_linesearch_v2/geometry.npz",
+      "sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d"
+    },
+    {
+      "path": "intact_prism_360_linesearch_v2/state_000/result.json",
+      "sha256": "a80a6bb42f04de7272fcf4b556b6a04ab8749d271da9dc605fa7fa78b88c4f8b"
+    },
+    {
+      "path": "intact_prism_360_linesearch_v2/state_001/result.json",
+      "sha256": "8e281203a17ce787667615e44951d51faff1664be31750b24b433ce4eb0ea710"
+    },
+    {
+      "path": "intact_prism_360_linesearch_v2/state_002/result.json",
+      "sha256": "daea2dbeb9a5d648d742d7f301caf2f3594f5b14fcc88b47430a2d6039c98cca"
+    },
+    {
+      "path": "intact_prism_360_linesearch_v2/state_003/result.json",
+      "sha256": "6d3be726849df2e8c621e4f49d742793e9cbac01352b04219ef55a02faeb5049"
+    },
+    {
+      "path": "intact_prism_360_linesearch_v2/state_004/result.json",
+      "sha256": "ac0667991eb6adead4e8e84ef89f6c47006826bc7d6afc11834d29ee24a4197f"
+    },
+    {
+      "path": "intact_prism_360_linesearch_v2/state_005/result.json",
+      "sha256": "44a357fc7e9e935c1186116379ea1585dbe948db8797ec9fbf88a1c80e67c2c2"
+    },
+    {
+      "path": "prism_10pct_continuation/summary.json",
+      "sha256": "8a2a0b1f82b34b40f9e8604d2ee8e04261ae5cd53f2eb70498bee0888a65ca98"
+    }
+  ],
+  "loading_points": 6,
+  "excluded_unconverged_loading_states": 1,
+  "matched_atom_permutation_count": 0,
+  "labelled_RMS_A": 1.0540572595938855,
+  "energy_difference_at_same_grips_eV": -9.719222937906352,
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "scope": "saved static endpoints and raw geometry; no first-crack or physical-cycle inference"
+}

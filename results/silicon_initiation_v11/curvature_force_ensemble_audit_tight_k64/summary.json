@@ -1,0 +1,48 @@
+{
+  "target_force_eV_A": 0.11889109505101941,
+  "target_nominal_GPa": 0.1,
+  "enthalpy_eV": -1754.5824153135084,
+  "U_reduced_gradient_max_eV_A": 0.11889077455764963,
+  "enthalpy_reduced_gradient_max_eV_A": 2.9320613446886384e-06,
+  "maximum_force_state_gradient_replay_difference_eV_A": 1.1102230246251565e-16,
+  "lanczos_converged": false,
+  "interruption": "explicit curvature work budget",
+  "modes": [],
+  "saved_eigenmodes": 0,
+  "independently_checked_modes": 0,
+  "force_calls": 495,
+  "elapsed_s": 3601.8172751000384,
+  "krylov_dimension": 64,
+  "coordinates": 649,
+  "source_force_tolerance_note": "source state identified by raw SHA; do not transfer stability to another relaxed state",
+  "linear_dead_load_has_zero_Hessian": true,
+  "original_curvature_result_preserved": true,
+  "distinction": "original reduced_gradient and odd_slope refer to U; force-control stationarity uses H=U-F*Delta",
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "global_minimum_certified": false,
+  "initiation_probability": null,
+  "source_manifest": [
+    {
+      "file": "curvature/protocol.json",
+      "sha256": "3b9f356e12589f8c086b0caacf0d5e9656230b30fbfc4a1db828b571ad53bd72"
+    },
+    {
+      "file": "curvature/summary.json",
+      "sha256": "09d10af689843e708491ec4ae998c2b8fcdc1cb199beebd10953d50224d1c3c2"
+    },
+    {
+      "file": "curvature/modes.npz",
+      "sha256": "6ec37671fd9334a0bd7ee21010b319702a7613a70ddbc760c1706d7420ff0916"
+    },
+    {
+      "file": "state/raw.npz",
+      "sha256": "b83cb6ebdf528979c75bf62cb6d0ecd1758ac3843b810f0f8c0718d6cdc11f19"
+    },
+    {
+      "file": "state/result.json",
+      "sha256": "9d1205e13b982884978a6449aeeb07fb8cc5e0c45fed88183500ebfbad13babd"
+    }
+  ]
+}
