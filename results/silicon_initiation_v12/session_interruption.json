@@ -1,0 +1,104 @@
+{
+  "status": "interrupted_by_battery_hibernation; reporting after resume",
+  "requested_start_UTC": "2026-09-24T17:40:54+00:00",
+  "requested_deadline_UTC": "2026-09-25T01:40:54+00:00",
+  "requested_wall_hours": 8,
+  "continuous_eight_hour_run_completed": false,
+  "Windows_sleep_UTC": "2026-09-24T20:08:49.1507384Z",
+  "Windows_wake_UTC": "2026-09-25T09:02:21.8757281Z",
+  "Windows_kernel_power_42_reason": "Battery",
+  "Windows_resume_507_reason": "Resume from Hibernate",
+  "reported_hibernation_wall_seconds": 46412.72499,
+  "request_to_hibernation_wall_seconds": 8875.150738,
+  "deadline_occurred_during_hibernation": true,
+  "after_resume": "budget guards ended unfinished calculation and waiting queues; no new heavy calculation started",
+  "no_global_power_policy_changed": true,
+  "no_new_automation_scheduled": true,
+  "old_si7_automation_remains_paused": true,
+  "known_calculation_and_waiter_processes_absent_verified": true,
+  "record_written_UTC": "2026-09-25T09:11:39.763543+00:00",
+  "events": [
+    {
+      "utc": "2026-09-25T09:02:22.4577330Z",
+      "id": 507,
+      "provider": "Microsoft-Windows-Kernel-Power",
+      "fields": {
+        "Reason": "25"
+      },
+      "message": "시스템이 최신 대기 모드를 종료합니다. \r\n\r\n이유: Resume from Hibernate."
+    },
+    {
+      "utc": "2026-09-25T09:02:21.1092951Z",
+      "id": 506,
+      "provider": "Microsoft-Windows-Kernel-Power",
+      "fields": {
+        "Reason": "20"
+      },
+      "message": "시스템이 최신 대기 모드를 시작합니다. \r\n\r\n이유: Sleep, Hibernate, or Shutdown."
+    },
+    {
+      "utc": "2026-09-24T20:08:55.3258173Z",
+      "id": 107,
+      "provider": "Microsoft-Windows-Kernel-Power",
+      "fields": {
+        "TargetState": "5",
+        "EffectiveState": "5"
+      },
+      "message": "시스템이 절전 모드에서 다시 시작되었습니다."
+    },
+    {
+      "utc": "2026-09-24T20:08:50.9639584Z",
+      "id": 42,
+      "provider": "Microsoft-Windows-Kernel-Power",
+      "fields": {
+        "Reason": "2",
+        "EffectiveState": "5",
+        "TargetState": "5"
+      },
+      "message": "시스템이 절전 모드로 전환하는 중입니다.\r\n\r\n절전 모드 전환 이유: Battery"
+    },
+    {
+      "utc": "2026-09-24T20:08:49.1516161Z",
+      "id": 507,
+      "provider": "Microsoft-Windows-Kernel-Power",
+      "fields": {
+        "Reason": "20"
+      },
+      "message": "시스템이 최신 대기 모드를 종료합니다. \r\n\r\n이유: Sleep, Hibernate, or Shutdown."
+    },
+    {
+      "utc": "2026-09-24T20:05:45.8480143Z",
+      "id": 506,
+      "provider": "Microsoft-Windows-Kernel-Power",
+      "fields": {
+        "Reason": "53"
+      },
+      "message": "시스템이 최신 대기 모드를 시작합니다. \r\n\r\n이유: 53."
+    },
+    {
+      "utc": "2026-09-24T20:05:45.8468841Z",
+      "id": 507,
+      "provider": "Microsoft-Windows-Kernel-Power",
+      "fields": {
+        "Reason": "53"
+      },
+      "message": "시스템이 최신 대기 모드를 종료합니다. \r\n\r\n이유: 53."
+    },
+    {
+      "utc": "2026-09-25T09:02:23.6148312Z",
+      "id": 1,
+      "provider": "Microsoft-Windows-Power-Troubleshooter",
+      "fields": {
+        "TargetState": "5",
+        "WakeDuration": "1375",
+        "SleepTime": "2026-09-24T20:08:49.1507384Z",
+        "WakeSourceText": null,
+        "EffectiveState": "5",
+        "SleepDuration": "2925",
+        "WakeSourceType": "0",
+        "WakeTime": "2026-09-25T09:02:21.8757281Z"
+      },
+      "message": "시스템이 저전원 상태에서 복귀되었습니다.\r\n\r\n절전 모드 시간: ‎2026‎-‎09‎-‎24T20:08:49.150738400Z\r\n절전 모드 해제 시간: ‎2026‎-‎09‎-‎25T09:02:21.875728100Z\r\n\r\n절전 모드 해제 원본: Unknown"
+    }
+  ]
+}

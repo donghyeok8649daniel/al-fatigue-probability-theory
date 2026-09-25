@@ -1,0 +1,51 @@
+{
+  "complete": true,
+  "vectors": 6,
+  "states": 5190,
+  "values": [
+    {
+      "key": "p02_nu1_N16",
+      "states": 33,
+      "maximum_absolute_error_model_time": 9.414691248821327e-13,
+      "maximum_error_over_largest_exact_time": 1.0692408535981289e-13
+    },
+    {
+      "key": "p02_nu1_N256",
+      "states": 513,
+      "maximum_absolute_error_model_time": 1.787601178193654e-10,
+      "maximum_error_over_largest_exact_time": 2.028372403257902e-11
+    },
+    {
+      "key": "p02_nu1_N1024",
+      "states": 2049,
+      "maximum_absolute_error_model_time": 2.8751685476891e-09,
+      "maximum_error_over_largest_exact_time": 3.262412896387611e-10
+    },
+    {
+      "key": "p02_nu10000_N16",
+      "states": 33,
+      "maximum_absolute_error_model_time": 1.461053500406706e-13,
+      "maximum_error_over_largest_exact_time": 1.1572282615776051e-13
+    },
+    {
+      "key": "p02_nu10000_N256",
+      "states": 513,
+      "maximum_absolute_error_model_time": 3.3306690738754696e-13,
+      "maximum_error_over_largest_exact_time": 2.541661868061654e-13
+    },
+    {
+      "key": "p02_nu10000_N1024",
+      "states": 2049,
+      "maximum_absolute_error_model_time": 5.6128435232949414e-12,
+      "maximum_error_over_largest_exact_time": 4.274635186348537e-12
+    }
+  ],
+  "maximum_absolute_error_model_time": 2.8751685476891e-09,
+  "maximum_error_over_largest_exact_time": 3.262412896387611e-10,
+  "method": "independent arccosh form and full cosh solution; original runner used sparse LU and asinh initial-state formula",
+  "source_sha256": "b21d022d2b97ab4996413289cee2386a731d05d8fe87d761e0f9b65eddda229a",
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "physical_clock": null
+}

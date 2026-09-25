@@ -1,0 +1,133 @@
+{
+  "complete": true,
+  "synthetic_backward_systems": 120,
+  "analytic_boundary_checks": 12,
+  "maximum_discrete_formula_relative_error": 6.809323005653171e-08,
+  "maximum_backward_system_absolute_residual": 1.2406726073166396e-06,
+  "maximum_detailed_balance_relative_error": 1.385613759282567e-16,
+  "formula_checks": [
+    {
+      "occupation": 0.02,
+      "charge_rate": 0.01,
+      "backward_equation_error": 2.1316282072803006e-14,
+      "reflected_zero_derivative_error": 0.0,
+      "reflected_right_derivative_error": 0.0,
+      "absorbed_right_value_error": 0.0,
+      "initial_mean_formula_error": 9.094947017729282e-13
+    },
+    {
+      "occupation": 0.02,
+      "charge_rate": 1.0,
+      "backward_equation_error": 2.842170943040401e-14,
+      "reflected_zero_derivative_error": 0.0,
+      "reflected_right_derivative_error": 0.0,
+      "absorbed_right_value_error": 0.0,
+      "initial_mean_formula_error": 1.4210854715202004e-14
+    },
+    {
+      "occupation": 0.02,
+      "charge_rate": 100.0,
+      "backward_equation_error": 1.7119639039719914e-13,
+      "reflected_zero_derivative_error": 0.0,
+      "reflected_right_derivative_error": 0.0,
+      "absorbed_right_value_error": 0.0,
+      "initial_mean_formula_error": 1.7763568394002505e-15
+    },
+    {
+      "occupation": 0.02,
+      "charge_rate": 10000.0,
+      "backward_equation_error": 2.7284841053187847e-12,
+      "reflected_zero_derivative_error": 0.0,
+      "reflected_right_derivative_error": 0.0,
+      "absorbed_right_value_error": 0.0,
+      "initial_mean_formula_error": 0.0
+    },
+    {
+      "occupation": 0.2,
+      "charge_rate": 0.01,
+      "backward_equation_error": 1.7763568394002505e-15,
+      "reflected_zero_derivative_error": 0.0,
+      "reflected_right_derivative_error": 0.0,
+      "absorbed_right_value_error": 0.0,
+      "initial_mean_formula_error": 1.1368683772161603e-13
+    },
+    {
+      "occupation": 0.2,
+      "charge_rate": 1.0,
+      "backward_equation_error": 2.6645352591003757e-15,
+      "reflected_zero_derivative_error": 0.0,
+      "reflected_right_derivative_error": 0.0,
+      "absorbed_right_value_error": 0.0,
+      "initial_mean_formula_error": 0.0
+    },
+    {
+      "occupation": 0.2,
+      "charge_rate": 100.0,
+      "backward_equation_error": 1.532107773982716e-14,
+      "reflected_zero_derivative_error": 0.0,
+      "reflected_right_derivative_error": 0.0,
+      "absorbed_right_value_error": 0.0,
+      "initial_mean_formula_error": 0.0
+    },
+    {
+      "occupation": 0.2,
+      "charge_rate": 10000.0,
+      "backward_equation_error": 3.6060043839825084e-13,
+      "reflected_zero_derivative_error": 0.0,
+      "reflected_right_derivative_error": 0.0,
+      "absorbed_right_value_error": 0.0,
+      "initial_mean_formula_error": 2.220446049250313e-16
+    },
+    {
+      "occupation": 0.8,
+      "charge_rate": 0.01,
+      "backward_equation_error": 4.440892098500626e-16,
+      "reflected_zero_derivative_error": 0.0,
+      "reflected_right_derivative_error": 0.0,
+      "absorbed_right_value_error": 0.0,
+      "initial_mean_formula_error": 7.105427357601002e-15
+    },
+    {
+      "occupation": 0.8,
+      "charge_rate": 1.0,
+      "backward_equation_error": 5.551115123125783e-16,
+      "reflected_zero_derivative_error": 0.0,
+      "reflected_right_derivative_error": 0.0,
+      "absorbed_right_value_error": 0.0,
+      "initial_mean_formula_error": 0.0
+    },
+    {
+      "occupation": 0.8,
+      "charge_rate": 100.0,
+      "backward_equation_error": 1.4654943925052066e-14,
+      "reflected_zero_derivative_error": 0.0,
+      "reflected_right_derivative_error": 0.0,
+      "absorbed_right_value_error": 0.0,
+      "initial_mean_formula_error": 2.220446049250313e-16
+    },
+    {
+      "occupation": 0.8,
+      "charge_rate": 10000.0,
+      "backward_equation_error": 3.552713678800501e-13,
+      "reflected_zero_derivative_error": 0.0,
+      "reflected_right_derivative_error": 0.0,
+      "absorbed_right_value_error": 0.0,
+      "initial_mean_formula_error": 0.0
+    }
+  ],
+  "continuum_mean_time": "L^2/(2D) + (1-p)*L*coth(L*sqrt(nu/D))/(p*sqrt(D*nu))",
+  "discrete_mean_time": "L^2/(2D) + (1-p)*L*h*coth(N*theta)/(p*D*sinh(theta)); theta=2*asinh(h*sqrt(nu/D)/2)",
+  "continuum_fast_excess": "(1-p)*L/(p*sqrt(D*nu))",
+  "fixed_grid_fast_excess": "2*(1-p)*L/(p*h*nu)",
+  "distinction": "same absorbing limit, different leading finite-rate corrections; h must resolve sqrt(D/nu)",
+  "initial_state": "x=0 with charge occupation (1-p,p)",
+  "spatial_boundary": "both reflect at 0; sector0 reflects and sector1 absorbs at L",
+  "occupation_is_not_dopant_concentration": true,
+  "physical_clock": null,
+  "new_MD": 0,
+  "new_DFT": 0,
+  "new_potential_calls": 0,
+  "source_csv_sha256": "ce9d4f1b5f8a3a0e3f16421f5705dc5fa4a666b005b6cf8dc9d4cf49871d8c1c",
+  "material_approved": false,
+  "first_crack_calibrated": false
+}

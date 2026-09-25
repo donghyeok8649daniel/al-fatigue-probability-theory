@@ -136,3 +136,37 @@ def test_exact_hidden_charge_coordinates_and_memory_resolvent(sectors):
     full=r['projection']@np.linalg.solve(z*np.eye(len(blocks))-r['generator'].toarray(),r['lift'].toarray())
     assert_allclose(reduced,full,atol=2e-14,rtol=2e-13)
     assert np.max(abs(memory))>1e-3
+
+
+@pytest.mark.parametrize('scale',[1e-15,1.,1e15])
+def test_reversible_validation_is_invariant_under_time_units(scale):
+    generator=np.array([[-2.,1.],[2.,-1.]])*scale
+    pi=np.array([1/3,2/3])
+    expected=expm(generator*(.7/scale))
+    assert_allclose(reversible_propagator(generator,pi,.7/scale),expected,atol=1e-14)
+    leaking=generator.copy();leaking[1,1]-=.1*scale
+    with pytest.raises(ValueError,match='conserve'):
+        reversible_propagator(leaking,pi,.7/scale)
+    with pytest.raises(ValueError,match='stationary'):
+        reversible_propagator(generator,np.array([.5,.5]),.7/scale)
+
+
+@pytest.mark.parametrize('scale',[1e-15,1.,1e15])
+def test_stationary_irreversible_cycle_is_rejected_at_every_time_scale(scale):
+    cycle=scale*np.array([[-1.,0.,1.],[1.,-1.,0.],[0.,1.,-1.]])
+    with pytest.raises(ValueError,match='reversible'):
+        reversible_propagator(cycle,np.ones(3)/3,.7/scale)
+
+
+def test_fast_sector_cannot_hide_invalid_slow_sector():
+    from scipy.linalg import block_diag
+    slow=1e-15*np.array([[-1.,1.],[1.,-1.1]])
+    fast=np.array([[-1.,1.],[1.,-1.]])
+    with pytest.raises(ValueError,match='conserve'):
+        reversible_propagator(block_diag(slow,fast),np.ones(4)/4,.5)
+
+
+def test_zero_generator_and_unnormalized_equilibrium():
+    assert_allclose(reversible_propagator(np.zeros((2,2)),np.array([.2,.8]),1e15),np.eye(2))
+    with pytest.raises(ValueError,match='normalized'):
+        reversible_propagator(np.zeros((2,2)),np.array([.2,.8000001]),1.)

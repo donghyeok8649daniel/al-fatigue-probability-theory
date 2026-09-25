@@ -1,0 +1,51 @@
+{
+  "complete": false,
+  "missing_or_incomplete": [
+    "loading8",
+    "return8",
+    "loading10"
+  ],
+  "states": [
+    {
+      "state": "force100",
+      "dimension": 649,
+      "minimum_curvature_eV_A2": 0.027137869906690544,
+      "maximum_curvature_eV_A2": 22.89510698106874,
+      "negative_modes": 0,
+      "basis_orthogonality_max_error": 1.1102230246251565e-16,
+      "independent_spectrum_max_error_eV_A2": 7.105427357601002e-14,
+      "eigen_residual_frobenius_eV_A2": 5.022997879052239e-13,
+      "raw_asymmetry_max_eV_A2": 5.773159728050814e-15,
+      "force_FD_max_error_norm_eV_A2": 1.9576346446156067e-08,
+      "force_half_step_max_error_norm_eV_A2": 5.0042675441058614e-09,
+      "energy_FD_max_error_eV_A2": 3.793374824923035e-06,
+      "checked_directions": 6,
+      "reduced_gradient_norm_eV_A": 2.2561542693588994e-05,
+      "reduced_gradient_max_eV_A": 2.9320613446886384e-06,
+      "raw_hessian_sha256": "1363fccaed47ff822eaa7eb21d7c30d88979b078654123a98dd8c1754356ecd4",
+      "spectrum_sha256": "4d1fcca9d8bd287a7c4f2ee8d3ad7604350d38a65d39f9dec6f3df2dfa47439c",
+      "harmonic_stationarity_correction": {
+        "coordinate_norm_A": 4.263293660243807e-05,
+        "maximum_atom_displacement_A": 5.413145957197561e-06,
+        "predicted_energy_reduction_eV": 2.426799643812355e-10,
+        "solve_residual_eV_A": 2.365486992248756e-19,
+        "status": "linearized residual estimate only, not an actually relaxed state"
+      },
+      "relaxed_tangent": {
+        "schur_curvature_eV_A2": 0.12318743240178143,
+        "d_force_d_extension_eV_A2": 4.434747566464131,
+        "d_nominal_stress_d_extension_GPa_A": 3.7300922870304634,
+        "tangent_using_current_grip_distance_GPa": 112.3208151601367,
+        "convention": "finite bare prism and rigid grips; current grip distance; not bulk Young modulus",
+        "free_response_solve_residual": 4.323026412067541e-15
+      }
+    }
+  ],
+  "independent_method": "scipy.linalg.eigh evr versus original numpy.linalg.eigh; raw matrix and basis replay",
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "material_approved": false,
+  "physical_clock": null,
+  "positive_computed_Hessian_does_not_certify_global_or_finite_temperature_stability": true
+}

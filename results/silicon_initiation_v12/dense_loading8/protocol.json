@@ -1,0 +1,23 @@
+{
+  "state_sha256": "f8d77c17d143feca5746511e91e7ea410d43cbcd91a2c64f795a32cbc3945df3",
+  "geometry_sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d",
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "runner_sha256": "8f39cabcb4687af38638915c9ee82ed800c7bd6dcd4ef0ca0bcc0d492d4f19b7",
+  "ensemble": "displacement",
+  "dimension": 648,
+  "basis": "orthonormal Cartesian free displacements plus normalized rigid grip extension",
+  "grip_extension_basis_norm": 6.0,
+  "external_nominal_stress_GPa": 0.0,
+  "energy": "U - F*Delta; linear dead load has zero Hessian",
+  "method": "autograd reduced force Jacobian, one row at a time",
+  "symmetrization": "only after measuring and checking raw asymmetry",
+  "max_seconds": 6000.0,
+  "max_rows": 100000,
+  "units": "H: eV/Angstrom^2, coordinates: Angstrom in orthonormal Cartesian basis",
+  "no_atomic_mass_or_kinetic_time": true,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "first_crack_certified": false,
+  "material_approved": false,
+  "physical_clock": null
+}

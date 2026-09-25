@@ -1,0 +1,184 @@
+{
+  "complete": true,
+  "cases": 24,
+  "maximum_absolute_error_model_time": 1.3096723705530167e-10,
+  "formula": "3/r + 3*(1-p)*(nu^2+3*nu*r+r^2)/(nu*p*(nu+r)*(nu+3*r))",
+  "derivation": "solve five backward first-entry equations with T(q2,sector1)=0 and initial q0 charge weights (1-p,p)",
+  "large_nu_excess": "T-3/r = 3*(1-p)/(p*nu) + O(nu^-2)",
+  "small_nu_leading": "T = (1-p)/(p*nu) + O(1), for fixed 0<p<1",
+  "p_zero": "sector0 becomes a closed nonabsorbing class; no finite mean first-entry time",
+  "occupation_is_not_dopant_atomic_fraction": true,
+  "physical_clock": null,
+  "Si_initiation_calibrated": false,
+  "source_csv_sha256": "9961aaf74cf3682b51f9f83bf750fdec2de1207e3e2c6db1a1f9c136c23eda4e",
+  "values": [
+    {
+      "occupation": 0.02,
+      "charge_rate": 0.01,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 5107.016226567223,
+      "error": 1.3096723705530167e-10
+    },
+    {
+      "occupation": 0.02,
+      "charge_rate": 0.1,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 663.3461538461538,
+      "error": 8.981260180007666e-12
+    },
+    {
+      "occupation": 0.02,
+      "charge_rate": 1.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 120.13636363636364,
+      "error": 4.547473508864641e-13
+    },
+    {
+      "occupation": 0.02,
+      "charge_rate": 10.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 21.654807692307692,
+      "error": 1.0658141036401503e-14
+    },
+    {
+      "occupation": 0.02,
+      "charge_rate": 100.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 8.96416657480749,
+      "error": 0.0
+    },
+    {
+      "occupation": 0.02,
+      "charge_rate": 1000.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 7.646941246993013,
+      "error": 1.652011860642233e-13
+    },
+    {
+      "occupation": 0.02,
+      "charge_rate": 10000.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 7.514699412047035,
+      "error": 1.9628743075372768e-13
+    },
+    {
+      "occupation": 0.02,
+      "charge_rate": 100000.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 7.501469994120047,
+      "error": 1.936228954946273e-12
+    },
+    {
+      "occupation": 0.2,
+      "charge_rate": 0.01,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 423.78703890344696,
+      "error": 3.808509063674137e-12
+    },
+    {
+      "occupation": 0.2,
+      "charge_rate": 0.1,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 61.03846153846153,
+      "error": 3.552713678800501e-14
+    },
+    {
+      "occupation": 0.2,
+      "charge_rate": 1.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 16.6948051948052,
+      "error": 7.105427357601002e-15
+    },
+    {
+      "occupation": 0.2,
+      "charge_rate": 10.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 8.655494505494506,
+      "error": 3.552713678800501e-15
+    },
+    {
+      "occupation": 0.2,
+      "charge_rate": 100.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 7.6195238020251015,
+      "error": 1.7763568394002505e-15
+    },
+    {
+      "occupation": 0.2,
+      "charge_rate": 1000.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 7.511995203836165,
+      "error": 4.556355293061642e-13
+    },
+    {
+      "occupation": 0.2,
+      "charge_rate": 10000.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 7.50119995200384,
+      "error": 4.299671729768306e-12
+    },
+    {
+      "occupation": 0.2,
+      "charge_rate": 100000.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 7.500119999520003,
+      "error": 8.414691166080956e-11
+    },
+    {
+      "occupation": 0.8,
+      "charge_rate": 0.01,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 33.51793993146542,
+      "error": 7.105427357601002e-15
+    },
+    {
+      "occupation": 0.8,
+      "charge_rate": 0.1,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 10.846153846153845,
+      "error": 7.105427357601002e-15
+    },
+    {
+      "occupation": 0.8,
+      "charge_rate": 1.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 8.074675324675324,
+      "error": 1.7763568394002505e-15
+    },
+    {
+      "occupation": 0.8,
+      "charge_rate": 10.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 7.572218406593406,
+      "error": 7.105427357601002e-15
+    },
+    {
+      "occupation": 0.8,
+      "charge_rate": 100.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 7.507470237626569,
+      "error": 3.9968028886505635e-14
+    },
+    {
+      "occupation": 0.8,
+      "charge_rate": 1000.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 7.50074970023976,
+      "error": 5.879741138414829e-13
+    },
+    {
+      "occupation": 0.8,
+      "charge_rate": 10000.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 7.50007499700024,
+      "error": 4.062528091708373e-12
+    },
+    {
+      "occupation": 0.8,
+      "charge_rate": 100000.0,
+      "spatial_rate": 0.4,
+      "exact_MFPT": 7.500007499970001,
+      "error": 5.6407323256735253e-11
+    }
+  ]
+}

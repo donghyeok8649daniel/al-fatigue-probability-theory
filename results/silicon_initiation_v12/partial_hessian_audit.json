@@ -1,0 +1,21 @@
+{
+  "complete_partial_file_integrity_audit": true,
+  "rows": 539,
+  "full_dimension": 648,
+  "raw_all_finite": true,
+  "basis_shape": [
+    1080,
+    648
+  ],
+  "known_leading_block_asymmetry_max_eV_A2": 5.329070518200751e-15,
+  "known_leading_principal_block_minimum_curvature_eV_A2": 0.054127303127422324,
+  "reduced_gradient_max_eV_A": 0.0007220006223479236,
+  "full_matrix_completed": false,
+  "full_matrix_stability_certified": false,
+  "interpretation": "positive leading principal block does not certify the missing full matrix; no independent derivative checks at this state completed",
+  "analysis_after_resume": true,
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "partial_file_sha256": "3495625f164cb1557b914cdb0abc4a964af7e79a48f6dda77a4e9b81ad69f71e"
+}

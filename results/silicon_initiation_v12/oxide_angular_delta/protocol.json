@@ -1,0 +1,42 @@
+{
+  "selection": "all 487 condensed Si/O/H or Si/O CP2K frames already evaluated in v11",
+  "train_test": "leave-one-entire-composition-out, five folds; no random-frame split",
+  "target": "DFT minus baseline MACE forces; equal weight per frame",
+  "energy_fit": false,
+  "energy_offset_fit": false,
+  "regularization": false,
+  "radial_centers_A": [
+    1.4,
+    1.6285714285714286,
+    1.8571428571428572,
+    2.0857142857142854,
+    2.314285714285714,
+    2.5428571428571427,
+    2.7714285714285714,
+    3.0
+  ],
+  "width_A": 0.24,
+  "cutoff_A": 3.5,
+  "window": "quintic rise .6->1.0 A and fall 2.8->3.5 A; energy and first two derivatives vanish at endpoints",
+  "coefficients": 17,
+  "basis": "angular",
+  "angular_definition": "P0/P1/P2 for O-Si-O, Si-O-Si, Si-Si-O; radial Gaussian 1.8/.45 A and quintic cutoff 2.2->2.8 A",
+  "architecture_selection": "angular extension motivated after seeing radial-only external QE failure; external QE is reused diagnostic, not untouched model-selection test",
+  "runner_sha256": "41f7ab9e0b9e9fc6e1ba46b87dbc85b48ef382fb90d86576e69792154610d7c4",
+  "mace_weights_changed": false,
+  "production_enabled": false,
+  "material_approved": false,
+  "source_method_CP2K": "GPW/PBE/GTH/DZ/650 Ry",
+  "source_method_QE": "PBE/PAW; distinct basis and cutoff conventions",
+  "external_QE": "not used to fit delta candidate; MACE pretraining overlap remains unaudited",
+  "complete_source_compounds": [
+    "H32O18Si192",
+    "H32O48Si192",
+    "H32O60Si192",
+    "H32O8Si192",
+    "O144Si72"
+  ],
+  "new_DFT": 0,
+  "new_MD": 0,
+  "new_MACE_calls": 0
+}

@@ -1,0 +1,245 @@
+{
+  "status": "final accounting after interrupted eight-hour plan",
+  "requested_eight_hours_completed": false,
+  "actual_new_potential_forward_evaluations": 55,
+  "actual_autograd_Hessian_rows": 1192,
+  "actual_new_DFT": 0,
+  "actual_new_MD": 0,
+  "actual_linear_fits": 12,
+  "full_constrained_Hessians": 1,
+  "planned_full_constrained_Hessians": 4,
+  "partial_loading8_rows": 539,
+  "partial_loading8_dimension": 648,
+  "small_probe_rows": 4,
+  "small_probe_dimension": 649,
+  "potential_call_accounting": "1 probe forward +4 independent standard calculator calls +49 completed force100 forwards +1 partial loading8 forward",
+  "Hessian_row_accounting": "4 probe +649 completed force100 +539 partial loading8",
+  "elapsed_is_not_CPU_time": "loading8 elapsed includes Windows hibernation; never summed as continuous compute time",
+  "large_structure_priority_revision": "prepared before prediction: prioritize69 oxygen-containing larger frames;99 larger pure-Si frames deferred; neither executed",
+  "source_preparation_is_not_execution": true,
+  "entries": [
+    {
+      "name": "four_row_probe",
+      "result": "hessian_probe/summary.json",
+      "complete": false,
+      "interruption": "explicit direct-Hessian budget; partial rows retained",
+      "completed_rows": 4,
+      "dimension": 649,
+      "new_graph_evaluations": 1,
+      "autograd_vjp_rows": 4,
+      "elapsed_s": 22.08265560003929,
+      "new_DFT": 0,
+      "new_MD": 0,
+      "first_crack_certified": false,
+      "physical_clock": null
+    },
+    {
+      "name": "force100_full",
+      "result": "dense_force100/summary.json",
+      "complete": true,
+      "interruption": null,
+      "completed_rows": 649,
+      "dimension": 649,
+      "new_graph_evaluations": 49,
+      "autograd_vjp_rows": 649,
+      "elapsed_s": 4022.967981300084,
+      "new_DFT": 0,
+      "new_MD": 0,
+      "first_crack_certified": false,
+      "physical_clock": null,
+      "raw_max_asymmetry_eV_A2": 5.773159728050814e-15,
+      "raw_frobenius_norm_eV_A2": 307.2312683025358,
+      "minimum_curvature_eV_A2": 0.02713786990668448,
+      "maximum_curvature_eV_A2": 22.895106981068725,
+      "negative_eigenvalues": 0,
+      "lowest_eight_eV_A2": [
+        0.02713786990668448,
+        0.034599055993875645,
+        0.052614931967618635,
+        0.08066118913842933,
+        0.08620224112412357,
+        0.12068318454238361,
+        0.1525486738452301,
+        0.17652174734815904
+      ],
+      "eigensystem_residual_frobenius": 5.022997879052239e-13,
+      "orthogonality_max_error": 3.12944115066216e-15,
+      "fixed_grip_at_same_state_lowest_eight_eV_A2": [
+        0.02713786990669269,
+        0.03471665016498888,
+        0.05261493196762591,
+        0.08620224112410886,
+        0.12068318440765179,
+        0.15254867384525053,
+        0.17648005710352505,
+        0.18779062625885298
+      ],
+      "fixed_grip_at_same_state_negative_eigenvalues": 0,
+      "relaxed_grip_tangent": {
+        "schur_curvature_eV_A2": 0.12318743240178143,
+        "d_force_d_extension_eV_A2": 4.434747566464131,
+        "d_nominal_stress_d_extension_GPa_A": 3.7300922870304634,
+        "tangent_using_current_grip_distance_GPa": 112.3208151601367,
+        "convention": "finite bare prism and rigid grips; current grip distance; not bulk Young modulus",
+        "free_response_solve_residual": 4.323026412067541e-15
+      },
+      "independent_checked_directions": 6,
+      "local_hessian_is_not_global_or_material_validation": true
+    },
+    {
+      "name": "loading8_partial",
+      "result": "dense_loading8/summary.json",
+      "complete": false,
+      "interruption": "explicit direct-Hessian budget; partial rows retained",
+      "completed_rows": 539,
+      "dimension": 648,
+      "new_graph_evaluations": 1,
+      "autograd_vjp_rows": 539,
+      "elapsed_s": 50464.411301100045,
+      "new_DFT": 0,
+      "new_MD": 0,
+      "first_crack_certified": false,
+      "physical_clock": null
+    },
+    {
+      "name": "probe_standard_calculator_difference",
+      "status": "complete",
+      "new_model_calls": 4,
+      "result": "hessian_probe/standard_calculator_replay.json"
+    },
+    {
+      "name": "radial_delta_fit",
+      "status": "complete_not_adopted",
+      "actual_linear_fits": 6,
+      "new_model_calls": 0
+    },
+    {
+      "name": "radial_angular_delta_fit",
+      "status": "complete_not_adopted",
+      "actual_linear_fits": 6,
+      "new_model_calls": 0
+    },
+    {
+      "name": "structural_descriptors",
+      "status": "complete",
+      "stored_states_reanalyzed": 7,
+      "new_model_calls": 0
+    },
+    {
+      "name": "charge_validator",
+      "status": "reproduced_fixed_and_tested",
+      "old_max_probability_loss": 0.06866588757887537,
+      "new_model_calls": 0
+    },
+    {
+      "name": "v9_charge_regression",
+      "status": "actually_rerun",
+      "byte_equal_reference_files": 5,
+      "new_model_calls": 0
+    },
+    {
+      "name": "hard_charge_boundary",
+      "status": "complete_synthetic",
+      "matrices": 24,
+      "time_points": 120,
+      "exact_boundary_controls": 27,
+      "new_model_calls": 0
+    },
+    {
+      "name": "charge_spatial_continuum",
+      "status": "complete_synthetic",
+      "sparse_backward_systems": 120,
+      "analytic_boundary_checks": 12,
+      "full_vector_replay_states": 5190,
+      "new_model_calls": 0
+    },
+    {
+      "name": "implementation_tests",
+      "status": "complete",
+      "tests_passed": 63,
+      "warnings": 2,
+      "elapsed_seconds": 5.16,
+      "source_files_bound": 14
+    },
+    {
+      "name": "initial_windows_powershell_launcher",
+      "status": "failed_then_recovered",
+      "reason": "execution policy; no atomic calculation started in failed attempt"
+    },
+    {
+      "name": "first_test_record_wrapper",
+      "status": "recording_failed_then_recovered",
+      "reason": "warning-bearing pytest summary parser; tests themselves passed63; final rerun binds source hashes"
+    },
+    {
+      "name": "dense_return8",
+      "status": "not_executed",
+      "new_model_calls": 0
+    },
+    {
+      "name": "dense_loading10",
+      "status": "not_executed",
+      "new_model_calls": 0
+    },
+    {
+      "name": "grip_augmented",
+      "status": "not_executed",
+      "new_model_calls": 0
+    },
+    {
+      "name": "large_oxide_321_1200",
+      "status": "not_executed",
+      "new_model_calls": 0
+    },
+    {
+      "name": "large_oxide_replay",
+      "status": "not_executed",
+      "new_model_calls": 0
+    },
+    {
+      "name": "large_delta_transfer",
+      "status": "not_executed",
+      "new_model_calls": 0
+    },
+    {
+      "name": "mpa_stratified_comparison",
+      "status": "not_executed",
+      "new_model_calls": 0
+    },
+    {
+      "name": "mpa_independent_replay",
+      "status": "not_executed",
+      "new_model_calls": 0
+    },
+    {
+      "name": "return_zero_force",
+      "status": "not_executed",
+      "new_model_calls": 0
+    },
+    {
+      "name": "zero_force_return_replay",
+      "status": "not_executed",
+      "new_model_calls": 0
+    },
+    {
+      "name": "hessian_localization",
+      "status": "not_executed",
+      "new_model_calls": 0
+    },
+    {
+      "name": "local_harmonic_diagnostic",
+      "status": "not_executed",
+      "new_model_calls": 0
+    },
+    {
+      "name": "local_anharmonic_audit",
+      "status": "not_executed",
+      "new_model_calls": 0
+    },
+    {
+      "name": "mpa_prism_transfer",
+      "status": "not_executed",
+      "new_model_calls": 0
+    }
+  ]
+}

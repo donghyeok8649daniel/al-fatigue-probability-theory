@@ -1,0 +1,28 @@
+{
+  "complete": true,
+  "synthetic": true,
+  "common_law_unchanged": true,
+  "states": 6,
+  "charge_occupations": [
+    0.02,
+    0.2,
+    0.8
+  ],
+  "hard_target": "q2 in sector1 only",
+  "initial": "q0, local charge-equilibrium weights",
+  "cases": 24,
+  "stored_time_points": 120,
+  "boundary_exact_checks": 27,
+  "maximum_mass_error": 2.308220281577178e-11,
+  "maximum_Pade_vs_Krylov_error": 5.995204332975845e-15,
+  "maximum_independent_backward_equation_error": 0.0,
+  "exact_boundary_survival": "exp(-nu*w_B*t) for initial q2/sector0 and no spatial motion",
+  "hard_fast_limit": "q2 is entirely absorbing when nu*w_B dominates spatial rates; both sectors must be removed at this projected coordinate",
+  "finite_rate_condition": "nu*w_B, not nu alone; a small equilibrium target weight can delay the fast boundary limit",
+  "caveat": "fixed-grid synthetic limit; does not identify actual Si initiating basins or commute automatically with spatial mesh refinement",
+  "new_DFT": 0,
+  "new_MD": 0,
+  "new_MACE": 0,
+  "physical_clock": null,
+  "Si_initiation_calibrated": false
+}

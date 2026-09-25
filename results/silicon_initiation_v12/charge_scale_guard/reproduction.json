@@ -1,0 +1,37 @@
+{
+  "baseline_commit": "86360a08abb0a1083dbefb4e4d3024bd959ebd03",
+  "baseline_source_git_sha256": "d4c1f0effd96857a4a73b9301e9158e57550c1cd1b88e273869531f00505c653",
+  "leaking_generator": [
+    [
+      -1e-15,
+      1e-15
+    ],
+    [
+      1e-15,
+      -1.1000000000000001e-15
+    ]
+  ],
+  "column_residual": [
+    0.0,
+    -1.0000000000000005e-16
+  ],
+  "old_propagator": [
+    [
+      0.5610667336347043,
+      0.4114081986515782
+    ],
+    [
+      0.41140819865157824,
+      0.5199259137695464
+    ]
+  ],
+  "old_column_masses": [
+    0.9724749322862825,
+    0.9313341124211246
+  ],
+  "old_maximum_mass_loss": 0.06866588757887537,
+  "new_rejection": "generator must conserve probability in each column",
+  "scope": "synthetic implementation regression; no Si rates or physical time",
+  "new_DFT": 0,
+  "new_MD": 0
+}

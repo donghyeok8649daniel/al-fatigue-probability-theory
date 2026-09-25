@@ -1,0 +1,71 @@
+{
+  "tests_passed": 63,
+  "test_elapsed_seconds": 5.16,
+  "command": "python -m pytest solver_v1/test_silicon_charge_dynamics.py solver_v1/test_silicon_initiation_probability.py solver_v1/test_silicon_initiation_research.py solver_v1/test_silicon_structure_diagnostics_v12.py solver_v1/test_silicon_oxide_delta_v12.py solver_v1/test_silicon_oxide_angular_delta_v12.py -q",
+  "log_summary": "63 passed, 2 warnings in 5.16s",
+  "log_path_redaction": "repository and Python environment absolute paths replaced by labels; warning text retained",
+  "started_UTC": "2026-09-24T19:47:32.659165+00:00",
+  "finished_UTC": "2026-09-24T19:47:39.345711+00:00",
+  "source_files": [
+    {
+      "path": "solver_v1/probability_pde_2d.py",
+      "sha256": "34504363059cbf1c0f6073c7a3b7624fb3e5a07b2355330bfcbf145182bb9cba"
+    },
+    {
+      "path": "solver_v1/silicon_charge_dynamics.py",
+      "sha256": "fddd750ab6c459a1e0990e7eeca3d39072318e8ea3156c1ead8f1a9922adac0e"
+    },
+    {
+      "path": "solver_v1/silicon_initiation_probability.py",
+      "sha256": "17181c340039f2062ca20b85470b47126a9629097ad5b5dffb018080db184cbf"
+    },
+    {
+      "path": "solver_v1/silicon_initiation_research.py",
+      "sha256": "94902a72b428930cd77ade29d3aa6717a9ff91bed4abec0267655ad01b07aad9"
+    },
+    {
+      "path": "solver_v1/silicon_oxide_angular_delta_v12.py",
+      "sha256": "f9d0c4a5400cc5ed01b7ddeef4fdb4fb4ab281b9fb401c78c44dbf46e636507c"
+    },
+    {
+      "path": "solver_v1/silicon_oxide_delta_v12.py",
+      "sha256": "4a88d73c66dc902e5f8bee5ab483e6b12ead61d789940379e402c52497673ac6"
+    },
+    {
+      "path": "solver_v1/silicon_oxide_research.py",
+      "sha256": "a307b1512deaf84e9defd53695663ae7962c80c49835d8d1c779bf9aed93ff30"
+    },
+    {
+      "path": "solver_v1/silicon_structure_diagnostics_v12.py",
+      "sha256": "24f55ae1640fab1368479ca46c2d1955c9596b70ff23f3da511a8f355c5b478f"
+    },
+    {
+      "path": "solver_v1/test_silicon_charge_dynamics.py",
+      "sha256": "fddcdb572687a97d73e0f2eeb858997c45c23cd9a84df523511d8ff200651e77"
+    },
+    {
+      "path": "solver_v1/test_silicon_initiation_probability.py",
+      "sha256": "8601987af6d82e71966d41c4e084f56695f46a5171a238b42d1313372b32d1ad"
+    },
+    {
+      "path": "solver_v1/test_silicon_initiation_research.py",
+      "sha256": "7a9e9f3a48017a0045906379c11a96f689595621dfb6f0496f3b090948218216"
+    },
+    {
+      "path": "solver_v1/test_silicon_oxide_angular_delta_v12.py",
+      "sha256": "b108b56e8af5bba30b1ce22d32f4d6b31951bb55952dbc6293cd7dc5179a92ab"
+    },
+    {
+      "path": "solver_v1/test_silicon_oxide_delta_v12.py",
+      "sha256": "9e94bd205f8bba28c20ffaf1709e30d0c500042d7d9b532555389edd008280d5"
+    },
+    {
+      "path": "solver_v1/test_silicon_structure_diagnostics_v12.py",
+      "sha256": "d85bfe3fca6b894f2fe9a3c34b5c50a5960a0d56a47f97177ea030beadddfc64"
+    }
+  ],
+  "scope": "probability conservation/first passage/charge dynamics; prism work and geometry; conservative oxide force derivatives and invariances",
+  "new_atomic_calculations": 0,
+  "material_approved": false,
+  "kinetic_clock_calibrated": false
+}

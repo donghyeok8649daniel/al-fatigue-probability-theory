@@ -1,0 +1,74 @@
+{
+  "complete": true,
+  "training_frames": 487,
+  "folds": 5,
+  "external_QE_frames": 1159,
+  "held_composition_baseline_RMSE_eV_A": 0.3149887403586964,
+  "held_composition_candidate_RMSE_eV_A": 0.3118490968374179,
+  "all_fit": {
+    "rank": 8,
+    "singular_values": [
+      24.12139511797813,
+      20.940972175375627,
+      18.179904523486368,
+      14.111687276678389,
+      7.219599352302836,
+      3.9929966566270982,
+      3.0161866370022614,
+      1.3338500103772546
+    ],
+    "condition_number": 18.084038632766394,
+    "coefficients_eV": [
+      0.06424949215607716,
+      0.08892330665158676,
+      0.016833197620353905,
+      0.12532277064756076,
+      -0.007384987439807099,
+      0.1102877152552463,
+      -0.019899159109326867,
+      0.035541989335108506
+    ],
+    "weighted_force_residual_norm": 6.75795649285865,
+    "normal_equation_residual_norm": 6.035419212857749e-14,
+    "frame_count": 487,
+    "force_components": 359916
+  },
+  "external_QE_groups": [
+    {
+      "group": "mixed_other_stoichiometry",
+      "frames": 173,
+      "atoms": 7039,
+      "baseline_RMSE_eV_A": 0.3427228086530711,
+      "candidate_RMSE_eV_A": 0.3416069770786762
+    },
+    {
+      "group": "SiO2_stoichiometry",
+      "frames": 493,
+      "atoms": 5823,
+      "baseline_RMSE_eV_A": 0.1582274890688484,
+      "candidate_RMSE_eV_A": 0.17163464782991156
+    },
+    {
+      "group": "O_only",
+      "frames": 22,
+      "atoms": 54,
+      "baseline_RMSE_eV_A": 0.972752744624552,
+      "candidate_RMSE_eV_A": 0.972752744624552
+    },
+    {
+      "group": "Si_only",
+      "frames": 471,
+      "atoms": 4497,
+      "baseline_RMSE_eV_A": 1.2737890366931888,
+      "candidate_RMSE_eV_A": 1.2737890366931888
+    }
+  ],
+  "elapsed_s": 37.15182609995827,
+  "models_fitted": 6,
+  "new_MACE_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "material_approved": false,
+  "does_not_determine_initiation_barriers": true,
+  "production_enabled": false
+}

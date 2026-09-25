@@ -1,0 +1,163 @@
+{
+  "complete": true,
+  "records": [
+    {
+      "family": "radial",
+      "composition": "H32O18Si192",
+      "frames": 86,
+      "atoms_per_frame": 242,
+      "pairs": 3655,
+      "baseline_pair_difference_RMSE_eV": 3.142193711859484,
+      "candidate_pair_difference_RMSE_eV": 2.7240907339722886,
+      "baseline_pair_difference_RMSE_eV_atom": 0.012984271536609438,
+      "candidate_pair_difference_RMSE_eV_atom": 0.011256573280877225,
+      "baseline_worst_pair_difference_error_eV": 17.359868086587085,
+      "candidate_worst_pair_difference_error_eV": 15.819791065088793,
+      "per_atom_replay_error_eV_atom": 9.506284648352903e-16
+    },
+    {
+      "family": "radial",
+      "composition": "H32O48Si192",
+      "frames": 80,
+      "atoms_per_frame": 272,
+      "pairs": 3160,
+      "baseline_pair_difference_RMSE_eV": 3.1240498077432375,
+      "candidate_pair_difference_RMSE_eV": 2.9151441274514833,
+      "baseline_pair_difference_RMSE_eV_atom": 0.011485477234350137,
+      "candidate_pair_difference_RMSE_eV_atom": 0.010717441645042219,
+      "baseline_worst_pair_difference_error_eV": 18.465924881777028,
+      "candidate_worst_pair_difference_error_eV": 16.378073076593864,
+      "per_atom_replay_error_eV_atom": 3.0513785942432037e-15
+    },
+    {
+      "family": "radial",
+      "composition": "H32O60Si192",
+      "frames": 76,
+      "atoms_per_frame": 284,
+      "pairs": 2850,
+      "baseline_pair_difference_RMSE_eV": 3.4759438035344363,
+      "candidate_pair_difference_RMSE_eV": 3.4170102358943875,
+      "baseline_pair_difference_RMSE_eV_atom": 0.012239238744839565,
+      "candidate_pair_difference_RMSE_eV_atom": 0.012031726182726717,
+      "baseline_worst_pair_difference_error_eV": 18.597406030399725,
+      "candidate_worst_pair_difference_error_eV": 18.19907951753703,
+      "per_atom_replay_error_eV_atom": 2.3071822230491534e-15
+    },
+    {
+      "family": "radial",
+      "composition": "H32O8Si192",
+      "frames": 181,
+      "atoms_per_frame": 232,
+      "pairs": 16290,
+      "baseline_pair_difference_RMSE_eV": 5.516843752919996,
+      "candidate_pair_difference_RMSE_eV": 5.317042556431462,
+      "baseline_pair_difference_RMSE_eV_atom": 0.023779498934999983,
+      "candidate_pair_difference_RMSE_eV_atom": 0.022918286881170095,
+      "baseline_worst_pair_difference_error_eV": 12.126308190501732,
+      "candidate_worst_pair_difference_error_eV": 11.817150245846278,
+      "per_atom_replay_error_eV_atom": 1.9081958235744878e-16
+    },
+    {
+      "family": "radial",
+      "composition": "O144Si72",
+      "frames": 64,
+      "atoms_per_frame": 216,
+      "pairs": 2016,
+      "baseline_pair_difference_RMSE_eV": 1.8312039637967237,
+      "candidate_pair_difference_RMSE_eV": 1.1387972882631583,
+      "baseline_pair_difference_RMSE_eV_atom": 0.008477796128688535,
+      "candidate_pair_difference_RMSE_eV_atom": 0.005272209667884992,
+      "baseline_worst_pair_difference_error_eV": 8.085315286443802,
+      "candidate_worst_pair_difference_error_eV": 4.90291427540069,
+      "per_atom_replay_error_eV_atom": 6.337812219481265e-15
+    },
+    {
+      "family": "angular",
+      "composition": "H32O18Si192",
+      "frames": 86,
+      "atoms_per_frame": 242,
+      "pairs": 3655,
+      "baseline_pair_difference_RMSE_eV": 3.142193711859484,
+      "candidate_pair_difference_RMSE_eV": 2.790482706486924,
+      "baseline_pair_difference_RMSE_eV_atom": 0.012984271536609438,
+      "candidate_pair_difference_RMSE_eV_atom": 0.011530920274739355,
+      "baseline_worst_pair_difference_error_eV": 17.359868086587085,
+      "candidate_worst_pair_difference_error_eV": 15.664130998269684,
+      "per_atom_replay_error_eV_atom": 9.506284648352903e-16
+    },
+    {
+      "family": "angular",
+      "composition": "H32O48Si192",
+      "frames": 80,
+      "atoms_per_frame": 272,
+      "pairs": 3160,
+      "baseline_pair_difference_RMSE_eV": 3.1240498077432375,
+      "candidate_pair_difference_RMSE_eV": 2.9186116178497548,
+      "baseline_pair_difference_RMSE_eV_atom": 0.011485477234350137,
+      "candidate_pair_difference_RMSE_eV_atom": 0.010730189771506452,
+      "baseline_worst_pair_difference_error_eV": 18.465924881777028,
+      "candidate_worst_pair_difference_error_eV": 16.339510684789275,
+      "per_atom_replay_error_eV_atom": 1.8231943732516243e-15
+    },
+    {
+      "family": "angular",
+      "composition": "H32O60Si192",
+      "frames": 76,
+      "atoms_per_frame": 284,
+      "pairs": 2850,
+      "baseline_pair_difference_RMSE_eV": 3.4759438035344363,
+      "candidate_pair_difference_RMSE_eV": 3.376382193109172,
+      "baseline_pair_difference_RMSE_eV_atom": 0.012239238744839565,
+      "candidate_pair_difference_RMSE_eV_atom": 0.01188866969404638,
+      "baseline_worst_pair_difference_error_eV": 18.597406030399725,
+      "candidate_worst_pair_difference_error_eV": 17.721745186121552,
+      "per_atom_replay_error_eV_atom": 2.3071822230491534e-15
+    },
+    {
+      "family": "angular",
+      "composition": "H32O8Si192",
+      "frames": 181,
+      "atoms_per_frame": 232,
+      "pairs": 16290,
+      "baseline_pair_difference_RMSE_eV": 5.516843752919996,
+      "candidate_pair_difference_RMSE_eV": 5.27842422738292,
+      "baseline_pair_difference_RMSE_eV_atom": 0.023779498934999983,
+      "candidate_pair_difference_RMSE_eV_atom": 0.022751828566305688,
+      "baseline_worst_pair_difference_error_eV": 12.126308190501732,
+      "candidate_worst_pair_difference_error_eV": 11.794418676356145,
+      "per_atom_replay_error_eV_atom": 3.0531133177191805e-16
+    },
+    {
+      "family": "angular",
+      "composition": "O144Si72",
+      "frames": 64,
+      "atoms_per_frame": 216,
+      "pairs": 2016,
+      "baseline_pair_difference_RMSE_eV": 1.8312039637967237,
+      "candidate_pair_difference_RMSE_eV": 1.9804881235892011,
+      "baseline_pair_difference_RMSE_eV_atom": 0.008477796128688535,
+      "candidate_pair_difference_RMSE_eV_atom": 0.009168926498098154,
+      "baseline_worst_pair_difference_error_eV": 8.085315286443802,
+      "candidate_worst_pair_difference_error_eV": 7.698068121899269,
+      "per_atom_replay_error_eV_atom": 1.5421691701433815e-15
+    }
+  ],
+  "sources": [
+    {
+      "path": "oxide_radial_delta/held_composition_frames.csv",
+      "sha256": "8a598ac9cc1bc878641a3c26876164d52f063982e4a4bd7c55edebc0403dfa54"
+    },
+    {
+      "path": "oxide_angular_delta/held_composition_frames.csv",
+      "sha256": "a54f373678bca89142bc47f601ed7bd805237dc979fec3fd497e593a9334f696"
+    }
+  ],
+  "energy_reference": "pair differences only within exact chemical composition; no cross-stoichiometry formation energies",
+  "caveat": "many source pairs are correlated and do not lie on validated initiation paths; whole-configuration differences are not barrier-error estimates",
+  "new_fits": 0,
+  "new_MACE": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "material_approved": false,
+  "physical_clock": null
+}

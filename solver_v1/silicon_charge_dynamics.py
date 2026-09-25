@@ -88,24 +88,38 @@ def reversible_propagator(generator, equilibrium, time):
     time = float(time)
     if (l.ndim != 2 or l.shape[0] != l.shape[1] or pi.shape != (len(l),)
             or not np.all(np.isfinite(l)) or not np.all(np.isfinite(pi)) or np.any(pi <= 0)
-            or not np.isfinite(time) or time < 0 or not np.isclose(sum(pi), 1)):
+            or not np.isfinite(time) or time < 0 or not np.isclose(sum(pi), 1, rtol=0, atol=1e-13)):
         raise ValueError('finite generator and normalized positive equilibrium required')
+    from .silicon_initiation_probability import check_generator
+    check_generator(l)
+    # Uniform changes of time units must not hide probability loss or a false
+    # equilibrium. A global/unit-sized absolute tolerance also masks a slow
+    # disconnected sector next to a fast one; check local flux scales instead.
+    stationary=l@pi
+    local_scale=abs(l)@pi
+    conductance=l*pi[None,:]
+    if (not np.all(np.isfinite(conductance)) or not np.all(np.isfinite(local_scale))
+            or np.any(abs(stationary)>1e-11*local_scale)
+            or np.any(abs(conductance-conductance.T)>1e-11*(abs(conductance)+abs(conductance.T)))):
+        raise ValueError('conservative reversible stationary generator required')
+    off=l.copy();np.fill_diagonal(off,0)
+    if np.any((off>0)&(conductance==0)):
+        raise ValueError('equilibrium conductance numerically underflowed')
     root = np.sqrt(pi)
     h = l*root[None, :]/root[:, None]
-    scale = max(1., float(np.max(abs(l))))
-    if (np.max(abs(l.sum(axis=0))) > 1e-11*scale
-            or np.max(abs(l@pi)) > 1e-11*scale
-            or not np.allclose(h, h.T, rtol=1e-11, atol=1e-11*scale)):
-        raise ValueError('conservative reversible stationary generator required')
-    off = l.copy()
-    np.fill_diagonal(off, 0)
-    if np.min(off) < 0:
-        raise ValueError('negative transition rate')
+    if not np.all(np.isfinite(h)):
+        raise ValueError('reversible similarity transform numerically unresolved')
+    scale = float(np.max(abs(l)))
+    if scale==0:return np.eye(len(l))
     values, vectors = eigh(h)
     if values[-1] > 1e-10*scale:
         raise ValueError('generator has a positive mode')
     # Do not clip even the floating-point zero eigenvalue; expose its residual.
-    return root[:, None]*((vectors*np.exp(values*time))@vectors.T)/root[None, :]
+    result=root[:, None]*((vectors*np.exp(values*time))@vectors.T)/root[None, :]
+    if (not np.all(np.isfinite(result)) or np.min(result)<-1e-11
+            or np.max(abs(result.sum(axis=0)-1))>1e-9):
+        raise ValueError('spectral propagator probability balance numerically unresolved')
+    return result
 
 
 def charge_memory_blocks(research_generator):

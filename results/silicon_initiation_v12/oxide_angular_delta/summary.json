@@ -1,0 +1,92 @@
+{
+  "complete": true,
+  "training_frames": 487,
+  "folds": 5,
+  "external_QE_frames": 1159,
+  "held_composition_baseline_RMSE_eV_A": 0.3149887403586964,
+  "held_composition_candidate_RMSE_eV_A": 0.3085557241492478,
+  "all_fit": {
+    "rank": 17,
+    "singular_values": [
+      26.254538737279873,
+      24.152505842609983,
+      21.58625631983813,
+      16.22241388817802,
+      14.059135243844326,
+      9.499945313266903,
+      8.126348276639852,
+      6.33773610194712,
+      5.178501103832338,
+      4.793823077065864,
+      3.9929987815852632,
+      3.7697661598789947,
+      3.4372176430121555,
+      3.1601636339716888,
+      1.9488707290239973,
+      1.5415559109237393,
+      0.9377252233194979
+    ],
+    "condition_number": 27.998115102780524,
+    "coefficients_eV": [
+      0.05673173895371116,
+      0.08150707830079276,
+      0.014157508138708905,
+      0.12374438770660373,
+      -0.037056088861128586,
+      0.12021405532592519,
+      -0.02293648646608267,
+      0.037329314207418814,
+      0.04160460835060453,
+      -0.01781793966701713,
+      0.02278042675446606,
+      0.06258323990651234,
+      0.3051238251264336,
+      0.13665022339613025,
+      0.027940641832948376,
+      -0.003148823061968246,
+      0.18347354214678596
+    ],
+    "weighted_force_residual_norm": 6.658867186401045,
+    "normal_equation_residual_norm": 8.300134384225476e-14,
+    "frame_count": 487,
+    "force_components": 359916
+  },
+  "external_QE_groups": [
+    {
+      "group": "mixed_other_stoichiometry",
+      "frames": 173,
+      "atoms": 7039,
+      "baseline_RMSE_eV_A": 0.3427228086530711,
+      "candidate_RMSE_eV_A": 0.3466361855253483
+    },
+    {
+      "group": "SiO2_stoichiometry",
+      "frames": 493,
+      "atoms": 5823,
+      "baseline_RMSE_eV_A": 0.1582274890688484,
+      "candidate_RMSE_eV_A": 0.1874918653641055
+    },
+    {
+      "group": "O_only",
+      "frames": 22,
+      "atoms": 54,
+      "baseline_RMSE_eV_A": 0.972752744624552,
+      "candidate_RMSE_eV_A": 0.972752744624552
+    },
+    {
+      "group": "Si_only",
+      "frames": 471,
+      "atoms": 4497,
+      "baseline_RMSE_eV_A": 1.2737890366931888,
+      "candidate_RMSE_eV_A": 1.2737890366931888
+    }
+  ],
+  "elapsed_s": 41.48491450003348,
+  "models_fitted": 6,
+  "new_MACE_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "material_approved": false,
+  "does_not_determine_initiation_barriers": true,
+  "production_enabled": false
+}

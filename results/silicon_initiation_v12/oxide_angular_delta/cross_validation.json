@@ -1,0 +1,476 @@
+{
+  "folds": [
+    {
+      "held_composition": "H32O18Si192",
+      "fit": {
+        "rank": 17,
+        "singular_values": [
+          25.229100781108883,
+          22.465660773243254,
+          20.279808526634667,
+          14.972430855214677,
+          12.973690627674694,
+          8.828570488869406,
+          7.662956624339472,
+          5.8407976049139405,
+          4.649375800006353,
+          4.425804128814619,
+          3.6221605388322993,
+          3.4233369072604813,
+          3.1771672145056327,
+          2.904991770074885,
+          1.8432800302842303,
+          1.4353411868420305,
+          0.8855685265707528
+        ],
+        "condition_number": 28.489156992520098,
+        "coefficients_eV": [
+          0.049811364364121195,
+          0.09404750427610306,
+          0.015757410479655214,
+          0.13232482575785307,
+          -0.030499033423875426,
+          0.10464255348938929,
+          -0.020118537188087694,
+          0.033722265258543424,
+          0.035816822169160364,
+          -0.015901957074851324,
+          0.02413889149641439,
+          0.05693369007516297,
+          0.3176902073386027,
+          0.14390320690659378,
+          0.0198903655646467,
+          -0.005028180084366129,
+          0.18896487638897091
+        ],
+        "weighted_force_residual_norm": 5.929674293396833,
+        "normal_equation_residual_norm": 1.4046467016588664e-13,
+        "frame_count": 401,
+        "force_components": 297480
+      },
+      "train": {
+        "frames": 401,
+        "atoms": 99160,
+        "baseline_force_RMSE_eV_A": 0.31040440007058717,
+        "candidate_force_RMSE_eV_A": 0.3000839876389095,
+        "relative_force_RMSE_change": -0.03324828008021408
+      },
+      "test": {
+        "frames": 86,
+        "atoms": 20812,
+        "baseline_force_RMSE_eV_A": 0.33597316599149685,
+        "candidate_force_RMSE_eV_A": 0.3274801151767846,
+        "relative_force_RMSE_change": -0.025278955804843073
+      }
+    },
+    {
+      "held_composition": "H32O48Si192",
+      "fit": {
+        "rank": 17,
+        "singular_values": [
+          23.69983212396595,
+          21.313798626055373,
+          19.356612747836664,
+          13.567315177202172,
+          12.425290548880001,
+          8.581225296857323,
+          7.401362979948637,
+          5.685079475683185,
+          4.668770584440957,
+          4.128086300121034,
+          3.3995779645101867,
+          3.2147351092688745,
+          3.1200696237917547,
+          2.8136409787650227,
+          1.7603178465723126,
+          1.3814024147886124,
+          0.8335722891617717
+        ],
+        "condition_number": 28.431645859770796,
+        "coefficients_eV": [
+          0.05075758761392979,
+          0.0916294712132148,
+          0.006058404338702649,
+          0.11523817311485776,
+          -0.04658379556180489,
+          0.11992535961252027,
+          -0.023426085972999527,
+          0.03633970944928403,
+          0.03525576716609591,
+          -0.030303153539369333,
+          0.03238500916078087,
+          0.07011603028459978,
+          0.2845971918194107,
+          0.1284036129038575,
+          0.04230410441909841,
+          0.01313753958525794,
+          0.1715300863673127
+        ],
+        "weighted_force_residual_norm": 5.915390197263334,
+        "normal_equation_residual_norm": 2.407849317166863e-13,
+        "frame_count": 407,
+        "force_components": 294636
+      },
+      "train": {
+        "frames": 407,
+        "atoms": 98212,
+        "baseline_force_RMSE_eV_A": 0.3059307416074205,
+        "candidate_force_RMSE_eV_A": 0.2962816958133653,
+        "relative_force_RMSE_change": -0.03153996797888714
+      },
+      "test": {
+        "frames": 80,
+        "atoms": 21760,
+        "baseline_force_RMSE_eV_A": 0.3529910410321765,
+        "candidate_force_RMSE_eV_A": 0.34448626862890036,
+        "relative_force_RMSE_change": -0.024093451149376
+      }
+    },
+    {
+      "held_composition": "H32O60Si192",
+      "fit": {
+        "rank": 17,
+        "singular_values": [
+          23.283376618927555,
+          21.330467114339083,
+          19.251095869323706,
+          14.236560151539106,
+          12.348514702785634,
+          8.441973340615917,
+          7.293772587450501,
+          5.597873846804592,
+          4.487763286969356,
+          4.1587260081672115,
+          3.5712450174751003,
+          3.372856996782876,
+          3.018842442339349,
+          2.779952320596828,
+          1.6620237261046111,
+          1.3695834571327672,
+          0.7977797120371056
+        ],
+        "condition_number": 29.18522026522106,
+        "coefficients_eV": [
+          0.05219120181778247,
+          0.0826402227294629,
+          0.0009271431666921723,
+          0.11927027385111898,
+          -0.044800384680449584,
+          0.12848756027778555,
+          -0.02464705362507702,
+          0.03755479262963993,
+          0.034636947614116745,
+          -0.03000752439416047,
+          0.00556635340378762,
+          0.07856557421091005,
+          0.2905063223222605,
+          0.13646174320619284,
+          0.028569745546332164,
+          -0.02378526728410669,
+          0.17445928728845356
+        ],
+        "weighted_force_residual_norm": 5.990088854378606,
+        "normal_equation_residual_norm": 6.682021666130004e-14,
+        "frame_count": 411,
+        "force_components": 295164
+      },
+      "train": {
+        "frames": 411,
+        "atoms": 98388,
+        "baseline_force_RMSE_eV_A": 0.30748517886863497,
+        "candidate_force_RMSE_eV_A": 0.29833591405101073,
+        "relative_force_RMSE_change": -0.029755140886101095
+      },
+      "test": {
+        "frames": 76,
+        "atoms": 21584,
+        "baseline_force_RMSE_eV_A": 0.3471441216074962,
+        "candidate_force_RMSE_eV_A": 0.3347327483110117,
+        "relative_force_RMSE_change": -0.035752796962287614
+      }
+    },
+    {
+      "held_composition": "H32O8Si192",
+      "fit": {
+        "rank": 17,
+        "singular_values": [
+          25.273270653224152,
+          22.487387523257347,
+          20.269281520558017,
+          15.176820264845961,
+          13.141940165970205,
+          8.859812770412612,
+          7.661308778439641,
+          5.85823587374422,
+          4.555068327129677,
+          4.434760057972661,
+          3.6036921393807995,
+          3.4095443433657997,
+          3.182212660967791,
+          2.9163020630184175,
+          1.8454441265906916,
+          1.4167120521864938,
+          0.8871613821904745
+        ],
+        "condition_number": 28.4877939466012,
+        "coefficients_eV": [
+          0.03119629123377812,
+          0.07175021414934284,
+          -0.0064409288123637685,
+          0.12339205678117889,
+          -0.03907398077673888,
+          0.11067702336720471,
+          -0.023969651196559243,
+          0.03310528589786839,
+          0.05268582930985902,
+          -0.008952510145756404,
+          0.015977666153849907,
+          0.029242957151125314,
+          0.27271025926948295,
+          0.11701872011638113,
+          0.02480635192893416,
+          0.005167358472799277,
+          0.18891804496985967
+        ],
+        "weighted_force_residual_norm": 5.364044711698473,
+        "normal_equation_residual_norm": 1.0882086106368333e-13,
+        "frame_count": 306,
+        "force_components": 233940
+      },
+      "train": {
+        "frames": 306,
+        "atoms": 77980,
+        "baseline_force_RMSE_eV_A": 0.323065837653288,
+        "candidate_force_RMSE_eV_A": 0.31081033557355287,
+        "relative_force_RMSE_change": -0.037934998540104514
+      },
+      "test": {
+        "frames": 181,
+        "atoms": 41992,
+        "baseline_force_RMSE_eV_A": 0.2994119446827329,
+        "candidate_force_RMSE_eV_A": 0.294375200068468,
+        "relative_force_RMSE_change": -0.016822123177490433
+      }
+    },
+    {
+      "held_composition": "O144Si72",
+      "fit": {
+        "rank": 17,
+        "singular_values": [
+          20.607942586150443,
+          20.315197268076364,
+          16.73833578401119,
+          13.867708495173483,
+          11.804976434184002,
+          7.602618408869795,
+          6.194425577812737,
+          5.253585964817668,
+          4.690233487083884,
+          4.226072624523238,
+          3.732796838502657,
+          3.4211369115483885,
+          2.6424406989631954,
+          2.4728113841696073,
+          1.568909946663858,
+          1.2688903415178359,
+          0.7667383580094146
+        ],
+        "condition_number": 26.877411793577444,
+        "coefficients_eV": [
+          0.11053634836457388,
+          0.061229098267527565,
+          0.06846507943926695,
+          0.1271587062297386,
+          -0.020854584944958753,
+          0.14075348334126936,
+          -0.02264014762210059,
+          0.04911008099259716,
+          0.06218434247311831,
+          0.014627030286571864,
+          0.05624057929972491,
+          0.07361033964601711,
+          0.3696507258247123,
+          0.1583032259691612,
+          0.02760751611620959,
+          -0.005113340400902066,
+          0.20228816262091898
+        ],
+        "weighted_force_residual_norm": 6.48786786653143,
+        "normal_equation_residual_norm": 6.706727984114511e-14,
+        "frame_count": 423,
+        "force_components": 318444
+      },
+      "train": {
+        "frames": 423,
+        "atoms": 106148,
+        "baseline_force_RMSE_eV_A": 0.32809031168179426,
+        "candidate_force_RMSE_eV_A": 0.31685554926901527,
+        "relative_force_RMSE_change": -0.03424289597333574
+      },
+      "test": {
+        "frames": 64,
+        "atoms": 13824,
+        "baseline_force_RMSE_eV_A": 0.18580536385989013,
+        "candidate_force_RMSE_eV_A": 0.19957569877024378,
+        "relative_force_RMSE_change": 0.07411161133506039
+      }
+    }
+  ],
+  "all_training_fit": {
+    "rank": 17,
+    "singular_values": [
+      26.254538737279873,
+      24.152505842609983,
+      21.58625631983813,
+      16.22241388817802,
+      14.059135243844326,
+      9.499945313266903,
+      8.126348276639852,
+      6.33773610194712,
+      5.178501103832338,
+      4.793823077065864,
+      3.9929987815852632,
+      3.7697661598789947,
+      3.4372176430121555,
+      3.1601636339716888,
+      1.9488707290239973,
+      1.5415559109237393,
+      0.9377252233194979
+    ],
+    "condition_number": 27.998115102780524,
+    "coefficients_eV": [
+      0.05673173895371116,
+      0.08150707830079276,
+      0.014157508138708905,
+      0.12374438770660373,
+      -0.037056088861128586,
+      0.12021405532592519,
+      -0.02293648646608267,
+      0.037329314207418814,
+      0.04160460835060453,
+      -0.01781793966701713,
+      0.02278042675446606,
+      0.06258323990651234,
+      0.3051238251264336,
+      0.13665022339613025,
+      0.027940641832948376,
+      -0.003148823061968246,
+      0.18347354214678596
+    ],
+    "weighted_force_residual_norm": 6.658867186401045,
+    "normal_equation_residual_norm": 8.300134384225476e-14,
+    "frame_count": 487,
+    "force_components": 359916
+  },
+  "all_training_metrics": {
+    "frames": 487,
+    "atoms": 119972,
+    "baseline_force_RMSE_eV_A": 0.3149887403586964,
+    "candidate_force_RMSE_eV_A": 0.3048895839578322,
+    "relative_force_RMSE_change": -0.03206196002232864
+  },
+  "all_training_relative_energy": [
+    {
+      "composition": "H32O18Si192",
+      "frames": 86,
+      "pairs": 3655,
+      "baseline_pair_energy_RMSE_eV_atom": 0.012984271536610388,
+      "candidate_pair_energy_RMSE_eV_atom": 0.011392692162888286,
+      "resolved_pair_count": 3628,
+      "baseline_reversed_resolved_pairs": 429,
+      "candidate_reversed_resolved_pairs": 377
+    },
+    {
+      "composition": "H32O48Si192",
+      "frames": 80,
+      "pairs": 3160,
+      "baseline_pair_energy_RMSE_eV_atom": 0.011485477234350906,
+      "candidate_pair_energy_RMSE_eV_atom": 0.010592791286067358,
+      "resolved_pair_count": 3144,
+      "baseline_reversed_resolved_pairs": 316,
+      "candidate_reversed_resolved_pairs": 338
+    },
+    {
+      "composition": "H32O60Si192",
+      "frames": 76,
+      "pairs": 2850,
+      "baseline_pair_energy_RMSE_eV_atom": 0.012239238744837257,
+      "candidate_pair_energy_RMSE_eV_atom": 0.011770504614180138,
+      "resolved_pair_count": 2844,
+      "baseline_reversed_resolved_pairs": 205,
+      "candidate_reversed_resolved_pairs": 234
+    },
+    {
+      "composition": "H32O8Si192",
+      "frames": 181,
+      "pairs": 16290,
+      "baseline_pair_energy_RMSE_eV_atom": 0.023779498934999973,
+      "candidate_pair_energy_RMSE_eV_atom": 0.02262672744610938,
+      "resolved_pair_count": 16247,
+      "baseline_reversed_resolved_pairs": 1106,
+      "candidate_reversed_resolved_pairs": 1105
+    },
+    {
+      "composition": "O144Si72",
+      "frames": 64,
+      "pairs": 2016,
+      "baseline_pair_energy_RMSE_eV_atom": 0.008477796128690077,
+      "candidate_pair_energy_RMSE_eV_atom": 0.004988093061854333,
+      "resolved_pair_count": 2016,
+      "baseline_reversed_resolved_pairs": 4,
+      "candidate_reversed_resolved_pairs": 2
+    }
+  ],
+  "held_composition_relative_energy": [
+    {
+      "composition": "H32O18Si192",
+      "frames": 86,
+      "pairs": 3655,
+      "baseline_pair_energy_RMSE_eV_atom": 0.012984271536610388,
+      "candidate_pair_energy_RMSE_eV_atom": 0.011530920274739754,
+      "resolved_pair_count": 3628,
+      "baseline_reversed_resolved_pairs": 429,
+      "candidate_reversed_resolved_pairs": 385
+    },
+    {
+      "composition": "H32O48Si192",
+      "frames": 80,
+      "pairs": 3160,
+      "baseline_pair_energy_RMSE_eV_atom": 0.011485477234350906,
+      "candidate_pair_energy_RMSE_eV_atom": 0.010730189771508275,
+      "resolved_pair_count": 3144,
+      "baseline_reversed_resolved_pairs": 316,
+      "candidate_reversed_resolved_pairs": 343
+    },
+    {
+      "composition": "H32O60Si192",
+      "frames": 76,
+      "pairs": 2850,
+      "baseline_pair_energy_RMSE_eV_atom": 0.012239238744837257,
+      "candidate_pair_energy_RMSE_eV_atom": 0.01188866969404602,
+      "resolved_pair_count": 2844,
+      "baseline_reversed_resolved_pairs": 205,
+      "candidate_reversed_resolved_pairs": 232
+    },
+    {
+      "composition": "H32O8Si192",
+      "frames": 181,
+      "pairs": 16290,
+      "baseline_pair_energy_RMSE_eV_atom": 0.023779498934999973,
+      "candidate_pair_energy_RMSE_eV_atom": 0.022751828566305993,
+      "resolved_pair_count": 16247,
+      "baseline_reversed_resolved_pairs": 1106,
+      "candidate_reversed_resolved_pairs": 1103
+    },
+    {
+      "composition": "O144Si72",
+      "frames": 64,
+      "pairs": 2016,
+      "baseline_pair_energy_RMSE_eV_atom": 0.008477796128690077,
+      "candidate_pair_energy_RMSE_eV_atom": 0.009168926498096999,
+      "resolved_pair_count": 2016,
+      "baseline_reversed_resolved_pairs": 4,
+      "candidate_reversed_resolved_pairs": 2
+    }
+  ]
+}

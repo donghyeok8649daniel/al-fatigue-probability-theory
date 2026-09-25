@@ -1,0 +1,47 @@
+{
+  "complete": true,
+  "byte_equal_files": 5,
+  "files": [
+    {
+      "file": "charge_rate_convergence.csv",
+      "bytes": 20208,
+      "baseline_sha256": "d3a0a11d39a5b2c6abca759bdf55e160de335c15e833cff71bcca0e2ae8f693a",
+      "rerun_sha256": "d3a0a11d39a5b2c6abca759bdf55e160de335c15e833cff71bcca0e2ae8f693a",
+      "byte_equal": true
+    },
+    {
+      "file": "spatial_grid_convergence.csv",
+      "bytes": 1480,
+      "baseline_sha256": "b91a8d38ab39c3549f9038d47119645234d76dcb0d68e7fbc6d25bb48fe3214e",
+      "rerun_sha256": "b91a8d38ab39c3549f9038d47119645234d76dcb0d68e7fbc6d25bb48fe3214e",
+      "byte_equal": true
+    },
+    {
+      "file": "absorption_convergence.csv",
+      "bytes": 2673,
+      "baseline_sha256": "5e7d23db2ec6264659ae8c4bdd24f44905f51cf44d1bc1632a1fa9f5a47254a1",
+      "rerun_sha256": "5e7d23db2ec6264659ae8c4bdd24f44905f51cf44d1bc1632a1fa9f5a47254a1",
+      "byte_equal": true
+    },
+    {
+      "file": "quenched_mixture_counterexample.csv",
+      "bytes": 337,
+      "baseline_sha256": "ff0172a7ed38ea274e3797c596dcddb374a4cc995d9929fc7154a41c768540bd",
+      "rerun_sha256": "ff0172a7ed38ea274e3797c596dcddb374a4cc995d9929fc7154a41c768540bd",
+      "byte_equal": true
+    },
+    {
+      "file": "dynamics_summary.json",
+      "bytes": 5744,
+      "baseline_sha256": "80e826e7d6e8833e3e616f09500dc59c0a5051cd6322fe1de7b3de0c5689c553",
+      "rerun_sha256": "80e826e7d6e8833e3e616f09500dc59c0a5051cd6322fe1de7b3de0c5689c553",
+      "byte_equal": true
+    }
+  ],
+  "new_charge_source_sha256": "fddd750ab6c459a1e0990e7eeca3d39072318e8ea3156c1ead8f1a9922adac0e",
+  "meaning": "actual full synthetic audit rerun; validates retained numerical results, not real Si kinetics",
+  "new_MACE": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "physical_clock": null
+}

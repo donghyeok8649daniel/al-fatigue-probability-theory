@@ -1,0 +1,16 @@
+{
+  "checks": [
+    {
+      "step_A": 0.0002,
+      "first_rows_error_norm_eV_A2": 2.498152026201031e-10,
+      "reference_norm": 0.6896300830852694
+    },
+    {
+      "step_A": 0.0001,
+      "first_rows_error_norm_eV_A2": 1.7952058747341134e-10,
+      "reference_norm": 0.6896300830852694
+    }
+  ],
+  "passed": true,
+  "standard_calculator_calls": 4
+}

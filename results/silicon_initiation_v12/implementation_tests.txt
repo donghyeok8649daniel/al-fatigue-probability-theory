@@ -1,0 +1,11 @@
+...............................................................          [100%]
+============================== warnings summary ===============================
+solver_v1/test_silicon_oxide_delta_v12.py::test_periodic_replication_and_rigid_rotation
+solver_v1/test_silicon_oxide_angular_delta_v12.py::test_angular_periodic_rotation_replication_and_atom_order
+  <PYTHON_ENV>\Lib\site-packages\ase\atoms.py:432: DeprecationWarning: Setting the shape on a NumPy array has been deprecated in NumPy 2.5.
+  As an alternative, you can create a new view using np.reshape (with copy=False if needed).
+    a.shape = (-1,) + shape
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+63 passed, 2 warnings in 5.16s
+
