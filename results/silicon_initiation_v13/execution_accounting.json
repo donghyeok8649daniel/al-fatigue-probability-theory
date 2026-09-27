@@ -1,0 +1,163 @@
+{
+  "recorded_utc": "2026-09-27T23:28:13.759012+00:00",
+  "complete_accounting": true,
+  "requested_final": true,
+  "stages": [
+    {
+      "stage": "dense_loading8",
+      "status": "completed",
+      "new_forward_evaluations": 49,
+      "new_autograd_rows": 112,
+      "reused_hessian_rows": 539,
+      "reused_prediction_frames": 0,
+      "note": "Resume validation 3 rows are included in new AD, not added twice.",
+      "reported_numerical_elapsed_s": 737.867535599973,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "dense_return8",
+      "status": "completed",
+      "new_forward_evaluations": 49,
+      "new_autograd_rows": 648,
+      "reused_hessian_rows": 0,
+      "reused_prediction_frames": 0,
+      "note": "Resume validation 0 rows are included in new AD, not added twice.",
+      "reported_numerical_elapsed_s": 4090.7160592,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "dense_loading10",
+      "status": "completed",
+      "new_forward_evaluations": 49,
+      "new_autograd_rows": 648,
+      "reused_hessian_rows": 0,
+      "reused_prediction_frames": 0,
+      "note": "Resume validation 0 rows are included in new AD, not added twice.",
+      "reported_numerical_elapsed_s": 3754.219610299915,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "dense_return_zero",
+      "status": "completed",
+      "new_forward_evaluations": 49,
+      "new_autograd_rows": 649,
+      "reused_hessian_rows": 0,
+      "reused_prediction_frames": 0,
+      "note": "Resume validation 0 rows are included in new AD, not added twice.",
+      "reported_numerical_elapsed_s": 3104.2344078999013,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "dense_force100",
+      "status": "completed",
+      "new_forward_evaluations": 0,
+      "new_autograd_rows": 0,
+      "reused_hessian_rows": 649,
+      "reused_prediction_frames": 0,
+      "note": "Entire v12 result reused. Old summary counters and elapsed excluded.",
+      "reported_numerical_elapsed_s": null,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "grip_augmented",
+      "status": "completed",
+      "new_forward_evaluations": 27,
+      "new_autograd_rows": 3,
+      "reused_hessian_rows": 1944,
+      "reused_prediction_frames": 0,
+      "note": "Rows reused from current dense runs; no extra AD.",
+      "reported_numerical_elapsed_s": 128.09014729992487,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "mpa_comparison",
+      "status": "completed",
+      "new_forward_evaluations": 208,
+      "new_autograd_rows": 0,
+      "reused_hessian_rows": 0,
+      "reused_prediction_frames": 0,
+      "note": "199 predictions plus 9 standard-calculator controls.",
+      "reported_numerical_elapsed_s": 301.92183140013367,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "mpa_qe_full",
+      "status": "completed",
+      "new_forward_evaluations": 1104,
+      "new_autograd_rows": 0,
+      "reused_hessian_rows": 0,
+      "reused_prediction_frames": 199,
+      "note": "Only complement predictions and new controls count again.",
+      "reported_numerical_elapsed_s": 326.18569760001265,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "return_zero_force",
+      "status": "completed",
+      "new_forward_evaluations": 147,
+      "new_autograd_rows": 0,
+      "reused_hessian_rows": 0,
+      "reused_prediction_frames": 0,
+      "note": "",
+      "reported_numerical_elapsed_s": 617.2343383000698,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "anharmonic_probes",
+      "status": "completed",
+      "new_forward_evaluations": 74,
+      "new_autograd_rows": 0,
+      "reused_hessian_rows": 0,
+      "reused_prediction_frames": 0,
+      "note": "Source replays included in forward count.",
+      "reported_numerical_elapsed_s": 290.19817370013334,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "large_oxide_321_1200",
+      "status": "failed_before_allocation",
+      "new_forward_evaluations": 0,
+      "new_autograd_rows": 0,
+      "reused_hessian_rows": 0,
+      "reused_prediction_frames": 0,
+      "note": "Failed before model allocation; no new potential evaluation.",
+      "reported_numerical_elapsed_s": null,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "large_oxide_321_1200_retry",
+      "status": "failed_before_allocation",
+      "new_forward_evaluations": 0,
+      "new_autograd_rows": 0,
+      "reused_hessian_rows": 0,
+      "reused_prediction_frames": 0,
+      "note": "Failed before model allocation; no new potential evaluation.",
+      "reported_numerical_elapsed_s": null,
+      "elapsed_is_not_cpu_time": true
+    }
+  ],
+  "completed_or_failed_stage_new_forward": 1756,
+  "completed_or_failed_stage_new_autograd_rows": 2060,
+  "actual_new_DFT": 0,
+  "actual_new_MD": 0,
+  "source_sha256": {
+    "dense_loading8/summary.json": "00263f4926d23f4bbb25535c7399134f41ba9b586625fb0b7dee70a81067e449",
+    "dense_return8/summary.json": "0c8901896f2c8f79862104a69ee58df22d6c13523baaad0766ab4fdccd456998",
+    "dense_loading10/summary.json": "5e9a2495fa0f38b8f9145f6c484a4f35abee97827424b330c451d0e0455ec130",
+    "dense_return_zero/summary.json": "625325f6a4bf3b44affa87c8581502475a13c8d3a81ef11e62c31fe183aa61ac",
+    "dense_return_zero_replay/summary.json": "a1a231ebeb03570acf7ca043e53ccb8409e487a9b6a2fc3544f9dd57fa7e5453",
+    "dense_force100/reuse_provenance.json": "f60f6280cd1572d2b30cee6cdccf7b1078e2fc122e560c69fb66b582b1e4e667",
+    "dense_force100/summary.json": "322037279af05aa320b7bd8c9892f40b06b0964a61143c7f32d4d0ef5e042bfb",
+    "grip_augmented/summary.json": "8a8309279ace1276de2f13ff3263349a73b8d6472a78314bcaade9e109aa9c7b",
+    "mpa_comparison/summary.json": "58daaf3d71b86b95a5bb20a99fabb4ab7708d5ad434ba46e5d1aaa2a92d7b1c2",
+    "mpa_qe_full/summary.json": "910604e2f6c4c378abb3f6b2bf5ed2badb19b9e8930b957c592fc447da1433da",
+    "return_zero_force/summary.json": "1337760302a5c6338620d88ab93b4e14f1ca411c0adfca494bcab1690e0475df",
+    "anharmonic_probes/summary.json": "af6bf985e79f989a9f9a89f399f675f5cf03963fc72356d9c3a99fc38cd88c11",
+    "large_oxide_321_1200/partial.json": "ba0eece64dbf1cd2bc5b6a4df50a9aad980275022b478c2912678a39e5c8041a",
+    "large_oxide_321_1200_retry/partial.json": "ba0eece64dbf1cd2bc5b6a4df50a9aad980275022b478c2912678a39e5c8041a"
+  },
+  "scope": "Reported executed calls, not independent specimens, physical time, or model adoption. Pending work excluded.",
+  "postprocessing_new_potential_calls": 0,
+  "new_model_calls_in_this_audit": 0,
+  "new_pytest_runs_in_this_audit": 0
+}

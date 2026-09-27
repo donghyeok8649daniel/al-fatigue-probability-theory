@@ -1,0 +1,283 @@
+{
+  "complete": true,
+  "points": 72,
+  "groups": [
+    {
+      "state": "loading8",
+      "label": "max_atom_0.01",
+      "points": 6,
+      "maximum_absolute_energy_residual_eV": 1.3290633219922355e-07,
+      "maximum_absolute_energy_residual_over_kBT300": 5.141046468248816e-06,
+      "largest_full_gradient_residual_point": {
+        "state": "loading8",
+        "mode": 1,
+        "label": "max_atom_0.01",
+        "sign": 1,
+        "maximum_atom_displacement_A": 0.01,
+        "nonlinear_energy_residual_eV": 1.3290633219922355e-07,
+        "nonlinear_energy_residual_over_kBT300": 5.141046468248816e-06,
+        "full_gradient_residual_norm_eV_A": 0.00016615736470229864,
+        "longitudinal_gradient_residual_eV_A": 5.305740937008763e-06,
+        "transverse_gradient_residual_norm_eV_A": 0.00016607263157402552,
+        "transverse_fraction_of_residual_norm": 0.9994900428974368,
+        "linear_gradient_increment_norm_eV_A": 0.0029890785710028895,
+        "projection_identity_error_eV2_A2": 6.617444900424222e-24
+      }
+    },
+    {
+      "state": "loading8",
+      "label": "max_atom_0.05",
+      "points": 6,
+      "maximum_absolute_energy_residual_eV": 1.752532259436182e-05,
+      "maximum_absolute_energy_residual_over_kBT300": 0.0006779097454409428,
+      "largest_full_gradient_residual_point": {
+        "state": "loading8",
+        "mode": 1,
+        "label": "max_atom_0.05",
+        "sign": 1,
+        "maximum_atom_displacement_A": 0.05,
+        "nonlinear_energy_residual_eV": 1.752532259436182e-05,
+        "nonlinear_energy_residual_over_kBT300": 0.0006779097454409428,
+        "full_gradient_residual_norm_eV_A": 0.004169222727873993,
+        "longitudinal_gradient_residual_eV_A": 0.00014234679995885196,
+        "transverse_gradient_residual_norm_eV_A": 0.0041667919966279264,
+        "transverse_fraction_of_residual_norm": 0.9994169821559746,
+        "linear_gradient_increment_norm_eV_A": 0.014945392855014446,
+        "projection_identity_error_eV2_A2": 6.776263578034403e-21
+      }
+    },
+    {
+      "state": "loading8",
+      "label": "max_atom_0.1",
+      "points": 6,
+      "maximum_absolute_energy_residual_eV": 0.00014954488077172957,
+      "maximum_absolute_energy_residual_over_kBT300": 0.005784654263001941,
+      "largest_full_gradient_residual_point": {
+        "state": "loading8",
+        "mode": 1,
+        "label": "max_atom_0.1",
+        "sign": 1,
+        "maximum_atom_displacement_A": 0.1,
+        "nonlinear_energy_residual_eV": 0.00014954488077172957,
+        "nonlinear_energy_residual_over_kBT300": 0.005784654263001941,
+        "full_gradient_residual_norm_eV_A": 0.016749914184325258,
+        "longitudinal_gradient_residual_eV_A": 0.0006193876760349232,
+        "transverse_gradient_residual_norm_eV_A": 0.016738458235125375,
+        "transverse_fraction_of_residual_norm": 0.9993160592302853,
+        "linear_gradient_increment_norm_eV_A": 0.029890785710028893,
+        "projection_identity_error_eV2_A2": 0.0
+      }
+    },
+    {
+      "state": "loading8",
+      "label": "max_atom_0.2",
+      "points": 6,
+      "maximum_absolute_energy_residual_eV": 0.0013521309685194383,
+      "maximum_absolute_energy_residual_over_kBT300": 0.05230276108964295,
+      "largest_full_gradient_residual_point": {
+        "state": "loading8",
+        "mode": 1,
+        "label": "max_atom_0.2",
+        "sign": 1,
+        "maximum_atom_displacement_A": 0.2,
+        "nonlinear_energy_residual_eV": 0.0013521309685194383,
+        "nonlinear_energy_residual_over_kBT300": 0.05230276108964295,
+        "full_gradient_residual_norm_eV_A": 0.06756475699163798,
+        "longitudinal_gradient_residual_eV_A": 0.0028989530219336542,
+        "transverse_gradient_residual_norm_eV_A": 0.06750253668356263,
+        "transverse_fraction_of_residual_norm": 0.9990791011342931,
+        "linear_gradient_increment_norm_eV_A": 0.059781571420057786,
+        "projection_identity_error_eV2_A2": 2.6020852139652106e-18
+      }
+    },
+    {
+      "state": "loading8",
+      "label": "quadratic_sigma_1.0",
+      "points": 6,
+      "maximum_absolute_energy_residual_eV": 0.00018502874478664062,
+      "maximum_absolute_energy_residual_over_kBT300": 0.007157231406280788,
+      "largest_full_gradient_residual_point": {
+        "state": "loading8",
+        "mode": 1,
+        "label": "quadratic_sigma_1.0",
+        "sign": 1,
+        "maximum_atom_displacement_A": 0.1070374465669528,
+        "nonlinear_energy_residual_eV": 0.00018502874478664062,
+        "nonlinear_energy_residual_over_kBT300": 0.007157231406280788,
+        "full_gradient_residual_norm_eV_A": 0.019201932084314186,
+        "longitudinal_gradient_residual_eV_A": 0.0007178539820226978,
+        "transverse_gradient_residual_norm_eV_A": 0.019188509098705626,
+        "transverse_fraction_of_residual_norm": 0.9993009565105417,
+        "linear_gradient_increment_norm_eV_A": 0.03199433378281454,
+        "projection_identity_error_eV2_A2": 5.421010862427522e-20
+      }
+    },
+    {
+      "state": "loading8",
+      "label": "quadratic_sigma_2.0",
+      "points": 6,
+      "maximum_absolute_energy_residual_eV": 0.0016859198822502391,
+      "maximum_absolute_energy_residual_over_kBT300": 0.0652142927501816,
+      "largest_full_gradient_residual_point": {
+        "state": "loading8",
+        "mode": 1,
+        "label": "quadratic_sigma_2.0",
+        "sign": 1,
+        "maximum_atom_displacement_A": 0.2140748931339056,
+        "nonlinear_energy_residual_eV": 0.0016859198822502391,
+        "nonlinear_energy_residual_over_kBT300": 0.0652142927501816,
+        "full_gradient_residual_norm_eV_A": 0.07750053472617584,
+        "longitudinal_gradient_residual_eV_A": 0.0033920496431658607,
+        "transverse_gradient_residual_norm_eV_A": 0.07742626739073429,
+        "transverse_fraction_of_residual_norm": 0.9990417184126026,
+        "linear_gradient_increment_norm_eV_A": 0.06398866756562908,
+        "projection_identity_error_eV2_A2": 1.734723475976807e-18
+      }
+    },
+    {
+      "state": "return8",
+      "label": "max_atom_0.01",
+      "points": 6,
+      "maximum_absolute_energy_residual_eV": 3.639541178038306e-09,
+      "maximum_absolute_energy_residual_over_kBT300": 1.407837385155775e-07,
+      "largest_full_gradient_residual_point": {
+        "state": "return8",
+        "mode": 1,
+        "label": "max_atom_0.01",
+        "sign": 1,
+        "maximum_atom_displacement_A": 0.01,
+        "nonlinear_energy_residual_eV": 3.639541178038306e-09,
+        "nonlinear_energy_residual_over_kBT300": 1.407837385155775e-07,
+        "full_gradient_residual_norm_eV_A": 0.00012018349701850468,
+        "longitudinal_gradient_residual_eV_A": 1.8062829793793937e-07,
+        "transverse_gradient_residual_norm_eV_A": 0.0001201833612818967,
+        "transverse_fraction_of_residual_norm": 0.9999988705886304,
+        "linear_gradient_increment_norm_eV_A": 0.0025136092651811123,
+        "projection_identity_error_eV2_A2": 0.0
+      }
+    },
+    {
+      "state": "return8",
+      "label": "max_atom_0.05",
+      "points": 6,
+      "maximum_absolute_energy_residual_eV": 1.0282395416366663e-06,
+      "maximum_absolute_energy_residual_over_kBT300": 3.977408131405681e-05,
+      "largest_full_gradient_residual_point": {
+        "state": "return8",
+        "mode": 1,
+        "label": "max_atom_0.05",
+        "sign": 1,
+        "maximum_atom_displacement_A": 0.05,
+        "nonlinear_energy_residual_eV": 1.0282395416366663e-06,
+        "nonlinear_energy_residual_over_kBT300": 3.977408131405681e-05,
+        "full_gradient_residual_norm_eV_A": 0.003005041877260732,
+        "longitudinal_gradient_residual_eV_A": 1.1375942908603227e-05,
+        "transverse_gradient_residual_norm_eV_A": 0.003005020344692136,
+        "transverse_fraction_of_residual_norm": 0.9999928345196256,
+        "linear_gradient_increment_norm_eV_A": 0.012568046325905562,
+        "projection_identity_error_eV2_A2": 1.6940658945086007e-21
+      }
+    },
+    {
+      "state": "return8",
+      "label": "max_atom_0.1",
+      "points": 6,
+      "maximum_absolute_energy_residual_eV": 1.3986481596199238e-05,
+      "maximum_absolute_energy_residual_over_kBT300": 0.0005410212637994025,
+      "largest_full_gradient_residual_point": {
+        "state": "return8",
+        "mode": 1,
+        "label": "max_atom_0.1",
+        "sign": 1,
+        "maximum_atom_displacement_A": 0.1,
+        "nonlinear_energy_residual_eV": 1.3986481596199238e-05,
+        "nonlinear_energy_residual_over_kBT300": 0.0005410212637994025,
+        "full_gradient_residual_norm_eV_A": 0.012019979824716674,
+        "longitudinal_gradient_residual_eV_A": 8.001904922100738e-05,
+        "transverse_gradient_residual_norm_eV_A": 0.012019713471558198,
+        "transverse_fraction_of_residual_norm": 0.9999778407982077,
+        "linear_gradient_increment_norm_eV_A": 0.025136092651811125,
+        "projection_identity_error_eV2_A2": 0.0
+      }
+    },
+    {
+      "state": "return8",
+      "label": "max_atom_0.2",
+      "points": 6,
+      "maximum_absolute_energy_residual_eV": 0.00020416041340725471,
+      "maximum_absolute_energy_residual_over_kBT300": 0.007897277390292145,
+      "largest_full_gradient_residual_point": {
+        "state": "return8",
+        "mode": 1,
+        "label": "max_atom_0.2",
+        "sign": 1,
+        "maximum_atom_displacement_A": 0.2,
+        "nonlinear_energy_residual_eV": 0.00020416041340725471,
+        "nonlinear_energy_residual_over_kBT300": 0.007897277390292145,
+        "full_gradient_residual_norm_eV_A": 0.04804516248987441,
+        "longitudinal_gradient_residual_eV_A": 0.0005958262643151071,
+        "transverse_gradient_residual_norm_eV_A": 0.04804146781418305,
+        "transverse_fraction_of_residual_norm": 0.9999230999438885,
+        "linear_gradient_increment_norm_eV_A": 0.05027218530362225,
+        "projection_identity_error_eV2_A2": 1.3010426069826053e-18
+      }
+    },
+    {
+      "state": "return8",
+      "label": "quadratic_sigma_1.0",
+      "points": 6,
+      "maximum_absolute_energy_residual_eV": 3.19777483185138e-05,
+      "maximum_absolute_energy_residual_over_kBT300": 0.0012369545328285367,
+      "largest_full_gradient_residual_point": {
+        "state": "return8",
+        "mode": 1,
+        "label": "quadratic_sigma_1.0",
+        "sign": 1,
+        "maximum_atom_displacement_A": 0.12403002574030048,
+        "nonlinear_energy_residual_eV": 3.19777483185138e-05,
+        "nonlinear_energy_residual_over_kBT300": 0.0012369545328285367,
+        "full_gradient_residual_norm_eV_A": 0.018489236156025535,
+        "longitudinal_gradient_residual_eV_A": 0.00014863143456368005,
+        "transverse_gradient_residual_norm_eV_A": 0.018488638736530647,
+        "transverse_fraction_of_residual_norm": 0.9999676882544067,
+        "linear_gradient_increment_norm_eV_A": 0.031176302186147118,
+        "projection_identity_error_eV2_A2": 1.0842021724855044e-19
+      }
+    },
+    {
+      "state": "return8",
+      "label": "quadratic_sigma_2.0",
+      "points": 6,
+      "maximum_absolute_energy_residual_eV": 0.00047389896304963347,
+      "maximum_absolute_energy_residual_over_kBT300": 0.01833123034831088,
+      "largest_full_gradient_residual_point": {
+        "state": "return8",
+        "mode": 1,
+        "label": "quadratic_sigma_2.0",
+        "sign": 1,
+        "maximum_atom_displacement_A": 0.24806005148060095,
+        "nonlinear_energy_residual_eV": 0.00047389896304963347,
+        "nonlinear_energy_residual_over_kBT300": 0.01833123034831088,
+        "full_gradient_residual_norm_eV_A": 0.07386007088990862,
+        "longitudinal_gradient_residual_eV_A": 0.0011194445275955142,
+        "transverse_gradient_residual_norm_eV_A": 0.07385158709067777,
+        "transverse_fraction_of_residual_norm": 0.9998851368658515,
+        "linear_gradient_increment_norm_eV_A": 0.062352604372294236,
+        "projection_identity_error_eV2_A2": 0.0
+      }
+    }
+  ],
+  "new_model_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "largest_saved_gradient_replay_difference_eV_A": 1.734723475976807e-18,
+  "maximum_projection_identity_error_eV2_A2": 2.6020852139652106e-18,
+  "sources": {
+    "points_sha256": "cab647e4e5d9fce337ec4415bfc2674f17e19a87fe12af72c6019cfa99c503f1",
+    "raw_replay_sha256": "d39f7839655dcc91772bc4e21b5b1d9be78e186fc973959cc08a4ba558b61718",
+    "script_sha256": "c05146ca7ea698cf05a0a0f231b72ae57ef7d63d325c1e9b7a8a99dc603a53b9"
+  },
+  "scope": "three straight Cartesian directions per state; transverse force is force perpendicular to that coordinate, not crack flux or transition rate",
+  "finite_temperature_free_energy_certified": false,
+  "first_crack_certified": false
+}

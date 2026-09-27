@@ -1,0 +1,301 @@
+{
+  "complete": true,
+  "geometry_sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d",
+  "sources": [
+    {
+      "state": "loading8",
+      "raw_hessian.npz_sha256": "96bf8e4ec1c1f444d9578492bfae53f5e4ec5b339da47a074e5793599acf3dcd",
+      "spectrum.npz_sha256": "252561c27a45e550f695a40bafe70cef67b97e7fc84439c48560be33142fa1e7",
+      "summary.json_sha256": "00263f4926d23f4bbb25535c7399134f41ba9b586625fb0b7dee70a81067e449",
+      "protocol.json_sha256": "1fdd081225bfb12cccb7f19e54f1a3a74d1f88f35ea0ebb1f75907e355b40cb8"
+    },
+    {
+      "state": "return8",
+      "raw_hessian.npz_sha256": "a7f9637bdfa9ed468d3d6757ed5249e38e2795df73963e5def9fa4a2ebff3004",
+      "spectrum.npz_sha256": "0703cc4e7c58075c4beddbe0706e16c7bc5c0f8081d9e0c76c37e802c8d4ba6f",
+      "summary.json_sha256": "0c8901896f2c8f79862104a69ee58df22d6c13523baaad0766ab4fdccd456998",
+      "protocol.json_sha256": "5671406ca27f7864153da3e19d99127a587256fa554378f6304886a025c5fee8"
+    }
+  ],
+  "runner_sha256": "6992cf3e4e006c400e998f7418c14dccb4e446d7d8038ce54cfa8b04c5342426",
+  "dimension": 648,
+  "same_fixed_grip_difference_A": 0.0,
+  "raw_eigensystem_checks": [
+    {
+      "state": "loading8",
+      "basis_max_error": 0.0,
+      "eigenvector_max_error": 3.219646771412954e-15,
+      "eigen_residual_norm": 3.9477563760487005e-13
+    },
+    {
+      "state": "return8",
+      "basis_max_error": 0.0,
+      "eigenvector_max_error": 3.3306690738754696e-15,
+      "eigen_residual_norm": 4.0633016213129367e-13
+    }
+  ],
+  "overlap_completeness_error": 3.552713678800501e-15,
+  "free_coordinate_chord_norm_A": 15.49141467408821,
+  "free_atom_chord_RMS_A": 1.0540572595938855,
+  "chord_projection_error_A": 0.0,
+  "lowest_direction_squared_overlap": 0.8835683142540757,
+  "subspaces": [
+    {
+      "first_modes": 1,
+      "mean_squared_subspace_overlap": 0.8835683142540751,
+      "principal_angles_degrees": [
+        19.951273850340854
+      ],
+      "projector_identity_error": 1.2490009027033011e-15,
+      "internal_basis_rotation_error": 2.220446049250313e-16,
+      "loading8_boundary_gap_eV_A2": 0.01012603842028531,
+      "return8_boundary_gap_eV_A2": 0.0147755699985914,
+      "loading8_chord_squared_projection_fraction": 1.978878382911849e-13,
+      "return8_chord_squared_projection_fraction": 3.953717333722375e-13
+    },
+    {
+      "first_modes": 4,
+      "mean_squared_subspace_overlap": 0.7131979288288135,
+      "principal_angles_degrees": [
+        9.472052777808923,
+        13.67746185071409,
+        14.67916898540936,
+        89.99998913088501
+      ],
+      "projector_identity_error": 3.1086244689504383e-15,
+      "internal_basis_rotation_error": 1.7763568394002505e-15,
+      "loading8_boundary_gap_eV_A2": 0.05175015949054207,
+      "return8_boundary_gap_eV_A2": 0.020893768596973006,
+      "loading8_chord_squared_projection_fraction": 0.15166980601586755,
+      "return8_chord_squared_projection_fraction": 0.02334880735843627
+    },
+    {
+      "first_modes": 8,
+      "mean_squared_subspace_overlap": 0.704005873833535,
+      "principal_angles_degrees": [
+        6.4576261336151415,
+        10.54345290224833,
+        13.31130213926676,
+        21.78464572001685,
+        28.279428792650577,
+        34.43389995479373,
+        54.864180870501926,
+        73.37061990808637
+      ],
+      "projector_identity_error": 1.3322676295501878e-14,
+      "internal_basis_rotation_error": 8.881784197001252e-16,
+      "loading8_boundary_gap_eV_A2": 0.009479602179569058,
+      "return8_boundary_gap_eV_A2": 0.02141211214216851,
+      "loading8_chord_squared_projection_fraction": 0.22930269394158967,
+      "return8_chord_squared_projection_fraction": 0.1534054571367229
+    },
+    {
+      "first_modes": 16,
+      "mean_squared_subspace_overlap": 0.6409424833764126,
+      "principal_angles_degrees": [
+        5.308496657532286,
+        7.629622119527016,
+        10.32964426889534,
+        12.80442496172915,
+        12.964786936422701,
+        19.687880192715934,
+        22.172876906608856,
+        28.29844209554105,
+        33.48889843728025,
+        35.2764646132684,
+        43.75733198234118,
+        50.97825944628793,
+        53.92108554133513,
+        61.070822013749094,
+        79.79031737604714,
+        88.00073929402932
+      ],
+      "projector_identity_error": 1.5987211554602254e-14,
+      "internal_basis_rotation_error": 1.7763568394002505e-15,
+      "loading8_boundary_gap_eV_A2": 0.009596782364056256,
+      "return8_boundary_gap_eV_A2": 0.023794009607733868,
+      "loading8_chord_squared_projection_fraction": 0.4252279267805403,
+      "return8_chord_squared_projection_fraction": 0.27547019870917716
+    }
+  ],
+  "first_eight_direction_comparisons": [
+    {
+      "direction_from": "loading8",
+      "mode": 1,
+      "own_curvature_eV_A2": 0.02947002388292215,
+      "other_state_same_direction_curvature_eV_A2": 0.09774827401924964,
+      "best_overlap_other_mode": 1,
+      "best_squared_overlap": 0.8835683142540757,
+      "overlap_with_same_ordered_mode_squared": 0.8835683142540757
+    },
+    {
+      "direction_from": "loading8",
+      "mode": 2,
+      "own_curvature_eV_A2": 0.03959606230320746,
+      "other_state_same_direction_curvature_eV_A2": 0.29863639004656894,
+      "best_overlap_other_mode": 2,
+      "best_squared_overlap": 0.8356936496004063,
+      "overlap_with_same_ordered_mode_squared": 0.8356936496004063
+    },
+    {
+      "direction_from": "loading8",
+      "mode": 3,
+      "own_curvature_eV_A2": 0.042114903248241777,
+      "other_state_same_direction_curvature_eV_A2": 0.1516046522093022,
+      "best_overlap_other_mode": 3,
+      "best_squared_overlap": 0.8600456417442404,
+      "overlap_with_same_ordered_mode_squared": 0.8600456417442404
+    },
+    {
+      "direction_from": "loading8",
+      "mode": 4,
+      "own_curvature_eV_A2": 0.05397887248710327,
+      "other_state_same_direction_curvature_eV_A2": 0.4476204435042369,
+      "best_overlap_other_mode": 6,
+      "best_squared_overlap": 0.685950437293606,
+      "overlap_with_same_ordered_mode_squared": 2.0677992220778317e-14
+    },
+    {
+      "direction_from": "loading8",
+      "mode": 5,
+      "own_curvature_eV_A2": 0.10572903197764534,
+      "other_state_same_direction_curvature_eV_A2": 0.34894334333708943,
+      "best_overlap_other_mode": 4,
+      "best_squared_overlap": 0.7695493327515766,
+      "overlap_with_same_ordered_mode_squared": 1.0525486399699662e-16
+    },
+    {
+      "direction_from": "loading8",
+      "mode": 6,
+      "own_curvature_eV_A2": 0.1284617263195132,
+      "other_state_same_direction_curvature_eV_A2": 1.0792915013927074,
+      "best_overlap_other_mode": 9,
+      "best_squared_overlap": 0.32574938835691497,
+      "overlap_with_same_ordered_mode_squared": 6.886068810658215e-14
+    },
+    {
+      "direction_from": "loading8",
+      "mode": 7,
+      "own_curvature_eV_A2": 0.13986148537597276,
+      "other_state_same_direction_curvature_eV_A2": 0.8520360862523539,
+      "best_overlap_other_mode": 11,
+      "best_squared_overlap": 0.3546539227129742,
+      "overlap_with_same_ordered_mode_squared": 0.1042764086313194
+    },
+    {
+      "direction_from": "loading8",
+      "mode": 8,
+      "own_curvature_eV_A2": 0.14990812484013716,
+      "other_state_same_direction_curvature_eV_A2": 0.48614592509799753,
+      "best_overlap_other_mode": 5,
+      "best_squared_overlap": 0.6716511106524902,
+      "overlap_with_same_ordered_mode_squared": 2.903837832402817e-18
+    },
+    {
+      "direction_from": "return8",
+      "mode": 1,
+      "own_curvature_eV_A2": 0.022821591769603626,
+      "other_state_same_direction_curvature_eV_A2": 0.08325752300146369,
+      "best_overlap_other_mode": 1,
+      "best_squared_overlap": 0.8835683142540757,
+      "overlap_with_same_ordered_mode_squared": 0.8835683142540757
+    },
+    {
+      "direction_from": "return8",
+      "mode": 2,
+      "own_curvature_eV_A2": 0.037597161768195025,
+      "other_state_same_direction_curvature_eV_A2": 0.27182180644705883,
+      "best_overlap_other_mode": 2,
+      "best_squared_overlap": 0.8356936496004063,
+      "overlap_with_same_ordered_mode_squared": 0.8356936496004063
+    },
+    {
+      "direction_from": "return8",
+      "mode": 3,
+      "own_curvature_eV_A2": 0.038384309314752556,
+      "other_state_same_direction_curvature_eV_A2": 0.11218698767716356,
+      "best_overlap_other_mode": 3,
+      "best_squared_overlap": 0.8600456417442404,
+      "overlap_with_same_ordered_mode_squared": 0.8600456417442404
+    },
+    {
+      "direction_from": "return8",
+      "mode": 4,
+      "own_curvature_eV_A2": 0.07826874050334026,
+      "other_state_same_direction_curvature_eV_A2": 0.35621394850705546,
+      "best_overlap_other_mode": 5,
+      "best_squared_overlap": 0.7695493327515766,
+      "overlap_with_same_ordered_mode_squared": 2.0677992220778317e-14
+    },
+    {
+      "direction_from": "return8",
+      "mode": 5,
+      "own_curvature_eV_A2": 0.09916250910031327,
+      "other_state_same_direction_curvature_eV_A2": 0.5548874247775226,
+      "best_overlap_other_mode": 8,
+      "best_squared_overlap": 0.6716511106524902,
+      "overlap_with_same_ordered_mode_squared": 1.0525486399699662e-16
+    },
+    {
+      "direction_from": "return8",
+      "mode": 6,
+      "own_curvature_eV_A2": 0.11714721634065775,
+      "other_state_same_direction_curvature_eV_A2": 0.5407881840903024,
+      "best_overlap_other_mode": 4,
+      "best_squared_overlap": 0.685950437293606,
+      "overlap_with_same_ordered_mode_squared": 6.886068810658215e-14
+    },
+    {
+      "direction_from": "return8",
+      "mode": 7,
+      "own_curvature_eV_A2": 0.1206570487587201,
+      "other_state_same_direction_curvature_eV_A2": 0.5790980153637888,
+      "best_overlap_other_mode": 10,
+      "best_squared_overlap": 0.33472002559879677,
+      "overlap_with_same_ordered_mode_squared": 0.1042764086313194
+    },
+    {
+      "direction_from": "return8",
+      "mode": 8,
+      "own_curvature_eV_A2": 0.15509623998628266,
+      "other_state_same_direction_curvature_eV_A2": 0.8438726923298892,
+      "best_overlap_other_mode": 12,
+      "best_squared_overlap": 0.18574909052561697,
+      "overlap_with_same_ordered_mode_squared": 2.903837832402817e-18
+    }
+  ],
+  "finite_chord_quadratic_extrapolations": [
+    {
+      "from_state": "loading8",
+      "actual_endpoint_energy_difference_eV": -9.719222937906352,
+      "linear_term_eV": 0.0034447922271495465,
+      "quadratic_term_eV": 222.23137991947476,
+      "quadratic_predicted_difference_eV": 222.23482471170192,
+      "prediction_minus_actual_eV": 231.95404764960827,
+      "unit_chord_local_curvature_eV_A2": 1.8520521870918003
+    },
+    {
+      "from_state": "return8",
+      "actual_endpoint_energy_difference_eV": 9.719222937906352,
+      "linear_term_eV": -0.001119251590844213,
+      "quadratic_term_eV": 301.8669440001382,
+      "quadratic_predicted_difference_eV": 301.8658247485473,
+      "prediction_minus_actual_eV": 292.14660181064096,
+      "unit_chord_local_curvature_eV_A2": 2.5157263301373254
+    }
+  ],
+  "coordinate_convention": "identical labelled free Cartesian coordinates; fixed grips; no mass weighting",
+  "limitations": [
+    "endpoint chord is not a transition path",
+    "quadratic extrapolation over a large chord is not a barrier",
+    "approximate stationary states retain their gradient",
+    "ordered modes may mix; boundary gaps are reported",
+    "mode weights are geometric and not probabilities"
+  ],
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "first_crack_certified": false,
+  "material_approved": false,
+  "physical_clock": null
+}

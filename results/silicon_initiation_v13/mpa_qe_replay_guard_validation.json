@@ -1,0 +1,13 @@
+{
+  "recorded_utc": "2026-09-27T20:39:33.927202+00:00",
+  "tests_passed": 11,
+  "elapsed_s": 0.3,
+  "scope": "nonfinite scalar and exact-control-schedule corruption regression",
+  "actual_candidate_inference": false,
+  "actual_result_replay": false,
+  "new_model_calls": 0,
+  "source_sha256": {
+    "results/silicon_wafer_feasibility/replay_mpa_qe_v13.py": "b60ccb9241f5a630c27e60267f4a9ad2c31dc4486b98094b60e726a824c03e49",
+    "solver_v1/test_mpa_qe_replay_v13.py": "5463a5673e981a5015e28900467587a38ebacf6cee2c29e6403e0576dc1d5165"
+  }
+}

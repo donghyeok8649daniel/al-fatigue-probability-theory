@@ -1,0 +1,253 @@
+{
+  "complete": true,
+  "planned_frames": 199,
+  "independent_selection_matches_runner": true,
+  "datasets": [
+    {
+      "dataset": "CP2K",
+      "full": {
+        "frames": 1013,
+        "atoms": 179857,
+        "compositions": 14,
+        "baseline_component_RMSE_eV_A": 0.37275973646183486
+      },
+      "selected": {
+        "frames": 135,
+        "atoms": 20043,
+        "compositions": 14,
+        "baseline_component_RMSE_eV_A": 0.5182443654734356
+      },
+      "selected_frame_fraction": 0.1332675222112537,
+      "selected_atom_fraction": 0.11143853172242392
+    },
+    {
+      "dataset": "QE",
+      "full": {
+        "frames": 1159,
+        "atoms": 17413,
+        "compositions": 30,
+        "baseline_component_RMSE_eV_A": 0.6912432192704427
+      },
+      "selected": {
+        "frames": 64,
+        "atoms": 1035,
+        "compositions": 20,
+        "baseline_component_RMSE_eV_A": 0.35142190418026
+      },
+      "selected_frame_fraction": 0.055220017256255395,
+      "selected_atom_fraction": 0.0594383506575547
+    }
+  ],
+  "groups": [
+    {
+      "dataset": "CP2K",
+      "group": "Si_H_vacuum1",
+      "full_frames": 93,
+      "full_atoms": 20832,
+      "full_compositions": 1,
+      "full_baseline_component_RMSE_eV_A": 0.2744877269133234,
+      "selected_frames": 12,
+      "selected_atoms": 2688,
+      "selected_compositions": 1,
+      "selected_baseline_component_RMSE_eV_A": 0.26381407012090735,
+      "full_dataset_atom_weight": 0.11582535013927732,
+      "selected_dataset_atom_weight": 0.13411165993114804
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "full_frames": 423,
+      "full_atoms": 106148,
+      "full_compositions": 4,
+      "full_baseline_component_RMSE_eV_A": 0.32809031168179426,
+      "selected_frames": 48,
+      "selected_atoms": 12360,
+      "selected_compositions": 4,
+      "selected_baseline_component_RMSE_eV_A": 0.32619191476345,
+      "full_dataset_atom_weight": 0.5901799763145166,
+      "selected_dataset_atom_weight": 0.6166741505762611
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_vacuum0",
+      "full_frames": 64,
+      "full_atoms": 13824,
+      "full_compositions": 1,
+      "full_baseline_component_RMSE_eV_A": 0.18580536385989013,
+      "selected_frames": 12,
+      "selected_atoms": 2592,
+      "selected_compositions": 1,
+      "selected_baseline_component_RMSE_eV_A": 0.17636452574549438,
+      "full_dataset_atom_weight": 0.07686106184357573,
+      "selected_dataset_atom_weight": 0.1293219577907499
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_vacuum0",
+      "full_frames": 201,
+      "full_atoms": 38592,
+      "full_compositions": 1,
+      "full_baseline_component_RMSE_eV_A": 0.19666155924827447,
+      "selected_frames": 12,
+      "selected_atoms": 2304,
+      "selected_compositions": 1,
+      "selected_baseline_component_RMSE_eV_A": 0.1930703468946366,
+      "full_dataset_atom_weight": 0.21457046431331558,
+      "selected_dataset_atom_weight": 0.11495285136955545
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_H",
+      "full_frames": 1,
+      "full_atoms": 1,
+      "full_compositions": 1,
+      "full_baseline_component_RMSE_eV_A": 0.0,
+      "selected_frames": 1,
+      "selected_atoms": 1,
+      "selected_compositions": 1,
+      "selected_baseline_component_RMSE_eV_A": 0.0,
+      "full_dataset_atom_weight": 5.559972644934587e-06,
+      "selected_dataset_atom_weight": 4.9892730629147335e-05
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_O",
+      "full_frames": 58,
+      "full_atoms": 115,
+      "full_compositions": 2,
+      "full_baseline_component_RMSE_eV_A": 4.113738958420019,
+      "selected_frames": 13,
+      "selected_atoms": 25,
+      "selected_compositions": 2,
+      "selected_baseline_component_RMSE_eV_A": 7.651541495759244,
+      "full_dataset_atom_weight": 0.0006393968541674775,
+      "selected_dataset_atom_weight": 0.0012473182657286833
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si",
+      "full_frames": 98,
+      "full_atoms": 195,
+      "full_compositions": 2,
+      "full_baseline_component_RMSE_eV_A": 5.966690375998809,
+      "selected_frames": 13,
+      "selected_atoms": 25,
+      "selected_compositions": 2,
+      "selected_baseline_component_RMSE_eV_A": 8.08491148449985,
+      "full_dataset_atom_weight": 0.0010841946657622445,
+      "selected_dataset_atom_weight": 0.0012473182657286833
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_H",
+      "full_frames": 52,
+      "full_atoms": 104,
+      "full_compositions": 1,
+      "full_baseline_component_RMSE_eV_A": 3.1164652509243225,
+      "selected_frames": 12,
+      "selected_atoms": 24,
+      "selected_compositions": 1,
+      "selected_baseline_component_RMSE_eV_A": 4.67187642060371,
+      "full_dataset_atom_weight": 0.000578237155073197,
+      "selected_dataset_atom_weight": 0.001197425535099536
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_O",
+      "full_frames": 23,
+      "full_atoms": 46,
+      "full_compositions": 1,
+      "full_baseline_component_RMSE_eV_A": 1.6623163634516418,
+      "selected_frames": 12,
+      "selected_atoms": 24,
+      "selected_compositions": 1,
+      "selected_baseline_component_RMSE_eV_A": 1.9659336881498704,
+      "full_dataset_atom_weight": 0.000255758741666991,
+      "selected_dataset_atom_weight": 0.001197425535099536
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "full_frames": 22,
+      "full_atoms": 54,
+      "full_compositions": 3,
+      "full_baseline_component_RMSE_eV_A": 0.9727527446245519,
+      "selected_frames": 16,
+      "selected_atoms": 40,
+      "selected_compositions": 3,
+      "selected_baseline_component_RMSE_eV_A": 0.8997597753404044,
+      "full_dataset_atom_weight": 0.0031011313386550277,
+      "selected_dataset_atom_weight": 0.03864734299516908
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "full_frames": 493,
+      "full_atoms": 5823,
+      "full_compositions": 7,
+      "full_baseline_component_RMSE_eV_A": 0.1582274890688483,
+      "selected_frames": 16,
+      "selected_atoms": 195,
+      "selected_compositions": 6,
+      "selected_baseline_component_RMSE_eV_A": 0.09699927334734446,
+      "full_dataset_atom_weight": 0.33440532935163386,
+      "selected_dataset_atom_weight": 0.18840579710144928
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "full_frames": 471,
+      "full_atoms": 4497,
+      "full_compositions": 9,
+      "full_baseline_component_RMSE_eV_A": 1.2737890366931888,
+      "selected_frames": 16,
+      "selected_atoms": 141,
+      "selected_compositions": 7,
+      "selected_baseline_component_RMSE_eV_A": 0.21355939973081595,
+      "full_dataset_atom_weight": 0.25825532648021593,
+      "selected_dataset_atom_weight": 0.13623188405797101
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "full_frames": 173,
+      "full_atoms": 7039,
+      "full_compositions": 11,
+      "full_baseline_component_RMSE_eV_A": 0.3427228086530711,
+      "selected_frames": 16,
+      "selected_atoms": 659,
+      "selected_compositions": 4,
+      "selected_baseline_component_RMSE_eV_A": 0.3637013701105116,
+      "full_dataset_atom_weight": 0.4042382128294952,
+      "selected_dataset_atom_weight": 0.6367149758454106
+    }
+  ],
+  "source_tables": [
+    {
+      "dataset": "CP2K",
+      "frames_csv_sha256": "0e3d9f19be5c50f3bb5568f75cebab4954dca6178c1958e4f2525b2ac30401a7",
+      "source_protocol_sha256": "ab76c1142de6239a474822bd92c01a787ead5f15d567205e9028028afd6a1a69"
+    },
+    {
+      "dataset": "QE",
+      "frames_csv_sha256": "a6225fb73a58a93ac30187ff10b02051252f72a2f9df00952ac8a36c56317bb4",
+      "source_protocol_sha256": "c7ed88faa7f426661cc33a88b2915c421ec0d732bbeafd3b3622e4ddc0e54cdf"
+    }
+  ],
+  "selection_sha256": "d940ba9044290ae2229a2542c6ed0d0bbe6b4f5e96f786f765f771908b7b3798",
+  "selection_fixed_before_candidate_predictions": true,
+  "random_sample": false,
+  "statistical_independence_certified": false,
+  "pretraining_overlap_audited": false,
+  "raw_model_evaluations": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "material_approved": false,
+  "physical_clock": null,
+  "interpretation": "CSV baseline scores and sampling coverage only; selected-frame comparisons do not estimate a wafer-population error or an unbiased full-corpus error",
+  "runner_sha256": "d68ebcd11556cd375c7830ace40b564237827cd0bfc37f45972b5932134e47e7",
+  "selector_sources": {
+    "compare_mpa_model_v12.py": "00804b786f8085e5a95a1bfe0760e63ac5e12fc622f4869601043a2637591061",
+    "replay_mpa_comparison_v12.py": "2e67f661a5a62580749e50d570b50aef848c5f67e07e7e37eb1ccb5b99e24ee6"
+  }
+}

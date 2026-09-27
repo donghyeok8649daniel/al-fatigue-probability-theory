@@ -1,0 +1,99 @@
+{
+  "complete": true,
+  "states": [
+    {
+      "state": "loading8",
+      "dimension": 648,
+      "energy_eV": -1735.3477245880867,
+      "log_determinant_in_eV_A2_units": 906.7086500383305,
+      "minimum_curvature_eV_A2": 0.02947002388292215,
+      "linearized_minimum_energy_correction_eV": -4.60519071898002e-05,
+      "linearized_maximum_atom_displacement_A": 0.005471846586130197,
+      "maximum_gradient_eV_A": 0.0007220006223479236,
+      "hessian_inverse_residual_norm": 1.0496255070144307e-12,
+      "raw_hessian_sha256": "96bf8e4ec1c1f444d9578492bfae53f5e4ec5b339da47a074e5793599acf3dcd"
+    },
+    {
+      "state": "return8",
+      "dimension": 648,
+      "energy_eV": -1745.066947525993,
+      "log_determinant_in_eV_A2_units": 927.0408465739761,
+      "minimum_curvature_eV_A2": 0.022821591769603626,
+      "linearized_minimum_energy_correction_eV": -1.0423037807669525e-05,
+      "linearized_maximum_atom_displacement_A": 0.0014274594484488079,
+      "maximum_gradient_eV_A": 0.0007035344337763816,
+      "hessian_inverse_residual_norm": 1.2059889342844755e-12,
+      "raw_hessian_sha256": "a7f9637bdfa9ed468d3d6757ed5249e38e2795df73963e5def9fa4a2ebff3004"
+    }
+  ],
+  "temperature_diagnostics": [
+    {
+      "temperature_K": 10.0,
+      "kBT_eV": 0.0008617333262145179,
+      "delta_energy_eV": -9.719222937906352,
+      "quadratic_entropy_term_eV": 0.008760465674954594,
+      "raw_centered_quadratic_delta_F_eV": -9.710462472231397,
+      "linearly_center_corrected_quadratic_delta_F_eV": -9.710426843362015,
+      "loading8_Gaussian_free_atom_RMS_A": 0.04292100252796665,
+      "loading8_Gaussian_maximum_atom_RMS_A": 0.06348832325738317,
+      "return8_Gaussian_free_atom_RMS_A": 0.0433838894328896,
+      "return8_Gaussian_maximum_atom_RMS_A": 0.05830810378289104
+    },
+    {
+      "temperature_K": 50.0,
+      "kBT_eV": 0.004308666631072589,
+      "delta_energy_eV": -9.719222937906352,
+      "quadratic_entropy_term_eV": 0.043802328374772964,
+      "raw_centered_quadratic_delta_F_eV": -9.67542060953158,
+      "linearly_center_corrected_quadratic_delta_F_eV": -9.675384980662198,
+      "loading8_Gaussian_free_atom_RMS_A": 0.09597427931497374,
+      "loading8_Gaussian_maximum_atom_RMS_A": 0.14196420658098965,
+      "return8_Gaussian_free_atom_RMS_A": 0.09700932590027596,
+      "return8_Gaussian_maximum_atom_RMS_A": 0.130380883697657
+    },
+    {
+      "temperature_K": 150.0,
+      "kBT_eV": 0.012925999893217768,
+      "delta_energy_eV": -9.719222937906352,
+      "quadratic_entropy_term_eV": 0.1314069851243189,
+      "raw_centered_quadratic_delta_F_eV": -9.587815952782034,
+      "linearly_center_corrected_quadratic_delta_F_eV": -9.587780323912652,
+      "loading8_Gaussian_free_atom_RMS_A": 0.16623232799334126,
+      "loading8_Gaussian_maximum_atom_RMS_A": 0.24588921865447805,
+      "return8_Gaussian_free_atom_RMS_A": 0.16802508126728535,
+      "return8_Gaussian_maximum_atom_RMS_A": 0.22582631490007066
+    },
+    {
+      "temperature_K": 300.0,
+      "kBT_eV": 0.025851999786435535,
+      "delta_energy_eV": -9.719222937906352,
+      "quadratic_entropy_term_eV": 0.2628139702486378,
+      "raw_centered_quadratic_delta_F_eV": -9.456408967657714,
+      "linearly_center_corrected_quadratic_delta_F_eV": -9.456373338788332,
+      "loading8_Gaussian_free_atom_RMS_A": 0.23508801275303592,
+      "loading8_Gaussian_maximum_atom_RMS_A": 0.3477398678624863,
+      "return8_Gaussian_free_atom_RMS_A": 0.23762334874703642,
+      "return8_Gaussian_maximum_atom_RMS_A": 0.31936663727241726
+    }
+  ],
+  "grip_coordinate_max_difference_A": 0.0,
+  "delta_energy_eV": -9.719222937906352,
+  "log_determinant_ratio": 20.332196535645608,
+  "delta_linearized_center_energy_correction_eV": 3.5628869382130676e-05,
+  "formula": "Delta F_quadratic = Delta E + kBT/2 * log(det H_return / det H_load); same dimension and coordinate measure",
+  "interpretation": "single labelled local quadratic wells only; no finite basin integration or physical free-energy certification",
+  "omitted": [
+    "anharmonicity",
+    "basin boundaries and truncation",
+    "quantum nuclear effects",
+    "configurational basin multiplicity",
+    "transition saddle",
+    "kinetic mobility"
+  ],
+  "temperatures_are_not_MD_runs": true,
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "material_approved": false,
+  "physical_clock": null
+}

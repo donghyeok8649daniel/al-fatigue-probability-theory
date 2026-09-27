@@ -1,0 +1,24 @@
+{
+  "recorded_UTC": "2026-09-27T19:32:31.809195+00:00",
+  "test_command": "python -m pytest -q -x --tb=short -p no:cacheprovider --basetemp=NEW_WORKSPACE_TEMP solver_v1/test_hessian_resume.py",
+  "tests_passed": 17,
+  "elapsed_s": 0.45,
+  "source_files": [
+    {
+      "path": "solver_v1/hessian_resume.py",
+      "sha256": "d200e63e116c1b4de4a926a6b23d645de510b23416a29e1b1c26b58260e60317"
+    },
+    {
+      "path": "solver_v1/test_hessian_resume.py",
+      "sha256": "a550bd151c314d58c5d58574bc2c2ad4b214a3d1b174fac4f12fb9ee0b34b1d9"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/check_prism_dense_hessian_v13.py",
+      "sha256": "67ba9235281ff28221bb5e002888e906e64bd8d0c6159c81dda972cb24599d11"
+    }
+  ],
+  "observed_stdout": "17 passed in 0.45s",
+  "first_attempt": "setup-only failure: existing system pytest temporary directory access denied; no test body executed",
+  "rerun": "fresh workspace temporary directory; all seventeen test bodies passed",
+  "test_is_not_material_or_kinetic_validation": true
+}

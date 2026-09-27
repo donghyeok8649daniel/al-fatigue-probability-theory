@@ -1,0 +1,629 @@
+{
+  "title": "실리콘 웨이퍼 균열 개시 모델 설명",
+  "asOfKST": "2026-09-26",
+  "revision": "c3a93f5d2e4df6e21a68d6080ed99cf6aee840bc",
+  "sections": [
+    {
+      "title": "실리콘 웨이퍼의\n균열 개시 모델",
+      "subtitle": "원자 결합과 환경을 첫 균열 확률에 연결하는 연구\n현재 모델 설명 · 2026.09.26",
+      "kind": "cover",
+      "takeaway": "원자 에너지와 확률 보존을 공통 원리로 사용한다. 실제 웨이퍼의 개시 확률·수명 예측은 아직 검증 단계에 있다.",
+      "paragraphs": [
+        "이 연구는 실리콘 웨이퍼에 하중이 작용할 때, 초기 시편에 없던 첫 균열이 어느 조건에서 얼마나 쉽게 생기는지 설명하려는 것이다. 도펀트와 산화층의 효과를 원자 결합, 전하 상태와 열적 운동에 연결하고, 그 결과로 균열 개시 확률을 계산하는 구조를 세운다.",
+        "현재 모델은 원자 에너지 계산, 조건부 자유에너지, 확률 보존과 첫 도달 사건을 연결하는 연구 체계다. 확률 법칙의 수학과 일부 원자 상태는 검증했지만, 실제 Si의 첫 균열 상태와 전이 경로, 물리 시간은 아직 확정하지 못했다. 이 설명에서 “현재 모델”은 검증 수준을 포함한 통합 연구 구성을 뜻한다."
+      ],
+      "sources": [
+        "solver_v1/SILICON_INITIATION_V11.md",
+        "results/silicon_initiation_v12/RESULTS_AND_LIMITS.md"
+      ]
+    },
+    {
+      "title": "연구 목적과 예측하려는 값",
+      "kind": "text",
+      "points": [
+        "입력  시편 형상·하중·온도·표면·도핑 조건",
+        "대상  초기 시편에서 처음 형성되는 균열",
+        "목표 출력  시간에 따른 개시 확률과 개시 위치·원인"
+      ],
+      "takeaway": "예: 100 MPa를 가한 시편에서 주어진 시간 안에 첫 균열이 생길 확률을 구한다.",
+      "paragraphs": [
+        "같은 명목 응력을 받아도 시편의 모서리, 표면 상태, 산화막과 도펀트 배치가 다르면 원자 수준의 에너지와 가능한 경로가 달라진다. 따라서 목표 출력은 강도 하나만이 아니라 “정의한 초기 시편과 환경에서, 일정 시간까지 첫 균열이 생길 확률”이다. 위 100 MPa는 연구 질문을 설명하는 예이며 현재 그 확률을 계산해 검증한 값은 없다.",
+        "필요한 입력에는 결정 방향, 하중의 공간 분포와 시간 이력, 산화층 두께·구조, 도펀트 종류·농도·배치 및 전하 조건이 포함된다. 실제 초기 시편의 제조 결함을 포함할 수 있지만, 미리 넣은 날카로운 균열의 선단 이동을 첫 균열 개시로 세지는 않는다."
+      ],
+      "sources": [
+        "solver_v1/SILICON_INITIATION_V11.md"
+      ]
+    },
+    {
+      "title": "첫 균열의 의미",
+      "kind": "text",
+      "points": [
+        "초기 상태 A  주어진 시편의 아직 균열이 생기지 않은 상태",
+        "중간 상태  결합 신장·표면 재구성·되돌아오는 국소 개방",
+        "개시 상태 B  원자 구조와 전이 경로로 확인한 첫 균열"
+      ],
+      "takeaway": "B는 새 분리면과 주변 이완을 함께 확인해야 한다. 거리 하나로 판정할 수 없다.",
+      "paragraphs": [
+        "원자 두 개가 멀어졌거나 응력이 떨어졌다는 사실만으로 균열 개시가 확인되는 것은 아니다. 열운동이나 표면 재구성으로도 같은 신호가 생긴다. 새 내부 분리면, 국소 공간의 연결, 주변 결합과 응력의 이완, 같은 하중에서의 상태 안정성 또는 전이 후의 거동을 함께 살펴야 한다.",
+        "B를 처음 방문한 이력을 누적하면 첫 균열 확률을 정의할 수 있다. 확률 계산에서 B를 흡수 경계로 처리하는 것은 “한 번이라도 사건이 발생했는가”를 기록하기 위한 것이다. 이후 원자가 재결합할 수 없다는 가정을 뜻하지 않는다. 실제 Si에서 사용할 A와 B의 물리적 판정은 현재 미완료다."
+      ],
+      "sources": [
+        "solver_v1/SILICON_INITIATION_V11.md",
+        "results/silicon_initiation_v12/RESULTS_AND_LIMITS.md"
+      ]
+    },
+    {
+      "title": "모델의 전체 구조",
+      "kind": "table",
+      "table": {
+        "head": [
+          "단계",
+          "계산하는 내용",
+          "다음 단계에 넘기는 값"
+        ],
+        "rows": [
+          [
+            "원자 구조와 하중",
+            "원소·위치·표면·전하·구속 조건",
+            "원자 에너지와 힘"
+          ],
+          [
+            "자유에너지",
+            "빠른 원자 운동을 열적으로 평균",
+            "좌표별 에너지 지형 F"
+          ],
+          [
+            "확률 진화",
+            "하중과 열운동에 따른 상태 이동",
+            "아직 개시하지 않은 분포 P"
+          ],
+          [
+            "첫 도달 집계",
+            "분포가 개시 상태 B로 들어가는 흐름",
+            "개시 확률 P_init와 생존확률 S"
+          ]
+        ],
+        "widths": [
+          1.05,
+          1.7,
+          1.35
+        ]
+      },
+      "takeaway": "공통 연결 구조는 마련했다. 실제 Si 입력을 연결하는 물리 검증은 진행 중이다.",
+      "paragraphs": [
+        "원자 모델은 주어진 배열의 에너지와 힘을 제공한다. 이 정보로 균열에 중요한 좌표를 정하고 나머지 빠른 자유도를 평균하여 자유에너지를 만든다. 이어서 물리적으로 검증된 이동도를 사용해 확률분포를 진화시키고, 최초 개시 사건으로 들어간 확률만 따로 누적한다.",
+        "소프트웨어에서 어느 단계가 계산된다는 사실과 실제 재료에 맞는 입력을 확보했다는 사실은 구분해야 한다. 현재 원자 연구와 합성 확률 검증 모듈이 있으며, 이 둘을 실제 웨이퍼의 보정된 수명 예측으로 연결한 상태는 아니다. Si와 Al은 에너지와 좌표가 달라도 같은 에너지·확률 보존 원리를 사용한다."
+      ],
+      "sources": [
+        "solver_v1/SILICON_INITIATION_V11.md",
+        "solver_v1/SILICON_CHARGE_DYNAMICS_V9.md",
+        "results/silicon_initiation_v12/RESULTS_AND_LIMITS.md"
+      ]
+    },
+    {
+      "title": "원자 에너지와 외부 하중",
+      "kind": "formula",
+      "equations": [
+        "Π(R, Δ) = E(R, Δ) − F_ext Δ",
+        "원자에 작용하는 힘 = − 에너지의 위치 미분"
+      ],
+      "definitions": [
+        "R: 자유 원자의 위치  ·  Δ: 양끝 고정부 사이의 연장량",
+        "F_ext = 명목 응력 × 명시한 단면적  ·  Π: 힘제어에서의 에너지"
+      ],
+      "takeaway": "MACE는 학습된 원자 에너지 모델이다. 현재 Si 계산의 후보이며 재료 적합성을 검증 중이다.",
+      "paragraphs": [
+        "인장 힘을 일정하게 유지하는 경우에는 원자 에너지 E에서 외력이 한 일 F_ext Δ를 뺀 값을 사용한다. 자유 원자와 시편 길이가 함께 이완되어 이 에너지의 국소 정지점을 찾는다. 변위를 고정하는 경우에는 다른 구속 조건을 사용해야 한다. 응력을 힘으로 바꿀 때는 원자 셀의 빈 공간이 아니라 선언한 시편 단면적을 사용한다.",
+        "현재 Si 원자 연구의 주요 후보는 MACE-MP-0b3이다. 원자 종과 배열에서 에너지와 미분 가능한 힘을 계산한다. 공개 DFT의 같은 배열에서 기존 SW·Tersoff와 비교했지만 모든 표면·산화·도핑·전하 환경의 정확성을 승인한 것은 아니다. 이 중성 모델에는 활성 전하를 독립 입력하는 기능이 없다."
+      ],
+      "sources": [
+        "solver_v1/SILICON_INITIATION_V11.md",
+        "solver_v1/SILICON_CHARGE_DYNAMICS_V9.md",
+        "results/silicon_doping_v9/COMPLETED_SUMMARY.md"
+      ]
+    },
+    {
+      "title": "원자 배열과 자유에너지",
+      "kind": "formula",
+      "equations": [
+        "Z(q,T) = ∫ exp[−U(q,x)/(kBT)] dμ(x|q)",
+        "F(q,T) = −kBT ln Z(q,T)"
+      ],
+      "definitions": [
+        "q: 개시 과정을 설명할 좌표  ·  x: 함께 움직이는 나머지 원자 자유도",
+        "T: 온도  ·  kB: 볼츠만 상수  ·  dμ: 좌표와 제약에 맞는 적분 측도"
+      ],
+      "takeaway": "자유에너지는 열적으로 가능한 원자 배열을 함께 반영한다. 0 K 최소 에너지와 구별한다.",
+      "paragraphs": [
+        "같은 국소 개방 정도 q에서도 주변 원자는 여러 배열로 움직일 수 있다. Z는 명시한 허용 영역에서 이 배열들의 열적 가중치를 합한 값이고 F는 그 결과다. U에는 선택한 하중 조건에 맞는 에너지가 들어간다. 적분 측도, 좌표의 Jacobian, 영역과 기준 단위를 일관되게 정의해야 한다.",
+        "현재 Al의 두 좌표인 수직 분리 a와 미끄럼 s를 실제 Si의 첫 균열 좌표라고 그대로 승인하지 않는다. Si에서는 표면 재구성, 여러 결합의 변화와 전하를 어느 정도 남겨야 하는지 확인해야 한다. 기존 균열 선단에서 시험한 열적 축약 결과는 방법 검증 자료이며, 무균열 Si의 전체 자유에너지 지형은 미확보다."
+      ],
+      "sources": [
+        "solver_v1/SILICON_INITIATION_V11.md",
+        "solver_v1/SILICON_CONDITIONAL_DYNAMICS_V3.md",
+        "solver_v1/SILICON_FINITE_T_ENSEMBLES_V4.md"
+      ]
+    },
+    {
+      "title": "지배방정식과 확률의 이동",
+      "kind": "formula",
+      "equations": [
+        "∂P/∂t = −∇·J",
+        "J = −M [P ∇F + kBT ∇P]"
+      ],
+      "definitions": [
+        "P: 아직 개시하지 않은 상태의 확률밀도  ·  J: 상태 사이의 확률 흐름",
+        "M: 기계적 이동도  ·  첫 항: 에너지에 따른 이동  ·  둘째 항: 열적 퍼짐"
+      ],
+      "takeaway": "확률분포를 보존적으로 진화시킨다. 실제 Si의 F와 M은 추가 검증이 필요하다.",
+      "paragraphs": [
+        "에너지 경사가 있으면 분포가 낮은 자유에너지 쪽으로 이동하고, 열운동은 분포를 퍼뜨린다. 식 자체는 확률밀도를 결정론적으로 진화시킨다. 온도가 일정하고 선택한 좌표만으로 미래 진화를 기술할 수 있는 Markov 축약이 정당화되어야 하며, 현재 확률 모듈은 Scharfetter–Gummel이라는 보존적 흐름 이산화를 사용한다.",
+        "제거한 원자 운동이나 전하의 영향이 과거 이력에 오래 남으면 좌표를 늘리거나 기억항을 유지해야 한다. 이를 임의의 상수 이동도로 덮지 않는다. 전하 상태 N을 남기면 각 P_N의 공간 흐름에 전하 전이항 Σ K_NM P_M을 더하며 K의 열별 합은 0이다. 실제 Si 기계 이동도와 전하 전이율은 아직 보정되지 않았다."
+      ],
+      "sources": [
+        "solver_v1/SILICON_INITIATION_V11.md",
+        "solver_v1/SILICON_CHARGE_DYNAMICS_V9.md",
+        "solver_v1/silicon_charge_dynamics.py"
+      ]
+    },
+    {
+      "title": "첫 도달 확률과 생존확률",
+      "kind": "formula",
+      "equations": [
+        "S(t) = Σ_N ∫ P_N(q,t) dq",
+        "P_init(t) = 1 − S(t)"
+      ],
+      "definitions": [
+        "적분 영역: 아직 B를 방문하지 않은 모든 상태  ·  N: 전하 상태",
+        "S: 그때까지 개시하지 않은 확률  ·  P_init: 한 번 이상 개시한 확률"
+      ],
+      "takeaway": "생존확률과 개시 확률의 합은 1이다. 수치 오차로 사라진 확률은 개시로 세지 않는다.",
+      "paragraphs": [
+        "이 식의 영역은 초기 상태 A만이 아니라 아직 B를 방문하지 않은 모든 중간 상태를 포함한다. 실제 계산에서는 B 경계를 통과한 흐름을 누적하고, 남은 확률과의 질량 보존 잔차를 별도로 확인한다. 원인별 개시 확률을 더할 때는 같은 사건이 표면과 계면에 중복 등록되지 않게 해야 한다.",
+        "국소 원자 영역의 확률을 웨이퍼 전체 확률로 바꾸려면 응력 분포와 영역 사이 상관을 추가로 알아야 한다. 메시 셀 수를 독립 시도 횟수로 간주하거나, 셀 면적을 물리적 상관 면적과 같다고 두지 않는다. 현재 Si에는 검증된 전체 시편 집계 계수가 없다."
+      ],
+      "sources": [
+        "solver_v1/SILICON_INITIATION_V11.md",
+        "results/silicon_initiation_v12/ENDURANCE_AND_FIRST_PASSAGE_V12.md"
+      ]
+    },
+    {
+      "title": "도핑이 모델에 들어가는 방식",
+      "kind": "table",
+      "table": {
+        "head": [
+          "입력",
+          "영향을 표현하는 곳",
+          "구분해야 하는 이유"
+        ],
+        "rows": [
+          [
+            "원소·농도·위치 배치 D",
+            "원자 구조와 에너지 E_D",
+            "같은 농도에도 군집·편석이 다름"
+          ],
+          [
+            "활성 전하 상태 N",
+            "전하별 자유에너지 F_DN",
+            "원소 치환만으로 활성률이 정해지지 않음"
+          ],
+          [
+            "전하 교환 속도 K",
+            "전하별 확률의 전이",
+            "빠른 평형 가정의 적용 범위가 달라짐"
+          ],
+          [
+            "시편의 배치 분포 w_D",
+            "S_mix(t) = Σ_D w_D S_D(t)",
+            "고정 배치별 결과를 먼저 구해 혼합"
+          ]
+        ],
+        "widths": [
+          1.2,
+          1.6,
+          1.75
+        ]
+      },
+      "takeaway": "도핑은 농도 한 개의 강도 배율로 표현하지 않는다. 화학 배치와 전하를 구분한다.",
+      "paragraphs": [
+        "도핑은 실리콘에 다른 원소를 도입해 재료의 전자 상태 등을 바꾸는 것이다. 도펀트가 실험 시간 동안 움직이지 않는다면 각 화학 배치 D마다 확률 법칙을 풀고 제조·준비 조건에 맞는 가중치 w_D로 생존확률을 합한다. 에너지나 전이율부터 평균내는 방식은 일반적으로 같은 결과를 주지 않는다. 도펀트가 실제로 확산한다면 그 배치 변화도 별도 동역학이 필요하다.",
+        "전자 저장고의 화학 퍼텐셜 μ가 고정된 경우에는 Φ_N=F_N−μN을 사용한다. 전하가 기계 운동보다 충분히 빠르게 평형에 도달할 때만 Ω=−kBT ln Σ_N exp[−Φ_N/(kBT)]로 축약할 수 있다. 고립 시편의 전체 전하 고정과 각 위치의 국소 전하 중성은 다르다. 현재 중성 B/P 원자 계산과 합성 전하 검증은 별도 단계이며 아직 실물 예측으로 연결하지 못했다."
+      ],
+      "sources": [
+        "solver_v1/SILICON_INITIATION_V11.md",
+        "solver_v1/SILICON_CHARGE_DYNAMICS_V9.md"
+      ]
+    },
+    {
+      "title": "붕소(B)와 인(P)의 정적 비교",
+      "kind": "chart",
+      "chart": {
+        "categories": [
+          "1개",
+          "2개",
+          "4개",
+          "8개"
+        ],
+        "series": [
+          {
+            "name": "B",
+            "values": [
+              2.227941674,
+              2.268106878,
+              2.3548832,
+              2.540511938
+            ]
+          },
+          {
+            "name": "P",
+            "values": [
+              2.114642123,
+              2.041408552,
+              1.885080636,
+              1.586932274
+            ]
+          }
+        ],
+        "yTitle": "정적 분리 일 (J/m²)",
+        "max": 3
+      },
+      "points": [
+        "216자리의 같은 고정 부피",
+        "도펀트 1개 ≈ 2.26×10²⁰ cm⁻³",
+        "분리면 인접층에 분산한 배치"
+      ],
+      "takeaway": "이 조건에서 B와 P의 분리 일은 반대 방향으로 변했다. 개시 강도 관계는 아직 미확정이다.",
+      "paragraphs": [
+        "가로축은 동일한 216자리 셀에 넣은 도펀트 수이고 세로축은 정해진 두 부분을 강체로 벌리는 데 필요한 단위 면적당 에너지다. 순수 Si는 2.185817 J/m²다. 선택한 인접층 분산 배치에서 B는 2.227942에서 2.540512 J/m²로, P는 2.114642에서 1.586932 J/m²로 변했다. 농도뿐 아니라 배치에 따라 경향이 달라지는 것도 확인했다.",
+        "이 계산에는 실제 첫 균열의 생성 경로, 활성 전하, 저농도 시편의 배치 분포가 포함되지 않는다. 따라서 “B가 항상 강화하고 P가 항상 약화한다”는 법칙으로 쓸 수 없다. 작은 셀에 한 원자씩 넣는 계산은 이미 높은 농도에 해당한다. 저농도에서는 많은 국소 영역에 도펀트가 없다는 점까지 배치 통계로 반영해야 한다."
+      ],
+      "sources": [
+        "results/silicon_concentration_v10/COMPLETED_SUMMARY.md",
+        "results/silicon_concentration_v10/analysis/concentration_effects.csv",
+        "solver_v1/SILICON_INITIATION_V11.md"
+      ]
+    },
+    {
+      "title": "표면과 열산화층의 역할",
+      "kind": "chart",
+      "chart": {
+        "categories": [
+          "제작 직후",
+          "50 nm",
+          "100 nm",
+          "200 nm",
+          "산화막 제거"
+        ],
+        "series": [
+          {
+            "name": "측정 명목 강도",
+            "values": [
+              4.09,
+              3.5,
+              3.77,
+              3.27,
+              2.55
+            ]
+          }
+        ],
+        "yTitle": "단조 인장 파단강도 (GPa)",
+        "max": 5
+      },
+      "points": [
+        "그래프는 문헌 측정값",
+        "〈110〉 단조 인장 · 26°C",
+        "RH 50% · 단면 약 4×5 μm"
+      ],
+      "takeaway": "산화층은 단면과 응력 분담, 잔류응력 및 계면 구조를 통해 모델에 들어간다.",
+      "paragraphs": [
+        "Tsuchiya 등의 실험에서 평균 명목 파단강도는 제작 직후 4.09 GPa, 산화막 50/100/200 nm에서 3.50/3.77/3.27 GPa, 산화막 제거 후 2.55 GPa였다. 이 값은 관측된 최종 파단강도다. 모델이 예측한 개시 확률이나 개시 시각은 아니다. 산화 공정은 표면 형상과 계면, 내부 결함에도 영향을 줄 수 있어 두께 하나의 효과로 확정하지 않는다.",
+        "동일 축 변형률의 단순 복합단면에서는 Si와 산화막이 각 단면적과 탄성에 따라 힘을 나누고, 고유변형률이 있으면 잔류응력 평형을 함께 푼다. 실제 모서리와 계면전단에는 공간 해석이 필요하다. 제공 논문의 일부 두께·Si core 규약에는 미해결 차이가 있으며, 측정 강도를 하중으로 넣은 FEM을 독립 강도 예측으로 해석하지 않는다."
+      ],
+      "sources": [
+        "solver_v1/SILICON_INITIATION_V11.md",
+        "results/silicon_initiation_v11/thermal_oxide_source.json",
+        "https://doi.org/10.1016/j.engfracmech.2015.08.029"
+      ]
+    },
+    {
+      "title": "현재 원자 기준 시편",
+      "kind": "table",
+      "table": {
+        "head": [
+          "항목",
+          "현재 계산 조건"
+        ],
+        "rows": [
+          [
+            "재료와 형상",
+            "순수 Si 360원자 · 내부에 미리 만든 균열 없음"
+          ],
+          [
+            "표면과 경계",
+            "처리하지 않은 자유 표면 · 양끝 강체 고정부"
+          ],
+          [
+            "움직이는 자유도",
+            "자유 원자 216개 · 힘제어에서 고정부 길이도 이완"
+          ],
+          [
+            "명목 응력의 기준",
+            "초기 단면적 190.4845 Å²"
+          ],
+          [
+            "실제 비교 하중",
+            "축력 0과 명목 인장 100 MPa"
+          ]
+        ],
+        "widths": [
+          1.15,
+          2.8
+        ]
+      },
+      "takeaway": "작은 원자 시편으로 하중과 에너지의 연결을 검사했다. 실제 산화 웨이퍼의 축소 복제는 아니다.",
+      "paragraphs": [
+        "시편은 〈110〉 인장 방향을 가지며 내부 원자 삭제, void 또는 미리 만든 균열이 없다. 자유 원자는 216개, 양끝 고정부 원자는 144개다. 외부 표면은 산화나 수소 처리가 없는 bare Si 표면이다. 작은 결정론적 섭동 후 이완했지만 모든 가능한 표면 상태의 전역 평형을 찾았다는 뜻은 아니다.",
+        "처음 만든 길이를 고정하고 표면을 이완했을 때 반력은 약 3.184 GPa였다. 변위 0을 무하중으로 놓을 수 없기 때문에 축력 0을 따로 풀었고 길이는 약 2.78964% 줄었다. 이후 같은 힘제어 규약으로 100 MPa를 적용했다. 이 절차는 하중의 의미를 확인하는 단계이며 파손 강도를 맞춘 것이 아니다."
+      ],
+      "sources": [
+        "solver_v1/SILICON_INITIATION_V11.md",
+        "results/silicon_initiation_v11/COMPLETED_SUMMARY.md"
+      ]
+    },
+    {
+      "title": "100 MPa 상태에서 확인한 것",
+      "kind": "table",
+      "table": {
+        "head": [
+          "검사",
+          "결과",
+          "의미"
+        ],
+        "rows": [
+          [
+            "전체 에너지 곡률",
+            "649차원 · 모든 고유값 양수",
+            "작은 허용 변형에 대한 국소 안정성"
+          ],
+          [
+            "최소 곡률",
+            "0.02713787 eV/Å²",
+            "현재 상태에서 가장 부드러운 방향도 양수"
+          ],
+          [
+            "독립 미분 대조",
+            "낮은 4방향 + 무작위 2방향",
+            "곡률 계산의 수치 일관성 확인"
+          ],
+          [
+            "유한 시편 접선",
+            "112.320815 GPa",
+            "현재 고정부·표면 조건의 국소 강성"
+          ]
+        ],
+        "widths": [
+          1.05,
+          1.55,
+          1.65
+        ]
+      },
+      "takeaway": "현재 상태 주변은 안정하다. 첫 균열로 넘어가는 장벽과 시간은 아직 계산되지 않았다.",
+      "paragraphs": [
+        "곡률 행렬인 Hessian은 에너지가 각 작은 변형 방향으로 얼마나 휘어 있는지를 나타낸다. 자유 원자의 Cartesian 좌표 648개와 고정부 연장 1개를 함께 검사한 649차원 행렬에서 음의 고유값이 없었다. 남은 에너지 기울기 최대 2.9321×10⁻⁶ eV/Å와 독립 힘 차분 오차 최대 1.9576×10⁻⁸ eV/Å²를 함께 기록했다.",
+        "양의 곡률은 현재 에너지 골짜기 근처의 안정성만 알려준다. 열운동으로 유한 장벽을 넘어 다른 구조로 갈 가능성, 전체 상태공간의 최저 에너지 또는 무한 수명을 보증하지 않는다. 112.320815 GPa도 이 작은 유한 시편의 접선이며 벌크 영률의 실험 보정값이 아니다. 다른 고변형 상태의 전체 곡률 검사는 미완료다."
+      ],
+      "sources": [
+        "results/silicon_initiation_v12/dense_force100/summary.json",
+        "results/silicon_initiation_v12/dense_first_completed_replay/summary.json",
+        "results/silicon_initiation_v12/RESULTS_AND_LIMITS.md"
+      ]
+    },
+    {
+      "title": "물리 시간과 피로한도",
+      "kind": "text",
+      "points": [
+        "시간 척도  에너지 지형과 함께 실제 이동도가 필요",
+        "피로한도 연구  반복 하중을 계속해도 개시하지 않는 조건이 있는가",
+        "유한 시간에 개시가 드묾  무한 시간의 비개시와 구분"
+      ],
+      "takeaway": "현재 Si의 초·Hz·피로 수명과 피로한도는 확정하지 않았다.",
+      "paragraphs": [
+        "피로한도(endurance limit)는 여기서 반복 하중을 계속해도 균열이 개시하지 않는 응력 범위가 있는가라는 질문으로 검토한다. 에너지 장벽의 높이만으로 초 단위 전이 시간을 정할 수 없다. 선택한 좌표의 유한온도 동역학과 기억 효과를 검사하고 이동도를 보정해야 한다. 원자 질량으로 얻은 진동 시간, 전하 수송의 Hall 이동도 또는 수치 최적화 반복 횟수를 기계 확률식의 물리 시간으로 대신 쓰지 않는다.",
+        "유한하고 시간에 따라 변하지 않는 상태 모델에서 초기 도달 가능한 모든 비흡수 상태가 양의 전이율 경로로 B에 연결되면 충분히 긴 시간 뒤 생존확률은 0으로 간다. 이 조건을 실제 Si가 만족하는지는 미검증이다. 닫힌 상태군이나 다른 물리 조건이 있으면 결과가 달라질 수 있으며, 연속 공간과 주기 하중에는 추가 가정이 필요하다."
+      ],
+      "sources": [
+        "solver_v1/SILICON_INITIATION_V11.md",
+        "solver_v1/SILICON_CHARGE_DYNAMICS_V9.md",
+        "results/silicon_initiation_v12/ENDURANCE_AND_FIRST_PASSAGE_V12.md"
+      ]
+    },
+    {
+      "title": "현재 모델의 사용 범위",
+      "kind": "table",
+      "table": {
+        "head": [
+          "분야",
+          "현재 가능한 판단",
+          "아직 필요한 검증"
+        ],
+        "rows": [
+          [
+            "확률 방정식",
+            "보존·첫 도달·전하 결합의 수학 검사",
+            "Si의 실제 자유에너지와 전이율"
+          ],
+          [
+            "원자 시편",
+            "선택한 순수 Si 상태의 에너지·국소 안정성",
+            "시편 크기·표면·경로의 변화"
+          ],
+          [
+            "도핑과 산화",
+            "조건을 나눈 후보 계산과 원자료 비교",
+            "도핑된 Si/산화 계면의 정확한 에너지"
+          ],
+          [
+            "웨이퍼 예측",
+            "입력과 계산 절차의 정의",
+            "첫 균열 확률·위치·수명 보정"
+          ]
+        ],
+        "widths": [
+          1,
+          1.6,
+          1.6
+        ]
+      },
+      "takeaway": "현재는 연구 모델이며, 실제 웨이퍼의 개시 확률과 수명은 검증되지 않았다.",
+      "paragraphs": [
+        "확률 보존과 첫 도달 계산은 합성 문제의 정확해 및 독립 계산으로 시험했다. 관련 구현 시험은 63개 통과했지만 이는 재료 검증 개수가 아니다. 순수 Si 후보는 공개 DFT 배열에서도 비교했으나 사전학습 중복을 완전히 감사하지 못했다. 원자 결과의 의미는 사용한 모델과 하중·표면 조건 안에서 해석해야 한다.",
+        "Si–O 힘을 개선하려던 거리형과 거리·각도형 후보는 조성 제외 검사에서 조금 나아졌지만 외부 QE SiO₂ 오차가 0.15823에서 각각 0.17163과 0.18749 eV/Å로 커져 채택하지 않았다. 확률 보존 통과나 양의 Hessian으로 이 재료 오차를 대신 해결할 수 없다."
+      ],
+      "sources": [
+        "results/silicon_initiation_v12/validation.json",
+        "results/silicon_initiation_v12/oxide_radial_delta/summary.json",
+        "results/silicon_initiation_v12/oxide_angular_delta/summary.json",
+        "results/silicon_initiation_v12/RESULTS_AND_LIMITS.md"
+      ]
+    },
+    {
+      "title": "실제 개시 예측에 필요한 연결",
+      "kind": "text",
+      "points": [
+        "재료  Si·산화층·도펀트·전하별 에너지와 힘의 검증",
+        "사건  초기 상태에서 첫 균열로 가는 경로와 B의 확인",
+        "동역학  자유에너지·이동도·물리 시간의 보정",
+        "시편  응력 분포와 영역 사이 상관을 반영한 집계"
+      ],
+      "takeaway": "핵심은 같은 에너지·확률 원리 안에서 실제 Si의 입력과 사건을 검증하는 것이다.",
+      "paragraphs": [
+        "처음 보는 독자가 기억할 핵심은 “원자 결합과 환경이 만드는 에너지 지형에서 확률이 이동하고, 첫 균열 상태로 들어간 양을 세는 모델”이라는 점이다. 도핑, 표면과 산화층은 그 에너지와 가능한 경로, 전하 제약 및 동역학에 영향을 주는 입력이다.",
+        "현재 연구는 하중 규약, 일부 원자 상태의 안정성, 확률 보존 구조를 확인했다. 다음 판단의 근거는 실제 첫 균열 경로와 재료·동역학 검증이어야 한다. 목표 응력 단위에 맞추려고 GPa 결과를 MPa로 임의 축소하거나 경험적 강도 배율을 붙이지 않는다."
+      ],
+      "sources": [
+        "solver_v1/SILICON_INITIATION_V11.md",
+        "results/silicon_initiation_v12/RESULTS_AND_LIMITS.md"
+      ]
+    },
+    {
+      "title": "용어와 근거 자료",
+      "kind": "table",
+      "table": {
+        "head": [
+          "용어",
+          "이 설명에서의 뜻"
+        ],
+        "rows": [
+          [
+            "자유에너지 F",
+            "열적으로 가능한 주변 배열을 반영한 상태 에너지"
+          ],
+          [
+            "이동도 M",
+            "에너지 경사에 대한 기계적 확률 이동의 속도 계수"
+          ],
+          [
+            "첫 도달",
+            "초기 준비 뒤 개시 상태 B를 최초로 방문한 사건"
+          ],
+          [
+            "Hessian",
+            "작은 변형에 대한 에너지의 2차 미분 행렬"
+          ],
+          [
+            "DFT / MACE",
+            "전자구조 기준 계산 / 학습된 원자 에너지 후보"
+          ]
+        ],
+        "widths": [
+          1,
+          3
+        ]
+      },
+      "takeaway": "본문은 통합 모델을 설명하고, 원자료는 조건별 계산과 검증 근거를 제공한다.",
+      "paragraphs": [
+        "모델 정의와 개시 사건: SILICON_INITIATION_V11.md. 도핑·전하 결합: SILICON_CHARGE_DYNAMICS_V9.md. 현재 원자 검증과 사용 한계: silicon_initiation_v12/RESULTS_AND_LIMITS.md 및 dense_force100/summary.json. B/P 정적 비교: silicon_concentration_v10/analysis/concentration_effects.csv. 연구 기준은 silicon-wafer-research의 c3a93f5다.",
+        "열산화층 측정값의 출처는 Tsuchiya, Miyamoto, Sugano, Tabata, “Fracture behavior of single crystal silicon with thermal oxide layer”, Engineering Fracture Mechanics 163 (2016) 523–532, DOI 10.1016/j.engfracmech.2015.08.029이다. 문헌 측정과 현재 모델의 계산 결과를 구분하여 사용했다."
+      ],
+      "sources": [
+        "solver_v1/SILICON_INITIATION_V11.md",
+        "solver_v1/SILICON_CHARGE_DYNAMICS_V9.md",
+        "results/silicon_initiation_v12/RESULTS_AND_LIMITS.md",
+        "results/silicon_concentration_v10/analysis/concentration_effects.csv",
+        "https://doi.org/10.1016/j.engfracmech.2015.08.029"
+      ]
+    }
+  ],
+  "sourceFiles": {
+    "solver_v1/SILICON_INITIATION_V11.md": {
+      "bytes": 13197,
+      "sha256": "3eae269e39c3f26896794461dabcf24a161c964f1be7079dc1a268ab3f2ca41d"
+    },
+    "results/silicon_initiation_v12/RESULTS_AND_LIMITS.md": {
+      "bytes": 2839,
+      "sha256": "f19d90d39baf8f5cbd953f3ec20e225b73d54bb57b25a7e6a0616568f76d46da"
+    },
+    "solver_v1/SILICON_CHARGE_DYNAMICS_V9.md": {
+      "bytes": 13034,
+      "sha256": "b901ae0f3d34726e90dc96da2a3bd50c5be23098aa103b899240f227347102a5"
+    },
+    "results/silicon_doping_v9/COMPLETED_SUMMARY.md": {
+      "bytes": 18476,
+      "sha256": "9cd298eaa456b71972acdfe66cba4114c1d944833b81e390e521b3bc4b26390b"
+    },
+    "solver_v1/SILICON_CONDITIONAL_DYNAMICS_V3.md": {
+      "bytes": 9369,
+      "sha256": "7f5776afc7a2dd510046e219e213b4582982a0d1a7c31bd3dce4d479da0c5db4"
+    },
+    "solver_v1/SILICON_FINITE_T_ENSEMBLES_V4.md": {
+      "bytes": 11445,
+      "sha256": "75a5a9ea9b1ed92b3782bfdef37c9b1a1e8028a523c1aa20b2cfe3867284043c"
+    },
+    "solver_v1/silicon_charge_dynamics.py": {
+      "bytes": 8124,
+      "sha256": "fddd750ab6c459a1e0990e7eeca3d39072318e8ea3156c1ead8f1a9922adac0e"
+    },
+    "results/silicon_initiation_v12/ENDURANCE_AND_FIRST_PASSAGE_V12.md": {
+      "bytes": 4730,
+      "sha256": "10297e116f23204a86cb830022115a5df609cfbec0ce17334c9c7e962aaec8bc"
+    },
+    "results/silicon_concentration_v10/COMPLETED_SUMMARY.md": {
+      "bytes": 11042,
+      "sha256": "560647e2607ee0790bd7a0e0dd0209ebd005b28dec9b08b645ef9e01fe60476a"
+    },
+    "results/silicon_concentration_v10/analysis/concentration_effects.csv": {
+      "bytes": 5883,
+      "sha256": "1014f349263d9c603fc2377aa818f1064e9fd91f4a6f2663a9ac05ae2563d798"
+    },
+    "results/silicon_initiation_v11/thermal_oxide_source.json": {
+      "bytes": 5123,
+      "sha256": "aab9e80d1d90050d2f29e9c3e82e92e99389f60f2e956b26280adc4d3e9bc8bd"
+    },
+    "results/silicon_initiation_v11/COMPLETED_SUMMARY.md": {
+      "bytes": 5955,
+      "sha256": "06ae9f95a94b45533cd2632eb1598951e20bdb856e6a21265c82a429d35afa28"
+    },
+    "results/silicon_initiation_v12/dense_force100/summary.json": {
+      "bytes": 1730,
+      "sha256": "322037279af05aa320b7bd8c9892f40b06b0964a61143c7f32d4d0ef5e042bfb"
+    },
+    "results/silicon_initiation_v12/dense_first_completed_replay/summary.json": {
+      "bytes": 2292,
+      "sha256": "9c354a92edc4a2e8cba360eed6a9c147b19e3acdac84852964832e8891c09085"
+    },
+    "results/silicon_initiation_v12/validation.json": {
+      "bytes": 3174,
+      "sha256": "ad076a6c6423df77a106288a931842e31126e595df868e7b38c4ef20f801cca7"
+    },
+    "results/silicon_initiation_v12/oxide_radial_delta/summary.json": {
+      "bytes": 2010,
+      "sha256": "ec1528605b6a27997d90ef9a7841b2fd26c9c6c19fe02a65ba847b9b570e379b"
+    },
+    "results/silicon_initiation_v12/oxide_angular_delta/summary.json": {
+      "bytes": 2503,
+      "sha256": "394af962d530fe70ecc02e8f3f4debfc54aa15bc43f8d215e081d7612352fb19"
+    }
+  },
+  "noNewScientificCalculation": true,
+  "audience": "처음 연구를 접하는 독자"
+}

@@ -1,0 +1,47 @@
+{
+  "complete": true,
+  "missing_or_incomplete": [],
+  "states": [
+    {
+      "state": "return_zero",
+      "dimension": 649,
+      "minimum_curvature_eV_A2": 0.015029861913068897,
+      "maximum_curvature_eV_A2": 22.463917863469337,
+      "negative_modes": 0,
+      "basis_orthogonality_max_error": 1.1102230246251565e-16,
+      "independent_spectrum_max_error_eV_A2": 6.750155989720952e-14,
+      "eigen_residual_frobenius_eV_A2": 4.2101555147053883e-13,
+      "raw_asymmetry_max_eV_A2": 5.329070518200751e-15,
+      "force_FD_max_error_norm_eV_A2": 2.076102716877066e-08,
+      "force_half_step_max_error_norm_eV_A2": 5.3333788770679525e-09,
+      "energy_FD_max_error_eV_A2": 2.7357030177432157e-06,
+      "checked_directions": 6,
+      "reduced_gradient_norm_eV_A": 1.9267955443334527e-05,
+      "reduced_gradient_max_eV_A": 2.448310940761367e-06,
+      "raw_hessian_sha256": "48fd3f672156568f8e26f7524c27edfc956c1952a8ad8f15e907a8ec0d52e6f9",
+      "spectrum_sha256": "74175cb9bd0fc25b3b32b05dfab871d2fdec5073a17211152031072a06ac7b37",
+      "harmonic_stationarity_correction": {
+        "coordinate_norm_A": 0.0001569009457253356,
+        "maximum_atom_displacement_A": 3.391689494702079e-05,
+        "predicted_energy_reduction_eV": 5.647131221262684e-10,
+        "solve_residual_eV_A": 4.517357082424591e-19,
+        "status": "linearized residual estimate only, not an actually relaxed state"
+      },
+      "relaxed_tangent": {
+        "schur_curvature_eV_A2": 0.06496795085696117,
+        "d_force_d_extension_eV_A2": 2.338846230850602,
+        "d_nominal_stress_d_extension_GPa_A": 1.9672173343570762,
+        "tangent_using_current_grip_distance_GPa": 63.58523132035592,
+        "convention": "finite bare prism and rigid grips; current grip distance; not bulk Young modulus",
+        "free_response_solve_residual": 4.8355550601945656e-15
+      }
+    }
+  ],
+  "independent_method": "scipy.linalg.eigh evr versus original numpy.linalg.eigh; raw matrix and basis replay",
+  "new_potential_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "material_approved": false,
+  "physical_clock": null,
+  "positive_computed_Hessian_does_not_certify_global_or_finite_temperature_stability": true
+}

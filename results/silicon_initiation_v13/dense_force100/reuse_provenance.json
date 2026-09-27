@@ -1,0 +1,32 @@
+{
+  "source": "results/silicon_initiation_v12/dense_force100",
+  "records": [
+    {
+      "path": "protocol.json",
+      "sha256": "8325c0dac1e6244670456df89af68c04c0b99e12eb6cef73e23b1a788b0e16cd"
+    },
+    {
+      "path": "summary.json",
+      "sha256": "322037279af05aa320b7bd8c9892f40b06b0964a61143c7f32d4d0ef5e042bfb"
+    },
+    {
+      "path": "raw_hessian.npz",
+      "sha256": "1363fccaed47ff822eaa7eb21d7c30d88979b078654123a98dd8c1754356ecd4"
+    },
+    {
+      "path": "spectrum.npz",
+      "sha256": "4d1fcca9d8bd287a7c4f2ee8d3ad7604350d38a65d39f9dec6f3df2dfa47439c"
+    },
+    {
+      "path": "mode_checks.json",
+      "sha256": "602185e520305bfcded802e29792a6ade8145442c6b5660242abcc99f535cd13"
+    },
+    {
+      "path": "source_replay.json",
+      "sha256": "112bd7666fe62697d745ffca30f9864ec57822f079f18bb23b642899a923f4f0"
+    }
+  ],
+  "new_atomic_evaluations": 0,
+  "new_hessian_rows": 0,
+  "previous_summary_counts_are_historical": true
+}

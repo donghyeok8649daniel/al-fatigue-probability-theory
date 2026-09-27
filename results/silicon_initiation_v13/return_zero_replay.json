@@ -1,0 +1,100 @@
+{
+  "complete": true,
+  "states": [
+    {
+      "role": "original",
+      "converged": true,
+      "energy_eV": -1754.6834657835977,
+      "extension_A": -0.8633554296780539,
+      "nominal_stress_GPa": -1.997794016340791e-06,
+      "free_force_max_eV_A": 2.546494533928361e-06,
+      "reaction_force_residual_eV_A": 8.397232030683227e-05,
+      "reaction_torque_eV": 0.00034511987052630253,
+      "raw_replay_error": 9.992007221626409e-16,
+      "grip_error_A": 0.0
+    },
+    {
+      "role": "after_rearrangement",
+      "converged": true,
+      "energy_eV": -1746.5325426466432,
+      "extension_A": 1.373817137723213,
+      "nominal_stress_GPa": 2.230591535640737e-06,
+      "free_force_max_eV_A": 3.3297155415197293e-06,
+      "reaction_force_residual_eV_A": 3.6125781712861445e-05,
+      "reaction_torque_eV": 0.00014236967546441874,
+      "raw_replay_error": 8.881784197001252e-16,
+      "grip_error_A": 0.0
+    }
+  ],
+  "geometry_sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d",
+  "source_states": [
+    {
+      "role": "original",
+      "raw_sha256": "3adaecd5519ac92070aee956518bd13a2b8ae8e101aa0bab9c0cb717f8a60f09",
+      "result_sha256": "ab5e03eece6a10add3fe33437f1282935d9ccf8088ebd087fb7f2986c947be52"
+    },
+    {
+      "role": "after_rearrangement",
+      "raw_sha256": "734284ef2df66e9445fdddeb57bdf175e12b2c7142670578c7683a06bad8d0d5",
+      "result_sha256": "a46a09d99a7f447e75a8b3a328e4d7a8d90f8fe49988d00ac9c4902198865679"
+    }
+  ],
+  "same_external_load": true,
+  "same_boundary_displacement": false,
+  "grip_extension_difference_A": 2.2371725674012666,
+  "extension_difference_over_original_force_free_gauge": 0.07436110772199807,
+  "energy_difference_at_zero_external_force_eV": 8.150923136954589,
+  "labelled_free_RMS_A": 1.3723591620464894,
+  "permutation_matching_RMS_A": 1.3699045166937232,
+  "permuted_atoms": 8,
+  "best_affine_removed_RMS_A": 0.9759154708285012,
+  "graph_diagnostics": [
+    {
+      "cutoff_A": 2.7,
+      "original_pairs": 616,
+      "returned_pairs": 651,
+      "lost_pairs": 37,
+      "new_pairs": 72,
+      "returned_edge_disjoint_paths": 14
+    },
+    {
+      "cutoff_A": 2.8,
+      "original_pairs": 618,
+      "returned_pairs": 655,
+      "lost_pairs": 39,
+      "new_pairs": 76,
+      "returned_edge_disjoint_paths": 14
+    },
+    {
+      "cutoff_A": 3.1,
+      "original_pairs": 624,
+      "returned_pairs": 685,
+      "lost_pairs": 35,
+      "new_pairs": 96,
+      "returned_edge_disjoint_paths": 16
+    },
+    {
+      "cutoff_A": 3.4,
+      "original_pairs": 650,
+      "returned_pairs": 761,
+      "lost_pairs": 27,
+      "new_pairs": 138,
+      "returned_edge_disjoint_paths": 18
+    },
+    {
+      "cutoff_A": 3.7,
+      "original_pairs": 794,
+      "returned_pairs": 980,
+      "lost_pairs": 77,
+      "new_pairs": 263,
+      "returned_edge_disjoint_paths": 26
+    }
+  ],
+  "new_model_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "actual_plasticity_certified": false,
+  "first_crack_certified": false,
+  "physical_clock": null,
+  "scope": "static history dependence after zero axial load; no thermal hold, physical dissipation or initiation classification"
+}

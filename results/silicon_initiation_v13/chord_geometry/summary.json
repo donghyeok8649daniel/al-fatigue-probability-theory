@@ -1,0 +1,151 @@
+{
+  "complete": true,
+  "atoms": 360,
+  "free_atoms": 216,
+  "all_pairs": 64620,
+  "endpoints": [
+    {
+      "state": "loading8",
+      "energy_eV": -1735.3477245880867,
+      "free_force_max_eV_A": 0.0008250466629189932,
+      "raw_sha256": "f8d77c17d143feca5746511e91e7ea410d43cbcd91a2c64f795a32cbc3945df3"
+    },
+    {
+      "state": "return8",
+      "energy_eV": -1745.066947525993,
+      "free_force_max_eV_A": 0.0009359256911967647,
+      "raw_sha256": "ebde47a89e483bbc9d0e9d78288097d255b964db41c61d20bc1b44930306b028"
+    }
+  ],
+  "geometry_sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d",
+  "runner_sha256": "3710b7653742e05e008fa992f2f9589dca6fa3fbf850f39cd860684bcb983cb8",
+  "same_fixed_grip_max_difference_A": 0.0,
+  "labelled_free_atom_RMS_displacement_A": 1.0540572595938855,
+  "labelled_free_atom_max_displacement_A": 2.8847061468306463,
+  "exact_continuous_chord_minimum_distance_A": 1.7109074141909308,
+  "closest_atom_pair": [
+    253,
+    286
+  ],
+  "closest_interpolation_fraction": 0.4934247046772408,
+  "minimum_distance_at_start_A": 2.3120920187001075,
+  "minimum_distance_at_end_A": 2.282481325042655,
+  "sampled_257point_minimum_distance_A": 1.7109120077117825,
+  "closest_pair_endpoint_distances_A": [
+    2.329662555701259,
+    2.3584673840469774
+  ],
+  "path_reversal_distance_error_A": 7.105427357601002e-15,
+  "rigid_frame_distance_error_A": 7.105427357601002e-15,
+  "independent_scalar_minimizations": [
+    {
+      "atom_i": 253,
+      "atom_j": 286,
+      "distance_error_A": 4.440892098500626e-16
+    },
+    {
+      "atom_i": 254,
+      "atom_j": 269,
+      "distance_error_A": 0.0
+    },
+    {
+      "atom_i": 243,
+      "atom_j": 280,
+      "distance_error_A": 0.0
+    },
+    {
+      "atom_i": 239,
+      "atom_j": 264,
+      "distance_error_A": 4.440892098500626e-16
+    },
+    {
+      "atom_i": 146,
+      "atom_j": 147,
+      "distance_error_A": 0.0
+    },
+    {
+      "atom_i": 145,
+      "atom_j": 180,
+      "distance_error_A": 0.0
+    },
+    {
+      "atom_i": 234,
+      "atom_j": 245,
+      "distance_error_A": 4.440892098500626e-16
+    },
+    {
+      "atom_i": 238,
+      "atom_j": 249,
+      "distance_error_A": 4.440892098500626e-16
+    },
+    {
+      "atom_i": 147,
+      "atom_j": 151,
+      "distance_error_A": 0.0
+    },
+    {
+      "atom_i": 180,
+      "atom_j": 188,
+      "distance_error_A": 4.440892098500626e-16
+    },
+    {
+      "atom_i": 207,
+      "atom_j": 244,
+      "distance_error_A": 4.440892098500626e-16
+    },
+    {
+      "atom_i": 203,
+      "atom_j": 228,
+      "distance_error_A": 0.0
+    },
+    {
+      "atom_i": 256,
+      "atom_j": 260,
+      "distance_error_A": 0.0
+    },
+    {
+      "atom_i": 223,
+      "atom_j": 227,
+      "distance_error_A": 0.0
+    },
+    {
+      "atom_i": 163,
+      "atom_j": 200,
+      "distance_error_A": 0.0
+    },
+    {
+      "atom_i": 175,
+      "atom_j": 212,
+      "distance_error_A": 0.0
+    },
+    {
+      "atom_i": 194,
+      "atom_j": 209,
+      "distance_error_A": 4.440892098500626e-16
+    },
+    {
+      "atom_i": 202,
+      "atom_j": 205,
+      "distance_error_A": 4.440892098500626e-16
+    },
+    {
+      "atom_i": 219,
+      "atom_j": 254,
+      "distance_error_A": 0.0
+    },
+    {
+      "atom_i": 252,
+      "atom_j": 253,
+      "distance_error_A": 0.0
+    }
+  ],
+  "interpretation": "unrelaxed labelled straight chord at identical fixed grips; compressed pairs motivate nonlinear path initialization, not a certified collision or transition barrier",
+  "interpolation_fraction_is_time": false,
+  "atom_permutation_performed": false,
+  "new_model_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "minimum_energy_path": false,
+  "first_crack_certified": false,
+  "physical_clock": null
+}

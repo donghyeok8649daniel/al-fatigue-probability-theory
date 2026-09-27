@@ -1,0 +1,39 @@
+{
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "runner_sha256": "ddd14f3c9c203484f15831fb0d2bcfba6fe4253deee23fd919cd9d411988a92e",
+  "sources": [
+    {
+      "state": "loading8",
+      "raw_sha256": "96bf8e4ec1c1f444d9578492bfae53f5e4ec5b339da47a074e5793599acf3dcd",
+      "spectrum_sha256": "252561c27a45e550f695a40bafe70cef67b97e7fc84439c48560be33142fa1e7"
+    },
+    {
+      "state": "return8",
+      "raw_sha256": "a7f9637bdfa9ed468d3d6757ed5249e38e2795df73963e5def9fa4a2ebff3004",
+      "spectrum_sha256": "0703cc4e7c58075c4beddbe0706e16c7bc5c0f8081d9e0c76c37e802c8d4ba6f"
+    }
+  ],
+  "modes": [
+    0,
+    1,
+    2
+  ],
+  "fixed_max_atom_displacements_A": [
+    0.01,
+    0.05,
+    0.1,
+    0.2
+  ],
+  "quadratic_coordinate_amplitudes_at_300K": [
+    1.0,
+    2.0
+  ],
+  "maximum_atom_bound_A": 0.3,
+  "bound_policy": "record and skip thermal probes above bound; do not clip or substitute",
+  "force_reference": "entire constrained gradient compared with g0 + H d",
+  "max_seconds": 600.0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "relaxation": false,
+  "interpretation": "six straight directions from two approximate stationary states; not paths or barriers"
+}

@@ -1,0 +1,208 @@
+{
+  "recorded_utc": "2026-09-27T23:29:52.566905+00:00",
+  "authorized_start_utc": "2026-09-27T19:19:39Z",
+  "authorized_deadline_utc": "2026-09-28T01:19:39Z",
+  "all_scientific_controllers_exited": true,
+  "last_atomic_attempt_ended_utc": "2026-09-27T23:25:06.007709Z",
+  "controller_history": [
+    {
+      "stage": "dense_loading8",
+      "status": "complete_verified_output_exit_code_unavailable",
+      "exit_code": null,
+      "started_utc": "2026-09-27T19:27:04.721162+00:00",
+      "completion_verified_utc": "2026-09-27T19:41:51.687231+00:00",
+      "numerical_elapsed_s": 737.867535599973,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "dense_return8",
+      "status": "process_completed",
+      "exit_code": 0,
+      "started_utc": "2026-09-27T19:41:52.039504+00:00",
+      "ended_utc": "2026-09-27T20:50:22.253060+00:00",
+      "wall_elapsed_s": 4110.21356,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "dense_loading10",
+      "status": "process_completed",
+      "exit_code": 0,
+      "started_utc": "2026-09-27T20:50:22.254328+00:00",
+      "ended_utc": "2026-09-27T21:53:07.429331+00:00",
+      "wall_elapsed_s": 3765.175006,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "matrix_replay",
+      "status": "process_completed",
+      "exit_code": 0,
+      "started_utc": "2026-09-27T21:53:07.430683+00:00",
+      "ended_utc": "2026-09-27T21:53:22.455579+00:00",
+      "wall_elapsed_s": 15.024908,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "localization",
+      "status": "process_completed",
+      "exit_code": 0,
+      "started_utc": "2026-09-27T21:53:22.458158+00:00",
+      "ended_utc": "2026-09-27T21:53:37.490048+00:00",
+      "wall_elapsed_s": 15.031899,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "local_harmonic",
+      "status": "process_completed",
+      "exit_code": 0,
+      "started_utc": "2026-09-27T21:53:37.492057+00:00",
+      "ended_utc": "2026-09-27T21:53:52.516207+00:00",
+      "wall_elapsed_s": 15.024158,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "grip_augmented",
+      "status": "process_completed",
+      "exit_code": 0,
+      "started_utc": "2026-09-27T21:53:52.518370+00:00",
+      "ended_utc": "2026-09-27T21:56:22.557741+00:00",
+      "wall_elapsed_s": 150.039375,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "large_oxide",
+      "status": "failed",
+      "exit_code": 1,
+      "started_utc": "2026-09-27T21:56:22.560048+00:00",
+      "ended_utc": "2026-09-27T21:56:37.588401+00:00",
+      "wall_elapsed_s": 15.028359,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "mpa_comparison",
+      "status": "process_completed",
+      "exit_code": 0,
+      "started_utc": "2026-09-27T21:56:37.591823+00:00",
+      "ended_utc": "2026-09-27T22:01:52.637016+00:00",
+      "wall_elapsed_s": 315.045197,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "mpa_replay",
+      "status": "process_completed",
+      "exit_code": 0,
+      "started_utc": "2026-09-27T22:01:52.638373+00:00",
+      "ended_utc": "2026-09-27T22:02:07.664470+00:00",
+      "wall_elapsed_s": 15.026104,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "return_zero_force",
+      "status": "process_completed",
+      "exit_code": 0,
+      "started_utc": "2026-09-27T22:02:07.666588+00:00",
+      "ended_utc": "2026-09-27T22:12:37.742215+00:00",
+      "wall_elapsed_s": 630.075632,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "return_zero_replay",
+      "status": "process_completed",
+      "exit_code": 0,
+      "started_utc": "2026-09-27T22:12:37.744122+00:00",
+      "ended_utc": "2026-09-27T22:12:52.767173+00:00",
+      "wall_elapsed_s": 15.023061,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "anharmonic",
+      "status": "process_completed",
+      "exit_code": 0,
+      "started_utc": "2026-09-27T22:12:52.769735+00:00",
+      "ended_utc": "2026-09-27T22:18:07.826771+00:00",
+      "wall_elapsed_s": 315.05704,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "mpa_qe_full",
+      "exit_code": 0,
+      "complete": true,
+      "started_utc": "2026-09-27T22:23:21.663219+00:00",
+      "ended_utc": "2026-09-27T22:28:56.724076+00:00",
+      "wall_elapsed_s": 335.060857,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "mpa_qe_full_replay",
+      "exit_code": 0,
+      "complete": true,
+      "started_utc": "2026-09-27T22:28:56.739973+00:00",
+      "ended_utc": "2026-09-27T22:29:11.771438+00:00",
+      "wall_elapsed_s": 15.031465,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "dense_return_zero",
+      "exit_code": 0,
+      "complete": true,
+      "started_utc": "2026-09-27T22:30:54.417415+00:00",
+      "ended_utc": "2026-09-27T23:22:54.656420+00:00",
+      "wall_elapsed_s": 3120.239005,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "dense_return_zero_replay",
+      "exit_code": 0,
+      "complete": true,
+      "started_utc": "2026-09-27T23:22:54.658618+00:00",
+      "ended_utc": "2026-09-27T23:23:04.713497+00:00",
+      "wall_elapsed_s": 10.054879,
+      "elapsed_is_not_cpu_time": true
+    },
+    {
+      "stage": "large_oxide_retry",
+      "exit_code": 1,
+      "complete": false,
+      "started_utc": "2026-09-27T23:24:50.976741+00:00",
+      "ended_utc": "2026-09-27T23:25:06.007709+00:00",
+      "wall_elapsed_s": 15.030977,
+      "elapsed_is_not_cpu_time": true
+    }
+  ],
+  "private_receipt_hashes": [
+    {
+      "name": "queue_status.json",
+      "sha256": "88bc94d153f5e7edbe1360ff43aef9fbdd270089a09bf2a3ef72e922912ea77c",
+      "terminal_stage": "queue_finished_review_required"
+    },
+    {
+      "name": "full_qe_status.json",
+      "sha256": "f1dbf50f8b22cb6657df81e62861aaa5946a454a25606c9f5c30ca07761602a4",
+      "terminal_stage": "followup_finished_review_required"
+    },
+    {
+      "name": "zero_hessian_status.json",
+      "sha256": "e796d6b5d3dff450432a1b55bdd7b4410bc15d7dd3949abc6bfe96c5fb9d5b54",
+      "terminal_stage": "zero_hessian_finished_review_required"
+    },
+    {
+      "name": "large_oxide_retry_status.json",
+      "sha256": "54428b7e6d03ae67247a7948bf31cba157f28a738977481c2193903110b86547",
+      "terminal_stage": "large_oxide_retry_partial_or_failed"
+    }
+  ],
+  "actual_cpu_seconds": null,
+  "time_scope": "Recorded wall-clock and numerical elapsed values are not CPU usage or physical simulation time.",
+  "interruption_scope": "Completed numerical runs report no interruption. Host-wide sleep history not independently audited; continuous CPU use is not claimed.",
+  "missing_exit_code_scope": "Loading8 adopted completed child had no retrievable exit code; completed outputs and process absence were verified before queue-controller replacement.",
+  "large_oxide_attempts": {
+    "count": 2,
+    "frames_completed": 0,
+    "new_potential_calls": 0,
+    "reason": "Both attempts failed below the unchanged12GB guard before model allocation.",
+    "retry_idle_admission_available_bytes": 12527755264,
+    "note": "Idle preflight memory differs from memory after runner imports and source preparation; no guard relaxation or further retry."
+  },
+  "first_crack_certified": false,
+  "material_approved": false,
+  "physical_clock": null
+}

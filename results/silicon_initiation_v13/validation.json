@@ -1,0 +1,134 @@
+{
+  "recorded_UTC": "2026-09-27T21:10:19.561097+00:00",
+  "tests_passed": 38,
+  "disjoint_previously_executed_runs": 3,
+  "runs": [
+    {
+      "path": "resume_implementation_validation.json",
+      "sha256": "9b0cd6028a72b2d16c9531cef36785df6d014b605d0b748e6110f0bf20a47a6d",
+      "tests_passed": 17,
+      "elapsed_seconds": 0.45,
+      "test_source_files": [
+        "solver_v1/test_hessian_resume.py"
+      ],
+      "original_record": {
+        "recorded_UTC": "2026-09-27T19:32:31.809195+00:00",
+        "test_command": "python -m pytest -q -x --tb=short -p no:cacheprovider --basetemp=NEW_WORKSPACE_TEMP solver_v1/test_hessian_resume.py",
+        "tests_passed": 17,
+        "elapsed_s": 0.45,
+        "source_files": [
+          {
+            "path": "solver_v1/hessian_resume.py",
+            "sha256": "d200e63e116c1b4de4a926a6b23d645de510b23416a29e1b1c26b58260e60317"
+          },
+          {
+            "path": "solver_v1/test_hessian_resume.py",
+            "sha256": "a550bd151c314d58c5d58574bc2c2ad4b214a3d1b174fac4f12fb9ee0b34b1d9"
+          },
+          {
+            "path": "results/silicon_wafer_feasibility/check_prism_dense_hessian_v13.py",
+            "sha256": "67ba9235281ff28221bb5e002888e906e64bd8d0c6159c81dda972cb24599d11"
+          }
+        ],
+        "observed_stdout": "17 passed in 0.45s",
+        "first_attempt": "setup-only failure: existing system pytest temporary directory access denied; no test body executed",
+        "rerun": "fresh workspace temporary directory; all seventeen test bodies passed",
+        "test_is_not_material_or_kinetic_validation": true
+      }
+    },
+    {
+      "path": "anharmonic_replay_validation.json",
+      "sha256": "e97ccb9433965ae8645d2296e85309cc93f0e2ff7e1f88d3a21f7ee737072f68",
+      "tests_passed": 10,
+      "elapsed_seconds": 2.18,
+      "test_source_files": [
+        "solver_v1/test_silicon_anharmonic_replay_v13.py"
+      ],
+      "original_record": {
+        "recorded_utc": "2026-09-27T19:56:34.774030+00:00",
+        "baseline_revision": "c3a93f5d2e4df6e21a68d6080ed99cf6aee840bc",
+        "tests_passed": 10,
+        "elapsed_s": 2.18,
+        "test_kind": "manufactured cubic/quartic algebra and corruption/partial/counter rejection",
+        "source_manifest": [
+          {
+            "path": "results/silicon_wafer_feasibility/replay_anharmonic_v13.py",
+            "sha256": "37592929dc486a19fc01be8a8435f775acb9eeafec70946dd2b23b161bee4826"
+          },
+          {
+            "path": "solver_v1/test_silicon_anharmonic_replay_v13.py",
+            "sha256": "9cdc76f39d10361ba15b750fdacff97bbdd80103f11fb07dfbced04c03a64440"
+          }
+        ],
+        "new_model_calls": 0,
+        "new_DFT": 0,
+        "new_MD": 0,
+        "actual_si_probe_replay_completed": false,
+        "first_crack_certified": false,
+        "physical_clock": null
+      }
+    },
+    {
+      "path": "mpa_qe_replay_guard_validation.json",
+      "sha256": "e785b3ed2220c454e69b4a0d496021a75bf9e916db35e7bf61ac4c4cd823e80b",
+      "tests_passed": 11,
+      "elapsed_seconds": 0.3,
+      "test_source_files": [
+        "solver_v1/test_mpa_qe_replay_v13.py"
+      ],
+      "original_record": {
+        "recorded_utc": "2026-09-27T20:39:33.927202+00:00",
+        "tests_passed": 11,
+        "elapsed_s": 0.3,
+        "scope": "nonfinite scalar and exact-control-schedule corruption regression",
+        "actual_candidate_inference": false,
+        "actual_result_replay": false,
+        "new_model_calls": 0,
+        "source_sha256": {
+          "results/silicon_wafer_feasibility/replay_mpa_qe_v13.py": "b60ccb9241f5a630c27e60267f4a9ad2c31dc4486b98094b60e726a824c03e49",
+          "solver_v1/test_mpa_qe_replay_v13.py": "5463a5673e981a5015e28900467587a38ebacf6cee2c29e6403e0576dc1d5165"
+        }
+      }
+    }
+  ],
+  "tests_rerun_by_consolidation": false,
+  "new_test_executions": 0,
+  "source_files": [
+    {
+      "path": "results/silicon_wafer_feasibility/check_prism_dense_hessian_v13.py",
+      "sha256": "67ba9235281ff28221bb5e002888e906e64bd8d0c6159c81dda972cb24599d11"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/replay_anharmonic_v13.py",
+      "sha256": "37592929dc486a19fc01be8a8435f775acb9eeafec70946dd2b23b161bee4826"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/replay_mpa_qe_v13.py",
+      "sha256": "b60ccb9241f5a630c27e60267f4a9ad2c31dc4486b98094b60e726a824c03e49"
+    },
+    {
+      "path": "solver_v1/hessian_resume.py",
+      "sha256": "d200e63e116c1b4de4a926a6b23d645de510b23416a29e1b1c26b58260e60317"
+    },
+    {
+      "path": "solver_v1/test_hessian_resume.py",
+      "sha256": "a550bd151c314d58c5d58574bc2c2ad4b214a3d1b174fac4f12fb9ee0b34b1d9"
+    },
+    {
+      "path": "solver_v1/test_mpa_qe_replay_v13.py",
+      "sha256": "5463a5673e981a5015e28900467587a38ebacf6cee2c29e6403e0576dc1d5165"
+    },
+    {
+      "path": "solver_v1/test_silicon_anharmonic_replay_v13.py",
+      "sha256": "9cdc76f39d10361ba15b750fdacff97bbdd80103f11fb07dfbced04c03a64440"
+    }
+  ],
+  "source_hashes_rechecked": true,
+  "old_v12_63_tests_included": false,
+  "scope": "Actual 17+10+11 disjoint test records; implementation validation only. Initial setup failure is preserved in its original record.",
+  "new_model_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "material_approved": false,
+  "physical_clock": null
+}

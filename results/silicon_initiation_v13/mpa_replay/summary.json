@@ -1,0 +1,541 @@
+{
+  "complete": true,
+  "frames": 199,
+  "source_array_checks_exact": true,
+  "maximum_scalar_replay_error": 8.881784197001252e-14,
+  "groups": [
+    {
+      "group": "CP2K__Si_H_vacuum1",
+      "frames": 12,
+      "atoms": 2688,
+      "baseline_force_RMSE_eV_A": 0.26381407012090735,
+      "candidate_force_RMSE_eV_A": 0.18755983493576694,
+      "frames_improved": 12,
+      "frames_worsened": 0,
+      "median_frame_RMSE_change_eV_A": -0.07637514485009124,
+      "worst_frame_RMSE_change_eV_A": -0.033717556588088685
+    },
+    {
+      "group": "CP2K__Si_O_H_vacuum1",
+      "frames": 48,
+      "atoms": 12360,
+      "baseline_force_RMSE_eV_A": 0.32619191476345,
+      "candidate_force_RMSE_eV_A": 0.24401962635381455,
+      "frames_improved": 48,
+      "frames_worsened": 0,
+      "median_frame_RMSE_change_eV_A": -0.0824153118290919,
+      "worst_frame_RMSE_change_eV_A": -0.00554723880888322
+    },
+    {
+      "group": "CP2K__Si_O_vacuum0",
+      "frames": 12,
+      "atoms": 2592,
+      "baseline_force_RMSE_eV_A": 0.17636452574549435,
+      "candidate_force_RMSE_eV_A": 0.15907931172590795,
+      "frames_improved": 11,
+      "frames_worsened": 1,
+      "median_frame_RMSE_change_eV_A": -0.01774775571399237,
+      "worst_frame_RMSE_change_eV_A": 0.005770521135761653
+    },
+    {
+      "group": "CP2K__Si_vacuum0",
+      "frames": 12,
+      "atoms": 2304,
+      "baseline_force_RMSE_eV_A": 0.19307034689463654,
+      "candidate_force_RMSE_eV_A": 0.13708349114280768,
+      "frames_improved": 11,
+      "frames_worsened": 1,
+      "median_frame_RMSE_change_eV_A": -0.05477312296942356,
+      "worst_frame_RMSE_change_eV_A": 3.090078512294804e-05
+    },
+    {
+      "group": "CP2K__small_H",
+      "frames": 1,
+      "atoms": 1,
+      "baseline_force_RMSE_eV_A": 0.0,
+      "candidate_force_RMSE_eV_A": 0.0,
+      "frames_improved": 0,
+      "frames_worsened": 0,
+      "median_frame_RMSE_change_eV_A": 0.0,
+      "worst_frame_RMSE_change_eV_A": 0.0
+    },
+    {
+      "group": "CP2K__small_O",
+      "frames": 13,
+      "atoms": 25,
+      "baseline_force_RMSE_eV_A": 7.651541495759245,
+      "candidate_force_RMSE_eV_A": 1.8079450618487072,
+      "frames_improved": 6,
+      "frames_worsened": 6,
+      "median_frame_RMSE_change_eV_A": 0.0,
+      "worst_frame_RMSE_change_eV_A": 0.6357898967139366
+    },
+    {
+      "group": "CP2K__small_Si",
+      "frames": 13,
+      "atoms": 25,
+      "baseline_force_RMSE_eV_A": 8.084911484499852,
+      "candidate_force_RMSE_eV_A": 9.255747016612252,
+      "frames_improved": 9,
+      "frames_worsened": 3,
+      "median_frame_RMSE_change_eV_A": -0.2257917622331001,
+      "worst_frame_RMSE_change_eV_A": 8.750657302579459
+    },
+    {
+      "group": "CP2K__small_Si_H",
+      "frames": 12,
+      "atoms": 24,
+      "baseline_force_RMSE_eV_A": 4.67187642060371,
+      "candidate_force_RMSE_eV_A": 2.5130607475112923,
+      "frames_improved": 9,
+      "frames_worsened": 3,
+      "median_frame_RMSE_change_eV_A": -0.11345134373781665,
+      "worst_frame_RMSE_change_eV_A": 0.7750384429282358
+    },
+    {
+      "group": "CP2K__small_Si_O",
+      "frames": 12,
+      "atoms": 24,
+      "baseline_force_RMSE_eV_A": 1.9659336881498704,
+      "candidate_force_RMSE_eV_A": 0.3434290874335955,
+      "frames_improved": 7,
+      "frames_worsened": 5,
+      "median_frame_RMSE_change_eV_A": -0.031440697909044496,
+      "worst_frame_RMSE_change_eV_A": 0.27826485171147425
+    },
+    {
+      "group": "QE__O_only",
+      "frames": 16,
+      "atoms": 40,
+      "baseline_force_RMSE_eV_A": 0.8997597753404044,
+      "candidate_force_RMSE_eV_A": 0.7116545704909446,
+      "frames_improved": 10,
+      "frames_worsened": 5,
+      "median_frame_RMSE_change_eV_A": -0.24406894299001267,
+      "worst_frame_RMSE_change_eV_A": 0.39699484177677846
+    },
+    {
+      "group": "QE__SiO2_stoichiometry",
+      "frames": 16,
+      "atoms": 195,
+      "baseline_force_RMSE_eV_A": 0.09699927334734446,
+      "candidate_force_RMSE_eV_A": 0.09330372180401353,
+      "frames_improved": 6,
+      "frames_worsened": 10,
+      "median_frame_RMSE_change_eV_A": 0.006090510007386587,
+      "worst_frame_RMSE_change_eV_A": 0.04425641308373962
+    },
+    {
+      "group": "QE__Si_only",
+      "frames": 16,
+      "atoms": 141,
+      "baseline_force_RMSE_eV_A": 0.21355939973081595,
+      "candidate_force_RMSE_eV_A": 0.10732738042427122,
+      "frames_improved": 14,
+      "frames_worsened": 1,
+      "median_frame_RMSE_change_eV_A": -0.059329776461724174,
+      "worst_frame_RMSE_change_eV_A": 0.02715641372031701
+    },
+    {
+      "group": "QE__mixed_other_stoichiometry",
+      "frames": 16,
+      "atoms": 659,
+      "baseline_force_RMSE_eV_A": 0.36370137011051157,
+      "candidate_force_RMSE_eV_A": 0.29454548319249324,
+      "frames_improved": 12,
+      "frames_worsened": 4,
+      "median_frame_RMSE_change_eV_A": -0.024921916117272458,
+      "worst_frame_RMSE_change_eV_A": 0.1344688326864647
+    }
+  ],
+  "elements": [
+    {
+      "group_element": "CP2K__Si_H_vacuum1__Z1",
+      "atoms": 384,
+      "baseline_RMSE_eV_A": 0.10293932859559932,
+      "candidate_RMSE_eV_A": 0.10186148013267356
+    },
+    {
+      "group_element": "CP2K__Si_H_vacuum1__Z14",
+      "atoms": 2304,
+      "baseline_RMSE_eV_A": 0.2818358091113217,
+      "candidate_RMSE_eV_A": 0.19827383447860938
+    },
+    {
+      "group_element": "CP2K__Si_O_H_vacuum1__Z1",
+      "atoms": 1536,
+      "baseline_RMSE_eV_A": 0.10787666010427187,
+      "candidate_RMSE_eV_A": 0.09942765855235364
+    },
+    {
+      "group_element": "CP2K__Si_O_H_vacuum1__Z8",
+      "atoms": 1608,
+      "baseline_RMSE_eV_A": 0.38749943866428477,
+      "candidate_RMSE_eV_A": 0.31115738886008815
+    },
+    {
+      "group_element": "CP2K__Si_O_H_vacuum1__Z14",
+      "atoms": 9216,
+      "baseline_RMSE_eV_A": 0.338468396873059,
+      "candidate_RMSE_eV_A": 0.24762628310460288
+    },
+    {
+      "group_element": "CP2K__Si_O_vacuum0__Z8",
+      "atoms": 1728,
+      "baseline_RMSE_eV_A": 0.14389395674349859,
+      "candidate_RMSE_eV_A": 0.1374328651660991
+    },
+    {
+      "group_element": "CP2K__Si_O_vacuum0__Z14",
+      "atoms": 864,
+      "baseline_RMSE_eV_A": 0.22782097412156715,
+      "candidate_RMSE_eV_A": 0.19530257909725476
+    },
+    {
+      "group_element": "CP2K__Si_vacuum0__Z14",
+      "atoms": 2304,
+      "baseline_RMSE_eV_A": 0.19307034689463654,
+      "candidate_RMSE_eV_A": 0.13708349114280768
+    },
+    {
+      "group_element": "CP2K__small_H__Z1",
+      "atoms": 1,
+      "baseline_RMSE_eV_A": 0.0,
+      "candidate_RMSE_eV_A": 0.0
+    },
+    {
+      "group_element": "CP2K__small_O__Z8",
+      "atoms": 25,
+      "baseline_RMSE_eV_A": 7.651541495759245,
+      "candidate_RMSE_eV_A": 1.8079450618487072
+    },
+    {
+      "group_element": "CP2K__small_Si__Z14",
+      "atoms": 25,
+      "baseline_RMSE_eV_A": 8.084911484499852,
+      "candidate_RMSE_eV_A": 9.255747016612252
+    },
+    {
+      "group_element": "CP2K__small_Si_H__Z1",
+      "atoms": 12,
+      "baseline_RMSE_eV_A": 4.671877549728518,
+      "candidate_RMSE_eV_A": 2.513061910598423
+    },
+    {
+      "group_element": "CP2K__small_Si_H__Z14",
+      "atoms": 12,
+      "baseline_RMSE_eV_A": 4.67187529147863,
+      "candidate_RMSE_eV_A": 2.5130595844236234
+    },
+    {
+      "group_element": "CP2K__small_Si_O__Z8",
+      "atoms": 12,
+      "baseline_RMSE_eV_A": 1.9603890426549495,
+      "candidate_RMSE_eV_A": 0.34398765535730524
+    },
+    {
+      "group_element": "CP2K__small_Si_O__Z14",
+      "atoms": 12,
+      "baseline_RMSE_eV_A": 1.9714627396538624,
+      "candidate_RMSE_eV_A": 0.3428696095496482
+    },
+    {
+      "group_element": "QE__O_only__Z8",
+      "atoms": 40,
+      "baseline_RMSE_eV_A": 0.8997597753404044,
+      "candidate_RMSE_eV_A": 0.7116545704909446
+    },
+    {
+      "group_element": "QE__SiO2_stoichiometry__Z8",
+      "atoms": 130,
+      "baseline_RMSE_eV_A": 0.08807992027547562,
+      "candidate_RMSE_eV_A": 0.07861921397978805
+    },
+    {
+      "group_element": "QE__SiO2_stoichiometry__Z14",
+      "atoms": 65,
+      "baseline_RMSE_eV_A": 0.11274055338816756,
+      "candidate_RMSE_eV_A": 0.11728082491968944
+    },
+    {
+      "group_element": "QE__Si_only__Z14",
+      "atoms": 141,
+      "baseline_RMSE_eV_A": 0.21355939973081595,
+      "candidate_RMSE_eV_A": 0.10732738042427122
+    },
+    {
+      "group_element": "QE__mixed_other_stoichiometry__Z8",
+      "atoms": 248,
+      "baseline_RMSE_eV_A": 0.3474886593446041,
+      "candidate_RMSE_eV_A": 0.2785472548637246
+    },
+    {
+      "group_element": "QE__mixed_other_stoichiometry__Z14",
+      "atoms": 411,
+      "baseline_RMSE_eV_A": 0.3731436098766551,
+      "candidate_RMSE_eV_A": 0.3037916285024235
+    }
+  ],
+  "relative_energy_pairs": {
+    "CP2K": [
+      {
+        "composition": "H32O18Si192",
+        "frames": 12,
+        "pairs": 66,
+        "baseline_pair_energy_RMSE_eV_atom": 0.02537654608338707,
+        "candidate_pair_energy_RMSE_eV_atom": 0.014947115038725789,
+        "resolved_pair_count": 66,
+        "baseline_reversed_resolved_pairs": 10,
+        "candidate_reversed_resolved_pairs": 8
+      },
+      {
+        "composition": "H32O48Si192",
+        "frames": 12,
+        "pairs": 66,
+        "baseline_pair_energy_RMSE_eV_atom": 0.02310601449962743,
+        "candidate_pair_energy_RMSE_eV_atom": 0.015789274062935985,
+        "resolved_pair_count": 66,
+        "baseline_reversed_resolved_pairs": 6,
+        "candidate_reversed_resolved_pairs": 2
+      },
+      {
+        "composition": "H32O60Si192",
+        "frames": 12,
+        "pairs": 66,
+        "baseline_pair_energy_RMSE_eV_atom": 0.023017492635339407,
+        "candidate_pair_energy_RMSE_eV_atom": 0.015031419821413606,
+        "resolved_pair_count": 66,
+        "baseline_reversed_resolved_pairs": 5,
+        "candidate_reversed_resolved_pairs": 4
+      },
+      {
+        "composition": "H32O8Si192",
+        "frames": 12,
+        "pairs": 66,
+        "baseline_pair_energy_RMSE_eV_atom": 0.025510087593830277,
+        "candidate_pair_energy_RMSE_eV_atom": 0.00858046349010093,
+        "resolved_pair_count": 66,
+        "baseline_reversed_resolved_pairs": 6,
+        "candidate_reversed_resolved_pairs": 3
+      },
+      {
+        "composition": "H32Si192",
+        "frames": 12,
+        "pairs": 66,
+        "baseline_pair_energy_RMSE_eV_atom": 0.01759542560276606,
+        "candidate_pair_energy_RMSE_eV_atom": 0.012937990371552953,
+        "resolved_pair_count": 65,
+        "baseline_reversed_resolved_pairs": 0,
+        "candidate_reversed_resolved_pairs": 2
+      },
+      {
+        "composition": "HSi",
+        "frames": 12,
+        "pairs": 66,
+        "baseline_pair_energy_RMSE_eV_atom": 0.8968320837551865,
+        "candidate_pair_energy_RMSE_eV_atom": 0.6390822128962192,
+        "resolved_pair_count": 66,
+        "baseline_reversed_resolved_pairs": 4,
+        "candidate_reversed_resolved_pairs": 4
+      },
+      {
+        "composition": "O144Si72",
+        "frames": 12,
+        "pairs": 66,
+        "baseline_pair_energy_RMSE_eV_atom": 0.00972125323829022,
+        "candidate_pair_energy_RMSE_eV_atom": 0.0038491454788157865,
+        "resolved_pair_count": 66,
+        "baseline_reversed_resolved_pairs": 0,
+        "candidate_reversed_resolved_pairs": 0
+      },
+      {
+        "composition": "O2",
+        "frames": 12,
+        "pairs": 66,
+        "baseline_pair_energy_RMSE_eV_atom": 1.2032712693292733,
+        "candidate_pair_energy_RMSE_eV_atom": 0.43553653731161585,
+        "resolved_pair_count": 66,
+        "baseline_reversed_resolved_pairs": 9,
+        "candidate_reversed_resolved_pairs": 9
+      },
+      {
+        "composition": "OSi",
+        "frames": 12,
+        "pairs": 66,
+        "baseline_pair_energy_RMSE_eV_atom": 0.1680924504873418,
+        "candidate_pair_energy_RMSE_eV_atom": 0.05776340382031516,
+        "resolved_pair_count": 66,
+        "baseline_reversed_resolved_pairs": 1,
+        "candidate_reversed_resolved_pairs": 0
+      },
+      {
+        "composition": "Si192",
+        "frames": 12,
+        "pairs": 66,
+        "baseline_pair_energy_RMSE_eV_atom": 0.005199204903675894,
+        "candidate_pair_energy_RMSE_eV_atom": 0.007130723038148625,
+        "resolved_pair_count": 66,
+        "baseline_reversed_resolved_pairs": 7,
+        "candidate_reversed_resolved_pairs": 3
+      },
+      {
+        "composition": "Si2",
+        "frames": 12,
+        "pairs": 66,
+        "baseline_pair_energy_RMSE_eV_atom": 3.1432939462885274,
+        "candidate_pair_energy_RMSE_eV_atom": 0.9401700039947305,
+        "resolved_pair_count": 66,
+        "baseline_reversed_resolved_pairs": 1,
+        "candidate_reversed_resolved_pairs": 0
+      }
+    ],
+    "QE": [
+      {
+        "composition": "Si0O2",
+        "frames": 6,
+        "pairs": 15,
+        "baseline_pair_energy_RMSE_eV_atom": 0.0643653491441154,
+        "candidate_pair_energy_RMSE_eV_atom": 0.02965453748062258,
+        "resolved_pair_count": 15,
+        "baseline_reversed_resolved_pairs": 0,
+        "candidate_reversed_resolved_pairs": 0
+      },
+      {
+        "composition": "Si0O3",
+        "frames": 9,
+        "pairs": 36,
+        "baseline_pair_energy_RMSE_eV_atom": 0.07314208801495616,
+        "candidate_pair_energy_RMSE_eV_atom": 0.024509453420222406,
+        "resolved_pair_count": 36,
+        "baseline_reversed_resolved_pairs": 4,
+        "candidate_reversed_resolved_pairs": 0
+      },
+      {
+        "composition": "Si1O2",
+        "frames": 4,
+        "pairs": 6,
+        "baseline_pair_energy_RMSE_eV_atom": 0.05262814199554979,
+        "candidate_pair_energy_RMSE_eV_atom": 0.03010341839769916,
+        "resolved_pair_count": 6,
+        "baseline_reversed_resolved_pairs": 0,
+        "candidate_reversed_resolved_pairs": 0
+      },
+      {
+        "composition": "Si22O12",
+        "frames": 3,
+        "pairs": 3,
+        "baseline_pair_energy_RMSE_eV_atom": 0.008209891393348934,
+        "candidate_pair_energy_RMSE_eV_atom": 0.012375273591367537,
+        "resolved_pair_count": 3,
+        "baseline_reversed_resolved_pairs": 1,
+        "candidate_reversed_resolved_pairs": 1
+      },
+      {
+        "composition": "Si24O16",
+        "frames": 9,
+        "pairs": 36,
+        "baseline_pair_energy_RMSE_eV_atom": 0.03951983706910828,
+        "candidate_pair_energy_RMSE_eV_atom": 0.04561850045269712,
+        "resolved_pair_count": 36,
+        "baseline_reversed_resolved_pairs": 1,
+        "candidate_reversed_resolved_pairs": 3
+      },
+      {
+        "composition": "Si2O0",
+        "frames": 2,
+        "pairs": 1,
+        "baseline_pair_energy_RMSE_eV_atom": 0.042416554905121195,
+        "candidate_pair_energy_RMSE_eV_atom": 0.008350504259297509,
+        "resolved_pair_count": 1,
+        "baseline_reversed_resolved_pairs": 0,
+        "candidate_reversed_resolved_pairs": 0
+      },
+      {
+        "composition": "Si2O4",
+        "frames": 2,
+        "pairs": 1,
+        "baseline_pair_energy_RMSE_eV_atom": 0.006087092501542657,
+        "candidate_pair_energy_RMSE_eV_atom": 0.010431374896120588,
+        "resolved_pair_count": 1,
+        "baseline_reversed_resolved_pairs": 0,
+        "candidate_reversed_resolved_pairs": 0
+      },
+      {
+        "composition": "Si3O6",
+        "frames": 3,
+        "pairs": 3,
+        "baseline_pair_energy_RMSE_eV_atom": 0.010137389764272326,
+        "candidate_pair_energy_RMSE_eV_atom": 0.005381198083986211,
+        "resolved_pair_count": 3,
+        "baseline_reversed_resolved_pairs": 0,
+        "candidate_reversed_resolved_pairs": 0
+      },
+      {
+        "composition": "Si40O16",
+        "frames": 3,
+        "pairs": 3,
+        "baseline_pair_energy_RMSE_eV_atom": 0.0069774368782959135,
+        "candidate_pair_energy_RMSE_eV_atom": 0.022329784856893162,
+        "resolved_pair_count": 3,
+        "baseline_reversed_resolved_pairs": 0,
+        "candidate_reversed_resolved_pairs": 0
+      },
+      {
+        "composition": "Si6O12",
+        "frames": 2,
+        "pairs": 1,
+        "baseline_pair_energy_RMSE_eV_atom": 0.03554397704402845,
+        "candidate_pair_energy_RMSE_eV_atom": 0.0021423122101191794,
+        "resolved_pair_count": 1,
+        "baseline_reversed_resolved_pairs": 0,
+        "candidate_reversed_resolved_pairs": 0
+      },
+      {
+        "composition": "Si7O0",
+        "frames": 2,
+        "pairs": 1,
+        "baseline_pair_energy_RMSE_eV_atom": 0.00228152270591104,
+        "candidate_pair_energy_RMSE_eV_atom": 0.0035914654956589027,
+        "resolved_pair_count": 1,
+        "baseline_reversed_resolved_pairs": 0,
+        "candidate_reversed_resolved_pairs": 0
+      },
+      {
+        "composition": "Si8O0",
+        "frames": 7,
+        "pairs": 21,
+        "baseline_pair_energy_RMSE_eV_atom": 0.11203589092215761,
+        "candidate_pair_energy_RMSE_eV_atom": 0.023217606890990346,
+        "resolved_pair_count": 21,
+        "baseline_reversed_resolved_pairs": 1,
+        "candidate_reversed_resolved_pairs": 0
+      },
+      {
+        "composition": "Si8O16",
+        "frames": 4,
+        "pairs": 6,
+        "baseline_pair_energy_RMSE_eV_atom": 0.004558028784243637,
+        "candidate_pair_energy_RMSE_eV_atom": 0.004239788989519165,
+        "resolved_pair_count": 6,
+        "baseline_reversed_resolved_pairs": 0,
+        "candidate_reversed_resolved_pairs": 0
+      },
+      {
+        "composition": "Si9O0",
+        "frames": 2,
+        "pairs": 1,
+        "baseline_pair_energy_RMSE_eV_atom": 0.0580681493641764,
+        "candidate_pair_energy_RMSE_eV_atom": 0.020148690289006926,
+        "resolved_pair_count": 1,
+        "baseline_reversed_resolved_pairs": 0,
+        "candidate_reversed_resolved_pairs": 0
+      }
+    ]
+  },
+  "caveat": "paired descriptive scores; correlated source frames are not independent confidence intervals; foundation pretraining overlap unknown",
+  "new_model_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "material_approved": false,
+  "physical_clock": null
+}

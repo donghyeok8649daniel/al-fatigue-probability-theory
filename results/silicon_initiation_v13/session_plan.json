@@ -1,0 +1,14 @@
+{
+  "baseline_revision": "c3a93f5d2e4df6e21a68d6080ed99cf6aee840bc",
+  "start_UTC": "2026-09-27T19:19:39Z",
+  "deadline_UTC": "2026-09-28T01:19:39Z",
+  "controller_sha256": "6c892b1a5fd70fe97753d29bcb06ae9b58acac18ebd5a3be59f182c0e3d1770d",
+  "baseline_force100_reused": true,
+  "baseline_force100_new_calls": 0,
+  "new_loading8_rows_planned": 109,
+  "resume_validation_rows": 3,
+  "queue_revision_note": "Controller replaced after identifying its process; same live atomic child retained, no restart. Corrected postprocess state_000 paths.",
+  "physical_clock": null,
+  "first_crack_certified": false,
+  "material_approved": false
+}

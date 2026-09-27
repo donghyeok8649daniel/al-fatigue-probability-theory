@@ -1,0 +1,12 @@
+{
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "runner_sha256": "273ea96bf0bd5e9bf5a93d296938199d554f3f4811332598681fb28aba801682",
+  "geometry_sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d",
+  "method": "one autograd rigid-grip row; reuse completed fixed-grip block; independent mixed-column force differences",
+  "force_ensemble": "constant axial force matched to each stored state reaction; existing free-force residual retained",
+  "normalized_grip_coordinate_norm": 6.0,
+  "physical_clock": null,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "first_crack_certified": false
+}

@@ -1,0 +1,28 @@
+{
+  "reused_rows": 539,
+  "partial_sha256": "3495625f164cb1557b914cdb0abc4a964af7e79a48f6dda77a4e9b81ad69f71e",
+  "protocol_sha256": "d50759105fb797393cffb04f1b736b5b3faea5a7d41a3a3c074e2f2c1f0afdfa",
+  "summary_sha256": "7d3ceae2d415d08c17b8dba68b29fd5c3f99597c13f519fc213b0241448479d3",
+  "gradient_replay_max_error_eV_A": 0.0,
+  "principal_raw_asymmetry_eV_A2": 5.329070518200751e-15,
+  "source_elapsed_is_not_new_cpu_time": true,
+  "recomputed_rows": [
+    {
+      "row": 0,
+      "error_norm_eV_A2": 0.0,
+      "tolerance_eV_A2": 8.574735459776012e-09
+    },
+    {
+      "row": 269,
+      "error_norm_eV_A2": 0.0,
+      "tolerance_eV_A2": 7.474497517859118e-09
+    },
+    {
+      "row": 538,
+      "error_norm_eV_A2": 0.0,
+      "tolerance_eV_A2": 8.209076377611331e-09
+    }
+  ],
+  "passed": true,
+  "previous_elapsed_not_added": true
+}

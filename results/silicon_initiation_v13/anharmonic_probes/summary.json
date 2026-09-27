@@ -1,0 +1,29 @@
+{
+  "complete": true,
+  "interruption": null,
+  "actual_points": 72,
+  "new_model_calls": 74,
+  "completed_source_replays": [
+    {
+      "state": "loading8",
+      "energy_error_eV": 0.0,
+      "force_max_error_eV_A": 0.0
+    },
+    {
+      "state": "return8",
+      "energy_error_eV": 0.0,
+      "force_max_error_eV_A": 2.220446049250313e-16
+    }
+  ],
+  "skipped": [],
+  "elapsed_s": 290.19817370013334,
+  "maximum_absolute_nonlinear_energy_eV": 0.0016859198822502391,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "relaxation": false,
+  "actual_temperature_sampling": false,
+  "first_crack_certified": false,
+  "physical_clock": null,
+  "material_approved": false,
+  "interpretation": "unrelaxed line-probe failures can reject local quadratic extrapolation; agreement cannot certify a basin or finite-T free energy"
+}

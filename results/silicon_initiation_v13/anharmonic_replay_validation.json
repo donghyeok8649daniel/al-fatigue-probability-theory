@@ -1,0 +1,23 @@
+{
+  "recorded_utc": "2026-09-27T19:56:34.774030+00:00",
+  "baseline_revision": "c3a93f5d2e4df6e21a68d6080ed99cf6aee840bc",
+  "tests_passed": 10,
+  "elapsed_s": 2.18,
+  "test_kind": "manufactured cubic/quartic algebra and corruption/partial/counter rejection",
+  "source_manifest": [
+    {
+      "path": "results/silicon_wafer_feasibility/replay_anharmonic_v13.py",
+      "sha256": "37592929dc486a19fc01be8a8435f775acb9eeafec70946dd2b23b161bee4826"
+    },
+    {
+      "path": "solver_v1/test_silicon_anharmonic_replay_v13.py",
+      "sha256": "9cdc76f39d10361ba15b750fdacff97bbdd80103f11fb07dfbced04c03a64440"
+    }
+  ],
+  "new_model_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "actual_si_probe_replay_completed": false,
+  "first_crack_certified": false,
+  "physical_clock": null
+}

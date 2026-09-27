@@ -1,0 +1,158 @@
+[
+  {
+    "name": "lowest_0",
+    "rayleigh_eV_A2": 0.021726276003294357,
+    "force_differences": [
+      {
+        "step_A": 0.0002,
+        "error_norm_eV_A2": 3.758179298144784e-10,
+        "rayleigh_eV_A2": 0.021726276003134246
+      },
+      {
+        "step_A": 0.0001,
+        "error_norm_eV_A2": 7.444472093149654e-10,
+        "rayleigh_eV_A2": 0.021726276003831764
+      }
+    ],
+    "energy_differences": [
+      {
+        "step_A": 0.002,
+        "curvature_eV_A2": 0.021726350496464875
+      },
+      {
+        "step_A": 0.001,
+        "curvature_eV_A2": 0.021723735699197277
+      }
+    ]
+  },
+  {
+    "name": "lowest_1",
+    "rayleigh_eV_A2": 0.03246350765596226,
+    "force_differences": [
+      {
+        "step_A": 0.0002,
+        "error_norm_eV_A2": 4.0644139460418545e-10,
+        "rayleigh_eV_A2": 0.0324635076580271
+      },
+      {
+        "step_A": 0.0001,
+        "error_norm_eV_A2": 7.010301097954505e-10,
+        "rayleigh_eV_A2": 0.03246350765716613
+      }
+    ],
+    "energy_differences": [
+      {
+        "step_A": 0.002,
+        "curvature_eV_A2": 0.03246282176405657
+      },
+      {
+        "step_A": 0.001,
+        "curvature_eV_A2": 0.032463049137732014
+      }
+    ]
+  },
+  {
+    "name": "lowest_2",
+    "rayleigh_eV_A2": 0.038193354204898285,
+    "force_differences": [
+      {
+        "step_A": 0.0002,
+        "error_norm_eV_A2": 3.9627477401596587e-10,
+        "rayleigh_eV_A2": 0.03819335421474419
+      },
+      {
+        "step_A": 0.0001,
+        "error_norm_eV_A2": 7.935865034018623e-10,
+        "rayleigh_eV_A2": 0.03819335420852717
+      }
+    ],
+    "energy_differences": [
+      {
+        "step_A": 0.002,
+        "curvature_eV_A2": 0.03819343419309007
+      },
+      {
+        "step_A": 0.001,
+        "curvature_eV_A2": 0.03819286575890146
+      }
+    ]
+  },
+  {
+    "name": "lowest_3",
+    "rayleigh_eV_A2": 0.07145242206814721,
+    "force_differences": [
+      {
+        "step_A": 0.0002,
+        "error_norm_eV_A2": 2.167079829954156e-09,
+        "rayleigh_eV_A2": 0.07145242280797379
+      },
+      {
+        "step_A": 0.0001,
+        "error_norm_eV_A2": 1.0088980362622693e-09,
+        "rayleigh_eV_A2": 0.07145242226015444
+      }
+    ],
+    "energy_differences": [
+      {
+        "step_A": 0.002,
+        "curvature_eV_A2": 0.07145206382119795
+      },
+      {
+        "step_A": 0.001,
+        "curvature_eV_A2": 0.07145172276068479
+      }
+    ]
+  },
+  {
+    "name": "random_0",
+    "rayleigh_eV_A2": 7.41285846672634,
+    "force_differences": [
+      {
+        "step_A": 0.0002,
+        "error_norm_eV_A2": 1.7154833438949004e-08,
+        "rayleigh_eV_A2": 7.412858475307959
+      },
+      {
+        "step_A": 0.0001,
+        "error_norm_eV_A2": 4.290310464536296e-09,
+        "rayleigh_eV_A2": 7.412858468829097
+      }
+    ],
+    "energy_differences": [
+      {
+        "step_A": 0.002,
+        "curvature_eV_A2": 7.412858963107283
+      },
+      {
+        "step_A": 0.001,
+        "curvature_eV_A2": 7.412859758915147
+      }
+    ]
+  },
+  {
+    "name": "random_1",
+    "rayleigh_eV_A2": 7.302784909131792,
+    "force_differences": [
+      {
+        "step_A": 0.0002,
+        "error_norm_eV_A2": 2.1910356423055645e-08,
+        "rayleigh_eV_A2": 7.302784919700822
+      },
+      {
+        "step_A": 0.0001,
+        "error_norm_eV_A2": 5.531766956051363e-09,
+        "rayleigh_eV_A2": 7.302784911773025
+      }
+    ],
+    "energy_differences": [
+      {
+        "step_A": 0.002,
+        "curvature_eV_A2": 7.302785661522648
+      },
+      {
+        "step_A": 0.001,
+        "curvature_eV_A2": 7.302784524654271
+      }
+    ]
+  }
+]

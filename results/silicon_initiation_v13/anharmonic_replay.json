@@ -1,0 +1,46 @@
+{
+  "complete": true,
+  "raw_replay_passed": true,
+  "verified_points": 72,
+  "planned_allowed_points": 72,
+  "skipped_pairs": 0,
+  "complete_signed_pairs": 36,
+  "maximum_scalar_replay_error": 2.391524478451146e-13,
+  "numerical_comparison_rtol": 1e-09,
+  "numerical_comparison_atol": 1e-10,
+  "source_manifest": [
+    {
+      "path": "dense_loading8/raw_hessian.npz",
+      "sha256": "96bf8e4ec1c1f444d9578492bfae53f5e4ec5b339da47a074e5793599acf3dcd"
+    },
+    {
+      "path": "dense_loading8/spectrum.npz",
+      "sha256": "252561c27a45e550f695a40bafe70cef67b97e7fc84439c48560be33142fa1e7"
+    },
+    {
+      "path": "anharmonic_probes/loading8_raw.npz",
+      "sha256": "96cd94fe05ec4032912004b13657530602b8828d211175ac1326db74041cb8e6"
+    },
+    {
+      "path": "dense_return8/raw_hessian.npz",
+      "sha256": "a7f9637bdfa9ed468d3d6757ed5249e38e2795df73963e5def9fa4a2ebff3004"
+    },
+    {
+      "path": "dense_return8/spectrum.npz",
+      "sha256": "0703cc4e7c58075c4beddbe0706e16c7bc5c0f8081d9e0c76c37e802c8d4ba6f"
+    },
+    {
+      "path": "anharmonic_probes/return8_raw.npz",
+      "sha256": "f4c5eaf838d7bc74c1b65f27b5085af96c50137d0a6ad96c6ca6371169c9d406"
+    }
+  ],
+  "protocol_sha256": "6518905b2e7644188f0686861a1bf0908ddd6dbc91b0e00a42935cc2689654d3",
+  "reported_summary_sha256": "af6bf985e79f989a9f9a89f399f675f5cf03963fc72356d9c3a99fc38cd88c11",
+  "new_model_calls": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "first_crack_certified": false,
+  "physical_clock": null,
+  "scope": "raw algebra and declared sampling schedule; no material, basin, path or free-energy certification",
+  "runner_sha256": "37592929dc486a19fc01be8a8435f775acb9eeafec70946dd2b23b161bee4826"
+}

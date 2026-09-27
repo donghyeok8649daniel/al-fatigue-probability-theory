@@ -1,0 +1,7783 @@
+{
+  "model_name": "MACE-MPA-0-medium",
+  "model_sha256": "75428afe3a1d7d8062e19bcaabd5c433623cabf308242ec9fb493e38604fb638",
+  "model_url": "https://github.com/ACEsuit/mace-foundations/releases/download/mace_mpa_0/mace-mpa-0-medium.model",
+  "baseline": "MACE-MP-0b3-medium, stored v11 predictions",
+  "selection": "CP2K: original135 reused; QE: all1159 frames, original64 reused and complementary1095 newly evaluated; complete corpus chosen after baseline sampling audit, before candidate predictions",
+  "parent_protocol_sha256": "553c660f560bec49b484bd821fc78e96374149b7d66f5578d5f7bc29facddcad",
+  "parent_summary_sha256": "58daaf3d71b86b95a5bb20a99fabb4ab7708d5ad434ba46e5d1aaa2a92d7b1c2",
+  "frames": 1294,
+  "source_selection": [
+    {
+      "dataset": "CP2K",
+      "group": "Si_H_vacuum1",
+      "composition": "H32Si192",
+      "source_frame": 497
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_H_vacuum1",
+      "composition": "H32Si192",
+      "source_frame": 505
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_H_vacuum1",
+      "composition": "H32Si192",
+      "source_frame": 513
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_H_vacuum1",
+      "composition": "H32Si192",
+      "source_frame": 522
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_H_vacuum1",
+      "composition": "H32Si192",
+      "source_frame": 530
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_H_vacuum1",
+      "composition": "H32Si192",
+      "source_frame": 538
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_H_vacuum1",
+      "composition": "H32Si192",
+      "source_frame": 547
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_H_vacuum1",
+      "composition": "H32Si192",
+      "source_frame": 555
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_H_vacuum1",
+      "composition": "H32Si192",
+      "source_frame": 563
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_H_vacuum1",
+      "composition": "H32Si192",
+      "source_frame": 572
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_H_vacuum1",
+      "composition": "H32Si192",
+      "source_frame": 580
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_H_vacuum1",
+      "composition": "H32Si192",
+      "source_frame": 589
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O18Si192",
+      "source_frame": 771
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O18Si192",
+      "source_frame": 778
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O18Si192",
+      "source_frame": 786
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O18Si192",
+      "source_frame": 794
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O18Si192",
+      "source_frame": 801
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O18Si192",
+      "source_frame": 809
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O18Si192",
+      "source_frame": 817
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O18Si192",
+      "source_frame": 825
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O18Si192",
+      "source_frame": 832
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O18Si192",
+      "source_frame": 840
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O18Si192",
+      "source_frame": 848
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O18Si192",
+      "source_frame": 856
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O48Si192",
+      "source_frame": 857
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O48Si192",
+      "source_frame": 864
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O48Si192",
+      "source_frame": 871
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O48Si192",
+      "source_frame": 878
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O48Si192",
+      "source_frame": 885
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O48Si192",
+      "source_frame": 892
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O48Si192",
+      "source_frame": 900
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O48Si192",
+      "source_frame": 907
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O48Si192",
+      "source_frame": 914
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O48Si192",
+      "source_frame": 921
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O48Si192",
+      "source_frame": 928
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O48Si192",
+      "source_frame": 936
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O60Si192",
+      "source_frame": 937
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O60Si192",
+      "source_frame": 943
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O60Si192",
+      "source_frame": 950
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O60Si192",
+      "source_frame": 957
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O60Si192",
+      "source_frame": 964
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O60Si192",
+      "source_frame": 971
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O60Si192",
+      "source_frame": 977
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O60Si192",
+      "source_frame": 984
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O60Si192",
+      "source_frame": 991
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O60Si192",
+      "source_frame": 998
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O60Si192",
+      "source_frame": 1005
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O60Si192",
+      "source_frame": 1012
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O8Si192",
+      "source_frame": 590
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O8Si192",
+      "source_frame": 606
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O8Si192",
+      "source_frame": 622
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O8Si192",
+      "source_frame": 639
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O8Si192",
+      "source_frame": 655
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O8Si192",
+      "source_frame": 671
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O8Si192",
+      "source_frame": 688
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O8Si192",
+      "source_frame": 704
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O8Si192",
+      "source_frame": 720
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O8Si192",
+      "source_frame": 737
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O8Si192",
+      "source_frame": 753
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_H_vacuum1",
+      "composition": "H32O8Si192",
+      "source_frame": 770
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_vacuum0",
+      "composition": "O144Si72",
+      "source_frame": 433
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_vacuum0",
+      "composition": "O144Si72",
+      "source_frame": 438
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_vacuum0",
+      "composition": "O144Si72",
+      "source_frame": 444
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_vacuum0",
+      "composition": "O144Si72",
+      "source_frame": 450
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_vacuum0",
+      "composition": "O144Si72",
+      "source_frame": 455
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_vacuum0",
+      "composition": "O144Si72",
+      "source_frame": 461
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_vacuum0",
+      "composition": "O144Si72",
+      "source_frame": 467
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_vacuum0",
+      "composition": "O144Si72",
+      "source_frame": 473
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_vacuum0",
+      "composition": "O144Si72",
+      "source_frame": 478
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_vacuum0",
+      "composition": "O144Si72",
+      "source_frame": 484
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_vacuum0",
+      "composition": "O144Si72",
+      "source_frame": 490
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_O_vacuum0",
+      "composition": "O144Si72",
+      "source_frame": 496
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_vacuum0",
+      "composition": "Si192",
+      "source_frame": 232
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_vacuum0",
+      "composition": "Si192",
+      "source_frame": 250
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_vacuum0",
+      "composition": "Si192",
+      "source_frame": 268
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_vacuum0",
+      "composition": "Si192",
+      "source_frame": 286
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_vacuum0",
+      "composition": "Si192",
+      "source_frame": 304
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_vacuum0",
+      "composition": "Si192",
+      "source_frame": 322
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_vacuum0",
+      "composition": "Si192",
+      "source_frame": 341
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_vacuum0",
+      "composition": "Si192",
+      "source_frame": 359
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_vacuum0",
+      "composition": "Si192",
+      "source_frame": 377
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_vacuum0",
+      "composition": "Si192",
+      "source_frame": 395
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_vacuum0",
+      "composition": "Si192",
+      "source_frame": 413
+    },
+    {
+      "dataset": "CP2K",
+      "group": "Si_vacuum0",
+      "composition": "Si192",
+      "source_frame": 432
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_H",
+      "composition": "H",
+      "source_frame": 2
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_O",
+      "composition": "O",
+      "source_frame": 0
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_O",
+      "composition": "O2",
+      "source_frame": 95
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_O",
+      "composition": "O2",
+      "source_frame": 180
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_O",
+      "composition": "O2",
+      "source_frame": 185
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_O",
+      "composition": "O2",
+      "source_frame": 190
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_O",
+      "composition": "O2",
+      "source_frame": 195
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_O",
+      "composition": "O2",
+      "source_frame": 200
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_O",
+      "composition": "O2",
+      "source_frame": 205
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_O",
+      "composition": "O2",
+      "source_frame": 210
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_O",
+      "composition": "O2",
+      "source_frame": 215
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_O",
+      "composition": "O2",
+      "source_frame": 220
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_O",
+      "composition": "O2",
+      "source_frame": 225
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_O",
+      "composition": "O2",
+      "source_frame": 231
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si",
+      "composition": "Si",
+      "source_frame": 1
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si",
+      "composition": "Si2",
+      "source_frame": 55
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si",
+      "composition": "Si2",
+      "source_frame": 63
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si",
+      "composition": "Si2",
+      "source_frame": 72
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si",
+      "composition": "Si2",
+      "source_frame": 81
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si",
+      "composition": "Si2",
+      "source_frame": 89
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si",
+      "composition": "Si2",
+      "source_frame": 100
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si",
+      "composition": "Si2",
+      "source_frame": 109
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si",
+      "composition": "Si2",
+      "source_frame": 118
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si",
+      "composition": "Si2",
+      "source_frame": 126
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si",
+      "composition": "Si2",
+      "source_frame": 135
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si",
+      "composition": "Si2",
+      "source_frame": 144
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si",
+      "composition": "Si2",
+      "source_frame": 153
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_H",
+      "composition": "HSi",
+      "source_frame": 3
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_H",
+      "composition": "HSi",
+      "source_frame": 7
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_H",
+      "composition": "HSi",
+      "source_frame": 12
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_H",
+      "composition": "HSi",
+      "source_frame": 16
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_H",
+      "composition": "HSi",
+      "source_frame": 21
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_H",
+      "composition": "HSi",
+      "source_frame": 26
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_H",
+      "composition": "HSi",
+      "source_frame": 30
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_H",
+      "composition": "HSi",
+      "source_frame": 35
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_H",
+      "composition": "HSi",
+      "source_frame": 40
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_H",
+      "composition": "HSi",
+      "source_frame": 44
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_H",
+      "composition": "HSi",
+      "source_frame": 49
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_H",
+      "composition": "HSi",
+      "source_frame": 54
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_O",
+      "composition": "OSi",
+      "source_frame": 154
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_O",
+      "composition": "OSi",
+      "source_frame": 156
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_O",
+      "composition": "OSi",
+      "source_frame": 158
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_O",
+      "composition": "OSi",
+      "source_frame": 160
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_O",
+      "composition": "OSi",
+      "source_frame": 162
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_O",
+      "composition": "OSi",
+      "source_frame": 164
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_O",
+      "composition": "OSi",
+      "source_frame": 166
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_O",
+      "composition": "OSi",
+      "source_frame": 168
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_O",
+      "composition": "OSi",
+      "source_frame": 170
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_O",
+      "composition": "OSi",
+      "source_frame": 172
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_O",
+      "composition": "OSi",
+      "source_frame": 174
+    },
+    {
+      "dataset": "CP2K",
+      "group": "small_Si_O",
+      "composition": "OSi",
+      "source_frame": 176
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O1",
+      "source_frame": 379
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O2",
+      "source_frame": 783
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O3",
+      "source_frame": 784
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O2",
+      "source_frame": 785
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O3",
+      "source_frame": 786
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O3",
+      "source_frame": 787
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O2",
+      "source_frame": 788
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O2",
+      "source_frame": 789
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O3",
+      "source_frame": 790
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O3",
+      "source_frame": 791
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O3",
+      "source_frame": 792
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O2",
+      "source_frame": 793
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O2",
+      "source_frame": 794
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O2",
+      "source_frame": 795
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O3",
+      "source_frame": 796
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O2",
+      "source_frame": 797
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O3",
+      "source_frame": 798
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O2",
+      "source_frame": 799
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O3",
+      "source_frame": 800
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O3",
+      "source_frame": 801
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O3",
+      "source_frame": 802
+    },
+    {
+      "dataset": "QE",
+      "group": "O_only",
+      "composition": "Si0O2",
+      "source_frame": 803
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 26
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 27
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 28
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 29
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 30
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 31
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 32
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 33
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 34
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 35
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 36
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 37
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 38
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 39
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 40
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 41
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 42
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 43
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 44
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 45
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 46
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 47
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 48
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 49
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 50
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 51
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 52
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 53
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 54
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 55
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 56
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 57
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 58
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 59
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 60
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 61
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 62
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 63
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 64
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 65
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 66
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 67
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 68
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 69
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 70
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 71
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 72
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 73
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 74
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 75
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 76
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 77
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 78
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 79
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 80
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 81
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 82
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 83
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 84
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 85
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 86
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 87
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 88
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 89
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 90
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 91
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 92
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 93
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 94
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 95
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 96
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 97
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 98
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 99
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 100
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 101
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 102
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 103
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 104
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 105
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 106
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 107
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 108
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 109
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 110
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 111
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 112
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 113
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 114
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 115
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 116
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 117
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 118
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 119
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 120
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 121
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 122
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 123
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 124
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 125
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 126
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 127
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 128
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 129
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 130
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 131
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 132
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 133
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 134
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 135
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 136
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 137
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 138
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 139
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 140
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 141
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 142
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 143
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 144
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 145
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 146
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 147
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 148
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 149
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 150
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 151
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 152
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 153
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 154
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 155
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 156
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 157
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 158
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 159
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 160
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 161
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 162
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 163
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 164
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 165
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 166
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 167
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 168
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 169
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 170
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 171
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 172
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 173
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 174
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 175
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 176
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 177
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 178
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 179
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 180
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 181
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 182
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 183
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 184
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 185
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 186
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 187
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 188
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 189
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 190
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 191
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 192
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 193
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 194
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 195
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 196
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 197
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 198
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 199
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 200
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 201
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 202
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 203
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 204
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 205
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 206
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 207
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 208
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 209
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 210
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 211
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 212
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 213
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 214
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 215
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 216
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 217
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 218
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 219
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 220
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 221
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 222
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 223
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 224
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 225
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 226
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 227
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 228
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 229
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 230
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 231
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 232
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 233
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 234
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 235
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 236
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 237
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 238
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 239
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 240
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 241
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 242
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 243
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 244
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 245
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 246
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 247
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 248
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 249
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 250
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 251
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 252
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 253
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 254
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 255
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 256
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 257
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 258
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 259
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 260
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 261
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 262
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 263
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 264
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 265
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 266
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 267
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 268
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 269
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 270
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 271
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 272
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 273
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 274
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 275
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 276
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 277
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 278
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 279
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 280
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 281
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 282
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 283
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 284
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 285
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 286
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 287
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 288
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 289
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 290
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 291
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 292
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 293
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 294
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 295
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 296
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 297
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 298
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 299
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 300
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 301
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 302
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 303
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 304
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 305
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 306
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 307
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 308
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 309
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 310
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 311
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 312
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 313
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 314
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 315
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 316
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 317
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 318
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 319
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 320
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 321
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 322
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 323
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 324
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 325
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 326
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 327
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 328
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 329
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 330
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 331
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 332
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 333
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 334
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 335
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 336
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 337
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 338
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 339
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 340
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 341
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 342
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 343
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 344
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 345
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 346
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 347
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 348
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 349
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 350
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 351
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 352
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 353
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 354
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 355
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 356
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 357
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 358
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 359
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 360
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 361
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 362
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 363
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 364
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 365
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 366
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 367
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 368
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 369
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 370
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 371
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 372
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 373
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 374
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 375
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 376
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 377
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 378
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 381
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 433
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 434
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 435
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 436
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 437
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 438
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 439
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 440
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 441
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 442
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 443
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 444
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 445
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 446
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 447
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si12O24",
+      "source_frame": 448
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 449
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 450
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 451
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 452
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 453
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 454
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 455
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 456
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 457
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 458
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 459
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 460
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 461
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 462
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 463
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 464
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 465
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 466
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 467
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 468
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 469
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 470
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 471
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 472
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 473
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 474
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 475
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 476
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 477
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 478
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 479
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 480
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 481
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 482
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 483
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 484
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 485
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 486
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 487
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 488
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 489
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 490
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 491
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 492
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 493
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 494
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 495
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 496
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 497
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 498
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 499
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 500
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 501
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 502
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 503
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 504
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 505
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 506
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 507
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 508
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 509
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 510
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 511
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 512
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 513
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 514
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 515
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 516
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 517
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 518
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 519
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 520
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 521
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 522
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si12O24",
+      "source_frame": 523
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 524
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 525
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 526
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 527
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 528
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 529
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 530
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 531
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si12O24",
+      "source_frame": 532
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 533
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 534
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 535
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 536
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 537
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 538
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 539
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 540
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 541
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 542
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 543
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 544
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 545
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 546
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 547
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 548
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 549
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 550
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si8O16",
+      "source_frame": 551
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 552
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 553
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 554
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 555
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 556
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 557
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 558
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si2O4",
+      "source_frame": 559
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si12O24",
+      "source_frame": 560
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 561
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 562
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si12O24",
+      "source_frame": 563
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 564
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 565
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si1O2",
+      "source_frame": 566
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si6O12",
+      "source_frame": 567
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si3O6",
+      "source_frame": 568
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 569
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 570
+    },
+    {
+      "dataset": "QE",
+      "group": "SiO2_stoichiometry",
+      "composition": "Si4O8",
+      "source_frame": 571
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si1O0",
+      "source_frame": 380
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 382
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si4O0",
+      "source_frame": 383
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si4O0",
+      "source_frame": 384
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 385
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 386
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si4O0",
+      "source_frame": 387
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 388
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 389
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 390
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si4O0",
+      "source_frame": 391
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 392
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 393
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si16O0",
+      "source_frame": 394
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 395
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si4O0",
+      "source_frame": 396
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si16O0",
+      "source_frame": 397
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 398
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si4O0",
+      "source_frame": 399
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 400
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si12O0",
+      "source_frame": 401
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 402
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si1O0",
+      "source_frame": 403
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 404
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 405
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si16O0",
+      "source_frame": 406
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 407
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si1O0",
+      "source_frame": 408
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si12O0",
+      "source_frame": 409
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 410
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 411
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si12O0",
+      "source_frame": 412
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si1O0",
+      "source_frame": 413
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 414
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 415
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si1O0",
+      "source_frame": 416
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 417
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 418
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si4O0",
+      "source_frame": 419
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si12O0",
+      "source_frame": 420
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si16O0",
+      "source_frame": 421
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 422
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 423
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 424
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 425
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 426
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 427
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 428
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 429
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 430
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 431
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 432
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 581
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 582
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 583
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 584
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 585
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 586
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 587
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 588
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 589
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 590
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 591
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 592
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 593
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 594
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 595
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 596
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 597
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 598
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 599
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 600
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 601
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 602
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 603
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 604
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 605
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 606
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 607
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 608
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 609
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 610
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 611
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 612
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 613
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 614
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 615
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 616
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 617
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 618
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 619
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 620
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 621
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 622
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 623
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 624
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 625
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 626
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 627
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 628
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 629
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 630
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 631
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 632
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 633
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 634
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 635
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 636
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 637
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 638
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 639
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 640
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 641
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 642
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si9O0",
+      "source_frame": 643
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 644
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 645
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 646
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 647
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 648
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 649
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 650
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 651
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 652
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 653
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 654
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 655
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 656
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 657
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 658
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 659
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 660
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 661
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 662
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 663
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 664
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 665
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 666
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 667
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 668
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 669
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 670
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 671
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 672
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 673
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 674
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 675
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 676
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 677
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 678
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 679
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 680
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 681
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 682
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 683
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 684
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 685
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 686
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 687
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 688
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 689
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 690
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 691
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 692
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si7O0",
+      "source_frame": 693
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 694
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 695
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 696
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 697
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 698
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 699
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 700
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 701
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 702
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 703
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 704
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 705
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 706
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 707
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 708
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 709
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 710
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 711
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 712
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 713
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 714
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 715
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 716
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 717
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 718
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 719
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 720
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 721
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 722
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 723
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 724
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 725
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 726
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 727
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 728
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 729
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 730
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 731
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 732
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si36O0",
+      "source_frame": 733
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si4O0",
+      "source_frame": 734
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si1O0",
+      "source_frame": 735
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 736
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 737
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 738
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 739
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 740
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 741
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 742
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 743
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si4O0",
+      "source_frame": 744
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 745
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 746
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si1O0",
+      "source_frame": 747
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 748
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 749
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si1O0",
+      "source_frame": 750
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 751
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 752
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si1O0",
+      "source_frame": 753
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 754
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si1O0",
+      "source_frame": 755
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 756
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si4O0",
+      "source_frame": 757
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 758
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 759
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 760
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si4O0",
+      "source_frame": 761
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 762
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 763
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si1O0",
+      "source_frame": 764
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 765
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 766
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 767
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si1O0",
+      "source_frame": 768
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 769
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 770
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si4O0",
+      "source_frame": 771
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 772
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si1O0",
+      "source_frame": 773
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 774
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 775
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 776
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 777
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si4O0",
+      "source_frame": 778
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si2O0",
+      "source_frame": 779
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si1O0",
+      "source_frame": 780
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si4O0",
+      "source_frame": 781
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si4O0",
+      "source_frame": 782
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 942
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 943
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 944
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 945
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 946
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 947
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 948
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 949
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 950
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 951
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 952
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 953
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 954
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 955
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 956
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 957
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 958
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 959
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 960
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 961
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 962
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 963
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 964
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 965
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 966
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 967
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 968
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 969
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 970
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 971
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 972
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 973
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 974
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 975
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 976
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 977
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 978
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 979
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 980
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 981
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 982
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 983
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 984
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 985
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 986
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 987
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 988
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 989
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 990
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 991
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 992
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 993
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 994
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 995
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 996
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 997
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 998
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 999
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1000
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1001
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1002
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1003
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1004
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1005
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1006
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1007
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1008
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1009
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1010
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1011
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1012
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1013
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1014
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1015
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1016
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1017
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1018
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1019
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1020
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1021
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1022
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1023
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1024
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1025
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1026
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1027
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1028
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1029
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1030
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1031
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1032
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1033
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1034
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1035
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1036
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1037
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1038
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1039
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1040
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1041
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1042
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1043
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1044
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1045
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1046
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1047
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1048
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1049
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1050
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1051
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1052
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1053
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1054
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1055
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1056
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1057
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1058
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1059
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1060
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1061
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1062
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1063
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1064
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1065
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1066
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1067
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1068
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1069
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1070
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1071
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1072
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1073
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1074
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1075
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1076
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1077
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1078
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1079
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1080
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1081
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1082
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1083
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1084
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1085
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1086
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1087
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1088
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1089
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1090
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1091
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1092
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1093
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1094
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1095
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1096
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1097
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1098
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1099
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1100
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1101
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1102
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1103
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1104
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1105
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1106
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1107
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1108
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1109
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1110
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1111
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1112
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1113
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1114
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1115
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1116
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1117
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1118
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1119
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1120
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1121
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1122
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1123
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1124
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1125
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1126
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1127
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1128
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1129
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1130
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1131
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1132
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1133
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1134
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1135
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1136
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1137
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1138
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1139
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1140
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1141
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1142
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1143
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1144
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1145
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1146
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1147
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1148
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1149
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1150
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1151
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1152
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1153
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1154
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1155
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1156
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1157
+    },
+    {
+      "dataset": "QE",
+      "group": "Si_only",
+      "composition": "Si8O0",
+      "source_frame": 1158
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 0
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 1
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 2
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 3
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 4
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 5
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 6
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 7
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 8
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 9
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 10
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 11
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 12
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 13
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 14
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 15
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 16
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 17
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 18
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 19
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 20
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 21
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 22
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 23
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 24
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si40O16",
+      "source_frame": 25
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si10O15",
+      "source_frame": 572
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si10O19",
+      "source_frame": 573
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si10O19",
+      "source_frame": 574
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si14O25",
+      "source_frame": 575
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si10O17",
+      "source_frame": 576
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si11O24",
+      "source_frame": 577
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si8O17",
+      "source_frame": 578
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si10O15",
+      "source_frame": 579
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si9O20",
+      "source_frame": 580
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 804
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 805
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 806
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 807
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 808
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 809
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 810
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 811
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 812
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 813
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 814
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 815
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 816
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 817
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 818
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 819
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 820
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 821
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 822
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 823
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 824
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 825
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 826
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 827
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 828
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 829
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 830
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 831
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 832
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 833
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 834
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 835
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 836
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 837
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 838
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 839
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 840
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 841
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 842
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 843
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 844
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 845
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 846
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 847
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 848
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 849
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 850
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 851
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 852
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 853
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 854
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 855
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 856
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 857
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 858
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 859
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 860
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 861
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 862
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 863
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 864
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 865
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 866
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 867
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 868
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 869
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 870
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 871
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 872
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 873
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 874
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 875
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 876
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 877
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 878
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 879
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 880
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 881
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 882
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 883
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 884
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 885
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 886
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 887
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 888
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 889
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 890
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 891
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 892
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 893
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 894
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 895
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 896
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 897
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 898
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 899
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 900
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 901
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 902
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 903
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si48O32",
+      "source_frame": 904
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 905
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 906
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 907
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 908
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 909
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 910
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 911
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 912
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 913
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 914
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 915
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 916
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 917
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 918
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 919
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 920
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 921
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 922
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 923
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 924
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 925
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 926
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si24O16",
+      "source_frame": 927
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 928
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 929
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 930
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 931
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 932
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 933
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 934
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 935
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 936
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 937
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 938
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 939
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 940
+    },
+    {
+      "dataset": "QE",
+      "group": "mixed_other_stoichiometry",
+      "composition": "Si22O12",
+      "source_frame": 941
+    }
+  ],
+  "source_overlap_status": "neither foundation pretraining overlap audited",
+  "energy_differences": "within same dataset and exact composition; no fitted offsets",
+  "new_DFT": 0,
+  "new_MD": 0,
+  "fit_performed": false,
+  "production_enabled": false,
+  "runner_sha256": "a7dfbd1f9cd97ae7f2da081b1fd4d54779bb52c72963954b2a1b483b8f006cf6"
+}

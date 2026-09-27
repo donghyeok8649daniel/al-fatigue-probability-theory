@@ -1,0 +1,53 @@
+{
+  "complete": true,
+  "interruption": null,
+  "completed_rows": 649,
+  "dimension": 649,
+  "new_graph_evaluations": 49,
+  "autograd_vjp_rows": 649,
+  "reused_vjp_rows": 0,
+  "resume_validation_vjp_rows": 0,
+  "elapsed_s": 3104.2344078999013,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "first_crack_certified": false,
+  "physical_clock": null,
+  "raw_max_asymmetry_eV_A2": 5.329070518200751e-15,
+  "raw_frobenius_norm_eV_A2": 264.2122179904782,
+  "minimum_curvature_eV_A2": 0.015029861913059123,
+  "maximum_curvature_eV_A2": 22.463917863469327,
+  "negative_eigenvalues": 0,
+  "lowest_eight_eV_A2": [
+    0.015029861913059123,
+    0.0289528161106628,
+    0.034011101307058214,
+    0.036881212396468285,
+    0.041490958905610796,
+    0.05904921375778599,
+    0.07528364721746474,
+    0.10039824210330131
+  ],
+  "eigensystem_residual_frobenius": 4.2101555147053883e-13,
+  "orthogonality_max_error": 3.1086244689504383e-15,
+  "fixed_grip_at_same_state_lowest_eight_eV_A2": [
+    0.01502986191306288,
+    0.028971094526782863,
+    0.03401110130706225,
+    0.04149095890561044,
+    0.0590455513387294,
+    0.07528364721747399,
+    0.10039527473962728,
+    0.11345584019701044
+  ],
+  "fixed_grip_at_same_state_negative_eigenvalues": 0,
+  "relaxed_grip_tangent": {
+    "schur_curvature_eV_A2": 0.06496795085696117,
+    "d_force_d_extension_eV_A2": 2.338846230850602,
+    "d_nominal_stress_d_extension_GPa_A": 1.9672173343570762,
+    "tangent_using_current_grip_distance_GPa": 63.58523132035592,
+    "convention": "finite bare prism and rigid grips; current grip distance; not bulk Young modulus",
+    "free_response_solve_residual": 4.8355550601945656e-15
+  },
+  "independent_checked_directions": 6,
+  "local_hessian_is_not_global_or_material_validation": true
+}

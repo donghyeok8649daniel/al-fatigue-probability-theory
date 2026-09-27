@@ -1,0 +1,69 @@
+{
+  "state": 0,
+  "target_nominal_GPa": 0.0,
+  "actual_nominal_GPa": 2.230591535640737e-06,
+  "target_force_eV_A": 0.0,
+  "axial_force_residual_eV_A": 2.651974702838622e-06,
+  "extension_A": 1.373817137723212,
+  "grip_centre_distance_A": 32.322423257385935,
+  "energy_eV": -1746.5325426466432,
+  "enthalpy_eV": -1746.5325426466432,
+  "converged": true,
+  "active_guard_bound": false,
+  "optimizer": {
+    "success": true,
+    "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+    "iterations": 138,
+    "evaluations": 146
+  },
+  "force_calls": 147,
+  "elapsed_s": 617.2090402001049,
+  "conjugate_force_eV_A": 2.651974702838622e-06,
+  "nominal_stress_GPa": 2.230591535640737e-06,
+  "lower_reaction_eV_A": [
+    -7.44118187206988e-09,
+    1.1344405831392734e-08,
+    1.5410899922074783e-05
+  ],
+  "upper_reaction_eV_A": [
+    3.305733109471021e-08,
+    -5.2438923647812885e-08,
+    2.071484933069412e-05
+  ],
+  "reaction_force_residual_eV_A": 3.6125781712861445e-05,
+  "reaction_torque_eV": 0.00014236967546441874,
+  "total_internal_force_eV_A": 1.1866928732135989e-15,
+  "total_internal_torque_eV": 3.592459381734991e-14,
+  "free_force_max_eV_A": 3.3297155415197293e-06,
+  "connectivity": [
+    {
+      "cutoff_A": 2.8,
+      "components": 1,
+      "grip_connected": true,
+      "largest_component_atoms": 360,
+      "pair_count": 655
+    },
+    {
+      "cutoff_A": 3.1,
+      "components": 1,
+      "grip_connected": true,
+      "largest_component_atoms": 360,
+      "pair_count": 685
+    },
+    {
+      "cutoff_A": 3.4,
+      "components": 1,
+      "grip_connected": true,
+      "largest_component_atoms": 360,
+      "pair_count": 761
+    },
+    {
+      "cutoff_A": 3.7,
+      "components": 1,
+      "grip_connected": true,
+      "largest_component_atoms": 360,
+      "pair_count": 980
+    }
+  ],
+  "crack_initiation_certified": false
+}

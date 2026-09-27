@@ -1,0 +1,23 @@
+{
+  "verified_files": 142,
+  "source_files": 55,
+  "artifact_files": 86,
+  "tested_source_files": 14,
+  "recorded_tests_passed": 63,
+  "tests_rerun": false,
+  "working_tree_hashes_verified": true,
+  "git_blob_hashes_verified": true,
+  "CRLF_to_LF_source_paths": [
+    "solver_v1/configurational_plasticity.py",
+    "solver_v1/lattice_bessel.py",
+    "solver_v1/model.py",
+    "solver_v1/probability_pde_2d.py"
+  ],
+  "current_worktree_line_ending_transports": [],
+  "result_artifacts_require_exact_bytes": true,
+  "git_revision": "c3a93f5d2e4df6e21a68d6080ed99cf6aee840bc",
+  "scope": "stored byte integrity and test-source binding; no physical validation",
+  "upstream_artifact_files_verified": 2375,
+  "upstream_scope": "unchanged stored data; historical v11 source hashes are not asserted against intentionally fixed v12 source",
+  "total_current_and_upstream_records": 2517
+}

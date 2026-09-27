@@ -1,0 +1,47 @@
+{
+  "state": "loading10",
+  "complete": true,
+  "dimension": 649,
+  "source_raw_hessian_sha256": "226fb4f0d90e2ec65569a6798caf8eb36d8c2b3fda5424a71880c8dbb2eaf5e4",
+  "source_energy_replay_error_eV": 0.0,
+  "source_force_replay_error_eV_A": 2.220446049250313e-16,
+  "matched_dead_force_eV_A": 4.300318958176797,
+  "matched_nominal_stress_GPa": 3.6170235931727377,
+  "free_gradient_max_eV_A": 0.0007528891127608628,
+  "fixed_grip_minimum_curvature_eV_A2": 0.021726276003295786,
+  "force_ensemble_minimum_curvature_eV_A2": 0.02172627600329221,
+  "force_ensemble_negative_modes": 0,
+  "independent_mixed_column_checks": [
+    {
+      "step_A": 0.0002,
+      "mixed_column_error_norm_eV_A2": 1.9279985288423374e-09,
+      "grip_energy_even_difference_eV_A2": 1.0061512512038462
+    },
+    {
+      "step_A": 0.0001,
+      "mixed_column_error_norm_eV_A2": 5.689004235865865e-10,
+      "grip_energy_even_difference_eV_A2": 1.0062194633064792
+    }
+  ],
+  "grip_energy_checks": [
+    {
+      "step_A": 0.002,
+      "curvature_eV_A2": 1.006162733574456,
+      "error_eV_A2": 6.643444050435932e-07
+    },
+    {
+      "step_A": 0.001,
+      "curvature_eV_A2": 1.0061617103929166,
+      "error_eV_A2": -3.588371344509511e-07
+    }
+  ],
+  "eigen_residual_norm_eV_A2": 4.024729324848159e-13,
+  "new_relaxation_performed": false,
+  "material_approved": false,
+  "physical_clock": null,
+  "schur_curvature_eV_A2": 0.04386566836801853,
+  "relaxed_axial_stiffness_eV_A2": 1.579164061248667,
+  "finite_prism_tangent_GPa": 45.21803685955887,
+  "tangent_convention": "current grip distance and original area; not bulk Young modulus",
+  "free_response_residual_norm": 4.401940700036486e-15
+}
