@@ -191,7 +191,7 @@ def main():
                    f"{d['selected']['baseline_component_RMSE_eV_A']:.6f}"] for d in sample['datasets']], widths=[1,1.55,1.2,1.2]),
         takeaway='같은 모델도 선택한 상태에 따라 평균 오차가 크게 달라진다. 같은 원자료 집합에서 비교해야 한다.',
         paragraphs=[
-            '표는 기존 MACE-MP-0b3의 힘 성분 RMSE이며 단위는 eV/Å다. CP2K 자료에서는 선택 표본의 오차가 전체보다 크지만, QE 자료에서는 반대로 작다. QE의 30개 조성 중 선택된 것은 20개다. 선택 규칙과 199개 원본 해시는 후보 모델의 새 결과를 보기 전에 고정했다.',
+            '표는 기존 MACE-MP-0b3의 힘 성분 RMSE이며 단위는 eV/Å다. CP2K의 전체는 원본 1,466개 중 320원자 이하의 기존 감사 대상 1,013개를 뜻한다. QE는 1,159개 전체다. CP2K에서는 선택 표본의 오차가 기존 감사 전체보다 크지만 QE에서는 작다. QE 30개 조성 중 선택된 것은 20개다. 선택 규칙과 199개 원본 해시는 새 예측 전에 고정했다.',
             '이는 원자료 CSV의 재분석이다. 전체 공개 자료도 실제 웨이퍼 조건의 무작위 표본은 아니다. MACE-MP-0b3와 MPA-0는 MPTrj 학습 자료를 공유하므로 두 모델의 일치를 독립적인 오차 보증으로 삼지 않는다. 신규 비교의 실제 완료 범위는 다음 결과 표에서 구분한다.'
         ], sources=[R13 + 'mpa_sampling_scope/summary.json', R13 + 'MODEL_COMPARISON_SCOPE_V13.md', 'https://github.com/ACEsuit/mace-foundations']))
     if (REPO / R13 / 'mpa_replay/summary.json').exists():
