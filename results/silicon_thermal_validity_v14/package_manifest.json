@@ -1,0 +1,769 @@
+{
+  "baseline_git_commit": "4bfe1e196e7be5df242d0d3f7b8d1231c66d84d5",
+  "scope": "v14 package, source code and explicitly used upstream inputs; excludes this manifest and mutable handoffs",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 4121,
+      "sha256": "e3d26dcbff826754e770ea1e9bb3a5cb3edeeb742542a44cc6c6050229b65d69"
+    },
+    {
+      "path": "results/silicon_initiation_v11/intact_prism_360_linesearch_v2/geometry.npz",
+      "bytes": 2902,
+      "sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d"
+    },
+    {
+      "path": "results/silicon_initiation_v13/dense_loading10/protocol.json",
+      "bytes": 1216,
+      "sha256": "1ed0899ed12fb7c5caf8a40014342559534c011dc2c83cc6d6641cc0093011b3"
+    },
+    {
+      "path": "results/silicon_initiation_v13/dense_loading10/raw_hessian.npz",
+      "bytes": 2993480,
+      "sha256": "226fb4f0d90e2ec65569a6798caf8eb36d8c2b3fda5424a71880c8dbb2eaf5e4"
+    },
+    {
+      "path": "results/silicon_initiation_v13/dense_loading10/summary.json",
+      "bytes": 1046,
+      "sha256": "5e9a2495fa0f38b8f9145f6c484a4f35abee97827424b330c451d0e0455ec130"
+    },
+    {
+      "path": "results/silicon_initiation_v13/dense_loading8/protocol.json",
+      "bytes": 1216,
+      "sha256": "1fdd081225bfb12cccb7f19e54f1a3a74d1f88f35ea0ebb1f75907e355b40cb8"
+    },
+    {
+      "path": "results/silicon_initiation_v13/dense_loading8/raw_hessian.npz",
+      "bytes": 2992434,
+      "sha256": "96bf8e4ec1c1f444d9578492bfae53f5e4ec5b339da47a074e5793599acf3dcd"
+    },
+    {
+      "path": "results/silicon_initiation_v13/dense_loading8/summary.json",
+      "bytes": 1043,
+      "sha256": "00263f4926d23f4bbb25535c7399134f41ba9b586625fb0b7dee70a81067e449"
+    },
+    {
+      "path": "results/silicon_initiation_v13/dense_return8/protocol.json",
+      "bytes": 1216,
+      "sha256": "5671406ca27f7864153da3e19d99127a587256fa554378f6304886a025c5fee8"
+    },
+    {
+      "path": "results/silicon_initiation_v13/dense_return8/raw_hessian.npz",
+      "bytes": 3048202,
+      "sha256": "a7f9637bdfa9ed468d3d6757ed5249e38e2795df73963e5def9fa4a2ebff3004"
+    },
+    {
+      "path": "results/silicon_initiation_v13/dense_return8/summary.json",
+      "bytes": 1041,
+      "sha256": "0c8901896f2c8f79862104a69ee58df22d6c13523baaad0766ab4fdccd456998"
+    },
+    {
+      "path": "results/silicon_initiation_v13/local_harmonic/summary.json",
+      "bytes": 4451,
+      "sha256": "d69c0f76f68d346d51129d908f9ae943fb35fada51e6bf1671ef5a26a7ec25dd"
+    },
+    {
+      "path": "results/silicon_thermal_v4/thermal_dynamics/analysis.json",
+      "bytes": 33907,
+      "sha256": "23e8d38b5818044386b20896979f774adbd88bf8d1e9aa21ba769ea41915a1cb"
+    },
+    {
+      "path": "results/silicon_thermal_v4/thermal_dynamics/initial_T300_seed103_dt0.00100.npz",
+      "bytes": 1007168,
+      "sha256": "8eda387413fca00519b681501d56d7b98d3f837967e43deb7728f2c902e8e10d"
+    },
+    {
+      "path": "results/silicon_thermal_v4/thermal_dynamics/initial_T300_seed211_dt0.00100.npz",
+      "bytes": 1006163,
+      "sha256": "18a7e0d0d61c0adbadcd5d9174f300e5e7eb20f9eb7822002bbba5b812138aa7"
+    },
+    {
+      "path": "results/silicon_thermal_v4/thermal_dynamics/initial_T300_seed307_dt0.00100.npz",
+      "bytes": 1005792,
+      "sha256": "d4df1d6eb397dd2d5d65711a2656bb7e8912a54fbac1755a7ddae543bdbf4857"
+    },
+    {
+      "path": "results/silicon_thermal_v4/thermal_dynamics/initial_T300_seed401_dt0.00100.npz",
+      "bytes": 1005551,
+      "sha256": "d4b6ad3608a9dd0f97f97bce44a34fe83626f5042a358ac9abfa5060cec531ca"
+    },
+    {
+      "path": "results/silicon_thermal_v4/thermal_dynamics/summary.json",
+      "bytes": 27726,
+      "sha256": "8b29154c9a234f6feb885a93334d06133ba9c2ecd19d2d58e9d045d110a1eb5c"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/.gitattributes",
+      "bytes": 72,
+      "sha256": "308a40fa1d89ae5ea4390b4c9b46a0108b09f171f07898f25d451fa0c69c4e9f"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/artifact_manifest.json",
+      "bytes": 514,
+      "sha256": "2ec824b5f2dbba7016e62d600e16be2646a81697c2466f44dd1ce72e392640e1"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/completed_replay.json",
+      "bytes": 901,
+      "sha256": "2e4910d38d9e5ecf593bb19524a23669f4e7786ef10747559f58c36d4f432328"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/COMPLETION.md",
+      "bytes": 4172,
+      "sha256": "4e6274346e25a7fdd0d7c3cad9e5d1aa4a18dc664ae17b57b878798b6a532616"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/artifact_manifest.json",
+      "bytes": 6052,
+      "sha256": "34a9978d5b0aaf7805e6ff3ebf453692d464d556585ae32343fbf5a7cb9ccb38"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_000.npz",
+      "bytes": 25114,
+      "sha256": "226f78c6e3ce86781e44e3baadbf76c3ce0f7cc3869e75329fcc66e64aba0b16"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_001.npz",
+      "bytes": 25111,
+      "sha256": "56b029e53dfd9bd61ab5ccc874e529bd3bcf61248375332185ad593a306a1581"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_002.npz",
+      "bytes": 25120,
+      "sha256": "bb813d18aa62026609baca2e6e89df6c4a90f6e83a43bda5bff09bcb5f1fed71"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_003.npz",
+      "bytes": 25104,
+      "sha256": "289e4125d2430adc1cd6fb3062b63cc67b2d8b1cf4922f2825bf34be55d1bb95"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_004.npz",
+      "bytes": 25092,
+      "sha256": "d447adb42e107cc5ae3ae23213319eba295b5f25c0e2d452b01b968fbdcca154"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_005.npz",
+      "bytes": 25103,
+      "sha256": "3699bc23f924daa867a1d59f7b6416e27856936feb477df118ab56a2d0403deb"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_006.npz",
+      "bytes": 25098,
+      "sha256": "fe6b90ae27daba183ca0350c0f9dc034e836c2f415aba33c281cb27893c5da8b"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_007.npz",
+      "bytes": 25106,
+      "sha256": "22f9004dd3a1bb085aec91adabd1595cce2d0ba99f0ee6cc90f38e88d677d8b5"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_008.npz",
+      "bytes": 25103,
+      "sha256": "7580a6fb70a127a0002f35aa89a1af068022a9c9dbe644f3251519a415df263d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_009.npz",
+      "bytes": 25097,
+      "sha256": "8f615d04534af38ca5065a29dc77bd00e60e439f5b24d35092690e5f5371e801"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_010.npz",
+      "bytes": 25107,
+      "sha256": "333ee0c4f1daa32859ec04bc0bbed8509083bd8cf297a8a8788f97d93e79c550"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_011.npz",
+      "bytes": 25128,
+      "sha256": "d39f35e4c70f7a0998c06a60bda2b7db7a1f9961e0a658bf1ca93ca5b7e52959"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_012.npz",
+      "bytes": 25117,
+      "sha256": "2a074cf73a262c2aa4ba0300cbafbf2137bae75e54042d0e43d84a60076d57fb"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_013.npz",
+      "bytes": 25103,
+      "sha256": "16b2d3f15d1ba3c46212a3b2f59b4eabae8302785204008893f38677620ea33d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_014.npz",
+      "bytes": 25094,
+      "sha256": "6f2524effb4d940f91b96d1c6fda0a43f8f0b5fbefbd9d46c8d9ab5dd3f2f89d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_015.npz",
+      "bytes": 25114,
+      "sha256": "dfdffac332c2d9f029409fe4e328fa3e047d126d7ea28891b9d28ccd29bdc6ee"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_016.npz",
+      "bytes": 25079,
+      "sha256": "e97d373aee759cc6904a7ef469f38dd83b056d85fb8fd219ebcbe2f33bc70e12"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_017.npz",
+      "bytes": 25109,
+      "sha256": "5eb27bdadcf7dfee5fcf03d261129778f5c486b2617736c9b71d660dc88a029b"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_018.npz",
+      "bytes": 25106,
+      "sha256": "c7db709bc902ce468e55eb8c0af5cd942fbcf67f1754516f82658f6ca065c900"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_019.npz",
+      "bytes": 25097,
+      "sha256": "0c684154291886b4b0816a727bdfd9bfd4270f04a64ccc07e940ac72dba8c6c0"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_020.npz",
+      "bytes": 25101,
+      "sha256": "8e3e5a58e7eceb854706cfc25e703fe31f041be51f063ab83e18998e0d103c23"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_021.npz",
+      "bytes": 25089,
+      "sha256": "c19e166372cffa810c143e9c807f00695381ea0cf1b4f6115a75518dc09d70ff"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_022.npz",
+      "bytes": 25108,
+      "sha256": "1df8d22df96b99582c701a979490b7c721d3c4da52f977f2a0b0338ffdffcedf"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_023.npz",
+      "bytes": 25112,
+      "sha256": "755c96092f394a992ee2b02138ac2904df95b9382e7a05e0e81b7a473c2f9d28"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_024.npz",
+      "bytes": 25082,
+      "sha256": "7ea2c1dbd70d7da4c14a9d018c934a1129b4d5b3bd32f9b9c62e2b8bce798bed"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_025.npz",
+      "bytes": 25106,
+      "sha256": "dfed9c97cf443c67ec8648e9a183245a4e2ced8584f3c3b7e4958494a8d38192"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_026.npz",
+      "bytes": 25102,
+      "sha256": "5c73e04ed3bc1bb8346095cc614469e2b34cc95f850bba041b2d01b37bd2dd80"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_027.npz",
+      "bytes": 25113,
+      "sha256": "159292fb9ce4bb7a513e5a62dc53272686a57ca2234c42efce7faee807550d03"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_028.npz",
+      "bytes": 25106,
+      "sha256": "c55b2abc043d50ead3314ff3f1a71cab7f3142d350f67d3648e75a62a5e5dbdd"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_029.npz",
+      "bytes": 25101,
+      "sha256": "1c05b816232f7081680a2af7146bbd4b79afc0287dfba7af18561b4a575d8549"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_030.npz",
+      "bytes": 25124,
+      "sha256": "4b3ad72a410a5b15d60772f2472fd20e86f010c6b7ffae032097982a5567a30e"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_031.npz",
+      "bytes": 25101,
+      "sha256": "e21492ff280bc6f446e353154eb6d588089a034ef249f54109cc188a23653899"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_032.npz",
+      "bytes": 25125,
+      "sha256": "525e23c274ec7ca8eab3fd839335f48732770dfed702bd5a1e9d1a6d5916805d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_033.npz",
+      "bytes": 25114,
+      "sha256": "c444de2cc93b5704653ca40987c883b1d066716724e44192d46b5d7486610b4d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_034.npz",
+      "bytes": 25116,
+      "sha256": "beca7df560cd56600ee034709b406c93dadcd83110698a087456a58888651df4"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_035.npz",
+      "bytes": 25110,
+      "sha256": "79a5e302ef6ac0a33a5eb8f27147c007185f4c3bd7a3ff962d0ce417ce9f5f83"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_036.npz",
+      "bytes": 25101,
+      "sha256": "e7bd8a6c66d59702ecc9b750fe9fc03fe0a2f7b5449d04c6ddd0608ca502cd8d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_037.npz",
+      "bytes": 25113,
+      "sha256": "3f5e4d835e64d2cc2232a106b2b06538d7fea85298d901ada77d0ecc089375f5"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_038.npz",
+      "bytes": 25109,
+      "sha256": "7a574a1b64800c58a521454defcd9829396cd9c1357bb4994bd34e2aa43113d4"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_039.npz",
+      "bytes": 25107,
+      "sha256": "03cdb87e9279494e83f1c295eb6927b9c3355daf50bcd5f5637a43906ec10d9d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_040.npz",
+      "bytes": 25125,
+      "sha256": "1e8ac6d721882e3f453d4f10df1ac3a67d344d9aa0879595a7c478100d317e91"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_041.npz",
+      "bytes": 25103,
+      "sha256": "7394a9e2f5f5b38a09b10183f6ff4e3b0fce63eab74aab261567db2dad737814"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_042.npz",
+      "bytes": 25108,
+      "sha256": "2b4a48a10a21fec062f949c03b898d91b9951d2487bfb44dbdca4a12aea309fb"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_043.npz",
+      "bytes": 25105,
+      "sha256": "b8ad4fa435bc69dbaac9b53ebe0649fbb93fcde175df2bd76c86db2deb5c8a11"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_044.npz",
+      "bytes": 25113,
+      "sha256": "2123148a8949091beeb5582cd7e80e084058bff6415bc46263720a918ae93b3e"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_045.npz",
+      "bytes": 25116,
+      "sha256": "8210e2415da393baa76f28859a2a7714011f61cc7b4281110223099591e3d05a"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_046.npz",
+      "bytes": 25103,
+      "sha256": "6c6a6ed2f9015410f18ac567f486fcf48e49afdce9b2a08fa30c7d25a123afee"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_047.npz",
+      "bytes": 25105,
+      "sha256": "69465c75c71f3e6a3c341eeb388b94c47576efbfd3ef8cde7657f2f3889ab9ca"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_048.npz",
+      "bytes": 25093,
+      "sha256": "f35ec7abf65d2b18f7b1e0f6c4a5f7f0e285498d5e26a63a4df73aeb7e380505"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_049.npz",
+      "bytes": 25098,
+      "sha256": "b614b887fb83237288fca74971da87fddacefdd5894d4cc86231db93e7fc4004"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_050.npz",
+      "bytes": 25097,
+      "sha256": "9e0224aaf4b032ebe09b11b94ed1f812814368269581385e9e7b0ec7abc59a7d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_051.npz",
+      "bytes": 25109,
+      "sha256": "6662482d85ed140bbb3e89794e467e5d3414eee9118112c0a37864a6bd6eb086"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_052.npz",
+      "bytes": 25112,
+      "sha256": "8f4af98cbdac0c06e51d62abd650789efe906395136300ef263232a01bd8fbef"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_053.npz",
+      "bytes": 25106,
+      "sha256": "dba0a9ffc102c0f3249bc8af0cf8767067bc47e5c4861f2bb70fa4d8b1a557a4"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_054.npz",
+      "bytes": 25105,
+      "sha256": "07ad33e13134386f3b441218590eda2e9745f0b076d8683d3eded36f14d57a48"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_055.npz",
+      "bytes": 25100,
+      "sha256": "da8e61e79f6ff9a42310404d26e38a6f92a81590f80d20b69687c0970321ee22"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_056.npz",
+      "bytes": 25097,
+      "sha256": "c24324066edcf161b61409b54b15dc16751b6780e5b6b48c01ae44b261a5fdfe"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_057.npz",
+      "bytes": 25098,
+      "sha256": "0021ff739c9496e9c32f8a343d87a25018c1495539ea44aa574a41b4d856d7f6"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_058.npz",
+      "bytes": 25098,
+      "sha256": "9fd2c5329d8486648f15e00101753bebde72374d9cc3b57babf77fc0de7b73c7"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_059.npz",
+      "bytes": 25090,
+      "sha256": "0ae9f8b1924dfada36310f8817d702dc2df9848fceac6a46859fa62953ee1fdd"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_060.npz",
+      "bytes": 25118,
+      "sha256": "61773e5f84d2380cf4620e1f6393901436136361ac55d7d71eac9d31499f68dc"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_061.npz",
+      "bytes": 25116,
+      "sha256": "56c62e66134c0a72a7d964c007d28706a47163f10cac25025bac15bab30ee670"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_062.npz",
+      "bytes": 25121,
+      "sha256": "4c1de8e9b38b7c78a550e2a5a4aff55529692ad8b6b3cfc667ed6f7c56835e12"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/point_063.npz",
+      "bytes": 25099,
+      "sha256": "8185d919a780b7a2698015db33e7e62916ae3e5193fee92f0f3417a354308521"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/points.json",
+      "bytes": 41126,
+      "sha256": "8ab9442920b9a9e27f77de3c7cebbdefd6fec17ccea27733c87e2c1e27b14ba2"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/protocol.json",
+      "bytes": 1460,
+      "sha256": "c0a655203661515b5243ddc1281add24c8b61c89125d68560b2860d8d79ff861"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_completed/summary.json",
+      "bytes": 2627,
+      "sha256": "2b7b490f22f81c1919b0a89845d3bd5114909000c2deccbaf1448c9e391008bd"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/artifact_manifest.json",
+      "bytes": 3622,
+      "sha256": "9529792ab118a5d338cb5ef475664edb4368606b96d6abbef9fdc2324e18104f"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_000.npz",
+      "bytes": 25114,
+      "sha256": "226f78c6e3ce86781e44e3baadbf76c3ce0f7cc3869e75329fcc66e64aba0b16"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_001.npz",
+      "bytes": 25111,
+      "sha256": "56b029e53dfd9bd61ab5ccc874e529bd3bcf61248375332185ad593a306a1581"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_002.npz",
+      "bytes": 25120,
+      "sha256": "bb813d18aa62026609baca2e6e89df6c4a90f6e83a43bda5bff09bcb5f1fed71"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_003.npz",
+      "bytes": 25104,
+      "sha256": "289e4125d2430adc1cd6fb3062b63cc67b2d8b1cf4922f2825bf34be55d1bb95"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_004.npz",
+      "bytes": 25092,
+      "sha256": "d447adb42e107cc5ae3ae23213319eba295b5f25c0e2d452b01b968fbdcca154"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_005.npz",
+      "bytes": 25103,
+      "sha256": "3699bc23f924daa867a1d59f7b6416e27856936feb477df118ab56a2d0403deb"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_006.npz",
+      "bytes": 25098,
+      "sha256": "fe6b90ae27daba183ca0350c0f9dc034e836c2f415aba33c281cb27893c5da8b"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_007.npz",
+      "bytes": 25106,
+      "sha256": "22f9004dd3a1bb085aec91adabd1595cce2d0ba99f0ee6cc90f38e88d677d8b5"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_008.npz",
+      "bytes": 25103,
+      "sha256": "7580a6fb70a127a0002f35aa89a1af068022a9c9dbe644f3251519a415df263d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_009.npz",
+      "bytes": 25097,
+      "sha256": "8f615d04534af38ca5065a29dc77bd00e60e439f5b24d35092690e5f5371e801"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_010.npz",
+      "bytes": 25107,
+      "sha256": "333ee0c4f1daa32859ec04bc0bbed8509083bd8cf297a8a8788f97d93e79c550"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_011.npz",
+      "bytes": 25128,
+      "sha256": "d39f35e4c70f7a0998c06a60bda2b7db7a1f9961e0a658bf1ca93ca5b7e52959"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_012.npz",
+      "bytes": 25117,
+      "sha256": "2a074cf73a262c2aa4ba0300cbafbf2137bae75e54042d0e43d84a60076d57fb"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_013.npz",
+      "bytes": 25103,
+      "sha256": "16b2d3f15d1ba3c46212a3b2f59b4eabae8302785204008893f38677620ea33d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_014.npz",
+      "bytes": 25094,
+      "sha256": "6f2524effb4d940f91b96d1c6fda0a43f8f0b5fbefbd9d46c8d9ab5dd3f2f89d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_015.npz",
+      "bytes": 25114,
+      "sha256": "dfdffac332c2d9f029409fe4e328fa3e047d126d7ea28891b9d28ccd29bdc6ee"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_016.npz",
+      "bytes": 25079,
+      "sha256": "e97d373aee759cc6904a7ef469f38dd83b056d85fb8fd219ebcbe2f33bc70e12"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_017.npz",
+      "bytes": 25109,
+      "sha256": "5eb27bdadcf7dfee5fcf03d261129778f5c486b2617736c9b71d660dc88a029b"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_018.npz",
+      "bytes": 25106,
+      "sha256": "c7db709bc902ce468e55eb8c0af5cd942fbcf67f1754516f82658f6ca065c900"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_019.npz",
+      "bytes": 25097,
+      "sha256": "0c684154291886b4b0816a727bdfd9bfd4270f04a64ccc07e940ac72dba8c6c0"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_020.npz",
+      "bytes": 25101,
+      "sha256": "8e3e5a58e7eceb854706cfc25e703fe31f041be51f063ab83e18998e0d103c23"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_021.npz",
+      "bytes": 25089,
+      "sha256": "c19e166372cffa810c143e9c807f00695381ea0cf1b4f6115a75518dc09d70ff"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_022.npz",
+      "bytes": 25108,
+      "sha256": "1df8d22df96b99582c701a979490b7c721d3c4da52f977f2a0b0338ffdffcedf"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_023.npz",
+      "bytes": 25112,
+      "sha256": "755c96092f394a992ee2b02138ac2904df95b9382e7a05e0e81b7a473c2f9d28"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_024.npz",
+      "bytes": 25082,
+      "sha256": "7ea2c1dbd70d7da4c14a9d018c934a1129b4d5b3bd32f9b9c62e2b8bce798bed"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_025.npz",
+      "bytes": 25106,
+      "sha256": "dfed9c97cf443c67ec8648e9a183245a4e2ced8584f3c3b7e4958494a8d38192"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_026.npz",
+      "bytes": 25102,
+      "sha256": "5c73e04ed3bc1bb8346095cc614469e2b34cc95f850bba041b2d01b37bd2dd80"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_027.npz",
+      "bytes": 25113,
+      "sha256": "159292fb9ce4bb7a513e5a62dc53272686a57ca2234c42efce7faee807550d03"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_028.npz",
+      "bytes": 25106,
+      "sha256": "c55b2abc043d50ead3314ff3f1a71cab7f3142d350f67d3648e75a62a5e5dbdd"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_029.npz",
+      "bytes": 25101,
+      "sha256": "1c05b816232f7081680a2af7146bbd4b79afc0287dfba7af18561b4a575d8549"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_030.npz",
+      "bytes": 25124,
+      "sha256": "4b3ad72a410a5b15d60772f2472fd20e86f010c6b7ffae032097982a5567a30e"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_031.npz",
+      "bytes": 25101,
+      "sha256": "e21492ff280bc6f446e353154eb6d588089a034ef249f54109cc188a23653899"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_032.npz",
+      "bytes": 25125,
+      "sha256": "525e23c274ec7ca8eab3fd839335f48732770dfed702bd5a1e9d1a6d5916805d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_033.npz",
+      "bytes": 25114,
+      "sha256": "c444de2cc93b5704653ca40987c883b1d066716724e44192d46b5d7486610b4d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_034.npz",
+      "bytes": 25116,
+      "sha256": "beca7df560cd56600ee034709b406c93dadcd83110698a087456a58888651df4"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_035.npz",
+      "bytes": 25110,
+      "sha256": "79a5e302ef6ac0a33a5eb8f27147c007185f4c3bd7a3ff962d0ce417ce9f5f83"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/point_036.npz",
+      "bytes": 25101,
+      "sha256": "e7bd8a6c66d59702ecc9b750fe9fc03fe0a2f7b5449d04c6ddd0608ca502cd8d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/points.json",
+      "bytes": 23806,
+      "sha256": "33a78d4c5263396e67bcedf4d1a9aa35274c659fab02793b73d784a595aaa480"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/protocol.json",
+      "bytes": 1213,
+      "sha256": "ac52e6dcef83987851825cdf6a117ca0237df16eb6b8f78a28e757a6326d4fbb"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/runner_snapshot.py",
+      "bytes": 8594,
+      "sha256": "f2f783a817e4ee895bdbf6f76f9e36eecfbad3b9122a5e927b3a2e6ceb8ae92d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/full_dimensional_probes/summary.json",
+      "bytes": 2520,
+      "sha256": "9796507f63576f7d514c59f03e42904f0d0e0b6a7b7505500ff0490eb5bdbae2"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/input_manifest.json",
+      "bytes": 3418,
+      "sha256": "a48ab63a6896e51223543800974c2bd029e5f4f3ce0ef589f5c88983b50001e7"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/partial_replay.json",
+      "bytes": 902,
+      "sha256": "f12af15ecd08402af2c5747635c0b18569e05f59e9dd6bed8ec20ba0c047f33d"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/README.md",
+      "bytes": 9942,
+      "sha256": "539829f6a19516bf57d9ea5f20d2ed2c881ed9b6209b876b89f5cc260491d405"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/spectra_and_covariance.npz",
+      "bytes": 144088,
+      "sha256": "a8629ed64139ff2b8634c21617ef2b23d8cad2a8212dde33851a6a35b3961703"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/summary.json",
+      "bytes": 23186,
+      "sha256": "14225a0d4d57997844eef4f6f347719476fddb56d872662163252763bb1fbc39"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/temperature_diagnostics.csv",
+      "bytes": 5009,
+      "sha256": "839fd98f9f1021ea8881dbb585e31628597dccbaed4c200d44f3c6a654ede10c"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/TEST_RESULTS.json",
+      "bytes": 558,
+      "sha256": "58878fe5d79ac2adb4cb6746c903f8b31e05a74744b45b22b4cab3238cdbb912"
+    },
+    {
+      "path": "results/silicon_thermal_validity_v14/thermal_validity.png",
+      "bytes": 223328,
+      "sha256": "cf537348045b26629f3c271a4bf8c77976253eba9d76e562b45dbe21e1956d61"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/audit_thermal_validity_v14.py",
+      "bytes": 16065,
+      "sha256": "cced9f7057f44795fd0e1330d4a9be20822468264f53603d00509fb1eafa287d"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/mace_force_only_v9.py",
+      "bytes": 1673,
+      "sha256": "dfe13c4db4c54bbf0138b9854474002b15692a8ec1e5ceb9bf5b58243de05b3c"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/probe_thermal_cloud_v14.py",
+      "bytes": 11419,
+      "sha256": "3262bc968f64cdc14d677af93fd531e300f333c324fd0698709dfa138a3da622"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/replay_thermal_validity_v14.py",
+      "bytes": 5018,
+      "sha256": "21282ee8e36bf4b2068bc42c90ea0d40bdec1f26e16f945b646f407b1910c32d"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/run_mace_boron_v9.py",
+      "bytes": 8626,
+      "sha256": "8c700c44601ddeffafc76a17295b35a0e10c2897017ace8649ad33bfd5da42d2"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/seal_thermal_validity_v14.py",
+      "bytes": 4938,
+      "sha256": "e141f3bfcc56f01a2d1332fddad02380cccee0bc0ce321d6626c274a9e1f6ebb"
+    },
+    {
+      "path": "solver_v1/probability_pde_2d.py",
+      "bytes": 39506,
+      "sha256": "34504363059cbf1c0f6073c7a3b7624fb3e5a07b2355330bfcbf145182bb9cba",
+      "git_bytes": 39105,
+      "git_sha256": "21ae2a7e0f1bf5161664a325a13f4e63c8109f750bbb30fbdf47234aa97a5d93",
+      "git_difference": "verified CRLF to LF only"
+    },
+    {
+      "path": "solver_v1/silicon_charge_dynamics.py",
+      "bytes": 8124,
+      "sha256": "fddd750ab6c459a1e0990e7eeca3d39072318e8ea3156c1ead8f1a9922adac0e"
+    },
+    {
+      "path": "solver_v1/silicon_conditional_research.py",
+      "bytes": 8758,
+      "sha256": "85b22cfee9118bf8b0f6a13579ee1aa61d34308fdc8506564b99ce26fc19c507"
+    },
+    {
+      "path": "solver_v1/silicon_quantum_diagnostic.py",
+      "bytes": 1567,
+      "sha256": "48285f08541bd6f50610554cdb491ed616421833f33da87a3c79a94abd1df9e3"
+    },
+    {
+      "path": "solver_v1/silicon_thermal_validity.py",
+      "bytes": 2636,
+      "sha256": "1ad93790fb4c80a607b0262760a782ceceefe4e0914dec3d955614e43c0a76be"
+    },
+    {
+      "path": "solver_v1/test_silicon_thermal_validity.py",
+      "bytes": 2477,
+      "sha256": "c58815f76767c0d99bc05878eb8162196656455e34e2ab7ed7a412d185e935cf"
+    }
+  ]
+}

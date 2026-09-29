@@ -1,0 +1,77 @@
+{
+  "complete": false,
+  "error": "TimeoutError: bounded full-dimensional probe budget",
+  "points": 37,
+  "new_model_calls": 39,
+  "source_replays": [
+    {
+      "state": "loading8",
+      "energy_error_eV": 0.0,
+      "force_error_eV_A": 0.0
+    },
+    {
+      "state": "return8",
+      "energy_error_eV": 0.0,
+      "force_error_eV_A": 2.220446049250313e-16
+    }
+  ],
+  "groups": [
+    {
+      "state": "loading8",
+      "temperature_K": 50.0,
+      "points": 16,
+      "deltaU_over_kBT_min": -3.3569833655954247,
+      "deltaU_over_kBT_max": 2.832991658452172,
+      "weight_ESS_diagnostic": 3.627870495999819,
+      "maximum_normalized_weight": 0.4097376881705407,
+      "max_gradient_residual_over_linear": 0.12494145998030944,
+      "independent_draws": 8,
+      "statistical_ESS_certified": false
+    },
+    {
+      "state": "loading8",
+      "temperature_K": 300.0,
+      "points": 16,
+      "deltaU_over_kBT_min": -8.541556425189855,
+      "deltaU_over_kBT_max": 5.193733068472148,
+      "weight_ESS_diagnostic": 2.042787610853469,
+      "maximum_normalized_weight": 0.5396830824586809,
+      "max_gradient_residual_over_linear": 0.3106969745997427,
+      "independent_draws": 8,
+      "statistical_ESS_certified": false
+    },
+    {
+      "state": "return8",
+      "temperature_K": 50.0,
+      "points": 3,
+      "deltaU_over_kBT_min": -4.247273493692131,
+      "deltaU_over_kBT_max": 4.0842531743918205,
+      "weight_ESS_diagnostic": 1.6351750519616468,
+      "maximum_normalized_weight": 0.7362718480831061,
+      "max_gradient_residual_over_linear": 0.11665486614716508,
+      "independent_draws": 1,
+      "statistical_ESS_certified": false
+    },
+    {
+      "state": "return8",
+      "temperature_K": 300.0,
+      "points": 2,
+      "deltaU_over_kBT_min": -11.081825491351669,
+      "deltaU_over_kBT_max": 10.299351277512097,
+      "weight_ESS_diagnostic": 1.0000000010358647,
+      "maximum_normalized_weight": 0.9999999994820676,
+      "max_gradient_residual_over_linear": 0.30838897540627547,
+      "independent_draws": 1,
+      "statistical_ESS_certified": false
+    }
+  ],
+  "elapsed_seconds": 300.3578294001054,
+  "new_MD": 0,
+  "new_DFT": 0,
+  "physical_clock": null,
+  "material_approved": false,
+  "canonical_sampling": false,
+  "basin_membership_certified": false,
+  "free_energy_estimated": false,
+  "interpretation": "small full-dimensional Gaussian-proposal overlap diagnostic with actual model evaluations"
+}

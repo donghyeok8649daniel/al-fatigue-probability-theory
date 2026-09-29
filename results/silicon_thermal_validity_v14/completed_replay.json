@@ -1,0 +1,27 @@
+{
+  "complete": true,
+  "checks": 711,
+  "maximum_errors": {
+    "input_hash_mismatch": 0.0,
+    "artifact_hash_mismatch": 0.0,
+    "cloud_source_hash_mismatch": 0.0,
+    "Gaussian_energy_identity_eV": 4.085620730620576e-14,
+    "position_lift_A": 0.0,
+    "fixed_grip_displacement_A": 0.0,
+    "quadratic_delta_replay_eV": 0.0,
+    "actual_energy_replay_eV": 0.0,
+    "energy_residual_replay_eV": 0.0,
+    "weight_log_replay": 0.0,
+    "full_gradient_norm_replay_eV_A": 4.440892098500626e-16,
+    "normal_vector_seed_replay": 0.0,
+    "antithetic_center_identity_A": 1.1102230246251565e-16,
+    "weight_ESS_replay": 3.1086244689504383e-15,
+    "saved_point_count": 0.0,
+    "model_call_accounting": 0.0
+  },
+  "cloud_complete": true,
+  "points_replayed": 64,
+  "new_model_evaluations": 0,
+  "new_MD": 0,
+  "replay_does_not_validate_material_or_thermal_equilibrium": true
+}

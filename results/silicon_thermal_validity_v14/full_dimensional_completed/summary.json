@@ -1,0 +1,79 @@
+{
+  "complete": true,
+  "error": null,
+  "points": 64,
+  "new_model_calls": 28,
+  "reused_point_evaluations": 37,
+  "previous_model_calls": 39,
+  "total_model_calls_including_previous": 67,
+  "source_replays": [
+    {
+      "state": "return8",
+      "energy_error_eV": 0.0,
+      "force_error_eV_A": 0.0
+    }
+  ],
+  "groups": [
+    {
+      "state": "loading8",
+      "temperature_K": 50.0,
+      "points": 16,
+      "deltaU_over_kBT_min": -3.3569833655954247,
+      "deltaU_over_kBT_max": 2.832991658452172,
+      "weight_ESS_diagnostic": 3.627870495999819,
+      "maximum_normalized_weight": 0.4097376881705407,
+      "max_gradient_residual_over_linear": 0.12494145998030944,
+      "normal_vectors_used": 8,
+      "complete_antithetic_pairs": 8,
+      "statistical_ESS_certified": false
+    },
+    {
+      "state": "loading8",
+      "temperature_K": 300.0,
+      "points": 16,
+      "deltaU_over_kBT_min": -8.541556425189855,
+      "deltaU_over_kBT_max": 5.193733068472148,
+      "weight_ESS_diagnostic": 2.042787610853469,
+      "maximum_normalized_weight": 0.5396830824586809,
+      "max_gradient_residual_over_linear": 0.3106969745997427,
+      "normal_vectors_used": 8,
+      "complete_antithetic_pairs": 8,
+      "statistical_ESS_certified": false
+    },
+    {
+      "state": "return8",
+      "temperature_K": 50.0,
+      "points": 16,
+      "deltaU_over_kBT_min": -4.247273493692131,
+      "deltaU_over_kBT_max": 4.0842531743918205,
+      "weight_ESS_diagnostic": 2.4474023666083404,
+      "maximum_normalized_weight": 0.5942512996380974,
+      "max_gradient_residual_over_linear": 0.12767742876554816,
+      "normal_vectors_used": 8,
+      "complete_antithetic_pairs": 8,
+      "statistical_ESS_certified": false
+    },
+    {
+      "state": "return8",
+      "temperature_K": 300.0,
+      "points": 16,
+      "deltaU_over_kBT_min": -11.081825491351669,
+      "deltaU_over_kBT_max": 13.397426410023902,
+      "weight_ESS_diagnostic": 1.0645882752063773,
+      "maximum_normalized_weight": 0.9687214115889615,
+      "max_gradient_residual_over_linear": 0.37442533716601534,
+      "normal_vectors_used": 8,
+      "complete_antithetic_pairs": 8,
+      "statistical_ESS_certified": false
+    }
+  ],
+  "elapsed_seconds": 214.48496560007334,
+  "new_MD": 0,
+  "new_DFT": 0,
+  "physical_clock": null,
+  "material_approved": false,
+  "canonical_sampling": false,
+  "basin_membership_certified": false,
+  "free_energy_estimated": false,
+  "interpretation": "small full-dimensional Gaussian-proposal overlap diagnostic with actual model evaluations"
+}

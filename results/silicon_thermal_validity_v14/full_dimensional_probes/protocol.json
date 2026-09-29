@@ -1,0 +1,35 @@
+{
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "source_sha256": {
+    "loading8": "96bf8e4ec1c1f444d9578492bfae53f5e4ec5b339da47a074e5793599acf3dcd",
+    "return8": "a7f9637bdfa9ed468d3d6757ed5249e38e2795df73963e5def9fa4a2ebff3004"
+  },
+  "geometry_sha256": "d3f73db0e16372da82162d32a9720db9727dcb0463fe944e0b8e1f624c0a890d",
+  "runner_sha256": "f2f783a817e4ee895bdbf6f76f9e36eecfbad3b9122a5e927b3a2e6ceb8ae92d",
+  "temperatures_K": [
+    50.0,
+    300.0
+  ],
+  "seeds": [
+    271828,
+    314159
+  ],
+  "normal_vectors_per_seed": 4,
+  "signs": [
+    -1,
+    1
+  ],
+  "planned_points": 64,
+  "planned_source_replays": 2,
+  "proposal": "d=-H^-1 g + V sqrt(kBT/lambda) z, z~N(0,I648)",
+  "proposed_points_are_not_canonical_MACE_samples": true,
+  "antithetic_pairs_and_temperature_pairs_are_not_independent": true,
+  "no_displacement_clipping": true,
+  "collision_guard_minimum_pair_A": 1.0,
+  "guard_is_computational_not_a_crack_criterion": true,
+  "allocation_guard_available_bytes": 6000000000,
+  "allocation_scope": "360-atom pure Si; not the failed 321-1200-atom oxygen batch",
+  "max_seconds": 300.0,
+  "new_MD": 0,
+  "new_DFT": 0
+}
