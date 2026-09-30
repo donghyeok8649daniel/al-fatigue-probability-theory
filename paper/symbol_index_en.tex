@@ -9,9 +9,9 @@ $a^\ddagger$ & outer normal saddle & m & Negative-curvature root of Eq.~\eqref{e
 $b$ & row repeat/slip period & m & Declared crystallographic repeat in Sec.~\ref{sec:row}.\\
 $s,s_0,\widetilde s$ & unwrapped, reference, and intrawell registry & m & $s=s_0+zb+\widetilde s$, Sec.~\ref{sec:plastic}.\\
 $z$ & unwrapped well index & 1 & Integer basin label; compute before folding $s$.\\
-$m,n,q$ & LJ and generic exponents & 1 & $m>n>2$ for $U_0$; $q>1$ suffices for one row.\\
+$n,m,q$ & repulsive, attractive, and generic exponents & 1 & $n>m>2$ for $U_0$; LJ 12--6: $n=12,m=6$; $q>1$ suffices for one row.\\
 $\epsLJ,\sigLJ$ & pair well depth and zero crossing & J, m & Independent pair parameters in Eq.~\eqref{eq:pair}.\\
-$C_{m,n}$ & well-depth normalization & 1 & Closed expression in Eq.~\eqref{eq:pair}.\\
+$C_{n,m}$ & well-depth normalization & 1 & Closed expression in Eq.~\eqref{eq:pair}.\\
 $p,k,\ell$ & row-site, normal-layer, reciprocal indices & 1 & $p\in\mathbb Z$, $k,\ell\ge1$; Secs.~\ref{sec:row}--\ref{sec:H}.\\
 $\delta,\delta_0,\eta$ & normalized registries and spacing & 1 & $s/b,s_0/b,a/b$.\\
 $B_q$ & one-row inverse-power kernel & 1 & Direct Eq.~\eqref{eq:Bdirect}; Bessel Eq.~\eqref{eq:Bbessel}.\\
@@ -20,7 +20,7 @@ $\Delta H_q$ & registry excess of $H_q$ & 1 & Cosine-difference series Eq.~\eqre
 $K_\nu$ & modified Bessel function, second kind & 1 & Integral definition Eq.~\eqref{eq:Kdef}; standard special-function evaluation.\\
 $\mathcal K_\nu$ & Bessel--Lambert series & 1 & $\sum k^{-\nu}K_\nu(kx)$ in Eq.~\eqref{eq:Klambert}.\\
 $\operatorname{Li}_r$ & polylogarithm & 1 & $\sum e^{-kx}/k^r$; 12--6 closure in Sec.~\ref{sec:polylog}.\\
-$v_{m,n}$ & pair potential & J & Eq.~\eqref{eq:pair}; pair counted once.\\
+$v_{n,m}$ & pair potential & J & Eq.~\eqref{eq:pair}; pair counted once.\\
 $W(d,s)$ & one row--row kernel & J & Direct site sum Eq.~\eqref{eq:W}; not the final lattice energy.\\
 $U_0$ & intrinsic multilayer potential & J & Unweighted $\sum_kW(ka,s)$, Eqs.~\eqref{eq:U0count} and \eqref{eq:U0H}; excludes external work.\\
 $\begin{gathered}\Delta U_0,\Delta U_n\\V_{\rm slip}\end{gathered}$ & total excess, normal part, slip part & J & Exact common-energy identity Eq.~\eqref{eq:decomp}.\\

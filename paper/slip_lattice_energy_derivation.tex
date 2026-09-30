@@ -73,22 +73,23 @@ energy and is not the local-state convention.  Similarly $W(ka,ks)$ would
 assign a different registry to every layer and is excluded by the definition
 of the collective coordinate.
 
-\section{Generalized Lennard--Jones $m$--$n$ pair potential}
+\section{Generalized Lennard--Jones $n$--$m$ pair potential}
 \label{sec:pair}
 
-We use the well-depth convention
+We use $n$ for the repulsive exponent and $m$ for the attractive exponent,
+with $n>m>0$, and the well-depth convention
 \begin{equation}
- \boxed{v_{m,n}(r)=C_{m,n}\epsLJ
- \left[\left(\frac{\sigLJ}{r}\right)^m-
-       \left(\frac{\sigLJ}{r}\right)^n\right],\qquad
- C_{m,n}=\frac{m}{m-n}\left(\frac mn\right)^{n/(m-n)}.}
+ \boxed{v_{n,m}(r)=C_{n,m}\epsLJ
+ \left[\left(\frac{\sigLJ}{r}\right)^n-
+       \left(\frac{\sigLJ}{r}\right)^m\right],\qquad
+ C_{n,m}=\frac{n}{n-m}\left(\frac nm\right)^{m/(n-m)}.}
  \label{eq:pair}
 \end{equation}
 It gives $\min v=-\epsLJ$ at
-$r_e=\sigLJ(m/n)^{1/(m-n)}$.  For $m=12,n=6$, $C_{12,6}=4$, so the usual
+$r_e=\sigLJ(n/m)^{1/(n-m)}$.  For $n=12,m=6$, $C_{12,6}=4$, so the usual
 $4\epsLJ$ convention is recovered rather than silently mixed with a different
 coefficient definition.  The full multilayer absolute energy below requires
-\begin{equation}\boxed{m>n>2.}\label{eq:convergence}
+\begin{equation}\boxed{n>m>2.}\label{eq:convergence}
 \end{equation}
 The weaker condition $q>1$ suffices for an individual row kernel.
 
@@ -97,8 +98,8 @@ The weaker condition $q>1$ suffices for an individual row kernel.
 
 For row separation $d$ and site index $p\in\mathbb Z$,
 \begin{equation}
- \boxed{W_{m,n}(d,s)=\sum_{p=-\infty}^{\infty}
- v_{m,n}\!\left(\sqrt{d^2+(pb+s)^2}\right).}
+ \boxed{W_{n,m}(d,s)=\sum_{p=-\infty}^{\infty}
+ v_{n,m}\!\left(\sqrt{d^2+(pb+s)^2}\right).}
  \label{eq:W}
 \end{equation}
 Put $\delta=s/b$, $\eta=d/b$ and, for $q>1$,
@@ -109,8 +110,8 @@ Put $\delta=s/b$, $\eta=d/b$ and, for $q>1$,
 \end{equation}
 Then
 \begin{equation}
- W_{m,n}=C_{m,n}\epsLJ\left[
- (\sigLJ/b)^mB_m-(\sigLJ/b)^nB_n\right].
+ W_{n,m}=C_{n,m}\epsLJ\left[
+ (\sigLJ/b)^nB_n-(\sigLJ/b)^mB_m\right].
  \label{eq:WB}
 \end{equation}
 
@@ -170,9 +171,9 @@ intrinsic potential is therefore
 \begin{equation}
  \boxed{\begin{aligned}
  U_0(a,s)&=\sum_{k=1}^{\infty}\sum_{p=-\infty}^{\infty}
- v_{m,n}\!\left(\sqrt{k^2a^2+(pb+s)^2}\right)\\
- &=C_{m,n}\epsLJ\left[(\sigLJ/b)^mH_m(\delta,\eta)-
- (\sigLJ/b)^nH_n(\delta,\eta)\right].
+ v_{n,m}\!\left(\sqrt{k^2a^2+(pb+s)^2}\right)\\
+ &=C_{n,m}\epsLJ\left[(\sigLJ/b)^nH_n(\delta,\eta)-
+ (\sigLJ/b)^mH_m(\delta,\eta)\right].
  \end{aligned}}
  \label{eq:U0H}
 \end{equation}
@@ -233,8 +234,8 @@ With $\delta_0=s_0/b$, the zero mode cancels exactly:
 \end{equation}
 Then
 \begin{equation}
- V_{\rm slip}=C_{m,n}\epsLJ[(\sigLJ/b)^m\Delta H_m-
- (\sigLJ/b)^n\Delta H_n].
+ V_{\rm slip}=C_{n,m}\epsLJ[(\sigLJ/b)^n\Delta H_n-
+ (\sigLJ/b)^m\Delta H_m].
  \label{eq:Vslip}
 \end{equation}
 At $\delta=\delta_0$ every bracket is zero, proving
@@ -456,7 +457,7 @@ collective/unwrapped slip 좌표이므로 모든 $k$에 동일하며 $ks$나 $js
 
 $B_q$의 기존 Mellin--Poisson--Bessel 유도를 보존한 채 다시 $k$에 대해
 합하면 식~\eqref{eq:Hexact}의 정확한 $H_q$를 얻는다. 이는 Taylor 또는
-harmonic 근사가 아니다. 전체 absolute double sum 때문에 $m>n>2$가
+harmonic 근사가 아니다. 전체 absolute double sum 때문에 $n>m>2$가
 필요하고, 단일 row에는 $q>1$이면 충분하다. 12--6에서는 $K_{5/2}$와
 $K_{11/2}$가 유한다항식으로 닫혀 식~\eqref{eq:poly6}--\eqref{eq:poly12}의
 polylog 식이 된다. 계수는 직접 이중합과 Bessel 합을 서로 비교하여 검산했다.
