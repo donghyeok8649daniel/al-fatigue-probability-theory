@@ -24,9 +24,9 @@ $\sigma,q$ & 법선응력과 무차원 traction & Pa, 1 & $q(t)=\sigma(t)/E$. \\
 $q_{\rm ref}$ & 기준상태 무차원 traction & 1 & 구조적 초기분포 $P_0$가 정의되는 하중수준. \\
 $q_r(\lambda_0)$ & 국소 잔류 conjugate bias & 1 & $q_r(\lambda_0)=\phi'(\lambda_0)-q_{\rm ref}$. \\
 $q_c$ & 최대 안정 무차원 traction & 1 & $q_c=\phi'(\lambda_c)$. \\
-$m,n$ & generalized-LJ 지수 & 1 & 현재 $m=12.19$, $n=6$. \\
+$n,m$ & generalized-LJ 반발 지수와 인력 지수 & 1 & $n>m>1$; 현재 $n=12.19$, $m=6$. \\
 $\phi,\phi',\phi''$ & 무차원 상호작용에너지, traction, 접선강성 & 1 & generalized-LJ 식을 직접 계산. \\
-$\lambda_c$ & 법선 불안정성 operational dividing surface & 1 & $\phi''(\lambda_c)=0$, 즉 $[(m+1)/(n+1)]^{1/(m-n)}$. 완성된 거시균열 자체를 뜻하지 않음. \\
+$\lambda_c$ & 법선 불안정성 operational dividing surface & 1 & $\phi''(\lambda_c)=0$, 즉 $[(n+1)/(m+1)]^{1/(n-m)}$. 완성된 거시균열 자체를 뜻하지 않음. \\
 $x_j,M$ & 미시 node 위치와 spacing 개수 & 1, 1 & finite-chain reference 변수. \\
 $\lambda_i,c_i$ & 미시 label $i$의 spacing과 spacing rate & 1, $\tau^{-1}$ & $\lambda_i=x_i-x_{i-1}$, $c_i=d\lambda_i/d\tau$. \\
 $E_{\rm mech}^*$ & 무차원 보존 기계에너지 & 1 & $\frac12\sum_j\dot x_j^2+\sum_i\phi(\lambda_i)$. \\

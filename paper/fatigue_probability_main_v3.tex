@@ -42,21 +42,21 @@ Let
 with normalized interaction
 \begin{equation}
 \phi(\lambda)
-=\frac{\lambda^{-m}}{m(m-n)}
--\frac{\lambda^{-n}}{n(m-n)},
-\qquad m>n>1,
+=\frac{\lambda^{-n}}{n(n-m)}
+-\frac{\lambda^{-m}}{m(n-m)},
+\qquad n>m>1,
 \label{eq:phi}
 \end{equation}
 so that
 \begin{equation}
-\phi'(\lambda)=\frac{\lambda^{-n-1}-\lambda^{-m-1}}{m-n},
+\phi'(\lambda)=\frac{\lambda^{-m-1}-\lambda^{-n-1}}{n-m},
 \end{equation}
 \begin{equation}
 \phi''(\lambda)
-=\frac{(m+1)\lambda^{-m-2}-(n+1)\lambda^{-n-2}}{m-n}.
+=\frac{(n+1)\lambda^{-n-2}-(m+1)\lambda^{-m-2}}{n-m}.
 \label{eq:phipp}
 \end{equation}
-The normalization gives $\phi'(1)=0$ and $\phi''(1)=1$. The active numerical calibration uses $m=12.19$ and $n=6$.
+The normalization gives $\phi'(1)=0$ and $\phi''(1)=1$. The active numerical calibration uses $n=12.19$ and $m=6$.
 
 With loading-axis modulus $E$, mechanical reference area $A_0$, atomic/reference mass $m_a$, and reference spacing $a_0$,
 \begin{equation}
@@ -154,7 +154,7 @@ The retained normal tangent stiffness vanishes at
 \begin{equation}
 \phi''(\lambda_c)=0,
 \qquad
-\lambda_c=\left(\frac{m+1}{n+1}\right)^{1/(m-n)}.
+\lambda_c=\left(\frac{n+1}{m+1}\right)^{1/(n-m)}.
 \label{eq:lambdac}
 \end{equation}
 For a stable spacing $\lambda$, define the effective-potential climb to this operational absorbing surface at the same local reduced traction,
