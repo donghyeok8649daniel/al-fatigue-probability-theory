@@ -1,0 +1,28 @@
+{
+  "tests": 12,
+  "failures": 0,
+  "errors": 0,
+  "elapsed_seconds": 10.098,
+  "test_names": [
+    "solver_v1.test_silicon_device_ensemble.test_device_response_matches_direct_coupled_gaussian_inverse",
+    "solver_v1.test_silicon_device_ensemble.test_normalized_grip_coordinate_and_units_are_not_conflated",
+    "solver_v1.test_silicon_device_ensemble.test_same_device_formula_matches_independent_nonlinear_energy_derivative",
+    "solver_v1.test_silicon_device_ensemble.test_nonlinear_gaussian_reference_cancels_from_same_bounded_target",
+    "solver_v1.test_silicon_device_ensemble.test_common_box_contains_both_starts_without_changing_the_fixed_grips",
+    "solver_v1.test_silicon_thermal_research.test_gaussian_whitening_covariance_and_unstable_reference_rejection",
+    "solver_v1.test_silicon_thermal_research.test_bounded_nonlinear_partition_matches_independent_quadrature",
+    "solver_v1.test_silicon_thermal_research.test_pcn_proposal_preserves_reference_and_metropolis_satisfies_balance",
+    "solver_v1.test_silicon_thermal_research.test_pcn_rejections_remain_in_history_and_bounded_target_is_correct",
+    "solver_v1.test_silicon_thermal_research.test_split_rhat_detects_offset_chains_without_calling_them_independent_draws",
+    "solver_v1.test_silicon_thermal_research.test_force_control_integrates_to_zero_even_with_nonzero_boundary_density",
+    "solver_v1.test_silicon_thermal_research.test_harmonic_split_is_reversible_and_hmc_matches_actual_nonlinear_integral"
+  ],
+  "tested_source_sha256": {
+    "solver_v1/silicon_device_ensemble.py": "9b0999eec1b6657237fcfeabbbc55b08dd65d18e97f68d4fbb4b37fe19bece2c",
+    "solver_v1/test_silicon_device_ensemble.py": "e64869d789843d981d532937f5125ac656523f795dc400e69e4d4a7476e299e1",
+    "solver_v1/silicon_thermal_research.py": "6f6ebe9e71f468830b9038964c39677c5cb69cd779ca6633bf65a79df48e8149",
+    "solver_v1/test_silicon_thermal_research.py": "72e07de04903575971f956302182a8e52923fdd304e5946c7570f4e359abd0e1",
+    "solver_v1/silicon_conditional_research.py": "85b22cfee9118bf8b0f6a13579ee1aa61d34308fdc8506564b99ce26fc19c507"
+  },
+  "scope": "5 new tests plus 7 existing sampling tests; mathematical implementation, not material certification"
+}

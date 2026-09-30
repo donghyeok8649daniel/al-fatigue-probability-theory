@@ -1,0 +1,93 @@
+{
+  "rows": [
+    {
+      "device_to_specimen_stiffness_ratio": 0.0,
+      "infinite_stiffness": false,
+      "temperature_K": 300.0,
+      "direct_matrix_variance_error_A2": 0.0,
+      "specimen_stiffness_eV_A2": 2.338846230850592,
+      "specimen_stiffness_N_mm": 0.037472447815877885,
+      "extension_variance_A2": 0.011053313144504449,
+      "d_extension_d_actuator": 0.0,
+      "d_force_d_actuator_eV_A2": 0.0
+    },
+    {
+      "device_to_specimen_stiffness_ratio": 0.01,
+      "infinite_stiffness": false,
+      "temperature_K": 300.0,
+      "direct_matrix_variance_error_A2": 1.3877787807814457e-17,
+      "specimen_stiffness_eV_A2": 2.338846230850592,
+      "specimen_stiffness_N_mm": 0.037472447815877885,
+      "extension_variance_A2": 0.010943874400499454,
+      "d_extension_d_actuator": 0.009900990099009875,
+      "d_force_d_actuator_eV_A2": 0.023156893374758278
+    },
+    {
+      "device_to_specimen_stiffness_ratio": 0.1,
+      "infinite_stiffness": false,
+      "temperature_K": 300.0,
+      "direct_matrix_variance_error_A2": 6.938893903907228e-18,
+      "specimen_stiffness_eV_A2": 2.338846230850592,
+      "specimen_stiffness_N_mm": 0.037472447815877885,
+      "extension_variance_A2": 0.010048466495004047,
+      "d_extension_d_actuator": 0.0909090909090907,
+      "d_force_d_actuator_eV_A2": 0.2126223846227806
+    },
+    {
+      "device_to_specimen_stiffness_ratio": 1.0,
+      "infinite_stiffness": false,
+      "temperature_K": 300.0,
+      "direct_matrix_variance_error_A2": 0.0,
+      "specimen_stiffness_eV_A2": 2.338846230850592,
+      "specimen_stiffness_N_mm": 0.037472447815877885,
+      "extension_variance_A2": 0.005526656572252231,
+      "d_extension_d_actuator": 0.4999999999999994,
+      "d_force_d_actuator_eV_A2": 1.1694231154252945
+    },
+    {
+      "device_to_specimen_stiffness_ratio": 10.0,
+      "infinite_stiffness": false,
+      "temperature_K": 300.0,
+      "direct_matrix_variance_error_A2": 4.336808689942018e-19,
+      "specimen_stiffness_eV_A2": 2.338846230850592,
+      "specimen_stiffness_N_mm": 0.037472447815877885,
+      "extension_variance_A2": 0.0010048466495004068,
+      "d_extension_d_actuator": 0.9090909090909088,
+      "d_force_d_actuator_eV_A2": 2.1262238462278105
+    },
+    {
+      "device_to_specimen_stiffness_ratio": 100.0,
+      "infinite_stiffness": false,
+      "temperature_K": 300.0,
+      "direct_matrix_variance_error_A2": 1.3552527156068805e-20,
+      "specimen_stiffness_eV_A2": 2.338846230850592,
+      "specimen_stiffness_N_mm": 0.037472447815877885,
+      "extension_variance_A2": 0.00010943874400499482,
+      "d_extension_d_actuator": 0.9900990099009901,
+      "d_force_d_actuator_eV_A2": 2.315689337475834
+    },
+    {
+      "device_to_specimen_stiffness_ratio": null,
+      "infinite_stiffness": true,
+      "temperature_K": 300.0,
+      "direct_matrix_variance_error_A2": null,
+      "specimen_stiffness_eV_A2": 2.338846230850592,
+      "specimen_stiffness_N_mm": 0.037472447815877885,
+      "extension_variance_A2": 0.0,
+      "d_extension_d_actuator": 1.0,
+      "d_force_d_actuator_eV_A2": 2.338846230850592
+    }
+  ],
+  "actual_reused_atomistic_state": "v13 return zero force, 360 bare Si atoms, 649 allowed coordinates",
+  "source_schur_stiffness_eV_A2": 2.338846230850586,
+  "inverse_vs_schur_relative_error": 2.6645352591003757e-15,
+  "physical_extension_basis_norm": 6.0,
+  "same_temperature_for_all_constraints": true,
+  "machine_ratios_are_diagnostic_not_measured_device_values": true,
+  "no_atomistic_to_macroscopic_stiffness_transfer": true,
+  "new_potential_evaluations": 0,
+  "new_MD": 0,
+  "new_DFT": 0,
+  "anharmonic_equilibrium_certified": false,
+  "physical_clock": null
+}

@@ -1,0 +1,37 @@
+{
+  "started_utc": "2026-09-30T20:17:07.443723+00:00",
+  "source_sha256": {
+    "results/silicon_initiation_v13/dense_loading8/raw_hessian.npz": "96bf8e4ec1c1f444d9578492bfae53f5e4ec5b339da47a074e5793599acf3dcd",
+    "results/silicon_initiation_v13/dense_return8/raw_hessian.npz": "a7f9637bdfa9ed468d3d6757ed5249e38e2795df73963e5def9fa4a2ebff3004"
+  },
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "runner_sha256": "9fb7e103b18da288eebc4f62f1be0ffdbcdee40bb32ddf59926fb3a8a68314cf",
+  "target_module_sha256": "9b0999eec1b6657237fcfeabbbc55b08dd65d18e97f68d4fbb4b37fe19bece2c",
+  "sampler_module_sha256": "6f6ebe9e71f468830b9038964c39677c5cb69cd779ca6633bf65a79df48e8149",
+  "seeds": [
+    151,
+    953
+  ],
+  "temperature_K": 300.0,
+  "proposal_scale": 0.35,
+  "warmup": 16,
+  "draws": 48,
+  "planned_proposals": 128,
+  "planned_initial_evaluations": 2,
+  "target": "exp(-U_MP0b3/kBT) dr_free on the common finite Cartesian domain",
+  "domain": "each free Cartesian component within 3 A of midpoint of two source positions; all pair distances >= 1 A",
+  "domain_is_not_an_intact_basin": true,
+  "domain_sensitivity_not_verified": true,
+  "fixed_grip_count": 144,
+  "free_dimension": 648,
+  "correction": "Phi=(U-U_source)/kBT - dot(u,u)/2; constant coordinate Jacobian",
+  "accept": "min(1,exp(Phi_current-Phi_proposed)); retain repeated states after rejection",
+  "source_states_share_same_fixed_grip_positions": true,
+  "gaussian_references_may_differ_but_target_domain_and_energy_are_same": true,
+  "no_displacement_clipping": true,
+  "allocation_guard_available_bytes": 6000000000,
+  "max_seconds": 1200.0,
+  "new_MD": 0,
+  "new_DFT": 0,
+  "physical_clock": null
+}

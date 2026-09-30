@@ -1,0 +1,141 @@
+{
+  "baseline_commit": "b02cb65398ab8ddc6c905c4fca895982da8e46b7",
+  "scope": "v15 results, used upstream data, exact sources; excludes this manifest and external CAD file",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 4121,
+      "sha256": "e3d26dcbff826754e770ea1e9bb3a5cb3edeeb742542a44cc6c6050229b65d69"
+    },
+    {
+      "path": "results/silicon_device_ensemble_v15/.gitattributes",
+      "bytes": 79,
+      "sha256": "ef6cba8e6ad7a188ab94f90468be344165aa8e89a8679b0bd25d2bee50c0cbcc"
+    },
+    {
+      "path": "results/silicon_device_ensemble_v15/CAD_REPOSITORY_REFERENCE.json",
+      "bytes": 1715,
+      "sha256": "5befe2d361ebdac62764a329c92012c8b71fc555246d12d935d710090d62a97f"
+    },
+    {
+      "path": "results/silicon_device_ensemble_v15/device_audit/cad_facts.json",
+      "bytes": 6634,
+      "sha256": "ee70bee33b774710f412c712549cb348f3a7a3ca96e8af7f3da085d69a4d69cd"
+    },
+    {
+      "path": "results/silicon_device_ensemble_v15/device_audit/device_sensitivity.json",
+      "bytes": 3775,
+      "sha256": "e9c6d561df1c3c73fe9727cacf7418282618bde7dc74a8d6375ca5fc7b80eb90"
+    },
+    {
+      "path": "results/silicon_device_ensemble_v15/device_audit/input_manifest.json",
+      "bytes": 651,
+      "sha256": "dbdd25fab4bdd02ad9599d393ddb144af042a22f1aec12e8f49a5e4c27e5739d"
+    },
+    {
+      "path": "results/silicon_device_ensemble_v15/nonlinear_pilot/allocation_check.json",
+      "bytes": 146,
+      "sha256": "c62fe344c7a9170398ba4e9e27c90c91394b4d37c5a5286fde781798c99cc80e"
+    },
+    {
+      "path": "results/silicon_device_ensemble_v15/nonlinear_pilot/common_domain.npz",
+      "bytes": 5964,
+      "sha256": "9d87bfabed090fae1450513efcd51cea4a12fcf9e684572a4d50ae7f0decc3c0"
+    },
+    {
+      "path": "results/silicon_device_ensemble_v15/nonlinear_pilot/protocol.json",
+      "bytes": 1749,
+      "sha256": "7954b003a24406d5cd21c942dd0ab32bb273751e08d5428932bf40fe0faf40c2"
+    },
+    {
+      "path": "results/silicon_device_ensemble_v15/nonlinear_pilot/summary.json",
+      "bytes": 469,
+      "sha256": "fa0d9bf0c4c653466bcd9a6f72ffa4a9716f5bdc00a549d93193dc37d89b40b9"
+    },
+    {
+      "path": "results/silicon_device_ensemble_v15/README.md",
+      "bytes": 11955,
+      "sha256": "c00b109f8c9a69163beb2529aee4513ce89fda2bbc5d77f84b03b4cc8a70f9f6"
+    },
+    {
+      "path": "results/silicon_device_ensemble_v15/REPRODUCE.md",
+      "bytes": 2941,
+      "sha256": "37e726981e771b1ef69cbde53373a38dc7be1d82cc4ec58bf503ee02f865c958"
+    },
+    {
+      "path": "results/silicon_device_ensemble_v15/TEST_RESULTS.json",
+      "bytes": 2239,
+      "sha256": "00f47d2aa23bb3fa3839cce323b888772c9be0b56496eb7df3b69e0891c9f146"
+    },
+    {
+      "path": "results/silicon_device_ensemble_v15/WORKING_STATUS.md",
+      "bytes": 1190,
+      "sha256": "9031b6abe8c6edb654abaaf001270ff322242ca2b1d27be0bdd5c3ca63a90c68"
+    },
+    {
+      "path": "results/silicon_initiation_v13/dense_loading8/raw_hessian.npz",
+      "bytes": 2992434,
+      "sha256": "96bf8e4ec1c1f444d9578492bfae53f5e4ec5b339da47a074e5793599acf3dcd"
+    },
+    {
+      "path": "results/silicon_initiation_v13/dense_return8/raw_hessian.npz",
+      "bytes": 3048202,
+      "sha256": "a7f9637bdfa9ed468d3d6757ed5249e38e2795df73963e5def9fa4a2ebff3004"
+    },
+    {
+      "path": "results/silicon_initiation_v13/dense_return_zero/protocol.json",
+      "bytes": 1209,
+      "sha256": "5fe637d4b36ff9bb9b1ef35be45c8a8ec0050b38b6769501a6c50149afb21bfd"
+    },
+    {
+      "path": "results/silicon_initiation_v13/dense_return_zero/raw_hessian.npz",
+      "bytes": 3134746,
+      "sha256": "48fd3f672156568f8e26f7524c27edfc956c1952a8ad8f15e907a8ec0d52e6f9"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/audit_device_ensemble_v15.py",
+      "bytes": 4955,
+      "sha256": "7da35fd041c02578d45d50c7c01e2e957eb8c3f99d5dec538c04f433fd799327"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/replay_device_ensemble_v15.py",
+      "bytes": 3460,
+      "sha256": "c7852a2ba13421ae63d55d70130d88b962abc787facaad5f7f53ebcd7a509510"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/sample_nonlinear_ensemble_v15.py",
+      "bytes": 7344,
+      "sha256": "9fb7e103b18da288eebc4f62f1be0ffdbcdee40bb32ddf59926fb3a8a68314cf"
+    },
+    {
+      "path": "results/silicon_wafer_feasibility/seal_device_ensemble_v15.py",
+      "bytes": 3319,
+      "sha256": "53fe761581a87ba9c156d16d6db703af454be3d03148632ad1c1c8d6ab64b8ad"
+    },
+    {
+      "path": "solver_v1/silicon_conditional_research.py",
+      "bytes": 8758,
+      "sha256": "85b22cfee9118bf8b0f6a13579ee1aa61d34308fdc8506564b99ce26fc19c507"
+    },
+    {
+      "path": "solver_v1/silicon_device_ensemble.py",
+      "bytes": 4672,
+      "sha256": "9b0999eec1b6657237fcfeabbbc55b08dd65d18e97f68d4fbb4b37fe19bece2c"
+    },
+    {
+      "path": "solver_v1/silicon_thermal_research.py",
+      "bytes": 13084,
+      "sha256": "6f6ebe9e71f468830b9038964c39677c5cb69cd779ca6633bf65a79df48e8149"
+    },
+    {
+      "path": "solver_v1/test_silicon_device_ensemble.py",
+      "bytes": 3490,
+      "sha256": "e64869d789843d981d532937f5125ac656523f795dc400e69e4d4a7476e299e1"
+    },
+    {
+      "path": "solver_v1/test_silicon_thermal_research.py",
+      "bytes": 5212,
+      "sha256": "72e07de04903575971f956302182a8e52923fdd304e5946c7570f4e359abd0e1"
+    }
+  ]
+}
