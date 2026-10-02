@@ -84,3 +84,7 @@ python results/silicon_bessel_reference/verify_saved_results.py
 
 실행기의 출력은 기존 폴더를 덮어쓰지 않는 새 경로여야 한다. source_manifest.json에는
 원래 SW 매개변수와 계산에 쓰인 소스의 해시를 기록했다. 개인 실행 경로는 포함하지 않는다.
+최초 Git 바이트 검사에서 기존 FCC 기하·격자 합 파일 두 개의 CRLF/LF 차이를 발견했다.
+실제 내용을 정규화해 완전히 같은 소스임을 확인하고, 계산 시 raw SHA와 LF SHA 및
+Git blob SHA를 함께 남겼다. 기존 참조 소스는 수정하지 않았다. 새 파일과 원자료의
+바이트 해시는 별도 package_manifest.json으로 묶었다.

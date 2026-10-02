@@ -43,8 +43,13 @@ def main(directory):
                angular['explicit_three_body_energy_eV']) < 3e-12
     assert abs(angular['missing_cross_term_eV']) > 1e-4
     manifest = json.loads((directory / 'source_manifest.json').read_text())
+    normalized_files = []
     for item in manifest:
-        assert hashlib.sha256((root / item['path']).read_bytes()).hexdigest() == item['sha256']
+        raw = (root / item['path']).read_bytes()
+        if hashlib.sha256(raw).hexdigest() != item['sha256']:
+            assert 'lf_sha256' in item, item['path']
+            assert hashlib.sha256(raw.replace(b'\r\n', b'\n')).hexdigest() == item['lf_sha256']
+            normalized_files.append(item['path'])
     assert summary['parameter_sha256'] == manifest[-1]['sha256']
     assert not any(summary[key] for key in ['new_DFT', 'new_MD', 'material_fit',
                      'first_initiation_validated', 'probability_evaluations',
@@ -52,6 +57,7 @@ def main(directory):
     result = dict(saved_array_reaggregation='passed', source_hashes='passed',
                   interface_states=len(rows), refinement_controls=len(refinement),
                   max_errors=maxima.tolist(), source_files=len(manifest),
+                  line_ending_normalized_files=normalized_files,
                   new_lattice_evaluations=0, new_MD=0, new_DFT=0)
     print(json.dumps(result, indent=2))
 
