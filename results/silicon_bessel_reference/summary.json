@@ -1,0 +1,33 @@
+{
+  "scope": "unchanged pure-Si original SW, static rigid periodic (111) interface",
+  "lattice_A": 5.430949778405214,
+  "bond_A": 2.3516702373881913,
+  "parameters": {
+    "epsilon": 2.1683,
+    "sigma": 2.0951,
+    "a": 1.8,
+    "lambda": 21.0,
+    "gamma": 1.2,
+    "costheta0": -0.333333333333,
+    "A": 7.049556277,
+    "B": 0.6022245584,
+    "p": 4.0,
+    "q": 0.0,
+    "tol": 0.0
+  },
+  "parameter_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+  "reciprocal_shell_index": 96,
+  "quadrature_nodes": 512,
+  "interface_states": 12,
+  "max_energy_error_eV": 1.0693668173189508e-12,
+  "max_gradient_error_eV_per_A": 8.179323884860423e-11,
+  "max_hessian_error_eV_per_A2": 1.0200196243204118e-08,
+  "elapsed_seconds": 152.5105113000609,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "material_fit": false,
+  "first_initiation_validated": false,
+  "probability_evaluations": 0,
+  "physical_clock_validated": false,
+  "refinement_is_certified_tail_bound": false
+}

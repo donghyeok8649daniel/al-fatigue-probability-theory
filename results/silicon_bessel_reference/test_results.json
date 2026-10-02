@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-02",
+  "focused_final": {
+    "command": "python -m pytest solver_v1/test_silicon_bessel_reference.py -q -p no:cacheprovider",
+    "passed": 17,
+    "failed": 0,
+    "elapsed_seconds_reported_by_pytest": 131.73,
+    "exit_code": 0,
+    "shell_index": 96,
+    "quadrature_nodes": 512
+  },
+  "related_regression": {
+    "command": "python -m pytest solver_v1/test_silicon_environment_research.py solver_v1/test_fcc111_geometry.py -q -p no:cacheprovider",
+    "passed": 17,
+    "failed": 0,
+    "elapsed_seconds_reported_by_pytest": 4.14,
+    "exit_code": 0
+  },
+  "first_focused_run": {
+    "passed": 5,
+    "failed": 12,
+    "elapsed_seconds_reported_by_pytest": 70.82,
+    "shell_index": 32,
+    "quadrature_nodes": 256,
+    "reason": "insufficient reciprocal resolution; acceptance tolerances unchanged"
+  },
+  "record_type": "transcription of observed pytest output; not a saved full terminal log",
+  "setup_failures": [
+    "bundled artifact Python lacked pytest; no test collected",
+    "bundled artifact Python lacked scipy; switched to existing scientific environment"
+  ],
+  "new_MD": 0,
+  "new_DFT": 0
+}
