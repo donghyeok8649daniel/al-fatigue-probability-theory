@@ -98,6 +98,11 @@ python results/silicon_sw_material_fit/verify_package_manifest.py
 관측 기록이다. 원래 JUnit의 개인 호스트명만 공개 파일에서 제거했다.
 원자료, 수치, 소스 해시는 바꾸지 않았다. PDF 검수 기록은 `report_qa.json`이다.
 
+`build_material_package.py`는 기존 계산 캐시에서 원자료·예측·Gram 통계를
+새 폴더로 다시 모으는 도구다. 시험을 다시 실행하거나 최종 보고서 검수를
+자동으로 완료하는 도구는 아니다. 시험 기록·독립 검증·그림·보고서는 각각의
+실행과 검수가 필요하다. 최종 배포 파일의 정확한 바이트 재현은 Git과 manifest를 따른다.
+
 표면 힘만 맞춘 계수가 벌크 조건을 벗어나는지는 `anchor_force_tradeoff.json`에
 기록했다. 고정 형상의 저장된 3×3 행렬을 재생한 검사이며 새 원자 계산이 아니다.
 아래 명령의 `FRESH_JSON`은 아직 없는 새 출력 파일이어야 한다.
@@ -105,6 +110,16 @@ python results/silicon_sw_material_fit/verify_package_manifest.py
 ```text
 python results/silicon_sw_material_fit/diagnose_anchor_tradeoff.py --output FRESH_JSON
 ```
+
+`bulk_optical_diagnostic.json`은 저장된 상대 변위 Hessian과 Γ 광학 모드를
+원자 두 개의 환산질량 m/2로 대조한다. 내부 이완 전후의 전단 곡률도 분리한다.
+같은 질량을 가정해 문헌 진동수에서 환산한 곡률은 새 DFT 계산이 아니다.
+재생은 `diagnose_bulk_optical.py --output FRESH_JSON`으로 수행한다.
+
+`optical_census.json`에는 기존 양의 각도 경계 30개와 조건을 통과한 12개의
+저장 곡률에서 환산한 Γ 광학 모드를 담았다. 후보 선택은 그대로 유지했다.
+재생은 `diagnose_optical_census.py --output FRESH_JSON`으로 수행한다.
+각 후보의 전체 밴드를 새로 계산한 작업이나 모든 형상의 불가능성 증명이 아니다.
 
 Python, NumPy, SciPy, ASE, pytest가 필요하다. 실제 버전과 관측된 테스트 명령은
 `tests_receipt.json`에 기록한다. 출력 폴더는 매번 새 경로여야 한다.

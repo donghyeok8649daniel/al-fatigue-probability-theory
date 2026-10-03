@@ -1,0 +1,84 @@
+{
+  "complete": true,
+  "primitive_cell_atoms": 2,
+  "relative_coordinate_reduced_mass_amu": 14.04275,
+  "atomic_mass_amu": 28.0855,
+  "internal_Hessian_eV_A2": [
+    [
+      17.10885588841489,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      17.10885588841489,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      17.10885588841489
+    ]
+  ],
+  "internal_eigenvalues_eV_A2": [
+    17.10885588841489,
+    17.10885588841489,
+    17.10885588841489
+  ],
+  "reconstructed_gamma_optical_THz": [
+    17.255803306098883,
+    17.255803306098883,
+    17.255803306098883
+  ],
+  "recorded_gamma_optical_THz": [
+    17.255803306098883,
+    17.255803306098883,
+    17.255803306098883
+  ],
+  "reference_gamma_optical_THz": [
+    15.084708032011545,
+    15.08470803201155,
+    15.084708032011552
+  ],
+  "inferred_reference_relative_curvature_eV_A2": [
+    13.074479912540301,
+    13.074479912540312,
+    13.074479912540317
+  ],
+  "relative_optical_curvature_excess": [
+    0.3085687540048949,
+    0.3085687540048938,
+    0.30856875400489336
+  ],
+  "unrelaxed_shear_curvature_GPa": 103.92614072694033,
+  "internal_relaxation_shear_reduction_GPa": 31.749210726940248,
+  "relaxed_C44_GPa": 72.17693000000008,
+  "optical_mode_maximum_replay_difference_THz": 0.0,
+  "normal_strain_internal_coupling_maximum_eV_A": 0.0,
+  "inputs": [
+    {
+      "path": "raw_runs/local_boundary_fit_results/selected_fit.json",
+      "sha256": "af8c2e2b892216dbaec2ad140470acf92c6419f485cd5361f537c2d4cd85ece8"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_recovery_results/summary.json",
+      "sha256": "ed084dfb50addfa011db58ac0cdcf4d27b20fb7b11c2bc8d506ce7d4a131b158"
+    },
+    {
+      "path": "primary_sources/test-results/model-CASTEP_ASE-test-bulk_diamond-properties.json",
+      "sha256": "af54a2722028e71b10e45b665bcbffa66273eae945afd5743e9f620c99e5a744"
+    },
+    {
+      "path": "diagnose_bulk_optical.py",
+      "sha256": "3616ddcd84eab5a29b42f149e1b3b536ea926bea0a01be9cc1aa635c52f321ca"
+    }
+  ],
+  "new_geometry_evaluations": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "selected_parameters_changed": false,
+  "actual_DFT_Hessian_inferred_as_direct_calculation": false,
+  "material_approved": false,
+  "physical_clock_calibrated": false,
+  "interpretation": "same-mass stored relative-basis harmonic diagnostic; optical frequencies are not mobility or physical fatigue Hz"
+}

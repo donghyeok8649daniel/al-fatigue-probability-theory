@@ -1,8 +1,8 @@
 {
   "format": "exact staged Git package blobs",
   "manifest_self_hash_excluded": true,
-  "total_files": 615,
-  "total_bytes": 66397021,
+  "total_files": 619,
+  "total_bytes": 66423377,
   "files": [
     {
       "path": ".gitattributes",
@@ -12,15 +12,15 @@
     },
     {
       "path": "COMPLETED_SUMMARY.md",
-      "bytes": 6694,
-      "sha256": "4645c078d4a0f378b3fd79667eb965da8db75c934a0e44490e716ebfc836fc07",
-      "git_blob_sha1": "da6313b3bd1da99ab4ed305a5d12ed1b998612bd"
+      "bytes": 7572,
+      "sha256": "2a0deb49e5a85cb9e1ed0792fc9475b8f950ff6705e3f839cf06ff987875046d",
+      "git_blob_sha1": "bd96a7fe82b16d0386989129df0c194f8f893813"
     },
     {
       "path": "README.md",
-      "bytes": 11528,
-      "sha256": "232e2050a5cdc9e2bc3ed661a030b5702fb287df62515a973660ab622266a2a1",
-      "git_blob_sha1": "d2af3d1df33d1b21a57f970a792d14ebea59a3fc"
+      "bytes": 12710,
+      "sha256": "64928e752a24b419af9ec5db665c27f776f2dab5c329122c5c1051103278be04",
+      "git_blob_sha1": "dc8983ed3234f5890fbd92f4e50cd98ebef743cc"
     },
     {
       "path": "anchor_force_tradeoff.json",
@@ -35,6 +35,12 @@
       "git_blob_sha1": "fc73bea883ab38a7d42e04359a65bc50c47a9a83"
     },
     {
+      "path": "bulk_optical_diagnostic.json",
+      "bytes": 2360,
+      "sha256": "f9abae406375ec113cc4111891992bdb0b8c4366723a5decb6d5eccb196c5ef8",
+      "git_blob_sha1": "653c03c7e12bc5be5467e29dd5c7fc8b1cfffc29"
+    },
+    {
       "path": "create_figures.py",
       "bytes": 4657,
       "sha256": "ff5b459347047b37725844a3a74b46b798ff6e7d4a224392d20baaf6c17c26ef",
@@ -42,9 +48,9 @@
     },
     {
       "path": "create_report.py",
-      "bytes": 27864,
-      "sha256": "b3ebe2537c417ff5b2b00af9015e2d1dd93138584a81e4e57c426ac41a618033",
-      "git_blob_sha1": "fd35eee4826e5f89904786acd390dcf57b29bab3"
+      "bytes": 28765,
+      "sha256": "7e84e91d45ca9ccf404968ba60ca0fc3ad21c961c6ed0db0cfc858bc3e8871e9",
+      "git_blob_sha1": "0f97d3c5f4110d66766ae84282f2bb19189a0386"
     },
     {
       "path": "current_source_manifest.json",
@@ -63,6 +69,18 @@
       "bytes": 4260,
       "sha256": "d973cb742e2edc84adf1c4aa7c0a5cfbb17b23b6ccd4e1b6dbe2ed423450db27",
       "git_blob_sha1": "6627cd8b6fe232ecf073705e453ee1a837ac332b"
+    },
+    {
+      "path": "diagnose_bulk_optical.py",
+      "bytes": 4241,
+      "sha256": "3616ddcd84eab5a29b42f149e1b3b536ea926bea0a01be9cc1aa635c52f321ca",
+      "git_blob_sha1": "85a730b78a832f8724135c18fa7e9cd03ffa8c51"
+    },
+    {
+      "path": "diagnose_optical_census.py",
+      "bytes": 3248,
+      "sha256": "463a985672ccd705725aa8fa20846f79b3ad54bc8eb2454e20bf8b0c04c3d4d9",
+      "git_blob_sha1": "3328b9a2c6e4915eddfc6876cc2e8c5bf544af0a"
     },
     {
       "path": "diagnose_selected_force_span.py",
@@ -135,6 +153,12 @@
       "bytes": 1291,
       "sha256": "88f70c9b06600895e7c4e3029f98c145f9cff09a80a30266a86b31b5c308ba48",
       "git_blob_sha1": "d4a001ca1ff9a4767d65dbe792dda128cbaa2e94"
+    },
+    {
+      "path": "optical_census.json",
+      "bytes": 12457,
+      "sha256": "a1205a6a59e4209272ad900aee3ca468b76391729dabec38c9d4292fb4eb2efc",
+      "git_blob_sha1": "29ecd1fac20fcdd3c9db129bd77c05b5f51b71ae"
     },
     {
       "path": "packaging_summary.json",
@@ -3619,8 +3643,8 @@
     {
       "path": "report_qa.json",
       "bytes": 2590,
-      "sha256": "3f9c0f3ed6977d65b45eea9bad5dc5156a9cd3bda1d33b092ab4b02567d13f1b",
-      "git_blob_sha1": "beef8f4c26ddc42d31c47099821a9484f5751dfe"
+      "sha256": "5cbac6f8ae0c3a21dbc1a87af749d5e3b82dfcb5a8707421f319a3d5b99a07c2",
+      "git_blob_sha1": "892cb8ec03d66097cb1538834a431312d75c1ea8"
     },
     {
       "path": "select_final_shape.py",
@@ -3636,9 +3660,9 @@
     },
     {
       "path": "silicon_wafer_material_report.pdf",
-      "bytes": 469720,
-      "sha256": "06eac8d5b93cc191b27af7890ac7533a5c28fd635711d26f07659f3ab88378dc",
-      "git_blob_sha1": "55804dd6073878b7cc228f67f8c68199b5f3f638"
+      "bytes": 470809,
+      "sha256": "bec9eeaa96354322e0ca7401266c0572e16b14ddacc085345bc7b9a72a2ee7d6",
+      "git_blob_sha1": "1c5a05e9ad8b2ca65c0b03e498cd94fa97cb61fc"
     },
     {
       "path": "structural_audits/elastic_bulk_feasibility.py",

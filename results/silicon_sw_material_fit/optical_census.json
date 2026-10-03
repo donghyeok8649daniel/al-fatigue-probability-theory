@@ -1,0 +1,417 @@
+{
+  "complete": true,
+  "profiles": 30,
+  "eligible_profiles": 12,
+  "reference_gamma_optical_THz": [
+    15.084708032011545,
+    15.08470803201155,
+    15.084708032011552
+  ],
+  "atomic_mass_amu": 28.0855,
+  "eligible_optical_frequency_range_THz": [
+    17.17866848859013,
+    17.32321417447045
+  ],
+  "rows": [
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 0,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.48175149314735,
+        17.48175149314735,
+        17.48175149314735
+      ],
+      "optical_frequency_RMSE_THz": 2.397043461135801,
+      "declared_training_objective_squared": 236.57660964545516
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 1,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.373677266399735,
+        17.373677266399735,
+        17.37367726639974
+      ],
+      "optical_frequency_RMSE_THz": 2.2889692343881873,
+      "declared_training_objective_squared": 110.88348225774016
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 2,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.289336835254637,
+        17.289336835254637,
+        17.289336835254637
+      ],
+      "optical_frequency_RMSE_THz": 2.204628803243089,
+      "declared_training_objective_squared": 90.96599220805969
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 3,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.37964085486651,
+        17.37964085486651,
+        17.37964085486651
+      ],
+      "optical_frequency_RMSE_THz": 2.29493282285496,
+      "declared_training_objective_squared": 218.5775910399955
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 4,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.27104060442787,
+        17.27104060442787,
+        17.27104060442787
+      ],
+      "optical_frequency_RMSE_THz": 2.186332572416322,
+      "declared_training_objective_squared": 125.23726713464815
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 5,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.18882402518984,
+        17.18882402518984,
+        17.18882402518984
+      ],
+      "optical_frequency_RMSE_THz": 2.104115993178293,
+      "declared_training_objective_squared": 105.30810704506649
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 6,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.271040604427867,
+        17.27104060442787,
+        17.27104060442787
+      ],
+      "optical_frequency_RMSE_THz": 2.1863325724163207,
+      "declared_training_objective_squared": 184.43932958884233
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 7,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.16564834029893,
+        17.16564834029893,
+        17.16564834029893
+      ],
+      "optical_frequency_RMSE_THz": 2.080940308287381,
+      "declared_training_objective_squared": 133.66376938567228
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 8,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.088342424110817,
+        17.088342424110817,
+        17.08834242411082
+      ],
+      "optical_frequency_RMSE_THz": 2.003634392099269,
+      "declared_training_objective_squared": 131.11161271752
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 0,
+      "eligible": true,
+      "reconstructed_gamma_optical_THz": [
+        17.32321417447045,
+        17.32321417447045,
+        17.32321417447045
+      ],
+      "optical_frequency_RMSE_THz": 2.238506142458902,
+      "declared_training_objective_squared": 95.34761883824952
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 1,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.28351380931136,
+        17.28351380931136,
+        17.28351380931136
+      ],
+      "optical_frequency_RMSE_THz": 2.19880577729981,
+      "declared_training_objective_squared": 91.27028176265867
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 2,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.24791865176096,
+        17.24791865176096,
+        17.24791865176096
+      ],
+      "optical_frequency_RMSE_THz": 2.16321061974941,
+      "declared_training_objective_squared": 94.28659015542651
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 3,
+      "eligible": true,
+      "reconstructed_gamma_optical_THz": [
+        17.317445322652752,
+        17.317445322652752,
+        17.317445322652752
+      ],
+      "optical_frequency_RMSE_THz": 2.2327372906412033,
+      "declared_training_objective_squared": 96.17146839437927
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 4,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.277787637885993,
+        17.277787637885993,
+        17.277787637885993
+      ],
+      "optical_frequency_RMSE_THz": 2.1930796058744444,
+      "declared_training_objective_squared": 91.67212411595636
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 5,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.242254535590842,
+        17.242254535590842,
+        17.242254535590842
+      ],
+      "optical_frequency_RMSE_THz": 2.1575465035792933,
+      "declared_training_objective_squared": 94.2245077710217
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 6,
+      "eligible": true,
+      "reconstructed_gamma_optical_THz": [
+        17.311767587408255,
+        17.311767587408255,
+        17.311767587408255
+      ],
+      "optical_frequency_RMSE_THz": 2.2270595553967065,
+      "declared_training_objective_squared": 97.01225294758919
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 7,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.27215584810689,
+        17.27215584810689,
+        17.27215584810689
+      ],
+      "optical_frequency_RMSE_THz": 2.1874478160953426,
+      "declared_training_objective_squared": 92.15571263023708
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 8,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.236687279170134,
+        17.236687279170134,
+        17.236687279170134
+      ],
+      "optical_frequency_RMSE_THz": 2.1519792471585855,
+      "declared_training_objective_squared": 94.30395480425989
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 0,
+      "eligible": true,
+      "reconstructed_gamma_optical_THz": [
+        17.29525927851745,
+        17.29525927851745,
+        17.29525927851745
+      ],
+      "optical_frequency_RMSE_THz": 2.2105512465059003,
+      "declared_training_objective_squared": 99.57008953559516
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 1,
+      "eligible": true,
+      "reconstructed_gamma_optical_THz": [
+        17.255803306098883,
+        17.255803306098883,
+        17.255803306098883
+      ],
+      "optical_frequency_RMSE_THz": 2.1710952740873344,
+      "declared_training_objective_squared": 93.97306773432464
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 2,
+      "eligible": true,
+      "reconstructed_gamma_optical_THz": [
+        17.22054178275406,
+        17.220541782754065,
+        17.220541782754065
+      ],
+      "optical_frequency_RMSE_THz": 2.135833750742515,
+      "declared_training_objective_squared": 95.21705353014943
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 3,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.27439739286546,
+        17.27439739286546,
+        17.27439739286546
+      ],
+      "optical_frequency_RMSE_THz": 2.1896893608539107,
+      "declared_training_objective_squared": 102.91293233632747
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 4,
+      "eligible": true,
+      "reconstructed_gamma_optical_THz": [
+        17.23518541164665,
+        17.23518541164665,
+        17.23518541164665
+      ],
+      "optical_frequency_RMSE_THz": 2.150477379635102,
+      "declared_training_objective_squared": 96.92987556282048
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 5,
+      "eligible": true,
+      "reconstructed_gamma_optical_THz": [
+        17.200226608270587,
+        17.200226608270587,
+        17.200226608270587
+      ],
+      "optical_frequency_RMSE_THz": 2.115518576259038,
+      "declared_training_objective_squared": 97.5366727714705
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 6,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.26442537453723,
+        17.26442537453723,
+        17.26442537453723
+      ],
+      "optical_frequency_RMSE_THz": 2.1797173425256804,
+      "declared_training_objective_squared": 104.51794602414765
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 7,
+      "eligible": true,
+      "reconstructed_gamma_optical_THz": [
+        17.22534859112215,
+        17.22534859112215,
+        17.22534859112215
+      ],
+      "optical_frequency_RMSE_THz": 2.1406405591106004,
+      "declared_training_objective_squared": 98.53554225158474
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 8,
+      "eligible": true,
+      "reconstructed_gamma_optical_THz": [
+        17.19055058270882,
+        17.19055058270882,
+        17.19055058270882
+      ],
+      "optical_frequency_RMSE_THz": 2.1058425506972713,
+      "declared_training_objective_squared": 99.01079520662535
+    },
+    {
+      "run": "refined_boundary_fit_results",
+      "profile": 0,
+      "eligible": false,
+      "reconstructed_gamma_optical_THz": [
+        17.329076436512345,
+        17.329076436512345,
+        17.329076436512345
+      ],
+      "optical_frequency_RMSE_THz": 2.2443684045007966,
+      "declared_training_objective_squared": 118.59658908457885
+    },
+    {
+      "run": "refined_boundary_fit_results",
+      "profile": 1,
+      "eligible": true,
+      "reconstructed_gamma_optical_THz": [
+        17.24533188055412,
+        17.24533188055412,
+        17.24533188055412
+      ],
+      "optical_frequency_RMSE_THz": 2.16062384854257,
+      "declared_training_objective_squared": 95.39727114304605
+    },
+    {
+      "run": "refined_boundary_fit_results",
+      "profile": 2,
+      "eligible": true,
+      "reconstructed_gamma_optical_THz": [
+        17.17866848859013,
+        17.17866848859013,
+        17.17866848859013
+      ],
+      "optical_frequency_RMSE_THz": 2.0939604565785817,
+      "declared_training_objective_squared": 101.18049317885162
+    }
+  ],
+  "inputs": [
+    {
+      "path": "final_selection.json",
+      "sha256": "255f91200f8addccb0b103a6d94f65fe7225584327333553287c23c7c2bea8a6"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_recovery_results/summary.json",
+      "sha256": "ed084dfb50addfa011db58ac0cdcf4d27b20fb7b11c2bc8d506ce7d4a131b158"
+    },
+    {
+      "path": "diagnose_optical_census.py",
+      "sha256": "463a985672ccd705725aa8fa20846f79b3ad54bc8eb2454e20bf8b0c04c3d4d9"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/profiles.json",
+      "sha256": "eadbc7632429b6053d7ad21b3f21563440f8f7e46698838f30668433545244bd"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/profiles.json",
+      "sha256": "9b737420663015707662843f74f71d5ba6f5eb771567909388a1fad9018b216c"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/profiles.json",
+      "sha256": "7b1d6d4bb590a7b3cbcb40bedae5d29119cb178009a048c0ce570f17fd27838a"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/profiles.json",
+      "sha256": "c93d665f8e4eecd542601a680392b6fbea9bbcc2101a14b3602067ba23112f98"
+    }
+  ],
+  "new_geometry_evaluations": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "selection_changed": false,
+  "full_bands_recomputed": false,
+  "global_shape_optimum_certified": false,
+  "family_impossibility_proved": false,
+  "material_approved": false,
+  "physical_clock_calibrated": false,
+  "interpretation": "post-selection relative-basis curvature census of the finite 30 shapes only; no alternative selected by validation error"
+}
