@@ -1,0 +1,30 @@
+{
+  "complete": true,
+  "candidate_profile": 1,
+  "angle_beta": 0.3640142880725576,
+  "new_selected_candidate_harmonic_assembly": true,
+  "q_path_points": 150,
+  "sampled_q_cube": 9,
+  "band_RMSE_THz": 1.6894899644720072,
+  "band_maximum_absolute_error_THz": 3.399674419136229,
+  "gamma_optical_THz": [
+    17.255803306098883,
+    17.255803306098883,
+    17.255803306098883
+  ],
+  "reference_gamma_optical_THz": [
+    15.084708032011545,
+    15.08470803201155,
+    15.084708032011552
+  ],
+  "maximum_eigenvalue_difference_from_prior_anchored_shape_eV_A2": 1.701215170930901,
+  "sampled_minimum_eigenvalue_eV_A2": -1.9864603283903166e-15,
+  "numerical_stability_floor_eV_A2": 5.385076632960805e-13,
+  "full_BZ_stability_certified": false,
+  "harmonic_frequency_is_not_overdamped_clock": true,
+  "elapsed_seconds": 0.0919170998968184,
+  "material_approved": false,
+  "first_initiation_validated": false,
+  "new_DFT": 0,
+  "new_MD": 0
+}

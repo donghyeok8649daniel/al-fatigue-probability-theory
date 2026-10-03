@@ -1,0 +1,314 @@
+[
+  {
+    "path": "results/silicon_wafer_feasibility/run_dft_material_audit.py",
+    "role": "unchanged dependency",
+    "sha256": "129dfb02cf026e485f24a681f71b8dd3a679ac86ae2cd05d294a178e65a047f3",
+    "lf_sha256": "129dfb02cf026e485f24a681f71b8dd3a679ac86ae2cd05d294a178e65a047f3",
+    "bytes": 10189,
+    "git_blob_sha1": "8ead1fc1971bf33a046238b8678537108055da75"
+  },
+  {
+    "path": "results/silicon_wafer_feasibility/run_static_probe.py",
+    "role": "unchanged dependency",
+    "sha256": "61e9232c2bbc946ec8f48e60aa90a9f4143db26dea7bd2914382ec6559f337d7",
+    "lf_sha256": "61e9232c2bbc946ec8f48e60aa90a9f4143db26dea7bd2914382ec6559f337d7",
+    "bytes": 13511,
+    "git_blob_sha1": "b69ff39c67d3ec1d54a84fb942e7dc0160fa13d1"
+  },
+  {
+    "path": "results/silicon_wafer_feasibility/source_Si.sw",
+    "role": "unchanged dependency",
+    "sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+    "lf_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+    "bytes": 795,
+    "git_blob_sha1": "9e7b214217a6852d116f5604cb2d8194ac31e787"
+  },
+  {
+    "path": "solver_v1/.gitattributes",
+    "role": "new source",
+    "sha256": "7484db027e5776b957589fea235c7ebcae9d3de2884cba63d835fc1765a27d23",
+    "lf_sha256": "7484db027e5776b957589fea235c7ebcae9d3de2884cba63d835fc1765a27d23",
+    "bytes": 31,
+    "git_blob_sha1": "ded2862f3fba7b8d8203c57801aab82385258b99"
+  },
+  {
+    "path": "solver_v1/SILICON_SW_MATERIAL_FIT.md",
+    "role": "new source",
+    "sha256": "35b530d2f4f13822c58e594b142c94bbe26b4a875846374744e6315206d5203c",
+    "lf_sha256": "35b530d2f4f13822c58e594b142c94bbe26b4a875846374744e6315206d5203c",
+    "bytes": 6146,
+    "git_blob_sha1": "e403072401a25de9f20924edd34023fa9a0cf730"
+  },
+  {
+    "path": "solver_v1/fcc111_geometry.py",
+    "role": "unchanged dependency",
+    "sha256": "29307b6fb05cad73f644770d85f66203a9d1293d655db1099435ba187e9eb1a0",
+    "lf_sha256": "12de2dd22cbde1327e614953415326338efdbeae6b3fc834c819bf26441bec6a",
+    "bytes": 7662,
+    "git_blob_sha1": "dfebf6c7d92a011b3c14ec524433ca6580a58145"
+  },
+  {
+    "path": "solver_v1/fcc111_lattice_sum.py",
+    "role": "unchanged dependency",
+    "sha256": "beca3c8fc53cc0733f313e3b8445a137931c6ed6c3b5f735c96cc85b42ee29cd",
+    "lf_sha256": "5e9439afad9a5a56b9c5934af316afc2b2250d75a6e0a2f12459c5004ee508a2",
+    "bytes": 18642,
+    "git_blob_sha1": "0c14974b982ce640786c9c11dac0e20b6e345194"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_angle_preference.py",
+    "role": "new source",
+    "sha256": "2bfb51979f7e5673b235a0043c75018a4fa7a964dc398c728dd944517715eea2",
+    "lf_sha256": "2bfb51979f7e5673b235a0043c75018a4fa7a964dc398c728dd944517715eea2",
+    "bytes": 6098,
+    "git_blob_sha1": "d614b19ef6867e85710502c72e7e8275be10a763"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_angular_continuum.py",
+    "role": "new source",
+    "sha256": "a914da2ca1bedf9c5447f265251ce1f09b92def550932f89f2ee2a1788a19e75",
+    "lf_sha256": "a914da2ca1bedf9c5447f265251ce1f09b92def550932f89f2ee2a1788a19e75",
+    "bytes": 7064,
+    "git_blob_sha1": "7d536f99e810ca70ae7d39a73682b652cb13998e"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_angular_fit.py",
+    "role": "new source",
+    "sha256": "ee90ffe95d80e881bb79ae491ab79588b33f5bc755940511ffa415d7a7660d06",
+    "lf_sha256": "ee90ffe95d80e881bb79ae491ab79588b33f5bc755940511ffa415d7a7660d06",
+    "bytes": 12365,
+    "git_blob_sha1": "d8f22271d7c6b9bf4007e194be7a8674eacc2fdb"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_angular_shape.py",
+    "role": "new source",
+    "sha256": "059c8f89945bc99ac5375c1ded15290596aef0be7e56ff14b1498a5efe26b7da",
+    "lf_sha256": "059c8f89945bc99ac5375c1ded15290596aef0be7e56ff14b1498a5efe26b7da",
+    "bytes": 14718,
+    "git_blob_sha1": "6a1063a4df80b667fe11acc99a44c6f196866b80"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_angular_shape_recovery.py",
+    "role": "new source",
+    "sha256": "62e1d43493d91955f8ccc4e1558d9a2abcaa8ea0d4d24bce06e95a7bf8e37061",
+    "lf_sha256": "62e1d43493d91955f8ccc4e1558d9a2abcaa8ea0d4d24bce06e95a7bf8e37061",
+    "bytes": 6864,
+    "git_blob_sha1": "addc3c26a2f00ceb3cdb28e565ad6c4637b1e67d"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_density_fit.py",
+    "role": "new source",
+    "sha256": "a58f9591772bbe8af6a4f76f8418769a96b00d7f12e670ef1648b2ae3f3d43e6",
+    "lf_sha256": "a58f9591772bbe8af6a4f76f8418769a96b00d7f12e670ef1648b2ae3f3d43e6",
+    "bytes": 14111,
+    "git_blob_sha1": "1cd179bd942f2399b7a93ccc34cb18a77fe60b67"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_elastic_anchor.py",
+    "role": "new source",
+    "sha256": "58c7906dcbeabcf4101b03c81bbfef93d8699d926a51d915b199344c6c50e425",
+    "lf_sha256": "58c7906dcbeabcf4101b03c81bbfef93d8699d926a51d915b199344c6c50e425",
+    "bytes": 13521,
+    "git_blob_sha1": "9c26c7965a22fbf730753d8ab9a9d38848e7ff5b"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_eos_reaudit.py",
+    "role": "new source",
+    "sha256": "0bc70aab0562c8ee844c56ca176095b7ca6ecbcaf353f6897c5161031ebedfe0",
+    "lf_sha256": "0bc70aab0562c8ee844c56ca176095b7ca6ecbcaf353f6897c5161031ebedfe0",
+    "bytes": 4385,
+    "git_blob_sha1": "1878933cdc217d8df7fc9143f80718e5a8ed625f"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_extended_bulk.py",
+    "role": "new source",
+    "sha256": "8b4ff6e6cf2b1db6cac6b1e685429698ac1e1fcf29469180f28fde114a20bfd6",
+    "lf_sha256": "8b4ff6e6cf2b1db6cac6b1e685429698ac1e1fcf29469180f28fde114a20bfd6",
+    "bytes": 6245,
+    "git_blob_sha1": "ab03514bbe307d7da8c119d7c610e17473a815f7"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_extended_fit.py",
+    "role": "new source",
+    "sha256": "e87d506b340294de643933d9ff346f4759303bb5e1391f1356b05b2037b1a3b8",
+    "lf_sha256": "e87d506b340294de643933d9ff346f4759303bb5e1391f1356b05b2037b1a3b8",
+    "bytes": 10142,
+    "git_blob_sha1": "d1b42be400eccea70ea916d02ba0d2031aaad9ed"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_external_audit.py",
+    "role": "new source",
+    "sha256": "e7eb0a9b52a35aa23b40eaa2da98da5c00bd9cc6c77856edb0f4e39b71893bae",
+    "lf_sha256": "e7eb0a9b52a35aa23b40eaa2da98da5c00bd9cc6c77856edb0f4e39b71893bae",
+    "bytes": 6525,
+    "git_blob_sha1": "92990820c0029caff20e31b2e05f70317a652c10"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_final_convergence.py",
+    "role": "new source",
+    "sha256": "a3edf7b96f60168d1ca0db8ad1821adeec4caee16465a37132ad3a46ec49fbcc",
+    "lf_sha256": "a3edf7b96f60168d1ca0db8ad1821adeec4caee16465a37132ad3a46ec49fbcc",
+    "bytes": 4132,
+    "git_blob_sha1": "9c765d3bbcecd738651a65d21237fddca2490af7"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_final_phonon.py",
+    "role": "new source",
+    "sha256": "fcfe97af0bf6e852b326389f35092522a8b7bd58407c958384df40d513953ce8",
+    "lf_sha256": "fcfe97af0bf6e852b326389f35092522a8b7bd58407c958384df40d513953ce8",
+    "bytes": 3154,
+    "git_blob_sha1": "aebd1be6af47c42f143fac605d27725ebaaa25a1"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_finite_strain.py",
+    "role": "new source",
+    "sha256": "16ea40f9b3f70a502d8a9ca568224b7b66c01c348118b4d938d51d4d7874d986",
+    "lf_sha256": "16ea40f9b3f70a502d8a9ca568224b7b66c01c348118b4d938d51d4d7874d986",
+    "bytes": 6369,
+    "git_blob_sha1": "cc603ad024237bc093932500de35523951f4d634"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_guarded_fit.py",
+    "role": "new source",
+    "sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+    "lf_sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+    "bytes": 11027,
+    "git_blob_sha1": "a0b289cdb6e6160d27f6bac3885546dff2ff3572"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_interface_audit.py",
+    "role": "new source",
+    "sha256": "8f8f39d9c38e9770e56106c71c5a6a01e690b1fa6da82bab5dbc052207bbfa23",
+    "lf_sha256": "8f8f39d9c38e9770e56106c71c5a6a01e690b1fa6da82bab5dbc052207bbfa23",
+    "bytes": 8091,
+    "git_blob_sha1": "75cb6223979bce1cca7b1e7ead6f455a68ea4448"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_interface_recovery.py",
+    "role": "new source",
+    "sha256": "c9782b0b9942aefa2770041153a42e35ca78ebfabd526327ef8515e010c1573a",
+    "lf_sha256": "c9782b0b9942aefa2770041153a42e35ca78ebfabd526327ef8515e010c1573a",
+    "bytes": 4131,
+    "git_blob_sha1": "1fb225013dc0ff70875f0ce9853a121793707967"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_material_fit.py",
+    "role": "new source",
+    "sha256": "fd30ec7331caf05c6eb209cd7668800cec688b66c9ce5ceba39ae9c4e6e38017",
+    "lf_sha256": "fd30ec7331caf05c6eb209cd7668800cec688b66c9ce5ceba39ae9c4e6e38017",
+    "bytes": 12763,
+    "git_blob_sha1": "9d63914425318ded76c05681e7d0468f8f789780"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_phonon_audit.py",
+    "role": "new source",
+    "sha256": "c2ed70aa1be23367b225d6595665ede74412cd8aa6a9aa276e220cccf962e738",
+    "lf_sha256": "c2ed70aa1be23367b225d6595665ede74412cd8aa6a9aa276e220cccf962e738",
+    "bytes": 4963,
+    "git_blob_sha1": "79049ef997bcc506f2ef917bc49fc85ecb7f5121"
+  },
+  {
+    "path": "solver_v1/run_silicon_sw_stress_fit.py",
+    "role": "new source",
+    "sha256": "16f31e8d321c433e8cefe2852633243d857badf5032e43d8e59c07a2d0c211cd",
+    "lf_sha256": "16f31e8d321c433e8cefe2852633243d857badf5032e43d8e59c07a2d0c211cd",
+    "bytes": 12260,
+    "git_blob_sha1": "df99acb14620225be59ad689816bb1e547a3c6b0"
+  },
+  {
+    "path": "solver_v1/silicon_bessel_reference.py",
+    "role": "unchanged dependency",
+    "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+    "lf_sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+    "bytes": 12873,
+    "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+  },
+  {
+    "path": "solver_v1/silicon_environment_research.py",
+    "role": "unchanged dependency",
+    "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+    "lf_sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+    "bytes": 13589,
+    "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+  },
+  {
+    "path": "solver_v1/silicon_sw_anharmonic.py",
+    "role": "new source",
+    "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+    "lf_sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+    "bytes": 12660,
+    "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+  },
+  {
+    "path": "solver_v1/silicon_sw_density_screening.py",
+    "role": "new source",
+    "sha256": "0d7ce92f78d7623c205d8e6f1a09dc473746feeb1d57345b022b579f363de45e",
+    "lf_sha256": "0d7ce92f78d7623c205d8e6f1a09dc473746feeb1d57345b022b579f363de45e",
+    "bytes": 8372,
+    "git_blob_sha1": "35302d7e1b5be0d6294c94733ee8c2ef603d8365"
+  },
+  {
+    "path": "solver_v1/silicon_sw_material_fit.py",
+    "role": "new source",
+    "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+    "lf_sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+    "bytes": 15009,
+    "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+  },
+  {
+    "path": "solver_v1/silicon_sw_phonon.py",
+    "role": "new source",
+    "sha256": "5a8fc4315952ecd0836b0bb74d31b8dde62b697741e337c85e4a184f50bb567e",
+    "lf_sha256": "5a8fc4315952ecd0836b0bb74d31b8dde62b697741e337c85e4a184f50bb567e",
+    "bytes": 2354,
+    "git_blob_sha1": "1466b39e3fd91c2fdbd36e153f136541c706dcc5"
+  },
+  {
+    "path": "solver_v1/test_silicon_sw_angle_preference.py",
+    "role": "new source",
+    "sha256": "2c6857067c5d63cad74efd2da4c49e307ae5ab176244fdc597cb8fd77b07e905",
+    "lf_sha256": "2c6857067c5d63cad74efd2da4c49e307ae5ab176244fdc597cb8fd77b07e905",
+    "bytes": 2391,
+    "git_blob_sha1": "3b2726bdfa366c371aa59e56fc14eb26192ba61c"
+  },
+  {
+    "path": "solver_v1/test_silicon_sw_angular_continuum.py",
+    "role": "new source",
+    "sha256": "e244f66004b7629b9a4255264e704d960d14fcd76923324670802859db6fe17a",
+    "lf_sha256": "e244f66004b7629b9a4255264e704d960d14fcd76923324670802859db6fe17a",
+    "bytes": 1169,
+    "git_blob_sha1": "00da97e6605403cb01b1ab73e293befaf9f69e95"
+  },
+  {
+    "path": "solver_v1/test_silicon_sw_anharmonic.py",
+    "role": "new source",
+    "sha256": "78993ceb9d2757fd8e9a658457b3c684de29c4f044b808f739f6a25f81360d98",
+    "lf_sha256": "78993ceb9d2757fd8e9a658457b3c684de29c4f044b808f739f6a25f81360d98",
+    "bytes": 6148,
+    "git_blob_sha1": "5f4ffdce590514811b73692ed06c94f087292e51"
+  },
+  {
+    "path": "solver_v1/test_silicon_sw_density_screening.py",
+    "role": "new source",
+    "sha256": "6c5d3b21e467179fd4a643618c4b83415fdfe079b64ebd5807912cd9f44ff15c",
+    "lf_sha256": "6c5d3b21e467179fd4a643618c4b83415fdfe079b64ebd5807912cd9f44ff15c",
+    "bytes": 4329,
+    "git_blob_sha1": "b4425ec1667efae71f8a59881bab1a5eb1a964f7"
+  },
+  {
+    "path": "solver_v1/test_silicon_sw_material_fit.py",
+    "role": "new source",
+    "sha256": "8acd92dd59fc0755f03e8e779aacf90e1d0dd6ef3e8b33dbb89b4416e60c31a9",
+    "lf_sha256": "8acd92dd59fc0755f03e8e779aacf90e1d0dd6ef3e8b33dbb89b4416e60c31a9",
+    "bytes": 6038,
+    "git_blob_sha1": "c103e51057a8ade35f4f50bb29beb0d0f830a618"
+  },
+  {
+    "path": "solver_v1/test_silicon_sw_phonon.py",
+    "role": "new source",
+    "sha256": "759342fecba3c832da40caaa0de6375d6ae529edee2f7ded0641de00feb0acb7",
+    "lf_sha256": "759342fecba3c832da40caaa0de6375d6ae529edee2f7ded0641de00feb0acb7",
+    "bytes": 3222,
+    "git_blob_sha1": "604e2950392d881e3833ee5964f0d882a4d782af"
+  }
+]

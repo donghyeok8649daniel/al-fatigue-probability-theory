@@ -1,0 +1,37 @@
+{
+  "complete": true,
+  "scope": "fixed original shapes, equilibrium, common pair amplitude; linear C11/C12 bands only",
+  "relative_elastic_band": 0.1,
+  "maximum_bulk_squared": 0.3318999493558146,
+  "optimum": {
+    "amplitudes": [
+      0.8613858453219007,
+      1.0173371251054033
+    ],
+    "active": [
+      3
+    ],
+    "multipliers": [
+      0.01636001145246926
+    ],
+    "slack": [
+      0.262726967081619,
+      11.260000000000012,
+      30.397273032918378,
+      -1.4210854715202004e-14,
+      0.8613858453219007,
+      1.0173371251054033
+    ],
+    "bulk_squared": 0.6992651498395877,
+    "dual_lower_bound": 0.6992651498395785,
+    "duality_gap": 9.103828801926284e-15,
+    "kkt_max_abs": 8.881784197001252e-16,
+    "C11_C12_GPa": [
+      138.23272696708165,
+      61.930000000000014
+    ]
+  },
+  "certified_incompatible": true,
+  "C44_constraint_omitted": true,
+  "material_family_impossibility_claim": false
+}

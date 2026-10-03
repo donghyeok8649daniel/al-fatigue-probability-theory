@@ -1,0 +1,33 @@
+{
+  "scope": "fixed original shapes and equilibrium, two independent amplitudes",
+  "amplitudes": [
+    "common_repulsion_and_attraction",
+    "centered_angle"
+  ],
+  "free_parameters": 2,
+  "target": {
+    "C11_GPa": 153.3,
+    "C12_GPa": 56.3,
+    "C44_GPa": 72.2,
+    "bulk_modulus_GPa": 88.6,
+    "source": "Bartok, Kermode, Bernstein, Csanyi (2018), PRX 8 041048, Fig. 1, PDF page 5",
+    "DOI": "10.1103/PhysRevX.8.041048",
+    "method": "static DFT CASTEP PW91, ultrasoft, 250 eV, finite-basis corrections",
+    "elastic_internal_relaxation": "publication framework convention needs source-code audit",
+    "temperature": "static electronic-structure reference, no finite-T MD or experiment",
+    "source_pdf_sha256": "b9cc20e0f4a3f43387ea186ee6f21f59caeca531163626127b007ed26cbaa60a"
+  },
+  "relative_elastic_band": 0.1,
+  "band_is_uncertainty": false,
+  "published_elasticity_role": "calibration, no longer an independent held-out validation",
+  "preserve_original_SW_lattice": true,
+  "bulk_guard": "same PW91 training E MSE <= original SW",
+  "training_selection": "same 511 explicit PW91 dia/surface001/surface110",
+  "heldout_used_in_fit": false,
+  "Si111_all_held_out": true,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "new_LAMMPS": 0,
+  "new_force_features": 0,
+  "material_approved": false
+}

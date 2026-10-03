@@ -1,0 +1,194 @@
+[
+  {
+    "mode": "hydro",
+    "step": 0.01,
+    "internally_relaxed": false,
+    "energy_tangent_GPa": 913.0841822658896,
+    "stress_tangent_GPa": 913.3624203367993,
+    "difference_GPa": -0.27823807090976516
+  },
+  {
+    "mode": "hydro",
+    "step": 0.01,
+    "internally_relaxed": true,
+    "energy_tangent_GPa": 913.0841822658896,
+    "stress_tangent_GPa": 913.3624203367993,
+    "difference_GPa": -0.27823807090976516
+  },
+  {
+    "mode": "hydro",
+    "step": 0.003,
+    "internally_relaxed": false,
+    "energy_tangent_GPa": 912.8310443100557,
+    "stress_tangent_GPa": 912.856074128294,
+    "difference_GPa": -0.025029818238294865
+  },
+  {
+    "mode": "hydro",
+    "step": 0.003,
+    "internally_relaxed": true,
+    "energy_tangent_GPa": 912.8310443100557,
+    "stress_tangent_GPa": 912.856074128294,
+    "difference_GPa": -0.025029818238294865
+  },
+  {
+    "mode": "hydro",
+    "step": 0.001,
+    "internally_relaxed": false,
+    "energy_tangent_GPa": 912.8087960570076,
+    "stress_tangent_GPa": 912.8115770126625,
+    "difference_GPa": -0.002780955654884565
+  },
+  {
+    "mode": "hydro",
+    "step": 0.001,
+    "internally_relaxed": true,
+    "energy_tangent_GPa": 912.8087960570076,
+    "stress_tangent_GPa": 912.8115770126625,
+    "difference_GPa": -0.002780955654884565
+  },
+  {
+    "mode": "hydro",
+    "step": 0.0003,
+    "internally_relaxed": false,
+    "energy_tangent_GPa": 912.8062658295785,
+    "stress_tangent_GPa": 912.8065156379898,
+    "difference_GPa": -0.00024980841135402443
+  },
+  {
+    "mode": "hydro",
+    "step": 0.0003,
+    "internally_relaxed": true,
+    "energy_tangent_GPa": 912.8062658295785,
+    "stress_tangent_GPa": 912.8065156379898,
+    "difference_GPa": -0.00024980841135402443
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.01,
+    "internally_relaxed": false,
+    "energy_tangent_GPa": 149.966857190509,
+    "stress_tangent_GPa": 149.92891871273108,
+    "difference_GPa": 0.037938477777913704
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.01,
+    "internally_relaxed": true,
+    "energy_tangent_GPa": 149.966857190509,
+    "stress_tangent_GPa": 149.92891871273108,
+    "difference_GPa": 0.037938477777913704
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.003,
+    "internally_relaxed": false,
+    "energy_tangent_GPa": 150.00138638335807,
+    "stress_tangent_GPa": 149.99797089302336,
+    "difference_GPa": 0.0034154903347030086
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.003,
+    "internally_relaxed": true,
+    "energy_tangent_GPa": 150.00138638335807,
+    "stress_tangent_GPa": 149.99797089302336,
+    "difference_GPa": 0.0034154903347030086
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.001,
+    "internally_relaxed": false,
+    "energy_tangent_GPa": 150.00442242285473,
+    "stress_tangent_GPa": 150.00404289926365,
+    "difference_GPa": 0.0003795235910786232
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.001,
+    "internally_relaxed": true,
+    "energy_tangent_GPa": 150.00442242285473,
+    "stress_tangent_GPa": 150.00404289926365,
+    "difference_GPa": 0.0003795235910786232
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.0003,
+    "internally_relaxed": false,
+    "energy_tangent_GPa": 150.00476831486574,
+    "stress_tangent_GPa": 150.0047336052411,
+    "difference_GPa": 3.470962462870375e-05
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.0003,
+    "internally_relaxed": true,
+    "energy_tangent_GPa": 150.00476831486574,
+    "stress_tangent_GPa": 150.0047336052411,
+    "difference_GPa": 3.470962462870375e-05
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.01,
+    "internally_relaxed": false,
+    "energy_tangent_GPa": 109.75358099235747,
+    "stress_tangent_GPa": 109.75067079394726,
+    "difference_GPa": 0.0029101984102055667
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.01,
+    "internally_relaxed": true,
+    "energy_tangent_GPa": 56.44592679900653,
+    "stress_tangent_GPa": 56.442512160295685,
+    "difference_GPa": 0.003414638710843576
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.003,
+    "internally_relaxed": false,
+    "energy_tangent_GPa": 109.7562289497134,
+    "stress_tangent_GPa": 109.75596709466215,
+    "difference_GPa": 0.00026185505124942665
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.003,
+    "internally_relaxed": true,
+    "energy_tangent_GPa": 56.44903411440221,
+    "stress_tangent_GPa": 56.44872679661646,
+    "difference_GPa": 0.0003073177857473297
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.001,
+    "internally_relaxed": false,
+    "energy_tangent_GPa": 109.75646172222247,
+    "stress_tangent_GPa": 109.75643261060665,
+    "difference_GPa": 2.9111615816646008e-05
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.001,
+    "internally_relaxed": true,
+    "energy_tangent_GPa": 56.44930731188915,
+    "stress_tangent_GPa": 56.44927313671474,
+    "difference_GPa": 3.4175174413064724e-05
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.0003,
+    "internally_relaxed": false,
+    "energy_tangent_GPa": 109.7564886679963,
+    "stress_tangent_GPa": 109.75648556212141,
+    "difference_GPa": 3.1058748817258675e-06
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.0003,
+    "internally_relaxed": true,
+    "energy_tangent_GPa": 56.449338665449574,
+    "stress_tangent_GPa": 56.44933528225981,
+    "difference_GPa": 3.383189763894734e-06
+  }
+]

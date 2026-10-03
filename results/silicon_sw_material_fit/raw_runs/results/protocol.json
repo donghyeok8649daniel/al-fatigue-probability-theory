@@ -1,0 +1,36 @@
+{
+  "train": "all explicit-PW91 dia, surface_001 and surface_110 source frames",
+  "held_out": "every other config-type/XC combination; entire Si(111) families excluded from fit",
+  "loss": "force and same-XC diamond-referenced energy; equal total weight per training family",
+  "force_scale_eV_A": 0.2,
+  "energy_scale_eV_atom": 0.05,
+  "scales_are_uncertainty": false,
+  "amplitudes": [
+    "repulsion",
+    "attraction",
+    "centered_angle"
+  ],
+  "fixed": [
+    "epsilon",
+    "sigma",
+    "a",
+    "gamma",
+    "costheta0",
+    "p",
+    "q"
+  ],
+  "epsilon_gauge": "epsilon fixed; candidate maps to A, B, lambda",
+  "shape_search": false,
+  "regularization": false,
+  "heldout_used_for_optimization": false,
+  "source_dataset": "GAP fitting database, no GAP fitted here",
+  "archive_sha256": "1d3efe976c53bcd2889c0556f2d600c26bf4603522b5c92fd8633dff7b7ab5c2",
+  "member_sha256": "74ac5f387aa0149ec9ea8f3e275d1087d7287db68c15ba8bc4c28a450de67e2a",
+  "original_SW_parameter_sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+  "new_DFT": 0,
+  "new_MD": 0,
+  "new_MACE": 0,
+  "first_initiation_validated": false,
+  "physical_clock_validated": false,
+  "production_enabled": false
+}

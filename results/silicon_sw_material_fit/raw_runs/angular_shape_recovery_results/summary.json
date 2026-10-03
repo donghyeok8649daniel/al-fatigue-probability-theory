@@ -1,0 +1,29 @@
+{
+  "complete": true,
+  "original_exit_code": 1,
+  "original_failure": "only final summary JSON rejected NumPy bool; all raw profiles and full validation saved",
+  "recovered_by": "independent raw array/source/selection/jet audit; no repeated geometry calculation",
+  "profiles": 36,
+  "selected_profile": 28,
+  "selected_beta": 0.375,
+  "reconstructed_counts": {
+    "hessian": 180,
+    "feature": 53064,
+    "eos": 1188,
+    "identity_controls": 432,
+    "cached_designs": 9
+  },
+  "counter_provenance": "completed fixed loops and cached branch identity; not recovered live counter memory",
+  "original_elapsed_seconds": null,
+  "recovery_elapsed_seconds": 2.9171176000963897,
+  "source_snapshots_verified": true,
+  "locked_selection_verified": true,
+  "validation_frames_verified": 2475,
+  "maximum_force_squared_metric_difference": 0.0,
+  "bessel_consistency_passed": true,
+  "material_approved": false,
+  "first_initiation_validated": false,
+  "physical_clock_validated": false,
+  "new_DFT": 0,
+  "new_MD": 0
+}

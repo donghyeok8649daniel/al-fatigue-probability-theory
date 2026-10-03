@@ -1,0 +1,1390 @@
+[
+  {
+    "profile": 0,
+    "sigma_A": 1.6,
+    "gamma": 0.6,
+    "a": 2.3569875,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        1.4484120896368384,
+        0.5514397393750703,
+        0.03220432343632277
+      ],
+      "rank": 3,
+      "singular_values": [
+        448.5944483106847,
+        31.374121997149405,
+        5.826193439340503
+      ],
+      "condition_number": 76.99614730977135,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 41.77951395961555,
+      "original_objective_squared": 182677.93712874776,
+      "kkt_max_abs": 2.778167740302706e-08,
+      "iterations": 15,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935581485,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 31.16974958334138,
+      "unconstrained_bulk_energy_squared": 1.4080278450229073,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 1.6,
+      "a": 2.3569875,
+      "lambda": 0.6762907921627782,
+      "gamma": 0.6,
+      "costheta0": -0.333333333333,
+      "A": 3.887405476098771,
+      "B": 1.5818035385902405,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 1,
+    "sigma_A": 1.6,
+    "gamma": 0.9,
+    "a": 2.3569875,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        1.5774315985091385,
+        0.5976720055165043,
+        0.116019243527675
+      ],
+      "rank": 3,
+      "singular_values": [
+        165.8121896610607,
+        31.187057382822566,
+        5.619233680507664
+      ],
+      "condition_number": 29.507971920840383,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 13.990815320204353,
+      "original_objective_squared": 20887.587209741945,
+      "kkt_max_abs": 3.465514963885141e-07,
+      "iterations": 12,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935581796,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 1.2796768356946446,
+      "unconstrained_bulk_energy_squared": 1.3082925297369903,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 1.6,
+      "a": 2.3569875,
+      "lambda": 2.4364041140811747,
+      "gamma": 0.9,
+      "costheta0": -0.333333333333,
+      "A": 4.213322438076052,
+      "B": 1.58944711990888,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 2,
+    "sigma_A": 1.6,
+    "gamma": 1.2,
+    "a": 2.3569875,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        1.6326298854464665,
+        0.5867562241653685,
+        0.2777301753694455
+      ],
+      "rank": 3,
+      "singular_values": [
+        69.662283632327,
+        30.83770877991832,
+        5.625812955429908
+      ],
+      "condition_number": 12.382616376374642,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 29.71356154024579,
+      "original_objective_squared": 2501.7960386308414,
+      "kkt_max_abs": 6.30513401489452e-07,
+      "iterations": 13,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935581535,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 5.0771625491984835,
+      "unconstrained_bulk_energy_squared": 3.2743284264118553,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 1.6,
+      "a": 2.3569875,
+      "lambda": 5.832333682758356,
+      "gamma": 1.2,
+      "costheta0": -0.333333333333,
+      "A": 4.136371023133793,
+      "B": 1.6756700164403162,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 3,
+    "sigma_A": 1.6,
+    "gamma": 1.5,
+    "a": 2.3569875,
+    "reused_original_features": false,
+    "status": "failed_or_infeasible",
+    "reason": "guarded fit KKT residual unresolved"
+  },
+  {
+    "profile": 4,
+    "sigma_A": 1.6,
+    "gamma": 1.8,
+    "a": 2.3569875,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        1.546438669643625,
+        0.5414340167320739,
+        1.8716070317648894
+      ],
+      "rank": 3,
+      "singular_values": [
+        32.50326607286206,
+        13.864956365873898,
+        5.716381398094907
+      ],
+      "condition_number": 5.685986257616469,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 172.79160822611271,
+      "original_objective_squared": 378.60987313298835,
+      "kkt_max_abs": 3.676412347886071e-07,
+      "iterations": 23,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935581485,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 1015.928178158456,
+      "unconstrained_bulk_energy_squared": 8.355773993199572,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 1.6,
+      "a": 2.3569875,
+      "lambda": 39.30374766706268,
+      "gamma": 1.8,
+      "costheta0": -0.333333333333,
+      "A": 3.8168695712349145,
+      "B": 1.7200680344021804,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 5,
+    "sigma_A": 2.0,
+    "gamma": 0.6,
+    "a": 1.88559,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.8879904812765343,
+        0.7215672525339261,
+        0.04869170679893956
+      ],
+      "rank": 3,
+      "singular_values": [
+        266.87459716553764,
+        32.11042039029682,
+        9.130622376939165
+      ],
+      "condition_number": 29.228522016152127,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 25.70905696933192,
+      "original_objective_squared": 63000.41324812613,
+      "kkt_max_abs": 1.6466229393330423e-06,
+      "iterations": 13,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.3318999493558161,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 20.560399806566043,
+      "unconstrained_bulk_energy_squared": 1.2550692995525456,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.0,
+      "a": 1.88559,
+      "lambda": 1.0225258427777308,
+      "gamma": 0.6,
+      "costheta0": -0.333333333333,
+      "A": 5.086728954378183,
+      "B": 0.7411224297835232,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 6,
+    "sigma_A": 2.0,
+    "gamma": 0.9,
+    "a": 1.88559,
+    "reused_original_features": false,
+    "status": "failed_or_infeasible",
+    "reason": "guarded amplitude optimization did not converge feasibly"
+  },
+  {
+    "profile": 7,
+    "sigma_A": 2.0,
+    "gamma": 1.2,
+    "a": 1.88559,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.9349445621172974,
+        0.7560709517848585,
+        0.5068025012538264
+      ],
+      "rank": 3,
+      "singular_values": [
+        32.3958006503252,
+        30.507763883714812,
+        8.94497065528566
+      ],
+      "condition_number": 3.6216776889236906,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 27.314149782245213,
+      "original_objective_squared": 253.81920414517592,
+      "kkt_max_abs": 4.1348669910235003e-07,
+      "iterations": 11,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935600736,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 2.6496486126670415,
+      "unconstrained_bulk_energy_squared": 3.3952188964137604,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.0,
+      "a": 1.88559,
+      "lambda": 10.642852526330355,
+      "gamma": 1.2,
+      "costheta0": -0.333333333333,
+      "A": 5.329964724012314,
+      "B": 0.7447007119112107,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 8,
+    "sigma_A": 2.0,
+    "gamma": 1.5,
+    "a": 1.88559,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.9209774216089127,
+        0.7327684692937034,
+        1.2692326574289536
+      ],
+      "rank": 3,
+      "singular_values": [
+        32.12643126404115,
+        12.36752736625568,
+        8.591306024942629
+      ],
+      "condition_number": 3.73941181594165,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 48.06471049646699,
+      "original_objective_squared": 76.12206462618805,
+      "kkt_max_abs": 2.5127917524514487e-08,
+      "iterations": 11,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.3318999493558155,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 4.92178204075617,
+      "unconstrained_bulk_energy_squared": 5.46968124926659,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.0,
+      "a": 1.88559,
+      "lambda": 26.653885806008027,
+      "gamma": 1.5,
+      "costheta0": -0.333333333333,
+      "A": 5.165692562297108,
+      "B": 0.7569037755669217,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 9,
+    "sigma_A": 2.0,
+    "gamma": 1.8,
+    "a": 1.88559,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.8912595596356966,
+        0.6993559685191828,
+        3.01583896399378
+      ],
+      "rank": 3,
+      "singular_values": [
+        32.11703270947277,
+        9.527281629378404,
+        4.492805777870395
+      ],
+      "condition_number": 7.148546876356704,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 70.25812638200574,
+      "original_objective_squared": 186.6766307984724,
+      "kkt_max_abs": 1.8786805355830438e-07,
+      "iterations": 13,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.331899949355818,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 7.519283431571638,
+      "unconstrained_bulk_energy_squared": 7.593356744902328,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.0,
+      "a": 1.88559,
+      "lambda": 63.332618243869376,
+      "gamma": 1.8,
+      "costheta0": -0.333333333333,
+      "A": 4.930149257731819,
+      "B": 0.7674752470589139,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 10,
+    "sigma_A": 2.0951,
+    "gamma": 0.6,
+    "a": 1.8,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.799649860772845,
+        0.7618643348638355,
+        0.053747229568590474
+      ],
+      "rank": 3,
+      "singular_values": [
+        237.49321849086587,
+        33.19833854981337,
+        9.618746985113686
+      ],
+      "condition_number": 24.690660733504977,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 23.292220750376206,
+      "original_objective_squared": 49333.9803496908,
+      "kkt_max_abs": 1.3838867118920462e-07,
+      "iterations": 14,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935582817,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 18.547849055723507,
+      "unconstrained_bulk_energy_squared": 1.2587173252092418,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.0951,
+      "a": 1.8,
+      "lambda": 1.1286918209404,
+      "gamma": 0.6,
+      "costheta0": -0.333333333333,
+      "A": 5.3708055040617815,
+      "B": 0.6320925685077733,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 11,
+    "sigma_A": 2.0951,
+    "gamma": 0.9,
+    "a": 1.8,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.8212045624594396,
+        0.7907901143620982,
+        0.20679960822106522
+      ],
+      "rank": 3,
+      "singular_values": [
+        73.29208490032244,
+        33.230977988831185,
+        9.487747682185093
+      ],
+      "condition_number": 7.724919270138386,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 14.348109502141003,
+      "original_objective_squared": 3324.3313681832224,
+      "kkt_max_abs": 6.496178261983232e-08,
+      "iterations": 11,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.3318999493558164,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 1.5521635279100732,
+      "unconstrained_bulk_energy_squared": 1.833154409103671,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.0951,
+      "a": 1.8,
+      "lambda": 4.34279177264237,
+      "gamma": 0.9,
+      "costheta0": -0.333333333333,
+      "A": 5.574719414490877,
+      "B": 0.6253866177653681,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 12,
+    "sigma_A": 2.0951,
+    "gamma": 1.2,
+    "a": 1.8,
+    "reused_original_features": true,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.8385614116297381,
+        0.8004674143023991,
+        0.5852119864418857
+      ],
+      "rank": 3,
+      "singular_values": [
+        33.244142178609074,
+        25.597673167670326,
+        9.434897250364251
+      ],
+      "condition_number": 3.5235298590374815,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 27.34035248877925,
+      "original_objective_squared": 134.9023174094668,
+      "kkt_max_abs": 3.2297119281210485e-06,
+      "iterations": 17,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935940886,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 2.560757530501474,
+      "unconstrained_bulk_energy_squared": 3.4812084003054076,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.0951,
+      "a": 1.8,
+      "lambda": 12.289451715279599,
+      "gamma": 1.2,
+      "costheta0": -0.333333333333,
+      "A": 5.642940085029437,
+      "B": 0.6308842393667019,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 13,
+    "sigma_A": 2.0951,
+    "gamma": 1.5,
+    "a": 1.8,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.8285177139224014,
+        0.7821455272326967,
+        1.5140695900318442
+      ],
+      "rank": 3,
+      "singular_values": [
+        33.243126039981675,
+        10.747787472031687,
+        8.370034898433438
+      ],
+      "condition_number": 3.97168308655482,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 47.11592796982811,
+      "original_objective_squared": 82.62329903605992,
+      "kkt_max_abs": 1.2912943558873735e-07,
+      "iterations": 10,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935581807,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 4.19817494527185,
+      "unconstrained_bulk_energy_squared": 5.488058198512135,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.0951,
+      "a": 1.8,
+      "lambda": 31.795461390668727,
+      "gamma": 1.5,
+      "costheta0": -0.333333333333,
+      "A": 5.513778911030731,
+      "B": 0.6379295118631441,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 14,
+    "sigma_A": 2.0951,
+    "gamma": 1.8,
+    "a": 1.8,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.8064538898406951,
+        0.7541973937803679,
+        3.7151947965669403
+      ],
+      "rank": 3,
+      "singular_values": [
+        33.241345086208774,
+        9.86723489385576,
+        3.5398207947656393
+      ],
+      "condition_number": 9.390685860528027,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 68.16248945968616,
+      "original_objective_squared": 183.5095850611899,
+      "kkt_max_abs": 2.6793868102004126e-07,
+      "iterations": 12,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.3318999493559269,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 5.764489556236539,
+      "unconstrained_bulk_energy_squared": 7.534935675026205,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.0951,
+      "a": 1.8,
+      "lambda": 78.01909072790575,
+      "gamma": 1.8,
+      "costheta0": -0.333333333333,
+      "A": 5.316756971421433,
+      "B": 0.6439512277348273,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 15,
+    "sigma_A": 2.4,
+    "gamma": 0.6,
+    "a": 1.571325,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.5898279841285817,
+        0.8986517827946295,
+        0.07446406211922234
+      ],
+      "rank": 3,
+      "singular_values": [
+        165.64738347624004,
+        39.59907296205123,
+        10.035056477231562
+      ],
+      "condition_number": 16.5068710726318,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 18.14823011047764,
+      "original_objective_squared": 22874.04434849675,
+      "kkt_max_abs": 7.415375335995122e-08,
+      "iterations": 14,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.3318999493558149,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 11.464859182787764,
+      "unconstrained_bulk_energy_squared": 1.34937998658036,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.4,
+      "a": 1.571325,
+      "lambda": 1.563745304503669,
+      "gamma": 0.6,
+      "costheta0": -0.333333333333,
+      "A": 6.335096316237121,
+      "B": 0.39526867255431003,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 16,
+    "sigma_A": 2.4,
+    "gamma": 0.9,
+    "a": 1.571325,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.6081212509269199,
+        0.941961369116986,
+        0.2965708150313891
+      ],
+      "rank": 3,
+      "singular_values": [
+        46.10810244017855,
+        39.39758445385542,
+        9.97372607832216
+      ],
+      "condition_number": 4.622956563885814,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 15.69702112156694,
+      "original_objective_squared": 1149.9546276971132,
+      "kkt_max_abs": 1.4278309046211746e-07,
+      "iterations": 11,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.3318999493558503,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 1.7353391803398324,
+      "unconstrained_bulk_energy_squared": 2.2166817978007107,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.4,
+      "a": 1.571325,
+      "lambda": 6.227987115659171,
+      "gamma": 0.9,
+      "costheta0": -0.333333333333,
+      "A": 6.640409682350162,
+      "B": 0.3887904151912592,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 17,
+    "sigma_A": 2.4,
+    "gamma": 1.2,
+    "a": 1.571325,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.6203222981508572,
+        0.9598754333109007,
+        0.9296909995291973
+      ],
+      "rank": 3,
+      "singular_values": [
+        39.85744646950724,
+        14.32615798858151,
+        9.872968644952913
+      ],
+      "condition_number": 4.037027555018365,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 28.251265734968406,
+      "original_objective_squared": 220.339954654898,
+      "kkt_max_abs": 1.8512719757168838e-07,
+      "iterations": 10,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.3318999493558155,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 2.5174565365946293,
+      "unconstrained_bulk_energy_squared": 3.8421227978997727,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.4,
+      "a": 1.571325,
+      "lambda": 19.523510990113145,
+      "gamma": 1.2,
+      "costheta0": -0.333333333333,
+      "A": 6.766695886034955,
+      "B": 0.3891893771892939,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 18,
+    "sigma_A": 2.4,
+    "gamma": 1.5,
+    "a": 1.571325,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.6175728132420965,
+        0.9530802427605987,
+        2.671255494479046
+      ],
+      "rank": 3,
+      "singular_values": [
+        39.85399814322772,
+        10.087935341862384,
+        4.659101461791706
+      ],
+      "condition_number": 8.554009495191687,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 45.88883546269345,
+      "original_objective_squared": 314.5545277385709,
+      "kkt_max_abs": 8.288945529955072e-09,
+      "iterations": 12,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.3318999493558162,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 3.4425810787900417,
+      "unconstrained_bulk_energy_squared": 5.702590042087984,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.4,
+      "a": 1.571325,
+      "lambda": 56.096365384059965,
+      "gamma": 1.5,
+      "costheta0": -0.333333333333,
+      "A": 6.718792807837662,
+      "B": 0.3902268644844714,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 19,
+    "sigma_A": 2.4,
+    "gamma": 1.8,
+    "a": 1.571325,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.6086229096382034,
+        0.936634331289115,
+        7.289608383419182
+      ],
+      "rank": 3,
+      "singular_values": [
+        39.854049124588165,
+        10.06632061561416,
+        1.6141682672125774
+      ],
+      "condition_number": 24.690145342412183,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 64.3066384203474,
+      "original_objective_squared": 376.99790964529956,
+      "kkt_max_abs": 3.964643724430061e-09,
+      "iterations": 12,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935581574,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 4.215009364668161,
+      "unconstrained_bulk_energy_squared": 7.543968338992805,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.4,
+      "a": 1.571325,
+      "lambda": 153.08177605180282,
+      "gamma": 1.8,
+      "costheta0": -0.333333333333,
+      "A": 6.602856429392878,
+      "B": 0.3913241814279093,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 20,
+    "sigma_A": 2.8,
+    "gamma": 0.6,
+    "a": 1.34685,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.4248312502602208,
+        1.1167935050359612,
+        0.11258536294124492
+      ],
+      "rank": 3,
+      "singular_values": [
+        106.02226249027365,
+        53.40271360004669,
+        8.925622039963649
+      ],
+      "condition_number": 11.878417214572693,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 16.24855222992214,
+      "original_objective_squared": 9131.267983943797,
+      "kkt_max_abs": 1.5122060048611274e-06,
+      "iterations": 14,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.3318999493558293,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 3.6097455488591503,
+      "unconstrained_bulk_energy_squared": 1.606817485668973,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.8,
+      "a": 1.34685,
+      "lambda": 2.3642926217661433,
+      "gamma": 0.6,
+      "costheta0": -0.333333333333,
+      "A": 7.872898663539091,
+      "B": 0.22908784025766973,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 21,
+    "sigma_A": 2.8,
+    "gamma": 0.9,
+    "a": 1.34685,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.4458025382501497,
+        1.1887690761732754,
+        0.477697388685536
+      ],
+      "rank": 3,
+      "singular_values": [
+        53.992552899951164,
+        25.10756412526898,
+        8.93426388289534
+      ],
+      "condition_number": 6.043312981086218,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 18.256788698865574,
+      "original_objective_squared": 1216.987284101353,
+      "kkt_max_abs": 4.231510506436109e-07,
+      "iterations": 12,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.3318999493558488,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 2.004684871254834,
+      "unconstrained_bulk_energy_squared": 2.7765989972701517,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.8,
+      "a": 1.34685,
+      "lambda": 10.031645162396256,
+      "gamma": 0.9,
+      "costheta0": -0.333333333333,
+      "A": 8.380294502840805,
+      "B": 0.2258413699618838,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 22,
+    "sigma_A": 2.8,
+    "gamma": 1.2,
+    "a": 1.34685,
+    "reused_original_features": false,
+    "status": "failed_or_infeasible",
+    "reason": "guarded amplitude optimization did not converge feasibly"
+  },
+  {
+    "profile": 23,
+    "sigma_A": 2.8,
+    "gamma": 1.5,
+    "a": 1.34685,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.45654617702310607,
+        1.2222345997469428,
+        5.6358733741664135
+      ],
+      "rank": 3,
+      "singular_values": [
+        53.94406191636898,
+        8.935049748713237,
+        1.9359036533108627
+      ],
+      "condition_number": 27.86505507343385,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 46.67407391963325,
+      "original_objective_squared": 1278.0430138494103,
+      "kkt_max_abs": 1.2305909535825776e-07,
+      "iterations": 11,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935582134,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 3.3905863355546604,
+      "unconstrained_bulk_energy_squared": 6.193969771668182,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 2.8,
+      "a": 1.34685,
+      "lambda": 118.35334085749469,
+      "gamma": 1.5,
+      "costheta0": -0.333333333333,
+      "A": 8.616211594612643,
+      "B": 0.224951347232253,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 24,
+    "sigma_A": 2.8,
+    "gamma": 1.8,
+    "a": 1.34685,
+    "reused_original_features": false,
+    "status": "failed_or_infeasible",
+    "reason": "guarded amplitude optimization did not converge feasibly"
+  },
+  {
+    "profile": 25,
+    "sigma_A": 3.2,
+    "gamma": 0.6,
+    "a": 1.17849375,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.3333502271685114,
+        1.413162759553593,
+        0.16117977881343937
+      ],
+      "rank": 3,
+      "singular_values": [
+        74.46809811516532,
+        66.01824878670497,
+        7.363788420831214
+      ],
+      "condition_number": 10.112742770352366,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 17.02924808037758,
+      "original_objective_squared": 5580.670988690724,
+      "kkt_max_abs": 1.780367524517601e-07,
+      "iterations": 14,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935581674,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 2.330415931828595,
+      "unconstrained_bulk_energy_squared": 1.9696793716959051,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 3.2,
+      "a": 1.17849375,
+      "lambda": 3.3847753550822266,
+      "gamma": 0.6,
+      "costheta0": -0.333333333333,
+      "A": 9.962170402033673,
+      "B": 0.142058437354033,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 26,
+    "sigma_A": 3.2,
+    "gamma": 0.9,
+    "a": 1.17849375,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.3512675302586348,
+        1.5044679502500327,
+        0.7713573150169735
+      ],
+      "rank": 3,
+      "singular_values": [
+        71.75058977662847,
+        14.183461126212304,
+        7.398851836005531
+      ],
+      "condition_number": 9.697530288073041,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 21.47192951254065,
+      "original_objective_squared": 3018.902302625254,
+      "kkt_max_abs": 1.2936663296159168e-08,
+      "iterations": 12,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.3318999493558192,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 2.3073391624925015,
+      "unconstrained_bulk_energy_squared": 3.388004331482655,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 3.2,
+      "a": 1.17849375,
+      "lambda": 16.198503615356444,
+      "gamma": 0.9,
+      "costheta0": -0.333333333333,
+      "A": 10.60583148223044,
+      "B": 0.14060913245450532,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 27,
+    "sigma_A": 3.2,
+    "gamma": 1.2,
+    "a": 1.17849375,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.35932596432623015,
+        1.545418784582074,
+        3.158136509056207
+      ],
+      "rank": 3,
+      "singular_values": [
+        71.74491730598628,
+        7.42012040787031,
+        3.2880185871343244
+      ],
+      "condition_number": 21.820106974673653,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 34.05186352146669,
+      "original_objective_squared": 3165.178432392096,
+      "kkt_max_abs": 1.2303488783338423e-09,
+      "iterations": 13,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935581624,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 3.0033846346407405,
+      "unconstrained_bulk_energy_squared": 5.113407989345325,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 3.2,
+      "a": 1.17849375,
+      "lambda": 66.32086669018034,
+      "gamma": 1.2,
+      "costheta0": -0.333333333333,
+      "A": 10.89451669344427,
+      "B": 0.14002348253230115,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 28,
+    "sigma_A": 3.2,
+    "gamma": 1.5,
+    "a": 1.17849375,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.36194668914296,
+        1.5596538578329031,
+        11.908180227034839
+      ],
+      "rank": 3,
+      "singular_values": [
+        71.74492335100767,
+        7.418696916456013,
+        0.8113001631673448
+      ],
+      "condition_number": 88.43203367655312,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 48.995167563636436,
+      "original_objective_squared": 3213.8851746252662,
+      "kkt_max_abs": 1.4194561970271025e-08,
+      "iterations": 13,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935585404,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 3.620970156774717,
+      "unconstrained_bulk_energy_squared": 6.797914389913363,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 3.2,
+      "a": 1.17849375,
+      "lambda": 250.0717847677316,
+      "gamma": 1.5,
+      "costheta0": -0.333333333333,
+      "A": 10.994867643433208,
+      "B": 0.13975741087598054,
+      "p": 4.0,
+      "q": 0.0
+    }
+  },
+  {
+    "profile": 29,
+    "sigma_A": 3.2,
+    "gamma": 1.8,
+    "a": 1.17849375,
+    "reused_original_features": false,
+    "status": "converged_feasible",
+    "fit": {
+      "amplitudes": [
+        0.3621425407463735,
+        1.5611142645531941,
+        42.76588256942924
+      ],
+      "rank": 3,
+      "singular_values": [
+        71.74491656222905,
+        7.418641585791548,
+        0.2075420458664328
+      ],
+      "condition_number": 345.68858692084837,
+      "active_mask": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "objective_squared": 63.544794180122096,
+      "original_objective_squared": 3223.330295333498,
+      "kkt_max_abs": 4.3250674508499287e-07,
+      "iterations": 14,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935583234,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 4.096059001248007,
+      "unconstrained_bulk_energy_squared": 8.25918948744846,
+      "constrained": true,
+      "convex_amplitude_problem": true
+    },
+    "parameters": {
+      "epsilon": 2.1683,
+      "sigma": 3.2,
+      "a": 1.17849375,
+      "lambda": 898.083533958014,
+      "gamma": 1.8,
+      "costheta0": -0.333333333333,
+      "A": 11.005162862795208,
+      "B": 0.13970222207998242,
+      "p": 4.0,
+      "q": 0.0
+    }
+  }
+]

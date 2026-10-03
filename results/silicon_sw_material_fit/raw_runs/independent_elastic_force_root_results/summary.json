@@ -1,0 +1,33 @@
+{
+  "complete": true,
+  "new_conservative_E_F_calls": 631,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "new_LAMMPS": 0,
+  "lattice_A": 5.430949782576885,
+  "reference_jet_C44_GPa": 56.44934131173334,
+  "independent_fine_relaxed": [
+    {
+      "step": 0.0003,
+      "internally_relaxed": true,
+      "method": "energy",
+      "C11_GPa": 151.42450786379732,
+      "C12_GPa": 76.42212370636445,
+      "C44_GPa": 56.449338665449574
+    },
+    {
+      "step": 0.0003,
+      "internally_relaxed": true,
+      "method": "stress",
+      "C11_GPa": 151.4245240504126,
+      "C12_GPa": 76.42215724779203,
+      "C44_GPa": 56.44933528225981
+    }
+  ],
+  "published_framework_SW_C44_GPa": 53.367156711416165,
+  "published_SW_epsilon_eV": 2.1675,
+  "current_epsilon_eV": 2.1683,
+  "published_finite_fit_protocol_fully_reproduced": false,
+  "elapsed_seconds": 1.814288099994883,
+  "source_sha256": "60092ee97b23349453a21659172d8836c0c21f319fd82b8033692a9647899034"
+}

@@ -1,0 +1,40 @@
+{
+  "beta": 0.375,
+  "kind": "right endpoint",
+  "objective_squared": 77.21302103212085,
+  "bulk_energy_squared": 0.3010024936961291,
+  "bulk_guard_passed": true,
+  "loss_derivative": -282.42138611421933,
+  "bulk_boundary_residual": -0.030897455659685547,
+  "anchor_profile": 1,
+  "parameters": {
+    "epsilon": 2.1683,
+    "sigma": 1.6,
+    "a": 2.3569875,
+    "lambda": 12.263853227800624,
+    "gamma": 1.2,
+    "costheta0": -0.333333333333,
+    "A": 5.481340556750244,
+    "B": 1.5433432310272628,
+    "p": 4.0,
+    "q": 0.0
+  },
+  "amplitudes": [
+    1.992641006895852,
+    0.7775440526141705,
+    0.5839930108476488
+  ],
+  "shape": {
+    "epsilon": 2.1683,
+    "sigma": 1.6,
+    "a": 2.3569875,
+    "lambda": 21.0,
+    "gamma": 1.2,
+    "costheta0": -0.333333333333,
+    "A": 7.049556277,
+    "B": 0.6022245584,
+    "p": 4.0,
+    "q": 0.0,
+    "tol": 0.0
+  }
+}

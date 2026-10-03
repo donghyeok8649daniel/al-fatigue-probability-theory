@@ -1,0 +1,27 @@
+{
+  "patterns": [
+    "exx=gamma_yz=e",
+    "pure gamma_yz=e control"
+  ],
+  "samples_per_fit": 5,
+  "strain_increments": [
+    0.01,
+    0.003,
+    0.001
+  ],
+  "optimizer": "atomic-force root, residual <=2e-8 eV/A",
+  "stress": "conservative all-atom current-configuration strain derivative / actual volume",
+  "old_matscipy_reproduced": false,
+  "old_quippy_reproduced": false,
+  "DFT_corrected_by_SW": false,
+  "historical_source": {
+    "repository": "libAtoms/matscipy",
+    "commit": "1202c4e9c85799ee15028faf7e7e4b4d0436fe72",
+    "date": "2015-12-15T15:56:10Z",
+    "url": "https://raw.githubusercontent.com/libAtoms/matscipy/1202c4e9c85799ee15028faf7e7e4b4d0436fe72/matscipy/elasticity.py",
+    "sha256": "de0f3339540236667a98cac22a4ad054d9022d0f543d8bd04a73344ea2ba309f",
+    "qualification": "last path revision before archive date; actual benchmark environment not pinned"
+  },
+  "new_DFT": 0,
+  "new_MD": 0
+}

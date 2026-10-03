@@ -1,0 +1,15 @@
+{
+  "complete": true,
+  "profiles": 90,
+  "new_EOS_energy_evaluations": 864,
+  "correction": "perfect EOS is unchanged only while four tetrahedral neighbors lie inside cutoff; compressed second neighbors invalidate reuse",
+  "prior_raw_results_preserved": true,
+  "no_new_training_features": true,
+  "selection_changed": false,
+  "selection_claim": "inspect corrected per-run selection files",
+  "material_approved": false,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "new_LAMMPS": 0,
+  "elapsed_seconds": 2.549364099977538
+}

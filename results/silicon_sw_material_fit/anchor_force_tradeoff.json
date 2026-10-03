@@ -1,0 +1,340 @@
+{
+  "complete": true,
+  "selected_run": "local_boundary_fit_results",
+  "selected_profile": 1,
+  "shape_fixed": true,
+  "anchor_matrix": [
+    [
+      -6.462807685650447,
+      12.28560138306474,
+      -0.0429980792886564
+    ],
+    [
+      7.742102377221816,
+      13.393967905607116,
+      9.449030870170692
+    ],
+    [
+      14.204910062872262,
+      1.1083665225423758,
+      -4.661885636951812
+    ]
+  ],
+  "anchor_target_eV": [
+    0.0,
+    38.95514669370448,
+    14.294681936234936
+  ],
+  "anchor_row_order": [
+    "dE/dexx",
+    "d2E/dexx2",
+    "d2E/dexxdeyy"
+  ],
+  "anchor_singular_values_eV": [
+    20.024597270940276,
+    16.964169710451166,
+    7.56980959652258
+  ],
+  "anchor_condition_number": 2.645323771437947,
+  "solved_locked_amplitudes": [
+    1.5154459672870815,
+    0.8032941483520551,
+    1.7423070209244775
+  ],
+  "locked_anchor_residual_eV": [
+    1.1232455870810966e-15,
+    0.0,
+    0.0
+  ],
+  "rows": [
+    {
+      "config_type": "dia",
+      "declared_xc": "PW91",
+      "solution": "unconstrained",
+      "amplitudes": [
+        1.5869287754230308,
+        0.3925179716835527,
+        1.1567797405988611
+      ],
+      "force_RMSE_eV_A": 0.10505856540951007,
+      "anchor_residual_eV": [
+        -5.483435457596376,
+        -10.481161055009938,
+        3.2897775163288454
+      ],
+      "normal_stress_at_reference_geometry_GPa": -21.577516685917097,
+      "unrelaxed_normal_curvature_residual_GPa": [
+        -41.2437475194421,
+        12.945393412664773
+      ],
+      "exact_normal_anchors_preserved": false
+    },
+    {
+      "config_type": "dia",
+      "declared_xc": "PW91",
+      "solution": "nonnegative",
+      "amplitudes": [
+        1.5869287754230292,
+        0.3925179716835534,
+        1.15677974059886
+      ],
+      "force_RMSE_eV_A": 0.10505856540951007,
+      "anchor_residual_eV": [
+        -5.483435457596357,
+        -10.481161055009949,
+        3.2897775163288276
+      ],
+      "normal_stress_at_reference_geometry_GPa": -21.577516685917026,
+      "unrelaxed_normal_curvature_residual_GPa": [
+        -41.243747519442145,
+        12.945393412664703
+      ],
+      "exact_normal_anchors_preserved": false
+    },
+    {
+      "config_type": "surface_001",
+      "declared_xc": "PW91",
+      "solution": "unconstrained",
+      "amplitudes": [
+        0.8036264406469535,
+        0.39355512307659457,
+        0.6923893978488657
+      ],
+      "force_RMSE_eV_A": 0.5541113376356969,
+      "anchor_residual_eV": [
+        -0.38839318685035035,
+        -20.919715035145398,
+        -5.670877488515005
+      ],
+      "normal_stress_at_reference_geometry_GPa": -1.5283412260009548,
+      "unrelaxed_normal_curvature_residual_GPa": [
+        -82.31983465951956,
+        -22.31510785135808
+      ],
+      "exact_normal_anchors_preserved": false
+    },
+    {
+      "config_type": "surface_001",
+      "declared_xc": "PW91",
+      "solution": "nonnegative",
+      "amplitudes": [
+        0.8036264406469542,
+        0.39355512307659474,
+        0.6923893978488663
+      ],
+      "force_RMSE_eV_A": 0.5541113376356969,
+      "anchor_residual_eV": [
+        -0.3883931868503529,
+        -20.919715035145384,
+        -5.670877488514998
+      ],
+      "normal_stress_at_reference_geometry_GPa": -1.5283412260009648,
+      "unrelaxed_normal_curvature_residual_GPa": [
+        -82.3198346595195,
+        -22.31510785135805
+      ],
+      "exact_normal_anchors_preserved": false
+    },
+    {
+      "config_type": "surface_110",
+      "declared_xc": "PW91",
+      "solution": "unconstrained",
+      "amplitudes": [
+        0.6882322692521164,
+        0.34907028797321116,
+        0.5443743017719512
+      ],
+      "force_RMSE_eV_A": 0.6043774201791038,
+      "anchor_residual_eV": [
+        -0.18278143591503287,
+        -23.807536189561894,
+        -6.669317366494733
+      ],
+      "normal_stress_at_reference_geometry_GPa": -0.7192515556773452,
+      "unrelaxed_normal_curvature_residual_GPa": [
+        -93.68351526216867,
+        -26.244004852807638
+      ],
+      "exact_normal_anchors_preserved": false
+    },
+    {
+      "config_type": "surface_110",
+      "declared_xc": "PW91",
+      "solution": "nonnegative",
+      "amplitudes": [
+        0.6882322692521168,
+        0.34907028797321116,
+        0.5443743017719512
+      ],
+      "force_RMSE_eV_A": 0.6043774201791038,
+      "anchor_residual_eV": [
+        -0.18278143591503504,
+        -23.807536189561894,
+        -6.669317366494727
+      ],
+      "normal_stress_at_reference_geometry_GPa": -0.7192515556773537,
+      "unrelaxed_normal_curvature_residual_GPa": [
+        -93.68351526216867,
+        -26.24400485280762
+      ],
+      "exact_normal_anchors_preserved": false
+    },
+    {
+      "config_type": "surface_111",
+      "declared_xc": "PW91",
+      "solution": "unconstrained",
+      "amplitudes": [
+        0.6471024302987861,
+        0.3112018815731835,
+        0.5284124690206095
+      ],
+      "force_RMSE_eV_A": 0.4890699140402771,
+      "anchor_residual_eV": [
+        -0.3815170145102875,
+        -24.783999683867613,
+        -7.2211228648001216
+      ],
+      "normal_stress_at_reference_geometry_GPa": -1.501283239351836,
+      "unrelaxed_normal_curvature_residual_GPa": [
+        -97.52593439967892,
+        -28.41537942977485
+      ],
+      "exact_normal_anchors_preserved": false
+    },
+    {
+      "config_type": "surface_111",
+      "declared_xc": "PW91",
+      "solution": "nonnegative",
+      "amplitudes": [
+        0.6471024302987863,
+        0.3112018815731837,
+        0.5284124690206097
+      ],
+      "force_RMSE_eV_A": 0.4890699140402772,
+      "anchor_residual_eV": [
+        -0.38151701451028713,
+        -24.783999683867606,
+        -7.221122864800119
+      ],
+      "normal_stress_at_reference_geometry_GPa": -1.5012832393518345,
+      "unrelaxed_normal_curvature_residual_GPa": [
+        -97.52593439967889,
+        -28.415379429774838
+      ],
+      "exact_normal_anchors_preserved": false
+    },
+    {
+      "config_type": "surface_111_3x3_das",
+      "declared_xc": "PW91",
+      "solution": "unconstrained",
+      "amplitudes": [
+        -0.4005849520096436,
+        -0.19941044369364366,
+        0.07371116842525037
+      ],
+      "force_RMSE_eV_A": 0.15097856903882345,
+      "anchor_residual_eV": [
+        0.13585684509924975,
+        -44.030914379886624,
+        -20.549608049471892
+      ],
+      "normal_stress_at_reference_geometry_GPa": 0.5346015950573616,
+      "unrelaxed_normal_curvature_residual_GPa": [
+        -173.26323927311262,
+        -80.86345029597584
+      ],
+      "exact_normal_anchors_preserved": false
+    },
+    {
+      "config_type": "surface_111_3x3_das",
+      "declared_xc": "PW91",
+      "solution": "nonnegative",
+      "amplitudes": [
+        0.0,
+        0.03890396960600643,
+        0.2019873957597991
+      ],
+      "force_RMSE_eV_A": 0.16623201195176884,
+      "anchor_residual_eV": [
+        0.46927359274007213,
+        -36.52548303548119,
+        -15.19320421786754
+      ],
+      "normal_stress_at_reference_geometry_GPa": 1.8466085460314188,
+      "unrelaxed_normal_curvature_residual_GPa": [
+        -143.729095701757,
+        -59.78580764900359
+      ],
+      "exact_normal_anchors_preserved": false
+    },
+    {
+      "config_type": "surface_111_pandey",
+      "declared_xc": "PBE",
+      "solution": "unconstrained",
+      "amplitudes": [
+        0.7492697893854261,
+        0.34479492189248356,
+        0.6143104869022714
+      ],
+      "force_RMSE_eV_A": 0.5805238687390639,
+      "anchor_residual_eV": [
+        -0.6327877552135055,
+        -22.731412403669694,
+        -6.133058052138047
+      ],
+      "normal_stress_at_reference_geometry_GPa": -2.490042684435747,
+      "unrelaxed_normal_curvature_residual_GPa": [
+        -89.44892927574409,
+        -24.133805071486247
+      ],
+      "exact_normal_anchors_preserved": false
+    },
+    {
+      "config_type": "surface_111_pandey",
+      "declared_xc": "PBE",
+      "solution": "nonnegative",
+      "amplitudes": [
+        0.7492697893854233,
+        0.34479492189248406,
+        0.6143104869022742
+      ],
+      "force_RMSE_eV_A": 0.5805238687390639,
+      "anchor_residual_eV": [
+        -0.6327877552134816,
+        -22.731412403669683,
+        -6.133058052138098
+      ],
+      "normal_stress_at_reference_geometry_GPa": -2.490042684435653,
+      "unrelaxed_normal_curvature_residual_GPa": [
+        -89.44892927574405,
+        -24.13380507148645
+      ],
+      "exact_normal_anchors_preserved": false
+    }
+  ],
+  "inputs": [
+    {
+      "path": "raw_runs/local_boundary_fit_results/selected_fit.json",
+      "sha256": "af8c2e2b892216dbaec2ad140470acf92c6419f485cd5361f537c2d4cd85ece8"
+    },
+    {
+      "path": "raw_runs/force_span_diagnostic_recovery_results/group_force_bounds.json",
+      "sha256": "d170d7eaadcc67d90dc71a3a724142393895d863d10b8fb305d344009db1dbc6"
+    },
+    {
+      "path": "primary_sources/test-results/model-CASTEP_ASE-test-bulk_diamond-properties.json",
+      "sha256": "af54a2722028e71b10e45b665bcbffa66273eae945afd5743e9f620c99e5a744"
+    },
+    {
+      "path": "diagnose_anchor_tradeoff.py",
+      "sha256": "d973cb742e2edc84adf1c4aa7c0a5cfbb17b23b6ccd4e1b6dbe2ed423450db27"
+    }
+  ],
+  "new_geometry_evaluations": 0,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "selected_parameters_changed": false,
+  "material_approved": false,
+  "family_impossibility_proved": false,
+  "interpretation": "fixed-shape exact normal anchors uniquely fix three amplitudes; force-only alternatives break them; unrelaxed curvature changes are not re-equilibrated elastic constants"
+}

@@ -1,0 +1,257 @@
+{
+  "selected_run": "local_boundary_fit_results",
+  "selected_profile": 1,
+  "selected_training_plus_EOS_objective_squared": 93.97306773432464,
+  "selected_fit_sha256": "af8c2e2b892216dbaec2ad140470acf92c6419f485cd5361f537c2d4cd85ece8",
+  "selection_rule": "minimum same declared training+EOS objective among positive-boundary roots passing exact a0/C11/C12/C44, positive local curvature, sampled-q numerical gate and original bulk energy guard",
+  "examined_profiles": 30,
+  "eligible_profiles": 12,
+  "profiles": [
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 0,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 236.57660964545516,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 1,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 110.88348225774016,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 2,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 90.96599220805969,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 3,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 218.5775910399955,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 4,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 125.23726713464815,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 5,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 105.30810704506649,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 6,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 184.43932958884233,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 7,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 133.66376938567228,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "angular_boundary_fit_results",
+      "profile": 8,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 131.11161271752,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "refined_boundary_fit_results",
+      "profile": 0,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 118.59658908457885,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "refined_boundary_fit_results",
+      "profile": 1,
+      "eligible": true,
+      "training_plus_EOS_objective_squared": 95.39727114304605,
+      "bulk_guard_passed": true,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "refined_boundary_fit_results",
+      "profile": 2,
+      "eligible": true,
+      "training_plus_EOS_objective_squared": 101.18049317885162,
+      "bulk_guard_passed": true,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 0,
+      "eligible": true,
+      "training_plus_EOS_objective_squared": 99.57008953559516,
+      "bulk_guard_passed": true,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 1,
+      "eligible": true,
+      "training_plus_EOS_objective_squared": 93.97306773432464,
+      "bulk_guard_passed": true,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 2,
+      "eligible": true,
+      "training_plus_EOS_objective_squared": 95.21705353014943,
+      "bulk_guard_passed": true,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 3,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 102.91293233632747,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 4,
+      "eligible": true,
+      "training_plus_EOS_objective_squared": 96.92987556282048,
+      "bulk_guard_passed": true,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 5,
+      "eligible": true,
+      "training_plus_EOS_objective_squared": 97.5366727714705,
+      "bulk_guard_passed": true,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 6,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 104.51794602414765,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 7,
+      "eligible": true,
+      "training_plus_EOS_objective_squared": 98.53554225158474,
+      "bulk_guard_passed": true,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "local_boundary_fit_results",
+      "profile": 8,
+      "eligible": true,
+      "training_plus_EOS_objective_squared": 99.01079520662535,
+      "bulk_guard_passed": true,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 0,
+      "eligible": true,
+      "training_plus_EOS_objective_squared": 95.34761883824952,
+      "bulk_guard_passed": true,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 1,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 91.27028176265867,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 2,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 94.28659015542651,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 3,
+      "eligible": true,
+      "training_plus_EOS_objective_squared": 96.17146839437927,
+      "bulk_guard_passed": true,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 4,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 91.67212411595636,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 5,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 94.2245077710217,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 6,
+      "eligible": true,
+      "training_plus_EOS_objective_squared": 97.01225294758919,
+      "bulk_guard_passed": true,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 7,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 92.15571263023708,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    },
+    {
+      "run": "guard_boundary_fit_results",
+      "profile": 8,
+      "eligible": false,
+      "training_plus_EOS_objective_squared": 94.30395480425989,
+      "bulk_guard_passed": false,
+      "excluded_metrics_used": false
+    }
+  ],
+  "global_shape_optimality_certified": false,
+  "excluded_metrics_used": false,
+  "material_approved": false,
+  "first_initiation_validated": false,
+  "physical_clock_validated": false,
+  "selector_sha256": "a0b4c0146249581977e2db45e11a1abd0e15556fdaf419b79a9202def2a6f62c"
+}

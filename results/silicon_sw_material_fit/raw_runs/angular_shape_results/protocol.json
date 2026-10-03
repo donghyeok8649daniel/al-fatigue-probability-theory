@@ -1,0 +1,47 @@
+{
+  "reason": "previous selected training profile sigma=1.6 is on smallest sigma boundary",
+  "sigmas_A": [
+    0.8,
+    1.2,
+    1.4,
+    1.6,
+    1.8,
+    2.0
+  ],
+  "gammas": [
+    0.9,
+    1.1,
+    1.2,
+    1.3,
+    1.5,
+    1.8
+  ],
+  "fixed_cutoff_A": 3.77118,
+  "profiles": 36,
+  "beta_interval": [
+    -0.375,
+    0.375
+  ],
+  "beta_search": "quadratic conservative observables; quartic loss/guard roots and endpoints",
+  "extra_angular_parameters": 1,
+  "bulk_exact_anchors": [
+    "a0",
+    "C11",
+    "C12"
+  ],
+  "C44_relative_band": 0.1,
+  "force_scale_eV_A": 0.2,
+  "energy_scale_eV_atom": 0.05,
+  "stress_scale_eV_A3": 0.05,
+  "EOS_scale_eV_atom": 0.02,
+  "bulk_guard": "same PW91 dia relative energy MSE <= original SW; no tolerance relaxation",
+  "heldout_used_for_selection": false,
+  "selection_locked_before_validation": true,
+  "no_global_shape_optimum_claim": true,
+  "material_approved": false,
+  "first_initiation_validated": false,
+  "physical_clock_validated": false,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "new_LAMMPS": 0
+}

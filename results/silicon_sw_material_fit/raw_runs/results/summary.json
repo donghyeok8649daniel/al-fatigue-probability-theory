@@ -1,0 +1,45 @@
+{
+  "complete": true,
+  "training_frames": 511,
+  "held_out_frames": 1964,
+  "new_feature_evaluations": 2475,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "new_LAMMPS": 0,
+  "new_MACE": 0,
+  "baseline_control_max_energy_error_eV": 1.5120349416974932e-11,
+  "baseline_control_max_force_error_eV_A": 3.545300581971403e-13,
+  "fit": {
+    "amplitudes": [
+      0.744102084783527,
+      0.7825778807926684,
+      0.5720321832023499
+    ],
+    "rank": 3,
+    "singular_values": [
+      33.244142178609074,
+      25.597673167670326,
+      9.434897250364251
+    ],
+    "condition_number": 3.5235298590374815,
+    "active_mask": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "objective_squared": 24.06456656864941,
+    "original_objective_squared": 134.9023174094668,
+    "kkt_max_abs": 1.4108159085424177e-13,
+    "iterations": 0,
+    "regularization": false,
+    "epsilon_gauge_fixed": true
+  },
+  "candidate_bessel_consistency_passed": true,
+  "diamond_internal_stable": true,
+  "diamond_elastic_stable": true,
+  "material_approved": false,
+  "first_initiation_validated": false,
+  "physical_clock_validated": false,
+  "production_enabled": false,
+  "elapsed_seconds": 47.19084220007062
+}

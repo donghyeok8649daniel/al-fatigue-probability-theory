@@ -1,0 +1,3698 @@
+{
+  "format": "exact staged Git package blobs",
+  "manifest_self_hash_excluded": true,
+  "total_files": 615,
+  "total_bytes": 66397021,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 1094,
+      "sha256": "c62c180483dfc292cf99db9b059c9055c0a9a2941d7c7b56406502187b9ef15a",
+      "git_blob_sha1": "5f4ce11ac9d158768158be2fe7573793fc292a69"
+    },
+    {
+      "path": "COMPLETED_SUMMARY.md",
+      "bytes": 6694,
+      "sha256": "4645c078d4a0f378b3fd79667eb965da8db75c934a0e44490e716ebfc836fc07",
+      "git_blob_sha1": "da6313b3bd1da99ab4ed305a5d12ed1b998612bd"
+    },
+    {
+      "path": "README.md",
+      "bytes": 11528,
+      "sha256": "232e2050a5cdc9e2bc3ed661a030b5702fb287df62515a973660ab622266a2a1",
+      "git_blob_sha1": "d2af3d1df33d1b21a57f970a792d14ebea59a3fc"
+    },
+    {
+      "path": "anchor_force_tradeoff.json",
+      "bytes": 9531,
+      "sha256": "00b2e41db2ec7ceefc0d261b978a3b18a98bdd5de7b12c0638daefdb1a1d7d99",
+      "git_blob_sha1": "f0fbdefe47b783d0483c89bfb5020aee6dfbb9d1"
+    },
+    {
+      "path": "build_material_package.py",
+      "bytes": 13383,
+      "sha256": "1626ef6cad538130f8db44cabffa043fff18485ddf54a0598ee1ee6cf1ead8b0",
+      "git_blob_sha1": "fc73bea883ab38a7d42e04359a65bc50c47a9a83"
+    },
+    {
+      "path": "create_figures.py",
+      "bytes": 4657,
+      "sha256": "ff5b459347047b37725844a3a74b46b798ff6e7d4a224392d20baaf6c17c26ef",
+      "git_blob_sha1": "42ba8e4f4c08e486b80ac00682db18887e9b7b57"
+    },
+    {
+      "path": "create_report.py",
+      "bytes": 27864,
+      "sha256": "b3ebe2537c417ff5b2b00af9015e2d1dd93138584a81e4e57c426ac41a618033",
+      "git_blob_sha1": "fd35eee4826e5f89904786acd390dcf57b29bab3"
+    },
+    {
+      "path": "current_source_manifest.json",
+      "bytes": 13406,
+      "sha256": "ceb46762976625748e1fdff5ee5d4418c2ce50dfcbfe002616f29fff8bc1e990",
+      "git_blob_sha1": "b8f1507e5d76075bb760ed79dc418a69576a41bc"
+    },
+    {
+      "path": "design_gram_replay.json",
+      "bytes": 549526,
+      "sha256": "d1f4b2731012e4894eb864172daa02fe7aa80cc77e2b5d873c6071cee4e2cfd5",
+      "git_blob_sha1": "e94312eb3a06fe15f0846f3a4ba882dc5ac2c7fb"
+    },
+    {
+      "path": "diagnose_anchor_tradeoff.py",
+      "bytes": 4260,
+      "sha256": "d973cb742e2edc84adf1c4aa7c0a5cfbb17b23b6ccd4e1b6dbe2ed423450db27",
+      "git_blob_sha1": "6627cd8b6fe232ecf073705e453ee1a837ac332b"
+    },
+    {
+      "path": "diagnose_selected_force_span.py",
+      "bytes": 3987,
+      "sha256": "7931b250c179887de70626af7872c0d6e12b4c87786daeeec66639946928e088",
+      "git_blob_sha1": "ffd1314da8a38b93cd75361f054a934cab4e92a3"
+    },
+    {
+      "path": "export_git_index.py",
+      "bytes": 3069,
+      "sha256": "dc6ab0729029a5877a8c2e1eddbe87c0280ca15fbc123fba975cb91453fc11cd",
+      "git_blob_sha1": "6e3f47b2380fe93861f898dc2ff0bebbe6ccf232"
+    },
+    {
+      "path": "figures/external_errors.png",
+      "bytes": 31890,
+      "sha256": "bb65d9582596d3df6518c5c91e9bdec76bc23a8643c4388b9cd2d88c66de8f4f",
+      "git_blob_sha1": "68b4537ab4f8122958977aceff3e60a77fd3b002"
+    },
+    {
+      "path": "figures/material_errors.png",
+      "bytes": 39833,
+      "sha256": "55007700a060bb2ed82ed120de14e28d9614669539de071b95f8e746523b14c8",
+      "git_blob_sha1": "e8c0e4571ffa1d5da196a159c49a1f656babdb75"
+    },
+    {
+      "path": "figures/phonon_bands.png",
+      "bytes": 111043,
+      "sha256": "7f1b7db165fd084be0cd7f726cf2a16a1b796caf8edeea1b2b71a4cb6c3edd76",
+      "git_blob_sha1": "3ecd4b8ab307a6f683d258333a6fb84f70bbe5a8"
+    },
+    {
+      "path": "figures/rigid_interface.png",
+      "bytes": 75163,
+      "sha256": "eb1c0ce3b4bdccba815fc2178ad5bd43c3a5109bd71869b08da59fd294274716",
+      "git_blob_sha1": "120cb82859d59b5a17ae66b046802f8bf338d7d1"
+    },
+    {
+      "path": "final_selection.json",
+      "bytes": 7883,
+      "sha256": "255f91200f8addccb0b103a6d94f65fe7225584327333553287c23c7c2bea8a6",
+      "git_blob_sha1": "eafc9c588b5e2eb48775d645374b3646940f7ed9"
+    },
+    {
+      "path": "frame_metadata.json",
+      "bytes": 308720,
+      "sha256": "32d763d2b65a5016bc4f98d2a09215ce40abb7a75764fb2f703aa8662b16b0fe",
+      "git_blob_sha1": "5ddda43c1364470b908122219e82315a3bc08820"
+    },
+    {
+      "path": "git_byte_independent_verification.json",
+      "bytes": 1291,
+      "sha256": "88f70c9b06600895e7c4e3029f98c145f9cff09a80a30266a86b31b5c308ba48",
+      "git_blob_sha1": "d4a001ca1ff9a4767d65dbe792dda128cbaa2e94"
+    },
+    {
+      "path": "git_byte_test_results.xml",
+      "bytes": 4978,
+      "sha256": "e4567d0274420dfda551f92359cd6b0cb8a86c0e6b25fed3b957bafa7a2c12b9",
+      "git_blob_sha1": "253646331e3aab4cb1e365df07341221780f19b9"
+    },
+    {
+      "path": "git_index_source_validation.json",
+      "bytes": 9788,
+      "sha256": "8bda2ed252f3fd1572a02629a95ff36b39308fbd04a8aada0067ea1033c8c4bc",
+      "git_blob_sha1": "fd8087ff3b857686b221aef2a641464afd2a46a1"
+    },
+    {
+      "path": "independent_verification.json",
+      "bytes": 1291,
+      "sha256": "88f70c9b06600895e7c4e3029f98c145f9cff09a80a30266a86b31b5c308ba48",
+      "git_blob_sha1": "d4a001ca1ff9a4767d65dbe792dda128cbaa2e94"
+    },
+    {
+      "path": "packaging_summary.json",
+      "bytes": 805,
+      "sha256": "e85c5959528305b36d3ef36a6fde9f599f70a0ca2203c87c0b49e17e0115872a",
+      "git_blob_sha1": "07800e3d428852d3215639b5c9acbd3cee9ef050"
+    },
+    {
+      "path": "prediction_cases.json",
+      "bytes": 5072,
+      "sha256": "026a7c2be6092b34bec1956d68aa18390098edd0e7a3e5ef1729c2032abcf874",
+      "git_blob_sha1": "2666f2808a686da8737c10d5fb9e9473b3fa599c"
+    },
+    {
+      "path": "primary_sources/additional_manifest.json",
+      "bytes": 2434,
+      "sha256": "338658053e7acd5ae3acd1dc5650b9b94b83dc357e14000b981a5cf96f1457fc",
+      "git_blob_sha1": "c8083e160952f4108608d5f2e7205422b66ef22c"
+    },
+    {
+      "path": "primary_sources/historical_elasticity/manifest.json",
+      "bytes": 440,
+      "sha256": "9be3f112ba8947a37710e7c944a9acb45ddf5a55c161f2ade0bb85b6bbb9bf9e",
+      "git_blob_sha1": "a437be365d5ed49f7c7dc4a18cf44ead94ac5dd3"
+    },
+    {
+      "path": "primary_sources/manifest.json",
+      "bytes": 9274,
+      "sha256": "b0a89cd7ec4b28c235e264e6bf6fad67731c3902e180fc26d2a3f3e84e0ccfa5",
+      "git_blob_sha1": "423fc2bda6d48185922126411c636163a6752d7d"
+    },
+    {
+      "path": "primary_sources/method_manifest.json",
+      "bytes": 1028,
+      "sha256": "6abd81921e6e25ff820bcc2cc26b244316ae34c1b1c346650b3ec18b01d1680f",
+      "git_blob_sha1": "ee492ea12786566274c9a3014ecffc7597d9947d"
+    },
+    {
+      "path": "primary_sources/test-results/model-CASTEP_ASE-test-bulk_diamond-properties.json",
+      "bytes": 682,
+      "sha256": "af54a2722028e71b10e45b665bcbffa66273eae945afd5743e9f620c99e5a744",
+      "git_blob_sha1": "c97fcf62afe9c71d293613c792176fb71a0ae0fb"
+    },
+    {
+      "path": "primary_sources/test-results/model-CASTEP_ASE-test-phonon_diamond-properties.json",
+      "bytes": 38368,
+      "sha256": "2309ec711872bcf75f6bd2a511c20cb4c5d94511fe49c8a6ecacabe6275fb5a2",
+      "git_blob_sha1": "17481f9ff4ff91423ef2a79fc86d784c27a9dff0"
+    },
+    {
+      "path": "primary_sources/test-results/model-SW-test-bulk_diamond-properties.json",
+      "bytes": 699,
+      "sha256": "30eca6a894b563107b990e4bf1c44b89cadf977fd1e9e41a1ed30dcc88cc314b",
+      "git_blob_sha1": "4798240778342b5a5f464c28a0b393a9fa1cc92b"
+    },
+    {
+      "path": "primary_sources/test-results/model-SW-test-phonon_diamond-properties.json",
+      "bytes": 38828,
+      "sha256": "1463ea992d58e3fdc313aa41343cb6c865b722ee83d9d6a053751877c22ddaa2",
+      "git_blob_sha1": "c995f53227f49ebaa320542b60b060bb40385976"
+    },
+    {
+      "path": "primary_sources/tests/testing_database_force_error/testing_database.xyz",
+      "bytes": 186545,
+      "sha256": "5b5d9152488a4527211e4b9b5c942b1852f66fad8972dc2bd97690fbfcc06aa3",
+      "git_blob_sha1": "403668ffd77dd684bf495905c9633bf356e283ab"
+    },
+    {
+      "path": "raw_cache_catalog.json",
+      "bytes": 286032,
+      "sha256": "cef1292b6f9c13dd3f717e25f2a480537e828e3d892daec4e2dca63745452bdd",
+      "git_blob_sha1": "0758c213a8ceb4fed7e259b85c34e3f7176b1588"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/bessel_audit.json",
+      "bytes": 8986,
+      "sha256": "a481cdf7df322901f8a04ccfe04d1e079b545e6d7a382b3ec95bda1a945b079a",
+      "git_blob_sha1": "4f771713bc914da7c5fb36156a35339b89573b8f"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/frame_metrics.json",
+      "bytes": 548249,
+      "sha256": "c0ad6e01c286ebc0cb16e9da48132594e2fd2fea06115cc95897a0330470dd53",
+      "git_blob_sha1": "2bce7e726ad9c6b54faa66c1d8d85b1a545a7df8"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/group_metrics.json",
+      "bytes": 7042,
+      "sha256": "66c48526d84ec325c5cf14f4e0e9a38dd3603bedc004f3b88e419424ccfbd1ae",
+      "git_blob_sha1": "4fe7238ff847cdbe0f8537d9c5eb8a320130dd28"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/profiles.json",
+      "bytes": 51296,
+      "sha256": "4e553fe60e6bd459ba7ed258a51ae2cf784ccc596b77004c9eb2ef769a060535",
+      "git_blob_sha1": "bf5ebdd83875db0daa22749a385f3477705da15f"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/protocol.json",
+      "bytes": 1692,
+      "sha256": "dd4b3c1b51cb8eb444a771d34cb791dd2e76b736addf7722b53e944f40eb385c",
+      "git_blob_sha1": "7b96791ae9f41b474bb82fc116f54c9671e94d65"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/selected_fit.json",
+      "bytes": 5145,
+      "sha256": "5ac053b35dc8649112ba49aea5a2a80336472c789fcf0c1fd6b143e0235159d9",
+      "git_blob_sha1": "fc9cf6b08a98fd14ed39fd38b7faae83e5606d48"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/selection_lock.json",
+      "bytes": 186,
+      "sha256": "63d2a637e98304b2c80ce324b81edf9ef5ff1e91f3a7b16dd342c0f99f6c1beb",
+      "git_blob_sha1": "060d2ef3630e71fe99d3a531bf1b7e5a80a5ea9a"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/source_manifest.json",
+      "bytes": 1146,
+      "sha256": "29e0d9c7155b37cd536b99d52897032316d794502af355ced3fc1102edabb52a",
+      "git_blob_sha1": "232e269f3a7efb6e351a2f781f71827c5a8d5416"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/source_snapshots/solver_v1/run_silicon_sw_extended_fit.py",
+      "bytes": 10142,
+      "sha256": "e87d506b340294de643933d9ff346f4759303bb5e1391f1356b05b2037b1a3b8",
+      "git_blob_sha1": "d1b42be400eccea70ea916d02ba0d2031aaad9ed"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/source_snapshots/solver_v1/run_silicon_sw_guarded_fit.py",
+      "bytes": 11027,
+      "sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+      "git_blob_sha1": "a0b289cdb6e6160d27f6bac3885546dff2ff3572"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/source_snapshots/solver_v1/run_silicon_sw_stress_fit.py",
+      "bytes": 12260,
+      "sha256": "16f31e8d321c433e8cefe2852633243d857badf5032e43d8e59c07a2d0c211cd",
+      "git_blob_sha1": "df99acb14620225be59ad689816bb1e547a3c6b0"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/source_snapshots/solver_v1/silicon_sw_phonon.py",
+      "bytes": 2354,
+      "sha256": "5a8fc4315952ecd0836b0bb74d31b8dde62b697741e337c85e4a184f50bb567e",
+      "git_blob_sha1": "1466b39e3fd91c2fdbd36e153f136541c706dcc5"
+    },
+    {
+      "path": "raw_runs/angle_preference_fit_results/summary.json",
+      "bytes": 382,
+      "sha256": "75542c7f90895e8bfec99d4ae64fa6d86b7c40751192d43b33553a37f841f20b",
+      "git_blob_sha1": "8db6ae8a981d7c33027e26a87f164ed8f53e1751"
+    },
+    {
+      "path": "raw_runs/angle_preference_results/admissible_profiles.json",
+      "bytes": 42391,
+      "sha256": "8ba91aef7be7b37f4422bbec76e3d03ca9d8edb43186193f9ccaa8accc672a79",
+      "git_blob_sha1": "f1606180af3a686ae3289b8e13aa00cab0c874a8"
+    },
+    {
+      "path": "raw_runs/angle_preference_results/cosine_scan.json",
+      "bytes": 61446,
+      "sha256": "f8dd5299545abb7fc7c78af372cf2e905ce885e97870a1d3174d371a99473ab4",
+      "git_blob_sha1": "a4dccf9b8e4e138f8c742f99a4bb6a42a86e1bd5"
+    },
+    {
+      "path": "raw_runs/angle_preference_results/protocol.json",
+      "bytes": 835,
+      "sha256": "cf59cccb0abf5ab25e6a70c45e11a6bcaa39b26f3eccce365b4abd38188fe0f5",
+      "git_blob_sha1": "ab0098e30be31a735229b6e0941f084fe7d569d2"
+    },
+    {
+      "path": "raw_runs/angle_preference_results/source_manifest.json",
+      "bytes": 729,
+      "sha256": "7f3a10362721323bf5d37ded6fae81d9cdfc905dce48c1b19216b133f55a4eb9",
+      "git_blob_sha1": "e5065aaa29e65f4d97259516da1ca9894a9be8be"
+    },
+    {
+      "path": "raw_runs/angle_preference_results/source_snapshots/solver_v1/run_silicon_sw_angle_preference.py",
+      "bytes": 5270,
+      "sha256": "782f31a40d509fd0062ccf756d936edc0972c06346959a5547c928efba49644c",
+      "git_blob_sha1": "f232f46274101ee40649c0899962be244d1e1c09"
+    },
+    {
+      "path": "raw_runs/angle_preference_results/source_snapshots/solver_v1/run_silicon_sw_extended_bulk.py",
+      "bytes": 6245,
+      "sha256": "8b4ff6e6cf2b1db6cac6b1e685429698ac1e1fcf29469180f28fde114a20bfd6",
+      "git_blob_sha1": "ab03514bbe307d7da8c119d7c610e17473a815f7"
+    },
+    {
+      "path": "raw_runs/angle_preference_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/angle_preference_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/angle_preference_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/angle_preference_results/summary.json",
+      "bytes": 329,
+      "sha256": "8c5510226268b7b400657b7b322d37dd85e184dbd4d19f8c0885181182c02112",
+      "git_blob_sha1": "4b764c3646b7e4ce147a296724624b40935c64b9"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/bessel_audit.json",
+      "bytes": 9015,
+      "sha256": "d543768ffba399037759103b0e161969dca6b862fee53f0b99f686df66a0e0ed",
+      "git_blob_sha1": "619a4ab0b78ca8df5842d17b9297d7d1b2a70fa4"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/frame_metrics.json",
+      "bytes": 548872,
+      "sha256": "bb5f58d4fb3b6d8330a8916147f1c33beefb3ec56bbb7f67bbb947683dd862a5",
+      "git_blob_sha1": "885b8f1adadb7d23b3d11d116e3c91daaaa09dd9"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/group_metrics.json",
+      "bytes": 7047,
+      "sha256": "7648c99ec3aec0dd58ae0053146f9a95f1c4d3d7423099955a0f5e347da5e6c1",
+      "git_blob_sha1": "06f733561214e15c10051b0b972f2df633de2a45"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/profiles.json",
+      "bytes": 51464,
+      "sha256": "eadbc7632429b6053d7ad21b3f21563440f8f7e46698838f30668433545244bd",
+      "git_blob_sha1": "840b278da44f1274c50fac26bc274375d67f9264"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/protocol.json",
+      "bytes": 1759,
+      "sha256": "76b0315e6b601309b67fb59783503f61e9eba47422ee7895c0e65532053adbdc",
+      "git_blob_sha1": "1ef390a2d865c9714004ce318656baacb855e7cc"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/selected_fit.json",
+      "bytes": 5169,
+      "sha256": "5ef81e62e3aa87d07ade8b978858d1ec8687b7eefe19f9283bd0b7f984f38508",
+      "git_blob_sha1": "11fe95880dfdb992976857889d6086b396f6eebc"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/selection_lock.json",
+      "bytes": 186,
+      "sha256": "2a0e134d0c433cdcc65096f0d312518a8d907d93d84ea2b092b8c5ae63975c93",
+      "git_blob_sha1": "60610249a02fc685c55f245f8e3a8bd8534915af"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/source_manifest.json",
+      "bytes": 1146,
+      "sha256": "29e0d9c7155b37cd536b99d52897032316d794502af355ced3fc1102edabb52a",
+      "git_blob_sha1": "232e269f3a7efb6e351a2f781f71827c5a8d5416"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/source_snapshots/solver_v1/run_silicon_sw_extended_fit.py",
+      "bytes": 10142,
+      "sha256": "e87d506b340294de643933d9ff346f4759303bb5e1391f1356b05b2037b1a3b8",
+      "git_blob_sha1": "d1b42be400eccea70ea916d02ba0d2031aaad9ed"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/source_snapshots/solver_v1/run_silicon_sw_guarded_fit.py",
+      "bytes": 11027,
+      "sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+      "git_blob_sha1": "a0b289cdb6e6160d27f6bac3885546dff2ff3572"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/source_snapshots/solver_v1/run_silicon_sw_stress_fit.py",
+      "bytes": 12260,
+      "sha256": "16f31e8d321c433e8cefe2852633243d857badf5032e43d8e59c07a2d0c211cd",
+      "git_blob_sha1": "df99acb14620225be59ad689816bb1e547a3c6b0"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/source_snapshots/solver_v1/silicon_sw_phonon.py",
+      "bytes": 2354,
+      "sha256": "5a8fc4315952ecd0836b0bb74d31b8dde62b697741e337c85e4a184f50bb567e",
+      "git_blob_sha1": "1466b39e3fd91c2fdbd36e153f136541c706dcc5"
+    },
+    {
+      "path": "raw_runs/angular_boundary_fit_results/summary.json",
+      "bytes": 379,
+      "sha256": "141dec33a8201f47c6a7628144a0a887ba714b4efd67b16b4709d7cdb5117dd3",
+      "git_blob_sha1": "abf953e088ea1bc25a7c02a624331023dcb83efd"
+    },
+    {
+      "path": "raw_runs/angular_boundary_preflight_results/admissible_profiles.json",
+      "bytes": 42581,
+      "sha256": "baa34d1fcb0e06313b618bd59c5a7b8da5c65f296edac3fd9282b4b4e5d31351",
+      "git_blob_sha1": "258b91372c1f5a3f28c2cd9342336c7365a5d900"
+    },
+    {
+      "path": "raw_runs/angular_boundary_preflight_results/cosine_scan.json",
+      "bytes": 69090,
+      "sha256": "9e9263f193bbf74a9f14e8542263074f0cd0f69b51a30357473bbdc1b0919255",
+      "git_blob_sha1": "2e20ebac3e12930561462cf685691d1de9c287cd"
+    },
+    {
+      "path": "raw_runs/angular_boundary_preflight_results/protocol.json",
+      "bytes": 900,
+      "sha256": "ea25a34db857ac8fe5208bc28d60fd19fca004235883d57ade5563e6cba70341",
+      "git_blob_sha1": "ba39b26809d65ba72c4b826f6adb35a798ab6665"
+    },
+    {
+      "path": "raw_runs/angular_boundary_preflight_results/source_manifest.json",
+      "bytes": 729,
+      "sha256": "94f6ee7b88e0828502b1db086db88f3e77e3b763332060a423428f3201d403f5",
+      "git_blob_sha1": "e9fb45f9792d12766fd64298aa9376307a69d09a"
+    },
+    {
+      "path": "raw_runs/angular_boundary_preflight_results/source_snapshots/solver_v1/run_silicon_sw_angle_preference.py",
+      "bytes": 5944,
+      "sha256": "b6dfe46dd80651a6eef0a336ed79225a01c1ff60dc22b7bab18ff762096b4bdd",
+      "git_blob_sha1": "1e76e44242d1b31c8c792fe17c97acf4f330dc75"
+    },
+    {
+      "path": "raw_runs/angular_boundary_preflight_results/source_snapshots/solver_v1/run_silicon_sw_extended_bulk.py",
+      "bytes": 6245,
+      "sha256": "8b4ff6e6cf2b1db6cac6b1e685429698ac1e1fcf29469180f28fde114a20bfd6",
+      "git_blob_sha1": "ab03514bbe307d7da8c119d7c610e17473a815f7"
+    },
+    {
+      "path": "raw_runs/angular_boundary_preflight_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/angular_boundary_preflight_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/angular_boundary_preflight_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/angular_boundary_preflight_results/summary.json",
+      "bytes": 330,
+      "sha256": "c498b7c0d60407d1d3c840a29762c68d75e9de99520689076cc181eed148b820",
+      "git_blob_sha1": "fb50eabca5647fc77541339a33f70a4f408767e8"
+    },
+    {
+      "path": "raw_runs/angular_continuum_corrected_results/profiles.json",
+      "bytes": 12509,
+      "sha256": "9a7c239d02e99eca7608925899f55160fbcf490885f3b7e282a0b60d51e2788d",
+      "git_blob_sha1": "bfdd211c5a583e9bef4fec7a2149b8de70f3237c"
+    },
+    {
+      "path": "raw_runs/angular_continuum_corrected_results/quadratic_design_identity.json",
+      "bytes": 2181,
+      "sha256": "9428034b1b31a61ef25a9000adfe45a3cb20c4f800a39ca42b0ba566cb5ff33b",
+      "git_blob_sha1": "aabf97ce4e926aace94dd63f71a9c25dccf18381"
+    },
+    {
+      "path": "raw_runs/angular_continuum_corrected_results/selected_fit.json",
+      "bytes": 866,
+      "sha256": "aa2a928d0b6ed347119ad3c9d6636b8fb6fac2d9cf5d9ce3d045bed7229a35f8",
+      "git_blob_sha1": "e2de8890662198e303536b6e3f7372c9011e990d"
+    },
+    {
+      "path": "raw_runs/angular_continuum_corrected_results/source_manifest.json",
+      "bytes": 154,
+      "sha256": "30981dee9dfd91dcde1251690406029361cd3006ddb3af59a6353d33473ec9c7",
+      "git_blob_sha1": "769da06af46517490e837e4f9516b30acf83db8d"
+    },
+    {
+      "path": "raw_runs/angular_continuum_corrected_results/source_snapshots/solver_v1/run_silicon_sw_angular_continuum.py",
+      "bytes": 7064,
+      "sha256": "a914da2ca1bedf9c5447f265251ce1f09b92def550932f89f2ee2a1788a19e75",
+      "git_blob_sha1": "7d536f99e810ca70ae7d39a73682b652cb13998e"
+    },
+    {
+      "path": "raw_runs/angular_continuum_corrected_results/summary.json",
+      "bytes": 537,
+      "sha256": "cf5a1c09bd0d4319c1edfd404558751afb22ab833218fc4bdc4f93d2abc71e6a",
+      "git_blob_sha1": "9131b897f366d84d14639817eff8c8bbb0cf12c5"
+    },
+    {
+      "path": "raw_runs/angular_continuum_results/profiles.json",
+      "bytes": 12511,
+      "sha256": "96de00afcbea27566590eb6d1793fb25f76b1eac600456bf1e1110a6d3dbadc9",
+      "git_blob_sha1": "29ca3b0d9d74f891c3b2c62cc9e8c7435dd90b5c"
+    },
+    {
+      "path": "raw_runs/angular_continuum_results/quadratic_design_identity.json",
+      "bytes": 1195,
+      "sha256": "f8b7655bdc5a438ad9ce6f42e1e4c4c26c8db590b5dd139ea39f0c340d458406",
+      "git_blob_sha1": "1fe5fa17fee69f43f2227165dcce5030991590de"
+    },
+    {
+      "path": "raw_runs/angular_continuum_results/selected_fit.json",
+      "bytes": 866,
+      "sha256": "72f6c064f88233cc079abfaa8924d404dc5d2d7b313069e5dbf96069a1b01c05",
+      "git_blob_sha1": "754e0b9f1178718942dd21934a9dcf579830f609"
+    },
+    {
+      "path": "raw_runs/angular_continuum_results/source_manifest.json",
+      "bytes": 154,
+      "sha256": "69916e228dbb014a61b183a90ca4d6bd8f4d52e225e8013e30b12d62540c81d2",
+      "git_blob_sha1": "27c3fcb6d8acb2d4bd0c50ebd3cd357c2f5c8687"
+    },
+    {
+      "path": "raw_runs/angular_continuum_results/source_snapshots/solver_v1/run_silicon_sw_angular_continuum.py",
+      "bytes": 6396,
+      "sha256": "fd62775baca5a5420a05b5f9214628b54057d12d17fd4ed4b8c8f888cfb9c5a6",
+      "git_blob_sha1": "4b202214d811690188620c217e13e90aa8498e01"
+    },
+    {
+      "path": "raw_runs/angular_continuum_results/summary.json",
+      "bytes": 538,
+      "sha256": "966bcc49a4ce02c915c487b59bac5bbb5db70f40fe5a9cd4cd2b497efe9272c7",
+      "git_blob_sha1": "704ca26e1fffbde94687faecc3147ff455034abb"
+    },
+    {
+      "path": "raw_runs/angular_results/bessel_audit.json",
+      "bytes": 8967,
+      "sha256": "1c418cab23c05b14a507322607c872bac505057ed19f9194b2ebebee79444a8e",
+      "git_blob_sha1": "5f78d40cfd299d23b1dfe686678e31025c936cdb"
+    },
+    {
+      "path": "raw_runs/angular_results/bulk_anchor_preservation.json",
+      "bytes": 1616,
+      "sha256": "f63b64e78d45e620d6d3a8db9cdba2d9f92c57c6124dab10b4be81c7095c2a1e",
+      "git_blob_sha1": "d90b21e86f710a050a671079bf7c4c33d0af64e3"
+    },
+    {
+      "path": "raw_runs/angular_results/frame_metrics.json",
+      "bytes": 548684,
+      "sha256": "de406bf51f8e207f43e8057b5fbe1713e7dce25a16ad4406c97826fb808b8605",
+      "git_blob_sha1": "b9cccb8aaa4b4b96848581ac86a3a4b8dc970852"
+    },
+    {
+      "path": "raw_runs/angular_results/group_metrics.json",
+      "bytes": 7054,
+      "sha256": "c42e918922ea6ee00b35c3f9564afdabeea11a4782589dfe77eacf7b817444bf",
+      "git_blob_sha1": "4d9a3a1cb4d7f11353021e62975bd868279289bf"
+    },
+    {
+      "path": "raw_runs/angular_results/lowest_unrestricted_diagnostic.json",
+      "bytes": 1673,
+      "sha256": "185a5778d73188bdbf0ce0fd894dbc8e782f0757f64f982132cfea5f4b44af1f",
+      "git_blob_sha1": "cbd6c6346c4eedb76731f9fbf6b6fe51ec62f17d"
+    },
+    {
+      "path": "raw_runs/angular_results/profiles.json",
+      "bytes": 114812,
+      "sha256": "77486b3d5b950d8299bfe53d60a00f44fe0c2f99e58c5179923910037921856f",
+      "git_blob_sha1": "dfa715601bc46a7b6497466d2392982c8402d2c2"
+    },
+    {
+      "path": "raw_runs/angular_results/protocol.json",
+      "bytes": 1230,
+      "sha256": "c85775239b952d508a5e73bbcb429f114d5d4cde529f285ee280f0cfdb0086df",
+      "git_blob_sha1": "10d5251b9df80ba6f05ad9b310146cede43942f6"
+    },
+    {
+      "path": "raw_runs/angular_results/selected_fit.json",
+      "bytes": 1672,
+      "sha256": "f2d6da6ba89e60d22be3cfaa814ac603f79a6398970f492386f1af5fe60be353",
+      "git_blob_sha1": "dadaab872c5d505a45090655f5fe8bb4d76920f6"
+    },
+    {
+      "path": "raw_runs/angular_results/source_manifest.json",
+      "bytes": 1154,
+      "sha256": "406dd3ab91b155c9dafb3d7a03f890741f14a34acaa227a2bd489081c79aaf63",
+      "git_blob_sha1": "8065900977f4bbe4565c8b83545fca43e0ebb16a"
+    },
+    {
+      "path": "raw_runs/angular_results/source_snapshots/solver_v1/run_silicon_sw_angular_fit.py",
+      "bytes": 12365,
+      "sha256": "ee90ffe95d80e881bb79ae491ab79588b33f5bc755940511ffa415d7a7660d06",
+      "git_blob_sha1": "d8f22271d7c6b9bf4007e194be7a8674eacc2fdb"
+    },
+    {
+      "path": "raw_runs/angular_results/source_snapshots/solver_v1/run_silicon_sw_guarded_fit.py",
+      "bytes": 11027,
+      "sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+      "git_blob_sha1": "a0b289cdb6e6160d27f6bac3885546dff2ff3572"
+    },
+    {
+      "path": "raw_runs/angular_results/source_snapshots/solver_v1/run_silicon_sw_stress_fit.py",
+      "bytes": 12260,
+      "sha256": "16f31e8d321c433e8cefe2852633243d857badf5032e43d8e59c07a2d0c211cd",
+      "git_blob_sha1": "df99acb14620225be59ad689816bb1e547a3c6b0"
+    },
+    {
+      "path": "raw_runs/angular_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/angular_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/angular_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/angular_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/angular_results/source_snapshots/solver_v1/test_silicon_sw_anharmonic.py",
+      "bytes": 5397,
+      "sha256": "31e9df075ac9b1a763c25336be9d58f7490127fe4051f2fdef76b6d973fcaab2",
+      "git_blob_sha1": "6787716d4fc7501ee81fa6d978f48620e405cb0e"
+    },
+    {
+      "path": "raw_runs/angular_results/summary.json",
+      "bytes": 575,
+      "sha256": "00a33b3a7d276c7affbc495364c21e5941eb9976bc98b72a7df476b4b8288985",
+      "git_blob_sha1": "a5f9d3b6d03e4e9fa3f86813d679eee60e47d2eb"
+    },
+    {
+      "path": "raw_runs/angular_shape_recovery_results/source_manifest.json",
+      "bytes": 159,
+      "sha256": "37dce4d6110a07004bbfce9deec6a4ed1d7905e0860037e5020f9d6e2fa4182a",
+      "git_blob_sha1": "c21175224dc08ef9f40c59eeedf2743b4c76bb12"
+    },
+    {
+      "path": "raw_runs/angular_shape_recovery_results/source_snapshots/solver_v1/run_silicon_sw_angular_shape_recovery.py",
+      "bytes": 6864,
+      "sha256": "62e1d43493d91955f8ccc4e1558d9a2abcaa8ea0d4d24bce06e95a7bf8e37061",
+      "git_blob_sha1": "addc3c26a2f00ceb3cdb28e565ad6c4637b1e67d"
+    },
+    {
+      "path": "raw_runs/angular_shape_recovery_results/summary.json",
+      "bytes": 1016,
+      "sha256": "3876a2da4f9c3376ffc2def3fad931c174ca09578506e59ff03c898b65822ab1",
+      "git_blob_sha1": "72b8b5e4ed25951984f9dc07baa3b6b8d28570d1"
+    },
+    {
+      "path": "raw_runs/angular_shape_recovery_results/verified_profiles.json",
+      "bytes": 951,
+      "sha256": "e33c2acf344724c8a8260eb288ac6d87cbf9800a288855e7507f56119a578ecc",
+      "git_blob_sha1": "9956469caf7f035376b0747b2c98602a09ecc01d"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/bessel_audit.json",
+      "bytes": 9017,
+      "sha256": "7055e8aa8d4064e295c9a0928d775e2f68f9eab98fe91834329133db9e21671f",
+      "git_blob_sha1": "ad9accd4b7d6bfa9e52983cf0d338486e51f2191"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/frame_metrics.json",
+      "bytes": 548937,
+      "sha256": "f671f58517f6a1e3864554ca21024998c9030c06a201ec63e18dc02373e75537",
+      "git_blob_sha1": "6a71e685916d578db5dc7420209f827d66a47971"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/group_metrics.json",
+      "bytes": 7047,
+      "sha256": "1bedb74a07549f9e5e4b9c2aec1b7f50351344a1aafa949cf1992ce795171023",
+      "git_blob_sha1": "4750e194a9dc09523ae4a869f9f4c1cc0d0b6431"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/input_bindings.json",
+      "bytes": 474,
+      "sha256": "b3e25c6c8dc5c816c60fb9a71d664e85b0a3a5f77344e8502fd928657921681c",
+      "git_blob_sha1": "930bfc64971e6720c939839c907fbaecf0f65c07"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/profiles.json",
+      "bytes": 172938,
+      "sha256": "e630fef78197cc67a6db6100761967723ed88cf13a8a0717e79d96b0a0f2835a",
+      "git_blob_sha1": "6ead3bcebaca28b3a6b80df623c4dc57acebcbd6"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/protocol.json",
+      "bytes": 1045,
+      "sha256": "0401c91b6bd03bd2286fd697b95a7c8c1779767b295f64acc64d55a54b2ea1b1",
+      "git_blob_sha1": "00e621dc2dcbc18eac97a8b22d9833f6bfc26cb2"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/selected_fit.json",
+      "bytes": 5109,
+      "sha256": "2f4ba82f8da625c28e671b6a667eb22284b3605d0973f7facd6d272ee0e594b5",
+      "git_blob_sha1": "3c5e3605f00149f1f64c35b168f93d91b09e01bc"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/selection_lock.json",
+      "bytes": 187,
+      "sha256": "4771933e9d313421551fa87ab7b138b811db5123e8672a7896449795c22afbb1",
+      "git_blob_sha1": "43f3537da0bcf704872fc1bbd8f0c4c42cc7ca94"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/source_manifest.json",
+      "bytes": 1456,
+      "sha256": "719573892fc3d15e3fcb838c63e777cb8ca7a1e7ffcf6163cd62c725c7692aee",
+      "git_blob_sha1": "33be57f6455f2bc6f45b2256fe5c4c1a8780fcd6"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/source_snapshots/solver_v1/run_silicon_sw_angular_continuum.py",
+      "bytes": 7064,
+      "sha256": "a914da2ca1bedf9c5447f265251ce1f09b92def550932f89f2ee2a1788a19e75",
+      "git_blob_sha1": "7d536f99e810ca70ae7d39a73682b652cb13998e"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/source_snapshots/solver_v1/run_silicon_sw_angular_shape.py",
+      "bytes": 14653,
+      "sha256": "b62b293ff14f3f11c65cd3324d710aa8d9d5b9f40f5fb9d781de986004749063",
+      "git_blob_sha1": "b7812543983a2816267e7678b956be3ea3a6b43b"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/source_snapshots/solver_v1/run_silicon_sw_elastic_anchor.py",
+      "bytes": 13507,
+      "sha256": "828a05ded8a485a32cf17d9918757bc3b05c7dc1a1c95352241eee6bed6ad582",
+      "git_blob_sha1": "88abbf4b8b4a0a9c2719a18417177ea0443f2c83"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/source_snapshots/solver_v1/run_silicon_sw_guarded_fit.py",
+      "bytes": 11027,
+      "sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+      "git_blob_sha1": "a0b289cdb6e6160d27f6bac3885546dff2ff3572"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/source_snapshots/solver_v1/run_silicon_sw_material_fit.py",
+      "bytes": 12763,
+      "sha256": "fd30ec7331caf05c6eb209cd7668800cec688b66c9ce5ceba39ae9c4e6e38017",
+      "git_blob_sha1": "9d63914425318ded76c05681e7d0468f8f789780"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/source_snapshots/solver_v1/run_silicon_sw_stress_fit.py",
+      "bytes": 12260,
+      "sha256": "16f31e8d321c433e8cefe2852633243d857badf5032e43d8e59c07a2d0c211cd",
+      "git_blob_sha1": "df99acb14620225be59ad689816bb1e547a3c6b0"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/angular_shape_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/anharmonic_first_test_failure/failed_test_source.py",
+      "bytes": 5017,
+      "sha256": "ca005f012dffde302e7a121e7783c0f48c54b798d0b25679edd2c4a4aac7b308",
+      "git_blob_sha1": "54a63c5dc6689642d57d8af3b589eff3e0383efc"
+    },
+    {
+      "path": "raw_runs/coordination_results/bessel_audit.json",
+      "bytes": 9016,
+      "sha256": "cb4fa8820ee67c53e71e39bba76cb0f001539d7c407377fbe5ecd2da69741e58",
+      "git_blob_sha1": "133a6ba4d015084ed5fc82cac68d94592d1cc141"
+    },
+    {
+      "path": "raw_runs/coordination_results/bulk_anchor_preservation.json",
+      "bytes": 1591,
+      "sha256": "ba9857ed2b6ffd3278521c6cb1e0b5fdf6842f56ccad5e0e1e50c007ce602ee3",
+      "git_blob_sha1": "8e299387bd3e55988852c142e03666b61af68514"
+    },
+    {
+      "path": "raw_runs/coordination_results/frame_metrics.json",
+      "bytes": 548441,
+      "sha256": "0e7a310bc3b393198eec945c2d7d08ca782eebca9645eef39e3e33cba3aee7ee",
+      "git_blob_sha1": "5a37314d4da6e8fb93f100bdcb16cbb646bd6d68"
+    },
+    {
+      "path": "raw_runs/coordination_results/group_metrics.json",
+      "bytes": 7048,
+      "sha256": "38e3ad617bd86b1cd8e61d9d010198022997e88906a3bfc56870b66d1bdf7f2e",
+      "git_blob_sha1": "1e577596b1a2944c62862ed4ea26b4173e23f73f"
+    },
+    {
+      "path": "raw_runs/coordination_results/lowest_unrestricted_diagnostic.json",
+      "bytes": 1090,
+      "sha256": "2c2caaf55ee003f359b659c859089c5b5e1b2f5d90933a2bf6855a0f0a6f6008",
+      "git_blob_sha1": "62b580e76d70ccb45c1423e007f454e6bb83d71e"
+    },
+    {
+      "path": "raw_runs/coordination_results/profiles.json",
+      "bytes": 53075,
+      "sha256": "1d0ae4a6f810a0c062e1565148e33dbbeeeb46d3a534ef3549a441670838f91b",
+      "git_blob_sha1": "101b719fb1641e25feb8d71e43a3124b2ca187a9"
+    },
+    {
+      "path": "raw_runs/coordination_results/protocol.json",
+      "bytes": 1406,
+      "sha256": "df64490f980e3c851c22b903eab3500821609f78d15a819e2ded50ef6558af62",
+      "git_blob_sha1": "468363adce4d00402019398773273ca4dc43a1d7"
+    },
+    {
+      "path": "raw_runs/coordination_results/selected_fit.json",
+      "bytes": 1090,
+      "sha256": "2c2caaf55ee003f359b659c859089c5b5e1b2f5d90933a2bf6855a0f0a6f6008",
+      "git_blob_sha1": "62b580e76d70ccb45c1423e007f454e6bb83d71e"
+    },
+    {
+      "path": "raw_runs/coordination_results/source_manifest.json",
+      "bytes": 1168,
+      "sha256": "4821ec9d319f5d57f4deea2ce994b9763ccfd7d75d82975d799625cfea158aa2",
+      "git_blob_sha1": "a930fe98f33c66b651597d66bdd5a7ed92b48f1b"
+    },
+    {
+      "path": "raw_runs/coordination_results/source_snapshots/solver_v1/run_silicon_sw_density_fit.py",
+      "bytes": 12983,
+      "sha256": "d09bfbbc8751c2eac0de03c1bc8833ed2cc1c68e7426db25b6b303b6c40df297",
+      "git_blob_sha1": "5fc4628d5624c5586a538a4bbbfb5894e1bf4a89"
+    },
+    {
+      "path": "raw_runs/coordination_results/source_snapshots/solver_v1/run_silicon_sw_guarded_fit.py",
+      "bytes": 11027,
+      "sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+      "git_blob_sha1": "a0b289cdb6e6160d27f6bac3885546dff2ff3572"
+    },
+    {
+      "path": "raw_runs/coordination_results/source_snapshots/solver_v1/run_silicon_sw_stress_fit.py",
+      "bytes": 12260,
+      "sha256": "16f31e8d321c433e8cefe2852633243d857badf5032e43d8e59c07a2d0c211cd",
+      "git_blob_sha1": "df99acb14620225be59ad689816bb1e547a3c6b0"
+    },
+    {
+      "path": "raw_runs/coordination_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/coordination_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/coordination_results/source_snapshots/solver_v1/silicon_sw_density_screening.py",
+      "bytes": 8372,
+      "sha256": "0d7ce92f78d7623c205d8e6f1a09dc473746feeb1d57345b022b579f363de45e",
+      "git_blob_sha1": "35302d7e1b5be0d6294c94733ee8c2ef603d8365"
+    },
+    {
+      "path": "raw_runs/coordination_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 14500,
+      "sha256": "c1e1215f6975a6972562d7de9ea561dd8198aebb41aadc204e5cf86e222449ab",
+      "git_blob_sha1": "9507108060571018b12c1a69925c13904651e55f"
+    },
+    {
+      "path": "raw_runs/coordination_results/source_snapshots/solver_v1/test_silicon_sw_density_screening.py",
+      "bytes": 4329,
+      "sha256": "6c5d3b21e467179fd4a643618c4b83415fdfe079b64ebd5807912cd9f44ff15c",
+      "git_blob_sha1": "b4425ec1667efae71f8a59881bab1a5eb1a964f7"
+    },
+    {
+      "path": "raw_runs/coordination_results/summary.json",
+      "bytes": 502,
+      "sha256": "e426d61abe92d73530ccbdcbf6164f6edb3e3962929099fb550de21d3255f585",
+      "git_blob_sha1": "a79a278e8b098ddba53332cdb69bf3a1d40a38c7"
+    },
+    {
+      "path": "raw_runs/density_results/bessel_audit.json",
+      "bytes": 9016,
+      "sha256": "cb4fa8820ee67c53e71e39bba76cb0f001539d7c407377fbe5ecd2da69741e58",
+      "git_blob_sha1": "133a6ba4d015084ed5fc82cac68d94592d1cc141"
+    },
+    {
+      "path": "raw_runs/density_results/bulk_anchor_preservation.json",
+      "bytes": 1591,
+      "sha256": "ba9857ed2b6ffd3278521c6cb1e0b5fdf6842f56ccad5e0e1e50c007ce602ee3",
+      "git_blob_sha1": "8e299387bd3e55988852c142e03666b61af68514"
+    },
+    {
+      "path": "raw_runs/density_results/frame_metrics.json",
+      "bytes": 548441,
+      "sha256": "0e7a310bc3b393198eec945c2d7d08ca782eebca9645eef39e3e33cba3aee7ee",
+      "git_blob_sha1": "5a37314d4da6e8fb93f100bdcb16cbb646bd6d68"
+    },
+    {
+      "path": "raw_runs/density_results/group_metrics.json",
+      "bytes": 7048,
+      "sha256": "38e3ad617bd86b1cd8e61d9d010198022997e88906a3bfc56870b66d1bdf7f2e",
+      "git_blob_sha1": "1e577596b1a2944c62862ed4ea26b4173e23f73f"
+    },
+    {
+      "path": "raw_runs/density_results/lowest_unrestricted_diagnostic.json",
+      "bytes": 1066,
+      "sha256": "5b4d808be1bc8eba472eed8a063cecaabbd0c0c171b0bfbd77d26dbd38df88cc",
+      "git_blob_sha1": "8fcd9c8eebf439f2bf61b6636f718de18e9ed7b5"
+    },
+    {
+      "path": "raw_runs/density_results/profiles.json",
+      "bytes": 51904,
+      "sha256": "c331e947fc9a40e7a4661d02dfde3154506acf11fe4b85915774b760cb8719a8",
+      "git_blob_sha1": "7090bc4e94db110227b00ddb299dfb446eca60c0"
+    },
+    {
+      "path": "raw_runs/density_results/protocol.json",
+      "bytes": 1268,
+      "sha256": "ffd1da8a21f6d33127b51212a795fed677d95aeb223aa139e476f780110e8f60",
+      "git_blob_sha1": "458fd3079b80a3ea4882cb7fd0357ede9abe70c8"
+    },
+    {
+      "path": "raw_runs/density_results/selected_fit.json",
+      "bytes": 1066,
+      "sha256": "5b4d808be1bc8eba472eed8a063cecaabbd0c0c171b0bfbd77d26dbd38df88cc",
+      "git_blob_sha1": "8fcd9c8eebf439f2bf61b6636f718de18e9ed7b5"
+    },
+    {
+      "path": "raw_runs/density_results/source_manifest.json",
+      "bytes": 1168,
+      "sha256": "493480827d6cd3b245f0f50a37ff3e2f7f1cee52621ff91c8b863ef3d460e949",
+      "git_blob_sha1": "02f27dc7583250935ecaaa403608687b9cd26b9c"
+    },
+    {
+      "path": "raw_runs/density_results/source_snapshots/solver_v1/run_silicon_sw_density_fit.py",
+      "bytes": 12525,
+      "sha256": "6001c4c2733a5558c83c9757f4ca114571212f981554ef6bfe8dd68246a5fb90",
+      "git_blob_sha1": "6d3bcd0f793d0ebaa66ad6d92e5374fb2151d298"
+    },
+    {
+      "path": "raw_runs/density_results/source_snapshots/solver_v1/run_silicon_sw_guarded_fit.py",
+      "bytes": 11027,
+      "sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+      "git_blob_sha1": "a0b289cdb6e6160d27f6bac3885546dff2ff3572"
+    },
+    {
+      "path": "raw_runs/density_results/source_snapshots/solver_v1/run_silicon_sw_stress_fit.py",
+      "bytes": 12260,
+      "sha256": "16f31e8d321c433e8cefe2852633243d857badf5032e43d8e59c07a2d0c211cd",
+      "git_blob_sha1": "df99acb14620225be59ad689816bb1e547a3c6b0"
+    },
+    {
+      "path": "raw_runs/density_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/density_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/density_results/source_snapshots/solver_v1/silicon_sw_density_screening.py",
+      "bytes": 6560,
+      "sha256": "a8d0d55e9021d2de2029389792413c817e2eb36b2194d68714e8652dcea5b273",
+      "git_blob_sha1": "4f6eb000b89a24eb7f0da51c3b3455367f84accc"
+    },
+    {
+      "path": "raw_runs/density_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 14328,
+      "sha256": "22c03b8269d9240ab8463289bff9247454ec1fd7ffc84fe2cef4ac629c820673",
+      "git_blob_sha1": "a4b6b8a5d9f683e29943cf8a9fe50f340a0fdf91"
+    },
+    {
+      "path": "raw_runs/density_results/source_snapshots/solver_v1/test_silicon_sw_density_screening.py",
+      "bytes": 3674,
+      "sha256": "80ca00cc290235c1af35ac15c844c467a757040dbec6b8720c50d0598ece76dc",
+      "git_blob_sha1": "26fffe231389a281388b2b3686ebb21c1c2b1123"
+    },
+    {
+      "path": "raw_runs/density_results/summary.json",
+      "bytes": 501,
+      "sha256": "33f12a359c2d5b890f7545f301788e12391f182780806312200c319d27cdfd7e",
+      "git_blob_sha1": "69dcc2a548ed9ee292458094790dc24bedbf5076"
+    },
+    {
+      "path": "raw_runs/dual_repair_results/calculation_fit_source.py",
+      "bytes": 12116,
+      "sha256": "e82a3281e3f8de06a7c4bf38d98a4a04455ef33da88672f2c8b3f8938a9628b2",
+      "git_blob_sha1": "d39967d1073c5b308d5ed550c562c499cc4b96e4"
+    },
+    {
+      "path": "raw_runs/dual_repair_results/profiles.json",
+      "bytes": 6908,
+      "sha256": "0b299de5668b075595af889c1f1c81d8c47eed51e1e8a9d85544e616153fd2db",
+      "git_blob_sha1": "f74ab5a471f640fad38281f55388485d25c13dab"
+    },
+    {
+      "path": "raw_runs/dual_repair_results/source_manifest.json",
+      "bytes": 435,
+      "sha256": "dc0b236ed98a18cb72940d24fcbc3e0cb749e203a0b61a5d12e13d6a9de26a09",
+      "git_blob_sha1": "21f22f3c88bb85098b77cda0853869aeed0a86aa"
+    },
+    {
+      "path": "raw_runs/dual_repair_results/source_snapshots/repair_failed_profiles.py",
+      "bytes": 3727,
+      "sha256": "c566c8c41ffbbb84594a83e5feff6ff4d353ef5cbe86d45c8a16bc8b736990fb",
+      "git_blob_sha1": "a8b4707d3e06abd08385f07ab922526e912a114c"
+    },
+    {
+      "path": "raw_runs/dual_repair_results/source_snapshots/solver_v1/run_silicon_sw_guarded_fit.py",
+      "bytes": 11027,
+      "sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+      "git_blob_sha1": "a0b289cdb6e6160d27f6bac3885546dff2ff3572"
+    },
+    {
+      "path": "raw_runs/dual_repair_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 12116,
+      "sha256": "e82a3281e3f8de06a7c4bf38d98a4a04455ef33da88672f2c8b3f8938a9628b2",
+      "git_blob_sha1": "d39967d1073c5b308d5ed550c562c499cc4b96e4"
+    },
+    {
+      "path": "raw_runs/dual_repair_results/summary.json",
+      "bytes": 330,
+      "sha256": "836eb09392b5d1258396a44b09299cd8d0364507d3f672061770cf5f189e8a15",
+      "git_blob_sha1": "c180f02d529dc2e016caef9f728cb1f6b8a57609"
+    },
+    {
+      "path": "raw_runs/elastic_anchor_results/bessel_audit.json",
+      "bytes": 9016,
+      "sha256": "cb4fa8820ee67c53e71e39bba76cb0f001539d7c407377fbe5ecd2da69741e58",
+      "git_blob_sha1": "133a6ba4d015084ed5fc82cac68d94592d1cc141"
+    },
+    {
+      "path": "raw_runs/elastic_anchor_results/evaluation_accounting_audit.json",
+      "bytes": 575,
+      "sha256": "0bd0a77d2256414f40cc50a5b408d41d13b4893fc9a2b69c9420e51a6deaadfc",
+      "git_blob_sha1": "3534a316a0eb6782d0892603e8f70306bb277eb9"
+    },
+    {
+      "path": "raw_runs/elastic_anchor_results/frame_metrics.json",
+      "bytes": 548441,
+      "sha256": "0e7a310bc3b393198eec945c2d7d08ca782eebca9645eef39e3e33cba3aee7ee",
+      "git_blob_sha1": "5a37314d4da6e8fb93f100bdcb16cbb646bd6d68"
+    },
+    {
+      "path": "raw_runs/elastic_anchor_results/group_metrics.json",
+      "bytes": 7048,
+      "sha256": "38e3ad617bd86b1cd8e61d9d010198022997e88906a3bfc56870b66d1bdf7f2e",
+      "git_blob_sha1": "1e577596b1a2944c62862ed4ea26b4173e23f73f"
+    },
+    {
+      "path": "raw_runs/elastic_anchor_results/profiles.json",
+      "bytes": 58225,
+      "sha256": "097583c5418d70eb7606d63100b2545dd7ca6bd30861effe4ac6247f7a6ac25d",
+      "git_blob_sha1": "ae4a6526593c48dd3283852841a9d3775ade40e1"
+    },
+    {
+      "path": "raw_runs/elastic_anchor_results/protocol.json",
+      "bytes": 1438,
+      "sha256": "47e087d34d7bc83a66deaea7e7fe2cc4014b4b71f73d0dc6c0ce69cd1d60bd04",
+      "git_blob_sha1": "9c22d0da11799fce1d3681a0355c170c7f6628e0"
+    },
+    {
+      "path": "raw_runs/elastic_anchor_results/selected_fit.json",
+      "bytes": 4772,
+      "sha256": "5cd4a171ebbd519bff93cfd916d9e19ab15438d63ae775b7732b37e5d2a522ce",
+      "git_blob_sha1": "7b64a3508278f30cd9962c53f2db57f00751a000"
+    },
+    {
+      "path": "raw_runs/elastic_anchor_results/source_manifest.json",
+      "bytes": 881,
+      "sha256": "06ed81f306f9a6f920f015cb3cd26a74ed4f249b03e566a56f767c8442451709",
+      "git_blob_sha1": "b9198023feb78eed2065aa4ddb2e0295c05a0559"
+    },
+    {
+      "path": "raw_runs/elastic_anchor_results/source_snapshots/results/silicon_wafer_feasibility/source_Si.sw",
+      "bytes": 795,
+      "sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+      "git_blob_sha1": "9e7b214217a6852d116f5604cb2d8194ac31e787"
+    },
+    {
+      "path": "raw_runs/elastic_anchor_results/source_snapshots/solver_v1/run_silicon_sw_elastic_anchor.py",
+      "bytes": 13260,
+      "sha256": "f96965712ae87f0c00c5c66ddbb132cde6c6d3c8c23a1a48bada265f46aa890b",
+      "git_blob_sha1": "f79e0e3b4db0e6c58850fdd17b188836c7e8b98c"
+    },
+    {
+      "path": "raw_runs/elastic_anchor_results/source_snapshots/solver_v1/run_silicon_sw_material_fit.py",
+      "bytes": 12763,
+      "sha256": "fd30ec7331caf05c6eb209cd7668800cec688b66c9ce5ceba39ae9c4e6e38017",
+      "git_blob_sha1": "9d63914425318ded76c05681e7d0468f8f789780"
+    },
+    {
+      "path": "raw_runs/elastic_anchor_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/elastic_anchor_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/elastic_anchor_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 12973,
+      "sha256": "60092ee97b23349453a21659172d8836c0c21f319fd82b8033692a9647899034",
+      "git_blob_sha1": "b2e15a1560e94eb909e9407415aa132a71b7a0d4"
+    },
+    {
+      "path": "raw_runs/elastic_anchor_results/summary.json",
+      "bytes": 595,
+      "sha256": "ebfeaa4f1db805da1000eb63e8f5ef34d26a6cb19c19bd624fee56d84b1bf5f3",
+      "git_blob_sha1": "882e9bfdaf228d16593a87278e5865abfe8c63ff"
+    },
+    {
+      "path": "raw_runs/elastic_guard_results/linear_band_bulk_feasibility.json",
+      "bytes": 963,
+      "sha256": "28133ec5d7dce2a364490943079c2e7aa25f14aa9e69aa50b186d26d3dab0ea1",
+      "git_blob_sha1": "0f6f6b89ed3b0bce4a40fd692550c893322e95e5"
+    },
+    {
+      "path": "raw_runs/elastic_guard_results/protocol.json",
+      "bytes": 1331,
+      "sha256": "aadd422130787422775719dc0726accf961a455b81fcb5666d0d2932e01fc70b",
+      "git_blob_sha1": "ea9f6d79fa0e32a4d2a55c58bd572f28fb156cca"
+    },
+    {
+      "path": "raw_runs/elastic_guard_results/runs.json",
+      "bytes": 2748,
+      "sha256": "267857bdd9f782dfc4a14e7d5e850507a378cf1566b4e2d76d06480881a17542",
+      "git_blob_sha1": "73ad6502c79c6b3b00006659fdc67ab81e326da3"
+    },
+    {
+      "path": "raw_runs/elastic_guard_results/summary.json",
+      "bytes": 145,
+      "sha256": "17c7ce95f2ad5226ba81149e5545db12090eaccfc8c56e4bc5dfa6c36b95e5b8",
+      "git_blob_sha1": "fb31df5b35a89a2140396502acb2a4e6d47eea5a"
+    },
+    {
+      "path": "raw_runs/eos_reaudit_results/coordination_results_selection.json",
+      "bytes": 459,
+      "sha256": "51d03b675d5993f4f86c815232969d84911b6a0af5734a48ab2b387620baad96",
+      "git_blob_sha1": "b863cdded3140f125b2eaee544523e9ff6e226d7"
+    },
+    {
+      "path": "raw_runs/eos_reaudit_results/density_results_selection.json",
+      "bytes": 455,
+      "sha256": "acf460f05e85a647daf9922ec29e818d2df53d8e3085728b16fbc6138a7ef3ad",
+      "git_blob_sha1": "c43971c5e50662d66e0e500503f6bead741a3dcf"
+    },
+    {
+      "path": "raw_runs/eos_reaudit_results/prior_raw_bindings.json",
+      "bytes": 306,
+      "sha256": "cd99172035c131cc504882cce1c9a7e167acd461c8e0f0db181abdaf65a1f341",
+      "git_blob_sha1": "47e5b5d4096aa5f149bd0cab5074d82a6d42b5f7"
+    },
+    {
+      "path": "raw_runs/eos_reaudit_results/profiles.json",
+      "bytes": 90886,
+      "sha256": "354ac9145f17e1a1317877902f603d8ecad84e62af01ec8c9d5ea2ff7a19a133",
+      "git_blob_sha1": "7c8d483b4a50986ad48ba37f508e93c9b98eacc7"
+    },
+    {
+      "path": "raw_runs/eos_reaudit_results/source_manifest.json",
+      "bytes": 442,
+      "sha256": "34a59d07cd91d2b53bfcf832ca9d2ba1670c50473c53b133990b2d625c3af3b3",
+      "git_blob_sha1": "ed25bd399e87ab0fe61c14a2717d16ae5396f2ec"
+    },
+    {
+      "path": "raw_runs/eos_reaudit_results/source_snapshots/solver_v1/run_silicon_sw_eos_reaudit.py",
+      "bytes": 4197,
+      "sha256": "7dc5e9dd1d17c73f37478f2e59a4548e6374beacdc12df963bce9c7790592f16",
+      "git_blob_sha1": "b65e99a44286eebbc86b8af3188df4cd7a8a0194"
+    },
+    {
+      "path": "raw_runs/eos_reaudit_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/eos_reaudit_results/source_snapshots/solver_v1/silicon_sw_density_screening.py",
+      "bytes": 8372,
+      "sha256": "0d7ce92f78d7623c205d8e6f1a09dc473746feeb1d57345b022b579f363de45e",
+      "git_blob_sha1": "35302d7e1b5be0d6294c94733ee8c2ef603d8365"
+    },
+    {
+      "path": "raw_runs/eos_reaudit_results/summary.json",
+      "bytes": 515,
+      "sha256": "7a90f3c8a55dd4fedc704f2cef27716303ff60f2750e065417878a34af1c3958",
+      "git_blob_sha1": "550dba2323d22830970a1c94f9c20966c8ad35a0"
+    },
+    {
+      "path": "raw_runs/extended_bulk_results/admissible_profiles.json",
+      "bytes": 101129,
+      "sha256": "cf77a2799c3998a8b6ba8732163dece25655cbbc37ffadbef0a48338dfcb5d63",
+      "git_blob_sha1": "a403b62d8ba5585d52f5e512e76786f5b4f28c6f"
+    },
+    {
+      "path": "raw_runs/extended_bulk_results/profiles.json",
+      "bytes": 229961,
+      "sha256": "5f017dd1e7aae9337072f24200a9722f84875806fb9583357aa3378d6cb64d41",
+      "git_blob_sha1": "e6c34801ff28b10d6dccb0575158dcbe2188c47b"
+    },
+    {
+      "path": "raw_runs/extended_bulk_results/protocol.json",
+      "bytes": 824,
+      "sha256": "4020e8f5291315d60073b174da3ba037d3d0ca4808aacb0812d3b72ee4c8a0b9",
+      "git_blob_sha1": "e4b052f16c75fd31e877d9bd56774ee0a146b471"
+    },
+    {
+      "path": "raw_runs/extended_bulk_results/source_manifest.json",
+      "bytes": 579,
+      "sha256": "3731f8c6ebd65b6814ce86122374b284151b257baa2254fefbbf7e862c430e9c",
+      "git_blob_sha1": "6930d6a70c7360a28a114ba8c03b0386e000ce03"
+    },
+    {
+      "path": "raw_runs/extended_bulk_results/source_snapshots/solver_v1/run_silicon_sw_extended_bulk.py",
+      "bytes": 6245,
+      "sha256": "8b4ff6e6cf2b1db6cac6b1e685429698ac1e1fcf29469180f28fde114a20bfd6",
+      "git_blob_sha1": "ab03514bbe307d7da8c119d7c610e17473a815f7"
+    },
+    {
+      "path": "raw_runs/extended_bulk_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/extended_bulk_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/extended_bulk_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/extended_bulk_results/summary.json",
+      "bytes": 355,
+      "sha256": "618d3f851b39acb6f24590f0928f592632a0e9fc78dc685d96714b279e590c8a",
+      "git_blob_sha1": "f02208167a025a6240caf4f48da51750e2fc7fa7"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/bessel_audit.json",
+      "bytes": 9638,
+      "sha256": "c6e9c93ae48c8969f1ea35fa9d97a5429e17cccca997d88886c8390fe237a84e",
+      "git_blob_sha1": "78f5cb46e84f0457f8563a9bd87d273e780ed858"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/frame_metrics.json",
+      "bytes": 548411,
+      "sha256": "b8ba6f0fa7a692e1c2430d0770a6e968319314749b6bf6ea68649f0aeeaceae8",
+      "git_blob_sha1": "75af23f4a41b25e8f37a4319f8de351424196a90"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/group_metrics.json",
+      "bytes": 7056,
+      "sha256": "f29ad06a01480cdbcce24e34b84dff380236827802761bbbb18bf22a967de58a",
+      "git_blob_sha1": "5d1157261583b6146cbe28084de7693e146c1a03"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/profiles.json",
+      "bytes": 118213,
+      "sha256": "a92703af3bbce3d869509739842fcd86ed0b438cbffc0c1c5718f4873e12eab5",
+      "git_blob_sha1": "e63455c07ae790ce164572827b5cc348c7f6036f"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/protocol.json",
+      "bytes": 667,
+      "sha256": "12cde0a2969eb74629fb101a59f54a5d087e0147eff6bce22ecfef5907370bef",
+      "git_blob_sha1": "a753ba0ddd00d6fa30828f52f791ffcd7c0101e6"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/selected_fit.json",
+      "bytes": 6850,
+      "sha256": "dfb122db24b8e650a8f66749db319f5dce863c16c72139570bef3e2498faddd9",
+      "git_blob_sha1": "4ec1eed5d6c579e031d4e8e4fa0d48e5f1d4667d"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/selection_lock.json",
+      "bytes": 186,
+      "sha256": "fd495adad2df4fa5374c246c49287db498be15f901b0ba8a082326e6765b698a",
+      "git_blob_sha1": "8f576a5a7c593d3d82d5a78939823c074066f409"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/source_manifest.json",
+      "bytes": 1146,
+      "sha256": "ca1d7c4ac51680795e20d27342b4ef6015994528c2bef1f59ca9de1f486b3533",
+      "git_blob_sha1": "17186ca21d6cdbc5baee8a385278a3bde1ac1ea8"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/source_snapshots/solver_v1/run_silicon_sw_extended_fit.py",
+      "bytes": 9948,
+      "sha256": "0df26e846815de66a38edb09aecf4b316baecda6232b58445902a42eb0edecd8",
+      "git_blob_sha1": "377098ea98ec791a17bf5fdbdfc00dbc5d76eb52"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/source_snapshots/solver_v1/run_silicon_sw_guarded_fit.py",
+      "bytes": 11027,
+      "sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+      "git_blob_sha1": "a0b289cdb6e6160d27f6bac3885546dff2ff3572"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/source_snapshots/solver_v1/run_silicon_sw_stress_fit.py",
+      "bytes": 12260,
+      "sha256": "16f31e8d321c433e8cefe2852633243d857badf5032e43d8e59c07a2d0c211cd",
+      "git_blob_sha1": "df99acb14620225be59ad689816bb1e547a3c6b0"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/source_snapshots/solver_v1/silicon_sw_phonon.py",
+      "bytes": 2354,
+      "sha256": "5a8fc4315952ecd0836b0bb74d31b8dde62b697741e337c85e4a184f50bb567e",
+      "git_blob_sha1": "1466b39e3fd91c2fdbd36e153f136541c706dcc5"
+    },
+    {
+      "path": "raw_runs/extended_fit_results/summary.json",
+      "bytes": 383,
+      "sha256": "aeb13e728dfdda6088734c91d36007e7e9072460f0c4d08d727c3b39e32e2bc7",
+      "git_blob_sha1": "7103f88cd188cac44e917bda641091bb2d931ee7"
+    },
+    {
+      "path": "raw_runs/external_audit_results/frame_metrics.json",
+      "bytes": 61302,
+      "sha256": "a796ed7cfab45b78a650b59b4231bdcd4ed286d43ff095e0741121c08db6d8c8",
+      "git_blob_sha1": "7aefcbb362a7125ff478081ef5d94d864a4ec3e1"
+    },
+    {
+      "path": "raw_runs/external_audit_results/group_metrics.json",
+      "bytes": 2762,
+      "sha256": "e139af15dcc9cd18691e5b82157724c457cc4eb428bdeea0ab333f6b64b3e07e",
+      "git_blob_sha1": "58add0275712d2c2737e2736b04ccd8c84b55bd3"
+    },
+    {
+      "path": "raw_runs/external_audit_results/input_bindings.json",
+      "bytes": 344,
+      "sha256": "bd4aba09c7e752f89a94c6798bd0362abd40c91a02e56833248e68017f680d07",
+      "git_blob_sha1": "54d3dc7ca813ad1c7bf9806a072b520da53ad4c9"
+    },
+    {
+      "path": "raw_runs/external_audit_results/overlap_audit.json",
+      "bytes": 2775,
+      "sha256": "f4dcd005d2f7c9102922886c359ea12cf27109f73ba2624d1fecb2c0d1b0ab74",
+      "git_blob_sha1": "985219ea4933f9ecb51b98df87d4a544f58fe560"
+    },
+    {
+      "path": "raw_runs/external_audit_results/predictions.npz",
+      "bytes": 104507,
+      "sha256": "eaa555ac6332f90dc209c7e8e679a94125cc8f04a79426155465408a3f296556",
+      "git_blob_sha1": "23515c3305d09909558680f69c6799b2452d3909"
+    },
+    {
+      "path": "raw_runs/external_audit_results/selection_lock.json",
+      "bytes": 257,
+      "sha256": "8ce2204670d4743317d574a8b83aebb19575377ffd17508eae32d35beea0704d",
+      "git_blob_sha1": "00fe1c824f2a5a5ab5697a617befe041789ddcc5"
+    },
+    {
+      "path": "raw_runs/external_audit_results/source_manifest.json",
+      "bytes": 580,
+      "sha256": "a1b5a0243440d1a921b18d28a9e5cef4d9f17e9f7099ddc61f7c5ffd1215610a",
+      "git_blob_sha1": "6e0d22454107d090c825b253f394799dfef0e794"
+    },
+    {
+      "path": "raw_runs/external_audit_results/source_snapshots/solver_v1/run_silicon_sw_external_audit.py",
+      "bytes": 6525,
+      "sha256": "e7eb0a9b52a35aa23b40eaa2da98da5c00bd9cc6c77856edb0f4e39b71893bae",
+      "git_blob_sha1": "92990820c0029caff20e31b2e05f70317a652c10"
+    },
+    {
+      "path": "raw_runs/external_audit_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/external_audit_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/external_audit_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/external_audit_results/summary.json",
+      "bytes": 513,
+      "sha256": "c826e672ca2d2615aedaafe4e0899efcb33ea86c1d36e00df8d3adb79a5ddd0e",
+      "git_blob_sha1": "51e0559f8a9c1c35ca94fa89b9ed4cca14d119d4"
+    },
+    {
+      "path": "raw_runs/final_convergence_results/input_snapshots/branches/branch_roots.json",
+      "bytes": 6516,
+      "sha256": "e0aac4ade7161d9637c39e3fab9057dbae0c3a7ceb8df21f506716e9a8d23cbd",
+      "git_blob_sha1": "7d7551c020938a10e6a791823432a8f43b94dbd6"
+    },
+    {
+      "path": "raw_runs/final_convergence_results/input_snapshots/reference/model-CASTEP_ASE-test-bulk_diamond-properties.json",
+      "bytes": 682,
+      "sha256": "af54a2722028e71b10e45b665bcbffa66273eae945afd5743e9f620c99e5a744",
+      "git_blob_sha1": "c97fcf62afe9c71d293613c792176fb71a0ae0fb"
+    },
+    {
+      "path": "raw_runs/final_convergence_results/input_snapshots/selection/selected_fit.json",
+      "bytes": 5156,
+      "sha256": "c2056d87a1f2c2c9fc257302b41e0f9cadb7f4beb36fc5e54269efd8edfdacae",
+      "git_blob_sha1": "5faed3ef28fe4e97f9595a665e912aa33d1ce62d"
+    },
+    {
+      "path": "raw_runs/final_convergence_results/resolution_checks.json",
+      "bytes": 26228,
+      "sha256": "151258a55934c3e7744d41a07d43d49506d5e9650d9788b156c24a9bfe07e813",
+      "git_blob_sha1": "8b576305c26c5e84e22b17af86b583b516fa40c8"
+    },
+    {
+      "path": "raw_runs/final_convergence_results/source_manifest.json",
+      "bytes": 730,
+      "sha256": "facc94bc805dba962bb373ba97c3e19a499ff6dbddfe0fa17991c696f4c1f447",
+      "git_blob_sha1": "6c5ed35ce18eb21853fa2aa0973d652994ba3f6d"
+    },
+    {
+      "path": "raw_runs/final_convergence_results/source_snapshots/solver_v1/run_silicon_sw_final_convergence.py",
+      "bytes": 4132,
+      "sha256": "a3edf7b96f60168d1ca0db8ad1821adeec4caee16465a37132ad3a46ec49fbcc",
+      "git_blob_sha1": "9c765d3bbcecd738651a65d21237fddca2490af7"
+    },
+    {
+      "path": "raw_runs/final_convergence_results/source_snapshots/solver_v1/run_silicon_sw_material_fit.py",
+      "bytes": 12763,
+      "sha256": "fd30ec7331caf05c6eb209cd7668800cec688b66c9ce5ceba39ae9c4e6e38017",
+      "git_blob_sha1": "9d63914425318ded76c05681e7d0468f8f789780"
+    },
+    {
+      "path": "raw_runs/final_convergence_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/final_convergence_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/final_convergence_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/final_convergence_results/summary.json",
+      "bytes": 764,
+      "sha256": "95c481983077fe9d63134dc92b1be3aea90a5f14fc32855fbcf57b45edbfaf60",
+      "git_blob_sha1": "091de716638efc032aaebc151c5e956b534b0ba7"
+    },
+    {
+      "path": "raw_runs/final_phonon_results/final_candidate.npz",
+      "bytes": 18741,
+      "sha256": "afba7c25aa7e18f805b7d841baaaf6df145b7581ccbcef7e616780942e111a24",
+      "git_blob_sha1": "01a1b4fdead1d2ffc52b298a6cf852a416817a35"
+    },
+    {
+      "path": "raw_runs/final_phonon_results/input_bindings.json",
+      "bytes": 367,
+      "sha256": "6f765ebf9867ba73d1b79a7dfbb50c11b9e6bb3da2f23e125316904471e5e7b5",
+      "git_blob_sha1": "7ffbfcf0db4a90878d3778e204524005ee992df9"
+    },
+    {
+      "path": "raw_runs/final_phonon_results/source_manifest.json",
+      "bytes": 572,
+      "sha256": "d93be8f9448482799df771928a201b8a0fc57950149c8ae7082221d692b81d4f",
+      "git_blob_sha1": "c84fbef00c889cae4613147fe612ad014a20cf1d"
+    },
+    {
+      "path": "raw_runs/final_phonon_results/source_snapshots/solver_v1/run_silicon_sw_final_phonon.py",
+      "bytes": 3037,
+      "sha256": "7463a3a968976f18f4658b45a0dcd42456a5c2c6d713ff785850282379997ef7",
+      "git_blob_sha1": "0394da6dec55254fd0b5b7070b0c271cb6085ec5"
+    },
+    {
+      "path": "raw_runs/final_phonon_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/final_phonon_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/final_phonon_results/source_snapshots/solver_v1/silicon_sw_phonon.py",
+      "bytes": 2354,
+      "sha256": "5a8fc4315952ecd0836b0bb74d31b8dde62b697741e337c85e4a184f50bb567e",
+      "git_blob_sha1": "1466b39e3fd91c2fdbd36e153f136541c706dcc5"
+    },
+    {
+      "path": "raw_runs/final_phonon_results/summary.json",
+      "bytes": 901,
+      "sha256": "c0ff5bf78fe4c4101943bf7f9cc7d6b18028378965fd45ba9c08fcf8a7360fd5",
+      "git_blob_sha1": "90b602a15c11bc037f92c3b6dbaae91747f28dde"
+    },
+    {
+      "path": "raw_runs/final_selected_convergence_results/input_snapshots/branches/branch_roots.json",
+      "bytes": 6556,
+      "sha256": "cc15ac83b1b9cb701fe7a5eda275eaa51e0ef6e507767d6a50b972b46f1f27eb",
+      "git_blob_sha1": "f48ae756dc1776018248d155dcde436c87e376f5"
+    },
+    {
+      "path": "raw_runs/final_selected_convergence_results/input_snapshots/reference/model-CASTEP_ASE-test-bulk_diamond-properties.json",
+      "bytes": 682,
+      "sha256": "af54a2722028e71b10e45b665bcbffa66273eae945afd5743e9f620c99e5a744",
+      "git_blob_sha1": "c97fcf62afe9c71d293613c792176fb71a0ae0fb"
+    },
+    {
+      "path": "raw_runs/final_selected_convergence_results/input_snapshots/selection/selected_fit.json",
+      "bytes": 5185,
+      "sha256": "af8c2e2b892216dbaec2ad140470acf92c6419f485cd5361f537c2d4cd85ece8",
+      "git_blob_sha1": "53fbf16af7c8d18db19ad1b9e95f4abd1570e0fe"
+    },
+    {
+      "path": "raw_runs/final_selected_convergence_results/resolution_checks.json",
+      "bytes": 26324,
+      "sha256": "38576db32ae75c5b1578cbcc7877e5c4f86a7455978553b14f1582bec0344857",
+      "git_blob_sha1": "84f48f0aeda718057738f4008ff15275574c9c1a"
+    },
+    {
+      "path": "raw_runs/final_selected_convergence_results/source_manifest.json",
+      "bytes": 730,
+      "sha256": "facc94bc805dba962bb373ba97c3e19a499ff6dbddfe0fa17991c696f4c1f447",
+      "git_blob_sha1": "6c5ed35ce18eb21853fa2aa0973d652994ba3f6d"
+    },
+    {
+      "path": "raw_runs/final_selected_convergence_results/source_snapshots/solver_v1/run_silicon_sw_final_convergence.py",
+      "bytes": 4132,
+      "sha256": "a3edf7b96f60168d1ca0db8ad1821adeec4caee16465a37132ad3a46ec49fbcc",
+      "git_blob_sha1": "9c765d3bbcecd738651a65d21237fddca2490af7"
+    },
+    {
+      "path": "raw_runs/final_selected_convergence_results/source_snapshots/solver_v1/run_silicon_sw_material_fit.py",
+      "bytes": 12763,
+      "sha256": "fd30ec7331caf05c6eb209cd7668800cec688b66c9ce5ceba39ae9c4e6e38017",
+      "git_blob_sha1": "9d63914425318ded76c05681e7d0468f8f789780"
+    },
+    {
+      "path": "raw_runs/final_selected_convergence_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/final_selected_convergence_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/final_selected_convergence_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/final_selected_convergence_results/summary.json",
+      "bytes": 763,
+      "sha256": "4de629528f0af005104b9236f03825955975c87cc9385e45635cedac85ac9e03",
+      "git_blob_sha1": "b2a748dbe6b37ef9c3ae2dc034cb7d8a23b128bb"
+    },
+    {
+      "path": "raw_runs/final_selected_external_results/frame_metrics.json",
+      "bytes": 61296,
+      "sha256": "9197ff7e5134a9f772cad1561f66529df67398ca6974aa5261bc3321d93e92ad",
+      "git_blob_sha1": "87c7d13dabe73e3f29690d3326e202b4c44455d9"
+    },
+    {
+      "path": "raw_runs/final_selected_external_results/group_metrics.json",
+      "bytes": 2762,
+      "sha256": "81dcd15fa6d47119c50055e147fa56964f7552d99d08572b96c07837f71a3952",
+      "git_blob_sha1": "161af6bc5e1c5c6f5376271d5cb22f622c0fc42b"
+    },
+    {
+      "path": "raw_runs/final_selected_external_results/input_bindings.json",
+      "bytes": 344,
+      "sha256": "25f553299de14eebf3a0f1ef851d5fc5de6c19aa47522509102d1b91c8be48ef",
+      "git_blob_sha1": "d6a14508978897eef627e5c572dddf4541ac4c25"
+    },
+    {
+      "path": "raw_runs/final_selected_external_results/overlap_audit.json",
+      "bytes": 2775,
+      "sha256": "f4dcd005d2f7c9102922886c359ea12cf27109f73ba2624d1fecb2c0d1b0ab74",
+      "git_blob_sha1": "985219ea4933f9ecb51b98df87d4a544f58fe560"
+    },
+    {
+      "path": "raw_runs/final_selected_external_results/predictions.npz",
+      "bytes": 104992,
+      "sha256": "10ff17c2de1e0a9ac4bcf7a1477ffeecb870da9df2b9023b387322790b1241c4",
+      "git_blob_sha1": "4957fb5cb16856a77c5557529173284cc4747ae1"
+    },
+    {
+      "path": "raw_runs/final_selected_external_results/selection_lock.json",
+      "bytes": 257,
+      "sha256": "3b06d1e7b5854d120fe4cf2083d998be3733b09af92d3baedf6dbc965d448aee",
+      "git_blob_sha1": "0ec96a805f8d5ec1c7d6e3f2efef805f140657e3"
+    },
+    {
+      "path": "raw_runs/final_selected_external_results/source_manifest.json",
+      "bytes": 580,
+      "sha256": "a1b5a0243440d1a921b18d28a9e5cef4d9f17e9f7099ddc61f7c5ffd1215610a",
+      "git_blob_sha1": "6e0d22454107d090c825b253f394799dfef0e794"
+    },
+    {
+      "path": "raw_runs/final_selected_external_results/source_snapshots/solver_v1/run_silicon_sw_external_audit.py",
+      "bytes": 6525,
+      "sha256": "e7eb0a9b52a35aa23b40eaa2da98da5c00bd9cc6c77856edb0f4e39b71893bae",
+      "git_blob_sha1": "92990820c0029caff20e31b2e05f70317a652c10"
+    },
+    {
+      "path": "raw_runs/final_selected_external_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/final_selected_external_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/final_selected_external_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/final_selected_external_results/summary.json",
+      "bytes": 513,
+      "sha256": "678d1f18ea3672ba104bd37071d1dcb4e1429004748aba4940a52f748f2622a1",
+      "git_blob_sha1": "5320ae680a8155591de85269c011d3aadf7507d3"
+    },
+    {
+      "path": "raw_runs/final_selected_finite_strain_results/fits.json",
+      "bytes": 1822,
+      "sha256": "42bcd375add866cf07d25489dcc5f508ba87525c99fdc12e5ede95efb2de4b06",
+      "git_blob_sha1": "28518c62ac8f6ec513287c884c26d35d42bccc0f"
+    },
+    {
+      "path": "raw_runs/final_selected_finite_strain_results/input_snapshots/manifest.json",
+      "bytes": 440,
+      "sha256": "9be3f112ba8947a37710e7c944a9acb45ddf5a55c161f2ade0bb85b6bbb9bf9e",
+      "git_blob_sha1": "a437be365d5ed49f7c7dc4a18cf44ead94ac5dd3"
+    },
+    {
+      "path": "raw_runs/final_selected_finite_strain_results/input_snapshots/model-CASTEP_ASE-test-bulk_diamond-properties.json",
+      "bytes": 682,
+      "sha256": "af54a2722028e71b10e45b665bcbffa66273eae945afd5743e9f620c99e5a744",
+      "git_blob_sha1": "c97fcf62afe9c71d293613c792176fb71a0ae0fb"
+    },
+    {
+      "path": "raw_runs/final_selected_finite_strain_results/input_snapshots/model-SW-test-bulk_diamond-properties.json",
+      "bytes": 699,
+      "sha256": "30eca6a894b563107b990e4bf1c44b89cadf977fd1e9e41a1ed30dcc88cc314b",
+      "git_blob_sha1": "4798240778342b5a5f464c28a0b393a9fa1cc92b"
+    },
+    {
+      "path": "raw_runs/final_selected_finite_strain_results/input_snapshots/selected_fit.json",
+      "bytes": 5185,
+      "sha256": "af8c2e2b892216dbaec2ad140470acf92c6419f485cd5361f537c2d4cd85ece8",
+      "git_blob_sha1": "53fbf16af7c8d18db19ad1b9e95f4abd1570e0fe"
+    },
+    {
+      "path": "raw_runs/final_selected_finite_strain_results/protocol.json",
+      "bytes": 923,
+      "sha256": "f9f20774b4b02060cfbd8bc43c326de04a1aadea84b5532034a39c55804567f8",
+      "git_blob_sha1": "fefdf5232080af42e4d9e10ea7295430ea71b1cc"
+    },
+    {
+      "path": "raw_runs/final_selected_finite_strain_results/source_manifest.json",
+      "bytes": 579,
+      "sha256": "99dbb75e1f385f1eeaa68329777649f3fa0dbd5fdeea0417ab05db85b0e42689",
+      "git_blob_sha1": "052dd1da4e8f4deb88fe9d03bcaafedcd610e1fd"
+    },
+    {
+      "path": "raw_runs/final_selected_finite_strain_results/source_snapshots/solver_v1/run_silicon_sw_finite_strain.py",
+      "bytes": 6369,
+      "sha256": "16ea40f9b3f70a502d8a9ca568224b7b66c01c348118b4d938d51d4d7874d986",
+      "git_blob_sha1": "cc603ad024237bc093932500de35523951f4d634"
+    },
+    {
+      "path": "raw_runs/final_selected_finite_strain_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/final_selected_finite_strain_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/final_selected_finite_strain_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/final_selected_finite_strain_results/states.json",
+      "bytes": 20251,
+      "sha256": "a08e91c988db91d50e7926b4b2263301039ba24cf3520bc99fac0a66531774db",
+      "git_blob_sha1": "e7908b70cda6e1936482b17bb6ba7d0bcaf40be7"
+    },
+    {
+      "path": "raw_runs/final_selected_finite_strain_results/summary.json",
+      "bytes": 483,
+      "sha256": "0f16bc9981b2b760f2a4577af998fc6a156fb132e189af245d050ac8599b03d6",
+      "git_blob_sha1": "986349db56a6380d424e9fc9db91487fc40002ad"
+    },
+    {
+      "path": "raw_runs/final_selected_interface_results/bessel_audit.json",
+      "bytes": 3009,
+      "sha256": "6e44315a93acc4e2ca615b920c1646245c3ca1bd36d2b0e4fc6b457cf2720b70",
+      "git_blob_sha1": "dd6deb3f5766c259bf427b2bb820a03a8a9e675a"
+    },
+    {
+      "path": "raw_runs/final_selected_interface_results/branch_roots.json",
+      "bytes": 6556,
+      "sha256": "cc15ac83b1b9cb701fe7a5eda275eaa51e0ef6e507767d6a50b972b46f1f27eb",
+      "git_blob_sha1": "f48ae756dc1776018248d155dcde436c87e376f5"
+    },
+    {
+      "path": "raw_runs/final_selected_interface_results/finite_difference_checks.json",
+      "bytes": 2213,
+      "sha256": "7a198f810249c7571298c5c88b6227bc8c7ab50e8c1b00a3d8eded4f93270cdc",
+      "git_blob_sha1": "ce88263cdbf1eb923e6e7e307e084fabcfd347d3"
+    },
+    {
+      "path": "raw_runs/final_selected_interface_results/input_snapshots/model-CASTEP_ASE-test-bulk_diamond-properties.json",
+      "bytes": 682,
+      "sha256": "af54a2722028e71b10e45b665bcbffa66273eae945afd5743e9f620c99e5a744",
+      "git_blob_sha1": "c97fcf62afe9c71d293613c792176fb71a0ae0fb"
+    },
+    {
+      "path": "raw_runs/final_selected_interface_results/input_snapshots/selected_fit.json",
+      "bytes": 5185,
+      "sha256": "af8c2e2b892216dbaec2ad140470acf92c6419f485cd5361f537c2d4cd85ece8",
+      "git_blob_sha1": "53fbf16af7c8d18db19ad1b9e95f4abd1570e0fe"
+    },
+    {
+      "path": "raw_runs/final_selected_interface_results/normal_branch.csv",
+      "bytes": 39847,
+      "sha256": "ec9ed99ac2d5eff6ede62707412318dde6097e1225512a3acaa7f16f150e0e6b",
+      "git_blob_sha1": "d28d653e49e1dc14c0b4ef2e495ca3681952e2de"
+    },
+    {
+      "path": "raw_runs/final_selected_interface_results/running.json",
+      "bytes": 89,
+      "sha256": "3da6a63e1b97acdedcafb559c374f986c3a1fccb8dff2cbfeb61a192896d7267",
+      "git_blob_sha1": "2401bc266c20c4168e3382a75bdec56a5b3115fb"
+    },
+    {
+      "path": "raw_runs/final_selected_interface_results/source_manifest.json",
+      "bytes": 728,
+      "sha256": "31cd3ef4e8c62d040687375b218e940733c56e4f2818d4a9d8b04a98be56a076",
+      "git_blob_sha1": "1a52c5ddd3504ac7602eaea8ed7d6d39d22cb323"
+    },
+    {
+      "path": "raw_runs/final_selected_interface_results/source_snapshots/solver_v1/run_silicon_sw_interface_audit.py",
+      "bytes": 8091,
+      "sha256": "8f8f39d9c38e9770e56106c71c5a6a01e690b1fa6da82bab5dbc052207bbfa23",
+      "git_blob_sha1": "75cb6223979bce1cca7b1e7ead6f455a68ea4448"
+    },
+    {
+      "path": "raw_runs/final_selected_interface_results/source_snapshots/solver_v1/run_silicon_sw_material_fit.py",
+      "bytes": 12763,
+      "sha256": "fd30ec7331caf05c6eb209cd7668800cec688b66c9ce5ceba39ae9c4e6e38017",
+      "git_blob_sha1": "9d63914425318ded76c05681e7d0468f8f789780"
+    },
+    {
+      "path": "raw_runs/final_selected_interface_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/final_selected_interface_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/final_selected_interface_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/final_selected_interface_results/summary.json",
+      "bytes": 979,
+      "sha256": "7f7569f77f266df9375707e586963ebd93f50ef3a8a863eecbc2c38f034642c7",
+      "git_blob_sha1": "5bf9a2f532f5c2de6d10d5cb00b67b226d6e9770"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_recovery_results/final_candidate.npz",
+      "bytes": 18712,
+      "sha256": "901154db41c9e3b515d86eeb110f8b37f2f3a1d7ac2e18d00b312fe10c50d2ef",
+      "git_blob_sha1": "324e00f1efa4107b0bccf0036bb014051f9a9e5d"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_recovery_results/input_bindings.json",
+      "bytes": 367,
+      "sha256": "f17b1bbc642ca8df17a658cfaf5cd83c2dca90a131b3206be9aa099d694ffcaf",
+      "git_blob_sha1": "0a2397569f389f6a1e82c941f8e8407695deb244"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_recovery_results/source_manifest.json",
+      "bytes": 572,
+      "sha256": "916fb538bdff3a29b53b7713803e71d029ee9807927141269303e6dcd8df508b",
+      "git_blob_sha1": "2d39234784c632df63695b6908d8cad1e493db62"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_recovery_results/source_snapshots/solver_v1/run_silicon_sw_final_phonon.py",
+      "bytes": 3154,
+      "sha256": "fcfe97af0bf6e852b326389f35092522a8b7bd58407c958384df40d513953ce8",
+      "git_blob_sha1": "aebd1be6af47c42f143fac605d27725ebaaa25a1"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_recovery_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_recovery_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_recovery_results/source_snapshots/solver_v1/silicon_sw_phonon.py",
+      "bytes": 2354,
+      "sha256": "5a8fc4315952ecd0836b0bb74d31b8dde62b697741e337c85e4a184f50bb567e",
+      "git_blob_sha1": "1466b39e3fd91c2fdbd36e153f136541c706dcc5"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_recovery_results/summary.json",
+      "bytes": 934,
+      "sha256": "ed084dfb50addfa011db58ac0cdcf4d27b20fb7b11c2bc8d506ce7d4a131b158",
+      "git_blob_sha1": "60abf57c43d04de70810d0e51dae0f116d79e316"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_results/failure.json",
+      "bytes": 266,
+      "sha256": "7015c78a8aaafdeccf92157d03e5ef96076ed3e2a46079565a07f4ed2e27897b",
+      "git_blob_sha1": "1c5dbbc0958e98072b6b46395978d0fa0629d540"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_results/source_manifest.json",
+      "bytes": 572,
+      "sha256": "916fb538bdff3a29b53b7713803e71d029ee9807927141269303e6dcd8df508b",
+      "git_blob_sha1": "2d39234784c632df63695b6908d8cad1e493db62"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_results/source_snapshots/solver_v1/run_silicon_sw_final_phonon.py",
+      "bytes": 3154,
+      "sha256": "fcfe97af0bf6e852b326389f35092522a8b7bd58407c958384df40d513953ce8",
+      "git_blob_sha1": "aebd1be6af47c42f143fac605d27725ebaaa25a1"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/final_selected_phonon_results/source_snapshots/solver_v1/silicon_sw_phonon.py",
+      "bytes": 2354,
+      "sha256": "5a8fc4315952ecd0836b0bb74d31b8dde62b697741e337c85e4a184f50bb567e",
+      "git_blob_sha1": "1466b39e3fd91c2fdbd36e153f136541c706dcc5"
+    },
+    {
+      "path": "raw_runs/final_selection_sources/initial_failure.json",
+      "bytes": 279,
+      "sha256": "4ad5d1b095a3b482ddd073e8ff6929d7748a35707b100c0175d6fb2c747e5021",
+      "git_blob_sha1": "4dfca850eda31112e8ba3575538a6b672a68814f"
+    },
+    {
+      "path": "raw_runs/final_selection_sources/initial_failure/select_final_shape.py",
+      "bytes": 2993,
+      "sha256": "cbc9757fb703bc0e0923ccc167df4c4b876ce2ddd1ce920a0fddf6a61cfdf77e",
+      "git_blob_sha1": "a24989818d3fffafbf6bd9ce49e673ac73272e01"
+    },
+    {
+      "path": "raw_runs/final_selection_sources/source_manifest.json",
+      "bytes": 134,
+      "sha256": "157fab386b64f73942054df16d92f74223f4bd94dcdf7a59485bc83a46bd356b",
+      "git_blob_sha1": "975c64e4ac93dc428e187279a6bc572cbe9e233f"
+    },
+    {
+      "path": "raw_runs/final_selection_sources/source_snapshots/select_final_shape.py",
+      "bytes": 2996,
+      "sha256": "a0b4c0146249581977e2db45e11a1abd0e15556fdaf419b79a9202def2a6f62c",
+      "git_blob_sha1": "a4b0d95024128317f0511bd32a13a6c329aaa711"
+    },
+    {
+      "path": "raw_runs/finite_strain_results/fits.json",
+      "bytes": 3700,
+      "sha256": "b9cbb6972bf6bc6d42c37f1b1cc451340017761485d8e46c790e1248b6512583",
+      "git_blob_sha1": "be7574feb1d17d9e6ec11a2a429c2676bf193a78"
+    },
+    {
+      "path": "raw_runs/finite_strain_results/input_snapshots/manifest.json",
+      "bytes": 440,
+      "sha256": "9be3f112ba8947a37710e7c944a9acb45ddf5a55c161f2ade0bb85b6bbb9bf9e",
+      "git_blob_sha1": "a437be365d5ed49f7c7dc4a18cf44ead94ac5dd3"
+    },
+    {
+      "path": "raw_runs/finite_strain_results/input_snapshots/model-CASTEP_ASE-test-bulk_diamond-properties.json",
+      "bytes": 682,
+      "sha256": "af54a2722028e71b10e45b665bcbffa66273eae945afd5743e9f620c99e5a744",
+      "git_blob_sha1": "c97fcf62afe9c71d293613c792176fb71a0ae0fb"
+    },
+    {
+      "path": "raw_runs/finite_strain_results/input_snapshots/model-SW-test-bulk_diamond-properties.json",
+      "bytes": 699,
+      "sha256": "30eca6a894b563107b990e4bf1c44b89cadf977fd1e9e41a1ed30dcc88cc314b",
+      "git_blob_sha1": "4798240778342b5a5f464c28a0b393a9fa1cc92b"
+    },
+    {
+      "path": "raw_runs/finite_strain_results/input_snapshots/selected_fit.json",
+      "bytes": 5109,
+      "sha256": "2f4ba82f8da625c28e671b6a667eb22284b3605d0973f7facd6d272ee0e594b5",
+      "git_blob_sha1": "3c5e3605f00149f1f64c35b168f93d91b09e01bc"
+    },
+    {
+      "path": "raw_runs/finite_strain_results/protocol.json",
+      "bytes": 923,
+      "sha256": "f9f20774b4b02060cfbd8bc43c326de04a1aadea84b5532034a39c55804567f8",
+      "git_blob_sha1": "fefdf5232080af42e4d9e10ea7295430ea71b1cc"
+    },
+    {
+      "path": "raw_runs/finite_strain_results/source_manifest.json",
+      "bytes": 579,
+      "sha256": "b0db0944f2ee86cc1ecf3867ea6491884482b2291508c1ad794bfd0e5a673a85",
+      "git_blob_sha1": "9688f113999f28b6712c5a81de732033a8b4078f"
+    },
+    {
+      "path": "raw_runs/finite_strain_results/source_snapshots/solver_v1/run_silicon_sw_finite_strain.py",
+      "bytes": 6124,
+      "sha256": "0d56271e6659decea9f5ac2e90df444d660df57ea8b2ae4c7c89dc5788f2f707",
+      "git_blob_sha1": "7cab1e3bdcb1997c1b301a5c16898c914f9d3a7f"
+    },
+    {
+      "path": "raw_runs/finite_strain_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/finite_strain_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/finite_strain_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/finite_strain_results/states.json",
+      "bytes": 40292,
+      "sha256": "2fc8f9d351dc2d6a6ca402f063b0a05436a22e8cc339f4f9ec7a72ba5d2817a2",
+      "git_blob_sha1": "7070fcbf2eee671d05a6dd9dc035354b1f46f512"
+    },
+    {
+      "path": "raw_runs/finite_strain_results/summary.json",
+      "bytes": 484,
+      "sha256": "2d372f5a85e442547c18c258d81df3de9c43c88ee68daac0a448bd62f105a28c",
+      "git_blob_sha1": "cbf343cd2cf65a11bf60d83ce47c5b7d3f73be05"
+    },
+    {
+      "path": "raw_runs/force_span_diagnostic_recovery_results/group_force_bounds.json",
+      "bytes": 8078,
+      "sha256": "d170d7eaadcc67d90dc71a3a724142393895d863d10b8fb305d344009db1dbc6",
+      "git_blob_sha1": "9447edd38fa53d91a4ec80a5151469c212b0f53c"
+    },
+    {
+      "path": "raw_runs/force_span_diagnostic_recovery_results/source_manifest.json",
+      "bytes": 140,
+      "sha256": "1927dd9eb81fc3927e8e169b25b907baf9f24571948a60ef55c31d1d293e7534",
+      "git_blob_sha1": "55fc5028089c1fade5e0f9829bd33b597d3fa1ef"
+    },
+    {
+      "path": "raw_runs/force_span_diagnostic_recovery_results/source_snapshots/diagnose_selected_force_span.py",
+      "bytes": 3987,
+      "sha256": "7931b250c179887de70626af7872c0d6e12b4c87786daeeec66639946928e088",
+      "git_blob_sha1": "ffd1314da8a38b93cd75361f054a934cab4e92a3"
+    },
+    {
+      "path": "raw_runs/force_span_diagnostic_recovery_results/summary.json",
+      "bytes": 707,
+      "sha256": "c9c7502977cee743baf25e46436b6cac5ee52c6e9725e55f4ae5f17aa93ee989",
+      "git_blob_sha1": "bf15ea7dd43176f7d5aa280128d7d34ba62ee7db"
+    },
+    {
+      "path": "raw_runs/force_span_diagnostic_results/failure.json",
+      "bytes": 338,
+      "sha256": "ae3b7fbd75ed2176ee10d84421783de68c592645949f8192acf80d6f6af8b936",
+      "git_blob_sha1": "173e46ad7f80e35f5c205299d4ab99edf26b0911"
+    },
+    {
+      "path": "raw_runs/force_span_diagnostic_results/initial_source.py",
+      "bytes": 3989,
+      "sha256": "96abfa035c912dce64cb228d26387c036abb99733f6961c963b48d1b49ef8cf3",
+      "git_blob_sha1": "644291845b8edc48711aa6297303d26aeaa39c25"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/bessel_audit.json",
+      "bytes": 9010,
+      "sha256": "6a23af04dd411551fd5103a565a35c75436d5523f3639eb32d0d44fb0bd5f1dd",
+      "git_blob_sha1": "8a2ada5093651286343c3c7d8f8de5e9b534153a"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/frame_metrics.json",
+      "bytes": 548642,
+      "sha256": "7bf1a331de9b8070d455bced23b8bbc2b34bc6d78d05301d54f69ed8e7d5775d",
+      "git_blob_sha1": "fb81c25d85f15c03d43c5a12c4faa92545dee106"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/group_metrics.json",
+      "bytes": 7046,
+      "sha256": "e3d77cb4fb1d39e05665537fb857152aee2ff562e5eca646341d41bd8c9c89ce",
+      "git_blob_sha1": "43d2b7334e398792a539ea138c7879463ec66665"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/profiles.json",
+      "bytes": 51670,
+      "sha256": "9b737420663015707662843f74f71d5ba6f5eb771567909388a1fad9018b216c",
+      "git_blob_sha1": "f9b0933395cc7fca003ad86b747aa13348b004f8"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/protocol.json",
+      "bytes": 1766,
+      "sha256": "0363e68c5e686f264a52d3a794bc43dd3b57d99aaef7b96e570b4e96f4e0d2d8",
+      "git_blob_sha1": "ee0d0040c0c823ea430eedb911e86b971f4814fe"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/selected_fit.json",
+      "bytes": 5201,
+      "sha256": "6f44fed07cfd1ece02ae9ea0335d4c6a398a7a07f4899f5d7324c872789712ed",
+      "git_blob_sha1": "a4e0c2693a6c8d77efa2c222b6ea03a948a6d8fa"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/selection_lock.json",
+      "bytes": 185,
+      "sha256": "877674fc733f6f4f58edd31fdf73714b240dce03146e5354418270b19781a136",
+      "git_blob_sha1": "db2b3430af8f36ffeeda2304703f2e3cabd1d04a"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/source_manifest.json",
+      "bytes": 1146,
+      "sha256": "29e0d9c7155b37cd536b99d52897032316d794502af355ced3fc1102edabb52a",
+      "git_blob_sha1": "232e269f3a7efb6e351a2f781f71827c5a8d5416"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/source_snapshots/solver_v1/run_silicon_sw_extended_fit.py",
+      "bytes": 10142,
+      "sha256": "e87d506b340294de643933d9ff346f4759303bb5e1391f1356b05b2037b1a3b8",
+      "git_blob_sha1": "d1b42be400eccea70ea916d02ba0d2031aaad9ed"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/source_snapshots/solver_v1/run_silicon_sw_guarded_fit.py",
+      "bytes": 11027,
+      "sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+      "git_blob_sha1": "a0b289cdb6e6160d27f6bac3885546dff2ff3572"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/source_snapshots/solver_v1/run_silicon_sw_stress_fit.py",
+      "bytes": 12260,
+      "sha256": "16f31e8d321c433e8cefe2852633243d857badf5032e43d8e59c07a2d0c211cd",
+      "git_blob_sha1": "df99acb14620225be59ad689816bb1e547a3c6b0"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/source_snapshots/solver_v1/silicon_sw_phonon.py",
+      "bytes": 2354,
+      "sha256": "5a8fc4315952ecd0836b0bb74d31b8dde62b697741e337c85e4a184f50bb567e",
+      "git_blob_sha1": "1466b39e3fd91c2fdbd36e153f136541c706dcc5"
+    },
+    {
+      "path": "raw_runs/guard_boundary_fit_results/summary.json",
+      "bytes": 380,
+      "sha256": "b4d98e24540add3a111e17615123b960418e383ab3f8c591ca595e30ecc151f0",
+      "git_blob_sha1": "fc85812c4b2ab5d2ce9c4590e8aa919b96c54719"
+    },
+    {
+      "path": "raw_runs/guard_boundary_preflight_results/admissible_profiles.json",
+      "bytes": 42866,
+      "sha256": "78889e0d35ad7063506883ee3858ae84bee29aafc9c634a7020db0fdeadb7887",
+      "git_blob_sha1": "da63d6274b21410e8c491bf495e21411b96b2f85"
+    },
+    {
+      "path": "raw_runs/guard_boundary_preflight_results/cosine_scan.json",
+      "bytes": 69817,
+      "sha256": "e5f1eadf2fc449b23d27f8c0126b01aa77036ef91be99ec9dba000bd92941d72",
+      "git_blob_sha1": "6aa80d14e7c293f02bfebbf6b840709cbe6775f0"
+    },
+    {
+      "path": "raw_runs/guard_boundary_preflight_results/protocol.json",
+      "bytes": 907,
+      "sha256": "a1cb55262d035187d2e11e615362a3521eed35e70eab9ac36228d264585fece9",
+      "git_blob_sha1": "56f4057aa8627e6eb82f637967c009cf641d1985"
+    },
+    {
+      "path": "raw_runs/guard_boundary_preflight_results/source_manifest.json",
+      "bytes": 729,
+      "sha256": "d4951afee335d4fcb0952665499fb212e486dcabe9802932f819307aeaff9404",
+      "git_blob_sha1": "37ebe0ffb5fa5dd12f74e6e1dd5a17dc34222144"
+    },
+    {
+      "path": "raw_runs/guard_boundary_preflight_results/source_snapshots/solver_v1/run_silicon_sw_angle_preference.py",
+      "bytes": 6098,
+      "sha256": "2bfb51979f7e5673b235a0043c75018a4fa7a964dc398c728dd944517715eea2",
+      "git_blob_sha1": "d614b19ef6867e85710502c72e7e8275be10a763"
+    },
+    {
+      "path": "raw_runs/guard_boundary_preflight_results/source_snapshots/solver_v1/run_silicon_sw_extended_bulk.py",
+      "bytes": 6245,
+      "sha256": "8b4ff6e6cf2b1db6cac6b1e685429698ac1e1fcf29469180f28fde114a20bfd6",
+      "git_blob_sha1": "ab03514bbe307d7da8c119d7c610e17473a815f7"
+    },
+    {
+      "path": "raw_runs/guard_boundary_preflight_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/guard_boundary_preflight_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/guard_boundary_preflight_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/guard_boundary_preflight_results/summary.json",
+      "bytes": 330,
+      "sha256": "efb19b4b8339d91cd9026c2ed61ae708d43e2714dd5322dc17fb939c9c709195",
+      "git_blob_sha1": "96e9724f6a49eb61d6716d0284a6f00bddcafbe8"
+    },
+    {
+      "path": "raw_runs/guarded_results/bessel_candidate_audit.json",
+      "bytes": 9018,
+      "sha256": "05e231c23a58c5dd49e746b273e5ab45ccab4dc2a9b339e0685e1d789c5113ff",
+      "git_blob_sha1": "5a1427563cf741c42136069ef0b80f3f28ada9b2"
+    },
+    {
+      "path": "raw_runs/guarded_results/bulk_diagnostic.json",
+      "bytes": 2720,
+      "sha256": "ecab725c5ca7d8e289495f3d795aebc846e8025ef3791bf2e2e75ad39394d74b",
+      "git_blob_sha1": "a8d367a250e31f42870525faeb911aa3ec70bde5"
+    },
+    {
+      "path": "raw_runs/guarded_results/calculation_source_snapshot_manifest.json",
+      "bytes": 1648,
+      "sha256": "3879ed1f59098d0f0cbc1f010db343ec1f6acc027d35c7e4ef3db35c0f43b09f",
+      "git_blob_sha1": "f992670c1345e081ae5d683aa9125a486c89db8d"
+    },
+    {
+      "path": "raw_runs/guarded_results/frame_metrics.csv",
+      "bytes": 218883,
+      "sha256": "e08578d4cb02cb040750f3070b00314e692f2bded955d25f0a3595b7104cf633",
+      "git_blob_sha1": "a011e4474915569f134c17188f45c65e83804219"
+    },
+    {
+      "path": "raw_runs/guarded_results/group_metrics.json",
+      "bytes": 12232,
+      "sha256": "61f647f32563e7d073b44bec2e225ce057b3c0b0d73730a923ca23447e4521c0",
+      "git_blob_sha1": "e5bb9666d8481b206561921be9093c8a2033c0f1"
+    },
+    {
+      "path": "raw_runs/guarded_results/profiles.json",
+      "bytes": 36598,
+      "sha256": "6a512c6ec1708f9a641ec6e1c9072547bfdada6b1d96979d3169b6d1d09c6160",
+      "git_blob_sha1": "5d5fd634de712da310bb3ce2f56a7f8bfa9338db"
+    },
+    {
+      "path": "raw_runs/guarded_results/protocol.json",
+      "bytes": 992,
+      "sha256": "25f654d4e5c1aa1dd09b303a4633ba9e773a5860564306bc7e4249797c82ee4f",
+      "git_blob_sha1": "6d4927e4036c6f9208ecf2ddf5361a096cfa6933"
+    },
+    {
+      "path": "raw_runs/guarded_results/selected_fit.json",
+      "bytes": 1270,
+      "sha256": "6bb357bdc82836b8f538b5eea5b4065405767eb12671992bfff2d42274dbd1b9",
+      "git_blob_sha1": "2e5b4e5faf558dfa2f5864d5dff360045bcac45a"
+    },
+    {
+      "path": "raw_runs/guarded_results/source_manifest.json",
+      "bytes": 1025,
+      "sha256": "9c2b265c316021fe40843eab9cd24f184dde314e1fed9f635a17c554b9015722",
+      "git_blob_sha1": "b75006c34fd95a7329a3954112d31c0c08cd7d45"
+    },
+    {
+      "path": "raw_runs/guarded_results/source_snapshots/results/silicon_wafer_feasibility/source_Si.sw",
+      "bytes": 795,
+      "sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+      "git_blob_sha1": "9e7b214217a6852d116f5604cb2d8194ac31e787"
+    },
+    {
+      "path": "raw_runs/guarded_results/source_snapshots/solver_v1/run_silicon_sw_guarded_fit.py",
+      "bytes": 11027,
+      "sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+      "git_blob_sha1": "a0b289cdb6e6160d27f6bac3885546dff2ff3572"
+    },
+    {
+      "path": "raw_runs/guarded_results/source_snapshots/solver_v1/run_silicon_sw_material_fit.py",
+      "bytes": 12763,
+      "sha256": "fd30ec7331caf05c6eb209cd7668800cec688b66c9ce5ceba39ae9c4e6e38017",
+      "git_blob_sha1": "9d63914425318ded76c05681e7d0468f8f789780"
+    },
+    {
+      "path": "raw_runs/guarded_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/guarded_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/guarded_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 8071,
+      "sha256": "24789de0b4777613d90e2e7c6b804306c62751dd89b2375d96ee18fcac8d43d1",
+      "git_blob_sha1": "ba40517da58500bc5829234dba2729d3f6e84b87"
+    },
+    {
+      "path": "raw_runs/guarded_results/source_snapshots/solver_v1/test_silicon_sw_material_fit.py",
+      "bytes": 3751,
+      "sha256": "8f70429896c0e6556ae598f01353f3a5ea501ddcd04a003045b1a9159a02ce05",
+      "git_blob_sha1": "737b72596e0d998754a96426969962f1b0c4cdf5"
+    },
+    {
+      "path": "raw_runs/guarded_results/summary.json",
+      "bytes": 1726,
+      "sha256": "187c73faeae0e679fc51422422edec51cd72e11e36a7c6e929cc1672de76d058",
+      "git_blob_sha1": "469057f8395b0f2c768366e3f49c921c5ed2bab7"
+    },
+    {
+      "path": "raw_runs/independent_elastic_force_root_results/constants.json",
+      "bytes": 3121,
+      "sha256": "0d43168bcc94c5019d0b30b0871ac7859b7330a69e3d603805c205171414a416",
+      "git_blob_sha1": "9d044e815b24fec4f7deb6b72f95585e94c7e797"
+    },
+    {
+      "path": "raw_runs/independent_elastic_force_root_results/states.json",
+      "bytes": 14868,
+      "sha256": "526e8c76b80a557e66487a5b2fdcd87c92ac8b28cae0ab2779ac825fbb0d7d13",
+      "git_blob_sha1": "974be6ee3359679855525032b068630dd2754d3a"
+    },
+    {
+      "path": "raw_runs/independent_elastic_force_root_results/summary.json",
+      "bytes": 976,
+      "sha256": "49c8d43b3c7df0c539bc7289516ea8df6b51dd3cf36aba207108b713702e6a0a",
+      "git_blob_sha1": "7162e869ff4c7892145701b51a5e9c1ca567cbc4"
+    },
+    {
+      "path": "raw_runs/independent_elastic_force_root_results/tangents.json",
+      "bytes": 5460,
+      "sha256": "6968cfc8e9f1f40aa7a5fdbc93f76d294eb7943b5bc88d76ff96aee44a1a5ada",
+      "git_blob_sha1": "21edbe05ab8dbf27e4707f633b267b8e980231b1"
+    },
+    {
+      "path": "raw_runs/independent_elastic_results/failed_source.py",
+      "bytes": 4283,
+      "sha256": "60c29952589a5b4ae93af9ecc1ebcb745f02f665393189b793538761fbdab8ea",
+      "git_blob_sha1": "eca87dc2ed36bf6ecae80f016d2593814c2e56cb"
+    },
+    {
+      "path": "raw_runs/interface_audit_results/bessel_audit.json",
+      "bytes": 5961,
+      "sha256": "bf7d7513f025cf19e955df6e74ae21b1c379027f7a266a6cb659c581e70c88df",
+      "git_blob_sha1": "0552d67b704f1da619c753e5cc13632fd10024fd"
+    },
+    {
+      "path": "raw_runs/interface_audit_results/branch_roots.json",
+      "bytes": 13019,
+      "sha256": "24ba22041bbcac089824f0448f0e9b04152a4f358c45105335545dbf0611d3ac",
+      "git_blob_sha1": "8d31e84b7b5e9e25962e2695872e2e5339c8a42c"
+    },
+    {
+      "path": "raw_runs/interface_audit_results/finite_difference_checks.json",
+      "bytes": 4334,
+      "sha256": "cd16c08a6dda65de40a9d2521857dcfc49a762c16f94dc2f176d318ccf4ffe6f",
+      "git_blob_sha1": "957d55dc5c85a0f3f22f1f18a2c7791a63fdff6c"
+    },
+    {
+      "path": "raw_runs/interface_audit_results/input_snapshots/model-CASTEP_ASE-test-bulk_diamond-properties.json",
+      "bytes": 682,
+      "sha256": "af54a2722028e71b10e45b665bcbffa66273eae945afd5743e9f620c99e5a744",
+      "git_blob_sha1": "c97fcf62afe9c71d293613c792176fb71a0ae0fb"
+    },
+    {
+      "path": "raw_runs/interface_audit_results/input_snapshots/selected_fit.json",
+      "bytes": 5109,
+      "sha256": "2f4ba82f8da625c28e671b6a667eb22284b3605d0973f7facd6d272ee0e594b5",
+      "git_blob_sha1": "3c5e3605f00149f1f64c35b168f93d91b09e01bc"
+    },
+    {
+      "path": "raw_runs/interface_audit_results/normal_branch.csv",
+      "bytes": 76529,
+      "sha256": "0b48f1b5ddc9ef9a0140861f9fc2308a098e23f2648a3f5e4410e52a3bb0e1ba",
+      "git_blob_sha1": "271f88391d5b711159027197c1fc151e805be35d"
+    },
+    {
+      "path": "raw_runs/interface_audit_results/running.json",
+      "bytes": 89,
+      "sha256": "302e116c87aa631665544268e6fe5ee63eed2ba51df7868f896153fbaea42c1a",
+      "git_blob_sha1": "4749d0de55ff36ad07cee7aff3d6baeee3dd2a86"
+    },
+    {
+      "path": "raw_runs/interface_audit_results/source_manifest.json",
+      "bytes": 728,
+      "sha256": "4d17b0fa8f34e0e6068c453c329130ebef7c742af2f795278234f93ce7b883dd",
+      "git_blob_sha1": "2af8c784016adfc59dc0dc37658ecea34be51404"
+    },
+    {
+      "path": "raw_runs/interface_audit_results/source_snapshots/solver_v1/run_silicon_sw_interface_audit.py",
+      "bytes": 7596,
+      "sha256": "5e460da1d661080b73ac11dd8aaa0a69ebb37237db235e108a7e70adbea8602d",
+      "git_blob_sha1": "eaa9c2d3a35e0c289286740b957d1eac3cc607f4"
+    },
+    {
+      "path": "raw_runs/interface_audit_results/source_snapshots/solver_v1/run_silicon_sw_material_fit.py",
+      "bytes": 12763,
+      "sha256": "fd30ec7331caf05c6eb209cd7668800cec688b66c9ce5ceba39ae9c4e6e38017",
+      "git_blob_sha1": "9d63914425318ded76c05681e7d0468f8f789780"
+    },
+    {
+      "path": "raw_runs/interface_audit_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/interface_audit_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/interface_audit_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/interface_audit_results/summary.json",
+      "bytes": 877,
+      "sha256": "d3dffbefb615618f7a761e2940392f44e352b349d0410384f8e8f38938b563f7",
+      "git_blob_sha1": "52a38e63d42266232da17dd7b192fe6c52bb3de1"
+    },
+    {
+      "path": "raw_runs/interface_recovery_results/branch_roots.json",
+      "bytes": 13021,
+      "sha256": "b3fd09f8858939abefdcdc5f2d3bc5d0f141ff68b7e50fccb697611b67219239",
+      "git_blob_sha1": "3e435bffc2a4a381c1331050b20819250921509b"
+    },
+    {
+      "path": "raw_runs/interface_recovery_results/normal_branch.csv",
+      "bytes": 76472,
+      "sha256": "a8e31cf4b10473c136388f56e05edaf3b14fae73b7d64700d7a37fa3f8786849",
+      "git_blob_sha1": "56cc9fcc570476ba7270a5beec77388bdcac707e"
+    },
+    {
+      "path": "raw_runs/interface_recovery_results/source_manifest.json",
+      "bytes": 155,
+      "sha256": "f2d8b9fd2904471744a5b9975ca863b953afa6e1487df66890b915f21a6f15ef",
+      "git_blob_sha1": "292b1e80ce6fa49ef16250b1b449391c5ee42d2c"
+    },
+    {
+      "path": "raw_runs/interface_recovery_results/source_snapshots/solver_v1/run_silicon_sw_interface_recovery.py",
+      "bytes": 4131,
+      "sha256": "c9782b0b9942aefa2770041153a42e35ca78ebfabd526327ef8515e010c1573a",
+      "git_blob_sha1": "1fb225013dc0ff70875f0ce9853a121793707967"
+    },
+    {
+      "path": "raw_runs/interface_recovery_results/summary.json",
+      "bytes": 528,
+      "sha256": "b0c366c2fbef30f25563706b400f4dc4f9361f8e9ff6d71ef48147aaf0d4125f",
+      "git_blob_sha1": "87ffe387867872828cfccb2517c4ffdb5c352d1c"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/bessel_audit.json",
+      "bytes": 9013,
+      "sha256": "dc88444f19cbf3a4afc43b6b50d155404dc50abf1f0f01039991c437b17db368",
+      "git_blob_sha1": "3e8ea1eccae9e071b2ba62a01f17db05d55dcddf"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/frame_metrics.json",
+      "bytes": 548633,
+      "sha256": "6d186c291f6da4755c9659eca276cc85401391cc0183a0e3b55f0297c02f3a45",
+      "git_blob_sha1": "ee85d6d26a549d302fbb29287fa7be14913aeedb"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/group_metrics.json",
+      "bytes": 7046,
+      "sha256": "968416015cad669ff4e047b1b0e46c7856a96ae2632de5c97b0e0d749c882e2c",
+      "git_blob_sha1": "356569f09bd86f482335cc35b9ec63dfa7012f44"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/profiles.json",
+      "bytes": 108386,
+      "sha256": "f79860c0552521a23354e7154e84878c7317d7f34866160eeeb81d9dddb88fbc",
+      "git_blob_sha1": "559eca3d3c2ed9c30c2dc72d0a98af8d4c269ef5"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/protocol.json",
+      "bytes": 1722,
+      "sha256": "341107b4f6376ad0235ffe4f8f26ac7035ecba61b563cbfae2bbb73c2599667b",
+      "git_blob_sha1": "86e8a466387f9276410ee455685ed153867cded4"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/selected_fit.json",
+      "bytes": 5149,
+      "sha256": "347c026610692b8cc00bddb505cd90883a1831938975c08478e521a29ecc9e43",
+      "git_blob_sha1": "a7902bf9367498e55b671b786b53782e7a497e91"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/selection_lock.json",
+      "bytes": 186,
+      "sha256": "4c35cc26ad0ffa6ca010475f48bd690d6f63f9053bd346de08a407a1b9bb2c02",
+      "git_blob_sha1": "2b1c6f80c030eed4f3246a69306b541325871e41"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/source_manifest.json",
+      "bytes": 1146,
+      "sha256": "29e0d9c7155b37cd536b99d52897032316d794502af355ced3fc1102edabb52a",
+      "git_blob_sha1": "232e269f3a7efb6e351a2f781f71827c5a8d5416"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/source_snapshots/solver_v1/run_silicon_sw_extended_fit.py",
+      "bytes": 10142,
+      "sha256": "e87d506b340294de643933d9ff346f4759303bb5e1391f1356b05b2037b1a3b8",
+      "git_blob_sha1": "d1b42be400eccea70ea916d02ba0d2031aaad9ed"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/source_snapshots/solver_v1/run_silicon_sw_guarded_fit.py",
+      "bytes": 11027,
+      "sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+      "git_blob_sha1": "a0b289cdb6e6160d27f6bac3885546dff2ff3572"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/source_snapshots/solver_v1/run_silicon_sw_stress_fit.py",
+      "bytes": 12260,
+      "sha256": "16f31e8d321c433e8cefe2852633243d857badf5032e43d8e59c07a2d0c211cd",
+      "git_blob_sha1": "df99acb14620225be59ad689816bb1e547a3c6b0"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/source_snapshots/solver_v1/silicon_sw_phonon.py",
+      "bytes": 2354,
+      "sha256": "5a8fc4315952ecd0836b0bb74d31b8dde62b697741e337c85e4a184f50bb567e",
+      "git_blob_sha1": "1466b39e3fd91c2fdbd36e153f136541c706dcc5"
+    },
+    {
+      "path": "raw_runs/joint_angle_fit_results/summary.json",
+      "bytes": 384,
+      "sha256": "bbf93ceae524eca7e1699018bba11e85208870c4dbde6c5d03089360e466a7a2",
+      "git_blob_sha1": "b44f00425c26929842f0ac6c93c8928b366f7f18"
+    },
+    {
+      "path": "raw_runs/joint_angle_preflight_results/admissible_profiles.json",
+      "bytes": 89622,
+      "sha256": "d2917c9406957f77674a4b267b30ad3c178853e1f8d7b0a96439b1099a09ab7a",
+      "git_blob_sha1": "a86cccf29bab1882d807c13e143c495d6917d6ae"
+    },
+    {
+      "path": "raw_runs/joint_angle_preflight_results/cosine_scan.json",
+      "bytes": 132146,
+      "sha256": "6dbaf90333c1a8f0262994644922c90fadaab907030cf710d0cd189410fd698e",
+      "git_blob_sha1": "cafbb99807a7f0d05546be30332ed196db2c2775"
+    },
+    {
+      "path": "raw_runs/joint_angle_preflight_results/protocol.json",
+      "bytes": 858,
+      "sha256": "efa76f67e5c1640df4608b415851053bb76a8ed07eec1b02312ad015727f11b2",
+      "git_blob_sha1": "e007654f4278dcbb7a0c2f8ab23f969f8a316f78"
+    },
+    {
+      "path": "raw_runs/joint_angle_preflight_results/source_manifest.json",
+      "bytes": 729,
+      "sha256": "c51e8da86fc3e1996dff33da00e93ccc7080d5579beff5147f0878718dd73a52",
+      "git_blob_sha1": "1a9bc7e97ac7dddbeaceb47556a8ff34f59fc92e"
+    },
+    {
+      "path": "raw_runs/joint_angle_preflight_results/source_snapshots/solver_v1/run_silicon_sw_angle_preference.py",
+      "bytes": 5434,
+      "sha256": "147ceaf9b1ce15349f4c678560c078e2ff7101226c468c279c47c9b27a95b23d",
+      "git_blob_sha1": "d31e2d539e07c5d4b2d528d533eb7b463736832c"
+    },
+    {
+      "path": "raw_runs/joint_angle_preflight_results/source_snapshots/solver_v1/run_silicon_sw_extended_bulk.py",
+      "bytes": 6245,
+      "sha256": "8b4ff6e6cf2b1db6cac6b1e685429698ac1e1fcf29469180f28fde114a20bfd6",
+      "git_blob_sha1": "ab03514bbe307d7da8c119d7c610e17473a815f7"
+    },
+    {
+      "path": "raw_runs/joint_angle_preflight_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/joint_angle_preflight_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/joint_angle_preflight_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/joint_angle_preflight_results/summary.json",
+      "bytes": 331,
+      "sha256": "7dafb4c3bd77ead435be26c470b6456318ce2f2c626427cc449b6b3fba325b9d",
+      "git_blob_sha1": "7d55d416350570c1840d187e6e8378f6362ac179"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/bessel_audit.json",
+      "bytes": 9012,
+      "sha256": "8cdde88f826441de656e96e983e7c0db586419cb10293baf96927edf107683c5",
+      "git_blob_sha1": "39bd8504f13aedd131a2b866876fb76f09295df8"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/frame_metrics.json",
+      "bytes": 548805,
+      "sha256": "063ef4b24b2fb3decd32f4a1aa477f5265e9330f3ad1d870cc3f2cc86face629",
+      "git_blob_sha1": "92cac9d471b3777ad1e50f147afa63d785d048e1"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/group_metrics.json",
+      "bytes": 7050,
+      "sha256": "042b278cf3753571e1d3eef8eea41231ee9a2751cd2e29722500d18244fc21c9",
+      "git_blob_sha1": "bf632ef8d220b662663d62cab508ae3f954b7ec6"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/profiles.json",
+      "bytes": 51639,
+      "sha256": "7b1d6d4bb590a7b3cbcb40bedae5d29119cb178009a048c0ce570f17fd27838a",
+      "git_blob_sha1": "70fac5fd79e6b4288cb3e726b62af6bd0d36a063"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/protocol.json",
+      "bytes": 1763,
+      "sha256": "470851fe5e4d2bcf724d14880b220d1c105e94b4b5bf3892026b96fe9c0ce61d",
+      "git_blob_sha1": "401ce12e8b92ec54b130db253f4fe7a919659615"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/selected_fit.json",
+      "bytes": 5185,
+      "sha256": "af8c2e2b892216dbaec2ad140470acf92c6419f485cd5361f537c2d4cd85ece8",
+      "git_blob_sha1": "53fbf16af7c8d18db19ad1b9e95f4abd1570e0fe"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/selection_lock.json",
+      "bytes": 185,
+      "sha256": "3199d4f364e2b9cd163d015e97b7191c4450c0934c6059ce3a8c826a1a9ef93b",
+      "git_blob_sha1": "b417770d446e031c0a9fd0c618e7545181c4fa02"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/source_manifest.json",
+      "bytes": 1146,
+      "sha256": "29e0d9c7155b37cd536b99d52897032316d794502af355ced3fc1102edabb52a",
+      "git_blob_sha1": "232e269f3a7efb6e351a2f781f71827c5a8d5416"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/source_snapshots/solver_v1/run_silicon_sw_extended_fit.py",
+      "bytes": 10142,
+      "sha256": "e87d506b340294de643933d9ff346f4759303bb5e1391f1356b05b2037b1a3b8",
+      "git_blob_sha1": "d1b42be400eccea70ea916d02ba0d2031aaad9ed"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/source_snapshots/solver_v1/run_silicon_sw_guarded_fit.py",
+      "bytes": 11027,
+      "sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+      "git_blob_sha1": "a0b289cdb6e6160d27f6bac3885546dff2ff3572"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/source_snapshots/solver_v1/run_silicon_sw_stress_fit.py",
+      "bytes": 12260,
+      "sha256": "16f31e8d321c433e8cefe2852633243d857badf5032e43d8e59c07a2d0c211cd",
+      "git_blob_sha1": "df99acb14620225be59ad689816bb1e547a3c6b0"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/source_snapshots/solver_v1/silicon_sw_phonon.py",
+      "bytes": 2354,
+      "sha256": "5a8fc4315952ecd0836b0bb74d31b8dde62b697741e337c85e4a184f50bb567e",
+      "git_blob_sha1": "1466b39e3fd91c2fdbd36e153f136541c706dcc5"
+    },
+    {
+      "path": "raw_runs/local_boundary_fit_results/summary.json",
+      "bytes": 381,
+      "sha256": "3556ab5186fee10a504008eeac6d255e5fb9291f40e8cf1f52ce1c03888017b4",
+      "git_blob_sha1": "bbb5056fe35f1f034665ad3d703af444e6ec376b"
+    },
+    {
+      "path": "raw_runs/local_boundary_preflight_results/admissible_profiles.json",
+      "bytes": 42759,
+      "sha256": "4740715337b4dc0599c75400c9b66d4e5f5f69250704a2f3ba250d54856d4d75",
+      "git_blob_sha1": "ce9ed33b1b64c04f2bbebd199a938b4805f2fcf8"
+    },
+    {
+      "path": "raw_runs/local_boundary_preflight_results/cosine_scan.json",
+      "bytes": 69562,
+      "sha256": "bcf25685f91964d7497160e67bb3f391ea5b004b84b38fb1347a8b9b83509173",
+      "git_blob_sha1": "d13970d016533d7d18f5143d84bbce4f91423a6d"
+    },
+    {
+      "path": "raw_runs/local_boundary_preflight_results/protocol.json",
+      "bytes": 904,
+      "sha256": "faea01fe03f6b732932e3afa31bdb5358ceaac47326002d6eb23235cd717c4e7",
+      "git_blob_sha1": "714201fe8f8c42ff283a08b9f3c8d3493ca9a06a"
+    },
+    {
+      "path": "raw_runs/local_boundary_preflight_results/source_manifest.json",
+      "bytes": 729,
+      "sha256": "d4951afee335d4fcb0952665499fb212e486dcabe9802932f819307aeaff9404",
+      "git_blob_sha1": "37ebe0ffb5fa5dd12f74e6e1dd5a17dc34222144"
+    },
+    {
+      "path": "raw_runs/local_boundary_preflight_results/source_snapshots/solver_v1/run_silicon_sw_angle_preference.py",
+      "bytes": 6098,
+      "sha256": "2bfb51979f7e5673b235a0043c75018a4fa7a964dc398c728dd944517715eea2",
+      "git_blob_sha1": "d614b19ef6867e85710502c72e7e8275be10a763"
+    },
+    {
+      "path": "raw_runs/local_boundary_preflight_results/source_snapshots/solver_v1/run_silicon_sw_extended_bulk.py",
+      "bytes": 6245,
+      "sha256": "8b4ff6e6cf2b1db6cac6b1e685429698ac1e1fcf29469180f28fde114a20bfd6",
+      "git_blob_sha1": "ab03514bbe307d7da8c119d7c610e17473a815f7"
+    },
+    {
+      "path": "raw_runs/local_boundary_preflight_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/local_boundary_preflight_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/local_boundary_preflight_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/local_boundary_preflight_results/summary.json",
+      "bytes": 330,
+      "sha256": "c2b0f6c304d0a8a6550b33a97c6454219c802761d770e9c93b6c177944e2d18f",
+      "git_blob_sha1": "98f4c1c183d5eb59124041efa9c85dcd637a863d"
+    },
+    {
+      "path": "raw_runs/new_candidate_external_results/frame_metrics.json",
+      "bytes": 61302,
+      "sha256": "5c55f1f0042bb70d18836dfdb307fa8d815e8555809da0fe6280997210c24af9",
+      "git_blob_sha1": "b99946b641ffabeb81f68791cd746d8643c0c2b1"
+    },
+    {
+      "path": "raw_runs/new_candidate_external_results/group_metrics.json",
+      "bytes": 2764,
+      "sha256": "a9a29122025dfb8a1b7b1db415b5aa798bbead86de14a0c8554b6610ea5f99f3",
+      "git_blob_sha1": "742849e0fe99d553794d8c03e7780bfae9a8fbdd"
+    },
+    {
+      "path": "raw_runs/new_candidate_external_results/input_bindings.json",
+      "bytes": 344,
+      "sha256": "8cd2df4fc2f8ae5b8ec49bdf0b74c9351eeb709d0d3ca31b681384b81b279f6d",
+      "git_blob_sha1": "81086da19c0d04faa47d929753fcc4b52721cdc0"
+    },
+    {
+      "path": "raw_runs/new_candidate_external_results/overlap_audit.json",
+      "bytes": 2775,
+      "sha256": "f4dcd005d2f7c9102922886c359ea12cf27109f73ba2624d1fecb2c0d1b0ab74",
+      "git_blob_sha1": "985219ea4933f9ecb51b98df87d4a544f58fe560"
+    },
+    {
+      "path": "raw_runs/new_candidate_external_results/predictions.npz",
+      "bytes": 104970,
+      "sha256": "a4bb492ce692556d1f24d9de30eeb968178914851ff00ebe4c076ed53d296a13",
+      "git_blob_sha1": "9097ab0dab47ca1a235adb2eb9967b58369db742"
+    },
+    {
+      "path": "raw_runs/new_candidate_external_results/selection_lock.json",
+      "bytes": 257,
+      "sha256": "bc22c4ed011fd938971846d3de8b1b5b6a4d6e8312e62e7082f4f04d59fac07b",
+      "git_blob_sha1": "7042569697a9b7744dfc4f5bf085f21af2b89108"
+    },
+    {
+      "path": "raw_runs/new_candidate_external_results/source_manifest.json",
+      "bytes": 580,
+      "sha256": "a1b5a0243440d1a921b18d28a9e5cef4d9f17e9f7099ddc61f7c5ffd1215610a",
+      "git_blob_sha1": "6e0d22454107d090c825b253f394799dfef0e794"
+    },
+    {
+      "path": "raw_runs/new_candidate_external_results/source_snapshots/solver_v1/run_silicon_sw_external_audit.py",
+      "bytes": 6525,
+      "sha256": "e7eb0a9b52a35aa23b40eaa2da98da5c00bd9cc6c77856edb0f4e39b71893bae",
+      "git_blob_sha1": "92990820c0029caff20e31b2e05f70317a652c10"
+    },
+    {
+      "path": "raw_runs/new_candidate_external_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/new_candidate_external_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/new_candidate_external_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/new_candidate_external_results/summary.json",
+      "bytes": 512,
+      "sha256": "f0ceb04189f9bbca366a402fec21deff0d990db425e9352e12a2e234238643b4",
+      "git_blob_sha1": "6a1408c26f28aa287787189ccb5fcb66580990eb"
+    },
+    {
+      "path": "raw_runs/new_candidate_finite_strain_results/fits.json",
+      "bytes": 1821,
+      "sha256": "729748a2cc580f12599ee9bd73a112324f5b5e6480b4e0122fdaa7db5aa0fece",
+      "git_blob_sha1": "efee22af39b9f8eb5312681ff71acddbc76fffd6"
+    },
+    {
+      "path": "raw_runs/new_candidate_finite_strain_results/input_snapshots/manifest.json",
+      "bytes": 440,
+      "sha256": "9be3f112ba8947a37710e7c944a9acb45ddf5a55c161f2ade0bb85b6bbb9bf9e",
+      "git_blob_sha1": "a437be365d5ed49f7c7dc4a18cf44ead94ac5dd3"
+    },
+    {
+      "path": "raw_runs/new_candidate_finite_strain_results/input_snapshots/model-CASTEP_ASE-test-bulk_diamond-properties.json",
+      "bytes": 682,
+      "sha256": "af54a2722028e71b10e45b665bcbffa66273eae945afd5743e9f620c99e5a744",
+      "git_blob_sha1": "c97fcf62afe9c71d293613c792176fb71a0ae0fb"
+    },
+    {
+      "path": "raw_runs/new_candidate_finite_strain_results/input_snapshots/model-SW-test-bulk_diamond-properties.json",
+      "bytes": 699,
+      "sha256": "30eca6a894b563107b990e4bf1c44b89cadf977fd1e9e41a1ed30dcc88cc314b",
+      "git_blob_sha1": "4798240778342b5a5f464c28a0b393a9fa1cc92b"
+    },
+    {
+      "path": "raw_runs/new_candidate_finite_strain_results/input_snapshots/selected_fit.json",
+      "bytes": 5156,
+      "sha256": "c2056d87a1f2c2c9fc257302b41e0f9cadb7f4beb36fc5e54269efd8edfdacae",
+      "git_blob_sha1": "5faed3ef28fe4e97f9595a665e912aa33d1ce62d"
+    },
+    {
+      "path": "raw_runs/new_candidate_finite_strain_results/protocol.json",
+      "bytes": 923,
+      "sha256": "f9f20774b4b02060cfbd8bc43c326de04a1aadea84b5532034a39c55804567f8",
+      "git_blob_sha1": "fefdf5232080af42e4d9e10ea7295430ea71b1cc"
+    },
+    {
+      "path": "raw_runs/new_candidate_finite_strain_results/source_manifest.json",
+      "bytes": 579,
+      "sha256": "99dbb75e1f385f1eeaa68329777649f3fa0dbd5fdeea0417ab05db85b0e42689",
+      "git_blob_sha1": "052dd1da4e8f4deb88fe9d03bcaafedcd610e1fd"
+    },
+    {
+      "path": "raw_runs/new_candidate_finite_strain_results/source_snapshots/solver_v1/run_silicon_sw_finite_strain.py",
+      "bytes": 6369,
+      "sha256": "16ea40f9b3f70a502d8a9ca568224b7b66c01c348118b4d938d51d4d7874d986",
+      "git_blob_sha1": "cc603ad024237bc093932500de35523951f4d634"
+    },
+    {
+      "path": "raw_runs/new_candidate_finite_strain_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/new_candidate_finite_strain_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/new_candidate_finite_strain_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/new_candidate_finite_strain_results/states.json",
+      "bytes": 20570,
+      "sha256": "2fdd1e1662fb50d1da3ce2cd44e2e566deb6ac8c890db8e2748d0a4f73bb7211",
+      "git_blob_sha1": "152f4b2e163b591307c20f0c0d99981be3603a21"
+    },
+    {
+      "path": "raw_runs/new_candidate_finite_strain_results/summary.json",
+      "bytes": 483,
+      "sha256": "8ff1fef3c064cb8edbc1a6449d55c9b0fd1e1231b176b4134719d975180c140b",
+      "git_blob_sha1": "5220c7203828de1d8227b14c35ccdcd3d99d5687"
+    },
+    {
+      "path": "raw_runs/new_candidate_interface_results/bessel_audit.json",
+      "bytes": 2988,
+      "sha256": "2f9bcecd2b710286c1c0f3f971652b2cf2c0d6e89354fc01fa8af029bd81a680",
+      "git_blob_sha1": "72d36fcefd404887813c10684313eaa3b972569c"
+    },
+    {
+      "path": "raw_runs/new_candidate_interface_results/branch_roots.json",
+      "bytes": 6516,
+      "sha256": "e0aac4ade7161d9637c39e3fab9057dbae0c3a7ceb8df21f506716e9a8d23cbd",
+      "git_blob_sha1": "7d7551c020938a10e6a791823432a8f43b94dbd6"
+    },
+    {
+      "path": "raw_runs/new_candidate_interface_results/finite_difference_checks.json",
+      "bytes": 2214,
+      "sha256": "19006272c62b12990fd73ff001f6b74db58a3a79ce2b8603d90fe8739c4b42a0",
+      "git_blob_sha1": "f13f0184fcf9d8b73a73c4ee6348292aa68f85e5"
+    },
+    {
+      "path": "raw_runs/new_candidate_interface_results/input_snapshots/model-CASTEP_ASE-test-bulk_diamond-properties.json",
+      "bytes": 682,
+      "sha256": "af54a2722028e71b10e45b665bcbffa66273eae945afd5743e9f620c99e5a744",
+      "git_blob_sha1": "c97fcf62afe9c71d293613c792176fb71a0ae0fb"
+    },
+    {
+      "path": "raw_runs/new_candidate_interface_results/input_snapshots/selected_fit.json",
+      "bytes": 5156,
+      "sha256": "c2056d87a1f2c2c9fc257302b41e0f9cadb7f4beb36fc5e54269efd8edfdacae",
+      "git_blob_sha1": "5faed3ef28fe4e97f9595a665e912aa33d1ce62d"
+    },
+    {
+      "path": "raw_runs/new_candidate_interface_results/normal_branch.csv",
+      "bytes": 39998,
+      "sha256": "e1388caf8b736c1338e801eb55a91e6bce64918790ed8a799f8063df7273211b",
+      "git_blob_sha1": "4065420094fad663c3a1258efcd518ac5565e18c"
+    },
+    {
+      "path": "raw_runs/new_candidate_interface_results/running.json",
+      "bytes": 89,
+      "sha256": "6f9a5c88d47a6314aff16f7bd41b21977b962fd971d8db48ba150715b3e3966c",
+      "git_blob_sha1": "ffe26a0a6516f969404ef6ac6730db5bf4ad0774"
+    },
+    {
+      "path": "raw_runs/new_candidate_interface_results/source_manifest.json",
+      "bytes": 728,
+      "sha256": "31cd3ef4e8c62d040687375b218e940733c56e4f2818d4a9d8b04a98be56a076",
+      "git_blob_sha1": "1a52c5ddd3504ac7602eaea8ed7d6d39d22cb323"
+    },
+    {
+      "path": "raw_runs/new_candidate_interface_results/source_snapshots/solver_v1/run_silicon_sw_interface_audit.py",
+      "bytes": 8091,
+      "sha256": "8f8f39d9c38e9770e56106c71c5a6a01e690b1fa6da82bab5dbc052207bbfa23",
+      "git_blob_sha1": "75cb6223979bce1cca7b1e7ead6f455a68ea4448"
+    },
+    {
+      "path": "raw_runs/new_candidate_interface_results/source_snapshots/solver_v1/run_silicon_sw_material_fit.py",
+      "bytes": 12763,
+      "sha256": "fd30ec7331caf05c6eb209cd7668800cec688b66c9ce5ceba39ae9c4e6e38017",
+      "git_blob_sha1": "9d63914425318ded76c05681e7d0468f8f789780"
+    },
+    {
+      "path": "raw_runs/new_candidate_interface_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/new_candidate_interface_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/new_candidate_interface_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/new_candidate_interface_results/summary.json",
+      "bytes": 979,
+      "sha256": "f34a6b2be7f548a8db92c4190870b459aabb59e6251986d54e2dfea8e821d3cf",
+      "git_blob_sha1": "60871f7e075211059f312e64ca428fc169dfba6f"
+    },
+    {
+      "path": "raw_runs/new_candidate_phonon_results/final_candidate.npz",
+      "bytes": 18704,
+      "sha256": "51c75f3c0cb5509203b5fc5d01b9ace6f1cb6f26371fe65058bcdb8cc993723c",
+      "git_blob_sha1": "df1fcb8355f96e5b0b9a29b2a46027d683ffd407"
+    },
+    {
+      "path": "raw_runs/new_candidate_phonon_results/input_bindings.json",
+      "bytes": 367,
+      "sha256": "aae963f716c1f7cc02a8088538d5fb7adf560616fb95bc8510103a0cf693a232",
+      "git_blob_sha1": "4ac21f98673a41e5ba78d0b7990b52cec7e4bf52"
+    },
+    {
+      "path": "raw_runs/new_candidate_phonon_results/source_manifest.json",
+      "bytes": 572,
+      "sha256": "916fb538bdff3a29b53b7713803e71d029ee9807927141269303e6dcd8df508b",
+      "git_blob_sha1": "2d39234784c632df63695b6908d8cad1e493db62"
+    },
+    {
+      "path": "raw_runs/new_candidate_phonon_results/source_snapshots/solver_v1/run_silicon_sw_final_phonon.py",
+      "bytes": 3154,
+      "sha256": "fcfe97af0bf6e852b326389f35092522a8b7bd58407c958384df40d513953ce8",
+      "git_blob_sha1": "aebd1be6af47c42f143fac605d27725ebaaa25a1"
+    },
+    {
+      "path": "raw_runs/new_candidate_phonon_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/new_candidate_phonon_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/new_candidate_phonon_results/source_snapshots/solver_v1/silicon_sw_phonon.py",
+      "bytes": 2354,
+      "sha256": "5a8fc4315952ecd0836b0bb74d31b8dde62b697741e337c85e4a184f50bb567e",
+      "git_blob_sha1": "1466b39e3fd91c2fdbd36e153f136541c706dcc5"
+    },
+    {
+      "path": "raw_runs/new_candidate_phonon_results/summary.json",
+      "bytes": 913,
+      "sha256": "00709f42c6ea7efe35e00fb0de9cca4c6bfcd464312de7ae18079d1706c20565",
+      "git_blob_sha1": "854303b030282b1e72921824816558643721b307"
+    },
+    {
+      "path": "raw_runs/phonon_audit_results/anchored_pair_angle_control.npz",
+      "bytes": 18719,
+      "sha256": "79fa17ae481cc49945ca5a3cdb8db4c7ce038fc0263e8b3a457018cd903e858b",
+      "git_blob_sha1": "260462e1b8736a6424e25c6501a0831596a35ff9"
+    },
+    {
+      "path": "raw_runs/phonon_audit_results/input_bindings.json",
+      "bytes": 345,
+      "sha256": "17af2cdd57f2b45accfad7ac9b1c3e54c989cb57a6d818b1ac3100a93b8c9d3a",
+      "git_blob_sha1": "d498a306434b4c3a1d1f6f57fb2a186fb9b4c2f6"
+    },
+    {
+      "path": "raw_runs/phonon_audit_results/metrics.json",
+      "bytes": 5826,
+      "sha256": "94a791add70ecc076050d950539b7b35562e4863b26605f4b6b6859211b1592c",
+      "git_blob_sha1": "9ad77c9ffb685a413e23aee6ec3d957ae494aeb9"
+    },
+    {
+      "path": "raw_runs/phonon_audit_results/original_SW_own_published_lattice.npz",
+      "bytes": 18684,
+      "sha256": "b0d9db7cc87eb9b178a446a4576fd3b72f4a5675961a123c9c5657844a6d25ac",
+      "git_blob_sha1": "e6d7be00792db035f9e5302f1a85a5f38b363a2f"
+    },
+    {
+      "path": "raw_runs/phonon_audit_results/published_SW_parameters_same_lattice.npz",
+      "bytes": 18680,
+      "sha256": "d2668a6b49e0047c4c1ac477a06b61e5e37b2a3c339cb1dd16da6e623133d4a0",
+      "git_blob_sha1": "0061b901001397b18936a7bca46985fa479c7115"
+    },
+    {
+      "path": "raw_runs/phonon_audit_results/selected_anharmonic.npz",
+      "bytes": 18723,
+      "sha256": "e7ec1817d16116f41e69235e0b79cf390a07ea4ef516e13d0f488736b2c4da79",
+      "git_blob_sha1": "8b86f9b02622b242bb4b36c8d0ff6098173f7ae3"
+    },
+    {
+      "path": "raw_runs/phonon_audit_results/source_manifest.json",
+      "bytes": 572,
+      "sha256": "5e114b2c09572a7a84b44509ab4521b30fe5bb3858ab1392c537dee293ae19c7",
+      "git_blob_sha1": "5f16442044ca8cba66d2fdcc1de358a4c64fb3c4"
+    },
+    {
+      "path": "raw_runs/phonon_audit_results/source_snapshots/solver_v1/run_silicon_sw_phonon_audit.py",
+      "bytes": 4963,
+      "sha256": "c2ed70aa1be23367b225d6595665ede74412cd8aa6a9aa276e220cccf962e738",
+      "git_blob_sha1": "79049ef997bcc506f2ef917bc49fc85ecb7f5121"
+    },
+    {
+      "path": "raw_runs/phonon_audit_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/phonon_audit_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/phonon_audit_results/source_snapshots/solver_v1/silicon_sw_phonon.py",
+      "bytes": 2354,
+      "sha256": "5a8fc4315952ecd0836b0bb74d31b8dde62b697741e337c85e4a184f50bb567e",
+      "git_blob_sha1": "1466b39e3fd91c2fdbd36e153f136541c706dcc5"
+    },
+    {
+      "path": "raw_runs/phonon_audit_results/summary.json",
+      "bytes": 731,
+      "sha256": "98d6ed41a1a89572d7087edb06446161c505f46578c910d1adcf67a2c33b1b60",
+      "git_blob_sha1": "05a6cbca4df4575d302e367dd1927a5c99cd674c"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/bessel_audit.json",
+      "bytes": 9016,
+      "sha256": "b21a5dbc32493e533cd213b0241693d81bcad6b613306191a02163cf9ad9bf53",
+      "git_blob_sha1": "e45780ecc01289cbfddb7cf7232f2c02307a72ea"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/frame_metrics.json",
+      "bytes": 548673,
+      "sha256": "238dbc582a7216a4ab2e29ecbdc9ea62d5662a2f77b7b0fda4ffa7d5a5fda824",
+      "git_blob_sha1": "346694457e4fe772b38af38070ac6d9b6fcfe493"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/group_metrics.json",
+      "bytes": 7053,
+      "sha256": "3ec5892f097d172e6e77e03643cc3f6c4e91f572fdde97e3e8ef1ef914c21003",
+      "git_blob_sha1": "6591e92fbad3839d8e4b3910247bb35629d5d32a"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/profiles.json",
+      "bytes": 17154,
+      "sha256": "c93d665f8e4eecd542601a680392b6fbea9bbcc2101a14b3602067ba23112f98",
+      "git_blob_sha1": "b0cfcb03f75e8eaa248b4bd0ef0c615ba8cecea5"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/protocol.json",
+      "bytes": 1737,
+      "sha256": "ef140f5a5d34e05a989185327d1b2777ee7178c7871956102f05644337762375",
+      "git_blob_sha1": "cc19d3ab6451abf8b155fe8fda638ad9bf8bff13"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/selected_fit.json",
+      "bytes": 5156,
+      "sha256": "c2056d87a1f2c2c9fc257302b41e0f9cadb7f4beb36fc5e54269efd8edfdacae",
+      "git_blob_sha1": "5faed3ef28fe4e97f9595a665e912aa33d1ce62d"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/selection_lock.json",
+      "bytes": 185,
+      "sha256": "a5eac6533760a421d2f4b3f734594e43eba05cb045699e3d70d4da06f94c3383",
+      "git_blob_sha1": "a94247a4289bfa28ce5f6156c954908b5fa20927"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/source_manifest.json",
+      "bytes": 1146,
+      "sha256": "29e0d9c7155b37cd536b99d52897032316d794502af355ced3fc1102edabb52a",
+      "git_blob_sha1": "232e269f3a7efb6e351a2f781f71827c5a8d5416"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/source_snapshots/solver_v1/run_silicon_sw_extended_fit.py",
+      "bytes": 10142,
+      "sha256": "e87d506b340294de643933d9ff346f4759303bb5e1391f1356b05b2037b1a3b8",
+      "git_blob_sha1": "d1b42be400eccea70ea916d02ba0d2031aaad9ed"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/source_snapshots/solver_v1/run_silicon_sw_guarded_fit.py",
+      "bytes": 11027,
+      "sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+      "git_blob_sha1": "a0b289cdb6e6160d27f6bac3885546dff2ff3572"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/source_snapshots/solver_v1/run_silicon_sw_stress_fit.py",
+      "bytes": 12260,
+      "sha256": "16f31e8d321c433e8cefe2852633243d857badf5032e43d8e59c07a2d0c211cd",
+      "git_blob_sha1": "df99acb14620225be59ad689816bb1e547a3c6b0"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/source_snapshots/solver_v1/silicon_sw_phonon.py",
+      "bytes": 2354,
+      "sha256": "5a8fc4315952ecd0836b0bb74d31b8dde62b697741e337c85e4a184f50bb567e",
+      "git_blob_sha1": "1466b39e3fd91c2fdbd36e153f136541c706dcc5"
+    },
+    {
+      "path": "raw_runs/refined_boundary_fit_results/summary.json",
+      "bytes": 380,
+      "sha256": "2f4e08bd6dd1d545b50f6c21dc69be935e05f7889a7854d85ca0a5c08fb90e49",
+      "git_blob_sha1": "ce359b38c9c9d2919e1c2223cbe17a488cff5a9d"
+    },
+    {
+      "path": "raw_runs/refined_boundary_preflight_results/admissible_profiles.json",
+      "bytes": 14207,
+      "sha256": "45f9bc568490c790df79c932dd28562acb46b3f13b8b9a75babfea6b9324bf53",
+      "git_blob_sha1": "2069bc63ea91bf7d05944dd38bc6623c28e5f364"
+    },
+    {
+      "path": "raw_runs/refined_boundary_preflight_results/cosine_scan.json",
+      "bytes": 23091,
+      "sha256": "efc78bc13d550ba3983907caf1d12dbacc00c1acfc792d2363c921fb2148e0cf",
+      "git_blob_sha1": "f9049ec89b54b8de27bda9d68bcc0b4aacc7c26c"
+    },
+    {
+      "path": "raw_runs/refined_boundary_preflight_results/protocol.json",
+      "bytes": 882,
+      "sha256": "3b263fa4d0d7b0de736c92525e95fb9b806871ec6e24989650ed7a7858d8251e",
+      "git_blob_sha1": "ac591b860a40b156a9550af5cc605ce32096b77e"
+    },
+    {
+      "path": "raw_runs/refined_boundary_preflight_results/source_manifest.json",
+      "bytes": 729,
+      "sha256": "d4951afee335d4fcb0952665499fb212e486dcabe9802932f819307aeaff9404",
+      "git_blob_sha1": "37ebe0ffb5fa5dd12f74e6e1dd5a17dc34222144"
+    },
+    {
+      "path": "raw_runs/refined_boundary_preflight_results/source_snapshots/solver_v1/run_silicon_sw_angle_preference.py",
+      "bytes": 6098,
+      "sha256": "2bfb51979f7e5673b235a0043c75018a4fa7a964dc398c728dd944517715eea2",
+      "git_blob_sha1": "d614b19ef6867e85710502c72e7e8275be10a763"
+    },
+    {
+      "path": "raw_runs/refined_boundary_preflight_results/source_snapshots/solver_v1/run_silicon_sw_extended_bulk.py",
+      "bytes": 6245,
+      "sha256": "8b4ff6e6cf2b1db6cac6b1e685429698ac1e1fcf29469180f28fde114a20bfd6",
+      "git_blob_sha1": "ab03514bbe307d7da8c119d7c610e17473a815f7"
+    },
+    {
+      "path": "raw_runs/refined_boundary_preflight_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/refined_boundary_preflight_results/source_snapshots/solver_v1/silicon_sw_anharmonic.py",
+      "bytes": 12660,
+      "sha256": "9a8dd7fdb3edf2c7c525402f0b858f006906a04f8ca5b6b618448c82d349f8b9",
+      "git_blob_sha1": "014b437f039ad18a2d8070cdafa08ef51885fb2d"
+    },
+    {
+      "path": "raw_runs/refined_boundary_preflight_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 15009,
+      "sha256": "a1e5c6c6aa7dac6160d7c1aa66cfa80e4d6af10415318caea38f6c43cbd9a357",
+      "git_blob_sha1": "48a20db96f399cab15ab58a77e4732233596c7c0"
+    },
+    {
+      "path": "raw_runs/refined_boundary_preflight_results/summary.json",
+      "bytes": 329,
+      "sha256": "0e4fe2ae3ec248c4420fac3f16e2ea752701dfc4e3716e583ad56e512f95bd18",
+      "git_blob_sha1": "4ae792a2e5708e5c3bbc1dca6803471206a61018"
+    },
+    {
+      "path": "raw_runs/results/bessel_candidate_audit.json",
+      "bytes": 9092,
+      "sha256": "8531be3129a244036acb385a96de195e57440ec688e70c17e83d14454d857327",
+      "git_blob_sha1": "931b711e4c48b2607c4fb67804f13fb029c15e7a"
+    },
+    {
+      "path": "raw_runs/results/bulk_diagnostic.json",
+      "bytes": 6190,
+      "sha256": "cf41a7d885ecc7285909a948dbfbc9eb73ba76f165d349839e3a18301b4a720d",
+      "git_blob_sha1": "0e5535f2e436c1162477a53cc9f94db1ecca233f"
+    },
+    {
+      "path": "raw_runs/results/calculation_source_snapshot_manifest.json",
+      "bytes": 1949,
+      "sha256": "670d179253efc8805e57d7c362d62745b6e1839bbf094323fba5b6a233871095",
+      "git_blob_sha1": "df457f746c62ae2393f9122ee39ac1f3646c6e05"
+    },
+    {
+      "path": "raw_runs/results/candidate_parameters.json",
+      "bytes": 447,
+      "sha256": "fb231219e49cf174d3e93a712a73c91dbec9c5dc6a1e9526cde103bfdf7dc4d6",
+      "git_blob_sha1": "ebcff30c853ab6968acf4aabb1159f197e4566d6"
+    },
+    {
+      "path": "raw_runs/results/fit.json",
+      "bytes": 6661,
+      "sha256": "7c31a4d985e6f69f0176a5c3b2c6a21f3b6d2995c3b3454d84015143cd5d88cc",
+      "git_blob_sha1": "36037f3a909ec5e5a83efaf5a200a95472e4bb0d"
+    },
+    {
+      "path": "raw_runs/results/frame_metrics.csv",
+      "bytes": 347836,
+      "sha256": "30b7d900beeef6f04085e68abfbfe58d7c478a2460c8897da2c7d14353600a6a",
+      "git_blob_sha1": "63326742b54f9c2520e787593383bfbe74d3b9dd"
+    },
+    {
+      "path": "raw_runs/results/group_metrics.json",
+      "bytes": 12234,
+      "sha256": "9e1ca77a238b9aa28276bf49323accb2c4069ff18481c66e28258348ad9cc70e",
+      "git_blob_sha1": "521904de52594bd485f61468e95da099c115f9f9"
+    },
+    {
+      "path": "raw_runs/results/protocol.json",
+      "bytes": 1211,
+      "sha256": "cddf2968852e20d0b0d9a1774bfba819f4fe0fcfc728b452f78c8e69b0320e8e",
+      "git_blob_sha1": "9a791039f7cc28f845f0f7d65a29f2294ec477f2"
+    },
+    {
+      "path": "raw_runs/results/running.json",
+      "bytes": 197,
+      "sha256": "4281ca15209e4728b726d164c183f4f739d428ee9bba0c5b4fb7185dc65030e3",
+      "git_blob_sha1": "3285733a1ac29cc47a11fcd364ac93f8c46ff15e"
+    },
+    {
+      "path": "raw_runs/results/source_manifest.json",
+      "bytes": 2123,
+      "sha256": "1255f786118c9f77317d335eb59921a59eb48e5670f58cc6756fb73045e57918",
+      "git_blob_sha1": "7cae69b1be13fcec4517187ac5aad5044d18b6d3"
+    },
+    {
+      "path": "raw_runs/results/source_snapshots/results/silicon_wafer_feasibility/run_dft_material_audit.py",
+      "bytes": 10189,
+      "sha256": "129dfb02cf026e485f24a681f71b8dd3a679ac86ae2cd05d294a178e65a047f3",
+      "git_blob_sha1": "8ead1fc1971bf33a046238b8678537108055da75"
+    },
+    {
+      "path": "raw_runs/results/source_snapshots/results/silicon_wafer_feasibility/run_static_probe.py",
+      "bytes": 13511,
+      "sha256": "61e9232c2bbc946ec8f48e60aa90a9f4143db26dea7bd2914382ec6559f337d7",
+      "git_blob_sha1": "b69ff39c67d3ec1d54a84fb942e7dc0160fa13d1"
+    },
+    {
+      "path": "raw_runs/results/source_snapshots/results/silicon_wafer_feasibility/source_Si.sw",
+      "bytes": 795,
+      "sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+      "git_blob_sha1": "9e7b214217a6852d116f5604cb2d8194ac31e787"
+    },
+    {
+      "path": "raw_runs/results/source_snapshots/solver_v1/run_silicon_sw_material_fit.py",
+      "bytes": 12763,
+      "sha256": "fd30ec7331caf05c6eb209cd7668800cec688b66c9ce5ceba39ae9c4e6e38017",
+      "git_blob_sha1": "9d63914425318ded76c05681e7d0468f8f789780"
+    },
+    {
+      "path": "raw_runs/results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 5258,
+      "sha256": "80e7a65bf7cff40f7c185c6eb73c110a6d5c0a89cbd2aa119af3e8fb2a0ef664",
+      "git_blob_sha1": "209f3f2d05ee0f14f5d62dbb25e1f24a6a576925"
+    },
+    {
+      "path": "raw_runs/results/source_snapshots/solver_v1/test_silicon_sw_material_fit.py",
+      "bytes": 3148,
+      "sha256": "8bfe164574d72ca91a45fef4a47e0fa878a8d1d44155c37702e8cba12cc3a381",
+      "git_blob_sha1": "a09fd0a0952431e9e47cb1f9967c56ff442e4861"
+    },
+    {
+      "path": "raw_runs/results/summary.json",
+      "bytes": 1171,
+      "sha256": "c60d2bd2dc3633c0c4506179ec883a9006e951ea4b44a1d2f34339a3073dd9ce",
+      "git_blob_sha1": "d346f7f14c773aa528ddfaaf90e52fb2e3d58ed0"
+    },
+    {
+      "path": "raw_runs/stress_results/bessel_audit.json",
+      "bytes": 9627,
+      "sha256": "fccf0bf0f5a5eb13a8a696f6e10b2d001e8a21d400db79d43cda8b34e27e9723",
+      "git_blob_sha1": "71ec7b7afa84e55e5cb3ab1aaf291adf8310d19a"
+    },
+    {
+      "path": "raw_runs/stress_results/frame_metrics.json",
+      "bytes": 657220,
+      "sha256": "7f188e6e3873ab2259870fb666ac0c8aa17f8e8f1e9fe67b1597341686ae5283",
+      "git_blob_sha1": "c55ae2b7e7fabedf5418e469876259970888aa49"
+    },
+    {
+      "path": "raw_runs/stress_results/group_metrics.json",
+      "bytes": 7079,
+      "sha256": "e82880910a693b359a3fe33a13c68308dec8070a570350f6c6dc272b30494fb3",
+      "git_blob_sha1": "26a5641b65a39d0cc1273f6d9062e2149d2f9bc8"
+    },
+    {
+      "path": "raw_runs/stress_results/profiles.json",
+      "bytes": 148718,
+      "sha256": "39cbdcfed781dadc3cdd94adb268aeed17c81794d882ff5c44934023c17df54f",
+      "git_blob_sha1": "a83ff537237cbe0b2543ea8b443f5c9aa9345cde"
+    },
+    {
+      "path": "raw_runs/stress_results/protocol.json",
+      "bytes": 1292,
+      "sha256": "06be4a971a705b4fd88888cf9593d89a9120077b41927023e58e056e11063f76",
+      "git_blob_sha1": "52a2720e7cc7d7a03103c5a2b03006248cdf80a6"
+    },
+    {
+      "path": "raw_runs/stress_results/selected_fit.json",
+      "bytes": 6307,
+      "sha256": "2ec30e6081bbd045a42a88c6769d484100a3270be5af13324bf4bfab8fda9f96",
+      "git_blob_sha1": "fd958e3ac203d04c67f605e9cd2a9bdac0a59f35"
+    },
+    {
+      "path": "raw_runs/stress_results/source_manifest.json",
+      "bytes": 1022,
+      "sha256": "52d7d516f086b6ccfa0b635a4a00e8cb0a7c123bbbca670bfabc14ce86862058",
+      "git_blob_sha1": "176d2a0d9635c8b3e19c5710ade67759e1724d45"
+    },
+    {
+      "path": "raw_runs/stress_results/source_snapshots/results/silicon_wafer_feasibility/source_Si.sw",
+      "bytes": 795,
+      "sha256": "c6d3a7d26db28ee8e3feaf2f8059607de9a4accb45d9719fcabe59488ecf1cad",
+      "git_blob_sha1": "9e7b214217a6852d116f5604cb2d8194ac31e787"
+    },
+    {
+      "path": "raw_runs/stress_results/source_snapshots/solver_v1/run_silicon_sw_guarded_fit.py",
+      "bytes": 11027,
+      "sha256": "a672f7fbc06ea82a0bbbafa9c757e3372f0b5f2991bcfbb87e93a18d9ae5c026",
+      "git_blob_sha1": "a0b289cdb6e6160d27f6bac3885546dff2ff3572"
+    },
+    {
+      "path": "raw_runs/stress_results/source_snapshots/solver_v1/run_silicon_sw_material_fit.py",
+      "bytes": 12763,
+      "sha256": "fd30ec7331caf05c6eb209cd7668800cec688b66c9ce5ceba39ae9c4e6e38017",
+      "git_blob_sha1": "9d63914425318ded76c05681e7d0468f8f789780"
+    },
+    {
+      "path": "raw_runs/stress_results/source_snapshots/solver_v1/run_silicon_sw_stress_fit.py",
+      "bytes": 12260,
+      "sha256": "16f31e8d321c433e8cefe2852633243d857badf5032e43d8e59c07a2d0c211cd",
+      "git_blob_sha1": "df99acb14620225be59ad689816bb1e547a3c6b0"
+    },
+    {
+      "path": "raw_runs/stress_results/source_snapshots/solver_v1/silicon_bessel_reference.py",
+      "bytes": 12873,
+      "sha256": "ffa308f9d4b01bf542b4ada07e092313901b780b7658d6c8a7cecbb9b64715f5",
+      "git_blob_sha1": "a5a96fbaf5f0d2b30fb670aab022c2b5527fb2ac"
+    },
+    {
+      "path": "raw_runs/stress_results/source_snapshots/solver_v1/silicon_environment_research.py",
+      "bytes": 13589,
+      "sha256": "ee190f7883391dd98defdc65eb3247836eb64b17fe332adb464faf88a47695f3",
+      "git_blob_sha1": "2e7b7d9368db237e3e06fd620827e3b75ab329e1"
+    },
+    {
+      "path": "raw_runs/stress_results/source_snapshots/solver_v1/silicon_sw_material_fit.py",
+      "bytes": 12973,
+      "sha256": "60092ee97b23349453a21659172d8836c0c21f319fd82b8033692a9647899034",
+      "git_blob_sha1": "b2e15a1560e94eb909e9407415aa132a71b7a0d4"
+    },
+    {
+      "path": "raw_runs/stress_results/stress_source_frames.json",
+      "bytes": 3426,
+      "sha256": "8c82879908dc595d5a6c70aeb02a78b302b856185f75c96ad5e2b5433046d70d",
+      "git_blob_sha1": "e3f8e823bbfe9c6db2eaecf767e044942387b828"
+    },
+    {
+      "path": "raw_runs/stress_results/stress_source_metadata.json",
+      "bytes": 185,
+      "sha256": "9628788a2bc2b2f0d4530ce3631a3185cc12a3f1ee0662f0bc6335f2d6d9bbac",
+      "git_blob_sha1": "a6a8713ddfd354a5f0da390c37d919bd7ea64311"
+    },
+    {
+      "path": "raw_runs/stress_results/summary.json",
+      "bytes": 491,
+      "sha256": "937007ed2576f3faf29ba05ba6d1b9ce220292c8c700ac17fba733681e8b0114",
+      "git_blob_sha1": "58ccd0116ae25ea4b4317bc4ee08ed63704a9a3f"
+    },
+    {
+      "path": "reaggregated_group_metrics.json",
+      "bytes": 107343,
+      "sha256": "31dd448644c41ec85d6476224404c8af8d684e9821c39158ad897c68afbba1b2",
+      "git_blob_sha1": "b1bc950eb29a702732128c634fb85a976e7e7718"
+    },
+    {
+      "path": "report_qa.json",
+      "bytes": 2590,
+      "sha256": "3f9c0f3ed6977d65b45eea9bad5dc5156a9cd3bda1d33b092ab4b02567d13f1b",
+      "git_blob_sha1": "beef8f4c26ddc42d31c47099821a9484f5751dfe"
+    },
+    {
+      "path": "select_final_shape.py",
+      "bytes": 2996,
+      "sha256": "a0b4c0146249581977e2db45e11a1abd0e15556fdaf419b79a9202def2a6f62c",
+      "git_blob_sha1": "a4b0d95024128317f0511bd32a13a6c329aaa711"
+    },
+    {
+      "path": "selected_predictions.npz",
+      "bytes": 49767828,
+      "sha256": "6e2aa0e941a98ef6fe81774a1e817151369ae0e732dca883870a36efdf2f6f20",
+      "git_blob_sha1": "4569a68426bd057aba1881f6671043e31a6d1862"
+    },
+    {
+      "path": "silicon_wafer_material_report.pdf",
+      "bytes": 469720,
+      "sha256": "06eac8d5b93cc191b27af7890ac7533a5c28fd635711d26f07659f3ab88378dc",
+      "git_blob_sha1": "55804dd6073878b7cc228f67f8c68199b5f3f638"
+    },
+    {
+      "path": "structural_audits/elastic_bulk_feasibility.py",
+      "bytes": 3067,
+      "sha256": "dcca2a97ca43e9508223d42d0f1659b7aed11d4ca06f764010619aecacace04f",
+      "git_blob_sha1": "267452f1d627c4eb996254f5c329df1385e9071a"
+    },
+    {
+      "path": "structural_audits/elastic_structure_audit.json",
+      "bytes": 3963,
+      "sha256": "93f7429834713b3a070a471ced135a902833347a0258f6da45dbb03b53f0b896",
+      "git_blob_sha1": "6df6bbd0e51c2ab3f1849f966f7e09794f064e13"
+    },
+    {
+      "path": "structural_audits/elastic_structure_audit.py",
+      "bytes": 2223,
+      "sha256": "f41945f6ce3a95984a78c7830e75e88c6613d808919d154fe8255aa6342947a3",
+      "git_blob_sha1": "837ca37b49ee375902e9a841ee6b881a5f320548"
+    },
+    {
+      "path": "supplemental_source_bindings.json",
+      "bytes": 886,
+      "sha256": "684c9b1b27a60806fb83a56491020d177c7e1c4beff21fe83a9d73e53099b5a8",
+      "git_blob_sha1": "3161c4d4470c3d47baba101981bee47ae4448bf2"
+    },
+    {
+      "path": "tests_initial_source/binding.json",
+      "bytes": 211,
+      "sha256": "d17e11b2d29cbe521b6f66a84df4acdc08bfc3939af38ce61849ec6bd4db4228",
+      "git_blob_sha1": "253bcbb66587f1570d54d23d2b6b88ec64bb248b"
+    },
+    {
+      "path": "tests_initial_source/test_silicon_sw_angle_preference.py",
+      "bytes": 2280,
+      "sha256": "fb74045d7eb4fa4556910707d5bb2fef09d6cb99ae411ceb0557b9b424caec7c",
+      "git_blob_sha1": "3f19279d2547e5bd8a374b57138517685fbbbd46"
+    },
+    {
+      "path": "tests_receipt.json",
+      "bytes": 4595,
+      "sha256": "0539023540b99c954ea63abb89016b5381202b3d65e51050df24183fe548dca1",
+      "git_blob_sha1": "0cfba03585e9e78ccf75106eca0d5b192a8b220b"
+    },
+    {
+      "path": "verify_material_package.py",
+      "bytes": 13162,
+      "sha256": "3b867953fd1f9602f375d7360cbd9e52b840e44fe35f425631dc0bad640ba1fd",
+      "git_blob_sha1": "884d38cea32b8573d23c4a9fac2c27c3ca32a503"
+    },
+    {
+      "path": "verify_package_manifest.py",
+      "bytes": 1505,
+      "sha256": "c82464c4557afa8be9f9fa6ab0b652ad7a4987840be077e6f2c2512e2d8e0d31",
+      "git_blob_sha1": "ce95f3f3bf63714bb25c5336f4e9b46c73e8bf32"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "reason": "known C44 calibration mismatch of tetrahedral four-neighbor harmonic identity",
+  "cutoff_A": 3.77118,
+  "sigma_values_A": [
+    1.6,
+    2.1,
+    2.8
+  ],
+  "gamma_values": [
+    0.9,
+    1.2,
+    1.5
+  ],
+  "preferred_cosine_interval": [
+    -0.6,
+    -0.05
+  ],
+  "interval_is_research_bound_not_physical_prior": true,
+  "initial_cosine_samples": 23,
+  "angle_betas": null,
+  "beta_policy": "beta=.5/(1-c0), monotone positive endpoint",
+  "anchors": "a0 stationarity,C11,C12 at each cosine; first sign-change roots of relaxed C44-target",
+  "target_role": "known published finite-strain calibration, not exact DFT zero-strain Hessian certification",
+  "keep_nonzero_angular_bulk_background": true,
+  "global_root_completeness_certified": false,
+  "external_force_set_used": false,
+  "force_geometries_evaluated": false,
+  "material_approved": false,
+  "new_DFT": 0,
+  "new_MD": 0
+}

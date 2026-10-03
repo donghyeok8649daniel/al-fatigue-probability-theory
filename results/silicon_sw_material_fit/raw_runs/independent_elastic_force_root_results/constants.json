@@ -1,0 +1,130 @@
+[
+  {
+    "step": 0.01,
+    "internally_relaxed": false,
+    "method": "energy",
+    "C11_GPa": 151.4427504263796,
+    "C12_GPa": 76.45932183112512,
+    "C44_GPa": 109.75358099235747
+  },
+  {
+    "step": 0.01,
+    "internally_relaxed": false,
+    "method": "stress",
+    "C11_GPa": 151.46101960833252,
+    "C12_GPa": 76.49656025196697,
+    "C44_GPa": 109.75067079394726
+  },
+  {
+    "step": 0.01,
+    "internally_relaxed": true,
+    "method": "energy",
+    "C11_GPa": 151.4427504263796,
+    "C12_GPa": 76.45932183112512,
+    "C44_GPa": 56.44592679900653
+  },
+  {
+    "step": 0.01,
+    "internally_relaxed": true,
+    "method": "stress",
+    "C11_GPa": 151.46101960833252,
+    "C12_GPa": 76.49656025196697,
+    "C44_GPa": 56.442512160295685
+  },
+  {
+    "step": 0.003,
+    "internally_relaxed": false,
+    "method": "energy",
+    "C11_GPa": 151.42613371779223,
+    "C12_GPa": 76.42544052611318,
+    "C44_GPa": 109.7562289497134
+  },
+  {
+    "step": 0.003,
+    "internally_relaxed": false,
+    "method": "stress",
+    "C11_GPa": 151.42777631192936,
+    "C12_GPa": 76.42879086541767,
+    "C44_GPa": 109.75596709466215
+  },
+  {
+    "step": 0.003,
+    "internally_relaxed": true,
+    "method": "energy",
+    "C11_GPa": 151.42613371779223,
+    "C12_GPa": 76.42544052611318,
+    "C44_GPa": 56.44903411440221
+  },
+  {
+    "step": 0.003,
+    "internally_relaxed": true,
+    "method": "stress",
+    "C11_GPa": 151.42777631192936,
+    "C12_GPa": 76.42879086541767,
+    "C44_GPa": 56.44872679661646
+  },
+  {
+    "step": 0.001,
+    "internally_relaxed": false,
+    "method": "energy",
+    "C11_GPa": 151.42467370284132,
+    "C12_GPa": 76.42246249141395,
+    "C44_GPa": 109.75646172222247
+  },
+  {
+    "step": 0.001,
+    "internally_relaxed": false,
+    "method": "stress",
+    "C11_GPa": 151.42485619005038,
+    "C12_GPa": 76.42283474041855,
+    "C44_GPa": 109.75643261060665
+  },
+  {
+    "step": 0.001,
+    "internally_relaxed": true,
+    "method": "energy",
+    "C11_GPa": 151.42467370284132,
+    "C12_GPa": 76.42246249141395,
+    "C44_GPa": 56.44930731188915
+  },
+  {
+    "step": 0.001,
+    "internally_relaxed": true,
+    "method": "stress",
+    "C11_GPa": 151.42485619005038,
+    "C12_GPa": 76.42283474041855,
+    "C44_GPa": 56.44927313671474
+  },
+  {
+    "step": 0.0003,
+    "internally_relaxed": false,
+    "method": "energy",
+    "C11_GPa": 151.42450786379732,
+    "C12_GPa": 76.42212370636445,
+    "C44_GPa": 109.7564886679963
+  },
+  {
+    "step": 0.0003,
+    "internally_relaxed": false,
+    "method": "stress",
+    "C11_GPa": 151.4245240504126,
+    "C12_GPa": 76.42215724779203,
+    "C44_GPa": 109.75648556212141
+  },
+  {
+    "step": 0.0003,
+    "internally_relaxed": true,
+    "method": "energy",
+    "C11_GPa": 151.42450786379732,
+    "C12_GPa": 76.42212370636445,
+    "C44_GPa": 56.449338665449574
+  },
+  {
+    "step": 0.0003,
+    "internally_relaxed": true,
+    "method": "stress",
+    "C11_GPa": 151.4245240504126,
+    "C12_GPa": 76.42215724779203,
+    "C44_GPa": 56.44933528225981
+  }
+]

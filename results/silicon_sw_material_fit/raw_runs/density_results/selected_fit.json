@@ -1,0 +1,45 @@
+{
+  "profile": 10,
+  "anchor_profile": 2,
+  "density_power": 0.0,
+  "density_reference": 0.7260886835355709,
+  "parameters": {
+    "epsilon": 2.1683,
+    "sigma": 1.6,
+    "a": 2.3569875,
+    "lambda": 24.26917836945492,
+    "gamma": 1.5,
+    "costheta0": -0.333333333333,
+    "A": 5.481340556750244,
+    "B": 1.5433432310272623,
+    "p": 4.0,
+    "q": 0.0
+  },
+  "amplitudes": [
+    1.9926410068958516,
+    0.7775440526141705,
+    1.1556751604502342
+  ],
+  "shape": {
+    "epsilon": 2.1683,
+    "sigma": 1.6,
+    "a": 2.3569875,
+    "lambda": 21.0,
+    "gamma": 1.5,
+    "costheta0": -0.333333333333,
+    "A": 7.049556277,
+    "B": 0.6022245584,
+    "p": 4.0,
+    "q": 0.0,
+    "tol": 0.0
+  },
+  "status": "completed",
+  "training_objective_squared": 302.8867148574622,
+  "objective_squared": 302.92973880699554,
+  "bulk_energy_squared": 0.3294795874177965,
+  "maximum_bulk_energy_squared": 0.3318999493558146,
+  "bulk_guard_passed": true,
+  "EOS_RMSE_eV_atom": 0.004148443058946666,
+  "bulk_stress_RMSE_eV_A3": 0.023627423228899144,
+  "reused_zero_design": true
+}

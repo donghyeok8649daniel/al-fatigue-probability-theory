@@ -1,0 +1,122 @@
+[
+  {
+    "initial": [
+      1.0,
+      1.0
+    ],
+    "optimizer_success": false,
+    "message": "Positive directional derivative for linesearch",
+    "pair_angle_amplitudes": [
+      1.0,
+      0.9999999999999987
+    ],
+    "objective_squared": 134.90231740946612,
+    "iterations": 13,
+    "constraints_slack": [
+      3.552713678800501e-15,
+      0.08776576126349855,
+      0.4574083524553324,
+      0.11223423873650151,
+      -0.25740835245533233,
+      -0.11815316834377532
+    ],
+    "active_constraints": [
+      0,
+      4,
+      5
+    ],
+    "multipliers": [
+      0.0,
+      40.343089754347666,
+      403.5078418812797
+    ],
+    "kkt_max_abs": 1.4210854715202004e-14,
+    "predicted_constants_GPa": [
+      151.42449120169434,
+      76.42209024323522,
+      56.449341245579426
+    ],
+    "C44_upper_band_passed": true,
+    "complete_feasible": false
+  },
+  {
+    "initial": [
+      0.9,
+      1.3
+    ],
+    "optimizer_success": false,
+    "message": "Positive directional derivative for linesearch",
+    "pair_angle_amplitudes": [
+      0.9196295471806465,
+      1.2536184638673282
+    ],
+    "objective_squared": 310.34589146850146,
+    "iterations": 7,
+    "constraints_slack": [
+      -1.9154862800311268,
+      0.11731517746826226,
+      0.20000039129626213,
+      0.08268482253173781,
+      -3.9129626205891554e-07,
+      -0.0006574112133956866
+    ],
+    "active_constraints": [
+      0,
+      4,
+      5
+    ],
+    "multipliers": [
+      0.0,
+      142.53323441115003,
+      734.443751450789
+    ],
+    "kkt_max_abs": 1.1368683772161603e-13,
+    "predicted_constants_GPa": [
+      155.95441670588463,
+      61.93002202997956,
+      64.93253491039283
+    ],
+    "C44_upper_band_passed": true,
+    "complete_feasible": false
+  },
+  {
+    "initial": [
+      1.1,
+      1.5
+    ],
+    "optimizer_success": false,
+    "message": "Positive directional derivative for linesearch",
+    "pair_angle_amplitudes": [
+      0.9281787496686293,
+      1.2497206364453457
+    ],
+    "objective_squared": 306.4561611260365,
+    "iterations": 9,
+    "constraints_slack": [
+      -1.8249660652362727,
+      0.12169996036600284,
+      0.21713242741338556,
+      0.07830003963399723,
+      -0.017132427413385498,
+      -3.108712088728538e-05
+    ],
+    "active_constraints": [
+      0,
+      4,
+      5
+    ],
+    "multipliers": [
+      0.0,
+      137.93469162526506,
+      726.3029919917841
+    ],
+    "kkt_max_abs": 5.684341886080802e-14,
+    "predicted_constants_GPa": [
+      156.62660392410825,
+      62.8945556633736,
+      64.97775550987194
+    ],
+    "C44_upper_band_passed": true,
+    "complete_feasible": false
+  }
+]

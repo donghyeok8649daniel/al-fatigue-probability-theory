@@ -1,0 +1,23 @@
+{
+  "complete": true,
+  "new_bessel_jets": 20,
+  "new_direct_jets": 4,
+  "final_refinement_maximum_errors": {
+    "energy_error_eV": 2.5153212845907547e-12,
+    "gradient_error_eV_A": 4.560796185160143e-12,
+    "hessian_error_eV_A2": 2.152292677415346e-08
+  },
+  "nominal_resolution_maximum_errors": {
+    "energy_error_eV": 3.0047075938455237e-12,
+    "gradient_error_eV_A": 1.3330736514660657e-10,
+    "hessian_error_eV_A2": 3.6805683834018055e-08
+  },
+  "elapsed_seconds": 723.1804043999873,
+  "certified_uniform_tail_bound": false,
+  "statement": "sampled rigid static states only; no first-crack or kinetic validation",
+  "material_approved": false,
+  "first_initiation_validated": false,
+  "physical_clock_validated": false,
+  "new_DFT": 0,
+  "new_MD": 0
+}

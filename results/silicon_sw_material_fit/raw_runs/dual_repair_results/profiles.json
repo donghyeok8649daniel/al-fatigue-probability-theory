@@ -1,0 +1,217 @@
+[
+  {
+    "profile": 3,
+    "sigma_A": 1.6,
+    "gamma": 1.5,
+    "previous_status": "failed_or_infeasible",
+    "previous_reason": "guarded fit KKT residual unresolved",
+    "cached_features": false,
+    "fit": {
+      "amplitudes": [
+        1.461483940161042,
+        0.4943330730012781,
+        0.6897542538885896
+      ],
+      "rank": 3,
+      "singular_values": [
+        35.51038311460495,
+        26.947039604947626,
+        5.7005643990602
+      ],
+      "condition_number": 6.2292749680118025,
+      "active_mask": [
+        0,
+        0,
+        0
+      ],
+      "objective_squared": 71.62330399626366,
+      "original_objective_squared": 392.814792257635,
+      "kkt_max_abs": 1.6996182239381596e-11,
+      "iterations": 22,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935581535,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 155.31206750043523,
+      "primal_violation": 7.216449660063518e-16,
+      "complementarity_residual": 1.120801716717278e-13,
+      "unconstrained_bulk_energy_squared": 5.841035207199735,
+      "constrained": true,
+      "convex_amplitude_problem": true,
+      "optimizer": "three-dimensional active-set enumeration and bracketed scalar dual root"
+    }
+  },
+  {
+    "profile": 6,
+    "sigma_A": 2.0,
+    "gamma": 0.9,
+    "previous_status": "failed_or_infeasible",
+    "previous_reason": "guarded amplitude optimization did not converge feasibly",
+    "cached_features": false,
+    "fit": {
+      "amplitudes": [
+        0.9145421027620615,
+        0.7491449476766963,
+        0.1849268693720162
+      ],
+      "rank": 3,
+      "singular_values": [
+        85.25416288024157,
+        32.11070120957861,
+        8.980309260689749
+      ],
+      "condition_number": 9.49345511445042,
+      "active_mask": [
+        0,
+        0,
+        0
+      ],
+      "objective_squared": 14.06958659794946,
+      "original_objective_squared": 4768.2099687721375,
+      "kkt_max_abs": 1.4921397450962104e-13,
+      "iterations": 13,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.3318999493558148,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 1.4984966179311252,
+      "primal_violation": 1.6653345369377348e-16,
+      "complementarity_residual": 2.495498171325092e-16,
+      "unconstrained_bulk_energy_squared": 1.7223945790080315,
+      "constrained": true,
+      "convex_amplitude_problem": true,
+      "optimizer": "three-dimensional active-set enumeration and bracketed scalar dual root"
+    }
+  },
+  {
+    "profile": 22,
+    "sigma_A": 2.8,
+    "gamma": 1.2,
+    "previous_status": "failed_or_infeasible",
+    "previous_reason": "guarded amplitude optimization did not converge feasibly",
+    "cached_features": false,
+    "fit": {
+      "amplitudes": [
+        0.45529275207992204,
+        1.2176588886544286,
+        1.7115559854928808
+      ],
+      "rank": 3,
+      "singular_values": [
+        53.944454380083,
+        8.939530330717044,
+        6.757942771227341
+      ],
+      "condition_number": 7.982378100293664,
+      "active_mask": [
+        0,
+        0,
+        0
+      ],
+      "objective_squared": 30.700974836205653,
+      "original_objective_squared": 1191.4854626206522,
+      "kkt_max_abs": 1.0373923942097463e-12,
+      "iterations": 16,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935580946,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 2.703182664921422,
+      "primal_violation": 0.0,
+      "complementarity_residual": 1.3955280699789588e-14,
+      "unconstrained_bulk_energy_squared": 4.439257128059444,
+      "constrained": true,
+      "convex_amplitude_problem": true,
+      "optimizer": "three-dimensional active-set enumeration and bracketed scalar dual root"
+    }
+  },
+  {
+    "profile": 24,
+    "sigma_A": 2.8,
+    "gamma": 1.8,
+    "previous_status": "failed_or_infeasible",
+    "previous_reason": "guarded amplitude optimization did not converge feasibly",
+    "cached_features": false,
+    "fit": {
+      "amplitudes": [
+        0.45432947017858344,
+        1.216064834628787,
+        17.654636016861346
+      ],
+      "rank": 3,
+      "singular_values": [
+        53.944062914417884,
+        8.934903535864931,
+        0.5756122948022026
+      ],
+      "condition_number": 93.7159671562517,
+      "active_mask": [
+        0,
+        0,
+        0
+      ],
+      "objective_squared": 62.79900687026869,
+      "original_objective_squared": 1304.8354309168465,
+      "kkt_max_abs": 3.055333763768431e-13,
+      "iterations": 12,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935581557,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 3.9453673825345925,
+      "primal_violation": 9.43689570931383e-16,
+      "complementarity_residual": 3.723202052390744e-15,
+      "unconstrained_bulk_energy_squared": 7.8280232573912745,
+      "constrained": true,
+      "convex_amplitude_problem": true,
+      "optimizer": "three-dimensional active-set enumeration and bracketed scalar dual root"
+    }
+  },
+  {
+    "profile": 1,
+    "sigma_A": 1.6,
+    "gamma": 0.9,
+    "previous_status": "converged_feasible",
+    "previous_reason": null,
+    "cached_features": true,
+    "fit": {
+      "amplitudes": [
+        1.5774315990518595,
+        0.5976720057770099,
+        0.11601924353132295
+      ],
+      "rank": 3,
+      "singular_values": [
+        165.8121896610607,
+        31.187057382822566,
+        5.619233680507664
+      ],
+      "condition_number": 29.507971920840383,
+      "active_mask": [
+        0,
+        0,
+        0
+      ],
+      "objective_squared": 13.990815320204353,
+      "original_objective_squared": 20887.587209741945,
+      "kkt_max_abs": 7.380762667708041e-13,
+      "iterations": 14,
+      "regularization": false,
+      "epsilon_gauge_fixed": true,
+      "bulk_energy_squared": 0.33189994935581835,
+      "maximum_bulk_energy_squared": 0.3318999493558146,
+      "bulk_guard_active": true,
+      "bulk_guard_multiplier": 1.279676822130589,
+      "primal_violation": 3.7192471324942744e-15,
+      "complementarity_residual": 4.7594343512285784e-15,
+      "unconstrained_bulk_energy_squared": 1.3082925297369903,
+      "constrained": true,
+      "convex_amplitude_problem": true,
+      "optimizer": "three-dimensional active-set enumeration and bracketed scalar dual root"
+    }
+  }
+]

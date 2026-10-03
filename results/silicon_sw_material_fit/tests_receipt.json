@@ -1,0 +1,96 @@
+{
+  "provenance": "transcribed from observed successful exec output; not synthesized pytest stdout",
+  "runtime": {
+    "python": "3.13.5",
+    "numpy": "2.5.0",
+    "scipy": "1.18.1",
+    "ase": "3.29.0",
+    "pytest": "9.1.1"
+  },
+  "runs": [
+    {
+      "test_files": [
+        "solver_v1/test_silicon_sw_anharmonic.py",
+        "solver_v1/test_silicon_sw_phonon.py",
+        "solver_v1/test_silicon_sw_material_fit.py",
+        "solver_v1/test_silicon_sw_density_screening.py",
+        "solver_v1/test_silicon_sw_angular_continuum.py"
+      ],
+      "command": "python -m pytest solver_v1/test_silicon_sw_anharmonic.py solver_v1/test_silicon_sw_phonon.py solver_v1/test_silicon_sw_material_fit.py solver_v1/test_silicon_sw_density_screening.py solver_v1/test_silicon_sw_angular_continuum.py -q -p no:cacheprovider",
+      "passed": 28,
+      "failed": 0,
+      "elapsed_seconds": 163.56,
+      "warnings": 4,
+      "warning_type": "ASE/NumPy shape deprecation",
+      "source_sha256": {
+        "test_silicon_sw_anharmonic.py": "78993ceb9d2757fd8e9a658457b3c684de29c4f044b808f739f6a25f81360d98",
+        "test_silicon_sw_phonon.py": "759342fecba3c832da40caaa0de6375d6ae529edee2f7ded0641de00feb0acb7",
+        "test_silicon_sw_material_fit.py": "8acd92dd59fc0755f03e8e779aacf90e1d0dd6ef3e8b33dbb89b4416e60c31a9",
+        "test_silicon_sw_density_screening.py": "6c5d3b21e467179fd4a643618c4b83415fdfe079b64ebd5807912cd9f44ff15c",
+        "test_silicon_sw_angular_continuum.py": "e244f66004b7629b9a4255264e704d960d14fcd76923324670802859db6fe17a"
+      }
+    },
+    {
+      "test_files": [
+        "solver_v1/test_silicon_sw_angle_preference.py"
+      ],
+      "command": "python -m pytest solver_v1/test_silicon_sw_angle_preference.py -q -p no:cacheprovider",
+      "passed": 5,
+      "failed": 0,
+      "elapsed_seconds": 122.88,
+      "source_sha256": {
+        "test_silicon_sw_angle_preference.py": "2c6857067c5d63cad74efd2da4c49e307ae5ab176244fdc597cb8fd77b07e905"
+      }
+    },
+    {
+      "scope": "existing related environment/geometry/lattice regression",
+      "passed": 24,
+      "failed": 0,
+      "elapsed_seconds": 6.87,
+      "exact_stdout_in_public_package": false
+    }
+  ],
+  "combined_single_run": false,
+  "initial_failures_retained": true,
+  "material_approval": false,
+  "earlier_angle_preference_run": {
+    "passed": 3,
+    "failed": 0,
+    "elapsed_seconds": 64.17,
+    "source_sha256": "fb74045d7eb4fa4556910707d5bb2fef09d6cb99ae411ceb0557b9b424caec7c",
+    "authoritative_source": "tests_initial_source/test_silicon_sw_angle_preference.py",
+    "superseded_by_five_test_run": true
+  },
+  "git_index_replay_run": {
+    "passed": 33,
+    "failed": 0,
+    "skipped": 0,
+    "elapsed_seconds": 269.936,
+    "test_files": [
+      "solver_v1/test_silicon_sw_material_fit.py",
+      "solver_v1/test_silicon_sw_density_screening.py",
+      "solver_v1/test_silicon_sw_anharmonic.py",
+      "solver_v1/test_silicon_sw_angular_continuum.py",
+      "solver_v1/test_silicon_sw_phonon.py",
+      "solver_v1/test_silicon_sw_angle_preference.py"
+    ],
+    "warnings": 4,
+    "warning_type": "ASE/NumPy shape deprecation",
+    "command": "python -m pytest solver_v1/test_silicon_sw_material_fit.py solver_v1/test_silicon_sw_density_screening.py solver_v1/test_silicon_sw_anharmonic.py solver_v1/test_silicon_sw_angular_continuum.py solver_v1/test_silicon_sw_phonon.py solver_v1/test_silicon_sw_angle_preference.py -q -p no:cacheprovider --rootdir . --junitxml git_byte_test_results.xml",
+    "source_sha256": {
+      "test_silicon_sw_material_fit.py": "8acd92dd59fc0755f03e8e779aacf90e1d0dd6ef3e8b33dbb89b4416e60c31a9",
+      "test_silicon_sw_density_screening.py": "6c5d3b21e467179fd4a643618c4b83415fdfe079b64ebd5807912cd9f44ff15c",
+      "test_silicon_sw_anharmonic.py": "78993ceb9d2757fd8e9a658457b3c684de29c4f044b808f739f6a25f81360d98",
+      "test_silicon_sw_angular_continuum.py": "e244f66004b7629b9a4255264e704d960d14fcd76923324670802859db6fe17a",
+      "test_silicon_sw_phonon.py": "759342fecba3c832da40caaa0de6375d6ae529edee2f7ded0641de00feb0acb7",
+      "test_silicon_sw_angle_preference.py": "2c6857067c5d63cad74efd2da4c49e307ae5ab176244fdc597cb8fd77b07e905"
+    },
+    "original_JUnit_sha256": "cdff61378ed2fa0ae38a0f5bd0208a1d186e7fe84de6cc2226acca596c66d3a5",
+    "public_JUnit_sha256": "e4567d0274420dfda551f92359cd6b0cb8a86c0e6b25fed3b957bafa7a2c12b9",
+    "sanitized_fields": [
+      "hostname"
+    ],
+    "original_JUnit_retained_locally": true,
+    "provenance": "observed successful exec and JUnit from exact staged Git objects, not a working-tree replay"
+  }
+}

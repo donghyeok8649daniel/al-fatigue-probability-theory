@@ -1,0 +1,14 @@
+{
+  "audit_type": "source-flow accounting of completed exact-anchor calculation; no new energy evaluations",
+  "original_summary_hessian_evaluations": 40,
+  "original_count_omitted_failed_profiles_and_final_candidate_checks": true,
+  "attempted_profiles": 27,
+  "basis_Hessian_evaluations_per_attempt": 4,
+  "basis_Hessian_evaluations": 108,
+  "positive_candidate_direct_Hessian_checks": 10,
+  "corrected_actual_Hessian_evaluations": 118,
+  "EOS_energy_evaluations": 120,
+  "force_feature_evaluations": 1965,
+  "raw_summary_preserved": true,
+  "no_new_DFT_MD_LAMMPS": true
+}

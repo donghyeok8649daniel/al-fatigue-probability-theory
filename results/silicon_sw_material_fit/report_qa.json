@@ -1,0 +1,73 @@
+{
+  "pdf_sha256": "06eac8d5b93cc191b27af7890ac7533a5c28fd635711d26f07659f3ab88378dc",
+  "pages": 10,
+  "expected_numbers_and_limitations_present": true,
+  "manual_visual_review_completed": true,
+  "render": "Poppler pdftoppm, 1200 pixel maximum dimension",
+  "page_reviews": [
+    {
+      "page": 1,
+      "png_sha256": "3cb80ef8e893c4fb25865f55a77f16cc02e1be2cd7964d1072e1989096437be4",
+      "manually_inspected": true,
+      "clipping_overlap_or_glyph_defects_observed": false
+    },
+    {
+      "page": 2,
+      "png_sha256": "8a35780a75ce209c2b9e49512450ff122a40c516b920b935b975c819172e7541",
+      "manually_inspected": true,
+      "clipping_overlap_or_glyph_defects_observed": false
+    },
+    {
+      "page": 3,
+      "png_sha256": "5510e28fde825455893ad88e11e70a263853b4348e08d10598b25f6d63321f60",
+      "manually_inspected": true,
+      "clipping_overlap_or_glyph_defects_observed": false
+    },
+    {
+      "page": 4,
+      "png_sha256": "5eb48ed1c3185cbc2680fcf674ad243bcfc01b312bc23a4816ef16025e0a2389",
+      "manually_inspected": true,
+      "clipping_overlap_or_glyph_defects_observed": false
+    },
+    {
+      "page": 5,
+      "png_sha256": "9a369ce4cdd73c7f6e77dd1d836ba8921f769fdab903e4e851260d77a202d4da",
+      "manually_inspected": true,
+      "clipping_overlap_or_glyph_defects_observed": false
+    },
+    {
+      "page": 6,
+      "png_sha256": "def4ae71eac21ec39f53ef2e421dfe64f5d22844be2f83c3de2f85c1f3fb3d72",
+      "manually_inspected": true,
+      "clipping_overlap_or_glyph_defects_observed": false
+    },
+    {
+      "page": 7,
+      "png_sha256": "75ec02814b8a45915afd8ad25193d0b587ae696f4d1568b86e1903e120ba5f74",
+      "manually_inspected": true,
+      "clipping_overlap_or_glyph_defects_observed": false
+    },
+    {
+      "page": 8,
+      "png_sha256": "688a9a7a8b71cbf29f6e25033729fa91ab1b70126a399aad09a2aeda1261c1ae",
+      "manually_inspected": true,
+      "clipping_overlap_or_glyph_defects_observed": false
+    },
+    {
+      "page": 9,
+      "png_sha256": "d2d26ad09aefe9371633c36926d66c0e7ceaf6930f92f873c2e6c6cbffdf258a",
+      "manually_inspected": true,
+      "clipping_overlap_or_glyph_defects_observed": false
+    },
+    {
+      "page": 10,
+      "png_sha256": "7bf7133947dd87713c3526b8305c91f1a89f18f7a70bb1f8370df93d1eb761a0",
+      "manually_inspected": true,
+      "clipping_overlap_or_glyph_defects_observed": false
+    }
+  ],
+  "review_scope": "equations, Korean glyphs, graphs, tables, margins, footers and page transitions",
+  "material_approved": false,
+  "first_initiation_validated": false,
+  "physical_clock_validated": false
+}

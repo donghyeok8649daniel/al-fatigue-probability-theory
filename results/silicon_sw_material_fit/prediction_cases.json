@@ -1,0 +1,155 @@
+{
+  "cases": [
+    {
+      "label": "original_SW",
+      "raw_cache_relative_path": "results/features.npz",
+      "source_sha256": "e406bbe17d3a9d959b29b27c2395e6cac95754b33ddd74b1a6b2a4ccc594ed60",
+      "amplitudes": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "production_enabled": false,
+      "material_approved": false
+    },
+    {
+      "label": "amplitude_fit",
+      "raw_cache_relative_path": "results/features.npz",
+      "source_sha256": "e406bbe17d3a9d959b29b27c2395e6cac95754b33ddd74b1a6b2a4ccc594ed60",
+      "amplitudes": [
+        0.744102084783527,
+        0.7825778807926684,
+        0.5720321832023499
+      ],
+      "production_enabled": false,
+      "material_approved": false
+    },
+    {
+      "label": "bulk_energy_guard",
+      "raw_cache_relative_path": "guarded_results/selected_features.npz",
+      "source_sha256": "99bb95ec9fc6f365df757f7b867c9d6655326be8863b0918b65f48297348de6c",
+      "amplitudes": [
+        1.5774315985091385,
+        0.5976720055165043,
+        0.116019243527675
+      ],
+      "production_enabled": false,
+      "material_approved": false
+    },
+    {
+      "label": "angular_grid",
+      "raw_cache_relative_path": "angular_results/selected_features.npz",
+      "source_sha256": "9d5f567705d0ec09a088fa8685bb8f8c5da0d0dc8966dfc726398a3f02b14218",
+      "amplitudes": [
+        1.992641006895852,
+        0.7775440526141705,
+        0.5839930108476488
+      ],
+      "production_enabled": false,
+      "material_approved": false
+    },
+    {
+      "label": "angular_shape",
+      "raw_cache_relative_path": "angular_shape_results/selected_features.npz",
+      "source_sha256": "6844f0ac85f9e70a8ef3566ad3018bc2693142781239017ea20b6f444fa91906",
+      "amplitudes": [
+        1.4014763410758602,
+        0.8101288758469786,
+        1.7705302844802964
+      ],
+      "production_enabled": false,
+      "material_approved": false
+    },
+    {
+      "label": "extended_support_diagnostic",
+      "raw_cache_relative_path": "extended_fit_results/selected_features.npz",
+      "source_sha256": "139939277696996afce1980049eeee11daff5e827ada0251ee104a54c35967b6",
+      "amplitudes": [
+        1.288925795726813,
+        0.6322527259296645,
+        0.17695537444625045
+      ],
+      "production_enabled": false,
+      "material_approved": false
+    },
+    {
+      "label": "angle_preference_diagnostic",
+      "raw_cache_relative_path": "angle_preference_fit_results/selected_features.npz",
+      "source_sha256": "95a4bb4b80a82ef843a132d050cac9240b39a834290e6a41daf53502dd7b4340",
+      "amplitudes": [
+        1.9837751242397559,
+        0.7803714006630368,
+        1.1556751604502342
+      ],
+      "production_enabled": false,
+      "material_approved": false
+    },
+    {
+      "label": "joint_angle_diagnostic",
+      "raw_cache_relative_path": "joint_angle_fit_results/selected_features.npz",
+      "source_sha256": "de8f32083afd0dba791fbff9d505dee0e645d6f2d23160c758eda1ddfad5d3d0",
+      "amplitudes": [
+        1.983977423105312,
+        0.7803068871424991,
+        1.2343644036335484
+      ],
+      "production_enabled": false,
+      "material_approved": false
+    },
+    {
+      "label": "angular_boundary_diagnostic",
+      "raw_cache_relative_path": "angular_boundary_fit_results/selected_features.npz",
+      "source_sha256": "f32bad059b5d6a5bd2458c9e581d099e52ff4682cd3075e32c698771b3feb9c0",
+      "amplitudes": [
+        1.9840688765862113,
+        0.7802777224410454,
+        1.2711569317981075
+      ],
+      "production_enabled": false,
+      "material_approved": false
+    },
+    {
+      "label": "early_joint_candidate",
+      "raw_cache_relative_path": "refined_boundary_fit_results/selected_features.npz",
+      "source_sha256": "56e24c94c925cc8f8c1256eb6647ab4e2a13725163af5f6e0b5e2b308b9dd9fb",
+      "amplitudes": [
+        1.3948212167210696,
+        0.8123935800069735,
+        1.9355795588880678
+      ],
+      "production_enabled": false,
+      "material_approved": false
+    },
+    {
+      "label": "joint_static_candidate",
+      "raw_cache_relative_path": "local_boundary_fit_results/selected_features.npz",
+      "source_sha256": "4f9c0b35fc06b4234aeb74e55fceb7d9c9141314d619cf3aa35ea5a91208ba8e",
+      "amplitudes": [
+        1.5154459672870815,
+        0.8032941483520551,
+        1.7423070209244775
+      ],
+      "production_enabled": false,
+      "material_approved": false
+    },
+    {
+      "label": "guard_joint_candidate",
+      "raw_cache_relative_path": "guard_boundary_fit_results/selected_features.npz",
+      "source_sha256": "faa679d65d57e9cba5018139fb9a8d196d164e6f4aeddb12990915f08241f10d",
+      "amplitudes": [
+        1.8937437468151805,
+        0.7842039533744902,
+        0.9525389313938538
+      ],
+      "production_enabled": false,
+      "material_approved": false
+    }
+  ],
+  "anchor_frame": 548,
+  "energy_anchor": "same PW91 thermal frame per atom, fixed and not relaxed DFT ground state",
+  "archive_sha256": "1d3efe976c53bcd2889c0556f2d600c26bf4603522b5c92fd8633dff7b7ab5c2",
+  "frames": 2475,
+  "atoms": 171815,
+  "new_DFT": 0,
+  "new_MD": 0
+}

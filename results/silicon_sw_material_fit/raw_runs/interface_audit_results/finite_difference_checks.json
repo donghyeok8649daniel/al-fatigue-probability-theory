@@ -1,0 +1,230 @@
+[
+  {
+    "case": "original_SW",
+    "cut_kind": "shuffle",
+    "state_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 4.587985102944003e-09
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 1.1018848056210118e-09
+      }
+    ]
+  },
+  {
+    "case": "original_SW",
+    "cut_kind": "shuffle",
+    "state_A": [
+      0.295338285082276,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 5.500879751707544e-10
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 1.837143770444527e-10
+      }
+    ]
+  },
+  {
+    "case": "original_SW",
+    "cut_kind": "shuffle",
+    "state_A": [
+      0.590676570164552,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 2.020843270500451e-09
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 4.665310360252317e-10
+      }
+    ]
+  },
+  {
+    "case": "original_SW",
+    "cut_kind": "glide",
+    "state_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 3.26577431764008e-09
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 6.875007230178198e-10
+      }
+    ]
+  },
+  {
+    "case": "original_SW",
+    "cut_kind": "glide",
+    "state_A": [
+      0.6060968374630923,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 1.0467573474670644e-09
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 2.0298784875194542e-10
+      }
+    ]
+  },
+  {
+    "case": "original_SW",
+    "cut_kind": "glide",
+    "state_A": [
+      1.2121936749261846,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 3.4861061815050216e-09
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 9.770021458521683e-10
+      }
+    ]
+  },
+  {
+    "case": "selected_angular_shape",
+    "cut_kind": "shuffle",
+    "state_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 3.8530565404926165e-09
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 9.331699857284548e-10
+      }
+    ]
+  },
+  {
+    "case": "selected_angular_shape",
+    "cut_kind": "shuffle",
+    "state_A": [
+      0.32583599141076197,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 2.435540658041191e-10
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 6.394929030761887e-11
+      }
+    ]
+  },
+  {
+    "case": "selected_angular_shape",
+    "cut_kind": "shuffle",
+    "state_A": [
+      0.6516719828215239,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 3.397275127881018e-09
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 8.437621712431585e-10
+      }
+    ]
+  },
+  {
+    "case": "selected_angular_shape",
+    "cut_kind": "glide",
+    "state_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 4.673671227806153e-09
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 1.1165344204755456e-09
+      }
+    ]
+  },
+  {
+    "case": "selected_angular_shape",
+    "cut_kind": "glide",
+    "state_A": [
+      0.6737323865620705,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 2.1897861302022648e-09
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 5.799627444957878e-10
+      }
+    ]
+  },
+  {
+    "case": "selected_angular_shape",
+    "cut_kind": "glide",
+    "state_A": [
+      1.347464773124141,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 5.817573534017128e-09
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 1.4210903565015085e-09
+      }
+    ]
+  }
+]

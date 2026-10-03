@@ -1,0 +1,41 @@
+{
+  "cutoffs_A": [
+    3.77118,
+    4.2,
+    4.6
+  ],
+  "sigmas_A": [
+    1.6,
+    2.0951,
+    2.8
+  ],
+  "gammas": [
+    0.9,
+    1.2,
+    1.5
+  ],
+  "profiles": 27,
+  "stress_scale_eV_A3": 0.05,
+  "scales_are_uncertainty": false,
+  "stress_loss": "dia PW91 only, equal-frame mean Frobenius norm, no slab vacuum normalization",
+  "source_virial": "extxyz: virial=-volume*static stress, no kinetic term",
+  "virial_reference": "https://github.com/libAtoms/extxyz#reading-aseatomsatoms-from-this-format",
+  "training": "same fixed PW91 511 dia/surface001/surface110; all other families excluded",
+  "held_out_used_for_fit": false,
+  "baseline_features_sha256": "e406bbe17d3a9d959b29b27c2395e6cac95754b33ddd74b1a6b2a4ccc594ed60",
+  "bulk_guard": "training dia E MSE <= original SW",
+  "elastic_target_GPa": [
+    153.3,
+    56.3,
+    72.2
+  ],
+  "elastic_relative_gate": 0.1,
+  "elastic_source": "Bartok et al., Phys Rev X 8 041048 (2018), Fig 1, 0 K PW91 DFT",
+  "elastic_reference_role": "known calibration gate; not independent unseen validation",
+  "selection": "lowest joint training loss among profiles passing calibration elastic gate; if none, diagnostic best",
+  "global_shape_optimum_certified": false,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "new_LAMMPS": 0,
+  "material_approved": false
+}

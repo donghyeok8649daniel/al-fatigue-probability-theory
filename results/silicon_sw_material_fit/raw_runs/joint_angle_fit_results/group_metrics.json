@@ -1,0 +1,282 @@
+[
+  {
+    "config_type": "111adatom",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 11,
+    "force_RMSE_eV_A": 0.6922547021417933,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "amorph",
+    "declared_xc": "PW91",
+    "training": false,
+    "frames": 64,
+    "force_RMSE_eV_A": 0.5937027743417064,
+    "relative_energy_RMSE_eV_atom": 0.07690511097046687
+  },
+  {
+    "config_type": "amorph",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 95,
+    "force_RMSE_eV_A": 0.653446720439819,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "bc8",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 49,
+    "force_RMSE_eV_A": 0.7227582812887652,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "bcc",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 49,
+    "force_RMSE_eV_A": 0.7248378269078719,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "bt",
+    "declared_xc": "PW91",
+    "training": false,
+    "frames": 323,
+    "force_RMSE_eV_A": 0.7482479955236117,
+    "relative_energy_RMSE_eV_atom": 1.584901051325516
+  },
+  {
+    "config_type": "bt",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 122,
+    "force_RMSE_eV_A": 1.0757077070409655,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "crack_110_1-10",
+    "declared_xc": "PW91",
+    "training": false,
+    "frames": 7,
+    "force_RMSE_eV_A": 0.7477699879826053,
+    "relative_energy_RMSE_eV_atom": 0.11344995689615099
+  },
+  {
+    "config_type": "crack_111_1-10",
+    "declared_xc": "PW91",
+    "training": false,
+    "frames": 10,
+    "force_RMSE_eV_A": 1.0539238496823913,
+    "relative_energy_RMSE_eV_atom": 0.15398951736344335
+  },
+  {
+    "config_type": "decohesion",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 33,
+    "force_RMSE_eV_A": 0.5441865982900097,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "dia",
+    "declared_xc": "PW91",
+    "training": true,
+    "frames": 489,
+    "force_RMSE_eV_A": 0.21520512278526294,
+    "relative_energy_RMSE_eV_atom": 0.03250875114506381
+  },
+  {
+    "config_type": "divacancy",
+    "declared_xc": "PW91",
+    "training": false,
+    "frames": 78,
+    "force_RMSE_eV_A": 0.4665582030498891,
+    "relative_energy_RMSE_eV_atom": 0.0608768329881981
+  },
+  {
+    "config_type": "fcc",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 49,
+    "force_RMSE_eV_A": 1.5114578945682995,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "hcp",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 49,
+    "force_RMSE_eV_A": 2.0623579832801933,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "hex_diamond",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 49,
+    "force_RMSE_eV_A": 0.30239815644452966,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "interstitial",
+    "declared_xc": "PW91",
+    "training": false,
+    "frames": 65,
+    "force_RMSE_eV_A": 0.5815657092601525,
+    "relative_energy_RMSE_eV_atom": 0.04255990637781395
+  },
+  {
+    "config_type": "interstitial",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 50,
+    "force_RMSE_eV_A": 0.6420127027630855,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "isolated_atom",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 1,
+    "force_RMSE_eV_A": 0.0,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "liq",
+    "declared_xc": "PW91",
+    "training": false,
+    "frames": 4,
+    "force_RMSE_eV_A": 2.1967263931262413,
+    "relative_energy_RMSE_eV_atom": 0.3538012171692618
+  },
+  {
+    "config_type": "liq",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 72,
+    "force_RMSE_eV_A": 2.7812074676880787,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "screw_disloc",
+    "declared_xc": "PW91",
+    "training": false,
+    "frames": 19,
+    "force_RMSE_eV_A": 0.6526166514501831,
+    "relative_energy_RMSE_eV_atom": 0.05320991773274181
+  },
+  {
+    "config_type": "sh",
+    "declared_xc": "PW91",
+    "training": false,
+    "frames": 53,
+    "force_RMSE_eV_A": 1.026959233905706,
+    "relative_energy_RMSE_eV_atom": 2.1905072886240387
+  },
+  {
+    "config_type": "sh",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 170,
+    "force_RMSE_eV_A": 1.6002220474358209,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "sp",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 100,
+    "force_RMSE_eV_A": 1.8830480132835685,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "sp2",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 51,
+    "force_RMSE_eV_A": 0.6040427793646881,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "st12",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 49,
+    "force_RMSE_eV_A": 0.9281763884176378,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "surface_001",
+    "declared_xc": "PW91",
+    "training": true,
+    "frames": 10,
+    "force_RMSE_eV_A": 1.2072423193466189,
+    "relative_energy_RMSE_eV_atom": 0.2104364401857184
+  },
+  {
+    "config_type": "surface_001",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 19,
+    "force_RMSE_eV_A": 0.7614183427967167,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "surface_110",
+    "declared_xc": "PW91",
+    "training": true,
+    "frames": 12,
+    "force_RMSE_eV_A": 1.51253858188398,
+    "relative_energy_RMSE_eV_atom": 0.2503343664154132
+  },
+  {
+    "config_type": "surface_110",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 14,
+    "force_RMSE_eV_A": 0.6873791495465181,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "surface_111",
+    "declared_xc": "PW91",
+    "training": false,
+    "frames": 47,
+    "force_RMSE_eV_A": 1.1477167747087575,
+    "relative_energy_RMSE_eV_atom": 0.2243037859323101
+  },
+  {
+    "config_type": "surface_111_3x3_das",
+    "declared_xc": "PW91",
+    "training": false,
+    "frames": 1,
+    "force_RMSE_eV_A": 1.4069548996069332,
+    "relative_energy_RMSE_eV_atom": 0.2465476810311621
+  },
+  {
+    "config_type": "surface_111_pandey",
+    "declared_xc": "PBE",
+    "training": false,
+    "frames": 50,
+    "force_RMSE_eV_A": 1.2346080673996818,
+    "relative_energy_RMSE_eV_atom": null
+  },
+  {
+    "config_type": "vacancy",
+    "declared_xc": "PW91",
+    "training": false,
+    "frames": 1,
+    "force_RMSE_eV_A": 0.07773105214707704,
+    "relative_energy_RMSE_eV_atom": 0.021435625891262022
+  },
+  {
+    "config_type": "vacancy",
+    "declared_xc": "UNSPECIFIED",
+    "training": false,
+    "frames": 210,
+    "force_RMSE_eV_A": 0.3896249325469071,
+    "relative_energy_RMSE_eV_atom": null
+  }
+]

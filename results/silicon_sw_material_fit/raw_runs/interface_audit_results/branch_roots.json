@@ -1,0 +1,614 @@
+[
+  {
+    "case": "original_SW",
+    "cut_kind": "shuffle",
+    "mesh_points": 81,
+    "opening_A": 0.5906765701645644,
+    "gap_A": 2.3516702391945783,
+    "atomic_cell_area_A2": 12.771802974246324,
+    "lattice_A": 5.430949782576885,
+    "normal_traction_GPa": 3.6239000282199254,
+    "critical_eigenvector": [
+      1.0,
+      -4.930380657631324e-32,
+      -1.3143302097945016e-16
+    ],
+    "jet": {
+      "energy_eV": 1.1368736726943034,
+      "gradient_eV_A": [
+        2.888803654765482,
+        0.0,
+        -3.9815938343310634e-17
+      ],
+      "hessian_eV_A2": [
+        [
+          1.9984014454597963e-15,
+          0.0,
+          1.592485205722321e-16
+        ],
+        [
+          0.0,
+          1.2116325059372346,
+          0.0
+        ],
+        [
+          1.592485205722321e-16,
+          0.0,
+          1.211632505937235
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        1.9984014454597963e-15,
+        1.211632505937234,
+        1.2116325059372348
+      ]
+    },
+    "interpretation": "first full-curvature loss on sampled u=0 rigid symmetry branch; not crack initiation strength"
+  },
+  {
+    "case": "original_SW",
+    "cut_kind": "shuffle",
+    "mesh_points": 161,
+    "opening_A": 0.590676570164552,
+    "gap_A": 2.3516702391945783,
+    "atomic_cell_area_A2": 12.771802974246324,
+    "lattice_A": 5.430949782576885,
+    "normal_traction_GPa": 3.623900028219927,
+    "critical_eigenvector": [
+      -1.0,
+      0.0,
+      1.314330209795035e-16
+    ],
+    "jet": {
+      "energy_eV": 1.136873672694267,
+      "gradient_eV_A": [
+        2.8888036547654834,
+        0.0,
+        -3.9815938343292675e-17
+      ],
+      "hessian_eV_A2": [
+        [
+          2.37365682665993e-13,
+          0.0,
+          1.5924852057226804e-16
+        ],
+        [
+          0.0,
+          1.211632505937252,
+          0.0
+        ],
+        [
+          1.5924852057226804e-16,
+          0.0,
+          1.211632505937252
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        2.37365682665993e-13,
+        1.211632505937252,
+        1.211632505937252
+      ]
+    },
+    "interpretation": "first full-curvature loss on sampled u=0 rigid symmetry branch; not crack initiation strength",
+    "zero": {
+      "energy_eV": 0.0,
+      "gradient_eV_A": [
+        1.8630881282177825e-08,
+        0.0,
+        -1.7601248763302554e-16
+      ],
+      "hessian_eV_A2": [
+        [
+          10.313893245492157,
+          0.0,
+          2.9445604128970305e-16
+        ],
+        [
+          0.0,
+          1.2711902851508445,
+          0.0
+        ],
+        [
+          2.9445604128970305e-16,
+          0.0,
+          1.271190285150845
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        1.2711902851508439,
+        1.2711902851508448,
+        10.313893245492157
+      ]
+    },
+    "separated": {
+      "energy_eV": 2.168299999958631,
+      "gradient_eV_A": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hessian_eV_A2": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "rigid_separation_work_J_m2": 2.720054171240395
+  },
+  {
+    "case": "original_SW",
+    "cut_kind": "glide",
+    "mesh_points": 81,
+    "opening_A": 1.2121936749264697,
+    "gap_A": 0.783890079731526,
+    "atomic_cell_area_A2": 12.771802974246324,
+    "lattice_A": 5.430949782576885,
+    "normal_traction_GPa": 6.21504840095327,
+    "critical_eigenvector": [
+      1.0,
+      -3.944304526105059e-31,
+      2.5290156626591174e-15
+    ],
+    "jet": {
+      "energy_eV": 4.098352069859602,
+      "gradient_eV_A": [
+        4.954345979581914,
+        0.0,
+        5.183680633173703e-16
+      ],
+      "hessian_eV_A2": [
+        [
+          -2.8969604493056522e-12,
+          0.0,
+          -4.186588337291853e-15
+        ],
+        [
+          0.0,
+          1.6876090055804225,
+          0.0
+        ],
+        [
+          -4.267989607564804e-15,
+          -1.974735479304268e-17,
+          1.6876090055804271
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        -2.8969604493056522e-12,
+        1.687609005580422,
+        1.6876090055804271
+      ]
+    },
+    "interpretation": "first full-curvature loss on sampled u=0 rigid symmetry branch; not crack initiation strength"
+  },
+  {
+    "case": "original_SW",
+    "cut_kind": "glide",
+    "mesh_points": 161,
+    "opening_A": 1.2121936749261846,
+    "gap_A": 0.783890079731526,
+    "atomic_cell_area_A2": 12.771802974246324,
+    "lattice_A": 5.430949782576885,
+    "normal_traction_GPa": 6.215048400953265,
+    "critical_eigenvector": [
+      1.0,
+      3.944304526105059e-31,
+      2.3726102602596016e-15
+    ],
+    "jet": {
+      "energy_eV": 4.098352069858189,
+      "gradient_eV_A": [
+        4.95434597958191,
+        0.0,
+        -7.694680179484715e-16
+      ],
+      "hessian_eV_A2": [
+        [
+          5.88418203051333e-15,
+          0.0,
+          -3.8930161394903905e-15
+        ],
+        [
+          0.0,
+          1.6876090055830735,
+          0.0
+        ],
+        [
+          -4.004038441952906e-15,
+          0.0,
+          1.68760900558308
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        5.88418203051332e-15,
+        1.6876090055830737,
+        1.6876090055830804
+      ]
+    },
+    "interpretation": "first full-curvature loss on sampled u=0 rigid symmetry branch; not crack initiation strength",
+    "zero": {
+      "energy_eV": 0.0,
+      "gradient_eV_A": [
+        1.863087473342808e-08,
+        0.0,
+        4.519119870782499e-15
+      ],
+      "hessian_eV_A2": [
+        [
+          7.9577520886587845,
+          0.0,
+          -5.161444275453286e-15
+        ],
+        [
+          0.0,
+          16.152994864184482,
+          -9.87367739652134e-18
+        ],
+        [
+          -5.605533485303349e-15,
+          -9.87367739652134e-18,
+          16.152994864184492
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        7.9577520886587845,
+        16.152994864184475,
+        16.152994864184492
+      ]
+    },
+    "separated": {
+      "energy_eV": 6.504899999875895,
+      "gradient_eV_A": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hessian_eV_A2": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "rigid_separation_work_J_m2": 8.160162513721186
+  },
+  {
+    "case": "selected_angular_shape",
+    "cut_kind": "shuffle",
+    "mesh_points": 81,
+    "opening_A": 0.6516719828215237,
+    "gap_A": 2.3646916764106427,
+    "atomic_cell_area_A2": 12.913632094509813,
+    "lattice_A": 5.4610215037046075,
+    "normal_traction_GPa": 3.6326105712817105,
+    "critical_eigenvector": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "jet": {
+      "energy_eV": 1.2492190156447132,
+      "gradient_eV_A": [
+        2.9279041689082033,
+        0.0,
+        0.0
+      ],
+      "hessian_eV_A2": [
+        [
+          4.218847495756563e-15,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.1644428904063857,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.1644428904063857
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        4.218847495756563e-15,
+        1.1644428904063857,
+        1.1644428904063857
+      ]
+    },
+    "interpretation": "first full-curvature loss on sampled u=0 rigid symmetry branch; not crack initiation strength"
+  },
+  {
+    "case": "selected_angular_shape",
+    "cut_kind": "shuffle",
+    "mesh_points": 161,
+    "opening_A": 0.6516719828215239,
+    "gap_A": 2.3646916764106427,
+    "atomic_cell_area_A2": 12.913632094509813,
+    "lattice_A": 5.4610215037046075,
+    "normal_traction_GPa": 3.632610571281709,
+    "critical_eigenvector": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "jet": {
+      "energy_eV": 1.249219015644715,
+      "gradient_eV_A": [
+        2.927904168908202,
+        0.0,
+        0.0
+      ],
+      "hessian_eV_A2": [
+        [
+          -7.327471960344546e-15,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.1644428904063844,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.1644428904063846
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        -7.327471960344546e-15,
+        1.1644428904063844,
+        1.1644428904063846
+      ]
+    },
+    "interpretation": "first full-curvature loss on sampled u=0 rigid symmetry branch; not crack initiation strength",
+    "zero": {
+      "energy_eV": 0.0,
+      "gradient_eV_A": [
+        -4.440892114276403e-16,
+        0.0,
+        0.0
+      ],
+      "hessian_eV_A2": [
+        [
+          9.059459276582999,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.6538018733079651,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.6538018733079656
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        1.6538018733079651,
+        1.6538018733079656,
+        9.059459276582999
+      ]
+    },
+    "separated": {
+      "energy_eV": 2.2392356366933015,
+      "gradient_eV_A": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hessian_eV_A2": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "rigid_separation_work_J_m2": 2.778188962542458
+  },
+  {
+    "case": "selected_angular_shape",
+    "cut_kind": "glide",
+    "mesh_points": 81,
+    "opening_A": 1.3474647731241414,
+    "gap_A": 0.7882305588035475,
+    "atomic_cell_area_A2": 12.913632094509813,
+    "lattice_A": 5.4610215037046075,
+    "normal_traction_GPa": 6.280512268183085,
+    "critical_eigenvector": [
+      -1.0,
+      -1.4581017345685716e-17,
+      -0.0
+    ],
+    "jet": {
+      "energy_eV": 4.628094247344823,
+      "gradient_eV_A": [
+        5.062127550436597,
+        0.0,
+        0.0
+      ],
+      "hessian_eV_A2": [
+        [
+          -5.717648576819556e-15,
+          0.0,
+          0.0
+        ],
+        [
+          -3.4963289699459204e-17,
+          2.397863528350042,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          2.397863528350041
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        -5.717648576819556e-15,
+        2.397863528350041,
+        2.397863528350042
+      ]
+    },
+    "interpretation": "first full-curvature loss on sampled u=0 rigid symmetry branch; not crack initiation strength"
+  },
+  {
+    "case": "selected_angular_shape",
+    "cut_kind": "glide",
+    "mesh_points": 161,
+    "opening_A": 1.347464773124141,
+    "gap_A": 0.7882305588035475,
+    "atomic_cell_area_A2": 12.913632094509813,
+    "lattice_A": 5.4610215037046075,
+    "normal_traction_GPa": 6.280512268183083,
+    "critical_eigenvector": [
+      -1.0,
+      0.0,
+      3.645254336421438e-17
+    ],
+    "jet": {
+      "energy_eV": 4.628094247344821,
+      "gradient_eV_A": [
+        5.062127550436594,
+        0.0,
+        0.0
+      ],
+      "hessian_eV_A2": [
+        [
+          4.884981308350689e-15,
+          0.0,
+          6.992657939891841e-17
+        ],
+        [
+          0.0,
+          2.3978635283500465,
+          0.0
+        ],
+        [
+          8.7408224248648e-17,
+          0.0,
+          2.3978635283500465
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        4.884981308350689e-15,
+        2.3978635283500465,
+        2.3978635283500465
+      ]
+    },
+    "interpretation": "first full-curvature loss on sampled u=0 rigid symmetry branch; not crack initiation strength",
+    "zero": {
+      "energy_eV": 0.0,
+      "gradient_eV_A": [
+        -3.9244398205397256e-15,
+        4.769839010731521e-29,
+        4.0934733827743566e-16
+      ],
+      "hessian_eV_A2": [
+        [
+          8.900004197290226,
+          -3.4963289699459204e-17,
+          -1.9404625783199857e-15
+        ],
+        [
+          -3.4963289699459204e-17,
+          15.203127018364619,
+          3.4963289699459204e-17
+        ],
+        [
+          -1.9404625783199857e-15,
+          3.4963289699459204e-17,
+          15.20312701836462
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        8.900004197290226,
+        15.20312701836462,
+        15.203127018364633
+      ]
+    },
+    "separated": {
+      "energy_eV": 6.7177069100799045,
+      "gradient_eV_A": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hessian_eV_A2": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "eigenvalues_eV_A2": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "rigid_separation_work_J_m2": 8.334566887627375
+  }
+]

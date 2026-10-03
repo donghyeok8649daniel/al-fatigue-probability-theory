@@ -1,0 +1,66 @@
+{
+  "complete": true,
+  "profiles": 30,
+  "converged_feasible_profiles": 26,
+  "training_frames": 511,
+  "held_out_frames": 1964,
+  "selected_profile": 1,
+  "fit": {
+    "amplitudes": [
+      1.5774315985091385,
+      0.5976720055165043,
+      0.116019243527675
+    ],
+    "rank": 3,
+    "singular_values": [
+      165.8121896610607,
+      31.187057382822566,
+      5.619233680507664
+    ],
+    "condition_number": 29.507971920840383,
+    "active_mask": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "objective_squared": 13.990815320204353,
+    "original_objective_squared": 20887.587209741945,
+    "kkt_max_abs": 3.465514963885141e-07,
+    "iterations": 12,
+    "regularization": false,
+    "epsilon_gauge_fixed": true,
+    "bulk_energy_squared": 0.33189994935581796,
+    "maximum_bulk_energy_squared": 0.3318999493558146,
+    "bulk_guard_active": true,
+    "bulk_guard_multiplier": 1.2796768356946446,
+    "unconstrained_bulk_energy_squared": 1.3082925297369903,
+    "constrained": true,
+    "convex_amplitude_problem": true
+  },
+  "parameters": {
+    "epsilon": 2.1683,
+    "sigma": 1.6,
+    "a": 2.3569875,
+    "lambda": 2.4364041140811747,
+    "gamma": 0.9,
+    "costheta0": -0.333333333333,
+    "A": 4.213322438076052,
+    "B": 1.58944711990888,
+    "p": 4.0,
+    "q": 0.0
+  },
+  "new_feature_evaluations": 16783,
+  "cached_training_frames": 511,
+  "selected_training_features_reused": true,
+  "candidate_bessel_consistency_passed": true,
+  "bulk_energy_guard_passed": true,
+  "material_approved": false,
+  "first_initiation_validated": false,
+  "physical_clock_validated": false,
+  "production_enabled": false,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "new_MACE": 0,
+  "new_LAMMPS": 0,
+  "elapsed_seconds": 130.84706279984675
+}

@@ -1,0 +1,674 @@
+[
+  {
+    "mode": "hydro",
+    "step": 0.01,
+    "sign": -1,
+    "internally_relaxed": false,
+    "energy_eV": -8.661568829026391,
+    "force_max_eV_A": 0.0,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.05865453657711166
+  },
+  {
+    "mode": "hydro",
+    "step": 0.01,
+    "sign": 1,
+    "internally_relaxed": false,
+    "energy_eV": -8.662008429966471,
+    "force_max_eV_A": 0.0,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.05536066011895992
+  },
+  {
+    "mode": "hydro",
+    "step": 0.01,
+    "sign": -1,
+    "internally_relaxed": true,
+    "energy_eV": -8.661568829026391,
+    "force_max_eV_A": 0.0,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.05865453657711166
+  },
+  {
+    "mode": "hydro",
+    "step": 0.01,
+    "sign": 1,
+    "internally_relaxed": true,
+    "energy_eV": -8.662008429966471,
+    "force_max_eV_A": 0.0,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.05536066011895992
+  },
+  {
+    "mode": "hydro",
+    "step": 0.003,
+    "sign": -1,
+    "internally_relaxed": false,
+    "energy_eV": -8.672167328820855,
+    "force_max_eV_A": 5.048709793414476e-29,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.017240947061628688
+  },
+  {
+    "mode": "hydro",
+    "step": 0.003,
+    "sign": 1,
+    "internally_relaxed": false,
+    "energy_eV": -8.672179193638865,
+    "force_max_eV_A": 5.048709793414476e-29,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.01694464976046155
+  },
+  {
+    "mode": "hydro",
+    "step": 0.003,
+    "sign": -1,
+    "internally_relaxed": true,
+    "energy_eV": -8.672167328820855,
+    "force_max_eV_A": 5.048709793414476e-29,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.017240947061628688
+  },
+  {
+    "mode": "hydro",
+    "step": 0.003,
+    "sign": 1,
+    "internally_relaxed": true,
+    "energy_eV": -8.672179193638865,
+    "force_max_eV_A": 5.048709793414476e-29,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.01694464976046155
+  },
+  {
+    "mode": "hydro",
+    "step": 0.001,
+    "sign": -1,
+    "internally_relaxed": false,
+    "energy_eV": -8.673085700990391,
+    "force_max_eV_A": 5.048709793414476e-29,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.005713778111160919
+  },
+  {
+    "mode": "hydro",
+    "step": 0.001,
+    "sign": 1,
+    "internally_relaxed": false,
+    "energy_eV": -8.6730861401053,
+    "force_max_eV_A": 5.048709793414476e-29,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.005680865371233827
+  },
+  {
+    "mode": "hydro",
+    "step": 0.001,
+    "sign": -1,
+    "internally_relaxed": true,
+    "energy_eV": -8.673085700990391,
+    "force_max_eV_A": 5.048709793414476e-29,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.005713778111160919
+  },
+  {
+    "mode": "hydro",
+    "step": 0.001,
+    "sign": 1,
+    "internally_relaxed": true,
+    "energy_eV": -8.6730861401053,
+    "force_max_eV_A": 5.048709793414476e-29,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.005680865371233827
+  },
+  {
+    "mode": "hydro",
+    "step": 0.0003,
+    "sign": -1,
+    "internally_relaxed": false,
+    "energy_eV": -8.673189726847,
+    "force_max_eV_A": 0.0,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.0017106641289023517
+  },
+  {
+    "mode": "hydro",
+    "step": 0.0003,
+    "sign": 1,
+    "internally_relaxed": false,
+    "energy_eV": -8.673189738607379,
+    "force_max_eV_A": 5.048709793414476e-29,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.0017077099614465022
+  },
+  {
+    "mode": "hydro",
+    "step": 0.0003,
+    "sign": -1,
+    "internally_relaxed": true,
+    "energy_eV": -8.673189726847,
+    "force_max_eV_A": 0.0,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.0017106641289023517
+  },
+  {
+    "mode": "hydro",
+    "step": 0.0003,
+    "sign": 1,
+    "internally_relaxed": true,
+    "energy_eV": -8.673189738607379,
+    "force_max_eV_A": 5.048709793414476e-29,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.0017077099614465022
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.01,
+    "sign": -1,
+    "internally_relaxed": false,
+    "energy_eV": -8.671325772486078,
+    "force_max_eV_A": 1.734723475976807e-18,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.009357827066696012
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.01,
+    "sign": 1,
+    "internally_relaxed": false,
+    "energy_eV": -8.671325772486078,
+    "force_max_eV_A": 1.734723475976807e-18,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.009357827066696012
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.01,
+    "sign": -1,
+    "internally_relaxed": true,
+    "energy_eV": -8.671325772486078,
+    "force_max_eV_A": 1.734723475976807e-18,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.009357827066696012
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.01,
+    "sign": 1,
+    "internally_relaxed": true,
+    "energy_eV": -8.671325772486078,
+    "force_max_eV_A": 1.734723475976807e-18,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.009357827066696012
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.003,
+    "sign": -1,
+    "internally_relaxed": false,
+    "energy_eV": -8.673031280535254,
+    "force_max_eV_A": 8.673617379884035e-19,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.0028086410894385396
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.003,
+    "sign": 1,
+    "internally_relaxed": false,
+    "energy_eV": -8.673031280535254,
+    "force_max_eV_A": 4.336808689942018e-19,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.0028086410894385006
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.003,
+    "sign": -1,
+    "internally_relaxed": true,
+    "energy_eV": -8.673031280535254,
+    "force_max_eV_A": 8.673617379884035e-19,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.0028086410894385396
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.003,
+    "sign": 1,
+    "internally_relaxed": true,
+    "energy_eV": -8.673031280535254,
+    "force_max_eV_A": 4.336808689942018e-19,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.0028086410894385006
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.001,
+    "sign": -1,
+    "internally_relaxed": false,
+    "energy_eV": -8.67318125286629,
+    "force_max_eV_A": 2.168404344971009e-19,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.0009362515949615655
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.001,
+    "sign": 1,
+    "internally_relaxed": false,
+    "energy_eV": -8.67318125286629,
+    "force_max_eV_A": 1.0842021724855044e-19,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.0009362515949615459
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.001,
+    "sign": -1,
+    "internally_relaxed": true,
+    "energy_eV": -8.67318125286629,
+    "force_max_eV_A": 2.168404344971009e-19,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.0009362515949615655
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.001,
+    "sign": 1,
+    "internally_relaxed": true,
+    "energy_eV": -8.67318125286629,
+    "force_max_eV_A": 1.0842021724855044e-19,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.0009362515949615459
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.0003,
+    "sign": -1,
+    "internally_relaxed": false,
+    "energy_eV": -8.673198312603498,
+    "force_max_eV_A": 5.421010862427522e-20,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.0002808767718027643
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.0003,
+    "sign": 1,
+    "internally_relaxed": false,
+    "energy_eV": -8.673198312603498,
+    "force_max_eV_A": 5.421010862427522e-20,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.00028087677180274476
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.0003,
+    "sign": -1,
+    "internally_relaxed": true,
+    "energy_eV": -8.673198312603498,
+    "force_max_eV_A": 5.421010862427522e-20,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.0002808767718027643
+  },
+  {
+    "mode": "tetragonal",
+    "step": 0.0003,
+    "sign": 1,
+    "internally_relaxed": true,
+    "energy_eV": -8.673198312603498,
+    "force_max_eV_A": 5.421010862427522e-20,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.00028087677180274476
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.01,
+    "sign": -1,
+    "internally_relaxed": false,
+    "energy_eV": -8.671828342343401,
+    "force_max_eV_A": 0.15603285263109884,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.006850098076885777
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.01,
+    "sign": 1,
+    "internally_relaxed": false,
+    "energy_eV": -8.671828342343401,
+    "force_max_eV_A": 0.15603285263109884,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.006850098076885777
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.01,
+    "sign": -1,
+    "internally_relaxed": true,
+    "energy_eV": -8.672494560634846,
+    "force_max_eV_A": 1.894042326542342e-14,
+    "shift_A": [
+      -9.254548699935432e-16,
+      1.5123168928627532e-16,
+      0.008539877858827948
+    ],
+    "conjugate_Piola_eV_A3": -0.0035228645183383567
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.01,
+    "sign": 1,
+    "internally_relaxed": true,
+    "energy_eV": -8.67249456063485,
+    "force_max_eV_A": 1.0422218643668657e-14,
+    "shift_A": [
+      -2.22747063017216e-16,
+      -4.372382510168707e-19,
+      -0.008539877858827325
+    ],
+    "conjugate_Piola_eV_A3": 0.003522864518338594
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.003,
+    "sign": -1,
+    "internally_relaxed": false,
+    "energy_eV": -8.673076547681946,
+    "force_max_eV_A": 0.04680926707236808,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.002055128593792652
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.003,
+    "sign": 1,
+    "internally_relaxed": false,
+    "energy_eV": -8.673076547681946,
+    "force_max_eV_A": 0.04680926707236808,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.002055128593792652
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.003,
+    "sign": -1,
+    "internally_relaxed": true,
+    "energy_eV": -8.673136506811495,
+    "force_max_eV_A": 4.482295439539331e-15,
+    "shift_A": [
+      -1.2881293617460312e-16,
+      2.7908878655258297e-18,
+      0.0025618599146829007
+    ],
+    "conjugate_Piola_eV_A3": -0.001056975721628531
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.003,
+    "sign": 1,
+    "internally_relaxed": true,
+    "energy_eV": -8.673136506811499,
+    "force_max_eV_A": 3.753422661984719e-15,
+    "shift_A": [
+      -2.5760553338650835e-16,
+      -1.1975308930720644e-16,
+      -0.0025618599146827723
+    ],
+    "conjugate_Piola_eV_A3": 0.0010569757216284973
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.001,
+    "sign": -1,
+    "internally_relaxed": false,
+    "energy_eV": -8.673186282899598,
+    "force_max_eV_A": 0.01560307176516591,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.0006850457701195592
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.001,
+    "sign": 1,
+    "internally_relaxed": false,
+    "energy_eV": -8.673186282899596,
+    "force_max_eV_A": 0.01560307176516591,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.000685045770119526
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.001,
+    "sign": -1,
+    "internally_relaxed": true,
+    "energy_eV": -8.67319294502005,
+    "force_max_eV_A": 5.146552646202338e-15,
+    "shift_A": [
+      7.41520386713811e-17,
+      1.3036876143538869e-16,
+      0.0008539502735437365
+    ],
+    "conjugate_Piola_eV_A3": -0.0003523286505260951
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.001,
+    "sign": 1,
+    "internally_relaxed": true,
+    "energy_eV": -8.67319294502005,
+    "force_max_eV_A": 3.2046587605805144e-13,
+    "shift_A": [
+      3.7370152883874265e-15,
+      -2.4726962996226843e-15,
+      -0.0008539502735259858
+    ],
+    "conjugate_Piola_eV_A3": 0.00035232865053294344
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.0003,
+    "sign": -1,
+    "internally_relaxed": false,
+    "energy_eV": -8.673198765310083,
+    "force_max_eV_A": 0.004680920940567835,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": -0.00020551383018507072
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.0003,
+    "sign": 1,
+    "internally_relaxed": false,
+    "energy_eV": -8.673198765310085,
+    "force_max_eV_A": 0.004680920940567835,
+    "shift_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "conjugate_Piola_eV_A3": 0.00020551383018507072
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.0003,
+    "sign": -1,
+    "internally_relaxed": true,
+    "energy_eV": -8.673199364900874,
+    "force_max_eV_A": 9.434293624099865e-15,
+    "shift_A": [
+      -9.174195455245477e-17,
+      3.4305444553199824e-17,
+      0.00025618497861812605
+    ],
+    "conjugate_Piola_eV_A3": -0.00010569871152325338
+  },
+  {
+    "mode": "simple_xy",
+    "step": 0.0003,
+    "sign": 1,
+    "internally_relaxed": true,
+    "energy_eV": -8.673199364900874,
+    "force_max_eV_A": 8.540043672233821e-15,
+    "shift_A": [
+      2.4957530417309043e-17,
+      1.872331410864806e-22,
+      -0.00025618497861766196
+    ],
+    "conjugate_Piola_eV_A3": 0.00010569871152364823
+  }
+]

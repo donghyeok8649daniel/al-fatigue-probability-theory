@@ -1,0 +1,421 @@
+[
+  {
+    "anchor_profile": 0,
+    "loss_polynomial_ascending": [
+      796.7270631728852,
+      -3178.484804116077,
+      5034.448998811162,
+      -3474.1239930640495,
+      902.1894266730811
+    ],
+    "bulk_polynomial_ascending": [
+      12.402400514516666,
+      -51.45565421617875,
+      86.43199516162363,
+      -67.17538806507758,
+      20.659259184041602
+    ],
+    "maximum_bulk_energy_squared": 0.3318999493558146,
+    "stationary_roots": [],
+    "guard_roots": [],
+    "candidates": [
+      {
+        "beta": -0.375,
+        "kind": "left endpoint",
+        "objective_squared": 2897.6751609511766,
+        "bulk_energy_squared": 47.803767190568884,
+        "bulk_guard_passed": false,
+        "loss_derivative": -8610.273194987198,
+        "bulk_boundary_residual": 47.47186724121307
+      },
+      {
+        "beta": 0.375,
+        "kind": "right endpoint",
+        "objective_squared": 147.4000429706437,
+        "bulk_energy_squared": 2.1271223184461743,
+        "bulk_guard_passed": false,
+        "loss_derivative": -677.9885323927488,
+        "bulk_boundary_residual": 1.7952223690903597
+      }
+    ],
+    "positive_coefficients_and_elastic_anchors_from_prior_profile": true
+  },
+  {
+    "anchor_profile": 1,
+    "loss_polynomial_ascending": [
+      418.9372160372973,
+      -1785.931959483871,
+      3065.060749553499,
+      -2159.1920188764943,
+      548.1440908707475
+    ],
+    "bulk_polynomial_ascending": [
+      1.2812661282228408,
+      -7.157158824835476,
+      17.386129663197295,
+      -15.899893203415992,
+      4.916078442741912
+    ],
+    "maximum_bulk_energy_squared": 0.3318999493558146,
+    "stationary_roots": [],
+    "guard_roots": [
+      0.2672088830205144
+    ],
+    "candidates": [
+      {
+        "beta": -0.375,
+        "kind": "left endpoint",
+        "objective_squared": 1644.389273885905,
+        "bulk_energy_squared": 7.345813473620518,
+        "bulk_guard_passed": false,
+        "loss_derivative": -5111.260798780564,
+        "bulk_boundary_residual": 7.013913524264703
+      },
+      {
+        "beta": 0.375,
+        "kind": "right endpoint",
+        "objective_squared": 77.21302103212085,
+        "bulk_energy_squared": 0.3010024936961291,
+        "bulk_guard_passed": true,
+        "loss_derivative": -282.42138611421933,
+        "bulk_boundary_residual": -0.030897455659685547
+      },
+      {
+        "beta": 0.2672088830205144,
+        "kind": "bulk guard root",
+        "objective_squared": 122.16698551574687,
+        "bulk_energy_squared": 0.33189994935581396,
+        "bulk_guard_passed": true,
+        "loss_derivative": -568.5798928662696,
+        "bulk_boundary_residual": -6.661338147750939e-16
+      }
+    ],
+    "positive_coefficients_and_elastic_anchors_from_prior_profile": true,
+    "selected": {
+      "beta": 0.375,
+      "kind": "right endpoint",
+      "objective_squared": 77.21302103212085,
+      "bulk_energy_squared": 0.3010024936961291,
+      "bulk_guard_passed": true,
+      "loss_derivative": -282.42138611421933,
+      "bulk_boundary_residual": -0.030897455659685547
+    }
+  },
+  {
+    "anchor_profile": 2,
+    "loss_polynomial_ascending": [
+      303.40300225186195,
+      -1247.652750778881,
+      2250.8726973530875,
+      -1593.6672169806288,
+      396.85485094181865
+    ],
+    "bulk_polynomial_ascending": [
+      0.3294795874177965,
+      0.0751275245482338,
+      3.8620455914026848,
+      -4.768990004014626,
+      1.4805062501220712
+    ],
+    "maximum_bulk_energy_squared": 0.3318999493558146,
+    "stationary_roots": [],
+    "guard_roots": [
+      -0.03552085615338585,
+      0.017247845092814375
+    ],
+    "candidates": [
+      {
+        "beta": -0.375,
+        "kind": "left endpoint",
+        "objective_squared": 1179.6907612034847,
+        "bulk_energy_squared": 1.1251742236650886,
+        "bulk_guard_passed": false,
+        "loss_derivative": -3691.847201077939,
+        "bulk_boundary_residual": 0.793274274309274
+      },
+      {
+        "beta": 0.375,
+        "kind": "right endpoint",
+        "objective_squared": 75.86910882839724,
+        "bulk_energy_squared": 0.6785404525903459,
+        "bulk_guard_passed": false,
+        "loss_derivative": -148.11501480722836,
+        "bulk_boundary_residual": 0.34664050323453127
+      },
+      {
+        "beta": -0.03552085615338585,
+        "kind": "bulk guard root",
+        "objective_squared": 350.63274889560466,
+        "bulk_energy_squared": 0.3318999493558147,
+        "bulk_guard_passed": true,
+        "loss_derivative": -1413.6620850410782,
+        "bulk_boundary_residual": 5.551115123125783e-17
+      },
+      {
+        "beta": 0.017247845092814375,
+        "kind": "bulk guard root",
+        "objective_squared": 282.54514682221827,
+        "bulk_energy_squared": 0.3318999493558147,
+        "bulk_guard_passed": true,
+        "loss_derivative": -1171.4214898533294,
+        "bulk_boundary_residual": 5.551115123125783e-17
+      }
+    ],
+    "positive_coefficients_and_elastic_anchors_from_prior_profile": true,
+    "selected": {
+      "beta": 0.017247845092814375,
+      "kind": "bulk guard root",
+      "objective_squared": 282.54514682221827,
+      "bulk_energy_squared": 0.3318999493558147,
+      "bulk_guard_passed": true,
+      "loss_derivative": -1171.4214898533294,
+      "bulk_boundary_residual": 5.551115123125783e-17
+    }
+  },
+  {
+    "anchor_profile": 3,
+    "loss_polynomial_ascending": [
+      657.5752413944546,
+      -2342.7527236650785,
+      3410.2615366960554,
+      -2219.0297458807877,
+      564.1736930583608
+    ],
+    "bulk_polynomial_ascending": [
+      6.3714256786441235,
+      -18.623583010422315,
+      25.75296500325568,
+      -17.47152677091185,
+      5.400280834915191
+    ],
+    "maximum_bulk_energy_squared": 0.3318999493558146,
+    "stationary_roots": [],
+    "guard_roots": [],
+    "candidates": [
+      {
+        "beta": -0.375,
+        "kind": "left endpoint",
+        "objective_squared": 2143.8514432827524,
+        "bulk_energy_squared": 18.004922718690278,
+        "bulk_guard_passed": false,
+        "loss_derivative": -5955.607438610075,
+        "bulk_boundary_residual": 17.673022769334462
+      },
+      {
+        "beta": 0.375,
+        "kind": "right endpoint",
+        "objective_squared": 152.74860702307888,
+        "bulk_energy_squared": 2.1945353717539264,
+        "bulk_guard_passed": false,
+        "loss_derivative": -602.2043568069962,
+        "bulk_boundary_residual": 1.8626354223981119
+      }
+    ],
+    "positive_coefficients_and_elastic_anchors_from_prior_profile": true
+  },
+  {
+    "anchor_profile": 4,
+    "loss_polynomial_ascending": [
+      412.24725557560436,
+      -1525.0127156066765,
+      2311.961512769367,
+      -1508.9187924943726,
+      374.1654499337078
+    ],
+    "bulk_polynomial_ascending": [
+      1.5616882624756256,
+      -3.996988189043543,
+      5.511959167399624,
+      -3.6791433178559783,
+      1.1432733635997703
+    ],
+    "maximum_bulk_energy_squared": 0.3318999493558146,
+    "stationary_roots": [],
+    "guard_roots": [],
+    "candidates": [
+      {
+        "beta": -0.375,
+        "kind": "left endpoint",
+        "objective_squared": 1396.2177690400633,
+        "bulk_energy_squared": 4.052304092041432,
+        "bulk_guard_passed": false,
+        "loss_derivative": -3974.4844903626563,
+        "bulk_boundary_residual": 3.720404142685617
+      },
+      {
+        "beta": 0.375,
+        "kind": "right endpoint",
+        "objective_squared": 93.31445343916546,
+        "bulk_energy_squared": 0.6665283034536512,
+        "bulk_guard_passed": false,
+        "loss_derivative": -348.6911720178232,
+        "bulk_boundary_residual": 0.3346283540978366
+      }
+    ],
+    "positive_coefficients_and_elastic_anchors_from_prior_profile": true
+  },
+  {
+    "anchor_profile": 5,
+    "loss_polynomial_ascending": [
+      338.20426193970656,
+      -1224.2530218440565,
+      1882.2640741546275,
+      -1216.7838873296141,
+      295.41730575262045
+    ],
+    "bulk_polynomial_ascending": [
+      0.6975114964197118,
+      -1.2553491881053076,
+      1.6653374533744023,
+      -1.0346948603624933,
+      0.3237398008223961
+    ],
+    "maximum_bulk_energy_squared": 0.3318999493558146,
+    "stationary_roots": [],
+    "guard_roots": [],
+    "candidates": [
+      {
+        "beta": -0.375,
+        "kind": "left endpoint",
+        "objective_squared": 1132.0008609862628,
+        "bulk_energy_squared": 1.4634215891390288,
+        "bulk_guard_passed": false,
+        "loss_derivative": -3211.5963678594017,
+        "bulk_boundary_residual": 1.1315216397832142
+      },
+      {
+        "beta": 0.375,
+        "kind": "right endpoint",
+        "objective_squared": 85.47841898642538,
+        "bulk_energy_squared": 0.4127817245061911,
+        "bulk_guard_passed": false,
+        "loss_derivative": -263.5710807630735,
+        "bulk_boundary_residual": 0.08088177515037648
+      }
+    ],
+    "positive_coefficients_and_elastic_anchors_from_prior_profile": true
+  },
+  {
+    "anchor_profile": 6,
+    "loss_polynomial_ascending": [
+      528.0576407879211,
+      -1750.4383017276416,
+      2422.247428538836,
+      -1504.9054956060538,
+      373.0902485106584
+    ],
+    "bulk_polynomial_ascending": [
+      3.2928269930624467,
+      -5.980841686574796,
+      6.705445093211482,
+      -3.631210204868801,
+      1.1284359276462592
+    ],
+    "maximum_bulk_energy_squared": 0.3318999493558146,
+    "stationary_roots": [],
+    "guard_roots": [],
+    "candidates": [
+      {
+        "beta": -0.375,
+        "kind": "left endpoint",
+        "objective_squared": 1611.8388047215872,
+        "bulk_energy_squared": 6.692400703672726,
+        "bulk_guard_passed": false,
+        "loss_derivative": -4280.70460338579,
+        "bulk_boundary_residual": 6.360500754316912
+      },
+      {
+        "beta": 0.375,
+        "kind": "right endpoint",
+        "objective_squared": 140.28957693615533,
+        "bulk_energy_squared": 1.8237902374468733,
+        "bulk_guard_passed": false,
+        "loss_derivative": -489.93601198710144,
+        "bulk_boundary_residual": 1.4918902880910587
+      }
+    ],
+    "positive_coefficients_and_elastic_anchors_from_prior_profile": true
+  },
+  {
+    "anchor_profile": 7,
+    "loss_polynomial_ascending": [
+      400.80036061013567,
+      -1339.1860043281476,
+      1886.0472932392363,
+      -1159.656200746116,
+      279.72675175189056
+    ],
+    "bulk_polynomial_ascending": [
+      1.7267364158783578,
+      -1.7970071201273212,
+      1.7416375700962075,
+      -0.7090839372795761,
+      0.22261823698691874
+    ],
+    "maximum_bulk_energy_squared": 0.3318999493558146,
+    "stationary_roots": [],
+    "guard_roots": [],
+    "candidates": [
+      {
+        "beta": -0.375,
+        "kind": "left endpoint",
+        "objective_squared": 1234.9059635903354,
+        "bulk_energy_squared": 2.687327330072525,
+        "bulk_guard_passed": false,
+        "loss_derivative": -3301.956295645007,
+        "bulk_boundary_residual": 2.3554273807167103
+      },
+      {
+        "beta": 0.375,
+        "kind": "right endpoint",
+        "objective_squared": 108.20897042178294,
+        "bulk_energy_squared": 1.2647857934670788,
+        "bulk_guard_passed": false,
+        "loss_derivative": -354.8756323908235,
+        "bulk_boundary_residual": 0.9328858441112642
+      }
+    ],
+    "positive_coefficients_and_elastic_anchors_from_prior_profile": true
+  },
+  {
+    "anchor_profile": 8,
+    "loss_polynomial_ascending": [
+      382.2170713895013,
+      -1236.6134682974557,
+      1735.9201910800214,
+      -1047.7411017151237,
+      247.36129979694172
+    ],
+    "bulk_polynomial_ascending": [
+      1.6104158317011183,
+      -0.9161356111166449,
+      0.802600163122301,
+      -0.2211255729456904,
+      0.07086305024326658
+    ],
+    "maximum_bulk_energy_squared": 0.3318999493558146,
+    "stationary_roots": [],
+    "guard_roots": [],
+    "candidates": [
+      {
+        "beta": -0.375,
+        "kind": "left endpoint",
+        "objective_squared": 1150.204537361426,
+        "bulk_energy_squared": 2.0798945971941816,
+        "bulk_guard_passed": false,
+        "loss_derivative": -3032.747163069457,
+        "bulk_boundary_residual": 1.747994647838367
+      },
+      {
+        "beta": 0.375,
+        "kind": "right endpoint",
+        "objective_squared": 112.24049181681734,
+        "bulk_energy_squared": 1.3694710510850825,
+        "bulk_guard_passed": false,
+        "loss_derivative": -324.5113280975902,
+        "bulk_boundary_residual": 1.037571101729268
+      }
+    ],
+    "positive_coefficients_and_elastic_anchors_from_prior_profile": true
+  }
+]

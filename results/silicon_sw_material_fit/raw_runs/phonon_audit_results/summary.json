@@ -1,0 +1,15 @@
+{
+  "complete": true,
+  "cases": 4,
+  "harmonic_angular_invariance_maximum_THz": 1.5805669022988608e-07,
+  "atomic_mass_amu": 28.0855,
+  "conversion_THz_per_sqrt_eV_A2_amu": 15.633304239856194,
+  "primary_method": "tagged phonopy 4x4x4 primitive supercell, displacement .03 A, 50 q per segment; historical phonopy version not pinned",
+  "current_method": "exact per-site Jet Hessian and Hermitian Bloch assembly, signed sqrt for negative curvature",
+  "reference_frequencies_units": "THz under published phonopy default; conversion checked against tagged SW control",
+  "harmonic_frequencies_are_not_overdamped_clock": true,
+  "no_material_approval": true,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "elapsed_seconds": 0.40158939990215003
+}

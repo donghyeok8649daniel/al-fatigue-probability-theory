@@ -1,0 +1,39 @@
+{
+  "profile_selection": "training objective only, no held-out metric selection",
+  "sigma_shape_A": [
+    1.6,
+    2.0,
+    2.0951,
+    2.4,
+    2.8,
+    3.2
+  ],
+  "gamma_shape": [
+    0.6,
+    0.9,
+    1.2,
+    1.5,
+    1.8
+  ],
+  "cutoff_A": 3.77118,
+  "a_equals_cutoff_over_sigma": true,
+  "bulk_guard": "PW91 dia energy MSE <= original SW on same 489 frames",
+  "guard_origin": "training-only failure of first unconstrained candidate",
+  "free_amplitudes": 3,
+  "fixed_shape_profiles": 30,
+  "global_shape_optimum_certified": false,
+  "reference_loss_scales": {
+    "force_eV_A": 0.2,
+    "energy_eV_atom": 0.05
+  },
+  "scales_are_uncertainty": false,
+  "heldout_used_for_fit": false,
+  "heldout_previously_audited_for_baseline": true,
+  "prior_candidate_diagnostics_are_preserved": true,
+  "baseline_features_sha256": "e406bbe17d3a9d959b29b27c2395e6cac95754b33ddd74b1a6b2a4ccc594ed60",
+  "new_DFT": 0,
+  "new_MD": 0,
+  "new_MACE": 0,
+  "new_LAMMPS": 0,
+  "production_enabled": false
+}

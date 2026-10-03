@@ -1,0 +1,30 @@
+{
+  "complete": true,
+  "exported_raw_files_verified": 564,
+  "exact_source_bindings_verified": 233,
+  "raw_prediction_frames_verified": 2475,
+  "raw_prediction_cases_verified": 12,
+  "group_metrics_verified": 420,
+  "maximum_force_group_difference_eV_A": 1.3322676295501878e-15,
+  "maximum_energy_group_difference_eV_atom": 3.175237850427948e-14,
+  "archived_LAMMPS_force_maximum_difference_eV_A": 3.545300581971403e-13,
+  "archived_LAMMPS_energy_maximum_difference_eV": 1.5120349416974932e-11,
+  "compact_Gram_profiles_replayed": 264,
+  "maximum_loss_error_over_quadratic_term_scale": 9.432858952860452e-15,
+  "actual_source_jets_audited": true,
+  "rigid_interface_SI_units_verified": true,
+  "new_candidate_force_Hessian_maximum_difference_eV_A2": 6.639139571440466e-09,
+  "new_candidate_branch_mesh_maximum_difference_A": 1.8207657603852567e-14,
+  "new_geometry_evaluations": 0,
+  "recorded_Bessel_resolution_states_verified": 20,
+  "new_candidate_finite_strain_smallest_step_error_GPa": [
+    0.00042262969500939107,
+    0.002279494920799152,
+    0.0010734519211723637
+  ],
+  "locked_final_training_selection_verified": true,
+  "fixed_shape_force_diagnostic_groups_verified": 6,
+  "material_approved": false,
+  "first_initiation_validated": false,
+  "physical_clock_validated": false
+}

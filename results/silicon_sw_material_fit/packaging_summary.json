@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "large_raw_files_retained_locally": true,
+  "cache_files": 871,
+  "raw_files_exported": 564,
+  "designs_with_Gram_statistics": 295,
+  "core_prediction_cases": 12,
+  "raw_prediction_frames": 2475,
+  "raw_prediction_atoms": 171815,
+  "no_new_research_geometry_evaluations": true,
+  "material_approved": false,
+  "first_initiation_validated": false,
+  "physical_clock_validated": false,
+  "known_invalid_results": [
+    "angular_continuum_results EOS sum normalization; corrected run is authoritative",
+    "interface_audit_results GPa display ten times too small; interface_recovery_results is authoritative"
+  ],
+  "corrections": [
+    "density EOS reuse audited separately; angular shape final JSON error recovered by raw audit; elastic anchor call count audited separately"
+  ]
+}

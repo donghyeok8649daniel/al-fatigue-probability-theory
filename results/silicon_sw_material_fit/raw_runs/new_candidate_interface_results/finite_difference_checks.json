@@ -1,0 +1,116 @@
+[
+  {
+    "case": "selected_joint_candidate",
+    "cut_kind": "shuffle",
+    "state_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 3.862883346528179e-09
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 9.032294912003636e-10
+      }
+    ]
+  },
+  {
+    "case": "selected_joint_candidate",
+    "cut_kind": "shuffle",
+    "state_A": [
+      0.3263280435471552,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 2.5145840965024036e-10
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 6.859135481818157e-11
+      }
+    ]
+  },
+  {
+    "case": "selected_joint_candidate",
+    "cut_kind": "shuffle",
+    "state_A": [
+      0.6526560870943104,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 3.430588504244047e-09
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 8.437688568674328e-10
+      }
+    ]
+  },
+  {
+    "case": "selected_joint_candidate",
+    "cut_kind": "glide",
+    "state_A": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 4.4925840825271735e-09
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 1.102414159959153e-09
+      }
+    ]
+  },
+  {
+    "case": "selected_joint_candidate",
+    "cut_kind": "glide",
+    "state_A": [
+      0.6781834130938065,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 2.2995547688253737e-09
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 6.231180016413873e-10
+      }
+    ]
+  },
+  {
+    "case": "selected_joint_candidate",
+    "cut_kind": "glide",
+    "state_A": [
+      1.356366826187613,
+      0.0,
+      0.0
+    ],
+    "checks": [
+      {
+        "step_A": 2e-05,
+        "maximum_hessian_error_eV_A2": 6.172970135054356e-09
+      },
+      {
+        "step_A": 1e-05,
+        "maximum_hessian_error_eV_A2": 1.4656245106436925e-09
+      }
+    ]
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "reason": "nearest-neighbor model has only two harmonic stiffnesses; finite-q DFT mismatch persists despite bulk normal anchors",
+  "cutoffs_A": [
+    4.0,
+    4.2,
+    4.4,
+    4.6
+  ],
+  "sigmas_A": [
+    1.6,
+    2.1,
+    2.8
+  ],
+  "gammas": [
+    0.9,
+    1.2,
+    1.5
+  ],
+  "betas": [
+    0.0,
+    0.1875,
+    0.375
+  ],
+  "profiles": 108,
+  "fixed_source_angular_preference": true,
+  "all_site_bulk_angular_background_kept": true,
+  "fresh_anchor_per_beta": true,
+  "no_prior_amplitude_transfer": true,
+  "DFT_benchmarks_role": "known calibration, not independent exact-zero-strain Hessian",
+  "C44_relative_calibration_band": 0.1,
+  "force_dataset_evaluated": false,
+  "heldout_used_for_selection": false,
+  "material_approved": false,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "global_shape_optimum_certified": false
+}

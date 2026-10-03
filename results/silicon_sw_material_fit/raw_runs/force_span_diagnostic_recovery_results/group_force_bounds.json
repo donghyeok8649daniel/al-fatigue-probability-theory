@@ -1,0 +1,338 @@
+[
+  {
+    "config_type": "dia",
+    "declared_xc": "PW91",
+    "frames": 489,
+    "atoms": 16708,
+    "components": 50124,
+    "Gram": [
+      [
+        2700.732531253118,
+        1152.4105899875717,
+        -2060.43994700558
+      ],
+      [
+        1152.4105899875717,
+        5384.232302868173,
+        -2053.258945118242
+      ],
+      [
+        -2060.43994700558,
+        -2053.258945118242,
+        4634.826535491476
+      ]
+    ],
+    "linear": [
+      2354.736848478547,
+      1567.0331190322074,
+      1285.7609590333611
+    ],
+    "target_squared": 6392.4642872696,
+    "locked_amplitudes": [
+      1.5154459672870815,
+      0.8032941483520551,
+      1.7423070209244775
+    ],
+    "locked_force_RMSE_eV_A": 0.20862744650893988,
+    "unconstrained_force_only_amplitudes": [
+      1.5869287754230308,
+      0.3925179716835527,
+      1.1567797405988611
+    ],
+    "unconstrained_force_only_RMSE_eV_A": 0.10505856540951007,
+    "nonnegative_force_only_amplitudes": [
+      1.5869287754230292,
+      0.3925179716835534,
+      1.15677974059886
+    ],
+    "nonnegative_force_only_RMSE_eV_A": 0.10505856540951007,
+    "numerical_rank": 3,
+    "singular_values": [
+      89.62584136215568,
+      57.456297308099856,
+      37.22598325607674
+    ],
+    "force_only_solutions_preserve_material_gates": false,
+    "fixed_shape_only": true
+  },
+  {
+    "config_type": "surface_001",
+    "declared_xc": "PW91",
+    "frames": 10,
+    "atoms": 1440,
+    "components": 4320,
+    "Gram": [
+      [
+        4684.333650367467,
+        -8922.680430447295,
+        1993.6182963647295
+      ],
+      [
+        -8922.680430447295,
+        43369.084356362146,
+        -13110.663310152968
+      ],
+      [
+        1993.6182963647295,
+        -13110.663310152968,
+        6569.355050186916
+      ]
+    ],
+    "linear": [
+      1633.2479550302078,
+      819.9391415207039,
+      990.9074503275106
+    ],
+    "target_squared": 3647.716401232101,
+    "locked_amplitudes": [
+      1.5154459672870815,
+      0.8032941483520551,
+      1.7423070209244775
+    ],
+    "locked_force_RMSE_eV_A": 1.0449857741249593,
+    "unconstrained_force_only_amplitudes": [
+      0.8036264406469535,
+      0.39355512307659457,
+      0.6923893978488657
+    ],
+    "unconstrained_force_only_RMSE_eV_A": 0.5541113376356969,
+    "nonnegative_force_only_amplitudes": [
+      0.8036264406469542,
+      0.39355512307659474,
+      0.6923893978488663
+    ],
+    "nonnegative_force_only_RMSE_eV_A": 0.5541113376356969,
+    "numerical_rank": 3,
+    "singular_values": [
+      222.29817224941533,
+      58.63037250698043,
+      42.05680790524329
+    ],
+    "force_only_solutions_preserve_material_gates": false,
+    "fixed_shape_only": true
+  },
+  {
+    "config_type": "surface_110",
+    "declared_xc": "PW91",
+    "frames": 12,
+    "atoms": 1296,
+    "components": 3888,
+    "Gram": [
+      [
+        4632.600163926319,
+        -7877.962759778209,
+        2197.048098581912
+      ],
+      [
+        -7877.962759778209,
+        36064.50622084213,
+        -11544.730296859512
+      ],
+      [
+        2197.048098581912,
+        -11544.730296859512,
+        6063.954938257319
+      ]
+    ],
+    "linear": [
+      1634.35871878365,
+      882.5248903768126,
+      783.2183047356774
+    ],
+    "target_squared": 3279.4233378982003,
+    "locked_amplitudes": [
+      1.5154459672870815,
+      0.8032941483520551,
+      1.7423070209244775
+    ],
+    "locked_force_RMSE_eV_A": 1.3032429898841902,
+    "unconstrained_force_only_amplitudes": [
+      0.6882322692521164,
+      0.34907028797321116,
+      0.5443743017719512
+    ],
+    "unconstrained_force_only_RMSE_eV_A": 0.6043774201791038,
+    "nonnegative_force_only_amplitudes": [
+      0.6882322692521168,
+      0.34907028797321116,
+      0.5443743017719512
+    ],
+    "nonnegative_force_only_RMSE_eV_A": 0.6043774201791038,
+    "numerical_rank": 3,
+    "singular_values": [
+      204.42026998424066,
+      55.27448274488104,
+      43.7966448473139
+    ],
+    "force_only_solutions_preserve_material_gates": false,
+    "fixed_shape_only": true
+  },
+  {
+    "config_type": "surface_111",
+    "declared_xc": "PW91",
+    "frames": 47,
+    "atoms": 4512,
+    "components": 13536,
+    "Gram": [
+      [
+        12224.091436122415,
+        -19014.432418720633,
+        2840.586683626157
+      ],
+      [
+        -19014.432418720633,
+        85928.64190075535,
+        -24047.1525599931
+      ],
+      [
+        2840.586683626157,
+        -24047.1525599931,
+        13463.581349007434
+      ]
+    ],
+    "linear": [
+      3493.91355371935,
+      1730.054354495984,
+      1468.9556857904413
+    ],
+    "target_squared": 6813.19808179,
+    "locked_amplitudes": [
+      1.5154459672870815,
+      0.8032941483520551,
+      1.7423070209244775
+    ],
+    "locked_force_RMSE_eV_A": 1.0210356274486827,
+    "unconstrained_force_only_amplitudes": [
+      0.6471024302987861,
+      0.3112018815731835,
+      0.5284124690206095
+    ],
+    "unconstrained_force_only_RMSE_eV_A": 0.4890699140402771,
+    "nonnegative_force_only_amplitudes": [
+      0.6471024302987863,
+      0.3112018815731837,
+      0.5284124690206097
+    ],
+    "nonnegative_force_only_RMSE_eV_A": 0.4890699140402772,
+    "numerical_rank": 3,
+    "singular_values": [
+      312.1445383271368,
+      99.68603863680633,
+      65.15209574008423
+    ],
+    "force_only_solutions_preserve_material_gates": false,
+    "fixed_shape_only": true
+  },
+  {
+    "config_type": "surface_111_3x3_das",
+    "declared_xc": "PW91",
+    "frames": 1,
+    "atoms": 52,
+    "components": 156,
+    "Gram": [
+      [
+        191.79047719391733,
+        -357.2837920678264,
+        79.529767316074
+      ],
+      [
+        -357.2837920678264,
+        709.9414501967613,
+        -203.2081081824084
+      ],
+      [
+        79.529767316074,
+        -203.2081081824084,
+        129.16651354550967
+      ]
+    ],
+    "linear": [
+      0.27997247161691585,
+      -13.42593596854129,
+      18.18440562600784
+    ],
+    "target_squared": 7.461459291400002,
+    "locked_amplitudes": [
+      1.5154459672870815,
+      0.8032941483520551,
+      1.7423070209244775
+    ],
+    "locked_force_RMSE_eV_A": 1.2319915013910756,
+    "unconstrained_force_only_amplitudes": [
+      -0.4005849520096436,
+      -0.19941044369364366,
+      0.07371116842525037
+    ],
+    "unconstrained_force_only_RMSE_eV_A": 0.15097856903882345,
+    "nonnegative_force_only_amplitudes": [
+      0.0,
+      0.03890396960600643,
+      0.2019873957597991
+    ],
+    "nonnegative_force_only_RMSE_eV_A": 0.16623201195176884,
+    "numerical_rank": 3,
+    "singular_values": [
+      30.81721180452937,
+      8.831588208383728,
+      1.7891191264144948
+    ],
+    "force_only_solutions_preserve_material_gates": false,
+    "fixed_shape_only": true
+  },
+  {
+    "config_type": "surface_111_pandey",
+    "declared_xc": "PBE",
+    "frames": 50,
+    "atoms": 4800,
+    "components": 14400,
+    "Gram": [
+      [
+        14214.659477915131,
+        -22242.866300957918,
+        3328.7136794758753
+      ],
+      [
+        -22242.866300957918,
+        116026.1446097154,
+        -35236.05902182084
+      ],
+      [
+        3328.7136794758753,
+        -35236.05902182084,
+        20443.743203356746
+      ]
+    ],
+    "linear": [
+      5026.251285496314,
+      1693.4371453339677,
+      2903.696220676742
+    ],
+    "target_squared": 10986.5924648086,
+    "locked_amplitudes": [
+      1.5154459672870815,
+      0.8032941483520551,
+      1.7423070209244775
+    ],
+    "locked_force_RMSE_eV_A": 1.0954340630076025,
+    "unconstrained_force_only_amplitudes": [
+      0.7492697893854261,
+      0.34479492189248356,
+      0.6143104869022714
+    ],
+    "unconstrained_force_only_RMSE_eV_A": 0.5805238687390639,
+    "nonnegative_force_only_amplitudes": [
+      0.7492697893854233,
+      0.34479492189248406,
+      0.6143104869022742
+    ],
+    "nonnegative_force_only_RMSE_eV_A": 0.5805238687390639,
+    "numerical_rank": 3,
+    "singular_values": [
+      363.0368397977817,
+      114.93712741339944,
+      75.35421011850119
+    ],
+    "force_only_solutions_preserve_material_gates": false,
+    "fixed_shape_only": true
+  }
+]

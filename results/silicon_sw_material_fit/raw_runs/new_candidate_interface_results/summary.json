@@ -1,0 +1,27 @@
+{
+  "complete": true,
+  "cases": 2,
+  "sampled_path_points": 322,
+  "direct_jet_calls": 432,
+  "bessel_jet_calls": 2,
+  "elapsed_seconds": 97.04711099993438,
+  "definition": "W=per-interface-cell excess static energy of two rigid half crystals, q=(opening,u1,u2)",
+  "unit_conversions": {
+    "eV_A3_to_GPa": 160.21766339999996,
+    "eV_A2_to_J_m2": 16.02176634
+  },
+  "loading": "only normal conjugate traction, W-A_atomic*T*opening; lateral force along u=0 checked",
+  "first_branch_loss": "root of minimum eigenvalue of the full 3x3 rigid Hessian, using first sampled sign-change bracket",
+  "limitations": [
+    "no global minimum certification",
+    "no atomistic surface relaxation",
+    "no thermal free energy",
+    "no pre-existing crack is introduced, but a rigid plane is prescribed",
+    "no finite-size specimen mechanics"
+  ],
+  "new_DFT": 0,
+  "new_MD": 0,
+  "material_approved": false,
+  "first_initiation_validated": false,
+  "physical_clock_validated": false
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "case": "original_SW",
+    "config_type": "GB",
+    "declared_xc": "PW91",
+    "frames": 1,
+    "atoms": 48,
+    "force_RMSE_eV_A": 0.4452987004649936,
+    "maximum_component_error_eV_A": 2.336046891326031
+  },
+  {
+    "case": "original_SW",
+    "config_type": "SF",
+    "declared_xc": "UNSPECIFIED",
+    "frames": 20,
+    "atoms": 360,
+    "force_RMSE_eV_A": 0.30654867599600255,
+    "maximum_component_error_eV_A": 2.649426005951057
+  },
+  {
+    "case": "original_SW",
+    "config_type": "aSi",
+    "declared_xc": "PW91",
+    "frames": 1,
+    "atoms": 216,
+    "force_RMSE_eV_A": 0.38873407062456855,
+    "maximum_component_error_eV_A": 2.6921776334903207
+  },
+  {
+    "case": "original_SW",
+    "config_type": "diinter",
+    "declared_xc": "PW91",
+    "frames": 6,
+    "atoms": 396,
+    "force_RMSE_eV_A": 1.103422130292923,
+    "maximum_component_error_eV_A": 7.640146722758224
+  },
+  {
+    "case": "selected_anharmonic",
+    "config_type": "GB",
+    "declared_xc": "PW91",
+    "frames": 1,
+    "atoms": 48,
+    "force_RMSE_eV_A": 0.5596577403069146,
+    "maximum_component_error_eV_A": 2.515330033465254
+  },
+  {
+    "case": "selected_anharmonic",
+    "config_type": "SF",
+    "declared_xc": "UNSPECIFIED",
+    "frames": 20,
+    "atoms": 360,
+    "force_RMSE_eV_A": 0.4345620675669646,
+    "maximum_component_error_eV_A": 4.306150543718143
+  },
+  {
+    "case": "selected_anharmonic",
+    "config_type": "aSi",
+    "declared_xc": "PW91",
+    "frames": 1,
+    "atoms": 216,
+    "force_RMSE_eV_A": 0.47531588531011637,
+    "maximum_component_error_eV_A": 2.3652956674462624
+  },
+  {
+    "case": "selected_anharmonic",
+    "config_type": "diinter",
+    "declared_xc": "PW91",
+    "frames": 6,
+    "atoms": 396,
+    "force_RMSE_eV_A": 1.0007943756898008,
+    "maximum_component_error_eV_A": 6.662941826246201
+  },
+  {
+    "case": "selected_plain_control",
+    "config_type": "GB",
+    "declared_xc": "PW91",
+    "frames": 1,
+    "atoms": 48,
+    "force_RMSE_eV_A": 1.1847362955727907,
+    "maximum_component_error_eV_A": 6.570429282079167
+  },
+  {
+    "case": "selected_plain_control",
+    "config_type": "SF",
+    "declared_xc": "UNSPECIFIED",
+    "frames": 20,
+    "atoms": 360,
+    "force_RMSE_eV_A": 0.3383557140337446,
+    "maximum_component_error_eV_A": 2.934705209129018
+  },
+  {
+    "case": "selected_plain_control",
+    "config_type": "aSi",
+    "declared_xc": "PW91",
+    "frames": 1,
+    "atoms": 216,
+    "force_RMSE_eV_A": 0.7284895448177011,
+    "maximum_component_error_eV_A": 5.5517394033060254
+  },
+  {
+    "case": "selected_plain_control",
+    "config_type": "diinter",
+    "declared_xc": "PW91",
+    "frames": 6,
+    "atoms": 396,
+    "force_RMSE_eV_A": 2.1204635844205786,
+    "maximum_component_error_eV_A": 15.226927919450798
+  }
+]
