@@ -1,0 +1,72 @@
+{
+  "approved_start_utc": "2026-10-02T21:01:36+00:00",
+  "approved_end_utc": "2026-10-03T02:01:36+00:00",
+  "approved_window_seconds": 18000.0,
+  "actual_recorded_close_utc": "2026-10-03T02:02:58.475257+00:00",
+  "observed_wall_seconds_since_start": 18082.475257,
+  "continuous_CPU_compute_seconds": null,
+  "timing_statement": "five-hour authorized wall window; individual saved elapsed times are wall-clock timings, not a certified continuous CPU-time total",
+  "power_event_probe": {
+    "events": [
+      {
+        "provider": "Microsoft-Windows-Kernel-Power",
+        "time_utc": "2026-10-02T21:15:39.9110283Z",
+        "event_id": 506,
+        "fields": {
+          "Reason": "12"
+        }
+      },
+      {
+        "provider": "Microsoft-Windows-Kernel-Power",
+        "time_utc": "2026-10-02T21:09:43.2803403Z",
+        "event_id": 507,
+        "fields": {
+          "SleepEntered": "false",
+          "Reason": "33",
+          "DripsResidencyInUs": "0",
+          "SleepDurationInUs": "0",
+          "ScreenOffDurationInUs": "101466816",
+          "ActiveResidencyInUs": "101467205"
+        }
+      },
+      {
+        "provider": "Microsoft-Windows-Kernel-Power",
+        "time_utc": "2026-10-02T21:08:01.8140404Z",
+        "event_id": 506,
+        "fields": {
+          "Reason": "12"
+        }
+      }
+    ],
+    "query_start_utc": "2026-10-02T21:01:36Z",
+    "query_end_utc": "2026-10-03T02:00:04.3492040Z",
+    "system_power_settings_changed": false
+  },
+  "power_settings_modified": false,
+  "interruption_statement": "Observed Modern Standby and sleep event fields are preserved. No suspended-computation duration or continuous CPU-time total is inferred from these events.",
+  "branch": "silicon-wafer-research",
+  "research_and_report_commit": "96c3de34025b93e30106c07691ea48513e0bfd71",
+  "observed_remote_commit": "96c3de34025b93e30106c07691ea48513e0bfd71",
+  "core_research_commit": "25e2720783043ab0e83222c22dc4434ca7505e35",
+  "core_tests_passed": 33,
+  "core_test_elapsed_wall_seconds": 269.936,
+  "core_sources_changed_after_tests": false,
+  "independent_raw_files_verified": 564,
+  "exact_historical_source_bindings": 233,
+  "compact_Gram_profiles_replayed": 264,
+  "prediction_cases": 12,
+  "group_metrics": 420,
+  "package_files_hashed": 619,
+  "package_manifest_sha256": "5f3a17cdf8c52e874180111a81f0196b88bbf36563f271444c71e1b71d0c77e3",
+  "pdf_sha256": "bec9eeaa96354322e0ca7401266c0572e16b14ddacc085345bc7b9a72a2ee7d6",
+  "PDF_pages": 10,
+  "manual_PDF_visual_review_completed": true,
+  "original_protected_files_unchanged_during_finalization": 5,
+  "Al_UI_production_PDE_energy_and_physical_Hz_preserved": true,
+  "new_DFT": 0,
+  "new_MD": 0,
+  "material_approved": false,
+  "first_initiation_validated": false,
+  "physical_clock_validated": false,
+  "additional_agents_created": 0
+}
