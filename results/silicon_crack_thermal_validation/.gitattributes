@@ -1,0 +1,9 @@
+# Preserve checksum-bound generated data and source snapshots exactly.
+*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+**/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+*.npz -text
+**/*.npz -text
+*.png -text
+**/*.png -text
+*.md text eol=lf
+source_snapshots/*.py text eol=lf

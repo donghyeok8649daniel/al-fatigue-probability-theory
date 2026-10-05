@@ -1,0 +1,60 @@
+{
+  "targeted": {
+    "errors": "0",
+    "failures": "1",
+    "skipped": "0",
+    "tests": "52",
+    "time": "11.118",
+    "timestamp": "2026-10-05T22:38:40.622213+09:00"
+  },
+  "targeted-final": {
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "52",
+    "time": "8.599",
+    "timestamp": "2026-10-05T22:41:16.767878+09:00"
+  },
+  "app": {
+    "errors": "23",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "192",
+    "time": "368.175",
+    "timestamp": "2026-10-05T22:46:02.880851+09:00"
+  },
+  "gui-approved": {
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "23",
+    "time": "130.423",
+    "timestamp": "2026-10-05T22:53:18.880516+09:00"
+  },
+  "solver": {
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "1138",
+    "time": "2278.468",
+    "timestamp": "2026-10-05T22:45:58.611127+09:00"
+  },
+  "app_fixture_error": "_tkinter.TclError: init.tcl unavailable in sandbox",
+  "same_gui_error_cases_all_passed_in_approved_environment": true,
+  "app_console_initial": "166 passed, 23 fixture errors, 3 subtests passed",
+  "app_console_gui_retest": "23 passed",
+  "initial_targeted_failure": "test expected 2 active pairs; actual geometry has 3; expectation repaired only",
+  "desktop_smoke": "PASS: a0=0.7713438268704838, kappa=86.29296488740997",
+  "checks_are_not_material_validation": true,
+  "solver_complete": true,
+  "solver_console": "1132 passed, 6 warnings, 6 subtests passed in 2278.47s",
+  "solver_xml_includes_subtests": true,
+  "solver_warning_origin": "ASE atoms.py NumPy 2.5 shape deprecation; six warnings",
+  "raw_test_xml_sha256": {
+    "targeted.xml": "0f48751583961c1e4a3e7b2a463eb8e252d98ff1602af7488bf8b9fe6e8b9b4a",
+    "targeted-final.xml": "074374961d1e300bd41ee0b8b0316c0bf590fc86b87a0af532f87f573e7da541",
+    "app.xml": "3a9f6165a805127723c56e6cfca1ac1bdb000f736eb30b24c679fa0a5ad2eaa6",
+    "gui-approved.xml": "2cb99afa1a74e0dd6d9354d8851d921fd98bd852856a4278741b254aff87b660",
+    "solver.xml": "2c1961902cb9174996a60bd3f027558eb07c17b2b49d68b1e373e259f7af86d0"
+  }
+}

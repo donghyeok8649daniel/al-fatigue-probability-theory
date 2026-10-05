@@ -1,0 +1,17 @@
+{
+  "acceptance_fraction": 0.3541666666666667,
+  "warmup_acceptance_fraction": 0.8125,
+  "proposal_scale": 0.35,
+  "warmup": 16,
+  "stride": 1,
+  "final_rng_state": {
+    "bit_generator": "PCG64",
+    "state": {
+      "state": 71670984871947272504199408575963250577,
+      "inc": 26343227198764012229638092262415893793
+    },
+    "has_uint32": 0,
+    "uinteger": 0
+  },
+  "physical_time_ps": null
+}

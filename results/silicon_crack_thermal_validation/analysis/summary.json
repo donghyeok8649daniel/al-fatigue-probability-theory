@@ -1,0 +1,667 @@
+{
+  "completed_utc": "2026-10-05T13:46:07.255192+00:00",
+  "chains": [
+    {
+      "chain": 0,
+      "evaluation_count": 65,
+      "saved_correlated_draws": 48,
+      "unique_retained_evaluations": 18,
+      "acceptance_fraction": 0.3541666666666667,
+      "warmup_acceptance_fraction": 0.8125,
+      "maximum_proposal_error": 0.0,
+      "maximum_position_error_A": 0.0,
+      "maximum_correction_error": 0.0,
+      "mean_energy_eV": -1728.0477702240617,
+      "mean_projection_A": -7.8512002278422015,
+      "mean_rms_from_own_source_A": 0.22890218315239155,
+      "mean_rms_from_common_center_A": 0.5813516293980069,
+      "temperature_identity_mean_numerator_eV": 13.94716604198017,
+      "temperature_identity_mean_denominator": 637.1594270002807,
+      "temperature_ratio_diagnostic_K": 254.01827897361628,
+      "mean_identity_residual_eV": -2.5246793287564833,
+      "block_residual_standard_error_diagnostic_eV": 0.22332471640751317,
+      "first_half_residual_eV": -3.0273127750414175,
+      "second_half_residual_eV": -2.0220458824715495,
+      "no_confidence_interval_claim": true,
+      "actual_physical_temperature_inferred": false,
+      "thermal_equilibrium_certified": false,
+      "physical_time_ps": null,
+      "retained_evaluation_indices": [
+        16,
+        18,
+        18,
+        20,
+        20,
+        20,
+        23,
+        24,
+        25,
+        25,
+        27,
+        27,
+        27,
+        27,
+        27,
+        32,
+        32,
+        32,
+        32,
+        36,
+        36,
+        38,
+        38,
+        38,
+        41,
+        42,
+        43,
+        43,
+        45,
+        45,
+        45,
+        45,
+        45,
+        45,
+        45,
+        45,
+        53,
+        53,
+        53,
+        53,
+        53,
+        53,
+        53,
+        53,
+        53,
+        62,
+        63,
+        64
+      ],
+      "pair_boundary_controls": [
+        {
+          "proposal_evaluation": 16,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 18,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 18,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 20,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 20,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 20,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 23,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 24,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 25,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 25,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 27,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 27,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 27,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 27,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 27,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 32,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 32,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 32,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 32,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 36,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 36,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 38,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 38,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 38,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 41,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 42,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 43,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 43,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 45,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 45,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 45,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 45,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 45,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 45,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 45,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 45,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 53,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 53,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 53,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 53,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 53,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 53,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 53,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 53,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 53,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 62,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 63,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 64,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        }
+      ]
+    },
+    {
+      "chain": 1,
+      "evaluation_count": 65,
+      "saved_correlated_draws": 48,
+      "unique_retained_evaluations": 18,
+      "acceptance_fraction": 0.375,
+      "warmup_acceptance_fraction": 0.75,
+      "maximum_proposal_error": 0.0,
+      "maximum_position_error_A": 0.0,
+      "maximum_correction_error": 0.0,
+      "mean_energy_eV": -1737.0641386796312,
+      "mean_projection_A": 7.6747424598529586,
+      "mean_rms_from_own_source_A": 0.22070365551131355,
+      "mean_rms_from_common_center_A": 0.5670757484722747,
+      "temperature_identity_mean_numerator_eV": 15.661745062888748,
+      "temperature_identity_mean_denominator": 638.0252647905849,
+      "temperature_ratio_diagnostic_K": 284.8586324509323,
+      "mean_identity_residual_eV": -0.8324839462179092,
+      "block_residual_standard_error_diagnostic_eV": 0.2252064573243095,
+      "first_half_residual_eV": -1.130841384739486,
+      "second_half_residual_eV": -0.534126507696333,
+      "no_confidence_interval_claim": true,
+      "actual_physical_temperature_inferred": false,
+      "thermal_equilibrium_certified": false,
+      "physical_time_ps": null,
+      "retained_evaluation_indices": [
+        17,
+        17,
+        17,
+        20,
+        21,
+        22,
+        22,
+        22,
+        25,
+        25,
+        25,
+        28,
+        28,
+        28,
+        31,
+        32,
+        33,
+        34,
+        35,
+        35,
+        35,
+        35,
+        35,
+        40,
+        40,
+        40,
+        40,
+        40,
+        45,
+        46,
+        46,
+        46,
+        46,
+        46,
+        46,
+        46,
+        46,
+        46,
+        46,
+        46,
+        57,
+        57,
+        59,
+        60,
+        60,
+        62,
+        62,
+        62
+      ],
+      "pair_boundary_controls": [
+        {
+          "proposal_evaluation": 17,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 17,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 17,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 20,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 21,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 22,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 22,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 22,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 25,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 25,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 25,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 28,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 28,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 28,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 31,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 32,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 33,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 34,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 35,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 35,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 35,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 35,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 35,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 40,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 40,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 40,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 40,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 40,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 45,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 46,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 46,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 46,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 46,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 46,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 46,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 46,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 46,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 46,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 46,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 46,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 57,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 57,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 59,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 60,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 60,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 62,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 62,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        },
+        {
+          "proposal_evaluation": 62,
+          "pair_taper": 1.0,
+          "active_pair_tapers": 0
+        }
+      ]
+    }
+  ],
+  "source_endpoint_distance_A": 15.49141467408821,
+  "feature_names": [
+    "total_energy_eV",
+    "endpoint_projection_A",
+    "rms_from_common_center_A"
+  ],
+  "classical_split_rhat_diagnostic": [
+    19.37648576744154,
+    76.76280936425444,
+    2.118817490613407
+  ],
+  "rhat_is_not_a_confidence_interval": true,
+  "full_covariance_rank_at_most": 47,
+  "new_potential_calls": 130,
+  "new_calls_in_this_replay": 0,
+  "new_MD": 0,
+  "new_DFT": 0,
+  "equilibrium_certified": false,
+  "free_energy_estimated": false,
+  "material_approved": false,
+  "first_crack_states_verified": false,
+  "crack_probability_estimated": false,
+  "physical_clock": null,
+  "production_changed": false,
+  "analysis_runner_sha256": "4cfc27c6451a88670e96994bcc798ba17a7b5d488d2dee05dd1554f5f2e73590",
+  "interpretation": "short two-start canonical-model pilot; no calibration of kBT or real Si"
+}

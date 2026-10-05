@@ -1,0 +1,27 @@
+{
+  "python_version": "3.13.5",
+  "packages": {
+    "numpy": "2.5.0",
+    "scipy": "1.18.1",
+    "pytest": "9.1.1",
+    "matplotlib": "3.11.0",
+    "ase": "3.29.0",
+    "torch": "2.12.1",
+    "mace-torch": "0.3.16",
+    "psutil": "7.2.2",
+    "e3nn": "0.4.4"
+  },
+  "starting_HEAD": "8e058c4228c8152a8a2cc9888d7b460a8b40f855",
+  "fetched_origin_HEAD": "8e058c4228c8152a8a2cc9888d7b460a8b40f855",
+  "branch": "silicon-wafer-research",
+  "new_potential_calls": 130,
+  "new_MD": 0,
+  "new_DFT": 0,
+  "production_changed": false,
+  "physical_clock": null,
+  "extra_agents": 0,
+  "pilot_elapsed_seconds": 787.5230255001225,
+  "elapsed_is_not_physical_time_or_CPU_time": true,
+  "source_and_model_unchanged_from_existing_reference": true,
+  "earlier_pilot_memory_failure_preserved": true
+}

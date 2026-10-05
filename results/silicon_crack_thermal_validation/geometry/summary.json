@@ -1,0 +1,69 @@
+{
+  "source_sha256": {
+    "results/silicon_initiation_v13/dense_loading8/raw_hessian.npz": "96bf8e4ec1c1f444d9578492bfae53f5e4ec5b339da47a074e5793599acf3dcd",
+    "results/silicon_initiation_v13/dense_return8/raw_hessian.npz": "a7f9637bdfa9ed468d3d6757ed5249e38e2795df73963e5def9fa4a2ebff3004"
+  },
+  "free_atoms": 216,
+  "fixed_atoms": 144,
+  "same_grip_max_difference_A": 0.0,
+  "nonaffine_rms_A": 0.9499862793116811,
+  "nonaffine_maximum_A": 2.419447318427126,
+  "rigid_control_error_A": 1.5792922525292852e-14,
+  "affine_control_error_A": 1.9539925233402755e-14,
+  "distance_sensitivity": [
+    {
+      "distance_cutoff_A": 2.7,
+      "reference_pairs": 628,
+      "lost_pairs": 43,
+      "gained_pairs": 72,
+      "changed_atoms": 104,
+      "affine_control_lost_pairs": 6,
+      "chemical_bond_or_crack_threshold": false
+    },
+    {
+      "distance_cutoff_A": 2.95,
+      "reference_pairs": 636,
+      "lost_pairs": 41,
+      "gained_pairs": 68,
+      "changed_atoms": 100,
+      "affine_control_lost_pairs": 2,
+      "chemical_bond_or_crack_threshold": false
+    },
+    {
+      "distance_cutoff_A": 3.2,
+      "reference_pairs": 644,
+      "lost_pairs": 39,
+      "gained_pairs": 90,
+      "changed_atoms": 114,
+      "affine_control_lost_pairs": 2,
+      "chemical_bond_or_crack_threshold": false
+    },
+    {
+      "distance_cutoff_A": 3.45,
+      "reference_pairs": 678,
+      "lost_pairs": 39,
+      "gained_pairs": 135,
+      "changed_atoms": 140,
+      "affine_control_lost_pairs": 8,
+      "chemical_bond_or_crack_threshold": false
+    },
+    {
+      "distance_cutoff_A": 3.7,
+      "reference_pairs": 850,
+      "lost_pairs": 116,
+      "gained_pairs": 201,
+      "changed_atoms": 194,
+      "affine_control_lost_pairs": 114,
+      "chemical_bond_or_crack_threshold": false
+    }
+  ],
+  "fresh_opposed_crack_surfaces_verified": false,
+  "cohesive_loss_verified": false,
+  "finite_time_nonrecovery_verified": false,
+  "first_crack_label": null,
+  "new_potential_calls": 0,
+  "new_MD": 0,
+  "new_DFT": 0,
+  "interpretation": "localized rearrangement diagnostics; no physical crack classification",
+  "runner_sha256": "74455c7a6c093b3a629a9364408764b2460c8baa86945732751f39a90b2bebb7"
+}
