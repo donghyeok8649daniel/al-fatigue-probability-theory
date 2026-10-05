@@ -1,6 +1,6 @@
 # Firmware Variable Definitions
 
-This file defines the variables introduced by the hardware-independent fatigue-tester firmware core. Theory variables remain in `../../docs/VARIABLE_DEFINITIONS.md`.
+This file defines the variables introduced by the hardware-independent fatigue-tester firmware core. Physical machine quantities are described in [tester hardware](../docs/FATIGUE_TESTER_HARDWARE.md). Probability-model variables and its uncalibrated time remain in the separate [published research references](../research/README.md).
 
 ## Configuration variables
 

@@ -162,7 +162,7 @@ The 10 kHz period shown in the example code is an integration example, not a fro
 - `firmware/src/main_loop_example.c` — fixed-period control-task integration example
 - `firmware/src/host_test.c` — host-side logic and safety tests
 - `firmware/CMakeLists.txt` — host compilation test
-- `tools/fatigue_pc_bridge.py` — initial PC-side telemetry/log helper
+- `fatigue_tester/pc/fatigue_pc_bridge.py` — initial PC-side telemetry/log helper
 
 ## Porting sequence
 

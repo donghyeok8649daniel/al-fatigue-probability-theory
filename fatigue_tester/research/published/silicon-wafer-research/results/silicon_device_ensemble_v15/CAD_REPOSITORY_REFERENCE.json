@@ -1,0 +1,43 @@
+{
+  "remote": "https://github.com/donghyeok8649daniel/AI_CAD_Stuff",
+  "commit": "6a81c64c08bce6f74e2723278fc8efecd9b03a37",
+  "local_old_checkout_commit": "c3ae90c",
+  "fresh_remote_head_checked": true,
+  "read_only_cache": true,
+  "files": [
+    {
+      "path": "cadstudio/research_package.py",
+      "git_blob": "5a843a1a1cd976a5ac637d1aef6151885c147de1",
+      "sha256": "03d661b9ad5828300e246504be1df1bfeb2151358f5eb4959600fffbd9497c0e",
+      "bytes": 5669,
+      "url": "https://github.com/donghyeok8649daniel/AI_CAD_Stuff/blob/6a81c64c08bce6f74e2723278fc8efecd9b03a37/cadstudio/research_package.py"
+    },
+    {
+      "path": "cadstudio/kernel.py",
+      "git_blob": "f6b4b7e0c4a5c50eb3dd4898c48c7bd7336edbbc",
+      "sha256": "7c4c3ee7e8e822b02d9bb8de5e6049d5da40d81e3df86dae2bd648be7bd335ca",
+      "bytes": 20147,
+      "url": "https://github.com/donghyeok8649daniel/AI_CAD_Stuff/blob/6a81c64c08bce6f74e2723278fc8efecd9b03a37/cadstudio/kernel.py"
+    },
+    {
+      "path": "docs/RESEARCH_AI_KO.md",
+      "git_blob": "9434c9f977eeeec0b78ddbfd5c270edb859ab2e6",
+      "sha256": "79f006d0c744a7625729c48f1111947eb99e12b7c48fb28420ce2b863a048f2b",
+      "bytes": 2944,
+      "url": "https://github.com/donghyeok8649daniel/AI_CAD_Stuff/blob/6a81c64c08bce6f74e2723278fc8efecd9b03a37/docs/RESEARCH_AI_KO.md"
+    }
+  ],
+  "measurement_headers": [
+    "time_s",
+    "cycle_index",
+    "force_N",
+    "crosshead_displacement_mm",
+    "gauge_strain",
+    "temperature_C",
+    "source",
+    "quality_flag"
+  ],
+  "implemented_export_status": "experiment handoff only; no solver integration",
+  "model_time_mapping": null,
+  "original_CAD_or_repository_modified": false
+}
