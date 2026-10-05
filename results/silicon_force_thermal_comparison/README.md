@@ -174,6 +174,7 @@ split-Rhat은 두 체인의 평균 차이를 체인 안의 변동과 비교하�
 
 - [인용 보충 기록](literature_and_harmonic/citation_addendum.json): 제목·저자·DOI·짧은 인용·정확한 위치·사용 범위.
 - [PDF 대조 기록](literature_and_harmonic/citation_proof.json): 5개 PDF의 해시·인용 위치. 나머지 3개는 HTML 접근이며 Ando는 초록만 확인했다.
+- [출판사 HTML 대조](literature_and_harmonic/publisher_quote_checks.json): 나머지 세 인용문의 실제 위치 재확인.
 - [수치 대조표](literature_and_harmonic/numeric_comparison.csv): 52행. 탄성·이상강도·최종 파단·FEM 값을 구별한다.
 - [양자 조화 진단](literature_and_harmonic/harmonic_quantum_diagnostic.json): 두 구조의 648모드와 공통 좌표 가중치.
 - [실제 계산 설정](atomistic_pilot/protocol.json), [완료 기록](atomistic_pilot/summary.json), [독립 검증](analysis/summary.json).
@@ -181,7 +182,7 @@ split-Rhat은 두 체인의 평균 차이를 체인 안의 변동과 비교하�
 
 아래 명령은 Si 저장소 루트에서 실행한다. 출력은 새 경로여야 한다. MODEL에는 protocol에
 기록한 해시와 같은 MACE 파일을 지정한다. ACTUAL_FUTURE_UTC는 실제 미래 종료 시각으로 바꾼다.
-첫 명령은 새 원자 계산이고, 나머지 두 명령은 저장 자료의 재검사다.
+첫 명령은 새 원자 계산이고, 나머지 명령은 저장 자료의 재검사다.
 
 ```text
 python -m results.silicon_wafer_feasibility.sample_force_thermal --root . --model MODEL --output NEW_PILOT --max-seconds 2200 --deadline-utc ACTUAL_FUTURE_UTC
