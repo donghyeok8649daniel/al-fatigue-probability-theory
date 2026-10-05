@@ -1,0 +1,333 @@
+{
+  "tests": 57,
+  "passed": 57,
+  "errors": 0,
+  "failures": 0,
+  "skipped": 0,
+  "elapsed_seconds": 3.349,
+  "recorded_timestamp": "2026-10-05T23:58:56.248339+09:00",
+  "original_local_xml_sha256": "f0f4ea330543c504cdc47200f23487ec088d2683577024e0581a50bc5e21cdb8",
+  "source_test_sha256": {
+    "solver_v1/test_silicon_sampling_score.py": "bbd5fff34d5e41325fb4fca02c22eda817bd4b5e8d24b74b7a480b630bbf29b9",
+    "solver_v1/test_silicon_crack_records.py": "63df8cb07caafb3c421a22edd628a7bf1174085097548acecce708774a9204e8",
+    "solver_v1/test_silicon_thermal_identity.py": "6127307eff3b144b9cbede7f65fe088f7ad9e9d848d850b4e146a2f7c81dcac9",
+    "solver_v1/test_silicon_initiation_probability.py": "8601987af6d82e71966d41c4e084f56695f46a5171a238b42d1313372b32d1ad",
+    "solver_v1/test_silicon_thermal_validity.py": "c58815f76767c0d99bc05878eb8162196656455e34e2ab7ed7a412d185e935cf",
+    "solver_v1/test_silicon_device_ensemble.py": "e64869d789843d981d532937f5125ac656523f795dc400e69e4d4a7476e299e1",
+    "solver_v1/test_silicon_thermal_research.py": "72e07de04903575971f956302182a8e52923fdd304e5946c7570f4e359abd0e1"
+  },
+  "python": "3.13.5",
+  "test_command": [
+    "python",
+    "-m",
+    "pytest",
+    "solver_v1/test_silicon_sampling_score.py",
+    "solver_v1/test_silicon_crack_records.py",
+    "solver_v1/test_silicon_thermal_identity.py",
+    "solver_v1/test_silicon_initiation_probability.py",
+    "solver_v1/test_silicon_thermal_validity.py",
+    "solver_v1/test_silicon_device_ensemble.py",
+    "solver_v1/test_silicon_thermal_research.py",
+    "-q",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "cases": [
+    {
+      "classname": "solver_v1.test_silicon_sampling_score",
+      "name": "test_actual_nonlinear_energy_difference_in_rotated_coupled_coordinates[80.0]",
+      "elapsed_seconds": 0.002
+    },
+    {
+      "classname": "solver_v1.test_silicon_sampling_score",
+      "name": "test_actual_nonlinear_energy_difference_in_rotated_coupled_coordinates[300.0]",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_sampling_score",
+      "name": "test_actual_nonlinear_energy_difference_in_rotated_coupled_coordinates[600.0]",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_sampling_score",
+      "name": "test_exact_reference_energy_leaves_zero_correction_gradient",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_sampling_score",
+      "name": "test_score_rejects_invalid_forces_and_coordinates",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_crack_records",
+      "name": "test_joint_histories_preserve_the_unmodified_healing_dynamics",
+      "elapsed_seconds": 0.004
+    },
+    {
+      "classname": "solver_v1.test_silicon_crack_records",
+      "name": "test_each_marginal_matches_a_separate_first_passage_problem",
+      "elapsed_seconds": 0.012
+    },
+    {
+      "classname": "solver_v1.test_silicon_crack_records",
+      "name": "test_closed_crack_is_formation_without_requiring_an_open_gap",
+      "elapsed_seconds": 0.002
+    },
+    {
+      "classname": "solver_v1.test_silicon_crack_records",
+      "name": "test_qualification_already_present_is_recorded_at_initial_time",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_crack_records",
+      "name": "test_direct_qualification_counts_formation_once",
+      "elapsed_seconds": 0.002
+    },
+    {
+      "classname": "solver_v1.test_silicon_crack_records",
+      "name": "test_first_event_flux_is_the_cdf_derivative",
+      "elapsed_seconds": 0.002
+    },
+    {
+      "classname": "solver_v1.test_silicon_crack_records",
+      "name": "test_invalid_or_non_nested_labels_are_rejected[formation0-qualified0]",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_crack_records",
+      "name": "test_invalid_or_non_nested_labels_are_rejected[formation1-qualified1]",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_crack_records",
+      "name": "test_invalid_or_non_nested_labels_are_rejected[formation2-qualified2]",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_crack_records",
+      "name": "test_invalid_or_non_nested_labels_are_rejected[formation3-qualified3]",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_identity",
+      "name": "test_nonlinear_box_identity_by_independent_quadrature_with_nonzero_boundary_density",
+      "elapsed_seconds": 0.007
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_identity",
+      "name": "test_pair_wall_requires_the_derivative_of_the_pair_taper",
+      "elapsed_seconds": 0.007
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_identity",
+      "name": "test_full_divergence_matches_independent_coordinate_differences_near_multiple_pair_walls",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_identity",
+      "name": "test_pair_boundary_field_and_divergence_vanish_without_clipping",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_identity",
+      "name": "test_fixed_grip_forces_do_not_enter_the_thermal_identity",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_identity",
+      "name": "test_domain_violations_are_rejected[1.99-3.0-1.0]",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_identity",
+      "name": "test_domain_violations_are_rejected[0.99-1.4-0.5]",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_initiation_probability",
+      "name": "test_competing_causes_against_closed_form",
+      "elapsed_seconds": 0.003
+    },
+    {
+      "classname": "solver_v1.test_silicon_initiation_probability",
+      "name": "test_returns_from_intermediate_are_not_counted_as_initiation",
+      "elapsed_seconds": 0.005
+    },
+    {
+      "classname": "solver_v1.test_silicon_initiation_probability",
+      "name": "test_sg_boundary_absorption_against_independent_dense_exponential",
+      "elapsed_seconds": 0.01
+    },
+    {
+      "classname": "solver_v1.test_silicon_initiation_probability",
+      "name": "test_dividing_a_cause_into_subcauses_preserves_total_probability",
+      "elapsed_seconds": 0.011
+    },
+    {
+      "classname": "solver_v1.test_silicon_initiation_probability",
+      "name": "test_frozen_chemical_mixture_preserves_conditional_first_passage",
+      "elapsed_seconds": 0.004
+    },
+    {
+      "classname": "solver_v1.test_silicon_initiation_probability",
+      "name": "test_uniform_diffusion_committor_mfpt_and_continuum_refinement",
+      "elapsed_seconds": 0.145
+    },
+    {
+      "classname": "solver_v1.test_silicon_initiation_probability",
+      "name": "test_closed_class_is_not_regularized_into_a_rate",
+      "elapsed_seconds": 0.002
+    },
+    {
+      "classname": "solver_v1.test_silicon_initiation_probability",
+      "name": "test_unresolved_rare_absorption_is_not_given_a_finite_clock",
+      "elapsed_seconds": 0.002
+    },
+    {
+      "classname": "solver_v1.test_silicon_initiation_probability",
+      "name": "test_overlapping_cause_labels_are_rejected",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_initiation_probability",
+      "name": "test_invalid_generator_rejected[g0]",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_initiation_probability",
+      "name": "test_invalid_generator_rejected[g1]",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_initiation_probability",
+      "name": "test_conservation_validation_is_invariant_to_time_units",
+      "elapsed_seconds": 0.002
+    },
+    {
+      "classname": "solver_v1.test_silicon_initiation_probability",
+      "name": "test_fast_columns_do_not_hide_missing_probability_in_slow_columns",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_validity",
+      "name": "test_classical_variance_against_direct_gaussian_integral",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_validity",
+      "name": "test_quantum_against_finite_oscillator_partition_sum",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_validity",
+      "name": "test_classical_high_temperature_and_quantum_low_temperature_limits",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_validity",
+      "name": "test_rotation_covariance_and_fixed_grips",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_validity",
+      "name": "test_reject_nonphysical_oscillators[values0-300-28]",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_validity",
+      "name": "test_reject_nonphysical_oscillators[values1-300-28]",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_validity",
+      "name": "test_reject_nonphysical_oscillators[values2-300-28]",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_validity",
+      "name": "test_reject_nonphysical_oscillators[values3-0-28]",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_validity",
+      "name": "test_reject_nonphysical_oscillators[values4-300-0]",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_validity",
+      "name": "test_reject_moving_grip_basis",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "classname": "solver_v1.test_silicon_device_ensemble",
+      "name": "test_device_response_matches_direct_coupled_gaussian_inverse",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_device_ensemble",
+      "name": "test_normalized_grip_coordinate_and_units_are_not_conflated",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_device_ensemble",
+      "name": "test_same_device_formula_matches_independent_nonlinear_energy_derivative",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_device_ensemble",
+      "name": "test_nonlinear_gaussian_reference_cancels_from_same_bounded_target",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_device_ensemble",
+      "name": "test_common_box_contains_both_starts_without_changing_the_fixed_grips",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_research",
+      "name": "test_gaussian_whitening_covariance_and_unstable_reference_rejection",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_research",
+      "name": "test_bounded_nonlinear_partition_matches_independent_quadrature",
+      "elapsed_seconds": 0.021
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_research",
+      "name": "test_pcn_proposal_preserves_reference_and_metropolis_satisfies_balance",
+      "elapsed_seconds": 0.127
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_research",
+      "name": "test_pcn_rejections_remain_in_history_and_bounded_target_is_correct",
+      "elapsed_seconds": 0.127
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_research",
+      "name": "test_split_rhat_detects_offset_chains_without_calling_them_independent_draws",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_research",
+      "name": "test_force_control_integrates_to_zero_even_with_nonzero_boundary_density",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "classname": "solver_v1.test_silicon_thermal_research",
+      "name": "test_harmonic_split_is_reversible_and_hmc_matches_actual_nonlinear_integral",
+      "elapsed_seconds": 0.953
+    }
+  ],
+  "prior_crack_thermal_package_checks": 193,
+  "new_source_tests": 5,
+  "existing_related_tests": 52,
+  "full_solver_or_UI_regression_repeated": false,
+  "desktop_UI_modified": false,
+  "new_potential_calls": 0,
+  "new_MD": 0,
+  "new_DFT": 0,
+  "equilibrium_certified": false,
+  "material_approved": false,
+  "physical_clock": null
+}
