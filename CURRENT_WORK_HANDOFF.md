@@ -1,5 +1,26 @@
 # CURRENT_WORK_HANDOFF.md — 단계별 검증 후 재개하기
 
+## 2026-10-06 Si 동일 체인 연속 검증 완료, 다음은 시험기 CAD 협업
+
+- 사용자 ‘계속해’로 새 현재 작업을 승인. 이전 한 시간/si-5 자동화는 재활성화하지 않았다.
+- Si 출발63bfb3305fb5da1f5acb2ce66651fcc2676bb75a, silicon-wafer-research. 새 결과 results/silicon_thermal_continuation.
+- 같은MACE/360Si/216free/144grips/300K/공통영역에서 부모 retained179/163와 RNG를 정확히 이어갔다.
+  추가64제안×2, 추가예열/재시드/적응0. 새381에너지·힘/1241.366초 완료 UTC18:35:40. 새MD/DFT0.
+- 부모347평가와새381평가 독립재생. 좌표/phi/경로/ΔH오차0, 새힘기울기오차1.244e-14이하.
+  실제재개 에너지차0/힘2.22e-16이하. 단일NPZ checkpoint에 retained상태/RNG/tx를 원자적으로 저장.
+- 관련47PASS/9.425초. 독립시험의첫5setup오류(임시폴더권한)와다음5fixture실패(합성자료completed_proposals누락)는 privateXML보존/수정후통과. 실제 원자료불변.
+- 각체인저장96개, 새수용65.625%/78.125%, 영역거절0. 마지막32개 energy차6.785142eV, 공통투영차17.704179Å.
+  tail splitRhat7.80456/47.42640/9.88146, combined7.20052/22.75149/3.99119. 혼합/평형미인증.
+- tail자기기준열잔차-1.288663/-.802492eV, 공통중점기준-1.679373/-.386331eV. 검사장 기준을 바꿔도 target/T를 바꾸지 않았다.
+  원자별 잔차는 손상/확률이아님. 추가표본으로이전에평형처럼보인복귀잔차도움직임을확인. kBT적합 없음.
+- 기존8논문에서필요한쪽/표/그림만추린 RESEARCH_PASSAGES.md. 새로검색한후보는이목록에채택하지않았다.
+- README.md, TEST_RESULTS.json, package_manifest.json, atomistic_pilot/summary.json, analysis/summary.json을 읽는다.
+  534개파일/manifest와기존8입력 Git바이트검증,최종commit/push결과는원래cache WORKING_STATUS.md확인.
+- 실제Si첫형성/비회복집합/age조건/F/M/물리초Hz/개시확률/재료승인은미확보. Al/UI/production보존.
+- 최신 사용자 변경: 현재 Si계산·검수·저장 완료 뒤, 다음4시간 ‘프롬프트 CAD · 시편과 로봇 설계’와 협업해 바탕화면 최신CAD JSON의 피로시험기 전장·로드셀·모터·전압/전류/신호·구동·습도챔버 고립을 설계.
+  CAD스레드에 여러부품등록/부품별소재지정/소재물성DB와부족한앱기능업데이트도 명시승인. 사용자수면중 질문없이 진행.
+  CAD메시징은사용자명시승인. Si계산중 CAD협업메시지는보내지않았음. 이후새Si장시간계산시작하지않는다.
+
 ## 2026-10-06 Si 실제 힘 샘플링·문헌 수치·열항 성분 감사
 
 - 사용자 승인 UTC16:28:11~17:28:11 한 시간. 출발96d72fee30dd9e036f186fc6197b6ba4e8b8edc4,

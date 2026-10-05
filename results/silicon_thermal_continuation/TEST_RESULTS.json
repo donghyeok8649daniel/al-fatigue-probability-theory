@@ -1,0 +1,48 @@
+{
+  "related_pytest": {
+    "tests": 47,
+    "failures": 0,
+    "errors": 0,
+    "duration_seconds": 9.425,
+    "raw_xml_sha256": "45eb4b5b9fc7dcd87aeeb0de040b16a3e7b61430297cf970e49502474a08b866"
+  },
+  "actual_restart_checks": [
+    {
+      "energy_error_eV": 0.0,
+      "force_error_eV_A": 2.220446049250313e-16,
+      "correction_error": 0.0,
+      "score_error": 1.3322676295501878e-15
+    },
+    {
+      "energy_error_eV": 0.0,
+      "force_error_eV_A": 0.0,
+      "correction_error": 0.0,
+      "score_error": 0.0
+    }
+  ],
+  "new_evaluations_independently_replayed": 381,
+  "parent_evaluations_independently_replayed": 347,
+  "all_rng_states_paths_acceptances_and_rejected_repeats_replayed": true,
+  "first_replay_test_setup": {
+    "tests": 5,
+    "failures": 0,
+    "errors": 5,
+    "duration_seconds": 2.803,
+    "raw_xml_sha256": "57cd2aa78a8976a57a52c34f8e7e62414a656639be097ccbd84143b962bd3e0b"
+  },
+  "first_replay_fixture_attempt": {
+    "tests": 5,
+    "failures": 5,
+    "errors": 0,
+    "duration_seconds": 3.456,
+    "raw_xml_sha256": "5e7b9ff0ea6ff4d331b7414830848aa221745615e4ef060a35f7b7614f9939d6"
+  },
+  "first_setup_cause": "default Windows pytest temporary folder denied; corrected with a fresh workspace basetemp",
+  "first_fixture_cause": "synthetic parent fixture omitted completed_proposals; fixture metadata completed, actual run unchanged",
+  "charts_visually_inspected": true,
+  "full_solver_UI_suite_repeated": false,
+  "kBT_fitted": false,
+  "equilibrium_certified": false,
+  "material_approved": false,
+  "production_changed": false
+}

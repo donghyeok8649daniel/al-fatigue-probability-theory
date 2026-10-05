@@ -1,0 +1,48 @@
+{
+  "started_utc": "2026-10-05T18:14:59.302932+00:00",
+  "parent_package": "results/silicon_force_thermal_comparison",
+  "parent_manifest_sha256": "d3209e42a7022ae5649beaa675b3250e5e0ce441477abbeba725e96db96de4a1",
+  "parent_final_retained_evaluations": [
+    179,
+    163
+  ],
+  "parent_completed_proposals": 56,
+  "parent_saved_draws": 32,
+  "new_warmup": 0,
+  "additional_draws_per_chain": 64,
+  "step": 0.3,
+  "steps": [
+    2,
+    4
+  ],
+  "temperature_K": 300.0,
+  "halfwidth_A": 3.0,
+  "minimum_pair_A": 1.0,
+  "max_seconds": 2400.0,
+  "allocation_guard_available_bytes": 6000000000,
+  "runner_sha256": "cf418c617ef485b9e9c0bd99e13498b0abace19e68deb0d8cd4991c74ef01066",
+  "continuation_core_sha256": "75401a45701aa980d30f59e7a19c81e7cf6d11b77264be01917b9c7f2c7a12c2",
+  "inherited_source_sha256": {
+    "results/silicon_initiation_v13/dense_loading8/raw_hessian.npz": "96bf8e4ec1c1f444d9578492bfae53f5e4ec5b339da47a074e5793599acf3dcd",
+    "results/silicon_initiation_v13/dense_return8/raw_hessian.npz": "a7f9637bdfa9ed468d3d6757ed5249e38e2795df73963e5def9fa4a2ebff3004",
+    "solver_v1/silicon_device_ensemble.py": "9b0999eec1b6657237fcfeabbbc55b08dd65d18e97f68d4fbb4b37fe19bece2c",
+    "solver_v1/silicon_sampling_score.py": "854f7acf2b81ec44f522127e34c8014cd59b2b750c2eeeb8d9d9add2db12a3a1",
+    "solver_v1/silicon_thermal_research.py": "6f6ebe9e71f468830b9038964c39677c5cb69cd779ca6633bf65a79df48e8149",
+    "solver_v1/silicon_thermal_identity.py": "f13951dd275d4604d92e97a2cc0b3a2eae2092722214d7fd5378eb66cda21d4b",
+    "results/silicon_wafer_feasibility/mace_force_only_v9.py": "dfe13c4db4c54bbf0138b9854474002b15692a8ec1e5ceb9bf5b58243de05b3c"
+  },
+  "model_sha256": "2f2be696351ac9e94fbe01cdfb6f017679acdbd2db7645209ef55fec9826b012",
+  "exact_parent_rng_restored": true,
+  "no_reseed": true,
+  "no_adaptation": true,
+  "checkpoint": "atomic single NPZ after each complete proposal, RNG included; incomplete paths retained as orphans",
+  "sequential_interleaving": "one proposal per chain, prevents a one-chain-only budget allocation",
+  "target": "exp(-U/kBT) dr_free on ONE common finite Cartesian domain",
+  "domain_is_not_crack_basin": true,
+  "domain_sensitivity_verified": false,
+  "physical_time": null,
+  "new_MD": 0,
+  "new_DFT": 0,
+  "kBT_fitted": false,
+  "production_changed": false
+}
