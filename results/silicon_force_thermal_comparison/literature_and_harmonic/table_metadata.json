@@ -1,0 +1,19 @@
+{
+  "row_count": 52,
+  "blank_means_unreported_or_not_applicable": true,
+  "numeric_inputs_sha256": {
+    "results/silicon_doping_v7/sources/jaakkola_2014_elastic.csv": "7962efea3cb4a16f2b1b018c17ca5aa2a20d72d0f504326c2e9e17d713bbd9a2",
+    "results/silicon_doping_v7/sources/noda_2023_ideal_strength.csv": "bf7fc7621c07bc9709b09f9dd411d7f82dc692e59c241e79fffee98bbd64a63e",
+    "results/silicon_doping_v7/sources/chen_2025_wafer.csv": "68c0f9a8bda40fba81aa9819d9b2450d02357d48020ad0d62f259543bf26ff5c",
+    "results/silicon_initiation_v11/thermal_oxide_source.json": "aab9e80d1d90050d2f29e9c3e82e92e99389f60f2e956b26280adc4d3e9bc8bd"
+  },
+  "no_new_fit": true,
+  "no_new_digitization": true,
+  "statistics_must_not_be_interchanged": true,
+  "missing_numeric_fatigue_raw_sources": [
+    "Ikehara2016",
+    "Ando2016",
+    "Muhlstein2001"
+  ],
+  "missing_initiation_endpoints_for_all_sources": true
+}

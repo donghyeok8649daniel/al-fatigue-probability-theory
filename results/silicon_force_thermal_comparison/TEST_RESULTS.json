@@ -1,0 +1,69 @@
+{
+  "related_pytest": {
+    "tests": 37,
+    "failures": 0,
+    "errors": 0,
+    "duration_seconds": 7.417,
+    "raw_xml_sha256": "01e8b17bf5a96389356082859f713fbe3e5225376f89824bce8a8cae380a8fd8",
+    "scope": [
+      "force-record replay (3 synthetic tests)",
+      "sampling score",
+      "harmonic HMC/pCN",
+      "fixed-grip ensemble",
+      "boundary-safe thermal identity",
+      "harmonic quantum diagnostic"
+    ]
+  },
+  "first_attempt": {
+    "collection_errors": 6,
+    "tests_executed": 0,
+    "raw_xml_sha256": "2ab730105b229b5a65cc4447d6ccec6ac02baf6c953354e7ea82d0d2ca09768a",
+    "cause": "pytest launched in original Al worktree and imported its solver_v1 package",
+    "correction": "same tests run from the Si worktree; original error XML retained privately"
+  },
+  "literature_builder_first_attempt": {
+    "error": "SyntaxError: unmatched closing parentheses in three add calls",
+    "material_or_sampling_failure": false,
+    "corrected_and_rerun": true
+  },
+  "package_builder_first_attempt": {
+    "error": "UnicodeDecodeError: default Windows cp949 on UTF-8 JSON",
+    "correction": "explicit UTF-8 reads; actual raw records unchanged",
+    "material_failure": false
+  },
+  "actual_model_preflights": [
+    {
+      "source_energy_error_eV": 0.0,
+      "source_force_error_eV_A": 0.0,
+      "directional_difference_epsilon": 0.0001,
+      "finite_difference": -0.0018710774418728704,
+      "analytic": -0.00187092468502688,
+      "absolute_score_error": 1.5275684599040142e-07,
+      "score_tolerance": 0.0002,
+      "actual_reverse_position_error": 1.8457457784393227e-15,
+      "actual_reverse_momentum_error": 6.4254157550180935e-15
+    },
+    {
+      "source_energy_error_eV": 0.0,
+      "source_force_error_eV_A": 2.220446049250313e-16,
+      "directional_difference_epsilon": 0.0001,
+      "finite_difference": -1.6649592815554115e-05,
+      "analytic": -1.6518306442038476e-05,
+      "absolute_score_error": 1.3128637351563928e-07,
+      "score_tolerance": 0.0002
+    }
+  ],
+  "all_347_actual_evaluations_replayed": true,
+  "independent_force_mapping_max_error": 1.4210854715202004e-14,
+  "all_rng_trajectories_acceptances_and_retained_repeats_replayed": true,
+  "table_rows": 52,
+  "table_and_harmonic_results_exact_replay": true,
+  "PDF_exact_excerpt_checks": 5,
+  "component_sum_max_error_eV": 5.329070518200751e-15,
+  "charts_visually_inspected": true,
+  "new_calls_in_checks": 0,
+  "full_solver_UI_suite_repeated": false,
+  "equilibrium_certified": false,
+  "material_approved": false,
+  "production_changed": false
+}

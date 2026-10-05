@@ -1,0 +1,146 @@
+{
+  "completed_utc": "2026-10-05T17:04:55.282622+00:00",
+  "temperature_K": 300.0,
+  "Cartesian_axis_names": [
+    "x",
+    "y",
+    "z"
+  ],
+  "results": [
+    {
+      "method": "pcn",
+      "chain": 0,
+      "correlated_draws": 48,
+      "Cartesian_xyz_mean_residual_eV": [
+        -0.6934892531720126,
+        -0.9168806107894213,
+        -0.9143094647950473
+      ],
+      "Cartesian_xyz_block_SE_diagnostic_eV": [
+        0.09550370711169677,
+        0.10855880060524259,
+        0.12930134199252294
+      ],
+      "Cartesian_xyz_first_half_residual_eV": [
+        -0.6286841787801374,
+        -1.1553858152280188,
+        -1.243242781033261
+      ],
+      "Cartesian_xyz_second_half_residual_eV": [
+        -0.758294327563889,
+        -0.6783754063508249,
+        -0.5853761485568351
+      ],
+      "global_mean_residual_eV": -2.524679328756481,
+      "sum_absolute_atom_axis_mean_residuals_eV": 17.063809797229275,
+      "physical_axis_assignment_verified": false,
+      "confidence_interval_claim": false,
+      "per_component_equilibrium_certified": false
+    },
+    {
+      "method": "pcn",
+      "chain": 1,
+      "correlated_draws": 48,
+      "Cartesian_xyz_mean_residual_eV": [
+        -0.008205161958015105,
+        -0.6875641072359043,
+        -0.13671467702399018
+      ],
+      "Cartesian_xyz_block_SE_diagnostic_eV": [
+        0.10969790273307876,
+        0.09610960751069536,
+        0.08639420722012357
+      ],
+      "Cartesian_xyz_first_half_residual_eV": [
+        -0.23294014044280817,
+        -0.7612715578627295,
+        -0.1366296864339479
+      ],
+      "Cartesian_xyz_second_half_residual_eV": [
+        0.2165298165267779,
+        -0.6138566566090788,
+        -0.13679966761403242
+      ],
+      "global_mean_residual_eV": -0.8324839462179097,
+      "sum_absolute_atom_axis_mean_residuals_eV": 19.146908637287506,
+      "physical_axis_assignment_verified": false,
+      "confidence_interval_claim": false,
+      "per_component_equilibrium_certified": false
+    },
+    {
+      "method": "hmc",
+      "chain": 0,
+      "correlated_draws": 32,
+      "Cartesian_xyz_mean_residual_eV": [
+        -0.5177737457255588,
+        -0.9969575308506207,
+        -0.028792166714090614
+      ],
+      "Cartesian_xyz_block_SE_diagnostic_eV": [
+        0.16756588139624848,
+        0.21465393180242964,
+        0.15396277712688122
+      ],
+      "Cartesian_xyz_first_half_residual_eV": [
+        -0.5179926872829304,
+        -0.6240084109848817,
+        0.09248276791958795
+      ],
+      "Cartesian_xyz_second_half_residual_eV": [
+        -0.517554804168187,
+        -1.3699066507163598,
+        -0.15006710134776918
+      ],
+      "global_mean_residual_eV": -1.5435234432902702,
+      "sum_absolute_atom_axis_mean_residuals_eV": 19.565908322435988,
+      "physical_axis_assignment_verified": false,
+      "confidence_interval_claim": false,
+      "per_component_equilibrium_certified": false
+    },
+    {
+      "method": "hmc",
+      "chain": 1,
+      "correlated_draws": 32,
+      "Cartesian_xyz_mean_residual_eV": [
+        0.23123591222661782,
+        -0.13831131434937494,
+        0.049047330862330124
+      ],
+      "Cartesian_xyz_block_SE_diagnostic_eV": [
+        0.18635037809502294,
+        0.108989266685352,
+        0.11398307724783731
+      ],
+      "Cartesian_xyz_first_half_residual_eV": [
+        0.1106044213727242,
+        -0.028481631142123043,
+        0.11178461432831564
+      ],
+      "Cartesian_xyz_second_half_residual_eV": [
+        0.35186740308051156,
+        -0.24814099755662677,
+        -0.013689952603655388
+      ],
+      "global_mean_residual_eV": 0.141971928739573,
+      "sum_absolute_atom_axis_mean_residuals_eV": 10.487439967370173,
+      "physical_axis_assignment_verified": false,
+      "confidence_interval_claim": false,
+      "per_component_equilibrium_certified": false
+    }
+  ],
+  "maximum_sum_error_eV": 5.329070518200751e-15,
+  "identity": "each g_i vanishes at its Cartesian face and every pair wall; integrate each d_i(g_i exp(-U/kBT))",
+  "aggregate_cancellation_is_not_per_component_validation": true,
+  "new_model_calls": 0,
+  "new_MD": 0,
+  "new_DFT": 0,
+  "kBT_fitted": false,
+  "equilibrium_certified": false,
+  "production_changed": false,
+  "source_sha256": {
+    "results/silicon_initiation_v13/dense_loading8/raw_hessian.npz": "96bf8e4ec1c1f444d9578492bfae53f5e4ec5b339da47a074e5793599acf3dcd",
+    "results/silicon_initiation_v13/dense_return8/raw_hessian.npz": "a7f9637bdfa9ed468d3d6757ed5249e38e2795df73963e5def9fa4a2ebff3004",
+    "solver_v1/silicon_thermal_identity.py": "f13951dd275d4604d92e97a2cc0b3a2eae2092722214d7fd5378eb66cda21d4b"
+  },
+  "runner_sha256": "e7cacc83b7dcda45ed75d84c572d9decd0de7f93e3a6e0724fa127773a037d1e"
+}

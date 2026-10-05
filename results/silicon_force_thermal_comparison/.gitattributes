@@ -1,0 +1,5 @@
+*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+*.npz -text
+*.csv -text
+*.png -text
+*.md text eol=lf

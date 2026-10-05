@@ -1,0 +1,79 @@
+{
+  "temperature_K": 300.0,
+  "thermal_energy_eV": 0.025851999786435535,
+  "source_sha256": {
+    "results/silicon_initiation_v13/dense_loading8/raw_hessian.npz": "96bf8e4ec1c1f444d9578492bfae53f5e4ec5b339da47a074e5793599acf3dcd",
+    "results/silicon_initiation_v13/dense_return8/raw_hessian.npz": "a7f9637bdfa9ed468d3d6757ed5249e38e2795df73963e5def9fa4a2ebff3004",
+    "results/silicon_sw_material_fit/bulk_optical_diagnostic.json": "f9abae406375ec113cc4111891992bdb0b8c4366723a5decb6d5eccb196c5ef8"
+  },
+  "local_modes": [
+    {
+      "name": "initial8",
+      "modes": 648,
+      "basis_checks": {
+        "basis_orthogonality_error": 0.0,
+        "fixed_basis_maximum": 0.0,
+        "raw_asymmetry": 5.329070518200751e-15
+      },
+      "minimum_frequency_THz": 0.5064072835403245,
+      "maximum_frequency_THz": 13.568019492386288,
+      "minimum_hnu_over_kBT": 0.08101238826110353,
+      "maximum_hnu_over_kBT": 2.1705407856044254,
+      "maximum_quantum_to_classical_mode_variance": 1.3648703831556153,
+      "endpoint_projection_classical_variance_A2": 0.13395179223443268,
+      "endpoint_projection_quantum_variance_A2": 0.13442843634848445,
+      "endpoint_projection_variance_ratio": 1.0035583257685539,
+      "endpoint_classical_variance_fraction_from_hnu_over_kBT_gt1": 0.002471200260489497,
+      "total_coordinate_variance_ratio": 1.0253713523869166,
+      "largest_gradient_component_eV_A": 0.0007220006223479236,
+      "local_frozen_hessian_approximation": true,
+      "endpoint_direction_is_not_verified_crack_coordinate": true,
+      "anharmonic_quantum_sampling_performed": false,
+      "kBT_adjusted": false,
+      "physical_clock_calibrated": false
+    },
+    {
+      "name": "returned8",
+      "modes": 648,
+      "basis_checks": {
+        "basis_orthogonality_error": 0.0,
+        "fixed_basis_maximum": 0.0,
+        "raw_asymmetry": 5.495603971894525e-15
+      },
+      "minimum_frequency_THz": 0.44563846101485954,
+      "maximum_frequency_THz": 13.662273950960037,
+      "minimum_hnu_over_kBT": 0.07129090990837159,
+      "maximum_hnu_over_kBT": 2.1856191208525573,
+      "maximum_quantum_to_classical_mode_variance": 1.3696049398874561,
+      "endpoint_projection_classical_variance_A2": 0.08600587051084273,
+      "endpoint_projection_quantum_variance_A2": 0.0864813734124742,
+      "endpoint_projection_variance_ratio": 1.0055287261068013,
+      "endpoint_classical_variance_fraction_from_hnu_over_kBT_gt1": 0.006988294184915518,
+      "total_coordinate_variance_ratio": 1.0248136907327308,
+      "largest_gradient_component_eV_A": 0.0007035344337763816,
+      "local_frozen_hessian_approximation": true,
+      "endpoint_direction_is_not_verified_crack_coordinate": true,
+      "anharmonic_quantum_sampling_performed": false,
+      "kBT_adjusted": false,
+      "physical_clock_calibrated": false
+    }
+  ],
+  "bulk_reference": {
+    "frequency_THz": 15.084708032011545,
+    "hnu_over_kBT": 2.413172684546107,
+    "variance_ratio": 1.4438851502917651,
+    "provenance": "existing CASTEP DFT benchmark; not experimental measurement",
+    "applicable_to_current_crack_coordinate": false
+  },
+  "formula": "C_quantum=V diag[(kBT/lambda_j)*(hbar omega_j/(2kBT))*coth(hbar omega_j/(2kBT))] V.T",
+  "assumptions": "stable frozen local harmonic Hessian; full equal-mass orthonormal Cartesian basis; no new eigenvalue clipping",
+  "primary_theory_url": "https://ocw.mit.edu/courses/8-333-statistical-mechanics-i-statistical-mechanics-of-particles-fall-2013/f38da5fe5bb800fb411f1c253ead20a0_b1P0hurY6UE.pdf",
+  "primary_theory_locator": "Mehran Kardar, lecture20, transcript pp1–5; harmonic quantum partition function and mode spectrum",
+  "new_potential_calls": 0,
+  "new_MD": 0,
+  "new_DFT": 0,
+  "quantum_PMF_estimated": false,
+  "material_approved": false,
+  "energy_quantization_does_not_change_physical_kBT": true,
+  "production_changed": false
+}
