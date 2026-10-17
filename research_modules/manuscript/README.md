@@ -24,15 +24,21 @@ For each substantive manuscript update record the source report, claim status, s
 
 ## Current reviewed manuscript snapshot
 
-- Revision: 20261018-current-model-rewrite-07
+- Revision: 20261018-current-model-rewrite-08
 - [LaTeX manuscript](1st_Paper.tex), [bibliography](1.bib)
-- [Archived source pair](versions/20261018-revision07/1st_Paper.tex)
+- [Archived source pair](versions/20261018-revision08/1st_Paper.tex)
 - Papeeria compilation succeeded: twelve PDF pages and five rendered references.
-- Changed or reflowed pages 7-12 were visually reviewed. Unchanged page text on pages 1-6 was preserved.
-- LaTeX SHA256: b25b81a171b5f82e892001fcd9959d538335be76f787c18df38bc25eb69b5a3a
+- Changed or reflowed pages 8-12 were visually reviewed. Unchanged page text on pages 1-7 was preserved.
+- LaTeX SHA256: 77e4f7b0eb113edb626ccb8085377e54d63128741daf7ea45c33ae293f168834
 - Bibliography SHA256: fb9f1b343cf3dae56beefdc8d0ed85d1f69ef12fd9e1165dd4ff0019ba47b2f2
-- Compiled PDF SHA256: d4cdae2f000c260e53882c2adefaeafce7b75d9f8b723f445cb3120c1148d8ad
+- Compiled PDF SHA256: 10f30bc89431b68a7d9e8d0edaa003e80d957d475a3efcdff1fa32c7d24f6be1
 - The raw XeTeX log retains one nonblocking inputenc-ignored warning. No undefined-reference/citation or overfull/underfull diagnostics were observed.
+
+The C-D12 implementation/source crosswalk is included after core A17 initial/raw-measure consumer review and D13 pointwise/event application review. Exact source-checked English fragments A18 and D14 record the accepted scope. The inspected literal local numerical snapshot is commit 5f878370c1c74be99e1e9b727a8ab9a11872b174. It is distinct from the recorded remote base; no working-tree equality or actual run identity is inferred.
+
+Initial-inclusive cumulative_absorbed_mass/initiation_probability cannot be relabelled o_t and then receive the same A0 again. Repeated initial_absorbed_mass snapshots are not fresh increments. A post-initial integrated aggregate is not automatically certified strict-interior original opening mass. Preparation versus alive raw measure, conditioning/normalization history, disjoint original cohorts, origins, event meaning and eligible prefixes need actual source bindings. Numerical residuals do not supply c_t, and density, rate and integrated mass retain their separate measures without duplicate factors.
+
+Numerical point calls and explicit/implicit stage times do not select original load-jump limits. Separate same-time energy/mask/loop/final-record calls require an actual original load representative and repeatability binding before being treated as the same f(t). Snapshot/duration tolerances do not resolve exact horizon/tie cases or provide a CDF-error bound. Aggregate fields do not supply joint opening/localization order, G_t or an original global same-event restriction. These are inspected-interface and supplied-record conclusions only, not actual-run validation, SG-continuum equivalence, repository-wide record absence or model failure. All actual source and physical inputs remain unresolved.
 
 D12's conditional event ledger is included after independent B9 event-logic and core A15 raw-measure/source review, with the A16 endpoint-referent correction applied exactly. Certified strict interior opening, alive through the observation time, and an unobserved complement partition the same finite raw mass: m=o_t+v_t+c_t. Initially outside-U and uncertified-prefix mass stay unobserved; localization is not added to physical absorption. A finer opening/localization/simultaneous/observation-endpoint/alive race requires the supplied original joint stopping record. No tie mass or missing classification is set to zero, and a killed path is not continued to invent the missing record.
 
