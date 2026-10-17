@@ -16,7 +16,7 @@ This location was designated by the authors on 2026-10-18. This research integra
 
 ## Synchronization
 
-Papeeria is the authoring workspace. The files in this directory are versioned manuscript snapshots, not a live connection or a promise of unattended access. Synchronization uses the authorized browser UI while login and editing remain available. No dedicated Papeeria plugin was found in the plugin search on 2026-10-18.
+Papeeria is the authoring workspace. This directory currently contains the workspace link, update policy and public bibliographic metadata. Full manuscript text is kept in Papeeria and the local research archive; publication of its full text in this public repository requires separate author approval. This is not a live connection or a promise of unattended access. Synchronization uses the authorized browser UI while login and editing remain available. No dedicated Papeeria plugin was found in the plugin search on 2026-10-18.
 
 Research changes stay on research/20261018-* branches. Do not modify or merge main or probability-pde-solver-v1. The integration branch is research/20261018-integration, based on the recorded remote base c8ccff7553cbb2e66b0c37a76ee8a24808478824; other unpublished local research is not implicitly published.
 
