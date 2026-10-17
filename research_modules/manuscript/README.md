@@ -24,13 +24,20 @@ For each substantive manuscript update record the source report, claim status, s
 
 ## Current reviewed manuscript snapshot
 
-- Revision: 20261018-current-model-rewrite-02
+- Revision: 20261018-current-model-rewrite-03
 - [LaTeX manuscript](1st_Paper.tex), [bibliography](1.bib)
-- Papeeria compilation succeeded with zero remaining warnings; seven PDF pages and five rendered references were visually reviewed.
-- LaTeX SHA256: f4b1dae40e55e5a0a81eb4054a51524f259dce0cd9281c7bb7197ec3b61b8467
-- Bibliography SHA256: 383ab247e9ef4c55cbac2b0ede77fee0f368c4fd5c0f87e4ea0db6771ccfbc6c
-- Compiled PDF SHA256: 4f7ac7d9f870dfc9e2db381e8b9ef7710c66fa7aa0956071b8e033220249224a
+- [Archived source pair](versions/20261018-revision03/1st_Paper.tex)
+- Papeeria compilation succeeded: eight PDF pages and five rendered references.
+- All changed or reflowed pages (4-8) were visually reviewed; unchanged page text on pages 1-3 was preserved.
+- LaTeX SHA256: 2b1865d4bedc90f7016a184e2b291f483ee74bcbb502371733d1549a6693c793
+- Bibliography SHA256: fb9f1b343cf3dae56beefdc8d0ed85d1f69ef12fd9e1165dd4ff0019ba47b2f2
+- Compiled PDF SHA256: cbfeb1839810c68f39a422c7e263633fe865412d5880865741a5405f49d71914
+- The raw XeTeX log retains a nonblocking inputenc-ignored warning; no undefined-reference or overfull/underfull diagnostics were observed.
 
-This is a working theoretical manuscript. Mathematical identities, diffusion-model assumptions, conditional theorems and unresolved experimental inputs are explicitly distinguished. The original draft is retained in the local archive; its earlier illustrative calibration and imposed spacing distributions are not adopted as current-model inputs. No previous scientific calculation was rerun for this editorial reconstruction.
+The independently reviewed E3 finite-tube result is included only as a conditional symbolic certificate. Strict endpoint envelopes and a positive finite-interval curvature lower bound give a guarded same-slip boundary-location sensitivity interface. No actual endpoints, force band or curvature value is selected; original selector/left-well identification, finite-evaluator accuracy and physical calibration remain unresolved. This is not a CDF or experimental-error certificate.
 
-The core units workstream reviewed revision 01 against its existing source contracts and accepted the targeted revision 02 changes. The manuscript now separates coherent physical contribution count, per-contribution normalization and passive unit changes; its passive formulas explicitly use the original r=1 reference. It also identifies a site marginal as two-coordinate, defines state-density/face-transfer measures, and states the conditional frequency/cycle origin. This is editorial source acceptance, not a new material, physical-clock or full-manuscript validation. No missing physical values were selected and no earlier scientific calculation was rerun.
+The core units workstream's A9 source review corrected the new work-basis paragraph: environment work belongs to the already counted mobile-lower contribution, while mobile-mobile residual work belongs to its original pair-energy contribution when present. Moment views refine disjoint residual parts. These views are never added to already included total-gradient work. Actual coordinate maps, physical scales and three-dimensional face geometry remain unspecified.
+
+Revision02's distinctions between coherent physical count, per-contribution normalization and passive unit changes remain intact, including the original r=1 passive reference and probability/cycle measures. SB5 is a separate declarative metadata workstream; neither its existence nor a documentation review supplies an actual physical packet or implemented FVM validator.
+
+This is a working theoretical manuscript. Identities, diffusion assumptions, conditional theorems, software checks and experimental inputs remain distinct. The five scholarly bibliography entries are unchanged; the saved bibliography differs from revision02 only by its final blank-line formatting. No earlier scientific calculation or completed QA was rerun for this editorial integration.
