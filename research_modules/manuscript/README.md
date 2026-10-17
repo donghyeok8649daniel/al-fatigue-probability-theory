@@ -24,19 +24,25 @@ For each substantive manuscript update record the source report, claim status, s
 
 ## Current reviewed manuscript snapshot
 
-- Revision: 20261018-current-model-rewrite-05
+- Revision: 20261018-current-model-rewrite-06
 - [LaTeX manuscript](1st_Paper.tex), [bibliography](1.bib)
-- [Archived source pair](versions/20261018-revision05/1st_Paper.tex)
-- Papeeria compilation succeeded: nine PDF pages and five rendered references.
-- Changed or reflowed pages 2-9 were visually reviewed. Unchanged page text on page 1 was preserved.
-- LaTeX SHA256: a6bdb68b3d32c5e29f1fb290bdfb4a477f0ec91f245c23c7a4795d3a93c34f31
+- [Archived source pair](versions/20261018-revision06/1st_Paper.tex)
+- Papeeria compilation succeeded: ten PDF pages and five rendered references.
+- Changed or reflowed pages 6-10 were visually reviewed. Unchanged page text on pages 1-5 was preserved.
+- LaTeX SHA256: d9ba0705aae0e198b882abcffae37f1cbd4da5e53383ecea1eb6a634bdf26318
 - Bibliography SHA256: fb9f1b343cf3dae56beefdc8d0ed85d1f69ef12fd9e1165dd4ff0019ba47b2f2
-- Compiled PDF SHA256: a219ed3dc6b1f1d59fd61d0a34ffc6a95b348d01f89278b38163b94a3d27de61
+- Compiled PDF SHA256: 0b5d7cff77c654f3daa8c3e8c173fb05340c909807c53c55c7081d60a44b284f
 - The raw XeTeX log retains one nonblocking inputenc-ignored warning. No undefined-reference/citation or overfull/underfull diagnostics were observed.
+
+D11's conditional interior stopped-law construction is included after independent B8 mathematical review and core A14 measure/bookkeeping review. With the exact native energy, positive finite constant coefficients, a predeclared finite native horizon, deterministic L1 load, usual Brownian/initial filtration assumptions and an arbitrary open localization whose closure is compact in the energy-input domain, the interior equation has a unique continuous stopped law and a Borel initial-to-stopped-path kernel. This is an explicit standard cutoff/Picard/stopping construction, not a claim of new mathematics in the literature.
+
+The same predeclared initial measure is preserved. Probability-law construction and linear extension to a finite raw initial measure are distinguished: total stopped-path mass is mu(E), and zero-localization mass is mu(E minus U). Outside-U initial mass is retained as constant proof-stopped paths, without conditioning, normalization or new physical absorption. Any initial absorbed mass stays in its separate original ledger. No extra state Jacobian, bin weight, time step or material cell volume is multiplied into the already supplied initial measure.
+
+The conditional theorem does not certify that an actual original reflected/killed law has this restriction. Original background/initial/regulator source bindings and continuation after an earlier original opening remain unresolved. No actual localization region, wall, load, clock or physical scale is selected. Original global nonexplosion, a=0 accessibility, full reflection/corners, moving/table event equivalence and physical crack probability remain outside this result.
 
 The D10 source map, core geometry workstream A13 and independent C implementation review now clarify continuous-background versus numerical-boundary scope. The positive-a energy kernel and unwrapped registry specify coordinate inputs. The finite SG box's outer numerical no-flux treatment does not identify a complete intended continuous background domain, lower-boundary treatment or reflection field/regulator. The inspected fixed-interval reductions and historical alternatives retain their narrower model scope. No numerical cutoff is adopted as a new continuous or physical wall.
 
-This is a reviewed source-scope clarification, not a new existence theorem, proof of model failure or claim that no relevant evidence exists anywhere in the repository. Global well-posedness, continuum initial-law binding and exact/table opening-event agreement remain separate requirements. A conditional interior stopped-law problem is being considered separately; no localization exit is labelled physical opening and no actual domain/initial law is selected.
+This is a reviewed source-scope clarification, not a new existence theorem, proof of model failure or claim that no relevant evidence exists anywhere in the repository. Global well-posedness, continuum initial-law binding and exact/table opening-event agreement remain separate requirements. The conditional interior theorem above does not close the actual original-source gate; no localization exit is labelled physical opening and no actual domain/initial law is selected.
 
 The independently reviewed E4/B7 symbolic nonvacuity result extends the retained E3 finite root-tube conditions. An exact identity shows that a positive curvature margin makes the lower force envelope positive. For fixed positive native parameters, declare an admissible finite R, then a positive force band below its cap, and then a finite A depending on that band. This establishes a nonempty symbolic family. It does not certify an arbitrary preselected operating band or one finite A for all bands approaching zero force. No actual endpoints, material loads, selector, left well or numerical certificate are supplied. The probability domain, initial ensemble and opening event are unchanged.
 
