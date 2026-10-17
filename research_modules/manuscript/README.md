@@ -24,15 +24,19 @@ For each substantive manuscript update record the source report, claim status, s
 
 ## Current reviewed manuscript snapshot
 
-- Revision: 20261018-current-model-rewrite-04
+- Revision: 20261018-current-model-rewrite-05
 - [LaTeX manuscript](1st_Paper.tex), [bibliography](1.bib)
-- [Archived source pair](versions/20261018-revision04/1st_Paper.tex)
+- [Archived source pair](versions/20261018-revision05/1st_Paper.tex)
 - Papeeria compilation succeeded: nine PDF pages and five rendered references.
-- Changed or reflowed pages 5-9 were visually reviewed. Unchanged page text on pages 1-4 was preserved.
-- LaTeX SHA256: c07549729ca108dd0254915f102eec4eb01c55179d9d14fd48d2c4cd27189e60
+- Changed or reflowed pages 2-9 were visually reviewed. Unchanged page text on page 1 was preserved.
+- LaTeX SHA256: a6bdb68b3d32c5e29f1fb290bdfb4a477f0ec91f245c23c7a4795d3a93c34f31
 - Bibliography SHA256: fb9f1b343cf3dae56beefdc8d0ed85d1f69ef12fd9e1165dd4ff0019ba47b2f2
-- Compiled PDF SHA256: caaa7b32fcaf89bdf42e045e6cb876c150ac3cc359c6d4c774ea3ebe8301169f
+- Compiled PDF SHA256: a219ed3dc6b1f1d59fd61d0a34ffc6a95b348d01f89278b38163b94a3d27de61
 - The raw XeTeX log retains one nonblocking inputenc-ignored warning. No undefined-reference/citation or overfull/underfull diagnostics were observed.
+
+The D10 source map, core geometry workstream A13 and independent C implementation review now clarify continuous-background versus numerical-boundary scope. The positive-a energy kernel and unwrapped registry specify coordinate inputs. The finite SG box's outer numerical no-flux treatment does not identify a complete intended continuous background domain, lower-boundary treatment or reflection field/regulator. The inspected fixed-interval reductions and historical alternatives retain their narrower model scope. No numerical cutoff is adopted as a new continuous or physical wall.
+
+This is a reviewed source-scope clarification, not a new existence theorem, proof of model failure or claim that no relevant evidence exists anywhere in the repository. Global well-posedness, continuum initial-law binding and exact/table opening-event agreement remain separate requirements. A conditional interior stopped-law problem is being considered separately; no localization exit is labelled physical opening and no actual domain/initial law is selected.
 
 The independently reviewed E4/B7 symbolic nonvacuity result extends the retained E3 finite root-tube conditions. An exact identity shows that a positive curvature margin makes the lower force envelope positive. For fixed positive native parameters, declare an admissible finite R, then a positive force band below its cap, and then a finite A depending on that band. This establishes a nonempty symbolic family. It does not certify an arbitrary preselected operating band or one finite A for all bands approaching zero force. No actual endpoints, material loads, selector, left well or numerical certificate are supplied. The probability domain, initial ensemble and opening event are unchanged.
 
