@@ -24,20 +24,22 @@ For each substantive manuscript update record the source report, claim status, s
 
 ## Current reviewed manuscript snapshot
 
-- Revision: 20261018-current-model-rewrite-03
+- Revision: 20261018-current-model-rewrite-04
 - [LaTeX manuscript](1st_Paper.tex), [bibliography](1.bib)
-- [Archived source pair](versions/20261018-revision03/1st_Paper.tex)
-- Papeeria compilation succeeded: eight PDF pages and five rendered references.
-- All changed or reflowed pages (4-8) were visually reviewed; unchanged page text on pages 1-3 was preserved.
-- LaTeX SHA256: 2b1865d4bedc90f7016a184e2b291f483ee74bcbb502371733d1549a6693c793
+- [Archived source pair](versions/20261018-revision04/1st_Paper.tex)
+- Papeeria compilation succeeded: nine PDF pages and five rendered references.
+- Changed or reflowed pages 5-9 were visually reviewed. Unchanged page text on pages 1-4 was preserved.
+- LaTeX SHA256: c07549729ca108dd0254915f102eec4eb01c55179d9d14fd48d2c4cd27189e60
 - Bibliography SHA256: fb9f1b343cf3dae56beefdc8d0ed85d1f69ef12fd9e1165dd4ff0019ba47b2f2
-- Compiled PDF SHA256: cbfeb1839810c68f39a422c7e263633fe865412d5880865741a5405f49d71914
-- The raw XeTeX log retains a nonblocking inputenc-ignored warning; no undefined-reference or overfull/underfull diagnostics were observed.
+- Compiled PDF SHA256: caaa7b32fcaf89bdf42e045e6cb876c150ac3cc359c6d4c774ea3ebe8301169f
+- The raw XeTeX log retains one nonblocking inputenc-ignored warning. No undefined-reference/citation or overfull/underfull diagnostics were observed.
 
-The independently reviewed E3 finite-tube result is included only as a conditional symbolic certificate. Strict endpoint envelopes and a positive finite-interval curvature lower bound give a guarded same-slip boundary-location sensitivity interface. No actual endpoints, force band or curvature value is selected; original selector/left-well identification, finite-evaluator accuracy and physical calibration remain unresolved. This is not a CDF or experimental-error certificate.
+The independently reviewed E4/B7 symbolic nonvacuity result extends the retained E3 finite root-tube conditions. An exact identity shows that a positive curvature margin makes the lower force envelope positive. For fixed positive native parameters, declare an admissible finite R, then a positive force band below its cap, and then a finite A depending on that band. This establishes a nonempty symbolic family. It does not certify an arbitrary preselected operating band or one finite A for all bands approaching zero force. No actual endpoints, material loads, selector, left well or numerical certificate are supplied. The probability domain, initial ensemble and opening event are unchanged.
 
-The core units workstream's A9 source review corrected the new work-basis paragraph: environment work belongs to the already counted mobile-lower contribution, while mobile-mobile residual work belongs to its original pair-energy contribution when present. Moment views refine disjoint residual parts. These views are never added to already included total-gradient work. Actual coordinate maps, physical scales and three-dimensional face geometry remain unspecified.
+The core units workstream's A11/A12 source review and independent D9 probability-meaning review distinguish shared-clock compatibility from absolute clock identification. The family t0(c)=c*t0, Mphys(c)=Mphys/c preserves the same declared native law but represents different uncalibrated physical embeddings. Its physical-time load placement changes; no same-second first-opening CDF identity is inferred. Independently supplied energy/coordinate scales and matched absolute physical mobility can fix a candidate clock, with full-matrix compatibility still required. Agreement between two axis clocks without those independent inputs does not identify seconds.
 
-Revision02's distinctions between coherent physical count, per-contribution normalization and passive unit changes remain intact, including the original r=1 passive reference and probability/cycle measures. SB5 is a separate declarative metadata workstream; neither its existence nor a documentation review supplies an actual physical packet or implemented FVM validator.
+Same-test measured frequency and an independently supplied and verified native full period, matched load waveform, cycle count, phase and initialization/time origins can specify a protocol-map candidate. That candidate does not independently validate the internal mobility or generator timing. Thermal/static anchors alone do not fix a kinetic clock, and a single random observed onset is not deterministically matched to a native path. Actual physical inputs, clock and observed-crack correspondence remain unresolved.
 
-This is a working theoretical manuscript. Identities, diffusion assumptions, conditional theorems, software checks and experimental inputs remain distinct. The five scholarly bibliography entries are unchanged; the saved bibliography differs from revision02 only by its final blank-line formatting. No earlier scientific calculation or completed QA was rerun for this editorial integration.
+Revision03's A9 exact work-ownership correction and E3 conditional finite-tube boundary-location result remain intact. Work views are not added again to already counted energy-gradient work. Revision02's distinctions among physical coherent count, per-contribution normalization and passive unit changes remain, including the original r=1 reference and probability/cycle measures. Actual coordinate maps, scales, face geometry and constitutive closure remain unspecified. SB5 remains a separate declarative metadata result; actual evidence and an implemented spatial FVM validator are not supplied by its documentation review.
+
+This is a working theoretical manuscript. Identities, reduced-diffusion assumptions, conditional theorems, software checks and experimental inputs remain distinct. The five verified bibliography entries are unchanged. New editorial source checks and rendering concern only this revision; no completed scientific calculation or prior approved-page QA was replayed.
