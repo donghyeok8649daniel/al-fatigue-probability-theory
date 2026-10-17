@@ -1,3 +1,4 @@
+% Revision 02: A6 unit/representation/measure review integrated; no new physical values.
 \documentclass[11pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -91,6 +92,12 @@ positive mobilities and Brownian thermal forcing. Its density satisfies
  M^*=\operatorname{diag}(M_a^*,M_s^*),\quad\theta^*>0.
  \label{eq:retained-fpe}
 \end{equation}
+Here $P$ is a raw density with respect to the native state measure $dq^*$,
+not per unit physical material volume. Under a constant coordinate map
+$q_{\rm phys}=Dq^*$, the density at corresponding times transforms as
+$P_{\rm phys}(q_{\rm phys})=P(D^{-1}q_{\rm phys})/\det D$.
+For $N$ site blocks the joint Jacobian is $(L_aL_s)^N$;
+one-site and pair marginals instead use their own two- and four-coordinate measures.
 This is an assumed reduced dynamics. Neglect of inertia, loss of memory and
 Brownian noise have not yet been justified for these same local coordinates
 by an accepted atomistic limit or kinetic calibration. Projection-based
@@ -122,15 +129,21 @@ The definition of $F_{\rm o}$ alone establishes neither a finite mean opening
 time nor equality with an optically detected crack-initiation probability.
 
 \subsection{From model time to cycles and observed initiation}
-Let $t=t_0\tau$ be a verified physical clock, and let $\nu(t)$ be the
-recorded loading frequency for the same experiment. The physical cycle count is
+If a physical clock $t=t_0\tau$ has been verified, let $t$ denote elapsed
+physical time from the declared model initialization. Let $\nu(t)$ be the
+synchronized recorded frequency in cycles per second (Hz), and $N_{\rm init}$
+the recorded cycle index at that origin. Define the cycle count by
 \begin{equation}
- N(t)=\int_0^t\nu(u)\,du,\qquad
+ \mathcal N(t)=N_{\rm init}+\int_0^t\nu(u)\,du,\qquad
  F_{{\rm o},N}(n)=F_{\rm o}\!\left(t(n)/t_0\right),
 \end{equation}
-when the measured cycle map has the required inverse $t(n)$ and the loading
-histories are synchronized. For constant recorded frequency this reduces to
-$N=\nu t_0\tau$. Neither $t_0$ nor an unrecorded frequency is estimated here.
+when the measured cycle map has the required inverse $t(n)$.
+The cycle count $\mathcal N$ is distinct from the site count $N$.
+The experimental time and cycle offsets must be supplied; they are not
+silently reset to zero. For constant recorded frequency,
+$\mathcal N=N_{\rm init}+\nu t_0\tau$, with physical period $1/\nu$
+and model period $1/(\nu t_0)$. Neither $t_0$, $N_{\rm init}$ nor an
+unrecorded frequency is estimated here.
 Even with this clock, $F_{{\rm o},N}$ becomes an observed crack-initiation CDF
 only after the original opening event has been linked to the specified
 experimental detection event. This event validation is separate from time conversion.
@@ -149,7 +162,7 @@ regularity and boundary trace assumptions, the exact tagged balance is
 \end{equation}
 where $k_i$ represents removal when another coordinate opens. The current $j_i$
 contains the pair marginal $u_{ij}$ weighted by the pair-energy gradient.
-Thus a one-coordinate marginal is not a closed independent-cell equation.
+Thus a one-site (two-coordinate) marginal is not a closed independent-cell equation.
 The full joint opening-boundary flux already includes all coordinates;
 adding the tagged sink $k_i$ to that full flux would count the same loss twice.
 Products of conditional marginals are additional closures, not exact joint laws.
@@ -171,6 +184,12 @@ Opposite face contributions cancel between neighbouring bins. On a fixed
 landscape the zero-current ratio is the discrete Gibbs ratio.
 Positivity also requires the appropriate time-integration conditions;
 conservation alone does not certify a correct distribution or opening CDF.
+In particular, bin mass and fully integrated interior-face transfer are
+\begin{equation}
+ p_K=\int_K P\,dq^*,\qquad
+ I_f=\int_{\tau_n}^{\tau_{n+1}}\int_f J\cdot n_f\,d\Sigma\,d\tau.
+\end{equation}
+The pointwise current $J_{LR}$ above is distinct from $I_f$.
 Bin probability mass already includes its quadrature weight. Multiplying it
 again by a state-space bin volume or a physical cell volume is incorrect.
 An integrated face transfer is probability mass, not a rate to be multiplied
@@ -179,7 +198,9 @@ by the time step a second time.
 \subsection{Interface to spatial solid mechanics}
 Spatial cells and probability bins represent different partitions.
 For an explicitly supplied displacement reconstruction, let
-$\epsilon_x(U)=B_xU+g_x$ be the spatial axial strain.
+$\epsilon_x(U)=B_xU+g_x$ be the spatial axial strain. If $U$ is physical
+displacement in metres, $B_x$ has units of inverse metres, while $g_x$ and
+strain are dimensionless.
 Equating it to the survivor mean is a separate constitutive closure,
 \begin{equation}
  R_{\rm strain}=\epsilon_x(U)-\bar e,\qquad
@@ -205,8 +226,11 @@ an atomic commit of displacement, probability and energy histories.
 \section{Theoretical Consistency Results}
 \subsection{Work and unit consistency}
 The existing relaxed axial calibration is $f^*=\kappa\sigma_x/E_x$.
-For a declared energy scale $E_0$ and $r$ coherent contributions sharing the
-same coordinate, virtual work gives
+Write $G_{\rm ref}^*$ for the unchanged original single-representative tilted
+energy, and let $E_0$ be its energy scale in joules per representative.
+For $r$ coherent contributions sharing the same coordinate, the declared
+physical total energy would be $G_{\rm coh}=rE_0G_{\rm ref}^*$.
+Its virtual work gives
 \begin{equation}
  \delta W_{\rm micro}=rE_0f^*a_0^*\delta e,\qquad
  V_{\rm eff}=\frac{rE_0\kappa a_0^*}{E_x}.
@@ -215,24 +239,41 @@ Equality with $V_{\rm geom}\sigma_x\delta e$ requires
 $V_{\rm geom}=V_{\rm eff}$ under this mapping. This is a conditional work
 normalization, not a measurement of the physical cell volume or atom count.
 The coefficient conjugate to dimensionless $q^*$ has units of energy;
-the force conjugate to $q=L_0q^*$ is obtained by dividing it by $L_0$.
+for a common length scale $q=L_0q^*$, division by $L_0$ gives its force in newtons.
 The factor $r$ is neither the number of independent failure sites nor
-automatically the coordinate count $N$. Changing physical energy counting
-also requires consistent thermal and mobility normalization.
+automatically the coordinate count $N$.
 
-For a passive change of units, $q_{\rm phys}=Dq^*$,
-$t_{\rm phys}=t_0\tau$, $G_{\rm phys}=E_0G^*$, with constant
-$D=\operatorname{diag}(L_a,L_s)$, the same generator requires
+Three operations must be distinguished: a passive change of units, a
+per-contribution normalization of an already specified total equation, and
+a physical change in coherent contribution count.
+Dividing an existing equation by its count requires consistent transformations
+of its energy, thermal energy, mobility/noise and initial probability measure.
+Changing the physical count $r$ at fixed physical temperature is a change
+in the energy-to-thermal-energy ratio; it is not a passive unit conversion.
+Equality of virtual work or dimensions alone therefore does not establish
+the same probability generator or first-opening CDF. Any such equivalence
+also requires an explicit representation binding for the energy, thermal
+energy, mobility/noise, initial law and opening rule. No missing scale or
+normalization mode is selected by the work identity.
+
+The following passive formulas are restricted to the unchanged $r=1$
+reference representation, so that $G_{\rm phys}=E_0G_{\rm ref}^*$.
+With constant $D=\operatorname{diag}(L_a,L_s)$ and positive constant
+$E_0,t_0$, let $q_{\rm phys}=Dq^*$ and $t_{\rm phys}=t_0\tau$.
+For the original reference mobility $M^*$ the same generator requires
 \begin{equation}
  k_BT_{\rm phys}=E_0\theta^*,\qquad
  M_{\rm phys}=\frac{DM^*D^T}{t_0E_0}.
 \end{equation}
+Here $M_{\rm phys}$ has units $\mathrm{m^2/(J\,s)}$.
 The initial measure, boundary and density Jacobian must be transported as well.
-Both coordinate mobilities must yield the same $t_0$ for the same physical
+Both coordinate mobilities must yield the same $t_0$ for this same energy
 representation. No accepted local mobility calibration presently supplies
 that clock; model time is therefore not labelled seconds or experimental cycles.
 
 \subsection{Conditional finite-time load sensitivity}
+Here $T$ and the integration variable $u$ denote the original model time,
+with no conversion to physical seconds.
 Consider two prescribed deterministic loads $f_0^*,f_1^*$ on $[0,T]$,
 with the same $W^*$, positive constant $M^*,\theta^*$, initial law,
 model clock and background reflection rule. Assume existence, non-explosion,
