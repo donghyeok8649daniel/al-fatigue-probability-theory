@@ -1,4 +1,4 @@
-% Revision 03: B6-reviewed conditional finite tube; A9 exact ownership correction; A6 baseline preserved.
+% Revision 04: E4/B7 symbolic nonvacuity; A11/A12/D9 clock identifiability; revision03 preserved.
 \documentclass[11pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -290,6 +290,38 @@ Both coordinate mobilities must yield the same $t_0$ for this same energy
 representation. No accepted local mobility calibration presently supplies
 that clock; model time is therefore not labelled seconds or experimental cycles.
 
+\paragraph{Clock compatibility and identifiability.}
+Shared-clock compatibility does not itself identify physical seconds.
+For conditionally fixed $E_0,D$ and a compatible candidate
+$(t_0,M_{\rm phys})$, any dimensionless $c>0$ gives
+\begin{equation}
+\begin{aligned}
+ t_0^{(c)}&=ct_0,\\
+ M_{\rm phys}^{(c)}&=M_{\rm phys}/c .
+\end{aligned}
+\end{equation}
+The native law, initial ensemble, opening rule and $f^*(\tau)$ remain
+fixed. These are distinct, uncalibrated physical embeddings, not a
+passive identity or verified dynamics of the same material or experiment.
+The physical-time placement of the load changes with $c$. The native
+first-opening CDF is unchanged, but equality of the corresponding
+first-opening CDFs at a fixed physical time is not implied.
+
+With independently established $E_0,D$ and absolute physical mobility,
+a positive diagonal component ratio in the native-coordinate pullback
+fixes a candidate clock for those inputs.
+The full matrix relation, including cross terms, must also hold for compatibility;
+agreement of the two axis clocks without those independent inputs
+does not identify physical seconds.
+Temperature and static anchors do not fix the kinetic clock.
+Same-test frequency $\nu$ and an independently supplied and verified native
+full period $P_\tau$, with the load waveform, cycle count, phase, and
+initialization/time origins matched to that same test, can supply the
+protocol-map candidate $t_{0,\rm protocol}=(1/\nu)/P_\tau$.
+That map does not independently validate the mobility or generator timing.
+The actual anchors remain unspecified; a single stochastic onset is
+not equated deterministically to one native first-passage time.
+
 \subsection{Conditional finite-time load sensitivity}
 Here $T$ and the integration variable $u$ denote the original model time,
 with no conversion to physical seconds.
@@ -421,6 +453,45 @@ no actual branch-certificate instance has passed.
 The full two-dimensional saddle, operating selector and left well,
 finite-evaluator/roundoff/table/SG accuracy and physical calibration remain
 uncertified.
+
+\paragraph{Symbolic nonvacuity and order of declaration.}
+The finite-tube conditions admit a nonempty symbolic family.
+For fixed positive $\epsilon,\sigma_{\rm LJ},b$, put
+$x=b/a$, $y=(\sigma_{\rm LJ}/a)^6$,
+$C(a)=\epsilon\sigma_{\rm LJ}^6/(ba^6)>0$ and
+$\ell(a)=L_F(a)/C(a)$. The reviewed exact identity is
+\begin{equation}
+ \ell(a)=\frac{M(a)}6+\frac{693\pi}{64}y+12x+72xy .
+\end{equation}
+Thus $M(R)>0$ implies $L_F(R)>0$.
+Since $M(a)\to45\pi$ as $a\to\infty$, admissible finite $R$ exist.
+After an admissible $R$ is declared, declare a band
+$0<f_{\min}\leq f_{\max}<L_F(R)$.
+For each such positive band, finite upper endpoints exist; it is sufficient to require
+\begin{equation}
+\begin{aligned}
+ A&>\mathcal A(R,f_{\min}),\\
+ \mathcal A(R,f_{\min})&=\max\left\{
+ \begin{gathered}
+ R,\quad
+ \left(\frac{45\pi\epsilon\sigma_{\rm LJ}^6}{2bf_{\min}}\right)^{1/6},\\
+ \left(\frac{72\epsilon\sigma_{\rm LJ}^6}{f_{\min}}\right)^{1/7},
+ \quad
+ \left(\frac{144\epsilon\sigma_{\rm LJ}^{12}}{f_{\min}}\right)^{1/13}
+ \end{gathered}\right\}.
+\end{aligned}
+\end{equation}
+Dropping the negative $a^{-12}$ term from $U_F$ gives a positive
+majorant; this strict threshold bounds each of its three positive
+terms by less than $f_{\min}/3$, and hence $U_F(A)<f_{\min}$.
+The order is positive parameters, an admissible $R$, a band below
+its positive cap, and then a finite $A$ depending on that band.
+This neither certifies an arbitrary preselected operating band nor
+supplies one finite $A$ for all bands approaching zero force.
+Zero or negative force, the actual selector and left well,
+finite-evaluator/CDF accuracy and physical crack initiation remain
+uncertified. No actual parameters or endpoints are selected, and the
+probability domain, initial law and opening event are unchanged.
 
 \section{Discussion}
 Earlier one-dimensional and Weibull-based constructions remain in the archived
