@@ -24,11 +24,13 @@ For each substantive manuscript update record the source report, claim status, s
 
 ## Current reviewed manuscript snapshot
 
-- Revision: 20261018-current-model-rewrite-01
+- Revision: 20261018-current-model-rewrite-02
 - [LaTeX manuscript](1st_Paper.tex), [bibliography](1.bib)
-- Papeeria compilation succeeded with zero remaining warnings; six PDF pages and five rendered references were visually reviewed.
-- LaTeX SHA256: a41ac0993ea5ba505d6e3cb9befb31cb6100bc5bd23c969a6a6201e6865347a3
+- Papeeria compilation succeeded with zero remaining warnings; seven PDF pages and five rendered references were visually reviewed.
+- LaTeX SHA256: f4b1dae40e55e5a0a81eb4054a51524f259dce0cd9281c7bb7197ec3b61b8467
 - Bibliography SHA256: 383ab247e9ef4c55cbac2b0ede77fee0f368c4fd5c0f87e4ea0db6771ccfbc6c
-- Compiled PDF SHA256: 17bfde3af50dfd8cb1fdc8ef3e12f2d283725cf3dfc8973fa8dafef1f19f382d
+- Compiled PDF SHA256: 4f7ac7d9f870dfc9e2db381e8b9ef7710c66fa7aa0956071b8e033220249224a
 
 This is a working theoretical manuscript. Mathematical identities, diffusion-model assumptions, conditional theorems and unresolved experimental inputs are explicitly distinguished. The original draft is retained in the local archive; its earlier illustrative calibration and imposed spacing distributions are not adopted as current-model inputs. No previous scientific calculation was rerun for this editorial reconstruction.
+
+The core units workstream reviewed revision 01 against its existing source contracts and accepted the targeted revision 02 changes. The manuscript now separates coherent physical contribution count, per-contribution normalization and passive unit changes; its passive formulas explicitly use the original r=1 reference. It also identifies a site marginal as two-coordinate, defines state-density/face-transfer measures, and states the conditional frequency/cycle origin. This is editorial source acceptance, not a new material, physical-clock or full-manuscript validation. No missing physical values were selected and no earlier scientific calculation was rerun.
