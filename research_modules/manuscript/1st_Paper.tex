@@ -1,4 +1,4 @@
-% Revision 04: E4/B7 symbolic nonvacuity; A11/A12/D9 clock identifiability; revision03 preserved.
+% Revision 05: D10/A13/C source boundary clarification; revision04 reviewed results preserved.
 \documentclass[11pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -108,6 +108,22 @@ The nonlinear energy is retained; a Gaussian approximation is not required
 to state or evolve Eq.~\eqref{eq:retained-fpe}.
 The initial ensemble must retain its declared source and conditioning.
 An equilibrium-basin initialization is a model choice, not a measured defect distribution.
+
+\paragraph{Continuous background and numerical boundaries.}
+The positive-$a^*$ energy kernel and unwrapped $s^*$ specify a coordinate
+input domain, not a complete continuous probability-background contract.
+In the inspected source, the finite SG box uses numerical outer no-flux
+boundaries; it does not identify the intended continuous lower/outer
+boundaries, reflection field or regulator.
+The inspected fixed-interval reductions and historical boundary alternatives
+do not supply that contract for the retained full two-coordinate law.
+Local smoothness of the exact energy and finite-grid normalization do not
+certify global existence, non-explosion or uniqueness of that law.
+The continuum initial-law binding and global agreement of the numerical
+opening mask with the exact event remain separate requirements.
+These are unresolved source bindings, not a proof of model failure.
+No numerical cutoff or localization exit is adopted as a new physical wall
+or opening event.
 
 Let $D(\tau)$ be the intact domain of the original opening predicate, with
 opening boundary $\Gamma(\tau)$. The first exit time from that predicate is
