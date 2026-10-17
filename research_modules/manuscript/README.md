@@ -24,15 +24,21 @@ For each substantive manuscript update record the source report, claim status, s
 
 ## Current reviewed manuscript snapshot
 
-- Revision: 20261018-current-model-rewrite-06
+- Revision: 20261018-current-model-rewrite-07
 - [LaTeX manuscript](1st_Paper.tex), [bibliography](1.bib)
-- [Archived source pair](versions/20261018-revision06/1st_Paper.tex)
-- Papeeria compilation succeeded: ten PDF pages and five rendered references.
-- Changed or reflowed pages 6-10 were visually reviewed. Unchanged page text on pages 1-5 was preserved.
-- LaTeX SHA256: d9ba0705aae0e198b882abcffae37f1cbd4da5e53383ecea1eb6a634bdf26318
+- [Archived source pair](versions/20261018-revision07/1st_Paper.tex)
+- Papeeria compilation succeeded: twelve PDF pages and five rendered references.
+- Changed or reflowed pages 7-12 were visually reviewed. Unchanged page text on pages 1-6 was preserved.
+- LaTeX SHA256: b25b81a171b5f82e892001fcd9959d538335be76f787c18df38bc25eb69b5a3a
 - Bibliography SHA256: fb9f1b343cf3dae56beefdc8d0ed85d1f69ef12fd9e1165dd4ff0019ba47b2f2
-- Compiled PDF SHA256: 0b5d7cff77c654f3daa8c3e8c173fb05340c909807c53c55c7081d60a44b284f
+- Compiled PDF SHA256: d4cdae2f000c260e53882c2adefaeafce7b75d9f8b723f445cb3120c1148d8ad
 - The raw XeTeX log retains one nonblocking inputenc-ignored warning. No undefined-reference/citation or overfull/underfull diagnostics were observed.
+
+D12's conditional event ledger is included after independent B9 event-logic and core A15 raw-measure/source review, with the A16 endpoint-referent correction applied exactly. Certified strict interior opening, alive through the observation time, and an unobserved complement partition the same finite raw mass: m=o_t+v_t+c_t. Initially outside-U and uncertified-prefix mass stay unobserved; localization is not added to physical absorption. A finer opening/localization/simultaneous/observation-endpoint/alive race requires the supplied original joint stopping record. No tie mass or missing classification is set to zero, and a killed path is not continued to invent the missing record.
+
+A source-bound original global law must identify the same prefix events, preserve m/o_t/v_t and bind a disjoint original initial absorbed cohort A0. Only under these separate conditions does A0+o_t <= A_raw(t) <= A0+o_t+c_t = A0+m-v_t hold for the original law. The same initial measure alone does not establish that restriction. All these conditions and the original probability ledger A0+m=1 are needed before interpreting A_raw as a CDF; otherwise it remains raw mass without arbitrary normalization. The interval upper endpoint is not selected as an actual CDF, and c_t is not a numerical error, certified boundary estimate or sharpness claim.
+
+The interior L1 drift uses time integrals. Its a.e. load class does not supply pointwise load-dependent opening, jump/contact, branch or table conventions. Later masks evaluated on a frozen post-exit coordinate do not establish original opening. Actual certificates, masses, event-source bindings, global restriction and physical clock remain unspecified. This ledger does not certify the actual SG-to-continuum event contract, an experimental onset or a material probability.
 
 D11's conditional interior stopped-law construction is included after independent B8 mathematical review and core A14 measure/bookkeeping review. With the exact native energy, positive finite constant coefficients, a predeclared finite native horizon, deterministic L1 load, usual Brownian/initial filtration assumptions and an arbitrary open localization whose closure is compact in the energy-input domain, the interior equation has a unique continuous stopped law and a Borel initial-to-stopped-path kernel. This is an explicit standard cutoff/Picard/stopping construction, not a claim of new mathematics in the literature.
 
