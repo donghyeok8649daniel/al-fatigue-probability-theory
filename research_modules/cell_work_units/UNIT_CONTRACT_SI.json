@@ -1,0 +1,83 @@
+{
+  "dateKST": "2026-10-18",
+  "topWorkObjective": "UNIFY_UNITS_BEFORE_ACTUAL_CELL_GEOMETRY_OR_VOLUME_INTERPRETATION",
+  "status": "ISOLATED_SI_CONVERSION_AND_PROVENANCE_GUARDS_VERIFIED",
+  "productionSolverPatchedOrIntegrated": false,
+  "physicalScaleCompleteForAllModels": false,
+  "conversions": {
+    "eV_to_J": "1.602176634e-19",
+    "angstrom_to_m": "1e-10",
+    "angstrom2_to_m2": "1e-20",
+    "angstrom3_to_m3": "1e-30",
+    "nm_to_m": "1e-9",
+    "MPa_to_Pa": "1e6",
+    "GPa_to_Pa": "1e9"
+  },
+  "rules": [
+    "Keep model ID, parameter reference, coordinate reference and energy representative attached to every reduced-scale declaration",
+    "Convert physical stress and elastic modulus to Pa before forming sigma/E",
+    "Convert area and volume using squared and cubed length factors",
+    "Preserve per-atom, per-reduced-two-row-cell and per-primitive-interface-cell labels when eV becomes J",
+    "Do not equate reduced two-site energy with two full-FCC atomic cells",
+    "Keep fixed unit length L0 distinct from candidate equilibrium bPhysical=L0*bStar",
+    "Use actual same-candidate area for J/m2 and traction normalization",
+    "Missing physical L0 or E0 blocks the associated physical conversion; no default supplied",
+    "Do not derive physical temperature, mobility or time from a declared length and energy unit alone",
+    "Keep effective axial work volume distinct from independently measured or declared geometric volume"
+  ],
+  "commonLengthFormulas": {
+    "energy_J": "E0_J*WStar",
+    "energyGradient_N": "(E0_J/L0_m)*dWStar_dqStar",
+    "force_N": "negative_energy_gradient_for_internal_conservative_force",
+    "energyCurvature_N_per_m": "(E0_J/L0_m^2)*HStar",
+    "interfaceEnergy_J_per_m2": "E0_J*WInterfaceStar/AInterface_m2",
+    "interfaceTraction_Pa": "E0_J*dWInterfaceStar_dqStar/(L0_m*AInterface_m2)",
+    "physicalStateDensity_per_m2": "PStar/L0_m^2",
+    "thermalStar": "kBT_J/E0_J",
+    "mobilityStar": "t0_s*E0_J*MPhysical_m2_per_J_s/L0_m^2"
+  },
+  "actualCouplingSelection": {
+    "modelId": null,
+    "parameterReference": null,
+    "coordinateReference": null,
+    "energyRepresentative": null,
+    "L0_m": null,
+    "E0_J": null,
+    "actualGeometryRecord": null,
+    "actualGeometricVolume_m3": null,
+    "actualInterfaceArea_m2": null,
+    "Ex_Pa": null,
+    "physicalTime_s": null
+  },
+  "geometryEvidenceRequirements": [
+    "Specify which object is being determined: bulk atomic primitive volume, interface area, finite probability/collective region, or numerical FVM cell",
+    "Same model, parameters, temperature/pressure/reference state, energy counting and boundary conditions",
+    "Actual 3D primitive/cell vectors or atom positions with a finite-region partition and explicit length unit",
+    "Coordinate-to-jump and collective support mapping, including reference/current strain conventions",
+    "Independent geometric area/volume and orientation data, then compare original axial work normalization",
+    "Same probability representative, thermal normalization and initial/opening definitions before using finite activation probabilities"
+  ],
+  "geometricIdentitiesOnly": {
+    "cellVolume": "abs(det(R1,R2,R3))",
+    "interfaceArea": "norm(cross(t1,t2))",
+    "perfectFCCAtomicVolume": "A111*h111=aLat^3/4",
+    "normalABCThreePlaneRepeatVolume": "3*A111*h111, with three atoms",
+    "numericCellVolumeComputedThisTask": false
+  },
+  "nonEquivalences": [
+    "SI conversion does not establish actual cell geometry",
+    "Target reference lattice length is not automatically the actual relaxed candidate length",
+    "Saved candidate geometry is not a production material validation",
+    "Interface area does not specify a finite collective activation depth",
+    "Activation volume, geometric volume, axial effective volume and numerical mesh volume are distinct",
+    "A_c is not an energy or geometry conversion factor"
+  ],
+  "execution": {
+    "newUnitOnlyTests": 7,
+    "physicalSolverRuns": 0,
+    "oldQaRepetitions": 0,
+    "newPhysicalValuesEstimated": 0,
+    "sourceReadmePdfWrites": 0,
+    "remoteWrites": 0
+  }
+}
