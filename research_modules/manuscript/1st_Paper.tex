@@ -1,4 +1,4 @@
-% Revision 02: A6 unit/representation/measure review integrated; no new physical values.
+% Revision 03: B6-reviewed conditional finite tube; A9 exact ownership correction; A6 baseline preserved.
 \documentclass[11pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -243,6 +243,25 @@ for a common length scale $q=L_0q^*$, division by $L_0$ gives its force in newto
 The factor $r$ is neither the number of independent failure sites nor
 automatically the coordinate count $N$.
 
+\paragraph{Coordinate and work-basis binding.}
+For a supplied admissible variation map, $\delta x=K_{xq}\delta q$ and
+$Q_q=K_{xq}^{T}F_x$ must hold on the same work basis.
+The model gradient order $(a^*,s^*)$ and native Cartesian component order
+$(s,a)$ must be explicitly distinguished. The coordinate map $K_{xq}$ is
+neither the face-jump operator $J_C$ nor supplied by the cell/face ID and
+sign relabellings $P_{\rm cell},S_{\rm face}$.
+Source energy, coordinate units, counting and representative basis must be
+shared by the gradient and every work slot, with each scale applied once.
+Environment-translation and environment-residual work are nonadditive views
+of the already counted $\sum_i W_i$ contribution; mobile--mobile residual work
+is a view of the already counted mobile--mobile pair-energy contribution.
+Any separate moment or rotation view must replace a declared disjoint part
+of its corresponding residual work, with matching source-component and work-sign tags.
+These decompositions are never added to the already included total-gradient work.
+The actual map and scales remain unspecified; SI force and three-dimensional
+traction therefore remain unestablished without the required physical
+length, embedding and face-area data.
+
 Three operations must be distinguished: a passive change of units, a
 per-contribution normalization of an already specified total equation, and
 a physical change in coherent contribution count.
@@ -334,9 +353,74 @@ inequality is not differentiated. In particular,
 This sufficient condition gives at most one fixed-$s$ scalar root of $W_a=f$
 within the declared tail. It does not establish root existence, a full
 two-dimensional saddle, the operating selector, or a numerical boundary table.
-No actual threshold or finite-tube curvature bound has been certified.
+No actual threshold or evaluated finite-tube curvature bound has been
+certified for an operating parameter/domain instance. The conditional
+symbolic finite-tube result below is separate from such instance certification.
 Indeed $W_{aa}\to0$ in the far field, so strict negative curvature there
 does not provide a positive uniform curvature bound on the entire infinite tail.
+
+\subsection{A conditional finite root tube}
+Continue in the same native lattice units, with stars suppressed.
+Let $0<R<A<\infty$ and $0<f_{\min}\leq f_{\max}<\infty$.
+The constant $A$ here is the upper root-tube endpoint, not the absorbed
+probability $A(\tau)$. Reusing the exact far-field envelopes, define
+\begin{align}
+ F_0(a)&=W_0'(a)
+ =\frac{15\pi\epsilon\sigma_{\rm LJ}^6}{2b}a^{-6}
+ -\frac{693\pi\epsilon\sigma_{\rm LJ}^{12}}{64b}a^{-12},\\
+ E_F(a)&=24\epsilon\sigma_{\rm LJ}^6
+ (a^{-7}+2\sigma_{\rm LJ}^6a^{-13}),\\
+ L_F(a)&=F_0(a)-E_F(a),\qquad U_F(a)=F_0(a)+E_F(a),\\
+ M(a)&=45\pi-\frac{2079\pi}{16}\left(\frac{\sigma_{\rm LJ}}a\right)^6
+ -216\frac ba-720\frac ba\left(\frac{\sigma_{\rm LJ}}a\right)^6 .
+\end{align}
+Here $M(a)$ is a scalar curvature margin, distinct from mobility $M^*$.
+A reviewed sufficient set of symbolic conditions is
+\begin{equation}
+ M(R)>0,\qquad L_F(R)>f_{\max},\qquad U_F(A)<f_{\min}.
+ \label{eq:finite-tube-conditions}
+\end{equation}
+Define $\eta_L=L_F(R)-f_{\max}>0$ and
+$\eta_R=f_{\min}-U_F(A)>0$. The endpoint inequalities are then
+$W_a(R,s)\geq f_{\max}+\eta_L$ and
+$W_a(A,s)\leq f_{\min}-\eta_R$ for every real $s$.
+On the whole finite tube the corresponding conservative symbolic lower bound is
+\begin{equation}
+ -W_{aa}(a,s)\geq k_{\rm cert}^{\rm sym}(R,A)
+ :=\frac{\epsilon\sigma_{\rm LJ}^6}{bA^7}M(R)>0,
+ \qquad R\leq a\leq A .
+ \label{eq:finite-tube-curvature}
+\end{equation}
+These conditions supply the strict bracket and curvature inputs to the
+existing scalar root-graph theorem for a conditional root
+$a_{\rm tube}(s,f)\in(R,A)$, $f\in[f_{\min},f_{\max}]$.
+They are sufficient conditions, not assertions that every operating band
+or arbitrary choice of endpoints satisfies them.
+For fixed admissible $R$, $k_{\rm cert}^{\rm sym}(R,A)\to0$ as
+$A\to\infty$, consistently with the absence of a positive uniform bound
+on the entire infinite tail.
+
+For two force histories confined to this band and roots on this same tube
+graph, the existing same-slip boundary comparison can use
+\begin{equation}
+ |\Delta a_{\rm tube}(\tau,s)|
+ \leq\frac{|\Delta f(\tau)|}{k_{\rm cert}^{\rm sym}}
+ \leq\frac{\delta}{k_{\rm cert}^{\rm sym}},
+ \qquad |\Delta f(\tau)|\leq\delta .
+\end{equation}
+Its initial-law, background, reflection and event hypotheses remain required.
+Identifying this tube graph with the original mechanical outer boundary
+requires separate selector and left-well evidence; otherwise the estimate
+concerns the tube graph alone. It is a native boundary-location bound,
+not a distance between stochastic paths, a CDF bound, a measured crack
+length or an experimental error bound.
+The tube introduces no probability-domain truncation, reflecting wall or
+change of initial ensemble. Actual $R,A$, force band, slip domain,
+parameter/runtime binding and evaluated $k_{\rm cert}$ remain unspecified;
+no actual branch-certificate instance has passed.
+The full two-dimensional saddle, operating selector and left well,
+finite-evaluator/roundoff/table/SG accuracy and physical calibration remain
+uncertified.
 
 \section{Discussion}
 Earlier one-dimensional and Weibull-based constructions remain in the archived
