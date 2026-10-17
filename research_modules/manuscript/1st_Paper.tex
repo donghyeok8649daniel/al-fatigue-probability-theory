@@ -1,4 +1,4 @@
-% Revision 07: D12/A15/B9 conditional event ledger; revision06 reviewed scope preserved.
+% Revision 08: reviewed initial-mass/time/event output scope; revision07 preserved.
 \documentclass[11pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -493,6 +493,33 @@ The interval's upper endpoint $A_0+o_t+c_t$ is not selected as an actual CDF val
 Actual certificates, masses, original global restriction and physical
 clock remain unspecified.
 
+
+\paragraph{Initial mass in numerical output.}
+At the literal local snapshot \texttt{5f87837}, the numerical source defines
+\texttt{cumulative\_\allowbreak absorbed\_\allowbreak mass} and
+\texttt{initiation\_\allowbreak probability} to include initial removal.
+Treating either as $o_t$ and adding the same $A_0$ would double-count that cohort.
+Repeated snapshots of \texttt{initial\_\allowbreak absorbed\_\allowbreak mass}
+record an initial ledger value, not new increments.
+Post-initial integrated flux is a different aggregate; excluding initial
+removal does not certify it as strict-interior original opening mass $o_t$.
+Density, rate and integrated mass retain distinct measures and intervals;
+quadrature, state-Jacobian, physical-volume and time factors must not be applied twice.
+Consumption requires source bindings for the preparation and alive raw
+initial-measure stage, normalization history, matching disjoint cohorts
+including zero-time event accounting,
+initialization origin, event meaning and eligible prefix.
+With $m=\mu(E)$, the original probability ledger $A_0+m=1$ and those
+bindings plus the global prefix restriction are required before interpreting
+the conditional raw-mass interval as a first-opening CDF;
+normalization alone is insufficient.
+Without those bindings, the result remains a raw-mass interval without renormalization.
+Numerical residual fields do not supply the unresolved mass $c_t$.
+Source definitions alone do not establish an actual run or its raw initial population.
+Actual raw $\mu$, execution records, cohort bindings and the physical clock remain unspecified.
+
+\paragraph{Time and event records.}
+In the inspected local snapshot at commit \texttt{5f87837}, load evaluations are numerical point calls. The explicit force at \(t\) and the implicit force at \(t+\Delta t\) identify integration stages; they do not select left or right limits at a load jump. Energy, mask, subsequent loop, and final record evaluations make separate calls, even when their time arguments coincide. Without a supplied original pointwise load representative and a repeatability contract, these calls are not certified evaluations of the same original \(f(t)\). Numerical record and duration tolerances, together with the last snapshot, resolve neither \(\tau_{\rm o}<t\) versus \(\tau_{\rm o}=t\) nor the opening, localization, and simultaneous cases at the observation horizon; they provide no CDF error bound. Aggregate probability, removal, and flux fields do not supply a joint \((\tau_{\rm o},\sigma_U)\) event order, the certificate \(G_t\), or a restriction identifying the same first-event prefix of an original global law. These observations concern the inspected source and interface and the records available to this review. They establish no actual-run validation or SG--continuum event equivalence, and imply neither repository-wide absence of records nor model failure. The original load and opening rules remain unchanged.
 
 \subsection{Conditional finite-time load sensitivity}
 Here $T$ and the integration variable $u$ denote the original model time,
