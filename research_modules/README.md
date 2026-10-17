@@ -12,3 +12,7 @@ Research modules are allocated separately so that work on geometry, actual mater
 The common starting commit is `c8ccff7553cbb2e66b0c37a76ee8a24808478824` on `probability-pde-solver-v1`. This records the GitHub base only; unpublished local research is not implicitly included or overwritten.
 
 Each module owns only its new directory. Units, virtual work, flux conservation, conditional probability assumptions and missing physical inputs must be reviewed before integration. The original production model and both main branches are preserved. No calibrated aluminium stress, specimen initiation probability or physical fatigue life is claimed by these allocation files.
+
+## Main manuscript
+
+The authors edit the main paper in [Papeeria: 1st_Paper.tex](https://www.papeeria.com/p/86fa402b20a593c3dbca788ee535b601#/1st_Paper.tex), with [1.bib](https://www.papeeria.com/p/86fa402b20a593c3dbca788ee535b601#/1.bib) as its bibliography. [Manuscript snapshots and update policy](manuscript/README.md) record reviewed research integration. The current integration chat coordinates specialist results, experimental evidence, author correspondence and manuscript updates.
