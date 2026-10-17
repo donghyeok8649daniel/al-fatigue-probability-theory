@@ -1,4 +1,4 @@
-% Revision 05: D10/A13/C source boundary clarification; revision04 reviewed results preserved.
+% Revision 06: D11/B8 conditional interior law; revision05 reviewed scope preserved.
 \documentclass[11pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -337,6 +337,70 @@ protocol-map candidate $t_{0,\rm protocol}=(1/\nu)/P_\tau$.
 That map does not independently validate the mobility or generator timing.
 The actual anchors remain unspecified; a single stochastic onset is
 not equated deterministically to one native first-passage time.
+
+\subsection{A conditional interior probability law}
+Here $E=\{(a^*,s^*):a^*>0,\ s^*\in\mathbb R\}$ denotes the
+energy-input domain only. On a predeclared finite native interval $[0,T]$,
+let the deterministic load satisfy $f^*\in L^1(0,T)$ and retain the original
+positive finite constant mobilities and temperature parameter.
+Zero denotes the existing initialization reference, not a newly chosen
+experimental origin. For any open $U$ with compact closure inside $E$, set
+\begin{equation}
+ \sigma_U=\inf\{\tau\in[0,T]:Q_\tau\notin U\},\qquad
+ \inf\varnothing=\infty .
+\end{equation}
+Consider the exact native interior equation
+\begin{equation}
+\begin{aligned}
+ dQ_\tau&=\left[-M^*\nabla_*W^*(Q_\tau)
+       +M^*(1,\chi)^T f^*(\tau)\right]d\tau+\Sigma^*dB_\tau,\\
+ \Sigma^*&=(2\theta^*M^*)^{1/2}.
+\end{aligned}
+\end{equation}
+For the same predeclared Borel probability initial law $\mu$ on $E$,
+assume an initial variable measurable at initialization and a Brownian
+motion for the same usual filtration. There is a unique continuous law
+of paths stopped at $\sigma_U$ among the stated interior candidates,
+with no regulator, additional drift or sink inside $U$.
+It is independent of the auxiliary cutoff used in its construction and
+admits a Borel initial-to-stopped-path kernel $K_U$.
+An initial point outside $U$ gives $\sigma_U=0$ and the constant path at
+that same point; no initial mass is discarded or reconditioned.
+
+To see this, reuse local smoothness of the exact energy and choose a smooth
+spatial cutoff equal to one near $\overline U$, supported compactly inside
+$E$. Its zero extension gives a bounded globally Lipschitz auxiliary
+spatial drift. The $L^1$ load has an absolutely continuous primitive;
+pathwise Picard iteration gives a continuous nonanticipative solution map
+for the additive driving path. Exit from open $U$ hits its closed
+complement when finite on this horizon. A distance-minimum argument gives
+a Borel stopping map without assuming a continuous hitting-time functional
+or a regular boundary. Gronwall comparison until the minimum of two exits,
+followed by exit attainment, proves cutoff independence and stopped
+pathwise uniqueness. The same construction on a weak candidate's space
+identifies its law, and composition with the Borel stopping map gives $K_U$.
+
+Let $\mathcal C_T=C([0,T],\mathbb R^2)$. The kernel mixture extends
+linearly to the same predeclared finite raw initial measure $\mu$:
+\begin{equation}
+\begin{aligned}
+ \Pi_\mu(A)&=\int_E K_U(x,A)\,\mu(dx),\\
+ \Pi_\mu(\mathcal C_T)&=\mu(E),\qquad
+ \Pi_\mu\{\sigma_U=0\}=\mu(E\setminus U).
+\end{aligned}
+\end{equation}
+For a raw measure, $\Pi_\mu$ is a path measure and is not forced to have
+unit mass. Any separately recorded initial absorbed mass retains its
+original ledger. Localization does not add to physical absorption.
+This is a conditional interior theorem, not certification that a supplied
+original reflected or killed law has this restriction. That application
+still needs its original background, initial-law and regulator bindings.
+The auxiliary continuation after an earlier original opening is not
+validated by this construction. No actual $U$, wall, load or physical
+scale is selected; global non-explosion, $a^*=0$ accessibility, full
+reflection and moving/table opening-event equivalence remain outside
+the result.
+
 
 \subsection{Conditional finite-time load sensitivity}
 Here $T$ and the integration variable $u$ denote the original model time,
