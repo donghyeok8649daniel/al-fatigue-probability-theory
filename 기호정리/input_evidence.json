@@ -1,0 +1,407 @@
+{
+  "schema_version": 1,
+  "date_kst": "2026-10-19",
+  "priority": "단위 통일",
+  "repository": "donghyeok8649daniel/al-fatigue-probability-theory",
+  "source_ref": "c8ccff7553cbb2e66b0c37a76ee8a24808478824",
+  "target_base_branch": "probability-pde-solver-v1",
+  "canonical_reference_model_id": "two_row_lj_reference",
+  "actual_coupled_model_id": null,
+  "reference_inputs": [
+    {
+      "scope": "canonical_n1",
+      "symbol": "N",
+      "value": 1,
+      "unit": "1",
+      "source": "S2",
+      "status": "source_reference_only",
+      "note": "N=1 UI 기준"
+    },
+    {
+      "scope": "canonical_n1",
+      "symbol": "b*",
+      "value": 1,
+      "unit": "1",
+      "source": "S1 S2",
+      "status": "source_reference_only",
+      "note": "상속된 native 기준"
+    },
+    {
+      "scope": "canonical_n1",
+      "symbol": "epsilon_LJ*",
+      "value": 1,
+      "unit": "1",
+      "source": "S1 S2",
+      "status": "source_reference_only",
+      "note": "상속된 native 기준"
+    },
+    {
+      "scope": "canonical_n1",
+      "symbol": "sigma_LJ*",
+      "value": 0.82,
+      "unit": "1",
+      "source": "S1 S2",
+      "status": "source_reference_only",
+      "note": "상속된 native 기준"
+    },
+    {
+      "scope": "canonical_n1",
+      "symbol": "theta*",
+      "value": 0.02,
+      "unit": "1",
+      "source": "S2",
+      "status": "source_reference_only",
+      "note": "native thermal energy"
+    },
+    {
+      "scope": "canonical_n1",
+      "symbol": "M_a*",
+      "value": 1,
+      "unit": "1",
+      "source": "S2",
+      "status": "source_reference_only",
+      "note": "native mobility"
+    },
+    {
+      "scope": "canonical_n1",
+      "symbol": "M_s*",
+      "value": 0.05,
+      "unit": "1",
+      "source": "S2",
+      "status": "source_reference_only",
+      "note": "native mobility"
+    },
+    {
+      "scope": "canonical_n1",
+      "symbol": "chi",
+      "value": 0.2,
+      "unit": "1",
+      "source": "S2",
+      "status": "source_reference_only",
+      "note": "기하 보정값 아님"
+    },
+    {
+      "scope": "canonical_n1",
+      "symbol": "a0*",
+      "value": 0.7713438268704838,
+      "unit": "1",
+      "source": "S8",
+      "status": "source_reference_only",
+      "note": "기록된 역사적 기준; 재계산하지 않음"
+    },
+    {
+      "scope": "canonical_n1",
+      "symbol": "kappa_ax*",
+      "value": 86.29296488740997,
+      "unit": "1",
+      "source": "S8",
+      "status": "source_reference_only",
+      "note": "같은 chi=.2 기준; 재계산하지 않음"
+    },
+    {
+      "scope": "ModelParams_default",
+      "symbol": "N",
+      "value": 3,
+      "unit": "1",
+      "source": "S1",
+      "status": "source_reference_only",
+      "note": "N1 프로파일과 별도"
+    },
+    {
+      "scope": "ModelParams_default",
+      "symbol": "theta*",
+      "value": 0.009,
+      "unit": "1",
+      "source": "S1",
+      "status": "source_reference_only",
+      "note": "N1 프로파일과 별도"
+    },
+    {
+      "scope": "ModelParams_default",
+      "symbol": "M_s*",
+      "value": 0.15,
+      "unit": "1",
+      "source": "S1",
+      "status": "source_reference_only",
+      "note": "N1 프로파일과 별도"
+    },
+    {
+      "scope": "ModelParams_default",
+      "symbol": "chi",
+      "value": 0.4,
+      "unit": "1",
+      "source": "S1",
+      "status": "source_reference_only",
+      "note": "N1 프로파일과 별도"
+    },
+    {
+      "scope": "declared_kinetic_file",
+      "symbol": "L0",
+      "value": 2.863782463805517e-10,
+      "unit": "m",
+      "source": "S5",
+      "status": "source_reference_only",
+      "note": "해당 FCC/eV reference 선언; 실제 결합 선택 아님"
+    },
+    {
+      "scope": "declared_kinetic_file",
+      "symbol": "E0",
+      "value": 1.602176634e-19,
+      "unit": "J",
+      "source": "S5",
+      "status": "source_reference_only",
+      "note": "1 eV 단위 선언; kinetic 보정 아님"
+    },
+    {
+      "scope": "Grid2DParams_default",
+      "symbol": "n_a",
+      "value": 61,
+      "unit": "count",
+      "source": "S3",
+      "status": "source_reference_only",
+      "note": "실제 선택된 run grid는 미정"
+    },
+    {
+      "scope": "Grid2DParams_default",
+      "symbol": "n_s",
+      "value": 121,
+      "unit": "count",
+      "source": "S3",
+      "status": "source_reference_only",
+      "note": "실제 선택된 run grid는 미정"
+    },
+    {
+      "scope": "PDETimeParams_default",
+      "symbol": "max_dt*",
+      "value": 0.002,
+      "unit": "model time",
+      "source": "S3",
+      "status": "source_reference_only",
+      "note": "실제 step은 CFL에 의해 제한됨"
+    },
+    {
+      "scope": "PDETimeParams_default",
+      "symbol": "cfl",
+      "value": 0.45,
+      "unit": "1",
+      "source": "S3",
+      "status": "source_reference_only",
+      "note": "기존 코드의 수치 제어값"
+    }
+  ],
+  "declared_kinetic_state": {
+    "calibrated": false,
+    "source": null,
+    "temperature_K": null,
+    "M_a_phys_m2_per_J_s": null,
+    "M_s_phys_m2_per_J_s": null,
+    "t0_seconds": null,
+    "mobility_ratio": null
+  },
+  "actual_coupled_inputs": [
+    {
+      "id": "actual_model_binding",
+      "label": "model/parameter/energy representative",
+      "value": null,
+      "unit": "식별자",
+      "status": "unresolved_no_estimate",
+      "required_raw": "같은 모형 ID·parameter fingerprint·per-atom/cell/interface counting과 채택 근거"
+    },
+    {
+      "id": "L0_actual_m",
+      "label": "실제 결합 모형 길이 척도",
+      "value": null,
+      "unit": "m",
+      "status": "unresolved_no_estimate",
+      "required_raw": "같은 좌표의 측정 길이·기준 lattice/상태·단위와 대응식"
+    },
+    {
+      "id": "E0_actual_J",
+      "label": "실제 결합 모형 에너지 척도",
+      "value": null,
+      "unit": "J",
+      "status": "unresolved_no_estimate",
+      "required_raw": "같은 대표계 에너지·thermal normalization·보정 근거"
+    },
+    {
+      "id": "geometry_vectors_and_support",
+      "label": "3D cell vectors/원자 위치·유한 집단 영역",
+      "value": null,
+      "unit": "m",
+      "status": "unresolved_no_estimate",
+      "required_raw": "3D primitive vectors 또는 원자 좌표, 경계·두께·partition·집단 지지영역"
+    },
+    {
+      "id": "V_geom_m3",
+      "label": "실제 재료 셀 부피",
+      "value": null,
+      "unit": "m^3",
+      "status": "unresolved_no_estimate",
+      "required_raw": "위 3D 자료와 동일한 대표계/기준 또는 현재 상태의 부피 측정"
+    },
+    {
+      "id": "A_int_m2",
+      "label": "실제 interface 면적",
+      "value": null,
+      "unit": "m^2",
+      "status": "unresolved_no_estimate",
+      "required_raw": "계면의 두 접벡터 또는 동일 영역의 면적/법선·방위"
+    },
+    {
+      "id": "chi_and_work_map",
+      "label": "실제 chi/strain-work mapping",
+      "value": null,
+      "unit": "1",
+      "status": "unresolved_no_estimate",
+      "required_raw": "좌표 jump→strain의 orientation/기하, 공액 stress·strain·volume convention"
+    },
+    {
+      "id": "E_x_Pa",
+      "label": "같은 방향의 탄성계수",
+      "value": null,
+      "unit": "Pa",
+      "status": "unresolved_no_estimate",
+      "required_raw": "같은 소재·온도·방위·상태의 modulus와 측정/보정 원자료"
+    },
+    {
+      "id": "T_phys_K",
+      "label": "실제 운전/보정 온도",
+      "value": null,
+      "unit": "K",
+      "status": "unresolved_no_estimate",
+      "required_raw": "같은 specimen/MD record의 온도 로그 및 thermostat/ensemble"
+    },
+    {
+      "id": "M_phys_and_t0",
+      "label": "local a/s 이동도와 공통 t0",
+      "value": null,
+      "unit": "m^2/(J s); s",
+      "status": "unresolved_no_estimate",
+      "required_raw": "같은 집단좌표·PMF·열항의 signed response 또는 covariance/확산 원자료, 오차와 coarse-time 검증"
+    },
+    {
+      "id": "load_stage_clock",
+      "label": "실제 하중·시간·주기 단계",
+      "value": null,
+      "unit": "Pa; s; cycles",
+      "status": "unresolved_no_estimate",
+      "required_raw": "controller raw trace, 센서 단위/교정, cycle-to-stage map·sampling clock"
+    },
+    {
+      "id": "P0_cohort",
+      "label": "실제 초기법칙·raw cohort·원점",
+      "value": null,
+      "unit": "density/mass",
+      "status": "unresolved_no_estimate",
+      "required_raw": "초기 준비·선별·support, 실제 grid와 quadrature, preload·초기 absorber 기록"
+    },
+    {
+      "id": "opening_event_map",
+      "label": "opening mask와 실측 균열 사건 대응",
+      "value": null,
+      "unit": "event",
+      "status": "unresolved_no_estimate",
+      "required_raw": "동일 stage의 원래 mask/geometry, 검사 last-negative/first-positive, 검출한계와 DCPD 교정"
+    },
+    {
+      "id": "A_c_and_independence",
+      "label": "실제 상관 영역·집단 법칙",
+      "value": null,
+      "unit": "m^2; joint law",
+      "status": "unresolved_no_estimate",
+      "required_raw": "동일 하중/조직의 공간 위치·correlation/공동 사건 자료; 독립성 검증"
+    },
+    {
+      "id": "runtime_error_binding",
+      "label": "실제 quadrature/runtime/source 오차",
+      "value": null,
+      "unit": "해당량 단위",
+      "status": "unresolved_no_estimate",
+      "required_raw": "같은 run의 grid/step/order/mask/source identity와 오차 근거"
+    }
+  ],
+  "unit_conversions": {
+    "angstrom_to_m": 1e-10,
+    "angstrom2_to_m2": 1e-20,
+    "angstrom3_to_m3": 1e-30,
+    "nm_to_m": 1e-9,
+    "MPa_to_Pa": 1000000,
+    "GPa_to_Pa": 1000000000,
+    "eV_to_J": 1.602176634e-19
+  },
+  "source_search_scope": {
+    "remote": "Only publicly accessible repository code/configuration/docs pinned at source_ref and listed below.",
+    "limits": "Public sources only; no private research or mail records included."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "path": "solver_v1/model.py",
+      "url": "https://github.com/donghyeok8649daniel/al-fatigue-probability-theory/blob/c8ccff7553cbb2e66b0c37a76ee8a24808478824/solver_v1/model.py",
+      "scope": "ModelParams 및 TwoRowLJ의 좌표·에너지·strain",
+      "blob_sha": "9924b60536e2dcc48681953bb028522cda91a8fd"
+    },
+    {
+      "id": "S2",
+      "path": "app/solver_adapter.py",
+      "url": "https://github.com/donghyeok8649daniel/al-fatigue-probability-theory/blob/c8ccff7553cbb2e66b0c37a76ee8a24808478824/app/solver_adapter.py",
+      "scope": "canonical_model_params:237-246의 N=1 UI 기준",
+      "blob_sha": "c6f053c99475137c380585cdc0869b02cdf12b2c"
+    },
+    {
+      "id": "S3",
+      "path": "solver_v1/probability_pde_2d.py",
+      "url": "https://github.com/donghyeok8649daniel/al-fatigue-probability-theory/blob/c8ccff7553cbb2e66b0c37a76ee8a24808478824/solver_v1/probability_pde_2d.py",
+      "scope": "density, cell_volume, SG face/generator, 초기화와 흡수",
+      "blob_sha": "011526a087cc02c88aa149014dee1e3839fbdb81"
+    },
+    {
+      "id": "S4",
+      "path": "solver_v1/PHYSICAL_TIME_AND_MOBILITY.md",
+      "url": "https://github.com/donghyeok8649daniel/al-fatigue-probability-theory/blob/c8ccff7553cbb2e66b0c37a76ee8a24808478824/solver_v1/PHYSICAL_TIME_AND_MOBILITY.md",
+      "scope": "단위 변환 및 물리 시계 미보정 상태",
+      "blob_sha": "e0d3737a044135fb4a1a134cf41ee368580b16ff"
+    },
+    {
+      "id": "S5",
+      "path": "solver_v1/data/aluminum_kinetic_calibration.json",
+      "url": "https://github.com/donghyeok8649daniel/al-fatigue-probability-theory/blob/c8ccff7553cbb2e66b0c37a76ee8a24808478824/solver_v1/data/aluminum_kinetic_calibration.json",
+      "scope": "선언된 단위 척도와 calibrated=false/null fields",
+      "blob_sha": "e9c4bfa40f49ab20cf7190662aa6e680fe0c39c4"
+    },
+    {
+      "id": "S6",
+      "path": "solver_v1/energy_model_registry.py",
+      "url": "https://github.com/donghyeok8649daniel/al-fatigue-probability-theory/blob/c8ccff7553cbb2e66b0c37a76ee8a24808478824/solver_v1/energy_model_registry.py",
+      "scope": "모형 ID와 각 energy/geometry scale의 적용 범위",
+      "blob_sha": "657c5abb878c9784e651c64a47dd5f609abcab40"
+    },
+    {
+      "id": "S7",
+      "path": "paper/fatigue_probability_main_v4.tex",
+      "url": "https://github.com/donghyeok8649daniel/al-fatigue-probability-theory/blob/c8ccff7553cbb2e66b0c37a76ee8a24808478824/paper/fatigue_probability_main_v4.tex",
+      "scope": "일반 correlated 2N Smoluchowski 이론; 과거 N=3 screening 별도",
+      "blob_sha": "c90fa3c147a44b227f445be6bb4f759b6270e172"
+    },
+    {
+      "id": "S8",
+      "path": "AGENTS.md",
+      "url": "https://github.com/donghyeok8649daniel/al-fatigue-probability-theory/blob/c8ccff7553cbb2e66b0c37a76ee8a24808478824/AGENTS.md",
+      "scope": "N=1 역사적 a0/kappa, 기하·통계·시계 구별",
+      "blob_sha": "50c7dc53af926a5eebe5048340e2c206ec5f1048"
+    },
+    {
+      "id": "S9",
+      "path": "README.md",
+      "url": "https://github.com/donghyeok8649daniel/al-fatigue-probability-theory/blob/c8ccff7553cbb2e66b0c37a76ee8a24808478824/README.md",
+      "scope": "현행 PDE 경로와 역사적 MC 검사의 구별",
+      "blob_sha": "7859a101c2c01396f587f1b5a6ad05633c00af26"
+    }
+  ],
+  "adoption": {
+    "actual_geometry_volume_selected": false,
+    "physical_time_available": false,
+    "actual_independence_or_probability_error_certified": false,
+    "production_code_changed": false
+  }
+}
