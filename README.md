@@ -17,6 +17,10 @@ Integration branch for the finalized Theory Core v1 manuscript and its executabl
 
 The macroscopic target remains stress/strain hysteresis, residual plastic response, irreversible evolution, and crack-initiation probability. Microscopic coordinates are hidden constitutive states rather than proposed experimental observables.
 
+## 기호·단위와 지배방정식
+
+[기호 정리 디렉터리](기호정리/README.md)에서 기호 시트(Excel/CSV), 단위를 통일한 지배방정식, 기존 N=1 모형의 적용 예시 하나, 확인된 기준 입력과 미정값별 필요 원자료를 볼 수 있습니다. 계산 기준값과 실제 물리 보정값을 구별합니다.
+
 ## Solver
 
 `solver_v1/` contains the executable dimensionless mechanism solver. The
