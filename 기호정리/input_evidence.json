@@ -304,6 +304,30 @@
       "required_raw": "동일 stage의 원래 mask/geometry, 검사 last-negative/first-positive, 검출한계와 DCPD 교정"
     },
     {
+      "id": "reference_r_nuF",
+      "label": "분석 reference의 형태와 full bin 질량",
+      "value": null,
+      "unit": "reference mass",
+      "status": "unresolved_no_estimate",
+      "required_raw": "고정 r(q), 동일 bin 적분·full nu_F·선택 이유; Gibbs 대체 여부 명시"
+    },
+    {
+      "id": "mask_joint_overlap",
+      "label": "같은 P/R의 두 mask joint/overlap",
+      "value": null,
+      "unit": "1",
+      "status": "unresolved_no_estimate",
+      "required_raw": "동일 raw cohort·reference의 masks/joint integrals와 무중간변화 stage 근거"
+    },
+    {
+      "id": "KL_energy_error_budgets",
+      "label": "실제 pre KL·독립 energy/error budgets",
+      "value": null,
+      "unit": "entropy; J",
+      "status": "unresolved_no_estimate",
+      "required_raw": "rho/r/reconstruction, proper finite functional 차이와 독립 절댓값 bound certificate"
+    },
+    {
       "id": "A_c_and_independence",
       "label": "실제 상관 영역·집단 법칙",
       "value": null,
@@ -330,8 +354,17 @@
     "eV_to_J": 1.602176634e-19
   },
   "source_search_scope": {
-    "remote": "Only publicly accessible repository code/configuration/docs pinned at source_ref and listed below.",
-    "limits": "Public sources only; no private research or mail records included."
+    "remote": "Pinned repository code/configuration/docs listed in sources",
+    "local_archive": "Existing life-backbone input map, atomistic-closure audit and archived author-reply receipt dated 2026-10-17; private local records are not included in this public directory",
+    "archived_reply_receipt": {
+      "record_date": "2026-10-17",
+      "raw_controller_trace_received": false,
+      "cycle_stage_map_received": false,
+      "dcpd_calibration_received": false,
+      "new_structured_dataset_received": false,
+      "checked_live_mailbox_this_task": false
+    },
+    "limits": "Bounded existing-source search; absence from these records is not a universal absence claim."
   },
   "sources": [
     {

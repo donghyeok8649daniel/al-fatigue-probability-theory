@@ -27,7 +27,7 @@ f^*=\kappa_{\rm ax}^*\frac{\sigma_{\rm Pa}}{E_{x,\rm Pa}},\quad
 
 $W^*$는 무한 Poisson/Bessel two-row 에너지입니다. N>1에서는 upper-cell 상호작용을 보존합니다. 별도 normal-chain 에너지를 중복 가산하지 않습니다.
 
-물리적 대표계 이론의 $\mathcal G_N=\mathcal U_N-V_c\sigma\varepsilon$를 해석하려면 같은 에너지 counting과 실제 기하/work mapping이 필요합니다. stress ratio mapping 자체는 실제 Vc를 측정하지 않습니다. 지정한 실제 대표계의 Vc와 에너지 counting은 별도로 결속해야 합니다.
+물리적 대표계 이론의 $\mathcal G_N=\mathcal U_N-V_c\sigma\varepsilon$를 해석하려면 같은 에너지 counting과 실제 기하/work mapping이 필요합니다. stress ratio mapping 자체는 실제 Vc를 측정하지 않습니다. $V_{\rm eff}$와 $V_{\rm geom}$을 동일 값으로 채우지 않습니다.
 
 ## 3. Smoluchowski 지배방정식
 
@@ -62,7 +62,7 @@ k_{RL}=\frac{D_i^*}{(\Delta q_i^*)^2}B_{\rm SG}(-\psi_{LR}).$$
 
 a-face에서는 $T_{LR}=\Delta s^*J_{LR}$, s-face에서는 $T_{LR}=\Delta a^*J_{LR}$입니다. raw rate에 transverse factor나 nu_B를 다시 곱하지 않습니다. 전체 내부 face를 조립하면 $\dot p=L_pp$이고 내부 conservative block의 열 합은 0입니다.
 
-위 설명은 원래 uniform-grid 구현에 한정합니다. 임의 nonuniform grid에는 별도 source/수치 검증이 필요합니다.
+density와 raw mass의 일반 연산자 연결은 같은 partition/order/measure에서 $p=D_B\rho$와 $L_p=D_BL_\rho D_B^{-1}$를 함께 결속해야 합니다. 위 uniform-grid 코드를 임의 nonuniform grid 검증으로 확장하지 않습니다.
 
 ## 5. 원래 opening 사건과 확률
 

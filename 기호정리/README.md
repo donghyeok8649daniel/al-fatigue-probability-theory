@@ -16,10 +16,10 @@
 
 `M_i`는 mobility, `K_k`는 binary keep mask입니다. `B_SG`는 Bernoulli 함수입니다. `sigma`와 `sigma_LJ`, `E_x`와 `E0`, diffusion `D_i`와 pre-reference `D_KL`을 구분합니다.
 
+분석 보조기호의 `eta_P`는 P-covariance 결손, `c_R`는 R-covariance, `eta_E`는 독립 에너지 예산입니다. `beta_2^P`, `beta_2^R`, updated conditional fraction은 서로 다른 분포·cohort의 양입니다. 보조기호 정리는 새로운 production 방정식이나 closure의 채택을 뜻하지 않습니다.
+
 ## 확인한 값의 범위
 
-입력 JSON에는 20개 source reference 기록을 채웠습니다. N=1 UI 기준과 일반 ModelParams 기본값은 별도 프로파일입니다. 선언된 kinetic 파일의 L0/E0도 별도 범위입니다. 실제 결합 입력 15개는 근거가 부족해 null로 유지했습니다. kinetic 파일은 calibrated=false이며 물리 mobility·온도·t0는 null입니다.
+입력 JSON에는 20개 source reference 기록을 채웠습니다. N=1 UI 기준과 일반 ModelParams 기본값은 별도 프로파일입니다. 선언된 kinetic 파일의 L0/E0도 별도 범위입니다. 실제 결합 입력 18개는 근거가 부족해 null로 유지했습니다. kinetic 파일은 calibrated=false이며 물리 mobility·온도·t0는 null입니다.
 
 적용 예시는 기존 N=1 native 모형의 한 내부 SG face를 기호로 계산합니다. actual load/P0/grid/time/geometry 값을 새로 지정하지 않습니다.
-
-이 공개 시트의 기호 48개와 기준 입력은 아래 출처 목록의 기존 공개 저장소 코드·문서에서만 정리했습니다. 로컬 보관 자료 및 미공개 분석 기호는 공개본에 포함하지 않습니다.
