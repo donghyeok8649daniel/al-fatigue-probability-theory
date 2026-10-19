@@ -1,0 +1,499 @@
+{
+  "scope": "PART I-III independent mathematical demonstrations; not calibrated Al or production adoption",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1"
+  },
+  "baseCommit": "c8ccff7553cbb2e66b0c37a76ee8a24808478824",
+  "parameters": {
+    "epsilon": 1.0,
+    "sigma_lj": 0.82,
+    "b": 1.0,
+    "h": 0.761436142462363
+  },
+  "checks": [
+    {
+      "name": "row_energy_force_hessian_direct_vs_poisson",
+      "passed": true,
+      "seconds": 0.031000000000858563,
+      "error": null,
+      "details": {
+        "points": [
+          {
+            "a": 0.12,
+            "s": 0.49,
+            "p": 3,
+            "maximumScaledError": 3.430766368313782e-16,
+            "valueAbsoluteError": 0.0,
+            "realValueTailBound": 3.389165954136476e-22,
+            "realRadius": 16384,
+            "reciprocalModes": 192
+          },
+          {
+            "a": 0.12,
+            "s": 0.49,
+            "p": 6,
+            "maximumScaledError": 3.0290295613668847e-16,
+            "valueAbsoluteError": 1.52587890625e-05,
+            "realValueTailBound": 7.967270580284034e-48,
+            "realRadius": 16384,
+            "reciprocalModes": 192
+          },
+          {
+            "a": 0.45,
+            "s": 0.13,
+            "p": 3,
+            "maximumScaledError": 7.593199642066514e-16,
+            "valueAbsoluteError": 1.0658141036401503e-14,
+            "realValueTailBound": 3.389165954136476e-22,
+            "realRadius": 16384,
+            "reciprocalModes": 192
+          },
+          {
+            "a": 0.45,
+            "s": 0.13,
+            "p": 6,
+            "maximumScaledError": 9.831612181418513e-15,
+            "valueAbsoluteError": 2.5011104298755527e-12,
+            "realValueTailBound": 7.967270580284034e-48,
+            "realRadius": 16384,
+            "reciprocalModes": 192
+          },
+          {
+            "a": 0.8,
+            "s": -0.21,
+            "p": 3,
+            "maximumScaledError": 2.696699983916376e-15,
+            "valueAbsoluteError": 1.3322676295501878e-15,
+            "realValueTailBound": 3.389165954136476e-22,
+            "realRadius": 16384,
+            "reciprocalModes": 192
+          },
+          {
+            "a": 0.8,
+            "s": -0.21,
+            "p": 6,
+            "maximumScaledError": 3.2404266943630353e-15,
+            "valueAbsoluteError": 2.6645352591003757e-15,
+            "realValueTailBound": 7.967270580284034e-48,
+            "realRadius": 16384,
+            "reciprocalModes": 192
+          },
+          {
+            "a": 1.6,
+            "s": 0.31,
+            "p": 3,
+            "maximumScaledError": 3.3443432494245265e-16,
+            "valueAbsoluteError": 1.3877787807814457e-17,
+            "realValueTailBound": 3.389165954136476e-22,
+            "realRadius": 16384,
+            "reciprocalModes": 192
+          },
+          {
+            "a": 1.6,
+            "s": 0.31,
+            "p": 6,
+            "maximumScaledError": 8.326672684688674e-17,
+            "valueAbsoluteError": 8.673617379884035e-19,
+            "realValueTailBound": 7.967270580284034e-48,
+            "realRadius": 16384,
+            "reciprocalModes": 192
+          },
+          {
+            "a": 5.0,
+            "s": -0.07,
+            "p": 3,
+            "maximumScaledError": 1.0842021724855044e-19,
+            "valueAbsoluteError": 1.0842021724855044e-19,
+            "realValueTailBound": 3.389165954136476e-22,
+            "realRadius": 16384,
+            "reciprocalModes": 192
+          },
+          {
+            "a": 5.0,
+            "s": -0.07,
+            "p": 6,
+            "maximumScaledError": 1.3234889800848443e-23,
+            "valueAbsoluteError": 3.308722450212111e-24,
+            "realValueTailBound": 7.967270580284034e-48,
+            "realRadius": 16384,
+            "reciprocalModes": 192
+          }
+        ],
+        "productionComparison": {
+          "model": "original one-upper-site/infinite-lower-row only",
+          "energyGradientMaximumDifference": 7.105427357601002e-15
+        },
+        "forceSign": "Internal force is minus reported gradient; Hessian channels checked separately from force."
+      }
+    },
+    {
+      "name": "planar_kernel_order_normalization_and_real_tail_refinement",
+      "passed": true,
+      "seconds": 0.25,
+      "error": null,
+      "details": {
+        "records": [
+          {
+            "p": 3,
+            "d": 0.55,
+            "delta": [
+              0.13,
+              -0.11
+            ],
+            "order": "K_2",
+            "reciprocalShell": 16,
+            "convergence": [
+              {
+                "realShell": 64,
+                "valueError": 1.2118361780721898e-07,
+                "valueTailBound": 2.877539143892904e-07,
+                "largestValueGradientHessianError": 1.2118361780721898e-07
+              },
+              {
+                "realShell": 128,
+                "valueError": 7.694435311123016e-09,
+                "valueTailBound": 1.7823024449748758e-08,
+                "largestValueGradientHessianError": 7.694435311123016e-09
+              },
+              {
+                "realShell": 256,
+                "valueError": 4.847002799124311e-10,
+                "valueTailBound": 1.1088705715993287e-09,
+                "largestValueGradientHessianError": 4.847002799124311e-10
+              }
+            ]
+          },
+          {
+            "p": 3,
+            "d": 1.3,
+            "delta": [
+              0.25,
+              0.2
+            ],
+            "order": "K_2",
+            "reciprocalShell": 16,
+            "convergence": [
+              {
+                "realShell": 64,
+                "valueError": 1.210934492679172e-07,
+                "valueTailBound": 2.9240769378908436e-07,
+                "largestValueGradientHessianError": 1.210934492679172e-07
+              },
+              {
+                "realShell": 128,
+                "valueError": 7.692974146600307e-09,
+                "valueTailBound": 1.7967372865658365e-08,
+                "largestValueGradientHessianError": 7.692974146600307e-09
+              },
+              {
+                "realShell": 256,
+                "valueError": 4.846685275339269e-10,
+                "valueTailBound": 1.1133644178158284e-09,
+                "largestValueGradientHessianError": 4.846685275339269e-10
+              }
+            ]
+          },
+          {
+            "p": 6,
+            "d": 0.55,
+            "delta": [
+              0.13,
+              -0.11
+            ],
+            "order": "K_5",
+            "reciprocalShell": 16,
+            "convergence": [
+              {
+                "realShell": 64,
+                "valueError": 5.684341886080801e-13,
+                "valueTailBound": 4.043081799138626e-18,
+                "largestValueGradientHessianError": 4.656612873077393e-10
+              },
+              {
+                "realShell": 128,
+                "valueError": 5.684341886080801e-13,
+                "valueTailBound": 3.877687994828394e-21,
+                "largestValueGradientHessianError": 4.656612873077393e-10
+              },
+              {
+                "realShell": 256,
+                "valueError": 5.684341886080801e-13,
+                "valueTailBound": 3.7524229265106876e-24,
+                "largestValueGradientHessianError": 4.656612873077393e-10
+              }
+            ]
+          },
+          {
+            "p": 6,
+            "d": 1.3,
+            "delta": [
+              0.25,
+              0.2
+            ],
+            "order": "K_5",
+            "reciprocalShell": 16,
+            "convergence": [
+              {
+                "realShell": 64,
+                "valueError": 2.7755575615628914e-17,
+                "valueTailBound": 4.1749150091333465e-18,
+                "largestValueGradientHessianError": 1.2878587085651816e-14
+              },
+              {
+                "realShell": 128,
+                "valueError": 2.0816681711721685e-17,
+                "valueTailBound": 3.940753023603473e-21,
+                "largestValueGradientHessianError": 1.2878587085651816e-14
+              },
+              {
+                "realShell": 256,
+                "valueError": 2.0816681711721685e-17,
+                "valueTailBound": 3.7828989467113596e-24,
+                "largestValueGradientHessianError": 1.2878587085651816e-14
+              }
+            ]
+          }
+        ],
+        "normalization": "Per triangular primitive plane cell; area=sqrt(3)b^2/2, reciprocal prefactor1/area."
+      }
+    },
+    {
+      "name": "explicit_cut_bond_enumeration_and_path_derivative",
+      "passed": true,
+      "seconds": 0.015000000001236913,
+      "error": null,
+      "details": {
+        "lowerRows": 4,
+        "upperRows": 5,
+        "counts": {
+          "4": 4,
+          "5": 4,
+          "6": 3,
+          "7": 2,
+          "8": 1,
+          "3": 3,
+          "2": 2,
+          "1": 1
+        },
+        "crossingPairs": 20,
+        "directEnergy": 0.4273971979607903,
+        "countedBesselEnergy": 0.42739719796078934,
+        "absoluteDifference": 9.43689570931383e-16,
+        "cutDerivative": 3.941084252594483,
+        "incorrectHomogeneousChainRule": 5.11634743041669
+      }
+    },
+    {
+      "name": "counted_rigid_cut_derivatives_refinement_and_separation_limit",
+      "passed": true,
+      "seconds": 0.01599999999962165,
+      "error": null,
+      "details": {
+        "geometry": "2D zigzag half-stacks; per lateral repeat, not J/m\u00b2",
+        "h": 0.761436142462363,
+        "referenceFeatures": [
+          0.0,
+          -4.618527782440651e-14,
+          1.1875376590105322e-15,
+          141.4437975062575,
+          -2.242932070035715e-14,
+          60.860414115850475
+        ],
+        "positiveHessianEigenvalues": [
+          60.860414115850475,
+          141.4437975062575
+        ],
+        "layerModeRefinementMaximumDifference": 0.0,
+        "finiteDifferenceGradientError": 1.1104927333249748e-07,
+        "finiteDifferenceHessianError": 1.8872964488991784e-06,
+        "separationLimit": 2.5636204291919826,
+        "approach": [
+          {
+            "opening": 4.0,
+            "energy": 2.5605138199520727,
+            "endpointError": 0.0031066092399099077
+          },
+          {
+            "opening": 8.0,
+            "energy": 2.5632218573160706,
+            "endpointError": 0.0003985718759120793
+          },
+          {
+            "opening": 16.0,
+            "energy": 2.563570271827333,
+            "endpointError": 5.0157364649638936e-05
+          },
+          {
+            "opening": 32.0,
+            "energy": 2.563614148892796,
+            "endpointError": 6.280299186478544e-06
+          },
+          {
+            "opening": 64.0,
+            "energy": 2.5636196438213856,
+            "endpointError": 7.853705970006786e-07
+          }
+        ],
+        "zeroMode": "Infinite weighted Hurwitz-zeta sum retained exactly."
+      }
+    },
+    {
+      "name": "same_bessel_energy_different_PMF_exact_entropy_counterexample",
+      "passed": true,
+      "seconds": 0.01599999999962165,
+      "error": null,
+      "details": {
+        "T": 0.2,
+        "model": "V(q,y)=W_Gamma_Bessel(q)+kappa(q)y\u00b2/2",
+        "sameRigidAndRelaxedEnergy": true,
+        "PMFEqualsRigid": false,
+        "records": [
+          {
+            "q": [
+              0.1,
+              0.17
+            ],
+            "rigidAndRelaxedEnergy": 0.5170967738516374,
+            "PMF": 0.5458266268875693,
+            "entropyCorrection": 0.028729853035931896,
+            "independentGaussianIntegralError": 4.750628961350619e-09
+          },
+          {
+            "q": [
+              -0.03,
+              0.08
+            ],
+            "rigidAndRelaxedEnergy": 0.42138522394817945,
+            "PMF": 0.423932956746425,
+            "entropyCorrection": 0.0025477327982455413,
+            "independentGaussianIntegralError": 1.3221460424203005e-11
+          },
+          {
+            "q": [
+              0.2,
+              -0.21
+            ],
+            "rigidAndRelaxedEnergy": 0.9918495703908348,
+            "PMF": 1.0379019749042406,
+            "entropyCorrection": 0.04605240451340585,
+            "independentGaussianIntegralError": 1.6289964658205478e-10
+          }
+        ],
+        "meaning": "Exact analytical counterexample to universal W=A, not an Al entropy estimate."
+      }
+    },
+    {
+      "name": "finite_hamiltonian_bath_exact_memory_FDT_and_initial_preparation",
+      "passed": true,
+      "seconds": 4.4210000000002765,
+      "error": null,
+      "details": {
+        "potential": "Full nonlinear counted Bessel cut, s constrained to0; not its harmonic replacement",
+        "dynamics": "Deterministic finite Hamiltonian bath under normal cyclic force; no fatigue trajectories",
+        "refinements": [
+          {
+            "rtol": 2e-08,
+            "maximumStep": 0.02,
+            "RHSEvaluations": 902,
+            "maximumHamiltonianVsGLEForceError": 3.4938718584953676e-13,
+            "normalCyclicWorkBalanceError": 7.996903649259285e-13
+          },
+          {
+            "rtol": 2e-10,
+            "maximumStep": 0.01,
+            "RHSEvaluations": 1802,
+            "maximumHamiltonianVsGLEForceError": 1.2212453270876722e-15,
+            "normalCyclicWorkBalanceError": 1.0312226333270003e-14
+          }
+        ],
+        "analyticCanonicalNoiseCovarianceError": 3.469446951953614e-18,
+        "GaussianButNotWhite": "Finite Gaussian bath has exact 2pi kernel recurrence",
+        "recurrenceError": 0.0,
+        "unshiftedPreparationInitialSlipError": 1.3552527156068805e-20,
+        "materialParameters": "illustrative dimensionless only"
+      }
+    },
+    {
+      "name": "memory_markov_and_inertia_limits_with_unchanged_equilibrium_PMF",
+      "passed": true,
+      "seconds": 0.0,
+      "error": null,
+      "details": {
+        "reference": "Local quadratic expansion using the checked Bessel-cut Hessian; approximation explicitly local",
+        "Hessian": [
+          [
+            141.4437975062575,
+            -2.242932070035715e-14
+          ],
+          [
+            -2.242932070035715e-14,
+            60.860414115850475
+          ]
+        ],
+        "friction": [
+          [
+            2.0,
+            0.3
+          ],
+          [
+            0.3,
+            1.4
+          ]
+        ],
+        "coloredEmbeddingEquilibriumCovarianceError": 7.993605777301127e-15,
+        "memoryCorrelationTimes": [
+          0.25,
+          0.05,
+          0.01
+        ],
+        "relativeColoredToWhiteResponseErrors": [
+          0.0036252553787878457,
+          0.00074881735133347,
+          0.00015004660847664698
+        ],
+        "masses": [
+          0.3,
+          0.06,
+          0.012
+        ],
+        "relativeInertialToOverdampedResponseErrors": [
+          0.002125465621419037,
+          0.0004243714199385251,
+          8.484547464830359e-05
+        ],
+        "samePMFDifferentRelaxationRates": {
+          "rates": [
+            76.41917594899982,
+            41.566855320543155
+          ],
+          "doubledMobilityRates": [
+            152.83835189799964,
+            83.13371064108631
+          ]
+        },
+        "physicalInference": "No measured scale separation, mobility or seconds inferred from this mathematical control."
+      }
+    },
+    {
+      "name": "multiplicative_mobility_drift_cannot_be_omitted",
+      "passed": true,
+      "seconds": 0.7039999999997235,
+      "error": null,
+      "details": {
+        "reference": "Periodic registry quotient at fixed a; not a normalizable Gibbs law on unwrapped s",
+        "maximumCorrectGibbsFlux": 3.552713678800501e-15,
+        "maximumMissingItoDriftFlux": 2.465414995254872,
+        "rule": "b_Ito=-M A_prime+kBT M_prime; all force comes from the same Bessel cut"
+      }
+    }
+  ],
+  "passed": 8,
+  "failed": 0,
+  "totalSeconds": 5.485000000000582,
+  "productionSolverChanged": false,
+  "physicalTimeIdentified": false,
+  "gaussianBathDerivedForActualAl": false,
+  "fullExistingSolverOrAppSuiteRun": false
+}

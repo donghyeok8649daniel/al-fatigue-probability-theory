@@ -1,0 +1,14 @@
+{
+  "command": "python -B -X utf8 research/first_principles_20261020/verify_foundations.py --output research/first_principles_20261020/results/run_001",
+  "startedUTC": "2026-10-19T21:52:47.835322+00:00",
+  "finishedUTC": "2026-10-19T21:52:56.091022+00:00",
+  "processID": 40612,
+  "exitCode": 0,
+  "timeoutSeconds": 600,
+  "timedOut": false,
+  "elapsedSeconds": 8.265999999999622,
+  "ownedProcessReaped": true,
+  "passed": 8,
+  "failed": 0,
+  "scope": "Isolated dimensionless mathematical controls; not material calibration or full production regression."
+}
