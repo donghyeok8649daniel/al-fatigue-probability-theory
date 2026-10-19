@@ -1,0 +1,3 @@
+# Preserve exact downloaded bytes, including the original newline convention.
+*.tex -text -whitespace
+*.bib -text -whitespace

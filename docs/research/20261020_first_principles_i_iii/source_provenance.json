@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-20",
+  "scope": "PART I-III first delivery; full later mechanism and downstream audit deferred",
+  "repository": "https://github.com/donghyeok8649daniel/al-fatigue-probability-theory",
+  "baseCommit": "c8ccff7553cbb2e66b0c37a76ee8a24808478824",
+  "branch": "research/20261020-first-principles-i-iii",
+  "sourceFiles": [
+    {
+      "path": "solver_v1/model.py",
+      "sha256": "77204c7ed2fe478860eda74132b4b44feb465070c2054662a47df4f645170ae8"
+    },
+    {
+      "path": "solver_v1/lattice_bessel.py",
+      "sha256": "43dc86c31957404641d4b8e1173bcb0ef0aeca9b9c287944fa439cf3a9c7db33"
+    },
+    {
+      "path": "solver_v1/fcc111_active_interface.py",
+      "sha256": "1ed4c13735073550e3df0d99914d5432abd37b34b9683dd376082456f1db8674"
+    },
+    {
+      "path": "solver_v1/energy_model_registry.py",
+      "sha256": "775375f99099b03005b0e4744f375f19bb5615d8ed02e2e18b61ea9a1289ff0e"
+    },
+    {
+      "path": "solver_v1/probability_pde_2d.py",
+      "sha256": "4e932b6a8ac26753f3aa810d24de348e4d975638aded60c9e7e80312fc651b0f"
+    },
+    {
+      "path": "solver_v1/PHYSICAL_TIME_AND_MOBILITY.md",
+      "sha256": "aec7df2af7876c906f1a88de498a215f4f57675b60dfebf8dee6f6145d766e5f"
+    },
+    {
+      "path": "solver_v1/WEAK_KINETICS_AND_MATERIAL_V31.md",
+      "sha256": "bdf344b5e178672d3520ac9adef6a538719658f6396696670671d2fe58271265"
+    }
+  ],
+  "papeeria": {
+    "project": "86fa402b20a593c3dbca788ee535b601",
+    "url": "https://www.papeeria.com/p/86fa402b20a593c3dbca788ee535b601#/1st_Paper.tex",
+    "title": "First_Paper_1Dimension_Fatigue",
+    "originalRevision": "11, 20 October 2026",
+    "acquiredBy": "Authenticated visible project menu: Download project",
+    "originalSourceSHA256": "ce46fad9a667ce0c6ef2e000ff9499148ff7d20d1a56c427516311a9be2199be",
+    "originalArchiveSHA256": "de5d28a89a44e990c02da81532de1819cb9c51c29e0f2ada482be11614124f60",
+    "originalBibliographySHA256": "77a1c96aa9ec80fc55725df35a103bf2cf93a21a362a8e048c7e9605bf0ce1ae",
+    "originalSource": "paper/rev11_original/1st_Paper_rev11_original.tex",
+    "companion": "paper/first_principles_20261020/First_Principles_I_III_20261020.tex",
+    "auditedMain": "paper/first_principles_20261020/1st_Paper.tex",
+    "originalNumberedEquationEnvironmentsPreserved": true
+  },
+  "verification": {
+    "result": "research/first_principles_20261020/results/run_001/verification.json",
+    "passed": 8,
+    "failed": 0,
+    "exitCode": 0,
+    "timeout": false,
+    "processReaped": true,
+    "physicalTimeIdentified": false,
+    "materialNoiseDerived": false,
+    "productionSolverChanged": false,
+    "fullProductionSolverOrAppSuiteRun": false
+  },
+  "hashConvention": "Git blob bytes at baseCommit; platform checkout newlines may differ"
+}
