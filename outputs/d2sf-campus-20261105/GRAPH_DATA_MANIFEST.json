@@ -1,0 +1,37 @@
+{
+  "source_sha256": {
+    "CORRELATION_MEMORY_RESULT.json": "e648b9815573d1f68e040b7323034094d8be925a27115390ad12eaf02cc50826",
+    "CORRELATION_WITNESS_EXACT.json": "4f801002841d12bd9631083cef44aa0b36e118d083b4190690bcf8ed30022530",
+    "CORRELATION_PREPARATION_EXACT.json": "a5094379e37a7e516a43515a501dece0bde901da02ecb5cb459399978cd33cda",
+    "REACHABLE_LOAD_ORDER_RESULT.json": "6e111458d12f107afa3882a364a4c2b9eea43bea96468ef6469a9cb41d618a5b"
+  },
+  "new_scientific_runs": 0,
+  "graph_kind": "Saved results only; first passage probability and identification interval, not physical fatigue accuracy",
+  "panel_a_probabilities": [
+    0.002165332901834113,
+    0.0017813068079940927
+  ],
+  "panel_b_horizon": 8,
+  "panel_b_intervals": {
+    "summary_only": {
+      "lower": 0.005427216054924824,
+      "upper": 0.007445085309683704,
+      "width": 0.00201786925475888,
+      "max_constraint_residual": 5.551115123125783e-17
+    },
+    "noisy_response": {
+      "cycles": 8,
+      "probe_absolute_uncertainty": 0.0001,
+      "lower": 0.005648021902301746,
+      "upper": 0.006965785388612901,
+      "width": 0.0013177634863111543
+    },
+    "exact_response": {
+      "lower": 0.006294595134653666,
+      "upper": 0.006309921505323769,
+      "width": 1.5326370670103086e-05,
+      "max_constraint_residual": 1.069422328470182e-13
+    }
+  },
+  "panels_use_distinct_preparation_families": true
+}
