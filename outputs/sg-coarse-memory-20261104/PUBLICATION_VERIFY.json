@@ -1,0 +1,39 @@
+{
+  "publication_base": "c8ccff7553cbb2e66b0c37a76ee8a24808478824",
+  "local_working_HEAD": "5f878370c1c74be99e1e9b727a8ab9a11872b174",
+  "branch": "codex/crack-correlation-memory-20261104",
+  "public_scope": "Research theory, frozen finite SG inputs, focused comparisons and results only",
+  "sanitized_local_path_files": [
+    "FINITE_POPULATION_FATIGUE_THEORY_KO.txt"
+  ],
+  "remote_base_source_reproduction": [
+    {
+      "script": "compare_correlation_memory.py",
+      "exit": 0,
+      "status": "PASS_MATCHED_MARGINAL_ENERGY_SOURCE_COMPARISON",
+      "wall_seconds": 11.34564859999955
+    },
+    {
+      "script": "compare_reachable_load_order.py",
+      "exit": 0,
+      "status": "PASS_SOURCE_SG_REACHABLE_LOAD_ORDER_COMPARISON",
+      "wall_seconds": 3.72223060000033
+    },
+    {
+      "script": "verify_correlation_artifacts.py",
+      "exit": 0,
+      "status": "PASS_SAVED_EXACT_WITNESS_AND_COMPARISON_READBACK",
+      "wall_seconds": 0.3627801000002364
+    },
+    {
+      "script": "verify_finite_population_theory.py",
+      "exit": 0,
+      "status": "PASS_DECLARED_FINITE_POPULATION_THEORY_CHECKS",
+      "wall_seconds": 1.956030199999077
+    }
+  ],
+  "original_files_preserved": true,
+  "other_user_changes_excluded": true,
+  "physical_material_validation": false,
+  "independent_review": false
+}

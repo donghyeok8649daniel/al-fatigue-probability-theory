@@ -1,0 +1,103 @@
+{
+  "status": "PASS_DECLARED_FINITE_POPULATION_THEORY_CHECKS",
+  "new_checks": 17,
+  "checks": [
+    {
+      "name": "exact_rational_energy_and_midpoint_all_edges",
+      "pass": true,
+      "value": null
+    },
+    {
+      "name": "full_detailed_balance",
+      "pass": true,
+      "value": 5.551115123125783e-17
+    },
+    {
+      "name": "multinomial_equilibrium_pushforward",
+      "pass": true,
+      "value": 2.7755575615628914e-17
+    },
+    {
+      "name": "occupancy_detailed_balance",
+      "pass": true,
+      "value": null
+    },
+    {
+      "name": "exact_occupancy_generator_intertwining",
+      "pass": true,
+      "value": 1.7763568394002505e-15
+    },
+    {
+      "name": "before_stress_omission_breaks_Gibbs",
+      "pass": true,
+      "value": 0.0014621773404704108
+    },
+    {
+      "name": "heterogeneous_sites_break_untyped_histogram_closure",
+      "pass": true,
+      "value": 3.186403989213762
+    },
+    {
+      "name": "full_occupancy_semigroup_agreement",
+      "pass": true,
+      "value": null
+    },
+    {
+      "name": "closed_free_energy_identity",
+      "pass": true,
+      "value": 4.440892098500626e-16
+    },
+    {
+      "name": "closed_dissipation_nonnegative",
+      "pass": true,
+      "value": 3.713540162258588
+    },
+    {
+      "name": "killed_generator_intertwining",
+      "pass": true,
+      "value": null
+    },
+    {
+      "name": "killed_CDF_agreement",
+      "pass": true,
+      "value": null
+    },
+    {
+      "name": "survivor_selection_covariance",
+      "pass": true,
+      "value": 2.220446049250313e-16
+    },
+    {
+      "name": "raw_survivor_free_energy_boundary_balance",
+      "pass": true,
+      "value": 5.551115123125783e-16
+    },
+    {
+      "name": "load_order_changes_first_exit_probability",
+      "pass": true,
+      "value": 0.0014878558459103797
+    },
+    {
+      "name": "periodic_mean_resolvent_vs_time_integral_sum",
+      "pass": true,
+      "value": 5.551115123125783e-17
+    },
+    {
+      "name": "finite_mean_positive",
+      "pass": true,
+      "value": 0.4133606780527519
+    }
+  ],
+  "synthetic_only": true,
+  "physical_material_calibration": false,
+  "independent_review": false,
+  "full_states": 27,
+  "occupancy_states": 10,
+  "alive_full_states": 8,
+  "alive_occupancy_states": 4,
+  "finite_population": 3,
+  "exact_fraction_energy_all_edges": true,
+  "cyclic_first_exit_mean_model_time": 0.4133606780527519,
+  "wall_seconds": 0.017203499999595806,
+  "prior_science_suites_repeated": false
+}

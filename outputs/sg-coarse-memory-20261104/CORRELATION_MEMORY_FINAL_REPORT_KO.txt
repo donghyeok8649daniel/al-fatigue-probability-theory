@@ -1,0 +1,78 @@
+당일 이론 발전 및 비교검증 최종 보고 | CRACK | 2026-11-04
+
+완료한 과제
+기존finiteN열역학이론에상관기억의관측·보정구조를추가하고,
+원(a,s)SG에너지/전이자료로가능한비교검증을실행했다.
+핵심은새damage계수를맞추는대신,같은현재요약에서달라지는미래개시위험을
+구분할정보를찾고그정보의필요정밀도를정량화하는것이다.
+
+이전보다 새로 확보한 것
+1. 원SG에서두좌표전체주변분포와평균에너지까지같은두준비집단의정확반례.
+   초기흡수0,모든하중mask안75상태전체에양의질량,commonuniform50%혼합.
+   에너지평균과marginal동일성은capturedbinary64energy에대한Fraction정확등식.
+2. 두집단의같은한주기흡수확률0.00216533290/0.00178130681.
+   exactgap0.000384026094. 같은요약값만쓰는어떤한값예측기도maxerror>=gap/2.
+3. 단순Cov(a,s)와evenmoment는이번비교에서정보구간을개선하지못함.
+4. 한주기eventmemory추가시보류2/4/8주기수치식별폭약605/249/132배축소.
+   동일주기행렬의다른horizon이며독립material/loaddataset은아님.
+5. probe정보의오차±1e-4를넣으면이득약1.5배수준으로감소함을확인.
+   따라서ideal배수를실험성능으로약속하지않음.
+6. 원SGgenerator에새AB/BAprotocol을가해같은강도순서라도window길이에따라
+   first-opening순서효과부호가뒤집히는것을확인. 원mask/공통maskablation과
+   총흡수/준비후새흡수차이를분리해boundaryartifact해석을방지.
+7. commonfixedmask의작은window에서ΔF/t²가이론commutator계수로접근함을확인.
+
+검증한 이론
+- 두marginal+meanenergy로futureCDF가결정되는필요충분조건은
+  r_ij=α_i+β_j+λW_ij이다.
+- 두rectanglecirculation을조합하면marginal과meanenergy를동시에보존하는
+  signed상관변화와유효준비쌍을구성할수있다.
+- 제안eventmemory와noisyprobe를추가한식별구간및projection오차식을도출했다.
+- 기존finiteN전체에너지의jointlaw에도같은관측정리를적용할수있지만,
+  이번N1수치결과가그finiteN계의정량성능으로이전되는것은아니다.
+
+비교의 공정성과 한계
+기준은marginal/meanenergy만사용하는모형군,거기에단순moment를추가한모형군이다.
+그입력정보로구별불가능한집단쌍의한계는알고리즘을잘못맞춰서생긴것이아니다.
+그러나fulljointstate를사용하는기존MD/Markov/SG,상용수명해석기모두를실제같은
+실험자료로재현해이겼다는비교는하지않았다.
+정확gap은양의column-mass보정표의유리수전파에대한것이다. originalfloattable의
+최대column보정1.31916e-16이하지만continuum/물리/전체source roundoff인증은아니다.
+heldoutLP구간은수치LP결과/feasibility검사이며엄밀outwardbound로명명하지않는다.
+두정확준비집단의실제실험도달가능성은미확인이다. 별도의AB/BA비교는동일초기law에서
+도달가능한history이지만그준비후marginal동일성까지주장하지않는다.
+
+선행연구 대조 결과
+committor·observable-specificprojection·Krylov·Markoverrorbounds는기존수학이다.
+그것자체를새롭다고쓰지않는다. 차별성은원피로SG에서energy/marginalmatched
+interiorcorrelation의정확반례와probe선택/noise/보류horizon/경계민감도까지묶은
+구성적결과에있다. 비교문헌과구체적차이는CORRELATION_MEMORY_PRIOR_ART_DELTA_KO.txt다.
+전세계논문·특허의최초성을확정한검토는아니다.
+
+D2SF에 제출할 수 있는 기술근거의 변화
+이전에는선언된일관성모형과작은합성검사뿐이었다.
+지금은원SG에서기존요약입력모형과다른예측을정확히구성했고,
+어떤기억정보를추가하면미래예측불확정성이줄어드는지수치로보였다.
+이는실제수명엔진을개발할때초기집단의상관기억을설계·보정하는구체기술근거다.
+계속남은물리과제는실제재료의initialjointlaw/energy/kineticclock/시편event결속이다.
+검증된산업수명정확도나시험비절감을지금주장할수는없다.
+
+읽을 파일
+CORRELATION_MEMORY_THEORY_KO.txt - 정리·증명·원자료비교·결과해석.
+CORRELATION_MEMORY_PRIOR_ART_DELTA_KO.txt - 기존연구대비차이와주장한계.
+CORRELATION_MEMORY_COMPARISON.png - 비교그림.
+CORRELATION_MEMORY_RESULT.json - LP16설정+noise9설정·검사기록.
+CORRELATION_WITNESS_EXACT.json / CORRELATION_PREPARATION_EXACT.json - 정확반례.
+REACHABLE_LOAD_ORDER_RESULT.json - 6protocol×4probe노드의별도source비교.
+
+실제 실행
+compare_correlation_memory.py 최종OSexit0,toolchunkfa6f2d.
+compare_reachable_load_order.py OSexit0,toolchunke70f2a.
+여러column양성assertion을독립실험수로집계하지않는다.
+그림을저장하고시각검토했다. 기존과학suite/MD/물리실험/대외연락/구매/원source수정0.
+새agent/chat0. 지원서추가제작0. 오늘허용된이론발전·보유자료비교범위는완료했다.
+
+저장산출물재읽기: exact두marginal·meanenergy·양의단위질량·CDFgap을별도reader로
+다시확인해PASS. 최초reader는정수5639자리변환이기본4300자리제한에걸려exit1이었다.
+생성된localcertificate에한정한50000자리reader로수정해exit0. 수학입력은변경하지않았다.
+원실패와수정은CORRELATION_ARTIFACT_VERIFY.json에보존했다.

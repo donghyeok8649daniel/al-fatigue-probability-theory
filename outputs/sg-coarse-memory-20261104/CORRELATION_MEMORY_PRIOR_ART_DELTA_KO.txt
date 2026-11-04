@@ -1,0 +1,75 @@
+상관기억 이론의 선행연구 대비 추가 내용 / 2026-11-04
+
+검토 목적
+기존SG/상세균형/Markov행렬곱을새이론처럼부르는문제를피하고,
+이번에원source자료에서새로완료한구체결과와기존일반방법을구분한다.
+
+Rens/Bea-Bragado/Bea2022
+Markov chain based non-linear fatigue damage accumulation model,
+DOI10.1016/j.probengmech.2022.103250.
+출판사/저자기관초록에서FRP실험유래blockPTM와sequence/failure확률을확인.
+차이:우리는원a/sSG의두전체주변분포와meanenergy를같게해도남는interiorjoint정보를
+구성적으로검사하고,필요한initialinformation을futurefirst-hit로정의한다.
+제약:그논문의PTMstate에우리의모든joint정보를넣으면그모형도상관을표현할수있다.
+실제동일FRP자료비교/그논문재현은하지않았으므로정확도우위를주장하지않는다.
+
+Schlichting/Seis2021 및 Maas/Mielke2020
+SG비선형확률수송·열역학gradient구조는기존이다.
+차이:이번추가결과는SG소산식자체가아니라그source에서동일marginal/energy의
+개시법칙이갈라지는정확준비쌍과eventmemory를추가한information범위의비교다.
+https://arxiv.org/pdf/2004.13981
+https://arxiv.org/pdf/2004.02831
+
+Lu/Vanden-Eijnden2014
+Exact dynamical coarse-graining without time-scale separation.
+https://arxiv.org/pdf/1404.4729
+본문도입은reactiveprocess와특정collectivevariable로방문순서/MFPT를보존하는접근을설명한다.
+차이:이번작업은periodicforcing의finitehorizon사건과미확인initialcoupling에서출발해,
+같은관측정보가허용하는CDF범위와추가probe정보오차를다룬다.
+제약:committor/반응좌표로정보손실을줄인다는일반원리는기존이다.
+
+Michel/Siegle2024
+Formal Error Bounds for the State Space Reduction of Markov Chains.
+https://arxiv.org/pdf/2403.07618
+본문도입/연구범위는discrete/continuousMarkovtransient분포의errorbound,
+lumpability와더일반적projection을다룬다.
+차이:이번비교의주목적은transitionapproximation전체오차가아니라,
+두좌표marginal+energy라는물리요약이firstopening에충분한가와어떤probe를추가할것인가다.
+제약:행렬projection/LP/duality자체를새수학이라고주장하지않는다.
+
+Abate/Andriushchenko/Češka/Kwiatkowska
+Adaptive Formal Approximations of Markov Chains.
+https://www.cs.ox.ac.uk/people/alessandro.abate/publications/AACK22.pdf
+본문도입과초록에stateaggregation/truncation및formalerrorcontrol/비교평가가있다.
+차이:이번에는원SG의energy-matchedjointpreparation,probe정밀도와futurehorizon식별폭에집중했다.
+제약:formalbounds나adaptivity자체를새롭다고하지않으며그알고리즘과runtimebench는수행하지않았다.
+
+Aristoff/Webber/Zuckerman2026 preprint
+Markov state models revisited: Principles and algorithms for unbiased observables.
+https://arxiv.org/pdf/2607.19452
+초록·Sec1.1~1.4는단일MSM의bias,관측별equilibrium/NESS행렬과localstationary
+sampling의필요성을논한다. 따라서'observable마다적절한상태/분포가필요하다'는
+일반아이디어도기존연구와겹친다.
+차이:우리는이특정피로SG의비정상초기집단·주기firsthit·동일두marginal/energy의
+구성적반례·probe불확실성까지포함한수치식별범위를원source에대해명시했다.
+제약:그논문의fullalgorithm과동일자료비교나어떤조건에서도더낫다는증명은없다.
+
+이 대조에서 확정할 수 있는 차별성
+- 이전의일반finiteN열역학구성에더해원a/ssource에서관측할수있는정보손실을보였다.
+- 초기경계에집중한질량이아닌75공통interior상태의strictlypositive준비쌍을사용했다.
+- 두좌표전체marginal과meanenergy를Fraction으로정확일치시켰다.
+- 단순covariance추가가실패하는비교와eventmemory추가의보류horizon개선을함께보고했다.
+- ideal한정보이득과noisyprobe에서의이득을분리했다.
+- 원SG에도달가능한AB/BAprotocol에서부호반전과경계민감도,작은windowcommutator접근을확인했다.
+
+확정할 수 없는 것
+전세계선행연구/특허전체에대한최초성,추상수학의신규성,실제Al수명정확도,
+기존상용해석기전체대체,시험비절감,자료없이initialcorrelation추정가능하다는주장.
+
+D2SF에 쓸 수 있는 정확한 기술 설명
+'같은현재분포요약으로도달라지는반복하중개시위험을계산하기위해,
+원자모형의상관기억을보존하고필요한추가보정정보와그정밀도를정량화하는예측구조.
+원SG모형에대한동일관측반례와보류horizon비교를확보했고실제재료실증을진행하려한다.'
+이것은실제수명엔진의상태/초기법칙설계기술이다. 연구비지원용과제로제시할근거는
+이전보다구체적이지만완성산업수명엔진이라는설명으로사용할수는없다.
+제품가치는실제재료에서추가상관정보의획득가능성과예측개선이확인되어야한다.

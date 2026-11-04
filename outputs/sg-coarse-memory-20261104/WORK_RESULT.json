@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "dateKST": "2026-11-04",
+  "status": "SOURCE_LINK_MEMORY_AND_FINITE_TABLE_CDF_BOUND_COMPLETED_CALIBRATION_INPUTS_OPEN",
+  "userInstructions": ["너무 구조가 약해. 길게이어서 weak point를 줄여야돼", "그건 결국 캘리브레이션이 필요해서 그런거 아니냐"],
+  "interpretation": "Research-model structure and its calibration dependencies, based on the preceding research discussion",
+  "completed": [
+    "Original N=1 SG generator/RHS/mask and ordinary solver entry point linked to an augmented first-loss operator",
+    "Nonstationary exact memory formula including moving liftings and the initial unresolved-law term",
+    "Memoryless approximation defect propagated to finite-horizon CDF error",
+    "Bellman event envelopes over unresolved fine states with time-dependent masks and empty-block handling",
+    "Exact equal-macro initial-law counterexample on captured original SG operators",
+    "Exact rational event envelopes for captured binary64 tables with explicit column residual perturbation",
+    "Actual kinetic calibration JSON and prior material-fit result checked for the user's calibration question"
+  ],
+  "results": {
+    "fineStatesWithCemetery": 136,
+    "timeSteps": 24,
+    "modelTimeStep": 0.0006096053822325939,
+    "forceSchedule": [1.0, 1.4, 0.8, 1.0],
+    "normalEntryDensityMaxDifference": 1.6653345369377348e-15,
+    "normalEntryCDFDifference": 2.612392520142817e-15,
+    "exactMemoryObservedMaxDifferenceAcrossReportedCases": 4e-15,
+    "declaredEqualMacroPreparationCDFs": [8.697240617034856e-16, 0.3936600977353066],
+    "moving28StateMemorylessCDF": 0.39311535368565476,
+    "moving28StateCDFError": 0.0005447440496518241,
+    "capturedTableRationalCDFLowerOutward": "0.392671573074072671263520454834127433898712834420213510159039",
+    "capturedTableRationalCDFUpperOutward": "0.393660153383429796849319178814456118920908266811553635553092",
+    "maximumColumnResidualChangeUpper": "1.31915688529041804862468626954874473256040801061317324638367e-16",
+    "exactRationalInitialMeasureRenormalized": false
+  },
+  "checks": {
+    "sourceBridge": {"checks": 23, "runsPassed": 1, "toolChunk": "e65ed4", "finalSession": 61028, "exit": 0, "codeWallSeconds": 6.84926019993145},
+    "declaredBoundaryMixture": {"checks": 17, "runsPassed": 1, "toolChunk": "fc2272", "exit": 0},
+    "movingLifting": {"checks": 123, "countMeaning": "Includes repeated empty-block zero-mass assertions; not123 independent experiments", "runsPassed": 1, "toolChunk": "867020", "exit": 0},
+    "rationalCertificate": {"checkGroups": 6, "runsPassed": 1, "toolChunk": "9063e8", "exit": 0},
+    "oldScientificSuiteRepeated": false,
+    "independentReviewer": null
+  },
+  "executionFailuresPreserved": [
+    {"stage": "First source runner import", "toolChunk": "29b879", "exit": 1, "reason": "Bundled Python lacked scipy", "resolution": "Used existing local Python313 with installed scientific packages"},
+    {"stage": "First exact certificate serialization", "toolChunk": "74ab48", "exit": 1, "reason": "Generated exact integer exceeded Python4300-digit decimal conversion limit", "resolution": "Bounded local-fixture conversion limit50000"},
+    {"stage": "Second exact certificate output processing", "toolChunk": "0940d9", "exit": 1, "reason": "Fraction two-argument construction was given serialized strings", "resolution": "Retained exact rational values directly, eliminating serialization round trip"},
+    {"stage": "Existing cache metadata search", "toolChunk": "9a238f", "exit": 1, "reason": "Access denied to unrelated existing pytest directories", "resolution": "Read explicit interpreter install directory instead"}
+  ],
+  "remaining": {
+    "physicalCalibration": "Ma_phys,Ms_phys,t0,temperature,initial joint law,material coordinates and detector binding need admissible data",
+    "materialEnergyValidation": "Existing v35 new-interface118.0056% and new excluded-q165.1135% errors remain failed validation evidence",
+    "precursorStateMapping": "Registry/normal-coordinate blocks are declared numerical observables; physical precursor identification remains open",
+    "fullSourceRoundoff": "Rational certificate covers captured transition coefficients and explicit perturbation, with energy/table generation and solver execution rounding separately open",
+    "continuum": "Grid/time/event convergence remains open",
+    "independentReview": "New November4 results await independent review",
+    "finiteMemorySpeedup": "Exact memory identity retains fine-space operations; truncation accuracy and cost remain open"
+  },
+  "git": {
+    "HEAD": "5f878370c1c74be99e1e9b727a8ab9a11872b174",
+    "cachedOrigin": "c8ccff7553cbb2e66b0c37a76ee8a24808478824",
+    "fetchSucceeded": false,
+    "reason": "FETCH_HEAD permission denied",
+    "fetchIndividualExitCaptured": null,
+    "batchExitAfterFollowingReadCommands": 0,
+    "preexistingTrackedChangesPreserved": true
+  },
+  "localDirectory": "outputs/sg-coarse-memory-20261104",
+  "report": "SOURCE_TO_MEMORY_AND_CDF_KO.txt",
+  "calibrationReport": "CALIBRATION_AND_STRUCTURAL_GAPS_KO.txt",
+  "plot": "source_memory_cdf.png",
+  "productionSourceEditedByThisTask": false,
+  "otherThreadMessagesOrNewAgents": 0,
+  "automationChanged": false
+}

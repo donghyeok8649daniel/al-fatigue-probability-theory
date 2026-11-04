@@ -1,0 +1,384 @@
+CRACK 유한집단 열역학–확률 피로개시 이론
+2026-11-04
+
+이론의 대상
+같은 재료의 유한한 내부상태 집단이 반복변형을 받는 동안, 상태 전이가 응력을
+바꾸고 바뀐 응력이 다시 전이를 바꾸는 과정과 그 집단의 첫 열림 시간을 정의한다.
+아래 에너지·전이율·공동확률·경계·초기법칙을 주면 유한차원 진화가 유일하게
+결정된다. 계수의 실제 재료 보정과 실험적 타당성은 이론의 정의와 구분한다.
+원모형의 (a,s), registry n, 같은 SG 열전이 구조를 유지한다. 별도의 경험적
+피로손상 누적식이나 임의 항복 threshold를 추가하지 않는다.
+
+1. 미시상태와 집단
+
+한 대표영역의 상태 i∈V는 기존 원(a,s) 격자 또는 source가 정의한 확장 상태다.
+이웃 graph E는 SG face를 잇는다. 상태마다 다음 입력이 주어진다.
+
+ u_i: 같은 대표영역의 무하중 내부 에너지[J],
+ g_i: 부호 있는 축방향 strain[1],
+ ν_i>0: 고정 기준측도에 대한 상태 control-volume weight[1].
+
+서로 다른 방출 이력이 같은(a,s)로 돌아오지만 다른 잔류슬립을 갖는다면,
+g를(a,s)의 단일값으로 정의할 수 없다. 그 경우 history를 구분하는 좌표를
+상태에 넣어야 한다. 없는 history를 gross flux로 채우지 않는다.
+
+N개 대표영역의 실제 joint configuration은 X=(i_1,...,i_N)이다.
+N은 물리적으로 선언한 대표영역 수이며 공간mesh개수나격자bin개수가 아니다.
+각 영역의 에너지정규화 부피 v[m³]를 고정한다. 먼저 동일영역 집단을 전개한다.
+
+ m_N(X)=(1/N)Σ_r g_(i_r),  ε=ε_drive(t),
+ σ_N(X,t)=K[ε(t)-m_N(X)], K>0[Pa].                         (1)
+
+K는 g와 u에 중복되지 않는 specimen/machine의 stiffness다. g가 plastic-only이고
+같은 recoverable elasticity를 u에서 제외했다면 specimen modulus를 사용할 수 있다.
+g가 원potential의 전체 미시strain이면 추가K는 구별된 직렬기계강성 등을 의미해야
+한다. 원W에 이미있는탄성을다시더하는 분해는 이 이론의 입력으로 허용하지 않는다.
+
+2. 같은 에너지로 응력과 전이를 정의한다
+
+ U_N(X,t)=Σ_r u_(i_r)+(NvK/2)[ε(t)-m_N(X)]².                (2)
+
+ ∂_ε U_N=Nvσ_N.                                             (3)
+
+따라서 외부 power는 Nvσ_N ε_dot다. 이 항이 기준영역 전체에 대한 일이다.
+원대표계의 per-atom/per-cell 에너지와 Nv를 섞지 않는다.
+
+영역r이 i→j로 바뀌면 Δg=g_j-g_i이고
+
+ ΔU_N= u_j-u_i-vσ_N(X,t)Δg+(vK/(2N))(Δg)².                (4)
+
+증명: m_N은 Δg/N만큼 변하므로 elastic square를 직접 전개한다.
+응력은 σ_after=σ_before-KΔg/N다. 따라서 같은 식을
+
+ ΔU_N=u_j-u_i-v[(σ_before+σ_after)/2]Δg                    (5)
+
+로도 쓸 수 있다. 전이 에너지는 midpoint stress와 pairing된다.
+현재stress만 사용하는 -vσ_beforeΔg는 유한집단에서 (vK/2N)(Δg)²를 빠뜨린다.
+이는 작은수치오차가 아니라 선택한 전체에너지의 정확한차이다.
+
+연구메인의 기존 φ_i=u_i-vσg_i는 mean-field 변분식이다. 그것을 유한N의
+개별 전이에 그대로 쓸 수 있는지와 mean-field해석은 여기서 분리된다.
+
+3. SG형 열전이율
+
+θ=k_BT>0[J], B(z)=z/(exp(z)-1), B(0)=1이라 정의한다.
+같은 graph edge의 κ_ij=κ_ji>0는 ν/time 단위를 갖는 conductance다.
+finite-N의 한 영역 전이 X→Y=X^(r:i→j)는
+
+ k(X,Y;t)=(κ_ij/ν_i) B([U_N(Y,t)-U_N(X,t)]/θ).             (6)
+
+κ는 같은 mobility·온도·격자 geometry에서 정해야 한다. ν_i가 모두 같으면
+그 common factor를κ에흡수할수있다. 원SG의 a/s서로다른mobility도 유지한다.
+B(z)>0, B(z)/B(-z)=exp(-z)이므로
+
+ k(X,Y)/k(Y,X)=(ν_j/ν_i) exp[-(U_N(Y)-U_N(X))/θ].           (7)
+
+고정 ε에서 정상분포는
+
+ π_N(X)=Z^{-1} exp[-U_N(X)/θ] Π_r ν_(i_r)                  (8)
+
+이고 π_N(X)k(X,Y)=π_N(Y)k(Y,X)다.
+이는 선언에너지에 대한 exact detailed balance다. 임의방향rate를 따로 맞추지 않는다.
+
+4. 닫힌 공동 master equation과 자유에너지
+
+전체상태 확률 P_X(t)는
+
+ P_dot_X=Σ_(Y~X)[P_Y k(Y,X)-P_X k(X,Y)].                    (9)
+
+유한graph, 유한u,g, θ>0와 bounded continuous ε(t)에서 rate는 유한·연속이다.
+따라서 선형시간의존ODE의 해가 유일하며 P>=0, ΣP=1을 보존한다.
+하중jump가 있으면 구간별해를 연결한다. 같은P에서응력분포는(1)의pushforward다.
+평균응력은 Eσ_N=K(ε-E m_N)이지만, 전이율의평균을 평균응력에대입한rate로
+바꿀 수는 없다. B가비선형이므로일반적으로 E k(σ_N)!=k(Eσ_N)이다.
+
+자유에너지 functional은
+
+ F_N[P,t]=Σ_X P_X U_N(X,t)
+                 +θΣ_X P_X log[P_X/(Π_rν_(i_r))].           (10)
+
+한 무방향edge{X,Y}에 a=P_X k(X,Y), b=P_Y k(Y,X)라 하면
+
+ dF_N/dt=Nv E[σ_N] ε_dot
+                 -θ Σ_{undirected edges}(a-b)log(a/b).       (11)
+
+증명: F의P미분차와(7)를사용하면 μ_X-μ_Y=θlog(a/b)다.
+edge의P미분기여는-(a-b)(μ_X-μ_Y)이고 explicit시간미분은(3)이다.
+(a-b)log(a/b)>=0이므로 고정변형에서F_N은증가하지않는다.
+영확률은 연속극한으로 해석한다. (11)은 흡수를넣기전 닫힌계의식이다.
+열림질량을삭제한 rawsurvivor에 이F감소식을그대로적용하지않는다.
+
+5. 응력제어와 변형제어를 구별한다
+
+외부가stress σ(t)를지정하는경우의potential은
+
+ U_N^σ=Σ_r[u_(i_r)-vσ(t)g_(i_r)].                          (12)
+
+이경우globalelasticfeedback이없고 (4)의quadraticself항도없다.
+원reduced tilt와의matching은 g, v, E0와같은q정규화로부터유도한다.
+원f*=κ_axial σ/E를사용하면서(12)의같은일을추가하면중복이다.
+N=1변형제어의(2)는 u_i+(vK/2)(ε-g_i)²다. u_i-vKεg_i만사용하면
+(vK/2)g_i²를빠뜨린다. 따라서원stress-controlled모델과finiteK변형제어는
+이름만바꿔같은모형이라고할수없다.
+
+6. mean-field 식은 유한집단 이론의 한계다
+
+empirical population p_i^N=(1/N)Σ_r 1_(i_r=i)를정의한다.
+대표영역이동일하고교환가능하며 i.i.d.초기상태, finitegraph, boundedload일때,
+N→∞의finite-time mean-field방정식은
+
+ m=Σ_i p_i g_i, σ=K(ε-m),
+ φ_i=u_i-vσg_i,
+ k_ij(p,t)=(κ_ij/ν_i) B((φ_j-φ_i)/θ),
+ p_dot_i=Σ_j[p_j k_ji(p,t)-p_i k_ij(p,t)].                  (13)
+
+finite-N의(4)에서1/N항이사라져(13)의전이에너지가남는다.
+응력이p의functional인 까닭은새가정이아니라(2)의선택된mean-field결합때문이다.
+
+같은독립초기집단에서 E||p^N(t)-p(t)||²<=C_T/N인finite-time추정의근거:
+ p^N(t)=p^N(0)+∫b_N(p^N,s)ds+M_N(t).
+finitegraph의boundedrate에서각jump는O(1/N), 총rate는O(N)이므로
+martingale quadratic variation은O(T/N)이다. (4)의에너지차와B의bounded구간
+미분으로 ||b_N-b||<=C/N, b는simplex에서Lipschitz다.
+차이의제곱에martingale기댓값과Gronwall을적용하면주장한추정이다.
+이주장은고정T의집단분율추정이며 N전체의첫희귀개시CDF수렴정리가아니다.
+
+mean-field functional
+
+ f[p]=Σ_i p_i u_i+(vK/2)(ε-Σ_i p_i g_i)²
+                    +θΣ_i p_i log(p_i/ν_i)                 (14)
+
+의변분은 u_i-vσg_i+θ[log(p_i/ν_i)+1]이다.
+(13)은이변분과같은edge열수송구조를가지며고정ε에서f가감소한다.
+이는기존연구메인의응력feedback식이갖는열역학적위치를명시한다.
+
+7. 균열개시 사건을 붙이면 수명분포가 정해진다
+
+한미시상태의intact집합 I(t)는원opening경계의선언과같이정한다.
+아직어느영역도열리지않은joint집합은 D_N(t)=I(t)^N이다.
+첫열림시간 τ_N=inf{t:X_t∉D_N(t)}를정의한다.
+이것은원모형의첫열림사건이며실제시편지속균열/검출과동일하다는주장은별도다.
+
+piecewisefixedD_N에서생존raw분포ρ_X는
+
+ ρ_dot_X=Σ_(Y in D_N,Y!=X)ρ_Y k(Y,X)
+             -ρ_XΣ_(Y!=X,including exit)k(X,Y).             (15)
+
+흡수율 r_out(X,t)=Σ_(Y outside D_N)k(X,Y,t)라두면
+
+ S_N=Σ_(X in D_N)ρ_X,
+ -S_dot_N=Σ_Xρ_X r_out(X,t), F_N^init(t)=1-S_N(t).          (16)
+
+initialrawmass가S0이고이미열림A0=1-S0이면F(0)=A0다.
+loadjump로D_N이바뀌면그순간밖으로나간ρ질량을흡수하고남은ρ를그대로보존한다.
+각구간의killed진화와jump map의시간순곱이전체protocol의해다.
+열림후전체역학은τ_N을계산하는데필요한경계전이에너지까지정의하면되지만,
+τ_N뒤균열성장/파단을예측하려면별도의post-opening상태와에너지가필요하다.
+
+8. 생존조건부 응력이 만드는 선택항
+
+S_N>0에서Q_X=ρ_X/S_N이고 h_N=E_Q r_out이다.
+살아있는상태끼리만의generator를L_int라하자. 임의f에대해
+
+ dE_Q f/dt=E_Q[L_int f]-Cov_Q(f,r_out)                     (17)
+
+(f가explicit시간의존이면E_Q∂_tf를더한다.)
+증명:Σfρ의미분은S E_Q L_intf-S E_Q(fr_out)이고,
+S_dot=-S E_Qr_out를quotient미분에넣으면(17)이다.
+
+ σ_surv=K(ε-E_Qm_N)이므로
+
+ σ_dot_surv=K[ε_dot-E_Q L_intm_N+Cov_Q(m_N,r_out)].          (18)
+
+첫번째상태전이항은살아있는집단의slip이동이고, covariance항은어떤집단이먼저
+열려빠졌는지에따른선택이다. 뒤항을소성유동이나열림뒤실제시편응력으로부르면안된다.
+또한E_Qk(σ_N)를k(σ_surv)로바꾸면남은상태상관을추가로버리는근사다.
+
+9. 반복하중과 피로수명은 같은 raw law를 이어서 계산한다
+
+주기T의같은loadprotocol에서jointkilled한주기연산자를K_T라하자.
+위상0의raw생존측도ρ0에서
+
+ ρ_n=K_T^nρ0,
+ S_n=1^T K_T^nρ0,
+ Pr((n-1)T<τ_N<=nT)=1^T(I-K_T)K_T^(n-1)ρ0.               (19)
+
+각주기마다Gibbs재준비/질량1재정규화하지않는다. h_n=1-S_(n+1)/S_n은
+S_n>0에서만정의되고, 같은하중주기라도생존분포가바뀌면h_n은변한다.
+위상내부propagatorK(t,0)를쓰면S(nT+t)=1^TK(t,0)K_T^nρ0다.
+동일주기세기의독립곱이나상수hazard는이식의일반결과가아니다.
+
+서로다른A/B구간의순서를바꾸면joint연산자곱이바뀐다. 변화된rawρ가다음
+주기에그대로전달되므로하중이력효과가별도경험적damage변수없이발생한다.
+CORE_THEORY_LOAD_ORDER_KO.txt의event식별·commutator식은이해의관측정리다.
+
+10. 독립영역곱과 희귀사건의 경계
+
+K=0의독립동역학또는외부고정stress, product초기법칙, 독립잡음과각자경계라면
+S_N(t)=s(t)^N인경우가있다. finiteK의(2)에서는전이율이공통m_N에의존하므로
+일반적으로그독립곱이성립하지않는다.
+mean-field분율의O(1/N)제곱오차만으로이첫개시확률의상대오차를인증할수없다.
+전체N개의동시생존은one-site marginal과다른관측이다.
+단순확률강성감소 K_eff=(1-F)K는(2)~(19)에서도출되지않으며넣지않는다.
+
+11. 이 이론이 실제로 내는 예측
+
+입력 u,g,ν,κ,θ,K,v,N,ε(t),I(t),ρ0를주면(2)(6)(15)로jointlaw를정하고
+(16)(19)로첫열림수명분포를얻는다. 응력분포는같은law의(1)pushforward다.
+유한N의전이자유에너지는beforestress가아닌midpointstress(5)와일치한다.
+같은평균상태라도stress변동과state-correlation이다르면전이율평균이다를수있다.
+생존집단에서관측한stress변화에는(18)의선택항이들어간다.
+다음주기는같은초기집단으로reset되지않으므로loadinghistory가수명법칙에남는다.
+
+따라서 'PDF→응력→PDF→첫열림수명'이이제하나의선언에너지로닫힌다.
+별도의σ감소함수나경험적수명식을끼워넣지않는다. 열림이후최종파단은범위밖이다.
+
+12. 수학적완결성과 물리검증
+
+이문서는위가정의유한집단모형을정의하고,전이에너지·상세균형·자유에너지식·
+고정시간mean-field추정의근거·흡수법칙·생존선택항·주기합성을전개했다.
+기존평균장prototype의검사37개를이번finiteN모형의검사로재집계하지않았다.
+독립증명검토·유한N수치실험·새MD는수행하지않았다.
+실제재료의u/g/κ/θ/K/v/N와물리time,eventmapping은원자료로검증해야한다.
+이것은계수를아직측정하지않은수학적모형이존재한다는뜻이며,
+실제Al수명예측이검증됐다는뜻은아니다. 표준masterequation/평균장수학과의
+신규성·우선성도별도로판정해야한다.
+
+재사용한기존연구
+연구메인2026-11-04응력feedback과에너지중복계상계약:
+공개묶음에 포함되지 않은 원형 연구 계약: PDF_STRESS_COUPLING.json
+공개묶음에 포함되지 않은 원형 연구 계약: PDF_STRESS_INPUT_CONTRACT.json
+그mean-fieldprototype을finiteN전체에너지와연결하고,누락되는정확전이항과
+jointfirst-exit의조건부선택항을이문서에서명시했다. 원source변경은없다.
+
+13. 정확한 occupancy 축약: 평균장 근사 없이 닫는다
+
+같은u,g,ν,κ를가지는대표영역과(2)의permutation-invariant결합에서는
+n_i=#{r:i_r=i}, Σ_i n_i=N의개수상태만으로정확한Markov법칙이닫힌다.
+이때
+
+ U(n,t)=Σ_i n_i u_i+(NvK/2)(ε-Σ_i n_i g_i/N)²,
+ R(n,n-e_i+e_j;t)=n_i(κ_ij/ν_i)B(ΔU(n;i→j)/θ).            (20)
+
+증명:같은n을가진어떤labelled배치에서도i상태영역은정확히n_i개이고,
+그각각의i→j전이energy/rate가같다. 따라서다음count상태로가는총rate는(20)으로
+배치와무관하다. 이것이strong lumpability이고grouping map H에대해
+
+ H G_full=G_count H,
+ H P_full(t,s)=P_count(t,s) H                               (21)
+
+를얻는다. raw초기law가exchangeable하지않아도itscountlaw에대한(21)은성립한다.
+first-any열림과stress가count로결정되므로그관측의law도정확히보존한다.
+평균장(13)과달리n/N의변동을없애지않는다.
+
+전체labelled상태수d^N에대해count상태수는 binomial(N+d-1,d-1)이다.
+이는항상작다는보장은없지만 label중복은제거한다. 국소공간배치에따라coupling이나
+에너지가다르면n만으로닫히지않는다. 이질영역은최소한type별counts가필요하며,
+임의비국소FVM결합까지(21)을확장했다고주장하지않는다.
+
+고정ε에서count평형은
+
+ Π(n)=Z^{-1}[N!/(Π_i n_i!)]Π_iν_i^(n_i) exp[-U(n)/θ].       (22)
+
+multinomial인자가labeldegeneracy를정확히계상한다. n→n-e_i+e_j에서
+Π(n')/Π(n)=[n_i/(n_j+1)](ν_j/ν_i)exp(-ΔU/θ)이므로
+Π(n)R(n,n')=Π(n')R(n',n)이다. degeneracy를버리면다른평형law다.
+
+14. 흡수된 집단의 열역학 수지도 닫는다
+
+fixedintactD에서w_X=Π_rν_(i_r),
+F_D[ρ,t]=Σ_Dρ_X U_X+θΣ_Dρ_Xlog(ρ_X/w_X)라두자.
+μ_X^raw=U_X+θ[log(ρ_X/w_X)+1]이면
+
+ dF_D/dt=NvΣ_Dρ_Xσ_X ε_dot-D_int
+                         -Σ_Dρ_X r_out(X) μ_X^raw.         (23)
+
+D_int는D내부edge에대한(11)의비음수소산이다. 마지막항은선택한rawsurvivor
+functional에서제거되는항이며항상비음수라는보장은없다. 따라서흡수후F_D의
+증가를곧열역학위반이라고할수없고,흡수전닫힌계의감소식을재사용해서도안된다.
+증명은(15)를F_D의chainrule에넣고내부edge와exit항을분리하면된다.
+실제열린시편의에너지·열·응력은여기서삭제된값으로유일결정되지않는다.
+
+15. 주기 내 시간을 포함한 평균 개시수명
+
+위상0의killed한주기연산자를C, 위상내전파를P(t,0)라두고
+R_T=∫_0^T P(t,0)dt라정의한다. 주기도는raw초기lawρ0에대해
+
+ E[τ]=Σ_(n>=0) 1^T R_T C^nρ0.                            (24)
+
+초기흡수mass는τ=0이어서평균에0을기여한다. 조건부평균이필요하면S0>0일때만
+우변을S0로나눈다. 접근가능한transient부분에서spectral radius(C)<1이면
+
+ E[τ]=1^T R_T(I-C)^(-1)ρ0.                                 (25)
+
+단순 T ΣS_n은주기경계에서round-up한시간의평균이지(24)의연속시간평균과같지않다.
+ρ(C)=1일때전체inverse를강제로만들지않는다. ρ0에서접근하지않는비흡수class는
+먼저제외할수있지만,접근가능한영구생존class에양의확률이있으면Eτ=∞다.
+관측끝tail을0으로채워유한평균을만들지않는다.
+
+16. 닫힌 가역모형이 할 수 없는 것도 정리한다
+
+finiteconnectedgraph에서모든edge열rate가양수이고ε를원래값에고정하면
+닫힌finiteNchain은유일한(8)로수렴한다. 같은ε로충분히오래hold한전후의
+평형평균strain은같다. 상대잔류strain은0이다. 절대평균g가0이라는뜻은아니다.
+
+mean-field(14)의simplex내부Hessian은
+θ diag(1/p_i)+vK g g^T로positive definite다. 따라서그평형functional은
+엄밀convex이고고정ε의평형은유일하다. 양의connectedrate와entropy소산으로
+stationarylaw는그유일최소점이다. 다중평형을임의로주장할수없다.
+
+그러므로이모형의유한시간hysteresis나firstopening은예측할수있지만,
+영구slip을구분하는상태없이소성잔류를자동예측한다고주장할수없다.
+firstopening을실제지속균열로읽을때도해당사건의정당화가필요하다.
+이정리는현재가역archive의확률가중만바꿔실제강도나영구소성을만들수없다는
+제약을설명한다. unboundedregistry/비가역transport/새상태를추가하면정리를재검토한다.
+
+17. 정리의 교차검산 결과와 완료 상태
+
+후속새합성검산을실행했다. N=3,d=3의27labelled상태와10count상태를독립조립했고,
+first-any흡수전8labelled상태와4count상태도대조했다.
+u,g,v,K,ε,θ는선언유리수이며실제재료입력이아니다.
+
+17개새검산을1회통과했다.
+- 모든edge의(4)(5)는Fraction정확등식으로확인.
+- detailedbalance최대잔차5.55e-17, countgeneratorintertwining1.78e-15.
+- beforestress만쓰는반례의Gibbsstationarity잔차0.00146218.
+- 이질영역반례는untypecountclosure를깨뜨림.
+- 자유에너지식잔차4.44e-16, rawsurvivor식5.55e-16.
+- 조건부선택covariance식잔차2.22e-16.
+- cyclic평균resolvent와200cycle적분합차5.55e-17.
+
+평균0.413360678...는이합성모형의model-time값이며물리Al수명이아니다.
+원검산은FINITE_POPULATION_THEORY_CHECKS.json와verify_finite_population_theory.py다.
+이검산은기호증명의독립review를대신하지않으며기존37개prototype검사를재집계하지않았다.
+절12의'새수치실험수행하지않음'은최초작성시점의이력이며본절이후상태가현재다.
+
+완료한범위는이선언모형의상태·에너지·rate·유일law·열역학·exactcount축약·
+흡수수명·조건부선택·주기평균·성립하지않는경우까지의수학적전개와새합성검산이다.
+실제Al검증·물리입력보정·출판신규성확정은이완료범위에포함되지않는다.
+
+18. 평균수명이 유한한 충분조건
+
+고정주기연산자C의모든접근가능한생존상태에서m주기이내열릴확률이적어도
+ε0>0이면 ||C^m||1<=1-ε0이고
+S_(km)<=S0(1-ε0)^k다. 따라서(25)의inverse가존재하고평균수명은유한하다.
+증명은양의substochastic행렬의열합과곱norm을적용하면된다.
+finitegraph에서각생존상태에양의rate로exit까지가는유한경로가있고,
+그경로를진행할수있는load시간구간의rate가양의하한/유한상한을가지면
+그경로를정해진시간내에수행할확률은양수다. 시작상태수가유한하므로최솟값도
+양수다. 다만매우작을수있어실용적인수명상한이라는보장은없다.
+실제로열림경로가없거나경계가원영역밖에있으면이조건은성립하지않는다.
+그경우이론은'무조건언젠가균열'을강제하지않는다.
+
+19. 이론의 최종 범위
+
+본이론의수학적대상은선언된대표영역·동일mean-field기계결합·SG형열전이·
+원모형과결속할firstopening사건이다. 모형입력을주면닫힌결정론적공동확률진화를
+계산하며 trajectoryMonteCarlo나경험S-Nfit로정의를대체하지않는다.
+exactcount축약은그모형자체의대칭에서나온다. spatialelasticity의임의비국소결합을
+이미풀었다거나새원자potential을검증한이론은아니다.
+
+입력의실제미확정은u/g의원source정규화와이중계산해소,대표volume/개수,
+kineticrate/온도/공통clock,초기결함집단과시편사건이다. 이값들은이론의변수와
+계수이며기본값을만들어넣지않았다. 이론개발의완료와실제재료검증의완료를
+따로보고한다. 최종파단수명은post-opening역학이없으므로출력대상이아니다.

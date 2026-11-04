@@ -1,0 +1,224 @@
+CRACK 상관기억 보존형 피로개시 이론과 원 SG 비교검증
+2026-11-04
+
+핵심 주장
+현재의 열림좌표 분포와 slip좌표 분포를 각각 모두 알고 평균 에너지도 알아도,
+둘의 결합구조를 잃으면 이후 cyclic first-opening law를 유일하게 정할 수 없다.
+필요한 기억은 임의의 scalar damage가 아니라 선택한 하중probe의first-hit response가
+현재 공동법칙에 대해 갖는 성분이다. 이 성분을 추가하면 미래식별범위를 줄일 수 있으며,
+그 개선이 추가 관측의 오차에 얼마나 민감한지도 같은 식으로 정량화한다.
+
+이 문서는 기존 finite-population 에너지/SG/응력 이론의 관측·초기법칙 부분을
+발전시킨다. 이번 실제계산은 원 N=1 SG와 선언된 준비집단에 대한 것이다.
+finiteN의 실제재료·공간FVM·실험피로수명이 검증됐다고 전이하지 않는다.
+
+1. 모형과 비교의 고정
+
+q=(a,s), s=bn+xi, 원 W(a,s)와 원 SG flux를 유지한다.
+한 하중주기의 augmented first-absorption 전이를 T라 한다. 마지막상태†는 흡수다.
+원준비집단 질량은1, 초기흡수A0를포함해T는확률질량을보존한다.
+alive joint preparation을x, terminal first-opening response를
+
+ r_n=(T^T)^n e_†,  F_n(x)=r_n^T x                         (1)
+
+로정의한다. 하중과mask의순서는T에보존된다. 매주기Gibbsreset은하지않는다.
+이번자료의한주기는1.0→1.4→0.8→1.0의24step선언일정이며physical주기는아니다.
+
+2. 주변분포·평균에너지로 닫히는 조건
+
+admissible공통지지집합의초기jointlaw를p_ij라하고
+ A_i=Σ_j p_ij, S_j=Σ_i p_ij, Ebar=Σ_ij W_ij p_ij
+를현재요약y로삼는다. 총질량과초기흡수도일치시킨다.
+P_a와P_s는각좌표의전체주변분포다. 평균/분산만맞추는약한조건이아니다.
+
+정리1. 모든유효준비집단에대해같은y가같은F_n을주기위한필요충분조건은
+
+  (r_n)_ij=α_i+β_j+λW_ij                                (2)
+
+로쓸수있다는것이다(고정A0기여는별도상수). 일반support에서는해당행렬O의
+rowspace에r_n이속해야한다.
+증명:조건을모으는O에서Oδ=0이면r_n^Tδ=0이어야한다. 유효확률분포차는
+kerO의벡터를rescale하여표현할수있으므로r_n∈range(O^T)가필요충분이다.
+직사각형support에서O의row는각a행·s열의indicator와W이므로(2)를얻는다.
+
+3. 에너지까지 같은 상관기억의 구성
+
+두행i,k와두열j,l의rectangle circulation C는(i,j),(k,l)에+1,
+(i,l),(k,j)에-1을갖는다. 모든행합·열합은0이다.
+서로다른C1,C2에대해e_h=<W,C_h>,d_h=<r_n,C_h>라하면
+
+ δ=e_2 C1-e_1 C2,
+ <W,δ>=0,  <r_n,δ>=e_2 d_1-e_1 d_2.                     (3)
+
+오른쪽이0이아니면p+=δ+/m, p-=δ-/m, m=Σδ+=Σδ->0는같은두주변분포와
+평균에너지를가진서로다른유효집단이다. 같은공통준비q를섞은
+p±,η=η p±+(1-η)q, 0<η<=1도등식을보존하고CDF차이는η배다.
+q가공통support에서양수이면두집단모두그전체support에서양수가된다.
+
+직사각형support의zero-row/column-sum공간은이런circulation으로생성된다.
+따라서r_n의모든circulation이W의circulation과같은비율이면(2)가성립하고,
+그렇지않으면(3)같은상관기억이존재한다. W의circulation이모두0이면
+r_n도모두0이어야주변분포로닫힌다. 일반구멍있는support는bipartitecycle기저를쓴다.
+
+물리적으로같은주변분포는같은평균a,mean s,well-population,mean n,mean xi를
+보장한다. g가원좌표의affine strain이면같은mean strain도보장한다.
+같은K,ε의평균응력식또한같다. 그래도firstopeningresponse의비분리성은남을수있다.
+임의비선형g나모든energy분포까지같다고주장하는것은아니다.
+
+4. 어떤 한 값 예측기도 피할 수 없는 오차
+
+같은y를갖는두집단의CDF가F+,F-이고gap=|F+-F-|라면,
+y만입력받아한값f(y)를주는어떤방법도
+
+ max(|f(y)-F+|,|f(y)-F-|)>=gap/2                           (4)
+
+를만족한다. 이는triangleinequality다. 특정알고리즘을나쁘게맞춘결과가아니라
+그입력정보로는두집단을구분할수없다는정보한계다.
+전체jointlaw를입력받는기존Markov/MD방법은이제약을받지않는다.
+따라서이결과를모든기존피로이론에대한우위로쓰지않는다.
+
+고정y의정확한식별범위는
+
+ L_n(y)=min r_n^Tx, U_n(y)=max r_n^Tx,
+             s.t. x>=0, Ox=y.                              (5)
+
+로정의한다. 측정분산·표본CI가아니며미확인jointlaw가허용하는범위다.
+
+5. 사건에 맞춘 기억량
+
+표준한주기의r_1을사용한다. r_1=O^Tλ+w로분해해기억량z=w^Tx를추가하면
+
+ F_1=λ^Ty+z.                                                (6)
+
+즉기존관측에서잃은future-event성분을직접보존한다. 단순공분산이나임의hardening
+변수를추가하는것과구별된다. 수학적으로는finite-horizonhittingresponse를이용하는
+observable-specificprojection이며committor/adjoint와관련된표준구조를사용한다.
+
+다음n주기의예측은r_n을O와r_1의span으로근사하는것으로정리할수있다.
+임의λ_n,b_n에대해
+
+ ε_n=||r_n-O^Tλ_n-b_n r_1||∞,
+ |F_n-(λ_n^Ty+b_n z_1)|<=ε_n,
+ z_1=r_1^Tx.                                                (7)
+
+z_1관측이|z_1-zobs|<=η라면우변은ε_n+|b_n|η로커진다.
+이는초기law질량1의l1/l∞duality로즉시증명된다.
+고정y,z1에서는(5)에r_1^Tx=z1을추가하면더날카로운식별구간을얻는다.
+오차있는probe는zobs-η<=r_1^Tx<=zobs+η로넣는다.
+
+응답r_1자체의계산에는원모형이필요하다. 실험에서z1을측정하려면같은준비law의
+별도반복집단에서표준probe를가하는절차가필요하며,같은시편을파괴적으로probe한뒤
+원래상태로되돌렸다고취급할수없다. fulljointlaw도없고probe자료도없으면z1은미정이다.
+이이론은없는initialinformation을자동으로생성하지않는다.
+
+6. 무한히 유효한 closure와 제한된 horizon을 구별한다
+
+V=span{rows(O),r1,...,rL}가T^T에불변이면이observable들로한주기moment진화가
+정확히닫힌다. 그렇지않으면유한horizon의(5)(7)로오차범위를유지해야한다.
+onecycle에맞는기억량하나가임의하중·모든수명꼬리에충분한것은아니다.
+Krylov/observability구조자체를독창적수학으로주장하지않는다.
+
+7. 현재 자료로 수행한 원 SG 비교
+
+기존9×15격자의원SG136상태전이표와원W의무하중에너지를사용했다.
+모든하중mask의공통intact영역75상태에만초기law를두었다.
+이전0.39차이사례처럼다음하중mask가즉시자르는셀에초기질량을집중한구성이아니다.
+원에너지값은이번비교에필요해새로평가했고,기존MD/fit/과학suite는재실행하지않았다.
+
+(3)으로만든두law에같은uniformcommonlaw를50%씩섞었다.
+두law는75개공통상태에모두양수이고,두주변분포와평균에너지를유리수로정확히맞췄다.
+energy의정확성대상은이번에평가한binary64값이다. continuumW의모든오차인증은아니다.
+capturedtable의column잔차는가장큰양의entry하나만보정해양의확률표로만들었다.
+최대column변경은1.31916e-16이하였다.
+
+한주기후확률:
+ F+=0.00216533290183411278509...,
+ F-=0.00178130680799409270055...,
+ gap=0.00038402609384002008454...>0.                         (8)
+
+이gap과초기등식은Fraction정확계산이다. 따라서같은현재요약만쓰는예측기는
+둘중적어도하나에서0.00019201304692001004...이상의절대오차를가진다.
+이는선언준비집단의유한SG모형에대한결론이다. 실제재료준비가이두law를만들수있는지는
+아직증명하거나측정하지않았다. correctedtablelaw와원float실행의차이도구분한다.
+
+8. 비교기준과 future-horizon 검증
+
+공통uniformlaw의주변분포·평균에너지를고정하고LP(5)를풀었다.
+비교1: 두좌표전체주변분포+meanenergy.
+비교2: 비교1+Cov(a,s).
+비교3: 비교1+even coupling moment (a-mean a)(s²-mean s²).
+제안식: 비교1+한주기eventmemory r1^Tx.
+
+첫주기r1으로변수를정한뒤2·4·8주기의r_n에대해평가했다.
+보류한것은동일주기연산자의다른horizon이며독립실험·다른재료·다른load데이터가아니다.
+
+주기수  기존정보구간폭      eventmemory추가구간폭    폭감소배수
+ 2      6.440441e-4         1.064352e-6            약605배
+ 4      1.213202e-3         4.865806e-6            약249배
+ 8      2.017869e-3         1.532637e-5            약132배
+
+같은비교의단순covariance/evenmoment추가는폭을실질적으로줄이지못했다.
+위배수는식별범위폭의비율이다. 예측정확도가605배,계산속도가605배라는뜻은아니다.
+첫주기의구간붕괴는r1을입력으로넣었으므로자명하며성과배수에포함하지않는다.
+LP값은수치해와제약잔차검사이며outward-certifiedexactinterval은아니다.
+
+9. probe 오차를 넣었을 때
+
+첫주기확률정보의절대오차가±1e-4이면2·4·8주기식별폭은각각
+4.195379e-4,7.910843e-4,1.317763e-3으로커진다.
+기존정보대비개선은대략1.5배수준으로줄어든다.
+따라서정확한한주기정보를가정한132~605배를실험효과로약속할수없다.
+이결과는'어떤추가정보가얼마나정확해야하는가'라는검증설계를정량화한다.
+
+10. 실제 load history에서의 별도 확인
+
+원W/원SGgenerator와같은격자·원openingmask를이용해연속시간유한SGchain을구성했다.
+초기law는같은75상태uniform이고A=0.8,B=1.4의각노출시간을같게하여AB/BA를가한뒤
+공통f=1.0probe를적용했다. 이두history는동일초기law에서실제로도달가능한전파다.
+다만준비후두주변분포가같다고주장하지않으며(8)의준비집단과별개비교다.
+
+원loadmask에서각준비window4dt,공통probe128dt의CDF는
+AB=0.00074010432, BA=0.00071821417로AB가더컸다.
+준비window16dt이면AB=0.00216129602, BA=0.00226066048로순서가뒤집혔다.
+현재모형에서loading순서효과의부호는강도순서만으로정해지지않는다.
+
+공통고정mask의작은window검사에서는ΔF/t²가
+-2.668446,-2.677312,-2.681758,-2.683984로변했고,
+이론commutator계수-2.686213으로접근했다.
+
+원loadmask와고정mask의CDF차이는boundary선언에민감했다. 총CDF차이와
+준비이후새흡수량차이는분리해보고했다. 이둘을혼합하면memory효과를오독할수있다.
+연속시간finiteSGfirst-exit와기존explicitendpointmaskstep은다른유한적분/사건규약이며,
+원continuum의연속최초통과나grid/time수렴을인증한검사는아니다.
+
+11. 기존 연구와 명확히 구분해서 주장할 범위
+
+Markov행렬곱의loadingsequence,committor,projection과aggregationerrorbound는기존이다.
+우리의이번구체결과는원a/s의비분리coupling에서'전체주변분포+meanenergy'를
+모두맞춘interior-preparation반례와정확gap,한주기eventmemory의보류horizon식별폭,
+그noise민감도및원SG도달가능load순서/경계민감도를함께구성한것이다.
+
+비교한marginal-only/moment추가모형군과는출력으로명확히구분됐다.
+fulljointMD/SG나임의의최신committor/MSM모형전체보다우수하다고주장하지않는다.
+세계최초의새수학원리·실제Al독점모형·실험수명검증완료라는주장도하지않는다.
+
+12. 기존 finite-population 이론과 통합 위치
+
+FINITE_POPULATION_FATIGUE_THEORY_KO.txt의에너지와열역학적전이정의는유지한다.
+그jointlaw의초기상태를어느요약으로보존할지에는(2)~(7)의관측이론을적용할수있다.
+그러나이번N1원SG수치결과를finiteN상호작용집단에그대로전이할수는없다.
+각자의T에대해r와error범위를다시확인해야한다.
+이론적추가사항은초기집단의상관정보와관측정밀도를명시적으로계약에넣는것이다.
+원측정자료없이그initialcorrelation을fit해고정된물성처럼사용하지않는다.
+
+13. 실제 완료 산출물
+
+compare_correlation_memory.py / CORRELATION_MEMORY_RESULT.json
+CORRELATION_WITNESS_EXACT.json / CORRELATION_MEMORY_COMPARISON.npz
+compare_reachable_load_order.py / REACHABLE_LOAD_ORDER_RESULT.json
+
+반복column양성확인등을포함한assertion수를독립실험수로세지않는다.
+비교1실행에LP16설정과noise9설정,exact준비집단1쌍을사용했고,
+비교2에는6준비protocol(2mask규약×3window),각4probe노드를사용했다.
+새실험자료취득·새MD·실물·원source수정·기존suite반복은없다.
+독립review·실제Alcalibration·physicaltime·시편event결속은여전히실증과제다.

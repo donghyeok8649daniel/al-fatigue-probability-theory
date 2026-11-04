@@ -1,0 +1,35 @@
+오늘 확보한 핵심 이론 후보 / 2026-11-04
+
+설명할 수 있는 주장
+원(a,s)확률상태가과거하중을보존하는경로를future첫열림응답으로측정하고,
+그상태를요약할때잃는예측정보의sharp범위를정의했다.
+하중순서응답은futureevent로가중한전이commutator이고,
+하중의존열림mask가있을때bulk순서항과mask삽입항을분리해야한다.
+
+증명한 것
+1. event-specific summary sufficiency iff r in row(O).
+2. global event ambiguity =2dist_inf(r,row(O)); fixed-summary LP sharp bounds.
+3. partition case explicit within-block response diameter and weighted widths.
+4. fixed-generator short-window observable commutator plus explicit remainder bound.
+5. original tilted-W interior generator commutator, forward/backward sign distinction.
+6. endpoint mask insertion and its possible first-order load-order terms.
+7. positive preparation-rate symbolic example with common-probe order response.
+
+기존 결과 재사용
+10/30 M1-M10의준비-생존joint측도·hybrid응답과11/4SG초기법칙/기억식은배경이다.
+기존수치검사를다시실행하거나새실험으로합산하지않았다.
+Schur/Gaussian주변이완문서는조건부기계연결이며이번핵심의물리검증을대신하지않는다.
+
+선행연구와 현재 차별성 후보
+Markov전이와하중순서자체는기존피로연구에있다. 그것을신규성으로쓰지않는다.
+원SG/firstopening을유지한event-conditioned상태식별범위와bulk/mask차수분리가
+차별성후보다. 체계적본문비교·독립검토전우선성/독점성확정0.
+읽은범위와본문403/timeout은CORE_THEORY_LOAD_ORDER_KO.txt에보존했다.
+
+아직 제출 성과로 쓰면 안 되는 주장
+실제Al수명정확도·범용산업성능·경험식보다우수·첫원자열림=시편개시·최종파단예측.
+오늘의물리실험/보정/새protocol수치검사/독립증명review/원고승인완료주장.
+
+원문
+CORE_THEORY_LOAD_ORDER_KO.txt (가정·정리·증명·예측·선행연구한계)
+상태: 당일 이론 후보 작성·작성자 기호 재검토 완료, 독립/물리/신규성 검증 미완료.

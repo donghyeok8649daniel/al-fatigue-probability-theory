@@ -1,0 +1,68 @@
+CRACK 이론 최종 대조·검토 기록 | 2026-11-04
+
+현재 이론 원문
+FINITE_POPULATION_FATIGUE_THEORY_KO.txt
+보조 관측 정리: CORE_THEORY_LOAD_ORDER_KO.txt
+조건부 기계 제거: ELASTIC_RELEASE_FIRST_PASSAGE_THEORY_KO.txt
+
+수학적 검토 결론
+정의된finiteN에너지에서stress와전이energy를동시에유도했고,상세균형및
+자유에너지수지,공동흡수법칙,생존선택항,주기CDF/평균을연결했다.
+finiteN정확count축약은permutation symmetry에서증명하며mean-field근사와구분한다.
+평균장제곱오차의finite-time추정으로rare-first-any오차를보장하지않는다.
+닫힌finiteconnected가역모형은같은load로무한hold하면유일평형으로돌아간다.
+따라서그상태공간만으로영구소성이나최종파단을주장할수없음을정리했다.
+
+원source와의 관계
+기존원W/SGsolver를수정하지않았다. 연구메인의확률–응력mean-field식과
+에너지분해계약을직접확인했다. 이번finiteN식은그계약이성립하는일반유한집단
+모형이며원source의actualg/u/v를이미결속한실제재료모델이라는주장은없다.
+
+기존 연구 대조
+
+1. Maas & Mielke (2020), Modeling of chemical reaction systems with detailed balance
+using gradient structures. DOI10.1007/s10955-020-02663-4.
+https://arxiv.org/pdf/2004.02831
+48쪽본문중도입과CME detailed-balance/normalization논의를확인했다.
+미시상세균형·entropygradient·macroscopiclimit을연결하는일반골격은기존수학이다.
+우리모형의미시/평균장열역학연결자체를최초기여로주장하지않는다.
+
+2. Schlichting & Seis, The Scharfetter–Gummel scheme for aggregation-diffusion equations.
+DOI10.1093/imanum/drab039, preprint2020/수정2021.
+https://arxiv.org/pdf/2004.13981
+37쪽본문도입의비국소비선형flux·자유에너지소산·평균장배경을확인했다.
+비선형feedback와SG의에너지보존구조를사용한다는것만으로새알고리즘이라고할수없다.
+본론전체의모든정리와우리식의동등성/차이를완전검토한것은아니다.
+
+3. Frechette, Dellago & Geissler (2020), The Origin of Mean-Field Behavior in an
+Elastic Ising Model. DOI10.1103/PhysRevB.102.024102.
+https://arxiv.org/pdf/2004.10373
+20쪽본문도입의탄성자유도적분후유효상호작용과mean-field열역학/kinetics,
+후반effectiveHamiltonian simulation구분을확인했다.
+탄성결합에서평균장이생긴다는일반설명도기존연구다. 그spin-crossover계의
+정량검증을Al피로검증으로옮겨쓸수없다.
+
+4. Rens, Bea-Bragado & Bea (2022), Markov chain based non-linear fatigue damage
+accumulation model. Probabilistic Engineering Mechanics68,103250.
+DOI10.1016/j.probengmech.2022.103250.
+https://www.sciencedirect.com/science/article/pii/S0266892022000327
+출판사/저자기관검색초록에서FRP/실험유래blockPTM와sequence효과를확인했다.
+저자기관본문open은403/timeout. loadingsequence의행렬곱자체도신규성이아니다.
+
+독자적인 연구 내용으로 현재 명시할 범위
+원(a,s)상태·일정한energy/count/volume규약을기준으로,
+finiteNmidpoint-work보정과상세균형,exactcount흡수법칙,생존응력선택항,
+event별기억식별및jumpmask순서항을한피로개시모형에연결한전개다.
+이를문헌에전혀없는최초수학정리·검증된산업우위·특허성으로확정하지않는다.
+선별한선행연구와의대조는완료했으나전문분야전체신규성전수증명은주장하지않는다.
+
+새검산
+FINITE_POPULATION_THEORY_CHECKS.json: 17검사/1회PASS.
+Fraction정확energy비교및독립조립labelled/countgenerator대조를포함한다.
+실제재료실험,기존prototype37개,기존원SGsuite를새검사로합산하지않았다.
+독립reviewer/formalproofchecker의승인기록은없다.
+
+결론
+정의된모형의수학적전개와위검산·한계검토를마쳤다.
+물리수명보정/실증및실제산업성능은미완료다. 유효물리입력을획득하지않고
+그부분까지끝났다고보고할수없다. 오늘완료한이론본은그구분을포함한다.

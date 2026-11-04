@@ -1,0 +1,16 @@
+{
+  "status": "PASS_SAVED_EXACT_WITNESS_AND_COMPARISON_READBACK",
+  "exact_positive_unit_mass": true,
+  "exact_both_marginals_and_mean_energy": true,
+  "exact_saved_cdf_gap_and_error_lower_bound": true,
+  "LP_settings": 16,
+  "noisy_probe_settings": 9,
+  "load_protocols": 6,
+  "initial_readback_processing_failure": {
+    "toolChunk": "2f3426",
+    "exit": 1,
+    "reason": "Default4300-digit integer conversion limit while reading generated5639-digit exact certificate",
+    "resolution": "Bounded50000-digit local generated-certificate reader; mathematical inputs unchanged"
+  },
+  "independent_reviewer": false
+}

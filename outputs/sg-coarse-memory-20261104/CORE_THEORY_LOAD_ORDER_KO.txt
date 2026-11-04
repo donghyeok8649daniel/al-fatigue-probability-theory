@@ -1,0 +1,301 @@
+CRACK 핵심 이론 후보
+사건에 필요한 기억 상태와 하중 순서 응답: 내부 전파와 이동 열림 경계의 분리
+2026-11-04 KST. 당일 작성한 조건부 유한상태 정리·증명·시험 가능한 예측.
+
+중심 질문
+현재 하중·누적노출·평균 상태가 같으면 이후 균열개시확률도 같은가?
+그렇지 않다면, 예측하려는 개시 사건에 필요한 상태 정보는 무엇이며,
+하중 순서를 바꾼 효과 중 내부 분포 변화와 경계 제거는 어떻게 구별하는가?
+
+이번 기여 후보
+Q1. 선택한 요약 상태가 버리는 '미래 사건에 보이는 기억'의 최대 영향을
+    정확한 최적화식과 sharp bound로 정의한다.
+Q2. 같은 원 SG 전이에서 하중 순서 응답을 미래 사건으로 가중한 commutator로
+    쓰고, 내부 전파와 하중 의존 열림 mask의 항을 분리한다.
+Q3. 고정 경계의 작은 두 loading window는 O(ab)로 시작하지만,
+    jump mask를 동반하는 protocol에서는 O(a+b)항이 남을 수 있음을 유도한다.
+
+이것들은 실제 Al 수명 예측의 완성이나 수학적 독창성 인증이 아니다.
+표준 선형쌍대성·semigroup 대수의 프로젝트 적용을 포함한다. 아래 정리는
+유한상태에서 증명했으며 continuum/실제 경계/물리 보정은 구분한다.
+
+1. 원모형, 상태, 첫 열림 사건
+
+원래 q=(a,s), s=bn+xi와 에너지 W를 유지한다. 원래 생존 경계와 SG flux를
+보존한 유한 격자의 살아 있는 상태에 흡수 상태 †를 하나 붙인다.
+열벡터 x>=0, 1^T x=1에서 마지막 성분 x_†는 같은 준비집단의 이미 열림 질량이다.
+모든 T는 비음수 열확률 행렬이며 T e_†=e_†다. 이미 열림 질량을 재초기화하지 않는다.
+
+두 준비 protocol의 augmented 분포를 x_P,x_R라 하고 δ=x_P-x_R라 둔다.
+공통 이후 probe C의 전이 T_C와 terminal event e_†에 대해
+
+  r=T_C^T e_†,    0<=r_j<=1,
+  F_P-F_R=r^T δ.                                               (1)
+
+r_j는 그 미시 상태에서 시작해 probe 종료까지 열림을 경험할 확률이다.
+이는 정적 평균 응력이나 원자 에너지 자체가 아닌 사건 응답 함수다.
+실제 physical crack/detection과 원모형의 열림을 동일시하려면 별도 결속이 필요하다.
+
+2. 정리1: 어떤 요약 상태가 이 사건의 기억을 충분히 보존하는가
+
+O는 선택한 현재 요약값 y=Ox를 만드는 행렬이다. row space에 전체 질량
+1^T를 포함한다. 초기흡수 일치가 필요하면 e_†^T도 포함한다. 평균변형률,
+well population 등의 선형 raw moments를 추가할 수 있다. 비선형 conditional
+평균은 생존질량을 고정한 뒤에만 해당 선형 row로 바꿀 수 있다.
+admissible 초기 support가 정해져 있으면 해당 column에 한정한다.
+
+모든 유효 초기 분포에 대해 같은 Ox이면 같은 r^T x가 나오기 위한 필요충분조건은
+
+  r ∈ range(O^T).                                              (2)
+
+충분성: r=O^T λ이면 r^T x=λ^T Ox다.
+필요성: range(O^T)의 직교여공간은 ker O다. r가 row space 밖이면
+Oδ=0, r^Tδ!=0인 signed δ가 존재한다. 질량 row로 1^Tδ=0이다.
+δ의 양/음 부분 질량을 같게 rescale하고 필요하면 같은 분포를 양쪽에 더하면
+유효 확률분포 x_P,x_R를 만들 수 있다. 이들은 같은 Ox와 다른 사건확률을 갖는다.
+
+이 정리는 전체 경로의 Markov closure 조건보다 약하다. 특정 probe의 특정
+종료 사건만 맞추기 위한 조건이다. 한 probe에 충분한 요약이 다른 probe나
+다른 horizon에도 충분하다는 결론은 아니다.
+
+3. 정리2: 버려진 기억의 최대 사건 영향
+
+전체 admissible 초기 집단에서의 요약 손실을
+
+  D_O(r)=sup{|r^T(x_P-x_R)|:
+                 x_P,x_R>=0, 1^T x_P=1^T x_R=1, O x_P=O x_R}
+
+로 정의한다. 유한차원 쌍대성으로
+
+  D_O(r)=2 inf_λ ||r-O^Tλ||_∞.                                (3)
+
+증명: δ=x_P-x_R는 ker O에 속하고 ||δ||_1<=2다. 역으로 그런 δ는
+양/음 부분의 공통 질량 m<=1에 같은 (1-m)확률분포를 더해 두 유효분포로
+표현할 수 있다. 따라서 좌변은 ker O의 l1단위공 위 선형함수 norm의2배다.
+부분공간 dual norm은 r의 annihilator range(O^T)에 대한 l∞거리이며 (3)을 얻는다.
+이는 고정된 특정 y의 최대차가 아니라, 같은 요약값을 갖는 모든 쌍의 최대차다.
+
+고정된 실제 y에 대해서는 다음 두 선형계획이 더 날카롭다.
+
+  L(y)=min{r^Tx:x>=0,Ox=y}, U(y)=max{r^Tx:x>=0,Ox=y}.           (4)
+
+O의 질량 row가1이라는 조건을 y에 포함한다. L,U의 쌍대는 각각
+max λ^Ty s.t.O^Tλ<=r, min λ^Ty s.t.O^Tλ>=r다.
+따라서 [L,U]는 아직 모르는 초기 공동법칙에 대한 식별 구간이다.
+이는 모집단 confidence interval이나 실제 재료 오차 인증이 아니다.
+
+특히 O=P가 서로소 상태 block의 질량을 모으는 partition이면
+
+  D_P(r)=max_g [max_(j in g)r_j-min_(j in g)r_j].              (5)
+
+같은 block에 속하지만 r가 최대/최소인 두 point mass가 하한을 달성한다.
+block 질량을 고정한 실제 y에서는
+
+  U(y)-L(y)=Σ_g y_g [max_(j in g)r_j-min_(j in g)r_j].        (6)
+
+따라서 '어떤 상태를 더 보존해야 하는가'에 대한 사건별 기준은 단순 기하
+크기나 mean strain이 아니라 같은 block 내부의 미래 개시 응답 폭이다.
+coarse 상태를 나눌수록 (4)의 구간은 넓어지지 않는다. 실제 연산자 r의 오차는
+별도 합산해야 하며 이 구간이 source/continuum 오차를 자동 포함하지 않는다.
+
+4. 기존 준비–생존 응답과의 연결
+
+2026-10-30의 기존 M1–M10은 precursor–잔여량 공동측도와 준비 응답을 다뤘고,
+새로 그것을 다시 증명하지 않는다. 이번 (1)~(6)은 원 SG처럼 다차원 미시상태를
+유지하는 유한 전이에서, 임의의 선형 요약과 future event에 대한 식별성을 다룬다.
+그 문서의 L/H rate나 잔여량 d를 원 a/s의 실제 변수로 대입하지 않는다.
+
+5. 하중 순서 응답의 정확식
+
+A를 a시간, B를 b시간 가한 것을 AB라 부르고 오른쪽 연산자가 먼저 작용한다.
+두 preparation은 같은 초기 x0, 각 하중의 총 노출시간, 공통 probe C를 쓴다.
+
+  x_AB=T_B T_A x0, x_BA=T_A T_B x0,
+  ΔF_C=r_C^T(T_B T_A-T_A T_B)x0.                            (7)
+
+T_B T_A!=T_A T_B만으로 ΔF_C!=0인 것은 아니다. 차이가 초기집단에 작용한 뒤
+probe가 그 차이를 구분할 수 있어야 한다. ΔF의 부호 역시 하중 세기 순서만으로
+결정되지 않는다. 초기법칙, 경계, 미래probe를 함께 지정해야 한다.
+
+준비 과정의 이미흡수가 다르면 그 차이도 (7)에 포함된다. 순수한 생존 집단
+기억을 보려면 실제로 x_AB,†=x_BA,†를 확인하거나, 그 차이를 따로 보고한다.
+사후 정규화로 두 집단을 맞추면 다른 비교문제가 된다.
+
+6. 정리3: 공통 고정 경계의 작은 loading window
+
+같은 augmented 상태공간의 유한 Markov generator G_A,G_B에서
+T_A=exp(aG_A), T_B=exp(bG_B)라 하자. 고정 경계의 killing을 포함할 수 있다.
+
+  ΔF_C=ab r_C^T[G_B,G_A]x0+R,                              (8)
+  |R|<=ab ||[G_B,G_A]||_1
+                      {exp(a||G_A||_1+b||G_B||_1)-1}.         (9)
+
+정확 항등식은
+
+ [exp(bB),exp(aA)]
+  =∫_0^b∫_0^a exp((b-s)B)exp((a-r)A)
+                         [B,A]exp(rA)exp(sB) dr ds.           (10)
+
+첫째로 [exp(bB),X]의 Duhamel식에 X=exp(aA)를 넣고,
+[B,exp(aA)]에 다시 Duhamel식을 적용하면 (10)이다. integrand의 exp들을
+identity로 대체한 항이 ab[B,A]다. 나머지는 곱의 telescoping과 induced1norm으로
+상계하면 총 exponent 길이가 a||A||+b||B||라서 (9)를 얻는다.
+||r_C||∞<=1, ||x0||1=1을 사용했다. 따라서 R=O(ab(a+b))다.
+
+반증 가능한 예측은 공통 경계·고정generator·정해진 초기집단에서 a,b를 같이
+축소하면 순서 차이의 선도항이 ab이며, 관측계수는 r_C^T[G_B,G_A]x0라는 것이다.
+이 계수가0이면 더 높은 차수이거나 해당probe에서 효과가 보이지 않을 수 있다.
+유한시간의 큰 하중window에 이 작은시간 근사를 그대로 적용하지 않는다.
+
+7. 원 W(a,s)에서 내부 순서 효과가 생기는 미분 구조
+
+같은 고정 내부 영역의 smooth compactly supported test function φ에 한해,
+상수 M=diag(Ma,Ms), θ>0, G_f(q)=W(q)-f c^Tq, c=(1,χ)^T라 하자.
+backward generator는
+
+  L_f=θ M:∇²-(M∇W)·∇+f v·∇, v=Mc.
+
+D=v·∇, L0=θ M:∇²-(M∇W)·∇라 두면 상수계수 확산은 D와 교환하고
+
+  [L0,D]φ=(M H_W v)·∇φ,
+  [L_B,L_A]φ=(f_A-f_B)(M H_W M c)·∇φ.                    (11)
+
+증명: b0=-M∇W에서 [b0·∇,v·∇]=-(v·∇b0)·∇이고
+v·∇b0=-M H_W v다. 같은 잠재에 서로 다른 tilt를 가해도 relaxation drift와
+forced translation이 교환하지 않을 수 있다. 새로운 empirical damage rate는 없다.
+
+전방밀도 generator의 commutator는 adjoint 순서가 뒤집히므로
+[G_B,G_A]^*=[L_A,L_B]다. 부호를 그대로 복사하면 안 된다.
+또한 실제 SG rate는 force의 affine함수가 아닐 수 있다. (11)은 내부 continuum
+미분식이지 모든 SG행렬에 그대로 대입하는 식이 아니다. 실제유한G로 (8)을 써야 한다.
+반사/흡수 경계에서 generator domain이 다르면 추가 domain 검토가 필요하며
+compact-interior 계산만으로 전체 killed semigroup의 commutator를 인증하지 않는다.
+
+8. 하중 의존 mask가 있는 실제 구현의 추가 항
+
+하중 f에서 intact mask 밖의 질량을 †로 옮기는 map J_f를 정의한다.
+J_f는 살아 있는 상태를 intact이면 유지하고, 아니면 †로 옮긴다.
+J_f는 양의 열확률행렬, J_f²=J_f, J_A J_B=J_B J_A=:Q다.
+좌표remap 없이 같은 상태 목록의 mask일 때의 식이다.
+
+반사 bulk propagator P_f(t)=exp(tG_f)로 한 구간 양끝만 mask하는
+선언 protocol을 T_f=J_f P_f J_f라 두자. 그러면 정확히
+
+ T_B T_A-T_A T_B
+  =(P_B P_A-P_A P_B)+(E_AB-E_BA),                            (12)
+ E_AB=J_B P_B Q P_A J_A-P_B P_A,
+ E_BA=J_A P_A Q P_B J_B-P_A P_B.
+
+첫항은 고정상태공간 bulk 전파의 순서, 뒤 항은 이 protocol의 mask 삽입 효과다.
+각 항의 부호가 정해져 있지는 않다. 이 분리는 특정 기준 bulk와 mask 규약에
+의존하며 두 항을 서로 독립적인 물리 손상량으로 합산하면 안 된다.
+
+초기 x0가 두 mask의 공통intact부분에 있어 Qx0=x0라면 Taylor전개로
+
+ (T_B T_A-T_A T_B)x0
+  =a(Q-J_A)G_A x0+b(J_B-Q)G_B x0+O((a+b)²).                (13)
+
+AB: J_B(I+bG_B)Q(I+aG_A)J_A x0
+   =x0+a QG_Ax0+b J_B G_Bx0+O((a+b)²).
+BA: x0+a J_A G_Ax0+b QG_Bx0+O((a+b)²).
+이 두 식을 빼면 (13)이다.
+
+즉 endpoint-only jump mask에서는 O(a),O(b) 순서항이 가능하다.
+J_A=J_B=I이면 이 항은 사라져 (8)의 O(ab)가 남는다.
+J_A=J_B라도 이 first-order항은0이지만 반복mask로 정의한 구간은 여전히
+공통killed generator semigroup과 자동으로 동일하지 않다.
+
+이는 mask 제거의 '실제 물리손상' 인증이 아니다. 실제 adaptive SG가 각 substep에서
+mask를 적용한다면 그 실제 substep들의 곱을 써야 한다. 연속 첫통과와 endpoint검사는
+기존phase30~32에서 구분했으며 여기서 같은 것으로 바꾸지 않는다.
+
+9. 순서 효과가 반드시0이 아닌 기호 예와 공통probe
+
+이는 원 SG 대체모형이 아니라 정리의 논리 확인용 양의rate2상태예다.
+준비 중 L↔H만 전이하고 흡수는 없다. A/B의 α_j,β_j>0,
+λ_j=α_j+β_j, π_j=α_j/λ_j, e_j=exp(-λ_j t_j)라 하자.
+H분율의 전이는 R_j(q)=π_j+(q-π_j)e_j다.
+
+  q_AB-q_BA=(π_B-π_A)(1-e_A)(1-e_B).                       (14)
+
+이는 q0와 무관하며 직접 affine합성으로 얻는다. 두 집단의 생존질량은1,
+이미흡수는0이고 각 하중의 노출시간은 같다. 공통probe가 H에서만 rateκ>0로
+흡수시키고 L/H교환이 없다면
+
+  ΔF_C(t)=(π_B-π_A)(1-e_A)(1-e_B)(1-exp(-κt)).             (15)
+
+준비rate는 양수, probe의0전이는 선언한 기호예이며 실제thermalSG가 아니다.
+따라서 순서반전 차이가 실제로 존재하고, 공통probe가 상태차를 읽어내며,
+작은 a,b에서는 차이가 ab로 시작한다는 것을 식 자체로 확인한다.
+이미 존재하는2026-10-30의 준비 응답과 affine2상태합성을 독창적 새피로법칙이라고
+주장하지 않는다. 새로운원소는 (2)~(13)의 event식별·연산자/경계분리와의 연결이다.
+
+10. 실제로 구분할 수 있는 protocol와 판정
+
+실험/수치 준비 AB와BA는 같은 재료·초기집단·노출시간·시계·종료phase를 쓴다.
+이후 같은probe C에서 곡선을 비교한다. 준비 중흡수차, 남은집단질량, 초기법칙의
+차이는 모두 별도 기록한다. 같은 meanstrain만으로 같은 초기상태라고 선언하지 않는다.
+
+예측P1: commonfixedboundary의 미소window에서 ΔF의ab계수는 (8)과 같다.
+예측P2: 하중별mask가 바뀌면 (13)의 first-order항이 가능하며 bulk만의ab법칙으로
+       해석할 수 없다. 작은노출 순서효과가 경계규약에 민감할 수 있다.
+예측P3: 특정요약을 같게맞춘 경우에도 future response의within-block폭이 양수면
+       같은요약으로 미래CDF를 유일하게 예측할 수 없는 준비집단이 존재한다.
+       존재정리는 실제실험이 극단집단을 만들 수 있다는 보장은 아니다.
+예측P4: 구체AB/BA의 부호·크기는 (7)의 projection으로 결정하며,
+       큰commutator norm 하나만으로 그 실험의순서효과를 보장할 수 없다.
+
+실제검증은 원SG/동일event의 공간·시간refinement 및 경계firstpassage검증과
+별개로, 실제재료·물리Ma/Ms/t0·검출사건과동일시편기록을 결속해야 한다.
+이 문서에서는 새수치실험·새MD·최적화·원고수정·지원서작성을 하지 않았다.
+
+11. 기존문헌과 기여주장의 경계
+
+Markov chain based non-linear fatigue damage accumulation model,
+Probabilistic Engineering Mechanics68(2022)103250의 저자기관 저장소/검색초록은
+전이행렬곱으로 loading sequence를 다룬다고 명시한다.
+https://zaguan.unizar.es/record/150654
+https://zaguan.unizar.es/record/150654/files/texto_completo.pdf
+이번 직접본문접근은403/timeout이었다. 검색초록으로만 확인했고 본문theorem의
+구체부재·우리결과의우선성은 판정하지 않았다.
+
+A framework for fatigue life prediction of materials under the multi-level cyclic loading
+역시 누적failure probability와 loading sequence를 다룬다는 출판사검색초록을 확인했다.
+https://www.sciencedirect.com/science/article/pii/S1350630721003563
+본문접근403. 이들과 '순서를다룬다'는 설명만으로 차별화할 수 없다.
+
+우리기여 후보는 선언damage좌표를새로맞추는대신 원(a,s)SG와firstopening을유지하고,
+event에필요한상태정보의sharp식별범위와 bulk/mask순서항을 함께명시하는 것이다.
+새로운mathematical theorem인지, 기존lumpability/observability/order-analysis의
+직접응용인지에 대한 충분한 문헌감사는 아직 남아 있다.
+
+12. 오늘의 완성과 미완료
+
+완료: 중심주장후보, 유한차원 정리1~3 증명, 원W의내부commutator유도,
+mask의1차항, 기호양의rate반례, 시험가능예측과 기존연구중복범위작성.
+미완료: 독립증명검토, 체계적신규성비교, 원SG에대한이번새protocol수치확인,
+continuum경계domain증명, 실제재료·kinetic·시편균열사건결속.
+따라서 지금은 지원에서 연구기술의핵심방향과증명가능부분을 설명할 수 있는
+조건부이론후보이며, 출판가능신규정리·물리수명검증완료라고 제출해서는 안 된다.
+
+13. 식 자체의 재검토와 과대해석 방지
+
+(3)의 계수2는 확률분포차의l1norm이최대2인규약에서 나온다. TV=||δ||1/2로
+정의하면 같은집단쌍에대한 상계는2 dist∞(r,rowO) TV(δ)다. 고정y의폭은(4)로
+계산해야 하며 global D_O를그y에서달성한다고말하지 않는다.
+(10)의commutator는[B,A]=BA-AB다. 식(7)의AB는A먼저/B나중이므로 이부호와
+일치한다. continuum backward와forward의adjoint에서순서를뒤집는것도명시했다.
+(13)의firstorder항은endpoint-only maskprotocol을직접전개한결과이며 실제SG
+전체적분법의관측결과로주장하지않는다. maskJ는단순대각삭제가아니라†로질량을
+옮기는augmented보존map이다. 그래서initialabsorbed가한번만유지된다.
+
+특히 H_W가상수인조화well에서도(11)은0이아닐수있다. 따라서순서효과가보인다는
+사실만으로 plastic slip·피로균열·영구손상을입증하지못한다. source의비선형장벽,
+열림사건, initial ensemble과physical검출을함께고정해야피로이론주장이된다.
+
+주변탄성이완유도의(7)(8)을사용하려면원W에서중복없는전체에너지를먼저결속해야한다.
+그조건하에서 H를 H_rel로대체해순서응답에기계결합이어떻게들어오는지검토할수있다.
+외력제거가비선형coupling g(q)를만들면load항이상수방향c가아니므로(11)을
+그대로쓰지않고[L0,M∇g·∇]를다시계산해야한다.
+
+위검토는작성자기호재검토다. 독립reviewer나formalproofchecker의승인이아니다.

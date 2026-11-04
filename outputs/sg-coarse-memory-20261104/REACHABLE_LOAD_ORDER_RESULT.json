@@ -1,0 +1,294 @@
+{
+  "status": "PASS_SOURCE_SG_REACHABLE_LOAD_ORDER_COMPARISON",
+  "dateKST": "2026-11-04",
+  "source": "Original N1 SG generator, captured grid and original opening masks",
+  "event_scope": "First exit of continuous-time finite SG chain; original continuum and explicit mask timestepping are distinct",
+  "initial": "Uniform on75 cells inside intersection of every original load mask, declared numerical preparation",
+  "cases": [
+    {
+      "mode": "original_load_masks",
+      "preparation_steps_equivalent": 4,
+      "each_window_model_time": 0.0024384215289303757,
+      "A_force": 0.8,
+      "B_force": 1.4,
+      "common_probe_force": 1.0,
+      "preparation_absorbed_AB_BA": [
+        0.000568400912174694,
+        0.000541281400487895
+      ],
+      "probes": [
+        {
+          "probe_steps_equivalent": 0,
+          "cdf_AB": 0.000568400912174694,
+          "cdf_BA": 0.000541281400487895,
+          "total_gap": 2.711951168679898e-05,
+          "new_absorption_gap_after_preparation": 0.0
+        },
+        {
+          "probe_steps_equivalent": 8,
+          "cdf_AB": 0.000569393384807464,
+          "cdf_BA": 0.0005426700164532578,
+          "total_gap": 2.6723368354206168e-05,
+          "new_absorption_gap_after_preparation": -3.9614333259281164e-07
+        },
+        {
+          "probe_steps_equivalent": 32,
+          "cdf_AB": 0.0005830494954975308,
+          "cdf_BA": 0.0005574529925391204,
+          "total_gap": 2.5596502958410397e-05,
+          "new_absorption_gap_after_preparation": -1.5230087283885823e-06
+        },
+        {
+          "probe_steps_equivalent": 128,
+          "cdf_AB": 0.0007401043198200428,
+          "cdf_BA": 0.0007182141730087104,
+          "total_gap": 2.18901468113324e-05,
+          "new_absorption_gap_after_preparation": -5.229364875466579e-06
+        }
+      ]
+    },
+    {
+      "mode": "original_load_masks",
+      "preparation_steps_equivalent": 16,
+      "each_window_model_time": 0.009753686115721503,
+      "A_force": 0.8,
+      "B_force": 1.4,
+      "common_probe_force": 1.0,
+      "preparation_absorbed_AB_BA": [
+        0.0020147864788784926,
+        0.0020958610593178424
+      ],
+      "probes": [
+        {
+          "probe_steps_equivalent": 0,
+          "cdf_AB": 0.0020147864788784926,
+          "cdf_BA": 0.0020958610593178424,
+          "total_gap": -8.107458043934979e-05,
+          "new_absorption_gap_after_preparation": 0.0
+        },
+        {
+          "probe_steps_equivalent": 8,
+          "cdf_AB": 0.0020156332739020622,
+          "cdf_BA": 0.0020980933669522877,
+          "total_gap": -8.246009305022542e-05,
+          "new_absorption_gap_after_preparation": -1.3855126108756367e-06
+        },
+        {
+          "probe_steps_equivalent": 32,
+          "cdf_AB": 0.0020272850737754677,
+          "cdf_BA": 0.0021136863898982236,
+          "total_gap": -8.640131612275585e-05,
+          "new_absorption_gap_after_preparation": -5.3267356834060635e-06
+        },
+        {
+          "probe_steps_equivalent": 128,
+          "cdf_AB": 0.0021612960224103557,
+          "cdf_BA": 0.0022606604823113725,
+          "total_gap": -9.93644599010168e-05,
+          "new_absorption_gap_after_preparation": -1.8289879461667012e-05
+        }
+      ]
+    },
+    {
+      "mode": "original_load_masks",
+      "preparation_steps_equivalent": 64,
+      "each_window_model_time": 0.03901474446288601,
+      "A_force": 0.8,
+      "B_force": 1.4,
+      "common_probe_force": 1.0,
+      "preparation_absorbed_AB_BA": [
+        0.005005021138425289,
+        0.007385250739537146
+      ],
+      "probes": [
+        {
+          "probe_steps_equivalent": 0,
+          "cdf_AB": 0.005005021138425289,
+          "cdf_BA": 0.007385250739537146,
+          "total_gap": -0.0023802296011118575,
+          "new_absorption_gap_after_preparation": 0.0
+        },
+        {
+          "probe_steps_equivalent": 8,
+          "cdf_AB": 0.005005470156279024,
+          "cdf_BA": 0.007388946390972615,
+          "total_gap": -0.0023834762346935908,
+          "new_absorption_gap_after_preparation": -3.2466335817332367e-06
+        },
+        {
+          "probe_steps_equivalent": 32,
+          "cdf_AB": 0.00501164894141677,
+          "cdf_BA": 0.007404360662365887,
+          "total_gap": -0.0023927117209491177,
+          "new_absorption_gap_after_preparation": -1.2482119837260199e-05
+        },
+        {
+          "probe_steps_equivalent": 128,
+          "cdf_AB": 0.005082728025984127,
+          "cdf_BA": 0.00750581806083135,
+          "total_gap": -0.0024230900348472233,
+          "new_absorption_gap_after_preparation": -4.28604337353658e-05
+        }
+      ]
+    },
+    {
+      "mode": "common_fixed_mask",
+      "preparation_steps_equivalent": 4,
+      "each_window_model_time": 0.0024384215289303757,
+      "A_force": 0.8,
+      "B_force": 1.4,
+      "common_probe_force": 1.0,
+      "preparation_absorbed_AB_BA": [
+        0.0005686671317959743,
+        0.0005842215468536173
+      ],
+      "probes": [
+        {
+          "probe_steps_equivalent": 0,
+          "cdf_AB": 0.0005686671317959743,
+          "cdf_BA": 0.0005842215468536173,
+          "total_gap": -1.5554415057642966e-05,
+          "new_absorption_gap_after_preparation": 0.0
+        },
+        {
+          "probe_steps_equivalent": 8,
+          "cdf_AB": 0.0007797195874617048,
+          "cdf_BA": 0.0007952739688325372,
+          "total_gap": -1.5554381370832355e-05,
+          "new_absorption_gap_after_preparation": 3.368681061096529e-11
+        },
+        {
+          "probe_steps_equivalent": 32,
+          "cdf_AB": 0.0013475410981224503,
+          "cdf_BA": 0.0013630953905919086,
+          "total_gap": -1.5554292469458246e-05,
+          "new_absorption_gap_after_preparation": 1.2258818472051652e-10
+        },
+        {
+          "probe_steps_equivalent": 128,
+          "cdf_AB": 0.002877447712158172,
+          "cdf_BA": 0.002893001778478265,
+          "total_gap": -1.555406632009317e-05,
+          "new_absorption_gap_after_preparation": 3.487375496886991e-10
+        }
+      ]
+    },
+    {
+      "mode": "common_fixed_mask",
+      "preparation_steps_equivalent": 16,
+      "each_window_model_time": 0.009753686115721503,
+      "A_force": 0.8,
+      "B_force": 1.4,
+      "common_probe_force": 1.0,
+      "preparation_absorbed_AB_BA": [
+        0.002018825570450918,
+        0.0022488467113243593
+      ],
+      "probes": [
+        {
+          "probe_steps_equivalent": 0,
+          "cdf_AB": 0.002018825570450918,
+          "cdf_BA": 0.0022488467113243593,
+          "total_gap": -0.00023002114087344134,
+          "new_absorption_gap_after_preparation": 0.0
+        },
+        {
+          "probe_steps_equivalent": 8,
+          "cdf_AB": 0.0021988659877589414,
+          "cdf_BA": 0.0024288866996869064,
+          "total_gap": -0.00023002071192796498,
+          "new_absorption_gap_after_preparation": 4.289454763606315e-10
+        },
+        {
+          "probe_steps_equivalent": 32,
+          "cdf_AB": 0.0026832615943379883,
+          "cdf_BA": 0.002913281174359508,
+          "total_gap": -0.00023001958002151967,
+          "new_absorption_gap_after_preparation": 1.5608519216697703e-09
+        },
+        {
+          "probe_steps_equivalent": 128,
+          "cdf_AB": 0.003988482083786417,
+          "cdf_BA": 0.004218498785478624,
+          "total_gap": -0.00023001670169220736,
+          "new_absorption_gap_after_preparation": 4.439181233977657e-09
+        }
+      ]
+    },
+    {
+      "mode": "common_fixed_mask",
+      "preparation_steps_equivalent": 64,
+      "each_window_model_time": 0.03901474446288601,
+      "A_force": 0.8,
+      "B_force": 1.4,
+      "common_probe_force": 1.0,
+      "preparation_absorbed_AB_BA": [
+        0.0050578944506612395,
+        0.007773160604551018
+      ],
+      "probes": [
+        {
+          "probe_steps_equivalent": 0,
+          "cdf_AB": 0.0050578944506612395,
+          "cdf_BA": 0.007773160604551018,
+          "total_gap": -0.0027152661538897786,
+          "new_absorption_gap_after_preparation": 0.0
+        },
+        {
+          "probe_steps_equivalent": 8,
+          "cdf_AB": 0.005153265207909404,
+          "cdf_BA": 0.007868528588248252,
+          "total_gap": -0.002715263380338848,
+          "new_absorption_gap_after_preparation": 2.773550930590396e-09
+        },
+        {
+          "probe_steps_equivalent": 32,
+          "cdf_AB": 0.005409879098036157,
+          "cdf_BA": 0.008125135162819068,
+          "total_gap": -0.002715256064782911,
+          "new_absorption_gap_after_preparation": 1.0089106867658404e-08
+        },
+        {
+          "probe_steps_equivalent": 128,
+          "cdf_AB": 0.006101527487955209,
+          "cdf_BA": 0.00881676498242795,
+          "total_gap": -0.00271523749447274,
+          "new_absorption_gap_after_preparation": 2.8659417038341684e-08
+        }
+      ]
+    }
+  ],
+  "fixed_mask_commutator_coefficient": -2.686212595136195,
+  "short_window_scaling": [
+    {
+      "window_time": 0.0006096053822325939,
+      "gap": -9.916446639594119e-07,
+      "gap_over_t_squared": -2.668446461731647,
+      "error_to_commutator_coefficient": 0.0177661334045478
+    },
+    {
+      "window_time": 0.00030480269111629696,
+      "gap": -2.4873483837286015e-07,
+      "gap_over_t_squared": -2.677312240920276,
+      "error_to_commutator_coefficient": 0.008900354215918949
+    },
+    {
+      "window_time": 0.00015240134555814848,
+      "gap": -6.228696956709593e-08,
+      "gap_over_t_squared": -2.681758086848043,
+      "error_to_commutator_coefficient": 0.00445450828815197
+    },
+    {
+      "window_time": 7.620067277907424e-05,
+      "gap": -1.5584668743632334e-08,
+      "gap_over_t_squared": -2.6839842570323045,
+      "error_to_commutator_coefficient": 0.002228338103890337
+    }
+  ],
+  "checks_count": 64,
+  "checks_all_passed": true,
+  "new_protocols_not_old_suite": true,
+  "material_or_physical_time_validation": false,
+  "independent_review": false,
+  "wall_seconds": 0.2511905999999726
+}

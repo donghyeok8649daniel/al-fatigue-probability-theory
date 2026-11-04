@@ -1,0 +1,214 @@
+{
+  "status": "PASS_EQUAL_AGGREGATE_SOURCE_OPERATOR_COUNTEREXAMPLE",
+  "dateKST": "2026-11-04",
+  "pid": 30172,
+  "wall_seconds": 6.431503499974497,
+  "declared_preparation": "60% original post-mask Gibbs survivor law plus40% surviving mass in one principal-well cell crossed by the next load increase; same A0",
+  "actual_physical_initial_law": null,
+  "boundary_cell_index": 82,
+  "boundary_a": 1.3530305555555555,
+  "boundary_s": 1.1102230246251565e-16,
+  "initial_macro_equality": true,
+  "levels": [
+    {
+      "normal_resolution": 1,
+      "macrostates": 4,
+      "cases": [
+        {
+          "truth": 8.697240617034856e-16,
+          "lower": 3.7230538276597747e-37,
+          "upper": 0.9980232465704756,
+          "final_audit": {
+            "step": 24,
+            "cdf_truth": 8.697240617034856e-16,
+            "cdf_markov": 0.0009858007787987022,
+            "cdf_error": 0.0009858007787978324,
+            "aggregate_tv_error": 0.0011854960203696709,
+            "posterior_tv_bound": 0.0011861268007131154,
+            "uniform_tv_bound": 1.0,
+            "one_step_tv_defect": 0.0006763216357457658
+          }
+        },
+        {
+          "truth": 0.3936600977353066,
+          "lower": 3.7230538276597747e-37,
+          "upper": 0.9980232465704756,
+          "final_audit": {
+            "step": 24,
+            "cdf_truth": 0.3936600977353066,
+            "cdf_markov": 0.0009858007787987022,
+            "cdf_error": 0.39267429695650785,
+            "aggregate_tv_error": 0.39267429695650946,
+            "posterior_tv_bound": 0.3942276021159471,
+            "uniform_tv_bound": 1.0,
+            "one_step_tv_defect": 0.0006763216357457658
+          }
+        }
+      ]
+    },
+    {
+      "normal_resolution": 3,
+      "macrostates": 7,
+      "cases": [
+        {
+          "truth": 8.697240617034856e-16,
+          "lower": 3.7230538276597747e-37,
+          "upper": 6.0509323401005215e-09,
+          "final_audit": {
+            "step": 24,
+            "cdf_truth": 8.697240617034856e-16,
+            "cdf_markov": 1.5578698266366188e-11,
+            "cdf_error": 1.5577828542304485e-11,
+            "aggregate_tv_error": 0.00019989743310921585,
+            "posterior_tv_bound": 0.00019992149063245276,
+            "uniform_tv_bound": 1.0,
+            "one_step_tv_defect": 0.007411916713819707
+          }
+        },
+        {
+          "truth": 0.3936600977353066,
+          "lower": 3.7230538276597747e-37,
+          "upper": 0.3992093022587497,
+          "final_audit": {
+            "step": 24,
+            "cdf_truth": 0.3936600977353066,
+            "cdf_markov": 0.0009208822911050296,
+            "cdf_error": 0.39273921544420154,
+            "aggregate_tv_error": 0.39273921544420076,
+            "posterior_tv_bound": 0.4087553749405787,
+            "uniform_tv_bound": 1.0,
+            "one_step_tv_defect": 0.007411916713819707
+          }
+        }
+      ]
+    },
+    {
+      "normal_resolution": 9,
+      "macrostates": 16,
+      "cases": [
+        {
+          "truth": 8.697240617034856e-16,
+          "lower": 4.667308180367144e-23,
+          "upper": 2.6374402494286912e-15,
+          "final_audit": {
+            "step": 24,
+            "cdf_truth": 8.697240617034856e-16,
+            "cdf_markov": 4.373323218723864e-16,
+            "cdf_error": 4.323917398310992e-16,
+            "aggregate_tv_error": 0.0932337300796475,
+            "posterior_tv_bound": 0.10563551416738876,
+            "uniform_tv_bound": 1.0,
+            "one_step_tv_defect": 0.19649211195248864
+          }
+        },
+        {
+          "truth": 0.3936600977353066,
+          "lower": 0.0016289029785620552,
+          "upper": 0.3992090890346762,
+          "final_audit": {
+            "step": 24,
+            "cdf_truth": 0.3936600977353066,
+            "cdf_markov": 0.0018384770604368177,
+            "cdf_error": 0.39182162067486975,
+            "aggregate_tv_error": 0.44734704403808107,
+            "posterior_tv_bound": 0.472380073353346,
+            "uniform_tv_bound": 1.0,
+            "one_step_tv_defect": 0.19649211195248864
+          }
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "name": "bracket_1_0",
+      "passed": true,
+      "value": null
+    },
+    {
+      "name": "tv_bound_1_0",
+      "passed": true,
+      "value": null
+    },
+    {
+      "name": "bracket_1_1",
+      "passed": true,
+      "value": null
+    },
+    {
+      "name": "tv_bound_1_1",
+      "passed": true,
+      "value": null
+    },
+    {
+      "name": "same_raw_macro_initial_law",
+      "passed": true,
+      "value": null
+    },
+    {
+      "name": "same_initial_absorbed_mass",
+      "passed": true,
+      "value": null
+    },
+    {
+      "name": "distinct_finite_horizon_cdf",
+      "passed": true,
+      "value": null
+    },
+    {
+      "name": "boundary_mixture_exact_memory",
+      "passed": true,
+      "value": 2.6645352591003757e-15
+    },
+    {
+      "name": "same_macro_predictor_for_both",
+      "passed": true,
+      "value": null
+    },
+    {
+      "name": "bracket_3_0",
+      "passed": true,
+      "value": null
+    },
+    {
+      "name": "tv_bound_3_0",
+      "passed": true,
+      "value": null
+    },
+    {
+      "name": "bracket_3_1",
+      "passed": true,
+      "value": null
+    },
+    {
+      "name": "tv_bound_3_1",
+      "passed": true,
+      "value": null
+    },
+    {
+      "name": "bracket_9_0",
+      "passed": true,
+      "value": null
+    },
+    {
+      "name": "tv_bound_9_0",
+      "passed": true,
+      "value": null
+    },
+    {
+      "name": "bracket_9_1",
+      "passed": true,
+      "value": null
+    },
+    {
+      "name": "tv_bound_9_1",
+      "passed": true,
+      "value": null
+    }
+  ],
+  "passed_checks": 17,
+  "new_normal_entrypoint_runs": 0,
+  "normal_entrypoint_reference": "SOURCE_BRIDGE_RESULT.json",
+  "independent_review": "NOT_PERFORMED",
+  "outward_roundoff_certificate": false
+}
