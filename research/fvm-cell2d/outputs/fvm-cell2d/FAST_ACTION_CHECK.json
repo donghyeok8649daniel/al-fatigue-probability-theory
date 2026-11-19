@@ -1,0 +1,84 @@
+{
+  "L1": 1.1553871948826253e-14,
+  "CDF": 3.970466940254533e-23,
+  "fast_audit": {
+    "method": "full_sparse_CRAM48_successive_orders_16_48",
+    "state_dimension": 2,
+    "independent_cell_count": 2,
+    "mass_table_shape": [
+      2,
+      10422
+    ],
+    "common_operator_shape": [
+      6166,
+      6166
+    ],
+    "maximum_successive_L1": 1.976719743487628e-14,
+    "maximum_successive_CDF": 1.475698881647421e-16,
+    "maximum_mass_residual": 3.1086244689504383e-15,
+    "maximum_negative_mass": 2.447351210313383e-23,
+    "explicit_moving_event_increment": [
+      1.0454758056142646e-51,
+      1.0454758056142646e-51
+    ],
+    "first_passage_flux": [
+      5.635353090651268e-09,
+      5.635353090651268e-09
+    ],
+    "numerical_mass_loss_added_to_event": false,
+    "probability_renormalized": false,
+    "probability_table_bytes": 166752,
+    "rational_action_checks": [
+      {
+        "maximum_LU_bytes": 7312844,
+        "maximum_scaled_solve_residual": 1.1826915466620009e-14,
+        "rational_order": 48,
+        "substeps": 1
+      }
+    ]
+  },
+  "reference_audit": {
+    "method": "full_sparse_CRAM48_successive_substeps",
+    "state_dimension": 2,
+    "independent_cell_count": 2,
+    "mass_table_shape": [
+      2,
+      10422
+    ],
+    "common_operator_shape": [
+      6166,
+      6166
+    ],
+    "maximum_successive_L1": 1.1553871988530914e-14,
+    "maximum_successive_CDF": 3.970466940254533e-23,
+    "maximum_mass_residual": 8.659739592076221e-15,
+    "maximum_negative_mass": 1.8174637274737977e-29,
+    "explicit_moving_event_increment": [
+      1.0454758056142646e-51,
+      1.0454758056142646e-51
+    ],
+    "first_passage_flux": [
+      5.635353090651308e-09,
+      5.635353090651308e-09
+    ],
+    "numerical_mass_loss_added_to_event": false,
+    "probability_renormalized": false,
+    "probability_table_bytes": 166752,
+    "rational_action_checks": [
+      {
+        "maximum_LU_bytes": 7312844,
+        "maximum_scaled_solve_residual": 1.1826915466620009e-14,
+        "rational_order": 48,
+        "substeps": 1
+      },
+      {
+        "maximum_LU_bytes": 7329204,
+        "maximum_scaled_solve_residual": 4.967328934262522e-15,
+        "rational_order": 48,
+        "substeps": 2
+      }
+    ]
+  },
+  "seconds": 4.486492800002452,
+  "accepted": true
+}

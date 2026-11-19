@@ -1,0 +1,1378 @@
+{
+  "case": "a1_s2_outer1",
+  "setup": {
+    "case": "a1_s2_outer1",
+    "axes_levels": [
+      1,
+      2
+    ],
+    "outer": 1,
+    "subdivisions": [
+      3,
+      1
+    ],
+    "shape": [
+      723,
+      85
+    ],
+    "total_states_per_cell": 61455,
+    "probability_table_shape": [
+      2,
+      61455
+    ],
+    "probability_table_bytes": 983280,
+    "physical_rows": "two independent illustrative replicas under identical local load",
+    "actual_specimen_mesh_solved": false,
+    "model": {
+      "model_id": "coherent_g4",
+      "active_dimension": 2,
+      "independent_physical_cells": true,
+      "energy_formula": "G4(a,s,a,s;f)",
+      "mobility": [
+        0.5,
+        0.025
+      ],
+      "theta": 0.02,
+      "old_four_coordinate_dynamics_exactly_preserved": false,
+      "microscopic_closure": "holonomic coherent motion a1=a2=a, s1=s2=s; all original G4 energy terms retained",
+      "physical_calibration_status": "not calibrated to seconds, MPa, characteristic volume or 30um initiation"
+    },
+    "initial": {
+      "reference": {
+        "state": [
+          0.7799836137856583,
+          0.004078358021914208
+        ],
+        "energy": -11.040639273908884,
+        "gradient_residual": 1.8768190127027573e-14
+      },
+      "normalization_count": 1,
+      "intact_basin_nodes": 55489,
+      "normalizer": 0.000871602767014705,
+      "barrier_interval": [
+        -7.715923576412216,
+        -7.715923576375836
+      ]
+    },
+    "operators": {
+      "1.0": {
+        "reference": {
+          "state": [
+            0.7799836137856583,
+            0.004078358021914208
+          ],
+          "energy": -11.040639273908884,
+          "gradient_residual": 1.8768190127027573e-14
+        },
+        "model": {
+          "model_id": "coherent_g4",
+          "active_dimension": 2,
+          "independent_physical_cells": true,
+          "energy_formula": "G4(a,s,a,s;f)",
+          "mobility": [
+            0.5,
+            0.025
+          ],
+          "theta": 0.02,
+          "old_four_coordinate_dynamics_exactly_preserved": false,
+          "microscopic_closure": "holonomic coherent motion a1=a2=a, s1=s2=s; all original G4 energy terms retained",
+          "physical_calibration_status": "not calibrated to seconds, MPa, characteristic volume or 30um initiation"
+        },
+        "state_dimension": 2,
+        "shape": [
+          723,
+          85
+        ],
+        "states": 60964,
+        "nonzeros": 303214,
+        "sparse_bytes": 3882428,
+        "scaled_column_defect": 3.2993023834029727e-16,
+        "maximum_event_root_residual": 3.552713678800501e-15
+      },
+      "-4.5": {
+        "reference": {
+          "state": [
+            0.7437793543586357,
+            -0.009885935836140117
+          ],
+          "energy": -11.175925078427031,
+          "gradient_residual": 3.733402476058245e-13
+        },
+        "model": {
+          "model_id": "coherent_g4",
+          "active_dimension": 2,
+          "independent_physical_cells": true,
+          "energy_formula": "G4(a,s,a,s;f)",
+          "mobility": [
+            0.5,
+            0.025
+          ],
+          "theta": 0.02,
+          "old_four_coordinate_dynamics_exactly_preserved": false,
+          "microscopic_closure": "holonomic coherent motion a1=a2=a, s1=s2=s; all original G4 energy terms retained",
+          "physical_calibration_status": "not calibrated to seconds, MPa, characteristic volume or 30um initiation"
+        },
+        "state_dimension": 2,
+        "shape": [
+          723,
+          85
+        ],
+        "states": 61455,
+        "nonzeros": 305659,
+        "sparse_bytes": 3913732,
+        "scaled_column_defect": 3.3055304269305276e-16,
+        "maximum_event_root_residual": 0.0
+      },
+      "4.5": {
+        "reference": {
+          "state": [
+            0.8391013173849321,
+            0.043344075266912564
+          ],
+          "energy": -11.287190289833545,
+          "gradient_residual": 6.088629600498052e-12
+        },
+        "model": {
+          "model_id": "coherent_g4",
+          "active_dimension": 2,
+          "independent_physical_cells": true,
+          "energy_formula": "G4(a,s,a,s;f)",
+          "mobility": [
+            0.5,
+            0.025
+          ],
+          "theta": 0.02,
+          "old_four_coordinate_dynamics_exactly_preserved": false,
+          "microscopic_closure": "holonomic coherent motion a1=a2=a, s1=s2=s; all original G4 energy terms retained",
+          "physical_calibration_status": "not calibrated to seconds, MPa, characteristic volume or 30um initiation"
+        },
+        "state_dimension": 2,
+        "shape": [
+          723,
+          85
+        ],
+        "states": 36503,
+        "nonzeros": 181105,
+        "sparse_bytes": 2319276,
+        "scaled_column_defect": 3.3278420075184646e-16,
+        "maximum_event_root_residual": 1.7763568394002505e-15
+      }
+    },
+    "sources": {
+      "independent_cells\\run_family.py": "43931bc4868f2be675fa9ea1169cef4c6e229ca1a25834201d43e96fb27a4aa8",
+      "independent_cells\\fvm2d.py": "c733f47698ebb42c3dd33a1e61e3b46116b3aa36f81672ec39cf3a223322d32e",
+      "outputs\\fvm-integration\\candidate\\joint_model.py": "2a077adcfc4746fa1a8dae4b67e413593bc024b4c79285ac12864a687805c431",
+      "independent_cells\\mesh_plan_loader.py": "0dd67e0dc6f8c5af3e096547d2fbd06424601e3453b8c9ea873c8d8dcb8d88f0",
+      "independent_cells\\cram_action.py": "cd64bc41349ab6df1a21552ea3c051e86cc98fe0750fe242eeca38e6d77e6424",
+      "independent_cells\\fast_propagation.py": "4feb243368d639725ab377778b396476dbcc71954f2918712f3d19c5fc92273b",
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80"
+    }
+  },
+  "records": [
+    {
+      "phase": 1,
+      "cycle": 1,
+      "force": 1.0,
+      "duration": 0.1,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 0.1,
+      "F": 1.8135510471097312e-82,
+      "F_per_cell": [
+        1.8135510471097312e-82,
+        1.8135510471097312e-82
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        1.0000000000000002,
+        1.0000000000000002
+      ],
+      "two_replica_first_event_probability": 3.6271020942194624e-82,
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        60964,
+        60964
+      ],
+      "poisson_powers": 10818,
+      "maximum_successive_L1": 0.0,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 2.220446049250313e-16,
+      "maximum_negative_mass": -0.0,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        1.8135510471097312e-82,
+        1.8135510471097312e-82
+      ],
+      "poisson_mean": 9744.434197355937,
+      "poisson_tail_bound": 1.4825966202401292e-25,
+      "probability_table_bytes": 983280,
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false
+    },
+    {
+      "phase": 2,
+      "cycle": 1,
+      "force": 4.5,
+      "duration": 0.3,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 0.4,
+      "F": 5.249965708854803e-09,
+      "F_per_cell": [
+        5.249965708854803e-09,
+        5.249965708854803e-09
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999947500282,
+        0.9999999947500282
+      ],
+      "two_replica_first_event_probability": 1.0499931390147464e-08,
+      "method": "full_sparse_CRAM48_successive_orders_16_48",
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        36503,
+        36503
+      ],
+      "maximum_successive_L1": 7.566999657021818e-14,
+      "maximum_successive_CDF": 1.1209000155460011e-16,
+      "maximum_mass_residual": 6.106226635438361e-15,
+      "maximum_negative_mass": 5.988395033903035e-31,
+      "explicit_moving_event_increment": [
+        1.1003133654459705e-51,
+        1.1003133654459705e-51
+      ],
+      "first_passage_flux": [
+        5.249965708854803e-09,
+        5.249965708854803e-09
+      ],
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false,
+      "probability_table_bytes": 983280,
+      "rational_action_checks": [
+        {
+          "maximum_LU_bytes": 60934540,
+          "maximum_scaled_solve_residual": 1.5802151787573468e-13,
+          "rational_order": 48,
+          "substeps": 1
+        }
+      ]
+    },
+    {
+      "phase": 3,
+      "cycle": 1,
+      "force": -4.5,
+      "duration": 0.3,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 0.7,
+      "F": 5.249965708854803e-09,
+      "F_per_cell": [
+        5.249965708854803e-09,
+        5.249965708854803e-09
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999947499831,
+        0.9999999947499831
+      ],
+      "two_replica_first_event_probability": 1.0499931390147464e-08,
+      "method": "full_sparse_CRAM48_successive_orders_16_48",
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        61455,
+        61455
+      ],
+      "maximum_successive_L1": 1.4627429361950006e-12,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 5.1181281435219717e-14,
+      "maximum_negative_mass": 3.1398943010453883e-38,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        0.0,
+        0.0
+      ],
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false,
+      "probability_table_bytes": 983280,
+      "rational_action_checks": [
+        {
+          "maximum_LU_bytes": 118833816,
+          "maximum_scaled_solve_residual": 8.09611048183273e-14,
+          "rational_order": 48,
+          "substeps": 1
+        }
+      ]
+    },
+    {
+      "phase": 4,
+      "cycle": 1,
+      "force": 1.0,
+      "duration": 0.1,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 0.8,
+      "F": 5.249965708854803e-09,
+      "F_per_cell": [
+        5.249965708854803e-09,
+        5.249965708854803e-09
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999947499987,
+        0.9999999947499987
+      ],
+      "two_replica_first_event_probability": 1.0499931390147464e-08,
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        60964,
+        60964
+      ],
+      "poisson_powers": 10818,
+      "maximum_successive_L1": 0.0,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 3.5638159090467525e-14,
+      "maximum_negative_mass": 5.6444243776415565e-42,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        6.141224196271406e-57,
+        6.141224196271406e-57
+      ],
+      "poisson_mean": 9744.434197355937,
+      "poisson_tail_bound": 1.4825966202401292e-25,
+      "probability_table_bytes": 983280,
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false
+    },
+    {
+      "phase": 5,
+      "cycle": 2,
+      "force": 1.0,
+      "duration": 0.1,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 0.9,
+      "F": 5.249965708854803e-09,
+      "F_per_cell": [
+        5.249965708854803e-09,
+        5.249965708854803e-09
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999947500162,
+        0.9999999947500162
+      ],
+      "two_replica_first_event_probability": 1.0499931390147464e-08,
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        60964,
+        60964
+      ],
+      "poisson_powers": 10818,
+      "maximum_successive_L1": 0.0,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 1.8096635301390052e-14,
+      "maximum_negative_mass": 3.2907055493109253e-43,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        9.037725246604796e-55,
+        9.037725246604796e-55
+      ],
+      "poisson_mean": 9744.434197355937,
+      "poisson_tail_bound": 1.4825966202401292e-25,
+      "probability_table_bytes": 983280,
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false
+    },
+    {
+      "phase": 6,
+      "cycle": 2,
+      "force": 4.5,
+      "duration": 0.3,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 1.2000000000000002,
+      "F": 8.791578558884536e-09,
+      "F_per_cell": [
+        8.791578558884536e-09,
+        8.791578558884536e-09
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999912083998,
+        0.9999999912083998
+      ],
+      "two_replica_first_event_probability": 1.758315704047722e-08,
+      "method": "full_sparse_CRAM48_successive_orders_16_48",
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        36503,
+        36503
+      ],
+      "maximum_successive_L1": 7.51253517036596e-14,
+      "maximum_successive_CDF": 1.4238890030065908e-16,
+      "maximum_mass_residual": 2.1649348980190553e-14,
+      "maximum_negative_mass": 6.494838948460673e-31,
+      "explicit_moving_event_increment": [
+        1.1089458275734306e-42,
+        1.1089458275734306e-42
+      ],
+      "first_passage_flux": [
+        3.5416128500297336e-09,
+        3.5416128500297336e-09
+      ],
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false,
+      "probability_table_bytes": 983280,
+      "rational_action_checks": [
+        {
+          "maximum_LU_bytes": 60934540,
+          "maximum_scaled_solve_residual": 1.7584042247723613e-13,
+          "rational_order": 48,
+          "substeps": 1
+        }
+      ]
+    },
+    {
+      "phase": 7,
+      "cycle": 2,
+      "force": -4.5,
+      "duration": 0.3,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 1.5,
+      "F": 8.791578558884536e-09,
+      "F_per_cell": [
+        8.791578558884536e-09,
+        8.791578558884536e-09
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999912083561,
+        0.9999999912083561
+      ],
+      "two_replica_first_event_probability": 1.758315704047722e-08,
+      "method": "full_sparse_CRAM48_successive_orders_16_48",
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        61455,
+        61455
+      ],
+      "maximum_successive_L1": 8.860064111278523e-13,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 6.52811138479592e-14,
+      "maximum_negative_mass": 2.0049451965265857e-26,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        0.0,
+        0.0
+      ],
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false,
+      "probability_table_bytes": 983280,
+      "rational_action_checks": [
+        {
+          "maximum_LU_bytes": 118833816,
+          "maximum_scaled_solve_residual": 6.780251329722087e-14,
+          "rational_order": 48,
+          "substeps": 1
+        }
+      ]
+    },
+    {
+      "phase": 8,
+      "cycle": 2,
+      "force": 1.0,
+      "duration": 0.1,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 1.6,
+      "F": 8.791578558884536e-09,
+      "F_per_cell": [
+        8.791578558884536e-09,
+        8.791578558884536e-09
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999912083727,
+        0.9999999912083727
+      ],
+      "two_replica_first_event_probability": 1.758315704047722e-08,
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        60964,
+        60964
+      ],
+      "poisson_powers": 10818,
+      "maximum_successive_L1": 0.0,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 4.873879078104437e-14,
+      "maximum_negative_mass": 3.8844805360577075e-33,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        -9.266808421067877e-56,
+        -9.266808421067877e-56
+      ],
+      "poisson_mean": 9744.434197355937,
+      "poisson_tail_bound": 1.4825966202401292e-25,
+      "probability_table_bytes": 983280,
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false
+    },
+    {
+      "phase": 9,
+      "cycle": 3,
+      "force": 1.0,
+      "duration": 0.1,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 1.7000000000000002,
+      "F": 8.791578558884536e-09,
+      "F_per_cell": [
+        8.791578558884536e-09,
+        8.791578558884536e-09
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999912083901,
+        0.9999999912083901
+      ],
+      "two_replica_first_event_probability": 1.758315704047722e-08,
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        60964,
+        60964
+      ],
+      "poisson_powers": 10818,
+      "maximum_successive_L1": 0.0,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 3.1308289294429414e-14,
+      "maximum_negative_mass": 1.7675688946495023e-42,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        -4.190086365892558e-53,
+        -4.190086365892558e-53
+      ],
+      "poisson_mean": 9744.434197355937,
+      "poisson_tail_bound": 1.4825966202401292e-25,
+      "probability_table_bytes": 983280,
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false
+    },
+    {
+      "phase": 10,
+      "cycle": 3,
+      "force": 4.5,
+      "duration": 0.3,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 2.0,
+      "F": 1.2241597016181597e-08,
+      "F_per_cell": [
+        1.2241597016181597e-08,
+        1.2241597016181597e-08
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999877583657,
+        0.9999999877583657
+      ],
+      "two_replica_first_event_probability": 2.4483193882506495e-08,
+      "method": "full_sparse_CRAM48_successive_orders_16_48",
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        36503,
+        36503
+      ],
+      "maximum_successive_L1": 7.693138718562762e-14,
+      "maximum_successive_CDF": 1.4675331118046138e-16,
+      "maximum_mass_residual": 3.7192471324942744e-14,
+      "maximum_negative_mass": 3.402401632752514e-30,
+      "explicit_moving_event_increment": [
+        -5.699497929878217e-43,
+        -5.699497929878217e-43
+      ],
+      "first_passage_flux": [
+        3.4500184572970606e-09,
+        3.4500184572970606e-09
+      ],
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false,
+      "probability_table_bytes": 983280,
+      "rational_action_checks": [
+        {
+          "maximum_LU_bytes": 60934540,
+          "maximum_scaled_solve_residual": 1.6360520763040453e-13,
+          "rational_order": 48,
+          "substeps": 1
+        }
+      ]
+    },
+    {
+      "phase": 11,
+      "cycle": 3,
+      "force": -4.5,
+      "duration": 0.3,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 2.3,
+      "F": 1.2241597016181597e-08,
+      "F_per_cell": [
+        1.2241597016181597e-08,
+        1.2241597016181597e-08
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999877583222,
+        0.9999999877583222
+      ],
+      "two_replica_first_event_probability": 2.4483193882506495e-08,
+      "method": "full_sparse_CRAM48_successive_orders_16_48",
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        61455,
+        61455
+      ],
+      "maximum_successive_L1": 8.607045335867022e-13,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 8.071321389024888e-14,
+      "maximum_negative_mass": 3.3749340121054564e-27,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        0.0,
+        0.0
+      ],
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false,
+      "probability_table_bytes": 983280,
+      "rational_action_checks": [
+        {
+          "maximum_LU_bytes": 118833816,
+          "maximum_scaled_solve_residual": 9.280362390866183e-14,
+          "rational_order": 48,
+          "substeps": 1
+        }
+      ]
+    },
+    {
+      "phase": 12,
+      "cycle": 3,
+      "force": 1.0,
+      "duration": 0.1,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 2.4000000000000004,
+      "F": 1.2241597016181597e-08,
+      "F_per_cell": [
+        1.2241597016181597e-08,
+        1.2241597016181597e-08
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999877583375,
+        0.9999999877583375
+      ],
+      "two_replica_first_event_probability": 2.4483193882506495e-08,
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        60964,
+        60964
+      ],
+      "poisson_powers": 10818,
+      "maximum_successive_L1": 5.934729841099874e-67,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 6.539213615042172e-14,
+      "maximum_negative_mass": 3.751406139614951e-34,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        7.699395048505693e-56,
+        7.699395048505693e-56
+      ],
+      "poisson_mean": 9744.434197355937,
+      "poisson_tail_bound": 1.4825966202401292e-25,
+      "probability_table_bytes": 983280,
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false
+    },
+    {
+      "phase": 13,
+      "cycle": 4,
+      "force": 1.0,
+      "duration": 0.1,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 2.5000000000000004,
+      "F": 1.2241597016181597e-08,
+      "F_per_cell": [
+        1.2241597016181597e-08,
+        1.2241597016181597e-08
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999877583556,
+        0.9999999877583556
+      ],
+      "two_replica_first_event_probability": 2.4483193882506495e-08,
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        60964,
+        60964
+      ],
+      "poisson_powers": 10818,
+      "maximum_successive_L1": 0.0,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 4.729550084903167e-14,
+      "maximum_negative_mass": 1.962481581046178e-42,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        3.044850311663708e-53,
+        3.044850311663708e-53
+      ],
+      "poisson_mean": 9744.434197355937,
+      "poisson_tail_bound": 1.4825966202401292e-25,
+      "probability_table_bytes": 983280,
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false
+    },
+    {
+      "phase": 14,
+      "cycle": 4,
+      "force": 4.5,
+      "duration": 0.3,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 2.8000000000000003,
+      "F": 1.5681685466316003e-08,
+      "F_per_cell": [
+        1.5681685466316003e-08,
+        1.5681685466316003e-08
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999843182629,
+        0.9999999843182629
+      ],
+      "two_replica_first_event_probability": 3.1363370686716755e-08,
+      "method": "full_sparse_CRAM48_successive_orders_16_48",
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        36503,
+        36503
+      ],
+      "maximum_successive_L1": 7.596072572904808e-14,
+      "maximum_successive_CDF": 1.4729951425536179e-16,
+      "maximum_mass_residual": 5.162537064506978e-14,
+      "maximum_negative_mass": 2.4461450750983017e-30,
+      "explicit_moving_event_increment": [
+        7.848194115258614e-44,
+        7.848194115258614e-44
+      ],
+      "first_passage_flux": [
+        3.440088450134407e-09,
+        3.440088450134407e-09
+      ],
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false,
+      "probability_table_bytes": 983280,
+      "rational_action_checks": [
+        {
+          "maximum_LU_bytes": 60934540,
+          "maximum_scaled_solve_residual": 1.7016709849493732e-13,
+          "rational_order": 48,
+          "substeps": 1
+        }
+      ]
+    },
+    {
+      "phase": 15,
+      "cycle": 4,
+      "force": -4.5,
+      "duration": 0.3,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 3.1000000000000005,
+      "F": 1.5681685466316003e-08,
+      "F_per_cell": [
+        1.5681685466316003e-08,
+        1.5681685466316003e-08
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999843182191,
+        0.9999999843182191
+      ],
+      "two_replica_first_event_probability": 3.1363370686716755e-08,
+      "method": "full_sparse_CRAM48_successive_orders_16_48",
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        61455,
+        61455
+      ],
+      "maximum_successive_L1": 8.581353729584829e-13,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 9.536815781530095e-14,
+      "maximum_negative_mass": 1.1606809579109638e-37,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        0.0,
+        0.0
+      ],
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false,
+      "probability_table_bytes": 983280,
+      "rational_action_checks": [
+        {
+          "maximum_LU_bytes": 118833816,
+          "maximum_scaled_solve_residual": 8.729219782705715e-14,
+          "rational_order": 48,
+          "substeps": 1
+        }
+      ]
+    },
+    {
+      "phase": 16,
+      "cycle": 4,
+      "force": 1.0,
+      "duration": 0.1,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 3.2,
+      "F": 1.5681685466316003e-08,
+      "F_per_cell": [
+        1.5681685466316003e-08,
+        1.5681685466316003e-08
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999843182356,
+        0.9999999843182356
+      ],
+      "two_replica_first_event_probability": 3.1363370686716755e-08,
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        60964,
+        60964
+      ],
+      "poisson_powers": 10818,
+      "maximum_successive_L1": 0.0,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 7.893685705084863e-14,
+      "maximum_negative_mass": 2.0747328091031716e-41,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        5.525425660632477e-58,
+        5.525425660632477e-58
+      ],
+      "poisson_mean": 9744.434197355937,
+      "poisson_tail_bound": 1.4825966202401292e-25,
+      "probability_table_bytes": 983280,
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false
+    },
+    {
+      "phase": 17,
+      "cycle": 5,
+      "force": 1.0,
+      "duration": 0.1,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 3.3000000000000003,
+      "F": 1.5681685466316003e-08,
+      "F_per_cell": [
+        1.5681685466316003e-08,
+        1.5681685466316003e-08
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999843182539,
+        0.9999999843182539
+      ],
+      "two_replica_first_event_probability": 3.1363370686716755e-08,
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        60964,
+        60964
+      ],
+      "poisson_powers": 10818,
+      "maximum_successive_L1": 0.0,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 6.061817714453355e-14,
+      "maximum_negative_mass": 9.468737070404465e-43,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        -2.2505040841915935e-54,
+        -2.2505040841915935e-54
+      ],
+      "poisson_mean": 9744.434197355937,
+      "poisson_tail_bound": 1.4825966202401292e-25,
+      "probability_table_bytes": 983280,
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false
+    },
+    {
+      "phase": 18,
+      "cycle": 5,
+      "force": 4.5,
+      "duration": 0.3,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 3.6,
+      "F": 1.9120588247249884e-08,
+      "F_per_cell": [
+        1.9120588247249884e-08,
+        1.9120588247249884e-08
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.999999980879348,
+        0.999999980879348
+      ],
+      "two_replica_first_event_probability": 3.824117612890287e-08,
+      "method": "full_sparse_CRAM48_successive_orders_16_48",
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        36503,
+        36503
+      ],
+      "maximum_successive_L1": 7.488635044136327e-14,
+      "maximum_successive_CDF": 1.473660617628223e-16,
+      "maximum_mass_residual": 6.372680161348399e-14,
+      "maximum_negative_mass": 2.698815128843789e-30,
+      "explicit_moving_event_increment": [
+        3.572556190931492e-44,
+        3.572556190931492e-44
+      ],
+      "first_passage_flux": [
+        3.4389027809338805e-09,
+        3.4389027809338805e-09
+      ],
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false,
+      "probability_table_bytes": 983280,
+      "rational_action_checks": [
+        {
+          "maximum_LU_bytes": 60934540,
+          "maximum_scaled_solve_residual": 1.7058455534648814e-13,
+          "rational_order": 48,
+          "substeps": 1
+        }
+      ]
+    },
+    {
+      "phase": 19,
+      "cycle": 5,
+      "force": -4.5,
+      "duration": 0.3,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 3.9000000000000004,
+      "F": 1.9120588247249884e-08,
+      "F_per_cell": [
+        1.9120588247249884e-08,
+        1.9120588247249884e-08
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999808793043,
+        0.9999999808793043
+      ],
+      "two_replica_first_event_probability": 3.824117612890287e-08,
+      "method": "full_sparse_CRAM48_successive_orders_16_48",
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        61455,
+        61455
+      ],
+      "maximum_successive_L1": 8.578693603738173e-13,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 1.0746958878371515e-13,
+      "maximum_negative_mass": 1.5254676691722197e-27,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        0.0,
+        0.0
+      ],
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false,
+      "probability_table_bytes": 983280,
+      "rational_action_checks": [
+        {
+          "maximum_LU_bytes": 118833816,
+          "maximum_scaled_solve_residual": 8.369100245523565e-14,
+          "rational_order": 48,
+          "substeps": 1
+        }
+      ]
+    },
+    {
+      "phase": 20,
+      "cycle": 5,
+      "force": 1.0,
+      "duration": 0.1,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 4.0,
+      "F": 1.9120588247249884e-08,
+      "F_per_cell": [
+        1.9120588247249884e-08,
+        1.9120588247249884e-08
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999808793207,
+        0.9999999808793207
+      ],
+      "two_replica_first_event_probability": 3.824117612890287e-08,
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        60964,
+        60964
+      ],
+      "poisson_powers": 10818,
+      "maximum_successive_L1": 0.0,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 9.103828801926284e-14,
+      "maximum_negative_mass": 8.138245116003603e-36,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        3.966546200721043e-56,
+        3.966546200721043e-56
+      ],
+      "poisson_mean": 9744.434197355937,
+      "poisson_tail_bound": 1.4825966202401292e-25,
+      "probability_table_bytes": 983280,
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false
+    },
+    {
+      "phase": 21,
+      "cycle": 6,
+      "force": 1.0,
+      "duration": 0.1,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 4.1,
+      "F": 1.9120588247249884e-08,
+      "F_per_cell": [
+        1.9120588247249884e-08,
+        1.9120588247249884e-08
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.999999980879339,
+        0.999999980879339
+      ],
+      "two_replica_first_event_probability": 3.824117612890287e-08,
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        60964,
+        60964
+      ],
+      "poisson_powers": 10818,
+      "maximum_successive_L1": 0.0,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 7.283063041541027e-14,
+      "maximum_negative_mass": 3.026937754718636e-43,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        1.4529870222059e-53,
+        1.4529870222059e-53
+      ],
+      "poisson_mean": 9744.434197355937,
+      "poisson_tail_bound": 1.4825966202401292e-25,
+      "probability_table_bytes": 983280,
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false
+    },
+    {
+      "phase": 22,
+      "cycle": 6,
+      "force": 4.5,
+      "duration": 0.3,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 4.4,
+      "F": 2.255934754602379e-08,
+      "F_per_cell": [
+        2.255934754602379e-08,
+        2.255934754602379e-08
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999774405752,
+        0.9999999774405752
+      ],
+      "two_replica_first_event_probability": 4.511869458312342e-08,
+      "method": "full_sparse_CRAM48_successive_orders_16_48",
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        36503,
+        36503
+      ],
+      "maximum_successive_L1": 7.536606743022686e-14,
+      "maximum_successive_CDF": 1.4737412470584315e-16,
+      "maximum_mass_residual": 7.72715225139109e-14,
+      "maximum_negative_mass": 1.658453914333139e-31,
+      "explicit_moving_event_increment": [
+        1.521876134436662e-43,
+        1.521876134436662e-43
+      ],
+      "first_passage_flux": [
+        3.4387592987739058e-09,
+        3.4387592987739058e-09
+      ],
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false,
+      "probability_table_bytes": 983280,
+      "rational_action_checks": [
+        {
+          "maximum_LU_bytes": 60934540,
+          "maximum_scaled_solve_residual": 1.808975157286458e-13,
+          "rational_order": 48,
+          "substeps": 1
+        }
+      ]
+    },
+    {
+      "phase": 23,
+      "cycle": 6,
+      "force": -4.5,
+      "duration": 0.3,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 4.7,
+      "F": 2.255934754602379e-08,
+      "F_per_cell": [
+        2.255934754602379e-08,
+        2.255934754602379e-08
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.999999977440532,
+        0.999999977440532
+      ],
+      "two_replica_first_event_probability": 4.511869458312342e-08,
+      "method": "full_sparse_CRAM48_successive_orders_16_48",
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        61455,
+        61455
+      ],
+      "maximum_successive_L1": 8.577258815134311e-13,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 1.2045919817182948e-13,
+      "maximum_negative_mass": 1.6884444264242702e-36,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        0.0,
+        0.0
+      ],
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false,
+      "probability_table_bytes": 983280,
+      "rational_action_checks": [
+        {
+          "maximum_LU_bytes": 118833816,
+          "maximum_scaled_solve_residual": 8.417753943652605e-14,
+          "rational_order": 48,
+          "substeps": 1
+        }
+      ]
+    },
+    {
+      "phase": 24,
+      "cycle": 6,
+      "force": 1.0,
+      "duration": 0.1,
+      "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80",
+      "model_time": 4.8,
+      "F": 2.255934754602379e-08,
+      "F_per_cell": [
+        2.255934754602379e-08,
+        2.255934754602379e-08
+      ],
+      "U": 0.0,
+      "survivor_mass": [
+        0.9999999774405486,
+        0.9999999774405486
+      ],
+      "two_replica_first_event_probability": 4.511869458312342e-08,
+      "state_dimension": 2,
+      "independent_cell_count": 2,
+      "mass_table_shape": [
+        2,
+        61455
+      ],
+      "common_operator_shape": [
+        60964,
+        60964
+      ],
+      "poisson_powers": 10818,
+      "maximum_successive_L1": 0.0,
+      "maximum_successive_CDF": 0.0,
+      "maximum_mass_residual": 1.0391687510491465e-13,
+      "maximum_negative_mass": 4.3379888122035137e-41,
+      "explicit_moving_event_increment": [
+        0.0,
+        0.0
+      ],
+      "first_passage_flux": [
+        -4.218047871800308e-56,
+        -4.218047871800308e-56
+      ],
+      "poisson_mean": 9744.434197355937,
+      "poisson_tail_bound": 1.4825966202401292e-25,
+      "probability_table_bytes": 983280,
+      "numerical_mass_loss_added_to_event": false,
+      "probability_renormalized": false
+    }
+  ],
+  "completed_phases": 24,
+  "runtime_seconds": 417.5759115999972,
+  "checkpoint_bytes": 950871,
+  "checkpoint_sha256": "168d4b9c1e82a25fc9646f0fda5f9f53835eb459be87b5e263450f247c40cb39",
+  "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80"
+}

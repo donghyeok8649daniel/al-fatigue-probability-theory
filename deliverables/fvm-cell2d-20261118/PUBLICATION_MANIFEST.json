@@ -1,0 +1,309 @@
+{
+  "organization_date": "2026-11-20",
+  "numerical_result_date": "2026-11-18",
+  "model": "coherent_g4",
+  "parent_remote_commit": "c8ccff7553cbb2e66b0c37a76ee8a24808478824",
+  "branch": "probability-pde-solver-v1",
+  "accepted_cases": 8,
+  "accepted_phase_records": 192,
+  "computational_sources_byte_identical": true,
+  "personal_paths_removed_from_public_metadata": true,
+  "original_FINAL_CHECKS_SHA256": "760cb610840cddc5ebc353099a817221a68f8e884e6361be1bceb1aabff45d0f",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1794,
+      "SHA256": "2da434ea1ce76e2e5ab319ea5eca28c9d63c3a1b6b3ba98714421a58ceba3416"
+    },
+    {
+      "path": "README_20260930.md",
+      "bytes": 6590,
+      "SHA256": "2b473f521a87222ac751eb130c46ba77c631c4e38d129efba9b5fd4cae5f2d7e"
+    },
+    {
+      "path": "deliverables/fvm-cell2d-20261118/.gitattributes",
+      "bytes": 75,
+      "SHA256": "e08d1085493cd1a95b26178bbc67c1a827ba826260bb9fdade20135649af7803"
+    },
+    {
+      "path": "deliverables/fvm-cell2d-20261118/CRACK_FVM_2차원_최종검증_20261118.docx",
+      "bytes": 47306,
+      "SHA256": "1a5d37b2d7cb9b7d47c71d3ea496887acdf8831f4c8eac844f797ad1f18725a0"
+    },
+    {
+      "path": "deliverables/fvm-cell2d-20261118/CRACK_FVM_2차원_최종검증_20261118.pdf",
+      "bytes": 488770,
+      "SHA256": "786dfeec0bfd2d12a24de166eac07fdba0623bafd9d840231191ddd6936474cc"
+    },
+    {
+      "path": "deliverables/fvm-cell2d-20261118/CRACK_FVM_cell2d_code_20261120.zip",
+      "bytes": 224118,
+      "SHA256": "c2082a6033db26f3f4d6860d35f3c2912f1ec5331631ce910e33d92e33d98079"
+    },
+    {
+      "path": "deliverables/fvm-cell2d-20261118/README.md",
+      "bytes": 1323,
+      "SHA256": "5a740cb606b849a70c16a5b41e494729a90306bf98073d84e6a10f317727d4c3"
+    },
+    {
+      "path": "deliverables/fvm-cell2d-20261118/evidence/DOCUMENT_QA.json",
+      "bytes": 1762,
+      "SHA256": "23ed9cc172c9d60ed49d0c870b02d4cf77945f45f067db304fb9c588613acf82"
+    },
+    {
+      "path": "deliverables/fvm-cell2d-20261118/evidence/FINAL_DELIVERY.json",
+      "bytes": 1747,
+      "SHA256": "73d38e45eaa88e4cb5ddb1345a5b38c3184d2914de26712c83bbab0e0c2a0672"
+    },
+    {
+      "path": "deliverables/fvm-cell2d-20261118/evidence/ORIGINAL_PORTABLE_SMOKE_CHECK.json",
+      "bytes": 6742,
+      "SHA256": "d5b53f5ffd12c55d1eac419693dabe300f4ec162f088bca216224d6d72b87136"
+    },
+    {
+      "path": "deliverables/fvm-cell2d-20261118/evidence/report_data.json",
+      "bytes": 360553,
+      "SHA256": "45a4f56e2265d9464cfce42849e2102e74c0101c64b098835e130cfdd31559ce"
+    },
+    {
+      "path": "docs/REPOSITORY_INDEX_KO.md",
+      "bytes": 3355,
+      "SHA256": "fe8f8f1de5a189e4f93030bd99d002d8c16e6f0632f858b5d76545d96c3c7841"
+    },
+    {
+      "path": "research/fvm-cell2d/.gitattributes",
+      "bytes": 69,
+      "SHA256": "6fb545c86d9652499880bf808af43d20a6c148ae2934b4d50c34c74400065758"
+    },
+    {
+      "path": "research/fvm-cell2d/README.md",
+      "bytes": 2800,
+      "SHA256": "7b38207e7bda2da93c46ec87964fcd2b99f1b4962e4c852e7fa14ea4c3ab69e3"
+    },
+    {
+      "path": "research/fvm-cell2d/RUN_CELL2D.cmd",
+      "bytes": 631,
+      "SHA256": "b92cf9f08758d30e8e1d94bcbc53ca46b123b6f52259586939ad05392beadb9e"
+    },
+    {
+      "path": "research/fvm-cell2d/SOURCE_PROVENANCE.json",
+      "bytes": 6883,
+      "SHA256": "0a04ca0eb36ef24942d7cd0bae57d6e2e14b018f369db5fb34945a316841deb1"
+    },
+    {
+      "path": "research/fvm-cell2d/independent_cells/OPENMC_LICENSE.txt",
+      "bytes": 1133,
+      "SHA256": "5f5405845324a4d509508bc260617df26e855d8cb6a6841b8b1437eca17e4b05"
+    },
+    {
+      "path": "research/fvm-cell2d/independent_cells/cram_action.py",
+      "bytes": 3771,
+      "SHA256": "cd64bc41349ab6df1a21552ea3c051e86cc98fe0750fe242eeca38e6d77e6424"
+    },
+    {
+      "path": "research/fvm-cell2d/independent_cells/fast_propagation.py",
+      "bytes": 3331,
+      "SHA256": "4feb243368d639725ab377778b396476dbcc71954f2918712f3d19c5fc92273b"
+    },
+    {
+      "path": "research/fvm-cell2d/independent_cells/fvm2d.py",
+      "bytes": 16049,
+      "SHA256": "c733f47698ebb42c3dd33a1e61e3b46116b3aa36f81672ec39cf3a223322d32e"
+    },
+    {
+      "path": "research/fvm-cell2d/independent_cells/mesh_plan_loader.py",
+      "bytes": 458,
+      "SHA256": "0dd67e0dc6f8c5af3e096547d2fbd06424601e3453b8c9ea873c8d8dcb8d88f0"
+    },
+    {
+      "path": "research/fvm-cell2d/independent_cells/run_family.py",
+      "bytes": 11185,
+      "SHA256": "43931bc4868f2be675fa9ea1169cef4c6e229ca1a25834201d43e96fb27a4aa8"
+    },
+    {
+      "path": "research/fvm-cell2d/independent_cells/verify_2d.py",
+      "bytes": 4275,
+      "SHA256": "bbde9700723cbb233097fc041477fb23a0ea8b3860bd1c5099e8389bdd011617"
+    },
+    {
+      "path": "research/fvm-cell2d/independent_cells/verify_cram.py",
+      "bytes": 1257,
+      "SHA256": "b11e6d2c334f2002478d4ae8fdad08f4a081e5f83a2a44f5b5f05433ddc0097d"
+    },
+    {
+      "path": "research/fvm-cell2d/independent_cells/verify_fast.py",
+      "bytes": 725,
+      "SHA256": "da6ff73ca9d4b86542ea481cbb1cd6c763cc094397c8c7f7e8976e840eeb440f"
+    },
+    {
+      "path": "research/fvm-cell2d/independent_cells/verify_stiff_restart.py",
+      "bytes": 1667,
+      "SHA256": "d20c6cb038457657e781eb0dc426cbeec160521fc5bdfafc3319e0f73c77a0a6"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/COMPONENT_CHECKS.json",
+      "bytes": 4875,
+      "SHA256": "5f974ad715ed118ddf5fd708cf2456958d8d74d9ccd403798dbbf78e8b42fa37"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/CRAM_ACTION_CHECK.json",
+      "bytes": 911,
+      "SHA256": "15c30bdfec6e39eabf1df7b9421f6da2fd868a3fb5353698e9493fa9af699597"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/FAST_ACTION_CHECK.json",
+      "bytes": 2377,
+      "SHA256": "e2b20707a4444e6504072c3c74785edeccb44ea40886551a82934624cc03e357"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/FINAL_CHECKS.json",
+      "bytes": 7003,
+      "SHA256": "83b6f077ac6155bd697228643a42b6d76c6348b94414e4bc667bfb208f4e29c0"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/MODEL_ASSUMPTIONS.json",
+      "bytes": 2241,
+      "SHA256": "afd36663459ce81f2e726558dd16515ae81f962c70556b50b74e53abd49604ce"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/STIFF_AND_RESTART_CHECK.json",
+      "bytes": 2764,
+      "SHA256": "5dd4ea66f4f949fd97d7be89b068868f215c2e70a01fd1f57f1c7503ca47a787"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/NATIVE_EXIT_OBSERVED.json",
+      "bytes": 478,
+      "SHA256": "224fb74036271a58d89c380eb194ec68591f830cd6f37668a774b89a7a19ebd4"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a0_s1_outer1/records.json",
+      "bytes": 33370,
+      "SHA256": "f0c293742f9a750d7ea4cb6c7cd7d00881380e55e75ba831b04f616f13483e59"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a0_s1_outer1/result.json",
+      "bytes": 41926,
+      "SHA256": "d999a6f56dc99f1bfe3b42052c01d186f9f5be57df253ba7c4dc0f2925bbed5d"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a0_s2_outer1/records.json",
+      "bytes": 32813,
+      "SHA256": "8b24e6a72945007fc412e5063cd688663329dc3bde1e2ac9fa1615cd98ae2dad"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a0_s2_outer1/result.json",
+      "bytes": 41337,
+      "SHA256": "cff08c23206b71c1dac5592f652017804df1070f64b4bd715189ec35f43570b3"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a0_s3_outer1/records.json",
+      "bytes": 32809,
+      "SHA256": "fd3bd0e4312388d5b3ea6c7736f755fd484dbef2dbff3d47981eb7c4074919de"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a0_s3_outer1/result.json",
+      "bytes": 41332,
+      "SHA256": "72787203e23199d28533fe3478e6c5e0adccf56b8ab15562f491df5e57dba0bc"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a1_s1_outer1/records.json",
+      "bytes": 32846,
+      "SHA256": "6e17cdf5015ae441e86bc36ceaf6b287db0295051ed70798dc7b598dab0aceb5"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a1_s1_outer1/result.json",
+      "bytes": 41368,
+      "SHA256": "59ba3c0a89a189c2e5b74c74a996c1ac5299a16a064dc122885d3f2dbd8789f5"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a1_s2_outer1/records.json",
+      "bytes": 32842,
+      "SHA256": "0a220341444ba3af8ce1ba46ac752c0a7aa04ca5f4af8c71c691e9b4115076b7"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a1_s2_outer1/result.json",
+      "bytes": 41364,
+      "SHA256": "c2cf6bebd3715822ddd57390ef72e89e7d7a38efb689ae225653730f68009703"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a1_s2_outer2/records.json",
+      "bytes": 32874,
+      "SHA256": "e3c86864056f733b96d7aca777e3e39a5fc6bef83139c514c2ade07dcea54bf3"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a1_s2_outer2/result.json",
+      "bytes": 41397,
+      "SHA256": "7a8cd58e53e79cf335300a146b6bbf4755cfa76cb2ddb6170b8f3fd0b5c215c4"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a1_s2_outer4/records.json",
+      "bytes": 32874,
+      "SHA256": "f87d08f94e161b40e0258dca65bcb0c2afd09ea9389da1f39d125f293f9f9494"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a1_s2_outer4/result.json",
+      "bytes": 41398,
+      "SHA256": "af71acc9fdfdc2fee6859541e5ff61119ba6b439f6942d127b17199118c73d6f"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a2_s1_outer1/records.json",
+      "bytes": 35164,
+      "SHA256": "b91aa7345051cbc27f5d17c36f365b67f7959f6eb1b90e74af6b40040556d1ad"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/attempt_normal3_s1/a2_s1_outer1/result.json",
+      "bytes": 43827,
+      "SHA256": "2c7a39094984e6d74df3332186bfb48305f845dfc0cacb9bd16e113ce652e1a6"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/figures/cell2d_cdf_8cases.png",
+      "bytes": 54356,
+      "SHA256": "9f90257b918a346064a45e32db687f61621a734605b5f9ff0dfdad8d375c3689"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-cell2d/figures/cell2d_grid_gates.png",
+      "bytes": 50254,
+      "SHA256": "6af059be864ac37ebb2943304dd59cbe06cad593e2113ba8c0adf311f670c412"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-integration/candidate/joint_model.py",
+      "bytes": 4447,
+      "SHA256": "2a077adcfc4746fa1a8dae4b67e413593bc024b4c79285ac12864a687805c431"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-integration/candidate/reference_kernel/outputs/raw-sg-convergence-20261108/EVENT_MESH_DIAGNOSTIC.json",
+      "bytes": 18106,
+      "SHA256": "2c5ca9e351af5e15783a3bbbefd83ee2a1561673e70deebfc0b9435aeb98ba3b"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-integration/candidate/reference_kernel/outputs/raw-sg-convergence-20261108/MESH_V5_CONTRACT.json",
+      "bytes": 41789,
+      "SHA256": "53fc7de5a5131cf7ee5f294485d949783182e89a20c5f83ce15d874740969b3b"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-integration/candidate/reference_kernel/outputs/raw-sg-convergence-20261108/PLANNING_SENSITIVITY.json",
+      "bytes": 5156,
+      "SHA256": "08e496be51ecb47d20874990a10e10ea9d7ea31df2e842b25fe76bdb9601510a"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-integration/candidate/reference_kernel/outputs/raw-sg-convergence-20261108/mesh_plan.py",
+      "bytes": 2191,
+      "SHA256": "72ec95efe2cec81b368f8352d324bef8cf6fd266326935ded7b63a73a0619bc4"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-integration/candidate/reference_kernel/outputs/raw-sg-convergence-20261108/mesh_plan_v5.py",
+      "bytes": 4890,
+      "SHA256": "75a7b47e9283f087513301ba8606ee004f265df33c928e243c0fb278c52c9134"
+    },
+    {
+      "path": "research/fvm-cell2d/outputs/fvm-integration/candidate/reference_kernel/outputs/raw-sg-convergence-20261108/positive_uniformization.py",
+      "bytes": 5897,
+      "SHA256": "ff1d0a149fc9c77328eeea6721d22295bff05cb77d52eb0955922bda5ac7745a"
+    },
+    {
+      "path": "research/fvm-cell2d/requirements-cell2d.txt",
+      "bytes": 49,
+      "SHA256": "1f349702157b6b4700bb82bc26e48cb144f5d04c1264ec0c52d5462ac316fc67"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "physical_cell_independence": "Separate physical characteristic-volume cells are independent conditional on their prescribed local loading histories.",
+  "within_cell_density": "The full joint density p(a,s,t) is retained. It is not replaced by p(a,t)*p(s,t).",
+  "additional_internal_reduction": "q4=P*q2 with a1=a2=a and s1=s2=s is a holonomic coherent-motion ansatz inside the representative, separate from physical-cell independence.",
+  "excluded_internal_modes": [
+    "relative opening a1-a2",
+    "relative slip s1-s2"
+  ],
+  "energy": "Gc(q2;f)=G4(P*q2;f), including every original LJ/Bessel and explicit pair term on the constraint manifold.",
+  "external_work": "-2*f*((a-A0)+0.2*s)",
+  "mobility": "Mc=(P^T*M4^-1*P)^-1=diag(Ma/2,Ms/2)",
+  "temperature": "Original theta=0.02 for full Gc. If Gc/2 were used instead, theta would also need to be divided by two; that convention is not used here.",
+  "governing_equation": "partial_t p=div_q[Mc*(p*grad_q Gc+theta*grad_q p)]",
+  "intact_reference": "A new stable minimum and GI(f) are computed for this constrained energy; original 4D GI numbers are not copied.",
+  "data_marginalization": "Old killed-joint survivor marginals each integrate to S_joint. Their copied global F/U is not a cell-specific first-passage CDF and cannot be composed with a survival product.",
+  "physical_limit": "Coherence suppresses relative escape modes and can change the initiation probability. Cell independence or equal marginal distributions alone does not establish the coherent-motion ansatz.",
+  "physical_mesh_vs_probability_grid": "Physical mesh volume and Vc are separate from the numerical a/s control-volume quadrature.",
+  "physical_calibration_status": "The present benchmark does not calibrate MPa, seconds, Vc, physical mobility, 30um crack initiation, or experimental S-N lifetime.",
+  "specimen_survival": "S_spec=product_i S_i only for independently initialized cell processes under the specified load; the production test uses two illustrative replicas rather than a full specimen mesh.",
+  "validation_scope": "Observed finite-domain spatial/refinement and numerical action validation, not a certified continuum bound or experimental fatigue validation."
+}

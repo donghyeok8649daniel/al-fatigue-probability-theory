@@ -1,0 +1,43 @@
+{
+  "complete": true,
+  "observed_utc": "2026-11-18T08:08:24.066012+00:00",
+  "active_dimension": 2,
+  "model_id": "coherent_g4",
+  "numerical_cases": 8,
+  "accepted_phase_records": 192,
+  "numerical_gates_recomputed_from_raw_records": true,
+  "native_exit_code": 0,
+  "portable_extracted_package_smoke_passed": true,
+  "Word_PDF_all_pages_reviewed": true,
+  "strict_FINAL_CHECKS_SHA256": "760cb610840cddc5ebc353099a817221a68f8e884e6361be1bceb1aabff45d0f",
+  "files": [
+    {
+      "name": "CRACK_FVM_2차원_수정코드_20261118.zip",
+      "bytes": 40061567,
+      "SHA256": "dcbabae1ad291bc14989925bea59e16d1dbf9860f4e4afc558229ec6035b1651"
+    },
+    {
+      "name": "CRACK_FVM_2차원_최종검증_20261118.pdf",
+      "bytes": 488770,
+      "SHA256": "786dfeec0bfd2d12a24de166eac07fdba0623bafd9d840231191ddd6936474cc"
+    },
+    {
+      "name": "CRACK_FVM_2차원_최종검증_20261118.docx",
+      "bytes": 47306,
+      "SHA256": "1a5d37b2d7cb9b7d47c71d3ea496887acdf8831f4c8eac844f797ad1f18725a0"
+    }
+  ],
+  "assumptions": [
+    "a1=a2=a and s1=s2=s inside each representative cell",
+    "independence between physical cells under specified load history"
+  ],
+  "physical_characteristic_volume_and_mobility_time_calibration_complete": false,
+  "original_requested_deadline_met": false,
+  "earlier_parallel_cache_recompression_failed_and_rolled_back": true,
+  "main_old_4d_files_removed": 1145,
+  "main_old_4d_bytes_removed": 150316227163,
+  "numerical_owner_old_4d_bytes_removed": 49354969400,
+  "total_original_file_bytes_removed": 199671196563,
+  "converted_marginals_used_as_new_independent_solver_restart": false,
+  "cross_cell_correlations_retained_in_migrated_historical_states": false
+}

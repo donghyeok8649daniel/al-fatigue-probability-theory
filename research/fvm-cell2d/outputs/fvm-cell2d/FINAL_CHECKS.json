@@ -1,0 +1,229 @@
+{
+  "accepted": true,
+  "complete": true,
+  "active_dimension": 2,
+  "model": {
+    "model_id": "coherent_g4",
+    "active_dimension": 2,
+    "independent_physical_cells": true,
+    "energy_formula": "G4(a,s,a,s;f)",
+    "mobility": [
+      0.5,
+      0.025
+    ],
+    "theta": 0.02,
+    "old_four_coordinate_dynamics_exactly_preserved": false,
+    "microscopic_closure": "holonomic coherent motion a1=a2=a, s1=s2=s; all original G4 energy terms retained",
+    "physical_calibration_status": "not calibrated to seconds, MPa, characteristic volume or 30um initiation"
+  },
+  "space_and_outer": {
+    "space": [
+      {
+        "left": "a0_s1_outer1",
+        "right": "a1_s1_outer1",
+        "kind": "six_corner_pairs",
+        "cycle_end_raw_relative_differences": [
+          0.002994081351816036,
+          0.003098915390549836,
+          0.0031491661483359955,
+          0.0031778132256822427,
+          0.0031962002149324028,
+          0.003208985808441297
+        ],
+        "maximum": 0.003208985808441297,
+        "accepted": true
+      },
+      {
+        "left": "a0_s1_outer1",
+        "right": "a0_s2_outer1",
+        "kind": "six_corner_pairs",
+        "cycle_end_raw_relative_differences": [
+          0.003507281645239462,
+          0.004070530983518544,
+          0.004187875145426921,
+          0.004239129383086215,
+          0.0042700489312176605,
+          0.00429129510095099
+        ],
+        "maximum": 0.00429129510095099,
+        "accepted": true
+      },
+      {
+        "left": "a0_s1_outer1",
+        "right": "a1_s2_outer1",
+        "kind": "six_corner_pairs",
+        "cycle_end_raw_relative_differences": [
+          0.006507399057798476,
+          0.007177409005274932,
+          0.0073454028827671875,
+          0.007425478869897899,
+          0.007474892542600087,
+          0.007508999099589363
+        ],
+        "maximum": 0.007508999099589363,
+        "accepted": true
+      },
+      {
+        "left": "a1_s1_outer1",
+        "right": "a0_s2_outer1",
+        "kind": "six_corner_pairs",
+        "cycle_end_raw_relative_differences": [
+          0.0005116683168576073,
+          0.0009686139403215443,
+          0.0010354481986753021,
+          0.0010579541766293139,
+          0.0010704274159483336,
+          0.0010788472868766305
+        ],
+        "maximum": 0.0010788472868766305,
+        "accepted": true
+      },
+      {
+        "left": "a1_s1_outer1",
+        "right": "a1_s2_outer1",
+        "kind": "six_corner_pairs",
+        "cycle_end_raw_relative_differences": [
+          0.003502829948156083,
+          0.0040658937539945015,
+          0.004183063572233177,
+          0.004234210115310904,
+          0.004265060340889433,
+          0.004286258747655532
+        ],
+        "maximum": 0.004286258747655532,
+        "accepted": true
+      },
+      {
+        "left": "a0_s2_outer1",
+        "right": "a1_s2_outer1",
+        "kind": "six_corner_pairs",
+        "cycle_end_raw_relative_differences": [
+          0.0029896319313601327,
+          0.0030942826483644566,
+          0.0031443595521236417,
+          0.003172899156766665,
+          0.0031912169588181414,
+          0.003203954882746376
+        ],
+        "maximum": 0.003203954882746376,
+        "accepted": true
+      },
+      {
+        "left": "a2_s1_outer1",
+        "right": "a1_s1_outer1",
+        "kind": "normal_probe",
+        "cycle_end_raw_relative_differences": [
+          0.0018471261322783993,
+          0.0019120625398809242,
+          0.0019431252969551727,
+          0.0019608275052779216,
+          0.0019721889935702215,
+          0.0019800893585497285
+        ],
+        "maximum": 0.0019800893585497285,
+        "accepted": true
+      },
+      {
+        "left": "a0_s3_outer1",
+        "right": "a0_s2_outer1",
+        "kind": "slip_probe",
+        "cycle_end_raw_relative_differences": [
+          0.0022918758997139406,
+          0.00265987211953375,
+          0.0027374041205685995,
+          0.0027713514929390095,
+          0.0027918222022000655,
+          0.002805886047611216
+        ],
+        "maximum": 0.002805886047611216,
+        "accepted": true
+      }
+    ],
+    "outer": [
+      {
+        "left": "a1_s2_outer1",
+        "right": "a1_s2_outer2",
+        "phase_end_absolute_differences": [
+          1.813551042571069e-82,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          6.617444900424222e-24,
+          6.617444900424222e-24,
+          6.617444900424222e-24,
+          6.617444900424222e-24,
+          1.6543612251060553e-23,
+          1.6543612251060553e-23,
+          1.6543612251060553e-23
+        ],
+        "maximum": 1.6543612251060553e-23,
+        "accepted": true
+      },
+      {
+        "left": "a1_s2_outer2",
+        "right": "a1_s2_outer4",
+        "phase_end_absolute_differences": [
+          4.5386622538719033e-91,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          3.308722450212111e-24,
+          3.308722450212111e-24,
+          3.308722450212111e-24,
+          3.308722450212111e-24,
+          3.308722450212111e-24,
+          3.308722450212111e-24,
+          3.308722450212111e-24,
+          3.308722450212111e-24,
+          3.308722450212111e-24,
+          3.308722450212111e-24,
+          3.308722450212111e-24
+        ],
+        "maximum": 3.308722450212111e-24,
+        "accepted": true
+      }
+    ],
+    "space_accepted": true,
+    "outer_accepted": true
+  },
+  "temporal_and_mass_accepted": true,
+  "cases": 8,
+  "phase_records": 192,
+  "numerical_unresolved_U": 0.0,
+  "full_state_domain_retained": true,
+  "source_hashes": {
+    "independent_cells\\run_family.py": "43931bc4868f2be675fa9ea1169cef4c6e229ca1a25834201d43e96fb27a4aa8",
+    "independent_cells\\fvm2d.py": "c733f47698ebb42c3dd33a1e61e3b46116b3aa36f81672ec39cf3a223322d32e",
+    "outputs\\fvm-integration\\candidate\\joint_model.py": "2a077adcfc4746fa1a8dae4b67e413593bc024b4c79285ac12864a687805c431",
+    "independent_cells\\mesh_plan_loader.py": "0dd67e0dc6f8c5af3e096547d2fbd06424601e3453b8c9ea873c8d8dcb8d88f0",
+    "independent_cells\\cram_action.py": "cd64bc41349ab6df1a21552ea3c051e86cc98fe0750fe242eeca38e6d77e6424",
+    "independent_cells\\fast_propagation.py": "4feb243368d639725ab377778b396476dbcc71954f2918712f3d19c5fc92273b",
+    "source_id": "6fe58cd8a5d99edb0f26ce30152a71f2c57cd6a99f6294f8beeed15c68facd80"
+  },
+  "seconds": 761.9144514999934,
+  "probability_output_correction": false,
+  "physical_fatigue_validation_pass": false,
+  "old_4D_runs_reclassified_as_new_2D": false
+}

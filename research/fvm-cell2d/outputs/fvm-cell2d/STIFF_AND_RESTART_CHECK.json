@@ -1,0 +1,99 @@
+{
+  "accepted": true,
+  "active_dimension": 2,
+  "model": {
+    "model_id": "coherent_g4",
+    "active_dimension": 2,
+    "independent_physical_cells": true,
+    "energy_formula": "G4(a,s,a,s;f)",
+    "mobility": [
+      0.5,
+      0.025
+    ],
+    "theta": 0.02,
+    "old_four_coordinate_dynamics_exactly_preserved": false,
+    "microscopic_closure": "holonomic coherent motion a1=a2=a, s1=s2=s; all original G4 energy terms retained",
+    "physical_calibration_status": "not calibrated to seconds, MPa, characteristic volume or 30um initiation"
+  },
+  "L1_BDF_vs_positive_uniformization": 3.5264072909755295e-14,
+  "CDF_BDF_vs_positive_uniformization": 8.334804200982315e-19,
+  "restart_difference": 0.0,
+  "checkpoint_bytes": 1221,
+  "explicit_audit": {
+    "state_dimension": 2,
+    "independent_cell_count": 2,
+    "mass_table_shape": [
+      2,
+      403
+    ],
+    "common_operator_shape": [
+      35,
+      35
+    ],
+    "poisson_powers": 1561,
+    "maximum_successive_L1": 0.0,
+    "maximum_successive_CDF": 0.0,
+    "maximum_mass_residual": 3.042011087472929e-14,
+    "maximum_negative_mass": -0.0,
+    "explicit_moving_event_increment": [
+      2.1081216182162848e-52,
+      1.9492345243273514e-52
+    ],
+    "first_passage_flux": [
+      6.801917101160845e-08,
+      5.150380440644902e-05
+    ],
+    "poisson_mean": 1130.3719870962284,
+    "poisson_tail_bound": 1.1368455515422882e-32,
+    "probability_table_bytes": 6448,
+    "numerical_mass_loss_added_to_event": false,
+    "probability_renormalized": false
+  },
+  "implicit_audit": {
+    "method": "full_sparse_BDF_successive_tolerances",
+    "state_dimension": 2,
+    "independent_cell_count": 2,
+    "mass_table_shape": [
+      2,
+      403
+    ],
+    "common_operator_shape": [
+      35,
+      35
+    ],
+    "maximum_successive_L1": 3.2543910671709364e-14,
+    "maximum_successive_CDF": 1.2495430037895439e-17,
+    "maximum_mass_residual": 1.3322676295501878e-15,
+    "maximum_negative_mass": 0.0,
+    "explicit_moving_event_increment": [
+      2.1081216182162848e-52,
+      1.9492345243273514e-52
+    ],
+    "first_passage_flux": [
+      6.801917101159286e-08,
+      5.150380440644819e-05
+    ],
+    "numerical_mass_loss_added_to_event": false,
+    "probability_renormalized": false,
+    "probability_table_bytes": 6448,
+    "linear_solve_checks": [
+      {
+        "L1": 4.313411646294525e-16,
+        "CDF": 1.0177630256852453e-19,
+        "nfev": [
+          310,
+          446
+        ]
+      },
+      {
+        "L1": 3.2543910671709364e-14,
+        "CDF": 1.2495430037895439e-17,
+        "nfev": [
+          786,
+          1390
+        ]
+      }
+    ]
+  },
+  "seconds": 10.027520400006324
+}

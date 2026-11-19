@@ -1,0 +1,11 @@
+{
+  "root_pid": 50900,
+  "exec_session_id": 76178,
+  "observed_native_exit_code": 0,
+  "command": "python -X utf8 independent_cells/run_family.py --out outputs/fvm-cell2d/attempt_normal3_s1 --base-s 1 --refine 3 --workers 4 --resume-revalidated",
+  "observed_utc": "2026-11-18T07:59:08.646235+00:00",
+  "final_checks_sha256": "760cb610840cddc5ebc353099a817221a68f8e884e6361be1bceb1aabff45d0f",
+  "actual_cases": 8,
+  "actual_phase_records": 192,
+  "accepted": true
+}

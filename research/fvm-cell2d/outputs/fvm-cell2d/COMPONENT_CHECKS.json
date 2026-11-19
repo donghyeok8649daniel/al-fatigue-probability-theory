@@ -1,0 +1,154 @@
+{
+  "model": {
+    "model_id": "coherent_g4",
+    "active_dimension": 2,
+    "independent_physical_cells": true,
+    "energy_formula": "G4(a,s,a,s;f)",
+    "mobility": [
+      0.5,
+      0.025
+    ],
+    "theta": 0.02,
+    "old_four_coordinate_dynamics_exactly_preserved": false,
+    "microscopic_closure": "holonomic coherent motion a1=a2=a, s1=s2=s; all original G4 energy terms retained",
+    "physical_calibration_status": "not calibrated to seconds, MPa, characteristic volume or 30um initiation"
+  },
+  "energy_expansion_absolute_difference": 1.7763568394002505e-15,
+  "finite_difference": [
+    {
+      "gradient_relative": 1.2608013978659701e-10,
+      "hessian_relative": 4.3644379146577347e-11
+    },
+    {
+      "gradient_relative": 3.1615760827340717e-10,
+      "hessian_relative": 1.693186688915908e-10
+    },
+    {
+      "gradient_relative": 1.3319890190821582e-09,
+      "hessian_relative": 2.76872615430828e-10
+    }
+  ],
+  "projected_mobility_difference": 0.0,
+  "action_against_independent_augmented_expm_L1": 3.828692744888529e-15,
+  "action_against_independent_augmented_expm_CDF": 5.048709793414476e-29,
+  "independent_row_isolation_error": 0.0,
+  "reflecting_gibbs_stationarity_scaled": 2.2118635192526826e-16,
+  "initial_a_s_covariance": 1.981697770906017e-06,
+  "initial_joint_vs_product_marginals_L1": 0.014392510714775226,
+  "a_s_joint_density_preserved": true,
+  "per_step_renormalization": false,
+  "audit": {
+    "method": "full_sparse_CRAM48_successive_substeps",
+    "state_dimension": 2,
+    "independent_cell_count": 2,
+    "mass_table_shape": [
+      2,
+      493
+    ],
+    "common_operator_shape": [
+      256,
+      256
+    ],
+    "maximum_successive_L1": 2.355967556426472e-15,
+    "maximum_successive_CDF": 5.048709793414476e-29,
+    "maximum_mass_residual": 8.881784197001252e-16,
+    "maximum_negative_mass": 0.0,
+    "explicit_moving_event_increment": [
+      5.094257380816557e-52,
+      4.4263453488962466e-52
+    ],
+    "first_passage_flux": [
+      4.0417503577609146e-19,
+      2.620003707326705e-13
+    ],
+    "numerical_mass_loss_added_to_event": false,
+    "probability_renormalized": false,
+    "probability_table_bytes": 7888,
+    "rational_action_checks": [
+      {
+        "maximum_LU_bytes": 117764,
+        "maximum_scaled_solve_residual": 8.177324605134237e-16,
+        "rational_order": 48,
+        "substeps": 1
+      },
+      {
+        "maximum_LU_bytes": 117764,
+        "maximum_scaled_solve_residual": 8.05838737084711e-16,
+        "rational_order": 48,
+        "substeps": 2
+      }
+    ]
+  },
+  "operator_checks": [
+    {
+      "reference": {
+        "state": [
+          0.8391013173849321,
+          0.043344075266912564
+        ],
+        "energy": -11.287190289833545,
+        "gradient_residual": 6.088629600498052e-12
+      },
+      "model": {
+        "model_id": "coherent_g4",
+        "active_dimension": 2,
+        "independent_physical_cells": true,
+        "energy_formula": "G4(a,s,a,s;f)",
+        "mobility": [
+          0.5,
+          0.025
+        ],
+        "theta": 0.02,
+        "old_four_coordinate_dynamics_exactly_preserved": false,
+        "microscopic_closure": "holonomic coherent motion a1=a2=a, s1=s2=s; all original G4 energy terms retained",
+        "physical_calibration_status": "not calibrated to seconds, MPa, characteristic volume or 30um initiation"
+      },
+      "state_dimension": 2,
+      "shape": [
+        29,
+        17
+      ],
+      "states": 256,
+      "nonzeros": 1206,
+      "sparse_bytes": 15500,
+      "scaled_column_defect": 2.2300190588608967e-16,
+      "maximum_event_root_residual": 1.7763568394002505e-15
+    },
+    {
+      "reference": {
+        "state": [
+          0.7437793543586357,
+          -0.009885935836140117
+        ],
+        "energy": -11.175925078427031,
+        "gradient_residual": 3.733402476058245e-13
+      },
+      "model": {
+        "model_id": "coherent_g4",
+        "active_dimension": 2,
+        "independent_physical_cells": true,
+        "energy_formula": "G4(a,s,a,s;f)",
+        "mobility": [
+          0.5,
+          0.025
+        ],
+        "theta": 0.02,
+        "old_four_coordinate_dynamics_exactly_preserved": false,
+        "microscopic_closure": "holonomic coherent motion a1=a2=a, s1=s2=s; all original G4 energy terms retained",
+        "physical_calibration_status": "not calibrated to seconds, MPa, characteristic volume or 30um initiation"
+      },
+      "state_dimension": 2,
+      "shape": [
+        29,
+        17
+      ],
+      "states": 493,
+      "nonzeros": 2373,
+      "sparse_bytes": 30452,
+      "scaled_column_defect": 2.0127186270993995e-16,
+      "maximum_event_root_residual": 0.0
+    }
+  ],
+  "seconds": 0.8284749000158627,
+  "accepted": true
+}

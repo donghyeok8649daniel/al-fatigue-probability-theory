@@ -1,0 +1,34 @@
+{
+  "results": [
+    {
+      "substeps": 1,
+      "seconds": 1.213939000008395,
+      "L1": 1.0277809793652009e-13,
+      "CDF": 9.512577044359818e-23,
+      "negative": 2.447351210313383e-23,
+      "balance": 2.886579864025407e-15,
+      "check": {
+        "maximum_LU_bytes": 7312844,
+        "maximum_scaled_solve_residual": 1.1826915466620009e-14,
+        "rational_order": 48,
+        "substeps": 1
+      }
+    },
+    {
+      "substeps": 2,
+      "seconds": 2.3467904000135604,
+      "L1": 9.960207174118643e-14,
+      "CDF": 1.348304398461435e-22,
+      "negative": 1.817463727473798e-29,
+      "balance": 8.659739592076221e-15,
+      "check": {
+        "maximum_LU_bytes": 7329204,
+        "maximum_scaled_solve_residual": 4.967328934262522e-15,
+        "rational_order": 48,
+        "substeps": 2
+      }
+    }
+  ],
+  "seconds": 7.303178600006504,
+  "accepted": true
+}

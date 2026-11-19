@@ -1,0 +1,198 @@
+{
+  "planning_only": true,
+  "accepted_as_scientific_test": false,
+  "certified_spatial_error_bound": false,
+  "original_all_state_test_not_promoted": true,
+  "duality_error": 9.774904122212364e-14,
+  "event_rate_relative_check": 1.77816992821378e-13,
+  "backward_audit": [
+    {
+      "order": 24,
+      "maximum_all_state_change": 0.13629225178635823,
+      "original_global_test_passed": false
+    },
+    {
+      "order": 32,
+      "maximum_all_state_change": 0.0037489304311205673,
+      "original_global_test_passed": false
+    },
+    {
+      "order": 40,
+      "maximum_all_state_change": 1.9577253493885394e-05,
+      "original_global_test_passed": false
+    },
+    {
+      "order": 48,
+      "maximum_all_state_change": 1.3752732286320679e-08,
+      "original_global_test_passed": false
+    },
+    {
+      "order": 56,
+      "maximum_all_state_change": 1.3899414952334155e-10,
+      "original_global_test_passed": false
+    },
+    {
+      "order": 64,
+      "maximum_all_state_change": 6.494693671754703e-12,
+      "original_global_test_passed": false
+    },
+    {
+      "order": 72,
+      "maximum_all_state_change": 3.4072744625746054e-13,
+      "original_global_test_passed": false
+    },
+    {
+      "order": 80,
+      "maximum_all_state_change": 2.711997293403101e-13,
+      "original_global_test_passed": false
+    },
+    {
+      "order": 88,
+      "maximum_all_state_change": 3.322342401190781e-13,
+      "original_global_test_passed": false
+    },
+    {
+      "order": 96,
+      "maximum_all_state_change": 3.052756208628618e-13,
+      "original_global_test_passed": false
+    }
+  ],
+  "forward_audit": [
+    {
+      "order": 24,
+      "change": 0.00017613175203093974,
+      "scalar_change": 2.400324931777095e-07
+    },
+    {
+      "order": 32,
+      "change": 1.4758470480419462e-07,
+      "scalar_change": 1.4073394479272678e-09
+    },
+    {
+      "order": 40,
+      "change": 1.593100175993772e-11,
+      "scalar_change": 4.945771270553189e-13
+    },
+    {
+      "order": 48,
+      "change": 3.909612021165106e-14,
+      "scalar_change": 6.581446000165914e-19
+    }
+  ],
+  "rows": [
+    {
+      "axis": "normal",
+      "breaks": [
+        0.7,
+        0.74,
+        0.9,
+        1.05,
+        1.2,
+        1.45
+      ],
+      "sensitivities": [
+        0.0,
+        3.679304522875863e-06,
+        3.4843380728570147e-06,
+        3.9673091247872415e-06,
+        2.2533509974966945e-06
+      ],
+      "fractions": [
+        0.0,
+        0.2748969894354747,
+        0.260330190243433,
+        0.29641507730147093,
+        0.16835774301962136
+      ],
+      "event_sensitivities": [
+        2.87072145557484e-24,
+        4.198706007457834e-08,
+        4.346404716472135e-09,
+        1.0524581407757808e-07,
+        1.8114756569643605e-06
+      ],
+      "total_sensitivities": [
+        2.87072145557484e-24,
+        3.7212915829504417e-06,
+        3.4886844775734867e-06,
+        4.072554938864819e-06,
+        4.064826654461055e-06
+      ],
+      "total_fractions": [
+        1.8704988313442576e-19,
+        0.24247115802484578,
+        0.22731499169163946,
+        0.26535870413127705,
+        0.2648551461522378
+      ],
+      "energy_variation_weighted": [
+        0.0,
+        6.654517908339516e-05,
+        7.857393717613454e-05,
+        2.4185318948603944e-05,
+        8.925063188359035e-05
+      ],
+      "weighted_fractions": [
+        0.0,
+        0.2573733318472844,
+        0.3038963345795113,
+        0.09354030157151805,
+        0.3451900320016863
+      ]
+    },
+    {
+      "axis": "slip",
+      "breaks": [
+        -0.08,
+        -0.04,
+        0.14,
+        0.25
+      ],
+      "sensitivities": [
+        0.0,
+        3.592004966658314e-06,
+        3.770401064118945e-09
+      ],
+      "fractions": [
+        0.0,
+        0.998951435871672,
+        0.0010485641283279384
+      ],
+      "event_sensitivities": [
+        4.438896670150163e-11,
+        7.484075203663469e-08,
+        1.2145323725481652e-09
+      ],
+      "total_sensitivities": [
+        4.438896670150163e-11,
+        3.666845718694949e-06,
+        4.984933436667111e-09
+      ],
+      "total_fractions": [
+        1.2088909945101012e-05,
+        0.99863031221186,
+        0.00135759887819495
+      ],
+      "energy_variation_weighted": [
+        0.0,
+        1.679483466511109e-05,
+        2.7288471624845796e-08
+      ],
+      "weighted_fractions": [
+        0.0,
+        0.9983778223828803,
+        0.0016221776171197787
+      ]
+    }
+  ],
+  "source_case": "stencil_small_reference",
+  "source_hashes": {
+    "solver_v1/model.py": "36accb2821c8c90fbb2a905f9db3d00b7d97a66cd999b6960d9f490853ed2a65",
+    "solver_v1/lattice_bessel.py": "521cabd98f92689c5c555731fef37d42144e82921c9f5be1000dd7b406e08529",
+    "outputs/crack-nucleus-20261106/CRITERION_ADOPTED_KO.txt": "2dc3d09b1b3bf4f50897e97d2fe2ec3df2cfe0b475f20647d70f9ef36ffe3f37"
+  },
+  "potential_changed": false,
+  "event_changed": false,
+  "SG_entries_changed": false,
+  "seconds": 3.0644968999986304
+}
