@@ -1,0 +1,1302 @@
+% Revision 11: propagate the counted surface potential through governing and dependent equations; R10 preserved.
+% Revision09: reviewed frozen A19/B10/C13; Papeeria synchronization 19 October 2026; R08 backed up.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{geometry}
+\usepackage[hidelinks]{hyperref}
+\geometry{margin=1in}
+\setlength{\emergencystretch}{2em}
+\title{An Energy-Based Probabilistic Framework for Fatigue Crack Initiation:\\
+Governing Equations and Conservative Cell Coupling}
+\author{Donghyeok Kim \quad Minsoo Kang \quad Junhyeok Park}
+\date{Working manuscript --- 20 October 2026\\Revision 11 with PART I--III foundations addendum}
+\begin{document}
+\maketitle
+\begin{abstract}
+We formulate a route from a nonlinear lattice energy to the probability of
+first local opening under a specified load history. The counted cleavage energy, with an explicitly declared coordinate and energy map,
+is a candidate energetic input to an assumed conservative two-coordinate
+Fokker--Planck equation; irreversible loss from
+the intact population defines the first-opening cumulative probability.
+We distinguish this event from experimentally detected crack initiation and
+state the physical clock and observation records needed to connect them.
+Exact population balances show why interacting regions cannot automatically
+be replaced by independent cells. Work consistency specifies conditional
+energy, volume and time mappings for coupling to spatial finite volumes.
+Reviewed analytical results include a finite-time load sensitivity bound
+and uniform far-field force and curvature bounds restricted to the original row kernel.
+The cleavage-potential substitution is propagated through forces, transport, numerical
+fluxes, energy accounting and strain drift; row-specific certificates are not transferred.
+Conditional additions specify local stress observability, the limits of a scalar strain reduction,
+and raw energy and free-energy accounting for opening removal.
+These results retain their explicit assumptions. Atomistic justification of
+the reduced diffusion, material calibration, a complete spatial constitutive
+closure and experimental crack-initiation validation remain open.
+\end{abstract}
+\begin{quote}\small
+Draft scope: theoretical framework and conditional results. No calibrated
+aluminium fatigue life or experimentally validated initiation CDF is claimed.
+The earlier one-dimensional draft is preserved separately; its fitted values
+and imposed spacing-distribution shapes are not current-model inputs.
+\end{quote}
+
+
+% PART I--III foundations addendum, 20 October 2026. Original R11 backed up.
+\subsection*{Foundations audit: status of the two reductions}
+\begin{quote}\small
+The nonlinear Poisson--Bessel identity and the declared rigid cut energy
+are retained. Their identification with a finite-temperature effective
+free energy and with a material probability current are separate steps.
+For the same affine collective coordinate and patch normalization, write
+$V(q,y)=U_\Gamma(q)+V_\perp(q,y)$. Conditional integration gives
+$\Delta A=\Delta U_\Gamma-k_BT\log[Z_\perp(q)/Z_\perp(q_0)]$,
+where $Z_\perp=\int e^{-V_\perp/(k_BT)}dy$.
+Thus $A=U_\Gamma+C$ requires a coordinate-independent bath partition
+factor. Exact dynamical projection generally retains memory, fluctuating
+force and inertia. Only a justified white-bath and small-inertia reduction
+supports the assumed current below. For variable symmetric mobility the
+It\^o drift additionally contains $k_BT\nabla\!\cdot M$.
+
+The standalone companion
+\texttt{First\_Principles\_I\_III\_20261020.tex} supplies the derivations,
+explicit assumptions, counterexamples and eight independent mathematical
+checks. These dimensionless checks are not aluminium fatigue validation.
+Existing Al plane-coordinate kinetic measurements are acknowledged, but
+their zero-drag uncertainty and local-coordinate/thermal mapping remain
+unresolved. Revision 11's equation labels and conditional closure are
+preserved; no physical clock or full downstream audit is certified here.
+\end{quote}
+
+% Editorial integration, 2026-10-18. No new scientific calculation.
+% Current-model main-body replacement; preserve the old draft in a backup.
+% Title, author list, abstract and bibliography are managed by the coordinator.
+\section{Introduction}
+Fatigue crack initiation is a first-event problem: under a specified loading
+history, what is the probability that an initially intact region has opened
+by a given time or cycle? A physically grounded answer requires more than
+an empirical lifetime curve. It requires an energy landscape, a law for
+probability transport, an initial ensemble and an operational opening event.
+Connecting that event to an observed crack additionally requires a physical
+clock and a measurement model.
+The Lennard--Jones family supplies a tractable interaction model, with known
+limitations as a material representation~\cite{SchwerdtfegerWales2024}.
+This work assembles the counted cleavage energy and conservative
+probability equation, then states the conditions needed for cell coupling.
+We separate exact conservation identities, conditional analytical results,
+reduced-dynamics assumptions and experimental validation requirements.
+The objective is a traceable route to crack-initiation probability;
+the present framework is not yet a calibrated fatigue-life predictor.
+
+Figure~\ref{fig:conditional-route} summarizes the conditional analytical route
+and the separate physical and observation inputs needed for its application.
+\begin{figure}[tbp]
+\centering
+\setlength{\fboxsep}{5pt}
+\footnotesize
+\fbox{\parbox[c][44pt][c]{0.255\linewidth}{\centering
+\textbf{Counted cut energy}\\[3pt]
+$G^*=U_\Gamma^*-\ell^{*T}x^*$\\
+Declared load history}}
+\hfill$\longrightarrow$\hfill
+\fbox{\parbox[c][44pt][c]{0.255\linewidth}{\centering
+\textbf{Conditional transport}\\[3pt]
+Native raw density\\
+Original initial law}}
+\hfill$\longrightarrow$\hfill
+\fbox{\parbox[c][44pt][c]{0.255\linewidth}{\centering
+\textbf{First-opening event}\\[3pt]
+Original removal rule\\
+Raw survival and loss}}
+\par\medskip
+\begin{minipage}{0.96\linewidth}\raggedright
+\textbf{Physical mapping required:} source-bound cell geometry, energy scale,
+local mobilities and a physical time or cycle map.\\[3pt]
+\textbf{Observation link required:} same-specimen load/cycle records,
+synchronization, negative--positive inspections and detection/calibration metadata.
+\end{minipage}
+\caption{Conditional route from the counted cut energy to first-opening event mass.
+The arrows summarize model dependencies. Physical mapping and the link to
+experimentally detected cracking retain their stated unresolved input gates;
+the diagram supplies no calibrated material prediction or measured data.}
+\label{fig:conditional-route}
+\end{figure}
+
+\section{Energy-Based Governing Model}
+\subsection{Scope of the reduced model}
+Our immediate objective is a probability of first local opening, followed by
+an independently validated connection to experimentally observed crack initiation.
+Those events must be distinguished throughout the construction.
+
+Let $q^*=(a^*,s^*)$ describe normal separation and unwrapped registry displacement.
+Stars denote the original dimensionless variables; $\tau$ is model time.
+For one upper coordinate interacting with a fixed infinite lower row,
+\begin{align}
+ S_p(a^*,s^*)&=\sum_{j\in\mathbb Z}
+ \left[(a^*)^2+((j+\tfrac12)b^*-s^*)^2\right]^{-p},\\
+ W_{\rm row}^*(a^*,s^*)&=4\epsilon^*
+ \left[(\sigma_{\rm LJ}^*)^{12}S_6-(\sigma_{\rm LJ}^*)^6S_3\right].
+\end{align}
+Here $\sigma_{\rm LJ}^*$ is a pair-potential length parameter, not a stress.
+The Poisson--Bessel representation evaluates this same infinite sum;
+it does not introduce a new interaction law or remove its nonzero lattice modes.
+With $a_0^*$ the declared reference separation, define
+\begin{equation}
+ h^*=(a^*-a_0^*)+\chi s^*,\qquad
+ e(q^*)=h^*/a_0^*,\qquad G_{\rm row}^*=W_{\rm row}^*-f^*(\tau)h^*.
+\end{equation}
+The observable $e$ is the original reduced total axial strain.
+Adding the same elastic strain $\sigma_x/E_x$ to it again would double count
+the response already represented by this definition.
+
+\subsection{Conditional bulk and cleavage counting}
+\label{sec:surface-bulk-count}
+The surface construction must declare which bonds cross a cut.  For the
+same pair potential and reference geometry, let $B$ denote the raw
+interaction sum with positive normal layers and $S_\parallel$ the
+self-excluded raw in-plane sum at a reference atom.  Inversion symmetry gives
+\begin{equation}
+ S_{\rm bulk}=S_\parallel+2B,\qquad
+ e_{\rm bulk}^{\rm pair}=\tfrac12S_\parallel+B .
+ \label{eq:r10-bulk-count}
+\end{equation}
+An unrelaxed one-sided environment with the same in-plane neighbors has
+$S_{\rm half}=S_\parallel+B$ and
+$e_{\rm half}^{\rm pair}=\tfrac12S_\parallel+B/2$.
+The two normal directions are present in the bulk; the factor $1/2$ in
+pair energy prevents counting each pair twice.  It is not a factor in
+the raw neighbor field or in an environment density.  For $B<0$ the bulk
+normal contribution is more negative and more strongly bound, rather
+than numerically greater.  Mixed attractive and repulsive contributions,
+different energy zeros, and per-atom versus per-area normalization do
+not support an unconditional energy ordering.
+
+For a single rigid cut between layers $0$ and $1$, write the normal gap
+increment as $\delta a$ and the slip as
+$\boldsymbol u=s_\Gamma\boldsymbol e_s$.
+Let $h>0$, the original registries $\boldsymbol\Delta_k^0$, and the
+pair kernel $w(d,\boldsymbol\Delta)$ be supplied in the same geometry
+and units.  Per declared primitive cut cell the conditional pair excess is
+\begin{equation}
+ W_\Gamma^{\rm pair}(\delta a,\boldsymbol u)
+ =\sum_{k\ge1}c_k
+ \left\{w(kh+\delta a,\boldsymbol\Delta_k^0+\boldsymbol u)
+            -w(kh,\boldsymbol\Delta_k^0)\right\},
+ \quad c_k=k .
+ \label{eq:r10-cut-count}
+\end{equation}
+The last equality applies to two infinite half-stacks: exactly $k$
+layer pairs at separation $k$ cross the cut.  A finite stack uses its
+actual crossing count instead.  Cross-cut pairs are already counted
+once, so no further factor $2$ or $1/2$ is applied to this difference.
+The coefficient $c_k$ multiplies the entire layer-kernel difference,
+including its reciprocal-zero term.  It is not the lateral lattice
+index or a Fourier/Bessel mode.  At fixed reference geometry the opening
+derivative uses $\partial_{\delta a}(kh+\delta a)=1$; the additional
+chain-rule factor $k$ of a homogeneous dilation $d_k=ka$ is absent.
+
+The reference $W_{\rm row}^*(a^*,s^*)$ is one selected atom's interaction with one
+infinite row.  It is not itself the full bulk energy or
+Eq.~\eqref{eq:r10-cut-count}.  A stacked-row candidate can reuse that
+kernel only with declared layer distances, registry signs and cell
+mapping.  A full plane kernel requires its own two-dimensional
+Poisson--Bessel representation: inverse-power row and plane transforms
+use $K_{p-1/2}$ and $K_{p-1}$, respectively.
+For an embedding model one must additionally retain the sitewise term
+$\sum_i[F(\rho_i)-F(\rho_i^{\rm ref})]$ with each full neighbor density
+formed first; multiplying $F$ by a pair-crossing index is not justified.
+
+All differences above use the same atom set, potential, energy gauge,
+strain and remote-boundary convention; unmatched finite-boundary terms
+remain separate.  If complete separation produces two equivalent
+surfaces, the declared cut-cell area $A_\Gamma$ gives
+$\gamma=W_{\rm sep}/(2A_\Gamma)$, where
+$W_{\rm sep}=\lim_{\delta a\to\infty}W_\Gamma$ includes every adopted
+energy contribution \cite{HaleSurfaceEnergyStatic}.
+Rigid separation and relaxed surface formation are distinct targets.
+The counted-cut probability model uses
+$G_\Gamma=W_\Gamma-A_\Gamma(T_n\delta a+\tau_{\rm res}s_\Gamma)$.
+Here $W_\Gamma$ and $G_\Gamma$ are dimensional energies per the same
+primitive cut cell; $\delta a,s_\Gamma$ are dimensional lengths and
+$T_n,\tau_{\rm res}$ their conjugate tractions.  Native scaled quantities
+require the separately declared energy/length/area and orientation map.
+The mobility, initial population and physical clock also remain to be declared.
+These counting identities do not calibrate those inputs or establish
+material validity.  The matched native bulk reference, physical area,
+energy and length scales, and kinetics remain unresolved.
+The governing substitution below changes the mathematical energy input;
+it supplies no calibrated material input or production-code adoption.
+
+
+
+\subsection{Propagation of the counted potential}
+\label{sec:r11-propagation}
+Fix one declared cut cell, its area $A_\Gamma$, geometry, crossing counts,
+reference configuration and orientation. Write $q^*=(a^*,s^*)$,
+$q_0^*=(a_0^*,0)$, $x^*=q^*-q_0^*$, and let the constant map
+$D_\Gamma=\operatorname{diag}(L_a,L_s)$ give
+$(\delta a,s_\Gamma)^T=D_\Gamma x^*$. Here $a_0^*$ is the declared
+zero-gap reference for this map, not an identification with a measured
+layer spacing. Require $E_\Gamma,L_a,L_s,t_\Gamma,A_\Gamma>0$;
+all physical scales remain supplied parameters, with $t=t_\Gamma\tau$.
+Define
+\begin{align}
+ U_\Gamma^*(q^*)&=E_\Gamma^{-1}W_\Gamma(D_\Gamma x^*),&
+ \ell^*(\tau)&=\frac{A_\Gamma}{E_\Gamma}D_\Gamma^T
+       (T_n,\tau_{\rm res})^T,\nonumber\\
+ G^*(q^*,\tau)&=U_\Gamma^*(q^*)-\ell^*(\tau)^Tx^*,&
+ \theta^*&=k_BT/E_\Gamma>0 .
+ \label{eq:r11-selected-energy}
+\end{align}
+$W_\Gamma$ denotes the adopted total excess, including sitewise embedding
+when that model is used; the pair-only specialization uses
+Eq.~\eqref{eq:r10-cut-count}. The active $G^*$ below is this counted-cut
+energy, replacing $G_{\rm row}^*$ in the governing formulas. It is not
+$G_{\rm row}^*+U_\Gamma^*$, and its external work is subtracted once.
+This replacement changes the modeled collective coordinate and need not
+preserve the old single-row mobility, initial physical preparation or CDF.
+The original raw initial-mass bookkeeping and first-opening event convention
+are retained, with their geometric and mechanical bindings checked below.
+
+At fixed geometry, put $z_k=(kh+\delta a,\boldsymbol\Delta_k^0+s_\Gamma\boldsymbol e_s)$.
+If the adopted layer sums and their first two derivative sums converge
+locally uniformly on the declared domain, termwise differentiation gives
+\begin{align}
+ W_{\Gamma,\delta a}^{\rm pair}&=\sum_k c_k w_d(z_k),&
+ W_{\Gamma,s}^{\rm pair}&=\sum_k c_k\boldsymbol e_s^T\nabla_\Delta w(z_k),\nonumber\\
+ W_{\Gamma,\delta a\delta a}^{\rm pair}&=\sum_k c_k w_{dd}(z_k),&
+ W_{\Gamma,\delta a s}^{\rm pair}&=\sum_k c_k\boldsymbol e_s^T\nabla_\Delta w_d(z_k),\nonumber\\
+ W_{\Gamma,ss}^{\rm pair}&=\sum_k c_k\boldsymbol e_s^T
+                    (\nabla_\Delta^2 w)(z_k)\boldsymbol e_s .
+ \label{eq:r11-counted-derivatives}
+\end{align}
+The fixed reference terms differentiate to zero. No second crossing $k$ is
+introduced: the active gap has derivative one. Sitewise embedding contributes
+its own derivatives, $\partial_\alpha F(\rho_i)=F'(\rho_i)\partial_\alpha\rho_i$
+and $\partial_{\alpha\beta}F(\rho_i)=F''(\rho_i)
+\partial_\alpha\rho_i\partial_\beta\rho_i+
+F'(\rho_i)\partial_{\alpha\beta}\rho_i$.
+Geometry-dependent counts, area, reference states or relaxation paths require
+their own derivatives and are outside this fixed-geometry substitution.
+
+The dimensional internal generalized force is $-\nabla W_\Gamma$;
+the fixed-area resisting traction is $\nabla W_\Gamma/A_\Gamma$.
+Consequently the net force is
+$-\nabla G_\Gamma=-\nabla W_\Gamma+A_\Gamma(T_n,\tau_{\rm res})^T$.
+The dimensionless derivative and Hessian are
+\begin{equation}
+ \nabla_*G^*=E_\Gamma^{-1}D_\Gamma^T\nabla W_\Gamma-\ell^*,
+ \qquad \nabla_*^2G^*=E_\Gamma^{-1}D_\Gamma^T
+                      (\nabla^2W_\Gamma)D_\Gamma .
+ \label{eq:r11-chain-work}
+\end{equation}
+The native bulk reference is fixed in this cut path. Its two-sided neighbor
+factor does not multiply the already counted cut excess again. Changing
+homogeneous bulk strain would instead require its separate deformation path.
+
+\paragraph{Downstream scope.}
+The transport, SG and functional equations below now consume this same
+$G^*$; no Bernoulli function, raw-mass normalization or additional sink is
+created by the multiplicity. Mobility and temperature refer to the chosen
+cut-cell coordinate, not to a single bond by default. Existing production
+executables and their old numerical results remain reference artifacts,
+not simulations of this new cut-potential law. Physical inputs and a
+source-bound implementation are still required for a material CDF.
+
+\subsection{Probability conservation and first opening}
+For the selected counted-cut energy, assume overdamped Markov diffusion with constant
+positive mobilities and Brownian thermal forcing. Its density satisfies
+\begin{equation}
+ \partial_\tau P=-\nabla_*\!\cdot J,\qquad
+ J=-M^*\left(P\nabla_*G^*+\theta^*\nabla_*P\right),\quad
+ M^*=\operatorname{diag}(M_a^*,M_s^*),\quad\theta^*>0.
+ \label{eq:retained-fpe}
+\end{equation}
+Equivalently, on a regular interior interval,
+\begin{equation}
+ dQ_\tau=[-M^*\nabla_*U_\Gamma^*(Q_\tau)+M^*\ell^*(\tau)]\,d\tau
+                +(2\theta^*M^*)^{1/2}\,dB_\tau .
+ \label{eq:r11-cut-sde}
+\end{equation}
+Both drift components therefore change through the full counted derivatives;
+the diffusion term stays in this form only under the declared constant-mobility,
+constant-temperature hypothesis. With physical time $t=t_\Gamma\tau$ the
+same representation requires
+$M_{\rm phys}=D_\Gamma M^*D_\Gamma^T/(t_\Gamma E_\Gamma)$.
+Neither a crossing count nor a static energy identifies $t_\Gamma$.
+
+Here $P$ is a raw density with respect to the native state measure $dq^*$,
+not per unit physical material volume. For the selected affine gap/slip map
+$y=(\delta a,s_\Gamma)^T=D_\Gamma(q^*-q_0^*)$, the density at corresponding
+times transforms as
+\begin{equation}
+ P_{\rm gap}(y,t)=\frac{P(q_0^*+D_\Gamma^{-1}y,t/t_\Gamma)}{\det D_\Gamma}.
+ \label{eq:r11-gap-density}
+\end{equation}
+The initial raw measure, intact domain and opening/removal records use this
+same affine pushforward; the reference shift changes the inverse-map
+argument but not the Jacobian. For $N$ identically mapped site blocks the
+joint Jacobian is $(L_aL_s)^N$;
+one-site and pair marginals instead use their own two- and four-coordinate measures.
+This is an assumed reduced dynamics. Neglect of inertia, loss of memory and
+Brownian noise have not yet been justified for these same local coordinates
+by an accepted atomistic limit or kinetic calibration. Projection-based
+statistical mechanics gives a route through memory-dependent reduced
+equations~\cite{Mori1965}; it does not by itself justify the Markov or
+overdamped limits for the present coordinates.
+The full counted nonlinear energy is used; a Gaussian approximation is not required
+to state or evolve Eq.~\eqref{eq:retained-fpe}.
+The initial ensemble must retain its declared source and conditioning.
+An equilibrium-basin initialization is a model choice, not a measured defect distribution.
+
+\paragraph{Continuous background and numerical boundaries.}
+The positive-$a^*$ energy kernel and unwrapped $s^*$ specify a coordinate
+input domain, not a complete continuous probability-background contract.
+In the inspected source, the finite SG box uses numerical outer no-flux
+boundaries; it does not identify the intended continuous lower/outer
+boundaries, reflection field or regulator.
+The inspected fixed-interval reductions and historical boundary alternatives
+do not supply that contract for the retained full two-coordinate law.
+Local smoothness of the exact energy and finite-grid normalization do not
+certify global existence, non-explosion or uniqueness of that law.
+The continuum initial-law binding and global agreement of the numerical
+opening mask with the exact event remain separate requirements.
+These are unresolved source bindings, not a proof of model failure.
+No numerical cutoff or localization exit is adopted as a new physical wall
+or opening event.
+
+Use the same opening convention, not the old numerical boundary table.
+If its mechanical selector was obtained from the potential, its stationary
+points must now solve $\nabla_*U_\Gamma^*=\ell^*$; a two-coordinate minimum
+or saddle is classified by the full Hessian in Eq.~\eqref{eq:r11-chain-work}.
+For a declared fixed-slip normal-force root the equation is
+$U_{\Gamma,a}^*=\ell_a^*$, and the selected branch and loss-of-stability
+conditions must use this energy. A genuinely energy-independent geometrical
+threshold can be retained as prescribed. Changing the energy does not justify
+keeping a row-derived saddle, mask or threshold table. The initial raw law
+is transported as the declared measure, not replaced silently by the new
+Gibbs law. If basin preparation is selected, its basin and normalization must
+be evaluated with $G^*$ and documented as a separate initial-law choice.
+Barrier differences and curvature factors likewise use this same $G^*$ at
+its newly selected stationary points, not row-derived barrier values or rates.
+A normalized Gibbs weight is a zero-current equilibrium candidate only for
+a fixed landscape and a compatible nonabsorbing background; it is not the
+surviving law of the absorbing first-opening problem.
+
+Let $D(\tau)$ be the intact domain of that same opening convention, with
+opening boundary $\Gamma(\tau)$. The first exit time from that predicate is
+$\tau_{\rm o}$. With a unit initial probability ledger, including any initial
+absorbed mass, the raw surviving density gives
+\begin{equation}
+ S(\tau)=\int_{D(\tau)}P\,dq^*,\qquad
+ F_{\rm o}(\tau)=\Pr(\tau_{\rm o}\leq\tau)=A(\tau)=1-S(\tau).
+\end{equation}
+Absorbed probability is recorded irreversibly and is not normalized back into $P$.
+On a regular moving boundary, with outward normal $n$ and velocity $v_\Gamma$,
+\begin{equation}
+ \dot A=\int_\Gamma (J-Pv_\Gamma)\cdot n\,d\Sigma,\qquad \dot S=-\dot A.
+\end{equation}
+This smooth-boundary identity does not replace the original discrete rule for
+mask changes or instantaneous removal. Reflecting boundaries carry no outward
+loss. Numerical repair or remapping loss must not be relabelled physical opening.
+The definition of $F_{\rm o}$ alone establishes neither a finite mean opening
+time nor equality with an optically detected crack-initiation probability.
+
+\subsection{From model time to cycles and observed initiation}
+If a physical clock $t=t_0\tau$ has been verified, let $t$ denote elapsed
+physical time from the declared model initialization. Let $\nu(t)$ be the
+synchronized recorded frequency in cycles per second (Hz), and $N_{\rm init}$
+the recorded cycle index at that origin. Define the cycle count by
+\begin{equation}
+ \mathcal N(t)=N_{\rm init}+\int_0^t\nu(u)\,du,\qquad
+ F_{{\rm o},N}(n)=F_{\rm o}\!\left(t(n)/t_0\right),
+\end{equation}
+when the measured cycle map has the required inverse $t(n)$.
+The cycle count $\mathcal N$ is distinct from the site count $N$.
+The experimental time and cycle offsets must be supplied; they are not
+silently reset to zero. For constant recorded frequency,
+$\mathcal N=N_{\rm init}+\nu t_0\tau$, with physical period $1/\nu$
+and model period $1/(\nu t_0)$. Neither $t_0$, $N_{\rm init}$ nor an
+unrecorded frequency is estimated here.
+Even with this clock, $F_{{\rm o},N}$ becomes an observed crack-initiation CDF
+only after the original opening event has been linked to the specified
+experimental detection event. This event validation is separate from time conversion.
+
+\subsection{Correlated regions and survivor selection}
+For an $N$-site ($2N$-coordinate) extension, the complete joint energy must
+count each pair or adopted site contribution once. The old upper--upper
+interaction ledger cannot be added blindly to $\sum_iU_\Gamma^*(q_i^*)$:
+shared cross-cut or embedding contributions require an explicit nonoverlapping
+allocation. No multi-cut joint energy is inferred from the one-cut formula.
+They cannot be removed by dividing space into numerical cells.
+Let $P_N$ be the joint density killed when any declared local opening occurs.
+Its tagged marginals $u_i$ and $u_{ij}$ both integrate to the same joint survival
+$S$, whereas $p_i=u_i/S$ integrates to one when $S>0$.
+For the stated block mobility and product intact domain, under the required
+regularity and boundary trace assumptions, the exact tagged balance is
+\begin{equation}
+ \partial_\tau u_i=-\nabla_i\!\cdot j_i-k_i,
+\end{equation}
+where $k_i$ represents removal when another coordinate opens. The current $j_i$
+contains the pair marginal $u_{ij}$ weighted by the pair-energy gradient.
+Thus a one-site (two-coordinate) marginal is not a closed independent-cell equation.
+The full joint opening-boundary flux already includes all coordinates;
+adding the tagged sink $k_i$ to that full flux would count the same loss twice.
+Products of conditional marginals are additional closures, not exact joint laws.
+No independence-based specimen probability is adopted here without its own
+geometrical, dependence and event validation.
+
+\section{Numerical Implementation}
+\subsection{Finite volumes in probability space}
+The existing two-coordinate reference uses conservative finite volumes and
+Scharfetter--Gummel exponential fitting~\cite{ScharfetterGummel1969}.
+For neighbouring density values $P_L,P_R$ separated by $\Delta q_\alpha^*$,
+the interior face formula with the selected $G^*$ is
+\begin{equation}
+ J_{LR}=\frac{M_\alpha^*\theta^*}{\Delta q_\alpha^*}
+ \left[B(z)P_L-B(-z)P_R\right],\qquad
+ z=\frac{G_R^*-G_L^*}{\theta^*},\quad B(z)=\frac{z}{e^z-1},\quad B(0)=1.
+\end{equation}
+Opposite face contributions cancel between neighbouring bins. On a fixed
+landscape the zero-current ratio is the discrete Gibbs ratio.
+All cell energies, face energy differences and any mechanical mask must be
+regenerated from the same selected cut-energy source. A table, polynomial
+branch or force cache made for $W_{\rm row}^*$ is not a cut-energy evaluator.
+Positivity also requires the appropriate time-integration conditions;
+conservation alone does not certify a correct distribution or opening CDF.
+In particular, bin mass and fully integrated interior-face transfer are
+\begin{equation}
+ p_K=\int_K P\,dq^*,\qquad
+ I_f=\int_{\tau_n}^{\tau_{n+1}}\int_f J\cdot n_f\,d\Sigma\,d\tau.
+\end{equation}
+The pointwise current $J_{LR}$ above is distinct from $I_f$.
+Bin probability mass already includes its quadrature weight. Multiplying it
+again by a state-space bin volume or a physical cell volume is incorrect.
+An integrated face transfer is probability mass, not a rate to be multiplied
+by the time step a second time.
+
+% R09-BEGIN C13_RAW_ENERGY
+\subsection{Raw energy and free-energy accounting with opening removal}
+Here stars are suppressed in the declared cut coordinates and model time.
+Consider a finite probability-state graph with fixed positive reference
+weights $\nu_i$, raw bin masses $p_i$, finite selected counted-cut tilted energies
+$g_i(t)=G(q_i,t)$, and a fixed $\theta>0$. The symbol $q_i$ in this evaluation
+denotes a state-bin location. The logarithmic reference is dimensionless;
+a dimensional coordinate measure would require its specified reference density.
+The weights $\nu_i$ are not spatial material-cell volumes. Define
+\begin{align}
+ E_g(p,t)&=\sum_i p_i g_i(t),&
+ H_\nu(p)&=\sum_i p_i\left[\log(p_i/\nu_i)-1\right],\nonumber\\
+ \mathcal F_g(p,t)&=E_g(p,t)+\theta H_\nu(p),&
+ \mu_i^{\rm chem}&=g_i+\theta\log(p_i/\nu_i).
+ \label{eq:r09-raw-functional}
+\end{align}
+The finite functional uses $0\log0=0$. Its logarithmic derivatives require
+positive masses and the stated integrability or separately justified endpoint
+limits. $H_\nu$ is a mathematical negative-entropy functional; no physical
+entropy or heat identification is assumed. The $-1$ term and reference cannot
+be omitted when the raw surviving mass changes.
+
+Orient each internal edge once from $i$ to $j$, and let
+$J_{ij}=k_{ij}p_i-k_{ji}p_j$ with supplied nonnegative rates. The incidence
+column has $+1$ at the donor and $-1$ at the receiver. With only the original
+opening-removal records, write $dp=-C J\,dt-dR$, $dR_i\geq0$; this introduces
+no new sink. On an interval where each $g_i$ is $C^1$ in native time, the required
+integrability holds, the relevant raw masses are positive, and the original
+loss on that interval is $dR_i=\ell_i\,dt$, the finite-sum product and chain
+rules give
+\begin{align}
+ \dot E_g&=P_G-\sum_{i\to j}(g_i-g_j)J_{ij}-\sum_i g_i\ell_i,\nonumber\\
+ \dot{\mathcal F}_g
+ &=P_G-\sum_{i\to j}(\mu_i^{\rm chem}-\mu_j^{\rm chem})J_{ij}
+       -\sum_i\mu_i^{\rm chem}\ell_i,\qquad
+ P_G=\sum_i p_i\partial_tg_i .
+ \label{eq:r09-ac-energy}
+\end{align}
+The edge term has no assigned sign without an additional rate relation.
+If, at each time,
+\begin{equation}
+ a_i^G=\nu_i e^{-g_i/\theta},\qquad
+ k_{ij}a_i^G=k_{ji}a_j^G=c_{ij}\geq0,
+ \label{eq:r09-db}
+\end{equation}
+then, for $u_i=p_i/a_i^G>0$,
+\begin{equation}
+ \mathcal D=\theta\sum_{i\to j}c_{ij}(u_i-u_j)(\log u_i-\log u_j)\geq0,
+ \qquad \dot{\mathcal F}_g=P_G-\mathcal D-\sum_i\mu_i^{\rm chem}\ell_i.
+ \label{eq:r09-db-dissipation}
+\end{equation}
+The weights $a_i^G$ state detailed balance, not a replacement initial law.
+Zero-rate or zero-mass limits require their own justification.
+Analytic Bernoulli exponential fitting has the requisite ratio under its
+stated measure and symmetric-edge assumptions. This does not certify the
+exact ratio of a floating-point polynomial branch, or positivity and
+dissipation of a particular time step. For strictly positive bidirectional
+rates and masses, a detailed-balance defect may instead be retained as
+\begin{align}
+ \varepsilon_{ij}&=\log\frac{k_{ij}a_i^G}{k_{ji}a_j^G},&
+ \mathcal D_{\rm rate}&=\theta\sum_{i\to j}
+  (k_{ij}p_i-k_{ji}p_j)\log\frac{k_{ij}p_i}{k_{ji}p_j}\geq0,\nonumber\\
+ -\sum_{i\to j}(\mu_i^{\rm chem}-\mu_j^{\rm chem})J_{ij}
+ &=-\mathcal D_{\rm rate}+\theta\sum_{i\to j}J_{ij}\varepsilon_{ij}.
+ \label{eq:r09-db-defect}
+\end{align}
+The defect term has no general sign; no defect value is supplied here.
+
+At an original mask invocation $t_k$, keep $g_i(t_k)$ and $\nu_i$ on the same
+reference and let $p_i^+=p_i^- -r_i$, $0\leq r_i\leq p_i^-$. In the retained
+full-cell deletion mask, each $r_i$ is either $p_i^-$ or zero. Exact finite
+differences give
+\begin{align}
+ E_g(p^+,t_k)-E_g(p^-,t_k)&=-\sum_i g_i(t_k)r_i,\nonumber\\
+ \mathcal F_g(p^+,t_k)-\mathcal F_g(p^-,t_k)&=-Q_{F,k},\nonumber\\
+ Q_{F,k}&=\sum_i\int_{p_i^+}^{p_i^-}
+    \left[g_i(t_k)+\theta\log(z/\nu_i)\right]dz .
+ \label{eq:r09-finite-mask}
+\end{align}
+The integral is finite at complete deletion by the continuous limit of
+$z\log z$. A completely removed cell contributes
+$p_i^-[g_i+\theta(\log(p_i^-/\nu_i)-1)]$, rather than
+$\mu_i^{\rm chem}(p^-)r_i$. Thus an instantaneous mask cannot be replaced
+by the infinitesimal loss formula. $Q_{F,k}$ is a signed loss from the live
+functional; it is not post-absorption stored energy, released heat or
+fracture energy. A scalar absorbed-mass total does not recover it.
+
+Write $S=\sum_i p_i$ for the raw mass on this graph. For fixed cut geometry
+and reference, $G=U_\Gamma-\ell^Tx$ gives, on a differentiable load interval,
+$P_G=-\dot\ell^T\sum_i p_i x_i$. If the adopted internal energy itself
+depends on time, add $\sum_i p_i\partial_t U_\Gamma(q_i,t)$; it is not
+included in the fixed-geometry formula. The legacy specialization
+$\ell=f(1,\chi)^T$ recovers $-\dot f\sum_i p_i h_i$. This parameter-work term is distinct from
+coordinate-transfer work and the removed $h$-weighted contribution. Original
+jump and stage conventions are required outside such intervals. A change of
+energy reference $g_i\mapsto g_i+c(t)$ changes $\mathcal F_g$ by $cS$,
+$P_G$ by $\dot cS$, and $Q_{F,k}$ by $c(t_k)\sum_i r_i$; internal differences
+are unchanged. Dropping the removed reference energy would break this balance.
+For $S>0$, writing $\widehat p_i=p_i/S$ with the same reference gives
+\begin{equation}
+ \mathcal F_g(p,t)=S\mathcal F_g(\widehat p,t)+\theta S\log S .
+ \label{eq:r09-conditioned-functional}
+\end{equation}
+At $S=0$ no conditioned functional is introduced. Starting after the initial
+mask excludes its loss from later interval sums; starting before it includes
+that invocation exactly once. Numerical clipping or correction is a separate
+record and cannot be relabelled opening. Actual evaluation requires cellwise
+pre/post masses, the same-time selected $G$, positive fixed reference and
+thermal data, source/counting bindings, and invocation and origin records.
+These identities establish neither a full discrete-time energy inequality
+nor a physical cell energy balance.
+% R09-END C13_RAW_ENERGY
+
+\subsection{Interface to spatial solid mechanics}
+Spatial cells and probability bins represent different partitions.
+For an explicitly supplied displacement reconstruction, let
+$\epsilon_x(U)=B_xU+g_x$ be the spatial axial strain. If $U$ is physical
+displacement in metres, $B_x$ has units of inverse metres, while $g_x$ and
+strain are dimensionless.
+Equating it to the survivor mean is a separate constitutive closure,
+\begin{equation}
+ R_{\rm strain}=\epsilon_x(U)-\bar e,\qquad
+ \bar e=\frac{\int_D eP\,dq^*}{S},\quad S>0.
+\end{equation}
+The required geometry, reconstruction, face tractions and other stress components
+are not determined by the two-coordinate energy. In particular, one axial
+response does not supply a general three-dimensional stress law.
+For a fixed observable and only the opening sink, its exact survivor mean obeys
+\begin{equation}
+ \dot{\bar e}=\frac1S\int_D\nabla_*e\cdot J\,dq^*
+ -\frac1S\int_\Gamma(e-\bar e)(J-Pv_\Gamma)\cdot n\,d\Sigma.
+\end{equation}
+The second term is selection of the surviving population. Consequently,
+$\dot{\bar e}$ cannot automatically be interpreted as each material cell's
+strain rate or mechanical power. Tagged joint marginals additionally require
+the corresponding other-opening selection term.
+If a coupled trial is repeated, every candidate must start from the same saved
+probability state and time interval; only an accepted candidate may advance it.
+The current interface does not establish a complete spatial FVM solver or
+an atomic commit of displacement, probability and energy histories.
+
+\section{Theoretical Consistency Results}
+\subsection{Work and unit consistency}
+The following axial identity belongs to the legacy row representation,
+whose calibration is $f^*=\kappa\sigma_x/E_x$. It is not an automatic
+traction calibration for the counted cut. For that cut use
+Eq.~\eqref{eq:r11-selected-energy}, with $\delta W_{\rm ext}=
+A_\Gamma(T_n\delta(\delta a)+\tau_{\rm res}\delta s_\Gamma)$,
+and the declared $E_\Gamma,D_\Gamma,t_\Gamma$ in the passive map above.
+Write $G_{\rm ref}^*$ for the unchanged original single-representative tilted
+energy, and let $E_0$ be its energy scale in joules per representative.
+For $r$ coherent contributions sharing the same coordinate, the declared
+physical total energy would be $G_{\rm coh}=rE_0G_{\rm ref}^*$.
+Its virtual work gives
+\begin{equation}
+ \delta W_{\rm micro}=rE_0f^*a_0^*\delta e,\qquad
+ V_{\rm eff}=\frac{rE_0\kappa a_0^*}{E_x}.
+\end{equation}
+Equality with $V_{\rm geom}\sigma_x\delta e$ requires
+$V_{\rm geom}=V_{\rm eff}$ under this mapping. This is a conditional work
+normalization, not a measurement of the physical cell volume or atom count.
+The coefficient conjugate to dimensionless $q^*$ has units of energy;
+for a common length scale $q=L_0q^*$, division by $L_0$ gives its force in newtons.
+The factor $r$ is neither the number of independent failure sites nor
+automatically the coordinate count $N$.
+
+\paragraph{Coordinate and work-basis binding.}
+For a supplied admissible variation map, $\delta x=K_{xq}\delta q$ and
+$Q_q=K_{xq}^{T}F_x$ must hold on the same work basis.
+The model gradient order $(a^*,s^*)$ and native Cartesian component order
+$(s,a)$ must be explicitly distinguished. The coordinate map $K_{xq}$ is
+neither the face-jump operator $J_C$ nor supplied by the cell/face ID and
+sign relabellings $P_{\rm cell},S_{\rm face}$.
+Source energy, coordinate units, counting and representative basis must be
+shared by the gradient and every work slot, with each scale applied once.
+Environment-translation and environment-residual work are nonadditive views
+of the already counted $\sum_i W_i$ contribution; mobile--mobile residual work
+is a view of the already counted mobile--mobile pair-energy contribution.
+Any separate moment or rotation view must replace a declared disjoint part
+of its corresponding residual work, with matching source-component and work-sign tags.
+These decompositions are never added to the already included total-gradient work.
+The actual map and scales remain unspecified; SI force and three-dimensional
+traction therefore remain unestablished without the required physical
+length, embedding and face-area data.
+
+Three operations must be distinguished: a passive change of units, a
+per-contribution normalization of an already specified total equation, and
+a physical change in coherent contribution count.
+Dividing an existing equation by its count requires consistent transformations
+of its energy, thermal energy, mobility/noise and initial probability measure.
+Changing the physical count $r$ at fixed physical temperature is a change
+in the energy-to-thermal-energy ratio; it is not a passive unit conversion.
+Equality of virtual work or dimensions alone therefore does not establish
+the same probability generator or first-opening CDF. Any such equivalence
+also requires an explicit representation binding for the energy, thermal
+energy, mobility/noise, initial law and opening rule. No missing scale or
+normalization mode is selected by the work identity.
+
+The following passive formulas are restricted to the unchanged $r=1$
+reference representation, so that $G_{\rm phys}=E_0G_{\rm ref}^*$.
+With constant $D=\operatorname{diag}(L_a,L_s)$ and positive constant
+$E_0,t_0$, let $q_{\rm phys}=Dq^*$ and $t_{\rm phys}=t_0\tau$.
+For that reference mobility $M_{\rm ref}^*$ the same reference generator requires
+\begin{equation}
+ k_BT_{\rm phys}=E_0\theta^*,\qquad
+ M_{\rm phys}=\frac{DM_{\rm ref}^*D^T}{t_0E_0}.
+\end{equation}
+Here $M_{\rm phys}$ has units $\mathrm{m^2/(J\,s)}$.
+The initial measure, boundary and density Jacobian must be transported as well.
+Both coordinate mobilities must yield the same $t_0$ for this same energy
+representation. No accepted local mobility calibration presently supplies
+that clock; model time is therefore not labelled seconds or experimental cycles.
+
+\paragraph{Clock compatibility and identifiability.}
+Shared-clock compatibility does not itself identify physical seconds.
+For conditionally fixed $E_0,D$ and a compatible candidate
+$(t_0,M_{\rm phys})$, any dimensionless $c>0$ gives
+\begin{equation}
+\begin{aligned}
+ t_0^{(c)}&=ct_0,\\
+ M_{\rm phys}^{(c)}&=M_{\rm phys}/c .
+\end{aligned}
+\end{equation}
+The native law, initial ensemble, opening rule and $f^*(\tau)$ remain
+fixed. These are distinct, uncalibrated physical embeddings, not a
+passive identity or verified dynamics of the same material or experiment.
+The physical-time placement of the load changes with $c$. The native
+first-opening CDF is unchanged, but equality of the corresponding
+first-opening CDFs at a fixed physical time is not implied.
+
+With independently established $E_0,D$ and absolute physical mobility,
+a positive diagonal component ratio in the native-coordinate pullback
+fixes a candidate clock for those inputs.
+The full matrix relation, including cross terms, must also hold for compatibility;
+agreement of the two axis clocks without those independent inputs
+does not identify physical seconds.
+Temperature and static anchors do not fix the kinetic clock.
+Same-test frequency $\nu$ and an independently supplied and verified native
+full period $P_\tau$, with the load waveform, cycle count, phase, and
+initialization/time origins matched to that same test, can supply the
+protocol-map candidate $t_{0,\rm protocol}=(1/\nu)/P_\tau$.
+That map does not independently validate the mobility or generator timing.
+The actual anchors remain unspecified; a single stochastic onset is
+not equated deterministically to one native first-passage time.
+
+% R09-BEGIN A19_LOCAL_STRESS
+\subsection{Conditional local stress observability}
+\paragraph{Local stress and traction identifiability.}
+At a fixed state, consider a common work contribution and Kelvin basis:
+\(Q=VB^{T}\sigma\), where \(V>0\), \(B\in\mathbb{R}^{6\times2}\) maps admissible
+micro-coordinate variations to strain, and \(\sigma\) ranges over unrestricted
+symmetric three-dimensional stresses. Assume compatibility.
+The stress fiber is \(\sigma_0+K\), \(K=\ker(B^{T})\); a linear observable
+\(L\sigma\) is identifiable exactly when \(K\subseteq\ker(L)\).
+Let \(\sigma_T\) denote the symmetric tensor with Kelvin coordinates \(\sigma\).
+For \(T_n\sigma=\sigma_T n\) with a nonzero unit normal, the adjoint image has
+dimension three, whereas \(\operatorname{rank}(B)\leq2\); hence this local
+relation does not determine the complete traction vector.
+Selected or projected traction requires its own target \(L\).
+Compatible additional data \(C\sigma=d\) give the condition
+\(K\cap\ker(C)\subseteq\ker(L)\); independently justified stress restrictions
+define a different admissible inverse problem.
+Stresses at different states cannot be stacked as one unknown; conjugate
+components driven by one amplitude or a load history do not automatically
+supply independent stress observations.
+This \(B\) differs from \(B_x\) (spatial strain reconstruction), \(J_C\)
+(face jumps), and \(K_{xq}\) (coordinate maps); its existence establishes
+neither global integrability nor assembled FVM closure.
+Physical traction requires an actual Cauchy tensor and matching physical normal.
+Face force additionally requires verified area integration or quadrature,
+orientation, location, cell-to-face mapping, and boundary signs; already
+integrated forces receive no second area factor.
+Parent contributions must be retained without omitting or duplicating bare,
+tilted, environment, residual, or moment work.
+Actual \(B,V,Q\), geometry, constitutive data, and scales remain unprovided.
+This conditional inverse result therefore does not establish the impossibility
+of a completed spatial FVM model.
+
+The argument is the standard linear inverse-map criterion applied to a
+supplied work map: compatibility gives an affine fiber, and an observable is
+constant on it precisely when it annihilates the null space. The rank bound
+concerns one fixed state and common contribution; no physical geometry,
+constitutive restriction or global spatial equation is inferred.
+% R09-END A19_LOCAL_STRESS
+
+% R09-BEGIN B10_SCALAR_STRAIN
+\subsection{Conditional limits of a scalar strain reduction}
+Suppress stars in this subsection in the declared cut coordinates and time.
+Keep the declared affine observable $e=(a-a_0+\chi s)/a_0$,
+$M=\operatorname{diag}(M_a,M_s)$, and use $G=U_\Gamma-\ell(t)^Tx$
+with positive constant mobilities and $\theta$. Its physical strain
+interpretation still requires a source-bound geometry map. On a regular interior interval the generator
+of the given two-coordinate diffusion acts on scalar $C^2$ tests as
+\begin{align}
+ L_t(\varphi\circ e)(q)&=\beta_e(t,q)\varphi'(e(q))
+                  +D_e\varphi''(e(q)),\nonumber\\
+ \beta_e(t,q)&=-\frac{M_aU_{\Gamma,a}+\chi M_sU_{\Gamma,s}}{a_0}
+              +\frac{M_a\ell_a+\chi M_s\ell_s}{a_0},&
+ D_e&=\frac{\theta(M_a+\chi^2M_s)}{a_0^2}.
+ \label{eq:r09-strain-generator}
+\end{align}
+This is the usual generator chain rule for an affine observable; its
+quadratic-variation rate is $2D_e$, and there is no Hessian correction to
+the strain drift.
+
+For one scalar interior transition law to serve all allowed starting states
+with the same strain, its instantaneous generator action must agree on each
+admissible strain fiber. Since $D_e$ is already constant, a necessary drift
+condition on a declared state set is
+\begin{equation}
+ \Psi_\Gamma(q):=M_aU_{\Gamma,a}(q)+\chi M_sU_{\Gamma,s}(q)=H(e(q)).
+ \label{eq:r09-fiber-closure}
+\end{equation}
+For $U_\Gamma\in C^2$, its tangential derivative must therefore satisfy
+\begin{equation}
+ -\chi M_a U_{\Gamma,aa}+(M_a-\chi^2M_s)U_{\Gamma,as}+\chi M_sU_{\Gamma,ss}=0.
+ \label{eq:r09-fiber-tangent}
+\end{equation}
+This differential condition gives constancy on connected fiber components;
+values on disconnected components must also match. A sufficient scalar-law
+construction further requires a well-posed scalar martingale problem with
+the same restart rules and compatible boundary, regulator and killing
+behavior. Generator action alone is not an if-and-only-if theorem for the
+full killed or globally reflected process.
+
+The following previously reviewed obstruction is restricted to the row kernel
+($W=W_{\rm row}$), not a proved obstruction for $U_\Gamma$. The row energy
+does not satisfy this drift criterion on its
+entire energy-input set $E=(0,\infty)\times\mathbb R$. If $\chi\ne0$,
+averaging the left side of Eq.~\eqref{eq:r09-fiber-tangent} over one slip
+period gives $-\chi M_aW_0''(a)$, which is not identically zero for the
+retained zero mode. If $\chi=0$, closure would require $W_a$ to be independent
+of slip, whereas aligned and staggered registry have distinct small-$a$
+derivatives. These are model-specific applications of the fiber criterion,
+not a choice of stochastic domain or a boundary-accessibility result.
+The row argument is not transferred by substitution to a counted plane or
+embedding energy; its own fiber expression must be evaluated. These results
+do not establish failure on every restricted reachable set or under one
+fixed initial law. In particular, this all-start drift obstruction alone
+does not prove that initial laws compatible with an actual observation
+produce different opening responses.
+
+For a supplied original local/killed law, let $\eta_t$ be its raw alive
+strain pushforward and let $\bar\beta(t,x)$ be the drift averaged over its
+alive hidden-fiber law. On intervals satisfying the continuous pre-killing,
+regulator, integrability and removal-trace conditions below, the weak balance
+is
+\begin{align}
+ \eta_t(\varphi)-\eta_r(\varphi)
+ &=\int_r^t\eta_u(\bar\beta\varphi'+D_e\varphi'')\,du
+       +\mathcal R_\varphi((r,t])\nonumber\\
+ &\quad-\int_{(r,t]\times\mathbb R}\varphi(x)\,\kappa_o(du,dx).
+ \label{eq:r09-projected-balance}
+\end{align}
+Here $\kappa_o$ is the pushforward of the original removal measure using
+its declared trace and ordering, and $\mathcal R_\varphi$ is the original
+projected reflection contribution when present. Neither is inferred from a
+numerical box. The mean drift still depends on the two-coordinate law and
+initial hidden-fiber distribution; it is defined $\eta_t$-almost everywhere,
+not supplied as a new scalar constitutive coefficient. If survival is zero,
+the conditioned drift is not filled with zero.
+
+
+An instantaneous reconstruction of the original intact predicate from the current scalar state and prescribed load history requires constancy on each admissible strain fiber. This requirement concerns the declared state range. It is not an if-and-only-if criterion for decisions based on the entire observed strain history, or for every killed Markov projection under a fixed initial law.
+
+The raw projected balance is used on regular intervals where the coordinates remain continuous semimartingales before killing and the reflection regulator has no jumps. Required expectations must be finite, and the removal trace and event ordering must be bound to the same original ledger. Loss measures may have atoms; no hazard density is assumed. Load or mask jumps require the supplied removal and ordering conventions. Coordinate or regulator jumps require separate Ito jump terms and simultaneous-event rules. Coordinates after entry into a cemetery state are not reconstructed as removal traces. Initial losses remain in their original cohort, and localization losses remain separate.
+
+The history-conditioned drift denotes a predictable version of the projection of the original drift onto the observed filtration on the pre-killing stochastic interval, with equality only \(dt\,d\mathbb P\)-almost everywhere. Reduction to a function of current time and strain, and the original reflection and killing compensators, require additional closure and source conditions. Actual domains, kernels, initial measures, errors, and physical time remain unresolved.
+% R09-END B10_SCALAR_STRAIN
+
+% R09-BEGIN A21_C13_SOURCE_UNITS
+\paragraph{Shared source and unit requirements.}
+The raw probability masses and state-space reference in
+Eq.~\eqref{eq:r09-raw-functional} must be bound to the same selected energy,
+representative, contribution count, initial cohort, time and stage.
+The chemical-potential coefficients $\mu_i^{\rm chem}$ are distinct from an
+initial measure $\mu$, and probability-bin indices are distinct from
+configuration coordinates and spatial cell labels. Interleaved and grouped
+coordinate representations require matching covector and variation
+reordering. Joint use with any allocation of bare energy $U$ must separately
+identify its relation to tilted $G$ and any entropy allocation; an allocation
+view is not another additive contribution to the total energy. Coefficients
+of work covectors have energy-per-coordinate units. Physical interpretation
+still requires actual energy, length, clock, multiplicity, frame and face
+data, with every factor applied once. State-space measure is not physical
+cell volume. No missing physical input is supplied by these requirements.
+% R09-END A21_C13_SOURCE_UNITS
+
+\subsection{A conditional interior probability law}
+Here $E$ is a declared open cut-energy input domain on which all adopted
+layer separations $kh+L_a(a^*-a_0^*)$ are positive, the energy and its
+derivatives exist, and the stated local regularity holds. Positivity of
+$a^*$ alone does not supply this condition for an arbitrary gap map.
+This is an energy-input domain only. On a predeclared finite native interval $[0,T]$,
+let the deterministic vector load satisfy $\ell^*\in L^1(0,T;\mathbb R^2)$
+and assume $U_\Gamma^*$ is $C^2$ locally on this domain, with
+positive finite constant mobilities and temperature parameter.
+Zero denotes the existing initialization reference, not a newly chosen
+experimental origin. For any open $U$ with compact closure inside $E$, set
+\begin{equation}
+ \sigma_U=\inf\{\tau\in[0,T]:Q_\tau\notin U\},\qquad
+ \inf\varnothing=\infty .
+\end{equation}
+Consider the exact native interior equation
+\begin{equation}
+\begin{aligned}
+ dQ_\tau&=\left[-M^*\nabla_*U_\Gamma^*(Q_\tau)
+       +M^*\ell^*(\tau)\right]d\tau+\Sigma^*dB_\tau,\\
+ \Sigma^*&=(2\theta^*M^*)^{1/2}.
+\end{aligned}
+\end{equation}
+For the same predeclared Borel probability initial law $\mu$ on $E$,
+assume an initial variable measurable at initialization and a Brownian
+motion for the same usual filtration. There is a unique continuous law
+of paths stopped at $\sigma_U$ among the stated interior candidates,
+with no regulator, additional drift or sink inside $U$.
+It is independent of the auxiliary cutoff used in its construction and
+admits a Borel initial-to-stopped-path kernel $K_U$.
+An initial point outside $U$ gives $\sigma_U=0$ and the constant path at
+that same point; no initial mass is discarded or reconditioned.
+
+Under the stated local $C^2$ assumption on the counted energy, choose a smooth
+spatial cutoff equal to one near $\overline U$, supported compactly inside
+$E$. Its zero extension gives a bounded globally Lipschitz auxiliary
+spatial drift. The $L^1$ load has an absolutely continuous primitive;
+pathwise Picard iteration gives a continuous nonanticipative solution map
+for the additive driving path. Exit from open $U$ hits its closed
+complement when finite on this horizon. A distance-minimum argument gives
+a Borel stopping map without assuming a continuous hitting-time functional
+or a regular boundary. Gronwall comparison until the minimum of two exits,
+followed by exit attainment, proves cutoff independence and stopped
+pathwise uniqueness. The same construction on a weak candidate's space
+identifies its law, and composition with the Borel stopping map gives $K_U$.
+
+Let $\mathcal C_T=C([0,T],\mathbb R^2)$. The kernel mixture extends
+linearly to the same predeclared finite raw initial measure $\mu$:
+\begin{equation}
+\begin{aligned}
+ \Pi_\mu(A)&=\int_E K_U(x,A)\,\mu(dx),\\
+ \Pi_\mu(\mathcal C_T)&=\mu(E),\qquad
+ \Pi_\mu\{\sigma_U=0\}=\mu(E\setminus U).
+\end{aligned}
+\end{equation}
+For a raw measure, $\Pi_\mu$ is a path measure and is not forced to have
+unit mass. Any separately recorded initial absorbed mass retains its
+original ledger. Localization does not add to physical absorption.
+This is a conditional interior theorem, not certification that a supplied
+original reflected or killed law has this restriction. That application
+still needs its original background, initial-law and regulator bindings.
+The auxiliary continuation after an earlier original opening is not
+validated by this construction. No actual $U$, wall, load or physical
+scale is selected; global non-explosion, $a^*=0$ accessibility, full
+reflection and moving/table opening-event equivalence remain outside
+the result.
+
+
+\subsection{Localization and a conditional opening-mass ledger}
+Retain the same finite raw initial measure $\mu$, native origin and
+stopped path measure $\Pi_\mu$, with $m=\mu(E)$. Localization freezes
+the coordinate after $\sigma_U$; applying a later load-dependent mask to
+that frozen point can produce a signal without identifying the original
+post-exit motion. Such a signal is not counted as original opening.
+Moreover, $\ell^*\in L^1$ specifies the interior drift through its time
+integral, whereas an opening predicate may depend on pointwise load,
+jump-side, contact, branch or table conventions. The original pointwise
+load and event rules must therefore be supplied separately. Neither
+continuous coordinates nor the interior theorem certifies an arbitrary
+moving or tabulated opening event.
+
+For a finite native observation time $t\in[0,T]$, suppose the original
+rule supplies measurable certified prefix events $O_t$ and $V_t$.
+In $O_t$, first opening is verified at $u<t$ and $u<\sigma_U$;
+in $V_t$, $t<\sigma_U$ and absence of opening is verified through and
+including $t$. An unresolved initial or local predicate is in neither
+class. These events are disjoint. With $C_t=(O_t\cup V_t)^c$ and
+$o_t=\Pi_\mu(O_t)$, $v_t=\Pi_\mu(V_t)$, $c_t=\Pi_\mu(C_t)$,
+finite-measure additivity gives
+\begin{equation}
+ m=o_t+v_t+c_t.\label{eq:localization-mass-ledger}
+\end{equation}
+These are integrated masses on the original measure, without survivor
+normalization or extra state, cell-volume or time weights.
+If a measurable source certificate $G_t\subseteq\{Z_0\in U\}$ is
+supplied with $O_t,V_t\subseteq G_t$, then
+\begin{equation}
+\begin{aligned}
+ C_t&=X_0\mathbin{\dot\cup}J_t\mathbin{\dot\cup}C_{G,t},\\
+ X_0&=\{Z_0\notin U\},\quad J_t=\{Z_0\in U\}\setminus G_t,\\
+ C_{G,t}&=G_t\setminus(O_t\cup V_t),\\
+ c_t&=\mu(E\setminus U)+\Pi_\mu(J_t)+\Pi_\mu(C_{G,t}).
+\end{aligned}
+\end{equation}
+An absent certificate leaves actual $O_t,V_t$ and their masses
+unresolved, rather than zero. Initial outside-$U$ mass and other
+unobserved mass are not added to physical absorption.
+
+A finer race partition requires source-supplied original joint stopping
+records, or the same decidable first-event race, on $G_t$. Only under
+that additional contract, writing $\tau_o$ for original first opening
+and $\sigma=\sigma_U$, one has the disjoint partition
+\begin{equation}
+\begin{aligned}
+ O_t&=G_t\cap\{\tau_o<\sigma,\ \tau_o<t\},\\
+ L_t&=G_t\cap\{\sigma<\tau_o,\ \sigma<t\},\\
+ B_t&=G_t\cap\{\tau_o=\sigma<t\},\\
+ H_t&=G_t\cap\{\min(\tau_o,\sigma)=t\},\\
+ V_t&=G_t\cap\{t<\tau_o,\ t<\sigma\}.
+\end{aligned}
+\end{equation}
+Indeed, the minimum is below, equal to, or above $t$; below $t$ the
+two records have either strict order or a tie. Thus
+$C_{G,t}=L_t\mathbin{\dot\cup}B_t\mathbin{\dot\cup}H_t$.
+Simultaneous and observation-endpoint ties retain their mass; no new
+priority or zero-tie assumption is made. For finite $t$, two infinite
+records belong to $V_t$. A killed coordinate without the required joint
+record does not justify inventing continuation after opening; only the
+coarser certified ledger then remains available.
+
+To connect this ledger to an original global raw law $\mathbb Q_\mu$,
+the source must separately identify the same prefix events with masses
+$o_t,v_t$, preserve total mass $m$, and certify
+$O_t^{\rm glob}\subseteq\{\tau_o\leq t\}$ and
+$V_t^{\rm glob}\subseteq\{\tau_o>t\}$. The same initial measure alone
+does not establish that restriction. For their global complement
+$C_t^{\rm glob}$, of mass $c_t$, and a separately supplied initial
+absorbed cohort $A_0$, the conditional identity and bounds are
+\begin{equation}
+\begin{aligned}
+ A_{\rm raw}(t)&=A_0+o_t+
+ \mathbb Q_\mu(C_t^{\rm glob}\cap\{\tau_o\leq t\}),\\
+ A_0+o_t&\leq A_{\rm raw}(t)\leq A_0+o_t+c_t=A_0+m-v_t.
+\end{aligned}
+\label{eq:conditional-opening-interval}
+\end{equation}
+Here $A_0$ and $\mu$ must share the original preparation, mass basis,
+origin and event meaning and have disjoint cohorts, including consistency
+of any $\tau_o=0$ mass. Together with those source bindings, the original
+probability ledger $A_0+m=1$ is required before interpreting
+$A_{\rm raw}$ as the original first-opening CDF. Otherwise the result
+remains a raw-mass interval and is not arbitrarily divided to make a
+probability. The residual $c_t$ is not a supplied numerical error or a certified
+boundary-error estimate. No claim is made that the conditional interval
+is sharp or that every unobserved completion is attainable.
+The interval's upper endpoint $A_0+o_t+c_t$ is not selected as an actual CDF value.
+Actual certificates, masses, original global restriction and physical
+clock remain unspecified.
+
+
+\paragraph{Initial mass in numerical output.}
+At the literal local snapshot \texttt{5f87837}, the numerical source defines
+\texttt{cumulative\_\allowbreak absorbed\_\allowbreak mass} and
+\texttt{initiation\_\allowbreak probability} to include initial removal.
+Treating either as $o_t$ and adding the same $A_0$ would double-count that cohort.
+Repeated snapshots of \texttt{initial\_\allowbreak absorbed\_\allowbreak mass}
+record an initial ledger value, not new increments.
+Post-initial integrated flux is a different aggregate; excluding initial
+removal does not certify it as strict-interior original opening mass $o_t$.
+Density, rate and integrated mass retain distinct measures and intervals;
+quadrature, state-Jacobian, physical-volume and time factors must not be applied twice.
+Consumption requires source bindings for the preparation and alive raw
+initial-measure stage, normalization history, matching disjoint cohorts
+including zero-time event accounting,
+initialization origin, event meaning and eligible prefix.
+With $m=\mu(E)$, the original probability ledger $A_0+m=1$ and those
+bindings plus the global prefix restriction are required before interpreting
+the conditional raw-mass interval as a first-opening CDF;
+normalization alone is insufficient.
+Without those bindings, the result remains a raw-mass interval without renormalization.
+Numerical residual fields do not supply the unresolved mass $c_t$.
+Source definitions alone do not establish an actual run or its raw initial population.
+Actual raw $\mu$, execution records, cohort bindings and the physical clock remain unspecified.
+
+\paragraph{Time and event records.}
+In the inspected local snapshot at commit \texttt{5f87837}, load evaluations are numerical point calls. The explicit force at \(t\) and the implicit force at \(t+\Delta t\) identify integration stages; they do not select left or right limits at a load jump. Energy, mask, subsequent loop, and final record evaluations make separate calls, even when their time arguments coincide. Without a supplied original pointwise load representative and a repeatability contract, these calls are not certified evaluations of the same original \(f(t)\). Numerical record and duration tolerances, together with the last snapshot, resolve neither \(\tau_{\rm o}<t\) versus \(\tau_{\rm o}=t\) nor the opening, localization, and simultaneous cases at the observation horizon; they provide no CDF error bound. Aggregate probability, removal, and flux fields do not supply a joint \((\tau_{\rm o},\sigma_U)\) event order, the certificate \(G_t\), or a restriction identifying the same first-event prefix of an original global law. These observations concern the inspected source and interface and the records available to this review. They establish no actual-run validation or SG--continuum event equivalence, and imply neither repository-wide absence of records nor model failure. The original load and opening rules remain unchanged.
+
+\subsection{Conditional finite-time load sensitivity}
+Here $T$ and the integration variable $u$ denote the original model time,
+with no conversion to physical seconds.
+Consider two prescribed deterministic vector loads $\ell_0^*,\ell_1^*$ on $[0,T]$,
+with the same $U_\Gamma^*$, positive constant $M^*,\theta^*$, initial law,
+model clock and background reflection rule. Assume existence, non-explosion,
+the weak uniqueness needed to identify the changed law, and a common measurable
+opening event. If $\Delta\ell^*=\ell_1^*-\ell_0^*\in L^2(0,T;\mathbb R^2)$,
+the same drift-control comparison gives
+\begin{equation}
+ |F_1^D(T)-F_0^D(T)|\leq B_{\rm load}(T)
+ :=\min\left\{1,\sqrt{\frac{1}{8\theta^*}
+ \int_0^T (\Delta\ell^*)^TM^*\Delta\ell^*\,du}\right\}.
+\end{equation}
+The drift difference is $M^*\Delta\ell^*$. For the legacy linked load
+$\ell^*=f^*(1,\chi)^T$, the integrand reduces to
+$(M_a^*+\chi^2M_s^*)|\Delta f^*|^2$. This bound compares two loads
+for the same counted energy; it does not bound the change from the row
+potential to the counted potential. A true-martingale
+change of measure on the driving space gives an entropy upper bound;
+data processing and Pinsker's inequality then bound any common path event.
+For deterministic square-integrable drift control the Novikov exponential
+is finite, but this does not establish the assumed global well-posedness of
+the singular lattice/reflection problem. Entropy results require their
+stated hypotheses~\cite{Leonard2012,Lehec2025}; the upper bound is not
+obtained by reversing an entropy inequality.
+When the initial law or load-dependent opening predicate differs, the
+comparison instead requires
+\begin{equation}
+ |F_1(T)-F_0(T)|\leq
+ \min\{1,\eta_{\rm init}+B_{\rm load}(T)+\eta_{\rm event}(T)\},
+\end{equation}
+where $\eta_{\rm init}$ is the initial-law total variation distance and
+$\eta_{\rm event}$ is the probability of the symmetric difference of the
+two opening events under the chosen common comparison law.
+The load integral alone does not control the moving-boundary term.
+This is an absolute CDF bound for finite time; it is not a relative rare-event
+error, an infinite-time mean-lifetime bound or a physical calibration.
+No numerical value for its inputs or event term is supplied.
+
+\subsection{Legacy row-kernel far-field result: restricted scope}
+\label{sec:r11-row-tail-only}
+The explicit constants in this subsection and the following root tube
+apply only to $W=W_{\rm row}$. They are preserved as reference results;
+they are not certificates for the counted $U_\Gamma^*$, its stationary
+points, opening mask or CDF. A layer sum or plane kernel requires its own
+convergent derivative remainder bounds before such a certificate is used.
+In this paragraph stars are suppressed in the original lattice units.
+For positive $\epsilon,\sigma_{\rm LJ},b,a$, define the zero mode
+$W_0=63\pi\epsilon\sigma_{\rm LJ}^{12}/(64ba^{11})
+-3\pi\epsilon\sigma_{\rm LJ}^{6}/(2ba^5)$.
+The reviewed exact-sum bounds, uniform for every real $s$, are
+\begin{align}
+ |S_p-A_p|&\leq a^{-2p},\quad
+ A_p=\frac{\sqrt\pi\,\Gamma(p-1/2)}{b\Gamma(p)}a^{1-2p},\quad p>\tfrac12,\\
+ |W_a-W_0'|&\leq24\epsilon\sigma_{\rm LJ}^6
+ (a^{-7}+2\sigma_{\rm LJ}^6a^{-13}),\\
+ |W_{aa}-W_0''|&\leq24\epsilon\sigma_{\rm LJ}^6
+ (9a^{-8}+30\sigma_{\rm LJ}^6a^{-14}).
+\end{align}
+The first bound follows by partitioning the line into intervals centred at
+the shifted lattice sites and bounding the quadrature error by half the total
+variation of $(a^2+x^2)^{-p}$. Exact derivatives of the lattice sum, followed
+by separate remainder bounds, give the other two inequalities; an error
+inequality is not differentiated. In particular,
+\begin{equation}
+ \frac{2079\pi}{16}\left(\frac{\sigma_{\rm LJ}}a\right)^6
+ +216\frac ba+720\frac ba\left(\frac{\sigma_{\rm LJ}}a\right)^6<45\pi
+ \quad\Longrightarrow\quad W_a>0,\quad W_{aa}<0.
+\end{equation}
+This sufficient condition gives at most one fixed-$s$ scalar root of $W_a=f$
+within the declared tail. It does not establish root existence, a full
+two-dimensional saddle, the operating selector, or a numerical boundary table.
+No actual threshold or evaluated finite-tube curvature bound has been
+certified for an operating parameter/domain instance. The conditional
+symbolic finite-tube result below is separate from such instance certification.
+Indeed $W_{aa}\to0$ in the far field, so strict negative curvature there
+does not provide a positive uniform curvature bound on the entire infinite tail.
+
+\subsection{Legacy row-kernel finite root tube: restricted scope}
+Continue in the same native lattice units, with stars suppressed.
+Let $0<R<A<\infty$ and $0<f_{\min}\leq f_{\max}<\infty$.
+The constant $A$ here is the upper root-tube endpoint, not the absorbed
+probability $A(\tau)$. Reusing the exact far-field envelopes, define
+\begin{align}
+ F_0(a)&=W_0'(a)
+ =\frac{15\pi\epsilon\sigma_{\rm LJ}^6}{2b}a^{-6}
+ -\frac{693\pi\epsilon\sigma_{\rm LJ}^{12}}{64b}a^{-12},\\
+ E_F(a)&=24\epsilon\sigma_{\rm LJ}^6
+ (a^{-7}+2\sigma_{\rm LJ}^6a^{-13}),\\
+ L_F(a)&=F_0(a)-E_F(a),\qquad U_F(a)=F_0(a)+E_F(a),\\
+ M(a)&=45\pi-\frac{2079\pi}{16}\left(\frac{\sigma_{\rm LJ}}a\right)^6
+ -216\frac ba-720\frac ba\left(\frac{\sigma_{\rm LJ}}a\right)^6 .
+\end{align}
+Here $M(a)$ is a scalar curvature margin, distinct from mobility $M^*$.
+A reviewed sufficient set of symbolic conditions is
+\begin{equation}
+ M(R)>0,\qquad L_F(R)>f_{\max},\qquad U_F(A)<f_{\min}.
+ \label{eq:finite-tube-conditions}
+\end{equation}
+Define $\eta_L=L_F(R)-f_{\max}>0$ and
+$\eta_R=f_{\min}-U_F(A)>0$. The endpoint inequalities are then
+$W_a(R,s)\geq f_{\max}+\eta_L$ and
+$W_a(A,s)\leq f_{\min}-\eta_R$ for every real $s$.
+On the whole finite tube the corresponding conservative symbolic lower bound is
+\begin{equation}
+ -W_{aa}(a,s)\geq k_{\rm cert}^{\rm sym}(R,A)
+ :=\frac{\epsilon\sigma_{\rm LJ}^6}{bA^7}M(R)>0,
+ \qquad R\leq a\leq A .
+ \label{eq:finite-tube-curvature}
+\end{equation}
+These conditions supply the strict bracket and curvature inputs to the
+existing scalar root-graph theorem for a conditional root
+$a_{\rm tube}(s,f)\in(R,A)$, $f\in[f_{\min},f_{\max}]$.
+They are sufficient conditions, not assertions that every operating band
+or arbitrary choice of endpoints satisfies them.
+For fixed admissible $R$, $k_{\rm cert}^{\rm sym}(R,A)\to0$ as
+$A\to\infty$, consistently with the absence of a positive uniform bound
+on the entire infinite tail.
+
+For two force histories confined to this band and roots on this same tube
+graph, the existing same-slip boundary comparison can use
+\begin{equation}
+ |\Delta a_{\rm tube}(\tau,s)|
+ \leq\frac{|\Delta f(\tau)|}{k_{\rm cert}^{\rm sym}}
+ \leq\frac{\delta}{k_{\rm cert}^{\rm sym}},
+ \qquad |\Delta f(\tau)|\leq\delta .
+\end{equation}
+Its initial-law, background, reflection and event hypotheses remain required.
+Identifying this tube graph with the original mechanical outer boundary
+requires separate selector and left-well evidence; otherwise the estimate
+concerns the tube graph alone. It is a native boundary-location bound,
+not a distance between stochastic paths, a CDF bound, a measured crack
+length or an experimental error bound.
+The tube introduces no probability-domain truncation, reflecting wall or
+change of initial ensemble. Actual $R,A$, force band, slip domain,
+parameter/runtime binding and evaluated $k_{\rm cert}$ remain unspecified;
+no actual branch-certificate instance has passed.
+The full two-dimensional saddle, operating selector and left well,
+finite-evaluator/roundoff/table/SG accuracy and physical calibration remain
+uncertified.
+
+\paragraph{Symbolic nonvacuity and order of declaration.}
+The finite-tube conditions admit a nonempty symbolic family.
+For fixed positive $\epsilon,\sigma_{\rm LJ},b$, put
+$x=b/a$, $y=(\sigma_{\rm LJ}/a)^6$,
+$C(a)=\epsilon\sigma_{\rm LJ}^6/(ba^6)>0$ and
+$\ell(a)=L_F(a)/C(a)$. The reviewed exact identity is
+\begin{equation}
+ \ell(a)=\frac{M(a)}6+\frac{693\pi}{64}y+12x+72xy .
+\end{equation}
+Thus $M(R)>0$ implies $L_F(R)>0$.
+Since $M(a)\to45\pi$ as $a\to\infty$, admissible finite $R$ exist.
+After an admissible $R$ is declared, declare a band
+$0<f_{\min}\leq f_{\max}<L_F(R)$.
+For each such positive band, finite upper endpoints exist; it is sufficient to require
+\begin{equation}
+\begin{aligned}
+ A&>\mathcal A(R,f_{\min}),\\
+ \mathcal A(R,f_{\min})&=\max\left\{
+ \begin{gathered}
+ R,\quad
+ \left(\frac{45\pi\epsilon\sigma_{\rm LJ}^6}{2bf_{\min}}\right)^{1/6},\\
+ \left(\frac{72\epsilon\sigma_{\rm LJ}^6}{f_{\min}}\right)^{1/7},
+ \quad
+ \left(\frac{144\epsilon\sigma_{\rm LJ}^{12}}{f_{\min}}\right)^{1/13}
+ \end{gathered}\right\}.
+\end{aligned}
+\end{equation}
+Dropping the negative $a^{-12}$ term from $U_F$ gives a positive
+majorant; this strict threshold bounds each of its three positive
+terms by less than $f_{\min}/3$, and hence $U_F(A)<f_{\min}$.
+The order is positive parameters, an admissible $R$, a band below
+its positive cap, and then a finite $A$ depending on that band.
+This neither certifies an arbitrary preselected operating band nor
+supplies one finite $A$ for all bands approaching zero force.
+Zero or negative force, the actual selector and left well,
+finite-evaluator/CDF accuracy and physical crack initiation remain
+uncertified. No actual parameters or endpoints are selected, and the
+probability domain, initial law and opening event are unchanged.
+
+\section{Discussion}
+Earlier one-dimensional and Weibull-based constructions remain in the archived
+draft. They are not identified with the present two-coordinate dynamics, and
+their illustrative fitted values are not adopted as current-model inputs.
+The same pair energy and the same external work must each be counted once.
+An API returning $G$ already includes the loading tilt; subtracting the same external work again
+would change the model. Likewise the macro and micro virtual works above
+describe the same transfer, rather than two additive stored energies.
+The lattice zero mode and registry modes are a mathematical decomposition;
+they have not been identified with physical bulk and surface energies.
+Such an excess decomposition requires the same atom set, energy reference,
+constraints, strain path and boundary conditions on both sides of the subtraction.
+The counted-cut construction supplies its symbolic reference ledger;
+its actual material geometry and matched physical bulk reference remain unresolved.
+Ideal uniform-interface strength, defect-controlled yielding and first crack
+initiation consequently remain different observables.
+
+As an example of the observation layer, Strohmann et al. use a convolutional
+neural network to segment fatigue crack paths and tip locations from DIC
+displacement fields in AA2024-T3 crack-growth experiments~\cite{Strohmann2021}.
+They report more robust segmentation at maximum load, whereas near-zero
+nominal loads allow DIC noise to obscure the crack-tip field. This load-stage
+dependence motivates an explicit observation model when relating a detected
+crack to the original first-opening event; pixel-class predictions do not
+supply a calibration of the first-opening CDF.
+
+Experimental validation requires records from the same specimen and test:
+actual cycle indices and load frequency, continuous load or a verified
+synchronization map, the last negative and first positive observation,
+and the detection criterion, correction and resolution.
+Those observations can bracket a detected transition under the stated inspection
+assumptions. They do not by themselves establish when a sub-resolution crack
+first formed or quantify the detection delay. The same-test controller, calibration and negative--positive records
+needed for the proposed validation are not yet available to this study.
+No material lifetime or observed initiation probability is inferred here.
+
+% R09-BEGIN R09_DISCUSSION_SCOPE
+\paragraph{Status of the added analytical statements.}
+The local stress criterion, scalar generator condition and finite-graph
+functional balances use standard linear inverse-map, generator and
+chain-rule arguments. Their application here concerns the retained work map,
+strain observable and opening-removal accounting under the stated
+assumptions. Independent internal source and mathematical reviews do not
+establish a literature gap or material validation; literature novelty remains
+undetermined. These conditional statements supply no measured stress,
+physical clock, calibrated initiation probability or completed spatial
+constitutive closure. They also provide no atomistic derivation of the
+assumed diffusion. The active energy is now the counted-cut $U_\Gamma^*$;
+the SG formula and raw population-removal bookkeeping keep their forms
+but consume the new energy and its consistently bound mechanical mask.
+Old row-specific numerical outputs are not results for this law.
+% R09-END R09_DISCUSSION_SCOPE
+
+\section{Conclusion}
+The current result is a conservative first-opening probability framework with
+explicit energy, population and work definitions. The counted surface
+energy is propagated through generalized force, probability drift, SG
+energy differences, raw functional work and affine-strain drift. The event
+convention is retained while potential-derived selectors require the new
+energy. Row far-field and root-tube results remain restricted reference
+results, while the physical clock, matched bulk
+reference, spatial constitutive closure and observed-crack mapping remain
+separate validation tasks. These missing inputs are left unspecified rather
+than inferred from illustrative fits or numerical conservation alone.
+
+\bibliographystyle{unsrt}
+\bibliography{1}
+\end{document}

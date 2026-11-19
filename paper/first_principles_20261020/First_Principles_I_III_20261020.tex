@@ -1,0 +1,489 @@
+% Standalone companion; original Revision 11 and production code are preserved.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,mathtools,booktabs,array,longtable}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+\newcommand{\kb}{k_{\rm B}}
+\newcommand{\dd}{\mathrm d}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Pm}{\mathcal P}
+\newcommand{\Qm}{\mathcal Q}
+\title{From the Poisson--Bessel Lattice Energy to Reduced Dynamics:\
+PART I--III Foundations and the Two Missing Bridges}
+\author{Research companion to the Revision 11 working manuscript}
+\date{20 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We reconstruct the ideal lattice energy without discarding its nonzero
+Poisson--Bessel modes, then distinguish it from the finite-temperature
+potential of mean force and from a probability-current law. Explicit
+collective coordinates, mass and measure give the conditional partition
+integral. Conditional projection gives a generally nonlinear memory
+equation. An exactly eliminable harmonic bath keeps the full nonlinear
+Bessel potential while exhibiting Gaussian but recurrent colored forcing.
+Separate Markov and small-mass assumptions yield a conditional diffusion,
+including its noise-induced drift for variable mobility. Eight independent
+mathematical checks support the identities and counterexamples in declared
+dimensionless models. They do not calibrate aluminium or establish a
+fatigue mechanism. Revision 11 is retained as a conditional framework;
+same-coordinate thermodynamic, kinetic and observation gates remain open.
+\end{abstract}
+\begin{quote}\small
+\textbf{Scope.} First delivery: PART I--III only. The full later mechanism,
+spatial coupling, 55-display downstream audit and experimental fatigue-life
+validation are deferred. Original Revision 11, production solver,
+calibration and historical results are preserved. This is a foundations
+audit, not a substitution of hypothetical numbers for missing material data.
+\end{quote}
+\tableofcontents
+
+\section{The two questions}
+The mathematical identity for an ideal rigid lattice is not the disputed
+step. The two questions are
+\begin{equation}
+W_\Gamma^{\rm Bessel}\ \xrightarrow[\text{same coordinate and measure}]
+ {\text{integrate out atoms}}\ A(q)
+\ \xrightarrow[\text{time scales and preparation}]
+ {\text{reduce actual dynamics}}\ \boldsymbol J.
+\end{equation}
+Here $q=(\delta a,s)$, with normal cut opening and tangential registry.
+An additive shift to $a$ changes no derivative. $A$ is a free energy,
+not a cut area. Geometry, coherent patch size, temperature, load, initial
+ensemble and boundaries must be the same through both arrows.
+
+\section{PART I: lattice energy, counting and derivatives}
+\subsection{Hamiltonian and the row transform}
+For finite atom positions $R$ and momenta $\Pi$,
+\begin{equation}
+H=\tfrac12\Pi^Tm^{-1}\Pi+V(R),\qquad
+V_{\rm pair}=\sum_{i<j}4\epsilon
+ [(\sigma/r_{ij})^{12}-(\sigma/r_{ij})^6].
+\end{equation}
+The pair force is $-\phi'(r)\widehat r$ and its radial Hessian is
+$\phi''(r)\widehat r\widehat r^T+
+(\phi'(r)/r)(I-\widehat r\widehat r^T)$, with
+\begin{align}
+\phi'&=4\epsilon[-12\sigma^{12}r^{-13}+6\sigma^6r^{-7}],\\
+\phi''&=4\epsilon[156\sigma^{12}r^{-14}-42\sigma^6r^{-8}].
+\end{align}
+For $a>0$, $p>1/2$, define $x_j=(j+1/2)b-s$ and
+\begin{equation}
+S_p(a,s)=\sum_{j\in\mathbb Z}(a^2+x_j^2)^{-p},\qquad
+W_{\rm row}=4\epsilon(\sigma^{12}S_6-\sigma^6S_3).
+\end{equation}
+Using $z^{-p}=\Gamma(p)^{-1}\int_0^\infty t^{p-1}e^{-tz}\dd t$,
+the Gaussian Fourier integral gives, for $k\ne0$,
+\begin{align}
+\widehat f_p(k)&=\frac{\sqrt\pi}{\Gamma(p)}
+ \int_0^\infty t^{p-3/2}e^{-a^2t-k^2/(4t)}\dd t\\
+ &=\frac{2\sqrt\pi}{\Gamma(p)}
+ \left(\frac{|k|}{2a}\right)^{p-1/2}K_{p-1/2}(a|k|),\\
+\widehat f_p(0)&=\frac{\sqrt\pi\Gamma(p-1/2)}{\Gamma(p)}a^{1-2p}.
+\end{align}
+The last integral is the modified-Bessel representation\cite{DLMF}.
+Poisson summation then gives
+\begin{align}
+S_p={}&\frac{\sqrt\pi\Gamma(p-1/2)}{b\Gamma(p)}a^{1-2p}\nonumber\\
+&+\frac{4\sqrt\pi}{b\Gamma(p)}\sum_{n=1}^\infty
+ \left(\frac{\pi n}{ab}\right)^{p-1/2}
+ K_{p-1/2}(2\pi na/b)\cos[2\pi n(1/2-s/b)].
+\label{eq:row}
+\end{align}
+Thus LJ rows use $K_{5/2}$ and $K_{11/2}$. The zero reciprocal mode is a
+lateral average, not a bulk environment. All nonzero modes are retained.
+On compact sets bounded away from $a=0$, the sums and their first two
+derivative sums converge uniformly. Direct differentiation gives
+\begin{align}
+S_{p,a}&=-2paS_{p+1},& S_{p,s}&=2p\sum_j x_j(a^2+x_j^2)^{-p-1},\\
+S_{p,aa}&=-2pS_{p+1}+4p(p+1)a^2S_{p+2},\nonumber\\
+S_{p,as}&=-4p(p+1)a\sum_jx_j(a^2+x_j^2)^{-p-2},\nonumber\\
+S_{p,ss}&=-2pS_{p+1}+4p(p+1)\sum_jx_j^2(a^2+x_j^2)^{-p-2}.
+\end{align}
+
+\subsection{An explicit cut geometry and its multiplicities}
+Choose the illustrative zigzag stack
+$r_{j\ell}=(jb+\ell b/2,\ell h)$. Lower layers have $\ell\leq0$;
+upper layers $\ell\geq1$ translate by $(-s,\delta a)$. With layer difference
+$k=\ell_+-\ell_-$, the correct row-kernel argument is
+\begin{equation}
+w_k(\delta a,s)=W_{\rm row}(kh+\delta a,s+(1-k)b/2).
+\end{equation}
+There are exactly $k$ crossing layer pairs for each $k\geq1$, since
+$1-k\leq\ell_-\leq0$. Hence, per lateral primitive cell,
+\begin{equation}
+W_\Gamma(\delta a,s)=\sum_{k\geq1}k
+ [w_k(\delta a,s)-w_k(0,0)].\label{eq:cut}
+\end{equation}
+For $L$ lower and $U$ upper layers the count is instead
+\begin{equation}
+c_k=\max\{0,\min(0,U-k)-\max(1-L,1-k)+1\}.
+\end{equation}
+No further pair factor $2$ or $1/2$ applies. Crucially,
+$\partial_{\delta a}(kh+\delta a)=1$, so
+\begin{equation}
+\partial_{\delta a}W_\Gamma=\sum_k k\,\partial_dw_k,
+\qquad \partial_{\delta a}^2W_\Gamma=\sum_k k\,\partial_d^2w_k.
+\end{equation}
+The extra chain factor $k$ for a homogeneous dilation $d_k=ka$ is absent.
+The absolute row baseline converges for $p>3/2$, including LJ. On
+$\delta a>-h$, local uniform derivative convergence holds. For opening
+tending to infinity at fixed registry, dominated convergence gives
+\begin{equation}
+W_{\rm sep}=-\sum_{k\geq1}k\,w_k(0,0).
+\end{equation}
+The zero mode, all registries and the complete crossing sum enter this
+limit. Matched equivalent surfaces give $W_{\rm sep}=2A_\Gamma\gamma$;
+rigid cleavage and relaxed surface formation are different targets.
+
+\subsection{A full plane is a different transform}
+For a planar Bravais lattice with primitive area $A_\parallel$,
+\begin{align}
+S_p^{(2)}(d,\Delta)&=A_\parallel^{-1}
+ \sum_{G\in\Lambda^*}\widehat f_p^{(2)}(G)e^{iG\cdot\Delta},\\
+\widehat f_p^{(2)}(G)&=\frac{2\pi}{\Gamma(p)}
+ (|G|/(2d))^{p-1}K_{p-1}(d|G|),\quad G\ne0,\\
+\widehat f_p^{(2)}(0)&=\frac{\pi}{p-1}d^{2-2p}.
+\end{align}
+Here $d>0,p>1$. LJ planes use $K_2,K_5$. The counted plane baseline
+converges for $p>2$. For a declared FCC(111) example one can use triangular
+vectors $a_1=b(1,0)$, $a_2=b(1/2,\sqrt3/2)$,
+$b=a_{\rm lat}/\sqrt2$, $h=a_{\rm lat}/\sqrt3$ and
+$\tau=(a_1+a_2)/3$, evaluating the plane kernel at
+$(kh+\delta a,k\tau+u)$ with count $k$. Orientation, scalar slip path
+and translation period remain required inputs. A row certificate is not
+automatically a full-plane or counted-cut certificate.
+
+For an embedding potential, first form each complete site density and then
+sum $\sum_i[F(\rho_i(q))-F(\rho_i^{\rm ref})]$. Multiplying an individual
+layer's embedding function by a pair-crossing count is not valid.
+
+\section{PART II: atoms, PMF and exact memory}
+\subsection{Collective coordinate, mass and hidden variables}
+Take a finite, normalizable canonical reference, removing translation zero
+modes consistently. Define $q=CR+q_c$ with rank-two constant $C$ and
+\begin{equation}
+G=Cm^{-1}C^T,\qquad M_q=G^{-1},\qquad B=m^{-1}C^TM_q.
+\end{equation}
+Choose $CE=0$ so $R=R_0+Bq+Ey$ and $B^TmE=0$. Then the canonical momentum
+$p=B^T\Pi=M_q\dot q$ separates a kinetic energy $p^TM_q^{-1}p/2$.
+For normal/tangent projections of two finite group mass-centre differences,
+$M_q=\mu I_2$, $\mu=M_+M_-/(M_++M_-)$. Other observables have other masses.
+The hidden variables include internal vibrations, common motion, unretained
+relative motion and all allowed rearrangements. They are not automatically
+fast. Infinite half-crystal masses diverge; a finite coherent patch has
+energy $N_cW_\Gamma$ and mass proportional to $N_c$. A per-cell potential
+cannot be combined with an unspecified whole-half-crystal mass.
+
+\subsection{The free-energy bridge}
+Relative to flat $\dd q$, define
+\begin{equation}
+Z(q)=\int\delta(\Xi(R)-q)e^{-\beta V(R)}\dd R,\qquad
+A=-\kb T\log Z+C_A.\label{eq:pmf}
+\end{equation}
+The affine map has constant Jacobian. With
+$V(q,y)=U_{\rm Bessel}(q)+V_\perp(q,y)$,
+$Z_\perp=\int e^{-\beta V_\perp}\dd y$, one obtains exactly
+\begin{equation}
+\boxed{\Delta A=\Delta U_{\rm Bessel}
+                  -\kb T\log[Z_\perp(q)/Z_\perp(q_0)].}\label{eq:bridge}
+\end{equation}
+Thus $A=U_{\rm Bessel}+C_A$ if and only if $Z_\perp$ is constant on the
+adopted domain and measure. The Bessel identity proves no such condition.
+The reference units inside logarithms are fixed; differences use ratios.
+
+For nonlinear $\Xi$, coarea gives
+\begin{equation}
+Z(q)=\int_{\Xi^{-1}(q)}\frac{e^{-\beta V}}{J_\Xi}\dd\sigma_q,
+\quad J_\Xi=\sqrt{\det(D\Xi D\Xi^T)}.
+\end{equation}
+If $b_i\cdot\nabla\Xi_j=\delta_{ij}$, integration by parts gives
+\begin{equation}
+\partial_iA=\langle b_i\cdot\nabla V-\kb T\nabla\cdot b_i\rangle_q,
+\end{equation}
+provided boundary terms vanish. The coordinate measure and constraint
+ensemble determine metric corrections; do not append a generic correction
+without those choices\cite{Legoll2010}. A variable mass metric along one
+level set can give a mixture of conditional velocity Gaussians, rather
+than a single exact inertial mass.
+
+At a unique interior nondegenerate constrained minimum $y_*(q)$, use the
+measure $w(q,y)\dd y$ and positive Hessian $H_\perp$. Laplace expansion gives
+\begin{align}
+A(q)={}&U_{\rm rel}(q)+\tfrac12\kb T\log\det H_\perp(q)
+ -\kb T\log w(q,y_*)\nonumber\\
+ &-\tfrac d2\kb T\log(2\pi\kb T)+C_A+O(T^2).
+\end{align}
+Ratios fix units in differences. Zero modes, multiple minima, boundary
+minima and nonuniform limits need separate treatment. For the exact
+counterexample $V=U_{\rm Bessel}(q)+\kappa(q)y^2/2$, $\kappa>0$,
+\begin{equation}
+U_{\rm rel}=U_{\rm rigid},\qquad
+\Delta A=\Delta U_{\rm Bessel}+\tfrac12\kb T\log[\kappa(q)/\kappa(q_0)].
+\end{equation}
+The nonlinear Bessel potential has not been replaced by a parabola; a hidden
+harmonic degree of freedom changes its PMF even though it leaves the
+constrained minimum energy unchanged.
+
+\subsection{Liouville marginal and conditional projection}
+For any initial ensemble, the exact marginal continuity law is
+\begin{equation}
+\partial_tP=-\nabla_q\cdot J,\qquad J=P\E_{\rho_t}[\dot q\mid q].
+\end{equation}
+The evolving conditional hidden distribution prevents closure by this
+identity alone. Smooth finite Hamiltonian positions have zero quadratic
+variation; Brownian positions require a limiting description.
+
+For an autonomous invariant canonical reference let $Z=(q,p)$,
+$Lf=\{f,H\}$, $\Pm f=\E_{\rm eq}[f\mid Z]$, $\Qm=I-\Pm$.
+On a suitable common operator domain the Dyson identity gives
+\begin{equation}
+\dot Z(t)=e^{tL}\Pm LZ+e^{t\Qm L}\Qm LZ
+ +\int_0^t e^{(t-u)L}\Pm Le^{u\Qm L}\Qm LZ\,\dd u.
+\label{eq:mz}
+\end{equation}
+For the affine coordinate, $\Qm Lq=0$, $\Pm Lp=-\nabla A$.
+Put $F(u)=e^{u\Qm L}\Qm Lp$ and
+$C_{ij}(z,u)=\E[F_i(u)F_j(0)\mid Z=z]$. Orthogonality gives $\Pm F=0$,
+not white or independent force. Anti-self-adjointness of $L$ and integration
+by parts in $p$ give
+\begin{equation}
+\boxed{\Pm LF_i(u)=\rho_Z^{-1}\partial_{p_j}(\rho_Z C_{ij})
+ =\partial_{p_j}C_{ij}-\beta C_{ij}(M_q^{-1}p)_j.}
+\end{equation}
+For example, pairing with $g(Z)$ gives
+$\langle g,LF_i\rangle=-\int\rho_Z\partial_{p_j}g\,C_{ij}\dd z$;
+conditional orthogonality cancels the resolved part of $Lg$.
+The memory in \eqref{eq:mz} evaluates this state-dependent expression at
+$Z(t-u)$. A velocity convolution follows only in special cases, e.g.
+$C$ independent of $z$. Conditional Zwanzig and linear Mori projections
+must not be mixed without justification\cite{Mori1965,Zwanzig1973,Ayaz2022}.
+No operator-domain theorem for every infinite LJ lattice is claimed here.
+
+\subsection{Exactly eliminable bath atop the full Bessel energy}
+Consider the specified finite Hamiltonian
+\begin{equation}
+H=\tfrac12p^TM_q^{-1}p+U(q)+\sum_j\left[
+ \frac{P_j^2}{2m_j}+\frac{m_j\omega_j^2}{2}
+ \left(x_j-\frac{c_j^Tq}{m_j\omega_j^2}\right)^2\right].
+\end{equation}
+Here $U$ is the full nonlinear Bessel potential. The shifted Gaussian bath
+integral is independent of $q$, hence $A=U+C_A$ exactly. Solving each
+oscillator and integrating by parts gives
+\begin{align}
+M_q\ddot q&=-\nabla U-\int_0^t\Gamma(t-u)\dot q(u)\dd u
+                   +\eta(t)+F_{\rm ext}(t),\\
+\Gamma(t)&=\sum_j\frac{c_jc_j^T}{m_j\omega_j^2}\cos\omega_jt,\\
+\eta(t)&=\sum_jc_j\left[
+ (x_j(0)-c_j^Tq(0)/(m_j\omega_j^2))\cos\omega_jt
+ +\frac{P_j(0)}{m_j\omega_j}\sin\omega_jt\right].
+\end{align}
+Shifted conditional canonical preparation gives
+\begin{equation}
+\E\eta=0,\qquad \E[\eta(t)\eta(u)^T]=\kb T\Gamma(t-u).
+\end{equation}
+Finitely many modes yield Gaussian but colored, recurrent forcing.
+Unshifted preparation instead gives an initial slip $-\Gamma(t)q(0)$.
+Changing bath parameters changes kinetics while leaving the same $A$.
+Off-diagonal memory requires symmetry or evidence to vanish. Arbitrary
+cyclic forcing of $q$ leaves this special linear bath identity intact;
+a driven anharmonic solid can instead require a nonstationary, two-time
+memory and a preparation-dependent fluctuation relation.
+
+\section{PART III: conditional stochastic limits and current}
+\subsection{White-bath limit and Kramers dynamics}
+A chosen exponentially decorrelating family has
+\begin{equation}
+\Gamma_\varepsilon(t)=\zeta\varepsilon^{-1}e^{-t/\varepsilon},\ t\geq0,
+\quad\int_0^\infty\Gamma_\varepsilon\dd t=\zeta.
+\end{equation}
+Its stationary noise covariance
+$\kb T\zeta\varepsilon^{-1}e^{-|t-u|/\varepsilon}$ tends to
+$2\kb T\zeta\delta(t-u)$. This is a controlled bath family, not a spectral
+derivation for the actual lattice. General non-Gaussian atomic baths need
+mixing and a functional limit plus feedback/preparation control.
+With constant symmetric $\zeta>0$, constant $T$ and constant mass, the
+candidate Markov inertial equation is
+\begin{align}
+\dd q&=M_q^{-1}p\dd t,\\
+\dd p&=[-\nabla A+F_{\rm ext}-\zeta M_q^{-1}p]\dd t
+                         +\sqrt{2\kb T\zeta}\dd B_t.
+\end{align}
+Its Kramers equation retains momentum transport and momentum diffusion.
+Integrating it over $p$ gives a current moment, not yet a position-only
+Fick law. The conditions are separately
+\begin{equation}
+\tau_{\rm bath}\ll\tau_q,\tau_{\rm load},\qquad
+\tau_p\ll\tau_q,\tau_{\rm load},\quad\tau_p=\mu/\zeta
+\quad\hbox{(scalar case)}.
+\end{equation}
+The first supports Markov approximation; the second supports overdamping.
+Joint colored-noise and small-mass limits require their ratio/order to be
+declared. Absorbing boundaries can create additional inertial layers.
+
+\subsection{Variable mobility and the forward equation}
+For constant temperature and a smooth symmetric positive mobility $M(q)$,
+the controlled small-mass limit of an inertial SDE with
+$\sigma\sigma^T=2\kb T\zeta$ and $M=\zeta^{-1}$ is, in It\^o form,
+\begin{equation}
+\boxed{\dd q=[-M\nabla A+MF_{\rm ext}+\kb T\nabla\cdot M]\dd t
+                  +B\dd B_t,\qquad BB^T=2\kb T M.}
+\label{eq:ito}
+\end{equation}
+Regularity, positive friction, growth/nonexplosion or localization, initial
+data and boundary assumptions remain required\cite{Hottovy2015}. This
+theorem starts from an inertial SDE, not from unspecified atomic noise.
+The It\^o forward equation gives
+\begin{equation}
+J_i=b_iP-\kb T\partial_j(M_{ij}P),\qquad
+\boxed{J=-M[(\nabla A-F_{\rm ext})P+\kb T\nabla P].}
+\label{eq:current}
+\end{equation}
+Omitting the mobility divergence in \eqref{eq:ito} changes this current.
+A Stratonovich representation subtracts
+$\tfrac12\sum_{jk}B_{jk}\partial_j B_{ik}$ from the It\^o drift; in
+multiple dimensions that correction depends on the noise frame and is
+not universally half the mobility divergence. Constant $M,T$ recover
+Rev.11's algebra only after all earlier identification assumptions hold.
+
+At fixed conservative external potential and admissible no-flux/decay
+boundaries, a normalizable Gibbs law is stationary. Integration by parts
+gives a nonpositive free-energy derivative
+$-\int P[\nabla(A+V_{\rm ext})+\kb T\nabla\log P]^T
+M[\nabla(A+V_{\rm ext})+\kb T\nabla\log P]\dd q$.
+Absorbing populations and time-dependent work require their own extra terms.
+
+\subsection{Domain and physical normalization}
+The ideal rigid cut tends to finite energy at infinite opening and is
+periodic in unwrapped slip. Its global Gibbs integral on that domain
+diverges even without tensile load. Equilibrium projection needs a declared
+finite confining or restricted reference; a periodic quotient loses winding
+history unless an index is retained. A numerical reflecting box does not
+prove physical confinement or a global continuous-law contract.
+
+For pure normal traction,
+$V_{\rm ext}=-A_\Gamma T_n(t)\delta a$, so $F_s=0$.
+The old projected work $-f[(a-a_0)+\chi s]$ has a tangential component
+$\chi f$ and requires its own loading geometry. Static energy does not
+identify a mobility. With $q=\ell q^*$, $A=E_0A^*$, $M=M_0M^*$,
+\begin{equation}
+t_0=\ell^2/(M_0E_0),\qquad\theta=\kb T/E_0.
+\end{equation}
+A fully specified physical Hamiltonian has Newtonian time; the missing
+quantity from an energy-only overdamped model is its compatible bath and
+mobility. Dividing a coherent plane energy by $N_p$ requires both
+$M\mapsto N_pM$ and $\kb T\mapsto\kb T/N_p$ to preserve the generator.
+Multiplying mobility alone is not equivalent.
+
+Existing repository v31 studies include actual Al99 MD and finite-band
+plane-coordinate kinetic estimates. Their error sets include zero drag,
+and their plane PMF/local-coordinate and thermal normalization match is
+unresolved. They are evidence, but do not presently calibrate this local
+physical clock. No measured seconds, hertz or fatigue cycles are inferred.
+
+\section{Executed mathematical checks}
+All parameters below are illustrative and dimensionless. The independent
+script saved all truncations, tolerances and channel errors; it ran to
+exit code zero with eight passes and no failures. No production regression
+or application suite is claimed.
+\begin{center}\small
+\begin{tabular}{p{0.34\linewidth}p{0.58\linewidth}}
+\toprule
+Check & Evidence and scope\\\midrule
+Row direct versus Poisson & Maximum scaled value/gradient/Hessian error
+$9.84\,10^{-15}$; near-singular large absolute values are not assigned that
+absolute error.\\
+Triangular plane transform & Real/reciprocal cutoffs refined; recorded
+analytic tail bound covers energy, not a Hessian tail certificate.\\
+Finite crossing counts & $4\times5$ layers, 20 crossing row pairs;
+direct/counted difference $9.44\,10^{-16}$.\\
+Cut derivatives and endpoint & Stress-free stack $h=0.761436142462363$;
+positive Hessian eigenvalues $60.8604,141.4438$;
+$W_{\rm sep}=2.563620429191983$.\\
+Exact PMF counterexample & At $(0.1,0.17)$, $\kb T=0.2$,
+$\Delta U=0.5170967738516374$, $\Delta A=0.5458266268875693$;
+same Bessel potential, hidden stiffness entropy.\\
+Finite Hamiltonian bath & Refined nonlinear force identity residual
+$1.23\,10^{-15}$; external-work balance $1.04\,10^{-14}$;
+analytic covariance, recurrence and initial slip checked.\\
+Two limit controls & Explicit local Bessel-Hessian OU model: equilibrium
+covariance residual $8.00\,10^{-15}$; separate memory and mass refinements
+reduce frequency-response errors.\\
+Variable-mobility drift & On a fixed-opening periodic quotient, Gibbs flux
+residual $3.56\,10^{-15}$ with correct drift; $2.4654$ without it.\\
+\bottomrule
+\end{tabular}
+\end{center}
+Two truncations agreeing at machine precision do not prove zero omitted
+tail. The local quadratic limit control is explicitly an approximation;
+the finite-bath force check keeps the nonlinear Bessel energy. No Monte
+Carlo fatigue count replaces a derivation.
+
+\section{Revision 11 decision and next gates}
+The actual Papeeria Rev.11 already calls its diffusion an assumed closure.
+Its constant-mobility FPE and interior It\^o SDE are algebraically consistent.
+The first eleven displays were audited: row energy, bulk/cut counts,
+fixed-geometry derivatives, affine work and density transformations can be
+retained under their stated conditions. The missing links are the
+thermodynamic identification and the material dynamical limits. The
+abstract's wording is qualified; the original equations are preserved.
+
+Retain Rev.11 as a conditional reference. First bind the same microscopic
+coordinate, patch, measure and preparation. Then compare constrained PMF
+and mean force with the rigid/relaxed energy over the occupied and escape
+region. Next test conditional memory, inertial response, cross mobility,
+preparation dependence and loading time scales on held-out trajectories.
+Only after those gates establish compatible kinetics and boundaries can
+one assign a physical clock and test an overdamped first-opening law.
+An absorbing event's increasing CDF does not prove prior microstructural
+damage accumulation or its equivalence to a detected crack. Later defect,
+spatial and observation studies remain separate.
+
+\appendix
+\section{Source and reproducibility record}
+Repository: \url{https://github.com/donghyeok8649daniel/al-fatigue-probability-theory}.
+Base: \texttt{c8ccff7553cbb2e66b0c37a76ee8a24808478824}.
+Files under \path{docs/research/20261020_first_principles_i_iii/}
+contain the detailed six requested research notes, Korean executive summary,
+scope and provenance. Isolated code is under
+\texttt{research/first\_principles\_20261020/}; the immutable saved result is
+\texttt{results/run\_001/verification.json}. Python 3.12.14, NumPy 2.5.3 and
+SciPy 1.18.1 were used.
+
+The downloaded Rev.11 source SHA-256 (two contiguous lines) is
+\begin{quote}\ttfamily\small
+ce46fad9a667ce0c6ef2e000ff9499148\\
+ff7d20d1a56c427516311a9be2199be
+\end{quote}
+The exact source and bibliography are preserved separately. This companion
+does not silently replace production potentials, calibration or historical
+outputs. The full 55-display audit and actual-material fatigue validation
+are outside this first delivery.
+
+\begin{thebibliography}{9}
+\bibitem{DLMF} NIST Digital Library of Mathematical Functions,
+Eq.~10.32.10, \url{https://dlmf.nist.gov/10.32.E10}.
+\bibitem{Mori1965} H.~Mori, Transport, collective motion, and Brownian motion,
+Prog. Theor. Phys. \textbf{33}, 423--455 (1965),
+\href{https://doi.org/10.1143/PTP.33.423}{doi:10.1143/PTP.33.423}.
+\bibitem{Zwanzig1973} R.~Zwanzig, Nonlinear generalized Langevin equations,
+J. Stat. Phys. \textbf{9}, 215--220 (1973),
+\href{https://doi.org/10.1007/BF01008729}{doi:10.1007/BF01008729}.
+\bibitem{Legoll2010} F.~Legoll and T.~Leli\`evre, Effective dynamics using
+conditional expectations, Nonlinearity \textbf{23}, 2131--2163 (2010),
+\href{https://doi.org/10.1088/0951-7715/23/9/006}{doi:10.1088/0951-7715/23/9/006}.
+\bibitem{Hottovy2015} S.~Hottovy, A.~McDaniel, G.~Volpe and J.~Wehr,
+The Smoluchowski--Kramers limit of stochastic differential equations with
+arbitrary state-dependent friction, Commun. Math. Phys. \textbf{336},
+1259--1283 (2015),
+\href{https://doi.org/10.1007/s00220-014-2233-4}{doi:10.1007/s00220-014-2233-4}.
+\bibitem{Ayaz2022} C.~Ayaz, B.~A.~Dalton and R.~R.~Netz, Generalized
+Langevin equation with a nonlinear potential of mean force and nonlinear
+memory friction from a hybrid projection scheme,
+Phys. Rev. E \textbf{105}, 054138 (2022),
+\href{https://doi.org/10.1103/PhysRevE.105.054138}{doi:10.1103/PhysRevE.105.054138}.
+\end{thebibliography}
+\end{document}

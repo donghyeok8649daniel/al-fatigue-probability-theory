@@ -1,0 +1,71 @@
+{
+  "verifiedUTC": "2026-10-19T22:21:16.977905+00:00",
+  "project": "86fa402b20a593c3dbca788ee535b601",
+  "archiveSHA256": "5c20806ddf89e8e16d16576fbce55d5669d9192e436c9cbe36c824f5fe378297",
+  "files": [
+    {
+      "serverFile": "1st_Paper.tex",
+      "repoFile": "paper/first_principles_20261020/1st_Paper.tex",
+      "sha256": "2c3abad944ca5d960b006863eb3f1c8093fbba0104248c5520b7ff2806e63d6b",
+      "exact": true
+    },
+    {
+      "serverFile": "First_Principles_I_III_20261020.tex",
+      "repoFile": "paper/first_principles_20261020/First_Principles_I_III_20261020.tex",
+      "sha256": "8494d3830a1ceccfa71203fb138d3b5c0dde28fc0d5635e40785ff748970012e",
+      "exact": true
+    },
+    {
+      "serverFile": "1st_Paper_rev11_original.tex",
+      "repoFile": "paper/rev11_original/1st_Paper_rev11_original.tex",
+      "sha256": "ce46fad9a667ce0c6ef2e000ff9499148ff7d20d1a56c427516311a9be2199be",
+      "exact": true
+    },
+    {
+      "serverFile": "1.bib",
+      "repoFile": "paper/rev11_original/1.bib",
+      "sha256": "77a1c96aa9ec80fc55725df35a103bf2cf93a21a362a8e048c7e9605bf0ce1ae",
+      "exact": true
+    }
+  ],
+  "originalPreserved": true,
+  "scope": "Downloaded final server project and compared bytes to local publication source",
+  "pdfs": [
+    {
+      "path": "paper/first_principles_20261020/output/pdf/First_Principles_I_III_20261020.pdf",
+      "sha256": "59f8d4e9c5fb70293fca804a6df85b6784e08cd3f46f2a022b2f16e39ee4be4e",
+      "bytes": 121182,
+      "pages": 9,
+      "producer": "XeTeX 0.99992",
+      "creationUTC": "2026-10-19T22:19:23+00:00"
+    },
+    {
+      "path": "paper/first_principles_20261020/output/pdf/Revision11_foundations_addendum.pdf",
+      "sha256": "f2322e40aba91ccc63e4369edb316b67fa906a42258894851f35209c003f3326",
+      "bytes": 568356,
+      "pages": 20,
+      "producer": "pdfTeX-1.40.20",
+      "creationUTC": "2026-10-19T22:20:37+00:00"
+    }
+  ],
+  "compile": {
+    "papeeriaCompanion": true,
+    "papeeriaMain": true,
+    "desktopCompilerSuccess": true,
+    "engine": {
+      "companion": "XeLaTeX; final PDF producer XeTeX 0.99992",
+      "main": "pdfLaTeX / TeX Live 2019; final PDF producer pdfTeX-1.40.20"
+    }
+  },
+  "visualReview": {
+    "companion": "All nine pages inspected; revised provenance pages 8-9 re-inspected after correction",
+    "main": "All twenty pages inspected in a contact sheet; changed pages 1-2 inspected separately",
+    "fullDownstreamEquationAudit": false
+  },
+  "mathematicalVerification": {
+    "passed": 8,
+    "failed": 0,
+    "materialCalibrated": false,
+    "productionChanged": false
+  }
+}
